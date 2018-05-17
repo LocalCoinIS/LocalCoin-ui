@@ -52,9 +52,9 @@ class AccountOverview extends React.Component {
             withdrawAsset: null,
             bridgeAsset: null,
             alwaysShowAssets: [
-                "BTS"
-                // "USD",
-                // "CNY",
+                "BTS",
+                "USD",
+                "CNY"
                 // "OPEN.BTC",
                 // "OPEN.USDT",
                 // "OPEN.ETH",

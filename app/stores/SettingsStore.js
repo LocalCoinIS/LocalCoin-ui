@@ -79,7 +79,7 @@ class SettingsStore {
                 "ja"
             ],
             apiServer: apiServer,
-            unit: [CORE_ASSET, "USD", "CNY", "BTC", "EUR", "GBP"],
+            unit: [CORE_ASSET, "USD", "CNY", "EUR", "GBP", "BTC"],
             showSettles: [{translate: "yes"}, {translate: "no"}],
             showAssetPercent: [{translate: "yes"}, {translate: "no"}],
             themes: ["darkTheme", "lightTheme", "midnightTheme"],
