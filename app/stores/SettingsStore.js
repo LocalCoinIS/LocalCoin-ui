@@ -79,7 +79,11 @@ class SettingsStore {
                 "ja"
             ],
             apiServer: apiServer,
-            unit: [CORE_ASSET, "USD", "CNY", "EUR", "GBP", "BTC"],
+            unit: [
+                CORE_ASSET
+                // "USD", "CNY", "EUR", "GBP",
+                // "BTC"
+            ],
             showSettles: [{translate: "yes"}, {translate: "no"}],
             showAssetPercent: [{translate: "yes"}, {translate: "no"}],
             themes: ["darkTheme", "lightTheme", "midnightTheme"],
@@ -268,7 +272,7 @@ class SettingsStore {
             let coreAsset = coreAssets[this.starredKey] || "BTS";
             this.defaults.unit[0] = coreAsset;
 
-            let chainBases = bases[this.starredKey] || bases.markets_4018d784;
+            let chainBases = bases[this.starredKey] || [];
             this.preferredBases = Immutable.List(chainBases);
 
             function addMarkets(target, base, markets) {
