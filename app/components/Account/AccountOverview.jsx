@@ -52,9 +52,9 @@ class AccountOverview extends React.Component {
             withdrawAsset: null,
             bridgeAsset: null,
             alwaysShowAssets: [
-                "BTS"
-                // "USD",
-                // "CNY",
+                "LLC",
+                "USD",
+                "CNY"
                 // "OPEN.BTC",
                 // "OPEN.USDT",
                 // "OPEN.ETH",
@@ -241,7 +241,7 @@ class AccountOverview extends React.Component {
     }
 
     _renderBuy = (symbol, canBuy, assetName, emptyCell, balance) => {
-        if (symbol === "BTS" && balance <= 100000) {
+        if (symbol === "LLC" && balance <= 100000) {
             // Precision of 5, 1 = 10^5
             return (
                 <span>
@@ -388,7 +388,7 @@ class AccountOverview extends React.Component {
             );
             const canDeposit =
                 (backedCoin && backedCoin.depositAllowed) ||
-                asset.get("symbol") == "BTS";
+                asset.get("symbol") == "LLC";
 
             const canWithdraw =
                 backedCoin &&
@@ -629,7 +629,7 @@ class AccountOverview extends React.Component {
                                 .find(
                                     a => a.backingCoin === thisAssetName[1]
                                 ) ||
-                            asset.get("symbol") == "BTS";
+                            asset.get("symbol") == "LLC";
 
                         const canBuy = !!this.props.bridgeCoins.get(
                             asset.get("symbol")
@@ -646,7 +646,7 @@ class AccountOverview extends React.Component {
                             market = "USD";
                         let preferredMarket = market
                             ? market
-                            : core_asset ? core_asset.get("symbol") : "BTS";
+                            : core_asset ? core_asset.get("symbol") : "LLC";
                         let directMarketLink = notCore ? (
                             <Link
                                 to={`/market/${asset.get(

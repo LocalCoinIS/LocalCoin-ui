@@ -25,10 +25,10 @@ class Assets extends React.Component {
             foundLast: false,
             lastAsset: "",
             isLoading: false,
-            totalAssets:
-                typeof accountStorage.get("totalAssets") != "object"
-                    ? accountStorage.get("totalAssets")
-                    : 3000,
+            // totalAssets:
+            //     typeof accountStorage.get("totalAssets") != "object"
+            //         ? accountStorage.get("totalAssets")
+            //         : 3000,
             assetsFetched: 0,
             activeFilter: "market",
             filterUIA: props.filterUIA || "",
@@ -49,6 +49,7 @@ class Assets extends React.Component {
     }
 
     _checkAssets(assets, force) {
+        const asset_batch_size = 101;
         this.setState({isLoading: true});
         let lastAsset = assets
             .sort((a, b) => {
@@ -63,20 +64,31 @@ class Assets extends React.Component {
             .last();
 
         if (assets.size === 0 || force) {
-            AssetActions.getAssetList.defer("A", 100);
-            this.setState({assetsFetched: 100});
+            AssetActions.getAssetList.defer("A", asset_batch_size);
+            this.setState({assetsFetched: asset_batch_size});
         } else if (assets.size >= this.state.assetsFetched) {
-            AssetActions.getAssetList.defer(lastAsset.symbol, 100);
-            this.setState({assetsFetched: this.state.assetsFetched + 99});
+            AssetActions.getAssetList.defer(lastAsset.symbol, asset_batch_size);
+            this.setState({
+                assetsFetched: this.state.assetsFetched + asset_batch_size - 1
+            });
         }
 
-        if (assets.size > this.state.totalAssets) {
-            accountStorage.set("totalAssets", assets.size);
-        }
+        // if (assets.size > this.state.totalAssets) {
+        //     accountStorage.set("totalAssets", assets.size);
+        // }
 
-        if (this.state.assetsFetched >= this.state.totalAssets - 100) {
+        if (assets.size < asset_batch_size) {
+            accountStorage.set("totalAssets", this.state.assetsFetched);
             this.setState({isLoading: false});
         }
+
+        // if (assets.size === 0 && !force) {
+        //     this.setState({isLoading: false});
+        // }
+
+        // if (this.state.assetsFetched >= this.state.totalAssets - asset_batch_size) {
+        //     this.setState({isLoading: false});
+        // }
     }
 
     componentWillReceiveProps(nextProps) {
@@ -135,7 +147,7 @@ class Assets extends React.Component {
                         "_" +
                         (description.market
                             ? description.market
-                            : coreAsset ? coreAsset.get("symbol") : "BTS");
+                            : coreAsset ? coreAsset.get("symbol") : "LLC");
 
                     return (
                         <tr key={asset.symbol}>
@@ -194,7 +206,7 @@ class Assets extends React.Component {
                         "_" +
                         (description.market
                             ? description.market
-                            : coreAsset ? coreAsset.get("symbol") : "BTS");
+                            : coreAsset ? coreAsset.get("symbol") : "LLC");
 
                     return (
                         <tr key={asset.symbol}>
@@ -263,7 +275,7 @@ class Assets extends React.Component {
                         "_" +
                         (description.market
                             ? description.market
-                            : coreAsset ? coreAsset.get("symbol") : "BTS");
+                            : coreAsset ? coreAsset.get("symbol") : "LLC");
 
                     return (
                         <tr key={asset.id.split(".")[2]}>

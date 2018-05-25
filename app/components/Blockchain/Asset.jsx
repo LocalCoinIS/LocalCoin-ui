@@ -254,7 +254,7 @@ class Asset extends React.Component {
         const core_asset = ChainStore.getAsset("1.3.0");
         let preferredMarket = description.market
             ? description.market
-            : core_asset ? core_asset.get("symbol") : "BTS";
+            : core_asset ? core_asset.get("symbol") : "LLC";
         if ("bitasset" in asset && asset.bitasset.is_prediction_market) {
             preferredMarket = ChainStore.getAsset(
                 asset.bitasset.options.short_backing_asset
