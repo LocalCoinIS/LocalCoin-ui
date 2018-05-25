@@ -7,7 +7,7 @@ import ls from "common/localStorage";
 import {Apis} from "bitsharesjs-ws";
 import {settingsAPIs} from "api/apiConfig";
 
-const CORE_ASSET = "BTS"; // Setting this to BTS to prevent loading issues when used with BTS chain which is the most usual case currently
+const CORE_ASSET = "LLC"; // Setting this to BTS to prevent loading issues when used with BTS chain which is the most usual case currently
 
 const STORAGE_KEY = "__graphene__";
 let ss = new ls(STORAGE_KEY);
@@ -269,7 +269,7 @@ class SettingsStore {
                 markets_4018d784: "BTS",
                 markets_39f5e2ed: "TEST"
             };
-            let coreAsset = coreAssets[this.starredKey] || "BTS";
+            let coreAsset = coreAssets[this.starredKey] || "LLC";
             this.defaults.unit[0] = coreAsset;
 
             let chainBases = bases[this.starredKey] || [];
