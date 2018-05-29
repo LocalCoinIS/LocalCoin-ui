@@ -73,7 +73,7 @@
         "show_asset":
             "Clicca qui per mostrare quest'asset nella lista principale.",
         "settle":
-            "Il settling ti permetterà di convertire le tue disponibilità di %(asset)s in BTS dopo un'attesa di 24 ore, ad un prezzo uguale al prezzo di mercato in quel momento.",
+            "Il settling ti permetterà di convertire le tue disponibilità di %(asset)s in LLC dopo un'attesa di 24 ore, ad un prezzo uguale al prezzo di mercato in quel momento.",
         "filter_ops":
             "Usa questa lista per filtrare il tuo storico secondo il tipo di operazione.",
         "show_block":
@@ -168,7 +168,7 @@
         "intro_text_title": "Benvenuto su BitShares",
         "intro_text_1": "Il tuo Exchange decentralizzato",
         "intro_text_2":
-            "<b>Il DEX</b> è inerentemente decentralizzato, permettendoti la compravendita del token BitShares (BTS) e una varietà di asset trustless stabili nel prezzo e ancorati al mercato come bitUSD, bitCNY, bitBTC, bitGold e altri. È possibile fare trading di questi asset con <b>zero</b> rischio di controparte, permettendoti di mantenere il pieno controllo sui tuoi fondi.",
+            "<b>Il DEX</b> è inerentemente decentralizzato, permettendoti la compravendita del token BitShares (LLC) e una varietà di asset trustless stabili nel prezzo e ancorati al mercato come bitUSD, bitCNY, bitBTC, bitGold e altri. È possibile fare trading di questi asset con <b>zero</b> rischio di controparte, permettendoti di mantenere il pieno controllo sui tuoi fondi.",
         "intro_text_3":
             "<b>Il DEX</b> permette anche la creazione di asset generati dagli utenti (user-issued assets, UIA), con cui si può fare trading con altri UIA o altri asset trustless sulla piattaforma.  Un distributore molto noto sul DEX è <b>OpenLedger</b>, che offre una gamma di asset che include BTC, ETH, STEEM, DASH, LTC, DOGE e molti altri",
         "intro_text_4":
@@ -464,7 +464,7 @@
         "unfollow": "Rimuovere",
         "follow": "Aggiungi contatto",
         "pay": "Invia a",
-        "deposit": "Deposita BTS",
+        "deposit": "Deposita LLC",
         "deposit_address":
             "Il tuo indirizzo di deposito è il nome del tuo account",
         "overview": "Panoramica",
@@ -945,7 +945,7 @@
         "workers": {
             "title": "Nome del worker",
             "period": "Durata worker",
-            "daily_pay": "Paga giornaliera (BTS)",
+            "daily_pay": "Paga giornaliera (LLC)",
             "website": "Sito web",
             "vesting_pay": "Periodo di vesting del salario (giorni)",
             "create": "Crea una nuova worker proposal",
@@ -958,7 +958,7 @@
             "date_text":
                 "La data d'inizio dovrebbe essere almeno una settimana nel futuro, in modo da dare alle persone il tempo di scoprire, valutare e votare per il tuo worker.",
             "pay_text":
-                "La paga giornaliera specifica quanto quanto vuoi essere pagato al giorno, ed è specificata in BTS. Attualmente, è buona norma definire il salario in USD/CNY, e impegnarsi a bruciare qualunque surplus che ottieni per via della crescita del prezzo di BTS. Finché il tuo worker è attivo e dispone di voti a sufficienza da stare sopra il Refund Worker, riceverai questa paga giornaliera.",
+                "La paga giornaliera specifica quanto quanto vuoi essere pagato al giorno, ed è specificata in LLC. Attualmente, è buona norma definire il salario in USD/CNY, e impegnarsi a bruciare qualunque surplus che ottieni per via della crescita del prezzo di LLC. Finché il tuo worker è attivo e dispone di voti a sufficienza da stare sopra il Refund Worker, riceverai questa paga giornaliera.",
             "url_text":
                 "Dovresti fornire un sito web, un documento github o Google doc che spieghi in dettaglio lo scopo del worker e come intendi utilizzare la paga del worker.",
             "vesting_text":
@@ -1033,13 +1033,13 @@
         "backup_backup": "Ripristina da un file di backup (.bin)",
         "backup_key": "Importa chiave privata",
         "backup_legacy":
-            "Importa un file di esportazione della chiave di BTS 0.9.3c (.json)",
+            "Importa un file di esportazione della chiave di LLC 0.9.3c (.json)",
         "backup_brainkey":
             "Ripristina utilizzando una brainkey del portafoglio",
         "backupcreate_backup": "Crea backup del portafoglio",
         "backupcreate_brainkey": "Crea backup della brainkey",
         "lookup_text":
-            "Clicca il pulsante sotto per verificare la presenza di saldi non riscossi da BTS 1.0",
+            "Clicca il pulsante sotto per verificare la presenza di saldi non riscossi da LLC 1.0",
         "delete_select": "Seleziona portafoglio da rimuovere",
         "restore_brainkey_text":
             "Per effettuare il ripristino da una brainkey, dovrai creare un nuovo portafoglio. Per favore fornisci sotto una password e il nome del tuo portafoglio, quindi inserisci una brainkey.",
@@ -1261,7 +1261,7 @@
         "restore_wallet_of": "Ripristina il portafoglio (%(name)s)",
         "restore_success": "Portafoglio (%(name)s) ripristinato con successo",
         "change": "Cambia a %(name)s",
-        "import_20_notice1": "Importa prima il tuo BACKUP BTS 2.0+",
+        "import_20_notice1": "Importa prima il tuo BACKUP LLC 2.0+",
         "import_20_notice2": "(se ne hai uno)",
         "loading_balances": "Ricerca in corso di saldi non riscossi",
         "no_balance": "Nessun saldo non riscosso trovato",
@@ -1316,14 +1316,14 @@
         "totals": "Totali asset",
         "claim_later":
             "Dopo aver importato le chiavi, puoi riscuotere questi saldi su un account di tua scelta.",
-        "bts_09_export": "File di esportazione chiavi BTS 0.9.3c (.json)",
+        "bts_09_export": "File di esportazione chiavi LLC 0.9.3c (.json)",
         "import_password": "Inserisci la password del file di importazione",
         "import_pass_match":
             "La password corrisponde. Decifrazione del backup in corso...",
         "submit": "Invia",
         "import_balance": "Importa saldo/i",
         "no_accounts": "Nessun account trovato",
-        "import_bts": "Importa un'esportazione chiavi BTS 0.9.3c",
+        "import_bts": "Importa un'esportazione chiavi LLC 0.9.3c",
         "import_private_key": "Importa una chiave privata",
         "wallet_browser": "Il tuo Browser Web è il tuo portafoglio",
         "has_wallet":
@@ -1570,7 +1570,7 @@
         "convert_coin": "Converti in %(coin)s (%(symbol)s)",
         "limit": "Limite: %(amount)s %(symbol)s",
         "bridge_text":
-            "Un bridge ti permette discambiare un asset verso un altro, ad esempio BTC in BTS.",
+            "Un bridge ti permette discambiare un asset verso un altro, ad esempio BTC in LLC.",
         "gateway_text":
             "Scegli qui se vuoi effettuare un deposito o un prelievo",
         "fiat_text":

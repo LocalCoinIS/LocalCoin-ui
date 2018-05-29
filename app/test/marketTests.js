@@ -201,7 +201,7 @@ describe("Asset", function() {
 
         let result1 = asset.times(price1);
         assert.equal(result1.asset_id, "1.3.121", "Asset id should be 1.3.121");
-        // 100 BTS * 200 BTS/USD = 100 BTS * (1/200) USD/BTS = 0.5 USD
+        // 100 LLC * 200 LLC/USD = 100 LLC * (1/200) USD/LLC = 0.5 USD
         assert.equal(
             result1.getAmount({real: true}),
             0.5,
@@ -210,14 +210,14 @@ describe("Asset", function() {
 
         let result2 = asset.times(price2);
         assert.equal(result2.asset_id, "1.3.121", "Asset id should be 1.3.121");
-        // 100 BTS * 0.001 USD / BTS = 0.1 USD
+        // 100 LLC * 0.001 USD / LLC = 0.1 USD
         assert.equal(
             result2.getAmount({real: true}),
             0.1,
             "Asset amount should be 0.1"
         );
 
-        // 55 USD * 250 BTS / USD = 13750 BTS
+        // 55 USD * 250 LLC / USD = 13750 LLC
         assert.equal(
             asset2.times(price3).getAmount({real: true}),
             13750,
@@ -663,14 +663,14 @@ describe("LimitOrderCreate", function() {
         real: 5.232
     });
 
-    let BTS = new Asset({
+    let LLC = new Asset({
         real: 1045.5
     });
 
     it("Instantiates", function() {
         let order = new LimitOrderCreate({
             to_receive: USD,
-            for_sale: BTS
+            for_sale: LLC
         });
 
         assert(order !== null);
@@ -679,7 +679,7 @@ describe("LimitOrderCreate", function() {
     it("Can be converted to object", function() {
         let order = new LimitOrderCreate({
             to_receive: USD,
-            for_sale: BTS
+            for_sale: LLC
         });
         let obj = order.toObject();
         assert.equal(Object.keys(obj).length, 6, "Object should have 6 keys");
@@ -710,7 +710,7 @@ describe("LimitOrderCreate", function() {
         assert.throws(function() {
             new LimitOrderCreate({
                 to_receive: null,
-                for_sale: BTS
+                for_sale: LLC
             });
         });
 
@@ -732,8 +732,8 @@ describe("LimitOrderCreate", function() {
     it("Throws if assets are the same", function() {
         assert.throws(function() {
             new LimitOrderCreate({
-                to_receive: BTS,
-                for_sale: BTS
+                to_receive: LLC,
+                for_sale: LLC
             });
         });
     });
