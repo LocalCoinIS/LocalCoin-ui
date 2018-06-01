@@ -37,86 +37,21 @@ class FeaturedMarkets extends React.Component {
     constructor() {
         super();
 
-        this.marketsByChain = {
-            "4018d784": [
-                ["USD", "BTS"],
-                ["USD", "OPEN.BTC"],
-                ["USD", "OPEN.USDT"],
-                ["USD", "OPEN.ETH"],
-                ["USD", "OPEN.DASH"],
-                ["USD", "GOLD"],
-                ["USD", "HERO"],
-                ["USD", "GDEX.BTC"],
-                ["USD", "GDEX.ETH"],
-                ["USD", "GDEX.EOS"],
-                ["USD", "GDEX.BTO"],
-                ["CNY", "BTS"],
-                ["CNY", "OPEN.BTC"],
-                ["CNY", "USD"],
-                ["CNY", "OPEN.ETH"],
-                ["CNY", "YOYOW"],
-                ["CNY", "OCT"],
-                ["CNY", "GDEX.BTC"],
-                ["CNY", "GDEX.ETH"],
-                ["CNY", "GDEX.EOS"],
-                ["CNY", "GDEX.BTO"],
-                ["CNY", "GDEX.BTM"],
-                ["OPEN.BTC", "BTS"],
-                ["OPEN.BTC", "OPEN.ETH"],
-                ["OPEN.BTC", "OPEN.DASH"],
-                ["OPEN.BTC", "BLOCKPAY"],
-                ["OPEN.BTC", "OPEN.DGD"],
-                ["OPEN.BTC", "OPEN.STEEM"],
-                ["BTS", "OPEN.ETH"],
-                ["BTS", "OPEN.EOS"],
-                ["BTS", "PPY"],
-                ["BTS", "OPEN.STEEM"],
-                ["BTS", "OBITS"],
-                ["BTS", "RUBLE"],
-                ["BTS", "HERO"],
-                ["BTS", "OCT"],
-                ["BTS", "SILVER"],
-                ["BTS", "GOLD"],
-                ["BTS", "BLOCKPAY"],
-                ["BTS", "BTWTY"],
-                ["BTS", "SMOKE"],
-                ["BTS", "GDEX.BTC"],
-                ["BTS", "GDEX.ETH"],
-                ["BTS", "GDEX.EOS"],
-                ["BTS", "GDEX.BTO"],
-                ["KAPITAL", "OPEN.BTC"],
-                ["USD", "OPEN.STEEM"],
-                ["USD", "OPEN.MAID"],
-                ["OPEN.USDT", "OPEN.BTC"],
-                ["OPEN.BTC", "OPEN.MAID"],
-                ["BTS", "OPEN.MAID"],
-                ["BTS", "OPEN.HEAT"],
-                ["BTS", "OPEN.INCENT"],
-                ["HEMPSWEET", "OPEN.BTC"],
-                ["KAPITAL", "BTS"],
-                ["BTS", "RUDEX.STEEM"],
-                ["USD", "RUDEX.STEEM"],
-                ["BTS", "RUDEX.SBD"],
-                ["BTS", "RUDEX.KRM"],
-                ["USD", "RUDEX.KRM"],
-                ["RUBLE", "RUDEX.GOLOS"],
-                ["CNY", "RUDEX.GOLOS"],
-                ["RUBLE", "RUDEX.GBG"],
-                ["CNY", "RUDEX.GBG"],
-                ["BTS", "RUDEX.MUSE"],
-                ["BTS", "RUDEX.TT"],
-                ["BTS", "RUDEX.SCR"],
-                ["BTS", "ZEPH"]
-            ],
-            "39f5e2ed": [["TEST", "PEG.FAKEUSD"], ["TEST", "BTWTY"]]
-        };
-
         let chainID = Apis.instance().chain_id;
         if (chainID) chainID = chainID.substr(0, 8);
 
         this.state = {
             chainID,
             markets: []
+        };
+
+        this.marketsByChain = {
+            [this.state.chainID]: [
+                ["USD", "LLC"],
+                ["USD", "CNY"],
+                ["LLC", "CNY"],
+                ["BTC", "LLC"]
+            ]
         };
 
         this.update = this.update.bind(this);
