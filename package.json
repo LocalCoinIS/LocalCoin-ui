@@ -129,7 +129,7 @@
         "alt-react": "0.0.1",
         "bignumber.js": "^4.0.0",
         "bitsharesjs": "git+ssh://git@github.com/ninetor/gateis_js#681e3016d00a",
-        "bitsharesjs-ws": "git+ssh://git@github.com/ninetor/gateis_js-ws.git#cf126c29",
+        "bitsharesjs-ws": "git+ssh://git@github.com/ninetor/gateis_js-ws.git#cb4dbda3bc781",
         "browser-locale": "^1.0.3",
         "classnames": "^2.2.1",
         "cookies-js": "^1.2.1",
