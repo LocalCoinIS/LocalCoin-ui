@@ -21,6 +21,7 @@ import GatewayStore from "stores/GatewayStore";
 import AccountImage from "../Account/AccountImage";
 import GdexGateway from "../DepositWithdraw/gdex/GdexGateway";
 import WinexGateway from "../DepositWithdraw/winex/WinexGateway";
+import LLCGateway from "../DepositWithdraw/llcgateway/LLCGateway";
 
 class AccountDepositWithdraw extends React.Component {
     static propTypes = {
@@ -125,212 +126,217 @@ class AccountDepositWithdraw extends React.Component {
         let {olService, btService, rudexService} = this.state;
 
         serList.push({
-            name: "Openledger (OPEN.X)",
-            template: (
-                <div className="content-block">
-                    {/* <div className="float-right">
-                            <a href="https://www.ccedk.com/" target="__blank" rel="noopener noreferrer"><Translate content="gateway.website" /></a>
-                        </div> */}
-                    <div
-                        className="service-selector"
-                        style={{marginBottom: "2rem"}}
-                    >
-                        <ul className="button-group segmented no-margin">
-                            <li
-                                onClick={this.toggleOLService.bind(
-                                    this,
-                                    "gateway"
-                                )}
-                                className={
-                                    olService === "gateway" ? "is-active" : ""
-                                }
-                            >
-                                <a>
-                                    <Translate content="gateway.gateway" />
-                                </a>
-                            </li>
-                            <li
-                                onClick={this.toggleOLService.bind(
-                                    this,
-                                    "fiat"
-                                )}
-                                className={
-                                    olService === "fiat" ? "is-active" : ""
-                                }
-                            >
-                                <Translate
-                                    component="a"
-                                    content="gateway.fiat"
-                                />
-                            </li>
-                        </ul>
-                    </div>
-
-                    {olService === "gateway" &&
-                    openLedgerGatewayCoins.length ? (
-                        <BlockTradesGateway
-                            account={account}
-                            coins={openLedgerGatewayCoins}
-                            provider="openledger"
-                        />
-                    ) : null}
-
-                    {olService === "fiat" ? (
-                        <div>
-                            <div style={{paddingBottom: 15}}>
-                                <Translate
-                                    component="h5"
-                                    content="gateway.fiat_text"
-                                    unsafe
-                                />
-                            </div>
-
-                            <OpenLedgerFiatDepositWithdrawal
-                                rpc_url={settingsAPIs.RPC_URL}
-                                account={account}
-                                issuer_account="openledger-fiat"
-                            />
-                            <OpenLedgerFiatTransactionHistory
-                                rpc_url={settingsAPIs.RPC_URL}
-                                account={account}
-                            />
-                        </div>
-                    ) : null}
-                </div>
-            )
+            name: LLCGateway.label,
+            template: <LLCGateway />
         });
 
-        serList.push({
-            name: "RuDEX (RUDEX.X)",
-            template: (
-                <div className="content-block">
-                    <div
-                        className="service-selector"
-                        style={{marginBottom: "2rem"}}
-                    >
-                        <ul className="button-group segmented no-margin">
-                            <li
-                                onClick={this.toggleRuDEXService.bind(
-                                    this,
-                                    "gateway"
-                                )}
-                                className={
-                                    rudexService === "gateway"
-                                        ? "is-active"
-                                        : ""
-                                }
-                            >
-                                <a>
-                                    <Translate content="gateway.gateway" />
-                                </a>
-                            </li>
-                            <li
-                                onClick={this.toggleRuDEXService.bind(
-                                    this,
-                                    "fiat"
-                                )}
-                                className={
-                                    rudexService === "fiat" ? "is-active" : ""
-                                }
-                            >
-                                <a>Fiat</a>
-                            </li>
-                        </ul>
-                    </div>
+        // serList.push({
+        //     name: "Openledger (OPEN.X)",
+        //     template: (
+        //         <div className="content-block">
+        //             {/* <div className="float-right">
+        //                     <a href="https://www.ccedk.com/" target="__blank" rel="noopener noreferrer"><Translate content="gateway.website" /></a>
+        //                 </div> */}
+        //             <div
+        //                 className="service-selector"
+        //                 style={{marginBottom: "2rem"}}
+        //             >
+        //                 <ul className="button-group segmented no-margin">
+        //                     <li
+        //                         onClick={this.toggleOLService.bind(
+        //                             this,
+        //                             "gateway"
+        //                         )}
+        //                         className={
+        //                             olService === "gateway" ? "is-active" : ""
+        //                         }
+        //                     >
+        //                         <a>
+        //                             <Translate content="gateway.gateway" />
+        //                         </a>
+        //                     </li>
+        //                     <li
+        //                         onClick={this.toggleOLService.bind(
+        //                             this,
+        //                             "fiat"
+        //                         )}
+        //                         className={
+        //                             olService === "fiat" ? "is-active" : ""
+        //                         }
+        //                     >
+        //                         <Translate
+        //                             component="a"
+        //                             content="gateway.fiat"
+        //                         />
+        //                     </li>
+        //                 </ul>
+        //             </div>
 
-                    {rudexService === "gateway" && rudexGatewayCoins.length ? (
-                        <RuDexGateway
-                            account={account}
-                            coins={rudexGatewayCoins}
-                        />
-                    ) : null}
+        //             {olService === "gateway" &&
+        //             openLedgerGatewayCoins.length ? (
+        //                 <BlockTradesGateway
+        //                     account={account}
+        //                     coins={openLedgerGatewayCoins}
+        //                     provider="openledger"
+        //                 />
+        //             ) : null}
 
-                    {rudexService === "fiat" ? (
-                        <div>
-                            <Translate content="gateway.rudex.coming_soon" />
-                        </div>
-                    ) : null}
-                </div>
-            )
-        });
+        //             {olService === "fiat" ? (
+        //                 <div>
+        //                     <div style={{paddingBottom: 15}}>
+        //                         <Translate
+        //                             component="h5"
+        //                             content="gateway.fiat_text"
+        //                             unsafe
+        //                         />
+        //                     </div>
 
-        serList.push({
-            name: "BlockTrades",
-            template: (
-                <div>
-                    <div className="content-block">
-                        {/* <div className="float-right"><a href="https://blocktrades.us" target="__blank" rel="noopener noreferrer"><Translate content="gateway.website" /></a></div> */}
+        //                     <OpenLedgerFiatDepositWithdrawal
+        //                         rpc_url={settingsAPIs.RPC_URL}
+        //                         account={account}
+        //                         issuer_account="openledger-fiat"
+        //                     />
+        //                     <OpenLedgerFiatTransactionHistory
+        //                         rpc_url={settingsAPIs.RPC_URL}
+        //                         account={account}
+        //                     />
+        //                 </div>
+        //             ) : null}
+        //         </div>
+        //     )
+        // });
 
-                        <div
-                            className="service-selector"
-                            style={{marginBottom: "2rem"}}
-                        >
-                            <ul className="button-group segmented no-margin">
-                                <li
-                                    onClick={this.toggleBTService.bind(
-                                        this,
-                                        "bridge"
-                                    )}
-                                    className={
-                                        btService === "bridge"
-                                            ? "is-active"
-                                            : ""
-                                    }
-                                >
-                                    <a>
-                                        <Translate content="gateway.bridge" />
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+        // serList.push({
+        //     name: "RuDEX (RUDEX.X)",
+        //     template: (
+        //         <div className="content-block">
+        //             <div
+        //                 className="service-selector"
+        //                 style={{marginBottom: "2rem"}}
+        //             >
+        //                 <ul className="button-group segmented no-margin">
+        //                     <li
+        //                         onClick={this.toggleRuDEXService.bind(
+        //                             this,
+        //                             "gateway"
+        //                         )}
+        //                         className={
+        //                             rudexService === "gateway"
+        //                                 ? "is-active"
+        //                                 : ""
+        //                         }
+        //                     >
+        //                         <a>
+        //                             <Translate content="gateway.gateway" />
+        //                         </a>
+        //                     </li>
+        //                     <li
+        //                         onClick={this.toggleRuDEXService.bind(
+        //                             this,
+        //                             "fiat"
+        //                         )}
+        //                         className={
+        //                             rudexService === "fiat" ? "is-active" : ""
+        //                         }
+        //                     >
+        //                         <a>Fiat</a>
+        //                     </li>
+        //                 </ul>
+        //             </div>
 
-                        <BlockTradesBridgeDepositRequest
-                            gateway="blocktrades"
-                            issuer_account="blocktrades"
-                            account={account}
-                            initial_deposit_input_coin_type="btc"
-                            initial_deposit_output_coin_type="bts"
-                            initial_deposit_estimated_input_amount="1.0"
-                            initial_withdraw_input_coin_type="bts"
-                            initial_withdraw_output_coin_type="btc"
-                            initial_withdraw_estimated_input_amount="100000"
-                            initial_conversion_input_coin_type="bts"
-                            initial_conversion_output_coin_type="bitbtc"
-                            initial_conversion_estimated_input_amount="1000"
-                        />
-                    </div>
-                    <div className="content-block" />
-                </div>
-            )
-        });
+        //             {rudexService === "gateway" && rudexGatewayCoins.length ? (
+        //                 <RuDexGateway
+        //                     account={account}
+        //                     coins={rudexGatewayCoins}
+        //                 />
+        //             ) : null}
 
-        serList.push({
-            name: "BitKapital",
-            template: (
-                <BitKapital
-                    viewSettings={this.props.viewSettings}
-                    account={account}
-                />
-            )
-        });
+        //             {rudexService === "fiat" ? (
+        //                 <div>
+        //                     <Translate content="gateway.rudex.coming_soon" />
+        //                 </div>
+        //             ) : null}
+        //         </div>
+        //     )
+        // });
 
-        serList.push({
-            name: "GDEX",
-            template: (
-                <div>
-                    <GdexGateway account={account} provider={"gdex"} />
-                </div>
-            )
-        });
+        // serList.push({
+        //     name: "BlockTrades",
+        //     template: (
+        //         <div>
+        //             <div className="content-block">
+        //                 {/* <div className="float-right"><a href="https://blocktrades.us" target="__blank" rel="noopener noreferrer"><Translate content="gateway.website" /></a></div> */}
 
-        serList.push({
-            name: "Winex",
-            template: (
-                <div>
-                    <WinexGateway account={account} provider="Winex" />
-                </div>
-            )
-        });
+        //                 <div
+        //                     className="service-selector"
+        //                     style={{marginBottom: "2rem"}}
+        //                 >
+        //                     <ul className="button-group segmented no-margin">
+        //                         <li
+        //                             onClick={this.toggleBTService.bind(
+        //                                 this,
+        //                                 "bridge"
+        //                             )}
+        //                             className={
+        //                                 btService === "bridge"
+        //                                     ? "is-active"
+        //                                     : ""
+        //                             }
+        //                         >
+        //                             <a>
+        //                                 <Translate content="gateway.bridge" />
+        //                             </a>
+        //                         </li>
+        //                     </ul>
+        //                 </div>
+
+        //                 <BlockTradesBridgeDepositRequest
+        //                     gateway="blocktrades"
+        //                     issuer_account="blocktrades"
+        //                     account={account}
+        //                     initial_deposit_input_coin_type="btc"
+        //                     initial_deposit_output_coin_type="bts"
+        //                     initial_deposit_estimated_input_amount="1.0"
+        //                     initial_withdraw_input_coin_type="bts"
+        //                     initial_withdraw_output_coin_type="btc"
+        //                     initial_withdraw_estimated_input_amount="100000"
+        //                     initial_conversion_input_coin_type="bts"
+        //                     initial_conversion_output_coin_type="bitbtc"
+        //                     initial_conversion_estimated_input_amount="1000"
+        //                 />
+        //             </div>
+        //             <div className="content-block" />
+        //         </div>
+        //     )
+        // });
+
+        // serList.push({
+        //     name: "BitKapital",
+        //     template: (
+        //         <BitKapital
+        //             viewSettings={this.props.viewSettings}
+        //             account={account}
+        //         />
+        //     )
+        // });
+
+        // serList.push({
+        //     name: "GDEX",
+        //     template: (
+        //         <div>
+        //             <GdexGateway account={account} provider={"gdex"} />
+        //         </div>
+        //     )
+        // });
+
+        // serList.push({
+        //     name: "Winex",
+        //     template: (
+        //         <div>
+        //             <WinexGateway account={account} provider="Winex" />
+        //         </div>
+        //     )
+        // });
 
         return serList;
     }
@@ -378,7 +384,8 @@ class AccountDepositWithdraw extends React.Component {
             "OPEN",
             "RUDEX",
             "TRADE",
-            "BITKAPITAL"
+            "BITKAPITAL",
+            LLCGateway.label
         ];
         const currentServiceName = serviceNames[activeService];
         const currentServiceDown = servicesDown.get(currentServiceName);
@@ -491,31 +498,34 @@ class DepositStoreWrapper extends React.Component {
     }
 }
 
-export default connect(DepositStoreWrapper, {
-    listenTo() {
-        return [AccountStore, SettingsStore, GatewayStore];
-    },
-    getProps() {
-        return {
-            account: AccountStore.getState().currentAccount,
-            viewSettings: SettingsStore.getState().viewSettings,
-            openLedgerBackedCoins: GatewayStore.getState().backedCoins.get(
-                "OPEN",
-                []
-            ),
-            rudexBackedCoins: GatewayStore.getState().backedCoins.get(
-                "RUDEX",
-                []
-            ),
-            blockTradesBackedCoins: GatewayStore.getState().backedCoins.get(
-                "TRADE",
-                []
-            ),
-            winexBackedCoins: GatewayStore.getState().backedCoins.get(
-                "WIN",
-                []
-            ),
-            servicesDown: GatewayStore.getState().down || {}
-        };
+export default connect(
+    DepositStoreWrapper,
+    {
+        listenTo() {
+            return [AccountStore, SettingsStore, GatewayStore];
+        },
+        getProps() {
+            return {
+                account: AccountStore.getState().currentAccount,
+                viewSettings: SettingsStore.getState().viewSettings,
+                openLedgerBackedCoins: GatewayStore.getState().backedCoins.get(
+                    "OPEN",
+                    []
+                ),
+                rudexBackedCoins: GatewayStore.getState().backedCoins.get(
+                    "RUDEX",
+                    []
+                ),
+                blockTradesBackedCoins: GatewayStore.getState().backedCoins.get(
+                    "TRADE",
+                    []
+                ),
+                winexBackedCoins: GatewayStore.getState().backedCoins.get(
+                    "WIN",
+                    []
+                ),
+                servicesDown: GatewayStore.getState().down || {}
+            };
+        }
     }
-});
+);
