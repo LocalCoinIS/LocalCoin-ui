@@ -18,22 +18,60 @@ class ChooseCurrency extends React.Component {
         this.getAllowCurrencies();
     }
 
+    _current = null;
+    getCurrency() {
+        let list = this.getCoinByType();
+        if (!list)
+            return {
+                internalCurrency: null,
+                externalCurrency: null
+            };
+
+        if (!this._current) return list[0];
+
+        for (var i in list)
+            if (list[i].internalCurrency == this._current) return list[i];
+
+        return {
+            internalCurrency: null,
+            externalCurrency: null
+        };
+    }
+
     getAllowCurrencies() {
         let provider = new LLCGatewayData();
         let self = this;
         provider.getAllowCurrency(data => {
-            self.setState({
-                currencies: data
-            });
+            self.setState(
+                {
+                    currencies: data
+                },
+                function() {
+                    self.props.bullet.setCurrency(self.getCurrency());
+                }
+            );
         });
     }
 
-    onSelectCoin(val) {}
+    onSelectCoin(event) {
+        this._current = event.target.value;
+        this.props.bullet.setCurrency(this.getCurrency());
+    }
 
     componentWillReceiveProps(props) {
-        this.setState({
-            type: props.type
-        });
+        let old = this.state.type;
+        let self = this;
+
+        this.setState(
+            {
+                type: props.type
+            },
+            () => {
+                if (old != this.state.type) {
+                    self.props.bullet.setCurrency(self.getCurrency());
+                }
+            }
+        );
     }
 
     getCoinByType() {
@@ -74,7 +112,7 @@ class ChooseCurrency extends React.Component {
                 </label>
                 <select
                     className="external-coin-types bts-select"
-                    onChange={this.onSelectCoin.bind(this)}
+                    onChange={this.onSelectCoin}
                 >
                     {coins}
                 </select>

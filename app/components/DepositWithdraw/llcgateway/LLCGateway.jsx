@@ -19,7 +19,11 @@ class LLCGateway extends React.Component {
         this.switchToWithdraw = this.switchToWithdraw.bind(this);
 
         this.state = {
-            type: LLCGateway.WITHDRAW
+            type: LLCGateway.WITHDRAW,
+            currency: {
+                internalCurrency: null,
+                externalCurrency: null
+            }
         };
     }
 
@@ -29,6 +33,14 @@ class LLCGateway extends React.Component {
 
     switchToWithdraw() {
         this.setState({type: LLCGateway.WITHDRAW});
+    }
+
+    setCurrency(model) {
+        this.setState({
+            currency: model
+        });
+
+        console.log(model);
     }
 
     render() {
@@ -54,7 +66,10 @@ class LLCGateway extends React.Component {
                     <div>
                         <div className="grid-block no-margin vertical medium-horizontal no-padding">
                             <div className="medium-4">
-                                <ChooseCurrency type={this.state.type} />
+                                <ChooseCurrency
+                                    type={this.state.type}
+                                    bullet={this}
+                                />
                             </div>
                             <div className="medium-6 medium-offset-1">
                                 <label className="left-label">
