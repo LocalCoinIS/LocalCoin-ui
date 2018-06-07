@@ -18,6 +18,26 @@ class Instructions extends React.Component {
         };
 
         this.activateModal = this.activateModal.bind(this);
+
+        this._copy = this._copy.bind(this);
+        document.addEventListener("copy", this._copy);
+    }
+
+    _copy(e) {
+        try {
+            if (this.state.clipboardText)
+                e.clipboardData.setData("text/plain", this.state.clipboardText);
+            else
+                e.clipboardData.setData(
+                    "text/plain",
+                    counterpart
+                        .translate("gateway.use_copy_button")
+                        .toUpperCase()
+                );
+            e.preventDefault();
+        } catch (err) {
+            console.error(err);
+        }
     }
 
     componentWillReceiveProps(props) {
@@ -38,7 +58,20 @@ class Instructions extends React.Component {
         });
     }
 
+    toClipboard(clipboardText) {
+        try {
+            this.setState({clipboardText}, () => {
+                document.execCommand("copy");
+            });
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
     render() {
+        let memoText = "LLCGateway";
+        let addressText = "llc:" + this.state.account;
+
         return (
             <div className="small-12 medium-7">
                 <h4>
@@ -102,7 +135,7 @@ class Instructions extends React.Component {
                                                 .translate("gateway.address")
                                                 .toUpperCase()}:&nbsp;
                                             <b>
-                                                <span>LLCGateway</span>
+                                                <span>{addressText}</span>
                                             </b>
                                         </td>
                                     </tr>
@@ -112,9 +145,7 @@ class Instructions extends React.Component {
                                                 .translate("gateway.memo")
                                                 .toUpperCase()}:&nbsp;
                                             <b>
-                                                <span>
-                                                    llc:{this.state.account}
-                                                </span>
+                                                <span>{memoText}</span>
                                             </b>
                                         </td>
                                     </tr>
@@ -124,12 +155,24 @@ class Instructions extends React.Component {
                                 className="button-group"
                                 style={{paddingTop: 10}}
                             >
-                                <div className="button">
+                                <div
+                                    className="button"
+                                    onClick={this.toClipboard.bind(
+                                        this,
+                                        addressText
+                                    )}
+                                >
                                     {counterpart.translate(
                                         "gateway.copy_address"
                                     )}
                                 </div>
-                                <div className="button">
+                                <div
+                                    className="button"
+                                    onClick={this.toClipboard.bind(
+                                        this,
+                                        memoText
+                                    )}
+                                >
                                     {counterpart.translate("gateway.copy_memo")}
                                 </div>
                             </div>
