@@ -13,7 +13,7 @@ class Summary extends React.Component {
         };
     }
 
-    componentWillUpdate(props) {
+    componentWillReceiveProps(props) {
         this.setState({
             type: props.type
         });

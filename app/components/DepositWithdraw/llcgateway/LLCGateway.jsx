@@ -4,6 +4,7 @@ import counterpart from "counterpart";
 import ChooseCurrency from "./ChooseCurrency";
 import Summary from "./Summary";
 import Instructions from "./Instructions";
+import Recent from "./Recent";
 
 class LLCGateway extends React.Component {
     static label = "LLCGateway";
@@ -107,6 +108,7 @@ class LLCGateway extends React.Component {
                         <Summary type={this.state.type} />
                         <Instructions type={this.state.type} />
                     </div>
+                    <Recent type={this.state.type} />
                 </div>
             </div>
         );

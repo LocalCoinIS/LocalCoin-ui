@@ -30,7 +30,7 @@ class ChooseCurrency extends React.Component {
 
     onSelectCoin(val) {}
 
-    componentWillUpdate(props) {
+    componentWillReceiveProps(props) {
         this.setState({
             type: props.type
         });
