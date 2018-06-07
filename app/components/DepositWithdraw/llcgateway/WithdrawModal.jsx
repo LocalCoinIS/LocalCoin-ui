@@ -57,7 +57,10 @@ class WithdrawModal extends React.Component {
                                             {counterpart.translate(
                                                 "modal.withdraw.withdraw"
                                             )}{" "}
-                                            {"LLC"}
+                                            {
+                                                this.props.currency
+                                                    .internalCurrency
+                                            }
                                         </span>
                                     </h3>
                                 </div>
@@ -85,17 +88,14 @@ class WithdrawModal extends React.Component {
                                                     <div>
                                                         <span className="no-amount">
                                                             <span className="currency">
-                                                                <div
-                                                                    className="inline-block tooltip"
-                                                                    data-tip="<div><strong>RUDEX.SCR</strong><br /><br />RUDEX.SCR asset is backed 1:1 by the real SCR on SCORUM blockchain (https://scorumcoins.com), and can be deposited and withdrawn using gateway operated by RuDEX (https://rudex.org).missing translation: en.gateway.assets.rudex</div>"
-                                                                    data-place="bottom"
-                                                                    data-html="true"
-                                                                >
-                                                                    <span className="asset-prefix-replaced">
-                                                                        rudex.
-                                                                    </span>
+                                                                <div className="inline-block tooltip">
                                                                     <span>
-                                                                        SCR
+                                                                        {
+                                                                            this
+                                                                                .props
+                                                                                .currency
+                                                                                .internalCurrency
+                                                                        }
                                                                     </span>
                                                                 </div>
                                                             </span>
@@ -114,7 +114,10 @@ class WithdrawModal extends React.Component {
                                                 <Translate
                                                     content="gateway.rudex.min_amount"
                                                     minAmount={1}
-                                                    symbol={"LLC"}
+                                                    symbol={
+                                                        this.props.currency
+                                                            .internalCurrency
+                                                    }
                                                 />
                                             </span>
                                         </b>

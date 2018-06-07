@@ -32,10 +32,7 @@ class ChooseCurrency extends React.Component {
         for (var i in list)
             if (list[i].internalCurrency == this._current) return list[i];
 
-        return {
-            internalCurrency: null,
-            externalCurrency: null
-        };
+        return list[0];
     }
 
     getAllowCurrencies() {
@@ -101,7 +98,7 @@ class ChooseCurrency extends React.Component {
             <div>
                 <label className="left-label">
                     <span>
-                        {this.state.type == LLCGateway.WITHDRAW
+                        {this.state.type == LLCGateway.DEPOSIT
                             ? counterpart
                                   .translate("gateway.choose_withdraw")
                                   .toUpperCase()
@@ -113,6 +110,7 @@ class ChooseCurrency extends React.Component {
                 <select
                     className="external-coin-types bts-select"
                     onChange={this.onSelectCoin}
+                    value={this._current}
                 >
                     {coins}
                 </select>

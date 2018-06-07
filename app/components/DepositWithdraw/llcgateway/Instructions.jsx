@@ -180,7 +180,11 @@ class Instructions extends React.Component {
                     )}
                 </div>
 
-                <WithdrawModal bullet={this} active={this.state.modalActive} />
+                <WithdrawModal
+                    bullet={this}
+                    active={this.state.modalActive}
+                    currency={this.props.currency}
+                />
             </div>
         );
     }

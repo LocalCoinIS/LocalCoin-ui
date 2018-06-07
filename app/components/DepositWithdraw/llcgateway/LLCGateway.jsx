@@ -39,8 +39,6 @@ class LLCGateway extends React.Component {
         this.setState({
             currency: model
         });
-
-        console.log(model);
     }
 
     render() {
@@ -121,8 +119,14 @@ class LLCGateway extends React.Component {
                         </div>
                     </div>
                     <div className="rudex__gateway grid-block no-padding no-margin">
-                        <Summary type={this.state.type} />
-                        <Instructions type={this.state.type} />
+                        <Summary
+                            type={this.state.type}
+                            currency={this.state.currency}
+                        />
+                        <Instructions
+                            type={this.state.type}
+                            currency={this.state.currency}
+                        />
                     </div>
                     <Recent type={this.state.type} />
                 </div>

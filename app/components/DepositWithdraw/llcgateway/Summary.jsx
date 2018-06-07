@@ -49,7 +49,9 @@ class Summary extends React.Component {
                                         textAlign: "right"
                                     }}
                                 >
-                                    GOLOS
+                                    {this.state.type == LLCGateway.WITHDRAW
+                                        ? this.props.currency.externalCurrency
+                                        : this.props.currency.internalCurrency}
                                 </td>
                             </tr>
                             <tr>
@@ -66,9 +68,11 @@ class Summary extends React.Component {
                                     }}
                                 >
                                     <span>
-                                        <span className="asset-prefix-replaced">
-                                            rudex.
-                                        </span>GOLOS
+                                        {this.state.type == LLCGateway.DEPOSIT
+                                            ? this.props.currency
+                                                  .externalCurrency
+                                            : this.props.currency
+                                                  .internalCurrency}
                                     </span>
                                 </td>
                             </tr>
@@ -85,8 +89,17 @@ class Summary extends React.Component {
                                         textAlign: "right"
                                     }}
                                 >
-                                    <a href="#/account/rudex-golos/overview/">
-                                        rudex-golos
+                                    <a
+                                        href={
+                                            "#/account/llc-" +
+                                            this.props.currency
+                                                .externalCurrency +
+                                            "/overview/"
+                                        }
+                                    >
+                                        llc-{
+                                            this.props.currency.externalCurrency
+                                        }
                                     </a>
                                 </td>
                             </tr>
@@ -135,11 +148,9 @@ class Summary extends React.Component {
                                     }}
                                 >
                                     <span>
-                                        0&nbsp;<span>
-                                            <span className="asset-prefix-replaced">
-                                                rudex.
-                                            </span>GOLOS
-                                        </span>
+                                        0&nbsp;{
+                                            this.props.currency.internalCurrency
+                                        }
                                     </span>
                                 </td>
                             </tr>
