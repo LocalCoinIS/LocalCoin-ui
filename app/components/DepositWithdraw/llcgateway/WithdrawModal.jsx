@@ -13,13 +13,11 @@ class WithdrawModal extends React.Component {
             active: props.active
         };
 
-        this.disactivateModal = this.disactivateModal.bind(this);
+        this.deactivateModal = this.deactivateModal.bind(this);
     }
 
-    disactivateModal() {
-        this.setState({
-            active: false
-        });
+    deactivateModal() {
+        this.props.bullet.deactivateModal();
     }
 
     componentWillReceiveProps(props) {
@@ -45,7 +43,7 @@ class WithdrawModal extends React.Component {
                     <a
                         href="#"
                         className="close-button"
-                        onClick={this.disactivateModal}
+                        onClick={this.deactivateModal}
                     >
                         ×
                     </a>
@@ -127,7 +125,7 @@ class WithdrawModal extends React.Component {
                                         <label className="right-label" />
                                         <label className="left-label">
                                             {counterpart.translate(
-                                                "modal.withdraw.free"
+                                                "modal.withdraw.fee"
                                             )}
                                         </label>
                                         <div className="inline-label input-wrapper">
@@ -196,7 +194,7 @@ class WithdrawModal extends React.Component {
                                     </div>
                                     <div
                                         className="button"
-                                        onClick={this.disactivateModal}
+                                        onClick={this.deactivateModal}
                                     >
                                         <span>
                                             {counterpart.translate(

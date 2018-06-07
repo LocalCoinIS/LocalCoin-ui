@@ -5,6 +5,7 @@ import ChooseCurrency from "./ChooseCurrency";
 import Summary from "./Summary";
 import Instructions from "./Instructions";
 import Recent from "./Recent";
+import accountUtils from "common/account_utils";
 
 class LLCGateway extends React.Component {
     static label = "LLCGateway";

@@ -1,4 +1,5 @@
 import React from "react";
+import AccountStore from "stores/AccountStore";
 import Translate from "react-translate-component";
 import SettingsStore from "stores/SettingsStore";
 import counterpart from "counterpart";
@@ -12,7 +13,8 @@ class Instructions extends React.Component {
 
         this.state = {
             type: props.type,
-            modalActive: false
+            modalActive: false,
+            account: AccountStore.getState().currentAccount
         };
 
         this.activateModal = this.activateModal.bind(this);
@@ -27,6 +29,12 @@ class Instructions extends React.Component {
     activateModal() {
         this.setState({
             modalActive: true
+        });
+    }
+
+    deactivateModal() {
+        this.setState({
+            modalActive: false
         });
     }
 
@@ -94,7 +102,7 @@ class Instructions extends React.Component {
                                                 .translate("gateway.address")
                                                 .toUpperCase()}:&nbsp;
                                             <b>
-                                                <span>rudex</span>
+                                                <span>LLCGateway</span>
                                             </b>
                                         </td>
                                     </tr>
@@ -104,7 +112,9 @@ class Instructions extends React.Component {
                                                 .translate("gateway.memo")
                                                 .toUpperCase()}:&nbsp;
                                             <b>
-                                                <span>dex:ninetor-dot</span>
+                                                <span>
+                                                    llc:{this.state.account}
+                                                </span>
                                             </b>
                                         </td>
                                     </tr>
@@ -127,7 +137,7 @@ class Instructions extends React.Component {
                     )}
                 </div>
 
-                <WithdrawModal active={this.state.modalActive} />
+                <WithdrawModal bullet={this} active={this.state.modalActive} />
             </div>
         );
     }

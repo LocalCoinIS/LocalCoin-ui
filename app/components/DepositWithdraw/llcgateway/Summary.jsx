@@ -1,4 +1,5 @@
 import React from "react";
+import AccountStore from "stores/AccountStore";
 import SettingsStore from "stores/SettingsStore";
 import counterpart from "counterpart";
 import LLCGateway from "./LLCGateway";
@@ -9,7 +10,8 @@ class Summary extends React.Component {
         super(props);
 
         this.state = {
-            type: props.type
+            type: props.type,
+            account: AccountStore.getState().currentAccount
         };
     }
 
@@ -102,8 +104,13 @@ class Summary extends React.Component {
                                             textAlign: "right"
                                         }}
                                     >
-                                        <a href="#/account/ninetor-dot/overview/">
-                                            ninetor-dot
+                                        <a
+                                            href={
+                                                "/#/account/" +
+                                                this.state.account
+                                            }
+                                        >
+                                            {this.state.account}
                                         </a>
                                     </td>
                                 </tr>

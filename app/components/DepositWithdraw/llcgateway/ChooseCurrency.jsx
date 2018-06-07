@@ -48,8 +48,13 @@ class ChooseCurrency extends React.Component {
         if ((dataCoins = this.getCoinByType()))
             coins = dataCoins.map(coin => {
                 return (
-                    <option value={coin.key} key={coin.key}>
-                        {coin.name}
+                    <option
+                        value={coin.internalCurrency}
+                        key={coin.internalCurrency}
+                    >
+                        {this.state.type == LLCGateway.WITHDRAW
+                            ? coin.internalCurrency
+                            : coin.externalCurrency}
                     </option>
                 );
             });
