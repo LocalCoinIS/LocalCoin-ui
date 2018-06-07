@@ -2,6 +2,7 @@ import React from "react";
 import SettingsStore from "stores/SettingsStore";
 import counterpart from "counterpart";
 import LLCGateway from "./LLCGateway";
+import LLCGatewayData from "./LLCGatewayData";
 
 class ChooseCurrency extends React.Component {
     constructor(props) {
@@ -9,10 +10,22 @@ class ChooseCurrency extends React.Component {
 
         this.state = {
             type: props.type,
-            data: null
+            data: null,
+            currencies: null
         };
 
         this.onSelectCoin = this.onSelectCoin.bind(this);
+        this.getAllowCurrencies();
+    }
+
+    getAllowCurrencies() {
+        let provider = new LLCGatewayData();
+        let self = this;
+        provider.getAllowCurrency(data => {
+            self.setState({
+                currencies: data
+            });
+        });
     }
 
     onSelectCoin(val) {}
@@ -24,12 +37,8 @@ class ChooseCurrency extends React.Component {
     }
 
     getCoinByType() {
-        return [
-            {value: "q123", name: "a234"},
-            {value: "w123", name: "s234"},
-            {value: "e123", name: "d234"},
-            {value: "r123", name: "f234"}
-        ];
+        if (!this.state.currencies) return null;
+        return this.state.currencies[this.state.type];
     }
 
     render() {
@@ -39,7 +48,7 @@ class ChooseCurrency extends React.Component {
         if ((dataCoins = this.getCoinByType()))
             coins = dataCoins.map(coin => {
                 return (
-                    <option value={coin.value} key={coin.value}>
+                    <option value={coin.key} key={coin.key}>
                         {coin.name}
                     </option>
                 );
