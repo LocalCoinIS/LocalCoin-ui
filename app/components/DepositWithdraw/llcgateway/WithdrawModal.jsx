@@ -34,7 +34,7 @@ class WithdrawModal extends React.Component {
                 className={
                     this.state.active
                         ? "modal-overlay is-active"
-                        : "modal-overlay is-active"
+                        : "modal-overlay"
                 }
             >
                 <div
