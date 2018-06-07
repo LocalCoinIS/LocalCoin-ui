@@ -4,14 +4,18 @@ import SettingsStore from "stores/SettingsStore";
 import counterpart from "counterpart";
 import LLCGateway from "./LLCGateway";
 import LLCGatewayData from "./LLCGatewayData";
+import WithdrawModal from "./WithdrawModal";
 
 class Instructions extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            type: props.type
+            type: props.type,
+            modalActive: false
         };
+
+        this.activateModal = this.activateModal.bind(this);
     }
 
     componentWillReceiveProps(props) {
@@ -19,6 +23,13 @@ class Instructions extends React.Component {
             type: props.type
         });
     }
+
+    activateModal() {
+        this.setState({
+            modalActive: true
+        });
+    }
+
     render() {
         return (
             <div className="small-12 medium-7">
@@ -43,6 +54,7 @@ class Instructions extends React.Component {
                                 style={{paddingTop: 20}}
                             >
                                 <button
+                                    onClick={this.activateModal}
                                     className="button success"
                                     style={{fontSize: "1.3rem"}}
                                 >
@@ -114,6 +126,8 @@ class Instructions extends React.Component {
                         </div>
                     )}
                 </div>
+
+                <WithdrawModal active={this.state.modalActive} />
             </div>
         );
     }

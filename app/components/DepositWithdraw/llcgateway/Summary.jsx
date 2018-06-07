@@ -18,6 +18,7 @@ class Summary extends React.Component {
             type: props.type
         });
     }
+
     render() {
         return (
             <div className="small-12 medium-5">
