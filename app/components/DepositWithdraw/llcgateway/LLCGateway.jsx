@@ -2,14 +2,16 @@ import React from "react";
 import SettingsStore from "stores/SettingsStore";
 import counterpart from "counterpart";
 import ChooseCurrency from "./ChooseCurrency";
+import Summary from "./Summary";
+import Instructions from "./Instructions";
 
 class LLCGateway extends React.Component {
     static label = "LLCGateway";
     static WITHDRAW = "withdraw";
     static DEPOSIT = "deposit";
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.switchToDeposit = this.switchToDeposit.bind(this);
         this.switchToWithdraw = this.switchToWithdraw.bind(this);
@@ -100,6 +102,10 @@ class LLCGateway extends React.Component {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div className="rudex__gateway grid-block no-padding no-margin">
+                        <Summary type={this.state.type} />
+                        <Instructions type={this.state.type} />
                     </div>
                 </div>
             </div>
