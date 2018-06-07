@@ -91,7 +91,7 @@ class Recent extends React.Component {
                                         <td colSpan={2}>
                                             <span>
                                                 {counterpart.translate(
-                                                    "gateway.no_recent"
+                                                    "operation.no_recent"
                                                 )}
                                             </span>
                                         </td>
