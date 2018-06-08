@@ -26,7 +26,16 @@ class WithdrawModal extends React.Component {
         });
     }
 
+    getBalance() {
+        let account = this.props.account;
+        let account_balances = account.get("balances").toJS();
+
+        console.log(this.props.currency.asset);
+    }
+
     render() {
+        this.getBalance();
+
         return (
             <div
                 className={
@@ -133,7 +142,12 @@ class WithdrawModal extends React.Component {
                                                 disabled
                                                 type="text"
                                                 tabIndex={2}
-                                                defaultValue="0.1094"
+                                                defaultValue={
+                                                    this.props.currency.minimal
+                                                }
+                                                value={
+                                                    this.props.currency.minimal
+                                                }
                                             />
                                             <div className="form-label select floating-dropdown" />
                                         </div>

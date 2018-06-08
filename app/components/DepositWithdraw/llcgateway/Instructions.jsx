@@ -167,6 +167,7 @@ class Instructions extends React.Component {
                 <WithdrawModal
                     bullet={this}
                     active={this.state.modalActive}
+                    account={this.props.account}
                     currency={this.props.currency}
                 />
             </div>
