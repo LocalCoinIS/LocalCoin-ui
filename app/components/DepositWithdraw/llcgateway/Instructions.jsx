@@ -12,7 +12,8 @@ class Instructions extends React.Component {
 
         this.state = {
             type: props.type,
-            modalActive: false
+            modalActive: false,
+            addressText: ""
         };
 
         this.activateModal = this.activateModal.bind(this);
@@ -67,9 +68,6 @@ class Instructions extends React.Component {
     }
 
     render() {
-        let memoText = "LLCGateway";
-        let addressText = "example-jhgf6576ri7654987t";
-
         return (
             <div className="small-12 medium-7">
                 <h4>
@@ -135,7 +133,9 @@ class Instructions extends React.Component {
                                                 .translate("gateway.address")
                                                 .toUpperCase()}:&nbsp;
                                             <b>
-                                                <span>{addressText}</span>
+                                                <span>
+                                                    {this.state.addressText}
+                                                </span>
                                             </b>
                                         </td>
                                     </tr>
@@ -149,21 +149,12 @@ class Instructions extends React.Component {
                                     className="button"
                                     onClick={this.toClipboard.bind(
                                         this,
-                                        addressText
+                                        this.state.addressText
                                     )}
                                 >
                                     {counterpart.translate(
                                         "gateway.copy_address"
                                     )}
-                                </div>
-                                <div
-                                    className="button"
-                                    onClick={this.toClipboard.bind(
-                                        this,
-                                        memoText
-                                    )}
-                                >
-                                    {counterpart.translate("gateway.copy_memo")}
                                 </div>
                             </div>
                         </div>
