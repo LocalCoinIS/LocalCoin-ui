@@ -1,5 +1,4 @@
 import React from "react";
-import AccountStore from "stores/AccountStore";
 import Translate from "react-translate-component";
 import SettingsStore from "stores/SettingsStore";
 import counterpart from "counterpart";
@@ -13,8 +12,7 @@ class Instructions extends React.Component {
 
         this.state = {
             type: props.type,
-            modalActive: false,
-            account: AccountStore.getState().currentAccount
+            modalActive: false
         };
 
         this.activateModal = this.activateModal.bind(this);
@@ -70,7 +68,7 @@ class Instructions extends React.Component {
 
     render() {
         let memoText = "LLCGateway";
-        let addressText = "llc:" + this.state.account;
+        let addressText = "example-jhgf6576ri7654987t";
 
         return (
             <div className="small-12 medium-7">
@@ -86,7 +84,7 @@ class Instructions extends React.Component {
                                 <span>
                                     <Translate
                                         content="gateway.withdraw_to"
-                                        asset={"LLC"}
+                                        asset={this.props.currency.asset}
                                     />
                                 </span>:
                             </label>
@@ -112,7 +110,7 @@ class Instructions extends React.Component {
                             <label className="left-label">
                                 <Translate
                                     content="gateway.deposit_to"
-                                    asset={"LLC"}
+                                    asset={this.props.currency.asset}
                                 />:
                             </label>
                             <label className="left-label">
@@ -120,8 +118,10 @@ class Instructions extends React.Component {
                                     <span>
                                         <Translate
                                             content="gateway.rudex.min_amount"
-                                            minAmount={1}
-                                            symbol={"LLC"}
+                                            minAmount={
+                                                this.props.currency.minimal
+                                            }
+                                            symbol={this.props.currency.asset}
                                         />
                                     </span>
                                 </b>
@@ -136,16 +136,6 @@ class Instructions extends React.Component {
                                                 .toUpperCase()}:&nbsp;
                                             <b>
                                                 <span>{addressText}</span>
-                                            </b>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            {counterpart
-                                                .translate("gateway.memo")
-                                                .toUpperCase()}:&nbsp;
-                                            <b>
-                                                <span>{memoText}</span>
                                             </b>
                                         </td>
                                     </tr>

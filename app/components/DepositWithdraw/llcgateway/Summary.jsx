@@ -1,18 +1,22 @@
 import React from "react";
-import AccountStore from "stores/AccountStore";
 import SettingsStore from "stores/SettingsStore";
 import counterpart from "counterpart";
 import LLCGateway from "./LLCGateway";
 import LLCGatewayData from "./LLCGatewayData";
+import {List} from "immutable";
+import AccountBalance from "../../Account/AccountBalance";
 
 class Summary extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            type: props.type,
-            account: AccountStore.getState().currentAccount
+            type: props.type
         };
+
+        console.log("balances:");
+        let balances = props.account.get("balances").toJS(); //props.account.get("balances", List()).toList();
+        console.log(balances);
     }
 
     componentWillReceiveProps(props) {
@@ -49,9 +53,9 @@ class Summary extends React.Component {
                                         textAlign: "right"
                                     }}
                                 >
-                                    {this.state.type == LLCGateway.WITHDRAW
-                                        ? this.props.currency.externalCurrency
-                                        : this.props.currency.internalCurrency}
+                                    {this.state.type == LLCGateway.DEPOSIT
+                                        ? this.props.currency.currency
+                                        : this.props.currency.asset}
                                 </td>
                             </tr>
                             <tr>
@@ -68,11 +72,9 @@ class Summary extends React.Component {
                                     }}
                                 >
                                     <span>
-                                        {this.state.type == LLCGateway.DEPOSIT
-                                            ? this.props.currency
-                                                  .externalCurrency
-                                            : this.props.currency
-                                                  .internalCurrency}
+                                        {this.state.type == LLCGateway.WITHDRAW
+                                            ? this.props.currency.currency
+                                            : this.props.currency.asset}
                                     </span>
                                 </td>
                             </tr>
@@ -91,15 +93,12 @@ class Summary extends React.Component {
                                 >
                                     <a
                                         href={
-                                            "#/account/llc-" +
-                                            this.props.currency
-                                                .externalCurrency +
+                                            "#/account/" +
+                                            this.props.currency.intermediate +
                                             "/overview/"
                                         }
                                     >
-                                        llc-{
-                                            this.props.currency.externalCurrency
-                                        }
+                                        {this.props.currency.intermediate}
                                     </a>
                                 </td>
                             </tr>
@@ -120,10 +119,10 @@ class Summary extends React.Component {
                                         <a
                                             href={
                                                 "/#/account/" +
-                                                this.state.account
+                                                this.props.account.get("name")
                                             }
                                         >
-                                            {this.state.account}
+                                            {this.props.account.get("name")}
                                         </a>
                                     </td>
                                 </tr>
@@ -147,11 +146,11 @@ class Summary extends React.Component {
                                         textAlign: "right"
                                     }}
                                 >
-                                    <span>
-                                        0&nbsp;{
-                                            this.props.currency.internalCurrency
-                                        }
-                                    </span>
+                                    <AccountBalance
+                                        account={this.props.account.get("name")}
+                                        asset={this.props.currency.asset}
+                                        replace={false}
+                                    />
                                 </td>
                             </tr>
                         </tbody>

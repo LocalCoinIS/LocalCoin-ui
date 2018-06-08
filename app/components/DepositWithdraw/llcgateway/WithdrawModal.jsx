@@ -57,10 +57,7 @@ class WithdrawModal extends React.Component {
                                             {counterpart.translate(
                                                 "modal.withdraw.withdraw"
                                             )}{" "}
-                                            {
-                                                this.props.currency
-                                                    .internalCurrency
-                                            }
+                                            {this.props.currency.asset}
                                         </span>
                                     </h3>
                                 </div>
@@ -94,7 +91,7 @@ class WithdrawModal extends React.Component {
                                                                             this
                                                                                 .props
                                                                                 .currency
-                                                                                .internalCurrency
+                                                                                .asset
                                                                         }
                                                                     </span>
                                                                 </div>
@@ -116,7 +113,7 @@ class WithdrawModal extends React.Component {
                                                     minAmount={1}
                                                     symbol={
                                                         this.props.currency
-                                                            .internalCurrency
+                                                            .asset
                                                     }
                                                 />
                                             </span>

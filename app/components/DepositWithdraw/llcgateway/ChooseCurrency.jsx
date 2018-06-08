@@ -23,14 +23,13 @@ class ChooseCurrency extends React.Component {
         let list = this.getCoinByType();
         if (!list)
             return {
-                internalCurrency: null,
-                externalCurrency: null
+                asset: null,
+                currency: null
             };
 
         if (!this._current) return list[0];
 
-        for (var i in list)
-            if (list[i].internalCurrency == this._current) return list[i];
+        for (var i in list) if (list[i].asset == this._current) return list[i];
 
         return list[0];
     }
@@ -83,13 +82,10 @@ class ChooseCurrency extends React.Component {
         if ((dataCoins = this.getCoinByType()))
             coins = dataCoins.map(coin => {
                 return (
-                    <option
-                        value={coin.internalCurrency}
-                        key={coin.internalCurrency}
-                    >
+                    <option value={coin.asset} key={coin.asset}>
                         {this.state.type == LLCGateway.WITHDRAW
-                            ? coin.internalCurrency
-                            : coin.externalCurrency}
+                            ? coin.asset
+                            : coin.currency}
                     </option>
                 );
             });

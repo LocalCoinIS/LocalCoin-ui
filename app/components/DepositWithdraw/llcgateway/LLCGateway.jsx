@@ -21,8 +21,8 @@ class LLCGateway extends React.Component {
         this.state = {
             type: LLCGateway.WITHDRAW,
             currency: {
-                internalCurrency: null,
-                externalCurrency: null
+                asset: null,
+                currency: null
             }
         };
     }
@@ -65,6 +65,7 @@ class LLCGateway extends React.Component {
                         <div className="grid-block no-margin vertical medium-horizontal no-padding">
                             <div className="medium-4">
                                 <ChooseCurrency
+                                    account={this.props.account}
                                     type={this.state.type}
                                     bullet={this}
                                 />
@@ -120,15 +121,20 @@ class LLCGateway extends React.Component {
                     </div>
                     <div className="rudex__gateway grid-block no-padding no-margin">
                         <Summary
+                            account={this.props.account}
                             type={this.state.type}
                             currency={this.state.currency}
                         />
                         <Instructions
+                            account={this.props.account}
                             type={this.state.type}
                             currency={this.state.currency}
                         />
                     </div>
-                    <Recent type={this.state.type} />
+                    <Recent
+                        account={this.props.account}
+                        type={this.state.type}
+                    />
                 </div>
             </div>
         );
