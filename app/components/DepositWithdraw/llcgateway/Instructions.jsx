@@ -7,13 +7,15 @@ import LLCGatewayData from "./LLCGatewayData";
 import WithdrawModal from "./WithdrawModal";
 
 class Instructions extends React.Component {
+    address = null;
+
     constructor(props) {
         super(props);
 
         this.state = {
             type: props.type,
             modalActive: false,
-            addressText: ""
+            addressText: props.depositAddress
         };
 
         this.activateModal = this.activateModal.bind(this);
@@ -41,7 +43,8 @@ class Instructions extends React.Component {
 
     componentWillReceiveProps(props) {
         this.setState({
-            type: props.type
+            type: props.type,
+            addressText: props.depositAddress
         });
     }
 

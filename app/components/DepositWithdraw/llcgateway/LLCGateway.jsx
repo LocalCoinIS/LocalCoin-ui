@@ -5,6 +5,7 @@ import ChooseCurrency from "./ChooseCurrency";
 import Summary from "./Summary";
 import Instructions from "./Instructions";
 import Recent from "./Recent";
+import LLCGatewayData from "./LLCGatewayData";
 import accountUtils from "common/account_utils";
 
 class LLCGateway extends React.Component {
@@ -23,7 +24,8 @@ class LLCGateway extends React.Component {
             currency: {
                 asset: null,
                 currency: null
-            }
+            },
+            depositAddress: ""
         };
     }
 
@@ -38,6 +40,18 @@ class LLCGateway extends React.Component {
     setCurrency(model) {
         this.setState({
             currency: model
+        });
+
+        this.createDepositAddress(this.props.account.get("name"), model.asset);
+    }
+
+    createDepositAddress(account, asset) {
+        if (!account || !asset) return;
+
+        new LLCGatewayData().сreatePaymentAddress(account, asset, address => {
+            this.setState({
+                depositAddress: address
+            });
         });
     }
 
@@ -126,6 +140,7 @@ class LLCGateway extends React.Component {
                             currency={this.state.currency}
                         />
                         <Instructions
+                            depositAddress={this.state.depositAddress}
                             account={this.props.account}
                             type={this.state.type}
                             currency={this.state.currency}

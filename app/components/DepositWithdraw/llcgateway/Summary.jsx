@@ -14,9 +14,9 @@ class Summary extends React.Component {
             type: props.type
         };
 
-        console.log("balances:");
-        let balances = props.account.get("balances").toJS(); //props.account.get("balances", List()).toList();
-        console.log(balances);
+        // console.log("balances:");
+        // let balances = props.account.get("balances").toJS(); //props.account.get("balances", List()).toList();
+        // console.log(balances);
     }
 
     componentWillReceiveProps(props) {
