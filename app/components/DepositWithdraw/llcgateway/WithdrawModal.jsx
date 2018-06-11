@@ -5,6 +5,7 @@ import counterpart from "counterpart";
 import LLCGateway from "./LLCGateway";
 import LLCGatewayData from "./LLCGatewayData";
 import ChainTypes from "components/Utility/ChainTypes";
+import TransactionConfirmActions from "actions/TransactionConfirmActions";
 
 class WithdrawModal extends React.Component {
     constructor(props) {
@@ -13,7 +14,8 @@ class WithdrawModal extends React.Component {
         this.state = {
             active: props.active,
             balance: this.getBalance(),
-            insufficient: this.checkInsufficient()
+            insufficient: this.checkInsufficient(),
+            wdBtn: "button disabled"
         };
 
         this.deactivateModal = this.deactivateModal.bind(this);
@@ -62,6 +64,76 @@ class WithdrawModal extends React.Component {
         return balance;
     }
 
+    wdAddr = null;
+    onChangeWithdrAddr(e) {
+        this.wdAddr = e.target.value;
+        this.validateUnlockWithdrawBtn();
+    }
+
+    wdAmount = null;
+    onChangeAmount(e) {
+        this.wdAmount = e.target.value;
+        this.validateUnlockWithdrawBtn();
+    }
+
+    validateUnlockWithdrawBtn() {
+        if (!this.wdAddr) {
+            this.lockWithdrawBtn();
+            return;
+        }
+
+        if (!this.props.account) {
+            this.lockWithdrawBtn();
+            return;
+        }
+        if (!this.props.currency.asset) {
+            this.lockWithdrawBtn();
+            return;
+        }
+
+        let balance = new LLCGatewayData().getUserBalance(
+            this.props.account,
+            true,
+            this.props.currency.asset
+        );
+
+        if (this.wdAmount > balance) {
+            this.lockWithdrawBtn();
+            return;
+        }
+
+        if (this.wdAmount < this.props.currency.minimal) {
+            this.lockWithdrawBtn();
+            return;
+        }
+
+        this.unlockWithdrawBtn();
+    }
+
+    unlockWithdrawBtn() {
+        this.setState({
+            wdBtn: "button"
+        });
+    }
+
+    lockWithdrawBtn() {
+        this.setState({
+            wdBtn: "button disabled"
+        });
+    }
+
+    onWdClick() {
+        TransactionConfirmActions.confirm(
+            {a: 123},
+            function() {
+                console.log("resolve");
+            },
+            function() {
+                console.log("reject");
+            }
+        );
+    }
+
     render() {
         return (
             <div
@@ -100,7 +172,9 @@ class WithdrawModal extends React.Component {
                                 <div className="content-block">
                                     <div className="amount-selector">
                                         <label className="right-label">
-                                            {this.state.balance}
+                                            {this.state.balance +
+                                                " " +
+                                                this.props.currency.asset}
                                         </label>
                                         <label className="left-label">
                                             {counterpart.translate(
@@ -113,6 +187,9 @@ class WithdrawModal extends React.Component {
                                                 placeholder={0.0}
                                                 tabIndex={0}
                                                 defaultValue={0}
+                                                onChange={this.onChangeAmount.bind(
+                                                    this
+                                                )}
                                             />
                                             <div className="form-label select floating-dropdown">
                                                 <div className="dropdown-wrapper inactive">
@@ -144,7 +221,10 @@ class WithdrawModal extends React.Component {
                                             <span>
                                                 <Translate
                                                     content="gateway.rudex.min_amount"
-                                                    minAmount={1}
+                                                    minAmount={
+                                                        this.props.currency
+                                                            .minimal
+                                                    }
                                                     symbol={
                                                         this.props.currency
                                                             .asset
@@ -198,9 +278,11 @@ class WithdrawModal extends React.Component {
                                                 type="text"
                                                 tabIndex={4}
                                                 autoComplete="off"
-                                                defaultValue
+                                                defaultValue={""}
+                                                onChange={this.onChangeWithdrAddr.bind(
+                                                    this
+                                                )}
                                             />
-                                            <span>▼</span>
                                         </div>
                                     </div>
                                     <div className="rudex-position-options" />
@@ -220,7 +302,10 @@ class WithdrawModal extends React.Component {
                                     />
                                 </div>
                                 <div className="button-group">
-                                    <div className="button disabled">
+                                    <div
+                                        className={this.state.wdBtn}
+                                        onClick={this.onWdClick.bind(this)}
+                                    >
                                         <span>
                                             {counterpart.translate(
                                                 "modal.withdraw.withdraw"
