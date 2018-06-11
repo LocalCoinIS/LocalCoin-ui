@@ -4,16 +4,35 @@ import SettingsStore from "stores/SettingsStore";
 import counterpart from "counterpart";
 import LLCGateway from "./LLCGateway";
 import LLCGatewayData from "./LLCGatewayData";
+import ChainTypes from "components/Utility/ChainTypes";
 
 class WithdrawModal extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            active: props.active
+            active: props.active,
+            balance: this.getBalance(),
+            insufficient: this.checkInsufficient()
         };
 
         this.deactivateModal = this.deactivateModal.bind(this);
+    }
+
+    checkInsufficient() {
+        if (!this.props.account)
+            return counterpart.translate("transfer.errors.noFeeBalance");
+        if (!this.props.currency.asset)
+            return counterpart.translate("transfer.errors.noFeeBalance");
+
+        let balance = new LLCGatewayData().getUserBalance(
+            this.props.account,
+            true,
+            this.props.currency.asset
+        );
+        if (balance > this.props.currency.minimal) return "";
+
+        return counterpart.translate("transfer.errors.noFeeBalance");
     }
 
     deactivateModal() {
@@ -22,20 +41,28 @@ class WithdrawModal extends React.Component {
 
     componentWillReceiveProps(props) {
         this.setState({
-            active: props.active
+            active: props.active,
+            balance: this.getBalance(),
+            insufficient: this.checkInsufficient()
         });
     }
 
     getBalance() {
-        let account = this.props.account;
-        let account_balances = account.get("balances").toJS();
+        if (!this.props.account) return 0;
+        if (!this.props.currency.asset) return 0;
 
-        console.log(this.props.currency.asset);
+        let balance = new LLCGatewayData().getUserBalance(
+            this.props.account,
+            true,
+            this.props.currency.asset
+        );
+
+        if (!balance) return counterpart.translate("transfer.errors.noFunds");
+
+        return balance;
     }
 
     render() {
-        this.getBalance();
-
         return (
             <div
                 className={
@@ -73,9 +100,7 @@ class WithdrawModal extends React.Component {
                                 <div className="content-block">
                                     <div className="amount-selector">
                                         <label className="right-label">
-                                            {counterpart.translate(
-                                                "transfer.errors.noFunds"
-                                            )}
+                                            {this.state.balance}
                                         </label>
                                         <label className="left-label">
                                             {counterpart.translate(
@@ -87,7 +112,7 @@ class WithdrawModal extends React.Component {
                                                 type="text"
                                                 placeholder={0.0}
                                                 tabIndex={0}
-                                                defaultValue
+                                                defaultValue={0}
                                             />
                                             <div className="form-label select floating-dropdown">
                                                 <div className="dropdown-wrapper inactive">
@@ -156,11 +181,7 @@ class WithdrawModal extends React.Component {
                                         className="has-error no-margin"
                                         style={{paddingTop: 10}}
                                     >
-                                        <span>
-                                            {counterpart.translate(
-                                                "transfer.errors.noFeeBalance"
-                                            )}
-                                        </span>
+                                        <span>{this.state.insufficient}</span>
                                     </p>
                                 </div>
                                 <div className="content-block">
