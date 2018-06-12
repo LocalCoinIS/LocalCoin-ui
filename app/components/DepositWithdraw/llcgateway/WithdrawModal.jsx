@@ -6,6 +6,12 @@ import LLCGateway from "./LLCGateway";
 import LLCGatewayData from "./LLCGatewayData";
 import ChainTypes from "components/Utility/ChainTypes";
 import TransactionConfirmActions from "actions/TransactionConfirmActions";
+import {
+    SerializerValidation,
+    TransactionBuilder,
+    TransactionHelper,
+    ChainStore
+} from "bitsharesjs/es";
 
 class WithdrawModal extends React.Component {
     constructor(props) {
@@ -19,6 +25,38 @@ class WithdrawModal extends React.Component {
         };
 
         this.deactivateModal = this.deactivateModal.bind(this);
+        this.onWdClick = this.onWdClick.bind(this);
+
+        ///test
+        setTimeout(this.onWdClick, 1000);
+    }
+
+    getAssetId() {
+        let asset = ChainStore.getAsset(this.props.currency.asset);
+        if (asset) return asset.get("id");
+
+        return null;
+    }
+
+    newTransaction() {
+        let tr = new TransactionBuilder();
+
+        tr.add_type_operation("withdraw", {
+            fee: {
+                amount: this.props.currency.minimal,
+                asset_id: this.getAssetId()
+            },
+            funding_account: this.props.account.get("id"),
+            withdraw: {
+                amount: this.wdAmount,
+                asset: this.props.currency.asset
+            },
+            address: {
+                address: this.wdAddr
+            }
+        });
+
+        return tr;
     }
 
     checkInsufficient() {
@@ -124,12 +162,12 @@ class WithdrawModal extends React.Component {
 
     onWdClick() {
         TransactionConfirmActions.confirm(
-            {a: 123},
+            this.newTransaction(),
             function() {
-                console.log("resolve");
+                alert("success");
             },
             function() {
-                console.log("reject");
+                alert("cancel");
             }
         );
     }
@@ -304,7 +342,7 @@ class WithdrawModal extends React.Component {
                                 <div className="button-group">
                                     <div
                                         className={this.state.wdBtn}
-                                        onClick={this.onWdClick.bind(this)}
+                                        onClick={this.onWdClick}
                                     >
                                         <span>
                                             {counterpart.translate(
