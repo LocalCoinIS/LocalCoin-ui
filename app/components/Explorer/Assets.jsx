@@ -51,6 +51,9 @@ class Assets extends React.Component {
     _checkAssets(assets, force) {
         const asset_batch_size = 101;
         this.setState({isLoading: true});
+        if (force) {
+            assets = Immutable.Map();
+        }
         let lastAsset = assets
             .sort((a, b) => {
                 if (a.symbol > b.symbol) {
@@ -62,8 +65,7 @@ class Assets extends React.Component {
                 }
             })
             .last();
-
-        if (assets.size === 0 || force) {
+        if (assets.size === 0) {
             AssetActions.getAssetList.defer("A", asset_batch_size);
             this.setState({assetsFetched: asset_batch_size});
         } else if (assets.size >= this.state.assetsFetched) {
@@ -71,24 +73,10 @@ class Assets extends React.Component {
             this.setState({
                 assetsFetched: this.state.assetsFetched + asset_batch_size - 1
             });
-        }
-
-        // if (assets.size > this.state.totalAssets) {
-        //     accountStorage.set("totalAssets", assets.size);
-        // }
-
-        if (assets.size < asset_batch_size) {
-            accountStorage.set("totalAssets", this.state.assetsFetched);
+        } else if (assets.size < this.state.assetsFetched) {
+            accountStorage.set("totalAssets", assets.size);
             this.setState({isLoading: false});
         }
-
-        // if (assets.size === 0 && !force) {
-        //     this.setState({isLoading: false});
-        // }
-
-        // if (this.state.assetsFetched >= this.state.totalAssets - asset_batch_size) {
-        //     this.setState({isLoading: false});
-        // }
     }
 
     componentWillReceiveProps(nextProps) {
