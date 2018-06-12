@@ -1,17 +1,21 @@
 import React from "react";
 import Translate from "react-translate-component";
 import SettingsStore from "stores/SettingsStore";
+import AccountActions from "actions/AccountActions";
 import counterpart from "counterpart";
 import LLCGateway from "./LLCGateway";
 import LLCGatewayData from "./LLCGatewayData";
 import ChainTypes from "components/Utility/ChainTypes";
 import TransactionConfirmActions from "actions/TransactionConfirmActions";
+import TransactionConfirmStore from "stores/TransactionConfirmStore";
 import {
     SerializerValidation,
     TransactionBuilder,
     TransactionHelper,
     ChainStore
 } from "bitsharesjs/es";
+import {Asset} from "common/MarketClasses";
+import {checkFeeStatusAsync, checkBalance} from "common/trxHelper";
 
 class WithdrawModal extends React.Component {
     constructor(props) {
@@ -21,14 +25,15 @@ class WithdrawModal extends React.Component {
             active: props.active,
             balance: this.getBalance(),
             insufficient: this.checkInsufficient(),
-            wdBtn: "button disabled"
+            wdBtn: "button disabled",
+            feeAmount: new Asset({amount: 0})
         };
 
         this.deactivateModal = this.deactivateModal.bind(this);
         this.onWdClick = this.onWdClick.bind(this);
 
         ///test
-        setTimeout(this.onWdClick, 1000);
+        // setTimeout(this.onWdClick, 1000);
     }
 
     getAssetId() {
@@ -36,27 +41,6 @@ class WithdrawModal extends React.Component {
         if (asset) return asset.get("id");
 
         return null;
-    }
-
-    newTransaction() {
-        let tr = new TransactionBuilder();
-
-        tr.add_type_operation("withdraw", {
-            fee: {
-                amount: this.props.currency.minimal,
-                asset_id: this.getAssetId()
-            },
-            funding_account: this.props.account.get("id"),
-            withdraw: {
-                amount: this.wdAmount,
-                asset: this.props.currency.asset
-            },
-            address: {
-                address: this.wdAddr
-            }
-        });
-
-        return tr;
     }
 
     checkInsufficient() {
@@ -114,6 +98,10 @@ class WithdrawModal extends React.Component {
         this.validateUnlockWithdrawBtn();
     }
 
+    onChMemo(e) {
+        this.setState({memo: e.target.value}, this._updateFee);
+    }
+
     validateUnlockWithdrawBtn() {
         if (!this.wdAddr) {
             this.lockWithdrawBtn();
@@ -160,19 +148,98 @@ class WithdrawModal extends React.Component {
         });
     }
 
-    onWdClick() {
-        TransactionConfirmActions.confirm(
-            this.newTransaction(),
-            function() {
-                alert("success");
-            },
-            function() {
-                alert("cancel");
-            }
+    generateMemo() {
+        return (
+            "withdwaw to [" +
+            this.props.currency.asset +
+            ': "' +
+            this.wdAddr +
+            '"]' +
+            "\n" +
+            this.state.memo
         );
     }
 
+    onWdClick() {
+        this.props.bullet.setState({modalActive: false});
+
+        let asset = ChainStore.getAsset(this.props.currency.asset);
+        let localcoinAccount = ChainStore.getAccount("localcoin-wallet");
+
+        const sendAmount = new Asset({
+            real: this.wdAmount,
+            asset_id: asset.get("id"),
+            precision: asset.get("precision")
+        });
+
+        AccountActions.transfer(
+            this.props.account.get("id"),
+            localcoinAccount.get("id"),
+            sendAmount.getAmount(),
+            asset.get("id"),
+            this.generateMemo(),
+            this.state.propose ? this.state.propose_account : null,
+            asset.get("id")
+        )
+            .then(() => {
+                this.resetForm.call(this);
+                TransactionConfirmStore.unlisten(this.onTrxIncluded);
+                TransactionConfirmStore.listen(this.onTrxIncluded);
+            })
+            .catch(e => {
+                let msg = e.message
+                    ? e.message.split("\n")[1] || e.message
+                    : null;
+                console.log("error: ", e, msg);
+                // this.setState({error: msg});
+            });
+    }
+
+    onTrxIncluded(confirm_store_state) {
+        if (
+            confirm_store_state.included &&
+            confirm_store_state.broadcasted_transaction
+        ) {
+            // this.setState(Transfer.getInitialState());
+            TransactionConfirmStore.unlisten(this.onTrxIncluded);
+            TransactionConfirmStore.reset();
+        } else if (confirm_store_state.closed) {
+            TransactionConfirmStore.unlisten(this.onTrxIncluded);
+            TransactionConfirmStore.reset();
+        }
+    }
+
+    componentWillMount() {
+        this._updateFee();
+        // this._checkFeeStatus();
+    }
+
+    _checkBalance() {}
+
+    _updateFee() {
+        // let fee_asset_id = this.getAssetId();
+        // let from_account = this.props.account;
+        // if (!from_account) return null;
+        // checkFeeStatusAsync({
+        //     accountID: from_account.get("id"),
+        //     feeID: fee_asset_id,
+        //     options: ["price_per_kbyte"],
+        //     data: {
+        //         type: "memo",
+        //         content: this.generateMemo()
+        //     }
+        // })
+        //     .then(({fee, hasBalance, hasPoolBalance}) => {
+        //         if (this.unMounted) return;
+        //         this.setState({
+        //             feeAmount: fee,
+        //         }, this._checkBalance);
+        //     });
+    }
+
     render() {
+        let fee = 0; //= this.state.feeAmount ? this.state.feeAmount.getAmount({real: true}) : 0;
+
         return (
             <div
                 className={
@@ -210,7 +277,11 @@ class WithdrawModal extends React.Component {
                                 <div className="content-block">
                                     <div className="amount-selector">
                                         <label className="right-label">
-                                            {this.state.balance +
+                                            {counterpart.translate(
+                                                "transfer.available"
+                                            ) +
+                                                ": " +
+                                                this.state.balance +
                                                 " " +
                                                 this.props.currency.asset}
                                         </label>
@@ -285,12 +356,8 @@ class WithdrawModal extends React.Component {
                                                 disabled
                                                 type="text"
                                                 tabIndex={2}
-                                                defaultValue={
-                                                    this.props.currency.minimal
-                                                }
-                                                value={
-                                                    this.props.currency.minimal
-                                                }
+                                                defaultValue={fee}
+                                                value={fee}
                                             />
                                             <div className="form-label select floating-dropdown" />
                                         </div>
@@ -337,6 +404,7 @@ class WithdrawModal extends React.Component {
                                         rows={3}
                                         tabIndex={1}
                                         defaultValue={""}
+                                        onChange={this.onChMemo.bind(this)}
                                     />
                                 </div>
                                 <div className="button-group">
