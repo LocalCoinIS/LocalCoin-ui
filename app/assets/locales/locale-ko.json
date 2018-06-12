@@ -57,7 +57,7 @@
         "hide_asset": "Click here to hide this asset from this list.",
         "show_asset": "Click here to show this asset in the main list.",
         "settle":
-            "Settling will let you convert your holdings of %(asset)s to BTS after a delay of 24 hours, at a price equal to the feed price at that time.",
+            "Settling will let you convert your holdings of %(asset)s to LLC after a delay of 24 hours, at a price equal to the feed price at that time.",
         "filter_ops": "Use this list to filter your history by operation type.",
         "show_block":
             "Click here to show block #%(block)s where this transaction occured.",
@@ -604,7 +604,7 @@
         "workers": {
             "title": "예산 항목",
             "period": "Worker duration",
-            "daily_pay": "Daily pay (BTS)",
+            "daily_pay": "Daily pay (LLC)",
             "website": "Website",
             "vesting_pay": "Salary vesting period (days)",
             "create": "Create a new worker proposal",
@@ -617,7 +617,7 @@
             "date_text":
                 "The start date should be at least a week into the future in order to allow people the time to discover, evaluate and vote for your worker.",
             "pay_text":
-                "The daily pay defines how much you want to be paid per day and is defined in BTS. The current best practice is to define a salary in USD/CNY, and commit to burning whatever surplus you receive as a result of the BTS price increasing. As long as your worker is active and has sufficient votes to be above the refund worker, you will receive this daily salary.",
+                "The daily pay defines how much you want to be paid per day and is defined in LLC. The current best practice is to define a salary in USD/CNY, and commit to burning whatever surplus you receive as a result of the LLC price increasing. As long as your worker is active and has sufficient votes to be above the refund worker, you will receive this daily salary.",
             "url_text":
                 "You should supply a website, github document or google doc that describes in more detail the purpose of the worker and how you intend to use the worker pay.",
             "vesting_text":

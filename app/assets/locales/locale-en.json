@@ -94,7 +94,7 @@
         "hide_asset": "Click here to hide this asset from this list.",
         "show_asset": "Click here to show this asset in the main list.",
         "settle":
-            "Settling will let you convert your holdings of %(asset)s to BTS after a delay of 24 hours, at a price equal to the feed price at that time.",
+            "Settling will let you convert your holdings of %(asset)s to LLC after a delay of 24 hours, at a price equal to the feed price at that time.",
         "filter_ops": "Use this list to filter your history by operation type.",
         "show_block":
             "Click here to show block #%(block)s where this transaction occurred.",
@@ -199,7 +199,7 @@
         "intro_text_title": "Welcome to BitShares",
         "intro_text_1": "Your Decentralized Exchange",
         "intro_text_2":
-            "<b>The DEX</b> is inherently decentralized, enabling you to trade the BitShares core token (BTS) and a range of trustless price-stable, market-pegged assets such as bitUSD, bitCNY, bitBTC, bitGold and more. These assets can all be traded with <b>zero</b> counter-party risk, putting you in total control of your funds.",
+            "<b>The DEX</b> is inherently decentralized, enabling you to trade the BitShares core token (LLC) and a range of trustless price-stable, market-pegged assets such as bitUSD, bitCNY, bitBTC, bitGold and more. These assets can all be traded with <b>zero</b> counter-party risk, putting you in total control of your funds.",
         "intro_text_3":
             "<b>The DEX</b> also enables creation of user-issued assets (UIAs), which can be traded against any other UIAs or trustless assets on the platform.  One well-known issuer on The DEX is <b>OpenLedger</b>, offering a host of assets including BTC, ETH, STEEM, DASH, LTC, DOGE, and many more",
         "intro_text_4":
@@ -537,7 +537,7 @@
         "unfollow": "Remove contact",
         "follow": "Add contact",
         "pay": "Send to",
-        "deposit": "Deposit BTS",
+        "deposit": "Deposit LLC",
         "deposit_address": "Your deposit address is your account name",
         "overview": "Overview",
         "home": "Home",
@@ -1027,7 +1027,7 @@
         "workers": {
             "title": "Worker name",
             "period": "Duration",
-            "daily_pay": "Daily pay (BTS)",
+            "daily_pay": "Daily pay (LLC)",
             "website": "Website",
             "vesting_pay": "Salary vesting period (days)",
             "create": "Create a new worker proposal",
@@ -1040,7 +1040,7 @@
             "date_text":
                 "The start date should be at least a week into the future in order to allow people the time to discover, evaluate and vote for your worker.",
             "pay_text":
-                "The daily pay defines how much you want to be paid per day and is defined in BTS. The current best practice is to define a salary in USD/CNY, and commit to burning whatever surplus you receive as a result of the BTS price increasing. As long as your worker is active and has sufficient votes to be above the refund worker, you will receive this daily salary.",
+                "The daily pay defines how much you want to be paid per day and is defined in LLC. The current best practice is to define a salary in USD/CNY, and commit to burning whatever surplus you receive as a result of the LLC price increasing. As long as your worker is active and has sufficient votes to be above the refund worker, you will receive this daily salary.",
             "url_text":
                 "You should supply a website, github document or google doc that describes in more detail the purpose of the worker and how you intend to use the worker pay.",
             "vesting_text":
@@ -1120,7 +1120,7 @@
         "backup_backup": "Restore from a backup file (.bin)",
         "backup_backup_short": "Restore from a backup",
         "backup_key": "Import a private key",
-        "backup_legacy": "Import a BTS 0.9.3c key export file (.json)",
+        "backup_legacy": "Import a LLC 0.9.3c key export file (.json)",
         "backup_brainkey": "Restore using a local wallet brainkey",
         "backup_favorites": "Restore favorites using a json file",
         "backup_favorites_error": "Could not parse JSON.",
@@ -1133,7 +1133,7 @@
         "backup_favoritestext":
             "Back up your favorites to restore them later after updates.",
         "lookup_text":
-            "Click the button below to check for unclaimed balances from BTS 1.0",
+            "Click the button below to check for unclaimed balances from LLC 1.0",
         "delete_select": "Select local wallet to delete",
         "restore_brainkey_text":
             "In order to restore from a brainkey, you will need to create a new local wallet. Please provide a password and name for your new local wallet below, then enter your brainkey.",
@@ -1399,7 +1399,7 @@
         "restore_wallet_of": "Restore (%(name)s Wallet)",
         "restore_success": "Successfully restored (%(name)s) wallet",
         "change": "Change to %(name)s",
-        "import_20_notice1": "Import your BTS 2.0+ BACKUP first",
+        "import_20_notice1": "Import your LLC 2.0+ BACKUP first",
         "import_20_notice2": "(if you have one)",
         "loading_balances": "Looking for unclaimed balances",
         "no_balance": "No unclaimed balances found",
@@ -1449,13 +1449,13 @@
         "totals": "Asset Totals",
         "claim_later":
             "Once you've imported the keys, you can claim these balances to an account of your choosing.",
-        "bts_09_export": "BTS 0.9.3c key export file (.json)",
+        "bts_09_export": "LLC 0.9.3c key export file (.json)",
         "import_password": "Enter import file password",
         "import_pass_match": "Password matches. Decrypting the backup now...",
         "submit": "Submit",
         "import_balance": "Import balance(s)",
         "no_accounts": "No accounts found",
-        "import_bts": "Import a BTS 0.9.3c key export",
+        "import_bts": "Import a LLC 0.9.3c key export",
         "import_private_key": "Import a private key",
         "wallet_browser": "Your Web Browser is your Wallet",
         "has_wallet":
@@ -1613,7 +1613,7 @@
             "asset": "Asset",
             "address_generation_error": "Unable to generate address",
             "bts_transfer_description":
-                "It's easy to receive BTS from anywhere. As long as BTS is sent to your account name it will show up in your wallet. This QR code also contains your account name.",
+                "It's easy to receive LLC from anywhere. As long as LLC is sent to your account name it will show up in your wallet. This QR code also contains your account name.",
             "close": "Close",
             "cancel": "Cancel",
             "amount": "Amount to Deposit",
@@ -1768,7 +1768,7 @@
         "convert_coin": "Convert to %(coin)s (%(symbol)s)",
         "limit": "Limit: %(amount)s %(symbol)s",
         "bridge_text":
-            "A bridge lets you exchange an asset into another one, for example BTC to BTS.",
+            "A bridge lets you exchange an asset into another one, for example BTC to LLC.",
         "gateway_text":
             "Choose whether you want to make a deposit or withdrawal here",
         "fiat_text":

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # Matching exmaple:
-# ./bloom.py BTS87mopaNqLDjT1BvzqQR3QjWzWSTgkWnMcwt5sqxHuavCBi1s3m
+# ./bloom.py LLC87mopaNqLDjT1BvzqQR3QjWzWSTgkWnMcwt5sqxHuavCBi1s3m
 
 # Sample program by theoriticalbts used to create js implementation
 

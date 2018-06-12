@@ -87,7 +87,7 @@
         "show_asset":
             "メインリストにこのアセットを表示するにはここをクリックしてください。",
         "settle":
-            "精算により、保有する%(asset)sを24時間の遅延後にBTSにその時点のフィード価格で変換できます。",
+            "精算により、保有する%(asset)sを24時間の遅延後にLLCにその時点のフィード価格で変換できます。",
         "filter_ops":
             "このドロップダウンリストで履歴を操作の種類別にフィルタリングできます。",
         "show_block":
@@ -189,7 +189,7 @@
         "intro_text_title": "BitShares分散型取引所へようこそ",
         "intro_text_1": "あなたのための分散型取引所",
         "intro_text_2":
-            "BitSharesは<b>DEX</b>として分散化されており、BitSharesのコアトークンであるBTSと、bitUSD、bitCNY、bitBTC、bitGoldなどのトラストレスで価格安定性のあるアセット間のトレードを可能にします。これらの資産はすべてカウンターパーティリスク<b>ゼロ</b>で取引することができるため、あなた自身が資金を完全にコントロールすることができます。",
+            "BitSharesは<b>DEX</b>として分散化されており、BitSharesのコアトークンであるLLCと、bitUSD、bitCNY、bitBTC、bitGoldなどのトラストレスで価格安定性のあるアセット間のトレードを可能にします。これらの資産はすべてカウンターパーティリスク<b>ゼロ</b>で取引することができるため、あなた自身が資金を完全にコントロールすることができます。",
         "intro_text_3":
             "<b>DEX</b>では、ユーザー発行型アセット（UIA）の作成も可能です。ユーザー発行型アセットは、プラットフォーム上の他のユーザー発行型アセット、及びトラストレスアセット間のトレードが可能です。 DEX上でよく知られているアセット発行者である、<b>OpenLedger</b>、はBTC、ETH、STEEM、DASH、LTC、DOGE、その他多数のアセットをホスティングしています。",
         "intro_text_4":
@@ -522,7 +522,7 @@
         "unfollow": "フォロー解除",
         "follow": "フォロー",
         "pay": "送金",
-        "deposit": "BTSをデポジットする",
+        "deposit": "LLCをデポジットする",
         "deposit_address":
             "あなたのデポジットアドレスはあなたのアカウント名です。",
         "overview": "概要",
@@ -1001,7 +1001,7 @@
         "workers": {
             "title": "ワーカー名",
             "period": "ワーカー期間",
-            "daily_pay": "日当 (BTS)",
+            "daily_pay": "日当 (LLC)",
             "website": "ウェブサイト",
             "vesting_pay": "給与の権利付与期間 (日)",
             "create": "新しいワーカー提案を作成する",
@@ -1014,7 +1014,7 @@
             "date_text":
                 "開始日は、人々があなたのワーカーを見つけ、評価し、投票するために時間がかかるため、少なくとも1週間後にする必要があります。",
             "pay_text":
-                "日当は、希望する1日の支払額をBTSで定義します。現在のベストプラクティスはUSD/CNYで給料を定義し、BTSの価格上昇によって生じた余剰分をバーンすると約束することです。あなたのワーカーがアクティブで、払い戻すワーカーより上にいるために十分な投票を得ている場合、この日当を受け取ることができます。",
+                "日当は、希望する1日の支払額をLLCで定義します。現在のベストプラクティスはUSD/CNYで給料を定義し、LLCの価格上昇によって生じた余剰分をバーンすると約束することです。あなたのワーカーがアクティブで、払い戻すワーカーより上にいるために十分な投票を得ている場合、この日当を受け取ることができます。",
             "url_text":
                 "You should supply a website, github document or google doc that describes in more detail the purpose of the worker and how you intend to use the worker pay.",
             "vesting_text":
@@ -1091,7 +1091,7 @@
         "backup_backup": "バックアップファイル (.bin) からリストアする",
         "backup_key": "秘密キーをインポートする",
         "backup_legacy":
-            "BTS 0.9.3cキーエクスポートファイル (.json) をインポートする。",
+            "LLC 0.9.3cキーエクスポートファイル (.json) をインポートする。",
         "backup_brainkey": "ウォレットブレインキーでリストアする",
         "backup_favorites": "jsonファイルを使ってお気に入りをリストアする",
         "backup_favorites_error": "JSONを解析できませんでした。",
@@ -1104,7 +1104,7 @@
         "backup_favoritestext":
             "アップデート後に復元するために、お気に入りをバックアップする。",
         "lookup_text":
-            "BTS 1.0から請求されていない残高を確認するには、以下のボタンをクリックしてください。",
+            "LLC 1.0から請求されていない残高を確認するには、以下のボタンをクリックしてください。",
         "delete_select": "削除するウォレットを選択してください",
         "restore_brainkey_text":
             "ブレインキーからリストアするためには、新しいウォレットを作成する必要があります。新しいウォレットのパスワードと名前を以下に入力してから、ブレインキーを入力してください。",
@@ -1347,7 +1347,7 @@
         "restore_wallet_of": "リストア(%(name)sのウォレット)",
         "restore_success": "(%(name)s)のウォレットを正常にリストアしました。",
         "change": "%(name)sに変更する",
-        "import_20_notice1": "BTS 2.0+ バックアップを最初にインポートする",
+        "import_20_notice1": "LLC 2.0+ バックアップを最初にインポートする",
         "import_20_notice2": "(お持ちの場合)",
         "loading_balances": "未請求残高を探しています",
         "no_balance": "未請求残高はありませんでした",
@@ -1400,14 +1400,14 @@
         "totals": "アセット合計",
         "claim_later":
             "キーをインポートしたら、選択したアカウントにこれらの残高を請求することができます。",
-        "bts_09_export": "BTS 0.9.3cキーエクスポートファイル (.json)",
+        "bts_09_export": "LLC 0.9.3cキーエクスポートファイル (.json)",
         "import_password": "インポートファイルのパスワードを入力してください",
         "import_pass_match":
             "パスワードが一致しました。バックアップを復号化しています...",
         "submit": "送信",
         "import_balance": "残高をインポートする",
         "no_accounts": "アカウントが見つかりません",
-        "import_bts": "BTS 0.9.3c キーエクスポートをインポートする",
+        "import_bts": "LLC 0.9.3c キーエクスポートをインポートする",
         "import_private_key": "秘密キーをインポートする",
         "wallet_browser": "あなたのWebブラウザがあなたのウォレットです",
         "has_wallet":
@@ -1558,7 +1558,7 @@
             "select_gateway": "ゲートウェイオペレータを選択してください",
             "address_generation_error": "アドレスを生成できません",
             "bts_transfer_description":
-                "BTSを受け取るのは簡単です。BTSをあなたのアカウント名に対して送れば、あなたのウォレットに届きます。このQRコードにも、あなたのアカウント名が含まれています。",
+                "LLCを受け取るのは簡単です。LLCをあなたのアカウント名に対して送れば、あなたのウォレットに届きます。このQRコードにも、あなたのアカウント名が含まれています。",
             "close": "閉じる",
             "cancel": "キャンセル",
             "amount": "入金する数量",
@@ -1709,7 +1709,7 @@
         "convert_coin": "%(coin)s (%(symbol)s) に変換",
         "limit": "リミット: %(amount)s %(symbol)s",
         "bridge_text":
-            "ブリッジはアセットを他のものに交換します。例: BTCをBTSに。",
+            "ブリッジはアセットを他のものに交換します。例: BTCをLLCに。",
         "gateway_text": "ここで入金または出金を選択してください",
         "fiat_text":
             "注意：法定通貨のゲートウェイは当面の間、利用不可となります。最新情報は<a target='_blank' href='https://blog.openledger.info/'>blog.openledger.info</a>から確認してください。",

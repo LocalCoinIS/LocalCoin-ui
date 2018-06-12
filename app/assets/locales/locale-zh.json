@@ -464,7 +464,7 @@
         "unfollow": "取消关注",
         "follow": "关注",
         "pay": "转账",
-        "deposit": "充值BTS",
+        "deposit": "充值LLC",
         "deposit_address": "您的充值地址就是您的账户名",
         "overview": "概述",
         "home": "首页",
@@ -928,7 +928,7 @@
         "workers": {
             "title": "预算项目",
             "period": "周期",
-            "daily_pay": "每日支付 (BTS)",
+            "daily_pay": "每日支付 (LLC)",
             "website": "网站",
             "vesting_pay": "工资解冻周期 (天)",
             "create": "创建一个新的预算项目提案",
@@ -940,7 +940,7 @@
             "date_text":
                 "开始时间应该至少设置在一周以后，以留有足够的时间让用户股东们发现、评估项目并投票。",
             "pay_text":
-                "每日支付设定的是每天你希望收到的酬劳，以 BTS 计价。目前的最佳实践是设定以美元或人民币计价的工资，并承诺销毁由于 BTS 升值导致的溢价部分。只要你的预算项目还是有效的，并且拥有足够的赞成票超过'回购项目'，你就能每日持续收到工资。",
+                "每日支付设定的是每天你希望收到的酬劳，以 LLC 计价。目前的最佳实践是设定以美元或人民币计价的工资，并承诺销毁由于 LLC 升值导致的溢价部分。只要你的预算项目还是有效的，并且拥有足够的赞成票超过'回购项目'，你就能每日持续收到工资。",
             "url_text":
                 "你应该提供一个网站、GitHub 文档或者 Google 文档来详细描述你的工作目标和资金使用计划。",
             "vesting_text":
@@ -1010,7 +1010,7 @@
         "backup_backup": "从钱包备份文件恢复 (.bin)",
         "backup_key": "导入私钥",
         "backup_legacy":
-            "从BTS 0.9.3c 版本客户端导出的JSON钱包文件导入 (.json)",
+            "从LLC 0.9.3c 版本客户端导出的JSON钱包文件导入 (.json)",
         "backup_brainkey": "从脑钱包密钥恢复钱包",
         "backup_favorites": "从备份文件恢复收藏的市场列表",
         "backup_favorites_error": "无法处理文件内容",
@@ -1021,7 +1021,7 @@
         "backupcreate_favorites": "备份收藏的市场列表",
         "backup_favoritesbtn": "备份市场收藏夹",
         "backup_favoritestext": "将收藏的市场进行备份，以便在更新后进行恢复。",
-        "lookup_text": "查看来自 BTS 1.0 的未领取余额",
+        "lookup_text": "查看来自 LLC 1.0 的未领取余额",
         "delete_select": "选择要删除的钱包",
         "restore_brainkey_text":
             "从脑钱包恢复前，你需要新建一个新的钱包。请为新钱包创建一个密码，然后输入你的脑钱包密钥。",
@@ -1238,7 +1238,7 @@
         "restore_wallet_of": "导入 (钱包 %(name)s)",
         "restore_success": "已成功导入钱包 %(name)s ",
         "change": "切换到钱包 %(name)s",
-        "import_20_notice1": "请先导入你的BTS 2.0+ 钱包备份文件",
+        "import_20_notice1": "请先导入你的LLC 2.0+ 钱包备份文件",
         "import_20_notice2": "(如果你有的话)",
         "loading_balances": "余额读取中",
         "no_balance": "无余额可导入",
@@ -1284,13 +1284,13 @@
         "totals": "资产总计",
         "claim_later":
             "导入私钥后，你可以将私钥拥有的余额申领到你选择的账户中去。",
-        "bts_09_export": "BTS 0.9.3c 私钥导出文件 (.json)",
+        "bts_09_export": "LLC 0.9.3c 私钥导出文件 (.json)",
         "import_password": "输入导入文件的密码",
         "import_pass_match": "密码相符。正在解密备份文件…",
         "submit": "提交",
         "import_balance": "导入余额",
         "no_accounts": "未找到账户",
-        "import_bts": "导入一个 BTS 0.9.3c 私钥导出文件",
+        "import_bts": "导入一个 LLC 0.9.3c 私钥导出文件",
         "import_private_key": "导入私钥",
         "wallet_browser": "你的浏览器即你的钱包",
         "has_wallet":
@@ -1535,7 +1535,7 @@
         "convert_coin": "兑换成 %(coin)s (%(symbol)s)",
         "limit": "限额: %(amount)s %(symbol)s",
         "bridge_text":
-            "桥接服务能让你将一种资产转变成另一种资产，比如从 BTC 转换到 BTS。",
+            "桥接服务能让你将一种资产转变成另一种资产，比如从 BTC 转换到 LLC。",
         "gateway_text":
             "网关能让你将 BitShares 中的资产与外部资产进行互换，比如 OPEN.BTC 到 BTC。",
         "fiat_text":
