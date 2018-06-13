@@ -218,7 +218,8 @@ class WithdrawModal extends React.Component {
     _updateFee() {
         let fee_asset_id = this.getAssetId();
         let from_account = this.props.account;
-        if (!from_account) return null;
+        if (!from_account || !fee_asset_id) return null;
+
         checkFeeStatusAsync({
             accountID: from_account.get("id"),
             feeID: fee_asset_id,
@@ -229,12 +230,7 @@ class WithdrawModal extends React.Component {
             }
         }).then(({fee, hasBalance, hasPoolBalance}) => {
             if (this.unMounted) return;
-            this.setState(
-                {
-                    feeAmount: fee
-                },
-                this.validateUnlockWithdrawBtn
-            );
+            this.setState({feeAmount: fee}, this.validateUnlockWithdrawBtn);
         });
     }
 
