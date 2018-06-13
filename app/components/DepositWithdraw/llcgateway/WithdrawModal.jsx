@@ -18,6 +18,9 @@ import {Asset} from "common/MarketClasses";
 import {checkFeeStatusAsync, checkBalance} from "common/trxHelper";
 
 class WithdrawModal extends React.Component {
+    asset = null;
+    localcoinAccount = null;
+
     constructor(props) {
         super(props);
 
@@ -32,14 +35,15 @@ class WithdrawModal extends React.Component {
         this.deactivateModal = this.deactivateModal.bind(this);
         this.onWdClick = this.onWdClick.bind(this);
 
-        ///test
-        // setTimeout(this.onWdClick, 1000);
+        setTimeout(() => {
+            this.asset = ChainStore.getAsset(this.props.currency.asset);
+            this.localcoinAccount = ChainStore.getAccount("localcoin-wallet");
+            this._updateFee();
+        }, 1000);
     }
 
     getAssetId() {
-        let asset = ChainStore.getAsset(this.props.currency.asset);
-        if (asset) return asset.get("id");
-
+        if (this.asset) return this.asset.get("id");
         return null;
     }
 
@@ -94,7 +98,7 @@ class WithdrawModal extends React.Component {
 
     wdAmount = null;
     onChangeAmount(e) {
-        this.wdAmount = e.target.value;
+        this.wdAmount = parseFloat(e.target.value);
         this.validateUnlockWithdrawBtn();
     }
 
@@ -123,12 +127,16 @@ class WithdrawModal extends React.Component {
             this.props.currency.asset
         );
 
-        if (this.wdAmount > balance) {
+        let fee = this.state.feeAmount
+            ? this.state.feeAmount.getAmount({real: true})
+            : 0;
+
+        if (this.wdAmount < this.props.currency.minimal) {
             this.lockWithdrawBtn();
             return;
         }
 
-        if (this.wdAmount < this.props.currency.minimal) {
+        if (this.wdAmount + fee > balance) {
             this.lockWithdrawBtn();
             return;
         }
@@ -149,37 +157,31 @@ class WithdrawModal extends React.Component {
     }
 
     generateMemo() {
-        return (
-            "withdwaw to [" +
-            this.props.currency.asset +
-            ': "' +
-            this.wdAddr +
-            '"]' +
-            "\n" +
+        return JSON.stringify([
+            "withdwaw to",
+            this.props.currency.asset,
+            this.wdAddr,
             this.state.memo
-        );
+        ]);
     }
 
     onWdClick() {
         this.props.bullet.setState({modalActive: false});
 
-        let asset = ChainStore.getAsset(this.props.currency.asset);
-        let localcoinAccount = ChainStore.getAccount("localcoin-wallet");
-
         const sendAmount = new Asset({
             real: this.wdAmount,
-            asset_id: asset.get("id"),
-            precision: asset.get("precision")
+            asset_id: this.asset.get("id"),
+            precision: this.asset.get("precision")
         });
 
         AccountActions.transfer(
             this.props.account.get("id"),
-            localcoinAccount.get("id"),
+            this.localcoinAccount.get("id"),
             sendAmount.getAmount(),
-            asset.get("id"),
+            this.asset.get("id"),
             this.generateMemo(),
             this.state.propose ? this.state.propose_account : null,
-            asset.get("id")
+            this.asset.get("id")
         )
             .then(() => {
                 this.resetForm.call(this);
@@ -211,34 +213,31 @@ class WithdrawModal extends React.Component {
 
     componentWillMount() {
         this._updateFee();
-        // this._checkFeeStatus();
     }
 
-    _checkBalance() {}
-
     _updateFee() {
-        // let fee_asset_id = this.getAssetId();
-        // let from_account = this.props.account;
-        // if (!from_account) return null;
-        // checkFeeStatusAsync({
-        //     accountID: from_account.get("id"),
-        //     feeID: fee_asset_id,
-        //     options: ["price_per_kbyte"],
-        //     data: {
-        //         type: "memo",
-        //         content: this.generateMemo()
-        //     }
-        // })
-        //     .then(({fee, hasBalance, hasPoolBalance}) => {
-        //         if (this.unMounted) return;
-        //         this.setState({
-        //             feeAmount: fee,
-        //         }, this._checkBalance);
-        //     });
+        let fee_asset_id = this.getAssetId();
+        let from_account = this.props.account;
+        if (!from_account || !fee_asset_id) return null;
+
+        checkFeeStatusAsync({
+            accountID: from_account.get("id"),
+            feeID: fee_asset_id,
+            options: ["price_per_kbyte"],
+            data: {
+                type: "memo",
+                content: this.generateMemo()
+            }
+        }).then(({fee, hasBalance, hasPoolBalance}) => {
+            if (this.unMounted) return;
+            this.setState({feeAmount: fee}, this.validateUnlockWithdrawBtn);
+        });
     }
 
     render() {
-        let fee = 0; //= this.state.feeAmount ? this.state.feeAmount.getAmount({real: true}) : 0;
+        let fee = this.state.feeAmount
+            ? this.state.feeAmount.getAmount({real: true})
+            : 0;
 
         return (
             <div
