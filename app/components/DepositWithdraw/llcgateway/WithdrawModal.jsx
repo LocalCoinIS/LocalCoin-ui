@@ -32,8 +32,7 @@ class WithdrawModal extends React.Component {
         this.deactivateModal = this.deactivateModal.bind(this);
         this.onWdClick = this.onWdClick.bind(this);
 
-        ///test
-        // setTimeout(this.onWdClick, 1000);
+        setTimeout(this._updateFee.bind(this), 1000);
     }
 
     getAssetId() {
@@ -94,7 +93,7 @@ class WithdrawModal extends React.Component {
 
     wdAmount = null;
     onChangeAmount(e) {
-        this.wdAmount = e.target.value;
+        this.wdAmount = parseFloat(e.target.value);
         this.validateUnlockWithdrawBtn();
     }
 
@@ -123,12 +122,16 @@ class WithdrawModal extends React.Component {
             this.props.currency.asset
         );
 
-        if (this.wdAmount > balance) {
+        let fee = this.state.feeAmount
+            ? this.state.feeAmount.getAmount({real: true})
+            : 0;
+
+        if (this.wdAmount < this.props.currency.minimal) {
             this.lockWithdrawBtn();
             return;
         }
 
-        if (this.wdAmount < this.props.currency.minimal) {
+        if (this.wdAmount + fee > balance) {
             this.lockWithdrawBtn();
             return;
         }
@@ -211,34 +214,35 @@ class WithdrawModal extends React.Component {
 
     componentWillMount() {
         this._updateFee();
-        // this._checkFeeStatus();
     }
 
-    _checkBalance() {}
-
     _updateFee() {
-        // let fee_asset_id = this.getAssetId();
-        // let from_account = this.props.account;
-        // if (!from_account) return null;
-        // checkFeeStatusAsync({
-        //     accountID: from_account.get("id"),
-        //     feeID: fee_asset_id,
-        //     options: ["price_per_kbyte"],
-        //     data: {
-        //         type: "memo",
-        //         content: this.generateMemo()
-        //     }
-        // })
-        //     .then(({fee, hasBalance, hasPoolBalance}) => {
-        //         if (this.unMounted) return;
-        //         this.setState({
-        //             feeAmount: fee,
-        //         }, this._checkBalance);
-        //     });
+        let fee_asset_id = this.getAssetId();
+        let from_account = this.props.account;
+        if (!from_account) return null;
+        checkFeeStatusAsync({
+            accountID: from_account.get("id"),
+            feeID: fee_asset_id,
+            options: ["price_per_kbyte"],
+            data: {
+                type: "memo",
+                content: this.generateMemo()
+            }
+        }).then(({fee, hasBalance, hasPoolBalance}) => {
+            if (this.unMounted) return;
+            this.setState(
+                {
+                    feeAmount: fee
+                },
+                this.validateUnlockWithdrawBtn
+            );
+        });
     }
 
     render() {
-        let fee = 0; //= this.state.feeAmount ? this.state.feeAmount.getAmount({real: true}) : 0;
+        let fee = this.state.feeAmount
+            ? this.state.feeAmount.getAmount({real: true})
+            : 0;
 
         return (
             <div
