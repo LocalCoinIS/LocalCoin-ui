@@ -47,6 +47,7 @@ class WithdrawModal extends React.Component {
     }
 
     getAssetId() {
+        this.asset = ChainStore.getAsset(this.props.currency.asset);
         if (this.asset) return this.asset.get("id");
         return null;
     }
@@ -172,6 +173,8 @@ class WithdrawModal extends React.Component {
     onWdClick() {
         this.props.bullet.setState({modalActive: false});
 
+        this.asset = ChainStore.getAsset(this.props.currency.asset);
+
         const sendAmount = new Asset({
             real: this.wdAmount,
             asset_id: this.asset.get("id"),
@@ -217,12 +220,6 @@ class WithdrawModal extends React.Component {
 
     componentWillMount() {
         this._updateFee();
-
-        setTimeout(() => {
-            this.asset = ChainStore.getAsset(this.props.currency.asset);
-            this.localcoinAccount = ChainStore.getAccount("localcoin-wallet");
-            this._updateFee();
-        }, 1000);
     }
 
     _updateFee() {
