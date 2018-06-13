@@ -35,10 +35,14 @@ class WithdrawModal extends React.Component {
         this.deactivateModal = this.deactivateModal.bind(this);
         this.onWdClick = this.onWdClick.bind(this);
 
-        setTimeout(() => {
-            this.asset = ChainStore.getAsset(this.props.currency.asset);
-            this.localcoinAccount = ChainStore.getAccount("localcoin-wallet");
-            this._updateFee();
+        setInterval(() => {
+            if (!this.localcoinAccount || !this.asset) {
+                this.asset = ChainStore.getAsset(this.props.currency.asset);
+                this.localcoinAccount = ChainStore.getAccount(
+                    "localcoin-wallet"
+                );
+                this._updateFee();
+            }
         }, 1000);
     }
 
@@ -158,7 +162,7 @@ class WithdrawModal extends React.Component {
 
     generateMemo() {
         return JSON.stringify([
-            "withdwaw to",
+            "withdraw to",
             this.props.currency.asset,
             this.wdAddr,
             this.state.memo
@@ -213,6 +217,12 @@ class WithdrawModal extends React.Component {
 
     componentWillMount() {
         this._updateFee();
+
+        setTimeout(() => {
+            this.asset = ChainStore.getAsset(this.props.currency.asset);
+            this.localcoinAccount = ChainStore.getAccount("localcoin-wallet");
+            this._updateFee();
+        }, 1000);
     }
 
     _updateFee() {
