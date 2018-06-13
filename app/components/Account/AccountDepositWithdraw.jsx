@@ -21,12 +21,13 @@ import GatewayStore from "stores/GatewayStore";
 import AccountImage from "../Account/AccountImage";
 import GdexGateway from "../DepositWithdraw/gdex/GdexGateway";
 import WinexGateway from "../DepositWithdraw/winex/WinexGateway";
+import PropTypes from "prop-types";
 import LLCGateway from "../DepositWithdraw/llcgateway/LLCGateway";
 
 class AccountDepositWithdraw extends React.Component {
     static propTypes = {
         account: ChainTypes.ChainAccount.isRequired,
-        contained: React.PropTypes.bool
+        contained: PropTypes.bool
     };
 
     static defaultProps = {
@@ -498,34 +499,31 @@ class DepositStoreWrapper extends React.Component {
     }
 }
 
-export default connect(
-    DepositStoreWrapper,
-    {
-        listenTo() {
-            return [AccountStore, SettingsStore, GatewayStore];
-        },
-        getProps() {
-            return {
-                account: AccountStore.getState().currentAccount,
-                viewSettings: SettingsStore.getState().viewSettings,
-                openLedgerBackedCoins: GatewayStore.getState().backedCoins.get(
-                    "OPEN",
-                    []
-                ),
-                rudexBackedCoins: GatewayStore.getState().backedCoins.get(
-                    "RUDEX",
-                    []
-                ),
-                blockTradesBackedCoins: GatewayStore.getState().backedCoins.get(
-                    "TRADE",
-                    []
-                ),
-                winexBackedCoins: GatewayStore.getState().backedCoins.get(
-                    "WIN",
-                    []
-                ),
-                servicesDown: GatewayStore.getState().down || {}
-            };
-        }
+export default connect(DepositStoreWrapper, {
+    listenTo() {
+        return [AccountStore, SettingsStore, GatewayStore];
+    },
+    getProps() {
+        return {
+            account: AccountStore.getState().currentAccount,
+            viewSettings: SettingsStore.getState().viewSettings,
+            openLedgerBackedCoins: GatewayStore.getState().backedCoins.get(
+                "OPEN",
+                []
+            ),
+            rudexBackedCoins: GatewayStore.getState().backedCoins.get(
+                "RUDEX",
+                []
+            ),
+            blockTradesBackedCoins: GatewayStore.getState().backedCoins.get(
+                "TRADE",
+                []
+            ),
+            winexBackedCoins: GatewayStore.getState().backedCoins.get(
+                "WIN",
+                []
+            ),
+            servicesDown: GatewayStore.getState().down || {}
+        };
     }
-);
+});
