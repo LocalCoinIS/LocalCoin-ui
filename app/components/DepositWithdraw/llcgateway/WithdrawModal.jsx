@@ -18,6 +18,9 @@ import {Asset} from "common/MarketClasses";
 import {checkFeeStatusAsync, checkBalance} from "common/trxHelper";
 
 class WithdrawModal extends React.Component {
+    asset = null;
+    localcoinAccount = null;
+
     constructor(props) {
         super(props);
 
@@ -32,13 +35,15 @@ class WithdrawModal extends React.Component {
         this.deactivateModal = this.deactivateModal.bind(this);
         this.onWdClick = this.onWdClick.bind(this);
 
-        setTimeout(this._updateFee.bind(this), 1000);
+        setTimeout(() => {
+            this.asset = ChainStore.getAsset(this.props.currency.asset);
+            this.localcoinAccount = ChainStore.getAccount("localcoin-wallet");
+            this._updateFee();
+        }, 1000);
     }
 
     getAssetId() {
-        let asset = ChainStore.getAsset(this.props.currency.asset);
-        if (asset) return asset.get("id");
-
+        if (this.asset) return this.asset.get("id");
         return null;
     }
 
@@ -152,37 +157,31 @@ class WithdrawModal extends React.Component {
     }
 
     generateMemo() {
-        return (
-            "withdwaw to [" +
-            this.props.currency.asset +
-            ': "' +
-            this.wdAddr +
-            '"]' +
-            "\n" +
+        return JSON.stringify([
+            "withdwaw to",
+            this.props.currency.asset,
+            this.wdAddr,
             this.state.memo
-        );
+        ]);
     }
 
     onWdClick() {
         this.props.bullet.setState({modalActive: false});
 
-        let asset = ChainStore.getAsset(this.props.currency.asset);
-        let localcoinAccount = ChainStore.getAccount("localcoin-wallet");
-
         const sendAmount = new Asset({
             real: this.wdAmount,
-            asset_id: asset.get("id"),
-            precision: asset.get("precision")
+            asset_id: this.asset.get("id"),
+            precision: this.asset.get("precision")
         });
 
         AccountActions.transfer(
             this.props.account.get("id"),
-            localcoinAccount.get("id"),
+            this.localcoinAccount.get("id"),
             sendAmount.getAmount(),
-            asset.get("id"),
+            this.asset.get("id"),
             this.generateMemo(),
             this.state.propose ? this.state.propose_account : null,
-            asset.get("id")
+            this.asset.get("id")
         )
             .then(() => {
                 this.resetForm.call(this);
