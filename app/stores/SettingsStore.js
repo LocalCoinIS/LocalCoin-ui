@@ -2,7 +2,7 @@ import alt from "alt-instance";
 import SettingsActions from "actions/SettingsActions";
 import IntlActions from "actions/IntlActions";
 import Immutable, {fromJS} from "immutable";
-import {merge} from "lodash";
+import {merge} from "lodash-es";
 import ls from "common/localStorage";
 import {Apis} from "bitsharesjs-ws";
 import {settingsAPIs} from "api/apiConfig";
@@ -24,6 +24,8 @@ class SettingsStore {
         this.bindListeners({
             onSetExchangeLastExpiration:
                 SettingsActions.setExchangeLastExpiration,
+            onSetExchangeTutorialShown:
+                SettingsActions.setExchangeTutorialShown,
             onChangeSetting: SettingsActions.changeSetting,
             onChangeViewSetting: SettingsActions.changeViewSetting,
             onChangeMarketDirection: SettingsActions.changeMarketDirection,
@@ -179,96 +181,11 @@ class SettingsStore {
             this.starredKey = this._getChainKey("markets");
             this.marketsKey = this._getChainKey("userMarkets");
             // Default markets setup
-            let topMarkets = {
-                markets_4018d784: [
-                    // BTS MAIN NET
-                    "OPEN.MKR",
-                    "BTS",
-                    "OPEN.ETH",
-                    "ICOO",
-                    "BTC",
-                    "OPEN.LISK",
-                    "BKT",
-                    "OPEN.STEEM",
-                    "OPEN.GAME",
-                    "OCT",
-                    "USD",
-                    "CNY",
-                    "BTSR",
-                    "OBITS",
-                    "OPEN.DGD",
-                    "EUR",
-                    "GOLD",
-                    "SILVER",
-                    "IOU.CNY",
-                    "OPEN.DASH",
-                    "OPEN.USDT",
-                    "OPEN.EURT",
-                    "OPEN.BTC",
-                    "CADASTRAL",
-                    "BLOCKPAY",
-                    "BTWTY",
-                    "OPEN.INCNT",
-                    "KAPITAL",
-                    "OPEN.MAID",
-                    "OPEN.SBD",
-                    "OPEN.GRC",
-                    "YOYOW",
-                    "HERO",
-                    "RUBLE",
-                    "SMOKE",
-                    "STEALTH",
-                    "BRIDGE.BCO",
-                    "BRIDGE.BTC",
-                    "KEXCOIN",
-                    "PPY",
-                    "OPEN.EOS",
-                    "OPEN.OMG",
-                    "CVCOIN",
-                    "BRIDGE.ZNY",
-                    "BRIDGE.MONA",
-                    "OPEN.LTC",
-                    "GDEX.BTC",
-                    "GDEX.EOS",
-                    "GDEX.ETH",
-                    "GDEX.BTO",
-                    "WIN.ETH",
-                    "WIN.ETC",
-                    "WIN.HSR",
-                    "RUDEX.STEEM",
-                    "RUDEX.SBD",
-                    "RUDEX.KRM",
-                    "RUDEX.GBG",
-                    "RUDEX.GOLOS",
-                    "RUDEX.MUSE",
-                    "RUDEX.DCT"
-                ],
-                markets_39f5e2ed: [
-                    // TESTNET
-                    "PEG.FAKEUSD",
-                    "BTWTY"
-                ]
-            };
+            let topMarkets = {};
 
-            let bases = {
-                markets_4018d784: [
-                    // BTS MAIN NET
-                    "USD",
-                    "OPEN.BTC",
-                    "CNY",
-                    "BTS",
-                    "BTC"
-                ],
-                markets_39f5e2ed: [
-                    // TESTNET
-                    "TEST"
-                ]
-            };
+            let bases = {};
 
-            let coreAssets = {
-                markets_4018d784: "BTS",
-                markets_39f5e2ed: "TEST"
-            };
+            let coreAssets = {};
             let coreAsset = coreAssets[this.starredKey] || "LLC";
             this.defaults.unit[0] = coreAsset;
 
@@ -496,6 +413,10 @@ class SettingsStore {
 
     onSetExchangeLastExpiration(value) {
         this.setExchangeSettings("lastExpiration", fromJS(value));
+    }
+
+    onSetExchangeTutorialShown(value) {
+        this.setExchangeSettings("tutorialShown", value);
     }
 
     getExhchangeLastExpiration() {
