@@ -162,12 +162,7 @@ class WithdrawModal extends React.Component {
     }
 
     generateMemo() {
-        return JSON.stringify([
-            "withdraw to",
-            this.props.currency.asset,
-            this.wdAddr,
-            this.state.memo
-        ]);
+        return JSON.stringify(["withdraw to", this.wdAddr, this.state.memo]);
     }
 
     onWdClick() {
