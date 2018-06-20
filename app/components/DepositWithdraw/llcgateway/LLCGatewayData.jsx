@@ -22,6 +22,13 @@ class LLCGatewayData {
         );
     }
 
+    validateAddress(address, asset, cb) {
+        this.ajax(cb, "ValidateAddress", {
+            address: address,
+            currency: asset
+        });
+    }
+
     ajax(cb, action, params) {
         if (typeof params === "undefined") params = null;
 

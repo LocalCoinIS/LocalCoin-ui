@@ -29,7 +29,8 @@ class WithdrawModal extends React.Component {
             balance: this.getBalance(),
             insufficient: this.checkInsufficient(),
             wdBtn: "button disabled",
-            feeAmount: new Asset({amount: 0})
+            feeAmount: new Asset({amount: 0}),
+            validAddress: true
         };
 
         this.deactivateModal = this.deactivateModal.bind(this);
@@ -97,6 +98,10 @@ class WithdrawModal extends React.Component {
 
     wdAddr = null;
     onChangeWithdrAddr(e) {
+        if (e.target.value.indexOf("") !== -1) {
+            e.target.value = e.target.value.replace(new RegExp(" ", "g"), "");
+        }
+
         this.wdAddr = e.target.value;
         this.validateUnlockWithdrawBtn();
     }
@@ -165,38 +170,61 @@ class WithdrawModal extends React.Component {
         return JSON.stringify(["withdraw to", this.wdAddr, this.state.memo]);
     }
 
-    onWdClick() {
-        this.props.bullet.setState({modalActive: false});
+    //чекнем у btcservice правильность адреса
+    //через llcgateway
+    validateAddr(addr, asset, cb) {
+        let provider = new LLCGatewayData();
+        let self = this;
+        provider.validateAddress(addr, asset, reponse => {
+            var isValide =
+                reponse == "true" || reponse == "True" || reponse == "1";
 
-        this.asset = ChainStore.getAsset(this.props.currency.asset);
-
-        const sendAmount = new Asset({
-            real: this.wdAmount,
-            asset_id: this.asset.get("id"),
-            precision: this.asset.get("precision")
+            self.setState(
+                {
+                    validAddress: isValide
+                },
+                function() {
+                    if (isValide) cb();
+                }
+            );
         });
+    }
 
-        AccountActions.transfer(
-            this.props.account.get("id"),
-            this.localcoinAccount.get("id"),
-            sendAmount.getAmount(),
-            this.asset.get("id"),
-            this.generateMemo(),
-            this.state.propose ? this.state.propose_account : null,
-            this.asset.get("id")
-        )
-            .then(() => {
-                this.resetForm.call(this);
-                TransactionConfirmStore.unlisten(this.onTrxIncluded);
-                TransactionConfirmStore.listen(this.onTrxIncluded);
-            })
-            .catch(e => {
-                let msg = e.message
-                    ? e.message.split("\n")[1] || e.message
-                    : null;
-                console.log("error: ", e, msg);
-                // this.setState({error: msg});
+    onWdClick() {
+        let self = this;
+        let next = function() {
+            self.props.bullet.setState({modalActive: false});
+            self.asset = ChainStore.getAsset(self.props.currency.asset);
+            const sendAmount = new Asset({
+                real: self.wdAmount,
+                asset_id: self.asset.get("id"),
+                precision: self.asset.get("precision")
             });
+
+            AccountActions.transfer(
+                self.props.account.get("id"),
+                self.localcoinAccount.get("id"),
+                sendAmount.getAmount(),
+                self.asset.get("id"),
+                self.generateMemo(),
+                self.state.propose ? self.state.propose_account : null,
+                self.asset.get("id")
+            )
+                .then(() => {
+                    self.resetForm.call(self);
+                    TransactionConfirmStore.unlisten(self.onTrxIncluded);
+                    TransactionConfirmStore.listen(self.onTrxIncluded);
+                })
+                .catch(e => {
+                    let msg = e.message
+                        ? e.message.split("\n")[1] || e.message
+                        : null;
+                    console.log("error: ", e, msg);
+                    // self.setState({error: msg});
+                });
+        };
+
+        this.validateAddr(this.wdAddr, this.props.currency.asset, next);
     }
 
     onTrxIncluded(confirm_store_state) {
@@ -392,6 +420,21 @@ class WithdrawModal extends React.Component {
                                         </div>
                                     </div>
                                     <div className="rudex-position-options" />
+                                    {!this.state.validAddress ? (
+                                        <div
+                                            class="has-error"
+                                            style={{paddingTop: 10}}
+                                        >
+                                            <Translate
+                                                content="gateway.valid_address"
+                                                coin_type={
+                                                    this.props.currency.asset
+                                                }
+                                            />
+                                        </div>
+                                    ) : (
+                                        ""
+                                    )}
                                 </div>
                                 <div className="content-block">
                                     <label>
