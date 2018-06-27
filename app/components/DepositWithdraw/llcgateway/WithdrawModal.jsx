@@ -62,7 +62,8 @@ class WithdrawModal extends React.Component {
         let balance = new LLCGatewayData().getUserBalance(
             this.props.account,
             true,
-            this.props.currency.asset
+            this.props.currency.asset,
+            this.props.currency.currencyCoef
         );
         if (balance > this.props.currency.minimal) return "";
 
@@ -88,7 +89,8 @@ class WithdrawModal extends React.Component {
         let balance = new LLCGatewayData().getUserBalance(
             this.props.account,
             true,
-            this.props.currency.asset
+            this.props.currency.asset,
+            this.props.currency.currencyCoef
         );
 
         if (!balance) return counterpart.translate("transfer.errors.noFunds");
@@ -134,7 +136,8 @@ class WithdrawModal extends React.Component {
         let balance = new LLCGatewayData().getUserBalance(
             this.props.account,
             true,
-            this.props.currency.asset
+            this.props.currency.asset,
+            this.props.currency.currencyCoef
         );
 
         let fee = this.state.feeAmount
@@ -146,7 +149,7 @@ class WithdrawModal extends React.Component {
             return;
         }
 
-        if (this.wdAmount + fee > balance) {
+        if (this.wdAmount > balance) {
             this.lockWithdrawBtn();
             return;
         }

@@ -50,15 +50,15 @@ class LLCGatewayData {
         return ret.join("&");
     }
 
-    getUserBalance(account, normalizeValue, byAsset) {
+    getUserBalance(account, normalizeValue, byAsset, currencyCoef) {
         let list = [];
 
-        let normalizeBalance = function(normalizeValue, balance) {
+        let normalizeBalance = function(normalizeValue, balance, currencyCoef) {
             if (!normalizeValue) return balance;
 
             if (!balance) return 0;
 
-            return balance / 100000;
+            return balance / currencyCoef;
         };
 
         let account_balances = account.get("balances").toJS();
@@ -73,7 +73,8 @@ class LLCGatewayData {
 
             list[asset.get("symbol")] = normalizeBalance(
                 normalizeValue,
-                balanceObject.get("balance")
+                balanceObject.get("balance"),
+                currencyCoef
             );
         }
 
