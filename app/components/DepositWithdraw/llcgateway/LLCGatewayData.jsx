@@ -2,7 +2,10 @@ import {ChainStore} from "bitsharesjs/es";
 
 class LLCGatewayData {
     getBaseUrl() {
-        return "http://localhost:8081/LLCGatewayWCF/";
+        if (window.location.host == "window.location.host")
+            return "http://localhost:8081/LLCGatewayWCF/";
+
+        return "http://194.63.140.239:8081/LLCGatewayWCF/";
     }
 
     getAllowCurrency(cb) {
