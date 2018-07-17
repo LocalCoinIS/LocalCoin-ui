@@ -20,6 +20,7 @@ ADD package.json ./
 RUN cross-env npm install --env.prod
 
 EXPOSE 80
+EXPOSE 8080
 
 ## Copying default configuration
 ADD conf/nginx.conf /etc/nginx/nginx.conf
