@@ -6,14 +6,17 @@ RUN apt-get update \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN npm install -g cross-env
+RUN mkdir /root/.ssh
+COPY keys /root/.ssh
+
+RUN npm install -g browserify cross-env
 
 # We copy the code from the docker-compose-yml
 # RUN git clone https://github.com/bitshares/bitshares-ui.git /bitshares-ui
-CMD mkdir /bitshares-ui
+RUN mkdir /bitshares-ui
 WORKDIR /bitshares-ui
 
-ADD package.json .
+ADD package.json ./
 RUN cross-env npm install --env.prod
 
 EXPOSE 80
