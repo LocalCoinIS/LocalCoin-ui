@@ -401,6 +401,43 @@ class WithdrawModal extends React.Component {
                                         <span>{this.state.insufficient}</span>
                                     </p>
                                 </div>
+                                <div className="content-block gate_fee">
+                                    <div className="amount-selector">
+                                        <label className="right-label" />
+                                        <label className="left-label">
+                                            GATEWAY{" "}
+                                            {counterpart.translate(
+                                                "modal.withdraw.fee"
+                                            )}
+                                        </label>
+                                        <div className="inline-label input-wrapper">
+                                            <input
+                                                disabled
+                                                type="text"
+                                                tabIndex={2}
+                                                defaultValue={
+                                                    this.props.currency
+                                                        .gatewayFee +
+                                                    " " +
+                                                    this.props.currency.asset
+                                                }
+                                                value={
+                                                    this.props.currency
+                                                        .gatewayFee +
+                                                    " " +
+                                                    this.props.currency.asset
+                                                }
+                                            />
+                                            <div className="form-label select floating-dropdown" />
+                                        </div>
+                                    </div>
+                                    <p
+                                        className="has-error no-margin"
+                                        style={{paddingTop: 10}}
+                                    >
+                                        <span>{this.state.insufficient}</span>
+                                    </p>
+                                </div>
                                 <div className="content-block">
                                     <label className="left-label">
                                         <span>
