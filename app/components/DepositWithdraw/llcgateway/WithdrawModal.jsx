@@ -72,8 +72,6 @@ class WithdrawModal extends React.Component {
 
     deactivateModal() {
         this.props.bullet.deactivateModal();
-
-        return false;
     }
 
     componentWillReceiveProps(props) {
@@ -288,7 +286,7 @@ class WithdrawModal extends React.Component {
                     className="modal fadeIn ng-enter is-active ng-enter-active"
                 >
                     <a
-                        href="#"
+                        href="javascript:void(0)"
                         className="close-button"
                         onClick={this.deactivateModal}
                     >
