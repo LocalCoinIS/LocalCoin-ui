@@ -431,12 +431,6 @@ class WithdrawModal extends React.Component {
                                             <div className="form-label select floating-dropdown" />
                                         </div>
                                     </div>
-                                    <p
-                                        className="has-error no-margin"
-                                        style={{paddingTop: 10}}
-                                    >
-                                        <span>{this.state.insufficient}</span>
-                                    </p>
                                 </div>
                                 <div className="content-block">
                                     <label className="left-label">
