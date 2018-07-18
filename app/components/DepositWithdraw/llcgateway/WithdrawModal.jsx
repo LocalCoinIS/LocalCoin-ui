@@ -72,6 +72,8 @@ class WithdrawModal extends React.Component {
 
     deactivateModal() {
         this.props.bullet.deactivateModal();
+
+        return false;
     }
 
     componentWillReceiveProps(props) {
