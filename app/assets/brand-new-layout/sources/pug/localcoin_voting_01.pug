@@ -1,0 +1,120 @@
+doctype html
+html(lang="ru-RU")
+	include includes/head
+	body.localcoin
+		include includes/header
+		main.main
+			include includes/sidebar
+			.content
+				h2.content__heading Voting
+				.dashboard
+					.dashboard__tabs.voting
+						.select.dashboard__mobileselect
+							span.placeholder Assets
+							ul
+								li(data-value='1') Open Orders
+								li(data-value='2') Margin Positions
+								li(data-value='3') History
+							input(type='hidden', name='changeme')
+						.dashboard__tabs__item
+							h4 Witnesses
+						.dashboard__tabs__item
+							h4 Committee
+						.dashboard__tabs__item.active
+							h4 Workers
+					.dashboard__actions
+						.container-fluid
+							.row
+								.col-xl-3.col-lg-6
+									input(type="text" placeholder="Search for an account")
+								.col-xl-9.col-lg-12
+									.dashboard__actions__filters
+										label.radio
+											input(type="radio" name="dashboard-filters").radio__input
+											span.radio__styled
+											span.radio__label Active (20)
+										label.radio
+											input(type="radio" name="dashboard-filters").radio__input
+											span.radio__styled
+											span.radio__label Proposed (15)
+										label.radio
+											input(type="radio" name="dashboard-filters").radio__input
+											span.radio__styled
+											span.radio__label Expired
+										button(type="button").btn.large.inverted.worker-btn Create new worker
+							.daily-budget
+								span.daily-budget__label: b Daily budget (
+									a(href="#") LLC
+									|):
+								span.daily-budget__number: b 230 517 LLC
+					.voting-table-wrap
+						table.voting-table
+							tr
+								th.center Line
+								th.center Id
+								th Description
+								th.center Votes
+								th Duration
+								th Funding
+								th.center Daily pay (LLC)
+								th.center Remaining (LLC)
+								th.center Toggle vote
+							tr
+								td.center 1
+								td.center 1.14.75
+									a(href="#").voting-table__linkicon
+								td
+									p Alfredo Garcia - Bitshares core developer
+									a(href="#") Alfredo-worker
+								td.center 497,276,143
+								td 22 Jan '18 - 22 Jul '18
+								td 100.00%
+								td.center 715.00
+								td.center 302,299.90
+								td.center
+									span.voting-table__toggle
+							tr
+								td.center 1
+								td.center 1.14.75
+									a(href="#").voting-table__linkicon
+								td
+									p Alfredo Garcia - Bitshares core developer
+									a(href="#") Alfredo-worker
+								td.center 497,276,143
+								td 22 Jan '18 - 22 Jul '18
+								td 100.00%
+								td.center 715.00
+								td.center 302,299.90
+								td.center
+									span.voting-table__toggle
+							tr
+								td.center 1
+								td.center 1.14.75
+									a(href="#").voting-table__linkicon
+								td
+									p Alfredo Garcia - Bitshares core developer
+									a(href="#") Alfredo-worker
+								td.center 497,276,143
+								td 22 Jan '18 - 22 Jul '18
+								td 100.00%
+								td.center 715.00
+								td.center 302,299.90
+								td.center
+									span.voting-table__toggle
+							tr
+								td.center 1
+								td.center 1.14.75
+									a(href="#").voting-table__linkicon
+								td
+									p Alfredo Garcia - Bitshares core developer
+									a(href="#") Alfredo-worker
+								td.center 497,276,143
+								td 22 Jan '18 - 22 Jul '18
+								td 100.00%
+								td.center 715.00
+								td.center 302,299.90
+								td.center
+									span.voting-table__toggle
+		include includes/footer
+		//- Подключение скриптов
+		include includes/scripts

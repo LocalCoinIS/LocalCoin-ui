@@ -20,7 +20,7 @@ import FeesContainer from "./components/Explorer/FeesContainer";
 import BlocksContainer from "./components/Explorer/BlocksContainer";
 import AssetsContainer from "./components/Explorer/AssetsContainer";
 import AccountsContainer from "./components/Explorer/AccountsContainer";
-import Explorer from "components/Explorer/Explorer";
+import Explorer from "./components-brand-new/Explorer/Explorer";
 import AccountPage from "./components/Account/AccountPage";
 import AccountOverview from "./components/Account/AccountOverview";
 import AccountAssets from "./components/Account/AccountAssets";
@@ -69,6 +69,9 @@ import Help from "./components/Help";
 import InitError from "./components/InitError";
 import LoginSelector from "./components/LoginSelector";
 import CreateWorker from "./components/Account/CreateWorker";
+import Header from "./components-brand-new/Layout/Header";
+import Footer from "./components-brand-new/Layout/Footer";
+import Sidebar from "./components-brand-new/Layout/Sidebar";
 
 const history = __HASH_HISTORY__ ? hashHistory : browserHistory;
 
@@ -82,7 +85,15 @@ const routes = (
     <Route path="/" component={App} onEnter={willTransitionTo}>
         <IndexRoute component={DashboardPage} />
         <Route path="/auth/:data" component={Auth} />
-        <Route path="explorer" component={Explorer} />
+        <Route
+            path="explorer"
+            components={{
+                headerBlock: Header,
+                sidebarBlock: Sidebar,
+                contentBlock: Explorer,
+                footerBlock: Footer
+            }}
+        />
         <Route path="/explorer/fees" component={FeesContainer} />
         <Route path="/explorer/blocks" component={BlocksContainer} />
         <Route path="/explorer/assets" component={AssetsContainer} />

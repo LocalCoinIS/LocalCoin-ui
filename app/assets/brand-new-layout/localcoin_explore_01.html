@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="theme-color" content="#000">
+    <meta name="msapplication-navbutton-color" content="#000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000"><style>body { opacity: 0; overflow-x: hidden; } html { background-color: #fff; }</style>
+<!--[if lt IE 9]>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script><![endif]-->
+  </head>
+  <body class="localcoin">
+    <header class="header">
+      <div class="container-fluid">
+        <div class="mobile"><span class="mobile__burger"><span></span></span>
+          <div class="mobile__menu"><span class="mobile__menu__close"></span>
+            <ul class="mobile__list">
+              <li class="mobile__list__item"><a class="mobile__list__link" href="#">Create Account</a></li>
+              <li class="mobile__list__item"><a class="mobile__list__link" href="#">Send</a></li>
+              <li class="mobile__list__item"><a class="mobile__list__link" href="#">Deposit/Withdraw</a></li>
+              <li class="mobile__list__item"><a class="mobile__list__link" href="#">Explore</a></li>
+              <li class="mobile__list__item"><a class="mobile__list__link" href="#">Settings</a></li>
+            </ul>
+            <label class="mobile__accounts">Accounts</label>
+          </div>
+        </div>
+        <div class="header-line">
+          <div class="logo"><img src="img/logo.svg" alt="logo"></div>
+          <nav class="navigation">
+            <ul class="navigation__list">
+              <li class="navigation__item active"><a class="navigation__link" href="#">Account</a></li>
+              <li class="navigation__item"><a class="navigation__link" href="#">Exchange</a></li>
+              <li class="navigation__item"><a class="navigation__link" href="#">Deposit/Withdraw</a></li>
+              <li class="navigation__item"><a class="navigation__link" href="#">OTC</a></li>
+            </ul>
+          </nav>
+          <div class="balance"><span class="balance__label">Balance: 0</span>
+            <ul class="balance__list">
+              <li class="balance__item active"><a class="balance__link" href="#">LLC</a></li>
+              <li class="balance__item"><a class="balance__link" href="#">BTC</a></li>
+              <li class="balance__item"><a class="balance__link" href="#">XCR</a></li>
+              <li class="balance__item"><a class="balance__link" href="#">ETH</a></li>
+            </ul>
+          </div>
+          <div class="user"><img class="user__icon" src="img/user.png" alt="user"><span class="user__name">Ninetor-dot</span></div><a class="settings" href="#"><img class="settings__icon" src="img/settings.svg" alt="settings"></a><a class="lock" href="#"><img class="lock__icon" src="img/lock.svg" alt="lock"></a>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <div class="sidebar">
+        <div class="sidebar__qr"><img src="img/qr.jpg" alt="code"></div>
+        <p class="sidebar__descr">Your deposit address is your account name!</p><span class="sidebar__user"><b>ninetor-dot</b></span>
+        <ul class="sidebar__menu">
+          <li class="sidebar__menu__item noborder"><a class="sidebar__menu__link" href="#">Dashboard</a></li>
+          <li class="sidebar__menu__item"><a class="sidebar__menu__link" href="#">Membership</a></li>
+          <li class="sidebar__menu__item"><a class="sidebar__menu__link" href="#">Voting</a></li>
+          <li class="sidebar__menu__item showsub expand noborder"><a class="sidebar__menu__link" href="#">Advanced features</a>
+            <ul class="sidebar__menu__sub">
+              <li class="sidebar__menu__sub__item noborder"><a class="sidebar__menu__sub__link" href="#">Issued Assets</a></li>
+              <li class="sidebar__menu__sub__item active"><a class="sidebar__menu__sub__link" href="#">Permissions</a></li>
+              <li class="sidebar__menu__sub__item"><a class="sidebar__menu__sub__link" href="#">Whitelist</a></li>
+              <li class="sidebar__menu__sub__item"><a class="sidebar__menu__sub__link" href="#">Vesting balances</a></li>
+              <li class="sidebar__menu__sub__item"><a class="sidebar__menu__sub__link" href="#">Signed Messages</a></li>
+            </ul>
+          </li>
+        </ul>
+        <button class="btn large create-account" type="button">Create a New Account</button>
+      </div>
+      <div class="content">
+        <h2 class="content__heading">Explore</h2>
+        <div class="explore">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12"><a class="explore__item" href="#"><img class="explore__item__img blockchain" src="img/e_blockchain.svg" alt="icon">
+                  <h4 class="explore__item__heading">Blockchain</h4></a></div>
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12"><a class="explore__item" href="#"><img class="explore__item__img assets" src="img/e_assets.svg" alt="icon">
+                  <h4 class="explore__item__heading">Assets</h4></a></div>
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12"><a class="explore__item" href="#"><img class="explore__item__img accounts" src="img/e_accounts.svg" alt="icon">
+                  <h4 class="explore__item__heading">Accounts</h4></a></div>
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12"><a class="explore__item" href="#"><img class="explore__item__img witnesses" src="img/e_witnesses.svg" alt="icon">
+                  <h4 class="explore__item__heading">Witnesses</h4></a></div>
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12"><a class="explore__item" href="#"><img class="explore__item__img members" src="img/e_members.svg" alt="icon">
+                  <h4 class="explore__item__heading">Committee members</h4></a></div>
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12"><a class="explore__item" href="#"><img class="explore__item__img markets" src="img/e_markets.svg" alt="icon">
+                  <h4 class="explore__item__heading">Markets</h4></a></div>
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12"><a class="explore__item" href="#"><img class="explore__item__img fee" src="img/e_fee.svg" alt="icon">
+                  <h4 class="explore__item__heading">Fee Schedule</h4></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer-line">
+        <div class="footer-info"><span class="footer-info__status">connected</span><span class="footer-info__data">latency 478ms / head block #27485593</span></div>
+        <button class="btn large inverted flat support-btn" type="button">Support</button>
+      </div>
+    </footer>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="libs/jquery/jquery-3.2.1.min.js"></script>
+    <script src="libs/magnific/jquery.magnific-popup.min.js"></script>
+    <script src="js/common.js"></script>
+  </body>
+</html>

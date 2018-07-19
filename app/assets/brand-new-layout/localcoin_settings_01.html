@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="theme-color" content="#000">
+    <meta name="msapplication-navbutton-color" content="#000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000"><style>body { opacity: 0; overflow-x: hidden; } html { background-color: #fff; }</style>
+<!--[if lt IE 9]>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script><![endif]-->
+  </head>
+  <body class="localcoin">
+    <header class="header">
+      <div class="container-fluid">
+        <div class="mobile"><span class="mobile__burger"><span></span></span>
+          <div class="mobile__menu"><span class="mobile__menu__close"></span>
+            <ul class="mobile__list">
+              <li class="mobile__list__item"><a class="mobile__list__link" href="#">Create Account</a></li>
+              <li class="mobile__list__item"><a class="mobile__list__link" href="#">Send</a></li>
+              <li class="mobile__list__item"><a class="mobile__list__link" href="#">Deposit/Withdraw</a></li>
+              <li class="mobile__list__item"><a class="mobile__list__link" href="#">Explore</a></li>
+              <li class="mobile__list__item"><a class="mobile__list__link" href="#">Settings</a></li>
+            </ul>
+            <label class="mobile__accounts">Accounts</label>
+          </div>
+        </div>
+        <div class="header-line">
+          <div class="logo"><img src="img/logo.svg" alt="logo"></div>
+          <nav class="navigation">
+            <ul class="navigation__list">
+              <li class="navigation__item active"><a class="navigation__link" href="#">Account</a></li>
+              <li class="navigation__item"><a class="navigation__link" href="#">Exchange</a></li>
+              <li class="navigation__item"><a class="navigation__link" href="#">Deposit/Withdraw</a></li>
+              <li class="navigation__item"><a class="navigation__link" href="#">OTC</a></li>
+            </ul>
+          </nav>
+          <div class="balance"><span class="balance__label">Balance: 0</span>
+            <ul class="balance__list">
+              <li class="balance__item active"><a class="balance__link" href="#">LLC</a></li>
+              <li class="balance__item"><a class="balance__link" href="#">BTC</a></li>
+              <li class="balance__item"><a class="balance__link" href="#">XCR</a></li>
+              <li class="balance__item"><a class="balance__link" href="#">ETH</a></li>
+            </ul>
+          </div>
+          <div class="user"><img class="user__icon" src="img/user.png" alt="user"><span class="user__name">Ninetor-dot</span></div><a class="settings" href="#"><img class="settings__icon" src="img/settings.svg" alt="settings"></a><a class="lock" href="#"><img class="lock__icon" src="img/lock.svg" alt="lock"></a>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <div class="content">
+        <div class="options">
+          <div class="container">
+            <h2 class="content__heading">General settings</h2>
+            <p>Adjust the basic settings.</p>
+            <div class="options__row">
+              <ul class="options__nav">
+                <li class="options__nav__item"><a class="options__nav__link" href="#">General</a></li>
+                <li class="options__nav__item"><a class="options__nav__link" href="#">Accounts</a></li>
+                <li class="options__nav__item"><a class="options__nav__link" href="#">Restore/Import</a></li>
+                <li class="options__nav__item"><a class="options__nav__link" href="#">Access</a></li>
+                <li class="options__nav__item"><a class="options__nav__link" href="#">Faucet</a></li>
+              </ul>
+              <div class="options__setup">
+                <form class="options__form">
+                  <div class="options__form__row">
+                    <label>Switch language</label>
+                    <div class="select select-withicon"><span class="placeholder"><i class="icon" style="background-image: url('img/united-kingdom.svg')"></i>EN</span>
+                      <ul>
+                        <li data-value="1"><i class="icon" style="background-image: url('img/russia.svg')"></i>RU</li>
+                        <li data-value="2"><i class="icon" style="background-image: url('img/germany.svg')"></i>DE</li>
+                        <li data-value="3"><i class="icon" style="background-image: url('img/united-states-of-america.svg')"></i>US</li>
+                      </ul>
+                      <input type="hidden" name="changeme">
+                    </div>
+                  </div>
+                  <div class="options__form__row">
+                    <label>Preferred unit of account</label>
+                    <div class="select"><span class="placeholder">LLC</span>
+                      <ul>
+                        <li data-value="1">BTC</li>
+                        <li data-value="2">ETH</li>
+                        <li data-value="3">DASH</li>
+                      </ul>
+                      <input type="hidden" name="changeme">
+                    </div>
+                  </div>
+                  <div class="options__form__row">
+                    <label>Show settle orders in depth chart</label>
+                    <div class="select"><span class="placeholder">No</span>
+                      <ul>
+                        <li data-value="1">Yes</li>
+                      </ul>
+                      <input type="hidden" name="changeme">
+                    </div>
+                  </div>
+                  <div class="options__form__row">
+                    <label>Wallet auto-lock time (seconds, 0 to disable)</label>
+                    <div class="select"><span class="placeholder">600</span>
+                      <ul>
+                        <li data-value="1">800</li>
+                      </ul>
+                      <input type="hidden" name="changeme">
+                    </div>
+                  </div>
+                  <div class="options__form__row">
+                    <button class="btn large inverted" type="button">Reset changes</button><span class="success options__form__status">Changes saved</span>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer-line">
+        <div class="footer-info"><span class="footer-info__status">connected</span><span class="footer-info__data">latency 478ms / head block #27485593</span></div>
+        <button class="btn large inverted flat support-btn" type="button">Support</button>
+      </div>
+    </footer>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="libs/jquery/jquery-3.2.1.min.js"></script>
+    <script src="libs/magnific/jquery.magnific-popup.min.js"></script>
+    <script src="js/common.js"></script>
+  </body>
+</html>

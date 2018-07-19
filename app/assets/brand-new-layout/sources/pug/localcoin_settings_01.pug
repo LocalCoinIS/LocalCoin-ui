@@ -1,0 +1,72 @@
+doctype html
+html(lang="ru-RU")
+	include includes/head
+	body.localcoin
+		include includes/header
+		main.main
+			.content
+				.options
+					.container
+						h2.content__heading General settings
+						p Adjust the basic settings.
+						.options__row
+							ul.options__nav
+								li.options__nav__item
+									a(href="#").options__nav__link General
+								li.options__nav__item
+									a(href="#").options__nav__link Accounts
+								li.options__nav__item
+									a(href="#").options__nav__link Restore/Import
+								li.options__nav__item
+									a(href="#").options__nav__link Access
+								li.options__nav__item
+									a(href="#").options__nav__link Faucet
+							.options__setup
+								form.options__form
+									.options__form__row
+										label Switch language
+										.select.select-withicon
+											span.placeholder
+												i.icon(style="background-image: url('img/united-kingdom.svg')")
+												|EN
+											ul
+												li(data-value='1')
+													i.icon(style="background-image: url('img/russia.svg')")
+													| RU
+												li(data-value='2')
+													i.icon(style="background-image: url('img/germany.svg')")
+													| DE
+												li(data-value='3')
+													i.icon(style="background-image: url('img/united-states-of-america.svg')")
+													| US
+											input(type='hidden', name='changeme')
+									.options__form__row
+										label Preferred unit of account
+										.select
+											span.placeholder LLC
+											ul
+												li(data-value='1') BTC
+												li(data-value='2') ETH
+												li(data-value='3') DASH
+											input(type='hidden', name='changeme')
+									.options__form__row
+										label Show settle orders in depth chart
+										.select
+											span.placeholder No
+											ul
+												li(data-value='1') Yes
+											input(type='hidden', name='changeme')
+									.options__form__row
+										label Wallet auto-lock time (seconds, 0 to disable)
+										.select
+											span.placeholder 600
+											ul
+												li(data-value='1') 800
+											input(type='hidden', name='changeme')
+									.options__form__row
+										button(type="button").btn.large.inverted Reset changes
+										span.success.options__form__status Changes saved
+
+		include includes/footer
+		//- Подключение скриптов
+		include includes/scripts

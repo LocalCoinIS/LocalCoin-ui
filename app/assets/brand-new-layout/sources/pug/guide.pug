@@ -1,0 +1,71 @@
+doctype html
+html(lang="ru-RU")
+	include includes/head
+	body.localcoin
+		.container-fluid
+			h1 Heading 1
+			h2 Heading 2
+			h3 Heading 3
+			h4 Heading 4
+			h5 Heading 5
+			h6 Heading 6
+			ul
+				li list-item 1
+				li list-item 2
+				li list-item 3
+				li list-item 4
+			label Label
+			p Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste officia repudiandae officiis amet eum nostrum beatae. Consequatur aspernatur assumenda voluptas facilis, similique nesciunt id minima aliquam sunt iste modi quam?
+			a(href="#") Link
+			br
+			u underline
+			.row
+				.col-6
+					input(type="text" placeholder="Placeholder")
+				.col-6
+					.select
+						span.placeholder Select
+						ul
+							li(data-value='1') 1
+							li(data-value='2') 2
+							li(data-value='3') 3
+						input(type='hidden', name='changeme')
+			.row
+				.col-md-4.col-sm-6
+					label.checkbox
+						input(type="checkbox" name="1").checkbox__input
+						span.checkbox__styled
+						span.checkbox__label Checkbox
+				.col-md-4.col-sm-6
+					label.radio
+						input(type="radio" name="2").radio__input
+						span.radio__styled
+						span.radio__label radio
+				.col-md-4.col-sm-6
+					label.switcher
+						input(type="checkbox" name="1").switcher__input
+						span.switcher__styled
+						span.switcher__label Switcher
+			table
+				tr
+					th th1
+					th th2
+					th th3
+					th th4
+				tr
+					td td1
+					td td2
+					td td3
+					td td4
+			button(type="button").btn Button
+			button(type="button").btn.orange Button
+			button(type="button").btn.green Button
+			button(type="button" style="background-image: url('img/copy.svg')").btn.icon
+			button(type="button").btn.large Button
+			button(type="button").btn.large.outline Button
+			button(type="button").btn.large.inverted Button
+			button(type="button").btn.large.inverted.flat Button
+			button(type="button" disabled).btn.large.inverted.flat Disabled
+					
+		//- Подключение скриптов
+		include includes/scripts

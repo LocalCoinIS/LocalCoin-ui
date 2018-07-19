@@ -210,6 +210,12 @@ class App extends React.Component {
     // }
 
     render() {
+        const {
+            headerBlock,
+            sidebarBlock,
+            contentBlock,
+            footerBlock
+        } = this.props; // !!!
         let {theme, incognito, incognitoWarningDismissed} = this.state;
         let {walletMode} = this.props;
 
@@ -249,6 +255,47 @@ class App extends React.Component {
                         type={theme === "lightTheme" ? "dark" : "light"}
                         effect="solid"
                     />
+                </div>
+            );
+        }
+
+        // !!! если есть эти блоки, значит новый лейаут
+        if (
+            !!headerBlock &&
+            !!sidebarBlock &&
+            !!contentBlock &&
+            !!footerBlock
+        ) {
+            return (
+                <div>
+                    {walletMode && incognito && !incognitoWarningDismissed ? (
+                        <Incognito
+                            onClickIgnore={this._onIgnoreIncognitoWarning.bind(
+                                this
+                            )}
+                        />
+                    ) : null}
+                    {headerBlock}
+                    <main className="main">
+                        {sidebarBlock}
+                        {contentBlock}
+                    </main>
+                    {footerBlock}
+                    <NotificationSystem
+                        ref="notificationSystem"
+                        allowHTML={true}
+                        style={{
+                            Containers: {
+                                DefaultStyle: {
+                                    width: "425px"
+                                }
+                            }
+                        }}
+                    />
+                    <TransactionConfirm />
+                    <BrowserNotifications />
+                    <WalletUnlockModal />
+                    <BrowserSupportModal ref="browser_modal" />
                 </div>
             );
         }
@@ -306,19 +353,22 @@ class RootIntl extends React.Component {
     }
 }
 
-RootIntl = connect(RootIntl, {
-    listenTo() {
-        return [IntlStore, WalletManagerStore, SettingsStore];
-    },
-    getProps() {
-        return {
-            locale: IntlStore.getState().currentLocale,
-            walletMode:
-                !SettingsStore.getState().settings.get("passwordLogin") ||
-                !!WalletManagerStore.getState().current_wallet
-        };
+RootIntl = connect(
+    RootIntl,
+    {
+        listenTo() {
+            return [IntlStore, WalletManagerStore, SettingsStore];
+        },
+        getProps() {
+            return {
+                locale: IntlStore.getState().currentLocale,
+                walletMode:
+                    !SettingsStore.getState().settings.get("passwordLogin") ||
+                    !!WalletManagerStore.getState().current_wallet
+            };
+        }
     }
-});
+);
 
 class Root extends React.Component {
     static childContextTypes = {

@@ -1,0 +1,27 @@
+.sidebar
+	.sidebar__qr
+		img(src="img/qr.jpg", alt="code")
+	p.sidebar__descr Your deposit address is your account name!
+	span.sidebar__user
+		b ninetor-dot
+	ul.sidebar__menu
+		li.sidebar__menu__item.noborder
+			a(href="#").sidebar__menu__link Dashboard
+		li.sidebar__menu__item
+			a(href="#").sidebar__menu__link Membership
+		li.sidebar__menu__item
+			a(href="#").sidebar__menu__link Voting
+		li.sidebar__menu__item.showsub.expand.noborder
+			a(href="#").sidebar__menu__link Advanced features
+			ul.sidebar__menu__sub
+				li.sidebar__menu__sub__item.noborder
+					a(href="#").sidebar__menu__sub__link Issued Assets
+				li.sidebar__menu__sub__item.active
+					a(href="#").sidebar__menu__sub__link Permissions
+				li.sidebar__menu__sub__item
+					a(href="#").sidebar__menu__sub__link Whitelist
+				li.sidebar__menu__sub__item
+					a(href="#").sidebar__menu__sub__link Vesting balances
+				li.sidebar__menu__sub__item
+					a(href="#").sidebar__menu__sub__link Signed Messages
+	button(type="button").btn.large.create-account Create a New Account

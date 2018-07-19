@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="theme-color" content="#000">
+    <meta name="msapplication-navbutton-color" content="#000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000"><style>body { opacity: 0; overflow-x: hidden; } html { background-color: #fff; }</style>
+<!--[if lt IE 9]>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script><![endif]-->
+  </head>
+  <body class="localcoin">
+    <div class="container-fluid"><br><a class="popup-with-zoom-anim" href="#dialog">Modal</a></div>
+    <div class="zoom-anim-dialog mfp-hide deposit-dialog" id="dialog"><span class="mfp-close"></span>
+      <h2>Deposit</h2>
+      <div class="modal-company"><img class="modal-company__icon" src="img/modal-company.png" alt="">
+        <h3 class="modal-company__title">Tusd</h3>
+      </div>
+      <p class="modal-company__text center">Funds will be sent to account <b>ninetor-dot.</b></p>
+      <p class="modal-company__text center">Please send your TUSD to the address below:</p>
+      <div class="modal-company__clip">
+        <label>Address</label>
+        <input type="text" value="0x8aff9360f54fb00200797120eeb10b7d8b2e32a7">
+        <button class="btn icon" type="button" style="background-image: url('img/copy.svg')"></button>
+      </div>
+      <p class="modal-company__text error">Minimum value to deposit should be 8.8.</p>
+      <p class="modal-company__text error">IMPORTANT: Send only BAR to this deposit address. Sending less than 8.8 BAR or any other currency to this address may result in the loss of your deposit.</p>
+    </div>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="libs/jquery/jquery-3.2.1.min.js"></script>
+    <script src="libs/magnific/jquery.magnific-popup.min.js"></script>
+    <script src="js/common.js"></script>
+  </body>
+</html>

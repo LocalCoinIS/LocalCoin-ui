@@ -1,0 +1,26 @@
+doctype html
+html(lang="ru-RU")
+	include includes/head
+	body.localcoin
+		.container-fluid
+			br
+			a.popup-with-zoom-anim(href='#dialog') Modal
+		#dialog.zoom-anim-dialog.mfp-hide.permissions-dialog
+			span.mfp-close
+			h2 Private key viewer
+			label.permissions-dialog__label Public key
+			p.permissions-dialog__text BTS76G3KpnGSGeepBGDc6TehTiKLkQCWpaUpkrcTa5GWBJP4vG1Kz
+			label.permissions-dialog__label Private key (WIF - Wallet Import Format)
+			p.permissions-dialog__text
+				b 5K2EstsJ3gtQTFQMiyz7Eb9oNgpq1wkqWeB5g5Bfyp4UTTpqGxV 
+				| (
+				a(href="#") hide
+				| )
+			label.permissions-dialog__label Brainkey position
+			p.permissions-dialog__text Non-deterministic
+			label.permissions-dialog__label Imported from account
+			p.permissions-dialog__text ninetor-dot
+			button(type="button").btn.large.inverted Close 
+
+		//- Подключение скриптов
+		include includes/scripts

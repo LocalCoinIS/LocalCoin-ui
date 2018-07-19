@@ -1,4 +1,5 @@
 require("./stylesheets/app.scss");
+require("./brand-new-layout/css/main.css");
 require("file-loader?name=index.html!./" +
     (__ELECTRON__ || __HASH_HISTORY__ ? "index-electron" : "index") +
     ".html");

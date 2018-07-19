@@ -1,0 +1,44 @@
+doctype html
+html(lang="ru-RU")
+	include includes/head
+	body.localcoin
+		include includes/header
+		main.main
+			include includes/sidebar
+			.content
+				h2.content__heading Explore
+				.explore
+					.container-fluid
+						.row
+							.col-xl-3.col-lg-4.col-md-6.col-sm-12
+								a(href="#").explore__item
+									img(src="img/e_blockchain.svg", alt="icon").explore__item__img.blockchain
+									h4.explore__item__heading Blockchain
+							.col-xl-3.col-lg-4.col-md-6.col-sm-12
+								a(href="#").explore__item
+									img(src="img/e_assets.svg", alt="icon").explore__item__img.assets
+									h4.explore__item__heading Assets
+							.col-xl-3.col-lg-4.col-md-6.col-sm-12
+								a(href="#").explore__item
+									img(src="img/e_accounts.svg", alt="icon").explore__item__img.accounts
+									h4.explore__item__heading Accounts
+							.col-xl-3.col-lg-4.col-md-6.col-sm-12
+								a(href="#").explore__item
+									img(src="img/e_witnesses.svg", alt="icon").explore__item__img.witnesses
+									h4.explore__item__heading Witnesses
+							.col-xl-3.col-lg-4.col-md-6.col-sm-12
+								a(href="#").explore__item
+									img(src="img/e_members.svg", alt="icon").explore__item__img.members
+									h4.explore__item__heading Committee members
+							.col-xl-3.col-lg-4.col-md-6.col-sm-12
+								a(href="#").explore__item
+									img(src="img/e_markets.svg", alt="icon").explore__item__img.markets
+									h4.explore__item__heading Markets
+							.col-xl-3.col-lg-4.col-md-6.col-sm-12
+								a(href="#").explore__item
+									img(src="img/e_fee.svg", alt="icon").explore__item__img.fee
+									h4.explore__item__heading Fee Schedule
+
+		include includes/footer
+		//- Подключение скриптов
+		include includes/scripts

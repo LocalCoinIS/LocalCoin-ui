@@ -268,7 +268,7 @@ module.exports = function(env) {
                 },
 
                 {
-                    test: /\.woff$/,
+                    test: /\.woff(2)?$/,
                     use: [
                         {
                             loader: "url-loader",

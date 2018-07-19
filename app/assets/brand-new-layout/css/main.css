@@ -1,0 +1,3219 @@
+@import url(../libs/bootstrap/css/bootstrap-grid.min.css);
+@import url(../libs/magnific/magnific-popup.css);
+@font-face {
+    font-family: "osnovapro";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/osnovapro/osnovapro.woff");
+    src: url("../fonts/osnovapro/osnovapro.woff") format("woff"),
+        url("../fonts/osnovapro/osnovapro.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "osnovapro-bold";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/osnovapro-bold/osnovapro-bold.woff");
+    src: url("../fonts/osnovapro-bold/osnovapro-bold.woff") format("woff"),
+        url("../fonts/osnovapro-bold/osnovapro-bold.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "osnovapro-bolditalic";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/osnovapro-bolditalic/osnovapro-bolditalic.woff");
+    src: url("../fonts/osnovapro-bolditalic/osnovapro-bolditalic.woff")
+            format("woff"),
+        url("../fonts/osnovapro-bolditalic/osnovapro-bolditalic.woff2")
+            format("woff2");
+}
+
+@font-face {
+    font-family: "osnovapro-italic";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/osnovapro-italic/osnovapro-italic.woff");
+    src: url("../fonts/osnovapro-italic/osnovapro-italic.woff") format("woff"),
+        url("../fonts/osnovapro-italic/osnovapro-italic.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "osnovaproheavy";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/osnovaproheavy/osnovaproheavy.woff");
+    src: url("../fonts/osnovaproheavy/osnovaproheavy.woff") format("woff"),
+        url("../fonts/osnovaproheavy/osnovaproheavy.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "osnovaproheavy-italic";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/osnovaproheavy-italic/osnovaproheavy-italic.woff");
+    src: url("../fonts/osnovaproheavy-italic/osnovaproheavy-italic.woff")
+            format("woff"),
+        url("../fonts/osnovaproheavy-italic/osnovaproheavy-italic.woff2")
+            format("woff2");
+}
+
+@font-face {
+    font-family: "osnovaprolight";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/osnovaprolight/osnovaprolight.woff");
+    src: url("../fonts/osnovaprolight/osnovaprolight.woff") format("woff"),
+        url("../fonts/osnovaprolight/osnovaprolight.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "osnovaprolight-italic";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/osnovaprolight-italic/osnovaprolight-italic.woff");
+    src: url("../fonts/osnovaprolight-italic/osnovaprolight-italic.woff")
+            format("woff"),
+        url("../fonts/osnovaprolight-italic/osnovaprolight-italic.woff2")
+            format("woff2");
+}
+
+@font-face {
+    font-family: "osnovapromedium";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/osnovapromedium/osnovapromedium.woff");
+    src: url("../fonts/osnovapromedium/osnovapromedium.woff") format("woff"),
+        url("../fonts/osnovapromedium/osnovapromedium.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "osnovapromedium-italic";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/osnovapromedium-italic/osnovapromedium-italic.woff");
+    src: url("../fonts/osnovapromedium-italic/osnovapromedium-italic.woff")
+            format("woff"),
+        url("../fonts/osnovapromedium-italic/osnovapromedium-italic.woff2")
+            format("woff2");
+}
+
+@font-face {
+    font-family: "osnovaprothin";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/osnovaprothin/osnovaprothin.woff");
+    src: url("../fonts/osnovaprothin/osnovaprothin.woff") format("woff"),
+        url("../fonts/osnovaprothin/osnovaprothin.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "osnovaprothin-italic";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/osnovaprothin-italic/osnovaprothin-italic.woff");
+    src: url("../fonts/osnovaprothin-italic/osnovaprothin-italic.woff")
+            format("woff"),
+        url("../fonts/osnovaprothin-italic/osnovaprothin-italic.woff2")
+            format("woff2");
+}
+
+@font-face {
+    font-family: "roboto-black";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/roboto-black/roboto-black.woff");
+    src: url("../fonts/roboto-black/roboto-black.woff") format("woff"),
+        url("../fonts/roboto-black/roboto-black.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "roboto-blackitalic";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/roboto-blackitalic/roboto-blackitalic.woff");
+    src: url("../fonts/roboto-blackitalic/roboto-blackitalic.woff")
+            format("woff"),
+        url("../fonts/roboto-blackitalic/roboto-blackitalic.woff2")
+            format("woff2");
+}
+
+@font-face {
+    font-family: "roboto-bold";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/roboto-bold/roboto-bold.woff");
+    src: url("../fonts/roboto-bold/roboto-bold.woff") format("woff"),
+        url("../fonts/roboto-bold/roboto-bold.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "roboto-bolditalic";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/roboto-bolditalic/roboto-bolditalic.woff");
+    src: url("../fonts/roboto-bolditalic/roboto-bolditalic.woff") format("woff"),
+        url("../fonts/roboto-bolditalic/roboto-bolditalic.woff2")
+            format("woff2");
+}
+
+@font-face {
+    font-family: "roboto-italic";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/roboto-italic/roboto-italic.woff");
+    src: url("../fonts/roboto-italic/roboto-italic.woff") format("woff"),
+        url("../fonts/roboto-italic/roboto-italic.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "roboto-light";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/roboto-light/roboto-light.woff");
+    src: url("../fonts/roboto-light/roboto-light.woff") format("woff"),
+        url("../fonts/roboto-light/roboto-light.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "roboto-lightitalic";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/roboto-lightitalic/roboto-lightitalic.woff");
+    src: url("../fonts/roboto-lightitalic/roboto-lightitalic.woff")
+            format("woff"),
+        url("../fonts/roboto-lightitalic/roboto-lightitalic.woff2")
+            format("woff2");
+}
+
+@font-face {
+    font-family: "roboto-medium";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/roboto-medium/roboto-medium.woff");
+    src: url("../fonts/roboto-medium/roboto-medium.woff") format("woff"),
+        url("../fonts/roboto-medium/roboto-medium.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "roboto-mediumitalic";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/roboto-mediumitalic/roboto-mediumitalic.woff");
+    src: url("../fonts/roboto-mediumitalic/roboto-mediumitalic.woff")
+            format("woff"),
+        url("../fonts/roboto-mediumitalic/roboto-mediumitalic.woff2")
+            format("woff2");
+}
+
+@font-face {
+    font-family: "roboto-regular";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/roboto-regular/roboto-regular.woff");
+    src: url("../fonts/roboto-regular/roboto-regular.woff") format("woff"),
+        url("../fonts/roboto-regular/roboto-regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "roboto-thin";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/roboto-thin/roboto-thin.woff");
+    src: url("../fonts/roboto-thin/roboto-thin.woff") format("woff"),
+        url("../fonts/roboto-thin/roboto-thin.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "roboto-thinitalic";
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/roboto-thinitalic/roboto-thinitalic.woff");
+    src: url("../fonts/roboto-thinitalic/roboto-thinitalic.woff") format("woff"),
+        url("../fonts/roboto-thinitalic/roboto-thinitalic.woff2")
+            format("woff2");
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+body div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+    display: block;
+}
+
+header,
+section,
+footer {
+    clear: both;
+}
+
+ul {
+    list-style: outside disc;
+    margin: 15px 0 15px 30px;
+}
+
+ol {
+    list-style: outside decimal;
+    margin: 15px 0 15px 30px;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+td {
+    vertical-align: top;
+}
+td img {
+    vertical-align: top;
+}
+
+button,
+input,
+select,
+textarea {
+    margin: 0;
+    outline: none;
+}
+
+input::-moz-focus-inner,
+button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+input,
+select {
+    vertical-align: middle;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin: 1px 4px 4px 0;
+}
+
+input[type="text"],
+input[type="password"] {
+    border-radius: 0;
+    -webkit-appearance: none;
+}
+
+textarea {
+    overflow: auto;
+    resize: vertical;
+    border-radius: 0;
+    -webkit-appearance: none;
+}
+
+button,
+input[type="submit"] {
+    width: auto;
+    overflow: visible;
+}
+
+.ie7 input[type="submit"],
+.ie7 input[type="reset"],
+.ie7 input[type="button"] {
+    -webkit-filter: chroma(color=#000000);
+    filter: chroma(color=#000000);
+}
+
+input[type="button"],
+input[type="submit"] {
+    cursor: pointer;
+    border-radius: 0;
+    -webkit-appearance: none;
+}
+
+button {
+    cursor: pointer;
+    border-radius: 0;
+    -webkit-appearance: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after {
+    content: "";
+    content: none;
+}
+
+q:before,
+q:after {
+    content: "";
+    content: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title],
+dfn[title] {
+    border-bottom: 1px dotted #000;
+    cursor: help;
+}
+
+small {
+    font-size: 85%;
+}
+
+strong {
+    font-weight: bold;
+}
+
+sub {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+}
+
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+    font-size: 0;
+    line-height: 0;
+}
+
+pre,
+code,
+kbd,
+samp {
+    font-family: monospace, sans-serif;
+}
+
+pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    white-space: pre-line;
+    word-wrap: break-word;
+}
+
+.ie7 img {
+    -ms-interpolation-mode: bicubic;
+}
+
+.clear {
+    clear: both;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+}
+
+.center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.my-mfp-zoom-in .zoom-anim-dialog {
+    opacity: 0;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    transform: scale(0.8);
+}
+
+.my-mfp-zoom-in.mfp-ready .zoom-anim-dialog {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+}
+
+.my-mfp-zoom-in.mfp-removing .zoom-anim-dialog {
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    transform: scale(0.8);
+    opacity: 0;
+}
+
+.my-mfp-zoom-in.mfp-bg {
+    opacity: 0;
+    -webkit-transition: opacity 0.3s ease-out;
+    -moz-transition: opacity 0.3s ease-out;
+    -o-transition: opacity 0.3s ease-out;
+    transition: opacity 0.3s ease-out;
+}
+
+.my-mfp-zoom-in.mfp-ready.mfp-bg {
+    opacity: 0.8;
+}
+
+.my-mfp-zoom-in.mfp-removing.mfp-bg {
+    opacity: 0;
+}
+
+.localcoin * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.localcoin b {
+    font-family: "osnovapro-bold", sans-serif;
+    color: #00195b;
+}
+
+.localcoin span {
+    font-weight: normal;
+    color: #00195b;
+}
+
+.localcoin h1 {
+    font-size: 32px;
+    font-weight: normal;
+    color: #001b60;
+    line-height: 1.3;
+    margin: 10px 0;
+}
+
+.localcoin h2 {
+    font-size: 24px;
+    font-weight: normal;
+    color: #001b60;
+    line-height: 1.3;
+    margin: 10px 0;
+}
+
+.localcoin h3 {
+    font-size: 21px;
+    font-weight: normal;
+    color: #001b60;
+    line-height: 1.3;
+    margin: 10px 0;
+}
+
+.localcoin h4 {
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "osnovapro-bold", sans-serif;
+    color: #00195b;
+}
+
+.localcoin h5 {
+    font-size: 15px;
+    font-weight: bold;
+    font-family: "osnovapro-bold", sans-serif;
+    color: #001b60;
+    line-height: 1.3;
+    margin: 5px 0;
+}
+
+.localcoin h6 {
+    font-size: 13px;
+    font-weight: bold;
+    font-family: "osnovapro-bold", sans-serif;
+    color: #001b60;
+    line-height: 1.3;
+    margin: 5px 0;
+}
+
+.localcoin p {
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: #00195b;
+    margin: 5px 0;
+}
+
+.localcoin a {
+    text-decoration: none;
+    color: #2964fa;
+}
+.localcoin a:hover {
+    color: #132d71;
+}
+
+.localcoin u {
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px dotted #00195b;
+}
+
+.localcoin label {
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 1.3;
+    color: #00195b;
+}
+
+.localcoin input[type="text"] {
+    width: 100%;
+    border-radius: 4px;
+    padding: 0 17px;
+    height: 40px;
+    background-color: #dce6f2;
+    color: #00195b;
+    font-size: 15px;
+    border: 1px solid #7fafe8;
+}
+.localcoin input[type="text"]::-webkit-input-placeholder {
+    color: #000;
+    opacity: 0.5;
+    font-size: 15px;
+}
+.localcoin input[type="text"]:-moz-placeholder {
+    color: #000;
+    opacity: 0.5;
+    font-size: 15px;
+}
+.localcoin input[type="text"]::-moz-placeholder {
+    color: #000;
+    opacity: 0.5;
+    font-size: 15px;
+}
+.localcoin input[type="text"]:-ms-input-placeholder {
+    color: #000;
+    opacity: 0.5;
+    font-size: 15px;
+}
+.localcoin input[type="text"]:hover::-webkit-input-placeholder {
+    color: #00195b;
+}
+.localcoin input[type="text"]:hover:-moz-placeholder {
+    color: #00195b;
+}
+.localcoin input[type="text"]:hover::-moz-placeholder {
+    color: #00195b;
+}
+.localcoin input[type="text"]:hover:-ms-input-placeholder {
+    color: #00195b;
+}
+.localcoin input[type="text"]:focus::-webkit-input-placeholder {
+    opacity: 1;
+    font-size: 0;
+}
+.localcoin input[type="text"]:focus:-moz-placeholder {
+    opacity: 1;
+    font-size: 0;
+}
+.localcoin input[type="text"]:focus::-moz-placeholder {
+    opacity: 1;
+    font-size: 0;
+}
+.localcoin input[type="text"]:focus:-ms-input-placeholder {
+    opacity: 1;
+    font-size: 0;
+}
+
+.localcoin .checkbox {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.localcoin .checkbox__input {
+    display: none;
+}
+.localcoin .checkbox__styled {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    min-width: 19px;
+    max-width: 19px;
+    width: 19px;
+    height: 19px;
+    background-color: #dce6f2;
+    border: 1px solid #7fafe8;
+    margin-right: 10px;
+}
+.localcoin .checkbox__label {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    position: relative;
+    top: 1px;
+    line-height: 19px;
+    color: #001b60;
+}
+.localcoin .checkbox__input:checked + .checkbox__styled::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    top: 2px;
+    left: 2px;
+    right: 0;
+    bottom: 0;
+    background-image: url("../img/checked.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.localcoin .switcher {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.localcoin .switcher__input {
+    display: none;
+}
+.localcoin .switcher__styled {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    min-width: 50px;
+    max-width: 50px;
+    width: 50px;
+    height: 32px;
+    background-color: #ccc;
+    border-radius: 50px;
+    margin-right: 10px;
+}
+.localcoin .switcher__styled::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    border-radius: 50%;
+    border: 4px solid #ccc;
+    background-color: #fff;
+    -webkit-transition: left 0.15s ease-out;
+    -o-transition: left 0.15s ease-out;
+    transition: left 0.15s ease-out;
+}
+.localcoin .switcher__label {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    position: relative;
+    top: 1px;
+    line-height: 19px;
+    color: #001b60;
+}
+.localcoin .switcher__input:checked + .switcher__styled {
+    background-color: #195d0e;
+}
+.localcoin .switcher__input:checked + .switcher__styled::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: 0;
+    left: 20px;
+    bottom: 0;
+    background-color: #2ba017;
+    border: none;
+}
+
+.localcoin .radio {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.localcoin .radio__input {
+    display: none;
+}
+.localcoin .radio__styled {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    min-width: 19px;
+    max-width: 19px;
+    width: 19px;
+    height: 19px;
+    background-color: #dce6f2;
+    border: 1px solid #7fafe8;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+.localcoin .radio__label {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    position: relative;
+    top: 1px;
+    line-height: 19px;
+    color: #000000;
+}
+.localcoin .radio__input:checked + .radio__styled::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: #354c9b;
+    border-radius: 50%;
+}
+
+.localcoin table {
+    width: 100%;
+}
+.localcoin table th {
+    text-align: left;
+    background-color: #c1d0e3;
+    font-family: "osnovapro-bold", sans-serif;
+    color: #00195b;
+    font-size: 15px;
+    padding: 5px 16px;
+    line-height: 1.3;
+}
+.localcoin table th.center,
+.localcoin table td.center {
+    text-align: center;
+}
+.localcoin table th.left,
+.localcoin table td.left {
+    text-align: left;
+}
+.localcoin table th.right,
+.localcoin table td.right {
+    text-align: right;
+}
+.localcoin table td {
+    padding: 6px 16px;
+    background-color: #e0e8f1;
+    vertical-align: middle;
+    color: #00195b;
+    font-size: 15px;
+}
+
+.localcoin .select.select-withicon .icon {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    margin: -4px 6px 0 0;
+    min-width: 20px;
+    max-width: 20px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+    height: 16px;
+}
+
+.localcoin .select {
+    position: relative;
+    display: block;
+    width: 100%;
+    vertical-align: middle;
+    text-align: left;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+.localcoin .select .placeholder {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0 20px;
+    font-size: 15px;
+    background-color: #dce6f2;
+    z-index: 1;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #7fafe8;
+    cursor: pointer;
+    color: #00195b;
+}
+.localcoin .select .placeholder:after {
+    position: absolute;
+    content: "";
+    right: 14px;
+    margin-top: -3.5px;
+    top: 50%;
+    display: inline-block;
+    margin-left: 5px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 7px 5.5px 0 5.5px;
+    border-color: #001b60 transparent transparent transparent;
+    z-index: 10;
+}
+.localcoin .select.is-open .placeholder {
+    border-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.localcoin .select.is-open .placeholder:after {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 5.5px 7px 5.5px;
+    border-color: transparent transparent #001b60 transparent;
+}
+.localcoin .select.is-open ul {
+    display: block;
+}
+.localcoin .select ul {
+    display: none;
+    position: absolute;
+    overflow: hidden;
+    overflow-y: auto;
+    width: 100%;
+    background: #eef3f9;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-left: 1px solid #7fafe8;
+    border-bottom: 1px solid #7fafe8;
+    border-right: 1px solid #7fafe8;
+    top: 100%;
+    left: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+    max-height: 200px;
+}
+.localcoin .select ul li {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-weight: normal;
+    padding-left: 20px;
+    font-family: "osnovapro", sans-serif;
+    text-align: left;
+    height: 40px;
+    margin: 0;
+    color: #00195b;
+    cursor: pointer;
+}
+.localcoin .select ul li:hover {
+    background: #dce6f2;
+    color: #00195b;
+}
+
+.localcoin ul {
+    margin: 10px 0 10px 18px;
+}
+.localcoin ul li {
+    margin-bottom: 8px;
+}
+
+html,
+body.localcoin {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}
+
+body.localcoin {
+    font-size: 15px;
+    min-width: 320px;
+    position: relative;
+    line-height: 1.625;
+    font-family: "osnovapro", sans-serif;
+    overflow-x: hidden;
+    opacity: 1;
+    background: #f3f3f3;
+}
+body.localcoin .footer-line {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+body.localcoin .footer-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    margin-left: auto;
+}
+body.localcoin .footer-info span {
+    line-height: 1;
+}
+body.localcoin .footer-info__status {
+    color: #168e13;
+    margin-bottom: 2px;
+}
+body.localcoin .footer-info__data {
+    color: #00195b;
+    text-align: right;
+}
+body.localcoin .header {
+    background-color: #001b60;
+}
+body.localcoin .header-line {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 40px;
+}
+body.localcoin .logo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 0 8px 0 8px;
+}
+body.localcoin .logo img {
+    max-width: 18px;
+    height: 28px;
+}
+body.localcoin .navigation__list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+body.localcoin .navigation__item {
+    padding: 0 10px;
+    margin: 0;
+}
+body.localcoin .navigation__item:hover {
+    background-color: #000f42;
+}
+body.localcoin .navigation__item.active {
+    background-color: #000324;
+}
+body.localcoin .navigation__item.active:hover {
+    background-color: #000324;
+}
+body.localcoin .navigation__link {
+    display: inline-block;
+    font-size: 18px;
+    line-height: 40px;
+    color: #9db1e6;
+    text-decoration: none;
+    margin: 0 2px;
+    letter-spacing: 1px;
+}
+body.localcoin .balance {
+    margin-left: auto;
+    position: relative;
+}
+body.localcoin .balance__label {
+    position: relative;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 15px;
+    line-height: 40px;
+    color: #fff;
+}
+body.localcoin .balance__label:after {
+    content: "";
+    display: inline-block;
+    min-width: 9px;
+    max-width: 9px;
+    height: 5px;
+    background-image: url("../img/down-chevron.svg");
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    margin: 0 0 2px 16px;
+}
+body.localcoin .balance:hover .balance__list {
+    opacity: 1;
+    visibility: visible;
+    width: auto;
+    height: auto;
+    background-color: #001b60;
+}
+body.localcoin .balance__list {
+    position: absolute;
+    top: 52px;
+    left: -13px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    margin: 0;
+    list-style-type: none;
+    height: 0;
+    width: 0;
+    background-color: #001b60;
+    border-radius: 6px;
+    padding: 10px 0 14px 0;
+    z-index: 2;
+}
+body.localcoin .balance__list:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -12px;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+    height: 12px;
+}
+body.localcoin .balance__list:after {
+    content: "";
+    position: absolute;
+    margin: 0 auto;
+    top: -9px;
+    left: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 9px 9px 9px;
+    border-color: transparent transparent #001b60 transparent;
+}
+body.localcoin .balance__link {
+    display: block;
+    font-size: 18px;
+    text-transform: uppercase;
+    padding: 9px 44px;
+    line-height: 1;
+    text-decoration: none;
+    color: #fff;
+}
+body.localcoin .balance__item.active {
+    background-color: #050f2a;
+}
+body.localcoin .balance__item.active:hover {
+    background-color: #050f2a;
+}
+body.localcoin .balance__item {
+    margin: 0;
+}
+body.localcoin .balance__item:hover {
+    background-color: #132d71;
+}
+body.localcoin .user {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-left: 22px;
+}
+body.localcoin .user__icon {
+    display: inline-block;
+    max-width: 24px;
+    margin-top: -4px;
+    margin-right: 8px;
+    height: auto;
+}
+body.localcoin .user__name {
+    line-height: 40px;
+    font-size: 15px;
+    color: #fff;
+}
+body.localcoin .settings {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-left: 35px;
+}
+body.localcoin .settings__icon {
+    max-width: 24px;
+    display: inline-block;
+    height: auto;
+}
+body.localcoin .settings__icon:hover {
+    opacity: 0.5;
+}
+body.localcoin .lock {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-left: 18px;
+}
+body.localcoin .lock:hover {
+    opacity: 0.5;
+}
+body.localcoin .main {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+body.localcoin .sidebar {
+    max-width: 212px;
+    min-width: 212px;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    background: #c1d0e3;
+    padding: 28px 0 0 0;
+}
+body.localcoin .sidebar__qr {
+    padding: 20px;
+    border: 1px solid #7fafe8;
+    max-width: 158px;
+    margin: auto;
+}
+body.localcoin .sidebar__qr img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+body.localcoin .sidebar__descr {
+    max-width: 158px;
+    margin: 15px auto 15px auto;
+    line-height: 1.3;
+    text-align: center;
+    color: #00195b;
+}
+body.localcoin .sidebar__user {
+    display: block;
+    color: #00195b;
+    text-align: center;
+}
+body.localcoin .sidebar__menu {
+    list-style: none;
+    margin: 20px 0 0 0;
+    padding: 0;
+}
+body.localcoin .sidebar__menu__item.showsub > .sidebar__menu__sub {
+    display: block;
+}
+body.localcoin .sidebar__menu__item {
+    border-top: 1px solid #f0f4f8;
+    line-height: 36px;
+    margin: 0;
+}
+body.localcoin .sidebar__menu__item:hover {
+    background-color: #e0e8f1;
+}
+body.localcoin .sidebar__menu__item.active {
+    background-color: #ffffff;
+    border-top-color: transparent;
+}
+body.localcoin .sidebar__menu__item.active .sidebar__menu__link {
+    font-family: "osnovapro-bold", sans-serif;
+}
+body.localcoin .sidebar__menu__item.active + .sidebar__menu__item {
+    border-top-color: transparent;
+}
+body.localcoin .sidebar__menu__item.noborder {
+    border-top: 0;
+}
+body.localcoin .sidebar__menu__item.expand:hover {
+    background-color: transparent;
+}
+body.localcoin .sidebar__menu__item.expand > .sidebar__menu__link {
+    margin-top: 10px;
+    font-size: 13px;
+}
+body.localcoin .sidebar__menu__item.expand > .sidebar__menu__link:after {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 4px 0 4px;
+    border-color: #00195b transparent transparent transparent;
+    margin-left: 6px;
+}
+body.localcoin
+    .sidebar__menu__item.expand.showsub
+    > .sidebar__menu__link:after {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 4px 5px 4px;
+    border-color: transparent transparent #00195b transparent;
+}
+body.localcoin .sidebar__menu__link {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    text-decoration: none;
+    color: #00195b;
+    font-size: 15px;
+    padding: 9px 30px;
+    min-height: 28px;
+    line-height: 1.3;
+}
+body.localcoin .sidebar__menu__sub {
+    display: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+body.localcoin .sidebar__menu__sub__item {
+    border-top: 1px solid #f0f4f8;
+    margin: 0;
+}
+body.localcoin .sidebar__menu__sub__item:hover {
+    background-color: #e0e8f1;
+}
+body.localcoin .sidebar__menu__sub__item.noborder {
+    border-top: 0;
+}
+body.localcoin .sidebar__menu__sub__item.showsub > .sidebar__menu__sub {
+    display: block;
+}
+body.localcoin .sidebar__menu__sub__item.expand > .sidebar__menu__sub__link {
+    margin-top: 10px;
+    font-size: 13px;
+}
+body.localcoin
+    .sidebar__menu__sub__item.expand
+    > .sidebar__menu__sub__link:after {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 4px 0 4px;
+    border-color: #00195b transparent transparent transparent;
+    margin-left: 6px;
+}
+body.localcoin
+    .sidebar__menu__sub__item.expand.showsub
+    > .sidebar__menu__sub__link:after {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 4px 5px 4px;
+    border-color: transparent transparent #00195b transparent;
+}
+body.localcoin .sidebar__menu__sub__item.active {
+    background-color: #ffffff;
+    border-top-color: transparent;
+}
+body.localcoin .sidebar__menu__sub__item.active .sidebar__menu__sub__link {
+    font-family: "osnovapro-bold", sans-serif;
+}
+body.localcoin .sidebar__menu__sub__item.active + .sidebar__menu__sub__item {
+    border-top-color: transparent;
+}
+body.localcoin .sidebar__menu__sub__link {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    text-decoration: none;
+    color: #00195b;
+    font-size: 15px;
+    padding: 9px 30px;
+    min-height: 28px;
+    line-height: 1.3;
+}
+body.localcoin .btn {
+    outline: none;
+    background-color: transparent;
+    font-size: 13px;
+    color: #00195b;
+    border: 1px solid #00195b;
+    line-height: 1;
+    padding: 3px 7px;
+    margin: 0 4px 4px 0;
+    border-radius: 2px;
+}
+body.localcoin .btn.large {
+    font-size: 15px;
+    font-family: "osnovapro-bold", sans-serif;
+    border-radius: 4px;
+    padding: 12px 12px;
+}
+body.localcoin .btn.large:hover {
+    background-color: #eef3f9;
+}
+body.localcoin .btn.large:active {
+    background-color: #ffffff;
+}
+body.localcoin .btn.large.inverted {
+    background-color: #00195b;
+    color: #fff;
+    font-family: "osnovapro", sans-serif;
+    padding: 12px 30px;
+}
+body.localcoin .btn.large.inverted:hover {
+    background-color: #132d71;
+}
+body.localcoin .btn.large.inverted:active {
+    background-color: #050f2a;
+}
+body.localcoin .btn.orange {
+    border-color: #ce7925;
+    color: #ce7925;
+    background-color: #dce6f2;
+}
+body.localcoin .btn.green {
+    border-color: #608c1c;
+    color: #608c1c;
+    background-color: #dce6f2;
+}
+body.localcoin .btn.large.inverted.flat {
+    border-radius: 0;
+    border: 0;
+}
+body.localcoin .btn[disabled] {
+    background-color: #7f8cad !important;
+    border-color: #7f8cad !important;
+    color: #fff !important;
+    pointer-events: none;
+}
+body.localcoin .btn.create-account {
+    display: block;
+    margin: 20px auto 0 auto;
+}
+body.localcoin .btn.icon {
+    padding: 19px 24px;
+    border-radius: 4px;
+    background-color: #00195b;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 15px 9px;
+    margin: 0;
+}
+body.localcoin .btn.large.outline {
+    font-family: "osnovapro", sans-serif;
+    font-weight: normal;
+    padding: 12px 24px;
+}
+body.localcoin .btn.large.outline:hover {
+    background-color: #eef3f9;
+}
+body.localcoin .btn.large.outline:active {
+    background-color: #c1d0e3;
+}
+body.localcoin .content {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding: 30px 20px 0 20px;
+    overflow: hidden;
+}
+body.localcoin .content:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 14px;
+    background-image: url("../img/background.svg");
+    background-size: 320px;
+    background-position: 0 -12px;
+    background-repeat: repeat-x;
+}
+body.localcoin .content__heading {
+    margin: 0 0 15px 0;
+}
+body.localcoin .content__description {
+    margin: 15px 0 0 0;
+    max-width: 510px;
+    letter-spacing: 0;
+}
+body.localcoin .marketw3c-btn {
+    margin-top: 25px;
+}
+body.localcoin .table-blocks {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+body.localcoin .table-blocks__item {
+    width: calc(50% - 10px);
+    margin-bottom: 28px;
+}
+body.localcoin .table-blocks__item:nth-child(odd) {
+    margin-right: 20px;
+}
+body.localcoin .table-blocks__item__heading {
+    padding: 17px 20px;
+    background-color: #c1d0e3;
+    border-radius: 2px;
+    margin: 0 0 18px 0;
+}
+body.localcoin .table-blocks__item__row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    color: #00195b;
+    line-height: 1;
+    margin-bottom: 20px;
+}
+body.localcoin .table-blocks__item__tags {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+body.localcoin .support-btn {
+    margin: 0 15px 0 10px;
+}
+body.localcoin .mobile {
+    display: none;
+}
+body.localcoin .mobile__menu.show {
+    width: 300px;
+    padding: 0 24px;
+}
+body.localcoin .mobile__menu {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #c1d0e3;
+    padding: 0;
+    width: 0;
+    overflow: hidden;
+    z-index: 10;
+    -webkit-box-shadow: 3px 0 10px rgba(0, 0, 0, 0.25);
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.25);
+    -webkit-transition: width 0.25s ease, padding 0.25s ease;
+    -o-transition: width 0.25s ease, padding 0.25s ease;
+    transition: width 0.25s ease, padding 0.25s ease;
+}
+body.localcoin .mobile__menu__close {
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    cursor: pointer;
+    width: 23px;
+    height: 4px;
+    background-color: #b2b2b2;
+    border-radius: 1px;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+body.localcoin .mobile__menu__close:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 23px;
+    height: 4px;
+    border-radius: 1px;
+    background-color: #b2b2b2;
+    -webkit-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+body.localcoin .mobile__menu__close:hover {
+    background-color: #7f7f7f;
+}
+body.localcoin .mobile__menu__close:hover:before {
+    background-color: #7f7f7f;
+}
+body.localcoin .mobile__menu__close:active {
+    background-color: #000000;
+}
+body.localcoin .mobile__menu__close:active:before {
+    background-color: #000000;
+}
+body.localcoin .mobile__list {
+    margin: 50px 0 0 0;
+    list-style: none;
+}
+body.localcoin .mobile__list__item {
+    border-bottom: 1px solid #f0f4f8;
+    margin: 0;
+}
+body.localcoin .mobile__list__link {
+    display: block;
+    color: #00195b;
+    font-size: 15px;
+    line-height: 36px;
+    white-space: nowrap;
+}
+body.localcoin .mobile__burger {
+    display: block;
+    width: 28px;
+    height: 28px;
+    margin: 8px 0 0 0;
+    cursor: pointer;
+}
+body.localcoin .mobile__burger span:after,
+body.localcoin .mobile__burger span:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+}
+body.localcoin .mobile__burger span:after {
+    top: 18px;
+}
+body.localcoin .mobile__burger span {
+    position: relative;
+    display: block;
+}
+body.localcoin .mobile__burger span,
+body.localcoin .mobile__burger span:after,
+body.localcoin .mobile__burger span:before {
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 2px;
+}
+body.localcoin .mobile__burger.on span {
+    background-color: transparent;
+}
+body.localcoin .mobile__burger.on span:before {
+    -webkit-transform: rotate(45deg) translate(-1px, 0px);
+    -ms-transform: rotate(45deg) translate(-1px, 0px);
+    transform: rotate(45deg) translate(-1px, 0px);
+}
+body.localcoin .mobile__burger.on span:after {
+    -webkit-transform: rotate(-45deg) translate(6px, -7px);
+    -ms-transform: rotate(-45deg) translate(6px, -7px);
+    transform: rotate(-45deg) translate(6px, -7px);
+}
+body.localcoin .mobile__accounts {
+    display: block;
+    margin: 20px 0;
+    color: gray;
+    text-transform: uppercase;
+}
+body.localcoin .dashboard__mobileselect {
+    display: none;
+}
+body.localcoin .dashboard__tabs {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background-color: #9bb2cf;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    -webkit-box-shadow: inset 0px -2px 2px -1px rgba(0, 25, 91, 0.35);
+    box-shadow: inset 0px -2px 2px -1px rgba(0, 25, 91, 0.35);
+}
+body.localcoin .dashboard__tabs__item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    padding: 8px 24px;
+    cursor: pointer;
+}
+body.localcoin .dashboard__tabs__item h4,
+body.localcoin .dashboard__tabs__item span {
+    position: relative;
+    z-index: 3;
+}
+body.localcoin .dashboard__tabs__item:after {
+    content: "";
+    position: absolute;
+    right: -1px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 1px;
+    height: 42px;
+    background-color: #cdd9e7;
+    z-index: 1;
+}
+body.localcoin .dashboard__tabs__item:first-child {
+    border-top-left-radius: 2px;
+}
+body.localcoin .dashboard__tabs__item:first-child:before {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+body.localcoin .dashboard__tabs__item:last-child:after {
+    display: none;
+}
+body.localcoin .dashboard__tabs__item.active {
+    -webkit-box-shadow: 3px 0px 1px -2px rgba(0, 25, 91, 0.35);
+    box-shadow: 3px 0px 1px -2px rgba(0, 25, 91, 0.35);
+}
+body.localcoin .dashboard__tabs__item.active:after {
+    right: 0;
+}
+body.localcoin .dashboard__tabs__item.active:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #c1d0e3;
+    z-index: 2;
+    -webkit-box-shadow: -3px 0px 1px -2px rgba(0, 25, 91, 0.35);
+    box-shadow: -3px 0px 1px -2px rgba(0, 25, 91, 0.35);
+}
+body.localcoin .dashboard__actions {
+    width: 100%;
+    background-color: #c1d0e3;
+    padding: 20px 5px 0 5px;
+}
+body.localcoin .dashboard__actions__filters {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 100%;
+}
+body.localcoin .dashboard__actions__filters label.checkbox {
+    margin-right: 30px;
+}
+body.localcoin .dashboard__actions__filters label.radio {
+    margin-right: 24px;
+}
+body.localcoin .dashboard__adaptive {
+    width: 100%;
+    overflow-x: auto;
+}
+body.localcoin .dashboard__table.composite tr td:first-child,
+body.localcoin .dashboard__table.composite tr th:first-child {
+    width: 60px;
+}
+body.localcoin .dashboard__table.composite tr td:nth-child(4),
+body.localcoin .dashboard__table.composite tr th:nth-child(4) {
+    width: 120px;
+    padding: 0 120px 0 80px;
+}
+body.localcoin .dashboard__table.composite .dashboard__table__total span {
+    margin-left: 10px;
+}
+body.localcoin .dashboard__table {
+    min-width: 1090px;
+    width: 100%;
+}
+body.localcoin .dashboard__table th {
+    padding: 15px 16px 5px 16px;
+}
+body.localcoin .dashboard__table th,
+body.localcoin .dashboard__table td {
+    white-space: nowrap;
+}
+body.localcoin .dashboard__table tr:first-child {
+    border-bottom: 1px solid #fff;
+}
+body.localcoin .dashboard__table tr:last-child td:first-child {
+    border-bottom-left-radius: 2px;
+}
+body.localcoin .dashboard__table tr:last-child td:last-child {
+    border-bottom-right-radius: 2px;
+}
+body.localcoin .dashboard__table__total span {
+    display: inline-block;
+    margin-left: 15px;
+}
+body.localcoin .dashboard__table__deposit {
+    display: inline-block;
+    min-width: 18px;
+    max-width: 18px;
+    width: 18px;
+    height: 18px;
+    background-image: url("../img/deposit.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+body.localcoin .dashboard__table__withdraw {
+    display: inline-block;
+    min-width: 18px;
+    max-width: 18px;
+    width: 18px;
+    height: 18px;
+    background-image: url("../img/deposit.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+body.localcoin .dashboard__table__trade {
+    display: inline-block;
+    min-width: 25px;
+    max-width: 25px;
+    width: 25px;
+    height: 19px;
+    background-image: url("../img/trade.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+body.localcoin .dashboard__table__borrow {
+    display: inline-block;
+    min-width: 19px;
+    max-width: 19px;
+    width: 19px;
+    height: 19px;
+    background-image: url("../img/borrow.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+body.localcoin .dashboard__table__settle {
+    display: inline-block;
+    min-width: 15px;
+    max-width: 15px;
+    width: 15px;
+    height: 19px;
+    background-image: url("../img/settle.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+body.localcoin .dashboard__table__link {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    line-height: 1;
+}
+body.localcoin .dashboard__table__link img {
+    display: inline-block;
+    max-width: 27px;
+    height: auto;
+    margin-right: 7px;
+}
+body.localcoin .dashboard__table__link span {
+    position: relative;
+    top: 3px;
+    -ms-flex-item-align: center;
+    align-self: center;
+}
+body.localcoin .dashboard__table__false {
+    color: #bb2820;
+}
+body.localcoin .dashboard__table__success {
+    color: #208c0f;
+}
+body.localcoin .dashboard__table__attention {
+    display: inline-block;
+    min-width: 22px;
+    max-width: 22px;
+    width: 22px;
+    height: 19px;
+    background-image: url("../img/attention.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+body.localcoin .table-star {
+    display: inline-block;
+    position: relative;
+    top: 3px;
+    min-width: 19px;
+    max-width: 19px;
+    width: 19px;
+    height: 19px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMzU0YzliIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNy4zNDQiIGhlaWdodD0iMTYuNjI0IiB2aWV3Qm94PSIwIDAgMTcuMzQ0IDE2LjYyNCI+ICA8bWV0YWRhdGE+PD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz48eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzE0MCA3OS4xNjA0NTEsIDIwMTcvMDUvMDYtMDE6MDg6MjEgICAgICAgICI+ICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIi8+ICAgPC9yZGY6UkRGPjwveDp4bXBtZXRhPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPD94cGFja2V0IGVuZD0idyI/PjwvbWV0YWRhdGE+PGRlZnM+ICAgIDxzdHlsZT4gICAgICAuY2xzLTEgeyAgICAgICAgZmlsbDogIzM1NGM5YjsgICAgICAgIGZpbGwtcnVsZTogZXZlbm9kZDsgICAgICB9ICAgIDwvc3R5bGU+ICA8L2RlZnM+ICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yNjAsMjU2LjQ1M2w1LjkyNS0uNjc0LDIuNzQ2LTUuNTg5LDIuNyw1LjQ0NCw1Ljk3NCwwLjkxNS00LjI4OCw0LjE0NCwwLjk2NCw2LjExOC01LjQtMy4wMzUtNS4yNTEsMi44OSwxLjAxMi01Ljk3M1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yNjAgLTI1MC4xODgpIi8+PC9zdmc+);
+}
+body.localcoin .table-star-default {
+    display: inline-block;
+    min-width: 19px;
+    max-width: 19px;
+    width: 19px;
+    height: 19px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjYzFkMGUzIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNy4zNDQiIGhlaWdodD0iMTYuNjI0IiB2aWV3Qm94PSIwIDAgMTcuMzQ0IDE2LjYyNCI+ICA8bWV0YWRhdGE+PD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz48eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzE0MCA3OS4xNjA0NTEsIDIwMTcvMDUvMDYtMDE6MDg6MjEgICAgICAgICI+ICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIi8+ICAgPC9yZGY6UkRGPjwveDp4bXBtZXRhPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPD94cGFja2V0IGVuZD0idyI/PjwvbWV0YWRhdGE+PGRlZnM+ICAgIDxzdHlsZT4gICAgICAuY2xzLTEgeyAgICAgICAgZmlsbDogI2MxZDBlMzsgICAgICAgIGZpbGwtcnVsZTogZXZlbm9kZDsgICAgICB9ICAgIDwvc3R5bGU+ICA8L2RlZnM+ICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yNjAsMjU2LjQ1M2w1LjkyNS0uNjc0LDIuNzQ2LTUuNTg5LDIuNyw1LjQ0NCw1Ljk3NCwwLjkxNS00LjI4OCw0LjE0NCwwLjk2NCw2LjExOC01LjQtMy4wMzUtNS4yNTEsMi44OSwxLjAxMi01Ljk3M1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yNjAgLTI1MC4xODgpIi8+PC9zdmc+);
+}
+body.localcoin .table-star-default:hover {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjOWFhNWNkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNy4zNDQiIGhlaWdodD0iMTYuNjI0IiB2aWV3Qm94PSIwIDAgMTcuMzQ0IDE2LjYyNCI+ICA8bWV0YWRhdGE+PD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz48eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzE0MCA3OS4xNjA0NTEsIDIwMTcvMDUvMDYtMDE6MDg6MjEgICAgICAgICI+ICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIi8+ICAgPC9yZGY6UkRGPjwveDp4bXBtZXRhPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPD94cGFja2V0IGVuZD0idyI/PjwvbWV0YWRhdGE+PGRlZnM+ICAgIDxzdHlsZT4gICAgICAuY2xzLTEgeyAgICAgICAgZmlsbDogIzlhYTVjZDsgICAgICAgIGZpbGwtcnVsZTogZXZlbm9kZDsgICAgICB9ICAgIDwvc3R5bGU+ICA8L2RlZnM+ICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yNjAsMjU2LjQ1M2w1LjkyNS0uNjc0LDIuNzQ2LTUuNTg5LDIuNyw1LjQ0NCw1Ljk3NCwwLjkxNS00LjI4OCw0LjE0NCwwLjk2NCw2LjExOC01LjQtMy4wMzUtNS4yNTEsMi44OSwxLjAxMi01Ljk3M1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yNjAgLTI1MC4xODgpIi8+PC9zdmc+);
+}
+body.localcoin .table-star-default:active {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMzU0YzliIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNy4zNDQiIGhlaWdodD0iMTYuNjI0IiB2aWV3Qm94PSIwIDAgMTcuMzQ0IDE2LjYyNCI+ICA8bWV0YWRhdGE+PD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz48eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzE0MCA3OS4xNjA0NTEsIDIwMTcvMDUvMDYtMDE6MDg6MjEgICAgICAgICI+ICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIi8+ICAgPC9yZGY6UkRGPjwveDp4bXBtZXRhPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPD94cGFja2V0IGVuZD0idyI/PjwvbWV0YWRhdGE+PGRlZnM+ICAgIDxzdHlsZT4gICAgICAuY2xzLTEgeyAgICAgICAgZmlsbDogIzM1NGM5YjsgICAgICAgIGZpbGwtcnVsZTogZXZlbm9kZDsgICAgICB9ICAgIDwvc3R5bGU+ICA8L2RlZnM+ICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yNjAsMjU2LjQ1M2w1LjkyNS0uNjc0LDIuNzQ2LTUuNTg5LDIuNyw1LjQ0NCw1Ljk3NCwwLjkxNS00LjI4OCw0LjE0NCwwLjk2NCw2LjExOC01LjQtMy4wMzUtNS4yNTEsMi44OSwxLjAxMi01Ljk3M1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yNjAgLTI1MC4xODgpIi8+PC9zdmc+);
+}
+body.localcoin .deposit-dialog {
+    background: #fff;
+    padding: 20px 30px;
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 6px;
+    position: relative;
+}
+body.localcoin .mfp-close {
+    display: inline-block;
+    position: absolute;
+    top: 26px;
+    right: 40px;
+    padding: 0;
+    cursor: pointer;
+    width: 23px;
+    height: 4px;
+    background-color: #b2b2b2;
+    border-radius: 1px;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+body.localcoin .mfp-close:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 23px;
+    height: 4px;
+    border-radius: 1px;
+    background-color: #b2b2b2;
+    -webkit-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+body.localcoin .mfp-close:hover {
+    background-color: #7f7f7f;
+}
+body.localcoin .mfp-close:hover:before {
+    background-color: #7f7f7f;
+}
+body.localcoin .mfp-close:active {
+    background-color: #000000;
+}
+body.localcoin .mfp-close:active:before {
+    background-color: #000000;
+}
+body.localcoin .modal-company {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+body.localcoin .modal-company__text {
+    margin-bottom: 15px;
+}
+body.localcoin .modal-company__text.error {
+    color: #bb2820;
+    font-size: 13px;
+}
+body.localcoin .modal-company__title {
+    font-family: "osnovapro-bold", sans-serif;
+    text-transform: uppercase;
+    color: #001b60;
+    font-size: 18px;
+}
+body.localcoin .modal-company__clip {
+    position: relative;
+    margin-bottom: 30px;
+}
+body.localcoin .modal-company__clip .btn {
+    position: absolute;
+    top: 24px;
+    right: 0;
+}
+body.localcoin .modal-company__clip input {
+    padding-right: 64px;
+}
+body.localcoin .explore {
+    margin: 0 -15px;
+}
+body.localcoin .explore .row {
+    margin-right: -10px;
+    margin-left: -10px;
+}
+body.localcoin .explore .col,
+body.localcoin .explore .col-1,
+body.localcoin .explore .col-10,
+body.localcoin .explore .col-11,
+body.localcoin .explore .col-12,
+body.localcoin .explore .col-2,
+body.localcoin .explore .col-3,
+body.localcoin .explore .col-4,
+body.localcoin .explore .col-5,
+body.localcoin .explore .col-6,
+body.localcoin .explore .col-7,
+body.localcoin .explore .col-8,
+body.localcoin .explore .col-9,
+body.localcoin .explore .col-auto,
+body.localcoin .explore .col-lg,
+body.localcoin .explore .col-lg-1,
+body.localcoin .explore .col-lg-10,
+body.localcoin .explore .col-lg-11,
+body.localcoin .explore .col-lg-12,
+body.localcoin .explore .col-lg-2,
+body.localcoin .explore .col-lg-3,
+body.localcoin .explore .col-lg-4,
+body.localcoin .explore .col-lg-5,
+body.localcoin .explore .col-lg-6,
+body.localcoin .explore .col-lg-7,
+body.localcoin .explore .col-lg-8,
+body.localcoin .explore .col-lg-9,
+body.localcoin .explore .col-lg-auto,
+body.localcoin .explore .col-md,
+body.localcoin .explore .col-md-1,
+body.localcoin .explore .col-md-10,
+body.localcoin .explore .col-md-11,
+body.localcoin .explore .col-md-12,
+body.localcoin .explore .col-md-2,
+body.localcoin .explore .col-md-3,
+body.localcoin .explore .col-md-4,
+body.localcoin .explore .col-md-5,
+body.localcoin .explore .col-md-6,
+body.localcoin .explore .col-md-7,
+body.localcoin .explore .col-md-8,
+body.localcoin .explore .col-md-9,
+body.localcoin .explore .col-md-auto,
+body.localcoin .explore .col-sm,
+body.localcoin .explore .col-sm-1,
+body.localcoin .explore .col-sm-10,
+body.localcoin .explore .col-sm-11,
+body.localcoin .explore .col-sm-12,
+body.localcoin .explore .col-sm-2,
+body.localcoin .explore .col-sm-3,
+body.localcoin .explore .col-sm-4,
+body.localcoin .explore .col-sm-5,
+body.localcoin .explore .col-sm-6,
+body.localcoin .explore .col-sm-7,
+body.localcoin .explore .col-sm-8,
+body.localcoin .explore .col-sm-9,
+body.localcoin .explore .col-sm-auto,
+body.localcoin .explore .col-xl,
+body.localcoin .explore .col-xl-1,
+body.localcoin .explore .col-xl-10,
+body.localcoin .explore .col-xl-11,
+body.localcoin .explore .col-xl-12,
+body.localcoin .explore .col-xl-2,
+body.localcoin .explore .col-xl-3,
+body.localcoin .explore .col-xl-4,
+body.localcoin .explore .col-xl-5,
+body.localcoin .explore .col-xl-6,
+body.localcoin .explore .col-xl-7,
+body.localcoin .explore .col-xl-8,
+body.localcoin .explore .col-xl-9,
+body.localcoin .explore .col-xl-auto {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+body.localcoin .explore__item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 2px;
+    padding: 23px 0 19px 0;
+    background-color: #c1d0e3;
+    margin-bottom: 20px;
+}
+body.localcoin .explore__item:hover {
+    background-color: #dce6f2;
+}
+body.localcoin .explore__item__img {
+    display: inline-block;
+    width: 100%;
+    height: 94px;
+}
+body.localcoin .explore__item__img.blockchain {
+    max-width: 94px;
+}
+body.localcoin .explore__item__img.assets {
+    max-width: 89px;
+}
+body.localcoin .explore__item__img.accounts {
+    max-width: 89px;
+}
+body.localcoin .explore__item__img.witnesses {
+    max-width: 85px;
+}
+body.localcoin .explore__item__img.members {
+    max-width: 78px;
+}
+body.localcoin .explore__item__img.markets {
+    max-width: 81px;
+    margin: 0;
+}
+body.localcoin .explore__item__img.fee {
+    max-width: 87px;
+}
+body.localcoin .explore__item__heading {
+    margin: 24px 0 0 0;
+    line-height: 1;
+}
+body.localcoin .faq {
+    margin: 0 -15px;
+}
+body.localcoin .faq p {
+    margin-bottom: 15px;
+}
+body.localcoin .markets {
+    margin: 0 -15px 15px -15px;
+}
+body.localcoin .markets__item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 115px;
+    background-color: #c1d0e3;
+    border-radius: 2px;
+    padding: 14px;
+    margin-bottom: 20px;
+}
+body.localcoin .markets__item:hover {
+    background-color: #dce6f2;
+}
+body.localcoin .markets__item__img {
+    max-width: 70px;
+    min-width: 70px;
+    margin-right: 10px;
+}
+body.localcoin .markets__item__img img {
+    max-width: 70px;
+    width: auto;
+    height: auto;
+}
+body.localcoin .markets__item__data {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+body.localcoin .markets__item__data h4 {
+    margin-bottom: 5px;
+}
+body.localcoin .markets__item__row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 3px;
+}
+body.localcoin .markets__item__row span {
+    display: inline-block;
+    min-width: 72px;
+    line-height: 1;
+}
+body.localcoin .markets__item__row b {
+    line-height: 1;
+}
+body.localcoin .markets__item__row b.danger {
+    color: #bb2820;
+}
+body.localcoin .markets__item__row b.success {
+    color: #208c0f;
+}
+body.localcoin .markets .row {
+    margin-right: -10px;
+    margin-left: -10px;
+}
+body.localcoin .markets .col,
+body.localcoin .markets .col-1,
+body.localcoin .markets .col-10,
+body.localcoin .markets .col-11,
+body.localcoin .markets .col-12,
+body.localcoin .markets .col-2,
+body.localcoin .markets .col-3,
+body.localcoin .markets .col-4,
+body.localcoin .markets .col-5,
+body.localcoin .markets .col-6,
+body.localcoin .markets .col-7,
+body.localcoin .markets .col-8,
+body.localcoin .markets .col-9,
+body.localcoin .markets .col-auto,
+body.localcoin .markets .col-lg,
+body.localcoin .markets .col-lg-1,
+body.localcoin .markets .col-lg-10,
+body.localcoin .markets .col-lg-11,
+body.localcoin .markets .col-lg-12,
+body.localcoin .markets .col-lg-2,
+body.localcoin .markets .col-lg-3,
+body.localcoin .markets .col-lg-4,
+body.localcoin .markets .col-lg-5,
+body.localcoin .markets .col-lg-6,
+body.localcoin .markets .col-lg-7,
+body.localcoin .markets .col-lg-8,
+body.localcoin .markets .col-lg-9,
+body.localcoin .markets .col-lg-auto,
+body.localcoin .markets .col-md,
+body.localcoin .markets .col-md-1,
+body.localcoin .markets .col-md-10,
+body.localcoin .markets .col-md-11,
+body.localcoin .markets .col-md-12,
+body.localcoin .markets .col-md-2,
+body.localcoin .markets .col-md-3,
+body.localcoin .markets .col-md-4,
+body.localcoin .markets .col-md-5,
+body.localcoin .markets .col-md-6,
+body.localcoin .markets .col-md-7,
+body.localcoin .markets .col-md-8,
+body.localcoin .markets .col-md-9,
+body.localcoin .markets .col-md-auto,
+body.localcoin .markets .col-sm,
+body.localcoin .markets .col-sm-1,
+body.localcoin .markets .col-sm-10,
+body.localcoin .markets .col-sm-11,
+body.localcoin .markets .col-sm-12,
+body.localcoin .markets .col-sm-2,
+body.localcoin .markets .col-sm-3,
+body.localcoin .markets .col-sm-4,
+body.localcoin .markets .col-sm-5,
+body.localcoin .markets .col-sm-6,
+body.localcoin .markets .col-sm-7,
+body.localcoin .markets .col-sm-8,
+body.localcoin .markets .col-sm-9,
+body.localcoin .markets .col-sm-auto,
+body.localcoin .markets .col-xl,
+body.localcoin .markets .col-xl-1,
+body.localcoin .markets .col-xl-10,
+body.localcoin .markets .col-xl-11,
+body.localcoin .markets .col-xl-12,
+body.localcoin .markets .col-xl-2,
+body.localcoin .markets .col-xl-3,
+body.localcoin .markets .col-xl-4,
+body.localcoin .markets .col-xl-5,
+body.localcoin .markets .col-xl-6,
+body.localcoin .markets .col-xl-7,
+body.localcoin .markets .col-xl-8,
+body.localcoin .markets .col-xl-9,
+body.localcoin .markets .col-xl-auto {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+body.localcoin .negative-margins {
+    margin: 0 -15px 0 -15px;
+}
+body.localcoin .negative-margins .row {
+    margin-right: -10px;
+    margin-left: -10px;
+}
+body.localcoin .negative-margins .col,
+body.localcoin .negative-margins .col-1,
+body.localcoin .negative-margins .col-10,
+body.localcoin .negative-margins .col-11,
+body.localcoin .negative-margins .col-12,
+body.localcoin .negative-margins .col-2,
+body.localcoin .negative-margins .col-3,
+body.localcoin .negative-margins .col-4,
+body.localcoin .negative-margins .col-5,
+body.localcoin .negative-margins .col-6,
+body.localcoin .negative-margins .col-7,
+body.localcoin .negative-margins .col-8,
+body.localcoin .negative-margins .col-9,
+body.localcoin .negative-margins .col-auto,
+body.localcoin .negative-margins .col-lg,
+body.localcoin .negative-margins .col-lg-1,
+body.localcoin .negative-margins .col-lg-10,
+body.localcoin .negative-margins .col-lg-11,
+body.localcoin .negative-margins .col-lg-12,
+body.localcoin .negative-margins .col-lg-2,
+body.localcoin .negative-margins .col-lg-3,
+body.localcoin .negative-margins .col-lg-4,
+body.localcoin .negative-margins .col-lg-5,
+body.localcoin .negative-margins .col-lg-6,
+body.localcoin .negative-margins .col-lg-7,
+body.localcoin .negative-margins .col-lg-8,
+body.localcoin .negative-margins .col-lg-9,
+body.localcoin .negative-margins .col-lg-auto,
+body.localcoin .negative-margins .col-md,
+body.localcoin .negative-margins .col-md-1,
+body.localcoin .negative-margins .col-md-10,
+body.localcoin .negative-margins .col-md-11,
+body.localcoin .negative-margins .col-md-12,
+body.localcoin .negative-margins .col-md-2,
+body.localcoin .negative-margins .col-md-3,
+body.localcoin .negative-margins .col-md-4,
+body.localcoin .negative-margins .col-md-5,
+body.localcoin .negative-margins .col-md-6,
+body.localcoin .negative-margins .col-md-7,
+body.localcoin .negative-margins .col-md-8,
+body.localcoin .negative-margins .col-md-9,
+body.localcoin .negative-margins .col-md-auto,
+body.localcoin .negative-margins .col-sm,
+body.localcoin .negative-margins .col-sm-1,
+body.localcoin .negative-margins .col-sm-10,
+body.localcoin .negative-margins .col-sm-11,
+body.localcoin .negative-margins .col-sm-12,
+body.localcoin .negative-margins .col-sm-2,
+body.localcoin .negative-margins .col-sm-3,
+body.localcoin .negative-margins .col-sm-4,
+body.localcoin .negative-margins .col-sm-5,
+body.localcoin .negative-margins .col-sm-6,
+body.localcoin .negative-margins .col-sm-7,
+body.localcoin .negative-margins .col-sm-8,
+body.localcoin .negative-margins .col-sm-9,
+body.localcoin .negative-margins .col-sm-auto,
+body.localcoin .negative-margins .col-xl,
+body.localcoin .negative-margins .col-xl-1,
+body.localcoin .negative-margins .col-xl-10,
+body.localcoin .negative-margins .col-xl-11,
+body.localcoin .negative-margins .col-xl-12,
+body.localcoin .negative-margins .col-xl-2,
+body.localcoin .negative-margins .col-xl-3,
+body.localcoin .negative-margins .col-xl-4,
+body.localcoin .negative-margins .col-xl-5,
+body.localcoin .negative-margins .col-xl-6,
+body.localcoin .negative-margins .col-xl-7,
+body.localcoin .negative-margins .col-xl-8,
+body.localcoin .negative-margins .col-xl-9,
+body.localcoin .negative-margins .col-xl-auto {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+body.localcoin .accounts-table-wrap {
+    width: 100%;
+    margin: 25px 0 30px 0;
+    overflow-x: auto;
+}
+body.localcoin .accounts-table {
+    border-bottom: 1px solid #7fafe8;
+    min-width: 1090px;
+}
+body.localcoin .accounts-table tr:first-child {
+    border-bottom: 1px solid #7fafe8;
+}
+body.localcoin .accounts-table th,
+body.localcoin .accounts-table td {
+    background-color: transparent;
+    padding: 8px 0;
+    vertical-align: middle;
+}
+body.localcoin .accounts-table th:nth-child(2),
+body.localcoin .accounts-table td:nth-child(2) {
+    width: 35%;
+}
+body.localcoin .accounts-table th:first-child,
+body.localcoin .accounts-table td:first-child {
+    padding-left: 15px;
+    width: 60px;
+}
+body.localcoin .recently-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+body.localcoin .recently-table {
+    border-bottom: 1px solid #7fafe8;
+    min-width: 1090px;
+}
+body.localcoin .recently-table tr:last-child td {
+    padding-bottom: 28px;
+}
+body.localcoin .recently-table tr:first-child {
+    border-bottom: 1px solid #7fafe8;
+}
+body.localcoin .recently-table td,
+body.localcoin .recently-table th {
+    background-color: transparent;
+}
+body.localcoin .recently-table th:first-child {
+    font-family: "osnovapro", sans-serif;
+    width: 400px;
+    padding: 7px 90px 7px 0;
+}
+body.localcoin .recently-table td:first-child {
+    width: 400px;
+    padding: 7px 90px 7px 0;
+}
+body.localcoin .recently-table th {
+    padding: 7px 16px;
+}
+body.localcoin .recently-table td:nth-child(3),
+body.localcoin .recently-table th:nth-child(3) {
+    width: 42%;
+}
+body.localcoin .recently-table td:last-child,
+body.localcoin .recently-table th:last-child {
+    width: 110px;
+    padding-left: 0;
+    padding-right: 0;
+}
+body.localcoin .csv-export {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+body.localcoin .csv-export img {
+    position: relative;
+    top: -4px;
+    margin-right: 10px;
+}
+body.localcoin .my-markets {
+    padding: 9px 10px 9px 10px;
+    background-color: #c1d0e3;
+    border-bottom: 1px solid #7fafe8;
+    margin: 0 0 20px 0;
+}
+body.localcoin .my-markets h4 {
+    margin: 0;
+    line-height: 1;
+}
+body.localcoin .markets-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 20px 0 0 0;
+    padding: 2px 2px 0 2px;
+    list-style-type: none;
+    background-color: #9ab1cf;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    -webkit-box-shadow: inset 0px -2px 2px -1px rgba(0, 25, 91, 0.35);
+    box-shadow: inset 0px -2px 2px -1px rgba(0, 25, 91, 0.35);
+}
+body.localcoin .markets-list__item {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    line-height: 1;
+    font-size: 15px;
+    color: #000000;
+    padding: 6px 14px 7px 14px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    margin: 0;
+}
+body.localcoin .markets-list__item.active {
+    background-color: #fff;
+}
+body.localcoin .market-list-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+body.localcoin .market-table {
+    width: 100%;
+    min-width: 1090px;
+}
+body.localcoin .market-table td,
+body.localcoin .market-table th {
+    background-color: transparent;
+}
+body.localcoin .market-table tr:first-child {
+    border-bottom: 1px solid #7fafe8;
+}
+body.localcoin .market-table th {
+    padding: 12px 0;
+}
+body.localcoin .market-table td {
+    padding: 8px 0;
+}
+body.localcoin .market-table td:first-child,
+body.localcoin .market-table th:first-child {
+    padding-left: 24px;
+    padding-right: 24px;
+    width: 75px;
+}
+body.localcoin .market-table td:nth-child(2),
+body.localcoin .market-table th:nth-child(2) {
+    width: 16%;
+}
+body.localcoin .market-table td:nth-child(3),
+body.localcoin .market-table th:nth-child(3) {
+    width: 32%;
+}
+body.localcoin .carret.up {
+    display: inline-block;
+    margin-left: 5px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 5.5px 7px 5.5px;
+    border-color: transparent transparent #001b60 transparent;
+}
+body.localcoin .carret {
+    display: inline-block;
+    margin-left: 5px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 7px 5.5px 0 5.5px;
+    border-color: #001b60 transparent transparent transparent;
+}
+body.localcoin .danger {
+    color: #bb2820;
+}
+body.localcoin .success {
+    color: #208c0f;
+}
+body.localcoin .dashboard__tabs.voting .dashboard__tabs__item {
+    padding: 25px 24px;
+    line-height: 1;
+}
+body.localcoin .dashboard__tabs.permissions {
+    margin-bottom: 20px;
+}
+body.localcoin .dashboard__tabs.permissions .dashboard__tabs__item {
+    padding: 25px 24px;
+    line-height: 1;
+}
+body.localcoin .threshold-block {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 25px 0 20px 0;
+}
+body.localcoin .threshold-block input {
+    max-width: 84px;
+    margin-left: 20px;
+}
+body.localcoin .label {
+    display: block;
+    margin-bottom: 15px;
+}
+body.localcoin .key-icon {
+    display: inline-block;
+    min-width: 36px;
+    max-width: 36px;
+    width: 36px;
+    height: 36px;
+    background-image: url("../img/key.svg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: contain;
+}
+body.localcoin .accounts-table-wrap.accounts-table-wrap__keys {
+    margin: 6px 0 30px 0;
+}
+body.localcoin
+    .accounts-table-wrap.accounts-table-wrap__keys
+    .accounts-table
+    td:last-child
+    .btn {
+    margin: 0;
+}
+body.localcoin
+    .accounts-table-wrap.accounts-table-wrap__keys
+    .accounts-table
+    td:last-child,
+body.localcoin
+    .accounts-table-wrap.accounts-table-wrap__keys
+    .accounts-table
+    th:last-child {
+    width: 105px;
+}
+body.localcoin
+    .accounts-table-wrap.accounts-table-wrap__keys
+    .accounts-table
+    th:nth-child(2),
+body.localcoin
+    .accounts-table-wrap.accounts-table-wrap__keys
+    .accounts-table
+    td:nth-child(2) {
+    width: 100%;
+}
+body.localcoin
+    .accounts-table-wrap.accounts-table-wrap__keys
+    .accounts-table
+    th:nth-child(3) {
+    padding-right: 250px;
+}
+body.localcoin
+    .accounts-table-wrap.accounts-table-wrap__keys
+    .accounts-table
+    th:first-child,
+body.localcoin
+    .accounts-table-wrap.accounts-table-wrap__keys
+    .accounts-table
+    td:first-child {
+    padding-left: 10px;
+    width: 63px;
+    padding-right: 15px;
+}
+body.localcoin .account-actions {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 35px;
+}
+body.localcoin .account-actions .btn {
+    margin: 0 10px 0 0;
+}
+body.localcoin .active-table-wrap {
+    overflow-x: auto;
+}
+body.localcoin .active-table {
+    min-width: 1090px;
+}
+body.localcoin .active-table th,
+body.localcoin .active-table td {
+    background-color: transparent;
+    padding: 18px 0;
+}
+body.localcoin .active-table tr:first-child {
+    border-bottom: 1px solid #7fafe8;
+}
+body.localcoin .active-table th:first-child,
+body.localcoin .active-table td:first-child {
+    width: 30%;
+}
+body.localcoin .account-inputs {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+body.localcoin .account-inputs input {
+    margin-right: 20px;
+}
+body.localcoin .account-inputs input:nth-child(2) {
+    width: 30%;
+}
+body.localcoin .account-inputs input:first-child {
+    width: 70%;
+}
+body.localcoin .permissions-dialog {
+    max-width: 800px;
+    width: 100%;
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 20px 34px;
+    border-radius: 6px;
+}
+body.localcoin .permissions-dialog .mfp-close {
+    right: 24px;
+}
+body.localcoin .permissions-dialog h2 {
+    margin-bottom: 15px;
+}
+body.localcoin .permissions-dialog__label {
+    line-height: 1;
+}
+body.localcoin .permissions-dialog__text {
+    font-size: 18px;
+    line-height: 1.3;
+    margin: 0 0 15px 0;
+    word-wrap: break-word;
+}
+body.localcoin .permissions-dialog__text a {
+    font-size: 15px;
+    font-weight: normal;
+    font-family: "osnovapro", sans-serif;
+}
+body.localcoin .options {
+    width: 100%;
+    margin: 0 -15px;
+}
+body.localcoin .options__row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 20px;
+}
+body.localcoin .options__setup {
+    width: 100%;
+}
+body.localcoin .options__nav {
+    margin: 0 20px 0 0;
+    padding: 0;
+    list-style: none;
+    min-width: 200px;
+    max-width: 200px;
+    width: 200px;
+}
+body.localcoin .options__nav__item {
+    margin-bottom: 0;
+    border-bottom: 1px solid #bfd7f4;
+}
+body.localcoin .options__nav__item:last-child {
+    border-bottom: 0;
+}
+body.localcoin .options__nav__link {
+    display: block;
+    line-height: 36px;
+    padding-left: 28px;
+}
+body.localcoin .options__form__row {
+    margin-bottom: 15px;
+}
+body.localcoin .options__form__row:last-child {
+    margin-top: 30px;
+}
+body.localcoin .options__form__status {
+    margin-left: 25px;
+}
+body.localcoin .daily-budget {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 10px 0 0 0;
+}
+body.localcoin .daily-budget__number {
+    margin-left: 40px;
+}
+body.localcoin .voting-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+body.localcoin .voting-table {
+    min-width: 1100px;
+}
+body.localcoin .voting-table__linkicon {
+    position: relative;
+    top: 2px;
+    display: inline-block;
+    min-width: 19px;
+    max-width: 19px;
+    width: 19px;
+    height: 16px;
+    background-image: url("../img/link.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: 9px;
+}
+body.localcoin .voting-table__toggle {
+    position: relative;
+    display: inline-block;
+    min-width: 19px;
+    max-width: 19px;
+    width: 19px;
+    height: 19px;
+    background-image: url("../img/toggle.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+body.localcoin .voting-table th,
+body.localcoin .voting-table td {
+    padding: 10px;
+}
+body.localcoin .voting-table th:first-child,
+body.localcoin .voting-table td:first-child {
+    padding-left: 20px;
+    padding-right: 0;
+}
+body.localcoin .voting-table th:last-child,
+body.localcoin .voting-table td:last-child {
+    padding-right: 14px;
+}
+body.localcoin .voting-table td {
+    white-space: nowrap;
+}
+body.localcoin .voting-table td:nth-child(3) {
+    white-space: normal;
+}
+body.localcoin .voting-table tr:first-child {
+    border-bottom: 1px solid #fff;
+}
+body.localcoin .voting-table th {
+    white-space: nowrap;
+}
+body.localcoin .voting-table tr:last-child td:first-child {
+    border-bottom-left-radius: 2px;
+}
+body.localcoin .voting-table tr:last-child td:last-child {
+    border-bottom-right-radius: 2px;
+}
+body.localcoin .worker-btn {
+    margin-left: auto;
+}
+body.localcoin .witnesses-board {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+body.localcoin .witnesses-board__sidetable {
+    min-width: 330px;
+    max-width: 330px;
+    width: 330px;
+    margin-right: 20px;
+}
+body.localcoin .witnesses-board__sidetable__row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+body.localcoin .witnesses-board__accounts {
+    width: 100%;
+    margin: 0 -15px;
+    overflow: hidden;
+}
+body.localcoin .table-witnesses-wrap {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+}
+body.localcoin .table-witnesses {
+    min-width: 1090px;
+    border-bottom: 1px solid #7fafe8;
+}
+body.localcoin .table-witnesses td,
+body.localcoin .table-witnesses th {
+    background-color: transparent;
+    padding: 10px 10px;
+    width: 18%;
+}
+body.localcoin .table-witnesses td:first-child,
+body.localcoin .table-witnesses th:first-child {
+    width: 10%;
+}
+body.localcoin .table-witnesses tr:first-child {
+    border-bottom: 1px solid #7fafe8;
+}
+body.localcoin .success-light {
+    color: #54be20;
+}
+body.localcoin .danger-light {
+    color: #e31616;
+}
+body.localcoin .warning-light {
+    color: #ba940f;
+}
+body.localcoin .witness-item {
+    display: block;
+    text-align: center;
+    margin-top: 27px;
+}
+body.localcoin .witness-item h5 {
+    margin: 0 0 5px 0;
+}
+body.localcoin .witness-item__content {
+    border-top: 1px solid #7fafe8;
+    background-color: #c1d0e3;
+    padding: 28px 0 22px 0;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+body.localcoin .witness-item__pic {
+    height: 76px;
+    margin-bottom: 15px;
+}
+body.localcoin .witness-item__img {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+}
+body.localcoin .witness-item__row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 0 22px;
+}
+body.localcoin .witness-item__row span {
+    line-height: 31px;
+}
+body.localcoin .witness-item__row.light {
+    background-color: #e0e8f1;
+}
+
+@media only screen and (max-width: 1200px) {
+    body.localcoin .dashboard__actions__filters {
+        margin-top: 10px;
+    }
+    body.localcoin .account-inputs {
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+    body.localcoin .account-inputs input {
+        margin: 0;
+    }
+    body.localcoin .account-inputs input:first-child {
+        margin-right: 20px;
+        width: calc(50% - 10px);
+    }
+    body.localcoin .account-inputs input:nth-child(2) {
+        width: calc(50% - 10px);
+    }
+    body.localcoin .account-inputs .btn {
+        margin-top: 20px;
+    }
+    body.localcoin .options {
+        margin: 0;
+    }
+    body.localcoin .options > .container {
+        max-width: none;
+        padding: 0;
+    }
+}
+
+@media only screen and (max-width: 1050px) {
+    body.localcoin .table-blocks__item:nth-child(odd) {
+        margin-right: 0;
+    }
+    body.localcoin .table-blocks__item {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    body.localcoin .navigation__item {
+        padding: 0 5px;
+    }
+    body.localcoin .navigation__link {
+        font-size: 13px;
+    }
+    body.localcoin .balance__label:after {
+        margin: 0 0 2px 6px;
+    }
+    body.localcoin .balance__label,
+    body.localcoin .user__name {
+        font-size: 13px;
+    }
+    body.localcoin .user {
+        margin-left: 12px;
+    }
+    body.localcoin .settings {
+        margin-left: 15px;
+    }
+    body.localcoin .dashboard__tabs__item {
+        display: none;
+    }
+    body.localcoin .dashboard__mobileselect {
+        display: block;
+        margin: 20px;
+    }
+    body.localcoin .dashboard__tabs {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    body.localcoin .witnesses-board {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    body.localcoin .witnesses-board__sidetable {
+        margin-right: 0;
+        width: auto;
+        min-width: 1px;
+        max-width: none;
+        margin-bottom: 20px;
+    }
+    body.localcoin .witnesses-board__accounts {
+        margin: 0;
+    }
+    body.localcoin .witnesses-board__accounts > .container-fluid {
+        padding: 0;
+    }
+    body.localcoin .witnesses-board__accounts input {
+        margin-bottom: 20px;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    body.localcoin .dashboard__actions__filters {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+    }
+    body.localcoin .dashboard__actions__filters label.checkbox,
+    body.localcoin .dashboard__actions__filters label.radio {
+        margin: 4px 0;
+    }
+    body.localcoin .worker-btn {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    body.localcoin .my-market-filters label.checkbox {
+        margin-top: 20px;
+    }
+    body.localcoin .account-inputs input:first-child {
+        width: 100%;
+        margin: 0 0 20px 0;
+    }
+    body.localcoin .account-inputs input:nth-child(2) {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    body.localcoin .sidebar,
+    body.localcoin .header-line {
+        display: none;
+    }
+    body.localcoin .mobile {
+        display: block;
+    }
+    body.localcoin .options__row {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    body.localcoin .options__nav {
+        max-width: none;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    body.localcoin .table-blocks__item__row span,
+    body.localcoin .table-blocks__item__row a {
+        font-size: 13px;
+    }
+    body.localcoin .account-actions {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    body.localcoin .account-actions .btn {
+        margin-top: 20px;
+    }
+}

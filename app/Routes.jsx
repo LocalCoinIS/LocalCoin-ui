@@ -40,7 +40,7 @@ const routes = (
         <Route
             path="explorer"
             getComponent={(location, cb) => {
-                import("components/Explorer/Explorer")
+                import("components-brand-new/Explorer/Explorer")
                     .then(loadRoute(cb))
                     .catch(errorLoading);
             }}

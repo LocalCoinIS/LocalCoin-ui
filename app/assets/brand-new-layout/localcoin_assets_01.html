@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="theme-color" content="#000">
+    <meta name="msapplication-navbutton-color" content="#000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000"><style>body { opacity: 0; overflow-x: hidden; } html { background-color: #fff; }</style>
+<!--[if lt IE 9]>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script><![endif]-->
+  </head>
+  <body class="localcoin">
+    <header class="header">
+      <div class="container-fluid">
+        <div class="mobile"><span class="mobile__burger"><span></span></span>
+          <div class="mobile__menu"><span class="mobile__menu__close"></span>
+            <ul class="mobile__list">
+              <li class="mobile__list__item"><a class="mobile__list__link" href="#">Create Account</a></li>
+              <li class="mobile__list__item"><a class="mobile__list__link" href="#">Send</a></li>
+              <li class="mobile__list__item"><a class="mobile__list__link" href="#">Deposit/Withdraw</a></li>
+              <li class="mobile__list__item"><a class="mobile__list__link" href="#">Explore</a></li>
+              <li class="mobile__list__item"><a class="mobile__list__link" href="#">Settings</a></li>
+            </ul>
+            <label class="mobile__accounts">Accounts</label>
+          </div>
+        </div>
+        <div class="header-line">
+          <div class="logo"><img src="img/logo.svg" alt="logo"></div>
+          <nav class="navigation">
+            <ul class="navigation__list">
+              <li class="navigation__item active"><a class="navigation__link" href="#">Account</a></li>
+              <li class="navigation__item"><a class="navigation__link" href="#">Exchange</a></li>
+              <li class="navigation__item"><a class="navigation__link" href="#">Deposit/Withdraw</a></li>
+              <li class="navigation__item"><a class="navigation__link" href="#">OTC</a></li>
+            </ul>
+          </nav>
+          <div class="balance"><span class="balance__label">Balance: 0</span>
+            <ul class="balance__list">
+              <li class="balance__item active"><a class="balance__link" href="#">LLC</a></li>
+              <li class="balance__item"><a class="balance__link" href="#">BTC</a></li>
+              <li class="balance__item"><a class="balance__link" href="#">XCR</a></li>
+              <li class="balance__item"><a class="balance__link" href="#">ETH</a></li>
+            </ul>
+          </div>
+          <div class="user"><img class="user__icon" src="img/user.png" alt="user"><span class="user__name">Ninetor-dot</span></div><a class="settings" href="#"><img class="settings__icon" src="img/settings.svg" alt="settings"></a><a class="lock" href="#"><img class="lock__icon" src="img/lock.svg" alt="lock"></a>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <div class="sidebar">
+        <div class="sidebar__qr"><img src="img/qr.jpg" alt="code"></div>
+        <p class="sidebar__descr">Your deposit address is your account name!</p><span class="sidebar__user"><b>ninetor-dot</b></span>
+        <ul class="sidebar__menu">
+          <li class="sidebar__menu__item noborder"><a class="sidebar__menu__link" href="#">Dashboard</a></li>
+          <li class="sidebar__menu__item"><a class="sidebar__menu__link" href="#">Membership</a></li>
+          <li class="sidebar__menu__item"><a class="sidebar__menu__link" href="#">Voting</a></li>
+          <li class="sidebar__menu__item showsub expand noborder"><a class="sidebar__menu__link" href="#">Advanced features</a>
+            <ul class="sidebar__menu__sub">
+              <li class="sidebar__menu__sub__item noborder"><a class="sidebar__menu__sub__link" href="#">Issued Assets</a></li>
+              <li class="sidebar__menu__sub__item active"><a class="sidebar__menu__sub__link" href="#">Permissions</a></li>
+              <li class="sidebar__menu__sub__item"><a class="sidebar__menu__sub__link" href="#">Whitelist</a></li>
+              <li class="sidebar__menu__sub__item"><a class="sidebar__menu__sub__link" href="#">Vesting balances</a></li>
+              <li class="sidebar__menu__sub__item"><a class="sidebar__menu__sub__link" href="#">Signed Messages</a></li>
+            </ul>
+          </li>
+        </ul>
+        <button class="btn large create-account" type="button">Create a New Account</button>
+      </div>
+      <div class="content">
+        <h2 class="content__heading">Account Dashboard</h2>
+        <div class="dashboard">
+          <div class="dashboard__tabs">
+            <div class="select dashboard__mobileselect"><span class="placeholder">Assets</span>
+              <ul>
+                <li data-value="1">Open Orders</li>
+                <li data-value="2">Margin Positions</li>
+                <li data-value="3">History</li>
+              </ul>
+              <input type="hidden" name="changeme">
+            </div>
+            <div class="dashboard__tabs__item">
+              <h4>Assets</h4><span>0 LLC</span>
+            </div>
+            <div class="dashboard__tabs__item">
+              <h4>Open Orders</h4><span>0 LLC</span>
+            </div>
+            <div class="dashboard__tabs__item active">
+              <h4>Margin Positions</h4><span>0 LLC</span>
+            </div>
+            <div class="dashboard__tabs__item">
+              <h4>History</h4>
+            </div>
+          </div>
+          <div class="dashboard__actions">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xl-3 col-lg-6">
+                  <input type="text" placeholder="Find an asset">
+                </div>
+                <div class="col-xl-9 col-lg-12">
+                  <div class="dashboard__actions__filters">
+                    <label class="checkbox">
+                      <input class="checkbox__input" type="checkbox" name="dashboard-filters"><span class="checkbox__styled"></span><span class="checkbox__label">Show favorites</span>
+                    </label>
+                    <label class="checkbox">
+                      <input class="checkbox__input" type="checkbox" name="dashboard-filters"><span class="checkbox__styled"></span><span class="checkbox__label">Hide 0 balances</span>
+                    </label>
+                    <label class="checkbox">
+                      <input class="checkbox__input" type="checkbox" name="dashboard-filters"><span class="checkbox__styled"></span><span class="checkbox__label">Hide unknown</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard__adaptive">
+            <table class="dashboard__table">
+              <tr>
+                <th class="right"><a class="table-star" href="#"></a></th>
+                <th>Asset</th>
+                <th class="right">Qty</th>
+                <th class="right">Price (LLC)<span class="carret"></span><span class="carret up"></span></th>
+                <th class="right">24hr</th>
+                <th class="right">Value (LLC)</th>
+                <th class="center">Send</th>
+                <th class="center">Deposit</th>
+                <th class="center">Widthdraw</th>
+                <th class="center">Trade</th>
+                <th class="center">Borrow</th>
+                <th class="center">Settle</th>
+              </tr>
+              <tr>
+                <td><a class="table-star-default" href="#"></a></td>
+                <td><a class="dashboard__table__link" href="#"><img src="img/w3c.png" alt="icon"><span>W3C</span></a></td>
+                <td class="right"></td>
+                <td class="right">0.00084995</td>
+                <td class="right danger">-23.43%</td>
+                <td class="right">--</td>
+                <td class="center">-</td>
+                <td class="center"><span class="dashboard__table__deposit"></span></td>
+                <td class="center"><span class="dashboard__table__withdraw"></span></td>
+                <td class="center"><span class="dashboard__table__trade"></span></td>
+                <td class="center"><span class="dashboard__table__borrow"></span></td>
+                <td class="center"><span class="dashboard__table__settle"></span></td>
+              </tr>
+              <tr>
+                <td><a class="table-star-default" href="#"></a></td>
+                <td><a class="dashboard__table__link" href="#"><img src="img/html.png" alt="icon"><span>HTML</span></a></td>
+                <td class="right">23 315 LLC</td>
+                <td class="right">0.00084995</td>
+                <td class="right danger">-23.43%</td>
+                <td class="right">--</td>
+                <td class="center">-</td>
+                <td class="center"><span class="dashboard__table__attention"></span></td>
+                <td class="center"><span class="dashboard__table__attention"></span></td>
+                <td class="center"><span class="dashboard__table__trade"></span></td>
+                <td class="center">-</td>
+                <td class="center">-</td>
+              </tr>
+              <tr>
+                <td><a class="table-star-default" href="#"></a></td>
+                <td><a class="dashboard__table__link" href="#"><img src="img/maid.png" alt="icon"><span>MAID</span></a></td>
+                <td class="right">186 LLC</td>
+                <td class="right">0.01724</td>
+                <td class="right success">120.00%</td>
+                <td class="right">--</td>
+                <td class="center">-</td>
+                <td class="center"><span class="dashboard__table__attention"></span></td>
+                <td class="center"><span class="dashboard__table__attention"></span></td>
+                <td class="center"><span class="dashboard__table__trade"></span></td>
+                <td class="center">-</td>
+                <td class="center">-</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td class="dashboard__table__total" colspan="11"> <b>Total (<a href="#"><b>LLC</b></a>)</b><span><b>23 517 LLC</b></span></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer-line">
+        <div class="footer-info"><span class="footer-info__status">connected</span><span class="footer-info__data">latency 478ms / head block #27485593</span></div>
+        <button class="btn large inverted flat support-btn" type="button">Support</button>
+      </div>
+    </footer>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="libs/jquery/jquery-3.2.1.min.js"></script>
+    <script src="libs/magnific/jquery.magnific-popup.min.js"></script>
+    <script src="js/common.js"></script>
+  </body>
+</html>

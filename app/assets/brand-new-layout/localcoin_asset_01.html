@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="theme-color" content="#000">
+    <meta name="msapplication-navbutton-color" content="#000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000"><style>body { opacity: 0; overflow-x: hidden; } html { background-color: #fff; }</style>
+<!--[if lt IE 9]>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script><![endif]-->
+  </head>
+  <body class="localcoin">
+    <header class="header">
+      <div class="container-fluid">
+        <div class="mobile"><span class="mobile__burger"><span></span></span>
+          <div class="mobile__menu"><span class="mobile__menu__close"></span>
+            <ul class="mobile__list">
+              <li class="mobile__list__item"><a class="mobile__list__link" href="#">Create Account</a></li>
+              <li class="mobile__list__item"><a class="mobile__list__link" href="#">Send</a></li>
+              <li class="mobile__list__item"><a class="mobile__list__link" href="#">Deposit/Withdraw</a></li>
+              <li class="mobile__list__item"><a class="mobile__list__link" href="#">Explore</a></li>
+              <li class="mobile__list__item"><a class="mobile__list__link" href="#">Settings</a></li>
+            </ul>
+            <label class="mobile__accounts">Accounts</label>
+          </div>
+        </div>
+        <div class="header-line">
+          <div class="logo"><img src="img/logo.svg" alt="logo"></div>
+          <nav class="navigation">
+            <ul class="navigation__list">
+              <li class="navigation__item active"><a class="navigation__link" href="#">Account</a></li>
+              <li class="navigation__item"><a class="navigation__link" href="#">Exchange</a></li>
+              <li class="navigation__item"><a class="navigation__link" href="#">Deposit/Withdraw</a></li>
+              <li class="navigation__item"><a class="navigation__link" href="#">OTC</a></li>
+            </ul>
+          </nav>
+          <div class="balance"><span class="balance__label">Balance: 0</span>
+            <ul class="balance__list">
+              <li class="balance__item active"><a class="balance__link" href="#">LLC</a></li>
+              <li class="balance__item"><a class="balance__link" href="#">BTC</a></li>
+              <li class="balance__item"><a class="balance__link" href="#">XCR</a></li>
+              <li class="balance__item"><a class="balance__link" href="#">ETH</a></li>
+            </ul>
+          </div>
+          <div class="user"><img class="user__icon" src="img/user.png" alt="user"><span class="user__name">Ninetor-dot</span></div><a class="settings" href="#"><img class="settings__icon" src="img/settings.svg" alt="settings"></a><a class="lock" href="#"><img class="lock__icon" src="img/lock.svg" alt="lock"></a>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <div class="sidebar">
+        <div class="sidebar__qr"><img src="img/qr.jpg" alt="code"></div>
+        <p class="sidebar__descr">Your deposit address is your account name!</p><span class="sidebar__user"><b>ninetor-dot</b></span>
+        <ul class="sidebar__menu">
+          <li class="sidebar__menu__item noborder"><a class="sidebar__menu__link" href="#">Dashboard</a></li>
+          <li class="sidebar__menu__item"><a class="sidebar__menu__link" href="#">Membership</a></li>
+          <li class="sidebar__menu__item"><a class="sidebar__menu__link" href="#">Voting</a></li>
+          <li class="sidebar__menu__item showsub expand noborder"><a class="sidebar__menu__link" href="#">Advanced features</a>
+            <ul class="sidebar__menu__sub">
+              <li class="sidebar__menu__sub__item noborder"><a class="sidebar__menu__sub__link" href="#">Issued Assets</a></li>
+              <li class="sidebar__menu__sub__item active"><a class="sidebar__menu__sub__link" href="#">Permissions</a></li>
+              <li class="sidebar__menu__sub__item"><a class="sidebar__menu__sub__link" href="#">Whitelist</a></li>
+              <li class="sidebar__menu__sub__item"><a class="sidebar__menu__sub__link" href="#">Vesting balances</a></li>
+              <li class="sidebar__menu__sub__item"><a class="sidebar__menu__sub__link" href="#">Signed Messages</a></li>
+            </ul>
+          </li>
+        </ul>
+        <button class="btn large create-account" type="button">Create a New Account</button>
+      </div>
+      <div class="content">
+        <h2 class="content__heading">Asset W3C</h2>
+        <p class="content__description">1:1 OpenLenger backed W3coin, W3coins is a digital currency, based on cryptography and created through a process called 'mining'. learn more at https://w3coin.net/</p>
+        <button class="btn large inverted marketw3c-btn" type="button">Market W3C / LLC</button>
+        <div class="table-blocks">
+          <div class="table-blocks__item">
+            <h5 class="table-blocks__item__heading">W3C</h5>
+            <div class="table-blocks__item__row"><span>Asset type</span><span>Simple</span></div>
+            <div class="table-blocks__item__row"><span>Issuer</span><a href="#">openledger-wallet</a></div>
+            <div class="table-blocks__item__row"><span>Precision</span><span>3</span></div>
+            <div class="table-blocks__item__row"><span>Current supply</span><span>3  001,000,000.000 W3C</span></div>
+            <div class="table-blocks__item__row"><span>Stealth supply</span><span>0.000 W3C</span></div>
+            <div class="table-blocks__item__row"><span>Market fee</span><span>0.2 %</span></div>
+            <div class="table-blocks__item__row"><span>Max market fee</span><span>100  000,000,000.000 W3C</span></div>
+            <div class="table-blocks__item__tags">
+              <label class="btn orange">Enable market fee</label>
+              <label class="btn orange">Require holders to be white-listed</label>
+              <label class="btn orange">Issuer may transfer asset back to himself</label>
+            </div>
+          </div>
+          <div class="table-blocks__item">
+            <h5 class="table-blocks__item__heading">Permissions</h5>
+            <div class="table-blocks__item__row"><span>Max market fee</span><span>100  000,000,000.000 W3C</span></div>
+            <div class="table-blocks__item__row"><span>Max supply</span><span>100  000,000,000.000 W3C</span></div>
+            <div class="table-blocks__item__tags">
+              <label class="btn orange">Enable market fee</label>
+              <label class="btn orange">Require holders to be white-listed</label>
+              <label class="btn orange">Issuer may transfer asset back to himself</label>
+              <label class="btn orange">Disable confidential transactions</label>
+            </div>
+          </div>
+          <div class="table-blocks__item">
+            <h5 class="table-blocks__item__heading">W3C</h5>
+            <div class="table-blocks__item__row"><span>Core exchange rate (CER)</span><span>0.00182482 
+                <u>BTS/W3C</u></span></div>
+            <div class="table-blocks__item__row"><span>Pool balance</span><span>0.00293 BTS</span></div>
+            <div class="table-blocks__item__row"><span>Unclaimed issuer income</span><span>912  797.638 W3C</span></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer-line">
+        <div class="footer-info"><span class="footer-info__status">connected</span><span class="footer-info__data">latency 478ms / head block #27485593</span></div>
+        <button class="btn large inverted flat support-btn" type="button">Support</button>
+      </div>
+    </footer>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="libs/jquery/jquery-3.2.1.min.js"></script>
+    <script src="libs/magnific/jquery.magnific-popup.min.js"></script>
+    <script src="js/common.js"></script>
+  </body>
+</html>
