@@ -1,5 +1,7 @@
 require("./stylesheets/app.scss");
 require("./brand-new-layout/css/main.css");
+require("./brand-new-layout/css/custom.css");
+require("./brand-new-layout/img/images");
 require("file-loader?name=index.html!./index-dev.html");
 require("file-loader?name=favicon.ico!./favicon.ico");
 // require("file-loader?name=dictionary.json!common/dictionary_en.json");

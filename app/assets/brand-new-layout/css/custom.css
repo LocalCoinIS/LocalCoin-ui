@@ -1,0 +1,34 @@
+.sidebar .help-content {
+    font-size: 15px;
+}
+.sidebar .help-content ul {
+    list-style: none;
+    padding: 0;
+}
+.sidebar .help-content > ul {
+    margin: 20px 0 0 0;
+}
+
+.sidebar .help-content h4 {
+    padding: 0px 20px;
+    line-height: 36px;
+    margin: 20px 0 -20px 0;
+}
+
+.sidebar .help-content ul li {
+    padding: 1px 20px;
+    line-height: 36px;
+    margin: 0;
+}
+
+.sidebar .help-content > ul > li {
+    border-top: 1px solid #f0f4f8;
+}
+
+.sidebar .help-content ul li {
+    background-color: #e0e8f1;
+}
+
+.sidebar .help-content ul li ul {
+    margin: -5px 0;
+}

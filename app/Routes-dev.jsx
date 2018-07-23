@@ -65,7 +65,8 @@ import BalanceClaimActive from "./components/Wallet/BalanceClaimActive";
 import BackupBrainkey from "./components/Wallet/BackupBrainkey";
 import Brainkey from "./components/Wallet/Brainkey";
 import News from "./components/News";
-import Help from "./components/Help";
+import HelpContent from "./components-brand-new/Help/Content";
+import HelpSidebar from "./components-brand-new/Help/Sidebar";
 import InitError from "./components/InitError";
 import LoginSelector from "./components/LoginSelector";
 import CreateWorker from "./components/Account/CreateWorker";
@@ -173,10 +174,42 @@ const routes = (
         <Route path="create-worker" component={CreateWorker} />
         <Route path="/init-error" component={InitError} />
         <Route path="/news" component={News} />
-        <Route path="/help" component={Help}>
-            <Route path=":path1" component={Help}>
-                <Route path=":path2" component={Help}>
-                    <Route path=":path3" component={Help} />
+        <Route
+            path="/help"
+            components={{
+                headerBlock: Header,
+                sidebarBlock: HelpSidebar,
+                contentBlock: HelpContent,
+                footerBlock: Footer
+            }}
+        >
+            <Route
+                path=":path1"
+                components={{
+                    headerBlock: Header,
+                    sidebarBlock: HelpSidebar,
+                    contentBlock: HelpContent,
+                    footerBlock: Footer
+                }}
+            >
+                <Route
+                    path=":path2"
+                    components={{
+                        headerBlock: Header,
+                        sidebarBlock: HelpSidebar,
+                        contentBlock: HelpContent,
+                        footerBlock: Footer
+                    }}
+                >
+                    <Route
+                        path=":path3"
+                        components={{
+                            headerBlock: Header,
+                            sidebarBlock: HelpSidebar,
+                            contentBlock: HelpContent,
+                            footerBlock: Footer
+                        }}
+                    />
                 </Route>
             </Route>
         </Route>

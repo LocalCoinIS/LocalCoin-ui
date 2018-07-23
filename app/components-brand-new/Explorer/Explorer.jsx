@@ -2,49 +2,58 @@ import React from "react";
 import {Link} from "react-router/es";
 import Translate from "react-translate-component";
 import counterpart from "counterpart";
+import {
+    eBlockchain,
+    eAssets,
+    eAccounts,
+    eWitnesses,
+    eMembers,
+    eMarkets,
+    eFee
+} from "../../assets/brand-new-layout/img/images";
 
 const exploreItems = [
     {
         translate: "explorer.blocks.title", // Blockchain
         link: "/explorer/blocks",
         imgClassName: "blockchain",
-        imgName: "e_blockchain.svg"
+        imgSrc: eBlockchain
     },
     {
         translate: "explorer.assets.title", // Assets
         link: "/explorer/assets",
         imgClassName: "assets",
-        imgName: "e_assets.svg"
+        imgSrc: eAssets
     },
     {
         translate: "explorer.accounts.title", // Accounts
         link: "/explorer/accounts",
         imgClassName: "accounts",
-        imgName: "e_accounts.svg"
+        imgSrc: eAccounts
     },
     {
         translate: "explorer.witnesses.title", // Witnesses
         link: "/explorer/witnesses",
         imgClassName: "witnesses",
-        imgName: "e_witnesses.svg"
+        imgSrc: eWitnesses
     },
     {
         translate: "explorer.committee_members.title", // Committee members
         link: "/explorer/committee-members",
         imgClassName: "members",
-        imgName: "e_members.svg"
+        imgSrc: eMembers
     },
     {
         translate: "markets.title", // Markets
         link: "/explorer/markets",
         imgClassName: "markets",
-        imgName: "e_markets.svg"
+        imgSrc: eMarkets
     },
     {
         translate: "fees.title", // Fee Schedule
         link: "/explorer/fees",
         imgClassName: "fee",
-        imgName: "e_fee.svg"
+        imgSrc: eFee
     }
 ];
 
@@ -53,8 +62,7 @@ class Explorer extends React.Component {
         super(props);
     }
     render() {
-        const makeExploreItem = ({translate, link, imgClassName, imgName}) => {
-            const imgSrc = require(`!file-loader?name=asset-symbols/[name].svg!../../assets/brand-new-layout/img/${imgName}`);
+        const makeExploreItem = ({translate, link, imgClassName, imgSrc}) => {
             let heading = translate;
             if (typeof heading === "string" && heading.indexOf(".") > 0) {
                 heading = counterpart.translate(heading);

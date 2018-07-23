@@ -1,0 +1,12 @@
+export const eBlockchain = require("!file-loader?name=asset-symbols/[name].svg!./e_blockchain.svg");
+export const eAssets = require("!file-loader?name=asset-symbols/[name].svg!./e_assets.svg");
+export const eAccounts = require("!file-loader?name=asset-symbols/[name].svg!./e_accounts.svg");
+export const eWitnesses = require("!file-loader?name=asset-symbols/[name].svg!./e_witnesses.svg");
+export const eMembers = require("!file-loader?name=asset-symbols/[name].svg!./e_members.svg");
+export const eMarkets = require("!file-loader?name=asset-symbols/[name].svg!./e_markets.svg");
+export const eFee = require("!file-loader?name=asset-symbols/[name].svg!./e_fee.svg");
+export const logo = require("!file-loader?name=asset-symbols/[name].svg!./logo.svg");
+export const userAvatar = require("!file-loader?name=asset-symbols/[name].png!./user.png");
+export const settingsIcon = require("!file-loader?name=asset-symbols/[name].svg!./settings.svg");
+export const lockIcon = require("!file-loader?name=asset-symbols/[name].svg!./lock.svg");
+export const qr = require("!file-loader?name=asset-symbols/[name].jpg!./qr.jpg");

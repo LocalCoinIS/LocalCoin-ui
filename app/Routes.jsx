@@ -495,7 +495,7 @@ const routes = (
         <Route
             path="/help"
             getComponent={(location, cb) => {
-                import("components/Help")
+                import("components-brand-new/Help")
                     .then(loadRoute(cb))
                     .catch(errorLoading);
             }}

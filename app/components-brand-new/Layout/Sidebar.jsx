@@ -1,4 +1,5 @@
 import React from "react";
+import {qr} from "../../assets/brand-new-layout/img/images";
 
 class Sidebar extends React.Component {
     constructor(props) {
@@ -9,7 +10,7 @@ class Sidebar extends React.Component {
         return (
             <div className="sidebar">
                 <div className="sidebar__qr">
-                    <img src="img/qr.jpg" alt="code" />
+                    <img src={qr} alt="code" />
                 </div>
                 <p className="sidebar__descr">
                     Your deposit address is your account name!
