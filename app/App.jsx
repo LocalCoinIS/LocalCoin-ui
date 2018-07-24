@@ -280,7 +280,9 @@ class App extends React.Component {
                         {sidebarBlock}
                         {contentBlock}
                     </main>
-                    {footerBlock}
+                    {React.cloneElement(footerBlock, {
+                        synced: this.state.synced
+                    })}
                     <NotificationSystem
                         ref="notificationSystem"
                         allowHTML={true}

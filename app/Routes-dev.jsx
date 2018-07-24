@@ -21,7 +21,7 @@ import BlocksContainer from "./components/Explorer/BlocksContainer";
 import AssetsContainer from "./components/Explorer/AssetsContainer";
 import AccountsContainer from "./components/Explorer/AccountsContainer";
 import Explorer from "./components-brand-new/Explorer/Explorer";
-import AccountPage from "./components/Account/AccountPage";
+import AccountPage from "./components-brand-new/Account/AccountPage";
 import AccountOverview from "./components/Account/AccountOverview";
 import AccountAssets from "./components/Account/AccountAssets";
 import {AccountAssetCreate} from "./components/Account/AccountAssetCreate";
@@ -34,7 +34,7 @@ import AccountWhitelist from "./components/Account/AccountWhitelist";
 import AccountVoting from "./components/Account/AccountVoting";
 import Page404 from "./components/Page404/Page404";
 // import AccountOrders from "./components/Account/AccountOrders";
-import AccountSignedMessages from "./components/Account/AccountSignedMessages";
+import AccountSignedMessages from "./components-brand-new/Account/AccountSignedMessages";
 import ExchangeContainer from "./components/Exchange/ExchangeContainer";
 import MarketsContainer from "./components/Explorer/MarketsContainer";
 import Transfer from "./components/Transfer/Transfer";
@@ -150,7 +150,15 @@ const routes = (
 
         <Route path="/accounts" component={DashboardAccountsOnly} />
 
-        <Route path="/account/:account_name" component={AccountPage}>
+        <Route
+            path="/account/:account_name"
+            components={{
+                headerBlock: Header,
+                sidebarBlock: Sidebar,
+                contentBlock: AccountPage,
+                footerBlock: Footer
+            }}
+        >
             <IndexRoute component={AccountOverview} />
             {/* <Route path="dashboard" component={AccountOverview} /> */}
             {/* <Route path="deposit-withdraw" component={AccountDepositWithdraw} /> */}
