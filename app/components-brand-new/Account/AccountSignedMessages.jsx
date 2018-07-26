@@ -3,11 +3,11 @@ import Translate from "react-translate-component";
 import PubKeyInput from "../../components/Forms/PubKeyInput";
 import ChainTypes from "../../components/Utility/ChainTypes";
 import BindToChainState from "../../components/Utility/BindToChainState";
-import {Tabs, Tab} from "../../components/Utility/Tabs";
 import counterpart from "counterpart";
 import SignedMessageAction from "../../actions/SignedMessageAction";
 import SignedMessage from "../../components/Account/SignedMessage";
 import cnames from "classnames";
+import Tabs from "../Utility/Tabs";
 
 /** This component gives a user interface for signing and verifying messages with the bitShares memo key.
  *  It consists of two tabs:
@@ -35,8 +35,7 @@ class AccountSignedMessages extends React.Component {
             tabvm_message_signed: null,
             tabvm_verified: null,
             tabvm_message_signed_and_verified: null,
-            tabvm_flag_verifyonchange: false,
-            activeTab: "account.signedmessages.verifying"
+            tabvm_flag_verifyonchange: false
         };
     }
 
@@ -230,74 +229,162 @@ class AccountSignedMessages extends React.Component {
     }
 
     render() {
-        const tabs = [
+        const signmessageContent = (
+            <div className="grid-content" style={{overflowX: "hidden"}}>
+                <div className="content-block no-margin">
+                    <h3>
+                        <Translate content="account.signedmessages.signmessage" />
+                    </h3>
+                </div>
+                <PubKeyInput
+                    ref="memo_key"
+                    value={this.state.tabsm_memo_key}
+                    label="account.perm.memo_public_key"
+                    placeholder="Public Key"
+                    tabIndex={7}
+                    onChange={this._tabSMHandleChangeKey.bind(this)}
+                    disableActionButton={true}
+                />
+                <br />
+                <textarea
+                    rows="10"
+                    value={this.state.tabsm_message_text}
+                    onChange={this._tabSMHandleChange.bind(this)}
+                    placeholder={counterpart.translate(
+                        "account.signedmessages.entermessage"
+                    )}
+                />
+                <span>
+                    <button
+                        className="button btn large inverted"
+                        style={{"margin-top": "10px"}}
+                        onClick={this._tabSMSignAction.bind(this)}
+                    >
+                        {counterpart.translate("account.signedmessages.sign")}
+                    </button>
+                    <text style={{color: "gray"}}>
+                        {this.state.tabsm_popup}
+                    </text>
+                </span>
+                <br />
+                <br />
+                <textarea
+                    rows="14"
+                    value={this.state.tabsm_message_signed}
+                    style={{editable: false}}
+                    placeholder={counterpart.translate(
+                        "account.signedmessages.automaticcreation"
+                    )}
+                    onClick={this._tabSMCopyToClipBoard.bind(this)}
+                />
+            </div>
+        );
+        const verifymessageContent = (
+            <div className="grid-content" style={{overflowX: "hidden"}}>
+                <div className="content-block no-margin">
+                    <h3>
+                        <Translate content="account.signedmessages.verifymessage" />
+                    </h3>
+                    <div
+                        style={{
+                            float: "right",
+                            marginTop: "0.1em",
+                            marginBottom: "0.5em"
+                        }}
+                    >
+                        <table>
+                            <tr>
+                                <td>
+                                    <label>
+                                        <Translate content="account.signedmessages.verifyonchange" />
+                                    </label>
+                                </td>
+                                <td>
+                                    <div
+                                        className="switch"
+                                        onClick={this._tabVMToggleVerifyOnChange.bind(
+                                            this
+                                        )}
+                                    >
+                                        <input
+                                            type="checkbox"
+                                            checked={
+                                                this.state
+                                                    .tabvm_flag_verifyonchange
+                                            }
+                                            value={counterpart.translate(
+                                                "account.signedmessages.verifyonchange"
+                                            )}
+                                        />
+                                        <label />
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <textarea
+                    rows="10"
+                    value={this.state.tabvm_message_signed}
+                    onChange={this._tabVMHandleChange.bind(this)}
+                    placeholder={counterpart.translate(
+                        "account.signedmessages.entermessage"
+                    )}
+                />
+                <span>
+                    <button
+                        className="button btn large inverted"
+                        style={{"margin-top": "10px"}}
+                        onClick={this._tabVMAction.bind(this)}
+                    >
+                        {counterpart.translate("account.signedmessages.verify")}
+                    </button>
+                    <text style={{color: "gray"}}>
+                        {this.state.tabvm_popup}
+                    </text>
+                    {this.state.tabvm_verified !== null && (
+                        <div style={{float: "right"}}>
+                            Message is:
+                            <div
+                                style={{
+                                    backgroundColor: this.state.tabvm_verified
+                                        ? "green"
+                                        : "red"
+                                }}
+                            >
+                                <label>
+                                    {this.state.tabvm_verified
+                                        ? "verified"
+                                        : "not verified"}
+                                </label>
+                            </div>
+                        </div>
+                    )}
+                    {((this.state.tabvm_verified &&
+                        this.state.tabvm_message_signed_and_verified !==
+                            null) ||
+                        this.state.tabvm_flag_verifyonchange) && (
+                        <div>
+                            <br />
+                            <SignedMessage
+                                message={this.state.tabvm_message_signed}
+                            />
+                        </div>
+                    )}
+                </span>
+            </div>
+        );
+        const items = [
             {
-                title: "account.signedmessages.signmessage"
+                title: "account.signedmessages.signmessage",
+                content: signmessageContent
             },
             {
-                title: "account.signedmessages.verifymessage"
+                title: "account.signedmessages.verifymessage",
+                content: verifymessageContent
             }
         ];
-        const makeTab = ({title}) => {
-            return (
-                <div
-                    key={title}
-                    className={cnames("dashboard__tabs__item", {
-                        active: this.state.activeTab
-                    })}
-                >
-                    <h4>{counterpart.translate(title)}</h4>
-                </div>
-            );
-        };
-        const makeTabsMobile = tabs => {
-            let clonedTabs = tabs;
-            let filtered = clonedTabs.filter(
-                ({title}) => title === this.state.activeTab
-            );
-            let activeTab =
-                filtered.length > 0 ? filtered.shift() : clonedTabs.shift();
-            return (
-                <div className="select dashboard__mobileselect">
-                    <span className="placeholder">
-                        {counterpart.translate(activeTab.title)}
-                    </span>
-                    <ul>
-                        {clonedTabs
-                            .filter(({title}) => title !== this.state.activeTab)
-                            .map(({title}) => (
-                                <li key={title} data-value={title}>
-                                    {counterpart.translate(title)}
-                                </li>
-                            ))}
-                    </ul>
-                </div>
-            );
-        };
-
-        return tabs.length > 0 ? (
-            <div>
-                <div className="dashboard" ref="appTables">
-                    <div className="dashboard__tabs permissions">
-                        {makeTabsMobile(tabs)}
-                        {tabs.map(makeTab)}
-                    </div>
-                </div>
-                <div className="negative-margins">
-                    <div className="container-fluid">
-                        <p>
-                            Active permissions define the accounts that have
-                            permission to spend funds for this account.
-                        </p>
-                        <p>
-                            They can be used to easily setup a multi-signature
-                            scheme, see <a href="#">permissions </a>for more
-                            details.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        ) : null;
+        return <Tabs items={items} />;
     }
 }
 
