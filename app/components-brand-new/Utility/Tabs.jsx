@@ -12,6 +12,7 @@ class Tabs extends React.Component {
         super(props);
         const {items} = props;
         this.state = {
+            openMobileSelect: false,
             activeTab: items.length > 0 ? [...items].shift().title : null
         };
         this._findActiveTab = this._findActiveTab.bind(this);
@@ -47,16 +48,37 @@ class Tabs extends React.Component {
     _renderMobileTabs(items) {
         const activeTab = this._findActiveTab(items);
         return activeTab ? (
-            <div className="select dashboard__mobileselect">
-                <span className="placeholder">
+            <div
+                className={cnames("select dashboard__mobileselect", {
+                    "is-open": this.state.openMobileSelect
+                })}
+            >
+                <span
+                    className="placeholder"
+                    onClick={e => {
+                        e.preventDefault();
+                        this.setState({
+                            openMobileSelect: !this.state.openMobileSelect
+                        });
+                    }}
+                >
                     {counterpart.translate(activeTab.title)}
                 </span>
                 <ul>
                     {items
                         .filter(({title}) => title !== activeTab.title)
-                        .map(({title}) => {
+                        .map(({title, link}) => {
                             return (
-                                <li key={`mobile-${title}`}>
+                                <li
+                                    key={`mobile-${title}`}
+                                    onClick={e => {
+                                        e.preventDefault();
+                                        this._changeTab({title, link});
+                                        this.setState({
+                                            openMobileSelect: false
+                                        });
+                                    }}
+                                >
                                     {counterpart.translate(title)}
                                 </li>
                             );
