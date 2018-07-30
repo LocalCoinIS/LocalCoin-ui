@@ -24,6 +24,7 @@ import {Apis} from "bitsharesjs-ws";
 import notify from "actions/NotificationActions";
 // import IntlActions from "actions/IntlActions";
 import AccountImage from "../../components/Account/AccountImage";
+import Identicon from "../../components/Account/Identicon";
 import {ChainStore} from "bitsharesjs/es";
 import WithdrawModal from "../../components/Modal/WithdrawModalNew";
 import {List} from "immutable";
@@ -184,7 +185,16 @@ class Sidebar extends React.Component {
         return !currentAccount ? null : (
             <div className="sidebar">
                 <div className="sidebar__qr">
+                    {/*
+                    <Identicon id={currentAccount} account={currentAccount} size={{height: 150, width: 150}} />
+                    */}
+                    <AccountImage
+                        size={{height: 150, width: 150}}
+                        account={currentAccount}
+                    />
+                    {/*
                     <img src={qr} alt="code" />
+                    */}
                 </div>
                 <p className="sidebar__descr">
                     Your deposit address is your account name!

@@ -262,7 +262,7 @@ class App extends React.Component {
         // !!! если есть эти блоки, значит новый лейаут
         if (
             !!headerBlock &&
-            !!sidebarBlock &&
+            // !!sidebarBlock && // может быть null на некоторых страницах
             !!contentBlock &&
             !!footerBlock
         ) {

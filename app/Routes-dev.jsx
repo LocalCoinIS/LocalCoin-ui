@@ -130,7 +130,15 @@ const routes = (
 
         <Route path="invoice/:data" component={Invoice} />
         <Route path="explorer/markets" component={MarketsContainer} />
-        <Route path="market/:marketID" component={ExchangeContainer} />
+        <Route
+            path="market/:marketID"
+            components={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: ExchangeContainer,
+                footerBlock: Footer
+            }}
+        />
         <Route path="settings" component={SettingsContainer} />
         <Route path="settings/:tab" component={SettingsContainer} />
         <Route path="block/:height" component={BlockContainer} />

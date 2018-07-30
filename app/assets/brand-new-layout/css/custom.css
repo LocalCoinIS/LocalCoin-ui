@@ -32,3 +32,17 @@
 .sidebar .help-content ul li ul {
     margin: 0;
 }
+
+.balance__label span {
+    color: #fff;
+}
+
+.sidebar__qr .account-image {
+    height: 116px;
+}
+
+.sidebar__qr canvas {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+}

@@ -1128,6 +1128,7 @@ body.localcoin .header-line {
     height: 40px;
 }
 body.localcoin .logo {
+    cursor: pointer;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1186,7 +1187,8 @@ body.localcoin .balance__label {
     line-height: 40px;
     color: #fff;
 }
-body.localcoin .balance__label:after {
+/* если одна валюта, то дропдаун не нужен! */
+/*body.localcoin .balance__label:after {
     content: "";
     display: inline-block;
     min-width: 9px;
@@ -1197,7 +1199,7 @@ body.localcoin .balance__label:after {
     background-size: 100%;
     background-repeat: no-repeat;
     margin: 0 0 2px 16px;
-}
+}*/
 body.localcoin .balance:hover .balance__list {
     opacity: 1;
     visibility: visible;
