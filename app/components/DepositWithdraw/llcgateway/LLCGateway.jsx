@@ -4,9 +4,10 @@ import counterpart from "counterpart";
 import ChooseCurrency from "./ChooseCurrency";
 import Summary from "./Summary";
 import Instructions from "./Instructions";
-import Recent from "./Recent";
 import LLCGatewayData from "./LLCGatewayData";
 import accountUtils from "common/account_utils";
+import {RecentTransactions} from "../../Account/RecentTransactions";
+import Immutable from "immutable";
 
 class LLCGateway extends React.Component {
     static label = "LLCGateway";
@@ -56,6 +57,9 @@ class LLCGateway extends React.Component {
     }
 
     render() {
+        let accountsList = Immutable.Set();
+        accountsList = accountsList.add(this.props.account);
+
         return (
             <div className="grid-content no-padding">
                 <div className="content-block">
@@ -146,10 +150,41 @@ class LLCGateway extends React.Component {
                             currency={this.state.currency}
                         />
                     </div>
-                    <Recent
-                        account={this.props.account}
-                        type={this.state.type}
-                    />
+
+                    <div
+                        style={{
+                            display:
+                                this.state.type == LLCGateway.WITHDRAW ||
+                                !this.state.type
+                                    ? "block"
+                                    : "none"
+                        }}
+                    >
+                        <RecentTransactions
+                            accountsList={accountsList}
+                            limit={25}
+                            compactView={true}
+                            filter="transfer"
+                            fullHeight={true}
+                        />
+                    </div>
+
+                    <div
+                        style={{
+                            display:
+                                this.state.type == LLCGateway.DEPOSIT
+                                    ? "block"
+                                    : "none"
+                        }}
+                    >
+                        <RecentTransactions
+                            accountsList={accountsList}
+                            limit={25}
+                            compactView={true}
+                            filter="asset_issue"
+                            fullHeight={true}
+                        />
+                    </div>
                 </div>
             </div>
         );
