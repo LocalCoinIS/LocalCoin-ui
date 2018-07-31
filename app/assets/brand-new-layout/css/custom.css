@@ -33,8 +33,13 @@
     margin: 0;
 }
 
-.balance__label span {
+.balance__label span,
+.inverted span {
     color: #fff;
+}
+
+.btn {
+    text-transform: none;
 }
 
 .sidebar__qr .account-image {
@@ -45,4 +50,30 @@
     max-width: 100%;
     max-height: 100%;
     height: auto;
+}
+
+.dashboard__tabs__item.active:before {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.icon svg path {
+    fill: #00195b !important;
+}
+
+label.radio .radio__label {
+    text-transform: none !important;
+}
+
+.dashboard__actions__filters {
+    margin-top: -10px;
+}
+
+.switch input:checked + label {
+    background: #195d0e;
+}
+
+.switch input:checked + label::after {
+    border-color: #2ba017;
+    background: #2ba017;
 }

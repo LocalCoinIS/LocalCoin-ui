@@ -384,7 +384,7 @@ class AccountSignedMessages extends React.Component {
                 content: verifymessageContent
             }
         ];
-        return <Tabs items={items} />;
+        return <Tabs items={items} dashboardTabsClass="permissions" />;
     }
 }
 

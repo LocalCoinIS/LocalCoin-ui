@@ -4,6 +4,11 @@ import cnames from "classnames";
 import counterpart from "counterpart";
 
 class Tabs extends React.Component {
+    static defaultProps = {
+        inner: false,
+        dashboardTabsClass: ""
+    };
+
     static contextTypes = {
         router: PropTypes.object.isRequired
     };
@@ -25,7 +30,7 @@ class Tabs extends React.Component {
     }
 
     _renderDesktopTabs(items) {
-        const renderDesktopTab = ({title, link}) => {
+        const renderDesktopTab = ({title, subTitle, link}) => {
             return (
                 <div
                     key={`desktop-${title}`}
@@ -38,6 +43,7 @@ class Tabs extends React.Component {
                     }}
                 >
                     <h4>{counterpart.translate(title)}</h4>
+                    {!!subTitle ? <span>{subTitle}</span> : null}
                 </div>
             );
         };
@@ -89,8 +95,15 @@ class Tabs extends React.Component {
     }
 
     _renderTabs(items) {
+        const {dashboardTabsClass} = this.props;
         return (
-            <div className="dashboard__tabs permissions">
+            <div
+                className={
+                    !!dashboardTabsClass
+                        ? `dashboard__tabs ${dashboardTabsClass}`
+                        : "dashboard__tabs"
+                }
+            >
                 {this._renderMobileTabs(items)}
                 {this._renderDesktopTabs(items)}
             </div>
@@ -111,15 +124,25 @@ class Tabs extends React.Component {
     }
 
     render() {
-        const {items} = this.props;
+        const {items, inner} = this.props;
         const activeTab = this._findActiveTab(items);
+
         return items.length > 0 && activeTab ? (
-            <div>
-                <div className="dashboard">{this._renderTabs(items)}</div>
-                <div className="negative-margins">
-                    <div className="container-fluid">{activeTab.content}</div>
+            inner ? (
+                <div className="dashboard">
+                    {this._renderTabs(items)}
+                    {activeTab.content}
                 </div>
-            </div>
+            ) : (
+                <div>
+                    <div className="dashboard">{this._renderTabs(items)}</div>
+                    <div className="negative-margins">
+                        <div className="container-fluid">
+                            {activeTab.content}
+                        </div>
+                    </div>
+                </div>
+            )
         ) : null;
     }
 }

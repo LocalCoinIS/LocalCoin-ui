@@ -22,7 +22,7 @@ import AssetsContainer from "./components/Explorer/AssetsContainer";
 import AccountsContainer from "./components/Explorer/AccountsContainer";
 import Explorer from "./components-brand-new/Explorer/Explorer";
 import AccountPage from "./components-brand-new/Account/AccountPage";
-import AccountOverview from "./components/Account/AccountOverview";
+import AccountOverview from "./components-brand-new/Account/AccountOverview";
 import AccountAssets from "./components/Account/AccountAssets";
 import {AccountAssetCreate} from "./components/Account/AccountAssetCreate";
 import AccountAssetUpdate from "./components/Account/AccountAssetUpdate";
