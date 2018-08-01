@@ -1153,7 +1153,7 @@ class AccountOverview extends React.Component {
                     asset_id={this.state.send_asset || "1.3.0"}
                 />
                 {shownAssets != "visual" ? (
-                    <div class="dashboard__adaptive">
+                    <div className="dashboard__adaptive">
                         <table className="dashboard__table">
                             <thead>
                                 <tr>

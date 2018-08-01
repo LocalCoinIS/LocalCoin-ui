@@ -12,6 +12,7 @@ import counterpart from "counterpart";
 import Icon from "../../components/Icon/Icon";
 import cnames from "classnames";
 import PropTypes from "prop-types";
+import {csvIcon} from "../../assets/brand-new-layout/img/images";
 
 const {operations} = grapheneChainTypes;
 const alignLeft = {textAlign: "left"};
@@ -55,6 +56,7 @@ class RecentTransactions extends React.Component {
             openFilter: false,
             filter: "all"
         };
+        this._downloadCSV = this._downloadCSV.bind(this);
         this._findActiveFilter = this._findActiveFilter.bind(this);
         this._renderFilters = this._renderFilters.bind(this);
     }
@@ -350,33 +352,16 @@ class RecentTransactions extends React.Component {
                       </td>
                   </tr>
               ];
-        display_history.push(
-            <tr className="total-value" key="total_value">
-                <td className="column-hide-tiny" />
-                <td style={alignRight}>
-                    {historyCount > 0 ? (
-                        <span>
-                            <a
-                                className="inline-block"
-                                onClick={this._downloadCSV.bind(this)}
-                                data-tip={counterpart.translate(
-                                    "transaction.csv_tip"
-                                )}
-                                data-place="bottom"
-                            >
-                                <Icon
-                                    name="excel"
-                                    title="icons.excel"
-                                    className="icon-14px"
-                                />
-                            </a>
-                        </span>
-                    ) : null}
-                </td>
-                <td style={{textAlign: "center"}}>
-                    &nbsp;{(this.props.showMore &&
-                        historyCount > this.props.limit) ||
-                    (20 && limit < historyCount) ? (
+        if (
+            (this.props.showMore && historyCount > this.props.limit) ||
+            (20 && limit < historyCount)
+        ) {
+            display_history.push(
+                <tr className="total-value" key="total_value">
+                    <td className="column-hide-tiny" />
+                    <td style={alignRight} />
+                    <td style={{textAlign: "center"}}>
+                        &nbsp;
                         <a onClick={this._onIncreaseLimit.bind(this)}>
                             <Icon
                                 name="chevron-down"
@@ -384,10 +369,10 @@ class RecentTransactions extends React.Component {
                                 className="icon-14px"
                             />
                         </a>
-                    ) : null}
-                </td>
-            </tr>
-        );
+                    </td>
+                </tr>
+            );
+        }
 
         return (
             <div className="recent-transactions no-overflow" style={style}>
@@ -454,6 +439,21 @@ class RecentTransactions extends React.Component {
                             </TransitionWrapper>
                         </table>
                     </div>
+                    {historyCount > 0 ? (
+                        <div className="export-row" style={{marginTop: "20px"}}>
+                            <a
+                                className="csv-export"
+                                href="#"
+                                onClick={e => {
+                                    e.preventDefault();
+                                    this._downloadCSV();
+                                }}
+                            >
+                                <img src={csvIcon} alt="" />
+                                {counterpart.translate("transaction.csv_tip")}
+                            </a>
+                        </div>
+                    ) : null}
                     {historyCount > 0 &&
                         this.state.csvExport && (
                             <div

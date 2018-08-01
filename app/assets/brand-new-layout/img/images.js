@@ -10,3 +10,4 @@ export const userAvatar = require("!file-loader?name=asset-symbols/[name].png!./
 export const settingsIcon = require("!file-loader?name=asset-symbols/[name].svg!./settings.svg");
 export const lockIcon = require("!file-loader?name=asset-symbols/[name].svg!./lock.svg");
 export const qr = require("!file-loader?name=asset-symbols/[name].jpg!./qr.jpg");
+export const csvIcon = require("!file-loader?name=asset-symbols/[name].svg!./csv.svg");

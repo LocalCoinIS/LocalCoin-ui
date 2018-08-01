@@ -197,7 +197,7 @@ class Sidebar extends React.Component {
                     */}
                 </div>
                 <p className="sidebar__descr">
-                    Your deposit address is your account name!
+                    {counterpart.translate("account.deposit_address")}
                 </p>
                 <span className="sidebar__user">
                     <b>{currentAccount}</b>
@@ -225,7 +225,7 @@ class Sidebar extends React.Component {
                             href="#"
                             onClick={this._toggleSubMenu}
                         >
-                            Advanced features{/* @todo перевести */}
+                            {counterpart.translate("account.advanced")}
                         </a>
                         <ul className="sidebar__menu__sub">
                             {makeSidebarMenuItem({

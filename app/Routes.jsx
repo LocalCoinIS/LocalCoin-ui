@@ -22,6 +22,23 @@ function loadRoute(cb, moduleName = "default") {
     return module => cb(null, module[moduleName]);
 }
 
+function loadMultiComponentsRoute(cb, moduleName = "default") {
+    return modules => {
+        const [
+            headerBlock,
+            sidebarBlock,
+            contentBlock,
+            footerBlock
+        ] = modules.map(module => (!!module ? module["default"] : module));
+        cb(null, {
+            headerBlock,
+            sidebarBlock,
+            contentBlock,
+            footerBlock
+        });
+    };
+}
+
 function errorLoading(err) {
     console.error("Dynamic page loading failed", err);
 }
@@ -29,9 +46,14 @@ function errorLoading(err) {
 const routes = (
     <Route path="/" component={App} onEnter={willTransitionTo}>
         <IndexRoute
-            getComponent={(location, cb) => {
-                import("components/Dashboard/DashboardPage")
-                    .then(loadRoute(cb))
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    import("components-brand-new/Layout/Sidebar"),
+                    import("components-brand-new/Dashboard/DashboardPage"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
             }}
         />
@@ -39,9 +61,14 @@ const routes = (
 
         <Route
             path="explorer"
-            getComponent={(location, cb) => {
-                import("components-brand-new/Explorer/Explorer")
-                    .then(loadRoute(cb))
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    import("components-brand-new/Layout/Sidebar"),
+                    import("components-brand-new/Explorer/Explorer"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
             }}
         />
@@ -237,9 +264,14 @@ const routes = (
         />
         <Route
             path="market/:marketID"
-            getComponent={(location, cb) => {
-                import("components/Exchange/ExchangeContainer")
-                    .then(loadRoute(cb))
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components/Exchange/ExchangeContainer"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
             }}
         />
@@ -361,15 +393,20 @@ const routes = (
 
         <Route
             path="/account/:account_name"
-            getComponent={(location, cb) => {
-                import("components/Account/AccountPage")
-                    .then(loadRoute(cb))
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    import("components-brand-new/Layout/Sidebar"),
+                    import("components-brand-new/Account/AccountPage"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
             }}
         >
             <IndexRoute
                 getComponent={(location, cb) => {
-                    import("components/Account/AccountOverview")
+                    import("components-brand-new/Account/AccountOverview")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}
@@ -451,7 +488,7 @@ const routes = (
             <Route
                 path="signedmessages"
                 getComponent={(location, cb) => {
-                    import("components/Account/AccountSignedMessages")
+                    import("components-brand-new/Account/AccountSignedMessages")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}
@@ -494,33 +531,53 @@ const routes = (
         />
         <Route
             path="/help"
-            getComponent={(location, cb) => {
-                import("components-brand-new/Help")
-                    .then(loadRoute(cb))
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    import("components-brand-new/Help/Sidebar"),
+                    import("components/Utility/HelpContent"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
             }}
         >
             <Route
                 path=":path1"
-                getComponent={(location, cb) => {
-                    import("components/Help")
-                        .then(loadRoute(cb))
+                getComponents={(location, cb) => {
+                    Promise.all([
+                        import("components-brand-new/Layout/Header"),
+                        import("components-brand-new/Help/Sidebar"),
+                        import("components/Utility/HelpContent"),
+                        import("components-brand-new/Layout/Footer")
+                    ])
+                        .then(loadMultiComponentsRoute(cb))
                         .catch(errorLoading);
                 }}
             >
                 <Route
                     path=":path2"
-                    getComponent={(location, cb) => {
-                        import("components/Help")
-                            .then(loadRoute(cb))
+                    getComponents={(location, cb) => {
+                        Promise.all([
+                            import("components-brand-new/Layout/Header"),
+                            import("components-brand-new/Help/Sidebar"),
+                            import("components/Utility/HelpContent"),
+                            import("components-brand-new/Layout/Footer")
+                        ])
+                            .then(loadMultiComponentsRoute(cb))
                             .catch(errorLoading);
                     }}
                 >
                     <Route
                         path=":path3"
-                        getComponent={(location, cb) => {
-                            import("components/Help")
-                                .then(loadRoute(cb))
+                        getComponents={(location, cb) => {
+                            Promise.all([
+                                import("components-brand-new/Layout/Header"),
+                                import("components-brand-new/Help/Sidebar"),
+                                import("components/Utility/HelpContent"),
+                                import("components-brand-new/Layout/Footer")
+                            ])
+                                .then(loadMultiComponentsRoute(cb))
                                 .catch(errorLoading);
                         }}
                     />

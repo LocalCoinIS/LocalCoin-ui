@@ -12,7 +12,7 @@ import willTransitionTo from "./routerTransition";
 import App from "./App";
 
 // Components imported here for react hot loader (does not work with async route loading)
-import DashboardPage from "./components/Dashboard/DashboardPage";
+import DashboardPage from "./components-brand-new/Dashboard/DashboardPage";
 import DashboardAccountsOnly from "./components/Dashboard/DashboardAccountsOnly";
 import Witnesses from "./components/Explorer/Witnesses";
 import CommitteeMembers from "./components/Explorer/CommitteeMembers";
@@ -84,7 +84,14 @@ class Auth extends React.Component {
 
 const routes = (
     <Route path="/" component={App} onEnter={willTransitionTo}>
-        <IndexRoute component={DashboardPage} />
+        <IndexRoute
+            components={{
+                headerBlock: Header,
+                sidebarBlock: Sidebar,
+                contentBlock: DashboardPage,
+                footerBlock: Footer
+            }}
+        />
         <Route path="/auth/:data" component={Auth} />
         <Route
             path="explorer"
