@@ -5,6 +5,8 @@ import counterpart from "counterpart";
 
 class Tabs extends React.Component {
     static defaultProps = {
+        defaultActiveTab: null,
+        defaultContent: null,
         inner: false,
         dashboardTabsClass: ""
     };
@@ -15,10 +17,15 @@ class Tabs extends React.Component {
 
     constructor(props) {
         super(props);
-        const {items} = props;
+        const {items, defaultActiveTab} = props;
+        let activeTab = !!defaultActiveTab
+            ? defaultActiveTab
+            : items.length > 0
+                ? [...items].shift().title
+                : null;
         this.state = {
             openMobileSelect: false,
-            activeTab: items.length > 0 ? [...items].shift().title : null
+            activeTab
         };
         this._findActiveTab = this._findActiveTab.bind(this);
         this._renderDesktopTabs = this._renderDesktopTabs.bind(this);
@@ -124,22 +131,25 @@ class Tabs extends React.Component {
     }
 
     render() {
-        const {items, inner} = this.props;
+        const {items, inner, defaultContent} = this.props;
         const activeTab = this._findActiveTab(items);
+        const content = !!defaultContent
+            ? defaultContent
+            : activeTab
+                ? activeTab.content
+                : null;
 
         return items.length > 0 && activeTab ? (
             inner ? (
                 <div className="dashboard">
                     {this._renderTabs(items)}
-                    {activeTab.content}
+                    {content}
                 </div>
             ) : (
                 <div>
                     <div className="dashboard">{this._renderTabs(items)}</div>
                     <div className="negative-margins">
-                        <div className="container-fluid">
-                            {activeTab.content}
-                        </div>
+                        <div className="container-fluid">{content}</div>
                     </div>
                 </div>
             )

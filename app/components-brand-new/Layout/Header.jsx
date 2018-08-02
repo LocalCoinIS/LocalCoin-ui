@@ -32,7 +32,8 @@ import {
     logo,
     userAvatar,
     settingsIcon,
-    lockIcon
+    lockIcon,
+    unlockIcon
 } from "../../assets/brand-new-layout/img/images";
 
 class Header extends React.Component {
@@ -562,69 +563,138 @@ class Header extends React.Component {
                                         </a>
                                     </li>
                                 )}
+                                <li
+                                    className={cnames("navigation__item", {
+                                        active:
+                                            active.indexOf("explorer") !== -1
+                                    })}
+                                >
+                                    <a
+                                        className="navigation__link"
+                                        href="#"
+                                        onClick={this._onNavigate.bind(
+                                            this,
+                                            "/explorer"
+                                        )}
+                                    >
+                                        {counterpart.translate(
+                                            "header.explorer"
+                                        )}
+                                    </a>
+                                </li>
+                                <li
+                                    className={cnames("navigation__item", {
+                                        active: active.indexOf("help") !== -1
+                                    })}
+                                >
+                                    <a
+                                        className="navigation__link"
+                                        href="#"
+                                        onClick={this._onNavigate.bind(
+                                            this,
+                                            "/help"
+                                        )}
+                                    >
+                                        {counterpart.translate("header.help")}
+                                    </a>
+                                </li>
                             </ul>
                         </nav>
-                        <div className="balance">
-                            <span className="balance__label">
-                                {counterpart.translate("exchange.balance")}:
+                        {currentAccount ? (
+                            <div className="balance">
+                                <span className="balance__label">
+                                    {counterpart.translate("exchange.balance")}:
+                                    &nbsp;
+                                    {walletBalance}
+                                </span>
+                                {/* если одна валюта, то дропдаун не нужен! */}
+                                {/*
+                                <ul className="balance__list">
+                                    <li className="balance__item active">
+                                        <a className="balance__link" href="#">
+                                            LLC
+                                        </a>
+                                    </li>
+                                    <li className="balance__item">
+                                        <a className="balance__link" href="#">
+                                            BTC
+                                        </a>
+                                    </li>
+                                    <li className="balance__item">
+                                        <a className="balance__link" href="#">
+                                            XCR
+                                        </a>
+                                    </li>
+                                    <li className="balance__item">
+                                        <a className="balance__link" href="#">
+                                            ETH
+                                        </a>
+                                    </li>
+                                </ul>
+                                */}
+                            </div>
+                        ) : null}
+                        {currentAccount ? (
+                            <div className="user">
+                                {/*
+                                <Identicon
+                                    id={currentAccount}
+                                    account={currentAccount}
+                                    size={{height: 20, width: 20}}
+                                />
+                                */}
+                                <AccountImage
+                                    size={{height: 20, width: 20}}
+                                    account={currentAccount}
+                                />
                                 &nbsp;
-                                {walletBalance}
-                            </span>
-                            {/* если одна валюта, то дропдаун не нужен! */}
-                            {/*
-                            <ul className="balance__list">
-                                <li className="balance__item active">
-                                    <a className="balance__link" href="#">
-                                        LLC
-                                    </a>
-                                </li>
-                                <li className="balance__item">
-                                    <a className="balance__link" href="#">
-                                        BTC
-                                    </a>
-                                </li>
-                                <li className="balance__item">
-                                    <a className="balance__link" href="#">
-                                        XCR
-                                    </a>
-                                </li>
-                                <li className="balance__item">
-                                    <a className="balance__link" href="#">
-                                        ETH
-                                    </a>
-                                </li>
-                            </ul>
-                            */}
-                        </div>
-                        <div className="user">
-                            {/*
-                            <Identicon
-                                id={currentAccount}
-                                account={currentAccount}
-                                size={{height: 20, width: 20}}
-                            />
-                            */}
-                            <AccountImage
-                                size={{height: 20, width: 20}}
-                                account={currentAccount}
-                            />
-                            &nbsp;
-                            <span className="user__name">{currentAccount}</span>
-                        </div>
-                        <a className="settings" href="#">
-                            <img
-                                className="settings__icon"
-                                src={settingsIcon}
-                                alt="settings"
-                            />
-                        </a>
-                        <a className="lock" href="#">
-                            <img
-                                className="lock__icon"
-                                src={lockIcon}
-                                alt="lock"
-                            />
-                        </a>
+                                <span className="user__name">
+                                    {currentAccount}
+                                </span>
+                            </div>
+                        ) : null}
+                        {currentAccount ? (
+                            <a
+                                className="settings"
+                                href="#"
+                                onClick={this._onNavigate.bind(
+                                    this,
+                                    "/settings"
+                                )}
+                            >
+                                <img
+                                    className="settings__icon"
+                                    src={settingsIcon}
+                                    alt="settings"
+                                />
+                            </a>
+                        ) : null}
+                        {currentAccount ? (
+                            <a
+                                href="#"
+                                className="lock"
+                                title={
+                                    this.props.locked
+                                        ? counterpart.translate(
+                                              "icons.locked.common"
+                                          )
+                                        : counterpart.translate(
+                                              "icons.unlocked.common"
+                                          )
+                                }
+                                onClick={this._toggleLock.bind(this)}
+                            >
+                                <img
+                                    className="lock__icon"
+                                    src={
+                                        this.props.locked
+                                            ? lockIcon
+                                            : unlockIcon
+                                    }
+                                    alt="lock"
+                                />
+                            </a>
+                        ) : null}
                     </div>
                 </div>
                 <SendModal

@@ -14,12 +14,12 @@ import App from "./App";
 // Components imported here for react hot loader (does not work with async route loading)
 import DashboardPage from "./components-brand-new/Dashboard/DashboardPage";
 import DashboardAccountsOnly from "./components/Dashboard/DashboardAccountsOnly";
-import Witnesses from "./components/Explorer/Witnesses";
-import CommitteeMembers from "./components/Explorer/CommitteeMembers";
-import FeesContainer from "./components/Explorer/FeesContainer";
-import BlocksContainer from "./components/Explorer/BlocksContainer";
-import AssetsContainer from "./components/Explorer/AssetsContainer";
-import AccountsContainer from "./components/Explorer/AccountsContainer";
+import Witnesses from "./components-brand-new/Explorer/Witnesses";
+import CommitteeMembers from "./components-brand-new/Explorer/CommitteeMembers";
+import FeesContainer from "./components-brand-new/Explorer/FeesContainer";
+import BlocksContainer from "./components-brand-new/Explorer/BlocksContainer";
+import AssetsContainer from "./components-brand-new/Explorer/AssetsContainer";
+import AccountsContainer from "./components-brand-new/Explorer/AccountsContainer";
 import Explorer from "./components-brand-new/Explorer/Explorer";
 import AccountPage from "./components-brand-new/Account/AccountPage";
 import AccountOverview from "./components-brand-new/Account/AccountOverview";
@@ -36,7 +36,7 @@ import Page404 from "./components/Page404/Page404";
 // import AccountOrders from "./components/Account/AccountOrders";
 import AccountSignedMessages from "./components-brand-new/Account/AccountSignedMessages";
 import ExchangeContainer from "./components/Exchange/ExchangeContainer";
-import MarketsContainer from "./components/Explorer/MarketsContainer";
+import MarketsContainer from "./components-brand-new/Explorer/MarketsContainer";
 import Transfer from "./components/Transfer/Transfer";
 import SettingsContainer from "./components/Settings/SettingsContainer";
 import BlockContainer from "./components/Blockchain/BlockContainer";
@@ -97,19 +97,64 @@ const routes = (
             path="explorer"
             components={{
                 headerBlock: Header,
-                sidebarBlock: Sidebar,
+                sidebarBlock: null, // Sidebar
                 contentBlock: Explorer,
                 footerBlock: Footer
             }}
         />
-        <Route path="/explorer/fees" component={FeesContainer} />
-        <Route path="/explorer/blocks" component={BlocksContainer} />
-        <Route path="/explorer/assets" component={AssetsContainer} />
-        <Route path="/explorer/accounts" component={AccountsContainer} />
-        <Route path="/explorer/witnesses" component={Witnesses} />
+        <Route
+            path="/explorer/fees"
+            components={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: FeesContainer,
+                footerBlock: Footer
+            }}
+        />
+        <Route
+            path="/explorer/blocks"
+            component={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: BlocksContainer,
+                footerBlock: Footer
+            }}
+        />
+        <Route
+            path="/explorer/assets"
+            component={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: AssetsContainer,
+                footerBlock: Footer
+            }}
+        />
+        <Route
+            path="/explorer/accounts"
+            component={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: AccountsContainer,
+                footerBlock: Footer
+            }}
+        />
+        <Route
+            path="/explorer/witnesses"
+            component={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: Witnesses,
+                footerBlock: Footer
+            }}
+        />
         <Route
             path="/explorer/committee-members"
-            component={CommitteeMembers}
+            component={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: CommitteeMembers,
+                footerBlock: Footer
+            }}
         />
 
         <Route path="wallet" component={WalletManager}>
@@ -136,7 +181,15 @@ const routes = (
         <Route path="transfer" component={Transfer} />
 
         <Route path="invoice/:data" component={Invoice} />
-        <Route path="explorer/markets" component={MarketsContainer} />
+        <Route
+            path="explorer/markets"
+            component={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: MarketsContainer,
+                footerBlock: Footer
+            }}
+        />
         <Route
             path="market/:marketID"
             components={{
@@ -146,8 +199,24 @@ const routes = (
                 footerBlock: Footer
             }}
         />
-        <Route path="settings" component={SettingsContainer} />
-        <Route path="settings/:tab" component={SettingsContainer} />
+        <Route
+            path="settings"
+            components={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: SettingsContainer,
+                footerBlock: Footer
+            }}
+        />
+        <Route
+            path="settings/:tab"
+            components={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: SettingsContainer,
+                footerBlock: Footer
+            }}
+        />
         <Route path="block/:height" component={BlockContainer} />
         <Route path="asset/:symbol" component={Asset} />
         <Route path="create-account" component={LoginSelector}>

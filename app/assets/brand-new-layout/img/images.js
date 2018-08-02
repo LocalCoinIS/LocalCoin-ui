@@ -7,7 +7,8 @@ export const eMarkets = require("!file-loader?name=asset-symbols/[name].svg!./e_
 export const eFee = require("!file-loader?name=asset-symbols/[name].svg!./e_fee.svg");
 export const logo = require("!file-loader?name=asset-symbols/[name].svg!./logo.svg");
 export const userAvatar = require("!file-loader?name=asset-symbols/[name].png!./user.png");
-export const settingsIcon = require("!file-loader?name=asset-symbols/[name].svg!./settings.svg");
-export const lockIcon = require("!file-loader?name=asset-symbols/[name].svg!./lock.svg");
 export const qr = require("!file-loader?name=asset-symbols/[name].jpg!./qr.jpg");
 export const csvIcon = require("!file-loader?name=asset-symbols/[name].svg!./csv.svg");
+export const settingsIcon = require("!file-loader?name=asset-symbols/[name].svg!./settings.svg");
+export const lockIcon = require("!file-loader?name=asset-symbols/[name].svg!./lock.svg");
+export const unlockIcon = require("!file-loader?name=asset-symbols/[name].svg!./padlock.svg");
