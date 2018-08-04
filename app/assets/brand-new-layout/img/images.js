@@ -12,3 +12,4 @@ export const csvIcon = require("!file-loader?name=asset-symbols/[name].svg!./csv
 export const settingsIcon = require("!file-loader?name=asset-symbols/[name].svg!./settings.svg");
 export const lockIcon = require("!file-loader?name=asset-symbols/[name].svg!./lock.svg");
 export const unlockIcon = require("!file-loader?name=asset-symbols/[name].svg!./padlock.svg");
+export const russiaFlag = require("!file-loader?name=asset-symbols/[name].svg!./russia.svg");

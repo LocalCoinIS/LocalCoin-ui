@@ -61,7 +61,8 @@
     fill: #00195b !important;
 }
 
-label.radio .radio__label {
+label.radio .radio__label,
+label {
     text-transform: none !important;
 }
 
