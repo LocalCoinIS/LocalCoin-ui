@@ -5,7 +5,18 @@ import SettingsActions from "actions/SettingsActions";
 import AssetName from "../../components/Utility/AssetName";
 import Notify from "notifyjs";
 import cnames from "classnames";
-import {russiaFlag} from "../../assets/brand-new-layout/img/images";
+import {
+    greatBritainFlag,
+    chinaFlag,
+    franceFlag,
+    southKoreaFlag,
+    germanyFlag,
+    spainFlag,
+    italyFlag,
+    turkeyFlag,
+    russiaFlag,
+    japanFlag
+} from "../../assets/brand-new-layout/img/images";
 
 export default class SettingsEntry extends React.Component {
     constructor() {
@@ -42,12 +53,28 @@ export default class SettingsEntry extends React.Component {
         };
     }
 
-    renderSelect(setting, options, selected, withIcons = false) {
+    getFlag(locale) {
+        const localeToFlagMap = {
+            en: greatBritainFlag,
+            zh: chinaFlag,
+            fr: franceFlag,
+            ko: southKoreaFlag,
+            de: germanyFlag,
+            es: spainFlag,
+            it: italyFlag,
+            tr: turkeyFlag,
+            ru: russiaFlag,
+            ja: japanFlag
+        };
+        return !!localeToFlagMap[locale] ? localeToFlagMap[locale] : null;
+    }
+
+    renderSelect(setting, options, selected) {
         return (
             <div
                 className={cnames(
                     "select",
-                    {"select-withicon": withIcons},
+                    {"select-withicon": !!selected["icon"]},
                     {"is-open": this.state.openSelect}
                 )}
             >
@@ -60,41 +87,46 @@ export default class SettingsEntry extends React.Component {
                         });
                     }}
                 >
-                    {withIcons ? (
+                    {!!selected["icon"] ? (
                         <i
-                            class="icon"
-                            style={{backgroundImage: `url(${russiaFlag})`}}
+                            className="icon"
+                            style={{
+                                backgroundImage: `url(${selected["icon"]})`
+                            }}
                         />
                     ) : null}
-                    {counterpart.translate("languages." + selected)}
+                    {selected["label"]}
                 </span>
                 <ul>
-                    {options.filter(entry => entry !== selected).map(entry => {
-                        let translationKey = "languages." + entry;
-                        let value = counterpart.translate(translationKey);
-
-                        return (
-                            <li
-                                key={entry}
-                                onClick={e => {
-                                    this.props.onChange.bind(
-                                        this,
-                                        setting,
-                                        entry
-                                    );
-                                    this.setState({openSelect: false});
-                                }}
-                            >
-                                <i
-                                    className="icon"
-                                    style={{
-                                        backgroundImage: `url(${russiaFlag})`
+                    {options
+                        .filter(entry => entry["key"] !== selected["key"])
+                        .map(entry => {
+                            return (
+                                <li
+                                    key={entry["key"]}
+                                    onClick={e => {
+                                        this.props.onChange.bind(
+                                            this,
+                                            setting,
+                                            entry["key"]
+                                        )(e);
+                                        this.setState({openSelect: false});
                                     }}
-                                />
-                                {value}
-                            </li>
-                        );
-                    })}
+                                >
+                                    {!!entry["icon"] ? (
+                                        <i
+                                            className="icon"
+                                            style={{
+                                                backgroundImage: `url(${
+                                                    entry["icon"]
+                                                })`
+                                            }}
+                                        />
+                                    ) : null}
+                                    {entry["label"]}
+                                </li>
+                            );
+                        })}
                 </ul>
             </div>
         );
@@ -113,8 +145,18 @@ export default class SettingsEntry extends React.Component {
 
         switch (setting) {
             case "locale":
-                value = selected;
-                options = defaults;
+                value = {
+                    key: selected,
+                    label: counterpart("languages." + selected),
+                    icon: this.getFlag(selected)
+                };
+                options = defaults.map(entry => {
+                    return {
+                        key: entry,
+                        label: counterpart("languages." + entry),
+                        icon: this.getFlag(entry)
+                    };
+                });
 
                 break;
 
@@ -140,37 +182,43 @@ export default class SettingsEntry extends React.Component {
                     <div className="settings--notifications">
                         <div className="settings--notifications--group">
                             <div className="settings--notifications--item">
-                                <input
-                                    type="checkbox"
-                                    id="browser_notifications.allow"
-                                    checked={!!value.allow}
-                                    onChange={this.handleNotificationChange(
-                                        "allow"
-                                    )}
-                                />
-                                <label htmlFor="browser_notifications.allow">
-                                    {counterpart.translate(
-                                        "settings.browser_notifications_allow"
-                                    )}
+                                <label className="checkbox">
+                                    <input
+                                        type="checkbox"
+                                        className="checkbox__input"
+                                        checked={!!value.allow}
+                                        onChange={this.handleNotificationChange(
+                                            "allow"
+                                        )}
+                                    />
+                                    <span className="checkbox__styled" />
+                                    <span className="checkbox__label">
+                                        {counterpart.translate(
+                                            "settings.browser_notifications_allow"
+                                        )}
+                                    </span>
                                 </label>
                             </div>
                             <div className="settings--notifications--group">
                                 <div className="settings--notifications--item">
-                                    <input
-                                        type="checkbox"
-                                        id="browser_notifications.additional.transferToMe"
-                                        disabled={!value.allow}
-                                        checked={
-                                            !!value.additional.transferToMe
-                                        }
-                                        onChange={this.handleNotificationChange(
-                                            "additional.transferToMe"
-                                        )}
-                                    />
-                                    <label htmlFor="browser_notifications.allow">
-                                        {counterpart.translate(
-                                            "settings.browser_notifications_additional_transfer_to_me"
-                                        )}
+                                    <label className="checkbox">
+                                        <input
+                                            type="checkbox"
+                                            className="checkbox__input"
+                                            disabled={!value.allow}
+                                            checked={
+                                                !!value.additional.transferToMe
+                                            }
+                                            onChange={this.handleNotificationChange(
+                                                "additional.transferToMe"
+                                            )}
+                                        />
+                                        <span className="checkbox__styled" />
+                                        <span className="checkbox__label">
+                                            {counterpart.translate(
+                                                "settings.browser_notifications_additional_transfer_to_me"
+                                            )}
+                                        </span>
                                     </label>
                                 </div>
                             </div>
@@ -206,7 +254,13 @@ export default class SettingsEntry extends React.Component {
                         type="text"
                         className="settings-input"
                         value={selected}
-                        onChange={this.props.onChange.bind(this, setting)}
+                        onChange={e => {
+                            this.props.onChange.bind(
+                                this,
+                                setting,
+                                e.target.value
+                            )(e);
+                        }}
                     />
                 );
                 break;
@@ -235,24 +289,32 @@ export default class SettingsEntry extends React.Component {
                             option = <AssetName name={entry} />;
                         }
                         let key = entry.translate ? entry.translate : entry;
-                        return (
-                            <option
-                                value={
-                                    entry.translate ? entry.translate : entry
-                                }
-                                key={key}
-                            >
-                                {option}
-                            </option>
-                        );
+                        return {
+                            key,
+                            label: option
+                        };
                     });
+                    value = {
+                        key: !!value.translate ? value.translate : value,
+                        label: !!value.translate
+                            ? counterpart.translate(
+                                  "settings." + value.translate
+                              )
+                            : value
+                    };
                 } else {
                     input = (
                         <input
                             className="settings-input"
                             type="text"
                             defaultValue={value}
-                            onBlur={this.props.onChange.bind(this, setting)}
+                            onBlur={e => {
+                                this.props.onChange.bind(
+                                    this,
+                                    setting,
+                                    e.target.value
+                                )(e);
+                            }}
                         />
                     );
                 }
@@ -271,9 +333,7 @@ export default class SettingsEntry extends React.Component {
                         {counterpart.translate(`settings.${setting}`)}
                     </label>
                 )}
-                {options
-                    ? this.renderSelect(setting, options, value, true)
-                    : null}
+                {options ? this.renderSelect(setting, options, value) : null}
                 {input ? input : null}
                 {component ? component : null}
                 <div className="facolor-success">{this.state.message}</div>

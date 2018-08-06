@@ -5,13 +5,13 @@ import Translate from "react-translate-component";
 import SettingsActions from "actions/SettingsActions";
 import WebsocketAddModal from "../../components/Settings/WebsocketAddModal";
 import SettingsEntry from "./SettingsEntry";
-import AccountsSettings from "../../components/Settings/AccountsSettings";
+import AccountsSettings from "./AccountsSettings";
 import WalletSettings from "../../components/Settings/WalletSettings";
 import PasswordSettings from "../../components/Settings/PasswordSettings";
-import RestoreSettings from "../../components/Settings/RestoreSettings";
-import ResetSettings from "../../components/Settings/ResetSettings";
+import RestoreSettings from "./RestoreSettings";
+import ResetSettings from "./ResetSettings";
 import BackupSettings from "../../components/Settings/BackupSettings";
-import AccessSettings from "../../components/Settings/AccessSettings";
+import AccessSettings from "./AccessSettings";
 import {set} from "lodash-es";
 import PropTypes from "prop-types";
 
@@ -37,15 +37,15 @@ class Settings extends React.Component {
             menuEntries,
             settingEntries: {
                 general: [
-                    "locale"
-                    // "unit",
-                    // "browser_notifications",
-                    // "showSettles",
-                    // "walletLockTimeout",
+                    "locale",
+                    "unit",
+                    "browser_notifications",
+                    "showSettles",
+                    "walletLockTimeout",
                     // "themes",
-                    // "showAssetPercent",
-                    // "passwordLogin",
-                    // "reset"
+                    "showAssetPercent",
+                    "passwordLogin",
+                    "reset"
                 ],
                 access: ["apiServer", "faucet_address"]
             }
@@ -136,10 +136,10 @@ class Settings extends React.Component {
 
     _onChangeSetting(setting, eTargetValue, e) {
         e.preventDefault();
+        // eTargetValue e.target.value
 
         let {defaults} = this.props;
         let value = null;
-        const etValue = !!eTargetValue ? eTargetValue : e.target.value;
 
         function findEntry(targetValue, targetDefaults) {
             if (!targetDefaults) return targetValue;
@@ -161,11 +161,11 @@ class Settings extends React.Component {
         switch (setting) {
             case "locale":
                 let myLocale = counterpart.getLocale();
-                if (etValue !== myLocale) {
-                    IntlActions.switchLocale(etValue);
+                if (eTargetValue !== myLocale) {
+                    IntlActions.switchLocale(eTargetValue);
                     SettingsActions.changeSetting({
                         setting: "locale",
-                        value: etValue
+                        value: eTargetValue
                     });
                 }
                 break;
@@ -173,7 +173,7 @@ class Settings extends React.Component {
             case "themes":
                 SettingsActions.changeSetting({
                     setting: "themes",
-                    value: etValue
+                    value: eTargetValue
                 });
                 break;
 
@@ -181,7 +181,7 @@ class Settings extends React.Component {
                 break;
 
             case "walletLockTimeout":
-                let newValue = parseInt(etValue, 10);
+                let newValue = parseInt(eTargetValue, 10);
                 if (isNaN(newValue)) newValue = 0;
                 if (!isNaN(newValue) && typeof newValue === "number") {
                     SettingsActions.changeSetting({
@@ -193,16 +193,16 @@ class Settings extends React.Component {
 
             case "inverseMarket":
             case "confirmMarketOrder":
-                value = findEntry(etValue, defaults[setting]) === 0; // USD/LLC is true, LLC/USD is false
+                value = findEntry(eTargetValue, defaults[setting]) === 0; // USD/LLC is true, LLC/USD is false
                 break;
 
             case "apiServer":
                 SettingsActions.changeSetting({
                     setting: "apiServer",
-                    value: etValue
+                    value: eTargetValue
                 });
                 this.setState({
-                    apiServer: etValue
+                    apiServer: eTargetValue
                 });
                 break;
 
@@ -213,12 +213,12 @@ class Settings extends React.Component {
                 if (reference.translate) reference = reference.translate;
                 SettingsActions.changeSetting({
                     setting,
-                    value: etValue === reference
+                    value: eTargetValue === reference
                 });
                 break;
 
             case "unit":
-                let index = findEntry(etValue, defaults[setting]);
+                let index = findEntry(eTargetValue, defaults[setting]);
                 SettingsActions.changeSetting({
                     setting: setting,
                     value: defaults[setting][index]
@@ -226,7 +226,7 @@ class Settings extends React.Component {
                 break;
 
             default:
-                value = findEntry(etValue, defaults[setting]);
+                value = findEntry(eTargetValue, defaults[setting]);
                 break;
         }
 
@@ -239,7 +239,8 @@ class Settings extends React.Component {
         SettingsActions.clearSettings();
     }
 
-    _redirectToEntry(entry) {
+    _redirectToEntry(entry, e) {
+        e.preventDefault();
         this.context.router.push("/settings/" + entry);
     }
 
@@ -335,7 +336,7 @@ class Settings extends React.Component {
             <div className="content">
                 <div className="options">
                     <div className="container">
-                        <h2 class="content__heading">
+                        <h2 className="content__heading">
                             {counterpart.translate("header.settings")}
                         </h2>
                         <div className="options__row">
@@ -375,17 +376,19 @@ class Settings extends React.Component {
                                     }
                                 />
                                 {activeEntry != "access" && (
-                                    <Translate
-                                        unsafe
-                                        style={{
-                                            paddingTop: 5,
-                                            marginBottom: 30
-                                        }}
-                                        content={`settings.${
-                                            menuEntries[activeSetting]
-                                        }_text`}
-                                        className="panel-bg-color"
-                                    />
+                                    <div className="options__form__row">
+                                        <Translate
+                                            unsafe
+                                            style={{
+                                                paddingTop: 5,
+                                                marginBottom: 30
+                                            }}
+                                            content={`settings.${
+                                                menuEntries[activeSetting]
+                                            }_text`}
+                                            className="panel-bg-color"
+                                        />
+                                    </div>
                                 )}
                                 {entries}
                             </div>

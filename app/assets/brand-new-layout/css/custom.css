@@ -62,7 +62,8 @@
 }
 
 label.radio .radio__label,
-label {
+label,
+.checkbox__label {
     text-transform: none !important;
 }
 
@@ -77,4 +78,12 @@ label {
 .switch input:checked + label::after {
     border-color: #2ba017;
     background: #2ba017;
+}
+
+.table-witnesses a > span {
+    color: #2964fa;
+}
+
+.markets-list li {
+    cursor: pointer;
 }
