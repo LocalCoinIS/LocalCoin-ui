@@ -671,7 +671,8 @@ pre {
     color: #00195b;
 }
 
-.localcoin input[type="text"] {
+.localcoin input[type="text"],
+.localcoin input[type="password"] {
     width: 100%;
     border-radius: 4px;
     padding: 0 17px;
@@ -681,51 +682,63 @@ pre {
     font-size: 15px;
     border: 1px solid #7fafe8;
 }
-.localcoin input[type="text"]::-webkit-input-placeholder {
+.localcoin input[type="text"]::-webkit-input-placeholder,
+.localcoin input[type="password"]::-webkit-input-placeholder {
     color: #000;
     opacity: 0.5;
     font-size: 15px;
 }
-.localcoin input[type="text"]:-moz-placeholder {
+.localcoin input[type="text"]:-moz-placeholder,
+.localcoin input[type="password"]:-moz-placeholder {
     color: #000;
     opacity: 0.5;
     font-size: 15px;
 }
-.localcoin input[type="text"]::-moz-placeholder {
+.localcoin input[type="text"]::-moz-placeholder,
+.localcoin input[type="password"]::-moz-placeholder {
     color: #000;
     opacity: 0.5;
     font-size: 15px;
 }
-.localcoin input[type="text"]:-ms-input-placeholder {
+.localcoin input[type="text"]:-ms-input-placeholder,
+.localcoin input[type="password"]:-ms-input-placeholder {
     color: #000;
     opacity: 0.5;
     font-size: 15px;
 }
-.localcoin input[type="text"]:hover::-webkit-input-placeholder {
+.localcoin input[type="text"]:hover::-webkit-input-placeholder,
+.localcoin input[type="password"]:hover::-webkit-input-placeholder {
     color: #00195b;
 }
-.localcoin input[type="text"]:hover:-moz-placeholder {
+.localcoin input[type="text"]:hover:-moz-placeholder,
+.localcoin input[type="password"]:hover:-moz-placeholder {
     color: #00195b;
 }
-.localcoin input[type="text"]:hover::-moz-placeholder {
+.localcoin input[type="text"]:hover::-moz-placeholder,
+.localcoin input[type="password"]:hover::-moz-placeholder {
     color: #00195b;
 }
-.localcoin input[type="text"]:hover:-ms-input-placeholder {
+.localcoin input[type="text"]:hover:-ms-input-placeholder,
+.localcoin input[type="password"]:hover:-ms-input-placeholder {
     color: #00195b;
 }
-.localcoin input[type="text"]:focus::-webkit-input-placeholder {
+.localcoin input[type="text"]:focus::-webkit-input-placeholder,
+.localcoin input[type="password"]:focus::-webkit-input-placeholder {
     opacity: 1;
     font-size: 0;
 }
-.localcoin input[type="text"]:focus:-moz-placeholder {
+.localcoin input[type="text"]:focus:-moz-placeholder,
+.localcoin input[type="password"]:focus:-moz-placeholder {
     opacity: 1;
     font-size: 0;
 }
-.localcoin input[type="text"]:focus::-moz-placeholder {
+.localcoin input[type="text"]:focus::-moz-placeholder,
+.localcoin input[type="password"]:focus::-moz-placeholder {
     opacity: 1;
     font-size: 0;
 }
-.localcoin input[type="text"]:focus:-ms-input-placeholder {
+.localcoin input[type="text"]:focus:-ms-input-placeholder,
+.localcoin input[type="password"]:focus:-ms-input-placeholder {
     opacity: 1;
     font-size: 0;
 }

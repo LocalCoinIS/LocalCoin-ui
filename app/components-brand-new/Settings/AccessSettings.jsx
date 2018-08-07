@@ -515,7 +515,7 @@ class AccessSettings extends React.Component {
             </div>
         ) : (
             <div className="row" style={{paddingTop: "1em"}}>
-                <div className="col-9">
+                <div className="col-lg-11">
                     {renderNode(autoNode, activeNode, false)}
                     <div className="active-node">
                         {/*<LoadingButton
