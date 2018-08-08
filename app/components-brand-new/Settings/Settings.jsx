@@ -10,7 +10,7 @@ import WalletSettings from "./WalletSettings";
 import PasswordSettings from "./PasswordSettings";
 import RestoreSettings from "./RestoreSettings";
 import ResetSettings from "./ResetSettings";
-import BackupSettings from "../../components/Settings/BackupSettings";
+import BackupSettings from "./BackupSettings";
 import AccessSettings from "./AccessSettings";
 import {set} from "lodash-es";
 import PropTypes from "prop-types";

@@ -2,7 +2,7 @@ import React from "react";
 import AssetStore from "stores/AssetStore";
 import SettingsStore from "stores/SettingsStore";
 import AltContainer from "alt-container";
-import Assets from "../../components/Explorer/Assets";
+import Assets from "./Assets";
 import ExplorerTabs from "./ExplorerTabs";
 
 class AssetsContainer extends React.Component {

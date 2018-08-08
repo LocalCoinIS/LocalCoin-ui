@@ -4,6 +4,11 @@ import {Route, IndexRoute, Redirect} from "react-router/es";
 import willTransitionTo from "./routerTransition";
 import App from "./App";
 
+import Header from "./components-brand-new/Layout/Header";
+import Footer from "./components-brand-new/Layout/Footer";
+import Witnesses from "./components-brand-new/Explorer/Witnesses";
+import CommitteeMembers from "./components-brand-new/Explorer/CommitteeMembers";
+
 /*
 * Electron does not support async loading of components via System.import,
 * so we make sure they're bundled already by including them here
@@ -126,6 +131,25 @@ const routes = (
         />
         <Route
             path="/explorer/witnesses"
+            component={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: Witnesses,
+                footerBlock: Footer
+            }}
+        />
+        <Route
+            path="/explorer/committee-members"
+            component={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: CommitteeMembers,
+                footerBlock: Footer
+            }}
+        />
+        {/*
+        <Route
+            path="/explorer/witnesses"
             getComponents={(location, cb) => {
                 Promise.all([
                     import("components-brand-new/Layout/Header"),
@@ -150,6 +174,7 @@ const routes = (
                     .catch(errorLoading);
             }}
         />
+        */}
 
         <Route
             path="wallet"

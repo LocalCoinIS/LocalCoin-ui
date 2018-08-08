@@ -1,7 +1,7 @@
 import React from "react";
 import BlockchainStore from "stores/BlockchainStore";
 import AltContainer from "alt-container";
-import Blocks from "../../components/Explorer/Blocks";
+import Blocks from "./Blocks";
 import ExplorerTabs from "./ExplorerTabs";
 
 class BlocksContainer extends React.Component {

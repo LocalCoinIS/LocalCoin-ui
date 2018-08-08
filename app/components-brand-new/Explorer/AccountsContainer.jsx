@@ -1,7 +1,7 @@
 import React from "react";
 import AccountStore from "stores/AccountStore";
 import AltContainer from "alt-container";
-import Accounts from "../../components/Explorer/Accounts";
+import Accounts from "./Accounts";
 import ExplorerTabs from "./ExplorerTabs";
 
 class AccountsContainer extends React.Component {

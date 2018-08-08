@@ -1,18 +1,20 @@
 import React from "react";
-import {BackupRestore} from "../../components/Wallet/Backup";
+import {BackupRestore} from "../Wallet/Backup";
 import ImportKeys from "../../components/Wallet/ImportKeys";
 import {CreateWalletFromBrainkey} from "../../components/Wallet/WalletCreate";
 import Translate from "react-translate-component";
 import counterpart from "counterpart";
 import SettingsActions from "actions/SettingsActions";
-import RestoreFavorites from "../../components/Settings/RestoreFavorites";
+import RestoreFavorites from "./RestoreFavorites";
+import DropdownList from "../Utility/DropdownList";
 
 export default class RestoreSettings extends React.Component {
     constructor() {
         super();
         this.state = {
             restoreType: 0,
-            types: ["backup", "key", "legacy", "brainkey", "favorites"]
+            types: ["backup", "key", "legacy", "brainkey", "favorites"],
+            isOpen: false
         };
     }
 
@@ -23,9 +25,9 @@ export default class RestoreSettings extends React.Component {
         });
     }
 
-    _changeType(e) {
+    _changeType(targetValue, e) {
         this.setState({
-            restoreType: this.state.types.indexOf(e.target.value)
+            restoreType: this.state.types.indexOf(targetValue)
         });
     }
 
@@ -53,13 +55,20 @@ export default class RestoreSettings extends React.Component {
             );
         }
         let {types, restoreType} = this.state;
-        let options = types.map(type => {
-            return (
-                <option key={type} value={type}>
-                    {counterpart.translate(`settings.backup_${type}`)}{" "}
-                </option>
-            );
-        });
+        let options = types
+            .filter(type => type !== types[restoreType])
+            .map(type => {
+                return {
+                    key: type,
+                    label: counterpart.translate(`settings.backup_${type}`)
+                };
+            });
+        let placeholder = {
+            key: types[restoreType],
+            label: counterpart.translate(
+                `settings.backup_${types[restoreType]}`
+            )
+        };
 
         let content;
 
@@ -98,14 +107,13 @@ export default class RestoreSettings extends React.Component {
 
         return (
             <div>
-                <select
-                    onChange={this._changeType.bind(this)}
-                    className="bts-select"
-                    value={types[restoreType]}
-                >
-                    {options}
-                </select>
-
+                <DropdownList
+                    options={options}
+                    selected={placeholder}
+                    isOpen={this.state.isOpen}
+                    setOpen={open => this.setState({isOpen: open})}
+                    onChange={e => this._changeType.bind(this)(e)}
+                />
                 {content}
             </div>
         );
