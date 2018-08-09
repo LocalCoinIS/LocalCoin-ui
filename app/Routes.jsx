@@ -494,7 +494,7 @@ const routes = (
             <Route
                 path="assets"
                 getComponent={(location, cb) => {
-                    import("components/Account/AccountAssets")
+                    import("components-brand-new/Account/AccountAssets")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}
@@ -518,7 +518,7 @@ const routes = (
             <Route
                 path="member-stats"
                 getComponent={(location, cb) => {
-                    import("components/Account/AccountMembership")
+                    import("components-brand-new/Account/AccountMembership")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}
@@ -526,7 +526,7 @@ const routes = (
             <Route
                 path="vesting"
                 getComponent={(location, cb) => {
-                    import("components/Account/AccountVesting")
+                    import("components-brand-new/Account/AccountVesting")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}
@@ -550,7 +550,7 @@ const routes = (
             <Route
                 path="whitelist"
                 getComponent={(location, cb) => {
-                    import("components/Account/AccountWhitelist")
+                    import("components-brand-new/Account/AccountWhitelist")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}

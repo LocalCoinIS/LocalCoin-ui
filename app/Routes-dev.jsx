@@ -23,14 +23,14 @@ import AccountsContainer from "./components-brand-new/Explorer/AccountsContainer
 import Explorer from "./components-brand-new/Explorer/Explorer";
 import AccountPage from "./components-brand-new/Account/AccountPage";
 import AccountOverview from "./components-brand-new/Account/AccountOverview";
-import AccountAssets from "./components/Account/AccountAssets";
+import AccountAssets from "./components-brand-new/Account/AccountAssets";
 import {AccountAssetCreate} from "./components/Account/AccountAssetCreate";
 import AccountAssetUpdate from "./components/Account/AccountAssetUpdate";
-import AccountMembership from "./components/Account/AccountMembership";
-import AccountVesting from "./components/Account/AccountVesting";
+import AccountMembership from "./components-brand-new/Account/AccountMembership";
+import AccountVesting from "./components-brand-new/Account/AccountVesting";
 import AccountDepositWithdraw from "./components/Account/AccountDepositWithdraw";
 import AccountPermissions from "./components/Account/AccountPermissions";
-import AccountWhitelist from "./components/Account/AccountWhitelist";
+import AccountWhitelist from "./components-brand-new/Account/AccountWhitelist";
 import AccountVoting from "./components/Account/AccountVoting";
 import Page404 from "./components/Page404/Page404";
 // import AccountOrders from "./components/Account/AccountOrders";
