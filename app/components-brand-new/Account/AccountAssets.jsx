@@ -273,7 +273,9 @@ class AccountAssets extends React.Component {
                                     )}
                                     className="btn outline"
                                 >
-                                    <Translate content="transaction.trxTypes.asset_issue" />
+                                    {counterpart.translate(
+                                        "transaction.trxTypes.asset_issue"
+                                    )}
                                 </button>
                             ) : null}
                         </td>
@@ -301,7 +303,9 @@ class AccountAssets extends React.Component {
                                 )}
                                 className="btn outline"
                             >
-                                <Translate content="transaction.trxTypes.asset_update" />
+                                {counterpart.translate(
+                                    "transaction.trxTypes.asset_update"
+                                )}
                             </button>
                         </td>
                     </tr>
@@ -352,7 +356,9 @@ class AccountAssets extends React.Component {
                         <div className="content-block">
                             <Link to={`/account/${account_name}/create-asset/`}>
                                 <button className="btn large inverted">
-                                    <Translate content="transaction.trxTypes.asset_create" />
+                                    {counterpart.translate(
+                                        "transaction.trxTypes.asset_create"
+                                    )}
                                 </button>
                             </Link>
                         </div>

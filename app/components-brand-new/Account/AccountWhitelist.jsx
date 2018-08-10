@@ -1,7 +1,7 @@
 import React from "react";
-import {Tabs, Tab} from "../../components/Utility/Tabs";
+import Tabs from "../Utility/Tabs";
 import constants from "chain/account_constants.js";
-import AccountSelector from "../../components/Account/AccountSelector";
+import AccountSelector from "./AccountSelector";
 import Immutable from "immutable";
 import Translate from "react-translate-component";
 import ChainTypes from "../../components/Utility/ChainTypes";
@@ -33,7 +33,7 @@ class AccountRow extends React.Component {
                     <td>
                         <button
                             onClick={onRemove.bind(this, account.get("id"))}
-                            className="button outline"
+                            className="btn outline"
                         >
                             Remove
                         </button>
@@ -92,7 +92,7 @@ class AccountList extends React.Component {
             rows.push(
                 <tr key="empty">
                     <td
-                        style={{padding: "1rem 0"}}
+                        style={{padding: "1rem 15px"}}
                         colSpan={removeButton ? 4 : 3}
                     >
                         <Translate
@@ -105,7 +105,7 @@ class AccountList extends React.Component {
         }
 
         return (
-            <table className="table compact dashboard-table">
+            <table>
                 {showHeaders ? (
                     <thead>
                         <tr>
@@ -194,149 +194,119 @@ class AccountWhitelist extends React.Component {
         let {account} = this.props;
         let {accountName} = this.state;
 
-        return (
-            <div className="grid-content app-tables no-padding" ref="appTables">
-                <div className="content-block small-12">
-                    <div className="tabs-container generic-bordered-box">
-                        <Tabs
-                            className="account-tabs"
-                            tabsClass="account-overview no-padding bordered-header content-block"
-                            setting="whitelistTab"
-                            contentClass="grid-content shrink small-vertical medium-horizontal no-padding"
-                            segmented={false}
-                        >
-                            <Tab title="account.whitelist.title">
-                                <div
-                                    style={{paddingBottom: "1rem"}}
-                                    className="small-12"
-                                >
-                                    <div>
-                                        <AccountList
-                                            emptyText="account.whitelist.empty"
-                                            account={account}
-                                            getCurrentState={this._getCurrentState.bind(
-                                                this
-                                            )}
-                                            list={
-                                                account.get(
-                                                    "whitelisted_accounts"
-                                                ) || Immutable.List()
-                                            }
-                                            removeButton
-                                            white={true}
-                                        />
-                                    </div>
-                                    {!account.get("whitelisted_accounts") ? (
-                                        <p className="has-error">
-                                            Please note, whitelisting is not
-                                            working yet due to unresolved
-                                            backend issue.
-                                        </p>
-                                    ) : null}
-                                    <div style={{padding: "2rem 0"}}>
-                                        <AccountSelector
-                                            label={"account.whitelist.add"}
-                                            accountName={accountName}
-                                            onAccountChanged={this._onAccountFound.bind(
-                                                this
-                                            )}
-                                            onChange={this._onAccountChanged.bind(
-                                                this
-                                            )}
-                                            account={accountName}
-                                            tabIndex={2}
-                                            onAction={this._onAdd.bind(
-                                                this,
-                                                "white_listed"
-                                            )}
-                                            action_label="account.perm.confirm_add"
-                                            white={false}
-                                            typeahead={true}
-                                        />
-                                    </div>
-                                </div>
-                            </Tab>
-
-                            <Tab title="account.whitelist.black">
-                                <div
-                                    style={{paddingBottom: "1rem"}}
-                                    className="small-12"
-                                >
-                                    <div>
-                                        <AccountList
-                                            emptyText="account.whitelist.empty_black"
-                                            account={account}
-                                            getCurrentState={this._getCurrentState.bind(
-                                                this
-                                            )}
-                                            list={account.get(
-                                                "blacklisted_accounts"
-                                            )}
-                                            removeButton
-                                        />
-                                    </div>
-                                    <div style={{padding: "2rem 1rem"}}>
-                                        <AccountSelector
-                                            label={
-                                                "account.whitelist.add_black"
-                                            }
-                                            accountName={accountName}
-                                            onAccountChanged={this._onAccountFound.bind(
-                                                this
-                                            )}
-                                            onChange={this._onAccountChanged.bind(
-                                                this
-                                            )}
-                                            account={accountName}
-                                            tabIndex={2}
-                                            onAction={this._onAdd.bind(
-                                                this,
-                                                "black_listed"
-                                            )}
-                                            action_label="account.perm.confirm_add"
-                                            typeahead={true}
-                                        />
-                                    </div>
-                                </div>
-                            </Tab>
-
-                            <Tab title="account.whitelist.white_by">
-                                <div
-                                    style={{paddingBottom: "1rem"}}
-                                    className="small-12"
-                                >
-                                    <div>
-                                        <AccountList
-                                            emptyText="account.whitelist.empty_white_by"
-                                            account={account}
-                                            list={account.get(
-                                                "whitelisting_accounts"
-                                            )}
-                                        />
-                                    </div>
-                                </div>
-                            </Tab>
-
-                            <Tab title="account.whitelist.black_by">
-                                <div
-                                    style={{paddingBottom: "1rem"}}
-                                    className="small-12"
-                                >
-                                    <div>
-                                        <AccountList
-                                            emptyText="account.whitelist.empty_black_by"
-                                            account={account}
-                                            list={account.get(
-                                                "blacklisting_accounts"
-                                            )}
-                                        />
-                                    </div>
-                                </div>
-                            </Tab>
-                        </Tabs>
-                    </div>
+        let whitelistTitle = (
+            <div style={{paddingBottom: "1rem"}} className="small-12">
+                <div>
+                    <AccountList
+                        emptyText="account.whitelist.empty"
+                        account={account}
+                        getCurrentState={this._getCurrentState.bind(this)}
+                        list={
+                            account.get("whitelisted_accounts") ||
+                            Immutable.List()
+                        }
+                        removeButton
+                        white={true}
+                    />
+                </div>
+                {!account.get("whitelisted_accounts") ? (
+                    <p className="has-error">
+                        Please note, whitelisting is not working yet due to
+                        unresolved backend issue.
+                    </p>
+                ) : null}
+                <div style={{padding: "2rem 0"}}>
+                    <AccountSelector
+                        label={"account.whitelist.add"}
+                        accountName={accountName}
+                        onAccountChanged={this._onAccountFound.bind(this)}
+                        onChange={this._onAccountChanged.bind(this)}
+                        account={accountName}
+                        tabIndex={2}
+                        onAction={this._onAdd.bind(this, "white_listed")}
+                        action_label="account.perm.confirm_add"
+                        white={false}
+                        typeahead={true}
+                    />
                 </div>
             </div>
+        );
+
+        let whitelistBlack = (
+            <div style={{paddingBottom: "1rem"}} className="small-12">
+                <div>
+                    <AccountList
+                        emptyText="account.whitelist.empty_black"
+                        account={account}
+                        getCurrentState={this._getCurrentState.bind(this)}
+                        list={account.get("blacklisted_accounts")}
+                        removeButton
+                    />
+                </div>
+                <div style={{padding: "2rem 1rem"}}>
+                    <AccountSelector
+                        label={"account.whitelist.add_black"}
+                        accountName={accountName}
+                        onAccountChanged={this._onAccountFound.bind(this)}
+                        onChange={this._onAccountChanged.bind(this)}
+                        account={accountName}
+                        tabIndex={2}
+                        onAction={this._onAdd.bind(this, "black_listed")}
+                        action_label="account.perm.confirm_add"
+                        typeahead={true}
+                    />
+                </div>
+            </div>
+        );
+
+        let whitelistWhiteBy = (
+            <div style={{paddingBottom: "1rem"}} className="small-12">
+                <div>
+                    <AccountList
+                        emptyText="account.whitelist.empty_white_by"
+                        account={account}
+                        list={account.get("whitelisting_accounts")}
+                    />
+                </div>
+            </div>
+        );
+
+        let whitelistBlackBy = (
+            <div style={{paddingBottom: "1rem"}} className="small-12">
+                <div>
+                    <AccountList
+                        emptyText="account.whitelist.empty_black_by"
+                        account={account}
+                        list={account.get("blacklisting_accounts")}
+                    />
+                </div>
+            </div>
+        );
+
+        const items = [
+            {
+                title: "account.whitelist.title",
+                content: whitelistTitle
+            },
+            {
+                title: "account.whitelist.black",
+                content: whitelistBlack
+            },
+            {
+                title: "account.whitelist.white_by",
+                content: whitelistWhiteBy
+            },
+            {
+                title: "account.whitelist.black_by",
+                content: whitelistBlackBy
+            }
+        ];
+
+        return (
+            <Tabs
+                items={items}
+                dashboardTabsClass="dashboard__tabs permissions"
+            />
         );
     }
 }

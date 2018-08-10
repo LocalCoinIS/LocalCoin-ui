@@ -534,7 +534,7 @@ const routes = (
             <Route
                 path="permissions"
                 getComponent={(location, cb) => {
-                    import("components/Account/AccountPermissions")
+                    import("components-brand-new/Account/AccountPermissions")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}
@@ -542,7 +542,7 @@ const routes = (
             <Route
                 path="voting"
                 getComponent={(location, cb) => {
-                    import("components/Account/AccountVoting")
+                    import("components-brand-new/Account/AccountVoting")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}

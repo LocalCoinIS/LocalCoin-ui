@@ -130,29 +130,33 @@ class AccountMembership extends React.Component {
                                             asset: core_asset
                                         }}
                                     />
-                                    <div
-                                        className="button no-margin"
+                                    <button
+                                        className="btn large inverted no-margin"
                                         onClick={this.upgradeAccount.bind(
                                             this,
                                             account.id,
                                             true
                                         )}
                                     >
-                                        <Translate content="account.member.upgrade_lifetime" />
-                                    </div>{" "}
+                                        {counterpart.translate(
+                                            "account.member.upgrade_lifetime"
+                                        )}
+                                    </button>{" "}
                                     &nbsp; &nbsp;
                                     {true ||
                                     member_status === "annual" ? null : (
-                                        <div
-                                            className="button"
+                                        <button
+                                            className="btn large inverted"
                                             onClick={this.upgradeAccount.bind(
                                                 this,
                                                 account.id,
                                                 false
                                             )}
                                         >
-                                            <Translate content="account.member.subscribe" />
-                                        </div>
+                                            {counterpart.translate(
+                                                "account.member.subscribe"
+                                            )}
+                                        </button>
                                     )}
                                 </div>
                                 <br />

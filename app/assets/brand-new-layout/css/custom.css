@@ -87,3 +87,17 @@ label,
 .markets-list li {
     cursor: pointer;
 }
+
+textarea,
+textarea:hover,
+[type="number"],
+.typeahead__input {
+    background-color: #dce6f2 !important;
+    color: #00195b !important;
+    font-size: 15px !important;
+    border: 1px solid #7fafe8 !important;
+}
+
+.typeahead {
+    margin-right: 10px;
+}
