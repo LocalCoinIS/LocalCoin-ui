@@ -68,7 +68,7 @@ import News from "./components/News";
 import HelpContent from "./components-brand-new/Help/Content";
 import HelpSidebar from "./components-brand-new/Help/Sidebar";
 import InitError from "./components/InitError";
-import LoginSelector from "./components/LoginSelector";
+import LoginSelector from "./components-brand-new/LoginSelector";
 import CreateWorker from "./components/Account/CreateWorker";
 import Header from "./components-brand-new/Layout/Header";
 import Footer from "./components-brand-new/Layout/Footer";
@@ -157,7 +157,15 @@ const routes = (
             }}
         />
 
-        <Route path="wallet" component={WalletManager}>
+        <Route
+            path="wallet"
+            components={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: WalletManager,
+                footerBlock: Footer
+            }}
+        >
             {/* wallet management console */}
             <IndexRoute component={WalletOptions} />
             <Route path="change" component={ChangeActiveWallet} />
@@ -172,15 +180,44 @@ const routes = (
             <Route path="balance-claims" component={BalanceClaimActive} />
         </Route>
 
-        <Route path="create-wallet" component={WalletCreate} />
+        <Route
+            path="create-wallet"
+            components={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: WalletCreate,
+                footerBlock: Footer
+            }}
+        />
         <Route
             path="create-wallet-brainkey"
-            component={CreateWalletFromBrainkey}
+            components={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: CreateWalletFromBrainkey,
+                footerBlock: Footer
+            }}
         />
 
-        <Route path="transfer" component={Transfer} />
+        <Route
+            path="transfer"
+            components={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: Transfer,
+                footerBlock: Footer
+            }}
+        />
 
-        <Route path="invoice/:data" component={Invoice} />
+        <Route
+            path="invoice/:data"
+            components={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: Invoice,
+                footerBlock: Footer
+            }}
+        />
         <Route
             path="explorer/markets"
             component={{
@@ -217,14 +254,46 @@ const routes = (
                 footerBlock: Footer
             }}
         />
-        <Route path="block/:height" component={BlockContainer} />
-        <Route path="asset/:symbol" component={Asset} />
-        <Route path="create-account" component={LoginSelector}>
+        <Route
+            path="block/:height"
+            components={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: BlockContainer,
+                footerBlock: Footer
+            }}
+        />
+        <Route
+            path="asset/:symbol"
+            components={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: Asset,
+                footerBlock: Footer
+            }}
+        />
+        <Route
+            path="create-account"
+            components={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: LoginSelector,
+                footerBlock: Footer
+            }}
+        >
             <Route path="wallet" component={CreateAccount} />
             <Route path="password" component={CreateAccountPassword} />
         </Route>
 
-        <Route path="existing-account" component={ExistingAccount}>
+        <Route
+            path="existing-account"
+            components={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: ExistingAccount,
+                footerBlock: Footer
+            }}
+        >
             <IndexRoute component={BackupRestore} />
             <Route path="import-backup" component={ExistingAccountOptions} />
             <Route path="import-keys" component={ImportKeys} />
@@ -232,7 +301,15 @@ const routes = (
             <Route path="balance-claim" component={BalanceClaimActive} />
         </Route>
 
-        <Route path="/accounts" component={DashboardAccountsOnly} />
+        <Route
+            path="/accounts"
+            components={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: DashboardAccountsOnly,
+                footerBlock: Footer
+            }}
+        />
 
         <Route
             path="/account/:account_name"
@@ -262,10 +339,42 @@ const routes = (
             <Redirect from="orders" to="/account/:account_name" />
         </Route>
 
-        <Route path="deposit-withdraw" component={AccountDepositWithdraw} />
-        <Route path="create-worker" component={CreateWorker} />
-        <Route path="/init-error" component={InitError} />
-        <Route path="/news" component={News} />
+        <Route
+            path="deposit-withdraw"
+            components={{
+                headerBlock: Header,
+                sidebarBlock: Sidebar,
+                contentBlock: AccountDepositWithdraw,
+                footerBlock: Footer
+            }}
+        />
+        <Route
+            path="create-worker"
+            components={{
+                headerBlock: Header,
+                sidebarBlock: Sidebar,
+                contentBlock: CreateWorker,
+                footerBlock: Footer
+            }}
+        />
+        <Route
+            path="/init-error"
+            components={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: InitError,
+                footerBlock: Footer
+            }}
+        />
+        <Route
+            path="/news"
+            components={{
+                headerBlock: Header,
+                sidebarBlock: Sidebar,
+                contentBlock: News,
+                footerBlock: Footer
+            }}
+        />
         <Route
             path="/help"
             components={{
@@ -305,7 +414,15 @@ const routes = (
                 </Route>
             </Route>
         </Route>
-        <Route path="*" component={Page404} />
+        <Route
+            path="*"
+            components={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: Page404,
+                footerBlock: Footer
+            }}
+        />
     </Route>
 );
 

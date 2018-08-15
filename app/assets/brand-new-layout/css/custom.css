@@ -101,3 +101,9 @@ textarea:hover,
 .typeahead {
     margin-right: 10px;
 }
+
+#content > div {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}

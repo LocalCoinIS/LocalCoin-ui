@@ -379,9 +379,14 @@ const routes = (
         />
         <Route
             path="create-account"
-            getComponent={(location, cb) => {
-                import("components/LoginSelector")
-                    .then(loadRoute(cb))
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components-brand-new/LoginSelector"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
             }}
         >
