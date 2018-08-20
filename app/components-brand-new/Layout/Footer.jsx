@@ -174,7 +174,13 @@ class Footer extends React.Component {
             <footer className="footer">
                 <div className="footer-line">
                     <div className="footer-info">
-                        <span className="footer-info__status">
+                        <span
+                            className="footer-info__status"
+                            onClick={e => {
+                                e.preventDefault();
+                                this.context.router.push("/settings/access");
+                            }}
+                        >
                             {!connected
                                 ? counterpart.translate("footer.disconnected")
                                 : activeNode.name}

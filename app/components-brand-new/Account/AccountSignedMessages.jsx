@@ -289,38 +289,26 @@ class AccountSignedMessages extends React.Component {
                         style={{
                             float: "right",
                             marginTop: "0.1em",
-                            marginBottom: "0.5em"
+                            marginBottom: "0.5em",
+                            display: "flex",
+                            alignItems: "center"
                         }}
                     >
-                        <table>
-                            <tr>
-                                <td>
-                                    <label>
-                                        <Translate content="account.signedmessages.verifyonchange" />
-                                    </label>
-                                </td>
-                                <td>
-                                    <div
-                                        className="switch"
-                                        onClick={this._tabVMToggleVerifyOnChange.bind(
-                                            this
-                                        )}
-                                    >
-                                        <input
-                                            type="checkbox"
-                                            checked={
-                                                this.state
-                                                    .tabvm_flag_verifyonchange
-                                            }
-                                            value={counterpart.translate(
-                                                "account.signedmessages.verifyonchange"
-                                            )}
-                                        />
-                                        <label />
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
+                        <Translate content="account.signedmessages.verifyonchange" />
+                        &nbsp;
+                        <div
+                            className="switch"
+                            onClick={this._tabVMToggleVerifyOnChange.bind(this)}
+                        >
+                            <input
+                                type="checkbox"
+                                checked={this.state.tabvm_flag_verifyonchange}
+                                value={counterpart.translate(
+                                    "account.signedmessages.verifyonchange"
+                                )}
+                            />
+                            <label />
+                        </div>
                     </div>
                 </div>
                 <textarea
