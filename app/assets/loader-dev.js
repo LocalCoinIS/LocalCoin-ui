@@ -1,5 +1,6 @@
 require("./stylesheets/app.scss");
-require("./brand-new-layout/css/main.css");
+require("./brand-new-layout/sass/main.sass");
+require("./brand-new-layout/css/fonts.css");
 require("./brand-new-layout/css/custom.css");
 require("./brand-new-layout/img/images");
 require("file-loader?name=index.html!./index-dev.html");

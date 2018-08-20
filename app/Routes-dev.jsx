@@ -32,7 +32,7 @@ import AccountDepositWithdraw from "./components/Account/AccountDepositWithdraw"
 import AccountPermissions from "./components-brand-new/Account/AccountPermissions";
 import AccountWhitelist from "./components-brand-new/Account/AccountWhitelist";
 import AccountVoting from "./components-brand-new/Account/AccountVoting";
-import Page404 from "./components/Page404/Page404";
+import Page404 from "./components-brand-new/Page404/Page404";
 // import AccountOrders from "./components/Account/AccountOrders";
 import AccountSignedMessages from "./components-brand-new/Account/AccountSignedMessages";
 import ExchangeContainer from "./components/Exchange/ExchangeContainer";
@@ -370,7 +370,7 @@ const routes = (
             path="/news"
             components={{
                 headerBlock: Header,
-                sidebarBlock: Sidebar,
+                sidebarBlock: null,
                 contentBlock: News,
                 footerBlock: Footer
             }}

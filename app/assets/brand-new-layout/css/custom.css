@@ -1,3 +1,19 @@
+/* Page404 */
+.page-404 {
+    margin: 0 auto;
+    margin-top: 30px;
+}
+/* /Page404 */
+
+/* Header-список-валют  */
+.balance__label .total-value span {
+    color: #fff;
+}
+.balance__label:after {
+    background-image: none !important;
+}
+/* /Header-список-валют  */
+
 .sidebar .help-content {
     font-size: 15px;
 }

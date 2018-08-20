@@ -181,18 +181,25 @@ class Footer extends React.Component {
                         </span>
                         <span className="footer-info__data">
                             {counterpart.translate("footer.latency")}
-                            &nbsp;{!connected
+                            &nbsp;
+                            {!connected
                                 ? "-"
                                 : !activeNode.ping
                                     ? "-"
-                                    : activeNode.ping + "ms"}&nbsp;/&nbsp;
+                                    : activeNode.ping + "ms"}
+                            &nbsp;/&nbsp;
                             {counterpart.translate("footer.block")}
-                            &nbsp;#{block_height}
+                            &nbsp;#
+                            {block_height}
                         </span>
                     </div>
                     <button
                         className="btn large inverted flat support-btn"
                         type="button"
+                        onClick={e => {
+                            e.preventDefault();
+                            this.context.router.push("/help");
+                        }}
                     >
                         {counterpart.translate("global.help")}
                     </button>

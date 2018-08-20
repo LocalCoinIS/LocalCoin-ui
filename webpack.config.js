@@ -245,7 +245,7 @@ module.exports = function(env) {
                     use: cssLoaders
                 },
                 {
-                    test: /\.scss$/,
+                    test: /\.(scss|sass)$/,
                     use: scssLoaders
                 },
                 {

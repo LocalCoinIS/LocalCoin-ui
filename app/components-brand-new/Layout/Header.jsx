@@ -479,6 +479,22 @@ class Header extends React.Component {
                                         </a>
                                     </li>
                                 )}
+                                {!!createAccountLink ? null : (
+                                    <li className="mobile__list__item">
+                                        <a
+                                            className="mobile__list__link"
+                                            href="#"
+                                            onClick={this._onNavigate.bind(
+                                                this,
+                                                "deposit-withdraw"
+                                            )}
+                                        >
+                                            {counterpart.translate(
+                                                "header.deposit-withdraw"
+                                            )}
+                                        </a>
+                                    </li>
+                                )}
                             </ul>
                         </div>
                     </div>
@@ -563,6 +579,30 @@ class Header extends React.Component {
                                         </a>
                                     </li>
                                 )}
+                                {!!createAccountLink ? null : (
+                                    <li
+                                        className={cnames("navigation__item", {
+                                            active:
+                                                active.indexOf(
+                                                    "deposit-withdraw"
+                                                ) !== -1
+                                        })}
+                                    >
+                                        <a
+                                            className="navigation__link"
+                                            href="#"
+                                            onClick={this._onNavigate.bind(
+                                                this,
+                                                "deposit-withdraw"
+                                            )}
+                                        >
+                                            {counterpart.translate(
+                                                "header.deposit-withdraw"
+                                            )}
+                                        </a>
+                                    </li>
+                                )}
+                                {/* В меню Settings */}
                                 <li
                                     className={cnames("navigation__item", {
                                         active:
@@ -598,6 +638,7 @@ class Header extends React.Component {
                                         {counterpart.translate("header.help")}
                                     </a>
                                 </li>
+                                {/* В меню Settings */}
                             </ul>
                         </nav>
                         {currentAccount ? (
@@ -607,7 +648,7 @@ class Header extends React.Component {
                                     &nbsp;
                                     {walletBalance}
                                 </span>
-                                {/* если одна валюта, то дропдаун не нужен! */}
+                                {/* скрыт пока не определимся с о списком валют */}
                                 {/*
                                 <ul className="balance__list">
                                     <li className="balance__item active">
@@ -636,13 +677,6 @@ class Header extends React.Component {
                         ) : null}
                         {currentAccount ? (
                             <div className="user">
-                                {/*
-                                <Identicon
-                                    id={currentAccount}
-                                    account={currentAccount}
-                                    size={{height: 20, width: 20}}
-                                />
-                                */}
                                 <AccountImage
                                     size={{height: 20, width: 20}}
                                     account={currentAccount}

@@ -8,6 +8,12 @@ import Header from "./components-brand-new/Layout/Header";
 import Footer from "./components-brand-new/Layout/Footer";
 import Witnesses from "./components-brand-new/Explorer/Witnesses";
 import CommitteeMembers from "./components-brand-new/Explorer/CommitteeMembers";
+import {WalletManager} from "./components/Wallet/WalletManager";
+import {
+    WalletCreate,
+    CreateWalletFromBrainkey
+} from "./components/Wallet/WalletCreate";
+import {ExistingAccount} from "./components/Wallet/ExistingAccount";
 
 /*
 * Electron does not support async loading of components via System.import,
@@ -131,7 +137,7 @@ const routes = (
         />
         <Route
             path="/explorer/witnesses"
-            component={{
+            components={{
                 headerBlock: Header,
                 sidebarBlock: null,
                 contentBlock: Witnesses,
@@ -140,7 +146,7 @@ const routes = (
         />
         <Route
             path="/explorer/committee-members"
-            component={{
+            components={{
                 headerBlock: Header,
                 sidebarBlock: null,
                 contentBlock: CommitteeMembers,
@@ -178,10 +184,11 @@ const routes = (
 
         <Route
             path="wallet"
-            getComponent={(location, cb) => {
-                import("components/Wallet/WalletManager")
-                    .then(loadRoute(cb, "WalletManager"))
-                    .catch(errorLoading);
+            components={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: WalletManager,
+                footerBlock: Footer
             }}
         >
             {/* wallet management console */}
@@ -276,36 +283,48 @@ const routes = (
 
         <Route
             path="create-wallet"
-            getComponent={(location, cb) => {
-                import("components/Wallet/WalletCreate")
-                    .then(loadRoute(cb, "WalletCreate"))
-                    .catch(errorLoading);
+            components={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: WalletCreate,
+                footerBlock: Footer
             }}
         />
 
         <Route
             path="create-wallet-brainkey"
-            getComponent={(location, cb) => {
-                import("components/Wallet/WalletCreate")
-                    .then(loadRoute(cb, "CreateWalletFromBrainkey"))
-                    .catch(errorLoading);
+            components={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: CreateWalletFromBrainkey,
+                footerBlock: Footer
             }}
         />
 
         <Route
             path="transfer"
-            getComponent={(location, cb) => {
-                import("components/Transfer/Transfer")
-                    .then(loadRoute(cb))
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components/Transfer/Transfer"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
             }}
         />
 
         <Route
             path="invoice/:data"
-            getComponent={(location, cb) => {
-                import("components/Transfer/Invoice")
-                    .then(loadRoute(cb))
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components/Transfer/Invoice"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
             }}
         />
@@ -363,17 +382,27 @@ const routes = (
         />
         <Route
             path="block/:height"
-            getComponent={(location, cb) => {
-                import("components/Blockchain/BlockContainer")
-                    .then(loadRoute(cb))
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components/Blockchain/BlockContainer"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
             }}
         />
         <Route
             path="asset/:symbol"
-            getComponent={(location, cb) => {
-                import("components/Blockchain/Asset")
-                    .then(loadRoute(cb))
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components/Blockchain/Asset"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
             }}
         />
@@ -410,19 +439,25 @@ const routes = (
 
         <Route
             path="accounts"
-            getComponent={(location, cb) => {
-                import("components/Dashboard/DashboardAccountsOnly")
-                    .then(loadRoute(cb))
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components/Dashboard/DashboardAccountsOnly"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
             }}
         />
 
         <Route
             path="existing-account"
-            getComponent={(location, cb) => {
-                import("components/Wallet/ExistingAccount")
-                    .then(loadRoute(cb, "ExistingAccount"))
-                    .catch(errorLoading);
+            components={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: ExistingAccount,
+                footerBlock: Footer
             }}
         >
             <IndexRoute
@@ -574,30 +609,55 @@ const routes = (
         </Route>
         <Route
             path="deposit-withdraw"
-            getComponent={(location, cb) => {
-                import("components/Account/AccountDepositWithdraw")
-                    .then(loadRoute(cb))
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    import("components-brand-new/Layout/Sidebar"),
+                    import("components/Account/AccountDepositWithdraw"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
             }}
         />
         <Route
             path="create-worker"
-            getComponent={(location, cb) => {
-                import("components/Account/CreateWorker")
-                    .then(loadRoute(cb))
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    import("components-brand-new/Layout/Sidebar"),
+                    import("components/Account/CreateWorker"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
             }}
         />
         <Route
             path="/init-error"
-            getComponent={(location, cb) => {
-                import("components/InitError")
-                    .then(loadRoute(cb))
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components/InitError"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
             }}
         />
         <Route
             path="/news"
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components/News"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
+            }}
             getComponent={(location, cb) => {
                 import("components/News")
                     .then(loadRoute(cb))
@@ -661,9 +721,14 @@ const routes = (
         </Route>
         <Route
             path="*"
-            getComponent={(location, cb) => {
-                import("components/Page404/Page404")
-                    .then(loadRoute(cb))
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components-brand-new/Page404/Page404"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
             }}
         />
