@@ -41,15 +41,7 @@ class Sidebar extends React.Component {
         super(props);
         const active = context.location.pathname;
         const currentAccount = this.props.currentAccount;
-        const showSubMenu =
-            currentAccount &&
-            (active.indexOf(`/account/${currentAccount}/assets`) !== -1 ||
-                active.indexOf(`/account/${currentAccount}/permissions`) !==
-                    -1 ||
-                active.indexOf(`/account/${currentAccount}/whitelist`) !== -1 ||
-                active.indexOf(`/account/${currentAccount}/vesting`) !== -1 ||
-                active.indexOf(`/account/${currentAccount}/signedmessages`) !==
-                    -1);
+        const showSubMenu = currentAccount;
         this.state = {
             active,
             showSubMenu
@@ -154,9 +146,14 @@ class Sidebar extends React.Component {
         let myAccounts = AccountStore.getMyAccounts();
         let myAccountCount = myAccounts.length;
 
-        const makeSidebarMenuItem = ({title, link, subLink, noBorder}) => {
+        const makeSidebarMenuItem = ({
+            title,
+            link,
+            subLink,
+            noBorder,
+            isActive
+        }) => {
             subLink = !!subLink;
-            const isActive = active.indexOf(link) !== -1;
             let str = title;
             if (typeof str === "string" && str.indexOf(".") > 0) {
                 str = counterpart.translate(str);
@@ -185,9 +182,6 @@ class Sidebar extends React.Component {
         return !currentAccount ? null : (
             <div className="sidebar">
                 <div className="sidebar__qr">
-                    {/*
-                    <Identicon id={currentAccount} account={currentAccount} size={{height: 150, width: 150}} />
-                    */}
                     <AccountImage
                         size={{height: 150, width: 150}}
                         account={currentAccount}
@@ -205,15 +199,24 @@ class Sidebar extends React.Component {
                 <ul className="sidebar__menu">
                     {makeSidebarMenuItem({
                         title: "header.dashboard",
-                        link: `/account/${currentAccount}/overview`
+                        link: `/account/${currentAccount}`,
+                        isActive: active === `/account/${currentAccount}`
                     })}
                     {makeSidebarMenuItem({
                         title: "account.member.stats",
-                        link: `/account/${currentAccount}/member-stats`
+                        link: `/account/${currentAccount}/member-stats`,
+                        isActive:
+                            active.indexOf(
+                                `/account/${currentAccount}/member-stats`
+                            ) !== -1
                     })}
                     {makeSidebarMenuItem({
                         title: "account.voting",
-                        link: `/account/${currentAccount}/voting`
+                        link: `/account/${currentAccount}/voting`,
+                        isActive:
+                            active.indexOf(
+                                `/account/${currentAccount}/voting`
+                            ) !== -1
                     })}
                     <li
                         className={cnames("sidebar__menu__item expand", {
@@ -231,27 +234,47 @@ class Sidebar extends React.Component {
                             {makeSidebarMenuItem({
                                 title: "explorer.assets.title",
                                 link: `/account/${currentAccount}/assets`,
+                                isActive:
+                                    active.indexOf(
+                                        `/account/${currentAccount}/assets`
+                                    ) !== -1,
                                 subLink: true,
                                 noBorder: true
                             })}
                             {makeSidebarMenuItem({
                                 title: "account.permissions",
                                 link: `/account/${currentAccount}/permissions`,
+                                isActive:
+                                    active.indexOf(
+                                        `/account/${currentAccount}/permissions`
+                                    ) !== -1,
                                 subLink: true
                             })}
                             {makeSidebarMenuItem({
                                 title: "account.whitelist.title",
                                 link: `/account/${currentAccount}/whitelist`,
+                                isActive:
+                                    active.indexOf(
+                                        `/account/${currentAccount}/whitelist`
+                                    ) !== -1,
                                 subLink: true
                             })}
                             {makeSidebarMenuItem({
                                 title: "account.vesting.title",
                                 link: `/account/${currentAccount}/vesting`,
+                                isActive:
+                                    active.indexOf(
+                                        `/account/${currentAccount}/vesting`
+                                    ) !== -1,
                                 subLink: true
                             })}
                             {makeSidebarMenuItem({
                                 title: "account.signedmessages.menuitem",
                                 link: `/account/${currentAccount}/signedmessages`,
+                                isActive:
+                                    active.indexOf(
+                                        `/account/${currentAccount}/signedmessages`
+                                    ) !== -1,
                                 subLink: true
                             })}
                         </ul>
@@ -291,42 +314,39 @@ class Sidebar extends React.Component {
     }
 }
 
-export default connect(
-    Sidebar,
-    {
-        listenTo() {
-            return [
-                AccountStore,
-                WalletUnlockStore,
-                WalletManagerStore,
-                SettingsStore,
-                GatewayStore
-            ];
-        },
-        getProps() {
-            const chainID = Apis.instance().chain_id;
-            return {
-                backedCoins: GatewayStore.getState().backedCoins,
-                myActiveAccounts: AccountStore.getState().myActiveAccounts,
-                currentAccount:
-                    AccountStore.getState().currentAccount ||
-                    AccountStore.getState().passwordAccount,
-                passwordAccount: AccountStore.getState().passwordAccount,
-                locked: WalletUnlockStore.getState().locked,
-                current_wallet: WalletManagerStore.getState().current_wallet,
-                lastMarket: SettingsStore.getState().viewSettings.get(
-                    `lastMarket${chainID ? "_" + chainID.substr(0, 8) : ""}`
-                ),
-                starredAccounts: AccountStore.getState().starredAccounts,
-                passwordLogin: SettingsStore.getState().settings.get(
-                    "passwordLogin"
-                ),
-                currentLocale: SettingsStore.getState().settings.get("locale"),
-                hiddenAssets: SettingsStore.getState().hiddenAssets,
-                settings: SettingsStore.getState().settings,
-                locales: SettingsStore.getState().defaults.locale,
-                contacts: AccountStore.getState().accountContacts
-            };
-        }
+export default connect(Sidebar, {
+    listenTo() {
+        return [
+            AccountStore,
+            WalletUnlockStore,
+            WalletManagerStore,
+            SettingsStore,
+            GatewayStore
+        ];
+    },
+    getProps() {
+        const chainID = Apis.instance().chain_id;
+        return {
+            backedCoins: GatewayStore.getState().backedCoins,
+            myActiveAccounts: AccountStore.getState().myActiveAccounts,
+            currentAccount:
+                AccountStore.getState().currentAccount ||
+                AccountStore.getState().passwordAccount,
+            passwordAccount: AccountStore.getState().passwordAccount,
+            locked: WalletUnlockStore.getState().locked,
+            current_wallet: WalletManagerStore.getState().current_wallet,
+            lastMarket: SettingsStore.getState().viewSettings.get(
+                `lastMarket${chainID ? "_" + chainID.substr(0, 8) : ""}`
+            ),
+            starredAccounts: AccountStore.getState().starredAccounts,
+            passwordLogin: SettingsStore.getState().settings.get(
+                "passwordLogin"
+            ),
+            currentLocale: SettingsStore.getState().settings.get("locale"),
+            hiddenAssets: SettingsStore.getState().hiddenAssets,
+            settings: SettingsStore.getState().settings,
+            locales: SettingsStore.getState().defaults.locale,
+            contacts: AccountStore.getState().accountContacts
+        };
     }
-);
+});

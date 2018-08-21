@@ -542,7 +542,7 @@ const routes = (
             <Route
                 path="create-asset"
                 getComponent={(location, cb) => {
-                    import("components/Account/AccountAssetCreate")
+                    import("components-brand-new/Account/AccountAssetCreate")
                         .then(loadRoute(cb, "AccountAssetCreate"))
                         .catch(errorLoading);
                 }}

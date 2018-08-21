@@ -213,7 +213,12 @@ export default class SettingsEntry extends React.Component {
                                                 "additional.transferToMe"
                                             )}
                                         />
-                                        <span className="checkbox__styled" />
+                                        <span
+                                            className={cnames(
+                                                "checkbox__styled",
+                                                {disable: !value.allow}
+                                            )}
+                                        />
                                         <span className="checkbox__label">
                                             {counterpart.translate(
                                                 "settings.browser_notifications_additional_transfer_to_me"

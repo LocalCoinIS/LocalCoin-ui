@@ -213,6 +213,11 @@
 			margin: auto
 			background-color: #354c9b
 			border-radius: 50%
+	table.blue-heading
+		th
+			background-color: #c1d0e3
+		td
+			background-color: transparent
 	table.blue-bg
 		th
 			background-color: #c1d0e3
@@ -1426,6 +1431,18 @@ body.localcoin
 	.label
 		display: block
 		margin-bottom: 15px
+	.label.info
+		color: #ce7925
+		background-color: #dce6f2
+		outline: none
+		font-size: 13px
+		border: 1px solid #ce7925
+		line-height: 1
+		padding: 3px 7px
+		margin: 0 4px 4px 0
+		border-radius: 2px
+		> span
+			color: inherit
 	.key-icon
 		display: inline-block
 		min-width: 36px
@@ -1660,3 +1677,60 @@ body.localcoin
 
 body.localcoin .dashboard__tabs.small .dashboard__tabs__item
 	padding: 15px 24px
+
+
+.card-divider
+	background-color: #e0e8f1
+.grid-content
+	padding: 0
+
+
+.account-overview
+	display: flex
+	background-color: #9bb2cf
+	border-top-left-radius: 2px
+	border-top-right-radius: 2px
+	box-shadow: inset 0px -2px 2px -1px rgba(0,25,91,0.35)
+	list-style: none
+	li
+		display: flex
+		position: relative
+		flex-direction: column
+		align-items: flex-end
+		padding: 8px 24px
+		cursor: pointer
+		h4, span
+			position: relative
+			z-index: 3
+		&:after
+			content: ''
+			position: absolute
+			right: -1px
+			top: 0
+			bottom: 0
+			margin: auto
+			width: 1px
+			height: 42px
+			background-color: #cdd9e7
+			z-index: 1
+		&:first-child
+			border-top-left-radius: 2px
+			&:before
+				box-shadow: none!important
+		&:last-child
+			&:after
+				display: none
+	li.is-active
+		box-shadow: 3px 0px 1px -2px rgba(0,25,91,0.35)
+		&:after
+			right: 0
+		&:before
+			content: ''
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			background-color: #c1d0e3
+			z-index: 2
+			box-shadow: -3px 0px 1px -2px rgba(0,25,91,0.35)

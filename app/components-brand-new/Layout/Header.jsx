@@ -62,6 +62,7 @@ class Header extends React.Component {
             this
         );
         this.onBodyClick = this.onBodyClick.bind(this);
+        this._renderSettingsMenu = this._renderSettingsMenu.bind(this);
     }
 
     componentWillMount() {
@@ -287,6 +288,50 @@ class Header extends React.Component {
 
     _onRemoveContact() {
         AccountActions.removeAccountContact(this.props.currentAccount);
+    }
+
+    _renderSettingsMenu() {
+        const items = [
+            {
+                label: "header.settings",
+                path: "/settings"
+            },
+            {
+                label: "header.explorer",
+                path: "/explorer/blocks"
+            },
+            {
+                label: "header.help",
+                path: "/help"
+            }
+        ];
+        return (
+            <div className="settings">
+                <img
+                    className="settings__icon"
+                    src={settingsIcon}
+                    alt="settings"
+                />
+                <ul className="balance__list">
+                    {items.map(({label, path}) => {
+                        return (
+                            <li className="balance__item">
+                                <a
+                                    className="balance__link"
+                                    href="#"
+                                    onClick={this._onNavigate.bind(this, path)}
+                                >
+                                    {typeof label === "string" &&
+                                    label.indexOf(".") > 0
+                                        ? counterpart.translate(label)
+                                        : label}
+                                </a>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </div>
+        );
     }
 
     render() {
@@ -602,43 +647,6 @@ class Header extends React.Component {
                                         </a>
                                     </li>
                                 )}
-                                {/* В меню Settings */}
-                                <li
-                                    className={cnames("navigation__item", {
-                                        active:
-                                            active.indexOf("explorer") !== -1
-                                    })}
-                                >
-                                    <a
-                                        className="navigation__link"
-                                        href="#"
-                                        onClick={this._onNavigate.bind(
-                                            this,
-                                            "/explorer"
-                                        )}
-                                    >
-                                        {counterpart.translate(
-                                            "header.explorer"
-                                        )}
-                                    </a>
-                                </li>
-                                <li
-                                    className={cnames("navigation__item", {
-                                        active: active.indexOf("help") !== -1
-                                    })}
-                                >
-                                    <a
-                                        className="navigation__link"
-                                        href="#"
-                                        onClick={this._onNavigate.bind(
-                                            this,
-                                            "/help"
-                                        )}
-                                    >
-                                        {counterpart.translate("header.help")}
-                                    </a>
-                                </li>
-                                {/* В меню Settings */}
                             </ul>
                         </nav>
                         {currentAccount ? (
@@ -687,22 +695,7 @@ class Header extends React.Component {
                                 </span>
                             </div>
                         ) : null}
-                        {currentAccount ? (
-                            <a
-                                className="settings"
-                                href="#"
-                                onClick={this._onNavigate.bind(
-                                    this,
-                                    "/settings"
-                                )}
-                            >
-                                <img
-                                    className="settings__icon"
-                                    src={settingsIcon}
-                                    alt="settings"
-                                />
-                            </a>
-                        ) : null}
+                        {currentAccount ? this._renderSettingsMenu() : null}
                         {currentAccount ? (
                             <a
                                 href="#"
@@ -755,42 +748,39 @@ class Header extends React.Component {
     }
 }
 
-export default connect(
-    Header,
-    {
-        listenTo() {
-            return [
-                AccountStore,
-                WalletUnlockStore,
-                WalletManagerStore,
-                SettingsStore,
-                GatewayStore
-            ];
-        },
-        getProps() {
-            const chainID = Apis.instance().chain_id;
-            return {
-                backedCoins: GatewayStore.getState().backedCoins,
-                myActiveAccounts: AccountStore.getState().myActiveAccounts,
-                currentAccount:
-                    AccountStore.getState().currentAccount ||
-                    AccountStore.getState().passwordAccount,
-                passwordAccount: AccountStore.getState().passwordAccount,
-                locked: WalletUnlockStore.getState().locked,
-                current_wallet: WalletManagerStore.getState().current_wallet,
-                lastMarket: SettingsStore.getState().viewSettings.get(
-                    `lastMarket${chainID ? "_" + chainID.substr(0, 8) : ""}`
-                ),
-                starredAccounts: AccountStore.getState().starredAccounts,
-                passwordLogin: SettingsStore.getState().settings.get(
-                    "passwordLogin"
-                ),
-                currentLocale: SettingsStore.getState().settings.get("locale"),
-                hiddenAssets: SettingsStore.getState().hiddenAssets,
-                settings: SettingsStore.getState().settings,
-                locales: SettingsStore.getState().defaults.locale,
-                contacts: AccountStore.getState().accountContacts
-            };
-        }
+export default connect(Header, {
+    listenTo() {
+        return [
+            AccountStore,
+            WalletUnlockStore,
+            WalletManagerStore,
+            SettingsStore,
+            GatewayStore
+        ];
+    },
+    getProps() {
+        const chainID = Apis.instance().chain_id;
+        return {
+            backedCoins: GatewayStore.getState().backedCoins,
+            myActiveAccounts: AccountStore.getState().myActiveAccounts,
+            currentAccount:
+                AccountStore.getState().currentAccount ||
+                AccountStore.getState().passwordAccount,
+            passwordAccount: AccountStore.getState().passwordAccount,
+            locked: WalletUnlockStore.getState().locked,
+            current_wallet: WalletManagerStore.getState().current_wallet,
+            lastMarket: SettingsStore.getState().viewSettings.get(
+                `lastMarket${chainID ? "_" + chainID.substr(0, 8) : ""}`
+            ),
+            starredAccounts: AccountStore.getState().starredAccounts,
+            passwordLogin: SettingsStore.getState().settings.get(
+                "passwordLogin"
+            ),
+            currentLocale: SettingsStore.getState().settings.get("locale"),
+            hiddenAssets: SettingsStore.getState().hiddenAssets,
+            settings: SettingsStore.getState().settings,
+            locales: SettingsStore.getState().defaults.locale,
+            contacts: AccountStore.getState().accountContacts
+        };
     }
-);
+});

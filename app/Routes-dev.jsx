@@ -24,7 +24,7 @@ import Explorer from "./components-brand-new/Explorer/Explorer";
 import AccountPage from "./components-brand-new/Account/AccountPage";
 import AccountOverview from "./components-brand-new/Account/AccountOverview";
 import AccountAssets from "./components-brand-new/Account/AccountAssets";
-import {AccountAssetCreate} from "./components/Account/AccountAssetCreate";
+import {AccountAssetCreate} from "./components-brand-new/Account/AccountAssetCreate";
 import AccountAssetUpdate from "./components/Account/AccountAssetUpdate";
 import AccountMembership from "./components-brand-new/Account/AccountMembership";
 import AccountVesting from "./components-brand-new/Account/AccountVesting";
