@@ -305,7 +305,7 @@ class AccountWhitelist extends React.Component {
         return (
             <Tabs
                 items={items}
-                dashboardTabsClass="dashboard__tabs permissions"
+                dashboardTabsClass="dashboard__tabs permissions small"
             />
         );
     }

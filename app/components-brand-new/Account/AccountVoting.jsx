@@ -1022,9 +1022,7 @@ class AccountVoting extends React.Component {
                     <tbody>
                         {workerTableIndex === 0
                             ? newWorkers
-                            : workerTableIndex === 1
-                                ? workers
-                                : expiredWorkers}
+                            : workerTableIndex === 1 ? workers : expiredWorkers}
                     </tbody>
                 </table>
             </div>
@@ -1048,7 +1046,7 @@ class AccountVoting extends React.Component {
         return (
             <Tabs
                 items={items}
-                dashboardTabsClass="dashboard__tabs permissions"
+                dashboardTabsClass="dashboard__tabs permissions small"
             />
         );
     }
