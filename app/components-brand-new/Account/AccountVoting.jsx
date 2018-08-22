@@ -4,7 +4,7 @@ import Translate from "react-translate-component";
 import accountUtils from "common/account_utils";
 import {ChainStore, FetchChainObjects} from "bitsharesjs/es";
 import WorkerApproval from "../../components/Account/WorkerApproval";
-import VotingAccountsList from "../../components/Account/VotingAccountsList";
+import VotingAccountsList from "./VotingAccountsList";
 import cnames from "classnames";
 import Tabs from "../Utility/Tabs";
 import BindToChainState from "../../components/Utility/BindToChainState";
@@ -656,7 +656,7 @@ class AccountVoting extends React.Component {
             });
 
         let actionButtons = (
-            <span>
+            <span style={{float: "right"}}>
                 <button
                     className={cnames(publish_buttons_class, {
                         success: this.isChanged()
@@ -737,17 +737,17 @@ class AccountVoting extends React.Component {
         );
 
         let tabWitnesses = (
-            <div className={cnames("content-block")}>
-                <div className="header-selector">
-                    {/* <Link to="/help/voting/witness"><Icon name="question-circle" title="icons.question_cirlce" /></Link> */}
-                    {proxyInput}
-                    <div
-                        style={{
-                            float: "right",
-                            marginTop: "-2.5rem"
-                        }}
-                    >
-                        {actionButtons}
+            <div>
+                <div className="dashboard__actions">
+                    <div className="container-fluid">
+                        <div className="row">
+                            <div className="col-xl-9 col-lg-12">
+                                {proxyInput}
+                            </div>
+                            <div className="col-xl-3 col-lg-6">
+                                {actionButtons}
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -773,17 +773,17 @@ class AccountVoting extends React.Component {
         );
 
         let tabCommitteeMembers = (
-            <div className={cnames("content-block")}>
-                <div className="header-selector">
-                    {/* <Link to="/help/voting/committee"><Icon name="question-circle" title="icons.question_cirlce" /></Link> */}
-                    {proxyInput}
-                    <div
-                        style={{
-                            float: "right",
-                            marginTop: "-2.5rem"
-                        }}
-                    >
-                        {actionButtons}
+            <div>
+                <div className="dashboard__actions">
+                    <div className="container-fluid">
+                        <div className="row">
+                            <div className="col-xl-9 col-lg-12">
+                                {proxyInput}
+                            </div>
+                            <div className="col-xl-3 col-lg-6">
+                                {actionButtons}
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <VotingAccountsList
@@ -1022,7 +1022,9 @@ class AccountVoting extends React.Component {
                     <tbody>
                         {workerTableIndex === 0
                             ? newWorkers
-                            : workerTableIndex === 1 ? workers : expiredWorkers}
+                            : workerTableIndex === 1
+                                ? workers
+                                : expiredWorkers}
                     </tbody>
                 </table>
             </div>
@@ -1046,6 +1048,7 @@ class AccountVoting extends React.Component {
         return (
             <Tabs
                 items={items}
+                inner={true}
                 dashboardTabsClass="dashboard__tabs permissions small"
             />
         );

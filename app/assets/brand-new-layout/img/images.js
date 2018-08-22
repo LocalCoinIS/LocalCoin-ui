@@ -7,6 +7,7 @@ export const eMarkets = require("!file-loader?name=asset-symbols/[name].svg!./e_
 export const eFee = require("!file-loader?name=asset-symbols/[name].svg!./e_fee.svg");
 
 export const logo = require("!file-loader?name=asset-symbols/[name].svg!./logo.svg");
+export const logoLight = require("!file-loader?name=asset-symbols/[name].svg!./logo_light.svg");
 export const userAvatar = require("!file-loader?name=asset-symbols/[name].png!./user.png");
 export const qr = require("!file-loader?name=asset-symbols/[name].jpg!./qr.jpg");
 

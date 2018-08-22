@@ -35,6 +35,80 @@ import {
     lockIcon,
     unlockIcon
 } from "../../assets/brand-new-layout/img/images";
+import onClickOutside from "react-onclickoutside";
+
+class SettingsMenuUnWrapped extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isOpen: false
+        };
+        this._toggleIsOpen = this._toggleIsOpen.bind(this);
+        this.handleClickOutside = this.handleClickOutside.bind(this);
+    }
+    handleClickOutside() {
+        this.setState({isOpen: false});
+    }
+    _toggleIsOpen() {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
+    }
+    render() {
+        const {onChange} = this.props;
+        const items = [
+            {
+                label: "header.settings",
+                path: "/settings"
+            },
+            {
+                label: "header.explorer",
+                path: "/explorer/blocks"
+            },
+            {
+                label: "header.help",
+                path: "/help"
+            }
+        ];
+        return (
+            <div className="settings">
+                <img
+                    className="settings__icon"
+                    src={settingsIcon}
+                    alt="settings"
+                    onClick={this._toggleIsOpen}
+                />
+                <ul
+                    className={cnames("balance__list", {
+                        "is-active": this.state.isOpen
+                    })}
+                >
+                    {items.map(({label, path}) => {
+                        return (
+                            <li className="balance__item" key={label}>
+                                <a
+                                    className="balance__link"
+                                    href="#"
+                                    onClick={e => {
+                                        onChange(path, e);
+                                        this._toggleIsOpen();
+                                    }}
+                                >
+                                    {typeof label === "string" &&
+                                    label.indexOf(".") > 0
+                                        ? counterpart.translate(label)
+                                        : label}
+                                </a>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </div>
+        );
+    }
+}
+
+const SettingsMenu = onClickOutside(SettingsMenuUnWrapped);
 
 class Header extends React.Component {
     static contextTypes = {
@@ -62,7 +136,6 @@ class Header extends React.Component {
             this
         );
         this.onBodyClick = this.onBodyClick.bind(this);
-        this._renderSettingsMenu = this._renderSettingsMenu.bind(this);
     }
 
     componentWillMount() {
@@ -288,50 +361,6 @@ class Header extends React.Component {
 
     _onRemoveContact() {
         AccountActions.removeAccountContact(this.props.currentAccount);
-    }
-
-    _renderSettingsMenu() {
-        const items = [
-            {
-                label: "header.settings",
-                path: "/settings"
-            },
-            {
-                label: "header.explorer",
-                path: "/explorer/blocks"
-            },
-            {
-                label: "header.help",
-                path: "/help"
-            }
-        ];
-        return (
-            <div className="settings">
-                <img
-                    className="settings__icon"
-                    src={settingsIcon}
-                    alt="settings"
-                />
-                <ul className="balance__list">
-                    {items.map(({label, path}) => {
-                        return (
-                            <li className="balance__item">
-                                <a
-                                    className="balance__link"
-                                    href="#"
-                                    onClick={this._onNavigate.bind(this, path)}
-                                >
-                                    {typeof label === "string" &&
-                                    label.indexOf(".") > 0
-                                        ? counterpart.translate(label)
-                                        : label}
-                                </a>
-                            </li>
-                        );
-                    })}
-                </ul>
-            </div>
-        );
     }
 
     render() {
@@ -695,7 +724,11 @@ class Header extends React.Component {
                                 </span>
                             </div>
                         ) : null}
-                        {currentAccount ? this._renderSettingsMenu() : null}
+                        {currentAccount ? (
+                            <SettingsMenu
+                                onChange={this._onNavigate.bind(this)}
+                            />
+                        ) : null}
                         {currentAccount ? (
                             <a
                                 href="#"
@@ -748,39 +781,42 @@ class Header extends React.Component {
     }
 }
 
-export default connect(Header, {
-    listenTo() {
-        return [
-            AccountStore,
-            WalletUnlockStore,
-            WalletManagerStore,
-            SettingsStore,
-            GatewayStore
-        ];
-    },
-    getProps() {
-        const chainID = Apis.instance().chain_id;
-        return {
-            backedCoins: GatewayStore.getState().backedCoins,
-            myActiveAccounts: AccountStore.getState().myActiveAccounts,
-            currentAccount:
-                AccountStore.getState().currentAccount ||
-                AccountStore.getState().passwordAccount,
-            passwordAccount: AccountStore.getState().passwordAccount,
-            locked: WalletUnlockStore.getState().locked,
-            current_wallet: WalletManagerStore.getState().current_wallet,
-            lastMarket: SettingsStore.getState().viewSettings.get(
-                `lastMarket${chainID ? "_" + chainID.substr(0, 8) : ""}`
-            ),
-            starredAccounts: AccountStore.getState().starredAccounts,
-            passwordLogin: SettingsStore.getState().settings.get(
-                "passwordLogin"
-            ),
-            currentLocale: SettingsStore.getState().settings.get("locale"),
-            hiddenAssets: SettingsStore.getState().hiddenAssets,
-            settings: SettingsStore.getState().settings,
-            locales: SettingsStore.getState().defaults.locale,
-            contacts: AccountStore.getState().accountContacts
-        };
+export default connect(
+    Header,
+    {
+        listenTo() {
+            return [
+                AccountStore,
+                WalletUnlockStore,
+                WalletManagerStore,
+                SettingsStore,
+                GatewayStore
+            ];
+        },
+        getProps() {
+            const chainID = Apis.instance().chain_id;
+            return {
+                backedCoins: GatewayStore.getState().backedCoins,
+                myActiveAccounts: AccountStore.getState().myActiveAccounts,
+                currentAccount:
+                    AccountStore.getState().currentAccount ||
+                    AccountStore.getState().passwordAccount,
+                passwordAccount: AccountStore.getState().passwordAccount,
+                locked: WalletUnlockStore.getState().locked,
+                current_wallet: WalletManagerStore.getState().current_wallet,
+                lastMarket: SettingsStore.getState().viewSettings.get(
+                    `lastMarket${chainID ? "_" + chainID.substr(0, 8) : ""}`
+                ),
+                starredAccounts: AccountStore.getState().starredAccounts,
+                passwordLogin: SettingsStore.getState().settings.get(
+                    "passwordLogin"
+                ),
+                currentLocale: SettingsStore.getState().settings.get("locale"),
+                hiddenAssets: SettingsStore.getState().hiddenAssets,
+                settings: SettingsStore.getState().settings,
+                locales: SettingsStore.getState().defaults.locale,
+                contacts: AccountStore.getState().accountContacts
+            };
+        }
     }
-});
+);

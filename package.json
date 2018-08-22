@@ -171,6 +171,7 @@
     "react-intl": "^2.4.0",
     "react-json-inspector": "^7.1.1",
     "react-notification-system": "^0.2.16",
+    "react-onclickoutside": "^6.7.1",
     "react-popover": "^0.4.6",
     "react-qr-reader": "^2.1.0",
     "react-responsive-mixin": "^0.4.0",

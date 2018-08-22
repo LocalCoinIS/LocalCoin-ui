@@ -394,8 +394,7 @@ class Witnesses extends React.Component {
 
         this.state = {
             filterWitness: props.filterWitness || "",
-            cardView: props.cardView,
-            isOpen: false
+            cardView: props.cardView
         };
     }
 
@@ -525,10 +524,6 @@ class Witnesses extends React.Component {
                                                       "explorer.witnesses.table"
                                                   )
                                         }}
-                                        isOpen={this.state.isOpen}
-                                        setOpen={open =>
-                                            this.setState({isOpen: open})
-                                        }
                                         onChange={e =>
                                             this._toggleView.bind(this)(e)
                                         }

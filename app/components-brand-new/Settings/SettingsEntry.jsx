@@ -17,20 +17,97 @@ import {
     russiaFlag,
     japanFlag
 } from "../../assets/brand-new-layout/img/images";
+import onClickOutside from "react-onclickoutside";
+
+class SelectUnWrapped extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isOpen: false
+        };
+        this.handleClickOutside = this.handleClickOutside.bind(this);
+    }
+    handleClickOutside() {
+        this.setState({isOpen: false});
+    }
+    render() {
+        const {setting, options, selected, onChange} = this.props;
+        return (
+            <div
+                className={cnames(
+                    "select",
+                    {"select-withicon": !!selected["icon"]},
+                    {"is-open": this.state.isOpen}
+                )}
+            >
+                <span
+                    className="placeholder"
+                    onClick={e => {
+                        e.preventDefault();
+                        this.setState({
+                            isOpen: !this.state.isOpen
+                        });
+                    }}
+                >
+                    {!!selected["icon"] ? (
+                        <i
+                            className="icon"
+                            style={{
+                                backgroundImage: `url(${selected["icon"]})`
+                            }}
+                        />
+                    ) : null}
+                    {selected["label"]}
+                </span>
+                <ul>
+                    {options
+                        .filter(entry => entry["key"] !== selected["key"])
+                        .map(entry => {
+                            return (
+                                <li
+                                    key={entry["key"]}
+                                    onClick={e => {
+                                        onChange.bind(
+                                            this,
+                                            setting,
+                                            entry["key"]
+                                        )(e);
+                                        this.setState({isOpen: false});
+                                    }}
+                                >
+                                    {!!entry["icon"] ? (
+                                        <i
+                                            className="icon"
+                                            style={{
+                                                backgroundImage: `url(${
+                                                    entry["icon"]
+                                                })`
+                                            }}
+                                        />
+                                    ) : null}
+                                    {entry["label"]}
+                                </li>
+                            );
+                        })}
+                </ul>
+            </div>
+        );
+    }
+}
+
+const Select = onClickOutside(SelectUnWrapped);
 
 export default class SettingsEntry extends React.Component {
     constructor() {
         super();
 
         this.state = {
-            message: null,
-            openSelect: false
+            message: null
         };
 
         this.handleNotificationChange = this.handleNotificationChange.bind(
             this
         );
-        this.renderSelect = this.renderSelect.bind(this);
     }
 
     _setMessage(key) {
@@ -67,69 +144,6 @@ export default class SettingsEntry extends React.Component {
             ja: japanFlag
         };
         return !!localeToFlagMap[locale] ? localeToFlagMap[locale] : null;
-    }
-
-    renderSelect(setting, options, selected) {
-        return (
-            <div
-                className={cnames(
-                    "select",
-                    {"select-withicon": !!selected["icon"]},
-                    {"is-open": this.state.openSelect}
-                )}
-            >
-                <span
-                    className="placeholder"
-                    onClick={e => {
-                        e.preventDefault();
-                        this.setState({
-                            openSelect: !this.state.openSelect
-                        });
-                    }}
-                >
-                    {!!selected["icon"] ? (
-                        <i
-                            className="icon"
-                            style={{
-                                backgroundImage: `url(${selected["icon"]})`
-                            }}
-                        />
-                    ) : null}
-                    {selected["label"]}
-                </span>
-                <ul>
-                    {options
-                        .filter(entry => entry["key"] !== selected["key"])
-                        .map(entry => {
-                            return (
-                                <li
-                                    key={entry["key"]}
-                                    onClick={e => {
-                                        this.props.onChange.bind(
-                                            this,
-                                            setting,
-                                            entry["key"]
-                                        )(e);
-                                        this.setState({openSelect: false});
-                                    }}
-                                >
-                                    {!!entry["icon"] ? (
-                                        <i
-                                            className="icon"
-                                            style={{
-                                                backgroundImage: `url(${
-                                                    entry["icon"]
-                                                })`
-                                            }}
-                                        />
-                                    ) : null}
-                                    {entry["label"]}
-                                </li>
-                            );
-                        })}
-                </ul>
-            </div>
-        );
     }
 
     render() {
@@ -338,7 +352,14 @@ export default class SettingsEntry extends React.Component {
                         {counterpart.translate(`settings.${setting}`)}
                     </label>
                 )}
-                {options ? this.renderSelect(setting, options, value) : null}
+                {options ? (
+                    <Select
+                        setting={setting}
+                        options={options}
+                        selected={value}
+                        onChange={this.props.onChange}
+                    />
+                ) : null}
                 {input ? input : null}
                 {component ? component : null}
                 <div className="facolor-success">{this.state.message}</div>

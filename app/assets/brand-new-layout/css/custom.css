@@ -21,6 +21,10 @@
 .dashboard__table tr:first-child {
     border-bottom: none !important;
 }
+
+.localcoin .content:before {
+    background-image: none !important;
+}
 /* ======================================== */
 
 .sidebar .help-content {

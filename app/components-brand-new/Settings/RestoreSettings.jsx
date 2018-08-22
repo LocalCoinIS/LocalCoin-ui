@@ -13,8 +13,7 @@ export default class RestoreSettings extends React.Component {
         super();
         this.state = {
             restoreType: 0,
-            types: ["backup", "key", "legacy", "brainkey", "favorites"],
-            isOpen: false
+            types: ["backup", "key", "legacy", "brainkey", "favorites"]
         };
     }
 
@@ -110,8 +109,6 @@ export default class RestoreSettings extends React.Component {
                 <DropdownList
                     options={options}
                     selected={placeholder}
-                    isOpen={this.state.isOpen}
-                    setOpen={open => this.setState({isOpen: open})}
                     onChange={e => this._changeType.bind(this)(e)}
                 />
                 {content}

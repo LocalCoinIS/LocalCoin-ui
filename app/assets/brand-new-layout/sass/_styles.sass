@@ -222,7 +222,9 @@
 		th
 			background-color: #c1d0e3
 		td
-			background-color: #e0e8f1
+			background-color: transparent
+			&:hover
+				background-color: rgba(193,208,227, .5)
 	table
 		width: 100%
 		th
@@ -525,18 +527,22 @@ body.localcoin
 			max-width: 24px
 			display: inline-block
 			height: auto
+			cursor: pointer
 			&:hover
 				opacity: 0.5
 		.balance__list
 			left: auto
 			right: -46px
-		&:hover
-			.balance__list
-				opacity: 1
-				visibility: visible
-				width: auto
-				height: auto
-				background-color: #001b60
+			&:after
+				left: 34px
+		.balance__list.is-active
+			opacity: 1
+			visibility: visible
+			width: auto
+			height: auto
+			background-color: #001b60
+		.balance__link
+			text-transform: none
 	.lock
 		display: inline-flex
 		align-items: center

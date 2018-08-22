@@ -315,8 +315,7 @@ class CommitteeMembers extends React.Component {
         super(props);
         this.state = {
             filterCommitteeMember: props.filterCommitteeMember || "",
-            cardView: props.cardView,
-            isOpen: false
+            cardView: props.cardView
         };
     }
 
@@ -325,8 +324,7 @@ class CommitteeMembers extends React.Component {
             !Immutable.is(nextProps.globalObject, this.props.globalObject) ||
             nextState.filterCommitteeMember !==
                 this.state.filterCommitteeMember ||
-            nextState.cardView !== this.state.cardView ||
-            nextState.isOpen !== this.state.isOpen
+            nextState.cardView !== this.state.cardView
         );
     }
 
@@ -417,10 +415,6 @@ class CommitteeMembers extends React.Component {
                                                       "explorer.witnesses.table"
                                                   )
                                         }}
-                                        isOpen={this.state.isOpen}
-                                        setOpen={open =>
-                                            this.setState({isOpen: open})
-                                        }
                                         onChange={e =>
                                             this._toggleView.bind(this)(e)
                                         }

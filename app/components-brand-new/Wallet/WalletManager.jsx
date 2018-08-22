@@ -94,7 +94,8 @@ class WalletOptions extends Component {
                         <div className="card">
                             <div className="card-content">
                                 <label>
-                                    <Translate content="wallet.active_wallet" />:
+                                    <Translate content="wallet.active_wallet" />
+                                    :
                                 </label>
                                 <div>{current_wallet}</div>
                                 <br />
@@ -322,8 +323,7 @@ class WalletDelete extends Component {
         super();
         this.state = {
             selected_wallet: null,
-            confirm: 0,
-            isOpen: false
+            confirm: 0
         };
     }
 
@@ -398,8 +398,6 @@ class WalletDelete extends Component {
                     <DropdownList
                         options={options}
                         selected={placeholder}
-                        isOpen={this.state.isOpen}
-                        setOpen={open => this.setState({isOpen: open})}
                         onChange={this.onChange.bind(this)}
                     />
                 </section>

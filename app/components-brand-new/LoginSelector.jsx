@@ -12,6 +12,7 @@ import SettingsStore from "stores/SettingsStore";
 import IntlActions from "actions/IntlActions";
 import {
     logo,
+    logoLight,
     greatBritainFlag,
     chinaFlag,
     franceFlag,
@@ -130,12 +131,7 @@ class LoginSelector extends React.Component {
                 <div className="grid-block shrink vertical">
                     <div className="grid-content shrink text-center account-creation">
                         <div>
-                            <img
-                                src={logo}
-                                style={{backgroundColor: "#00195b"}}
-                                height="50px"
-                                width="50px"
-                            />
+                            <img src={logoLight} height="50px" width="50px" />
                         </div>
                         {childCount == 0 ? null : (
                             <div>

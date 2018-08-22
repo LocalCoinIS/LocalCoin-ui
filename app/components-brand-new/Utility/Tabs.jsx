@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import cnames from "classnames";
 import counterpart from "counterpart";
+import onClickOutside from "react-onclickoutside";
 
 class Tabs extends React.Component {
     static defaultProps = {
@@ -27,9 +28,15 @@ class Tabs extends React.Component {
             openMobileSelect: false,
             activeTab
         };
+        this.handleClickOutside = this.handleClickOutside.bind(this);
         this._findActiveTab = this._findActiveTab.bind(this);
         this._renderDesktopTabs = this._renderDesktopTabs.bind(this);
         this._renderMobileTabs = this._renderMobileTabs.bind(this);
+    }
+
+    handleClickOutside() {
+        this.setState({openMobileSelect: false});
+        console.log("outside tab");
     }
 
     _findActiveTab(items) {
@@ -157,4 +164,4 @@ class Tabs extends React.Component {
     }
 }
 
-export default Tabs;
+export default onClickOutside(Tabs);
