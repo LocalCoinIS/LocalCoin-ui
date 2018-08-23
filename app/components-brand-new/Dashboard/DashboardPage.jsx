@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "alt-react";
 
 import LoadingIndicator from "../../components/LoadingIndicator";
-import LoginSelector from "../../components/LoginSelector";
+import LoginSelector from "../LoginSelector";
 import AccountStore from "stores/AccountStore";
 
 import Tabs from "../Utility/Tabs";

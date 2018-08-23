@@ -24,6 +24,7 @@ import {
     russiaFlag,
     japanFlag
 } from "../assets/brand-new-layout/img/images";
+import counterpart from "counterpart";
 
 const FlagImage = ({flag, width = 50, height = 50}) => {
     return (
@@ -175,7 +176,8 @@ class LoginSelector extends React.Component {
                                 <Link
                                     id="account_login_button"
                                     to="/create-account/password"
-                                    className="button primary"
+                                    className="button primary outline"
+                                    style={{color: "#00195b"}}
                                     data-intro={translator.translate(
                                         "walkthrough.create_cloud_wallet"
                                     )}
@@ -186,7 +188,8 @@ class LoginSelector extends React.Component {
                                 </Link>
 
                                 <span
-                                    className="button hollow primary"
+                                    className="button primary outline"
+                                    style={{color: "#00195b"}}
                                     onClick={() => {
                                         SettingsActions.changeSetting({
                                             setting: "passwordLogin",
