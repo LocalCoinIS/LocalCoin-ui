@@ -1,6 +1,7 @@
 @import '../libs/bootstrap/css/bootstrap-grid.min.css'
 // @import '../libs/slick/slick.css'
 @import '../libs/magnific/magnific-popup.css'
+@import './_vars.sass'
 
 
 // Animation zoom-in
@@ -157,8 +158,11 @@ div.input-wrapper div.floating-dropdown
 	font-size: 15px
 	border-radius: 4px
 	background-color: #00195b
+	line-height: 40px
 	color: #fff
-	padding: 12px 30px
+	font-family: $osnovapro
+	padding: 0px 30px
+	height: 40px
 	&:hover
 		background-color: #132d71
 		color: #fff
@@ -169,12 +173,15 @@ div.input-wrapper div.floating-dropdown
 		color: inherit
 .button.disabled
 	border: 1px solid #00195b
+	line-height: 40px
 	line-height: 1
 	margin: 0 4px 4px 0
 	border-radius: 2px
 	font-size: 15px
 	border-radius: 4px
-	padding: 12px 30px
+	font-family: $osnovapro
+	padding: 0px 30px
+	height: 40px
 	background-color: #7f8cad!important
 	border-color: #7f8cad!important
 	color: #fff!important
@@ -190,10 +197,12 @@ div.input-wrapper div.floating-dropdown
 
 
 .button.hollow.primary,
-.button.outline
+.button.outline,
+.button
 	outline: none
 	background-color: transparent
 	font-size: 13px
+	line-height: 40px
 	color: #00195b
 	border: 1px solid #00195b
 	line-height: 1
@@ -202,9 +211,49 @@ div.input-wrapper div.floating-dropdown
 	border-radius: 2px
 	font-size: 15px
 	border-radius: 4px
+	font-family: $osnovapro
 	font-weight: normal
-	padding: 12px 24px
+	padding: 0 24px
+	height: 40px
 	&:hover
 		background-color: #eef3f9
 	&:active
 		background-color: #c1d0e3
+
+body.localcoin .account-inputs .typeahead__innerList
+	input
+		width: 100%
+
+
+.sub-content
+	input
+		width: 100%
+		border-radius: 4px
+		padding: 0 17px
+		height: 40px
+		background-color: #dce6f2
+		color: #00195b
+		font-size: 15px
+		border: 1px solid #7fafe8
+		&:focus
+			border: 1px solid #999!important
+			background-color: #fff
+			color: #000
+
+
+
+.txtlabel
+	display: block
+	margin-top: 2rem
+
+.active-witness
+	td
+		background-color: #dce6f2 !important
+	.txtlabel
+		display: table-cell
+		margin-top: 0
+
+.mymarkets-header.clickable
+	border-bottom-color: #049cce
+.mymarkets-header.clickable.inactive
+	border-bottom-color: transparent

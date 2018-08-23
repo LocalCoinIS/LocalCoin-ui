@@ -468,7 +468,6 @@ class Upload extends Component {
                     accept=".bin"
                     type="file"
                     id="backup_input_file"
-                    style={{border: "solid"}}
                     onChange={this.onFileUpload.bind(this)}
                 />
                 {is_invalid ? (

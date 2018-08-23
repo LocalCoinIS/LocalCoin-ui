@@ -71,7 +71,8 @@
 	input::-webkit-inner-spin-button
 		-webkit-appearance: none;
 	input[type="text"],
-	input[type="number"]
+	input[type="number"],
+	input[type="password"]
 		width: 100%
 		border-radius: 4px
 		padding: 0 17px
@@ -221,15 +222,16 @@
 	table.blue-bg
 		th
 			background-color: #c1d0e3
+		tr:not(:first-child):hover
+			td
+				background-color: rgba(224,232,241, .5)
 		td
-			background-color: transparent
-			&:hover
-				background-color: rgba(193,208,227, .5)
+			background-color: #e0e8f1
 	table
 		width: 100%
 		th
 			text-align: left
-			background-color: transparent
+			background-color: #c1d0e3
 			font-family: $osnovapro-bold
 			color: #00195b
 			font-size: 15px
@@ -364,7 +366,7 @@ body.localcoin
 	font-family: $osnovapro
 	overflow-x: hidden
 	opacity: 1
-	background: #F3F3F3
+	background: #fff
 
 	// .sticky-footer
 	// 	flex-grow: 1
@@ -707,7 +709,8 @@ body.localcoin
 		font-size: 15px
 		font-family: $osnovapro-bold 
 		border-radius: 4px
-		padding: 12px 12px
+		padding: 0px 12px
+		height: 40px
 		&:hover
 			background-color: #eef3f9
 		&:active
@@ -716,7 +719,8 @@ body.localcoin
 		background-color: #00195b
 		color: #fff
 		font-family: $osnovapro
-		padding: 12px 30px
+		padding: 0px 30px
+		height: 40px
 		&:hover
 			background-color: #132d71
 		&:active
@@ -741,7 +745,8 @@ body.localcoin
 		display: block
 		margin: 20px auto 0 auto
 	.btn.icon
-		padding: 19px 24px
+		padding: 0px 24px
+		height: 40px
 		border-radius: 4px
 		background-color: #00195b
 		background-repeat: no-repeat
@@ -751,7 +756,8 @@ body.localcoin
 	.btn.large.outline
 		font-family: $osnovapro
 		font-weight: normal
-		padding: 12px 24px
+		padding: 0px 24px
+		height: 40px
 		&:hover
 			background-color: #eef3f9
 		&:active
@@ -1438,6 +1444,7 @@ body.localcoin
 		display: block
 		margin-bottom: 15px
 	.label.info
+		display: inline-block
 		color: #ce7925
 		background-color: #dce6f2
 		outline: none
@@ -1687,7 +1694,8 @@ body.localcoin .dashboard__tabs.small .dashboard__tabs__item
 
 .card-divider
 	background-color: #e0e8f1
-.grid-content
+	margin-top: 1rem
+body.localcoin .grid-content
 	padding: 0
 
 
@@ -1740,3 +1748,22 @@ body.localcoin .dashboard__tabs.small .dashboard__tabs__item
 			background-color: #c1d0e3
 			z-index: 2
 			box-shadow: -3px 0px 1px -2px rgba(0,25,91,0.35)
+
+
+
+body.localcoin .asset-card .card-divider
+	background-color: #e0e8f1
+	border-radius: 2px
+	span
+		font-size: 15px
+		font-weight: bold
+		font-family: $osnovapro-bold
+		color: #001b60
+		line-height: 1.3
+
+
+.switch input:checked+label
+	background: #3f3f3f
+
+.switch input:checked+label:after
+	background-color: #fff

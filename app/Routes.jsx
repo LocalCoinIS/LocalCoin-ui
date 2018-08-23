@@ -398,7 +398,7 @@ const routes = (
             getComponents={(location, cb) => {
                 Promise.all([
                     import("components-brand-new/Layout/Header"),
-                    Promise.resolve(null),
+                    import("components-brand-new/Layout/Sidebar"),
                     import("components/Blockchain/Asset"),
                     import("components-brand-new/Layout/Footer")
                 ])

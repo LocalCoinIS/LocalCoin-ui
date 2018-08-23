@@ -25,6 +25,11 @@
 .localcoin .content:before {
     background-image: none !important;
 }
+
+.header-line .logo,
+footer .footer-line .footer-info__status {
+    cursor: pointer !important;
+}
 /* ======================================== */
 
 .sidebar .help-content {

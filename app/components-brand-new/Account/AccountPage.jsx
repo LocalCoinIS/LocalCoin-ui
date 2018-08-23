@@ -10,7 +10,7 @@ import BindToChainState from "../../components/Utility/BindToChainState";
 import {connect} from "alt-react";
 import accountUtils from "common/account_utils";
 import {List} from "immutable";
-import Page404 from "../../components/Page404/Page404";
+import Page404 from "../Page404/Page404";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
 import Sidebar from "../Layout/Sidebar";

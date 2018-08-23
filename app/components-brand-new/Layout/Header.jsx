@@ -676,11 +676,39 @@ class Header extends React.Component {
                                         </a>
                                     </li>
                                 )}
+                                {!currentAccount ? null : (
+                                    <li
+                                        className={cnames("navigation__item", {
+                                            active:
+                                                active.indexOf(
+                                                    `/account/${currentAccount}/voting`
+                                                ) !== -1
+                                        })}
+                                    >
+                                        <a
+                                            className="navigation__link"
+                                            href="#"
+                                            onClick={this._onNavigate.bind(
+                                                this,
+                                                `/account/${currentAccount}/voting`
+                                            )}
+                                        >
+                                            {counterpart.translate(
+                                                "account.voting"
+                                            )}
+                                        </a>
+                                    </li>
+                                )}
                             </ul>
                         </nav>
                         {currentAccount ? (
                             <div className="balance">
-                                <span className="balance__label">
+                                <span
+                                    className="balance__label"
+                                    style={{
+                                        display: walletBalance ? "" : "none"
+                                    }}
+                                >
                                     {counterpart.translate("exchange.balance")}:
                                     &nbsp;
                                     {walletBalance}

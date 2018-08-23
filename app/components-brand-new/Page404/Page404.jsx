@@ -4,7 +4,7 @@ import {connect} from "alt-react";
 import SettingsStore from "stores/SettingsStore";
 import Translate from "react-translate-component";
 
-import {logo} from "../../assets/brand-new-layout/img/images";
+import {logoLight} from "../../assets/brand-new-layout/img/images";
 
 class Page404 extends React.Component {
     static defaultProps = {
@@ -16,8 +16,7 @@ class Page404 extends React.Component {
                 <div className="page-404-container">
                     <div className="page-404-logo">
                         <img
-                            src={logo}
-                            style={{backgroundColor: "#00195b"}}
+                            src={logoLight}
                             height="50px"
                             width="50px"
                             alt="Logo"

@@ -267,7 +267,7 @@ const routes = (
             path="asset/:symbol"
             components={{
                 headerBlock: Header,
-                sidebarBlock: null,
+                sidebarBlock: Sidebar,
                 contentBlock: Asset,
                 footerBlock: Footer
             }}

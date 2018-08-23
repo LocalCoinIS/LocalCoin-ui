@@ -46,6 +46,7 @@ export default class RestoreSettings extends React.Component {
 
                     <button
                         className="btn large inverted"
+                        style={{marginTop: "20px"}}
                         onClick={this._setWalletMode}
                     >
                         <Translate content="settings.enable_wallet" />
