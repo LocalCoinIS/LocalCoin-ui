@@ -77,7 +77,7 @@ class AccountPermissionRow extends React.Component {
                     ) : pubKey ? (
                         <div className="account-image">
                             <PrivateKeyView pubkey={pubKey}>
-                                <Icon name="key" title="icons.key" size="4x" />
+                                <span className="key-icon" />
                             </PrivateKeyView>
                         </div>
                     ) : null}
@@ -88,7 +88,7 @@ class AccountPermissionRow extends React.Component {
                 <td>{this.props.weights[item_id]}</td>
                 <td>
                     <button
-                        className="btn outline"
+                        className="btn large outline"
                         onClick={this.props.onRemoveItem.bind(
                             this,
                             item_id,

@@ -8,7 +8,7 @@ import ApplicationApi from "api/ApplicationApi";
 import {PublicKey} from "bitsharesjs/es";
 import AccountPermissionsList from "./AccountPermissionsList";
 import AccountPermissionsMigrate from "./AccountPermissionsMigrate";
-import PubKeyInput from "../../components/Forms/PubKeyInput";
+import PubKeyInput from "../Forms/PubKeyInput";
 import Tabs from "../Utility/Tabs";
 import HelpContent from "../../components/Utility/HelpContent";
 // import {RecentTransactions} from "../../components/Account/RecentTransactions";

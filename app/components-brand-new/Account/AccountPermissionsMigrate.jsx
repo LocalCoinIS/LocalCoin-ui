@@ -154,7 +154,7 @@ export default class AccountPermissionsMigrate extends React.Component {
                             <td>{this.props.active}</td>
                             <td className="text-right">
                                 <button
-                                    className="btn"
+                                    className="btn large outline"
                                     onClick={this._onUseKey.bind(
                                         this,
                                         "active",
@@ -172,7 +172,7 @@ export default class AccountPermissionsMigrate extends React.Component {
                             <td>{this.props.owner}</td>
                             <td className="text-right">
                                 <button
-                                    className="btn"
+                                    className="btn large outline"
                                     onClick={this._onUseKey.bind(
                                         this,
                                         "owner",
@@ -190,7 +190,7 @@ export default class AccountPermissionsMigrate extends React.Component {
                             <td>{this.props.memo}</td>
                             <td className="text-right">
                                 <button
-                                    className="btn"
+                                    className="btn large outline"
                                     style={{
                                         visibility: memoInUse ? "hidden" : ""
                                     }}

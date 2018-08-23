@@ -2,15 +2,29 @@ import React from "react";
 import {Link} from "react-router/es";
 import AssetWrapper from "./AssetWrapper";
 import AssetName from "./AssetName";
+import {coinIcon} from "../../assets/brand-new-layout/img/images";
 
 class LinkToAssetById extends React.Component {
+    static defaultProps = {
+        showIcon: false
+    };
     render() {
         const symbol = this.props.asset.get("symbol");
         const assetName = <AssetName name={symbol} noTip />;
         return this.props.noLink ? (
             assetName
         ) : (
-            <Link to={`/asset/${symbol}/`}>{assetName}</Link>
+            <Link
+                className={
+                    this.props.showIcon ? "dashboard__table__link" : null
+                }
+                to={`/asset/${symbol}/`}
+            >
+                {this.props.showIcon ? (
+                    <img src={coinIcon} alt={`ico-${symbol}`} />
+                ) : null}
+                {assetName}
+            </Link>
         );
     }
 }

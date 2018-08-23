@@ -428,7 +428,7 @@ class AccountOverview extends React.Component {
             balances.push(
                 <tr key={asset.get("symbol")} style={{maxWidth: "100rem"}}>
                     <td style={{textAlign: "left"}}>
-                        <LinkToAssetById asset={asset.get("id")} />
+                        <LinkToAssetById showIcon asset={asset.get("id")} />
                     </td>
                     <td style={{textAlign: "right"}}>
                         {hasBalance || hasOnOrder ? (
@@ -1188,10 +1188,9 @@ class AccountOverview extends React.Component {
                                         className="column-hide-small clickable"
                                         style={{textAlign: "right"}}
                                     >
-                                        <Translate content="exchange.price" /> (<AssetName
-                                            name={preferredUnit}
-                                            noTip
-                                        />)
+                                        <Translate content="exchange.price" /> (
+                                        <AssetName name={preferredUnit} noTip />
+                                        )
                                     </th>
                                     <th
                                         onClick={this._toggleSortOrder.bind(

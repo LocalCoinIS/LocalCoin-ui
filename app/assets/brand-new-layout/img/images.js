@@ -16,6 +16,8 @@ export const settingsIcon = require("!file-loader?name=asset-symbols/[name].svg!
 export const lockIcon = require("!file-loader?name=asset-symbols/[name].svg!./lock.svg");
 export const unlockIcon = require("!file-loader?name=asset-symbols/[name].svg!./padlock.svg");
 
+export const coinIcon = require("!file-loader?name=asset-symbols/[name].png!./coin.png");
+
 export const greatBritainFlag = require("!file-loader?name=asset-symbols/[name].svg!./gb.svg");
 export const chinaFlag = require("!file-loader?name=asset-symbols/[name].svg!./cn.svg");
 export const franceFlag = require("!file-loader?name=asset-symbols/[name].svg!./fr.svg");

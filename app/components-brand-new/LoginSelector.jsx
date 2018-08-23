@@ -180,7 +180,9 @@ class LoginSelector extends React.Component {
                                         "walkthrough.create_cloud_wallet"
                                     )}
                                 >
-                                    <Translate content="header.create_account" />
+                                    {counterpart.translate(
+                                        "header.create_account"
+                                    )}
                                 </Link>
 
                                 <span
@@ -193,7 +195,9 @@ class LoginSelector extends React.Component {
                                         WalletUnlockActions.unlock.defer();
                                     }}
                                 >
-                                    <Translate content="header.unlock_short" />
+                                    {counterpart.translate(
+                                        "header.unlock_short"
+                                    )}
                                 </span>
                             </div>
                         )}
