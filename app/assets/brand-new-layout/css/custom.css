@@ -30,6 +30,25 @@
 footer .footer-line .footer-info__status {
     cursor: pointer !important;
 }
+
+[data-clipboard-text] .icon svg {
+    display: block !important;
+}
+[data-clipboard-text] .icon svg path {
+    fill: #fff !important;
+}
+
+#account_login_button {
+    background-color: #00195b;
+    border-radius: 4px;
+}
+#account_login_button:hover {
+    background-color: #132d71;
+}
+#account_login_button2:hover {
+    background: none;
+    background-color: #eef3f9;
+}
 /* ======================================== */
 
 .sidebar .help-content {

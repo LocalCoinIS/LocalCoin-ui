@@ -50,6 +50,10 @@ class Exchange extends React.Component {
     };
 
     constructor(props) {
+        document.querySelector("#content > div") &&
+            document
+                .querySelector("#content > div")
+                .classList.add("exchange-layout");
         super();
 
         this.state = {

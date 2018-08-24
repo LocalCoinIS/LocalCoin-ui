@@ -258,12 +258,6 @@ body.localcoin .account-inputs .typeahead__innerList
 .mymarkets-header.clickable.inactive
 	border-bottom-color: transparent
 
-.block-list header
-	margin-left: 0
-
-.button.arrow-down
-	height: auto
-
 
 
 .exchange-content-header.bid
@@ -276,3 +270,51 @@ body.localcoin .account-inputs .typeahead__innerList
 	background-color: #dcdcdc
 	.float-right
 		margin-right: auto
+
+
+.additional-account-options
+	span
+		a
+			text-decoration: none
+			span
+				color: #2964fa
+				&:hover
+					color: #132d71
+body.localcoin
+	.buy-sell-input,
+	.buy-sell-label,
+	.buy-sell-box
+		display: flex
+		align-items: center
+		height: auto
+		.form-control
+			color: #00195b
+			font-weight: normal
+	.order-form
+		.grid-content
+			display: flex
+			align-items: center
+		table.float-left
+			tr
+				td:first-child
+					padding-left: 0
+	.exchange-bordered
+		overflow: hidden
+	.exchange-content-header + div
+		padding-right: 0!important
+		width: calc(100% + 1px)
+	.grid-block.shrink.left-orderbook-header.bottom-header + div
+		padding-right: 0!important
+		width: calc(100% + 1px)
+	.button
+		line-height: 40px
+	.marketPicker
+		background-color: #fff
+	.block-list header
+		margin-left: 0
+	.button.arrow-down
+		height: auto
+	section input[type=password]:active, section input[type=password]:focus, section input[type=password]:hover, section input[type=text]:active, section input[type=text]:focus, section input[type=text]:hover
+		border: 1px solid #bbb
+		background-color: #fff
+		color: #000

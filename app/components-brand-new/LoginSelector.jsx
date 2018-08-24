@@ -176,8 +176,7 @@ class LoginSelector extends React.Component {
                                 <Link
                                     id="account_login_button"
                                     to="/create-account/password"
-                                    className="button primary outline"
-                                    style={{color: "#00195b"}}
+                                    className="button primary"
                                     data-intro={translator.translate(
                                         "walkthrough.create_cloud_wallet"
                                     )}
@@ -188,6 +187,7 @@ class LoginSelector extends React.Component {
                                 </Link>
 
                                 <span
+                                    id="account_login_button2"
                                     className="button primary outline"
                                     style={{color: "#00195b"}}
                                     onClick={() => {

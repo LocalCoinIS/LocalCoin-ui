@@ -28,7 +28,7 @@ import {AccountAssetCreate} from "./components-brand-new/Account/AccountAssetCre
 import AccountAssetUpdate from "./components/Account/AccountAssetUpdate";
 import AccountMembership from "./components-brand-new/Account/AccountMembership";
 import AccountVesting from "./components-brand-new/Account/AccountVesting";
-import AccountDepositWithdraw from "./components/Account/AccountDepositWithdraw";
+import AccountDepositWithdraw from "./components-brand-new/Account/AccountDepositWithdraw";
 import AccountPermissions from "./components-brand-new/Account/AccountPermissions";
 import AccountWhitelist from "./components-brand-new/Account/AccountWhitelist";
 import AccountVoting from "./components-brand-new/Account/AccountVoting";
@@ -42,7 +42,7 @@ import SettingsContainer from "./components-brand-new/Settings/SettingsContainer
 import BlockContainer from "./components/Blockchain/BlockContainer";
 import Asset from "./components-brand-new/Blockchain/Asset";
 import CreateAccount from "./components/Account/CreateAccount";
-import CreateAccountPassword from "./components/Account/CreateAccountPassword";
+import CreateAccountPassword from "./components-brand-new/Account/CreateAccountPassword";
 import {
     ExistingAccount,
     ExistingAccountOptions
@@ -234,6 +234,19 @@ const routes = (
                 sidebarBlock: null,
                 contentBlock: ExchangeContainer,
                 footerBlock: Footer
+            }}
+            onEnter={(nextState, replace, callback) => {
+                document.querySelector("#content > div") &&
+                    document
+                        .querySelector("#content > div")
+                        .classList.add("exchange-layout");
+                callback();
+            }}
+            onLeave={() => {
+                document.querySelector("#content > div") &&
+                    document
+                        .querySelector("#content > div")
+                        .classList.remove("exchange-layout");
             }}
         />
         <Route

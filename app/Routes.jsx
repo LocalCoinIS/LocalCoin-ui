@@ -353,6 +353,19 @@ const routes = (
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
             }}
+            onEnter={(nextState, replace, callback) => {
+                document.querySelector("#content > div") &&
+                    document
+                        .querySelector("#content > div")
+                        .classList.add("exchange-layout");
+                callback();
+            }}
+            onLeave={() => {
+                document.querySelector("#content > div") &&
+                    document
+                        .querySelector("#content > div")
+                        .classList.remove("exchange-layout");
+            }}
         />
         <Route
             path="settings"
@@ -430,7 +443,7 @@ const routes = (
             <Route
                 path="password"
                 getComponent={(location, cb) => {
-                    import("components/Account/CreateAccountPassword")
+                    import("components-brand-new/Account/CreateAccountPassword")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}
@@ -613,7 +626,7 @@ const routes = (
                 Promise.all([
                     import("components-brand-new/Layout/Header"),
                     import("components-brand-new/Layout/Sidebar"),
-                    import("components/Account/AccountDepositWithdraw"),
+                    import("components-brand-new/Account/AccountDepositWithdraw"),
                     import("components-brand-new/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))

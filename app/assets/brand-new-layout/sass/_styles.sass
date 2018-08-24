@@ -725,6 +725,8 @@ body.localcoin
 			background-color: #132d71
 		&:active
 			background-color: #050f2a
+		span
+			color: #fff!important
 	.btn.orange
 		border-color: #ce7925
 		color: #ce7925
@@ -1444,7 +1446,8 @@ body.localcoin
 	.label
 		display: block
 		margin-bottom: 15px
-	.label.info
+	.label.info,
+	.label.warning
 		display: inline-block
 		color: #ce7925
 		background-color: #dce6f2
@@ -1457,6 +1460,22 @@ body.localcoin
 		border-radius: 2px
 		> span
 			color: inherit
+	.label.success
+		display: inline-block
+		color: #608c1c
+		background-color: #dce6f2
+		outline: none
+		font-size: 13px
+		border: 1px solid #608c1c
+		line-height: 1
+		padding: 3px 7px
+		margin: 0 4px 4px 0
+		border-radius: 2px
+		> span
+			color: inherit
+	.dashboard__table
+		.label
+			margin: 0
 	.key-icon
 		display: inline-block
 		min-width: 36px
@@ -1772,3 +1791,4 @@ body.localcoin .asset-card .card-divider
 
 .page-layout .main-content
 	background-color: #fff
+	

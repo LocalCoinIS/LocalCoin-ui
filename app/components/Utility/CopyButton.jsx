@@ -17,9 +17,14 @@ const CopyButton = ({
             className={className}
             data-place={dataPlace}
             data-tip={counterpart.translate(tip)}
+            style={{backgroundColor: "#00195b"}}
         >
             {!buttonText ? (
-                <Icon name={buttonIcon} title={"icons.clippy.copy"} />
+                <Icon
+                    name={buttonIcon}
+                    title={"icons.clippy.copy"}
+                    style={{color: "#fff"}}
+                />
             ) : (
                 buttonText
             )}
