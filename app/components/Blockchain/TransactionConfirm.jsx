@@ -79,7 +79,8 @@ class TransactionConfirm extends React.Component {
                     <div>
                         <p>
                             <Translate content="transaction.transaction_confirmed" />
-                            &nbsp;&nbsp;<span>
+                            &nbsp;&nbsp;
+                            <span>
                                 <Icon
                                     name="checkmark-circle"
                                     title="icons.checkmark_circle.operation_succeed"
@@ -244,20 +245,19 @@ class TransactionConfirm extends React.Component {
                     ref="modal"
                     overlay={true}
                     overlayClose={!broadcasting}
-                    noCloseBtn={true}
                 >
                     <div
                         style={{minHeight: 350}}
                         className="grid-block vertical no-padding no-margin"
                     >
-                        {!broadcasting ? (
+                        {/*!broadcasting ? (
                             <div
                                 className="close-button"
                                 onClick={this.onCloseClick.bind(this)}
                             >
                                 &times;
                             </div>
-                        ) : null}
+                        ) : null*/}
                         {header}
                         <div
                             className="grid-content shrink"
@@ -327,13 +327,16 @@ class TransactionConfirm extends React.Component {
     }
 }
 
-TransactionConfirm = connect(TransactionConfirm, {
-    listenTo() {
-        return [TransactionConfirmStore];
-    },
-    getProps() {
-        return TransactionConfirmStore.getState();
+TransactionConfirm = connect(
+    TransactionConfirm,
+    {
+        listenTo() {
+            return [TransactionConfirmStore];
+        },
+        getProps() {
+            return TransactionConfirmStore.getState();
+        }
     }
-});
+);
 
 export default TransactionConfirm;

@@ -1,3 +1,15 @@
+/* colors */
+.txtlabel.warning {
+    color: #f35b92;
+}
+.txtlabel.info {
+    color: #ce7925;
+}
+.txtlabel.success {
+    color: #21d19f;
+}
+/* /colors */
+
 /* Page404 */
 .page-404 {
     margin: 0 auto;

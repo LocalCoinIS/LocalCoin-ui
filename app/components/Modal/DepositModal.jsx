@@ -469,7 +469,6 @@ export default class DepositModal extends React.Component {
                 className={this.props.modalId}
                 onClose={this.onClose.bind(this)}
                 overlay={true}
-                noCloseBtn
             >
                 <DepositModalContent {...this.props} open={this.state.open} />
             </BaseModal>

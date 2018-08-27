@@ -4,7 +4,8 @@ import ZfApi from "react-foundation-apps/src/utils/foundation-api";
 import Modal from "react-foundation-apps/src/modal";
 import Trigger from "react-foundation-apps/src/trigger";
 import Translate from "react-translate-component";
-var logo = require("assets/logo-ico-blue.png");
+// var logo = require("assets/logo-ico-blue.png");
+import {logoLight as logo} from "../../assets/brand-new-layout/img/images";
 
 class BaseModal extends React.Component {
     constructor() {
@@ -59,10 +60,10 @@ class BaseModal extends React.Component {
                     )}
                     {!noLogo &&
                         (leftHeader ? (
-                            <img src={logo} />
+                            <img src={logo} width="50px" height="50px" />
                         ) : (
                             <div className="modal__logo">
-                                <img src={logo} />
+                                <img src={logo} width="50px" height="50px" />
                             </div>
                         ))}
                     {!noHeader &&

@@ -74,7 +74,10 @@ class WalletManager extends Component {
         );
     }
 }
-WalletManager = connect(WalletManager, connectObject);
+WalletManager = connect(
+    WalletManager,
+    connectObject
+);
 
 class WalletOptions extends Component {
     render() {
@@ -90,9 +93,14 @@ class WalletOptions extends Component {
                         <div className="card">
                             <div className="card-content">
                                 <label>
-                                    <Translate content="wallet.active_wallet" />:
+                                    <Translate content="wallet.active_wallet" />
+                                    :
                                 </label>
-                                <div>{current_wallet}</div>
+                                {current_wallet ? (
+                                    <div>{current_wallet}</div>
+                                ) : (
+                                    <div>&nbsp;</div>
+                                )}
                                 <br />
                                 {has_wallets ? (
                                     <Link to="/wallet/change">
@@ -203,7 +211,10 @@ class WalletOptions extends Component {
         );
     }
 }
-WalletOptions = connect(WalletOptions, connectObject);
+WalletOptions = connect(
+    WalletOptions,
+    connectObject
+);
 
 class ChangeActiveWallet extends Component {
     constructor() {
@@ -305,7 +316,10 @@ class ChangeActiveWallet extends Component {
         this.setState({current_wallet});
     }
 }
-ChangeActiveWallet = connect(ChangeActiveWallet, connectObject);
+ChangeActiveWallet = connect(
+    ChangeActiveWallet,
+    connectObject
+);
 
 class WalletDelete extends Component {
     constructor() {
@@ -373,7 +387,8 @@ class WalletDelete extends Component {
         let options = [placeholder];
         options.push(
             <option key="select_option" value="">
-                {counterpart.translate("settings.delete_select")}&hellip;
+                {counterpart.translate("settings.delete_select")}
+                &hellip;
             </option>
         );
         this.props.wallet_names.forEach(wallet_name => {
@@ -437,6 +452,9 @@ class WalletDelete extends Component {
         this.setState({selected_wallet});
     }
 }
-WalletDelete = connect(WalletDelete, connectObject);
+WalletDelete = connect(
+    WalletDelete,
+    connectObject
+);
 
 export {WalletManager, WalletOptions, ChangeActiveWallet, WalletDelete};

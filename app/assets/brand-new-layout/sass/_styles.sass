@@ -219,6 +219,9 @@
 			background-color: #c1d0e3
 		td
 			background-color: transparent
+	table.blue-bg.with-borders
+		td:not(:last-child)
+			border-bottom: 1px solid #fff
 	table.blue-bg
 		th
 			background-color: #c1d0e3
@@ -392,7 +395,7 @@ body.localcoin
 	.header-line
 		display: flex
 		align-items: center
-		height: 40px
+		height: 35px
 	.logo
 		display: flex
 		align-items: center
@@ -418,7 +421,7 @@ body.localcoin
 		&__link
 			display: inline-block
 			font-size: 18px
-			line-height: 40px
+			line-height: 35px
 			color: #9db1e6
 			text-decoration: none
 			margin: 0 2px
@@ -1432,7 +1435,6 @@ body.localcoin
 			padding: 25px 24px
 			line-height: 1
 	.dashboard__tabs.permissions
-		margin-bottom: 20px
 		.dashboard__tabs__item
 			padding: 25px 24px
 			line-height: 1
@@ -1791,4 +1793,9 @@ body.localcoin .asset-card .card-divider
 
 .page-layout .main-content
 	background-color: #fff
-	
+body.localcoin
+	.footer-line
+		height: 30px
+	.btn.large.inverted
+		height: 30px
+		line-height: 30px

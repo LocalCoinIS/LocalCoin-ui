@@ -9,7 +9,8 @@ class Tabs extends React.Component {
         defaultActiveTab: null,
         defaultContent: null,
         inner: false,
-        dashboardTabsClass: ""
+        dashboardTabsClass: "",
+        buttons: null
     };
 
     static contextTypes = {
@@ -138,7 +139,7 @@ class Tabs extends React.Component {
     }
 
     render() {
-        const {items, inner, defaultContent} = this.props;
+        const {items, inner, defaultContent, buttons} = this.props;
         const activeTab = this._findActiveTab(items);
         const content = !!defaultContent
             ? defaultContent
@@ -150,11 +151,15 @@ class Tabs extends React.Component {
             inner ? (
                 <div className="dashboard">
                     {this._renderTabs(items)}
+                    {buttons}
                     {content}
                 </div>
             ) : (
                 <div>
-                    <div className="dashboard">{this._renderTabs(items)}</div>
+                    <div className="dashboard">
+                        {this._renderTabs(items)}
+                        {buttons}
+                    </div>
                     <div className="negative-margins">
                         <div className="container-fluid">{content}</div>
                     </div>

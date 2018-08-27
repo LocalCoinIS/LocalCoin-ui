@@ -84,9 +84,11 @@ class WalletOptions extends Component {
     render() {
         let has_wallet = !!this.props.current_wallet;
         let has_wallets = this.props.wallet_names.size > 1;
-        let current_wallet = this.props.current_wallet
-            ? this.props.current_wallet.toUpperCase()
-            : "";
+        let current_wallet = this.props.current_wallet ? (
+            this.props.current_wallet.toUpperCase()
+        ) : (
+            <br />
+        );
         return (
             <span>
                 <div className="grid-block">

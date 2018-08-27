@@ -712,7 +712,8 @@ class AccountAssetCreate extends React.Component {
                             <td style={{border: "none", width: "80%"}}>
                                 <Translate
                                     content={`account.user_issued_assets.${key}`}
-                                />:
+                                />
+                                :
                             </td>
                             <td style={{border: "none"}}>
                                 <div
@@ -750,7 +751,9 @@ class AccountAssetCreate extends React.Component {
                 this._onUpdateDescription.bind(this, "visible"),
                 update.description.visible
                     ? false
-                    : update.description.visible === false ? true : false
+                    : update.description.visible === false
+                        ? true
+                        : false
             )
         );
 
@@ -764,7 +767,8 @@ class AccountAssetCreate extends React.Component {
                             <td style={{border: "none", width: "80%"}}>
                                 <Translate
                                     content={`account.user_issued_assets.${key}`}
-                                />:
+                                />
+                                :
                             </td>
                             <td style={{border: "none"}}>
                                 <div
@@ -859,7 +863,8 @@ class AccountAssetCreate extends React.Component {
                             <td style={{border: "none"}}>
                                 <Translate
                                     content={"account.user_issued_assets.mpa"}
-                                />:
+                                />
+                                :
                             </td>
                             <td style={{border: "none"}}>
                                 <div
@@ -889,7 +894,8 @@ class AccountAssetCreate extends React.Component {
                                         content={
                                             "account.user_issued_assets.pm"
                                         }
-                                    />:
+                                    />
+                                    :
                                 </td>
                                 <td style={{border: "none"}}>
                                     <div
@@ -1014,8 +1020,8 @@ class AccountAssetCreate extends React.Component {
                 </div>
                 {
                     <p>
-                        <Translate content="account.user_issued_assets.approx_fee" />:{" "}
-                        {createFee}
+                        <Translate content="account.user_issued_assets.approx_fee" />
+                        : {createFee}
                     </p>
                 }
             </div>
@@ -1140,7 +1146,8 @@ class AccountAssetCreate extends React.Component {
                                             width: "80%"
                                         }}
                                     >
-                                        <Translate content="account.user_issued_assets.charge_market_fee" />:
+                                        <Translate content="account.user_issued_assets.charge_market_fee" />
+                                        :
                                     </td>
                                     <td
                                         style={{
@@ -1250,10 +1257,10 @@ class AccountAssetCreate extends React.Component {
                 <h2 className="content__heading">
                     {counterpart.translate("header.create_asset")}
                 </h2>
-                {confirmButtons}
                 <Tabs
                     items={items}
                     dashboardTabsClass="dashboard__tabs permissions small"
+                    buttons={confirmButtons}
                 />
             </div>
         );

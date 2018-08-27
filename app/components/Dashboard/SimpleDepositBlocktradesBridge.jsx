@@ -347,7 +347,8 @@ class SimpleDepositBlocktradesBridge extends React.Component {
                             className="inline-block tooltip"
                             onClick={this.onBlockTradesContact.bind(this)}
                         >
-                            &nbsp;<Icon
+                            &nbsp;
+                            <Icon
                                 style={{position: "relative", top: 0}}
                                 name="question-circle"
                                 title="icons.question_circle"
@@ -378,7 +379,9 @@ class SimpleDepositBlocktradesBridge extends React.Component {
                                                 "tooltip.over_limit"
                                             )}
                                         >
-                                            <Translate content="gateway.over_limit" />&nbsp;<Icon
+                                            <Translate content="gateway.over_limit" />
+                                            &nbsp;
+                                            <Icon
                                                 name="question-circle"
                                                 title="icons.question_circle"
                                             />
@@ -465,8 +468,8 @@ class SimpleDepositBlocktradesBridge extends React.Component {
                                 <div className="grid-block">
                                     <label className="left-label">
                                         <Translate content="exchange.price" />
-                                        &nbsp;&nbsp;{this.state
-                                            .receiveLoading ? (
+                                        &nbsp;&nbsp;
+                                        {this.state.receiveLoading ? (
                                             <Translate content="footer.loading" />
                                         ) : (
                                             ""
@@ -626,7 +629,8 @@ class SimpleDepositBlocktradesBridge extends React.Component {
                 <label style={{fontSize: "1rem"}}>
                     {counterpart.translate("gateway.balance_asset", {
                         asset: assetName
-                    })}:
+                    })}
+                    :
                     <span className="inline-label">
                         <input
                             disabled
@@ -703,19 +707,22 @@ class StoreWrapper extends React.Component {
     }
 }
 
-StoreWrapper = connect(StoreWrapper, {
-    listenTo() {
-        return [SettingsStore];
-    },
-    getProps() {
-        return {
-            preferredBridge: SettingsStore.getState().viewSettings.get(
-                "preferredBridge",
-                "btc"
-            )
-        };
+StoreWrapper = connect(
+    StoreWrapper,
+    {
+        listenTo() {
+            return [SettingsStore];
+        },
+        getProps() {
+            return {
+                preferredBridge: SettingsStore.getState().viewSettings.get(
+                    "preferredBridge",
+                    "btc"
+                )
+            };
+        }
     }
-});
+);
 
 export default class SimpleDepositBlocktradesBridgeModal extends React.Component {
     constructor() {
@@ -743,7 +750,6 @@ export default class SimpleDepositBlocktradesBridgeModal extends React.Component
             <BaseModal
                 id={this.props.modalId}
                 onClose={this.onClose.bind(this)}
-                noCloseBtn
                 overlay={true}
             >
                 {this.state.open ? (

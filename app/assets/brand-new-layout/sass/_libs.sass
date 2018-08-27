@@ -215,9 +215,12 @@ div.input-wrapper div.floating-dropdown
 	font-weight: normal
 	padding: 0 24px
 	height: 40px
+	line-height: 40px
 	&:hover
 		background-color: #eef3f9
 	&:active
+		background-color: #c1d0e3
+	&:focus
 		background-color: #c1d0e3
 
 body.localcoin .account-inputs .typeahead__innerList
@@ -260,14 +263,10 @@ body.localcoin .account-inputs .typeahead__innerList
 
 
 
-.exchange-content-header.bid
-	border-bottom: 1px solid #7c9d74
-.exchange-content-header.ask
-	border-bottom: 1px solid #7c9d74
 .exchange-content-header
 	display: flex
 	align-items: center
-	background-color: #dcdcdc
+	background-color: #abbfd9
 	.float-right
 		margin-right: auto
 
@@ -280,24 +279,84 @@ body.localcoin .account-inputs .typeahead__innerList
 				color: #2964fa
 				&:hover
 					color: #132d71
+.lightTheme .stats .stressed-stat.daily_change.positive
+	color: #488a00!important
+.lightTheme .stats .stressed-stat.daily_change.negativ
+	color: #e1424a!important
 body.localcoin
+	.stressed-stat.hide-order-3,
+	.stressed-stat.hide-order-4
+		span.value.stat-primary,
+		span.symbol-text
+			color: #bbbf2b!important
+			>span
+				color: #bbbf2b!important
+	.table-witnesses-wrap,
+	.market-list-wrap
+		table
+			td.txtlabel
+				max-width: none
+				width: auto
+				display: block
+			tr:hover
+				td
+					background-color: #f5f5f5
+					
+	.exchange-content-header, .mymarkets-header
+		padding: 2.5px 10px
 	.buy-sell-input,
 	.buy-sell-label,
 	.buy-sell-box
 		display: flex
 		align-items: center
 		height: auto
+		input
+			height: 28px
 		.form-control
 			color: #00195b
 			font-weight: normal
 	.order-form
+		.vertical
+			margin-bottom: 10px
 		.grid-content
 			display: flex
 			align-items: center
+		.float-right
+			margin-left: 30px
+			input.button
+				padding: 13.6px 16px
+				text-transform: uppercase
+				line-height: 1
+
 		table.float-left
+			td.expiration-datetime-picker
+				padding: 0
+			tr:first-child
+				td
+					padding-top: 0
 			tr
 				td:first-child
 					padding-left: 0
+				td
+					padding-top: 5px
+					padding-left: 5px
+					padding-right: 0
+					padding-bottom: 0
+					line-height: .999
+					span
+						font-size: 14px
+					select
+						height: 28px
+						float: right
+						width: auto
+						padding: 0
+						background: 0 0
+						border: 0
+						color: #00195b
+						border-bottom: 1px dotted #a09f9f
+						font-size: 14px
+						height: 28px
+						margin: 0 0 1px
 	.exchange-bordered
 		overflow: hidden
 	.exchange-content-header + div
@@ -318,3 +377,243 @@ body.localcoin
 		border: 1px solid #bbb
 		background-color: #fff
 		color: #000
+	.orderbook-showall
+		a
+			text-decoration: none
+			&:hover
+				color: #132d71
+			span
+				color: #2964fa
+	.exchange-content-header
+		background-color: #abbfd9
+	.exchange-content-header.bid
+		border-bottom: 1px solid #fff
+	.exchange-content-header.ask
+		border-bottom: 1px solid #fff
+	.stressed-stat
+		> span
+			font-size: 18px
+	.label-actions
+		>span
+			font-size: 12px
+	.exchange-layout
+		.modal-content
+			form
+				.form-group + div:not([class])
+					.form-group
+						span
+							input:first-child
+								width: 13%!important
+								padding: 0!important
+								text-align: center!important
+						span + .float-left
+							float: none
+				div:not([class]) + .no-padding.grid-content.button-group.no-overflow
+					.button.success
+						margin: 0 4px 4px 0!important
+						background-color: transparent
+		.sticky-table-row:nth-child(odd)
+			background-color: #dce6f2
+		.transition-container
+			.cell
+				font-family: 'Roboto Mono', monospace!important
+	.exchange-layout
+		.small-12.medium-6.middle-content.order-1,
+		.small-12.medium-6.middle-content.order-2,
+		.medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3,
+		.medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
+			table
+				th:nth-child(3),
+				th:nth-child(4)
+					padding-left: 0!important
+
+		.table.order-table.text-right.fixed-table.market-right-padding,
+		.table.order-table.table-hover.fixed-table.text-right.no-overflow
+			td
+				padding: 0 5px
+				text-align: left!important
+				font-family: 'Roboto Mono', monospace!important
+		.small-12.medium-6.middle-content.order-1
+			.table.order-table.table-hover.fixed-table.text-right
+				.price-integer:nth-child(2)
+					color: #ea340b
+		.small-12.medium-6.middle-content.order-2
+			.table.order-table.table-hover.fixed-table.text-right
+				.price-integer:nth-child(2)
+					color: #258a14
+		.medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3
+			.table.order-table.text-right.fixed-table.market-right-padding
+				.price-integer:nth-child(2)
+					color: #258a14
+	.exchange-layout
+		.table.table-hover.text-right
+			tr
+				td
+					font-size: 12px
+					span
+						font-size: 12px
+				td.text-right
+					font-family: 'Roboto Mono', monospace!important
+	.mymarkets-tabs
+		.mymarkets-tab
+			background-color: #fff
+		.mymarkets-tab.active
+			background-color: #dcdcdc
+	.float-right.buy-sell-deposit
+		margin: 0 0 0 auto
+		a
+			text-decoration: none
+			&:hover
+				color: #132d71
+			span
+				color: #2964fa
+	.grid-block.main-content.vertical.no-overflow
+		overflow-y: auto
+	.change-up
+		color: #258a14
+	.change-down
+		color: #ea340b
+	.market-stats.stats.top-stats
+		margin-bottom: 0
+	// overflow
+	// .main
+	// 	height: auto
+	// .grid-block.vertical
+	// 	height: calc(100vh - 80px)
+	.exchange-layout
+		overflow: hidden
+		height: calc(100vh - 65px)
+		.grid-block, .grid-content
+			overflow: hidden
+		.grid-block.no-overflow.wrap.shrink,
+		.grid-block.shrink.no-overflow
+			background-color: #fff
+
+
+	.cell.orderHistoryAsk.right
+		.price-integer:nth-child(2)
+			color: #ea340b
+	.cell.orderHistoryBid.right
+		.price-integer:nth-child(2)
+				color: #258a14
+	.left-order-book .cell
+		padding: 0 15px 0 0px
+		font-size: 12px
+	.cell.center-cell
+		background-color: #abbfd9
+	.v-align.no-padding.align-center.grid-block.footer.shrink.bottom-header
+		background-color: #aabfd9
+	.icon.thumb-untack,
+	.order-book-button-v
+		cursor: pointer
+	#transaction_confirm_modal
+		.modal h3
+			margin: 0!important
+		.grid-content.modal__header,
+		.grid-block.vertical.no-padding.no-margin
+			min-height: 1px!important
+	.typeahead + .btn
+		margin-left: 10px
+	.small-12.grid-content
+		overflow: visible
+	.asset-selector[style]
+		padding-right: 0!important
+	.modal
+		max-width: 600px
+	.page-header + .content-block
+		> span
+			display: flex
+			flex-wrap: wrap
+			.grid-block
+				width: 100%
+	.hide-order-1.stressed-stat.daily_change.positive
+		span
+			color: #488a00!important
+			b
+				color: #488a00!important
+	.hide-order-1.stressed-stat.daily_change.negative
+		span
+			color: #e1424a!important
+			b
+				color: #e1424a!important
+	.medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3,
+	.medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
+		height: 322px
+		.exchange-bordered.small-12[style]
+			height: 100%!important
+			.table-container.grid-block.market-right-padding-only.no-overflow.ps-container.ps-theme-default[style]
+				max-height: 230px!important
+				table
+					tr:hover
+						td
+							background-color: #f5f5f5!important
+	.medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
+		height: 317px
+		.exchange-bordered.small-12[style]
+			height: 100%!important
+			.table-container.grid-block.market-right-padding-only.no-overflow.ps-container.ps-theme-default[style]
+				max-height: 230px!important
+				table
+					tr:hover
+						td
+							background-color: #f5f5f5!important
+	.table-witnesses
+		.txtlabel
+			margin: 0
+#unlock_wallet_modal2
+	border-radius: 4px
+	max-width: 500px
+	width: 100%
+	overflow: hidden!important
+	input
+		width: 100%
+		border-radius: 4px!important
+		padding: 0 17px
+		height: 40px
+		background-color: #dce6f2
+		color: #00195b
+		font-size: 15px!important
+		border: 1px solid #7fafe8
+		&:focus
+			border: 1px solid #999!important
+			background-color: #fff
+			color: #000
+	.has-error
+		margin-top: 45px
+	.login-type-selector
+		margin-bottom: 0
+#ws_modal_add
+	.with-dropdown
+		border: 0!important
+		input
+			max-width: none!important
+		label
+			color: #00195b!important
+			&:hover
+				background-color: transparent
+#help + ul
+	overflow-x: hidden
+	li
+		position: relative
+		z-index: 1
+		&:before
+			content: ''
+			position: absolute
+			top: 0
+			left: -20px
+			right: 0
+			bottom: 0
+			background-color: transparent
+			height: 36px
+			width: calc(100% + 40px)
+			z-index: -1
+		a
+			position: relative
+	li:hover
+		&:before
+			background-color: #fff
+
+	// .lightTheme .orderHistoryAsk>span.price-integer,
+	// .lightTheme .orderHistoryAsk>span>span.price-integer,
+	// .lightTheme .orderHistoryAsk>span.formatted-price>span
+	// 	color: #ea340b
