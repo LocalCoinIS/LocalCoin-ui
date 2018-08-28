@@ -60,8 +60,7 @@ class HelpContent extends React.Component {
         let locale = this.props.locale || counterpart.getLocale() || "en";
 
         // Only load helpData for the current locale as well as the fallback 'en'
-        req
-            .keys()
+        req.keys()
             .filter(a => {
                 return (
                     a.indexOf(`/${locale}/`) !== -1 || a.indexOf("/en/") !== -1
@@ -80,6 +79,15 @@ class HelpContent extends React.Component {
 
     onClickLink(e) {
         e.preventDefault();
+        // подсвечиваем элемент
+        e.target.closest(".help-content") &&
+            e.target
+                .closest(".help-content")
+                .querySelectorAll("li")
+                .forEach(el => el.classList.remove("active"));
+        e.target.closest("li") &&
+            e.target.closest("li").classList.add("active");
+        // /подсвечиваем элемент
         let path = (__HASH_HISTORY__ ? e.target.hash : e.target.pathname)
             .split("/")
             .filter(p => p && p !== "#");

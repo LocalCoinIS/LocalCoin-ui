@@ -209,7 +209,7 @@ class Exchange extends React.Component {
             feeStatus: {},
             height: window.innerHeight,
             width: window.innerWidth,
-            chartHeight: ws.get("chartHeight", 600),
+            chartHeight: ws.get("chartHeight", 400),
             currentPeriod: ws.get("currentPeriod", 3600 * 24 * 30 * 3) // 3 months
         };
     }
@@ -1549,7 +1549,9 @@ class Exchange extends React.Component {
                 onClick={this._orderbookClick.bind(this)}
                 horizontal={!leftOrderBook}
                 moveOrderBook={this._moveOrderBook.bind(this)}
-                flipOrderBook={this.props.viewSettings.get("flipOrderBook")}
+                flipOrderBook={
+                    true /*this.props.viewSettings.get("flipOrderBook")*/
+                }
                 marketReady={marketReady}
                 wrapperClass={`order-${buySellTop ? 3 : 1} xlarge-order-${
                     buySellTop ? 4 : 1

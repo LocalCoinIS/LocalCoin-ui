@@ -247,7 +247,7 @@ class AccountSignedMessages extends React.Component {
                 />
                 <br />
                 <textarea
-                    rows="10"
+                    rows="4"
                     value={this.state.tabsm_message_text}
                     onChange={this._tabSMHandleChange.bind(this)}
                     placeholder={counterpart.translate(
@@ -269,7 +269,7 @@ class AccountSignedMessages extends React.Component {
                 <br />
                 <br />
                 <textarea
-                    rows="14"
+                    rows="4"
                     value={this.state.tabsm_message_signed}
                     style={{editable: false}}
                     placeholder={counterpart.translate(
@@ -312,7 +312,7 @@ class AccountSignedMessages extends React.Component {
                     </div>
                 </div>
                 <textarea
-                    rows="10"
+                    rows="4"
                     value={this.state.tabvm_message_signed}
                     onChange={this._tabVMHandleChange.bind(this)}
                     placeholder={counterpart.translate(

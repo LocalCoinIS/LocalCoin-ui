@@ -1,3 +1,13 @@
+.order-table td,
+.order-table .cell {
+    font-size: 11px !important;
+}
+/* help-sidebar */
+.help-content li.active:before {
+    background-color: #fff !important;
+}
+/* /help-sidebar */
+
 /* colors */
 .txtlabel.warning {
     color: #f35b92;

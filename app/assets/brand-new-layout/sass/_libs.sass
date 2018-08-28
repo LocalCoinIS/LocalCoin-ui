@@ -422,10 +422,21 @@ body.localcoin
 		.small-12.medium-6.middle-content.order-2,
 		.medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3,
 		.medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
-			table
-				th:nth-child(3),
-				th:nth-child(4)
-					padding-left: 0!important
+			.grid-block.shrink.left-orderbook-header.market-right-padding-only
+				padding-right: 13px!important
+				border-bottom: 1px solid rgb(221, 221, 221)
+				background-color: rgb(193, 208, 227)
+				table
+					th
+						border: 0!important
+			.exchange-content-header.bid + div,
+			.exchange-content-header.ask + div
+				padding-right: 9px!important
+				border-bottom: 1px solid rgb(221, 221, 221)
+				background-color: rgb(193, 208, 227)
+				table
+					th
+						border: 0!important
 
 		.table.order-table.text-right.fixed-table.market-right-padding,
 		.table.order-table.table-hover.fixed-table.text-right.no-overflow
@@ -560,6 +571,17 @@ body.localcoin
 	.table-witnesses
 		.txtlabel
 			margin: 0
+	.dashboard
+		position: relative
+	.dashboard__tabs.dashboard__tabs.permissions.small + div
+		position: absolute
+		top: 0
+		right: 12px
+		bottom: 0
+		display: flex
+		align-items: center
+		.button
+			background-color: #fff
 #unlock_wallet_modal2
 	border-radius: 4px
 	max-width: 500px
@@ -612,7 +634,6 @@ body.localcoin
 	li:hover
 		&:before
 			background-color: #fff
-
 	// .lightTheme .orderHistoryAsk>span.price-integer,
 	// .lightTheme .orderHistoryAsk>span>span.price-integer,
 	// .lightTheme .orderHistoryAsk>span.formatted-price>span
