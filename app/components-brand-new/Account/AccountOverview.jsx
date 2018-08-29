@@ -1154,7 +1154,7 @@ class AccountOverview extends React.Component {
                 />
                 {shownAssets != "visual" ? (
                     <div className="dashboard__adaptive">
-                        <table className="dashboard__table">
+                        <table className="dashboard__table blue-bg with-borders">
                             <thead>
                                 <tr>
                                     <th
@@ -1300,7 +1300,7 @@ class AccountOverview extends React.Component {
         const accountCollaterals = (
             <MarginPositions
                 preferredUnit={preferredUnit}
-                className="dashboard-table"
+                className="dashboard-table blue-bg with-borders"
                 callOrders={call_orders}
                 account={account}
             >

@@ -299,7 +299,7 @@ class AccountOrders extends React.Component {
                 </div>
 
                 <div className="dashboard__adaptive">
-                    <table className="dashboard__table">
+                    <table className="dashboard__table blue-bg with-borders">
                         <TableHeader
                             settings={this.props.settings}
                             dashboard

@@ -404,7 +404,7 @@ class RecentTransactions extends React.Component {
                     <div className="dashboard__adaptive">
                         <table
                             className={
-                                "dashboard__table " +
+                                "dashboard__table blue-bg with-borders" +
                                 (compactView ? "compact" : "") +
                                 (this.props.dashboard ? " dashboard-table" : "")
                             }

@@ -315,7 +315,7 @@ class AccountAssets extends React.Component {
 
         return (
             <div>
-                <h2 class="content__heading">
+                <h2 className="content__heading">
                     {counterpart.translate(
                         "account.user_issued_assets.issued_assets"
                     )}
@@ -323,7 +323,7 @@ class AccountAssets extends React.Component {
                 <div className="negative-margins">
                     <div className="container-fluid">
                         <div className="content-block">
-                            <table>
+                            <table className="blue-bg with-borders">
                                 <thead>
                                     <tr>
                                         <th>

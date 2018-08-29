@@ -1263,7 +1263,7 @@ class AccountAssetCreate extends React.Component {
         }
 
         return (
-            <div>
+            <div className="create-asset-container">
                 <h2 className="content__heading">
                     {counterpart.translate("header.create_asset")}
                 </h2>
