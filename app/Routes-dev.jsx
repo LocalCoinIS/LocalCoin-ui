@@ -53,14 +53,17 @@ import {
 } from "./components/Wallet/WalletCreate";
 import ImportKeys from "./components/Wallet/ImportKeys";
 import Invoice from "./components/Transfer/Invoice";
-import {BackupCreate, BackupRestore} from "./components/Wallet/Backup";
+import {
+    BackupCreate,
+    BackupRestore
+} from "./components-brand-new/Wallet/Backup";
 import WalletChangePassword from "./components/Wallet/WalletChangePassword";
 import {
     WalletManager,
     WalletOptions,
     ChangeActiveWallet,
     WalletDelete
-} from "./components/Wallet/WalletManager";
+} from "./components-brand-new/Wallet/WalletManager";
 import BalanceClaimActive from "./components/Wallet/BalanceClaimActive";
 import BackupBrainkey from "./components/Wallet/BackupBrainkey";
 import Brainkey from "./components/Wallet/Brainkey";

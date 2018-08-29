@@ -557,7 +557,8 @@ class SendModal extends React.Component {
                         <Translate
                             component="span"
                             content="transfer.available"
-                        />:{" "}
+                        />
+                        :{" "}
                         <span
                             className={_error}
                             style={{
@@ -837,12 +838,10 @@ class SendModal extends React.Component {
                                             >
                                                 {propose ? (
                                                     <button
-                                                        className={classnames(
-                                                            "button primary",
-                                                            {
-                                                                disabled: isSendNotValid
-                                                            }
-                                                        )}
+                                                        className="btn large inverted"
+                                                        disabled={
+                                                            isSendNotValid
+                                                        }
                                                         type="submit"
                                                         value="Submit"
                                                         onClick={
@@ -854,19 +853,16 @@ class SendModal extends React.Component {
                                                         }
                                                         tabIndex={tabIndex++}
                                                     >
-                                                        <Translate
-                                                            component="span"
-                                                            content="propose"
-                                                        />
+                                                        {counterpart.translate(
+                                                            "propose"
+                                                        )}
                                                     </button>
                                                 ) : (
                                                     <button
-                                                        className={classnames(
-                                                            "button primary",
-                                                            {
-                                                                disabled: isSendNotValid
-                                                            }
-                                                        )}
+                                                        className="btn large inverted"
+                                                        disabled={
+                                                            isSendNotValid
+                                                        }
                                                         type="submit"
                                                         value="Submit"
                                                         onClick={
@@ -878,10 +874,9 @@ class SendModal extends React.Component {
                                                         }
                                                         tabIndex={tabIndex++}
                                                     >
-                                                        <Translate
-                                                            component="span"
-                                                            content="transfer.send"
-                                                        />
+                                                        {counterpart.translate(
+                                                            "transfer.send"
+                                                        )}
                                                     </button>
                                                 )}
                                             </div>
@@ -893,9 +888,7 @@ class SendModal extends React.Component {
                                                 }}
                                             >
                                                 <button
-                                                    className={classnames(
-                                                        "button hollow primary"
-                                                    )}
+                                                    className="btn large outline"
                                                     type="submit"
                                                     value="Cancel"
                                                     tabIndex={tabIndex++}
@@ -903,10 +896,9 @@ class SendModal extends React.Component {
                                                         this
                                                     )}
                                                 >
-                                                    <Translate
-                                                        component="span"
-                                                        content="transfer.cancel"
-                                                    />
+                                                    {counterpart.translate(
+                                                        "transfer.cancel"
+                                                    )}
                                                 </button>
                                             </div>
                                         </div>
@@ -927,16 +919,19 @@ class SendModalConnectWrapper extends React.Component {
     }
 }
 
-SendModalConnectWrapper = connect(SendModalConnectWrapper, {
-    listenTo() {
-        return [AccountStore];
-    },
-    getProps() {
-        return {
-            currentAccount: AccountStore.getState().currentAccount,
-            passwordAccount: AccountStore.getState().passwordAccount
-        };
+SendModalConnectWrapper = connect(
+    SendModalConnectWrapper,
+    {
+        listenTo() {
+            return [AccountStore];
+        },
+        getProps() {
+            return {
+                currentAccount: AccountStore.getState().currentAccount,
+                passwordAccount: AccountStore.getState().passwordAccount
+            };
+        }
     }
-});
+);
 
 export default SendModalConnectWrapper;

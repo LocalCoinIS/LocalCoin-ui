@@ -15,6 +15,7 @@ import {ChainStore} from "bitsharesjs/es";
 import utils from "common/utils";
 import Operation from "components/Blockchain/Operation";
 import notify from "actions/NotificationActions";
+import counterpart from "counterpart";
 
 class TransactionConfirm extends React.Component {
     shouldComponentUpdate(nextProps) {
@@ -118,7 +119,9 @@ class TransactionConfirm extends React.Component {
         }
         let button_group,
             header,
-            confirmButtonClass = "button";
+            confirmButtonClass = "button",
+            disableButton =
+                this.props.propose && !this.props.fee_paying_account;
         if (this.props.propose && !this.props.fee_paying_account)
             confirmButtonClass += " disabled";
 
@@ -158,12 +161,12 @@ class TransactionConfirm extends React.Component {
             );
             button_group = (
                 <div className="button-group">
-                    <div
-                        className="button primary hollow"
+                    <button
+                        className="btn large inverted"
                         onClick={this.onCloseClick.bind(this)}
                     >
-                        <Translate content="transfer.close" />
-                    </div>
+                        {counterpart.translate("transfer.close")}
+                    </button>
                 </div>
             );
         } else if (broadcast) {
@@ -181,12 +184,12 @@ class TransactionConfirm extends React.Component {
             );
             button_group = (
                 <div className="button-group">
-                    <div
-                        className="button primary hollow"
+                    <button
+                        className="btn large inverted"
                         onClick={this.onCloseClick.bind(this)}
                     >
-                        <Translate content="transfer.close" />
-                    </div>
+                        {counterpart.translate("transfer.close")}
+                    </button>
                 </div>
             );
         } else if (broadcasting) {
@@ -217,22 +220,23 @@ class TransactionConfirm extends React.Component {
             button_group = (
                 <div className="button-group">
                     <div className="grid-block full-width-content">
-                        <div
-                            className={confirmButtonClass}
+                        <button
+                            className="btn large inverted"
+                            disabled={disableButton}
                             onClick={this.onConfirmClick.bind(this)}
                         >
-                            {this.props.propose ? (
-                                <Translate content="propose" />
-                            ) : (
-                                <Translate content="transfer.confirm" />
+                            {counterpart.translate(
+                                this.props.propose
+                                    ? "propose"
+                                    : "transfer.confirm"
                             )}
-                        </div>
-                        <div
-                            className="button primary hollow"
+                        </button>
+                        <button
+                            className="btn large outline"
                             onClick={this.onCloseClick.bind(this)}
                         >
-                            <Translate content="account.perm.cancel" />
-                        </div>
+                            {counterpart.translate("account.perm.cancel")}
+                        </button>
                     </div>
                 </div>
             );

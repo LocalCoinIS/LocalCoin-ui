@@ -10,6 +10,7 @@ import {connect} from "alt-react";
 import cname from "classnames";
 import SettingsActions from "actions/SettingsActions";
 import PropTypes from "prop-types";
+import counterpart from "counterpart";
 
 class CreateNewWallet extends Component {
     static propTypes = {
@@ -209,18 +210,17 @@ class CreateNewWallet extends Component {
                         ) : null}
 
                         <button
-                            className={cname("button", {
-                                disabled: !this.state.isValid
-                            })}
+                            className="btn large inverted"
+                            disabled={!this.state.isValid}
                         >
-                            <Translate content="wallet.create_wallet" />
+                            {counterpart.translate("wallet.create_wallet")}
                         </button>
 
                         <button
-                            className="button secondary"
+                            className="btn large outline"
                             onClick={this.onBack.bind(this)}
                         >
-                            <Translate content="wallet.cancel" />
+                            {counterpart.translate("wallet.cancel")}
                         </button>
                     </div>
 
@@ -239,14 +239,17 @@ class CreateNewWallet extends Component {
     }
 }
 
-CreateNewWallet = connect(CreateNewWallet, {
-    listenTo() {
-        return [WalletManagerStore];
-    },
-    getProps() {
-        return WalletManagerStore.getState();
+CreateNewWallet = connect(
+    CreateNewWallet,
+    {
+        listenTo() {
+            return [WalletManagerStore];
+        },
+        getProps() {
+            return WalletManagerStore.getState();
+        }
     }
-});
+);
 
 class WalletCreate extends Component {
     render() {

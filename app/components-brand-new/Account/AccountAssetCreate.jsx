@@ -793,17 +793,20 @@ class AccountAssetCreate extends React.Component {
             );
         }
 
+        // className="button"
+        // className={classnames("button", {disabled: !isValid})}
         const confirmButtons = (
             <div>
                 <button
-                    className="button"
+                    className="btn large outline"
                     onClick={this._reset.bind(this)}
                     value={counterpart.translate("account.perm.reset")}
                 >
                     <Translate content="account.perm.reset" />
                 </button>
                 <button
-                    className={classnames("button", {disabled: !isValid})}
+                    className="btn large inverted"
+                    disabled={!isValid}
                     onClick={this._createAsset.bind(this)}
                 >
                     <Translate content="header.create_asset" />

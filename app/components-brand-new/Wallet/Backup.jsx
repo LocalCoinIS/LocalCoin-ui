@@ -18,6 +18,7 @@ import Translate from "react-translate-component";
 import {PrivateKey} from "bitsharesjs/es";
 import SettingsActions from "actions/SettingsActions";
 import {backupName} from "common/backupUtils";
+import counterpart from "counterpart";
 
 const connectObject = {
     listenTo() {
@@ -108,14 +109,11 @@ class BackupRestore extends Component {
                         </NewWalletName>
                     </DecryptBackup>
                 </Upload>
-                <br />
-                {/*
                 <Link to="/">
-                    <button className="btn large outline blue">
-                        <Translate content="wallet.back" />
+                    <button className="btn large inverted">
+                        {counterpart.translate("wallet.back")}
                     </button>
                 </Link>
-                */}
             </div>
         );
     }
@@ -168,15 +166,14 @@ class Restore extends Component {
                 <h3>
                     <Translate content="wallet.ready_to_restore" />
                 </h3>
-                <div
-                    className="btn large button outline"
+                <button
+                    className="btn large outline"
                     onClick={this.onRestore.bind(this)}
                 >
-                    <Translate
-                        content="wallet.restore_wallet_of"
-                        name={new_wallet}
-                    />
-                </div>
+                    {couterpart.translate("wallet.restore_wallet_of", {
+                        name: new_wallet
+                    })}
+                </button>
             </span>
         );
     }
@@ -254,13 +251,13 @@ class NewWalletName extends Component {
                         <Translate content="wallet.wallet_exist" />
                     ) : null}
                 </p>
-                <div
+                <button
+                    className="btn large outline"
+                    disabled={!name_ready}
                     onClick={this.onAccept.bind(this)}
-                    type="submit"
-                    className={cname("button outline", {disabled: !name_ready})}
                 >
-                    <Translate content="wallet.accept" />
-                </div>
+                    {counterpart.translate("wallet.accept")}
+                </button>
             </form>
         );
     }
@@ -439,14 +436,13 @@ class Upload extends Component {
     render() {
         let resetButton = (
             <div style={{paddingTop: 20}}>
-                <div
+                <button
+                    className="btn large outline"
+                    disabled={!this.props.backup.contents}
                     onClick={this.reset.bind(this)}
-                    className={cname("btn large button outline", {
-                        disabled: !this.props.backup.contents
-                    })}
                 >
-                    <Translate content="wallet.reset" />
-                </div>
+                    {counterpart.translate("wallet.reset")}
+                </button>
             </div>
         );
 

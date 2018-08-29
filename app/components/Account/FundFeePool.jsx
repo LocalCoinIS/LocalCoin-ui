@@ -1,6 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import Translate from "react-translate-component";
+import counterpart from "counterpart";
 
 import AccountSelector from "../Account/AccountSelector";
 import AmountSelector from "../Utility/AmountSelector";
@@ -70,7 +71,8 @@ class FundFeePool extends React.Component {
         }
         const balanceText = (
             <span>
-                <Translate component="span" content="transfer.available" />:&nbsp;
+                <Translate component="span" content="transfer.available" />
+                :&nbsp;
                 <FormattedAsset amount={balance} asset={coreID} />
             </span>
         );
@@ -120,21 +122,22 @@ class FundFeePool extends React.Component {
 
                 <div style={{paddingTop: "1rem"}}>
                     <button
-                        className={classnames("button", {
-                            disabled: fundPoolAmount <= 0
-                        })}
+                        className="btn large inverted"
+                        disabled={fundPoolAmount <= 0}
                         onClick={onFundPool}
                     >
-                        <Translate content="transaction.trxTypes.asset_fund_fee_pool" />
+                        {counterpart.translate(
+                            "transaction.trxTypes.asset_fund_fee_pool"
+                        )}
                     </button>
-                    <button className="button outline" onClick={reset}>
-                        <Translate content="account.perm.reset" />
+                    <button className="btn large outline" onClick={reset}>
+                        {counterpart.translate("account.perm.reset")}
                     </button>
                     <br />
                     <br />
                     <p>
-                        <Translate content="account.user_issued_assets.approx_fee" />:{" "}
-                        <FormattedFee opType="asset_fund_fee_pool" />
+                        <Translate content="account.user_issued_assets.approx_fee" />
+                        : <FormattedFee opType="asset_fund_fee_pool" />
                     </p>
                     <hr />
                 </div>

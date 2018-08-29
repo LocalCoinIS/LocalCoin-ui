@@ -476,14 +476,14 @@ class CreateAccountPassword extends React.Component {
 
                 <div>
                     {!this.state.showPass ? (
-                        <div
+                        <button
+                            className="btn large outline"
                             onClick={() => {
                                 this.setState({showPass: true});
                             }}
-                            className="button"
                         >
-                            <Translate content="wallet.password_show" />
-                        </div>
+                            {counterpart.translate("wallet.password_show")}
+                        </button>
                     ) : (
                         <div>
                             <h5>
@@ -508,15 +508,15 @@ class CreateAccountPassword extends React.Component {
                     <Translate unsafe content="wallet.password_lose_warning" />
                 </p>
 
-                <div
+                <button
+                    className="btn large inverted"
                     style={{width: "100%"}}
                     onClick={() => {
                         this.context.router.push("/");
                     }}
-                    className="button"
                 >
-                    <Translate content="wallet.ok_done" />
-                </div>
+                    {counterpart.translate("wallet.ok_done")}
+                </button>
             </div>
         );
     }

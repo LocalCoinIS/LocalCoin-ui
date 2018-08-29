@@ -283,7 +283,7 @@ class Sidebar extends React.Component {
                     </li>
                 </ul>
                 <button
-                    className="btn large create-account"
+                    className="btn large outline create-account"
                     type="button"
                     onClick={this._onNavigate.bind(
                         this,

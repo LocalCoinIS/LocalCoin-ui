@@ -8,7 +8,7 @@ import Header from "./components-brand-new/Layout/Header";
 import Footer from "./components-brand-new/Layout/Footer";
 import Witnesses from "./components-brand-new/Explorer/Witnesses";
 import CommitteeMembers from "./components-brand-new/Explorer/CommitteeMembers";
-import {WalletManager} from "./components/Wallet/WalletManager";
+import {WalletManager} from "./components-brand-new/Wallet/WalletManager";
 import {
     WalletCreate,
     CreateWalletFromBrainkey
@@ -194,7 +194,7 @@ const routes = (
             {/* wallet management console */}
             <IndexRoute
                 getComponent={(location, cb) => {
-                    import("components/Wallet/WalletManager")
+                    import("components-brand-new/Wallet/WalletManager")
                         .then(loadRoute(cb, "WalletOptions"))
                         .catch(errorLoading);
                 }}
@@ -202,7 +202,7 @@ const routes = (
             <Route
                 path="change"
                 getComponent={(location, cb) => {
-                    import("components/Wallet/WalletManager")
+                    import("components-brand-new/Wallet/WalletManager")
                         .then(loadRoute(cb, "ChangeActiveWallet"))
                         .catch(errorLoading);
                 }}
@@ -242,7 +242,7 @@ const routes = (
             <Route
                 path="delete"
                 getComponent={(location, cb) => {
-                    import("components/Wallet/WalletManager")
+                    import("components-brand-new/Wallet/WalletManager")
                         .then(loadRoute(cb, "WalletDelete"))
                         .catch(errorLoading);
                 }}
@@ -250,7 +250,7 @@ const routes = (
             <Route
                 path="backup/restore"
                 getComponent={(location, cb) => {
-                    import("components/Wallet/Backup")
+                    import("components-brand-new/Wallet/Backup")
                         .then(loadRoute(cb, "BackupRestore"))
                         .catch(errorLoading);
                 }}
@@ -258,7 +258,7 @@ const routes = (
             <Route
                 path="backup/create"
                 getComponent={(location, cb) => {
-                    import("components/Wallet/Backup")
+                    import("components-brand-new/Wallet/Backup")
                         .then(loadRoute(cb, "BackupCreate"))
                         .catch(errorLoading);
                 }}
