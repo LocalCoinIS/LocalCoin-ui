@@ -484,7 +484,7 @@ class Witnesses extends React.Component {
                             />
                         </div>
                     </div>
-                    <div class="witnesses-board__accounts">
+                    <div className="witnesses-board__accounts">
                         <div className="container-fluid">
                             {/*filter*/}
                             <div className="row">

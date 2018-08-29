@@ -1030,11 +1030,13 @@ class AccountVoting extends React.Component {
         ];
 
         return (
-            <Tabs
-                items={items}
-                inner={true}
-                dashboardTabsClass="dashboard__tabs permissions small"
-            />
+            <div className="voting-container">
+                <Tabs
+                    items={items}
+                    inner={true}
+                    dashboardTabsClass="dashboard__tabs permissions small"
+                />
+            </div>
         );
     }
 }

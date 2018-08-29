@@ -1222,6 +1222,16 @@ class AccountAssetCreate extends React.Component {
             </div>
         );
 
+        const userIssuedAssetsBitassetOpts = (
+            <BitAssetOptions
+                bitasset_opts={bitasset_opts}
+                onUpdate={this.onChangeBitAssetOpts.bind(this)}
+                backingAsset={bitasset_opts.short_backing_asset}
+                assetPrecision={update.precision}
+                assetSymbol={update.symbol}
+            />
+        );
+
         let items = [
             {
                 //0
