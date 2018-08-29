@@ -17,7 +17,7 @@ import Header from "components/Layout/Header";
 import ReactTooltip from "react-tooltip";
 import NotificationSystem from "react-notification-system";
 import TransactionConfirm from "./components/Blockchain/TransactionConfirm";
-import WalletUnlockModal from "./components/Wallet/WalletUnlockModal";
+import WalletUnlockModal from "./components-brand-new/Wallet/WalletUnlockModal";
 import BrowserSupportModal from "./components/Modal/BrowserSupportModal";
 import Footer from "./components/Layout/Footer";
 import Deprecate from "./Deprecate";
