@@ -17,6 +17,7 @@ let icons = [
     "connected",
     "connect",
     "cross-circle",
+    "fire",
     "dashboard",
     "deposit",
     "disconnected",
