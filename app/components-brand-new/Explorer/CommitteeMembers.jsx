@@ -313,19 +313,27 @@ class CommitteeMembers extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.applyFilterAterLoadPage = this.applyFilterAterLoadPage.bind(this);
+
         this.state = {
             filterCommitteeMember: props.filterCommitteeMember || "",
             cardView: props.cardView
         };
+
+        setTimeout(this.applyFilterAterLoadPage, 500);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        return (
-            !Immutable.is(nextProps.globalObject, this.props.globalObject) ||
-            nextState.filterCommitteeMember !==
-                this.state.filterCommitteeMember ||
-            nextState.cardView !== this.state.cardView
-        );
+        return true;
+    }
+
+    applyFilterAterLoadPage(e) {        
+        this.setState({filterCommitteeMember: ""});
+
+        SettingsActions.changeViewSetting({
+            filterCommitteeMember: ""
+        });        
     }
 
     _onFilter(e) {
