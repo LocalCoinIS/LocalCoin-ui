@@ -35,9 +35,6 @@ export default class ReserveAssetModal extends React.Component {
     render() {
         let assetId = this.props.assetId;
 
-        console.log(assetId);
-        
-
         return (
             <form className="grid-block vertical full-width-content">
                 <Translate component="h3" content="modal.reserve.title" />

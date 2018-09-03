@@ -110,7 +110,7 @@ class AccountMembership extends React.Component {
 
         return (
             <div>
-                <h2 class="content__heading">
+                <h2 className="content__heading">
                     {counterpart.translate("account.member.membership")}
                 </h2>
                 <div className="negative-margins">
@@ -177,8 +177,8 @@ class AccountMembership extends React.Component {
                         </div>
                     </div>
                 ) : null}
-                <div class="table-blocks">
-                    <div class="table-blocks__item">
+                <div className="table-blocks">
+                    <div className="table-blocks__item">
                         <h5 className="table-blocks__item__heading">
                             {counterpart.translate(
                                 "account.member.fee_allocation"
@@ -246,7 +246,7 @@ class AccountMembership extends React.Component {
                             </tbody>
                         </table>
                     </div>
-                    <div class="table-blocks__item">
+                    <div className="table-blocks__item">
                         <h5 className="table-blocks__item__heading">
                             {counterpart.translate(
                                 "account.member.fees_cashback"

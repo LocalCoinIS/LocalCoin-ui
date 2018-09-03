@@ -456,7 +456,7 @@ class WithdrawModal extends React.Component {
                                     <div className="rudex-position-options" />
                                     {!this.state.validAddress ? (
                                         <div
-                                            class="has-error"
+                                            className="has-error"
                                             style={{paddingTop: 10}}
                                         >
                                             <Translate

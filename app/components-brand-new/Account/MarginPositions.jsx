@@ -673,7 +673,7 @@ const CollateralTable = ({
     preferredUnit
 }) => {
     return (
-        <div class="dashboard__adaptive">
+        <div className="dashboard__adaptive">
             <table className={"dashboard__table " + className}>
                 <thead>
                     <tr>

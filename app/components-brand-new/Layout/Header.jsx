@@ -8,6 +8,7 @@ import SettingsStore from "stores/SettingsStore";
 import SettingsActions from "actions/SettingsActions";
 import ZfApi from "react-foundation-apps/src/utils/foundation-api";
 import SendModal from "../../components/Modal/SendModal";
+import FormattedAsset from "../../components/Utility/FormattedAsset";
 import DepositModal from "../../components/Modal/DepositModal";
 import GatewayStore from "stores/GatewayStore";
 import Icon from "../../components/Icon/Icon";
@@ -70,6 +71,7 @@ class SettingsMenuUnWrapped extends React.Component {
                 path: "/help"
             }
         ];
+
         return (
             <div className="settings">
                 <img
@@ -120,7 +122,8 @@ class Header extends React.Component {
         super(props);
         this.state = {
             active: context.location.pathname,
-            accountsListDropdownActive: false
+            accountsListDropdownActive: false,
+            selectedAsset: "LLC"
         };
 
         this.unlisten = null;
@@ -363,6 +366,81 @@ class Header extends React.Component {
         AccountActions.removeAccountContact(this.props.currentAccount);
     }
 
+    _onChangeAsset(symbol, e) {
+        this.setState({
+            selectedAsset: symbol
+        });
+    }
+
+    getAllowWalletBalances() {
+        let list = [];
+        let currentAccount = ChainStore.getAccount(
+            AccountStore.getState().currentAccount
+        );
+
+        if (!currentAccount) return list;
+
+        currentAccount.get("balances").forEach((balanceId, asset_type) => {
+            let assetObject = ChainStore.getAsset(asset_type);
+            if (!assetObject) return;
+
+            let symbol = assetObject.get("symbol");
+            if (!symbol) return;
+
+            list.push(
+                <li
+                    className={
+                        "balance__item " +
+                        (this.state.selectedAsset == symbol ? "active" : "")
+                    }
+                >
+                    <a
+                        className="balance__link"
+                        href="#"
+                        onClick={this._onChangeAsset.bind(this, symbol)}
+                    >
+                        {symbol}
+                    </a>
+                </li>
+            );
+        });
+
+        return list;
+    }
+
+    getBalanceBySelectedCurrency() {
+        var balance = "0";
+
+        let currentAccount = ChainStore.getAccount(
+            AccountStore.getState().currentAccount
+        );
+
+        if (!currentAccount) return "";
+
+        currentAccount.get("balances").forEach((balanceId, asset_type) => {
+            let balanceObject = ChainStore.getObject(balanceId);
+            if (!balanceObject) return "";
+
+            let assetObject = ChainStore.getAsset(asset_type);
+            if (!assetObject) return;
+
+            let symbol = assetObject.get("symbol");
+            if (!symbol) return;
+
+            if (symbol != this.state.selectedAsset) return;
+
+            balance = (
+                <FormattedAsset
+                    amount={balanceObject.get("balance")}
+                    asset={asset_type}
+                    decimalOffset={0}
+                />
+            );
+        });
+
+        return balance;
+    }
+
     render() {
         let {active} = this.state;
         let {
@@ -407,12 +485,7 @@ class Header extends React.Component {
                     className="total-value"
                     onClick={this._toggleAccountDropdownMenu}
                 >
-                    <TotalBalanceValue.AccountWrapper
-                        hiddenAssets={this.props.hiddenAssets}
-                        accounts={List([this.props.currentAccount])}
-                        noTip
-                        style={{minHeight: 15}}
-                    />
+                    {this.getBalanceBySelectedCurrency()}
                 </div>
             ) : null;
 
@@ -499,6 +572,8 @@ class Header extends React.Component {
         }
 
         const hasLocalWallet = !!WalletDb.getWallet();
+
+        const usedAssets = this.getAllowWalletBalances();
 
         return (
             <header className="header">
@@ -712,32 +787,25 @@ class Header extends React.Component {
                                     {counterpart.translate("exchange.balance")}:
                                     &nbsp;
                                     {walletBalance}
+                                    &nbsp;
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        xmlnsXlink="http://www.w3.org/1999/xlink"
+                                        version="1.1"
+                                        viewBox="0 0 129 129"
+                                        enableBackground="new 0 0 129 129"
+                                        width="15px"
+                                        height="15px"
+                                    >
+                                        <g>
+                                            <path
+                                                d="m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z"
+                                                fill="#FFFFFF"
+                                            />
+                                        </g>
+                                    </svg>
                                 </span>
-                                {/* скрыт пока не определимся с о списком валют */}
-                                {/*
-                                <ul className="balance__list">
-                                    <li className="balance__item active">
-                                        <a className="balance__link" href="#">
-                                            LLC
-                                        </a>
-                                    </li>
-                                    <li className="balance__item">
-                                        <a className="balance__link" href="#">
-                                            BTC
-                                        </a>
-                                    </li>
-                                    <li className="balance__item">
-                                        <a className="balance__link" href="#">
-                                            XCR
-                                        </a>
-                                    </li>
-                                    <li className="balance__item">
-                                        <a className="balance__link" href="#">
-                                            ETH
-                                        </a>
-                                    </li>
-                                </ul>
-                                */}
+                                <ul className="balance__list">{usedAssets}</ul>
                             </div>
                         ) : null}
                         {currentAccount ? (
