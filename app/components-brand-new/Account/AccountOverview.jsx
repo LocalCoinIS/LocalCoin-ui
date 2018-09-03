@@ -614,7 +614,7 @@ class AccountOverview extends React.Component {
                             }
                             onClick={this._reserveButtonClick.bind(
                                 this,
-                                asset.id
+                                asset.get("id")
                             )}
                         >
                         <span class="icon fire icon-14px">
