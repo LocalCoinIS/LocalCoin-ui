@@ -210,6 +210,14 @@ class Sidebar extends React.Component {
                                 `/account/${currentAccount}/member-stats`
                             ) !== -1
                     })}
+                    {makeSidebarMenuItem({
+                        title: "account.voting",
+                        link: `/account/${currentAccount}/voting`,
+                        isActive:
+                            active.indexOf(
+                                `/account/${currentAccount}/voting`
+                            ) !== -1
+                    })}
                     {false
                         ? makeSidebarMenuItem({
                               title: "account.voting",
