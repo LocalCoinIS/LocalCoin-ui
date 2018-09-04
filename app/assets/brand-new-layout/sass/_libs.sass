@@ -284,6 +284,28 @@ body.localcoin .account-inputs .typeahead__innerList
 .lightTheme .stats .stressed-stat.daily_change.negativ
 	color: #e1424a!important
 body.localcoin
+	.order-table .cell, .order-table td
+		font-size: 11px!important
+	.asset-card
+		.card-divider + table:not([class])
+			td
+				padding: 5px 16px
+				line-height: 1
+			th:nth-child(2)
+				width: 1173px / 3129px * 100%
+			th:nth-child(3)
+				width: 825px / 3129px * 100%
+			th:nth-child(4)
+				width: 850px / 3129px * 100%
+	.btn.large.inverted
+		height: 40px!important
+		line-height: 40px!important
+	.footer-line
+		height: 30px!important
+		>.btn.large.inverted
+			height: 30px!important
+			line-height: 30px!important
+			margin-right: 0
 	.stressed-stat.hide-order-3,
 	.stressed-stat.hide-order-4
 		span.value.stat-primary,
@@ -397,6 +419,38 @@ body.localcoin
 		>span
 			font-size: 12px
 	.exchange-layout
+		div:first-child .exchange-bordered, div:last-child .exchange-bordered
+			margin: 0
+		.inline-block
+			>span
+				line-height: 1!important
+				font-size: 16px!important
+		div[class$="grid-block shrink"].grid-block.shrink
+			>div
+				position: relative
+				>div:not(.label-actions)
+					padding-left: 30px!important
+					>span:nth-child(2)
+						display: none
+					>span:nth-child(3)
+						margin-left: 20px
+				.label-actions
+					position: absolute
+					top: 12px
+					left: 20px
+					display: flex
+					justify-content: space-between
+					flex-direction: row-reverse
+					width: 102px
+					.stat-text
+						display: none
+			span
+				font-size: 16px!important
+				line-height: 1!important
+			.inline-block
+				>span
+					font-size: 16px!important
+					line-height: 1!important
 		.modal-content
 			form
 				.form-group + div:not([class])
@@ -494,6 +548,9 @@ body.localcoin
 	.exchange-layout
 		overflow: hidden
 		height: calc(100vh - 65px)
+		.grid-block.no-overflow.wrap.shrink
+			display: flex
+			align-items: stretch
 		.grid-block, .grid-content
 			overflow: hidden
 		.grid-block.no-overflow.wrap.shrink,
@@ -549,7 +606,7 @@ body.localcoin
 				color: #e1424a!important
 	.medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3,
 	.medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
-		height: 322px
+		height: auto
 		.exchange-bordered.small-12[style]
 			height: 100%!important
 			.table-container.grid-block.market-right-padding-only.no-overflow.ps-container.ps-theme-default[style]
@@ -559,7 +616,8 @@ body.localcoin
 						td
 							background-color: #f5f5f5!important
 	.medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
-		height: 317px
+		height: auto
+		margin-bottom: 10px!important
 		.exchange-bordered.small-12[style]
 			height: 100%!important
 			.table-container.grid-block.market-right-padding-only.no-overflow.ps-container.ps-theme-default[style]
@@ -571,17 +629,28 @@ body.localcoin
 	.table-witnesses
 		.txtlabel
 			margin: 0
-	.dashboard
+	.create-asset-container
 		position: relative
-	.dashboard__tabs.dashboard__tabs.permissions.small + div
-		position: absolute
-		top: 0
-		right: 12px
-		bottom: 0
-		display: flex
-		align-items: center
-		.button
-			background-color: #fff
+		margin-bottom: 12px
+		.dashboard__tabs.dashboard__tabs.permissions.small + div
+			position: absolute
+			top: 0
+			right: 12px
+			bottom: 0
+			display: flex
+			align-items: center
+			.button
+				background-color: #fff
+	.voting-container
+		.dashboard__tabs.dashboard__tabs.permissions.small + div
+			position: relative!important
+			top: 0!important
+			right: 0!important
+			bottom: 0
+			display: block!important
+			align-items: center
+			.button
+				background-color: #fff
 #unlock_wallet_modal2
 	border-radius: 4px
 	max-width: 500px
@@ -634,7 +703,138 @@ body.localcoin
 	li:hover
 		&:before
 			background-color: #fff
-	// .lightTheme .orderHistoryAsk>span.price-integer,
-	// .lightTheme .orderHistoryAsk>span>span.price-integer,
-	// .lightTheme .orderHistoryAsk>span.formatted-price>span
-	// 	color: #ea340b
+
+
+
+body.localcoin
+	.service-selector + div.tab-content.grid-block.padding-top.shrink.small-vertical.medium-horizontal
+		margin: 0!important
+	.service-selector + div
+		.small-12.large-8.large-offset-2.grid-content
+			.grid-content.has-error
+				display: flex
+				width: 100%
+				max-width: none
+				margin: 20px 0 10px 0
+	.service-selector
+		margin-bottom: 15px!important
+		ul.button-group.no-margin.account-overview.bordered-header.content-block
+			display: flex
+			position: relative
+			background-color: #9bb2cf
+			border-top-left-radius: 2px
+			border-top-right-radius: 2px
+			box-shadow: inset 0px -2px 2px -1px rgba(0,25,91,0.35)
+			li
+				display: flex
+				position: relative
+				flex-direction: column
+				align-items: flex-end
+				padding: 15px 24px
+				cursor: pointer
+				margin: 0!important
+				a
+					padding: 0!important
+					margin: 0!important
+					line-height: 1!important
+					background-color: transparent!important
+					border: 0!important
+				&:after
+					content: ''
+					position: absolute
+					right: -1px
+					top: 0
+					bottom: 0
+					margin: auto
+					width: 1px
+					height: 42px
+					background-color: #cdd9e7
+					z-index: 1
+				&:first-child
+					border-top-left-radius: 2px
+					&:before
+						box-shadow: none!important
+				&:last-child
+					&:after
+						display: none
+				.tab-title
+					display: inline-block
+					position: relative
+					z-index: 3
+					font-size: 18px
+					font-family: 'osnovapro-bold',sans-serif
+					font-weight: 700
+					color: #00195b
+					line-height: 1.4
+					margin-top: .2rem
+					margin-bottom: .5rem
+			li.is-active
+				box-shadow: 3px 0px 1px -2px rgba(0,25,91,0.35)
+				&:after
+					right: 0
+				&:before
+					content: ''
+					position: absolute
+					top: 0
+					left: 0
+					right: 0
+					bottom: 0
+					background-color: #c1d0e3
+					z-index: 2
+					box-shadow: -3px 0px 1px -2px rgba(0,25,91,0.35)
+			li.tabs-action-buttons
+				position: absolute
+				right: 12px
+				top: 0
+				bottom: 0
+				padding: 0!important
+				>div
+					display: flex
+					align-items: center
+					height: 100%
+				.button
+					white-space: nowrap
+
+@media only screen and (min-width: 1280px)
+	.exchange-layout
+		.exchange-bordered
+			border-right: 0
+		.medium-6
+			flex: 0 0 33.33333%!important
+			max-width: 33.33333%!important
+		.order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+			flex: 0 0 66.6666%!important
+			max-width: 66.6666%!important
+			.medium-6
+				flex: 0 0 50%!important
+				max-width: 50%!important
+@media only screen and (max-width: 1279px)
+	.exchange-layout
+		.medium-6
+			flex: 0 0 100%!important
+			max-width: 100%!important
+		.order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+			flex: 0 0 100%!important
+			max-width: 100%!important
+			.medium-6
+				flex: 0 0 100%!important
+				max-width: 100%!important
+@media only screen and (max-width: 1440px) and (min-width: 1280px)
+	body.localcoin .exchange-layout
+		.medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
+			order: 2!important
+	body.localcoin .exchange-layout
+		.exchange-content-header
+			font-size: 12px
+			.float-right.clickable.hide-for-xlarge
+				padding-left: 0!important
+			.inline-block>span
+				font-size: 12px!important
+		.float-right.header-sub-title
+			font-size: 10px
+			margin-right: 0
+			margin-left: auto
+			.inline-block.tooltip
+				font-size: 10px
+	body.localcoin .exchange-layout .float-right.header-sub-title .inline-block>span
+		font-size: 10px!important

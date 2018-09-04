@@ -1672,8 +1672,10 @@ body.localcoin
 		td:first-child,
 		th:first-child
 			width: 10%
-		tr:first-child
+		th
 			border-bottom: 1px solid #7fafe8
+		tr:first-child
+			border-bottom: 0!important
 	.success-light
 		color: #54be20
 	.danger-light
@@ -1684,6 +1686,9 @@ body.localcoin
 		display: block
 		text-align: center
 		margin-top: 27px
+		&:hover
+			.witness-item__content
+				background-color: #f5f5f5
 		h5
 			margin: 0 0 5px 0
 		&__content
@@ -1793,9 +1798,3 @@ body.localcoin .asset-card .card-divider
 
 .page-layout .main-content
 	background-color: #fff
-body.localcoin
-	.footer-line
-		height: 30px
-	.btn.large.inverted
-		height: 30px
-		line-height: 30px
