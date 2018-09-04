@@ -169,7 +169,13 @@ class HelpContent extends React.Component {
         }
 
         if (this.props.section) {
-            value = value[this.props.section];
+            if (typeof value[this.props.section] === "undefined") {
+                for (var text in value) {
+                    if (text.indexOf(this.props.section) === 0) {
+                        value = text.substr(this.props.section.length + 1);
+                    }
+                }
+            } else value = value[this.props.section];
         }
 
         if (!value) {

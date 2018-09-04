@@ -89,6 +89,17 @@ class AccountMembership extends React.Component {
             ]) *
                 gprops.getIn(["parameters", "current_fees", "scale"])) /
             10000;
+        let annual_cost =
+            (gprops.getIn([
+                "parameters",
+                "current_fees",
+                "parameters",
+                8,
+                1,
+                "membership_annual_fee"
+            ]) *
+                gprops.getIn(["parameters", "current_fees", "scale"])) /
+            10000;
 
         let member_status = ChainStore.getAccountMemberStatus(
             this.props.account
@@ -109,158 +120,151 @@ class AccountMembership extends React.Component {
             expiration_date = "N/A";
 
         return (
-            <div>
-                <h2 className="content__heading">
-                    {counterpart.translate("account.member.membership")}
-                </h2>
-                <div className="negative-margins">
-                    <div className="container-fluid">
-                        <h3>
-                            {counterpart.translate(membership)} {expiration}
-                        </h3>
-                        {member_status === "lifetime" ? null : (
-                            <div className="row">
-                                <div className="col-lg-6 col-md-8">
-                                    <HelpContent
-                                        path="components/AccountMembership"
-                                        section="lifetime"
-                                        feesCashback={100 - network_fee}
-                                        price={{
-                                            amount: lifetime_cost,
-                                            asset: core_asset
-                                        }}
-                                    />
-                                    <button
-                                        className="btn large inverted no-margin"
+            <div className="grid-content" style={{overflowX: "hidden"}}>
+                <div className="content-block no-margin">
+                    <h3>
+                        <Translate content={membership} /> {expiration}
+                    </h3>
+                    {member_status === "lifetime" ? null : (
+                        <div>
+                            <div className="large-6 medium-8">
+                                <HelpContent
+                                    path="components/AccountMembership"
+                                    section="lifetime"
+                                    feesCashback={100 - network_fee}
+                                    price={{
+                                        amount: lifetime_cost,
+                                        asset: core_asset
+                                    }}
+                                />
+                                <div
+                                    className="button no-margin"
+                                    onClick={this.upgradeAccount.bind(
+                                        this,
+                                        account.id,
+                                        true
+                                    )}
+                                >
+                                    <Translate content="account.member.upgrade_lifetime" />
+                                </div>{" "}
+                                &nbsp; &nbsp;
+                                {true || member_status === "annual" ? null : (
+                                    <div
+                                        className="button"
                                         onClick={this.upgradeAccount.bind(
                                             this,
                                             account.id,
-                                            true
+                                            false
                                         )}
                                     >
-                                        {counterpart.translate(
-                                            "account.member.upgrade_lifetime"
-                                        )}
-                                    </button>{" "}
-                                    &nbsp; &nbsp;
-                                    {true ||
-                                    member_status === "annual" ? null : (
-                                        <button
-                                            className="btn large inverted"
-                                            onClick={this.upgradeAccount.bind(
-                                                this,
-                                                account.id,
-                                                false
-                                            )}
-                                        >
-                                            {counterpart.translate(
-                                                "account.member.subscribe"
-                                            )}
-                                        </button>
-                                    )}
-                                </div>
+                                        <Translate content="account.member.subscribe" />
+                                    </div>
+                                )}
                             </div>
-                        )}
-                    </div>
-                </div>
-                {member_status === "lifetime" ? (
-                    <div className="negative-margins">
-                        <div className="container-fluid">
-                            <h4>
-                                <Translate content="account.member.referral_link" />
-                            </h4>
-                            <Translate content="account.member.referral_text" />
-                            :
-                            <h5>{`https://wallet.bitshares.org/?r=${
-                                account.name
-                            }`}</h5>
+                            <br />
+                            <hr />
                         </div>
-                    </div>
-                ) : null}
-                <div className="table-blocks">
-                    <div className="table-blocks__item">
-                        <h5 className="table-blocks__item__heading">
-                            {counterpart.translate(
-                                "account.member.fee_allocation"
-                            )}
-                        </h5>
-                        <table className="table-blocks__item__table">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <Translate content="account.member.network_percentage" />
-                                    </td>
-                                    <td>{network_fee}%</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <Translate content="account.member.lifetime_referrer" />{" "}
-                                        &nbsp; (
-                                        <Link
-                                            to={`account/${
-                                                account.lifetime_referrer_name
-                                            }/overview`}
-                                        >
-                                            {account.lifetime_referrer_name}
-                                        </Link>
-                                        )
-                                    </td>
-                                    <td>{lifetime_fee}%</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <Translate content="account.member.registrar" />{" "}
-                                        &nbsp; (
-                                        <Link
-                                            to={`account/${
-                                                account.registrar_name
-                                            }/overview`}
-                                        >
-                                            {account.registrar_name}
-                                        </Link>
-                                        )
-                                    </td>
-                                    <td>{registrar_fee}%</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <Translate content="account.member.referrer" />{" "}
-                                        &nbsp; (
-                                        <Link
-                                            to={`account/${
-                                                account.referrer_name
-                                            }/overview`}
-                                        >
-                                            {account.referrer_name}
-                                        </Link>
-                                        )
-                                    </td>
-                                    <td>{referrer_fee}%</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <Translate content="account.member.membership_expiration" />{" "}
-                                    </td>
-                                    <td>{expiration_date}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div className="table-blocks__item">
-                        <h5 className="table-blocks__item__heading">
-                            {counterpart.translate(
-                                "account.member.fees_cashback"
-                            )}
-                        </h5>
-                        <table className="table-blocks__item__table">
-                            <Statistics stat_object={account.statistics} />
-                        </table>
-                    </div>
+                    )}
                 </div>
-                <div className="negative-margins">
-                    <div className="container-fluid">
-                        <div className="row">
-                            <div className="col-lg-5">
+
+                <div className="content-block no-margin">
+                    <div className="no-margin grid-block vertical large-horizontal">
+                        <div className="no-margin grid-block large-5">
+                            <div
+                                className="grid-content"
+                                style={{paddingRight: 45}}
+                            >
+                                {member_status === "lifetime" ? (
+                                    <div>
+                                        <h4>
+                                            <Translate content="account.member.referral_link" />
+                                        </h4>
+                                        <Translate content="account.member.referral_text" />
+                                        :
+                                        <h5>{`${document.domain}?r=${
+                                            account.name
+                                        }`}</h5>
+                                    </div>
+                                ) : null}
+                                <h4>
+                                    <Translate content="account.member.fee_allocation" />
+                                </h4>
+                                <table className="table key-value-table">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <Translate content="account.member.network_percentage" />
+                                            </td>
+                                            <td>{network_fee}%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <Translate content="account.member.lifetime_referrer" />{" "}
+                                                &nbsp; (
+                                                <Link
+                                                    to={`account/${
+                                                        account.lifetime_referrer_name
+                                                    }/overview`}
+                                                >
+                                                    {
+                                                        account.lifetime_referrer_name
+                                                    }
+                                                </Link>
+                                                )
+                                            </td>
+                                            <td>{lifetime_fee}%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <Translate content="account.member.registrar" />{" "}
+                                                &nbsp; (
+                                                <Link
+                                                    to={`account/${
+                                                        account.registrar_name
+                                                    }/overview`}
+                                                >
+                                                    {account.registrar_name}
+                                                </Link>
+                                                )
+                                            </td>
+                                            <td>{registrar_fee}%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <Translate content="account.member.referrer" />{" "}
+                                                &nbsp; (
+                                                <Link
+                                                    to={`account/${
+                                                        account.referrer_name
+                                                    }/overview`}
+                                                >
+                                                    {account.referrer_name}
+                                                </Link>
+                                                )
+                                            </td>
+                                            <td>{referrer_fee}%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <Translate content="account.member.membership_expiration" />{" "}
+                                            </td>
+                                            <td>{expiration_date}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h4>
+                                    <Translate content="account.member.fees_cashback" />
+                                </h4>
+                                <table className="table key-value-table">
+                                    <Statistics
+                                        stat_object={account.statistics}
+                                    />
+                                </table>
+                            </div>
+                        </div>
+                        <div className="grid-block large-7">
+                            <div className="grid-content">
                                 <FeeHelp
                                     account={account_name}
                                     networkFee={network_fee}

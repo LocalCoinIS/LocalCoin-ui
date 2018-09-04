@@ -182,3 +182,11 @@ textarea:hover,
     flex-direction: column;
     min-height: 100vh;
 }
+
+.help-content > h4,
+.grid-content > h4 {
+    padding: 17px 20px;
+    background-color: #c1d0e3;
+    border-radius: 2px;
+    margin: 0 0 18px;
+}
