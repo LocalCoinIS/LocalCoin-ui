@@ -27,7 +27,9 @@ class OrderBookRowVertical extends React.Component {
         const isCall = order.isCall();
         let integerClass = isCall
             ? "orderHistoryCall"
-            : isBid ? "orderHistoryBid" : "orderHistoryAsk";
+            : isBid
+                ? "orderHistoryBid"
+                : "orderHistoryAsk";
 
         let price = (
             <PriceText price={order.getPrice()} quote={quote} base={base} />
@@ -82,7 +84,9 @@ class OrderBookRowHorizontal extends React.Component {
 
         let integerClass = isCall
             ? "orderHistoryCall"
-            : isBid ? "orderHistoryBid" : "orderHistoryAsk";
+            : isBid
+                ? "orderHistoryBid"
+                : "orderHistoryAsk";
 
         let price = (
             <PriceText price={order.getPrice()} quote={quote} base={base} />
@@ -122,22 +126,11 @@ class OrderBookRowHorizontal extends React.Component {
                     order.isMine(this.props.currentAccount) ? "my-order" : ""
                 }
             >
-                {position === "left" ? (
-                    <td>{total}</td>
-                ) : (
-                    <td style={{width: "25%"}} className={integerClass}>
-                        {price}
-                    </td>
-                )}
+                <td style={{width: "25%"}} className={integerClass}>
+                    {price}
+                </td>
                 <td>{position === "left" ? value : amount}</td>
                 <td>{position === "left" ? amount : value}</td>
-                {position === "right" ? (
-                    <td>{total}</td>
-                ) : (
-                    <td style={{width: "25%"}} className={integerClass}>
-                        {price}
-                    </td>
-                )}
             </tr>
         );
     }
@@ -438,16 +431,13 @@ class OrderBook extends React.Component {
                     <tr key="top-header" className="top-header">
                         <th>
                             <Translate
-                                className="header-sub-title"
-                                content="exchange.total"
+                                className={
+                                    (this.state.flip
+                                        ? "ask-total"
+                                        : "bid-total") + " header-sub-title"
+                                }
+                                content="exchange.price"
                             />
-                            <span className="header-sub-title">
-                                {" "}
-                                (<AssetName
-                                    dataPlace="top"
-                                    name={baseSymbol}
-                                />)
-                            </span>
                         </th>
                         <th>
                             <span className="header-sub-title">
@@ -458,16 +448,6 @@ class OrderBook extends React.Component {
                             <span className="header-sub-title">
                                 <AssetName dataPlace="top" name={quoteSymbol} />
                             </span>
-                        </th>
-                        <th>
-                            <Translate
-                                className={
-                                    (this.state.flip
-                                        ? "ask-total"
-                                        : "bid-total") + " header-sub-title"
-                                }
-                                content="exchange.price"
-                            />
                         </th>
                     </tr>
                 </thead>
@@ -494,19 +474,6 @@ class OrderBook extends React.Component {
                         <th>
                             <span className="header-sub-title">
                                 <AssetName dataPlace="top" name={baseSymbol} />
-                            </span>
-                        </th>
-                        <th>
-                            <Translate
-                                className="header-sub-title"
-                                content="exchange.total"
-                            />
-                            <span className="header-sub-title">
-                                {" "}
-                                (<AssetName
-                                    dataPlace="top"
-                                    name={baseSymbol}
-                                />)
                             </span>
                         </th>
                     </tr>
