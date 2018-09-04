@@ -75,7 +75,10 @@ var Utils = {
         }
         let num = numeral(number).format("0,0" + zeros);
         if (num.indexOf(".") > 0 && !trailing_zeros)
-            return num.replace(/0+$/, "").replace(/\.$/, "");
+            num = num.replace(/0+$/, "").replace(/\.$/, "");
+
+        num = num.replace(/,/g, "");
+
         return num;
     },
 
@@ -348,7 +351,7 @@ var Utils = {
 
         let eqValue =
             fromAsset.get("id") !== toAsset.get("id")
-                ? basePrecision * (amount / quotePrecision) / assetPrice
+                ? (basePrecision * (amount / quotePrecision)) / assetPrice
                 : amount;
 
         if (isNaN(eqValue) || !isFinite(eqValue)) {
@@ -392,7 +395,7 @@ var Utils = {
     },
 
     get_percentage(a, b) {
-        return Math.round(a / b * 100) + "%";
+        return Math.round((a / b) * 100) + "%";
     },
 
     replaceName(asset) {
@@ -423,7 +426,9 @@ var Utils = {
 
         let prefix = isBitAsset
             ? "bit"
-            : toReplace[i] ? toReplace[i].toLowerCase() : null;
+            : toReplace[i]
+                ? toReplace[i].toLowerCase()
+                : null;
 
         return {
             name,
