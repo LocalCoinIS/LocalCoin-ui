@@ -196,18 +196,27 @@ class Header extends React.Component {
 
     _showSend(e) {
         e.preventDefault();
+
+        if (this.isUnauthorizedUser()) return;
+
         if (this.send_modal) this.send_modal.show();
         this._closeDropdown();
     }
 
     _showDeposit(e) {
         e.preventDefault();
+
+        if (this.isUnauthorizedUser()) return;
+
         this.refs.deposit_modal_new.show();
         this._closeDropdown();
     }
 
     _showWithdraw(e) {
         e.preventDefault();
+
+        if (this.isUnauthorizedUser()) return;
+
         this._closeDropdown();
         this.refs.withdraw_modal_new.show();
     }
@@ -231,8 +240,23 @@ class Header extends React.Component {
         this._closeDropdown();
     }
 
+    _currentAccount = null;
+    _createAccountLink = null;
+    isUnauthorizedUser(route) {
+        //for exchange allow access forever
+
+        if (typeof route !== "undefined" && route.indexOf("/market/") === 0)
+            return false;
+
+        this.context.router.push("/create-account/password");
+
+        return !this._currentAccount || !!this._createAccountLink;
+    }
+
     _onNavigate(route, e) {
         e.preventDefault();
+
+        if (route !== "/" && this.isUnauthorizedUser(route)) return;
 
         // Set Accounts Tab as active tab
         if (route == "/accounts") {
@@ -279,8 +303,17 @@ class Header extends React.Component {
         window.history.forward();
     }
 
+    _onGoAccount(e) {
+        e.preventDefault();
+
+        console.log("_onGoAccount(e)");
+    }
+
     _accountClickHandler(account_name, e) {
         e.preventDefault();
+
+        if (this.isUnauthorizedUser()) return;
+
         ZfApi.publish("account_drop_down", "close");
         if (this.context.location.pathname.indexOf("/account/") !== -1) {
             let currentPath = this.context.location.pathname.split("/");
@@ -575,6 +608,9 @@ class Header extends React.Component {
 
         const usedAssets = this.getAllowWalletBalances();
 
+        this._currentAccount = currentAccount;
+        this._createAccountLink = createAccountLink;
+
         return (
             <header className="header">
                 <div className="container-fluid">
@@ -585,20 +621,23 @@ class Header extends React.Component {
                         <div className="mobile__menu">
                             <span className="mobile__menu__close" />
                             <ul className="mobile__list">
-                                {!currentAccount ||
-                                !!createAccountLink ? null : (
+                                {
                                     <li className="mobile__list__item">
-                                        <Link
+                                        <a
                                             className="mobile__list__link"
-                                            to={`/account/${currentAccount}`}
+                                            href="#"
+                                            onClick={this._onNavigate.bind(
+                                                this,
+                                                "/account/" + currentAccount
+                                            )}
                                         >
                                             {/* AccountOverview */}
                                             {counterpart.translate(
                                                 "header.account"
                                             )}
-                                        </Link>
+                                        </a>
                                     </li>
-                                )}
+                                }
                                 <li className="mobile__list__item">
                                     <a
                                         className="mobile__list__link"
@@ -614,7 +653,7 @@ class Header extends React.Component {
                                         )}
                                     </a>
                                 </li>
-                                {!!createAccountLink ? null : (
+                                {
                                     <li className="mobile__list__item">
                                         <a
                                             className="mobile__list__link"
@@ -627,8 +666,8 @@ class Header extends React.Component {
                                             )}
                                         </a>
                                     </li>
-                                )}
-                                {!!createAccountLink ? null : (
+                                }
+                                {
                                     <li className="mobile__list__item">
                                         <a
                                             className="mobile__list__link"
@@ -643,7 +682,7 @@ class Header extends React.Component {
                                             )}
                                         </a>
                                     </li>
-                                )}
+                                }
                             </ul>
                         </div>
                     </div>
@@ -656,8 +695,7 @@ class Header extends React.Component {
                         </div>
                         <nav className="navigation">
                             <ul className="navigation__list">
-                                {!currentAccount ||
-                                !!createAccountLink ? null : (
+                                {
                                     <li
                                         className={cnames("navigation__item", {
                                             active:
@@ -684,17 +722,21 @@ class Header extends React.Component {
                                                 ) === -1
                                         })}
                                     >
-                                        <Link
+                                        <a
                                             className="navigation__link"
-                                            to={`/account/${currentAccount}`}
+                                            href="#"
+                                            onClick={this._onNavigate.bind(
+                                                this,
+                                                "/account/" + currentAccount
+                                            )}
                                         >
                                             {/* AccountOverview */}
                                             {counterpart.translate(
                                                 "header.account"
                                             )}
-                                        </Link>
+                                        </a>
                                     </li>
-                                )}
+                                }
                                 <li
                                     className={cnames("navigation__item", {
                                         active: active.indexOf("market/") !== -1
@@ -714,7 +756,7 @@ class Header extends React.Component {
                                         )}
                                     </a>
                                 </li>
-                                {!!createAccountLink ? null : (
+                                {
                                     <li className="navigation__item">
                                         <a
                                             className="navigation__link"
@@ -727,8 +769,8 @@ class Header extends React.Component {
                                             )}
                                         </a>
                                     </li>
-                                )}
-                                {!!createAccountLink ? null : (
+                                }
+                                {
                                     <li
                                         className={cnames("navigation__item", {
                                             active:
@@ -750,7 +792,7 @@ class Header extends React.Component {
                                             )}
                                         </a>
                                     </li>
-                                )}
+                                }
                                 {!currentAccount ? null : (
                                     <li
                                         className={cnames("navigation__item", {
