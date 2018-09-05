@@ -778,7 +778,10 @@ class MyMarkets extends React.Component {
         const translator = require("counterpart");
 
         return (
-            <div className={this.props.className} style={this.props.style}>
+            <div
+                className={this.props.className + " explorer_markets"}
+                style={this.props.style}
+            >
                 <div
                     style={this.props.headerStyle}
                     className="grid-block shrink left-orderbook-header bottom-header"
