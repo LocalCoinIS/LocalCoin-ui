@@ -261,7 +261,12 @@ class Header extends React.Component {
     _onNavigate(route, e) {
         e.preventDefault();
 
-        if (route !== "/" && this.isUnauthorizedUser(route)) return;
+        if (
+            route !== "/" &&
+            route !== "/settings" &&
+            this.isUnauthorizedUser(route)
+        )
+            return;
 
         // Set Accounts Tab as active tab
         if (route == "/accounts") {
