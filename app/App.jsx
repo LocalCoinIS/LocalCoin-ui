@@ -11,6 +11,7 @@ import alt from "alt-instance";
 import {connect, supplyFluxContext} from "alt-react";
 import {IntlProvider} from "react-intl";
 import SyncError from "./components/SyncError";
+import DynamicDataTip from "./components/DynamicDataTip";
 import LoadingIndicator from "./components/LoadingIndicator";
 import BrowserNotifications from "./components/BrowserNotifications/BrowserNotificationsContainer";
 import Header from "components/Layout/Header";
@@ -390,6 +391,8 @@ class Root extends React.Component {
                     windowsClass;
             }
         }
+
+        new DynamicDataTip().register();
     }
 
     getChildContext() {
