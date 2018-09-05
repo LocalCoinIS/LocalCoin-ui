@@ -284,15 +284,29 @@ body.localcoin .account-inputs .typeahead__innerList
 .lightTheme .stats .stressed-stat.daily_change.negativ
 	color: #e1424a!important
 body.localcoin
+	.op-table>tbody>tr>td:first-child
+		width: 17rem
+	.table.op-table
+		td
+			padding: 0
+	.dashboard__table.blue-bg.with-borders.dashboard-table
+		td
+			> div
+				line-height: 1
 	.order-table .cell, .order-table td
 		font-size: 11px!important
 	.asset-card
+		.card-divider
+			font-family: 'osnovapro-bold',sans-serif
+			color: #00195b
 		.card-divider + table:not([class])
 			td
 				padding: 5px 16px
 				line-height: 1
+			th:nth-child(1)
+				width: 280px
 			th:nth-child(2)
-				width: 1173px / 3129px * 100%
+				width: auto
 			th:nth-child(3)
 				width: 825px / 3129px * 100%
 			th:nth-child(4)
@@ -467,7 +481,7 @@ body.localcoin
 						margin: 0 4px 4px 0!important
 						background-color: transparent
 		.sticky-table-row:nth-child(odd)
-			background-color: #dce6f2
+			background-color: transparent
 		.transition-container
 			.cell
 				font-family: 'Roboto Mono', monospace!important
@@ -556,6 +570,9 @@ body.localcoin
 		.grid-block.no-overflow.wrap.shrink,
 		.grid-block.shrink.no-overflow
 			background-color: #fff
+		.grid-block.small-4.no-margin.no-overflow.buy-sell-label
+			span
+				line-height: 1.3
 
 
 	.cell.orderHistoryAsk.right
@@ -824,6 +841,13 @@ body.localcoin
 		.medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
 			order: 2!important
 	body.localcoin .exchange-layout
+		.table.order-table.table-hover.fixed-table.text-right,
+		.table.order-table.text-right.fixed-table.market-right-padding
+			span
+				font-size: 12px!important
+		.mymarkets-header
+			span
+				font-size: 12px
 		.exchange-content-header
 			font-size: 12px
 			.float-right.clickable.hide-for-xlarge
