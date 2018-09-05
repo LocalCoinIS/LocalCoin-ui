@@ -90,7 +90,7 @@ class SettingsMenuUnWrapped extends React.Component {
                             <li className="balance__item" key={label}>
                                 <a
                                     className="balance__link"
-                                    href="#"
+                                    href="javascript:void(0)"
                                     onClick={e => {
                                         onChange(path, e);
                                         this._toggleIsOpen();
@@ -197,9 +197,11 @@ class Header extends React.Component {
     _showSend(e) {
         e.preventDefault();
 
-        if (this.isUnauthorizedUser()) return;
+        console.log("_showSend");
 
-        if (this.send_modal) this.send_modal.show();
+        if (this.isUnauthorizedUser()) return;
+        else if (this.send_modal) this.send_modal.show();
+
         this._closeDropdown();
     }
 
@@ -248,9 +250,12 @@ class Header extends React.Component {
         if (typeof route !== "undefined" && route.indexOf("/market/") === 0)
             return false;
 
-        this.context.router.push("/create-account/password");
+        if (!this._currentAccount || !!this._createAccountLink) {
+            this.context.router.push("/create-account/password");
+            return true;
+        }
 
-        return !this._currentAccount || !!this._createAccountLink;
+        return false;
     }
 
     _onNavigate(route, e) {
@@ -429,7 +434,7 @@ class Header extends React.Component {
                 >
                     <a
                         className="balance__link"
-                        href="#"
+                        href="javascript:void(0)"
                         onClick={this._onChangeAsset.bind(this, symbol)}
                     >
                         {symbol}
