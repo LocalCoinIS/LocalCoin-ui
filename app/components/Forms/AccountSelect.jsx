@@ -1,6 +1,7 @@
 import React from "react";
 import counterpart from "counterpart";
 import PropTypes from "prop-types";
+import DropdownList from "components-brand-new/Utility/DropdownList";
 
 export default class AccountSelect extends React.Component {
     static propTypes = {
@@ -16,10 +17,16 @@ export default class AccountSelect extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {selected: null};
+
+        if (typeof props.selected !== "undefined")
+            this.state = {selected: props.selected};
+        else this.state = {selected: null};
+
         this.default_placeholder = counterpart.translate(
             "account.select_placeholder"
         );
+
+        this._onAccountChange = this._onAccountChange.bind(this);
     }
 
     shouldComponentUpdate(nextProps) {
@@ -41,62 +48,44 @@ export default class AccountSelect extends React.Component {
 
     render() {
         var account_names = this.props.account_names;
-        var selected_account = this.props.selected;
         var placeholder = this.props.placeholder || this.default_placeholder;
-        var ikey;
-        if (this.props.list_size > 1) {
-            placeholder = (
-                <option value="" disabled>
-                    {placeholder}
-                </option>
-            );
-        } else {
-            //When disabled and list_size was 1, chrome was skipping the
-            //placeholder and selecting the 1st item automatically (not shown)
-            placeholder = <option value="">{placeholder}</option>;
-        }
-        var key = 0;
+
+        let options = account_names.sort().map(account_name => {
+            return {
+                key: account_name,
+                label: account_name
+            };
+        });
+
         return (
-            <select
-                ref="account-selector"
-                key={selected_account}
-                defaultValue={selected_account}
-                className={
-                    "form-control account-select bts-select " +
-                    (this.props.className || "")
-                }
-                onChange={this._onAccountChange.bind(this)}
-                style={this.props.center ? {margin: "0 auto"} : null}
-                tabIndex={this.props.tabIndex}
-            >
-                {placeholder}
-                {account_names.sort().map(account_name => {
-                    if (!account_name || account_name === "") {
-                        return null;
-                    }
-                    return (
-                        <option key={key++} value={account_name}>
-                            {account_name}
-                        </option>
-                    );
-                })}
-            </select>
+            <DropdownList
+                options={options}
+                selected={{
+                    key: this.state.selected,
+                    label:
+                        this.state.selected === null
+                            ? placeholder
+                            : this.state.selected
+                }}
+                onChange={key => {
+                    this._onAccountChange(key);
+                }}
+            />
         );
-        //Cannot read property 'getAttribute' of null
-        //<Identicon account={current_account} size={
-        //            {height: 150, width: 150}
-        //        }/>
     }
 
-    _onAccountChange(e) {
-        //DEBUG console.log('... _onAccountChange',e.target.value)
-        e.preventDefault();
-        let value = e.target.value;
+    _onAccountChange(value) {
         var placeholder = this.props.placeholder || this.default_placeholder;
         if (value === placeholder) {
             value = null;
         }
-        this.state.selected = value;
+
+        this.setState({
+            selected: value
+        });
+
+        console.log(value);
+
         if (this.props.onChange) {
             this.props.onChange(value);
         }
