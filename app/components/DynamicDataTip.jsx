@@ -1,30 +1,37 @@
-import ReactTooltip from "react-tooltip";
-
 class DynamicDataTip {
     register() {
         let self = this;
-        document.body.addEventListener(
-            "mouseover",
-            function(e) {
-                e = e || window.event;
-                let targetElem = e.target || e.srcElement;
-                let dataTip = targetElem.getAttribute("data-tip");
+        self.update();
 
-                if (dataTip !== null) {
-                    self.appendToolip(targetElem, dataTip);
-                }
-            },
-            false
-        );
+        setInterval(function() {
+            self.update();
+        }, 2000);
+    }
+
+    update() {
+        let list = this.getAllElementsWithAttribute("data-tip");
+
+        for (var i = 0, n = list.length; i < n; i++) {
+            let dataTip = list[i].getAttribute("data-tip");
+            this.appendToolip(list[i], dataTip);
+        }
+    }
+
+    getAllElementsWithAttribute(attribute) {
+        var matchingElements = [];
+        var allElements = document.getElementsByTagName("*");
+        for (var i = 0, n = allElements.length; i < n; i++) {
+            if (allElements[i].getAttribute(attribute) !== null)
+                matchingElements.push(allElements[i]);
+        }
+
+        return matchingElements;
     }
 
     appendToolip(dom, text) {
         if (dom.getElementsByClassName("dynamic-tooltiptext").length < 1) {
-            let span = document.createElement("span");
-            span.innerHTML = text;
-            span.className = "dynamic-tooltiptext";
-
-            dom.appendChild(span);
+            dom.innerHTML +=
+                '<span class="dynamic-tooltiptext">' + text + "</span>";
         }
     }
 }
