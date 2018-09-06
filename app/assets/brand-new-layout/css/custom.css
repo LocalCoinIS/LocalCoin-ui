@@ -223,3 +223,7 @@ textarea:hover,
     visibility: visible;
     opacity: 1;
 }
+
+.checkbox > .checkbox__styled {
+    cursor: pointer;
+}

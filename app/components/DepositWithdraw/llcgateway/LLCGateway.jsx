@@ -8,6 +8,7 @@ import LLCGatewayData from "./LLCGatewayData";
 import accountUtils from "common/account_utils";
 import {RecentTransactions} from "../../Account/RecentTransactions";
 import Immutable from "immutable";
+import Tabs from "components-brand-new/Utility/Tabs";
 
 class LLCGateway extends React.Component {
     static label = "LLCGateway";
@@ -17,8 +18,7 @@ class LLCGateway extends React.Component {
     constructor(props) {
         super(props);
 
-        this.switchToDeposit = this.switchToDeposit.bind(this);
-        this.switchToWithdraw = this.switchToWithdraw.bind(this);
+        this.onChangeDepositWithdraw = this.onChangeDepositWithdraw.bind(this);
 
         this.state = {
             type: LLCGateway.WITHDRAW,
@@ -28,6 +28,14 @@ class LLCGateway extends React.Component {
             },
             depositAddress: ""
         };
+    }
+
+    onChangeDepositWithdraw(title) {
+        if (title == "gateway.deposit") {
+            this.setState({type: LLCGateway.DEPOSIT});
+        } else if (title == "gateway.withdraw") {
+            this.setState({type: LLCGateway.WITHDRAW});
+        }
     }
 
     switchToDeposit() {
@@ -56,29 +64,35 @@ class LLCGateway extends React.Component {
         });
     }
 
+    //{counterpart.translate("gateway.gateway")}
     render() {
         let accountsList = Immutable.Set();
         accountsList = accountsList.add(this.props.account);
 
+        const items = [
+            {
+                title: "gateway.gateway",
+                content: ""
+            }
+        ];
+
+        const depositWithdrawList = [
+            {
+                title: "gateway.withdraw",
+                content: ""
+            },
+            {
+                title: "gateway.deposit",
+                content: ""
+            }
+        ];
+
         return (
             <div className="grid-content no-padding">
                 <div className="content-block">
-                    <div
-                        className="service-selector"
-                        style={{marginBottom: "2rem"}}
-                    >
-                        <ul className="button-group segmented no-margin">
-                            <li className="is-active">
-                                <a>
-                                    <span>
-                                        {counterpart.translate(
-                                            "gateway.gateway"
-                                        )}
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                    <Tabs items={items} inner={true} />
+                    <br />
+
                     <div>
                         <div className="grid-block no-margin vertical medium-horizontal no-padding">
                             <div className="medium-4">
@@ -94,46 +108,14 @@ class LLCGateway extends React.Component {
                                         {counterpart.translate(
                                             "gateway.gateway_text"
                                         )}
-                                    </span>:
+                                    </span>
+                                    :
                                 </label>
-                                <div>
-                                    <ul className="button-group segmented no-margin">
-                                        <li
-                                            onClick={this.switchToDeposit}
-                                            className={
-                                                this.state.type ==
-                                                LLCGateway.DEPOSIT
-                                                    ? "is-active"
-                                                    : ""
-                                            }
-                                        >
-                                            <a>
-                                                <span>
-                                                    {counterpart.translate(
-                                                        "gateway.deposit"
-                                                    )}
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li
-                                            onClick={this.switchToWithdraw}
-                                            className={
-                                                this.state.type ==
-                                                LLCGateway.WITHDRAW
-                                                    ? "is-active"
-                                                    : ""
-                                            }
-                                        >
-                                            <a>
-                                                <span>
-                                                    {counterpart.translate(
-                                                        "gateway.withdraw"
-                                                    )}
-                                                </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <Tabs
+                                    onChange={this.onChangeDepositWithdraw}
+                                    items={depositWithdrawList}
+                                    inner={true}
+                                />
                             </div>
                         </div>
                     </div>

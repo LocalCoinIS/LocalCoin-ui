@@ -136,6 +136,9 @@ class Tabs extends React.Component {
         }
 
         this.setState({activeTab: title});
+
+        if (typeof this.props.onChange !== "undefined")
+            this.props.onChange(title);
     }
 
     render() {
