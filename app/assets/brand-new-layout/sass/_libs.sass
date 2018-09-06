@@ -284,11 +284,19 @@ body.localcoin .account-inputs .typeahead__innerList
 .lightTheme .stats .stressed-stat.daily_change.negativ
 	color: #e1424a!important
 body.localcoin
+	.explorer_markets
+		.table.table-hover.text-right
+			th
+				background: transparent
+				text-transform: none
 	.op-table>tbody>tr>td:first-child
 		width: 17rem
 	.table.op-table
 		td
-			padding: 0
+			padding: 0 5px
+		tr
+			&:nth-child(even)
+				background-color: #e0e8f1
 	.dashboard__table.blue-bg.with-borders.dashboard-table
 		td
 			> div
@@ -394,7 +402,7 @@ body.localcoin
 						height: 28px
 						margin: 0 0 1px
 	.exchange-bordered
-		overflow: hidden
+		overflow: visible
 	.exchange-content-header + div
 		padding-right: 0!important
 		width: calc(100% + 1px)
@@ -512,6 +520,10 @@ body.localcoin
 				padding: 0 5px
 				text-align: left!important
 				font-family: 'Roboto Mono', monospace!important
+			td.orderHistoryAsk,
+			td.orderHistoryBid
+				span
+					font-size: 11px
 		.small-12.medium-6.middle-content.order-1
 			.table.order-table.table-hover.fixed-table.text-right
 				.price-integer:nth-child(2)
@@ -562,11 +574,23 @@ body.localcoin
 	.exchange-layout
 		overflow: hidden
 		height: calc(100vh - 65px)
+		.inline-block.tooltip
+			position: relative
+			span.dynamic-tooltiptext
+				margin-left: -160px!important
+				border: 1px solid grey
+				background-color: #7e7e7e
+				border-radius: 3px
+				font-size: 13px!important
+				line-height: 1!important
+				padding: 8px 21px
+				width: 320px!important
+				text-align: left
 		.grid-block.no-overflow.wrap.shrink
 			display: flex
 			align-items: stretch
 		.grid-block, .grid-content
-			overflow: hidden
+			overflow: visible
 		.grid-block.no-overflow.wrap.shrink,
 		.grid-block.shrink.no-overflow
 			background-color: #fff
@@ -659,6 +683,31 @@ body.localcoin
 			.button
 				background-color: #fff
 	.voting-container
+		table
+			thead
+				tr:nth-child(2)
+					th[style]:not([class])
+						display: none
+		.col-xl-3.col-lg-6
+			.account-inputs.account-selector
+				width: 100%!important
+				max-width: none!important
+				min-width: 220px!important
+		.dashboard__tabs.dashboard__tabs.permissions.small + div
+			.col-xs-12
+				span[style="float: right;"]
+					position: absolute
+					top: -52px
+					right: 20px
+		.dashboard__actions
+			.row
+				.col-xl-9.col-lg-12
+					display: flex
+					align-items: center
+				.dashboard__actions__filters + button
+					margin-left: auto
+				.dashboard__actions__filters
+					margin-top: 6px
 		.dashboard__tabs.dashboard__tabs.permissions.small + div
 			position: relative!important
 			top: 0!important
@@ -839,12 +888,22 @@ body.localcoin
 @media only screen and (max-width: 1440px) and (min-width: 1280px)
 	body.localcoin .exchange-layout
 		.medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
+			order: 5!important
+		.medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3
 			order: 2!important
 	body.localcoin .exchange-layout
 		.table.order-table.table-hover.fixed-table.text-right,
 		.table.order-table.text-right.fixed-table.market-right-padding
 			span
-				font-size: 12px!important
+				font-size: 11px!important
+		// .table.order-table.table-hover.fixed-table.text-right.no-overflow
+		// 	td.orderHistoryAsk
+		// 		span
+		// 			font-size: 11px!important
+		// .table.order-table.table-hover.fixed-table.text-right.no-overflow
+		// 	td.orderHistoryBid
+		// 		span
+		// 			font-size: 11px!important
 		.mymarkets-header
 			span
 				font-size: 12px
