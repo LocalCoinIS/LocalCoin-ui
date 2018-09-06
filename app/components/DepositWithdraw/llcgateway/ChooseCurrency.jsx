@@ -3,6 +3,7 @@ import SettingsStore from "stores/SettingsStore";
 import counterpart from "counterpart";
 import LLCGateway from "./LLCGateway";
 import LLCGatewayData from "./LLCGatewayData";
+import DropdownList from "components-brand-new/Utility/DropdownList";
 
 class ChooseCurrency extends React.Component {
     constructor(props) {
@@ -27,10 +28,22 @@ class ChooseCurrency extends React.Component {
                 currency: null
             };
 
-        if (!this._current) return list[0];
+        if (!this._current) {
+            if (typeof list[0] === "undefined")
+                return {
+                    asset: null,
+                    currency: null
+                };
+            return list[0];
+        }
 
         for (var i in list) if (list[i].asset == this._current) return list[i];
 
+        if (typeof list[0] === "undefined")
+            return {
+                asset: null,
+                currency: null
+            };
         return list[0];
     }
 
@@ -43,15 +56,18 @@ class ChooseCurrency extends React.Component {
                     currencies: data
                 },
                 function() {
-                    self.props.bullet.setCurrency(self.getCurrency());
+                    if (self.getCurrency())
+                        self.props.bullet.setCurrency(self.getCurrency());
                 }
             );
         });
     }
 
-    onSelectCoin(event) {
-        this._current = event.target.value;
-        this.props.bullet.setCurrency(this.getCurrency());
+    onSelectCoin(key) {
+        if (key) this._current = key;
+
+        if (this.getCurrency())
+            this.props.bullet.setCurrency(this.getCurrency());
     }
 
     componentWillReceiveProps(props) {
@@ -71,24 +87,41 @@ class ChooseCurrency extends React.Component {
     }
 
     getCoinByType() {
+        // //++test
+        // let dataListCoins = [];
+        // dataListCoins.push({
+        //     asset: "asset0",
+        //     currency: "currency0"
+        // });
+        // dataListCoins.push({
+        //     asset: "asset1",
+        //     currency: "currency1"
+        // });
+        // dataListCoins.push({
+        //     asset: "asset2",
+        //     currency: "currency2"
+        // });
+        // return dataListCoins;
+        // //--test
+
         if (!this.state.currencies) return null;
         return this.state.currencies[this.state.type];
     }
 
     render() {
-        let coins = null;
+        let dataListCoins = this.getCoinByType();
 
-        let dataCoins = null;
-        if ((dataCoins = this.getCoinByType()))
-            coins = dataCoins.map(coin => {
-                return (
-                    <option value={coin.asset} key={coin.asset}>
-                        {this.state.type == LLCGateway.WITHDRAW
-                            ? coin.asset
-                            : coin.currency}
-                    </option>
-                );
+        let options = [];
+        if (dataListCoins)
+            options = dataListCoins.map(coin => {
+                return {
+                    key: coin.asset,
+                    label: coin.currency
+                };
             });
+
+        let selected = this.getCurrency();
+        let self = this;
 
         return (
             <div>
@@ -101,15 +134,19 @@ class ChooseCurrency extends React.Component {
                             : counterpart
                                   .translate("gateway.choose_deposit")
                                   .toUpperCase()}
-                    </span>:{" "}
+                    </span>
+                    :{" "}
                 </label>
-                <select
-                    className="external-coin-types bts-select"
-                    onChange={this.onSelectCoin}
-                    value={this._current}
-                >
-                    {coins}
-                </select>
+                <DropdownList
+                    options={options}
+                    selected={{
+                        key: selected ? selected.asset : null,
+                        label: selected ? selected.currency : null
+                    }}
+                    onChange={key => {
+                        self.onSelectCoin(key);
+                    }}
+                />
             </div>
         );
     }
