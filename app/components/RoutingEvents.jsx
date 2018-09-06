@@ -15,6 +15,7 @@ class RoutingEvents {
     }
 
     createClassName() {
+        if (this.currentLocation == "/") return "homepage";
         return this.currentLocation.match(/[a-zA-Z]+/g).join("-");
     }
 
