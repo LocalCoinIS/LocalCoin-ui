@@ -233,6 +233,43 @@ export default class ExchangeHeader extends React.Component {
                                             noTip
                                         />
                                     </span>
+                                    <Link
+                                        onClick={() => {
+                                            MarketsActions.switchMarket();
+                                        }}
+                                        to={`/market/${baseSymbol}_${quoteSymbol}`}
+                                        data-intro={translator.translate(
+                                            "walkthrough.switch_button"
+                                        )}
+                                    >
+                                        <Icon
+                                            className="shuffle"
+                                            name="shuffle"
+                                            title="icons.shuffle"
+                                        />
+                                    </Link>
+
+                                    <Link
+                                        onClick={() => {
+                                            this._addMarket(
+                                                this.props.quoteAsset.get(
+                                                    "symbol"
+                                                ),
+                                                this.props.baseAsset.get(
+                                                    "symbol"
+                                                )
+                                            );
+                                        }}
+                                        data-intro={translator.translate(
+                                            "walkthrough.favourite_button"
+                                        )}
+                                    >
+                                        <Icon
+                                            className={starClass}
+                                            name="fi-star"
+                                            title="icons.fi_star.market"
+                                        />
+                                    </Link>
                                 </div>
                             ) : (
                                 <a className="market-symbol">
@@ -247,39 +284,6 @@ export default class ExchangeHeader extends React.Component {
                                     className="stat-text"
                                     content="exchange.trading_pair"
                                 />
-                                <Link
-                                    onClick={() => {
-                                        MarketsActions.switchMarket();
-                                    }}
-                                    to={`/market/${baseSymbol}_${quoteSymbol}`}
-                                    data-intro={translator.translate(
-                                        "walkthrough.switch_button"
-                                    )}
-                                >
-                                    <Icon
-                                        className="shuffle"
-                                        name="shuffle"
-                                        title="icons.shuffle"
-                                    />
-                                </Link>
-
-                                <Link
-                                    onClick={() => {
-                                        this._addMarket(
-                                            this.props.quoteAsset.get("symbol"),
-                                            this.props.baseAsset.get("symbol")
-                                        );
-                                    }}
-                                    data-intro={translator.translate(
-                                        "walkthrough.favourite_button"
-                                    )}
-                                >
-                                    <Icon
-                                        className={starClass}
-                                        name="fi-star"
-                                        title="icons.fi_star.market"
-                                    />
-                                </Link>
                             </div>
                         </div>
                     </div>
