@@ -14,6 +14,8 @@ divide the remaining {referrerTotalFee}% between themselves and their own _Affil
 
 {account}'s registrar chose to share {referrerFee}% of the total fee with the _Affiliate Referrer_ and keep {registrarFee}% of the total fee for themselves.
 
+[more information about fee](/explorer/fees)
+
 
 #### Pending Fees
 Fees paid by {account} are divided among the network, referrers, and registrars once every maintenance interval ({maintenanceInterval} seconds). The
