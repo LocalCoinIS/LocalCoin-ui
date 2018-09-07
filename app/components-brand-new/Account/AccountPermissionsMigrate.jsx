@@ -145,7 +145,7 @@ export default class AccountPermissionsMigrate extends React.Component {
                     />
                 </form>
 
-                <table>
+                <table className="blue-bg borders">
                     <tbody>
                         <tr className={activeInUse ? "in-use" : ""}>
                             <td>

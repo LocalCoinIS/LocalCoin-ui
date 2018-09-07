@@ -684,7 +684,7 @@ class Header extends React.Component {
                                             href="#"
                                             onClick={this._onNavigate.bind(
                                                 this,
-                                                "deposit-withdraw"
+                                                "/deposit-withdraw"
                                             )}
                                         >
                                             {counterpart.translate(
@@ -785,7 +785,7 @@ class Header extends React.Component {
                                         className={cnames("navigation__item", {
                                             active:
                                                 active.indexOf(
-                                                    "deposit-withdraw"
+                                                    "/deposit-withdraw"
                                                 ) !== -1
                                         })}
                                     >
@@ -794,11 +794,33 @@ class Header extends React.Component {
                                             href="#"
                                             onClick={this._onNavigate.bind(
                                                 this,
-                                                "deposit-withdraw"
+                                                "/deposit-withdraw"
                                             )}
                                         >
                                             {counterpart.translate(
                                                 "header.deposit-withdraw"
+                                            )}
+                                        </a>
+                                    </li>
+                                }
+                                {
+                                    <li
+                                        className={cnames("navigation__item", {
+                                            active:
+                                                active.indexOf("/explorer") !==
+                                                -1
+                                        })}
+                                    >
+                                        <a
+                                            className="navigation__link"
+                                            href="#"
+                                            onClick={this._onNavigate.bind(
+                                                this,
+                                                "/explorer"
+                                            )}
+                                        >
+                                            {counterpart.translate(
+                                                "header.explorer"
                                             )}
                                         </a>
                                     </li>
