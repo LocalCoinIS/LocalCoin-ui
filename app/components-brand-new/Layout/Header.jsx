@@ -894,11 +894,25 @@ class Header extends React.Component {
                                 </span>
                             </div>
                         ) : null}
-                        {currentAccount ? (
+                        <a
+                            href="#"
+                            className="settings"
+                            onClick={this._onNavigate.bind(
+                                this,
+                                "/settings/general"
+                            )}
+                        >
+                            <img
+                                className="settings__icon"
+                                src="/asset-symbols/settings.svg"
+                                alt="settings"
+                            />
+                        </a>
+                        {/* {currentAccount ? (
                             <SettingsMenu
                                 onChange={this._onNavigate.bind(this)}
                             />
-                        ) : null}
+                        ) : null} */}
                         {currentAccount ? (
                             <a
                                 href="#"
