@@ -263,7 +263,7 @@ class Header extends React.Component {
 
         if (
             route !== "/" &&
-            route !== "/settings" &&
+            route !== "/settings/general" &&
             this.isUnauthorizedUser(route)
         )
             return;
@@ -766,29 +766,28 @@ class Header extends React.Component {
                                         </a>
                                     </li>
                                 }
-                                {!currentAccount ? null : (
-                                    <li
-                                        className={cnames("navigation__item", {
-                                            active:
-                                                active.indexOf(
-                                                    `/account/${currentAccount}/voting`
-                                                ) !== -1
-                                        })}
-                                    >
-                                        <a
-                                            className="navigation__link"
-                                            href="#"
-                                            onClick={this._onNavigate.bind(
-                                                this,
+
+                                <li
+                                    className={cnames("navigation__item", {
+                                        active:
+                                            active.indexOf(
                                                 `/account/${currentAccount}/voting`
-                                            )}
-                                        >
-                                            {counterpart.translate(
-                                                "account.voting"
-                                            )}
-                                        </a>
-                                    </li>
-                                )}
+                                            ) !== -1
+                                    })}
+                                >
+                                    <a
+                                        className="navigation__link"
+                                        href="#"
+                                        onClick={this._onNavigate.bind(
+                                            this,
+                                            `/account/${currentAccount}/voting`
+                                        )}
+                                    >
+                                        {counterpart.translate(
+                                            "account.voting"
+                                        )}
+                                    </a>
+                                </li>
                             </ul>
                         </nav>
                         {currentAccount ? (
@@ -844,6 +843,9 @@ class Header extends React.Component {
                                 </a>
                             </div>
                         ) : null}
+
+                        {currentAccount ? null : <div className="balance" />}
+
                         <a
                             href="#"
                             className="settings"
@@ -863,32 +865,27 @@ class Header extends React.Component {
                                 onChange={this._onNavigate.bind(this)}
                             />
                         ) : null} */}
-                        {currentAccount ? (
-                            <a
-                                href="#"
-                                className="lock"
-                                title={
-                                    this.props.locked
-                                        ? counterpart.translate(
-                                              "icons.locked.common"
-                                          )
-                                        : counterpart.translate(
-                                              "icons.unlocked.common"
-                                          )
-                                }
-                                onClick={this._toggleLock.bind(this)}
-                            >
-                                <img
-                                    className="lock__icon"
-                                    src={
-                                        this.props.locked
-                                            ? lockIcon
-                                            : unlockIcon
-                                    }
-                                    alt="lock"
-                                />
-                            </a>
-                        ) : null}
+
+                        <a
+                            href="#"
+                            className="lock"
+                            title={
+                                this.props.locked
+                                    ? counterpart.translate(
+                                          "icons.locked.common"
+                                      )
+                                    : counterpart.translate(
+                                          "icons.unlocked.common"
+                                      )
+                            }
+                            onClick={this._toggleLock.bind(this)}
+                        >
+                            <img
+                                className="lock__icon"
+                                src={this.props.locked ? lockIcon : unlockIcon}
+                                alt="lock"
+                            />
+                        </a>
                     </div>
                 </div>
                 <SendModal
