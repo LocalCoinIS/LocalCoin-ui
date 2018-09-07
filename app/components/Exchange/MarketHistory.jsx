@@ -180,17 +180,11 @@ class MarketHistory extends React.Component {
                             <td>{parsed_order.pays}</td>
                             <td
                                 className="tooltip"
-                                data-tip={new Date(order.time)}
+                                data-tip={new Date(
+                                    order.time
+                                ).toLocaleDateString()}
                             >
-                                {counterpart.localize(new Date(order.time), {
-                                    type: "date",
-                                    format:
-                                        getLocale()
-                                            .toLowerCase()
-                                            .indexOf("en-us") !== -1
-                                            ? "market_history_us"
-                                            : "market_history"
-                                })}
+                                {new Date(order.time).toLocaleTimeString()}
                             </td>
                         </tr>
                     );
@@ -291,13 +285,16 @@ MarketHistory.propTypes = {
     history: PropTypes.object.isRequired
 };
 
-export default connect(MarketHistory, {
-    listenTo() {
-        return [SettingsStore];
-    },
-    getProps() {
-        return {
-            viewSettings: SettingsStore.getState().viewSettings
-        };
+export default connect(
+    MarketHistory,
+    {
+        listenTo() {
+            return [SettingsStore];
+        },
+        getProps() {
+            return {
+                viewSettings: SettingsStore.getState().viewSettings
+            };
+        }
     }
-});
+);

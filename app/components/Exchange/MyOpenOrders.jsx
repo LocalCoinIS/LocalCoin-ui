@@ -124,7 +124,9 @@ class OrderRow extends React.Component {
         const isCall = order.isCall();
         let tdClass = isCall
             ? "orderHistoryCall"
-            : isBid ? "orderHistoryBid" : "orderHistoryAsk";
+            : isBid
+                ? "orderHistoryBid"
+                : "orderHistoryAsk";
 
         let priceSymbol = showSymbols ? (
             <span>{` ${base.get("symbol")}/${quote.get("symbol")}`}</span>
@@ -632,12 +634,7 @@ class MyOpenOrders extends React.Component {
                                                 />
                                             </span>
                                         </th>
-                                        <th>
-                                            <Translate
-                                                className="header-sub-title"
-                                                content="explorer.block.date"
-                                            />
-                                        </th>
+                                        <th />
                                     </tr>
                                 </thead>
                             )}
