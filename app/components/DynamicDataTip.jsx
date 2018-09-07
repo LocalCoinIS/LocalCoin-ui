@@ -5,7 +5,7 @@ class DynamicDataTip {
 
         setInterval(function() {
             self.update();
-        }, 2000);
+        }, 3000);
     }
 
     update() {
@@ -29,10 +29,29 @@ class DynamicDataTip {
     }
 
     appendToolip(dom, text) {
-        if (dom.getElementsByClassName("dynamic-tooltiptext").length < 1) {
+        var list = dom.getElementsByClassName("dynamic-tooltiptext");
+
+        if (list.length > 0) {
+            let toRemove = false;
+            for (var i in list)
+                if (typeof list[i].innerHTML !== "undefined")
+                    if (
+                        list[i].innerHTML.replace(/"/g, "") !=
+                        text.replace(/"/g, "")
+                    )
+                        toRemove = true;
+
+            if (toRemove) {
+                dom.innerHTML = dom.innerHTML.replace(
+                    /\<span class=\"dynamic-tooltiptext\"\>[^]*\<\/span\>/g,
+                    ""
+                );
+                dom.innerHTML +=
+                    '<span class="dynamic-tooltiptext">' + text + "</span>";
+            }
+        } else
             dom.innerHTML +=
                 '<span class="dynamic-tooltiptext">' + text + "</span>";
-        }
     }
 }
 
