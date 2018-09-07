@@ -227,3 +227,12 @@ textarea:hover,
 .checkbox > .checkbox__styled {
     cursor: pointer;
 }
+
+a.navigation__link.navigation__item {
+    height: 35px;
+    margin: 0;
+}
+
+.account-image > canvas {
+    margin-top: 6px;
+}

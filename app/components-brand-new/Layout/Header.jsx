@@ -631,23 +631,6 @@ class Header extends React.Component {
                         <div className="mobile__menu">
                             <span className="mobile__menu__close" />
                             <ul className="mobile__list">
-                                {
-                                    <li className="mobile__list__item">
-                                        <a
-                                            className="mobile__list__link"
-                                            href="#"
-                                            onClick={this._onNavigate.bind(
-                                                this,
-                                                "/account/" + currentAccount
-                                            )}
-                                        >
-                                            {/* AccountOverview */}
-                                            {counterpart.translate(
-                                                "header.account"
-                                            )}
-                                        </a>
-                                    </li>
-                                }
                                 <li className="mobile__list__item">
                                     <a
                                         className="mobile__list__link"
@@ -705,48 +688,6 @@ class Header extends React.Component {
                         </div>
                         <nav className="navigation">
                             <ul className="navigation__list">
-                                {
-                                    <li
-                                        className={cnames("navigation__item", {
-                                            active:
-                                                active.indexOf("account/") !==
-                                                    -1 &&
-                                                active.indexOf("/account/") !==
-                                                    -1 &&
-                                                active.indexOf("/assets") ===
-                                                    -1 &&
-                                                active.indexOf("/voting") ===
-                                                    -1 &&
-                                                active.indexOf(
-                                                    "/signedmessages"
-                                                ) === -1 &&
-                                                active.indexOf(
-                                                    "/member-stats"
-                                                ) === -1 &&
-                                                active.indexOf("/vesting") ===
-                                                    -1 &&
-                                                active.indexOf("/whitelist") ===
-                                                    -1 &&
-                                                active.indexOf(
-                                                    "/permissions"
-                                                ) === -1
-                                        })}
-                                    >
-                                        <a
-                                            className="navigation__link"
-                                            href="#"
-                                            onClick={this._onNavigate.bind(
-                                                this,
-                                                "/account/" + currentAccount
-                                            )}
-                                        >
-                                            {/* AccountOverview */}
-                                            {counterpart.translate(
-                                                "header.account"
-                                            )}
-                                        </a>
-                                    </li>
-                                }
                                 <li
                                     className={cnames("navigation__item", {
                                         active: active.indexOf("market/") !== -1
@@ -889,9 +830,18 @@ class Header extends React.Component {
                                     account={currentAccount}
                                 />
                                 &nbsp;
-                                <span className="user__name">
-                                    {currentAccount}
-                                </span>
+                                <a
+                                    className="navigation__link navigation__item"
+                                    href="#"
+                                    onClick={this._onNavigate.bind(
+                                        this,
+                                        "/account/" + currentAccount
+                                    )}
+                                >
+                                    <span className="user__name">
+                                        {currentAccount}
+                                    </span>
+                                </a>
                             </div>
                         ) : null}
                         <a
