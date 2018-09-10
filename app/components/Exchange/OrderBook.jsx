@@ -126,11 +126,15 @@ class OrderBookRowHorizontal extends React.Component {
                     order.isMine(this.props.currentAccount) ? "my-order" : ""
                 }
             >
-                <td style={{width: "25%"}} className={integerClass}>
+                <td
+                    data-tip={total}
+                    style={{width: "25%"}}
+                    className={integerClass}
+                >
                     {price}
                 </td>
-                <td>{position === "left" ? value : amount}</td>
-                <td>{position === "left" ? amount : value}</td>
+                <td data-tip={total}>{position === "left" ? value : amount}</td>
+                <td data-tip={total}>{position === "left" ? amount : value}</td>
             </tr>
         );
     }
