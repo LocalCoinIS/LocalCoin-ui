@@ -748,8 +748,9 @@ class Header extends React.Component {
                                     <li
                                         className={cnames("navigation__item", {
                                             active:
-                                                active.indexOf("/explorer") !==
-                                                -1
+                                                active.indexOf(
+                                                    "/explorer/blocks"
+                                                ) !== -1
                                         })}
                                     >
                                         <a
@@ -757,7 +758,7 @@ class Header extends React.Component {
                                             href="#"
                                             onClick={this._onNavigate.bind(
                                                 this,
-                                                "/explorer"
+                                                "/explorer/blocks"
                                             )}
                                         >
                                             {counterpart.translate(

@@ -60,7 +60,10 @@ const exploreItems = [
 class Explorer extends React.Component {
     constructor(props) {
         super(props);
+
+        location.href = "/explorer/blocks";
     }
+
     render() {
         const makeExploreItem = ({translate, link, imgClassName, imgSrc}) => {
             let heading = translate;
