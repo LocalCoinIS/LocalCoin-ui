@@ -10,8 +10,6 @@ class LinkToAssetById extends React.Component {
     };
 
     render() {
-        //coinIcon
-
         const symbol = this.props.asset.get("symbol");
         const assetName = <AssetName name={symbol} noTip />;
         return this.props.noLink ? (
@@ -27,7 +25,17 @@ class LinkToAssetById extends React.Component {
                     <img
                         src={"/asset-symbols/" + symbol.toLowerCase() + ".png"}
                         onError={e => {
-                            e.target.src = "/asset-symbols/coin.png";
+                            var img = new Image();
+                            img.src =
+                                "/asset-symbols/" +
+                                symbol.toLowerCase() +
+                                ".svg";
+                            if (img.height != 0) {
+                                e.target.src =
+                                    "/asset-symbols/" +
+                                    symbol.toLowerCase() +
+                                    ".svg";
+                            } else e.target.src = "/asset-symbols/coin.png";
                         }}
                         alt={`ico-${symbol}`}
                     />
