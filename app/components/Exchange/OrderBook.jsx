@@ -419,6 +419,21 @@ class OrderBook extends React.Component {
         }
 
         if (this.props.horizontal) {
+            if (
+                document.getElementsByClassName("container-menu-header")
+                    .length > 0
+            ) {
+                let dom = document.getElementsByClassName(
+                    "container-menu-header"
+                )[0];
+                if (dom.className.indexOf("left-cell-active") !== -1) {
+                    dom.className = dom.className.replaсe(
+                        "left-cell-active",
+                        ""
+                    );
+                }
+            }
+
             let totalBidsLength = bidRows.length;
             let totalAsksLength = askRows.length;
 
@@ -721,10 +736,24 @@ class OrderBook extends React.Component {
                 </div>
             );
         } else {
+            if (
+                document.getElementsByClassName("container-menu-header")
+                    .length > 0
+            ) {
+                let dom = document.getElementsByClassName(
+                    "container-menu-header"
+                )[0];
+                if (dom.className.indexOf("left-cell-active") === -1) {
+                    dom.className += " left-cell-active";
+                }
+            }
             // Vertical orderbook
             return (
                 <div className="left-order-book no-padding no-overflow">
-                    <div className="order-table-container">
+                    <div
+                        className="order-table-container exchange-sell-orders"
+                        style={{height: "calc(50% - 30px)"}}
+                    >
                         <StickyTable
                             stickyColumnCount={0}
                             className="order-table table"
@@ -767,73 +796,92 @@ class OrderBook extends React.Component {
                                           </div>
                                       )}
                             </TransitionWrapper>
-                            <div className="sticky-table-row" ref="center_text">
-                                {noOrders ? (
-                                    <td
-                                        colSpan={3}
-                                        className="no-orders padtop"
-                                    >
-                                        <Translate content="exchange.no_orders" />
-                                    </td>
-                                ) : (
-                                    <td
-                                        className="cell center-cell"
-                                        colSpan="3"
-                                    >
-                                        <div className="orderbook-latest-price">
-                                            <div className="text-center spread">
-                                                {!!spread && (
-                                                    <span
-                                                        className="clickable left"
-                                                        onClick={
-                                                            this
-                                                                .toggleSpreadValue
+                        </StickyTable>
+                    </div>
+                    <div
+                        className="sticky-table-row exchange-sell-buy-orders"
+                        ref="center_text"
+                    >
+                        {noOrders ? (
+                            <td colSpan={3} className="no-orders padtop">
+                                <Translate content="exchange.no_orders" />
+                            </td>
+                        ) : (
+                            <td className="cell center-cell" colSpan="3">
+                                <div className="orderbook-latest-price">
+                                    <div className="text-center spread">
+                                        {!!spread && (
+                                            <span
+                                                className="clickable left"
+                                                onClick={this.toggleSpreadValue}
+                                            >
+                                                <Translate content="exchange.spread" />{" "}
+                                                <span className="spread-value">
+                                                    {spread}
+                                                </span>
+                                            </span>
+                                        )}
+                                        <Icon
+                                            className="lock-unlock clickable"
+                                            onClick={this.toggleAutoScroll}
+                                            name={
+                                                this.state.autoScroll
+                                                    ? "locked"
+                                                    : "unlocked"
+                                            }
+                                            title={
+                                                this.state.autoScroll
+                                                    ? "icons.locked.enable_auto_scroll"
+                                                    : "icons.unlocked.disable_auto_scroll"
+                                            }
+                                        />
+                                        {!!this.props.latest && (
+                                            <span className="right">
+                                                <Translate content="exchange.latest" />{" "}
+                                                <span
+                                                    className={
+                                                        this.props.changeClass
+                                                    }
+                                                >
+                                                    <PriceText
+                                                        preFormattedPrice={
+                                                            this.props.latest
                                                         }
-                                                    >
-                                                        <Translate content="exchange.spread" />{" "}
-                                                        <span className="spread-value">
-                                                            {spread}
-                                                        </span>
-                                                    </span>
-                                                )}
-                                                <Icon
-                                                    className="lock-unlock clickable"
-                                                    onClick={
-                                                        this.toggleAutoScroll
-                                                    }
-                                                    name={
-                                                        this.state.autoScroll
-                                                            ? "locked"
-                                                            : "unlocked"
-                                                    }
-                                                    title={
-                                                        this.state.autoScroll
-                                                            ? "icons.locked.enable_auto_scroll"
-                                                            : "icons.unlocked.disable_auto_scroll"
-                                                    }
-                                                />
-                                                {!!this.props.latest && (
-                                                    <span className="right">
-                                                        <Translate content="exchange.latest" />{" "}
-                                                        <span
-                                                            className={
-                                                                this.props
-                                                                    .changeClass
-                                                            }
-                                                        >
-                                                            <PriceText
-                                                                preFormattedPrice={
-                                                                    this.props
-                                                                        .latest
-                                                                }
-                                                            />
-                                                        </span>
-                                                    </span>
-                                                )}
-                                            </div>
-                                        </div>
-                                    </td>
-                                )}
+                                                    />
+                                                </span>
+                                            </span>
+                                        )}
+                                    </div>
+                                </div>
+                            </td>
+                        )}
+                    </div>
+                    <div
+                        className="order-table-container exchange-buy-orders"
+                        style={{height: "calc(50% - 30px)"}}
+                    >
+                        <StickyTable
+                            stickyColumnCount={0}
+                            className="order-table table"
+                            ref="vertical_sticky_table"
+                        >
+                            <div className="sticky-table-row top-header">
+                                <div className="cell header-cell left">
+                                    <span className="header-sub-title">
+                                        <AssetName name={baseSymbol} />
+                                    </span>
+                                </div>
+                                <div className="cell header-cell">
+                                    <span className="header-sub-title">
+                                        <AssetName name={quoteSymbol} />
+                                    </span>
+                                </div>
+                                <div className="cell header-cell right">
+                                    <Translate
+                                        className="header-sub-title"
+                                        content="exchange.price"
+                                    />
+                                </div>
                             </div>
                             <TransitionWrapper
                                 ref="bidTransition"
