@@ -411,6 +411,7 @@
         "top_markets": "Top Markets"
     },
     "exchange": {
+        "no_orders": "No open orders",
         "asks": "Sell orders",
         "atr": "Average True Range",
         "balance": "Balance",
