@@ -207,15 +207,22 @@ class OrderBook extends React.Component {
         }
     }
 
-    queryStickyTable = query =>
-        this.refs.vertical_sticky_table.table.querySelector(query);
+    // queryStickyTable = query =>
+    //     this.refs.vertical_sticky_table.table.querySelector(query);
 
-    verticalScrollBar = () => this.queryStickyTable("#y-scrollbar");
+    //verticalScrollBar = () => this.queryStickyTable("#y-scrollbar");
 
     componentDidMount() {
         if (!this.props.horizontal) {
-            Ps.initialize(this.verticalScrollBar());
-            this.centerVerticalScrollBar();
+            let up = this.refs.vertical_sticky_table_up.table.querySelector(
+                "#y-scrollbar"
+            );
+            Ps.initialize(up);
+
+            let down = this.refs.vertical_sticky_table_down.table.querySelector(
+                "#y-scrollbar"
+            );
+            Ps.initialize(down);
         } else {
             let bidsContainer = this.refs.hor_bids;
             Ps.initialize(bidsContainer);
@@ -225,48 +232,46 @@ class OrderBook extends React.Component {
     }
 
     componentWillUpdate() {
-        if (!this.props.horizontal) {
-            const scrollableContainer = this.queryStickyTable(
-                "#sticky-table-y-wrapper"
-            );
-
-            const centerTextContainer = this.refs.center_text;
-            const centeringOffset = 21;
-            const scrollTo =
-                centerTextContainer.offsetTop -
-                elemHeight(scrollableContainer) / 2 +
-                centeringOffset;
-
-            this.offset = scrollableContainer.scrollTop - scrollTo;
-        }
+        // if (!this.props.horizontal) {
+        //     const scrollableContainer = this.queryStickyTable(
+        //         "#sticky-table-y-wrapper"
+        //     );
+        //     const centerTextContainer = this.refs.center_text;
+        //     const centeringOffset = 21;
+        //     const scrollTo =
+        //         centerTextContainer.offsetTop -
+        //         elemHeight(scrollableContainer) / 2 +
+        //         centeringOffset;
+        //     this.offset = scrollableContainer.scrollTop - scrollTo;
+        // }
     }
 
-    centerVerticalScrollBar() {
-        if (!this.props.horizontal) {
-            const scrollableContainer = this.queryStickyTable(
-                "#sticky-table-y-wrapper"
-            );
-            const centerTextContainer = this.refs.center_text;
-            const centeringOffset = 21;
-            const offset =
-                !this.state.autoScroll && this.offset ? this.offset : 0;
-            const scrollTo =
-                centerTextContainer.offsetTop -
-                elemHeight(scrollableContainer) / 2 +
-                centeringOffset +
-                offset;
+    // centerVerticalScrollBar() {
+    //     if (!this.props.horizontal) {
+    //         const scrollableContainer = this.queryStickyTable(
+    //             "#sticky-table-y-wrapper"
+    //         );
+    //         const centerTextContainer = this.refs.center_text;
+    //         const centeringOffset = 21;
+    //         const offset =
+    //             !this.state.autoScroll && this.offset ? this.offset : 0;
+    //         const scrollTo =
+    //             centerTextContainer.offsetTop -
+    //             elemHeight(scrollableContainer) / 2 +
+    //             centeringOffset +
+    //             offset;
 
-            this.setState(
-                {ownScroll: true},
-                () => (scrollableContainer.scrollTop = scrollTo)
-            );
-        }
-    }
+    //         this.setState(
+    //             {ownScroll: true},
+    //             () => (scrollableContainer.scrollTop = scrollTo)
+    //         );
+    //     }
+    // }
 
     psUpdate() {
         if (!this.props.horizontal) {
-            Ps.update(this.verticalScrollBar());
-            this.centerVerticalScrollBar();
+            //Ps.update(this.verticalScrollBar());
+            //this.centerVerticalScrollBar();
         } else {
             let bidsContainer = this.refs.hor_bids;
             Ps.update(bidsContainer);
@@ -311,9 +316,9 @@ class OrderBook extends React.Component {
 
     toggleAutoScroll = () => {
         const newState = {autoScroll: !this.state.autoScroll};
-        if (newState.autoScroll)
-            this.setState(newState, this.centerVerticalScrollBar);
-        else this.setState(newState);
+        if (newState.autoScroll) {
+            //this.setState(newState, this.centerVerticalScrollBar);
+        } else this.setState(newState);
     };
 
     render() {
@@ -755,9 +760,8 @@ class OrderBook extends React.Component {
                         style={{height: "calc(50% - 30px)"}}
                     >
                         <StickyTable
-                            stickyColumnCount={0}
                             className="order-table table"
-                            ref="vertical_sticky_table"
+                            ref="vertical_sticky_table_up"
                         >
                             <div className="sticky-table-row top-header">
                                 <div className="cell header-cell left">
@@ -861,9 +865,8 @@ class OrderBook extends React.Component {
                         style={{height: "calc(50% - 30px)"}}
                     >
                         <StickyTable
-                            stickyColumnCount={0}
                             className="order-table table"
-                            ref="vertical_sticky_table"
+                            ref="vertical_sticky_table_down"
                         >
                             <div className="sticky-table-row top-header">
                                 <div className="cell header-cell left">
