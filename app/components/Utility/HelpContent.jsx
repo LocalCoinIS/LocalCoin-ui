@@ -120,7 +120,6 @@ class HelpContent extends React.Component {
 
     render() {
         let locale = this.props.locale || counterpart.getLocale() || "en";
-
         if (!HelpData[locale]) {
             console.error(
                 `missing locale '${locale}' help files, rolling back to 'en'`
@@ -169,13 +168,16 @@ class HelpContent extends React.Component {
         }
 
         if (this.props.section) {
-            if (typeof value[this.props.section] === "undefined") {
-                for (var text in value) {
-                    if (text.indexOf(this.props.section) === 0) {
-                        value = text.substr(this.props.section.length + 1);
-                    }
+            /* The previously used remarkable-loader parsed the md properly as an object, the new one does not */
+            for (let key in value) {
+                if (!!key.match(this.props.section)) {
+                    value = key.replace(
+                        new RegExp("^" + this.props.section + ","),
+                        ""
+                    );
+                    break;
                 }
-            } else value = value[this.props.section];
+            }
         }
 
         if (!value) {
