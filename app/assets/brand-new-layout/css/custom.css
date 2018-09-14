@@ -253,7 +253,11 @@ main.account-assets > .content,
 main.account-vesting > .content,
 main.deposit-withdraw > .content,
 main.settings-general > .content,
+main.settings-accounts > .content,
+main.settings-restore > .content,
+main.settings-access > .content,
+main.settings-faucet_address > .content,
+main.settings-reset > .content,
 main.help > .content {
-    margin-top: 20px;
-    margin-left: 20px;
+    margin: 20px;
 }
