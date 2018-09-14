@@ -248,11 +248,11 @@ a.navigation__link.navigation__item {
     height: calc(50vh - 75px);
 }
 
-/* main.account-member-s,
-main.account-assets,
-main.account-vesting,
-main.deposit-withdraw,
-main.settings-general,
-main.help {
-
-} */
+main.account-member-s > .content,
+main.account-assets > .content,
+main.account-vesting > .content,
+main.deposit-withdraw > .content,
+main.settings-general > .content,
+main.help > .content {
+    margin: 20px 20px 0 20px;
+}
