@@ -9498,28 +9498,31 @@
                                             }));
                                     }
                                     if (this.props.horizontal) {
-                                        if (
-                                            document.getElementsByClassName(
-                                                "container-menu-header"
-                                            ).length > 0
-                                        ) {
-                                            var I = document.getElementsByClassName(
-                                                "container-menu-header"
-                                            )[0];
-                                            -1 !==
-                                                I.className.indexOf(
-                                                    "left-cell-active"
-                                                ) &&
-                                                (I.className = I.className.replaсe(
-                                                    "left-cell-active",
-                                                    ""
-                                                ));
-                                        }
-                                        var q = C.length,
-                                            F = S.length;
+                                        try {
+                                            if (
+                                                document.getElementsByClassName(
+                                                    "container-menu-header"
+                                                ).length > 0
+                                            ) {
+                                                var I = document.getElementsByClassName(
+                                                        "container-menu-header"
+                                                    )[0],
+                                                    q = I.className.toString();
+                                                -1 !==
+                                                    q.indexOf(
+                                                        "left-cell-active"
+                                                    ) &&
+                                                    (I.className = q.replace(
+                                                        /left-cell-active/gi,
+                                                        ""
+                                                    ));
+                                            }
+                                        } catch (e) {}
+                                        var F = C.length,
+                                            M = S.length;
                                         g || C.splice(y, C.length),
                                             b || S.splice(y, S.length);
-                                        var M = r.a.createElement(
+                                        var D = r.a.createElement(
                                                 "thead",
                                                 null,
                                                 r.a.createElement(
@@ -9581,7 +9584,7 @@
                                                     )
                                                 )
                                             ),
-                                            D = r.a.createElement(
+                                            L = r.a.createElement(
                                                 "thead",
                                                 null,
                                                 r.a.createElement(
@@ -9643,7 +9646,7 @@
                                                     )
                                                 )
                                             ),
-                                            L = a(3);
+                                            z = a(3);
                                         return r.a.createElement(
                                             "div",
                                             {
@@ -9673,7 +9676,7 @@
                                                         {
                                                             className:
                                                                 "exchange-content-header ask",
-                                                            "data-intro": L.translate(
+                                                            "data-intro": z.translate(
                                                                 "walkthrough.sell_orders"
                                                             )
                                                         },
@@ -9793,8 +9796,8 @@
                                                                     "table order-table table-hover fixed-table text-right"
                                                             },
                                                             this.state.flip
-                                                                ? M
-                                                                : D
+                                                                ? D
+                                                                : L
                                                         )
                                                     ),
                                                     r.a.createElement(
@@ -9836,7 +9839,7 @@
                                                             )
                                                         )
                                                     ),
-                                                    F > y
+                                                    M > y
                                                         ? r.a.createElement(
                                                               "div",
                                                               {
@@ -9865,7 +9868,7 @@
                                                                             "span",
                                                                             null,
                                                                             " (",
-                                                                            F,
+                                                                            M,
                                                                             ")"
                                                                         )
                                                               )
@@ -9894,7 +9897,7 @@
                                                         {
                                                             className:
                                                                 "exchange-content-header bid",
-                                                            "data-intro": L.translate(
+                                                            "data-intro": z.translate(
                                                                 "walkthrough.buy_orders"
                                                             )
                                                         },
@@ -10014,8 +10017,8 @@
                                                                     "table order-table table-hover fixed-table text-right"
                                                             },
                                                             this.state.flip
-                                                                ? D
-                                                                : M
+                                                                ? L
+                                                                : D
                                                         )
                                                     ),
                                                     r.a.createElement(
@@ -10057,7 +10060,7 @@
                                                             )
                                                         )
                                                     ),
-                                                    q > y
+                                                    F > y
                                                         ? r.a.createElement(
                                                               "div",
                                                               {
@@ -10086,7 +10089,7 @@
                                                                             "span",
                                                                             null,
                                                                             " (",
-                                                                            q,
+                                                                            F,
                                                                             ")"
                                                                         )
                                                               )
@@ -10101,14 +10104,14 @@
                                             "container-menu-header"
                                         ).length > 0
                                     ) {
-                                        var z = document.getElementsByClassName(
+                                        var U = document.getElementsByClassName(
                                             "container-menu-header"
                                         )[0];
                                         -1 ===
-                                            z.className.indexOf(
+                                            U.className.indexOf(
                                                 "left-cell-active"
                                             ) &&
-                                            (z.className +=
+                                            (U.className +=
                                                 " left-cell-active");
                                     }
                                     return r.a.createElement(
@@ -10121,10 +10124,7 @@
                                             "div",
                                             {
                                                 className:
-                                                    "order-table-container exchange-sell-orders",
-                                                style: {
-                                                    height: "calc(50% - 30px)"
-                                                }
+                                                    "order-table-container exchange-sell-orders"
                                             },
                                             r.a.createElement(
                                                 P.StickyTable,
@@ -10347,10 +10347,7 @@
                                             "div",
                                             {
                                                 className:
-                                                    "order-table-container exchange-buy-orders",
-                                                style: {
-                                                    height: "calc(50% - 30px)"
-                                                }
+                                                    "order-table-container exchange-buy-orders"
                                             },
                                             r.a.createElement(
                                                 P.StickyTable,

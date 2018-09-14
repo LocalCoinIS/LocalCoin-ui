@@ -424,20 +424,24 @@ class OrderBook extends React.Component {
         }
 
         if (this.props.horizontal) {
-            if (
-                document.getElementsByClassName("container-menu-header")
-                    .length > 0
-            ) {
-                let dom = document.getElementsByClassName(
-                    "container-menu-header"
-                )[0];
-                if (dom.className.indexOf("left-cell-active") !== -1) {
-                    dom.className = dom.className.replaсe(
-                        "left-cell-active",
-                        ""
-                    );
+            try {
+                if (
+                    document.getElementsByClassName("container-menu-header")
+                        .length > 0
+                ) {
+                    let dom = document.getElementsByClassName(
+                        "container-menu-header"
+                    )[0];
+                    let strClassName = dom.className.toString();
+
+                    if (strClassName.indexOf("left-cell-active") !== -1) {
+                        dom.className = strClassName.replace(
+                            /left-cell-active/gi,
+                            ""
+                        );
+                    }
                 }
-            }
+            } catch (e) {}
 
             let totalBidsLength = bidRows.length;
             let totalAsksLength = askRows.length;
@@ -755,10 +759,7 @@ class OrderBook extends React.Component {
             // Vertical orderbook
             return (
                 <div className="left-order-book no-padding no-overflow">
-                    <div
-                        className="order-table-container exchange-sell-orders"
-                        style={{height: "calc(50% - 30px)"}}
-                    >
+                    <div className="order-table-container exchange-sell-orders">
                         <StickyTable
                             className="order-table table"
                             ref="vertical_sticky_table_up"
@@ -860,10 +861,7 @@ class OrderBook extends React.Component {
                             </td>
                         )}
                     </div>
-                    <div
-                        className="order-table-container exchange-buy-orders"
-                        style={{height: "calc(50% - 30px)"}}
-                    >
+                    <div className="order-table-container exchange-buy-orders">
                         <StickyTable
                             className="order-table table"
                             ref="vertical_sticky_table_down"

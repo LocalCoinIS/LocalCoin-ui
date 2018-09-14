@@ -394,7 +394,7 @@ class Root extends React.Component {
         }
 
         new DynamicDataTip().register();
-        new RoutingEvents().register();
+        new RoutingEvents(this.props.router).register();
     }
 
     getChildContext() {

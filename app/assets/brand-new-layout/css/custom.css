@@ -242,3 +242,17 @@ a.navigation__link.navigation__item {
 
 .exchange-buy-orders {
 }
+
+.order-table-container.exchange-buy-orders,
+.order-table-container.exchange-sell-orders {
+    height: calc(50vh - 75px);
+}
+
+/* main.account-member-s,
+main.account-assets,
+main.account-vesting,
+main.deposit-withdraw,
+main.settings-general,
+main.help {
+
+} */

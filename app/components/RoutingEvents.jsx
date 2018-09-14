@@ -1,5 +1,15 @@
 class RoutingEvents {
+    router = null;
     currentLocation = null;
+
+    constructor(r) {
+        this.router = r;
+
+        this.createClassName = this.createClassName.bind(this);
+        this.updateContentClassByLocation = this.updateContentClassByLocation.bind(
+            this
+        );
+    }
 
     register() {
         let self = this;
@@ -16,7 +26,14 @@ class RoutingEvents {
 
     createClassName() {
         if (this.currentLocation == "/") return "homepage";
-        return this.currentLocation.match(/[a-zA-Z]+/g).join("-");
+
+        if (typeof this.router.params.account_name === "undefined")
+            return this.currentLocation.match(/[a-zA-Z]+/g).join("-");
+
+        return this.currentLocation
+            .replace("/" + this.router.params.account_name + "/", "/")
+            .match(/[a-zA-Z]+/g)
+            .join("-");
     }
 
     updateContentClassByLocation() {
