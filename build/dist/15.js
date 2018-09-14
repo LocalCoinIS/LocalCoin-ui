@@ -10,22 +10,22 @@
                     return C;
                 });
             var r = n(0),
-                o = n.n(r),
-                a = n(17),
-                l = n(6),
-                s = n(12),
-                i = n(49),
+                a = n.n(r),
+                o = n(17),
+                i = n(6),
+                l = n(12),
+                s = n(49),
                 c = n(5),
                 u = n(15),
                 p = n(31),
                 f = n(1),
                 m = n.n(f),
                 b = n(3),
-                y = n.n(b),
-                h = n(52),
-                d = n.n(h),
-                v = n(271),
-                g = n(42),
+                h = n.n(b),
+                y = n(52),
+                d = n.n(y),
+                g = n(271),
+                v = n(42),
                 O =
                     Object.assign ||
                     function(e) {
@@ -59,11 +59,11 @@
                             (n[r] = e[r]));
                 return n;
             }
-            function w(e, t) {
+            function k(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function j(e, t) {
+            function w(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -72,7 +72,7 @@
                     ? e
                     : t;
             }
-            function k(e, t) {
+            function j(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -94,8 +94,8 @@
             var P = (function(e) {
                 function t(e) {
                     return (
-                        w(this, t),
-                        j(
+                        k(this, t),
+                        w(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).call(
                                 this,
@@ -105,7 +105,7 @@
                     );
                 }
                 return (
-                    k(t, v["a"]),
+                    j(t, g["a"]),
                     _(t, [
                         {
                             key: "componentDidMount",
@@ -119,20 +119,20 @@
                                 return (
                                     (function e(t, n, r) {
                                         null === t && (t = Function.prototype);
-                                        var o = Object.getOwnPropertyDescriptor(
+                                        var a = Object.getOwnPropertyDescriptor(
                                             t,
                                             n
                                         );
-                                        if (void 0 === o) {
-                                            var a = Object.getPrototypeOf(t);
-                                            return null === a
+                                        if (void 0 === a) {
+                                            var o = Object.getPrototypeOf(t);
+                                            return null === o
                                                 ? void 0
-                                                : e(a, n, r);
+                                                : e(o, n, r);
                                         }
-                                        if ("value" in o) return o.value;
-                                        var l = o.get;
-                                        return void 0 !== l
-                                            ? l.call(r)
+                                        if ("value" in a) return a.value;
+                                        var i = a.get;
+                                        return void 0 !== i
+                                            ? i.call(r)
                                             : void 0;
                                     })(
                                         t.prototype.__proto__ ||
@@ -157,10 +157,10 @@
                                     t = e.amount,
                                     n = e.toAsset,
                                     r = e.fromAsset,
-                                    o = e.fullPrecision,
-                                    a = e.marketStats,
-                                    l = e.coreAsset;
-                                return g.a.convertValue(t, n, r, a, l, o);
+                                    a = e.fullPrecision,
+                                    o = e.marketStats,
+                                    i = e.coreAsset;
+                                return v.a.convertValue(t, n, r, o, i, a);
                             }
                         },
                         {
@@ -170,25 +170,25 @@
                                     t = e.amount,
                                     n = e.toAsset,
                                     r = e.fromAsset,
-                                    l = e.fullPrecision,
-                                    s = E(e, [
+                                    i = e.fullPrecision,
+                                    l = E(e, [
                                         "amount",
                                         "toAsset",
                                         "fromAsset",
                                         "fullPrecision"
                                     ]),
-                                    i = n.get("id"),
+                                    s = n.get("id"),
                                     u = n.get("symbol");
-                                l || (t = c.a.get_asset_amount(t, r));
+                                i || (t = c.a.get_asset_amount(t, r));
                                 var p = this.getValue();
                                 return p || 0 === p
-                                    ? o.a.createElement(
-                                          a.a,
+                                    ? a.a.createElement(
+                                          o.a,
                                           O(
                                               {
                                                   noPrefix: !0,
                                                   amount: p,
-                                                  asset: i,
+                                                  asset: s,
                                                   decimalOffset:
                                                       -1 !== u.indexOf("BTC")
                                                           ? 4
@@ -204,20 +204,20 @@
                                                                         "precision"
                                                                     ) - 2
                                               },
-                                              s
+                                              l
                                           )
                                       )
-                                    : o.a.createElement(
+                                    : a.a.createElement(
                                           "div",
                                           {
                                               className: "tooltip inline-block",
                                               "data-place": "bottom",
-                                              "data-tip": y.a.translate(
+                                              "data-tip": h.a.translate(
                                                   "tooltip.no_price"
                                               ),
                                               style: {fontSize: "0.9rem"}
                                           },
-                                          o.a.createElement(m.a, {
+                                          a.a.createElement(m.a, {
                                               content: "account.no_price"
                                           })
                                       );
@@ -233,15 +233,15 @@
                 fullDecimals: !1,
                 hide_asset: !1
             }),
-                (P = Object(i.a)(P, {
+                (P = Object(s.a)(P, {
                     propNames: ["toAsset", "fromAsset", "coreAsset"],
                     defaultProps: {toAsset: "1.3.0", coreAsset: "1.3.0"}
                 }));
             var A = (function(e) {
                 function t() {
                     return (
-                        w(this, t),
-                        j(
+                        k(this, t),
+                        w(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -251,7 +251,7 @@
                     );
                 }
                 return (
-                    k(t, o.a.Component),
+                    j(t, a.a.Component),
                     _(t, [
                         {
                             key: "render",
@@ -259,7 +259,7 @@
                                 var e = this.props,
                                     t = e.refCallback,
                                     n = E(e, ["refCallback"]);
-                                return o.a.createElement(P, O({}, n, {ref: t}));
+                                return a.a.createElement(P, O({}, n, {ref: t}));
                             }
                         }
                     ]),
@@ -277,8 +277,8 @@
             var C = (function(e) {
                 function t() {
                     return (
-                        w(this, t),
-                        j(
+                        k(this, t),
+                        w(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -288,7 +288,7 @@
                     );
                 }
                 return (
-                    k(t, o.a.Component),
+                    j(t, a.a.Component),
                     _(t, [
                         {
                             key: "render",
@@ -297,22 +297,22 @@
                                     t = e.balance,
                                     n = E(e, ["balance"]),
                                     r = !!t.getIn(["balance", "amount"]),
-                                    a = Number(
+                                    o = Number(
                                         r
                                             ? t.getIn(["balance", "amount"])
                                             : t.get("balance")
                                     ),
-                                    l = r
+                                    i = r
                                         ? t.getIn(["balance", "asset_id"])
                                         : t.get("asset_type");
-                                return isNaN(a)
-                                    ? o.a.createElement("span", null, "--")
-                                    : o.a.createElement(
+                                return isNaN(o)
+                                    ? a.a.createElement("span", null, "--")
+                                    : a.a.createElement(
                                           A,
                                           O(
                                               {
-                                                  amount: a,
-                                                  fromAsset: l,
+                                                  amount: o,
+                                                  fromAsset: i,
                                                   noDecimals: !0
                                               },
                                               n
@@ -324,33 +324,33 @@
                     t
                 );
             })();
-            (C.propTypes = {balance: l.a.ChainObject.isRequired}),
-                (C = Object(s.a)(C, {keep_updating: !0}));
+            (C.propTypes = {balance: i.a.ChainObject.isRequired}),
+                (C = Object(l.a)(C, {keep_updating: !0}));
         },
         4991: function(e, t, n) {
             "use strict";
             n.r(t);
             var r = n(0),
-                o = n.n(r),
-                a = n(121),
-                l = n(8),
-                s = n(50),
-                i = n.n(s),
+                a = n.n(r),
+                o = n(121),
+                i = n(8),
+                l = n(50),
+                s = n.n(l),
                 c = n(7),
                 u = n.n(c),
                 p = n(3),
                 f = n.n(p),
                 m = n(9),
                 b = n.n(m),
-                y = n(1),
-                h = n.n(y),
+                h = n(1),
+                y = n.n(h),
                 d = n(69),
-                v = n(6),
-                g = n(12),
+                g = n(6),
+                v = n(12),
                 O = n(17),
                 _ = n(139),
                 E = n(4),
-                w = (function() {
+                k = (function() {
                     function e(e, t) {
                         for (var n = 0; n < t.length; n++) {
                             var r = t[n];
@@ -364,11 +364,11 @@
                         return n && e(t.prototype, n), r && e(t, r), t;
                     };
                 })();
-            function j(e, t) {
+            function w(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function k(e, t) {
+            function j(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -405,12 +405,12 @@
                     account: [5, 6, 7, 8, 9],
                     business: [20, 21, 22, 23, 24, 29, 30, 31, 34, 35, 36]
                 },
-                N = [5, 7, 20, 21, 34],
-                T = (function(e) {
+                T = [5, 7, 20, 21, 34],
+                N = (function(e) {
                     function t(e) {
                         return (
-                            j(this, t),
-                            k(
+                            w(this, t),
+                            j(
                                 this,
                                 (t.__proto__ || Object.getPrototypeOf(t)).call(
                                     this,
@@ -420,8 +420,8 @@
                         );
                     }
                     return (
-                        P(t, o.a.Component),
-                        w(t, [
+                        P(t, a.a.Component),
+                        k(t, [
                             {
                                 key: "shouldComponentUpdate",
                                 value: function(e) {
@@ -440,14 +440,14 @@
                                         r = e.opIds;
                                     e.title;
                                     t = t.toJSON();
-                                    var a = E.b.getAsset("1.3.0"),
-                                        l = t.parameters.current_fees,
-                                        s =
+                                    var o = E.b.getAsset("1.3.0"),
+                                        i = t.parameters.current_fees,
+                                        l =
                                             t.parameters
                                                 .network_percent_of_fee / 1e4,
-                                        i = l.scale,
-                                        c = l.parameters,
-                                        u = n.get("unit") || a.get("symbol"),
+                                        s = i.scale,
+                                        c = i.parameters,
+                                        u = n.get("unit") || o.get("symbol"),
                                         p = f.a.translate(
                                             "transaction.trxTypes"
                                         ),
@@ -456,44 +456,44 @@
                                                 var t = c[e],
                                                     n = t[0],
                                                     r = t[1],
-                                                    a = C[n],
-                                                    l = p[a],
-                                                    m = s;
-                                                10 === n && (m = 0.5 + 0.5 * s);
-                                                var y = [],
-                                                    h = !1,
+                                                    o = C[n],
+                                                    i = p[o],
+                                                    m = l;
+                                                10 === n && (m = 0.5 + 0.5 * l);
+                                                var h = [],
+                                                    y = !1,
                                                     d = b()("label", "info");
-                                                for (var v in r) {
-                                                    var g = (r[v] * i) / 1e4,
-                                                        E = g * m,
-                                                        w = f.a.translate(
+                                                for (var g in r) {
+                                                    var v = (r[g] * s) / 1e4,
+                                                        E = v * m,
+                                                        k = f.a.translate(
                                                             "transaction.feeTypes"
                                                         ),
-                                                        j = g
-                                                            ? o.a.createElement(
+                                                        w = v
+                                                            ? a.a.createElement(
                                                                   O.a,
                                                                   {
-                                                                      amount: g,
+                                                                      amount: v,
                                                                       asset:
                                                                           "1.3.0"
                                                                   }
                                                               )
-                                                            : w._none,
-                                                        k = g
-                                                            ? o.a.createElement(
+                                                            : k._none,
+                                                        j = v
+                                                            ? a.a.createElement(
                                                                   _.b,
                                                                   {
                                                                       fromAsset:
                                                                           "1.3.0",
                                                                       fullPrecision: !0,
-                                                                      amount: g,
+                                                                      amount: v,
                                                                       toAsset: u,
                                                                       fullDecimals: !0
                                                                   }
                                                               )
-                                                            : w._none,
+                                                            : k._none,
                                                         P = E
-                                                            ? o.a.createElement(
+                                                            ? a.a.createElement(
                                                                   O.a,
                                                                   {
                                                                       amount: E,
@@ -501,9 +501,9 @@
                                                                           "1.3.0"
                                                                   }
                                                               )
-                                                            : w._none,
+                                                            : k._none,
                                                         A = E
-                                                            ? o.a.createElement(
+                                                            ? a.a.createElement(
                                                                   _.b,
                                                                   {
                                                                       fromAsset:
@@ -514,11 +514,11 @@
                                                                       fullDecimals: !0
                                                                   }
                                                               )
-                                                            : w._none,
+                                                            : k._none,
                                                         x = null;
-                                                    h ||
-                                                        ((h = !0),
-                                                        (x = o.a.createElement(
+                                                    y ||
+                                                        ((y = !0),
+                                                        (x = a.a.createElement(
                                                             "td",
                                                             {
                                                                 rowSpan: "6",
@@ -527,35 +527,35 @@
                                                                         "15em"
                                                                 }
                                                             },
-                                                            o.a.createElement(
+                                                            a.a.createElement(
                                                                 "span",
                                                                 {className: d},
-                                                                l
+                                                                i
                                                             )
                                                         ))),
-                                                        N.indexOf(n) < 0
-                                                            ? y.push(
-                                                                  o.a.createElement(
+                                                        T.indexOf(n) < 0
+                                                            ? h.push(
+                                                                  a.a.createElement(
                                                                       "tr",
                                                                       {
                                                                           key:
                                                                               n.toString() +
-                                                                              v,
+                                                                              g,
                                                                           className:
                                                                               "Annual Membership" ===
-                                                                              w[
-                                                                                  v
+                                                                              k[
+                                                                                  g
                                                                               ]
                                                                                   ? "linethrough"
                                                                                   : ""
                                                                       },
                                                                       x,
-                                                                      o.a.createElement(
+                                                                      a.a.createElement(
                                                                           "td",
                                                                           null,
-                                                                          w[v]
+                                                                          k[g]
                                                                       ),
-                                                                      o.a.createElement(
+                                                                      a.a.createElement(
                                                                           "td",
                                                                           {
                                                                               style: {
@@ -563,16 +563,16 @@
                                                                                       "right"
                                                                               }
                                                                           },
-                                                                          j,
+                                                                          w,
                                                                           0 !==
-                                                                              g &&
+                                                                              v &&
                                                                               "LLC" !==
                                                                                   u && [
                                                                                   " / ",
-                                                                                  k
+                                                                                  j
                                                                               ]
                                                                       ),
-                                                                      o.a.createElement(
+                                                                      a.a.createElement(
                                                                           "td",
                                                                           {
                                                                               style: {
@@ -587,7 +587,7 @@
                                                                           8 !==
                                                                               e &&
                                                                               0 !==
-                                                                                  g &&
+                                                                                  v &&
                                                                               "LLC" !==
                                                                                   u && [
                                                                                   " / ",
@@ -596,21 +596,21 @@
                                                                       )
                                                                   )
                                                               )
-                                                            : y.push(
-                                                                  o.a.createElement(
+                                                            : h.push(
+                                                                  a.a.createElement(
                                                                       "tr",
                                                                       {
                                                                           key:
                                                                               n.toString() +
-                                                                              v
+                                                                              g
                                                                       },
                                                                       x,
-                                                                      o.a.createElement(
+                                                                      a.a.createElement(
                                                                           "td",
                                                                           null,
-                                                                          w[v]
+                                                                          k[g]
                                                                       ),
-                                                                      o.a.createElement(
+                                                                      a.a.createElement(
                                                                           "td",
                                                                           {
                                                                               style: {
@@ -619,13 +619,13 @@
                                                                               }
                                                                           },
                                                                           "- ",
-                                                                          o.a.createElement(
+                                                                          a.a.createElement(
                                                                               "sup",
                                                                               null,
                                                                               "*"
                                                                           )
                                                                       ),
-                                                                      o.a.createElement(
+                                                                      a.a.createElement(
                                                                           "td",
                                                                           {
                                                                               style: {
@@ -635,7 +635,7 @@
                                                                           },
                                                                           P,
                                                                           0 !==
-                                                                              g &&
+                                                                              v &&
                                                                               "LLC" !==
                                                                                   u && [
                                                                                   " / ",
@@ -645,10 +645,10 @@
                                                                   )
                                                               );
                                                 }
-                                                return o.a.createElement(
+                                                return a.a.createElement(
                                                     "tbody",
                                                     {key: e},
-                                                    y
+                                                    h
                                                 );
                                             }
                                             console.warn(
@@ -656,40 +656,40 @@
                                                 e
                                             );
                                         });
-                                    return o.a.createElement(
+                                    return a.a.createElement(
                                         "div",
                                         {className: "asset-card"},
-                                        o.a.createElement(
+                                        a.a.createElement(
                                             "div",
                                             {className: "card-divider"},
                                             this.props.title
                                         ),
-                                        o.a.createElement(
+                                        a.a.createElement(
                                             "table",
                                             null,
-                                            o.a.createElement(
+                                            a.a.createElement(
                                                 "thead",
                                                 null,
-                                                o.a.createElement(
+                                                a.a.createElement(
                                                     "tr",
                                                     null,
-                                                    o.a.createElement(
+                                                    a.a.createElement(
                                                         "th",
                                                         null,
-                                                        o.a.createElement(h.a, {
+                                                        a.a.createElement(y.a, {
                                                             content:
                                                                 "explorer.block.op"
                                                         })
                                                     ),
-                                                    o.a.createElement(
+                                                    a.a.createElement(
                                                         "th",
                                                         null,
-                                                        o.a.createElement(h.a, {
+                                                        a.a.createElement(y.a, {
                                                             content:
                                                                 "explorer.fees.type"
                                                         })
                                                     ),
-                                                    o.a.createElement(
+                                                    a.a.createElement(
                                                         "th",
                                                         {
                                                             style: {
@@ -697,12 +697,12 @@
                                                                     "right"
                                                             }
                                                         },
-                                                        o.a.createElement(h.a, {
+                                                        a.a.createElement(y.a, {
                                                             content:
                                                                 "explorer.fees.fee"
                                                         })
                                                     ),
-                                                    o.a.createElement(
+                                                    a.a.createElement(
                                                         "th",
                                                         {
                                                             style: {
@@ -710,7 +710,7 @@
                                                                     "right"
                                                             }
                                                         },
-                                                        o.a.createElement(h.a, {
+                                                        a.a.createElement(y.a, {
                                                             content:
                                                                 "explorer.fees.feeltm"
                                                         })
@@ -726,14 +726,14 @@
                         t
                     );
                 })();
-            (T.propTypes = {globalObject: v.a.ChainObject.isRequired}),
-                (T.defaultProps = {globalObject: "2.0.0"}),
-                (T = Object(g.a)(T));
+            (N.propTypes = {globalObject: g.a.ChainObject.isRequired}),
+                (N.defaultProps = {globalObject: "2.0.0"}),
+                (N = Object(v.a)(N));
             var S = (function(e) {
                     function t() {
                         return (
-                            j(this, t),
-                            k(
+                            w(this, t),
+                            j(
                                 this,
                                 (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                     this,
@@ -743,8 +743,8 @@
                         );
                     }
                     return (
-                        P(t, o.a.Component),
-                        w(t, [
+                        P(t, a.a.Component),
+                        k(t, [
                             {
                                 key: "render",
                                 value: function() {
@@ -754,41 +754,41 @@
                                         t = [];
                                     for (var n in x) {
                                         var r = e[n],
-                                            a = x[n];
+                                            o = x[n];
                                         t.push(
-                                            o.a.createElement(T, {
+                                            a.a.createElement(N, {
                                                 key: n,
                                                 settings: this.props.settings,
-                                                opIds: a,
+                                                opIds: o,
                                                 title: r
                                             })
                                         );
                                     }
-                                    return o.a.createElement(
+                                    return a.a.createElement(
                                         "div",
                                         {
                                             className: "grid-block vertical",
                                             style: {overflow: "visible"}
                                         },
-                                        o.a.createElement(
+                                        a.a.createElement(
                                             "div",
                                             {
                                                 className:
                                                     "grid-block small-12 shrink",
                                                 style: {overflow: "visible"}
                                             },
-                                            o.a.createElement(d.a, {
+                                            a.a.createElement(d.a, {
                                                 path: "components/Fees"
                                             })
                                         ),
-                                        o.a.createElement(
+                                        a.a.createElement(
                                             "div",
                                             {
                                                 className:
                                                     "grid-block small-12 ",
                                                 style: {overflow: "visible"}
                                             },
-                                            o.a.createElement(
+                                            a.a.createElement(
                                                 "div",
                                                 {className: "grid-content"},
                                                 t
@@ -862,21 +862,73 @@
                                     (Object.setPrototypeOf
                                         ? Object.setPrototypeOf(e, t)
                                         : (e.__proto__ = t));
-                        })(t, o.a.Component),
+                        })(t, a.a.Component),
                         D(t, [
+                            {
+                                key: "dikiHack",
+                                value: function() {
+                                    var e = [
+                                            [
+                                                "Price per KByte Transaction Size",
+                                                "highlight-all"
+                                            ],
+                                            [
+                                                "Symbols with 4 Characters",
+                                                "highlight-all"
+                                            ],
+                                            [
+                                                "Fee for Premium Names",
+                                                "highlight-all"
+                                            ],
+                                            [
+                                                "Lifetime Membership",
+                                                "highlight-all"
+                                            ]
+                                        ],
+                                        t = document.getElementsByTagName("td");
+                                    if (t.length < 50) return !1;
+                                    for (var n in t)
+                                        for (var r in e) {
+                                            var a = t[n].innerHTML,
+                                                o = e[r][0];
+                                            try {
+                                                a.indexOf(o) > -1 &&
+                                                    (t[
+                                                        n
+                                                    ].parentNode.firstChild.className =
+                                                        e[r][1]);
+                                            } catch (e) {}
+                                        }
+                                    return !0;
+                                }
+                            },
+                            {
+                                key: "componentDidUpdate",
+                                value: function(e, t) {
+                                    this.dikiHack() ||
+                                        setTimeout(this.dikiHack, 1e3);
+                                }
+                            },
+                            {
+                                key: "componentDidMount",
+                                value: function() {
+                                    this.dikiHack() ||
+                                        setTimeout(this.dikiHack, 1e3);
+                                }
+                            },
                             {
                                 key: "render",
                                 value: function() {
-                                    return o.a.createElement(
-                                        i.a,
+                                    return a.a.createElement(
+                                        s.a,
                                         {
-                                            stores: [l.a],
+                                            stores: [i.a],
                                             inject: {
-                                                settings: l.a.getState()
+                                                settings: i.a.getState()
                                                     .settings
                                             }
                                         },
-                                        o.a.createElement(S, this.props)
+                                        a.a.createElement(S, this.props)
                                     );
                                 }
                             }
@@ -884,7 +936,7 @@
                         t
                     );
                 })(),
-                R = (function() {
+                H = (function() {
                     function e(e, t) {
                         for (var n = 0; n < t.length; n++) {
                             var r = t[n];
@@ -898,7 +950,7 @@
                         return n && e(t.prototype, n), r && e(t, r), t;
                     };
                 })();
-            var I = (function(e) {
+            var M = (function(e) {
                 function t() {
                     return (
                         (function(e, t) {
@@ -944,16 +996,16 @@
                                 (Object.setPrototypeOf
                                     ? Object.setPrototypeOf(e, t)
                                     : (e.__proto__ = t));
-                    })(t, o.a.Component),
-                    R(t, [
+                    })(t, a.a.Component),
+                    H(t, [
                         {
                             key: "render",
                             value: function() {
-                                var e = o.a.createElement(L, null);
-                                return o.a.createElement(
+                                var e = a.a.createElement(L, null);
+                                return a.a.createElement(
                                     "div",
                                     {className: "content"},
-                                    o.a.createElement(a.a, {
+                                    a.a.createElement(o.a, {
                                         defaultActiveTab: "fees.title",
                                         defaultContent: e
                                     })
@@ -964,7 +1016,7 @@
                     t
                 );
             })();
-            t.default = I;
+            t.default = M;
         }
     }
 ]);

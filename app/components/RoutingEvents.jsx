@@ -5,21 +5,30 @@ class RoutingEvents {
     constructor(r) {
         this.router = r;
 
+        this.getUrl = this.getUrl.bind(this);
         this.createClassName = this.createClassName.bind(this);
         this.updateContentClassByLocation = this.updateContentClassByLocation.bind(
             this
         );
     }
 
+    getUrl() {
+        return (
+            window.location.pathname +
+            "/" +
+            window.location.hash.replace(/\#/gi, "")
+        );
+    }
+
     register() {
         let self = this;
-        this.currentLocation = window.location.pathname;
+        this.currentLocation = this.getUrl();
         this.updateContentClassByLocation();
 
         setInterval(function() {
-            if (self.currentLocation == window.location.pathname) return;
+            if (self.currentLocation == self.getUrl()) return;
 
-            self.currentLocation = window.location.pathname;
+            self.currentLocation = self.getUrl();
             self.updateContentClassByLocation();
         }, 500);
     }

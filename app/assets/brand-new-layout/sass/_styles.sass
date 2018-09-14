@@ -367,6 +367,7 @@ html, body.localcoin
 body.localcoin
 	font-size: 15px
 	min-width: 320px
+	padding-top: 35px
 	position: relative
 	line-height: 1.625
 	font-family: $osnovapro
@@ -385,16 +386,38 @@ body.localcoin
 		flex-direction: column
 		align-items: flex-end
 		margin-left: auto
+		font-size: 14px
+		border-left: 1px solid hsla(0,0%,50%,.45)
+		padding-left: 10px
+		cursor: pointer
+		&:hover
+			background-color: rgba(220, 230, 242, 0.5)
 		span
 			line-height: 1
 		&__status
 			color: #168e13
 			margin-bottom: 2px
+			font-family: roboto-regular,arial,sans-serif
+			font-weight: 400
+			font-style: normal
+			text-transform: lowercase
+			font-variant: small-caps
 		&__data
 			color: #00195b
 			text-align: right
+			font-family: roboto-regular,arial,sans-serif
+			font-weight: 400
+			font-style: normal
+			text-transform: lowercase
+			font-variant: small-caps
 	.header
 		background-color: #001b60
+		position: fixed
+		top: 0
+		right: 0
+		left: 0
+		width: 100%
+		z-index: 20
 	.header-line
 		display: flex
 		align-items: center
@@ -640,7 +663,7 @@ body.localcoin
 				text-decoration: none
 				color: #00195b
 				font-size: 15px
-				padding: 9px 30px
+				padding: 4.5px 30px
 				min-height: 28px
 				line-height: 1.3
 			// submenu
@@ -696,7 +719,7 @@ body.localcoin
 					text-decoration: none
 					color: #00195b
 					font-size: 15px
-					padding: 9px 30px
+					padding: 4.5px 30px
 					min-height: 28px
 					line-height: 1.3
 	.btn

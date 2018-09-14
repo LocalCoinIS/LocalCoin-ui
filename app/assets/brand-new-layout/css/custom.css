@@ -258,6 +258,28 @@ main.settings-restore > .content,
 main.settings-access > .content,
 main.settings-faucet_address > .content,
 main.settings-reset > .content,
-main.help > .content {
+main.help > .content,
+main[class^="help-"] > .content,
+main[class*="help-"] > .content {
     margin: 20px;
+}
+
+.navigation_account__link {
+    display: inline-block;
+    font-size: 18px;
+    line-height: 35px;
+    color: #9db1e6;
+    text-decoration: none;
+    letter-spacing: 1px;
+    height: 35px;
+    margin: 0;
+    margin-left: 5px;
+}
+
+.header-line > a.settings > img {
+    transition: all 0.3s ease 0s;
+}
+
+.navigation_account__link:hover {
+    opacity: 0.5;
 }

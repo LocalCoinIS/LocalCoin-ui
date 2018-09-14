@@ -370,6 +370,7 @@ class RecentTransactions extends React.Component {
                             />
                         </a>
                     </td>
+                    <td>&nbsp;</td>
                 </tr>
             );
         }

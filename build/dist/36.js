@@ -643,6 +643,11 @@
                                                                 "icon-14px"
                                                         })
                                                     )
+                                                ),
+                                                r.a.createElement(
+                                                    "td",
+                                                    null,
+                                                    " "
                                                 )
                                             )
                                         ),

@@ -1034,6 +1034,7 @@ class AccountVoting extends React.Component {
                 <Tabs
                     items={items}
                     inner={true}
+                    hashByConten={true}
                     dashboardTabsClass="dashboard__tabs permissions small"
                 />
             </div>

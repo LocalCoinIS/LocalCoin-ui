@@ -147,7 +147,7 @@ class OrderBook extends React.Component {
             flip: props.flipOrderBook,
             showAllBids: false,
             showAllAsks: false,
-            rowCount: 20,
+            rowCount: 50,
             autoScroll: true
         };
     }

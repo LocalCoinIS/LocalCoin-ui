@@ -126,6 +126,14 @@ class Tabs extends React.Component {
     }
 
     _changeTab({title, link}) {
+        let hashByConten =
+            typeof this.props.hashByConten !== "undefined"
+                ? this.props.hashByConten
+                : false;
+        if (hashByConten === true) {
+            window.location.hash = title.match(/[a-zA-Z]+/g).join("-");
+        }
+
         if (title === this.state.activeTab) {
             return;
         }

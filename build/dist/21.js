@@ -645,7 +645,7 @@
                                     o = t.starred;
                                 if (!a || !n) return null;
                                 var i = a.get("symbol") + "_" + n.get("symbol"),
-                                    l = a.get("symbol") + ":" + n.get("symbol"),
+                                    l = a.get("symbol") + "/" + n.get("symbol"),
                                     c = this.props.getDynamicObject(
                                         a.get("dynamic_asset_data_id")
                                     ),
@@ -754,6 +754,20 @@
                                                         )
                                                     );
                                                 case "market":
+                                                    var v = e.props.name;
+                                                    try {
+                                                        void 0 !== v.props &&
+                                                            (v =
+                                                                v.props
+                                                                    .children[0]
+                                                                    .props
+                                                                    .name +
+                                                                "/" +
+                                                                v.props
+                                                                    .children[2]
+                                                                    .props
+                                                                    .name);
+                                                    } catch (e) {}
                                                     return s.a.createElement(
                                                         "td",
                                                         {
@@ -763,10 +777,10 @@
                                                             ),
                                                             key: t.index
                                                         },
-                                                        e.props.name
+                                                        v
                                                     );
                                                 case "price":
-                                                    var v =
+                                                    var S =
                                                             r && r.price
                                                                 ? r.price.toReal()
                                                                 : r &&
@@ -798,7 +812,7 @@
                                                                           n,
                                                                           !0
                                                                       ),
-                                                        S = 6;
+                                                        w = 6;
                                                     return (
                                                         -1 !==
                                                             [
@@ -809,7 +823,7 @@
                                                                 "SILVER"
                                                             ].indexOf(
                                                                 n.get("symbol")
-                                                            ) && (S = 8),
+                                                            ) && (w = 8),
                                                         s.a.createElement(
                                                             "td",
                                                             {
@@ -822,12 +836,12 @@
                                                                 key: t.index
                                                             },
                                                             u.a.format_number(
-                                                                v,
-                                                                v > 1e3
+                                                                S,
+                                                                S > 1e3
                                                                     ? 0
-                                                                    : v > 10
+                                                                    : S > 10
                                                                         ? 2
-                                                                        : S
+                                                                        : w
                                                             )
                                                         )
                                                     );

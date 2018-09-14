@@ -831,7 +831,7 @@ class Header extends React.Component {
                                 />
                                 &nbsp;
                                 <a
-                                    className="navigation__link navigation__item"
+                                    className="navigation_account__link"
                                     href="#"
                                     onClick={this._onNavigate.bind(
                                         this,

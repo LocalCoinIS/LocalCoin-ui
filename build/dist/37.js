@@ -2854,6 +2854,7 @@
                                     o.a.createElement(V.a, {
                                         items: A,
                                         inner: !0,
+                                        hashByConten: !0,
                                         dashboardTabsClass:
                                             "dashboard__tabs permissions small"
                                     })

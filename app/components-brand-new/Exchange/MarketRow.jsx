@@ -68,7 +68,7 @@ class MarketRow extends React.Component {
         }
 
         let marketID = quote.get("symbol") + "_" + base.get("symbol");
-        let marketName = quote.get("symbol") + ":" + base.get("symbol");
+        let marketName = quote.get("symbol") + "/" + base.get("symbol");
         let dynamic_data = this.props.getDynamicObject(
             quote.get("dynamic_asset_data_id")
         );
@@ -168,12 +168,25 @@ class MarketRow extends React.Component {
                         );
 
                     case "market":
+                        let customMarketName = this.props.name;
+
+                        try {
+                            if (typeof customMarketName.props !== "undefined") {
+                                customMarketName =
+                                    customMarketName.props.children[0].props
+                                        .name +
+                                    "/" +
+                                    customMarketName.props.children[2].props
+                                        .name;
+                            }
+                        } catch (e) {}
+
                         return (
                             <td
                                 onClick={this._onClick.bind(this, marketID)}
                                 key={column.index}
                             >
-                                {this.props.name}
+                                {customMarketName}
                             </td>
                         );
 
