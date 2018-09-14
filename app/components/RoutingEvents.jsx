@@ -34,15 +34,19 @@ class RoutingEvents {
     }
 
     createClassName() {
-        if (this.currentLocation == "/") return "homepage";
+        try {
+            if (this.currentLocation == "/") return "homepage";
 
-        if (typeof this.router.params.account_name === "undefined")
-            return this.currentLocation.match(/[a-zA-Z]+/g).join("-");
+            if (typeof this.router.params.account_name === "undefined")
+                return this.currentLocation.match(/[a-zA-Z]+/g).join("-");
 
-        return this.currentLocation
-            .replace("/" + this.router.params.account_name + "/", "/")
-            .match(/[a-zA-Z]+/g)
-            .join("-");
+            return this.currentLocation
+                .replace("/" + this.router.params.account_name + "/", "/")
+                .match(/[a-zA-Z]+/g)
+                .join("-");
+        } catch (e) {}
+
+        return "";
     }
 
     updateContentClassByLocation() {
