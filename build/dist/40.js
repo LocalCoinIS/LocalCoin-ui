@@ -3202,8 +3202,8 @@
                 j = a(8),
                 I = a(10),
                 P = a(127),
-                D = a(7),
-                W = a.n(D),
+                W = a(7),
+                D = a.n(W),
                 B = (a(9),
                 (function() {
                     function e(e, t) {
@@ -3662,7 +3662,7 @@
                                                                 return s.a.createElement(
                                                                     P.a,
                                                                     {
-                                                                        accountsList: W.a.List(
+                                                                        accountsList: D.a.List(
                                                                             [
                                                                                 e.props.account.get(
                                                                                     "id"
@@ -3743,7 +3743,7 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            var J = (function(e) {
+            var G = (function(e) {
                 function t(e) {
                     !(function(e, t) {
                         if (!(e instanceof t))
@@ -4132,14 +4132,14 @@
                     t
                 );
             })();
-            J.propTypes = {
+            G.propTypes = {
                 account: p.a.ChainAccount.isRequired,
                 issuer_account: p.a.ChainAccount.isRequired,
                 deposit_asset: N.a.string,
                 receive_asset: p.a.ChainAsset.isRequired,
                 rpc_url: N.a.string
             };
-            var G = Object(d.a)(J),
+            var J = Object(d.a)(G),
                 V = a(24),
                 z = (function() {
                     function e(e, t) {
@@ -4541,7 +4541,7 @@
                                                       className:
                                                           "grid-block vertical"
                                                   },
-                                                  s.a.createElement(G, {
+                                                  s.a.createElement(J, {
                                                       account: this.props.account.get(
                                                           "name"
                                                       ),
@@ -6540,7 +6540,7 @@
                                                                 return s.a.createElement(
                                                                     P.a,
                                                                     {
-                                                                        accountsList: W.a.List(
+                                                                        accountsList: D.a.List(
                                                                             [
                                                                                 e.props.account.get(
                                                                                     "id"
@@ -6897,7 +6897,7 @@
                 je = a(76),
                 Ie = a(36),
                 Pe = a(18),
-                De = (function() {
+                We = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -6911,7 +6911,7 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            var We = (function(e) {
+            var De = (function(e) {
                 function t(e) {
                     !(function(e, t) {
                         if (!(e instanceof t))
@@ -6984,7 +6984,7 @@
                                     ? Object.setPrototypeOf(e, t)
                                     : (e.__proto__ = t));
                     })(t, s.a.Component),
-                    De(t, [
+                    We(t, [
                         {
                             key: "componentWillMount",
                             value: function() {
@@ -8213,7 +8213,7 @@
                     t
                 );
             })();
-            We.propTypes = {
+            De.propTypes = {
                 account: p.a.ChainAccount.isRequired,
                 issuer: p.a.ChainAccount.isRequired,
                 asset: p.a.ChainAsset.isRequired,
@@ -8221,7 +8221,7 @@
                 balance: p.a.ChainObject,
                 output_supports_memos: N.a.bool.isRequired
             };
-            var Be = Object(d.a)(We),
+            var Be = Object(d.a)(De),
                 Fe = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
@@ -9235,8 +9235,8 @@
                     );
                 })(),
                 Ue = Object(d.a)(Le),
-                Je = a(13),
-                Ge = (function() {
+                Ge = a(13),
+                Je = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -9323,7 +9323,7 @@
                                         ? Object.setPrototypeOf(e, t)
                                         : (e.__proto__ = t));
                         })(t, s.a.Component),
-                        Ge(t, [
+                        Je(t, [
                             {
                                 key: "componentWillMount",
                                 value: function() {
@@ -9562,7 +9562,7 @@
                                                                   )
                                                               },
                                                               s.a.createElement(
-                                                                  Je.a,
+                                                                  Ge.a,
                                                                   {
                                                                       name:
                                                                           "chevron-down",
@@ -13203,10 +13203,7 @@
                             {
                                 key: "getBaseUrl",
                                 value: function() {
-                                    return "localhost:8080" ==
-                                        window.location.host
-                                        ? "http://localhost:8081/LLCGatewayWCF/"
-                                        : "http://194.63.140.239:8081/LLCGatewayWCF/";
+                                    return "http://194.63.140.239:8081/LLCGatewayWCF/";
                                 }
                             },
                             {
@@ -13217,13 +13214,13 @@
                             },
                             {
                                 key: "сreatePaymentAddress",
-                                value: function(e, t, a) {
+                                value: function(e, t, a, n) {
                                     this.ajax(
                                         function(e) {
-                                            a(e.address);
+                                            n(e.address);
                                         },
                                         "CreatePaymentAddress",
-                                        {account: e, asset: t}
+                                        {account: e, asset: t, type: a}
                                     );
                                 }
                             },
@@ -15048,10 +15045,22 @@
                         (a.onChangeDepositWithdraw = a.onChangeDepositWithdraw.bind(
                             a
                         )),
+                        (a.onChangeGatewayBridge = a.onChangeGatewayBridge.bind(
+                            a
+                        )),
                         (a.state = {
                             type: t.WITHDRAW,
+                            mode: t.GATEWAY,
                             currency: {asset: null, currency: null},
-                            depositAddress: ""
+                            depositAddress: "",
+                            gatewayBridgeList: [
+                                {title: "gateway.gateway", content: ""},
+                                {title: "gateway.bridge", content: ""}
+                            ],
+                            depositWithdrawList: [
+                                {title: "gateway.withdraw", content: ""},
+                                {title: "gateway.deposit", content: ""}
+                            ]
                         }),
                         a
                     );
@@ -15077,6 +15086,47 @@
                                     : (e.__proto__ = t));
                     })(t, s.a.Component),
                     Ot(t, [
+                        {
+                            key: "onChangeGatewayBridge",
+                            value: function(e) {
+                                "gateway.gateway" == e
+                                    ? (this.setState({
+                                          mode: t.GATEWAY,
+                                          depositWithdrawList: [
+                                              {
+                                                  title: "gateway.withdraw",
+                                                  content: ""
+                                              },
+                                              {
+                                                  title: "gateway.deposit",
+                                                  content: ""
+                                              }
+                                          ],
+                                          type: t.WITHDRAW
+                                      }),
+                                      this.createDepositAddress(
+                                          this.props.account.get("name"),
+                                          this.state.currency.asset,
+                                          t.GATEWAY
+                                      ))
+                                    : "gateway.bridge" == e &&
+                                      (this.setState({
+                                          mode: t.BRIDGE,
+                                          depositWithdrawList: [
+                                              {
+                                                  title: "gateway.deposit",
+                                                  content: ""
+                                              }
+                                          ],
+                                          type: t.DEPOSIT
+                                      }),
+                                      this.createDepositAddress(
+                                          this.props.account.get("name"),
+                                          this.state.currency.asset,
+                                          t.BRIDGE
+                                      ));
+                            }
+                        },
                         {
                             key: "onChangeDepositWithdraw",
                             value: function(e) {
@@ -15104,21 +15154,23 @@
                                 this.setState({currency: e}),
                                     this.createDepositAddress(
                                         this.props.account.get("name"),
-                                        e.asset
+                                        e.asset,
+                                        this.state.mode
                                     );
                             }
                         },
                         {
                             key: "createDepositAddress",
-                            value: function(e, t) {
-                                var a = this;
+                            value: function(e, t, a) {
+                                var n = this;
                                 e &&
                                     t &&
                                     new ft().сreatePaymentAddress(
                                         e,
                                         t,
+                                        a,
                                         function(e) {
-                                            a.setState({depositAddress: e});
+                                            n.setState({depositAddress: e});
                                         }
                                     );
                             }
@@ -15126,141 +15178,141 @@
                         {
                             key: "render",
                             value: function() {
-                                var e = W.a.Set();
-                                e = e.add(this.props.account);
-                                return s.a.createElement(
-                                    "div",
-                                    {className: "grid-content no-padding"},
+                                var e = D.a.Set();
+                                return (
+                                    (e = e.add(this.props.account)),
                                     s.a.createElement(
                                         "div",
-                                        {className: "content-block"},
-                                        s.a.createElement(Nt.a, {
-                                            items: [
-                                                {
-                                                    title: "gateway.gateway",
-                                                    content: ""
-                                                }
-                                            ],
-                                            inner: !0
-                                        }),
-                                        s.a.createElement("br", null),
+                                        {className: "grid-content no-padding"},
                                         s.a.createElement(
                                             "div",
-                                            null,
+                                            {className: "content-block"},
+                                            s.a.createElement(Nt.a, {
+                                                onChange: this
+                                                    .onChangeGatewayBridge,
+                                                items: this.state
+                                                    .gatewayBridgeList,
+                                                inner: !0
+                                            }),
+                                            s.a.createElement("br", null),
                                             s.a.createElement(
                                                 "div",
-                                                {
-                                                    className:
-                                                        "grid-block no-margin vertical medium-horizontal no-padding"
-                                                },
-                                                s.a.createElement(
-                                                    "div",
-                                                    {className: "medium-4"},
-                                                    s.a.createElement(vt, {
-                                                        account: this.props
-                                                            .account,
-                                                        type: this.state.type,
-                                                        bullet: this
-                                                    })
-                                                ),
+                                                null,
                                                 s.a.createElement(
                                                     "div",
                                                     {
                                                         className:
-                                                            "medium-6 medium-offset-1"
+                                                            "grid-block no-margin vertical medium-horizontal no-padding"
                                                     },
                                                     s.a.createElement(
-                                                        "label",
+                                                        "div",
+                                                        {className: "medium-4"},
+                                                        s.a.createElement(vt, {
+                                                            account: this.props
+                                                                .account,
+                                                            type: this.state
+                                                                .type,
+                                                            bullet: this
+                                                        })
+                                                    ),
+                                                    s.a.createElement(
+                                                        "div",
                                                         {
                                                             className:
-                                                                "left-label"
+                                                                "medium-6 medium-offset-1"
                                                         },
                                                         s.a.createElement(
-                                                            "span",
-                                                            null,
-                                                            A.a.translate(
-                                                                "gateway.gateway_text"
-                                                            )
-                                                        ),
-                                                        ":"
-                                                    ),
-                                                    s.a.createElement(Nt.a, {
-                                                        onChange: this
-                                                            .onChangeDepositWithdraw,
-                                                        items: [
+                                                            "label",
                                                             {
-                                                                title:
-                                                                    "gateway.withdraw",
-                                                                content: ""
+                                                                className:
+                                                                    "left-label"
                                                             },
-                                                            {
-                                                                title:
-                                                                    "gateway.deposit",
-                                                                content: ""
-                                                            }
-                                                        ],
-                                                        inner: !0
-                                                    })
+                                                            s.a.createElement(
+                                                                "span",
+                                                                null,
+                                                                A.a.translate(
+                                                                    "gateway.gateway_text"
+                                                                )
+                                                            ),
+                                                            ":"
+                                                        ),
+                                                        this.state.mode ==
+                                                        t.BRIDGE
+                                                            ? null
+                                                            : s.a.createElement(
+                                                                  Nt.a,
+                                                                  {
+                                                                      onChange: this
+                                                                          .onChangeDepositWithdraw,
+                                                                      items: this
+                                                                          .state
+                                                                          .depositWithdrawList,
+                                                                      inner: !0
+                                                                  }
+                                                              )
+                                                    )
                                                 )
+                                            ),
+                                            s.a.createElement(
+                                                "div",
+                                                {
+                                                    className:
+                                                        "rudex__gateway grid-block no-padding no-margin"
+                                                },
+                                                s.a.createElement(wt, {
+                                                    account: this.props.account,
+                                                    type: this.state.type,
+                                                    currency: this.state
+                                                        .currency
+                                                }),
+                                                s.a.createElement(St, {
+                                                    depositAddress: this.state
+                                                        .depositAddress,
+                                                    account: this.props.account,
+                                                    type: this.state.type,
+                                                    currency: this.state
+                                                        .currency
+                                                })
+                                            ),
+                                            s.a.createElement(
+                                                "div",
+                                                {
+                                                    style: {
+                                                        display:
+                                                            this.state.type !=
+                                                                t.WITHDRAW &&
+                                                            this.state.type
+                                                                ? "none"
+                                                                : "block"
+                                                    }
+                                                },
+                                                s.a.createElement(P.a, {
+                                                    accountsList: e,
+                                                    limit: 25,
+                                                    compactView: !0,
+                                                    filter: "transfer",
+                                                    fullHeight: !0
+                                                })
+                                            ),
+                                            s.a.createElement(
+                                                "div",
+                                                {
+                                                    style: {
+                                                        display:
+                                                            this.state.type ==
+                                                            t.DEPOSIT
+                                                                ? "block"
+                                                                : "none"
+                                                    }
+                                                },
+                                                s.a.createElement(P.a, {
+                                                    accountsList: e,
+                                                    limit: 25,
+                                                    compactView: !0,
+                                                    filter: "asset_issue",
+                                                    fullHeight: !0
+                                                })
                                             )
-                                        ),
-                                        s.a.createElement(
-                                            "div",
-                                            {
-                                                className:
-                                                    "rudex__gateway grid-block no-padding no-margin"
-                                            },
-                                            s.a.createElement(wt, {
-                                                account: this.props.account,
-                                                type: this.state.type,
-                                                currency: this.state.currency
-                                            }),
-                                            s.a.createElement(St, {
-                                                depositAddress: this.state
-                                                    .depositAddress,
-                                                account: this.props.account,
-                                                type: this.state.type,
-                                                currency: this.state.currency
-                                            })
-                                        ),
-                                        s.a.createElement(
-                                            "div",
-                                            {
-                                                style: {
-                                                    display:
-                                                        this.state.type !=
-                                                            t.WITHDRAW &&
-                                                        this.state.type
-                                                            ? "none"
-                                                            : "block"
-                                                }
-                                            },
-                                            s.a.createElement(P.a, {
-                                                accountsList: e,
-                                                limit: 25,
-                                                compactView: !0,
-                                                filter: "transfer",
-                                                fullHeight: !0
-                                            })
-                                        ),
-                                        s.a.createElement(
-                                            "div",
-                                            {
-                                                style: {
-                                                    display:
-                                                        this.state.type ==
-                                                        t.DEPOSIT
-                                                            ? "block"
-                                                            : "none"
-                                                }
-                                            },
-                                            s.a.createElement(P.a, {
-                                                accountsList: e,
-                                                limit: 25,
-                                                compactView: !0,
-                                                filter: "asset_issue",
-                                                fullHeight: !0
-                                            })
                                         )
                                     )
                                 );
@@ -15272,7 +15324,9 @@
             })();
             (Tt.label = "LLCGateway"),
                 (Tt.WITHDRAW = "withdraw"),
-                (Tt.DEPOSIT = "deposit");
+                (Tt.DEPOSIT = "deposit"),
+                (Tt.GATEWAY = "0"),
+                (Tt.BRIDGE = "1");
             var xt = Tt,
                 jt = (function() {
                     function e(e, t) {
@@ -15301,7 +15355,7 @@
                     ? e
                     : t;
             }
-            function Dt(e, t) {
+            function Wt(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -15320,7 +15374,7 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var Wt = (function(e) {
+            var Dt = (function(e) {
                 function t(e) {
                     It(this, t);
                     var a = Pt(
@@ -15354,7 +15408,7 @@
                     );
                 }
                 return (
-                    Dt(t, s.a.Component),
+                    Wt(t, s.a.Component),
                     jt(t, [
                         {
                             key: "shouldComponentUpdate",
@@ -15661,12 +15715,12 @@
                     t
                 );
             })();
-            (Wt.propTypes = {
+            (Dt.propTypes = {
                 account: p.a.ChainAccount.isRequired,
                 contained: N.a.bool
             }),
-                (Wt.defaultProps = {contained: !1}),
-                (Wt = Object(d.a)(Wt));
+                (Dt.defaultProps = {contained: !1}),
+                (Dt = Object(d.a)(Dt));
             var Bt = (function(e) {
                 function t() {
                     return (
@@ -15681,7 +15735,7 @@
                     );
                 }
                 return (
-                    Dt(t, s.a.Component),
+                    Wt(t, s.a.Component),
                     jt(t, [
                         {
                             key: "componentWillMount",
@@ -15692,7 +15746,7 @@
                         {
                             key: "render",
                             value: function() {
-                                return s.a.createElement(Wt, this.props);
+                                return s.a.createElement(Dt, this.props);
                             }
                         }
                     ]),
@@ -19108,7 +19162,7 @@
                     url: k.a.string.isRequired
                 }),
                     (P = Object(l.a)(P));
-                var D = (function(e) {
+                var W = (function(e) {
                     function t(e) {
                         N(this, t);
                         var a = O(
@@ -20951,13 +21005,13 @@
                                                 },
                                                 x
                                             ),
-                                            D = this.state
+                                            W = this.state
                                                 .withdraw_estimated_input_amount,
-                                            W = D
+                                            D = W
                                                 ? s.a.createElement("input", {
                                                       style: {width: "11rem"},
                                                       type: "text",
-                                                      value: D || "",
+                                                      value: W || "",
                                                       onChange: this.onInputAmountChanged.bind(
                                                           this,
                                                           "withdraw"
@@ -21133,7 +21187,7 @@
                                                                 s.a.createElement(
                                                                     "div",
                                                                     null,
-                                                                    W
+                                                                    D
                                                                 )
                                                             ),
                                                             "→",
@@ -21239,7 +21293,7 @@
                                                 )
                                             );
                                         });
-                                        var J = s.a.createElement(
+                                        var G = s.a.createElement(
                                                 "select",
                                                 {
                                                     style: {width: "11rem"},
@@ -21254,13 +21308,13 @@
                                                 },
                                                 U
                                             ),
-                                            G = this.state
+                                            J = this.state
                                                 .conversion_estimated_input_amount,
-                                            V = G
+                                            V = J
                                                 ? s.a.createElement("input", {
                                                       style: {width: "11rem"},
                                                       type: "text",
-                                                      value: G || "",
+                                                      value: J || "",
                                                       onChange: this.onInputAmountChanged.bind(
                                                           this,
                                                           "conversion"
@@ -21436,7 +21490,7 @@
                                                                 s.a.createElement(
                                                                     "div",
                                                                     null,
-                                                                    J
+                                                                    G
                                                                 ),
                                                                 s.a.createElement(
                                                                     "div",
@@ -21556,7 +21610,7 @@
                         t
                     );
                 })();
-                D.propTypes = {
+                W.propTypes = {
                     url: k.a.string,
                     gateway: k.a.string,
                     account: o.a.ChainAccount,
@@ -21571,7 +21625,7 @@
                     initial_conversion_output_coin_type: k.a.string,
                     initial_conversion_estimated_input_amount: k.a.string
                 };
-                Object(l.a)(D);
+                Object(l.a)(W);
             }.call(this, a(29).Buffer));
         },
         809: function(e, t, a) {

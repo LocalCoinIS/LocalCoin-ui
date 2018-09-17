@@ -15,19 +15,60 @@ class LLCGateway extends React.Component {
     static WITHDRAW = "withdraw";
     static DEPOSIT = "deposit";
 
+    static GATEWAY = "0";
+    static BRIDGE = "1";
+
     constructor(props) {
         super(props);
 
         this.onChangeDepositWithdraw = this.onChangeDepositWithdraw.bind(this);
+        this.onChangeGatewayBridge = this.onChangeGatewayBridge.bind(this);
 
         this.state = {
             type: LLCGateway.WITHDRAW,
+            mode: LLCGateway.GATEWAY,
             currency: {
                 asset: null,
                 currency: null
             },
-            depositAddress: ""
+            depositAddress: "",
+            gatewayBridgeList: [
+                {title: "gateway.gateway", content: ""},
+                {title: "gateway.bridge", content: ""}
+            ],
+            depositWithdrawList: [
+                {title: "gateway.withdraw", content: ""},
+                {title: "gateway.deposit", content: ""}
+            ]
         };
+    }
+    onChangeGatewayBridge(title) {
+        if (title == "gateway.gateway") {
+            this.setState({
+                mode: LLCGateway.GATEWAY,
+                depositWithdrawList: [
+                    {title: "gateway.withdraw", content: ""},
+                    {title: "gateway.deposit", content: ""}
+                ],
+                type: LLCGateway.WITHDRAW
+            });
+            this.createDepositAddress(
+                this.props.account.get("name"),
+                this.state.currency.asset,
+                LLCGateway.GATEWAY
+            );
+        } else if (title == "gateway.bridge") {
+            this.setState({
+                mode: LLCGateway.BRIDGE,
+                depositWithdrawList: [{title: "gateway.deposit", content: ""}],
+                type: LLCGateway.DEPOSIT
+            });
+            this.createDepositAddress(
+                this.props.account.get("name"),
+                this.state.currency.asset,
+                LLCGateway.BRIDGE
+            );
+        }
     }
 
     onChangeDepositWithdraw(title) {
@@ -51,17 +92,26 @@ class LLCGateway extends React.Component {
             currency: model
         });
 
-        this.createDepositAddress(this.props.account.get("name"), model.asset);
+        this.createDepositAddress(
+            this.props.account.get("name"),
+            model.asset,
+            this.state.mode
+        );
     }
 
-    createDepositAddress(account, asset) {
+    createDepositAddress(account, asset, mode) {
         if (!account || !asset) return;
 
-        new LLCGatewayData().сreatePaymentAddress(account, asset, address => {
-            this.setState({
-                depositAddress: address
-            });
-        });
+        new LLCGatewayData().сreatePaymentAddress(
+            account,
+            asset,
+            mode,
+            address => {
+                this.setState({
+                    depositAddress: address
+                });
+            }
+        );
     }
 
     //{counterpart.translate("gateway.gateway")}
@@ -69,28 +119,14 @@ class LLCGateway extends React.Component {
         let accountsList = Immutable.Set();
         accountsList = accountsList.add(this.props.account);
 
-        const items = [
-            {
-                title: "gateway.gateway",
-                content: ""
-            }
-        ];
-
-        const depositWithdrawList = [
-            {
-                title: "gateway.withdraw",
-                content: ""
-            },
-            {
-                title: "gateway.deposit",
-                content: ""
-            }
-        ];
-
         return (
             <div className="grid-content no-padding">
                 <div className="content-block">
-                    <Tabs items={items} inner={true} />
+                    <Tabs
+                        onChange={this.onChangeGatewayBridge}
+                        items={this.state.gatewayBridgeList}
+                        inner={true}
+                    />
                     <br />
 
                     <div>
@@ -111,11 +147,13 @@ class LLCGateway extends React.Component {
                                     </span>
                                     :
                                 </label>
-                                <Tabs
-                                    onChange={this.onChangeDepositWithdraw}
-                                    items={depositWithdrawList}
-                                    inner={true}
-                                />
+                                {this.state.mode == LLCGateway.BRIDGE ? null : (
+                                    <Tabs
+                                        onChange={this.onChangeDepositWithdraw}
+                                        items={this.state.depositWithdrawList}
+                                        inner={true}
+                                    />
+                                )}
                             </div>
                         </div>
                     </div>
