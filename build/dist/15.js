@@ -893,9 +893,7 @@
                                                 o = e[r][0];
                                             try {
                                                 a.indexOf(o) > -1 &&
-                                                    (t[
-                                                        n
-                                                    ].parentNode.firstChild.className =
+                                                    (t[n].parentNode.className =
                                                         e[r][1]);
                                             } catch (e) {}
                                         }

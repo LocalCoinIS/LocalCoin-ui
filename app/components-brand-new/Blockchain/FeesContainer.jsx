@@ -22,8 +22,7 @@ class FeesContainer extends React.Component {
 
                 try {
                     if (haystack.indexOf(needle) > -1) {
-                        tds[tdI].parentNode.firstChild.className =
-                            bullets[bulletI][1];
+                        tds[tdI].parentNode.className = bullets[bulletI][1];
                     }
                 } catch (e) {}
             }
