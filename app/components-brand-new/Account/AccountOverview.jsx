@@ -606,16 +606,16 @@ class AccountOverview extends React.Component {
                         className="column-hide-small"
                         data-place="bottom"
                         data-tip={counterpart.translate("tooltip.burn")}
+                        onClick={this._reserveButtonClick.bind(
+                            this,
+                            asset.get("id")
+                        )}
                     >
                         <a
                             style={{marginRight: 0}}
                             className={
                                 includeAsset ? "order-cancel" : "action-plus"
                             }
-                            onClick={this._reserveButtonClick.bind(
-                                this,
-                                asset.get("id")
-                            )}
                         >
                             <span className="icon fire icon-14px">
                                 <svg
@@ -638,17 +638,17 @@ class AccountOverview extends React.Component {
                             "tooltip." +
                                 (includeAsset ? "hide_asset" : "show_asset")
                         )}
+                        onClick={this._hideAsset.bind(
+                            this,
+                            asset_type,
+                            includeAsset
+                        )}
                     >
                         <a
                             style={{marginRight: 0}}
                             className={
                                 includeAsset ? "order-cancel" : "action-plus"
                             }
-                            onClick={this._hideAsset.bind(
-                                this,
-                                asset_type,
-                                includeAsset
-                            )}
                         >
                             <Icon
                                 name={
