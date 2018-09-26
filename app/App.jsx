@@ -152,12 +152,14 @@ class App extends React.Component {
     }
 
     _rebuildTooltips() {
+        if (this.rebuildTimeout) return;
         ReactTooltip.hide();
 
-        setTimeout(() => {
+        this.rebuildTimeout = setTimeout(() => {
             if (this.refs.tooltip) {
                 this.refs.tooltip.globalRebuild();
             }
+            this.rebuildTimeout = null;
         }, 1500);
     }
 
@@ -251,12 +253,6 @@ class App extends React.Component {
                         </div>
                     </div>
                     {showFooter ? <Footer synced={this.state.synced} /> : null}
-                    <ReactTooltip
-                        ref="tooltip"
-                        place="top"
-                        type={theme === "lightTheme" ? "dark" : "light"}
-                        effect="solid"
-                    />
                 </div>
             );
         }
@@ -300,6 +296,12 @@ class App extends React.Component {
                     <BrowserNotifications />
                     <WalletUnlockModal />
                     <BrowserSupportModal ref="browser_modal" />
+                    <ReactTooltip
+                        ref="tooltip"
+                        place="top"
+                        type={theme === "lightTheme" ? "dark" : "light"}
+                        effect="solid"
+                    />
                 </div>
             );
         }
@@ -333,6 +335,12 @@ class App extends React.Component {
                     <BrowserNotifications />
                     <WalletUnlockModal />
                     <BrowserSupportModal ref="browser_modal" />
+                    <ReactTooltip
+                        ref="tooltip"
+                        place="top"
+                        type={theme === "lightTheme" ? "dark" : "light"}
+                        effect="solid"
+                    />
                 </div>
             </div>
         );
@@ -393,7 +401,7 @@ class Root extends React.Component {
             }
         }
 
-        new DynamicDataTip().register();
+        //new DynamicDataTip().register();
         new RoutingEvents(this.props.router).register();
     }
 
