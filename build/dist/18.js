@@ -1,437 +1,994 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
     [18],
     {
-        4997: function(e, t, n) {
+        5029: function(e, t, a) {
             "use strict";
-            n.r(t);
-            var a = n(0),
-                r = n.n(a),
-                c = n(14),
-                o = n(50),
-                l = n.n(o),
-                u = n(76),
-                i = n(2),
-                s = n.n(i),
-                p = n(11),
-                f = n(7),
-                h = n.n(f),
-                m = n(1),
-                d = n.n(m),
-                b = n(24),
-                y = n(6),
-                E = n(13),
-                v = n(12),
-                g = n(56),
-                _ = n(15),
-                w = n(37),
-                C = (function() {
+            a.r(t);
+            var n = a(0),
+                r = a.n(n),
+                l = a(107),
+                s = a(8),
+                i = a(51),
+                o = a.n(i),
+                c = a(2),
+                u = a.n(c),
+                m = a(79),
+                p = a(10),
+                d = a(11),
+                f = a(7),
+                y = a.n(f),
+                h = a(1),
+                E = a.n(h),
+                b = a(41),
+                k = a(48),
+                v = a(3),
+                g = a.n(v),
+                _ = a(17),
+                x = a(22),
+                w = a(4),
+                A = a(9),
+                P = a.n(A),
+                C = a(5),
+                O = a(39),
+                F = a(86),
+                L = (function() {
                     function e(e, t) {
-                        for (var n = 0; n < t.length; n++) {
-                            var a = t[n];
-                            (a.enumerable = a.enumerable || !1),
-                                (a.configurable = !0),
-                                "value" in a && (a.writable = !0),
-                                Object.defineProperty(e, a.key, a);
+                        for (var a = 0; a < t.length; a++) {
+                            var n = t[a];
+                            (n.enumerable = n.enumerable || !1),
+                                (n.configurable = !0),
+                                "value" in n && (n.writable = !0),
+                                Object.defineProperty(e, n.key, n);
                         }
                     }
-                    return function(t, n, a) {
-                        return n && e(t.prototype, n), a && e(t, a), t;
+                    return function(t, a, n) {
+                        return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            function O(e, t) {
-                if (!(e instanceof t))
-                    throw new TypeError("Cannot call a class as a function");
-            }
-            function A(e, t) {
-                if (!e)
-                    throw new ReferenceError(
-                        "this hasn't been initialised - super() hasn't been called"
-                    );
-                return !t || ("object" != typeof t && "function" != typeof t)
-                    ? e
-                    : t;
-            }
-            function j(e, t) {
-                if ("function" != typeof t && null !== t)
-                    throw new TypeError(
-                        "Super expression must either be null or a function, not " +
-                            typeof t
-                    );
-                (e.prototype = Object.create(t && t.prototype, {
-                    constructor: {
-                        value: e,
-                        enumerable: !1,
-                        writable: !0,
-                        configurable: !0
-                    }
-                })),
-                    t &&
-                        (Object.setPrototypeOf
-                            ? Object.setPrototypeOf(e, t)
-                            : (e.__proto__ = t));
-            }
-            var k = (function(e) {
-                function t() {
-                    return (
-                        O(this, t),
-                        A(
-                            this,
-                            (t.__proto__ || Object.getPrototypeOf(t)).apply(
-                                this,
-                                arguments
-                            )
-                        )
-                    );
-                }
+            function j(e, t, a) {
                 return (
-                    j(t, r.a.Component),
-                    C(t, [
-                        {
-                            key: "shouldComponentUpdate",
-                            value: function(e) {
-                                return (
-                                    e.contacts !== this.props.contacts ||
-                                    e.account !== this.props.account
-                                );
-                            }
-                        },
-                        {
-                            key: "_onAddContact",
-                            value: function(e, t) {
-                                t.preventDefault(), b.a.addAccountContact(e);
-                            }
-                        },
-                        {
-                            key: "_onRemoveContact",
-                            value: function(e, t) {
-                                t.preventDefault(), b.a.removeAccountContact(e);
-                            }
-                        },
-                        {
-                            key: "render",
-                            value: function() {
-                                var e = this.props,
-                                    t = e.account,
-                                    n = e.contacts;
-                                if (!t) return null;
-                                var a = t.getIn(["balances", "1.3.0"]) || null,
-                                    c = t.get("name");
-                                return r.a.createElement(
-                                    "tr",
-                                    {key: t.get("id")},
-                                    r.a.createElement("td", null, t.get("id")),
-                                    n.has(c)
-                                        ? r.a.createElement(
-                                              "td",
-                                              {
-                                                  onClick: this._onRemoveContact.bind(
-                                                      this,
-                                                      c
-                                                  )
-                                              },
-                                              r.a.createElement(E.a, {
-                                                  name: "minus-circle",
-                                                  title:
-                                                      "icons.minus_circle.remove_contact"
-                                              })
-                                          )
-                                        : r.a.createElement(
-                                              "td",
-                                              {
-                                                  onClick: this._onAddContact.bind(
-                                                      this,
-                                                      c
-                                                  )
-                                              },
-                                              r.a.createElement(E.a, {
-                                                  name: "plus-circle",
-                                                  title:
-                                                      "icons.plus_circle.add_contact"
-                                              })
-                                          ),
-                                    r.a.createElement(
-                                        "td",
-                                        null,
-                                        r.a.createElement(
-                                            p.b,
-                                            {to: "/account/" + c + "/overview"},
-                                            c
-                                        )
-                                    ),
-                                    r.a.createElement(
-                                        "td",
-                                        null,
-                                        a
-                                            ? r.a.createElement(g.a, {
-                                                  balance: a
-                                              })
-                                            : "n/a"
-                                    ),
-                                    r.a.createElement(
-                                        "td",
-                                        null,
-                                        a
-                                            ? r.a.createElement(g.a, {
-                                                  balance: a,
-                                                  asPercentage: !0
-                                              })
-                                            : "n/a"
-                                    )
-                                );
-                            }
-                        }
-                    ]),
-                    t
+                    t in e
+                        ? Object.defineProperty(e, t, {
+                              value: a,
+                              enumerable: !0,
+                              configurable: !0,
+                              writable: !0
+                          })
+                        : (e[t] = a),
+                    e
                 );
-            })();
-            (k.propTypes = {account: y.a.ChainAccount.isRequired}),
-                (k.defaultProps = {tempComponent: "tr", autosubscribe: !1}),
-                (k = Object(v.a)(k));
-            var T = function(e) {
-                return r.a.createElement(k, e);
-            };
-            T = Object(_.connect)(T, {
-                listenTo: function() {
-                    return [c.a];
-                },
-                getProps: function() {
-                    return {contacts: c.a.getState().accountContacts};
-                }
-            });
-            var P = (function(e) {
-                function t(e) {
-                    O(this, t);
-                    var n = A(
-                        this,
-                        (t.__proto__ || Object.getPrototypeOf(t)).call(this)
-                    );
-                    return (
-                        (n.state = {searchTerm: e.searchTerm, isLoading: !1}),
-                        (n._searchAccounts = Object(u.a)(
-                            n._searchAccounts,
-                            200
-                        )),
-                        n
-                    );
-                }
-                return (
-                    j(t, r.a.Component),
-                    C(t, [
-                        {
-                            key: "shouldComponentUpdate",
-                            value: function(e, t) {
-                                return (
-                                    !h.a.is(
-                                        e.searchAccounts,
-                                        this.props.searchAccounts
-                                    ) ||
-                                    t.searchTerm !== this.state.searchTerm ||
-                                    t.isLoading !== this.state.isLoading
+            }
+            var M = new F.a("__graphene__"),
+                S = (function(e) {
+                    function t(e) {
+                        !(function(e, t) {
+                            if (!(e instanceof t))
+                                throw new TypeError(
+                                    "Cannot call a class as a function"
                                 );
-                            }
-                        },
-                        {
-                            key: "_onSearchChange",
-                            value: function(e) {
-                                this.setState({
-                                    searchTerm: e.target.value.toLowerCase(),
-                                    isLoading: !0
-                                }),
-                                    this._searchAccounts(e.target.value);
-                            }
-                        },
-                        {
-                            key: "_searchAccounts",
-                            value: function(e) {
-                                b.a.accountSearch(e),
-                                    this.setState({isLoading: !1});
-                            }
-                        },
-                        {
-                            key: "render",
-                            value: function() {
-                                var e = this.props.searchAccounts,
-                                    t = this.state.searchTerm,
-                                    n = null;
-                                return (
-                                    e.size > 0 &&
-                                        t &&
-                                        t.length > 0 &&
-                                        (n = e
-                                            .filter(function(e) {
-                                                return -1 !== e.indexOf(t);
-                                            })
-                                            .sort(function(e, t) {
-                                                return e > t
-                                                    ? 1
-                                                    : e < t
+                        })(this, t);
+                        var a = (function(e, t) {
+                            if (!e)
+                                throw new ReferenceError(
+                                    "this hasn't been initialised - super() hasn't been called"
+                                );
+                            return !t ||
+                                ("object" != typeof t && "function" != typeof t)
+                                ? e
+                                : t;
+                        })(
+                            this,
+                            (t.__proto__ || Object.getPrototypeOf(t)).call(this)
+                        );
+                        return (
+                            (a.state = {
+                                foundLast: !1,
+                                lastAsset: "",
+                                isLoading: !1,
+                                assetsFetched: 0,
+                                activeFilter: "market",
+                                filterUIA: e.filterUIA || "",
+                                filterMPA: e.filterMPA || "",
+                                filterPM: e.filterPM || ""
+                            }),
+                            a
+                        );
+                    }
+                    return (
+                        (function(e, t) {
+                            if ("function" != typeof t && null !== t)
+                                throw new TypeError(
+                                    "Super expression must either be null or a function, not " +
+                                        typeof t
+                                );
+                            (e.prototype = Object.create(t && t.prototype, {
+                                constructor: {
+                                    value: e,
+                                    enumerable: !1,
+                                    writable: !0,
+                                    configurable: !0
+                                }
+                            })),
+                                t &&
+                                    (Object.setPrototypeOf
+                                        ? Object.setPrototypeOf(e, t)
+                                        : (e.__proto__ = t));
+                        })(t, r.a.Component),
+                        L(t, [
+                            {
+                                key: "shouldComponentUpdate",
+                                value: function(e, t) {
+                                    return (
+                                        !y.a.is(e.assets, this.props.assets) ||
+                                        !C.a.are_equal_shallow(t, this.state)
+                                    );
+                                }
+                            },
+                            {
+                                key: "componentWillMount",
+                                value: function() {
+                                    this._checkAssets(this.props.assets, !0);
+                                }
+                            },
+                            {
+                                key: "_checkAssets",
+                                value: function(e, t) {
+                                    this.setState({isLoading: !0}),
+                                        t && (e = y.a.Map());
+                                    var a = e
+                                        .sort(function(e, t) {
+                                            return e.symbol > t.symbol
+                                                ? 1
+                                                : e.symbol < t.symbol
+                                                    ? -1
+                                                    : 0;
+                                        })
+                                        .last();
+                                    0 === e.size
+                                        ? (m.a.getAssetList.defer("A", 101),
+                                          this.setState({assetsFetched: 101}))
+                                        : e.size >= this.state.assetsFetched
+                                            ? (m.a.getAssetList.defer(
+                                                  a.symbol,
+                                                  101
+                                              ),
+                                              this.setState({
+                                                  assetsFetched:
+                                                      this.state.assetsFetched +
+                                                      101 -
+                                                      1
+                                              }))
+                                            : e.size <
+                                                  this.state.assetsFetched &&
+                                              (M.set("totalAssets", e.size),
+                                              this.setState({isLoading: !1}));
+                                }
+                            },
+                            {
+                                key: "componentWillReceiveProps",
+                                value: function(e) {
+                                    e.assets !== this.props.assets &&
+                                        this._checkAssets(e.assets);
+                                }
+                            },
+                            {
+                                key: "linkToAccount",
+                                value: function(e) {
+                                    return e
+                                        ? r.a.createElement(b.a, {account: e})
+                                        : r.a.createElement("span", null, "-");
+                                }
+                            },
+                            {
+                                key: "_toggleFilter",
+                                value: function(e) {
+                                    this.setState({activeFilter: e});
+                                }
+                            },
+                            {
+                                key: "_onFilter",
+                                value: function(e, t) {
+                                    this.setState(
+                                        j({}, e, t.target.value.toUpperCase())
+                                    ),
+                                        p.a.changeViewSetting(
+                                            j(
+                                                {},
+                                                e,
+                                                t.target.value.toUpperCase()
+                                            )
+                                        );
+                                }
+                            },
+                            {
+                                key: "render",
+                                value: function() {
+                                    var e = this,
+                                        t = this.props.assets,
+                                        a = this.state.activeFilter,
+                                        n = g.a
+                                            .translate("markets.filter")
+                                            .toUpperCase(),
+                                        l = w.b.getAsset("1.3.0"),
+                                        s = void 0,
+                                        i = void 0,
+                                        o = void 0;
+                                    return (
+                                        "user" == a &&
+                                            (s = t
+                                                .filter(function(t) {
+                                                    return (
+                                                        !t.market_asset &&
+                                                        -1 !==
+                                                            t.symbol.indexOf(
+                                                                e.state
+                                                                    .filterUIA
+                                                            )
+                                                    );
+                                                })
+                                                .map(function(t) {
+                                                    var a = k.a.parseDescription(
+                                                            t.options
+                                                                .description
+                                                        ),
+                                                        n =
+                                                            t.symbol +
+                                                            "_" +
+                                                            (a.market
+                                                                ? a.market
+                                                                : l
+                                                                    ? l.get(
+                                                                          "symbol"
+                                                                      )
+                                                                    : "LLC");
+                                                    return r.a.createElement(
+                                                        "tr",
+                                                        {key: t.symbol},
+                                                        r.a.createElement(
+                                                            "td",
+                                                            null,
+                                                            r.a.createElement(
+                                                                d.b,
+                                                                {
+                                                                    to:
+                                                                        "/asset/" +
+                                                                        t.symbol
+                                                                },
+                                                                r.a.createElement(
+                                                                    x.a,
+                                                                    {
+                                                                        name:
+                                                                            t.symbol
+                                                                    }
+                                                                )
+                                                            )
+                                                        ),
+                                                        r.a.createElement(
+                                                            "td",
+                                                            null,
+                                                            e.linkToAccount(
+                                                                t.issuer
+                                                            )
+                                                        ),
+                                                        r.a.createElement(
+                                                            "td",
+                                                            null,
+                                                            r.a.createElement(
+                                                                _.a,
+                                                                {
+                                                                    amount:
+                                                                        t
+                                                                            .dynamic
+                                                                            .current_supply,
+                                                                    asset: t.id,
+                                                                    hide_asset: !0
+                                                                }
+                                                            )
+                                                        ),
+                                                        r.a.createElement(
+                                                            "td",
+                                                            null,
+                                                            r.a.createElement(
+                                                                d.b,
+                                                                {
+                                                                    className:
+                                                                        "btn outline",
+                                                                    to:
+                                                                        "/market/" +
+                                                                        n
+                                                                },
+                                                                r.a.createElement(
+                                                                    E.a,
+                                                                    {
+                                                                        content:
+                                                                            "header.exchange"
+                                                                    }
+                                                                )
+                                                            )
+                                                        )
+                                                    );
+                                                })
+                                                .sort(function(e, t) {
+                                                    return e.key > t.key
+                                                        ? 1
+                                                        : e.key < t.key
+                                                            ? -1
+                                                            : 0;
+                                                })
+                                                .toArray()),
+                                        "market" == a &&
+                                            (i = t
+                                                .filter(function(t) {
+                                                    return (
+                                                        t.bitasset_data &&
+                                                        !t.bitasset_data
+                                                            .is_prediction_market &&
+                                                        -1 !==
+                                                            t.symbol.indexOf(
+                                                                e.state
+                                                                    .filterMPA
+                                                            )
+                                                    );
+                                                })
+                                                .map(function(t) {
+                                                    var a = k.a.parseDescription(
+                                                            t.options
+                                                                .description
+                                                        ),
+                                                        n =
+                                                            t.symbol +
+                                                            "_" +
+                                                            (a.market
+                                                                ? a.market
+                                                                : l
+                                                                    ? l.get(
+                                                                          "symbol"
+                                                                      )
+                                                                    : "LLC");
+                                                    return r.a.createElement(
+                                                        "tr",
+                                                        {key: t.symbol},
+                                                        r.a.createElement(
+                                                            "td",
+                                                            null,
+                                                            r.a.createElement(
+                                                                d.b,
+                                                                {
+                                                                    to:
+                                                                        "/asset/" +
+                                                                        t.symbol
+                                                                },
+                                                                r.a.createElement(
+                                                                    x.a,
+                                                                    {
+                                                                        name:
+                                                                            t.symbol
+                                                                    }
+                                                                )
+                                                            )
+                                                        ),
+                                                        r.a.createElement(
+                                                            "td",
+                                                            null,
+                                                            e.linkToAccount(
+                                                                t.issuer
+                                                            )
+                                                        ),
+                                                        r.a.createElement(
+                                                            "td",
+                                                            null,
+                                                            r.a.createElement(
+                                                                _.a,
+                                                                {
+                                                                    amount:
+                                                                        t
+                                                                            .dynamic
+                                                                            .current_supply,
+                                                                    asset: t.id,
+                                                                    hide_asset: !0
+                                                                }
+                                                            )
+                                                        ),
+                                                        r.a.createElement(
+                                                            "td",
+                                                            null,
+                                                            r.a.createElement(
+                                                                d.b,
+                                                                {
+                                                                    className:
+                                                                        "btn outline",
+                                                                    to:
+                                                                        "/market/" +
+                                                                        n
+                                                                },
+                                                                r.a.createElement(
+                                                                    E.a,
+                                                                    {
+                                                                        content:
+                                                                            "header.exchange"
+                                                                    }
+                                                                )
+                                                            )
+                                                        )
+                                                    );
+                                                })
+                                                .sort(function(e, t) {
+                                                    return e.key > t.key
+                                                        ? 1
+                                                        : e.key < t.key
+                                                            ? -1
+                                                            : 0;
+                                                })
+                                                .toArray()),
+                                        "prediction" == a &&
+                                            (o = t
+                                                .filter(function(t) {
+                                                    var a = k.a.parseDescription(
+                                                        t.options.description
+                                                    );
+                                                    return (
+                                                        t.bitasset_data &&
+                                                        t.bitasset_data
+                                                            .is_prediction_market &&
+                                                        (-1 !==
+                                                            t.symbol
+                                                                .toLowerCase()
+                                                                .indexOf(
+                                                                    e.state.filterPM.toLowerCase()
+                                                                ) ||
+                                                            -1 !==
+                                                                a.main
+                                                                    .toLowerCase()
+                                                                    .indexOf(
+                                                                        e.state.filterPM.toLowerCase()
+                                                                    ))
+                                                    );
+                                                })
+                                                .map(function(e) {
+                                                    var t = k.a.parseDescription(
+                                                            e.options
+                                                                .description
+                                                        ),
+                                                        a =
+                                                            e.symbol +
+                                                            "_" +
+                                                            (t.market
+                                                                ? t.market
+                                                                : l
+                                                                    ? l.get(
+                                                                          "symbol"
+                                                                      )
+                                                                    : "LLC");
+                                                    return r.a.createElement(
+                                                        "tr",
+                                                        {
+                                                            key: e.id.split(
+                                                                "."
+                                                            )[2]
+                                                        },
+                                                        r.a.createElement(
+                                                            "td",
+                                                            {
+                                                                style: {
+                                                                    width: "80%"
+                                                                }
+                                                            },
+                                                            r.a.createElement(
+                                                                "div",
+                                                                {
+                                                                    style: {
+                                                                        paddingTop: 10,
+                                                                        fontWeight:
+                                                                            "bold"
+                                                                    }
+                                                                },
+                                                                r.a.createElement(
+                                                                    d.b,
+                                                                    {
+                                                                        to:
+                                                                            "/asset/" +
+                                                                            e.symbol
+                                                                    },
+                                                                    r.a.createElement(
+                                                                        x.a,
+                                                                        {
+                                                                            name:
+                                                                                e.symbol
+                                                                        }
+                                                                    )
+                                                                ),
+                                                                t.condition
+                                                                    ? r.a.createElement(
+                                                                          "span",
+                                                                          null,
+                                                                          " (",
+                                                                          t.condition,
+                                                                          ")"
+                                                                      )
+                                                                    : null
+                                                            ),
+                                                            t
+                                                                ? r.a.createElement(
+                                                                      "div",
+                                                                      {
+                                                                          style: {
+                                                                              padding:
+                                                                                  "10px 20px 5px 0",
+                                                                              lineHeight:
+                                                                                  "18px"
+                                                                          }
+                                                                      },
+                                                                      t.main
+                                                                  )
+                                                                : null,
+                                                            r.a.createElement(
+                                                                "div",
+                                                                {
+                                                                    style: {
+                                                                        padding:
+                                                                            "0 20px 5px 0",
+                                                                        lineHeight:
+                                                                            "18px"
+                                                                    }
+                                                                },
+                                                                r.a.createElement(
+                                                                    b.a,
+                                                                    {
+                                                                        account:
+                                                                            e.issuer
+                                                                    }
+                                                                ),
+                                                                r.a.createElement(
+                                                                    "span",
+                                                                    null,
+                                                                    " ",
+                                                                    "-",
+                                                                    " ",
+                                                                    r.a.createElement(
+                                                                        _.a,
+                                                                        {
+                                                                            amount:
+                                                                                e
+                                                                                    .dynamic
+                                                                                    .current_supply,
+                                                                            asset:
+                                                                                e.id
+                                                                        }
+                                                                    )
+                                                                ),
+                                                                t.expiry
+                                                                    ? r.a.createElement(
+                                                                          "span",
+                                                                          null,
+                                                                          " - ",
+                                                                          t.expiry
+                                                                      )
+                                                                    : null
+                                                            )
+                                                        ),
+                                                        r.a.createElement(
+                                                            "td",
+                                                            {
+                                                                style: {
+                                                                    width: "20%"
+                                                                }
+                                                            },
+                                                            r.a.createElement(
+                                                                d.b,
+                                                                {
+                                                                    className:
+                                                                        "btn outline",
+                                                                    to:
+                                                                        "/market/" +
+                                                                        a
+                                                                },
+                                                                r.a.createElement(
+                                                                    E.a,
+                                                                    {
+                                                                        content:
+                                                                            "header.exchange"
+                                                                    }
+                                                                )
+                                                            )
+                                                        )
+                                                    );
+                                                })
+                                                .sort(function(e, t) {
+                                                    return e.key > t.key
                                                         ? -1
-                                                        : 0;
-                                            })
-                                            .map(function(e, t) {
-                                                return r.a.createElement(T, {
-                                                    key: t,
-                                                    account: e
-                                                });
-                                            })
-                                            .toArray()),
-                                    r.a.createElement(
-                                        "div",
-                                        null,
-                                        r.a.createElement(
-                                            "div",
-                                            null,
-                                            r.a.createElement(d.a, {
-                                                component: "h3",
-                                                content:
-                                                    "explorer.accounts.title"
-                                            }),
-                                            r.a.createElement("input", {
-                                                style: {maxWidth: "500px"},
-                                                type: "text",
-                                                value: this.state.searchTerm,
-                                                onChange: this._onSearchChange.bind(
-                                                    this
-                                                )
-                                            })
-                                        ),
+                                                        : e.key < t.key
+                                                            ? 1
+                                                            : 0;
+                                                })
+                                                .toArray()),
                                         r.a.createElement(
                                             "div",
                                             null,
                                             r.a.createElement(
                                                 "div",
-                                                {className: "market-list-wrap"},
+                                                {className: "header-selector"},
                                                 r.a.createElement(
-                                                    "table",
-                                                    null,
+                                                    "div",
+                                                    {className: "selector"},
                                                     r.a.createElement(
-                                                        "thead",
-                                                        null,
+                                                        "ul",
+                                                        {
+                                                            className:
+                                                                "markets-list"
+                                                        },
                                                         r.a.createElement(
-                                                            "tr",
-                                                            null,
-                                                            r.a.createElement(
-                                                                "th",
-                                                                null,
-                                                                r.a.createElement(
-                                                                    d.a,
+                                                            "li",
+                                                            {
+                                                                className: P()(
+                                                                    "markets-list__item",
                                                                     {
-                                                                        component:
-                                                                            "span",
-                                                                        content:
-                                                                            "explorer.assets.id"
+                                                                        active:
+                                                                            "market" ==
+                                                                            a
                                                                     }
+                                                                ),
+                                                                onClick: this._toggleFilter.bind(
+                                                                    this,
+                                                                    "market"
                                                                 )
-                                                            ),
-                                                            r.a.createElement(
-                                                                "th",
-                                                                null,
-                                                                r.a.createElement(
-                                                                    E.a,
+                                                            },
+                                                            g.a.translate(
+                                                                "explorer.assets.market"
+                                                            )
+                                                        ),
+                                                        r.a.createElement(
+                                                            "li",
+                                                            {
+                                                                className: P()(
+                                                                    "markets-list__item",
                                                                     {
-                                                                        name:
-                                                                            "user",
-                                                                        title:
-                                                                            "icons.user.account"
+                                                                        active:
+                                                                            "user" ==
+                                                                            a
                                                                     }
+                                                                ),
+                                                                onClick: this._toggleFilter.bind(
+                                                                    this,
+                                                                    "user"
                                                                 )
-                                                            ),
-                                                            r.a.createElement(
-                                                                "th",
-                                                                null,
-                                                                r.a.createElement(
-                                                                    d.a,
+                                                            },
+                                                            g.a.translate(
+                                                                "explorer.assets.user"
+                                                            )
+                                                        ),
+                                                        r.a.createElement(
+                                                            "li",
+                                                            {
+                                                                className: P()(
+                                                                    "markets-list__item",
                                                                     {
-                                                                        component:
-                                                                            "span",
-                                                                        content:
-                                                                            "account.name"
+                                                                        active:
+                                                                            "prediction" ==
+                                                                            a
                                                                     }
+                                                                ),
+                                                                onClick: this._toggleFilter.bind(
+                                                                    this,
+                                                                    "prediction"
                                                                 )
-                                                            ),
-                                                            r.a.createElement(
-                                                                "th",
-                                                                null,
-                                                                r.a.createElement(
-                                                                    d.a,
-                                                                    {
-                                                                        component:
-                                                                            "span",
-                                                                        content:
-                                                                            "gateway.balance"
-                                                                    }
-                                                                )
-                                                            ),
-                                                            r.a.createElement(
-                                                                "th",
-                                                                null,
-                                                                r.a.createElement(
-                                                                    d.a,
-                                                                    {
-                                                                        component:
-                                                                            "span",
-                                                                        content:
-                                                                            "account.percent"
-                                                                    }
-                                                                )
+                                                            },
+                                                            g.a.translate(
+                                                                "explorer.assets.prediction"
                                                             )
                                                         )
-                                                    ),
-                                                    r.a.createElement(
-                                                        "tbody",
-                                                        null,
-                                                        this.state.isLoading
-                                                            ? r.a.createElement(
-                                                                  "tr",
-                                                                  {colSpan: "5"}
-                                                              )
-                                                            : n
                                                     )
                                                 )
                                             ),
                                             this.state.isLoading
+                                                ? r.a.createElement(O.a, null)
+                                                : null,
+                                            "market" == a
                                                 ? r.a.createElement(
                                                       "div",
                                                       {
                                                           style: {
-                                                              textAlign:
-                                                                  "center",
-                                                              padding: 10
+                                                              marginTop: "20px"
                                                           }
                                                       },
-                                                      r.a.createElement(w.a, {
-                                                          type: "three-bounce"
-                                                      })
+                                                      r.a.createElement(
+                                                          "div",
+                                                          null,
+                                                          r.a.createElement(
+                                                              "input",
+                                                              {
+                                                                  style: {
+                                                                      maxWidth:
+                                                                          "500px"
+                                                                  },
+                                                                  placeholder: n,
+                                                                  type: "text",
+                                                                  value: this
+                                                                      .state
+                                                                      .filterMPA,
+                                                                  onChange: this._onFilter.bind(
+                                                                      this,
+                                                                      "filterMPA"
+                                                                  )
+                                                              }
+                                                          )
+                                                      )
+                                                  )
+                                                : null,
+                                            "market" == a
+                                                ? r.a.createElement(
+                                                      "div",
+                                                      {
+                                                          style: {
+                                                              paddingBottom: 20
+                                                          }
+                                                      },
+                                                      r.a.createElement(
+                                                          "div",
+                                                          {
+                                                              className:
+                                                                  "market-list-wrap"
+                                                          },
+                                                          r.a.createElement(
+                                                              "table",
+                                                              null,
+                                                              r.a.createElement(
+                                                                  "thead",
+                                                                  null,
+                                                                  r.a.createElement(
+                                                                      "tr",
+                                                                      null,
+                                                                      r.a.createElement(
+                                                                          "th",
+                                                                          null,
+                                                                          r.a.createElement(
+                                                                              E.a,
+                                                                              {
+                                                                                  component:
+                                                                                      "span",
+                                                                                  content:
+                                                                                      "explorer.assets.symbol"
+                                                                              }
+                                                                          )
+                                                                      ),
+                                                                      r.a.createElement(
+                                                                          "th",
+                                                                          null,
+                                                                          r.a.createElement(
+                                                                              E.a,
+                                                                              {
+                                                                                  component:
+                                                                                      "span",
+                                                                                  content:
+                                                                                      "explorer.assets.issuer"
+                                                                              }
+                                                                          )
+                                                                      ),
+                                                                      r.a.createElement(
+                                                                          "th",
+                                                                          null,
+                                                                          r.a.createElement(
+                                                                              E.a,
+                                                                              {
+                                                                                  component:
+                                                                                      "span",
+                                                                                  content:
+                                                                                      "markets.supply"
+                                                                              }
+                                                                          )
+                                                                      ),
+                                                                      r.a.createElement(
+                                                                          "th",
+                                                                          null
+                                                                      )
+                                                                  )
+                                                              ),
+                                                              r.a.createElement(
+                                                                  "tbody",
+                                                                  null,
+                                                                  i
+                                                              )
+                                                          )
+                                                      )
+                                                  )
+                                                : null,
+                                            "user" == a
+                                                ? r.a.createElement(
+                                                      "div",
+                                                      {
+                                                          style: {
+                                                              marginTop: "20px"
+                                                          }
+                                                      },
+                                                      r.a.createElement(
+                                                          "div",
+                                                          null,
+                                                          r.a.createElement(
+                                                              "input",
+                                                              {
+                                                                  style: {
+                                                                      maxWidth:
+                                                                          "500px"
+                                                                  },
+                                                                  placeholder: n,
+                                                                  type: "text",
+                                                                  value: this
+                                                                      .state
+                                                                      .filterUIA,
+                                                                  onChange: this._onFilter.bind(
+                                                                      this,
+                                                                      "filterUIA"
+                                                                  )
+                                                              }
+                                                          )
+                                                      )
+                                                  )
+                                                : null,
+                                            "user" == a
+                                                ? r.a.createElement(
+                                                      "div",
+                                                      {
+                                                          style: {
+                                                              paddingBottom: 20
+                                                          }
+                                                      },
+                                                      r.a.createElement(
+                                                          "div",
+                                                          {
+                                                              className:
+                                                                  "market-list-wrap"
+                                                          },
+                                                          r.a.createElement(
+                                                              "table",
+                                                              null,
+                                                              r.a.createElement(
+                                                                  "thead",
+                                                                  null,
+                                                                  r.a.createElement(
+                                                                      "tr",
+                                                                      null,
+                                                                      r.a.createElement(
+                                                                          "th",
+                                                                          null,
+                                                                          r.a.createElement(
+                                                                              E.a,
+                                                                              {
+                                                                                  component:
+                                                                                      "span",
+                                                                                  content:
+                                                                                      "explorer.assets.symbol"
+                                                                              }
+                                                                          )
+                                                                      ),
+                                                                      r.a.createElement(
+                                                                          "th",
+                                                                          null,
+                                                                          r.a.createElement(
+                                                                              E.a,
+                                                                              {
+                                                                                  component:
+                                                                                      "span",
+                                                                                  content:
+                                                                                      "explorer.assets.issuer"
+                                                                              }
+                                                                          )
+                                                                      ),
+                                                                      r.a.createElement(
+                                                                          "th",
+                                                                          null,
+                                                                          r.a.createElement(
+                                                                              E.a,
+                                                                              {
+                                                                                  component:
+                                                                                      "span",
+                                                                                  content:
+                                                                                      "markets.supply"
+                                                                              }
+                                                                          )
+                                                                      ),
+                                                                      r.a.createElement(
+                                                                          "th",
+                                                                          null
+                                                                      )
+                                                                  )
+                                                              ),
+                                                              r.a.createElement(
+                                                                  "tbody",
+                                                                  null,
+                                                                  s
+                                                              )
+                                                          )
+                                                      )
+                                                  )
+                                                : null,
+                                            "prediction" == a
+                                                ? r.a.createElement(
+                                                      "div",
+                                                      {
+                                                          style: {
+                                                              marginTop: "20px"
+                                                          }
+                                                      },
+                                                      r.a.createElement(
+                                                          "div",
+                                                          null,
+                                                          r.a.createElement(
+                                                              "input",
+                                                              {
+                                                                  style: {
+                                                                      maxWidth:
+                                                                          "500px"
+                                                                  },
+                                                                  placeholder: g.a
+                                                                      .translate(
+                                                                          "markets.search"
+                                                                      )
+                                                                      .toUpperCase(),
+                                                                  type: "text",
+                                                                  value: this
+                                                                      .state
+                                                                      .filterPM,
+                                                                  onChange: this._onFilter.bind(
+                                                                      this,
+                                                                      "filterPM"
+                                                                  )
+                                                              }
+                                                          )
+                                                      )
+                                                  )
+                                                : null,
+                                            "prediction" == a
+                                                ? r.a.createElement(
+                                                      "div",
+                                                      {
+                                                          style: {
+                                                              paddingBottom: 20
+                                                          }
+                                                      },
+                                                      r.a.createElement(
+                                                          "div",
+                                                          {
+                                                              className:
+                                                                  "market-list-wrap"
+                                                          },
+                                                          r.a.createElement(
+                                                              "table",
+                                                              null,
+                                                              r.a.createElement(
+                                                                  "tbody",
+                                                                  null,
+                                                                  o
+                                                              )
+                                                          )
+                                                      )
                                                   )
                                                 : null
                                         )
-                                    )
-                                );
+                                    );
+                                }
                             }
-                        }
-                    ]),
-                    t
-                );
-            })();
-            (P.defaultProps = {searchAccounts: {}}),
-                (P.propTypes = {searchAccounts: s.a.object.isRequired});
-            var S = P,
-                x = n(121),
-                L = (function() {
+                        ]),
+                        t
+                    );
+                })();
+            (S.defaultProps = {assets: {}}),
+                (S.propTypes = {assets: u.a.object.isRequired});
+            var N = S,
+                T = a(123),
+                U = (function() {
                     function e(e, t) {
-                        for (var n = 0; n < t.length; n++) {
-                            var a = t[n];
-                            (a.enumerable = a.enumerable || !1),
-                                (a.configurable = !0),
-                                "value" in a && (a.writable = !0),
-                                Object.defineProperty(e, a.key, a);
+                        for (var a = 0; a < t.length; a++) {
+                            var n = t[a];
+                            (n.enumerable = n.enumerable || !1),
+                                (n.configurable = !0),
+                                "value" in n && (n.writable = !0),
+                                Object.defineProperty(e, n.key, n);
                         }
                     }
-                    return function(t, n, a) {
-                        return n && e(t.prototype, n), a && e(t, a), t;
+                    return function(t, a, n) {
+                        return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            var R = (function(e) {
+            var I = (function(e) {
                 function t() {
                     return (
                         (function(e, t) {
@@ -478,33 +1035,42 @@
                                     ? Object.setPrototypeOf(e, t)
                                     : (e.__proto__ = t));
                     })(t, r.a.Component),
-                    L(t, [
+                    U(t, [
                         {
                             key: "render",
                             value: function() {
                                 var e = r.a.createElement(
-                                    l.a,
+                                    o.a,
                                     {
-                                        stores: [c.a],
+                                        stores: [l.a, s.a],
                                         inject: {
-                                            searchAccounts: function() {
-                                                return c.a.getState()
-                                                    .searchAccounts;
+                                            assets: function() {
+                                                return l.a.getState().assets;
                                             },
-                                            searchTerm: function() {
-                                                return c.a.getState()
-                                                    .searchTerm;
+                                            filterMPA: function() {
+                                                return s.a
+                                                    .getState()
+                                                    .viewSettings.get(
+                                                        "filterMPA"
+                                                    );
+                                            },
+                                            filterUIA: function() {
+                                                return s.a
+                                                    .getState()
+                                                    .viewSettings.get(
+                                                        "filterUIA"
+                                                    );
                                             }
                                         }
                                     },
-                                    r.a.createElement(S, null)
+                                    r.a.createElement(N, null)
                                 );
                                 return r.a.createElement(
                                     "div",
                                     {className: "content"},
-                                    r.a.createElement(x.a, {
+                                    r.a.createElement(T.a, {
                                         defaultActiveTab:
-                                            "explorer.accounts.title",
+                                            "explorer.assets.title",
                                         defaultContent: e
                                     })
                                 );
@@ -514,7 +1080,7 @@
                     t
                 );
             })();
-            t.default = R;
+            t.default = I;
         }
     }
 ]);

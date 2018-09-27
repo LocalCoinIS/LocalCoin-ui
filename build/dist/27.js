@@ -1,22 +1,22 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
     [27],
     {
-        350: function(e, t, a) {
+        358: function(e, t, a) {
             "use strict";
             var n = a(0),
                 r = a.n(n),
                 o = a(2),
                 l = a.n(o),
                 c = a(9),
-                s = a.n(c),
-                i = a(24),
+                i = a.n(c),
+                s = a(24),
                 u = a(14),
                 m = a(4),
-                d = (a(1), a(3)),
-                h = a.n(d),
-                p = a(50),
-                f = a.n(p),
-                _ =
+                h = (a(1), a(3)),
+                f = a.n(h),
+                p = a(51),
+                d = a.n(p),
+                v =
                     Object.assign ||
                     function(e) {
                         for (var t = 1; t < arguments.length; t++) {
@@ -27,7 +27,7 @@
                         }
                         return e;
                     },
-                v = (function() {
+                g = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -41,11 +41,11 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            function g(e, t) {
+            function E(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function E(e, t) {
+            function b(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -54,7 +54,7 @@
                     ? e
                     : t;
             }
-            function b(e, t) {
+            function _(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -73,10 +73,10 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var w = (function(e) {
+            var y = (function(e) {
                 function t() {
-                    g(this, t);
-                    var e = E(
+                    E(this, t);
+                    var e = b(
                         this,
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                     );
@@ -92,8 +92,8 @@
                     );
                 }
                 return (
-                    b(t, r.a.Component),
-                    v(t, [
+                    _(t, r.a.Component),
+                    g(t, [
                         {
                             key: "shouldComponentUpdate",
                             value: function(e, t) {
@@ -170,12 +170,12 @@
                                     );
                                     this.props.accountShouldNotExist &&
                                         a &&
-                                        (t = h.a.translate(
+                                        (t = f.a.translate(
                                             "account.name_input.name_is_taken"
                                         )),
                                         this.props.accountShouldExist &&
                                             !a &&
-                                            (t = h.a.translate(
+                                            (t = f.a.translate(
                                                 "account.name_input.not_found"
                                             ));
                                 }
@@ -193,12 +193,12 @@
                                     this.props.cheapNameOnly
                                         ? this.state.error ||
                                           m.d.is_cheap_name(e) ||
-                                          (this.state.error = h.a.translate(
+                                          (this.state.error = f.a.translate(
                                               "account.name_input.premium_name_faucet"
                                           ))
                                         : this.state.error ||
                                           m.d.is_cheap_name(e) ||
-                                          (this.state.warning = h.a.translate(
+                                          (this.state.warning = f.a.translate(
                                               "account.name_input.premium_name_warning"
                                           )),
                                     this.setState({
@@ -213,7 +213,7 @@
                                         }),
                                     (this.props.accountShouldExist ||
                                         this.props.accountShouldNotExist) &&
-                                        i.a.accountSearch(e);
+                                        s.a.accountSearch(e);
                             }
                         },
                         {
@@ -240,7 +240,7 @@
                             key: "render",
                             value: function() {
                                 var e = this.getError() || "",
-                                    t = s()("form-group", "account-name", {
+                                    t = i()("form-group", "account-name", {
                                         "has-error": !1
                                     }),
                                     a = this.state.warning;
@@ -292,7 +292,7 @@
                     t
                 );
             })();
-            (w.propTypes = {
+            (y.propTypes = {
                 id: l.a.string,
                 placeholder: l.a.string,
                 initial_value: l.a.string,
@@ -303,12 +303,12 @@
                 cheapNameOnly: l.a.bool,
                 noLabel: l.a.bool
             }),
-                (w.defaultProps = {noLabel: !1});
-            var y = (function(e) {
+                (y.defaultProps = {noLabel: !1});
+            var w = (function(e) {
                 function t() {
                     return (
-                        g(this, t),
-                        E(
+                        E(this, t),
+                        b(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -318,13 +318,13 @@
                     );
                 }
                 return (
-                    b(t, r.a.Component),
-                    v(t, [
+                    _(t, r.a.Component),
+                    g(t, [
                         {
                             key: "render",
                             value: function() {
                                 return r.a.createElement(
-                                    f.a,
+                                    d.a,
                                     {
                                         stores: [u.a],
                                         inject: {
@@ -335,8 +335,8 @@
                                         }
                                     },
                                     r.a.createElement(
-                                        w,
-                                        _({ref: "nameInput"}, this.props)
+                                        y,
+                                        v({ref: "nameInput"}, this.props)
                                     )
                                 );
                             }
@@ -345,9 +345,9 @@
                     t
                 );
             })();
-            t.a = y;
+            t.a = w;
         },
-        4968: function(e, t, a) {
+        5002: function(e, t, a) {
             "use strict";
             a.r(t);
             var n = a(0),
@@ -355,29 +355,28 @@
                 o = a(15),
                 l = a(9),
                 c = a.n(l),
-                s = a(24),
-                i = a(14),
-                u = a(350),
-                m = a(16),
-                d = a(28),
-                h = a(11),
-                p = a(115),
-                f = a(39),
-                _ = a(37),
-                v = a(1),
-                g = a.n(v),
-                E = a(3),
-                b = a.n(E),
+                i = a(24),
+                s = a(14),
+                u = a(358),
+                m = a(285),
+                h = a(16),
+                f = a(31),
+                p = a(11),
+                d = a(118),
+                v = a(46),
+                g = a(40),
+                E = a(39),
+                b = a(45),
+                _ = a(1),
+                y = a.n(_),
                 w = a(4),
-                y = a(52),
-                k = a.n(y),
-                N = a(5),
-                x = a(10),
-                A = a(45),
-                C = a(13),
-                S = a(161),
-                P = a(2),
-                O = a.n(P),
+                k = a(580),
+                C = a(53),
+                N = a.n(C),
+                S = a(5),
+                A = a(10),
+                x = a(3),
+                O = a.n(x),
                 j = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
@@ -392,7 +391,7 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            function F(e, t, a) {
+            function P(e, t, a) {
                 return (
                     t in e
                         ? Object.defineProperty(e, t, {
@@ -405,7 +404,7 @@
                     e
                 );
             }
-            var R = (function(e) {
+            var T = (function(e) {
                 function t() {
                     !(function(e, t) {
                         if (!(e instanceof t))
@@ -427,6 +426,9 @@
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                     );
                     return (
+                        (e._onBackupDownload = function() {
+                            e.setState({step: 3});
+                        }),
                         (e.state = {
                             validAccountName: !1,
                             accountName: "",
@@ -435,15 +437,7 @@
                             loading: !1,
                             hide_refcode: !0,
                             show_identicon: !1,
-                            step: 1,
-                            showPass: !1,
-                            generatedPassword: (
-                                "P" + w.o.get_random_key().toWif()
-                            ).substr(0, 45),
-                            confirm_password: "",
-                            understand_1: !1,
-                            understand_2: !1,
-                            understand_3: !1
+                            step: 1
                         }),
                         (e.onFinishConfirm = e.onFinishConfirm.bind(e)),
                         (e.accountNameInput = null),
@@ -474,38 +468,35 @@
                         {
                             key: "componentWillMount",
                             value: function() {
-                                m.a.getWallet() ||
-                                    x.a.changeSetting({
-                                        setting: "passwordLogin",
-                                        value: !0
-                                    });
+                                A.a.changeSetting({
+                                    setting: "passwordLogin",
+                                    value: !1
+                                });
                             }
                         },
                         {
                             key: "componentDidMount",
                             value: function() {
-                                k.a.rebuild();
+                                N.a.rebuild();
                             }
                         },
                         {
                             key: "shouldComponentUpdate",
                             value: function(e, t) {
-                                return !N.a.are_equal_shallow(t, this.state);
+                                return !S.a.are_equal_shallow(t, this.state);
                             }
                         },
                         {
                             key: "isValid",
                             value: function() {
-                                var e = 0 === i.a.getMyAccounts().length,
+                                var e = 0 === s.a.getMyAccounts().length,
                                     t = this.state.validAccountName;
                                 return (
-                                    m.a.getWallet() ||
+                                    h.a.getWallet() ||
                                         (t = t && this.state.validPassword),
                                     e ||
                                         (t = t && this.state.registrar_account),
-                                    t &&
-                                        this.state.understand_1 &&
-                                        this.state.understand_2
+                                    t
                                 );
                             }
                         },
@@ -523,120 +514,147 @@
                             }
                         },
                         {
+                            key: "onPasswordChange",
+                            value: function(e) {
+                                this.setState({validPassword: e.valid});
+                            }
+                        },
+                        {
                             key: "onFinishConfirm",
                             value: function(e) {
                                 var t = this;
                                 e.included &&
                                     e.broadcasted_transaction &&
-                                    (f.a.unlisten(this.onFinishConfirm),
-                                    f.a.reset(),
+                                    (g.a.unlisten(this.onFinishConfirm),
+                                    g.a.reset(),
                                     Object(w.f)(
                                         "getAccount",
                                         this.state.accountName,
                                         void 0,
-                                        F({}, this.state.accountName, !0)
+                                        P({}, this.state.accountName, !0)
                                     ).then(function() {
-                                        t.props.router.push(
-                                            "/wallet/backup/create?newAccount=true"
-                                        );
+                                        console.log("onFinishConfirm"),
+                                            t.props.router.push(
+                                                "/wallet/backup/create?newAccount=true"
+                                            );
                                     }));
                             }
                         },
                         {
-                            key: "_unlockAccount",
-                            value: function(e, t) {
-                                x.a.changeSetting({
-                                    setting: "passwordLogin",
-                                    value: !0
-                                }),
-                                    m.a.validatePassword(t, !0, e),
-                                    A.a.checkLock.defer();
+                            key: "createAccount",
+                            value: function(e) {
+                                var t = this,
+                                    a = this.refs.refcode
+                                        ? this.refs.refcode.value()
+                                        : null,
+                                    n = s.a.getState().referralAccount;
+                                v.a
+                                    .unlock()
+                                    .then(function() {
+                                        t.setState({loading: !0}),
+                                            i.a
+                                                .createAccount(
+                                                    e,
+                                                    t.state.registrar_account,
+                                                    n ||
+                                                        t.state
+                                                            .registrar_account,
+                                                    0,
+                                                    a
+                                                )
+                                                .then(function() {
+                                                    t.state.registrar_account
+                                                        ? (Object(w.f)(
+                                                              "getAccount",
+                                                              e,
+                                                              void 0,
+                                                              P({}, e, !0)
+                                                          ).then(function() {
+                                                              t.setState({
+                                                                  step: 2,
+                                                                  loading: !1
+                                                              });
+                                                          }),
+                                                          g.a.listen(
+                                                              t.onFinishConfirm
+                                                          ))
+                                                        : Object(w.f)(
+                                                              "getAccount",
+                                                              e,
+                                                              void 0,
+                                                              P({}, e, !0)
+                                                          ).then(function() {
+                                                              t.setState({
+                                                                  step: 2,
+                                                                  loading: !1
+                                                              });
+                                                          });
+                                                })
+                                                .catch(function(a) {
+                                                    console.log(
+                                                        "ERROR AccountActions.createAccount",
+                                                        a
+                                                    );
+                                                    var n =
+                                                        a.base &&
+                                                        a.base.length &&
+                                                        a.base.length > 0
+                                                            ? a.base[0]
+                                                            : "unknown error";
+                                                    a.remote_ip &&
+                                                        (n = a.remote_ip[0]),
+                                                        f.a.addNotification({
+                                                            message:
+                                                                "Failed to create account: " +
+                                                                e +
+                                                                " - " +
+                                                                n,
+                                                            level: "error",
+                                                            autoDismiss: 10
+                                                        }),
+                                                        t.setState({
+                                                            loading: !1
+                                                        });
+                                                });
+                                    })
+                                    .catch(function() {});
                             }
                         },
                         {
-                            key: "createAccount",
-                            value: function(e, t) {
-                                var a = this,
-                                    n = this.refs.refcode
-                                        ? this.refs.refcode.value()
-                                        : null,
-                                    r = i.a.getState().referralAccount;
-                                this.setState({loading: !0}),
-                                    s.a
-                                        .createAccountWithPassword(
-                                            e,
-                                            t,
-                                            this.state.registrar_account,
-                                            r || this.state.registrar_account,
-                                            0,
-                                            n
-                                        )
-                                        .then(function() {
-                                            s.a.setPasswordAccount(e),
-                                                a.state.registrar_account
-                                                    ? (Object(w.f)(
-                                                          "getAccount",
-                                                          e,
-                                                          void 0,
-                                                          F({}, e, !0)
-                                                      ).then(function() {
-                                                          a.setState({
-                                                              step: 2,
-                                                              loading: !1
-                                                          }),
-                                                              a._unlockAccount(
-                                                                  e,
-                                                                  t
-                                                              );
-                                                      }),
-                                                      f.a.listen(
-                                                          a.onFinishConfirm
-                                                      ))
-                                                    : Object(w.f)(
-                                                          "getAccount",
-                                                          e,
-                                                          void 0,
-                                                          F({}, e, !0)
-                                                      ).then(function() {
-                                                          a.setState({step: 2}),
-                                                              a._unlockAccount(
-                                                                  e,
-                                                                  t
-                                                              );
-                                                      });
-                                        })
-                                        .catch(function(t) {
-                                            console.log(
-                                                "ERROR AccountActions.createAccount",
-                                                t
-                                            );
-                                            var n =
-                                                t.base &&
-                                                t.base.length &&
-                                                t.base.length > 0
-                                                    ? t.base[0]
-                                                    : "unknown error";
-                                            t.remote_ip && (n = t.remote_ip[0]),
-                                                d.a.addNotification({
-                                                    message:
-                                                        "Failed to create account: " +
-                                                        e +
-                                                        " - " +
-                                                        n,
-                                                    level: "error",
-                                                    autoDismiss: 10
-                                                }),
-                                                a.setState({loading: !1});
-                                        });
+                            key: "createWallet",
+                            value: function(e) {
+                                return b.a
+                                    .setWallet("default", e)
+                                    .then(function() {
+                                        console.log(
+                                            "Congratulations, your wallet was successfully created."
+                                        );
+                                    })
+                                    .catch(function(e) {
+                                        console.log("CreateWallet failed:", e),
+                                            f.a.addNotification({
+                                                message:
+                                                    "Failed to create wallet: " +
+                                                    e,
+                                                level: "error",
+                                                autoDismiss: 10
+                                            });
+                                    });
                             }
                         },
                         {
                             key: "onSubmit",
                             value: function(e) {
+                                var t = this;
                                 if ((e.preventDefault(), this.isValid())) {
-                                    var t = this.accountNameInput.getValue(),
-                                        a = this.state.generatedPassword;
-                                    this.createAccount(t, a);
+                                    var a = this.accountNameInput.getValue();
+                                    if (h.a.getWallet()) this.createAccount(a);
+                                    else {
+                                        var n = this.refs.password.value();
+                                        this.createWallet(n).then(function() {
+                                            return t.createAccount(a);
+                                        });
+                                    }
                                 }
                             }
                         },
@@ -647,316 +665,194 @@
                             }
                         },
                         {
-                            key: "_onInput",
-                            value: function(e, t) {
-                                var a;
-                                this.setState(
-                                    (F(
-                                        (a = {}),
-                                        e,
-                                        "confirm_password" === e
-                                            ? t.target.value
-                                            : !this.state[e]
-                                    ),
-                                    F(
-                                        a,
-                                        "validPassword",
-                                        "confirm_password" === e
-                                            ? t.target.value ===
-                                              this.state.generatedPassword
-                                            : this.state.validPassword
-                                    ),
-                                    a)
-                                );
-                            }
-                        },
-                        {
-                            key: "_renderCheckbox",
-                            value: function(e, t, a, n) {
-                                return r.a.createElement(
-                                    "label",
-                                    {className: "checkbox", htmlFor: t},
-                                    r.a.createElement("input", {
-                                        type: "checkbox",
-                                        id: t,
-                                        onChange: n,
-                                        checked: a,
-                                        className: "checkbox__input"
-                                    }),
-                                    r.a.createElement("span", {
-                                        className: "checkbox__styled"
-                                    }),
-                                    r.a.createElement(
-                                        "span",
-                                        {className: "checkbox__label"},
-                                        e
-                                    )
-                                );
-                            }
-                        },
-                        {
                             key: "_renderAccountCreateForm",
                             value: function() {
                                 var e = this,
                                     t = this.state.registrar_account,
-                                    a = i.a.getMyAccounts(),
+                                    a = s.a.getMyAccounts(),
                                     n = 0 === a.length,
-                                    o = this.isValid(),
-                                    l = !1,
-                                    s = t ? w.b.getAccount(t) : null;
-                                s &&
-                                    s.get("lifetime_referrer") == s.get("id") &&
-                                    (l = !0);
-                                var m = c()("btn inverted large", {
-                                    disabled: !o || (t && !l)
+                                    o = h.a.getWallet(),
+                                    l = this.isValid(),
+                                    i = !1,
+                                    f = t ? w.b.getAccount(t) : null;
+                                f &&
+                                    f.get("lifetime_referrer") == f.get("id") &&
+                                    (i = !0);
+                                var v = c()("submit-button button no-margin", {
+                                    disabled: !l || (t && !i)
                                 });
                                 return r.a.createElement(
-                                    "div",
-                                    {style: {textAlign: "left"}},
+                                    "form",
+                                    {
+                                        style: {maxWidth: "40rem"},
+                                        onSubmit: this.onSubmit.bind(this),
+                                        noValidate: !0
+                                    },
                                     r.a.createElement(
-                                        "form",
+                                        "p",
                                         {
-                                            style: {maxWidth: "60rem"},
-                                            onSubmit: this.onSubmit.bind(this),
-                                            noValidate: !0
+                                            style: {
+                                                fontWeight: "normal",
+                                                fontFamily:
+                                                    "Roboto-Medium, arial, sans-serif",
+                                                fontStyle: "normal"
+                                            }
                                         },
-                                        r.a.createElement(u.a, {
-                                            ref: function(t) {
-                                                t &&
-                                                    (e.accountNameInput =
-                                                        t.refs.nameInput);
-                                            },
-                                            cheapNameOnly: !!n,
-                                            onChange: this.onAccountNameChange.bind(
-                                                this
-                                            ),
-                                            accountShouldNotExist: !0,
-                                            placeholder: b.a.translate(
-                                                "wallet.account_public"
-                                            ),
-                                            noLabel: !0
-                                        }),
-                                        r.a.createElement(
-                                            "section",
-                                            {className: "form-group"},
-                                            r.a.createElement(
-                                                "label",
-                                                {className: "left-label"},
-                                                r.a.createElement(g.a, {
-                                                    content: "wallet.generated"
-                                                }),
-                                                "  ",
-                                                r.a.createElement(
-                                                    "span",
-                                                    {
-                                                        className: "tooltip",
-                                                        "data-html": !0,
-                                                        "data-tip": b.a.translate(
-                                                            "tooltip.generate"
-                                                        )
-                                                    },
-                                                    r.a.createElement(C.a, {
-                                                        name: "question-circle",
-                                                        title:
-                                                            "icons.question_circle"
-                                                    })
-                                                )
-                                            ),
-                                            r.a.createElement(
-                                                "div",
-                                                {
-                                                    style: {
-                                                        paddingBottom: "0.5rem"
-                                                    }
-                                                },
-                                                r.a.createElement(
-                                                    "span",
-                                                    {className: "inline-label"},
-                                                    r.a.createElement("input", {
-                                                        style: {
-                                                            maxWidth:
-                                                                "calc(30rem - 48px)",
-                                                            fontSize: "80%"
-                                                        },
-                                                        disabled: !0,
-                                                        value: this.state
-                                                            .generatedPassword,
-                                                        type: "text",
-                                                        className:
-                                                            "input-button"
-                                                    }),
-                                                    r.a.createElement(S.a, {
-                                                        text: this.state
-                                                            .generatedPassword,
-                                                        tip:
-                                                            "tooltip.copy_password",
-                                                        dataPlace: "top"
-                                                    })
-                                                )
-                                            )
+                                        n
+                                            ? r.a.createElement(y.a, {
+                                                  content: "wallet.create_w_a"
+                                              })
+                                            : r.a.createElement(y.a, {
+                                                  content: "wallet.create_a"
+                                              })
+                                    ),
+                                    r.a.createElement(u.a, {
+                                        ref: function(t) {
+                                            t &&
+                                                (e.accountNameInput =
+                                                    t.refs.nameInput);
+                                        },
+                                        cheapNameOnly: !!n,
+                                        onChange: this.onAccountNameChange.bind(
+                                            this
                                         ),
+                                        accountShouldNotExist: !0,
+                                        placeholder: O.a.translate(
+                                            "wallet.account_public"
+                                        ),
+                                        noLabel: !0
+                                    }),
+                                    o
+                                        ? null
+                                        : r.a.createElement(m.a, {
+                                              ref: "password",
+                                              confirmation: !0,
+                                              onChange: this.onPasswordChange.bind(
+                                                  this
+                                              ),
+                                              noLabel: !0,
+                                              checkStrength: !0
+                                          }),
+                                    n
+                                        ? null
+                                        : r.a.createElement(
+                                              "div",
+                                              {
+                                                  className:
+                                                      "full-width-content form-group no-overflow"
+                                              },
+                                              r.a.createElement(
+                                                  "label",
+                                                  null,
+                                                  r.a.createElement(y.a, {
+                                                      content:
+                                                          "account.pay_from"
+                                                  })
+                                              ),
+                                              r.a.createElement(d.a, {
+                                                  account_names: a,
+                                                  onChange: this.onRegistrarAccountChange.bind(
+                                                      this
+                                                  )
+                                              }),
+                                              t && !i
+                                                  ? r.a.createElement(
+                                                        "div",
+                                                        {
+                                                            style: {
+                                                                textAlign:
+                                                                    "left"
+                                                            },
+                                                            className:
+                                                                "facolor-error"
+                                                        },
+                                                        r.a.createElement(y.a, {
+                                                            content:
+                                                                "wallet.must_be_ltm"
+                                                        })
+                                                    )
+                                                  : null
+                                          ),
+                                    r.a.createElement("div", {
+                                        className: "divider"
+                                    }),
+                                    this.state.loading
+                                        ? r.a.createElement(E.a, {
+                                              type: "three-bounce"
+                                          })
+                                        : r.a.createElement(
+                                              "button",
+                                              {
+                                                  style: {width: "100%"},
+                                                  className: v
+                                              },
+                                              r.a.createElement(y.a, {
+                                                  content:
+                                                      "account.create_account"
+                                              })
+                                          ),
+                                    r.a.createElement(
+                                        "div",
+                                        {style: {paddingTop: 40}},
                                         r.a.createElement(
-                                            "section",
+                                            "label",
                                             null,
                                             r.a.createElement(
-                                                "label",
-                                                {className: "left-label"},
-                                                r.a.createElement(g.a, {
-                                                    content:
-                                                        "wallet.confirm_password"
+                                                p.b,
+                                                {to: "/existing-account"},
+                                                r.a.createElement(y.a, {
+                                                    content: "wallet.restore"
                                                 })
-                                            ),
-                                            r.a.createElement("input", {
-                                                type: "password",
-                                                name: "password",
-                                                id: "password",
-                                                value: this.state
-                                                    .confirm_password,
-                                                onChange: this._onInput.bind(
-                                                    this,
-                                                    "confirm_password"
-                                                )
-                                            }),
-                                            this.state.confirm_password &&
-                                            this.state.confirm_password !==
-                                                this.state.generatedPassword
-                                                ? r.a.createElement(
-                                                      "div",
-                                                      {className: "has-error"},
-                                                      r.a.createElement(g.a, {
+                                            )
+                                        ),
+                                        r.a.createElement(
+                                            "label",
+                                            null,
+                                            r.a.createElement(
+                                                p.b,
+                                                {to: "/create-wallet-brainkey"},
+                                                r.a.createElement(y.a, {
+                                                    content:
+                                                        "settings.backup_brainkey"
+                                                })
+                                            )
+                                        )
+                                    ),
+                                    !o || n
+                                        ? null
+                                        : r.a.createElement(
+                                              "div",
+                                              {style: {paddingTop: 20}},
+                                              r.a.createElement(
+                                                  "label",
+                                                  null,
+                                                  r.a.createElement(
+                                                      "a",
+                                                      {
+                                                          onClick: function() {
+                                                              e.setState({
+                                                                  step: 3
+                                                              });
+                                                          }
+                                                      },
+                                                      r.a.createElement(y.a, {
                                                           content:
-                                                              "wallet.confirm_error"
+                                                              "wallet.go_get_started"
                                                       })
                                                   )
-                                                : null
-                                        ),
-                                        r.a.createElement("br", null),
-                                        r.a.createElement(
-                                            "div",
-                                            {className: "confirm-checks"},
-                                            this._renderCheckbox(
-                                                b.a.translate(
-                                                    "wallet.understand_3"
-                                                ),
-                                                "checkbox-1",
-                                                this.state.understand_3,
-                                                this._onInput.bind(
-                                                    this,
-                                                    "understand_3"
-                                                )
-                                            )
-                                        ),
-                                        r.a.createElement("br", null),
-                                        r.a.createElement(
-                                            "div",
-                                            {className: "confirm-checks"},
-                                            this._renderCheckbox(
-                                                b.a.translate(
-                                                    "wallet.understand_1"
-                                                ),
-                                                "checkbox-2",
-                                                this.state.understand_1,
-                                                this._onInput.bind(
-                                                    this,
-                                                    "understand_1"
-                                                )
-                                            )
-                                        ),
-                                        r.a.createElement("br", null),
-                                        r.a.createElement(
-                                            "div",
-                                            {
-                                                className: "confirm-checks",
-                                                style: {paddingBottom: "1.5rem"}
-                                            },
-                                            this._renderCheckbox(
-                                                b.a.translate(
-                                                    "wallet.understand_2"
-                                                ),
-                                                "checkbox-3",
-                                                this.state.understand_2,
-                                                this._onInput.bind(
-                                                    this,
-                                                    "understand_2"
-                                                )
-                                            )
-                                        ),
-                                        n
-                                            ? null
-                                            : r.a.createElement(
-                                                  "div",
-                                                  {
-                                                      className:
-                                                          "full-width-content form-group no-overflow",
-                                                      style: {paddingTop: 30}
-                                                  },
-                                                  r.a.createElement(
-                                                      "label",
-                                                      null,
-                                                      r.a.createElement(g.a, {
-                                                          content:
-                                                              "account.pay_from"
-                                                      })
-                                                  ),
-                                                  r.a.createElement(p.a, {
-                                                      account_names: a,
-                                                      onChange: this.onRegistrarAccountChange.bind(
-                                                          this
-                                                      )
-                                                  }),
-                                                  t && !l
-                                                      ? r.a.createElement(
-                                                            "div",
-                                                            {
-                                                                style: {
-                                                                    textAlign:
-                                                                        "left"
-                                                                },
-                                                                className:
-                                                                    "facolor-error"
-                                                            },
-                                                            r.a.createElement(
-                                                                g.a,
-                                                                {
-                                                                    content:
-                                                                        "wallet.must_be_ltm"
-                                                                }
-                                                            )
-                                                        )
-                                                      : null
-                                              ),
-                                        this.state.loading
-                                            ? r.a.createElement(_.a, {
-                                                  type: "three-bounce"
-                                              })
-                                            : r.a.createElement(
-                                                  "button",
-                                                  {
-                                                      className: m,
-                                                      style: {
-                                                          width: "100%",
-                                                          backgroundColor:
-                                                              "#00195b"
-                                                      },
-                                                      disabled: !o || (t && !l)
-                                                  },
-                                                  r.a.createElement(g.a, {
-                                                      style: {color: "#fff"},
-                                                      content:
-                                                          "account.create_account"
-                                                  })
                                               )
-                                    )
+                                          )
                                 );
                             }
                         },
                         {
                             key: "_renderAccountCreateText",
                             value: function() {
-                                var e = 0 === i.a.getMyAccounts().length;
+                                var e = h.a.getWallet(),
+                                    t = 0 === s.a.getMyAccounts().length;
                                 return r.a.createElement(
                                     "div",
-                                    null,
+                                    {className: "confirm-checks"},
                                     r.a.createElement(
                                         "h4",
                                         {
@@ -965,28 +861,36 @@
                                                 fontFamily:
                                                     "Roboto-Medium, arial, sans-serif",
                                                 fontStyle: "normal",
-                                                paddingBottom: 15
+                                                paddingBottom: 15,
+                                                marginTop: 0
                                             }
                                         },
-                                        r.a.createElement(g.a, {
-                                            content: "wallet.wallet_password"
+                                        r.a.createElement(y.a, {
+                                            content: "wallet.wallet_browser"
                                         })
                                     ),
-                                    r.a.createElement(g.a, {
-                                        style: {textAlign: "left"},
-                                        unsafe: !0,
-                                        component: "p",
-                                        content:
-                                            "wallet.create_account_password_text"
-                                    }),
-                                    r.a.createElement(g.a, {
+                                    r.a.createElement(
+                                        "p",
+                                        null,
+                                        e
+                                            ? null
+                                            : r.a.createElement(y.a, {
+                                                  content: "wallet.has_wallet"
+                                              })
+                                    ),
+                                    r.a.createElement(y.a, {
                                         style: {textAlign: "left"},
                                         component: "p",
                                         content: "wallet.create_account_text"
                                     }),
-                                    e
-                                        ? null
-                                        : r.a.createElement(g.a, {
+                                    t
+                                        ? r.a.createElement(y.a, {
+                                              style: {textAlign: "left"},
+                                              component: "p",
+                                              content:
+                                                  "wallet.first_account_paid"
+                                          })
+                                        : r.a.createElement(y.a, {
                                               style: {textAlign: "left"},
                                               component: "p",
                                               content:
@@ -998,90 +902,63 @@
                         {
                             key: "_renderBackup",
                             value: function() {
-                                var e = this;
                                 return r.a.createElement(
                                     "div",
                                     {className: "backup-submit"},
                                     r.a.createElement(
                                         "p",
                                         null,
-                                        r.a.createElement(g.a, {
+                                        r.a.createElement(y.a, {
                                             unsafe: !0,
-                                            content: "wallet.password_crucial"
+                                            content: "wallet.wallet_crucial"
                                         })
-                                    ),
-                                    r.a.createElement(
-                                        "div",
-                                        null,
-                                        this.state.showPass
-                                            ? r.a.createElement(
-                                                  "div",
-                                                  null,
-                                                  r.a.createElement(
-                                                      "h5",
-                                                      null,
-                                                      r.a.createElement(g.a, {
-                                                          content:
-                                                              "settings.password"
-                                                      }),
-                                                      ":"
-                                                  ),
-                                                  r.a.createElement(
-                                                      "p",
-                                                      {
-                                                          style: {
-                                                              fontWeight:
-                                                                  "normal",
-                                                              fontFamily:
-                                                                  "Roboto-Medium, arial, sans-serif",
-                                                              fontStyle:
-                                                                  "normal",
-                                                              textAlign:
-                                                                  "center"
-                                                          }
-                                                      },
-                                                      this.state
-                                                          .generatedPassword
-                                                  )
-                                              )
-                                            : r.a.createElement(
-                                                  "button",
-                                                  {
-                                                      className:
-                                                          "btn large outline",
-                                                      onClick: function() {
-                                                          e.setState({
-                                                              showPass: !0
-                                                          });
-                                                      }
-                                                  },
-                                                  b.a.translate(
-                                                      "wallet.password_show"
-                                                  )
-                                              )
                                     ),
                                     r.a.createElement("div", {
                                         className: "divider"
                                     }),
+                                    r.a.createElement(k.BackupCreate, {
+                                        noText: !0,
+                                        downloadCb: this._onBackupDownload
+                                    })
+                                );
+                            }
+                        },
+                        {
+                            key: "_renderBackupText",
+                            value: function() {
+                                return r.a.createElement(
+                                    "div",
+                                    null,
                                     r.a.createElement(
                                         "p",
-                                        {className: "txtlabel warning"},
-                                        r.a.createElement(g.a, {
-                                            unsafe: !0,
-                                            content:
-                                                "wallet.password_lose_warning"
+                                        {
+                                            style: {
+                                                fontWeight: "normal",
+                                                fontFamily:
+                                                    "Roboto-Medium, arial, sans-serif",
+                                                fontStyle: "normal"
+                                            }
+                                        },
+                                        r.a.createElement(y.a, {
+                                            content: "footer.backup"
                                         })
                                     ),
                                     r.a.createElement(
-                                        "button",
-                                        {
-                                            className: "btn large inverted",
-                                            style: {width: "100%"},
-                                            onClick: function() {
-                                                e.context.router.push("/");
-                                            }
-                                        },
-                                        b.a.translate("wallet.ok_done")
+                                        "p",
+                                        null,
+                                        r.a.createElement(y.a, {
+                                            content: "wallet.wallet_move",
+                                            unsafe: !0
+                                        })
+                                    ),
+                                    r.a.createElement(
+                                        "p",
+                                        {className: "txtlabel warning"},
+                                        r.a.createElement(y.a, {
+                                            unsafe: !0,
+                                            content:
+                                                "wallet.wallet_lose_warning"
+                                        })
                                     )
                                 );
                             }
@@ -1104,7 +981,7 @@
                                                 r.a.createElement(
                                                     "td",
                                                     null,
-                                                    r.a.createElement(g.a, {
+                                                    r.a.createElement(y.a, {
                                                         content:
                                                             "wallet.tips_dashboard"
                                                     }),
@@ -1114,9 +991,9 @@
                                                     "td",
                                                     null,
                                                     r.a.createElement(
-                                                        h.b,
+                                                        p.b,
                                                         {to: "/"},
-                                                        r.a.createElement(g.a, {
+                                                        r.a.createElement(y.a, {
                                                             content:
                                                                 "header.dashboard"
                                                         })
@@ -1129,7 +1006,7 @@
                                                 r.a.createElement(
                                                     "td",
                                                     null,
-                                                    r.a.createElement(g.a, {
+                                                    r.a.createElement(y.a, {
                                                         content:
                                                             "wallet.tips_account"
                                                     }),
@@ -1139,7 +1016,7 @@
                                                     "td",
                                                     null,
                                                     r.a.createElement(
-                                                        h.b,
+                                                        p.b,
                                                         {
                                                             to:
                                                                 "/account/" +
@@ -1147,7 +1024,7 @@
                                                                     .accountName +
                                                                 "/overview"
                                                         },
-                                                        r.a.createElement(g.a, {
+                                                        r.a.createElement(y.a, {
                                                             content:
                                                                 "wallet.link_account"
                                                         })
@@ -1160,7 +1037,7 @@
                                                 r.a.createElement(
                                                     "td",
                                                     null,
-                                                    r.a.createElement(g.a, {
+                                                    r.a.createElement(y.a, {
                                                         content:
                                                             "wallet.tips_deposit"
                                                     }),
@@ -1170,12 +1047,12 @@
                                                     "td",
                                                     null,
                                                     r.a.createElement(
-                                                        h.b,
+                                                        p.b,
                                                         {
                                                             to:
                                                                 "/deposit-withdraw"
                                                         },
-                                                        r.a.createElement(g.a, {
+                                                        r.a.createElement(y.a, {
                                                             content:
                                                                 "wallet.link_deposit"
                                                         })
@@ -1188,7 +1065,7 @@
                                                 r.a.createElement(
                                                     "td",
                                                     null,
-                                                    r.a.createElement(g.a, {
+                                                    r.a.createElement(y.a, {
                                                         content:
                                                             "wallet.tips_transfer"
                                                     }),
@@ -1198,9 +1075,9 @@
                                                     "td",
                                                     null,
                                                     r.a.createElement(
-                                                        h.b,
+                                                        p.b,
                                                         {to: "/transfer"},
-                                                        r.a.createElement(g.a, {
+                                                        r.a.createElement(y.a, {
                                                             content:
                                                                 "wallet.link_transfer"
                                                         })
@@ -1213,7 +1090,7 @@
                                                 r.a.createElement(
                                                     "td",
                                                     null,
-                                                    r.a.createElement(g.a, {
+                                                    r.a.createElement(y.a, {
                                                         content:
                                                             "wallet.tips_settings"
                                                     }),
@@ -1223,9 +1100,9 @@
                                                     "td",
                                                     null,
                                                     r.a.createElement(
-                                                        h.b,
+                                                        p.b,
                                                         {to: "/settings"},
-                                                        r.a.createElement(g.a, {
+                                                        r.a.createElement(y.a, {
                                                             content:
                                                                 "header.settings"
                                                         })
@@ -1253,28 +1130,28 @@
                                                 fontStyle: "normal"
                                             }
                                         },
-                                        r.a.createElement(g.a, {
+                                        r.a.createElement(y.a, {
                                             content: "wallet.congrat"
                                         })
                                     ),
                                     r.a.createElement(
                                         "p",
                                         null,
-                                        r.a.createElement(g.a, {
-                                            content: "wallet.tips_explore_pass"
+                                        r.a.createElement(y.a, {
+                                            content: "wallet.tips_explore"
                                         })
                                     ),
                                     r.a.createElement(
                                         "p",
                                         null,
-                                        r.a.createElement(g.a, {
+                                        r.a.createElement(y.a, {
                                             content: "wallet.tips_header"
                                         })
                                     ),
                                     r.a.createElement(
                                         "p",
                                         {className: "txtlabel warning"},
-                                        r.a.createElement(g.a, {
+                                        r.a.createElement(y.a, {
                                             content: "wallet.tips_login"
                                         })
                                     )
@@ -1290,8 +1167,8 @@
                                     {className: "sub-content"},
                                     r.a.createElement(
                                         "div",
-                                        null,
-                                        2 === e
+                                        {style: {maxWidth: "95vw"}},
+                                        1 !== e
                                             ? r.a.createElement(
                                                   "p",
                                                   {
@@ -1302,24 +1179,45 @@
                                                           fontStyle: "normal"
                                                       }
                                                   },
-                                                  r.a.createElement(g.a, {
+                                                  r.a.createElement(y.a, {
                                                       content:
                                                           "wallet.step_" + e
                                                   })
                                               )
                                             : null,
-                                        3 === e
-                                            ? this._renderGetStartedText()
-                                            : null,
                                         1 === e
-                                            ? r.a.createElement(
-                                                  "div",
-                                                  null,
-                                                  this._renderAccountCreateForm()
-                                              )
+                                            ? this._renderAccountCreateForm()
                                             : 2 === e
                                                 ? this._renderBackup()
                                                 : this._renderGetStarted()
+                                    ),
+                                    r.a.createElement(
+                                        "div",
+                                        {
+                                            style: {
+                                                maxWidth: "95vw",
+                                                paddingTop: "2rem"
+                                            }
+                                        },
+                                        1 === e
+                                            ? this._renderAccountCreateText()
+                                            : 2 === e
+                                                ? this._renderBackupText()
+                                                : this._renderGetStartedText()
+                                    ),
+                                    r.a.createElement(
+                                        p.b,
+                                        {to: "/"},
+                                        r.a.createElement(
+                                            "button",
+                                            {
+                                                className:
+                                                    "button primary hollow"
+                                            },
+                                            r.a.createElement(y.a, {
+                                                content: "wallet.back"
+                                            })
+                                        )
                                     )
                                 );
                             }
@@ -1328,15 +1226,14 @@
                     t
                 );
             })();
-            (R.contextTypes = {router: O.a.object.isRequired}),
-                (t.default = Object(o.connect)(R, {
-                    listenTo: function() {
-                        return [i.a];
-                    },
-                    getProps: function() {
-                        return {};
-                    }
-                }));
+            t.default = Object(o.connect)(T, {
+                listenTo: function() {
+                    return [s.a];
+                },
+                getProps: function() {
+                    return {};
+                }
+            });
         }
     }
 ]);
