@@ -402,7 +402,13 @@ class Root extends React.Component {
         }
 
         //new DynamicDataTip().register();
-        new RoutingEvents(this.props.router).register();
+
+        var self = this;
+        let re = new RoutingEvents(this.props.router);
+        re.register();
+        setInterval(function() {
+            re.updateRouter(self.props.router);
+        }, 500);
     }
 
     getChildContext() {

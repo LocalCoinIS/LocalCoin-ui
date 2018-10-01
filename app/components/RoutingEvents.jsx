@@ -1,6 +1,11 @@
 class RoutingEvents {
     router = null;
     currentLocation = null;
+    // rebuild = null;
+
+    updateRouter(r) {
+        this.router = r;
+    }
 
     constructor(r) {
         this.router = r;
@@ -33,16 +38,21 @@ class RoutingEvents {
         };
 
         setInterval(action, 500);
-        setInterval(action, 1500);
-        setInterval(action, 3000);
     }
 
     createClassName() {
         try {
             if (this.currentLocation == "/") return "homepage";
 
-            if (typeof this.router.params.account_name === "undefined")
+            if (typeof this.router.params.account_name === "undefined") {
+                var self = this;
+                // if(this.rebuild !== null)
+                //     setInterval(function() {
+                //         self.rebuild();
+                //     }, 500);
+
                 return this.currentLocation.match(/[a-zA-Z]+/g).join("-");
+            }
 
             return this.currentLocation
                 .replace("/" + this.router.params.account_name + "/", "/")
