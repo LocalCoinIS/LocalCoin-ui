@@ -25,12 +25,16 @@ class RoutingEvents {
         this.currentLocation = this.getUrl();
         this.updateContentClassByLocation();
 
-        setInterval(function() {
+        let action = function() {
             if (self.currentLocation == self.getUrl()) return;
 
             self.currentLocation = self.getUrl();
             self.updateContentClassByLocation();
-        }, 500);
+        };
+
+        setInterval(action, 500);
+        setInterval(action, 1500);
+        setInterval(action, 3000);
     }
 
     createClassName() {
