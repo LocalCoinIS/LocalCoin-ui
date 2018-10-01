@@ -1,7 +1,6 @@
 class RoutingEvents {
     router = null;
-    currentLocation = null;
-    // rebuild = null;
+    currentClass = null;
 
     updateRouter(r) {
         this.router = r;
@@ -27,13 +26,13 @@ class RoutingEvents {
 
     register() {
         let self = this;
-        this.currentLocation = this.getUrl();
+        this.currentClass = this.createClassName();
         this.updateContentClassByLocation();
 
         let action = function() {
-            if (self.currentLocation == self.getUrl()) return;
+            if (currentClass == self.createClassName()) return;
 
-            self.currentLocation = self.getUrl();
+            this.currentClass = self.createClassName();
             self.updateContentClassByLocation();
         };
 
@@ -41,20 +40,15 @@ class RoutingEvents {
     }
 
     createClassName() {
+        let currentLocation = this.getUrl();
+
         try {
-            if (this.currentLocation == "/") return "homepage";
+            if (currentLocation == "/") return "homepage";
 
-            if (typeof this.router.params.account_name === "undefined") {
-                var self = this;
-                // if(this.rebuild !== null)
-                //     setInterval(function() {
-                //         self.rebuild();
-                //     }, 500);
+            if (typeof this.router.params.account_name === "undefined")
+                return currentLocation.match(/[a-zA-Z]+/g).join("-");
 
-                return this.currentLocation.match(/[a-zA-Z]+/g).join("-");
-            }
-
-            return this.currentLocation
+            return currentLocation
                 .replace("/" + this.router.params.account_name + "/", "/")
                 .match(/[a-zA-Z]+/g)
                 .join("-");
