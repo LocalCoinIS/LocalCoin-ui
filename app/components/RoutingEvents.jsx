@@ -30,7 +30,7 @@ class RoutingEvents {
         this.updateContentClassByLocation();
 
         let action = function() {
-            if (currentClass == self.createClassName()) return;
+            if (this.currentClass == self.createClassName()) return;
 
             this.currentClass = self.createClassName();
             self.updateContentClassByLocation();
@@ -40,7 +40,7 @@ class RoutingEvents {
     }
 
     createClassName() {
-        let currentLocation = this.getUrl();
+        var currentLocation = this.getUrl();
 
         try {
             if (currentLocation == "/") return "homepage";
