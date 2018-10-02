@@ -826,41 +826,56 @@ class MyMarkets extends React.Component {
 
                 {myMarketTab ? (
                     <div
-                        className="grid-block shrink"
+                        className="grid-block vertical shrink"
                         style={{
                             width: "100%",
                             textAlign: "left",
                             padding: "0.75rem 0.5rem"
                         }}
                     >
-                        <label style={{margin: "3px 0 0"}}>
-                            <input
-                                style={{position: "relative", top: 3}}
-                                className="no-margin"
-                                type="checkbox"
-                                checked={this.props.onlyStars}
-                                onChange={() => {
-                                    MarketsActions.toggleStars();
-                                }}
-                            />
-                            <span style={{paddingLeft: "0.4rem"}}>
-                                <TranslateWithLinks
-                                    string="exchange.show_only_star_formatter"
-                                    keys={[
-                                        {
-                                            type: "icon",
-                                            value: "fi-star",
-                                            className: "gold-star",
-                                            arg: "star_icon"
-                                        }
-                                    ]}
+                        <div>
+                            <label style={{margin: "3px 0 0"}}>
+                                <input
+                                    style={{position: "relative", top: 3}}
+                                    className="no-margin"
+                                    type="checkbox"
+                                    checked={this.props.onlyLiquid}
+                                    onChange={() => {
+                                        SettingsActions.changeViewSetting({
+                                            onlyLiquid: !this.props.onlyLiquid
+                                        });
+                                    }}
                                 />
-                            </span>
-                        </label>
-                        <div
-                            className="float-right search-wrapper"
-                            style={{paddingLeft: 20}}
-                        >
+                                <span style={{paddingLeft: "0.4rem"}}>
+                                    <Translate content="exchange.show_only_liquid" />
+                                </span>
+                            </label>
+                            <label style={{margin: "3px 0 0"}}>
+                                <input
+                                    style={{position: "relative", top: 3}}
+                                    className="no-margin"
+                                    type="checkbox"
+                                    checked={this.props.onlyStars}
+                                    onChange={() => {
+                                        MarketsActions.toggleStars();
+                                    }}
+                                />
+                                <span style={{paddingLeft: "0.4rem"}}>
+                                    <TranslateWithLinks
+                                        string="exchange.show_only_star_formatter"
+                                        keys={[
+                                            {
+                                                type: "icon",
+                                                value: "fi-star",
+                                                className: "gold-star",
+                                                arg: "star_icon"
+                                            }
+                                        ]}
+                                    />
+                                </span>
+                            </label>
+                        </div>
+                        <div className="search-wrapper">
                             <form>
                                 <input
                                     autoComplete="off"
@@ -943,13 +958,15 @@ class MyMarkets extends React.Component {
                                             type="text"
                                             value={this.state.inputValue}
                                             onChange={this._onInputName.bind(
-                                                this
+                                                this,
+                                                true
                                             )}
                                             placeholder={counterpart.translate(
                                                 "exchange.search"
                                             )}
                                             maxLength="16"
                                             tabIndex={2}
+                                            ref="findSearchInput"
                                         />
                                         {this.state.assetNameError ? (
                                             <div
@@ -1121,6 +1138,10 @@ export default connect(
         getProps() {
             return {
                 starredMarkets: SettingsStore.getState().starredMarkets,
+                onlyLiquid: SettingsStore.getState().viewSettings.get(
+                    "onlyLiquid",
+                    true
+                ),
                 defaultMarkets: SettingsStore.getState().defaultMarkets,
                 viewSettings: SettingsStore.getState().viewSettings,
                 preferredBases: SettingsStore.getState().preferredBases,
