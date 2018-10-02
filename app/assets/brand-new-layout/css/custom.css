@@ -283,3 +283,7 @@ main[class*="help-"] > .content {
 .navigation_account__link:hover {
     opacity: 0.5;
 }
+
+.icon.rotate180 > svg {
+    transform: rotate(180deg);
+}
