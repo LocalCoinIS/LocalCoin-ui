@@ -189,6 +189,7 @@ class SettingsStore {
             this.starredKey = this._getChainKey("markets");
             this.marketsKey = this._getChainKey("userMarkets");
             this.basesKey = this._getChainKey("preferredBases");
+
             // Default markets setup
             let topMarkets = {
                 markets_4018d784: getMyMarketsQuotes(),
@@ -207,12 +208,13 @@ class SettingsStore {
 
             let defaultBases = bases[this.starredKey] || bases.markets_4018d784;
             let storedBases = ss.get(this.basesKey, []);
+
             this.preferredBases = Immutable.List(
                 storedBases.length ? storedBases : defaultBases
             );
 
             let chainBases = bases[this.starredKey] || [];
-            this.preferredBases = Immutable.List(chainBases);
+            //this.preferredBases = Immutable.List(chainBases);
 
             function addMarkets(target, base, markets) {
                 markets
