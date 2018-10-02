@@ -1045,30 +1045,39 @@ class MyMarkets extends React.Component {
                             <LoadingIndicator type="three-bounce" />
                         </div>
                     ) : null}
-                    {preferredBases.map((base, index) => {
-                        return (
-                            <MarketGroup
-                                userMarkets={this.props.userMarkets}
-                                defaultMarkets={this.props.defaultMarkets}
-                                index={index}
-                                allowChange={false}
-                                key={base}
-                                current={current}
-                                starredMarkets={starredMarkets}
-                                marketStats={marketStats}
-                                viewSettings={viewSettings}
-                                columns={
-                                    myMarketTab
-                                        ? columns
-                                        : this.props.findColumns || columns
-                                }
-                                markets={baseGroups[base]}
-                                base={base}
-                                maxRows={myMarketTab ? 20 : 10}
-                                findMarketTab={!myMarketTab}
-                            />
-                        );
-                    })}
+                    {preferredBases
+                        .filter(a => {
+                            return a === preferredBases.get(activeMarketTab);
+                        })
+                        .map((base, index) => {
+                            return (
+                                <MarketGroup
+                                    userMarkets={this.props.userMarkets}
+                                    defaultMarkets={this.props.defaultMarkets}
+                                    index={index}
+                                    allowChange={false}
+                                    key={base}
+                                    current={current}
+                                    starredMarkets={starredMarkets}
+                                    marketStats={marketStats}
+                                    viewSettings={viewSettings}
+                                    columns={
+                                        myMarketTab
+                                            ? columns
+                                            : this.props.findColumns || columns
+                                    }
+                                    markets={baseGroups[base]}
+                                    base={base}
+                                    maxRows={myMarketTab ? 20 : 10}
+                                    findMarketTab={!myMarketTab}
+                                    location={this.props.location}
+                                    history={this.props.history}
+                                    onlyLiquid={
+                                        this.props.onlyLiquid && myMarketTab
+                                    }
+                                />
+                            );
+                        })}
                     {activeMarketTab === preferredBases.size + 1 &&
                     myMarketTab &&
                     hasOthers ? (
@@ -1084,9 +1093,12 @@ class MyMarkets extends React.Component {
                             base="others"
                             maxRows={myMarketTab ? 20 : 10}
                             findMarketTab={!myMarketTab}
+                            location={this.props.location}
+                            history={this.props.history}
                         />
                     ) : null}
                 </div>
+
                 <QuoteSelectionModal quotes={this.props.preferredBases} />
             </div>
         );
