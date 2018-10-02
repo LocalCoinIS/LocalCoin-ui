@@ -1,19 +1,36 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
     [42],
     {
-        5009: function(e, t, n) {
+        4975: function(e, t, n) {
             "use strict";
             n.r(t);
             var a = n(0),
                 r = n.n(a),
                 o = n(15),
-                l = n(119),
-                c = n(14),
-                s = n(5),
-                i = n(31),
-                u = n(1),
-                p = n.n(u),
-                m = (function() {
+                i = n(93),
+                l = n(8),
+                c = n(1),
+                s = n.n(c),
+                u = n(224),
+                p = n(10),
+                f = n(21),
+                m = n(3),
+                d = n.n(m),
+                v =
+                    "function" == typeof Symbol &&
+                    "symbol" == typeof Symbol.iterator
+                        ? function(e) {
+                              return typeof e;
+                          }
+                        : function(e) {
+                              return e &&
+                                  "function" == typeof Symbol &&
+                                  e.constructor === Symbol &&
+                                  e !== Symbol.prototype
+                                  ? "symbol"
+                                  : typeof e;
+                          },
+                b = (function() {
                     function e(e, t) {
                         for (var n = 0; n < t.length; n++) {
                             var a = t[n];
@@ -27,37 +44,31 @@
                         return n && e(t.prototype, n), a && e(t, a), t;
                     };
                 })();
-            var f = (function(e) {
+            var g = (function(e) {
                 function t() {
-                    !(function(e, t) {
-                        if (!(e instanceof t))
-                            throw new TypeError(
-                                "Cannot call a class as a function"
-                            );
-                    })(this, t);
-                    var e = (function(e, t) {
-                        if (!e)
-                            throw new ReferenceError(
-                                "this hasn't been initialised - super() hasn't been called"
-                            );
-                        return !t ||
-                            ("object" != typeof t && "function" != typeof t)
-                            ? e
-                            : t;
-                    })(
-                        this,
-                        (t.__proto__ || Object.getPrototypeOf(t)).call(this)
-                    );
                     return (
-                        (e.state = {
-                            title: null,
-                            start: new Date(),
-                            end: null,
-                            pay: null,
-                            url: "http://",
-                            vesting: 7
-                        }),
-                        e
+                        (function(e, t) {
+                            if (!(e instanceof t))
+                                throw new TypeError(
+                                    "Cannot call a class as a function"
+                                );
+                        })(this, t),
+                        (function(e, t) {
+                            if (!e)
+                                throw new ReferenceError(
+                                    "this hasn't been initialised - super() hasn't been called"
+                                );
+                            return !t ||
+                                ("object" != typeof t && "function" != typeof t)
+                                ? e
+                                : t;
+                        })(
+                            this,
+                            (t.__proto__ || Object.getPrototypeOf(t)).apply(
+                                this,
+                                arguments
+                            )
+                        )
                     );
                 }
                 return (
@@ -80,266 +91,273 @@
                                     ? Object.setPrototypeOf(e, t)
                                     : (e.__proto__ = t));
                     })(t, r.a.Component),
-                    m(t, [
+                    b(t, [
                         {
-                            key: "shouldComponentUpdate",
-                            value: function(e, t) {
-                                return (
-                                    e.currentAccount,
-                                    this.props.currentAccount,
-                                    !s.a.are_equal_shallow(t, this.state)
-                                );
+                            key: "componentWillReceiveProps",
+                            value: function(e) {
+                                "open" === e.rpc_connection_status &&
+                                    e.apiServer !== this.props.apiServer &&
+                                    p.a.showWS(e.apiServer);
                             }
                         },
                         {
-                            key: "onSubmit",
+                            key: "triggerModal",
+                            value: function(e) {
+                                this.refs.ws_modal.show(e);
+                            }
+                        },
+                        {
+                            key: "onChangeWS",
+                            value: function(e) {
+                                p.a.changeSetting({
+                                    setting: "apiServer",
+                                    value: e.target.value
+                                }),
+                                    f.Apis.reset(e.target.value, !0);
+                            }
+                        },
+                        {
+                            key: "onReloadClick",
+                            value: function(e) {
+                                e && e.preventDefault(),
+                                    window.electron
+                                        ? ((window.location.hash = ""),
+                                          window.remote
+                                              .getCurrentWindow()
+                                              .reload())
+                                        : (window.location.href = "/");
+                            }
+                        },
+                        {
+                            key: "onReset",
                             value: function() {
-                                l.a
-                                    .createWorker(
-                                        this.state,
-                                        this.props.currentAccount
-                                    )
-                                    .catch(function(e) {
-                                        console.log("error", e);
-                                        var t =
-                                            e.message &&
-                                            e.message.length &&
-                                            e.message.length > 0
-                                                ? e.message.split("stack")[0]
-                                                : "unknown error";
-                                        i.a.addNotification({
-                                            message:
-                                                "Failed to create worker: " + t,
-                                            level: "error",
-                                            autoDismiss: 10
-                                        });
-                                    });
+                                p.a.changeSetting({
+                                    setting: "apiServer",
+                                    value: this.props.defaultConnection
+                                }),
+                                    p.a.clearSettings();
                             }
                         },
                         {
                             key: "render",
                             value: function() {
-                                var e = this;
-                                return (
-                                    console.log("state:", this.state),
+                                var e = this.props.apis
+                                    .reduce(function(e, t) {
+                                        return (
+                                            -1 !==
+                                                e.findIndex(function(e) {
+                                                    return e.url === t.url;
+                                                }) || e.push(t),
+                                            e
+                                        );
+                                    }, [])
+                                    .map(function(e) {
+                                        var t =
+                                                -1 !==
+                                                e.url.indexOf(
+                                                    "fake.automatic-selection"
+                                                ),
+                                            n = e.location;
+                                        return (
+                                            n &&
+                                                "object" ===
+                                                    (void 0 === n
+                                                        ? "undefined"
+                                                        : v(n)) &&
+                                                "translate" in n &&
+                                                (n = d.a.translate(
+                                                    n.translate
+                                                )),
+                                            r.a.createElement(
+                                                "option",
+                                                {key: e.url, value: e.url},
+                                                n || e.url,
+                                                " ",
+                                                !t && n
+                                                    ? "(" + e.url + ")"
+                                                    : null
+                                            )
+                                        );
+                                    });
+                                return r.a.createElement(
+                                    "div",
+                                    {className: "grid-block page-layout"},
                                     r.a.createElement(
                                         "div",
-                                        {
-                                            className: "grid-block",
-                                            style: {paddingTop: 20}
-                                        },
+                                        {className: "grid-container"},
                                         r.a.createElement(
                                             "div",
                                             {
                                                 className:
-                                                    "grid-content large-9 large-offset-3 small-12"
+                                                    "grid-content no-overflow"
                                             },
-                                            r.a.createElement(p.a, {
-                                                content:
-                                                    "explorer.workers.create",
-                                                component: "h3"
+                                            r.a.createElement("br", null),
+                                            r.a.createElement(s.a, {
+                                                component: "h3",
+                                                content: "init_error.title"
                                             }),
+                                            r.a.createElement("br", null),
                                             r.a.createElement(
-                                                "form",
-                                                {style: {maxWidth: 800}},
-                                                r.a.createElement(p.a, {
-                                                    content:
-                                                        "explorer.workers.create_text_1",
-                                                    component: "p"
-                                                }),
-                                                r.a.createElement(p.a, {
-                                                    content:
-                                                        "explorer.workers.create_text_2",
-                                                    component: "p"
-                                                }),
+                                                "section",
+                                                {className: "block-list"},
                                                 r.a.createElement(
-                                                    "label",
+                                                    "header",
                                                     null,
-                                                    r.a.createElement(p.a, {
+                                                    r.a.createElement(s.a, {
+                                                        component: "span",
                                                         content:
-                                                            "explorer.workers.title"
-                                                    }),
-                                                    r.a.createElement("input", {
-                                                        onChange: function(t) {
-                                                            e.setState({
-                                                                title:
-                                                                    t.target
-                                                                        .value
-                                                            });
-                                                        },
-                                                        type: "text"
+                                                            "settings.apiServer"
                                                     })
                                                 ),
-                                                r.a.createElement(p.a, {
-                                                    content:
-                                                        "explorer.workers.name_text",
-                                                    component: "p"
-                                                }),
                                                 r.a.createElement(
-                                                    "div",
-                                                    {
-                                                        style: {
-                                                            width: "50%",
-                                                            paddingRight:
-                                                                "2.5%",
-                                                            display:
-                                                                "inline-block"
-                                                        }
-                                                    },
+                                                    "ul",
+                                                    null,
                                                     r.a.createElement(
-                                                        "label",
-                                                        null,
-                                                        r.a.createElement(p.a, {
-                                                            content:
-                                                                "account.votes.start"
-                                                        }),
-                                                        r.a.createElement(
-                                                            "input",
-                                                            {
-                                                                onChange: function(
-                                                                    t
-                                                                ) {
-                                                                    e.setState({
-                                                                        start: new Date(
-                                                                            t.target.value
-                                                                        )
-                                                                    });
-                                                                },
-                                                                type: "date"
-                                                            }
-                                                        )
-                                                    )
-                                                ),
-                                                r.a.createElement(
-                                                    "div",
-                                                    {
-                                                        style: {
-                                                            width: "50%",
-                                                            paddingLeft: "2.5%",
-                                                            display:
-                                                                "inline-block"
-                                                        }
-                                                    },
-                                                    r.a.createElement(
-                                                        "label",
-                                                        null,
-                                                        r.a.createElement(p.a, {
-                                                            content:
-                                                                "account.votes.end"
-                                                        }),
-                                                        r.a.createElement(
-                                                            "input",
-                                                            {
-                                                                onChange: function(
-                                                                    t
-                                                                ) {
-                                                                    e.setState({
-                                                                        end: new Date(
-                                                                            t.target.value
-                                                                        )
-                                                                    });
-                                                                },
-                                                                type: "date"
-                                                            }
-                                                        )
-                                                    )
-                                                ),
-                                                r.a.createElement(p.a, {
-                                                    content:
-                                                        "explorer.workers.date_text",
-                                                    component: "p"
-                                                }),
-                                                r.a.createElement(
-                                                    "label",
-                                                    null,
-                                                    r.a.createElement(p.a, {
-                                                        content:
-                                                            "explorer.workers.daily_pay"
-                                                    }),
-                                                    r.a.createElement("input", {
-                                                        onChange: function(t) {
-                                                            e.setState({
-                                                                pay:
-                                                                    t.target
-                                                                        .value
-                                                            });
+                                                        "li",
+                                                        {
+                                                            className:
+                                                                "with-dropdown"
                                                         },
-                                                        type: "number"
-                                                    })
-                                                ),
-                                                r.a.createElement(p.a, {
-                                                    content:
-                                                        "explorer.workers.pay_text",
-                                                    component: "p"
-                                                }),
-                                                r.a.createElement(
-                                                    "label",
-                                                    null,
-                                                    r.a.createElement(p.a, {
-                                                        content:
-                                                            "explorer.workers.website"
-                                                    }),
-                                                    r.a.createElement("input", {
-                                                        onChange: function(t) {
-                                                            e.setState({
-                                                                url:
-                                                                    t.target
-                                                                        .value
-                                                            });
-                                                        },
-                                                        type: "text"
-                                                    })
-                                                ),
-                                                r.a.createElement(p.a, {
-                                                    content:
-                                                        "explorer.workers.url_text",
-                                                    component: "p"
-                                                }),
-                                                r.a.createElement(
-                                                    "label",
-                                                    null,
-                                                    r.a.createElement(p.a, {
-                                                        content:
-                                                            "explorer.workers.vesting_pay"
-                                                    }),
-                                                    r.a.createElement("input", {
-                                                        defaultValue: this.state
-                                                            .vesting,
-                                                        onChange: function(t) {
-                                                            e.setState({
-                                                                vesting: parseInt(
-                                                                    t.target
-                                                                        .value
+                                                        r.a.createElement(
+                                                            "select",
+                                                            {
+                                                                onChange: this.onChangeWS.bind(
+                                                                    this
+                                                                ),
+                                                                value: this
+                                                                    .props
+                                                                    .apiServer
+                                                            },
+                                                            e
+                                                        ),
+                                                        r.a.createElement(
+                                                            "div",
+                                                            {
+                                                                style: {
+                                                                    paddingTop: 10
+                                                                },
+                                                                className:
+                                                                    "button-group"
+                                                            },
+                                                            r.a.createElement(
+                                                                "div",
+                                                                {
+                                                                    onClick: this.triggerModal.bind(
+                                                                        this
+                                                                    ),
+                                                                    className:
+                                                                        "button outline",
+                                                                    id: "add"
+                                                                },
+                                                                r.a.createElement(
+                                                                    s.a,
+                                                                    {
+                                                                        id:
+                                                                            "add_text",
+                                                                        content:
+                                                                            "settings.add_api"
+                                                                    }
                                                                 )
-                                                            });
+                                                            )
+                                                        )
+                                                    ),
+                                                    r.a.createElement(
+                                                        "li",
+                                                        {
+                                                            className:
+                                                                "key-value clearfix"
                                                         },
-                                                        type: "number"
-                                                    })
-                                                ),
-                                                r.a.createElement(p.a, {
-                                                    content:
-                                                        "explorer.workers.vesting_text",
-                                                    component: "p"
-                                                }),
+                                                        r.a.createElement(
+                                                            "div",
+                                                            {
+                                                                className:
+                                                                    "float-left"
+                                                            },
+                                                            r.a.createElement(
+                                                                s.a,
+                                                                {
+                                                                    content:
+                                                                        "init_error.ws_status"
+                                                                }
+                                                            )
+                                                        ),
+                                                        r.a.createElement(
+                                                            "div",
+                                                            {
+                                                                className:
+                                                                    "float-right"
+                                                            },
+                                                            "open" ===
+                                                            this.props
+                                                                .rpc_connection_status
+                                                                ? r.a.createElement(
+                                                                      "span",
+                                                                      {
+                                                                          className:
+                                                                              "txtlabel success"
+                                                                      },
+                                                                      r.a.createElement(
+                                                                          s.a,
+                                                                          {
+                                                                              content:
+                                                                                  "init_error.connected"
+                                                                          }
+                                                                      )
+                                                                  )
+                                                                : r.a.createElement(
+                                                                      "span",
+                                                                      {
+                                                                          className:
+                                                                              "txtlabel warning"
+                                                                      },
+                                                                      r.a.createElement(
+                                                                          s.a,
+                                                                          {
+                                                                              content:
+                                                                                  "init_error.not_connected"
+                                                                          }
+                                                                      )
+                                                                  )
+                                                        )
+                                                    )
+                                                )
+                                            ),
+                                            r.a.createElement("br", null),
+                                            r.a.createElement(
+                                                "div",
+                                                {className: "button-group"},
                                                 r.a.createElement(
                                                     "div",
                                                     {
                                                         className:
-                                                            "button-group",
-                                                        onClick: this.onSubmit.bind(
-                                                            this
-                                                        )
+                                                            "button outline",
+                                                        onClick: this
+                                                            .onReloadClick
                                                     },
-                                                    r.a.createElement(
-                                                        "div",
-                                                        {
-                                                            className: "button",
-                                                            type: "submit"
-                                                        },
-                                                        "Publish"
-                                                    )
+                                                    r.a.createElement(s.a, {
+                                                        content:
+                                                            "init_error.retry"
+                                                    })
+                                                ),
+                                                r.a.createElement(
+                                                    "div",
+                                                    {
+                                                        onClick: this.onReset.bind(
+                                                            this
+                                                        ),
+                                                        className:
+                                                            "button outline"
+                                                    },
+                                                    r.a.createElement(s.a, {
+                                                        content:
+                                                            "settings.reset"
+                                                    })
                                                 )
-                                            )
+                                            ),
+                                            r.a.createElement(u.a, {
+                                                ref: "ws_modal",
+                                                apis: this.props.apis
+                                            })
                                         )
                                     )
                                 );
@@ -349,12 +367,20 @@
                     t
                 );
             })();
-            t.default = f = Object(o.connect)(f, {
+            t.default = Object(o.connect)(g, {
                 listenTo: function() {
-                    return [c.a];
+                    return [i.a, l.a];
                 },
                 getProps: function() {
-                    return {currentAccount: c.a.getState().currentAccount};
+                    return {
+                        rpc_connection_status: i.a.getState()
+                            .rpc_connection_status,
+                        apis: l.a.getState().defaults.apiServer,
+                        apiServer: l.a.getState().settings.get("apiServer"),
+                        defaultConnection: l.a
+                            .getState()
+                            .defaultSettings.get("apiServer")
+                    };
                 }
             });
         }
