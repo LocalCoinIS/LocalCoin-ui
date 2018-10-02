@@ -6,6 +6,13 @@ import {merge} from "lodash-es";
 import ls from "common/localStorage";
 import {Apis} from "bitsharesjs-ws";
 import {settingsAPIs} from "api/apiConfig";
+import {
+    getDefaultTheme,
+    getDefaultLogin,
+    getMyMarketsBases,
+    getMyMarketsQuotes,
+    getUnits
+} from "branding";
 
 const CORE_ASSET = "LLC"; // Setting this to LLC to prevent loading issues when used with LLC chain which is the most usual case currently
 
@@ -41,7 +48,8 @@ class SettingsStore {
             onClearSettings: SettingsActions.clearSettings,
             onSwitchLocale: IntlActions.switchLocale,
             onSetUserMarket: SettingsActions.setUserMarket,
-            onUpdateLatencies: SettingsActions.updateLatencies
+            onUpdateLatencies: SettingsActions.updateLatencies,
+            onModifyPreferedBases: SettingsActions.modifyPreferedBases
         });
 
         this.initDone = false;
@@ -180,14 +188,28 @@ class SettingsStore {
             if (this.initDone) resolve();
             this.starredKey = this._getChainKey("markets");
             this.marketsKey = this._getChainKey("userMarkets");
+            this.basesKey = this._getChainKey("preferredBases");
             // Default markets setup
-            let topMarkets = {};
+            let topMarkets = {
+                markets_4018d784: getMyMarketsQuotes(),
+                markets_39f5e2ed: [
+                    // TESTNET
+                    "PEG.FAKEUSD",
+                    "BTWTY"
+                ]
+            };
 
             let bases = {};
 
             let coreAssets = {};
             let coreAsset = coreAssets[this.starredKey] || "LLC";
             this.defaults.unit[0] = coreAsset;
+
+            let defaultBases = bases[this.starredKey] || bases.markets_4018d784;
+            let storedBases = ss.get(this.basesKey, []);
+            this.preferredBases = Immutable.List(
+                storedBases.length ? storedBases : defaultBases
+            );
 
             let chainBases = bases[this.starredKey] || [];
             this.preferredBases = Immutable.List(chainBases);
@@ -205,12 +227,9 @@ class SettingsStore {
                     });
             }
 
-            let defaultMarkets = [];
-            let chainMarkets = topMarkets[this.starredKey] || [];
-            this.preferredBases.forEach(base => {
-                addMarkets(defaultMarkets, base, chainMarkets);
-            });
+            this.chainMarkets = topMarkets[this.starredKey] || [];
 
+            let defaultMarkets = this._getDefaultMarkets();
             this.defaultMarkets = Immutable.Map(defaultMarkets);
             this.starredMarkets = Immutable.Map(ss.get(this.starredKey, []));
             this.userMarkets = Immutable.Map(ss.get(this.marketsKey, {}));
@@ -267,10 +286,14 @@ class SettingsStore {
 
     onChangeMarketDirection(payload) {
         for (let key in payload) {
-            this.marketDirections = this.marketDirections.set(
-                key,
-                payload[key]
-            );
+            if (payload[key]) {
+                this.marketDirections = this.marketDirections.set(
+                    key,
+                    payload[key]
+                );
+            } else {
+                this.marketDirections = this.marketDirections.delete(key);
+            }
         }
         ss.set("marketDirections", this.marketDirections.toJS());
     }
@@ -421,6 +444,56 @@ class SettingsStore {
 
     getExhchangeLastExpiration() {
         return this.getExchangeSettings("lastExpiration");
+    }
+
+    onModifyPreferedBases(payload) {
+        if ("newIndex" in payload && "oldIndex" in payload) {
+            /* Reorder */
+            let current = this.preferredBases.get(payload.newIndex);
+            this.preferredBases = this.preferredBases.set(
+                payload.newIndex,
+                this.preferredBases.get(payload.oldIndex)
+            );
+            this.preferredBases = this.preferredBases.set(
+                payload.oldIndex,
+                current
+            );
+        } else if ("remove" in payload) {
+            /* Remove */
+            this.preferredBases = this.preferredBases.delete(payload.remove);
+            let defaultMarkets = this._getDefaultMarkets();
+            this.defaultMarkets = Immutable.Map(defaultMarkets);
+        } else if ("add" in payload) {
+            /* Add new */
+            this.preferredBases = this.preferredBases.push(payload.add);
+            let defaultMarkets = this._getDefaultMarkets();
+            this.defaultMarkets = Immutable.Map(defaultMarkets);
+        }
+
+        ss.set(this.basesKey, this.preferredBases.toArray());
+    }
+
+    _getDefaultMarkets() {
+        let markets = [];
+
+        this.preferredBases.forEach(base => {
+            addMarkets(markets, base, this.chainMarkets);
+        });
+
+        function addMarkets(target, base, markets) {
+            markets
+                .filter(a => {
+                    return a !== base;
+                })
+                .forEach(market => {
+                    target.push([
+                        `${market}_${base}`,
+                        {quote: market, base: base}
+                    ]);
+                });
+        }
+
+        return markets;
     }
 }
 

@@ -43,6 +43,7 @@ export default class QuoteSelectionModal extends React.Component {
 
     _onAdd(quote) {
         const idx = this.props.quotes.findIndex(q => q === quote.get("symbol"));
+
         if (idx === -1) {
             SettingsActions.modifyPreferedBases({
                 add: quote.get("symbol")
