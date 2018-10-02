@@ -29,7 +29,8 @@ let lastLookup = new Date();
 
 class MarketGroup extends React.Component {
     static defaultProps = {
-        maxRows: 20
+        maxRows: 20,
+        onlyLiquid: false
     };
 
     constructor(props) {
@@ -123,8 +124,7 @@ class MarketGroup extends React.Component {
             base,
             marketStats,
             starredMarkets,
-            current,
-            findMarketTab
+            current
         } = this.props;
         let {sortBy, inverseSort, open} = this.state;
 
@@ -167,14 +167,14 @@ class MarketGroup extends React.Component {
                 case "quoteSupply":
                     return (
                         <th key={header.name}>
-                            <Translate content="exchange.quote_supply" />
+                            <Translate content="exchange.base_supply" />
                         </th>
                     );
 
                 case "baseSupply":
                     return (
                         <th key={header.name}>
-                            <Translate content="exchange.base_supply" />
+                            <Translate content="exchange.quote_supply" />
                         </th>
                     );
 
@@ -209,10 +209,15 @@ class MarketGroup extends React.Component {
             }
         });
 
-        let index = 0;
-
         let marketRows = markets
             .map(market => {
+                if (
+                    this.props.onlyLiquid &&
+                    marketStats.get(market.id) &&
+                    marketStats.get(market.id).volumeBase == 0
+                ) {
+                    return null;
+                }
                 return (
                     <MarketRow
                         key={market.id}
@@ -244,6 +249,8 @@ class MarketGroup extends React.Component {
                             this.props.defaultMarkets.has(market.id)
                         }
                         onCheckMarket={this._onToggleUserMarket.bind(this)}
+                        location={this.props.location}
+                        history={this.props.history}
                     />
                 );
             })
@@ -295,8 +302,6 @@ class MarketGroup extends React.Component {
                         }
                 }
             });
-
-        let caret = open ? <span>&#9660;</span> : <span>&#9650;</span>;
 
         return (
             <div style={{paddingRight: 10}}>
@@ -383,6 +388,7 @@ class MyMarkets extends React.Component {
             nextProps.listHeight !== this.props.listHeight ||
             nextProps.preferredBases !== this.props.preferredBases ||
             nextProps.onlyStars !== this.props.onlyStars ||
+            nextProps.onlyLiquid !== this.props.onlyLiquid ||
             nextProps.assetsLoading !== this.props.assetsLoading ||
             nextProps.userMarkets !== this.props.userMarkets
         );
