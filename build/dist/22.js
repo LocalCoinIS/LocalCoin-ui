@@ -1234,11 +1234,11 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            function I(e, t) {
+            function q(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function q(e, t) {
+            function I(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -1268,8 +1268,8 @@
             }
             var B = (function(e) {
                 function t(e) {
-                    I(this, t);
-                    var a = q(
+                    q(this, t);
+                    var a = I(
                         this,
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                     );
@@ -1837,7 +1837,7 @@
                                                   })
                                               )
                                     ),
-                                    I = s.a.createElement(
+                                    q = s.a.createElement(
                                         "span",
                                         null,
                                         s.a.createElement(
@@ -1871,7 +1871,7 @@
                                             })
                                         )
                                     ),
-                                    q = this._getFeedPrice(),
+                                    I = this._getFeedPrice(),
                                     F =
                                         this.props.quote_asset.getIn([
                                             "bitasset",
@@ -1884,7 +1884,7 @@
                                         "maximum_short_squeeze_ratio"
                                     ]),
                                     this._isPredictionMarket(this.props));
-                                return !B && isNaN(q)
+                                return !B && isNaN(I)
                                     ? s.a.createElement(
                                           "div",
                                           null,
@@ -2122,7 +2122,7 @@
                                                           ),
                                                           asset: r.get("id"),
                                                           assets: [r.get("id")],
-                                                          display_balance: I,
+                                                          display_balance: q,
                                                           placeholder: "0.0",
                                                           tabIndex: 1
                                                       }),
@@ -2297,8 +2297,8 @@
                 (B = Object(b.a)(B));
             var R = (function(e) {
                 function t() {
-                    I(this, t);
-                    var e = q(
+                    q(this, t);
+                    var e = I(
                         this,
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                     );
@@ -3031,8 +3031,8 @@
                 P = a(12),
                 T = a(4),
                 j = a(18),
-                I = a(139),
-                q = a(321),
+                q = a(139),
+                I = a(321),
                 F = a(64),
                 B = a(52),
                 R = a.n(B);
@@ -3509,7 +3509,7 @@
                                                   style: W,
                                                   onClick: this.props.onFlip
                                               },
-                                              r.a.createElement(q.a, {
+                                              r.a.createElement(I.a, {
                                                   base: t.get("id"),
                                                   quote: a.get("id"),
                                                   force_direction: t.get(
@@ -3525,7 +3525,7 @@
                                                   style: {textAlign: "right"},
                                                   onClick: this.props.onFlip
                                               },
-                                              r.a.createElement(I.b, {
+                                              r.a.createElement(q.b, {
                                                   hide_asset: !0,
                                                   amount: n
                                                       .amountForSale()
@@ -4722,8 +4722,8 @@
                 P = a(8),
                 T = a(31),
                 j = a(106),
-                I = a(22),
-                q = a(77),
+                q = a(22),
+                I = a(77),
                 F = a(9),
                 B = a.n(F),
                 R = a(111),
@@ -5308,7 +5308,7 @@
                                         o = t.marketStats,
                                         i = t.starredMarkets,
                                         l = t.current,
-                                        c = (t.findMarketTab, this.state),
+                                        c = this.state,
                                         u = c.sortBy,
                                         p = c.inverseSort,
                                         d = c.open;
@@ -5374,7 +5374,7 @@
                                                         {key: t.name},
                                                         s.a.createElement(m.a, {
                                                             content:
-                                                                "exchange.quote_supply"
+                                                                "exchange.base_supply"
                                                         })
                                                     );
                                                 case "baseSupply":
@@ -5383,7 +5383,7 @@
                                                         {key: t.name},
                                                         s.a.createElement(m.a, {
                                                             content:
-                                                                "exchange.base_supply"
+                                                                "exchange.quote_supply"
                                                         })
                                                     );
                                                 case "change":
@@ -5440,60 +5440,68 @@
                                         }),
                                         f = n
                                             .map(function(t) {
-                                                return s.a.createElement(N, {
-                                                    key: t.id,
-                                                    name:
-                                                        "others" === r
-                                                            ? s.a.createElement(
-                                                                  "span",
-                                                                  null,
-                                                                  s.a.createElement(
-                                                                      I.a,
-                                                                      {
-                                                                          name:
-                                                                              t.quote
-                                                                      }
-                                                                  ),
-                                                                  ":",
-                                                                  s.a.createElement(
-                                                                      I.a,
-                                                                      {
-                                                                          name:
-                                                                              t.base
-                                                                      }
-                                                                  )
-                                                              )
-                                                            : s.a.createElement(
-                                                                  I.a,
-                                                                  {
-                                                                      dataPlace:
-                                                                          "left",
-                                                                      name:
-                                                                          t.quote
-                                                                  }
+                                                return e.props.onlyLiquid &&
+                                                    o.get(t.id) &&
+                                                    0 == o.get(t.id).volumeBase
+                                                    ? null
+                                                    : s.a.createElement(N, {
+                                                          key: t.id,
+                                                          name:
+                                                              "others" === r
+                                                                  ? s.a.createElement(
+                                                                        "span",
+                                                                        null,
+                                                                        s.a.createElement(
+                                                                            q.a,
+                                                                            {
+                                                                                name:
+                                                                                    t.quote
+                                                                            }
+                                                                        ),
+                                                                        ":",
+                                                                        s.a.createElement(
+                                                                            q.a,
+                                                                            {
+                                                                                name:
+                                                                                    t.base
+                                                                            }
+                                                                        )
+                                                                    )
+                                                                  : s.a.createElement(
+                                                                        q.a,
+                                                                        {
+                                                                            dataPlace:
+                                                                                "left",
+                                                                            name:
+                                                                                t.quote
+                                                                        }
+                                                                    ),
+                                                          quote: t.quote,
+                                                          base: t.base,
+                                                          columns: a,
+                                                          leftAlign: !0,
+                                                          compact: !0,
+                                                          noSymbols: !0,
+                                                          stats: o.get(t.id),
+                                                          starred: i.has(t.id),
+                                                          current: l === t.id,
+                                                          isChecked: e.props.userMarkets.has(
+                                                              t.id
+                                                          ),
+                                                          isDefault:
+                                                              e.props
+                                                                  .defaultMarkets &&
+                                                              e.props.defaultMarkets.has(
+                                                                  t.id
                                                               ),
-                                                    quote: t.quote,
-                                                    base: t.base,
-                                                    columns: a,
-                                                    leftAlign: !0,
-                                                    compact: !0,
-                                                    noSymbols: !0,
-                                                    stats: o.get(t.id),
-                                                    starred: i.has(t.id),
-                                                    current: l === t.id,
-                                                    isChecked: e.props.userMarkets.has(
-                                                        t.id
-                                                    ),
-                                                    isDefault:
-                                                        e.props
-                                                            .defaultMarkets &&
-                                                        e.props.defaultMarkets.has(
-                                                            t.id
-                                                        ),
-                                                    onCheckMarket: e._onToggleUserMarket.bind(
-                                                        e
-                                                    )
-                                                });
+                                                          onCheckMarket: e._onToggleUserMarket.bind(
+                                                              e
+                                                          ),
+                                                          location:
+                                                              e.props.location,
+                                                          history:
+                                                              e.props.history
+                                                      });
                                             })
                                             .filter(function(e) {
                                                 return null !== e;
@@ -5545,9 +5553,6 @@
                                                             : 0;
                                                 }
                                             });
-                                    d
-                                        ? s.a.createElement("span", null, "▼")
-                                        : s.a.createElement("span", null, "▲");
                                     return s.a.createElement(
                                         "div",
                                         {style: {paddingRight: 10}},
@@ -5583,7 +5588,7 @@
                         t
                     );
                 })();
-            $.defaultProps = {maxRows: 20};
+            $.defaultProps = {maxRows: 20, onlyLiquid: !1};
             var ee = (function(e) {
                 function t(e) {
                     G(this, t);
@@ -5628,7 +5633,7 @@
                         }),
                         (a._setMinWidth = a._setMinWidth.bind(a)),
                         (a.getAssetList = Object(n.a)(
-                            q.a.getAssetList.defer,
+                            I.a.getAssetList.defer,
                             150
                         )),
                         a
@@ -5671,6 +5676,8 @@
                                         e.preferredBases ===
                                             this.props.preferredBases &&
                                         e.onlyStars === this.props.onlyStars &&
+                                        e.onlyLiquid ===
+                                            this.props.onlyLiquid &&
                                         e.assetsLoading ===
                                             this.props.assetsLoading &&
                                         e.userMarkets === this.props.userMarkets
@@ -5877,53 +5884,53 @@
                                     v = _.activeMarketTab,
                                     k = _.activeTab,
                                     E = _.lookupQuote,
-                                    C = _.lookupBase,
-                                    S = s.a.createElement("tr", null),
-                                    A = "my-market" === k,
-                                    x = p.map(function(e) {
+                                    S = _.lookupBase,
+                                    A = s.a.createElement("tr", null),
+                                    x = "my-market" === k,
+                                    O = p.map(function(e) {
                                         return e;
                                     });
-                                A ||
+                                x ||
                                     (p = (p = p.clear()).push(
                                         this.state.activeFindBase
                                     ));
-                                var O = {},
-                                    N = [];
+                                var N = {},
+                                    P = [];
                                 E || (E = "OPEN."),
-                                    A || (v = 0),
+                                    x || (v = 0),
                                     c
                                         .filter(function(e) {
-                                            return C && C.length
-                                                ? 0 === e.symbol.indexOf(C)
+                                            return S && S.length
+                                                ? 0 === e.symbol.indexOf(S)
                                                 : -1 !== e.symbol.indexOf(E);
                                         })
                                         .forEach(function(e) {
-                                            C && C.length
-                                                ? 0 === e.symbol.indexOf(C) &&
-                                                  N.push(e.symbol)
+                                            S && S.length
+                                                ? 0 === e.symbol.indexOf(S) &&
+                                                  P.push(e.symbol)
                                                 : p.includes(e.symbol) &&
                                                   e.symbol.length >= E.length &&
                                                   e.symbol.length <
                                                       E.length + 3 &&
-                                                  N.push(e.symbol);
+                                                  P.push(e.symbol);
                                         }),
-                                    (N = (N = N.concat(
+                                    (P = (P = P.concat(
                                         p
                                             .filter(function(e) {
                                                 return (
-                                                    !C ||
-                                                    !C.length ||
-                                                    0 === e.indexOf(C)
+                                                    !S ||
+                                                    !S.length ||
+                                                    0 === e.indexOf(S)
                                                 );
                                             })
                                             .toArray()
                                     )).filter(function(e) {
                                         return (
-                                            !(C && C.length > 1) ||
-                                            0 === e.indexOf(C)
+                                            !(S && S.length > 1) ||
+                                            0 === e.indexOf(S)
                                         );
                                     }));
-                                var P = [];
+                                var T = [];
                                 c.size &&
                                     c
                                         .filter(function(e) {
@@ -5945,10 +5952,10 @@
                                             );
                                         })
                                         .forEach(function(e) {
-                                            N.forEach(function(t) {
+                                            P.forEach(function(t) {
                                                 var a = e.symbol + "_" + t;
                                                 t !== e.symbol &&
-                                                    P.push([
+                                                    T.push([
                                                         a,
                                                         {
                                                             quote: e.symbol,
@@ -5957,39 +5964,42 @@
                                                     ]);
                                             });
                                         }),
-                                    (P = P.filter(function(e) {
-                                        return !C || e[1].quote === E;
+                                    (T = T.filter(function(e) {
+                                        return !S || e[1].quote === E;
                                     })),
-                                    (P = i.a.Map(P));
-                                var T = A ? r : P;
-                                A &&
+                                    (T = i.a.Map(T));
+                                var j = x ? r : T;
+                                x &&
                                     y.size &&
                                     y.forEach(function(e, t) {
-                                        T = T.set(t, e);
+                                        j = j.set(t, e);
                                     }),
-                                    T.size > 0 &&
-                                        (S = T.filter(function(t) {
-                                            if (A) {
-                                                var a = t.quote + "_" + t.base;
-                                                return e.state.myMarketFilter
-                                                    ? -1 !==
-                                                          a.indexOf(
-                                                              e.state
-                                                                  .myMarketFilter
-                                                          )
-                                                    : !(g && !n.has(a));
-                                            }
-                                            return (
-                                                !(E.length < 1) &&
-                                                -1 !== t.quote.indexOf(E)
-                                            );
-                                        })
+                                    j.size > 0 &&
+                                        (A = j
+                                            .filter(function(t) {
+                                                if (x) {
+                                                    var a =
+                                                        t.quote + "_" + t.base;
+                                                    return e.state
+                                                        .myMarketFilter
+                                                        ? -1 !==
+                                                              a.indexOf(
+                                                                  e.state
+                                                                      .myMarketFilter
+                                                              )
+                                                        : !(g && !n.has(a));
+                                                }
+                                                return (
+                                                    !(E.length < 1) &&
+                                                    -1 !== t.quote.indexOf(E)
+                                                );
+                                            })
                                             .map(function(e) {
                                                 var t = e.quote + "_" + e.base;
                                                 return p.includes(e.base)
-                                                    ? (O[e.base] ||
-                                                          (O[e.base] = []),
-                                                      O[e.base].push({
+                                                    ? (N[e.base] ||
+                                                          (N[e.base] = []),
+                                                      N[e.base].push({
                                                           id: t,
                                                           quote: e.quote,
                                                           base: e.base
@@ -6004,18 +6014,18 @@
                                             .filter(function(e) {
                                                 return null !== e;
                                             })
-                                            .take(A ? 100 : 20)
+                                            .take(x ? 100 : 20)
                                             .toArray());
-                                var j = S && S.length,
-                                    q = "mymarkets-header clickable",
-                                    F = B()(q, {inactive: !A}),
-                                    M = B()(q, {inactive: A}),
-                                    z = {
+                                var I = A && A.length,
+                                    F = "mymarkets-header clickable",
+                                    M = B()(F, {inactive: !x}),
+                                    z = B()(F, {inactive: x}),
+                                    U = {
                                         minWidth: this.state.minWidth,
                                         minHeight: "6rem"
                                     };
-                                b && (z.height = b);
-                                var U = a(3);
+                                b && (U.height = b);
+                                var H = a(3);
                                 return s.a.createElement(
                                     "div",
                                     {
@@ -6035,12 +6045,12 @@
                                             "div",
                                             {
                                                 ref: "myMarkets",
-                                                className: F,
+                                                className: M,
                                                 onClick: this._changeTab.bind(
                                                     this,
                                                     "my-market"
                                                 ),
-                                                "data-intro": U.translate(
+                                                "data-intro": H.translate(
                                                     "walkthrough.my_markets_tab"
                                                 )
                                             },
@@ -6051,12 +6061,12 @@
                                         s.a.createElement(
                                             "div",
                                             {
-                                                className: M,
+                                                className: z,
                                                 onClick: this._changeTab.bind(
                                                     this,
                                                     "find-market"
                                                 ),
-                                                "data-intro": U.translate(
+                                                "data-intro": H.translate(
                                                     "walkthrough.find_markets_tab"
                                                 )
                                             },
@@ -6087,12 +6097,12 @@
                                                   : null
                                           )
                                         : null,
-                                    A
+                                    x
                                         ? s.a.createElement(
                                               "div",
                                               {
                                                   className:
-                                                      "grid-block shrink",
+                                                      "grid-block vertical shrink",
                                                   style: {
                                                       width: "100%",
                                                       textAlign: "left",
@@ -6100,53 +6110,116 @@
                                                   }
                                               },
                                               s.a.createElement(
-                                                  "label",
-                                                  {style: {margin: "3px 0 0"}},
-                                                  s.a.createElement("input", {
-                                                      style: {
-                                                          position: "relative",
-                                                          top: 3
-                                                      },
-                                                      className: "no-margin",
-                                                      type: "checkbox",
-                                                      checked: this.props
-                                                          .onlyStars,
-                                                      onChange: function() {
-                                                          w.a.toggleStars();
-                                                      }
-                                                  }),
+                                                  "div",
+                                                  null,
                                                   s.a.createElement(
-                                                      "span",
+                                                      "label",
                                                       {
                                                           style: {
-                                                              paddingLeft:
-                                                                  "0.4rem"
+                                                              margin: "3px 0 0"
                                                           }
                                                       },
-                                                      s.a.createElement(d.a, {
-                                                          string:
-                                                              "exchange.show_only_star_formatter",
-                                                          keys: [
-                                                              {
-                                                                  type: "icon",
-                                                                  value:
-                                                                      "fi-star",
-                                                                  className:
-                                                                      "gold-star",
-                                                                  arg:
-                                                                      "star_icon"
+                                                      s.a.createElement(
+                                                          "input",
+                                                          {
+                                                              style: {
+                                                                  position:
+                                                                      "relative",
+                                                                  top: 3
+                                                              },
+                                                              className:
+                                                                  "no-margin",
+                                                              type: "checkbox",
+                                                              checked: this
+                                                                  .props
+                                                                  .onlyLiquid,
+                                                              onChange: function() {
+                                                                  C.a.changeViewSetting(
+                                                                      {
+                                                                          onlyLiquid: !e
+                                                                              .props
+                                                                              .onlyLiquid
+                                                                      }
+                                                                  );
                                                               }
-                                                          ]
-                                                      })
+                                                          }
+                                                      ),
+                                                      s.a.createElement(
+                                                          "span",
+                                                          {
+                                                              style: {
+                                                                  paddingLeft:
+                                                                      "0.4rem"
+                                                              }
+                                                          },
+                                                          s.a.createElement(
+                                                              m.a,
+                                                              {
+                                                                  content:
+                                                                      "exchange.show_only_liquid"
+                                                              }
+                                                          )
+                                                      )
+                                                  ),
+                                                  s.a.createElement(
+                                                      "label",
+                                                      {
+                                                          style: {
+                                                              margin: "3px 0 0"
+                                                          }
+                                                      },
+                                                      s.a.createElement(
+                                                          "input",
+                                                          {
+                                                              style: {
+                                                                  position:
+                                                                      "relative",
+                                                                  top: 3
+                                                              },
+                                                              className:
+                                                                  "no-margin",
+                                                              type: "checkbox",
+                                                              checked: this
+                                                                  .props
+                                                                  .onlyStars,
+                                                              onChange: function() {
+                                                                  w.a.toggleStars();
+                                                              }
+                                                          }
+                                                      ),
+                                                      s.a.createElement(
+                                                          "span",
+                                                          {
+                                                              style: {
+                                                                  paddingLeft:
+                                                                      "0.4rem"
+                                                              }
+                                                          },
+                                                          s.a.createElement(
+                                                              d.a,
+                                                              {
+                                                                  string:
+                                                                      "exchange.show_only_star_formatter",
+                                                                  keys: [
+                                                                      {
+                                                                          type:
+                                                                              "icon",
+                                                                          value:
+                                                                              "fi-star",
+                                                                          className:
+                                                                              "gold-star",
+                                                                          arg:
+                                                                              "star_icon"
+                                                                      }
+                                                                  ]
+                                                              }
+                                                          )
+                                                      )
                                                   )
                                               ),
                                               s.a.createElement(
                                                   "div",
-                                                  {
-                                                      className:
-                                                          "float-right search-wrapper",
-                                                      style: {paddingLeft: 20}
-                                                  },
+                                                  {className: "search-wrapper"},
                                                   s.a.createElement(
                                                       "form",
                                                       null,
@@ -6225,7 +6298,7 @@
                                                                       onAssetSelect: this._onFoundBaseAsset.bind(
                                                                           this
                                                                       ),
-                                                                      assets: x,
+                                                                      assets: O,
                                                                       onChange: this._onInputBaseAsset.bind(
                                                                           this
                                                                       ),
@@ -6294,14 +6367,17 @@
                                                                           .state
                                                                           .inputValue,
                                                                       onChange: this._onInputName.bind(
-                                                                          this
+                                                                          this,
+                                                                          !0
                                                                       ),
                                                                       placeholder: D.a.translate(
                                                                           "exchange.search"
                                                                       ),
                                                                       maxLength:
                                                                           "16",
-                                                                      tabIndex: 2
+                                                                      tabIndex: 2,
+                                                                      ref:
+                                                                          "findSearchInput"
                                                                   }
                                                               ),
                                                               this.state
@@ -6359,14 +6435,14 @@
                                                               {active: v === a}
                                                           )
                                                       },
-                                                      s.a.createElement(I.a, {
+                                                      s.a.createElement(q.a, {
                                                           name: t,
                                                           dataPlace: "left"
                                                       })
                                                   )
                                                 : null;
                                         }),
-                                        A && j
+                                        x && I
                                             ? s.a.createElement(
                                                   "li",
                                                   {
@@ -6393,7 +6469,7 @@
                                                   })
                                               )
                                             : null,
-                                        A &&
+                                        x &&
                                             s.a.createElement(
                                                 "li",
                                                 {
@@ -6416,7 +6492,7 @@
                                     s.a.createElement(
                                         "div",
                                         {
-                                            style: z,
+                                            style: U,
                                             className:
                                                 "table-container grid-block vertical mymarkets-list",
                                             ref: "favorites"
@@ -6437,29 +6513,38 @@
                                                   })
                                               )
                                             : null,
-                                        p.map(function(t, a) {
-                                            return s.a.createElement($, {
-                                                userMarkets:
-                                                    e.props.userMarkets,
-                                                defaultMarkets:
-                                                    e.props.defaultMarkets,
-                                                index: a,
-                                                allowChange: !1,
-                                                key: t,
-                                                current: h,
-                                                starredMarkets: n,
-                                                marketStats: o,
-                                                viewSettings: f,
-                                                columns: A
-                                                    ? l
-                                                    : e.props.findColumns || l,
-                                                markets: O[t],
-                                                base: t,
-                                                maxRows: A ? 20 : 10,
-                                                findMarketTab: !A
-                                            });
-                                        }),
-                                        v === p.size + 1 && A && j
+                                        p
+                                            .filter(function(e) {
+                                                return e === p.get(v);
+                                            })
+                                            .map(function(t, a) {
+                                                return s.a.createElement($, {
+                                                    userMarkets:
+                                                        e.props.userMarkets,
+                                                    defaultMarkets:
+                                                        e.props.defaultMarkets,
+                                                    index: a,
+                                                    allowChange: !1,
+                                                    key: t,
+                                                    current: h,
+                                                    starredMarkets: n,
+                                                    marketStats: o,
+                                                    viewSettings: f,
+                                                    columns: x
+                                                        ? l
+                                                        : e.props.findColumns ||
+                                                          l,
+                                                    markets: N[t],
+                                                    base: t,
+                                                    maxRows: x ? 20 : 10,
+                                                    findMarketTab: !x,
+                                                    location: e.props.location,
+                                                    history: e.props.history,
+                                                    onlyLiquid:
+                                                        e.props.onlyLiquid && x
+                                                });
+                                            }),
+                                        v === p.size + 1 && x && I
                                             ? s.a.createElement($, {
                                                   userMarkets: this.props
                                                       .userMarkets,
@@ -6469,10 +6554,12 @@
                                                   marketStats: o,
                                                   viewSettings: f,
                                                   columns: l,
-                                                  markets: S,
+                                                  markets: A,
                                                   base: "others",
-                                                  maxRows: A ? 20 : 10,
-                                                  findMarketTab: !A
+                                                  maxRows: x ? 20 : 10,
+                                                  findMarketTab: !x,
+                                                  location: this.props.location,
+                                                  history: this.props.history
                                               })
                                             : null
                                     ),
@@ -6527,6 +6614,9 @@
                 getProps: function() {
                     return {
                         starredMarkets: P.a.getState().starredMarkets,
+                        onlyLiquid: P.a
+                            .getState()
+                            .viewSettings.get("onlyLiquid", !0),
                         defaultMarkets: P.a.getState().defaultMarkets,
                         viewSettings: P.a.getState().viewSettings,
                         preferredBases: P.a.getState().preferredBases,
@@ -6681,7 +6771,7 @@
                         ? e
                         : t;
                 }
-                function I(e, t) {
+                function q(e, t) {
                     if ("function" != typeof t && null !== t)
                         throw new TypeError(
                             "Super expression must either be null or a function, not " +
@@ -6700,7 +6790,7 @@
                                 ? Object.setPrototypeOf(e, t)
                                 : (e.__proto__ = t));
                 }
-                var q = (function(t) {
+                var I = (function(t) {
                     function a(e) {
                         T(this, a);
                         var t = j(
@@ -6738,7 +6828,7 @@
                         );
                     }
                     return (
-                        I(a, x["a"]),
+                        q(a, x["a"]),
                         P(a, [
                             {
                                 key: "componentWillMount",
@@ -7951,17 +8041,17 @@
                         a
                     );
                 })();
-                (q.propTypes = {
+                (I.propTypes = {
                     sender: h.a.ChainAccount.isRequired,
                     asset: h.a.ChainAsset.isRequired,
                     coreAsset: h.a.ChainAsset.isRequired,
                     globalObject: h.a.ChainAsset.isRequired
                 }),
-                    (q.defaultProps = {
+                    (I.defaultProps = {
                         coreAsset: "1.3.0",
                         globalObject: "2.0.0"
                     }),
-                    (q = Object(d.a)(q));
+                    (I = Object(d.a)(I));
                 var F = (function(e) {
                     function t() {
                         T(this, t);
@@ -7972,7 +8062,7 @@
                         return (e.state = {open: !1}), e;
                     }
                     return (
-                        I(t, s.a.Component),
+                        q(t, s.a.Component),
                         P(t, [
                             {
                                 key: "show",
@@ -8005,7 +8095,7 @@
                                               },
                                               this.state.open
                                                   ? s.a.createElement(
-                                                        q,
+                                                        I,
                                                         N({}, this.props, {
                                                             open: this.state
                                                                 .open
@@ -8081,7 +8171,7 @@
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function I(e, t) {
+            function q(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -8090,7 +8180,7 @@
                     ? e
                     : t;
             }
-            function q(e, t) {
+            function I(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -8112,7 +8202,7 @@
             var F = (function(e) {
                 function t(e) {
                     j(this, t);
-                    var a = I(
+                    var a = q(
                         this,
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                     );
@@ -8132,7 +8222,7 @@
                     );
                 }
                 return (
-                    q(t, r.a.Component),
+                    I(t, r.a.Component),
                     T(t, [
                         {
                             key: "onClose",
@@ -9232,7 +9322,7 @@
                 function t() {
                     return (
                         j(this, t),
-                        I(
+                        q(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -9242,7 +9332,7 @@
                     );
                 }
                 return (
-                    q(t, r.a.Component),
+                    I(t, r.a.Component),
                     T(t, [
                         {
                             key: "render",
@@ -9293,14 +9383,14 @@
             var R = (function(e) {
                 function t() {
                     j(this, t);
-                    var e = I(
+                    var e = q(
                         this,
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                     );
                     return (e.state = {open: !1}), e;
                 }
                 return (
-                    q(t, r.a.Component),
+                    I(t, r.a.Component),
                     T(t, [
                         {
                             key: "show",
@@ -9392,11 +9482,11 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            function I(e, t) {
+            function q(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function q(e, t) {
+            function I(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -9427,8 +9517,8 @@
             var B = (function(e) {
                     function t() {
                         return (
-                            I(this, t),
-                            q(
+                            q(this, t),
+                            I(
                                 this,
                                 (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                     this,
@@ -9526,8 +9616,8 @@
                 R = (function(e) {
                     function t() {
                         return (
-                            I(this, t),
-                            q(
+                            q(this, t),
+                            I(
                                 this,
                                 (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                     this,
@@ -9647,8 +9737,8 @@
                 })(),
                 M = (function(e) {
                     function t(e) {
-                        I(this, t);
-                        var a = q(
+                        q(this, t);
+                        var a = I(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                         );
@@ -9909,15 +9999,15 @@
                                                     "container-menu-header"
                                                 ).length > 0
                                             ) {
-                                                var I = document.getElementsByClassName(
+                                                var q = document.getElementsByClassName(
                                                         "container-menu-header"
                                                     )[0],
-                                                    q = I.className.toString();
+                                                    I = q.className.toString();
                                                 -1 !==
-                                                    q.indexOf(
+                                                    I.indexOf(
                                                         "left-cell-active"
                                                     ) &&
-                                                    (I.className = q.replace(
+                                                    (q.className = I.replace(
                                                         /left-cell-active/gi,
                                                         ""
                                                     ));
@@ -11696,7 +11786,7 @@
                                         precision: f,
                                         asset_id: this.props.balanceId
                                     }),
-                                    I = new me.a({
+                                    q = new me.a({
                                         amount: o.getIn([
                                             "options",
                                             "max_market_fee"
@@ -11704,7 +11794,7 @@
                                         asset_id: o.get("asset_id"),
                                         precision: o.get("precision")
                                     }),
-                                    q = new me.a({
+                                    I = new me.a({
                                         amount: s.getIn([
                                             "options",
                                             "max_market_fee"
@@ -11728,25 +11818,25 @@
                                         "%",
                                     R = C
                                         ? Math.min(
-                                              q.getAmount({real: !0}),
+                                              I.getAmount({real: !0}),
                                               (C *
                                                   s.getIn([
                                                       "options",
                                                       "market_fee_percent"
                                                   ])) /
                                                   1e4
-                                          ).toFixed(q.precision)
+                                          ).toFixed(I.precision)
                                         : 0,
                                     M = C
                                         ? Math.min(
-                                              I.getAmount({real: !0}),
+                                              q.getAmount({real: !0}),
                                               (O *
                                                   o.getIn([
                                                       "options",
                                                       "market_fee_percent"
                                                   ])) /
                                                   1e4
-                                          ).toFixed(I.precision)
+                                          ).toFixed(q.precision)
                                         : 0,
                                     D = he.a.getFlagBooleans(
                                         o.getIn(["options", "flags"]),
@@ -13625,8 +13715,8 @@
                 Pe = a.n(Ne),
                 Te = a(303),
                 je = a.n(Te),
-                Ie = a(103),
-                qe = (function() {
+                qe = a(103),
+                Ie = (function() {
                     return function(e, t) {
                         if (Array.isArray(e)) return e;
                         if (Symbol.iterator in Object(e))
@@ -13765,7 +13855,7 @@
                                 value: function(e, t, a) {
                                     var n = this,
                                         r = e.split("_"),
-                                        s = qe(r, 2),
+                                        s = Ie(r, 2),
                                         o = s[0],
                                         i = s[1];
                                     Promise.all([
@@ -13773,7 +13863,7 @@
                                         Object(H.f)("getAsset", i)
                                     ])
                                         .then(function(a) {
-                                            var r = qe(a, 2),
+                                            var r = Ie(a, 2),
                                                 s = r[0],
                                                 o = r[1];
                                             t(
@@ -13782,10 +13872,10 @@
                                                         (this.name = t.ticker),
                                                         (this.ticker =
                                                             t.ticker);
-                                                    var a = Object(Ie.c)(
+                                                    var a = Object(qe.c)(
                                                             t.quoteAsset
                                                         ),
-                                                        n = Object(Ie.c)(
+                                                        n = Object(qe.c)(
                                                             t.baseAsset
                                                         ),
                                                         r =
@@ -14531,8 +14621,8 @@
                                 var P = Object(We.a)(t),
                                     T = Object(We.a)(a),
                                     j = Object(We.a)(n),
-                                    I = Object(We.a)(s),
-                                    q = {
+                                    q = Object(We.a)(s),
+                                    I = {
                                         chart: {
                                             type: "area",
                                             backgroundColor:
@@ -14625,43 +14715,43 @@
                                     };
                                 if (P.length > 0 && T.length > 0) {
                                     var F = (T[0][0] + P[P.length - 1][0]) / 2;
-                                    (q.xAxis.min = 0.4 * F),
-                                        (q.xAxis.max = 1.6 * F),
-                                        q.xAxis.max < T[0][0] &&
-                                            (q.xAxis.max = 1.5 * T[0][0]),
-                                        q.xAxis.min > P[P.length - 1][0] &&
-                                            (q.xAxis.min =
+                                    (I.xAxis.min = 0.4 * F),
+                                        (I.xAxis.max = 1.6 * F),
+                                        I.xAxis.max < T[0][0] &&
+                                            (I.xAxis.max = 1.5 * T[0][0]),
+                                        I.xAxis.min > P[P.length - 1][0] &&
+                                            (I.xAxis.min =
                                                 0.5 * P[P.length - 1][0]);
                                     var B = 0;
                                     P.forEach(function(e) {
-                                        e[0] >= q.xAxis.min &&
+                                        e[0] >= I.xAxis.min &&
                                             (B = Math.max(e[1], B));
                                     }),
                                         T.forEach(function(e) {
-                                            e[0] <= q.xAxis.max &&
+                                            e[0] <= I.xAxis.max &&
                                                 (B = Math.max(e[1], B));
                                         }),
-                                        (q.yAxis.max = 1.15 * B);
+                                        (I.yAxis.max = 1.15 * B);
                                     var R = B > 10 ? 0 : B > 1 ? 2 : 5;
-                                    q.yAxis.labels.formatter = function() {
+                                    I.yAxis.labels.formatter = function() {
                                         return k.a.format_number(this.value, R);
                                     };
                                 } else
                                     P.length && !T.length
-                                        ? ((q.xAxis.min =
+                                        ? ((I.xAxis.min =
                                               0.4 * P[P.length - 1][0]),
-                                          (q.xAxis.max =
+                                          (I.xAxis.max =
                                               1.6 * P[P.length - 1][0]))
                                         : T.length &&
                                           !P.length &&
-                                          ((q.xAxis.min = 0),
-                                          (q.xAxis.max = 2 * T[0][0]));
+                                          ((I.xAxis.min = 0),
+                                          (I.xAxis.max = 2 * T[0][0]));
                                 if (
                                     (this.props.hasPrediction &&
-                                        ((q.xAxis.min = -0.05),
-                                        (q.xAxis.max = 1.05)),
+                                        ((I.xAxis.min = -0.05),
+                                        (I.xAxis.max = 1.05)),
                                     this.props.LCP &&
-                                        q.xAxis.plotLines.push({
+                                        I.xAxis.plotLines.push({
                                             color: v,
                                             id: "plot_line",
                                             dashStyle: "longdash",
@@ -14681,7 +14771,7 @@
                                     u)
                                 ) {
                                     var M = l.has("bitasset") ? y : b;
-                                    q.xAxis.plotLines.push({
+                                    I.xAxis.plotLines.push({
                                         color: M,
                                         id: "plot_line",
                                         dashStyle: "solid",
@@ -14700,7 +14790,7 @@
                                     }),
                                         j &&
                                             j.length &&
-                                            q.series.push({
+                                            I.series.push({
                                                 name: "Call " + x,
                                                 data: j,
                                                 color: d
@@ -14708,16 +14798,16 @@
                                 }
                                 return (
                                     u &&
-                                        I &&
-                                        I.length &&
-                                        q.series.push({
+                                        q &&
+                                        q.length &&
+                                        I.series.push({
                                             name: "Settle " + x,
-                                            data: I,
+                                            data: q,
                                             color: h,
                                             fillColor: f
                                         }),
                                     P.length &&
-                                        q.series.push({
+                                        I.series.push({
                                             step: "right",
                                             name: "Bid " + x,
                                             data: P,
@@ -14725,7 +14815,7 @@
                                             fillColor: g
                                         }),
                                     T.length &&
-                                        q.series.push({
+                                        I.series.push({
                                             step: "left",
                                             name: "Ask " + x,
                                             data: T,
@@ -14733,10 +14823,10 @@
                                             fillColor: _
                                         }),
                                     this.props.height
-                                        ? (q.chart.height = this.props.height)
-                                        : (q.chart.height = "400px"),
+                                        ? (I.chart.height = this.props.height)
+                                        : (I.chart.height = "400px"),
                                     this.props.onClick &&
-                                        (q.chart.events = {
+                                        (I.chart.events = {
                                             click: this.props.onClick.bind(this)
                                         }),
                                     this.props.noFrame
@@ -14788,7 +14878,7 @@
                                                     ),
                                               P || T || j
                                                   ? r.a.createElement(Ve.a, {
-                                                        config: q
+                                                        config: I
                                                     })
                                                   : null
                                           )
@@ -14884,7 +14974,7 @@
                                                             {
                                                                 ref:
                                                                     "depthChart",
-                                                                config: q
+                                                                config: I
                                                             }
                                                         )
                                                       : null
@@ -15917,14 +16007,14 @@
                                         O = this.state.volumeShowQuote ? n : s,
                                         P = !1,
                                         j = n.get("id"),
-                                        I = s.get("id"),
-                                        q =
+                                        q = s.get("id"),
+                                        I =
                                             "1.3.0" === j
-                                                ? I
-                                                : "1.3.0" === I
+                                                ? q
+                                                : "1.3.0" === q
                                                     ? j
                                                     : null,
-                                        F = q ? H.b.getAsset(q) : null,
+                                        F = I ? H.b.getAsset(I) : null,
                                         B = "",
                                         R = null;
                                     if (!!F && !!F.get("bitasset")) {
@@ -15945,7 +16035,7 @@
                                                             "call_price",
                                                             "quote",
                                                             "asset_id"
-                                                        ]) === q
+                                                        ]) === I
                                                 ) {
                                                     (B = L), (P = !0);
                                                     break;
@@ -16598,7 +16688,7 @@
                     e
                 );
             }
-            var It = (function(e) {
+            var qt = (function(e) {
                 function t(e) {
                     !(function(e, t) {
                         if (!(e instanceof t))
@@ -17863,8 +17953,8 @@
                                     P = s.flatSettles,
                                     T = this.state,
                                     j = T.bid,
-                                    I = T.ask,
-                                    q = T.leftOrderBook,
+                                    q = T.ask,
+                                    I = T.leftOrderBook,
                                     F = T.showDepthChart,
                                     B = T.chartHeight,
                                     R = T.buyDiff,
@@ -17981,14 +18071,14 @@
                                     ((Pe = c.getIn(["options", "description"])),
                                     (Pe = he.a.parseDescription(Pe).main));
                                 var Te = !1;
-                                L < 1e3 && ((Te = !0), (q = !1));
-                                var je = q ? 2 : 1,
-                                    Ie = (Math.max(
+                                L < 1e3 && ((Te = !0), (I = !1));
+                                var je = I ? 2 : 1,
+                                    qe = (Math.max(
                                         this.state.height > 1100 ? B : B - 125,
                                         300
                                     ),
                                     this.state.expirationType),
-                                    qe = this.state.expirationCustomTime,
+                                    Ie = this.state.expirationCustomTime,
                                     Fe = H
                                         ? null
                                         : r.a.createElement(Ee, {
@@ -18015,7 +18105,7 @@
                                               ),
                                               className: A()(
                                                   "small-12 no-padding middle-content",
-                                                  q || Te
+                                                  I || Te
                                                       ? "medium-6"
                                                       : "medium-6 xlarge-4",
                                                   this.state.flipBuySell
@@ -18027,9 +18117,9 @@
                                                         " buy-form"
                                               ),
                                               type: "bid",
-                                              expirationType: Ie.bid,
+                                              expirationType: qe.bid,
                                               expirations: this.EXPIRATIONS,
-                                              expirationCustomTime: qe.bid,
+                                              expirationCustomTime: Ie.bid,
                                               onExpirationTypeChange: this._handleExpirationChange.bind(
                                                   this,
                                                   "bid"
@@ -18135,7 +18225,7 @@
                                               ),
                                               className: A()(
                                                   "small-12 no-padding middle-content",
-                                                  q || Te
+                                                  I || Te
                                                       ? "medium-6"
                                                       : "medium-6 xlarge-4",
                                                   this.state.flipBuySell
@@ -18147,14 +18237,14 @@
                                                         " sell-form"
                                               ),
                                               type: "ask",
-                                              amount: I.forSaleText,
-                                              price: I.priceText,
-                                              total: I.toReceiveText,
+                                              amount: q.forSaleText,
+                                              price: q.priceText,
+                                              total: q.toReceiveText,
                                               quote: Q,
                                               base: J,
-                                              expirationType: Ie.ask,
+                                              expirationType: qe.ask,
                                               expirations: this.EXPIRATIONS,
-                                              expirationCustomTime: qe.ask,
+                                              expirationCustomTime: Ie.ask,
                                               onExpirationTypeChange: this._handleExpirationChange.bind(
                                                   this,
                                                   "ask"
@@ -18248,7 +18338,7 @@
                                         onClick: this._orderbookClick.bind(
                                             this
                                         ),
-                                        horizontal: !q,
+                                        horizontal: !I,
                                         moveOrderBook: this._moveOrderBook.bind(
                                             this
                                         ),
@@ -18319,7 +18409,7 @@
                                               )
                                             : null,
                                         r.a.createElement(lt, null),
-                                        q
+                                        I
                                             ? r.a.createElement(
                                                   "div",
                                                   {
@@ -18396,10 +18486,10 @@
                                                                   LCP: ee
                                                                       ? p
                                                                       : null,
-                                                                  leftOrderBook: q,
+                                                                  leftOrderBook: I,
                                                                   hasPrediction: Ne,
                                                                   noFrame: !1,
-                                                                  verticalOrderbook: q,
+                                                                  verticalOrderbook: I,
                                                                   theme: this.props.settings.get(
                                                                       "themes"
                                                                   ),
@@ -18428,7 +18518,7 @@
                                                                       .dataFeed,
                                                                   baseSymbol: $,
                                                                   quoteSymbol: Z,
-                                                                  leftOrderBook: q,
+                                                                  leftOrderBook: I,
                                                                   marketReady: d,
                                                                   theme: this.props.settings.get(
                                                                       "themes"
@@ -18505,7 +18595,7 @@
                                                     Be,
                                                     r.a.createElement(se, {
                                                         className: A()(
-                                                            Te || q
+                                                            Te || I
                                                                 ? ""
                                                                 : "medium-6 xlarge-4",
                                                             "no-padding no-overflow middle-content small-12 medium-6 order-5 xlarge-order-3"
@@ -18523,7 +18613,7 @@
                                                         baseSymbol: $,
                                                         quoteSymbol: Z
                                                     }),
-                                                    q ? null : Re,
+                                                    I ? null : Re,
                                                     r.a.createElement(pt, {
                                                         type: "buy",
                                                         ref: "buy",
@@ -18558,7 +18648,7 @@
                                                                       .props
                                                                       .smallScreen,
                                                                   className: A()(
-                                                                      Te || q
+                                                                      Te || I
                                                                           ? ""
                                                                           : "medium-6 xlarge-4",
                                                                       "small-12 medium-6 no-padding align-spaced ps-container middle-content order-6"
@@ -18717,7 +18807,7 @@
                                                               g.toReal(),
                                                           spread: ce,
                                                           LCP: ee ? p : null,
-                                                          leftOrderBook: q,
+                                                          leftOrderBook: I,
                                                           hasPrediction: Ne,
                                                           noText: !0,
                                                           theme: this.props.settings.get(
@@ -18765,21 +18855,21 @@
                     t
                 );
             })();
-            (It.propTypes = {
+            (qt.propTypes = {
                 marketCallOrders: b.a.object.isRequired,
                 activeMarketHistory: b.a.object.isRequired,
                 viewSettings: b.a.object.isRequired,
                 priceData: b.a.array.isRequired,
                 volumeData: b.a.array.isRequired
             }),
-                (It.defaultProps = {
+                (qt.defaultProps = {
                     marketCallOrders: [],
                     activeMarketHistory: {},
                     viewSettings: {},
                     priceData: [],
                     volumeData: []
                 });
-            var qt = It,
+            var It = qt,
                 Ft = a(180),
                 Bt =
                     Object.assign ||
@@ -19194,7 +19284,7 @@
                                                   "market_not_found_subtitle"
                                           })
                                         : r.a.createElement(
-                                              qt,
+                                              It,
                                               Bt({}, this.props, {
                                                   sub: this.state.sub,
                                                   subToMarket: this._subToMarket

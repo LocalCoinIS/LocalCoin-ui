@@ -1008,22 +1008,22 @@
             })();
             (O.defaultProps = {noSymbols: !1}),
                 (O.contextTypes = {router: M.a.object.isRequired});
-            var T = Object(y.a)(O, {
+            var A = Object(y.a)(O, {
                     propNames: ["quote", "base"],
                     defaultProps: {tempComponent: "tr"},
                     withDynamic: !0
                 }),
-                A = n(8),
+                T = n(8),
                 j = n(31),
                 N = n(106),
                 B = n(22),
-                I = n(77),
-                P = n(9),
-                q = n.n(P),
-                D = n(111),
-                W = n(3),
-                R = n.n(W),
-                L = n(37),
+                q = n(77),
+                I = n(9),
+                P = n.n(I),
+                L = n(111),
+                D = n(3),
+                W = n.n(D),
+                R = n(37),
                 F = n(4),
                 U = n(20),
                 z = n.n(U),
@@ -1359,7 +1359,7 @@
                                             s.a.createElement(
                                                 "div",
                                                 null,
-                                                s.a.createElement(D.a, {
+                                                s.a.createElement(L.a, {
                                                     label:
                                                         "exchange.custom_quote",
                                                     onChange: this._onInputBackingAsset.bind(
@@ -1602,7 +1602,7 @@
                                         o = t.marketStats,
                                         i = t.starredMarkets,
                                         l = t.current,
-                                        c = (t.findMarketTab, this.state),
+                                        c = this.state,
                                         u = c.sortBy,
                                         p = c.inverseSort,
                                         m = c.open;
@@ -1668,7 +1668,7 @@
                                                         {key: t.name},
                                                         s.a.createElement(h.a, {
                                                             content:
-                                                                "exchange.quote_supply"
+                                                                "exchange.base_supply"
                                                         })
                                                     );
                                                 case "baseSupply":
@@ -1677,7 +1677,7 @@
                                                         {key: t.name},
                                                         s.a.createElement(h.a, {
                                                             content:
-                                                                "exchange.base_supply"
+                                                                "exchange.quote_supply"
                                                         })
                                                     );
                                                 case "change":
@@ -1734,60 +1734,68 @@
                                         }),
                                         d = a
                                             .map(function(t) {
-                                                return s.a.createElement(T, {
-                                                    key: t.id,
-                                                    name:
-                                                        "others" === r
-                                                            ? s.a.createElement(
-                                                                  "span",
-                                                                  null,
-                                                                  s.a.createElement(
-                                                                      B.a,
-                                                                      {
-                                                                          name:
-                                                                              t.quote
-                                                                      }
-                                                                  ),
-                                                                  ":",
-                                                                  s.a.createElement(
-                                                                      B.a,
-                                                                      {
-                                                                          name:
-                                                                              t.base
-                                                                      }
-                                                                  )
-                                                              )
-                                                            : s.a.createElement(
-                                                                  B.a,
-                                                                  {
-                                                                      dataPlace:
-                                                                          "left",
-                                                                      name:
-                                                                          t.quote
-                                                                  }
+                                                return e.props.onlyLiquid &&
+                                                    o.get(t.id) &&
+                                                    0 == o.get(t.id).volumeBase
+                                                    ? null
+                                                    : s.a.createElement(A, {
+                                                          key: t.id,
+                                                          name:
+                                                              "others" === r
+                                                                  ? s.a.createElement(
+                                                                        "span",
+                                                                        null,
+                                                                        s.a.createElement(
+                                                                            B.a,
+                                                                            {
+                                                                                name:
+                                                                                    t.quote
+                                                                            }
+                                                                        ),
+                                                                        ":",
+                                                                        s.a.createElement(
+                                                                            B.a,
+                                                                            {
+                                                                                name:
+                                                                                    t.base
+                                                                            }
+                                                                        )
+                                                                    )
+                                                                  : s.a.createElement(
+                                                                        B.a,
+                                                                        {
+                                                                            dataPlace:
+                                                                                "left",
+                                                                            name:
+                                                                                t.quote
+                                                                        }
+                                                                    ),
+                                                          quote: t.quote,
+                                                          base: t.base,
+                                                          columns: n,
+                                                          leftAlign: !0,
+                                                          compact: !0,
+                                                          noSymbols: !0,
+                                                          stats: o.get(t.id),
+                                                          starred: i.has(t.id),
+                                                          current: l === t.id,
+                                                          isChecked: e.props.userMarkets.has(
+                                                              t.id
+                                                          ),
+                                                          isDefault:
+                                                              e.props
+                                                                  .defaultMarkets &&
+                                                              e.props.defaultMarkets.has(
+                                                                  t.id
                                                               ),
-                                                    quote: t.quote,
-                                                    base: t.base,
-                                                    columns: n,
-                                                    leftAlign: !0,
-                                                    compact: !0,
-                                                    noSymbols: !0,
-                                                    stats: o.get(t.id),
-                                                    starred: i.has(t.id),
-                                                    current: l === t.id,
-                                                    isChecked: e.props.userMarkets.has(
-                                                        t.id
-                                                    ),
-                                                    isDefault:
-                                                        e.props
-                                                            .defaultMarkets &&
-                                                        e.props.defaultMarkets.has(
-                                                            t.id
-                                                        ),
-                                                    onCheckMarket: e._onToggleUserMarket.bind(
-                                                        e
-                                                    )
-                                                });
+                                                          onCheckMarket: e._onToggleUserMarket.bind(
+                                                              e
+                                                          ),
+                                                          location:
+                                                              e.props.location,
+                                                          history:
+                                                              e.props.history
+                                                      });
                                             })
                                             .filter(function(e) {
                                                 return null !== e;
@@ -1839,9 +1847,6 @@
                                                             : 0;
                                                 }
                                             });
-                                    m
-                                        ? s.a.createElement("span", null, "▼")
-                                        : s.a.createElement("span", null, "▲");
                                     return s.a.createElement(
                                         "div",
                                         {style: {paddingRight: 10}},
@@ -1877,7 +1882,7 @@
                         t
                     );
                 })();
-            $.defaultProps = {maxRows: 20};
+            $.defaultProps = {maxRows: 20, onlyLiquid: !1};
             var ee = (function(e) {
                 function t(e) {
                     G(this, t);
@@ -1922,7 +1927,7 @@
                         }),
                         (n._setMinWidth = n._setMinWidth.bind(n)),
                         (n.getAssetList = Object(a.a)(
-                            I.a.getAssetList.defer,
+                            q.a.getAssetList.defer,
                             150
                         )),
                         n
@@ -1965,6 +1970,8 @@
                                         e.preferredBases ===
                                             this.props.preferredBases &&
                                         e.onlyStars === this.props.onlyStars &&
+                                        e.onlyLiquid ===
+                                            this.props.onlyLiquid &&
                                         e.assetsLoading ===
                                             this.props.assetsLoading &&
                                         e.userMarkets === this.props.userMarkets
@@ -2171,29 +2178,29 @@
                                     k = v.activeMarketTab,
                                     _ = v.activeTab,
                                     E = v.lookupQuote,
-                                    S = v.lookupBase,
-                                    x = s.a.createElement("tr", null),
-                                    M = "my-market" === _,
-                                    C = p.map(function(e) {
+                                    x = v.lookupBase,
+                                    M = s.a.createElement("tr", null),
+                                    C = "my-market" === _,
+                                    O = p.map(function(e) {
                                         return e;
                                     });
-                                M ||
+                                C ||
                                     (p = (p = p.clear()).push(
                                         this.state.activeFindBase
                                     ));
-                                var O = {},
+                                var A = {},
                                     T = [];
                                 E || (E = "OPEN."),
-                                    M || (k = 0),
+                                    C || (k = 0),
                                     c
                                         .filter(function(e) {
-                                            return S && S.length
-                                                ? 0 === e.symbol.indexOf(S)
+                                            return x && x.length
+                                                ? 0 === e.symbol.indexOf(x)
                                                 : -1 !== e.symbol.indexOf(E);
                                         })
                                         .forEach(function(e) {
-                                            S && S.length
-                                                ? 0 === e.symbol.indexOf(S) &&
+                                            x && x.length
+                                                ? 0 === e.symbol.indexOf(x) &&
                                                   T.push(e.symbol)
                                                 : p.includes(e.symbol) &&
                                                   e.symbol.length >= E.length &&
@@ -2205,19 +2212,19 @@
                                         p
                                             .filter(function(e) {
                                                 return (
-                                                    !S ||
-                                                    !S.length ||
-                                                    0 === e.indexOf(S)
+                                                    !x ||
+                                                    !x.length ||
+                                                    0 === e.indexOf(x)
                                                 );
                                             })
                                             .toArray()
                                     )).filter(function(e) {
                                         return (
-                                            !(S && S.length > 1) ||
-                                            0 === e.indexOf(S)
+                                            !(x && x.length > 1) ||
+                                            0 === e.indexOf(x)
                                         );
                                     }));
-                                var A = [];
+                                var j = [];
                                 c.size &&
                                     c
                                         .filter(function(e) {
@@ -2242,7 +2249,7 @@
                                             T.forEach(function(t) {
                                                 var n = e.symbol + "_" + t;
                                                 t !== e.symbol &&
-                                                    A.push([
+                                                    j.push([
                                                         n,
                                                         {
                                                             quote: e.symbol,
@@ -2251,42 +2258,39 @@
                                                     ]);
                                             });
                                         }),
-                                    (A = A.filter(function(e) {
-                                        return !S || e[1].quote === E;
+                                    (j = j.filter(function(e) {
+                                        return !x || e[1].quote === E;
                                     })),
-                                    (A = i.a.Map(A));
-                                var j = M ? r : A;
-                                M &&
+                                    (j = i.a.Map(j));
+                                var N = C ? r : j;
+                                C &&
                                     g.size &&
                                     g.forEach(function(e, t) {
-                                        j = j.set(t, e);
+                                        N = N.set(t, e);
                                     }),
-                                    j.size > 0 &&
-                                        (x = j
-                                            .filter(function(t) {
-                                                if (M) {
-                                                    var n =
-                                                        t.quote + "_" + t.base;
-                                                    return e.state
-                                                        .myMarketFilter
-                                                        ? -1 !==
-                                                              n.indexOf(
-                                                                  e.state
-                                                                      .myMarketFilter
-                                                              )
-                                                        : !(b && !a.has(n));
-                                                }
-                                                return (
-                                                    !(E.length < 1) &&
-                                                    -1 !== t.quote.indexOf(E)
-                                                );
-                                            })
+                                    N.size > 0 &&
+                                        (M = N.filter(function(t) {
+                                            if (C) {
+                                                var n = t.quote + "_" + t.base;
+                                                return e.state.myMarketFilter
+                                                    ? -1 !==
+                                                          n.indexOf(
+                                                              e.state
+                                                                  .myMarketFilter
+                                                          )
+                                                    : !(b && !a.has(n));
+                                            }
+                                            return (
+                                                !(E.length < 1) &&
+                                                -1 !== t.quote.indexOf(E)
+                                            );
+                                        })
                                             .map(function(e) {
                                                 var t = e.quote + "_" + e.base;
                                                 return p.includes(e.base)
-                                                    ? (O[e.base] ||
-                                                          (O[e.base] = []),
-                                                      O[e.base].push({
+                                                    ? (A[e.base] ||
+                                                          (A[e.base] = []),
+                                                      A[e.base].push({
                                                           id: t,
                                                           quote: e.quote,
                                                           base: e.base
@@ -2301,18 +2305,18 @@
                                             .filter(function(e) {
                                                 return null !== e;
                                             })
-                                            .take(M ? 100 : 20)
+                                            .take(C ? 100 : 20)
                                             .toArray());
-                                var N = x && x.length,
+                                var q = M && M.length,
                                     I = "mymarkets-header clickable",
-                                    P = q()(I, {inactive: !M}),
-                                    W = q()(I, {inactive: M}),
-                                    F = {
+                                    D = P()(I, {inactive: !C}),
+                                    F = P()(I, {inactive: C}),
+                                    U = {
                                         minWidth: this.state.minWidth,
                                         minHeight: "6rem"
                                     };
-                                y && (F.height = y);
-                                var U = n(3);
+                                y && (U.height = y);
+                                var V = n(3);
                                 return s.a.createElement(
                                     "div",
                                     {
@@ -2332,12 +2336,12 @@
                                             "div",
                                             {
                                                 ref: "myMarkets",
-                                                className: P,
+                                                className: D,
                                                 onClick: this._changeTab.bind(
                                                     this,
                                                     "my-market"
                                                 ),
-                                                "data-intro": U.translate(
+                                                "data-intro": V.translate(
                                                     "walkthrough.my_markets_tab"
                                                 )
                                             },
@@ -2348,12 +2352,12 @@
                                         s.a.createElement(
                                             "div",
                                             {
-                                                className: W,
+                                                className: F,
                                                 onClick: this._changeTab.bind(
                                                     this,
                                                     "find-market"
                                                 ),
-                                                "data-intro": U.translate(
+                                                "data-intro": V.translate(
                                                     "walkthrough.find_markets_tab"
                                                 )
                                             },
@@ -2384,12 +2388,12 @@
                                                   : null
                                           )
                                         : null,
-                                    M
+                                    C
                                         ? s.a.createElement(
                                               "div",
                                               {
                                                   className:
-                                                      "grid-block shrink",
+                                                      "grid-block vertical shrink",
                                                   style: {
                                                       width: "100%",
                                                       textAlign: "left",
@@ -2397,53 +2401,116 @@
                                                   }
                                               },
                                               s.a.createElement(
-                                                  "label",
-                                                  {style: {margin: "3px 0 0"}},
-                                                  s.a.createElement("input", {
-                                                      style: {
-                                                          position: "relative",
-                                                          top: 3
-                                                      },
-                                                      className: "no-margin",
-                                                      type: "checkbox",
-                                                      checked: this.props
-                                                          .onlyStars,
-                                                      onChange: function() {
-                                                          w.a.toggleStars();
-                                                      }
-                                                  }),
+                                                  "div",
+                                                  null,
                                                   s.a.createElement(
-                                                      "span",
+                                                      "label",
                                                       {
                                                           style: {
-                                                              paddingLeft:
-                                                                  "0.4rem"
+                                                              margin: "3px 0 0"
                                                           }
                                                       },
-                                                      s.a.createElement(m.a, {
-                                                          string:
-                                                              "exchange.show_only_star_formatter",
-                                                          keys: [
-                                                              {
-                                                                  type: "icon",
-                                                                  value:
-                                                                      "fi-star",
-                                                                  className:
-                                                                      "gold-star",
-                                                                  arg:
-                                                                      "star_icon"
+                                                      s.a.createElement(
+                                                          "input",
+                                                          {
+                                                              style: {
+                                                                  position:
+                                                                      "relative",
+                                                                  top: 3
+                                                              },
+                                                              className:
+                                                                  "no-margin",
+                                                              type: "checkbox",
+                                                              checked: this
+                                                                  .props
+                                                                  .onlyLiquid,
+                                                              onChange: function() {
+                                                                  S.a.changeViewSetting(
+                                                                      {
+                                                                          onlyLiquid: !e
+                                                                              .props
+                                                                              .onlyLiquid
+                                                                      }
+                                                                  );
                                                               }
-                                                          ]
-                                                      })
+                                                          }
+                                                      ),
+                                                      s.a.createElement(
+                                                          "span",
+                                                          {
+                                                              style: {
+                                                                  paddingLeft:
+                                                                      "0.4rem"
+                                                              }
+                                                          },
+                                                          s.a.createElement(
+                                                              h.a,
+                                                              {
+                                                                  content:
+                                                                      "exchange.show_only_liquid"
+                                                              }
+                                                          )
+                                                      )
+                                                  ),
+                                                  s.a.createElement(
+                                                      "label",
+                                                      {
+                                                          style: {
+                                                              margin: "3px 0 0"
+                                                          }
+                                                      },
+                                                      s.a.createElement(
+                                                          "input",
+                                                          {
+                                                              style: {
+                                                                  position:
+                                                                      "relative",
+                                                                  top: 3
+                                                              },
+                                                              className:
+                                                                  "no-margin",
+                                                              type: "checkbox",
+                                                              checked: this
+                                                                  .props
+                                                                  .onlyStars,
+                                                              onChange: function() {
+                                                                  w.a.toggleStars();
+                                                              }
+                                                          }
+                                                      ),
+                                                      s.a.createElement(
+                                                          "span",
+                                                          {
+                                                              style: {
+                                                                  paddingLeft:
+                                                                      "0.4rem"
+                                                              }
+                                                          },
+                                                          s.a.createElement(
+                                                              m.a,
+                                                              {
+                                                                  string:
+                                                                      "exchange.show_only_star_formatter",
+                                                                  keys: [
+                                                                      {
+                                                                          type:
+                                                                              "icon",
+                                                                          value:
+                                                                              "fi-star",
+                                                                          className:
+                                                                              "gold-star",
+                                                                          arg:
+                                                                              "star_icon"
+                                                                      }
+                                                                  ]
+                                                              }
+                                                          )
+                                                      )
                                                   )
                                               ),
                                               s.a.createElement(
                                                   "div",
-                                                  {
-                                                      className:
-                                                          "float-right search-wrapper",
-                                                      style: {paddingLeft: 20}
-                                                  },
+                                                  {className: "search-wrapper"},
                                                   s.a.createElement(
                                                       "form",
                                                       null,
@@ -2465,7 +2532,7 @@
                                                               type: "text",
                                                               className:
                                                                   "no-margin market-filter-input",
-                                                              placeholder: R.a.translate(
+                                                              placeholder: W.a.translate(
                                                                   "exchange.filter"
                                                               ),
                                                               maxLength: "16",
@@ -2517,12 +2584,12 @@
                                                               "td",
                                                               null,
                                                               s.a.createElement(
-                                                                  D.a,
+                                                                  L.a,
                                                                   {
                                                                       onAssetSelect: this._onFoundBaseAsset.bind(
                                                                           this
                                                                       ),
-                                                                      assets: C,
+                                                                      assets: O,
                                                                       onChange: this._onInputBaseAsset.bind(
                                                                           this
                                                                       ),
@@ -2591,14 +2658,17 @@
                                                                           .state
                                                                           .inputValue,
                                                                       onChange: this._onInputName.bind(
-                                                                          this
+                                                                          this,
+                                                                          !0
                                                                       ),
-                                                                      placeholder: R.a.translate(
+                                                                      placeholder: W.a.translate(
                                                                           "exchange.search"
                                                                       ),
                                                                       maxLength:
                                                                           "16",
-                                                                      tabIndex: 2
+                                                                      tabIndex: 2,
+                                                                      ref:
+                                                                          "findSearchInput"
                                                                   }
                                                               ),
                                                               this.state
@@ -2651,7 +2721,7 @@
                                                               e,
                                                               n
                                                           ),
-                                                          className: q()(
+                                                          className: P()(
                                                               "mymarkets-tab",
                                                               {active: k === n}
                                                           )
@@ -2663,7 +2733,7 @@
                                                   )
                                                 : null;
                                         }),
-                                        M && N
+                                        C && q
                                             ? s.a.createElement(
                                                   "li",
                                                   {
@@ -2676,7 +2746,7 @@
                                                           this,
                                                           p.size + 1
                                                       ),
-                                                      className: q()(
+                                                      className: P()(
                                                           "mymarkets-tab",
                                                           {
                                                               active:
@@ -2690,7 +2760,7 @@
                                                   })
                                               )
                                             : null,
-                                        M &&
+                                        C &&
                                             s.a.createElement(
                                                 "li",
                                                 {
@@ -2713,7 +2783,7 @@
                                     s.a.createElement(
                                         "div",
                                         {
-                                            style: F,
+                                            style: U,
                                             className:
                                                 "table-container grid-block vertical mymarkets-list",
                                             ref: "favorites"
@@ -2729,34 +2799,43 @@
                                                           width: "100%"
                                                       }
                                                   },
-                                                  s.a.createElement(L.a, {
+                                                  s.a.createElement(R.a, {
                                                       type: "three-bounce"
                                                   })
                                               )
                                             : null,
-                                        p.map(function(t, n) {
-                                            return s.a.createElement($, {
-                                                userMarkets:
-                                                    e.props.userMarkets,
-                                                defaultMarkets:
-                                                    e.props.defaultMarkets,
-                                                index: n,
-                                                allowChange: !1,
-                                                key: t,
-                                                current: f,
-                                                starredMarkets: a,
-                                                marketStats: o,
-                                                viewSettings: d,
-                                                columns: M
-                                                    ? l
-                                                    : e.props.findColumns || l,
-                                                markets: O[t],
-                                                base: t,
-                                                maxRows: M ? 20 : 10,
-                                                findMarketTab: !M
-                                            });
-                                        }),
-                                        k === p.size + 1 && M && N
+                                        p
+                                            .filter(function(e) {
+                                                return e === p.get(k);
+                                            })
+                                            .map(function(t, n) {
+                                                return s.a.createElement($, {
+                                                    userMarkets:
+                                                        e.props.userMarkets,
+                                                    defaultMarkets:
+                                                        e.props.defaultMarkets,
+                                                    index: n,
+                                                    allowChange: !1,
+                                                    key: t,
+                                                    current: f,
+                                                    starredMarkets: a,
+                                                    marketStats: o,
+                                                    viewSettings: d,
+                                                    columns: C
+                                                        ? l
+                                                        : e.props.findColumns ||
+                                                          l,
+                                                    markets: A[t],
+                                                    base: t,
+                                                    maxRows: C ? 20 : 10,
+                                                    findMarketTab: !C,
+                                                    location: e.props.location,
+                                                    history: e.props.history,
+                                                    onlyLiquid:
+                                                        e.props.onlyLiquid && C
+                                                });
+                                            }),
+                                        k === p.size + 1 && C && q
                                             ? s.a.createElement($, {
                                                   userMarkets: this.props
                                                       .userMarkets,
@@ -2766,10 +2845,12 @@
                                                   marketStats: o,
                                                   viewSettings: d,
                                                   columns: l,
-                                                  markets: x,
+                                                  markets: M,
                                                   base: "others",
-                                                  maxRows: M ? 20 : 10,
-                                                  findMarketTab: !M
+                                                  maxRows: C ? 20 : 10,
+                                                  findMarketTab: !C,
+                                                  location: this.props.location,
+                                                  history: this.props.history
                                               })
                                             : null
                                     ),
@@ -2819,16 +2900,19 @@
             })();
             t.a = Object(f.connect)(te, {
                 listenTo: function() {
-                    return [A.a, j.a, N.a];
+                    return [T.a, j.a, N.a];
                 },
                 getProps: function() {
                     return {
-                        starredMarkets: A.a.getState().starredMarkets,
-                        defaultMarkets: A.a.getState().defaultMarkets,
-                        viewSettings: A.a.getState().viewSettings,
-                        preferredBases: A.a.getState().preferredBases,
+                        starredMarkets: T.a.getState().starredMarkets,
+                        onlyLiquid: T.a
+                            .getState()
+                            .viewSettings.get("onlyLiquid", !0),
+                        defaultMarkets: T.a.getState().defaultMarkets,
+                        viewSettings: T.a.getState().viewSettings,
+                        preferredBases: T.a.getState().preferredBases,
                         marketStats: j.a.getState().allMarketStats,
-                        userMarkets: A.a.getState().userMarkets,
+                        userMarkets: T.a.getState().userMarkets,
                         searchAssets: N.a.getState().assets,
                         onlyStars: j.a.getState().onlyStars,
                         assetsLoading: N.a.getState().assetsLoading
