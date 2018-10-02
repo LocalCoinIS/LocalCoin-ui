@@ -287,3 +287,7 @@ main[class*="help-"] > .content {
 .icon.rotate180 > svg {
     transform: rotate(180deg);
 }
+
+.icon.fi-star.gold-star svg path {
+    fill: #cc9f00 !important;
+}
