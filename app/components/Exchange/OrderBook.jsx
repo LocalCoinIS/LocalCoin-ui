@@ -135,15 +135,15 @@ class OrderBookRowHorizontal extends React.Component {
         let tdDataTip =
             translator.translate("exchange.total") +
             " " +
-            base.get("symbol") +
+            quote.get("symbol") +
             " " +
-            totalBaseCurrency +
+            totalQuoteCurrency +
             "<br />" +
             translator.translate("exchange.total") +
             " " +
-            quote.get("symbol") +
+            base.get("symbol") +
             " " +
-            totalQuoteCurrency;
+            totalBaseCurrency;
 
         return (
             <tr
@@ -155,9 +155,9 @@ class OrderBookRowHorizontal extends React.Component {
                 <td style={{width: "25%"}} className={integerClass}>
                     {price}
                 </td>
-                <td>{position === "left" ? value : amount}</td>
+                <td>{position === "left" ? amount : value}</td>
                 <td data-tip={tdDataTip} data-html={true}>
-                    {position === "left" ? amount : value}
+                    {position === "left" ? value : amount}
                 </td>
             </tr>
         );
@@ -605,8 +605,8 @@ class OrderBook extends React.Component {
                             <div style={{paddingRight: "0.6rem"}}>
                                 <table className="table order-table table-hover fixed-table text-right">
                                     {!this.state.flip
-                                        ? rightHeader
-                                        : leftHeader}
+                                        ? leftHeader
+                                        : rightHeader}
                                 </table>
                             </div>
                             <div
