@@ -37,11 +37,7 @@ class Footer extends React.Component {
         };
     }
 
-    componentDidMount() {
-        this.checkNewVersionAvailable.call(this);
-
-        this.downloadLink = "https://bitshares.org/download";
-    }
+    componentDidMount() {}
 
     shouldComponentUpdate(nextProps, nextState) {
         return (
@@ -52,26 +48,6 @@ class Footer extends React.Component {
             nextProps.synced !== this.props.synced ||
             nextState.showNodesPopup !== this.state.showNodesPopup
         );
-    }
-
-    checkNewVersionAvailable() {
-        if (__ELECTRON__) {
-            fetch(
-                "https://api.github.com/repos/bitshares/bitshares-ui/releases/latest"
-            )
-                .then(res => {
-                    return res.json();
-                })
-                .then(
-                    function(json) {
-                        let oldVersion = String(json.tag_name);
-                        let newVersion = String(APP_VERSION);
-                        if (oldVersion !== newVersion) {
-                            this.setState({newVersion});
-                        }
-                    }.bind(this)
-                );
-        }
     }
 
     downloadVersion() {
@@ -92,10 +68,7 @@ class Footer extends React.Component {
         var theme = SettingsStore.getState().settings.get("themes");
 
         if (hintData.length == 0) {
-            window.open(
-                "http://docs.bitshares.org/bitshares/user/index.html",
-                "_blank"
-            );
+            window.open("/help", "_blank");
         } else {
             guide
                 .introJs()
@@ -173,7 +146,12 @@ class Footer extends React.Component {
         return (
             <footer className="footer">
                 <div className="footer-line">
-                    <div className="footer-info">
+                    <div
+                        className="footer-info"
+                        onClick={() => {
+                            this.setState({showNodesPopup: true});
+                        }}
+                    >
                         <span
                             className="footer-info__status"
                             onClick={e => {
@@ -210,8 +188,48 @@ class Footer extends React.Component {
                         {counterpart.translate("global.help")}
                     </button>
                 </div>
+
+                <div
+                    onMouseEnter={() => {
+                        this.setState({showNodesPopup: true});
+                    }}
+                    onMouseLeave={() => {
+                        this.setState({showNodesPopup: false});
+                    }}
+                    className="node-access-popup"
+                    style={{display: this.state.showNodesPopup ? "" : "none"}}
+                >
+                    <AccessSettings
+                        nodes={this.props.defaults.apiServer}
+                        popup={true}
+                    />
+                    <div style={{paddingTop: 15}}>
+                        <a onClick={this.onAccess.bind(this)}>
+                            <Translate content="footer.advanced_settings" />
+                        </a>
+                    </div>
+                </div>
             </footer>
         );
+    }
+
+    onBackup() {
+        this.context.router.push("/wallet/backup/create");
+    }
+
+    onBackupBrainkey() {
+        this.context.router.push("/wallet/backup/brainkey");
+    }
+
+    onPopup() {
+        this.setState({
+            showNodesPopup: !this.state.showNodesPopup
+        });
+    }
+
+    onAccess() {
+        SettingsActions.changeViewSetting({activeSetting: 6});
+        this.context.router.push("/settings/access");
     }
 }
 Footer = BindToChainState(Footer);

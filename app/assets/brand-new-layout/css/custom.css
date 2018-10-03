@@ -291,3 +291,9 @@ main[class*="help-"] > .content {
 .icon.fi-star.gold-star svg path {
     fill: #cc9f00 !important;
 }
+
+.node-access-popup {
+    border-left: 1px solid rgba(128, 128, 128, 0.45);
+    border-top: 1px solid rgba(128, 128, 128, 0.45);
+    border-right: 1px solid rgba(128, 128, 128, 0.45);
+}
