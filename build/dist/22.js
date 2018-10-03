@@ -9716,15 +9716,15 @@
                                         f =
                                             e.translate("exchange.total") +
                                             " " +
-                                            o.get("symbol") +
+                                            s.get("symbol") +
                                             " " +
-                                            d +
+                                            h +
                                             "<br />" +
                                             e.translate("exchange.total") +
                                             " " +
-                                            s.get("symbol") +
+                                            o.get("symbol") +
                                             " " +
-                                            h;
+                                            d;
                                     return r.a.createElement(
                                         "tr",
                                         {
@@ -9746,12 +9746,12 @@
                                         r.a.createElement(
                                             "td",
                                             null,
-                                            "left" === i ? m : p
+                                            "left" === i ? p : m
                                         ),
                                         r.a.createElement(
                                             "td",
                                             {"data-tip": f, "data-html": !0},
-                                            "left" === i ? p : m
+                                            "left" === i ? m : p
                                         )
                                     );
                                 }
@@ -10316,8 +10316,8 @@
                                                                     "table order-table table-hover fixed-table text-right"
                                                             },
                                                             this.state.flip
-                                                                ? D
-                                                                : L
+                                                                ? L
+                                                                : D
                                                         )
                                                     ),
                                                     r.a.createElement(
