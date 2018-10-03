@@ -1048,7 +1048,7 @@
             })();
             t.a = i;
         },
-        180: function(e, t, a) {
+        184: function(e, t, a) {
             "use strict";
             a.r(t);
             var n = a(0),
@@ -6726,7 +6726,7 @@
                     C = a(36),
                     S = a(22),
                     A = a(4),
-                    x = a(182),
+                    x = a(185),
                     O = a(23),
                     N =
                         Object.assign ||
@@ -9446,7 +9446,7 @@
                 i = a(106),
                 l = a(8),
                 c = a(75),
-                u = a(183),
+                u = a(181),
                 p = a(74),
                 m = a(50),
                 d = a.n(m),
@@ -9644,66 +9644,92 @@
                             {
                                 key: "render",
                                 value: function() {
-                                    var e = this.props,
-                                        t = e.order,
-                                        a = e.quote,
-                                        n = e.base,
-                                        s = e.position,
-                                        o = t.isBid(),
-                                        i = t.isCall()
+                                    var e = a(3),
+                                        t = this.props,
+                                        n = t.order,
+                                        s = t.quote,
+                                        o = t.base,
+                                        i = t.position,
+                                        l = n.isBid(),
+                                        c = n.isCall()
                                             ? "orderHistoryCall"
-                                            : o
+                                            : l
                                                 ? "orderHistoryBid"
                                                 : "orderHistoryAsk",
-                                        l = r.a.createElement(x.a, {
-                                            price: t.getPrice(),
-                                            quote: a,
-                                            base: n
+                                        u = r.a.createElement(x.a, {
+                                            price: n.getPrice(),
+                                            quote: s,
+                                            base: o
                                         }),
-                                        c = o
+                                        p = l
                                             ? k.a.format_number(
-                                                  t
+                                                  n
                                                       .amountToReceive()
                                                       .getAmount({real: !0}),
-                                                  a.get("precision")
+                                                  s.get("precision")
                                               )
                                             : k.a.format_number(
-                                                  t
+                                                  n
                                                       .amountForSale()
                                                       .getAmount({real: !0}),
-                                                  a.get("precision")
+                                                  s.get("precision")
                                               ),
-                                        u = o
+                                        m = l
                                             ? k.a.format_number(
-                                                  t
+                                                  n
                                                       .amountForSale()
                                                       .getAmount({real: !0}),
-                                                  n.get("precision")
+                                                  o.get("precision")
                                               )
                                             : k.a.format_number(
-                                                  t
+                                                  n
                                                       .amountToReceive()
                                                       .getAmount({real: !0}),
-                                                  n.get("precision")
+                                                  o.get("precision")
                                               ),
-                                        p = o
+                                        d = l
                                             ? k.a.format_number(
-                                                  t
+                                                  n
                                                       .totalForSale()
                                                       .getAmount({real: !0}),
-                                                  n.get("precision")
+                                                  8
                                               )
                                             : k.a.format_number(
-                                                  t
+                                                  n
                                                       .totalToReceive()
                                                       .getAmount({real: !0}),
-                                                  n.get("precision")
-                                              );
+                                                  8
+                                              ),
+                                        h = l
+                                            ? k.a.format_number(
+                                                  n
+                                                      .totalToReceive()
+                                                      .getAmount({real: !0}),
+                                                  8
+                                              )
+                                            : k.a.format_number(
+                                                  n
+                                                      .totalForSale()
+                                                      .getAmount({real: !0}),
+                                                  8
+                                              ),
+                                        f =
+                                            e.translate("exchange.total") +
+                                            " " +
+                                            o.get("symbol") +
+                                            " " +
+                                            d +
+                                            "<br />" +
+                                            e.translate("exchange.total") +
+                                            " " +
+                                            s.get("symbol") +
+                                            " " +
+                                            h;
                                     return r.a.createElement(
                                         "tr",
                                         {
                                             onClick: this.props.onClick,
-                                            className: t.isMine(
+                                            className: n.isMine(
                                                 this.props.currentAccount
                                             )
                                                 ? "my-order"
@@ -9712,21 +9738,20 @@
                                         r.a.createElement(
                                             "td",
                                             {
-                                                "data-tip": p,
                                                 style: {width: "25%"},
-                                                className: i
+                                                className: c
                                             },
-                                            l
+                                            u
                                         ),
                                         r.a.createElement(
                                             "td",
-                                            {"data-tip": p},
-                                            "left" === s ? u : c
+                                            null,
+                                            "left" === i ? m : p
                                         ),
                                         r.a.createElement(
                                             "td",
-                                            {"data-tip": p},
-                                            "left" === s ? c : u
+                                            {"data-tip": f, "data-html": !0},
+                                            "left" === i ? p : m
                                         )
                                     );
                                 }
@@ -10988,7 +11013,7 @@
                 V = a(3),
                 J = a.n(V),
                 Q = a(93),
-                K = a(181),
+                K = a(180),
                 G = a(52),
                 Y = a.n(G),
                 X = a(272),
@@ -11601,7 +11626,7 @@
                 ue = a(439),
                 pe = a(440),
                 me = a(18),
-                de = a(182),
+                de = a(185),
                 he = a(47),
                 fe = a(568),
                 be = a.n(fe),
@@ -18870,7 +18895,7 @@
                     volumeData: []
                 });
             var It = qt,
-                Ft = a(180),
+                Ft = a(184),
                 Bt =
                     Object.assign ||
                     function(e) {

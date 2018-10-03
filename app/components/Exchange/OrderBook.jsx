@@ -365,6 +365,7 @@ class OrderBook extends React.Component {
             rowCount,
             displaySpreadAsPercentage
         } = this.state;
+
         const noOrders = !lowestAsk.sell_price && !highestBid.sell_price;
         const hasAskAndBids = !!(lowestAsk.sell_price && highestBid.sell_price);
         const spread =
