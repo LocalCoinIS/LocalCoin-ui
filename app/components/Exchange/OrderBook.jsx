@@ -78,6 +78,8 @@ class OrderBookRowHorizontal extends React.Component {
     }
 
     render() {
+        const translator = require("counterpart");
+
         let {order, quote, base, position} = this.props;
         const isBid = order.isBid();
         const isCall = order.isCall();
@@ -109,15 +111,39 @@ class OrderBookRowHorizontal extends React.Component {
                   order.amountToReceive().getAmount({real: true}),
                   base.get("precision")
               );
-        let total = isBid
+
+        let totalBaseCurrency = isBid
             ? utils.format_number(
                   order.totalForSale().getAmount({real: true}),
-                  base.get("precision")
+                  8
               )
             : utils.format_number(
                   order.totalToReceive().getAmount({real: true}),
-                  base.get("precision")
+                  8
               );
+
+        let totalQuoteCurrency = !isBid
+            ? utils.format_number(
+                  order.totalForSale().getAmount({real: true}),
+                  8
+              )
+            : utils.format_number(
+                  order.totalToReceive().getAmount({real: true}),
+                  8
+              );
+
+        let tdDataTip =
+            translator.translate("exchange.total") +
+            " " +
+            base.get("symbol") +
+            " " +
+            totalBaseCurrency +
+            "<br />" +
+            translator.translate("exchange.total") +
+            " " +
+            quote.get("symbol") +
+            " " +
+            totalQuoteCurrency;
 
         return (
             <tr
@@ -126,15 +152,13 @@ class OrderBookRowHorizontal extends React.Component {
                     order.isMine(this.props.currentAccount) ? "my-order" : ""
                 }
             >
-                <td
-                    data-tip={total}
-                    style={{width: "25%"}}
-                    className={integerClass}
-                >
+                <td style={{width: "25%"}} className={integerClass}>
                     {price}
                 </td>
-                <td data-tip={total}>{position === "left" ? value : amount}</td>
-                <td data-tip={total}>{position === "left" ? amount : value}</td>
+                <td>{position === "left" ? value : amount}</td>
+                <td data-tip={tdDataTip} data-html={true}>
+                    {position === "left" ? amount : value}
+                </td>
             </tr>
         );
     }

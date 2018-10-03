@@ -296,4 +296,5 @@ main[class*="help-"] > .content {
     border-left: 1px solid rgba(128, 128, 128, 0.45);
     border-top: 1px solid rgba(128, 128, 128, 0.45);
     border-right: 1px solid rgba(128, 128, 128, 0.45);
+    background: #fff;
 }
