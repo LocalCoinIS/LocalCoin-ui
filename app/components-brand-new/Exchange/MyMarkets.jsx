@@ -1048,7 +1048,7 @@ class MyMarkets extends React.Component {
                                     active: activeMarketTab === index
                                 })}
                             >
-                                <AssetName name={base} dataPlace="left" />
+                                <span>{base}</span>
                             </li>
                         );
                     })}
