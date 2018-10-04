@@ -24,14 +24,15 @@
                 v = a(3),
                 g = a.n(v),
                 _ = a(17),
-                x = a(22),
-                w = a(4),
+                w = a(22),
+                x = a(4),
                 A = a(9),
                 P = a.n(A),
                 C = a(5),
                 O = a(37),
                 F = a(85),
-                L = (function() {
+                L = a(107),
+                j = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -45,7 +46,7 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            function j(e, t, a) {
+            function M(e, t, a) {
                 return (
                     t in e
                         ? Object.defineProperty(e, t, {
@@ -58,8 +59,8 @@
                     e
                 );
             }
-            var M = new F.a("__graphene__"),
-                S = (function(e) {
+            var S = new F.a("__graphene__"),
+                N = (function(e) {
                     function t(e) {
                         !(function(e, t) {
                             if (!(e instanceof t))
@@ -114,7 +115,7 @@
                                         ? Object.setPrototypeOf(e, t)
                                         : (e.__proto__ = t));
                         })(t, r.a.Component),
-                        L(t, [
+                        j(t, [
                             {
                                 key: "shouldComponentUpdate",
                                 value: function(e, t) {
@@ -160,7 +161,7 @@
                                               }))
                                             : e.size <
                                                   this.state.assetsFetched &&
-                                              (M.set("totalAssets", e.size),
+                                              (S.set("totalAssets", e.size),
                                               this.setState({isLoading: !1}));
                                 }
                             },
@@ -189,10 +190,10 @@
                                 key: "_onFilter",
                                 value: function(e, t) {
                                     this.setState(
-                                        j({}, e, t.target.value.toUpperCase())
+                                        M({}, e, t.target.value.toUpperCase())
                                     ),
                                         p.a.changeViewSetting(
-                                            j(
+                                            M(
                                                 {},
                                                 e,
                                                 t.target.value.toUpperCase()
@@ -209,7 +210,7 @@
                                         n = g.a
                                             .translate("markets.filter")
                                             .toUpperCase(),
-                                        l = w.b.getAsset("1.3.0"),
+                                        l = x.b.getAsset("1.3.0"),
                                         s = void 0,
                                         i = void 0,
                                         o = void 0;
@@ -255,10 +256,11 @@
                                                                         t.symbol
                                                                 },
                                                                 r.a.createElement(
-                                                                    x.a,
+                                                                    L.a,
                                                                     {
-                                                                        name:
-                                                                            t.symbol
+                                                                        showIcon: !0,
+                                                                        asset:
+                                                                            t.id
                                                                     }
                                                                 )
                                                             )
@@ -359,10 +361,11 @@
                                                                         t.symbol
                                                                 },
                                                                 r.a.createElement(
-                                                                    x.a,
+                                                                    L.a,
                                                                     {
-                                                                        name:
-                                                                            t.symbol
+                                                                        showIcon: !0,
+                                                                        asset:
+                                                                            t.id
                                                                     }
                                                                 )
                                                             )
@@ -490,7 +493,7 @@
                                                                             e.symbol
                                                                     },
                                                                     r.a.createElement(
-                                                                        x.a,
+                                                                        w.a,
                                                                         {
                                                                             name:
                                                                                 e.symbol
@@ -970,11 +973,11 @@
                         t
                     );
                 })();
-            (S.defaultProps = {assets: {}}),
-                (S.propTypes = {assets: u.a.object.isRequired});
-            var N = S,
-                T = a(121),
-                U = (function() {
+            (N.defaultProps = {assets: {}}),
+                (N.propTypes = {assets: u.a.object.isRequired});
+            var T = N,
+                U = a(122),
+                I = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -988,7 +991,7 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            var I = (function(e) {
+            var W = (function(e) {
                 function t() {
                     return (
                         (function(e, t) {
@@ -1035,7 +1038,7 @@
                                     ? Object.setPrototypeOf(e, t)
                                     : (e.__proto__ = t));
                     })(t, r.a.Component),
-                    U(t, [
+                    I(t, [
                         {
                             key: "render",
                             value: function() {
@@ -1063,12 +1066,12 @@
                                             }
                                         }
                                     },
-                                    r.a.createElement(N, null)
+                                    r.a.createElement(T, null)
                                 );
                                 return r.a.createElement(
                                     "div",
                                     {className: "content"},
-                                    r.a.createElement(T.a, {
+                                    r.a.createElement(U.a, {
                                         defaultActiveTab:
                                             "explorer.assets.title",
                                         defaultContent: e
@@ -1080,7 +1083,7 @@
                     t
                 );
             })();
-            t.default = I;
+            t.default = W;
         }
     }
 ]);

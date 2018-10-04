@@ -1,7 +1,7 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
     [24, 43],
     {
-        184: function(e, t, a) {
+        180: function(e, t, a) {
             "use strict";
             a.r(t);
             var n = a(0),
@@ -605,13 +605,14 @@
                 y = a(21),
                 v = a(72),
                 k = a(18),
-                O = a(184),
+                O = a(180),
                 w = a(349),
                 x = a(14),
                 P = a(15),
                 A = a(3),
                 T = a.n(A),
-                j =
+                j = a(107),
+                N =
                     Object.assign ||
                     function(e) {
                         for (var t = 1; t < arguments.length; t++) {
@@ -622,7 +623,7 @@
                         }
                         return e;
                     },
-                N = (function() {
+                S = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -636,7 +637,7 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            function S(e, t, a) {
+            function C(e, t, a) {
                 return (
                     t in e
                         ? Object.defineProperty(e, t, {
@@ -649,11 +650,11 @@
                     e
                 );
             }
-            function C(e, t) {
+            function q(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function q(e, t) {
+            function R(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -662,7 +663,7 @@
                     ? e
                     : t;
             }
-            function R(e, t) {
+            function D(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -681,11 +682,11 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var D = (function(e) {
+            var I = (function(e) {
                     function t() {
                         return (
-                            C(this, t),
-                            q(
+                            q(this, t),
+                            R(
                                 this,
                                 (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                     this,
@@ -695,46 +696,8 @@
                         );
                     }
                     return (
-                        R(t, r.a.Component),
-                        N(t, [
-                            {
-                                key: "render",
-                                value: function() {
-                                    var e = this.props,
-                                        t = e.isSet,
-                                        a = e.name;
-                                    return t
-                                        ? r.a.createElement(
-                                              "label",
-                                              {className: "btn orange"},
-                                              T.a.translate(
-                                                  "account.user_issued_assets." +
-                                                      a
-                                              )
-                                          )
-                                        : r.a.createElement("span", null);
-                                }
-                            }
-                        ]),
-                        t
-                    );
-                })(),
-                I = (function(e) {
-                    function t() {
-                        return (
-                            C(this, t),
-                            q(
-                                this,
-                                (t.__proto__ || Object.getPrototypeOf(t)).apply(
-                                    this,
-                                    arguments
-                                )
-                            )
-                        );
-                    }
-                    return (
-                        R(t, r.a.Component),
-                        N(t, [
+                        D(t, r.a.Component),
+                        S(t, [
                             {
                                 key: "render",
                                 value: function() {
@@ -758,9 +721,47 @@
                     );
                 })(),
                 F = (function(e) {
+                    function t() {
+                        return (
+                            q(this, t),
+                            R(
+                                this,
+                                (t.__proto__ || Object.getPrototypeOf(t)).apply(
+                                    this,
+                                    arguments
+                                )
+                            )
+                        );
+                    }
+                    return (
+                        D(t, r.a.Component),
+                        S(t, [
+                            {
+                                key: "render",
+                                value: function() {
+                                    var e = this.props,
+                                        t = e.isSet,
+                                        a = e.name;
+                                    return t
+                                        ? r.a.createElement(
+                                              "label",
+                                              {className: "btn orange"},
+                                              T.a.translate(
+                                                  "account.user_issued_assets." +
+                                                      a
+                                              )
+                                          )
+                                        : r.a.createElement("span", null);
+                                }
+                            }
+                        ]),
+                        t
+                    );
+                })(),
+                L = (function(e) {
                     function t(e) {
-                        C(this, t);
-                        var a = q(
+                        q(this, t);
+                        var a = R(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).call(
                                 this,
@@ -777,20 +778,20 @@
                         );
                     }
                     return (
-                        R(t, r.a.Component),
-                        N(t, [
+                        D(t, r.a.Component),
+                        S(t, [
                             {
                                 key: "componentWillMount",
                                 value: function() {
                                     var e = this;
                                     if (this.props.asset.has("bitasset")) {
                                         var t,
-                                            a = (S(
+                                            a = (C(
                                                 (t = {}),
                                                 this.props.asset.get("id"),
                                                 this.props.asset.toJS()
                                             ),
-                                            S(
+                                            C(
                                                 t,
                                                 this.props.backingAsset.get(
                                                     "id"
@@ -912,7 +913,7 @@
                                         "div",
                                         null,
                                         t.map(function(t) {
-                                            return r.a.createElement(D, {
+                                            return r.a.createElement(I, {
                                                 key: "flag_" + t,
                                                 name: t,
                                                 isSet: e[t]
@@ -938,7 +939,7 @@
                                                 },
                                                 t.map(function(t) {
                                                     return r.a.createElement(
-                                                        I,
+                                                        F,
                                                         {
                                                             key: "perm_" + t,
                                                             name: t,
@@ -2462,13 +2463,17 @@
                                         this.renderPriceFeedData(e, t);
                                     return r.a.createElement(
                                         "div",
-                                        {className: "content"},
+                                        {
+                                            className: "content",
+                                            style: {margin: 20}
+                                        },
                                         r.a.createElement(
                                             "h2",
                                             {className: "content__heading"},
-                                            T.a.translate("account.asset"),
-                                            " ",
-                                            e.symbol
+                                            r.a.createElement(j.a, {
+                                                showIcon: !0,
+                                                asset: e.id
+                                            })
                                         ),
                                         this.renderAboutBox(
                                             e,
@@ -2489,7 +2494,7 @@
                         t
                     );
                 })();
-            (F = Object(P.connect)(F, {
+            (L = Object(P.connect)(L, {
                 listenTo: function() {
                     return [x.a];
                 },
@@ -2502,12 +2507,12 @@
                     };
                 }
             })),
-                (F = Object(c.a)(F, {propNames: ["backingAsset"]}));
-            var L = (function(e) {
+                (L = Object(c.a)(L, {propNames: ["backingAsset"]}));
+            var B = (function(e) {
                 function t() {
                     return (
-                        C(this, t),
-                        q(
+                        q(this, t),
+                        R(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -2517,8 +2522,8 @@
                     );
                 }
                 return (
-                    R(t, r.a.Component),
-                    N(t, [
+                    D(t, r.a.Component),
+                    S(t, [
                         {
                             key: "render",
                             value: function() {
@@ -2534,8 +2539,8 @@
                                       ])
                                     : "1.3.0";
                                 return r.a.createElement(
-                                    F,
-                                    j({}, this.props, {backingAsset: e})
+                                    L,
+                                    N({}, this.props, {backingAsset: e})
                                 );
                             }
                         }
@@ -2543,12 +2548,12 @@
                     t
                 );
             })();
-            L = Object(c.a)(L, {withDynamic: !0});
-            var B = (function(e) {
+            B = Object(c.a)(B, {withDynamic: !0});
+            var z = (function(e) {
                 function t() {
                     return (
-                        C(this, t),
-                        q(
+                        q(this, t),
+                        R(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -2558,15 +2563,15 @@
                     );
                 }
                 return (
-                    R(t, r.a.Component),
-                    N(t, [
+                    D(t, r.a.Component),
+                    S(t, [
                         {
                             key: "render",
                             value: function() {
                                 var e = this.props.params.symbol.toUpperCase();
                                 return r.a.createElement(
-                                    L,
-                                    j({}, this.props, {asset: e})
+                                    B,
+                                    N({}, this.props, {asset: e})
                                 );
                             }
                         }
@@ -2574,7 +2579,7 @@
                     t
                 );
             })();
-            t.default = B;
+            t.default = z;
         },
         72: function(e, t, a) {
             "use strict";

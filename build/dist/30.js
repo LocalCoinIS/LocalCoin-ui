@@ -1,7 +1,7 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
     [30],
     {
-        110: function(e, t, a) {
+        111: function(e, t, a) {
             "use strict";
             var n = a(0),
                 r = a.n(n),
@@ -2109,7 +2109,7 @@
                 f = a(22),
                 b = a(272),
                 g = a.n(b),
-                v = a(110),
+                v = a(111),
                 _ = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
@@ -3578,7 +3578,8 @@
                 u = a.n(c),
                 p = a(43),
                 d = a(77),
-                h = (function() {
+                h = a(4),
+                m = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -3592,7 +3593,7 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            var m = (function(e) {
+            var f = (function(e) {
                 function t(e) {
                     !(function(e, t) {
                         if (!(e instanceof t))
@@ -3613,7 +3614,7 @@
                         this,
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this, e)
                     );
-                    return (a.state = {amount: 0}), a;
+                    return (a.state = {amount: 0, showError: !1}), a;
                 }
                 return (
                     (function(e, t) {
@@ -3635,7 +3636,7 @@
                                     ? Object.setPrototypeOf(e, t)
                                     : (e.__proto__ = t));
                     })(t, r.a.Component),
-                    h(t, [
+                    m(t, [
                         {
                             key: "onAmountChanged",
                             value: function(e) {
@@ -3645,25 +3646,48 @@
                             }
                         },
                         {
+                            key: "getBalance",
+                            value: function() {
+                                var e = this,
+                                    t = this.props.account.get("balances"),
+                                    a = 0;
+                                return (
+                                    t &&
+                                        t.forEach(function(t, n) {
+                                            if (n == e.props.assetId) {
+                                                var r = h.b.getObject(t);
+                                                a = r.get("balance");
+                                            }
+                                        }),
+                                    a
+                                );
+                            }
+                        },
+                        {
                             key: "onSubmit",
                             value: function() {
                                 var e = i.a.get_asset_precision(
                                         this.state.asset.get("precision")
                                     ),
                                     t = this.state.amount.replace(/,/g, "");
-                                (t *= e),
-                                    d.a.reserveAsset(
-                                        t,
-                                        this.props.assetId,
-                                        this.props.account.get("id")
-                                    ),
-                                    this.props.onClose();
+                                t *= e;
+                                var a = this.getBalance();
+                                t <= 0 || t > a
+                                    ? this.setState({showError: !0})
+                                    : (this.setState({showError: !1}),
+                                      d.a.reserveAsset(
+                                          t,
+                                          this.props.assetId,
+                                          this.props.account.get("id")
+                                      ),
+                                      this.props.onClose());
                             }
                         },
                         {
                             key: "render",
                             value: function() {
-                                var e = this.props.assetId;
+                                var e = this,
+                                    t = this.props.assetId;
                                 return r.a.createElement(
                                     "form",
                                     {
@@ -3682,26 +3706,40 @@
                                         },
                                         r.a.createElement(
                                             "div",
-                                            {className: "content-block"},
+                                            {
+                                                className: "content-block",
+                                                onClick: function() {
+                                                    e.setState({showError: !1});
+                                                }
+                                            },
                                             r.a.createElement(p.a, {
                                                 label: "modal.reserve.amount",
                                                 amount: this.state.amount,
                                                 onChange: this.onAmountChanged.bind(
                                                     this
                                                 ),
-                                                asset: e,
-                                                assets: [e],
+                                                asset: t,
+                                                assets: [t],
                                                 display_balance: r.a.createElement(
                                                     l.a,
                                                     {
                                                         balance: this.props.account.getIn(
-                                                            ["balances", e]
+                                                            ["balances", t]
                                                         )
                                                     }
                                                 ),
                                                 tabIndex: 1
                                             })
                                         ),
+                                        this.state.showError
+                                            ? r.a.createElement(
+                                                  "p",
+                                                  {className: "errorModal"},
+                                                  u.a.translate(
+                                                      "exchange.invalid_amount"
+                                                  )
+                                              )
+                                            : null,
                                         r.a.createElement(
                                             "div",
                                             {
@@ -3737,7 +3775,7 @@
                     t
                 );
             })();
-            t.a = m;
+            t.a = f;
         },
         439: function(e, t, a) {
             "use strict";
@@ -3766,7 +3804,7 @@
                     O = a(36),
                     A = a(22),
                     C = a(4),
-                    x = a(185),
+                    x = a(182),
                     N = a(23),
                     S =
                         Object.assign ||
@@ -6485,13 +6523,13 @@
                 r = a.n(n),
                 o = a(1),
                 s = a.n(o),
-                i = a(120),
+                i = a(121),
                 l = a(147),
                 c = a(6),
                 u = a(13),
                 p = a(5),
                 d = a(4),
-                h = a(110),
+                h = a(111),
                 m = a(58),
                 f = a.n(m),
                 b = a(3),
@@ -7321,7 +7359,7 @@
                 i = a(1),
                 l = a.n(i),
                 c = a(56),
-                u = a(107),
+                u = a(108),
                 p = a(20),
                 d = a.n(p),
                 h = a(34),
@@ -8939,9 +8977,9 @@
                 },
                 pe = a(441),
                 de = a(255),
-                he = a(116),
+                he = a(117),
                 me = a(14),
-                fe = a(202),
+                fe = a(201),
                 be = a(40),
                 ge = {
                     AccountPermission: function(e, t, a) {
@@ -11100,7 +11138,7 @@
                         t
                     );
                 })(),
-                bt = a(132),
+                bt = a(107),
                 gt = (a(252), a(439), a(440), a(104)),
                 vt = a(322),
                 _t = a(35),
@@ -11745,7 +11783,7 @@
                 title: Z.a.string.isRequired
             };
             var It = Tt,
-                qt = (a(253), a(130)),
+                qt = (a(253), a(131)),
                 Dt = a.n(qt),
                 Lt = a(574),
                 Rt = a.n(Lt),

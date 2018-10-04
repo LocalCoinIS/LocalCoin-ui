@@ -308,3 +308,7 @@ main[class*="help-"] > .content {
     margin-top: -23px;
     margin-bottom: 18px;
 }
+
+.grid-content .highcharts-label table td {
+    color: #fff;
+}

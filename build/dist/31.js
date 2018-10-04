@@ -1,33 +1,34 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
     [31],
     {
-        351: function(e, t, n) {
+        351: function(e, t, a) {
             "use strict";
-            var a = n(0),
-                s = n.n(a),
-                o = n(1),
-                i = n.n(o),
-                r = n(5),
-                c = n(56),
-                l = n(3),
-                u = n.n(l),
-                p = n(43),
-                m = n(77),
+            var n = a(0),
+                s = a.n(n),
+                o = a(1),
+                i = a.n(o),
+                r = a(5),
+                c = a(56),
+                l = a(3),
+                u = a.n(l),
+                p = a(43),
+                m = a(77),
+                h = a(4),
                 d = (function() {
                     function e(e, t) {
-                        for (var n = 0; n < t.length; n++) {
-                            var a = t[n];
-                            (a.enumerable = a.enumerable || !1),
-                                (a.configurable = !0),
-                                "value" in a && (a.writable = !0),
-                                Object.defineProperty(e, a.key, a);
+                        for (var a = 0; a < t.length; a++) {
+                            var n = t[a];
+                            (n.enumerable = n.enumerable || !1),
+                                (n.configurable = !0),
+                                "value" in n && (n.writable = !0),
+                                Object.defineProperty(e, n.key, n);
                         }
                     }
-                    return function(t, n, a) {
-                        return n && e(t.prototype, n), a && e(t, a), t;
+                    return function(t, a, n) {
+                        return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            var h = (function(e) {
+            var b = (function(e) {
                 function t(e) {
                     !(function(e, t) {
                         if (!(e instanceof t))
@@ -35,7 +36,7 @@
                                 "Cannot call a class as a function"
                             );
                     })(this, t);
-                    var n = (function(e, t) {
+                    var a = (function(e, t) {
                         if (!e)
                             throw new ReferenceError(
                                 "this hasn't been initialised - super() hasn't been called"
@@ -48,7 +49,7 @@
                         this,
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this, e)
                     );
-                    return (n.state = {amount: 0}), n;
+                    return (a.state = {amount: 0, showError: !1}), a;
                 }
                 return (
                     (function(e, t) {
@@ -75,8 +76,26 @@
                             key: "onAmountChanged",
                             value: function(e) {
                                 var t = e.amount,
-                                    n = e.asset;
-                                this.setState({amount: t, asset: n});
+                                    a = e.asset;
+                                this.setState({amount: t, asset: a});
+                            }
+                        },
+                        {
+                            key: "getBalance",
+                            value: function() {
+                                var e = this,
+                                    t = this.props.account.get("balances"),
+                                    a = 0;
+                                return (
+                                    t &&
+                                        t.forEach(function(t, n) {
+                                            if (n == e.props.assetId) {
+                                                var s = h.b.getObject(t);
+                                                a = s.get("balance");
+                                            }
+                                        }),
+                                    a
+                                );
                             }
                         },
                         {
@@ -86,19 +105,24 @@
                                         this.state.asset.get("precision")
                                     ),
                                     t = this.state.amount.replace(/,/g, "");
-                                (t *= e),
-                                    m.a.reserveAsset(
-                                        t,
-                                        this.props.assetId,
-                                        this.props.account.get("id")
-                                    ),
-                                    this.props.onClose();
+                                t *= e;
+                                var a = this.getBalance();
+                                t <= 0 || t > a
+                                    ? this.setState({showError: !0})
+                                    : (this.setState({showError: !1}),
+                                      m.a.reserveAsset(
+                                          t,
+                                          this.props.assetId,
+                                          this.props.account.get("id")
+                                      ),
+                                      this.props.onClose());
                             }
                         },
                         {
                             key: "render",
                             value: function() {
-                                var e = this.props.assetId;
+                                var e = this,
+                                    t = this.props.assetId;
                                 return s.a.createElement(
                                     "form",
                                     {
@@ -117,26 +141,40 @@
                                         },
                                         s.a.createElement(
                                             "div",
-                                            {className: "content-block"},
+                                            {
+                                                className: "content-block",
+                                                onClick: function() {
+                                                    e.setState({showError: !1});
+                                                }
+                                            },
                                             s.a.createElement(p.a, {
                                                 label: "modal.reserve.amount",
                                                 amount: this.state.amount,
                                                 onChange: this.onAmountChanged.bind(
                                                     this
                                                 ),
-                                                asset: e,
-                                                assets: [e],
+                                                asset: t,
+                                                assets: [t],
                                                 display_balance: s.a.createElement(
                                                     c.a,
                                                     {
                                                         balance: this.props.account.getIn(
-                                                            ["balances", e]
+                                                            ["balances", t]
                                                         )
                                                     }
                                                 ),
                                                 tabIndex: 1
                                             })
                                         ),
+                                        this.state.showError
+                                            ? s.a.createElement(
+                                                  "p",
+                                                  {className: "errorModal"},
+                                                  u.a.translate(
+                                                      "exchange.invalid_amount"
+                                                  )
+                                              )
+                                            : null,
                                         s.a.createElement(
                                             "div",
                                             {
@@ -172,52 +210,52 @@
                     t
                 );
             })();
-            t.a = h;
+            t.a = b;
         },
-        4970: function(e, t, n) {
+        4970: function(e, t, a) {
             "use strict";
-            n.r(t);
-            var a = n(76),
-                s = n(0),
-                o = n.n(s),
-                i = n(2),
-                r = n.n(i),
-                c = n(11),
-                l = n(1),
-                u = n.n(l),
-                p = n(77),
-                m = n(106),
-                d = n(24),
-                h = n(34),
-                b = n(17),
-                f = n(20),
-                v = n.n(f),
-                y = n(28),
-                g = n(5),
-                _ = n(37),
-                E = n(576),
-                k = n(351),
-                w = n(15),
-                T = n(47),
-                C = n(7),
-                N = n(49),
-                O = (n(72), n(3)),
-                S = n.n(O),
+            a.r(t);
+            var n = a(76),
+                s = a(0),
+                o = a.n(s),
+                i = a(2),
+                r = a.n(i),
+                c = a(11),
+                l = a(1),
+                u = a.n(l),
+                p = a(77),
+                m = a(106),
+                h = a(24),
+                d = a(34),
+                b = a(17),
+                f = a(20),
+                v = a.n(f),
+                g = a(28),
+                y = a(5),
+                _ = a(37),
+                E = a(576),
+                k = a(351),
+                w = a(15),
+                C = a(47),
+                T = a(7),
+                N = a(49),
+                O = (a(72), a(3)),
+                S = a.n(O),
                 x = (function() {
                     function e(e, t) {
-                        for (var n = 0; n < t.length; n++) {
-                            var a = t[n];
-                            (a.enumerable = a.enumerable || !1),
-                                (a.configurable = !0),
-                                "value" in a && (a.writable = !0),
-                                Object.defineProperty(e, a.key, a);
+                        for (var a = 0; a < t.length; a++) {
+                            var n = t[a];
+                            (n.enumerable = n.enumerable || !1),
+                                (n.configurable = !0),
+                                "value" in n && (n.writable = !0),
+                                Object.defineProperty(e, n.key, n);
                         }
                     }
-                    return function(t, n, a) {
-                        return n && e(t.prototype, n), a && e(t, a), t;
+                    return function(t, a, n) {
+                        return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            var A = (function(e) {
+            var j = (function(e) {
                 function t(e) {
                     !(function(e, t) {
                         if (!(e instanceof t))
@@ -225,7 +263,7 @@
                                 "Cannot call a class as a function"
                             );
                     })(this, t);
-                    var n = (function(e, t) {
+                    var a = (function(e, t) {
                         if (!e)
                             throw new ReferenceError(
                                 "this hasn't been initialised - super() hasn't been called"
@@ -239,7 +277,7 @@
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this, e)
                     );
                     return (
-                        (n.state = {
+                        (a.state = {
                             create: {
                                 symbol: "",
                                 name: "",
@@ -258,11 +296,11 @@
                             isValid: !1,
                             searchTerm: ""
                         }),
-                        (n._searchAccounts = Object(a.a)(
-                            n._searchAccounts,
+                        (a._searchAccounts = Object(n.a)(
+                            a._searchAccounts,
                             150
                         )),
-                        n
+                        a
                     );
                 }
                 return (
@@ -290,7 +328,7 @@
                             key: "_checkAssets",
                             value: function(e, t) {
                                 if (!this.props.account.get("assets").size) {
-                                    var n = e
+                                    var a = e
                                         .sort(function(e, t) {
                                             return e.symbol > t.symbol
                                                 ? 1
@@ -304,7 +342,7 @@
                                           this.setState({assetsFetched: 100}))
                                         : e.size >= this.state.assetsFetched &&
                                           (p.a.getAssetList.defer(
-                                              n.symbol,
+                                              a.symbol,
                                               100
                                           ),
                                           this.setState({
@@ -329,54 +367,54 @@
                         {
                             key: "_onIssueInput",
                             value: function(e, t) {
-                                var n = t.target.id,
-                                    a = this.state.issue;
-                                if ("to" === n) {
+                                var a = t.target.id,
+                                    n = this.state.issue;
+                                if ("to" === a) {
                                     this._searchAccounts(t.target.value),
-                                        (a.to = t.target.value);
+                                        (n.to = t.target.value);
                                     var s = this.props.searchAccounts.findEntry(
                                         function(e) {
                                             return e === t.target.value;
                                         }
                                     );
-                                    a.to_id = s ? s[0] : null;
-                                } else a[e] = t.target.value;
-                                this.setState({issue: a});
+                                    n.to_id = s ? s[0] : null;
+                                } else n[e] = t.target.value;
+                                this.setState({issue: n});
                             }
                         },
                         {
                             key: "_searchAccounts",
                             value: function(e) {
-                                d.a.accountSearch(e);
+                                h.a.accountSearch(e);
                             }
                         },
                         {
                             key: "_issueAsset",
                             value: function(e, t) {
-                                var n = this;
+                                var a = this;
                                 t.preventDefault(),
                                     v.a.publish("issue_asset", "close");
-                                var a = this.state.issue,
-                                    s = this.props.assets.get(a.asset_id);
-                                (a.amount *= g.a.get_asset_precision(
+                                var n = this.state.issue,
+                                    s = this.props.assets.get(n.asset_id);
+                                (n.amount *= y.a.get_asset_precision(
                                     s.precision
                                 )),
-                                    p.a.issueAsset(e, a).then(function(e) {
+                                    p.a.issueAsset(e, n).then(function(e) {
                                         e
-                                            ? (y.a.addNotification({
+                                            ? (g.a.addNotification({
                                                   message:
                                                       "Successfully issued " +
-                                                      g.a.format_asset(
-                                                          a.amount,
-                                                          n.props.assets.get(
-                                                              a.asset_id
+                                                      y.a.format_asset(
+                                                          n.amount,
+                                                          a.props.assets.get(
+                                                              n.asset_id
                                                           )
                                                       ),
                                                   level: "success",
                                                   autoDismiss: 10
                                               }),
-                                              ChainStore.getAsset(a.asset_id))
-                                            : y.a.addNotification({
+                                              ChainStore.getAsset(n.asset_id))
+                                            : g.a.addNotification({
                                                   message:
                                                       "Failed to issue asset",
                                                   level: "error",
@@ -398,29 +436,29 @@
                             value: function(e, t) {
                                 t.preventDefault(),
                                     v.a.publish("reserve_asset", "close");
-                                var n = this.state.issue,
-                                    a = this.props.assets.get(n.asset_id);
-                                (n.amount *= g.a.get_asset_precision(
-                                    a.precision
+                                var a = this.state.issue,
+                                    n = this.props.assets.get(a.asset_id);
+                                (a.amount *= y.a.get_asset_precision(
+                                    n.precision
                                 )),
-                                    p.a.issueAsset(e, n);
+                                    p.a.issueAsset(e, a);
                             }
                         },
                         {
                             key: "_issueButtonClick",
-                            value: function(e, t, n) {
-                                n.preventDefault();
-                                var a = this.state.issue;
-                                (a.asset_id = e),
-                                    (a.symbol = t),
-                                    this.setState({issue: a}),
+                            value: function(e, t, a) {
+                                a.preventDefault();
+                                var n = this.state.issue;
+                                (n.asset_id = e),
+                                    (n.symbol = t),
+                                    this.setState({issue: n}),
                                     v.a.publish("issue_asset", "open");
                             }
                         },
                         {
                             key: "_editButtonClick",
-                            value: function(e, t, n) {
-                                n.preventDefault(),
+                            value: function(e, t, a) {
+                                a.preventDefault(),
                                     this.props.router.push(
                                         "/account/" + t + "/update-asset/" + e
                                     );
@@ -442,16 +480,16 @@
                             value: function() {
                                 var e = this,
                                     t = this.props,
-                                    n = t.account,
-                                    a = t.account_name,
+                                    a = t.account,
+                                    n = t.account_name,
                                     s = t.assets,
                                     i = t.assetsList,
                                     r = !0;
-                                if (!n)
+                                if (!a)
                                     return o.a.createElement(_.a, {
                                         type: "circle"
                                     });
-                                if ((n.notFound && (r = !1), !r))
+                                if ((a.notFound && (r = !1), !r))
                                     return o.a.createElement(
                                         "div",
                                         {className: "grid-block"},
@@ -462,7 +500,7 @@
                                                 component: "h5",
                                                 content:
                                                     "account.errors.not_found",
-                                                name: a
+                                                name: n
                                             })
                                         )
                                     );
@@ -473,7 +511,7 @@
                                     }));
                                 var l = s
                                     .filter(function(e) {
-                                        return e.issuer === n.get("id");
+                                        return e.issuer === a.get("id");
                                     })
                                     .sort(function(e, t) {
                                         return (
@@ -488,12 +526,12 @@
                                         );
                                     })
                                     .map(function(t) {
-                                        var n = T.a.parseDescription(
+                                        var a = C.a.parseDescription(
                                                 t.options.description
                                             ),
-                                            s = n.short_name
-                                                ? n.short_name
-                                                : n.main;
+                                            s = a.short_name
+                                                ? a.short_name
+                                                : a.main;
                                         s.length > 100 &&
                                             (s = s.substr(0, 100) + "...");
                                         var i = e.props.getDynamicObject(
@@ -596,7 +634,7 @@
                                                         onClick: e._editButtonClick.bind(
                                                             e,
                                                             t.symbol,
-                                                            a
+                                                            n
                                                         ),
                                                         className: "btn outline"
                                                     },
@@ -720,7 +758,7 @@
                                                     {
                                                         to:
                                                             "/account/" +
-                                                            a +
+                                                            n +
                                                             "/create-asset/"
                                                     },
                                                     o.a.createElement(
@@ -738,7 +776,7 @@
                                         )
                                     ),
                                     o.a.createElement(
-                                        h.a,
+                                        d.a,
                                         {id: "issue_asset", overlay: !0},
                                         o.a.createElement("br", null),
                                         o.a.createElement(
@@ -757,7 +795,7 @@
                                         )
                                     ),
                                     o.a.createElement(
-                                        h.a,
+                                        d.a,
                                         {id: "reserve_asset", overlay: !0},
                                         o.a.createElement("br", null),
                                         o.a.createElement(
@@ -765,7 +803,7 @@
                                             {className: "grid-block vertical"},
                                             o.a.createElement(k.a, {
                                                 assetId: this.state.reserve,
-                                                account: n,
+                                                account: a,
                                                 onClose: function() {
                                                     v.a.publish(
                                                         "reserve_asset",
@@ -782,76 +820,76 @@
                     t
                 );
             })();
-            (A.defaultProps = {
+            (j.defaultProps = {
                 symbol: "",
                 name: "",
                 description: "",
                 max_supply: 0,
                 precision: 0
             }),
-                (A.propTypes = {symbol: r.a.string.isRequired}),
-                (A = Object(N.a)(A, {
+                (j.propTypes = {symbol: r.a.string.isRequired}),
+                (j = Object(N.a)(j, {
                     propNames: ["assetsList"],
                     asList: !0,
                     withDynamic: !0
                 })),
-                (t.default = Object(w.connect)(A, {
+                (t.default = Object(w.connect)(j, {
                     listenTo: function() {
                         return [m.a];
                     },
                     getProps: function(e) {
-                        var t = Object(C.Map)(),
-                            n = Object(C.List)();
+                        var t = Object(T.Map)(),
+                            a = Object(T.List)();
                         return (
                             e.account.get("assets", []).size
                                 ? e.account
                                       .get("assets", [])
                                       .forEach(function(e) {
-                                          n = n.push(e);
+                                          a = a.push(e);
                                       })
                                 : (t = m.a.getState().assets),
-                            {assets: t, assetsList: n}
+                            {assets: t, assetsList: a}
                         );
                     }
                 }));
         },
-        576: function(e, t, n) {
+        576: function(e, t, a) {
             "use strict";
             (function(e) {
-                var a = n(0),
-                    s = n.n(a),
-                    o = n(1),
-                    i = n.n(o),
-                    r = n(6),
-                    c = n(13),
-                    l = n(5),
-                    u = n(3),
-                    p = n.n(u),
-                    m = n(77),
-                    d = n(101),
-                    h = n(43),
+                var n = a(0),
+                    s = a.n(n),
+                    o = a(1),
+                    i = a.n(o),
+                    r = a(6),
+                    c = a(13),
+                    l = a(5),
+                    u = a(3),
+                    p = a.n(u),
+                    m = a(77),
+                    h = a(101),
+                    d = a(43),
                     b = (function() {
                         function e(e, t) {
-                            for (var n = 0; n < t.length; n++) {
-                                var a = t[n];
-                                (a.enumerable = a.enumerable || !1),
-                                    (a.configurable = !0),
-                                    "value" in a && (a.writable = !0),
-                                    Object.defineProperty(e, a.key, a);
+                            for (var a = 0; a < t.length; a++) {
+                                var n = t[a];
+                                (n.enumerable = n.enumerable || !1),
+                                    (n.configurable = !0),
+                                    "value" in n && (n.writable = !0),
+                                    Object.defineProperty(e, n.key, n);
                             }
                         }
-                        return function(t, n, a) {
-                            return n && e(t.prototype, n), a && e(t, a), t;
+                        return function(t, a, n) {
+                            return a && e(t.prototype, a), n && e(t, n), t;
                         };
                     })();
                 var f = (function(t) {
-                    function n(e) {
+                    function a(e) {
                         !(function(e, t) {
                             if (!(e instanceof t))
                                 throw new TypeError(
                                     "Cannot call a class as a function"
                                 );
-                        })(this, n);
+                        })(this, a);
                         var t = (function(e, t) {
                             if (!e)
                                 throw new ReferenceError(
@@ -863,7 +901,7 @@
                                 : t;
                         })(
                             this,
-                            (n.__proto__ || Object.getPrototypeOf(n)).call(
+                            (a.__proto__ || Object.getPrototypeOf(a)).call(
                                 this,
                                 e
                             )
@@ -897,8 +935,8 @@
                                     (Object.setPrototypeOf
                                         ? Object.setPrototypeOf(e, t)
                                         : (e.__proto__ = t));
-                        })(n, s.a.Component),
-                        b(n, [
+                        })(a, s.a.Component),
+                        b(a, [
                             {
                                 key: "onAmountChanged",
                                 value: function(e) {
@@ -928,18 +966,18 @@
                                 key: "onSubmit",
                                 value: function() {
                                     var t = this.props.asset_to_issue,
-                                        n = l.a.get_asset_precision(
+                                        a = l.a.get_asset_precision(
                                             t.get("precision")
                                         ),
-                                        a = this.state.amount
+                                        n = this.state.amount
                                             .toString()
                                             .replace(/,/g, "");
-                                    (a *= n),
+                                    (n *= a),
                                         m.a.issueAsset(
                                             this.state.to_id,
                                             t.get("issuer"),
                                             t.get("id"),
-                                            a,
+                                            n,
                                             this.state.memo
                                                 ? new e(
                                                       this.state.memo,
@@ -981,7 +1019,7 @@
                                             s.a.createElement(
                                                 "div",
                                                 {className: "content-block"},
-                                                s.a.createElement(d.a, {
+                                                s.a.createElement(h.a, {
                                                     label: "modal.issue.to",
                                                     accountName: this.state.to,
                                                     onAccountChanged: this.onToAccountChanged.bind(
@@ -997,7 +1035,7 @@
                                             s.a.createElement(
                                                 "div",
                                                 {className: "content-block"},
-                                                s.a.createElement(h.a, {
+                                                s.a.createElement(d.a, {
                                                     label: "modal.issue.amount",
                                                     amount: this.state.amount,
                                                     onChange: this.onAmountChanged.bind(
@@ -1078,44 +1116,44 @@
                                 }
                             }
                         ]),
-                        n
+                        a
                     );
                 })();
                 (f.propTypes = {asset_to_issue: r.a.ChainAsset.isRequired}),
                     (t.a = Object(c.a)(f));
-            }.call(this, n(29).Buffer));
+            }.call(this, a(29).Buffer));
         },
-        72: function(e, t, n) {
+        72: function(e, t, a) {
             "use strict";
-            n.d(t, "b", function() {
-                return g;
+            a.d(t, "b", function() {
+                return y;
             }),
-                n.d(t, "a", function() {
-                    return y;
+                a.d(t, "a", function() {
+                    return g;
                 });
-            var a = n(0),
-                s = n.n(a),
-                o = n(2),
-                i = n.n(o),
-                r = (n(1), n(9)),
-                c = n.n(r),
-                l = n(15),
-                u = n(10),
-                p = n(8),
-                m = n(3),
-                d = n.n(m),
-                h = (function() {
+            var n = a(0),
+                s = a.n(n),
+                o = a(2),
+                i = a.n(o),
+                r = (a(1), a(9)),
+                c = a.n(r),
+                l = a(15),
+                u = a(10),
+                p = a(8),
+                m = a(3),
+                h = a.n(m),
+                d = (function() {
                     function e(e, t) {
-                        for (var n = 0; n < t.length; n++) {
-                            var a = t[n];
-                            (a.enumerable = a.enumerable || !1),
-                                (a.configurable = !0),
-                                "value" in a && (a.writable = !0),
-                                Object.defineProperty(e, a.key, a);
+                        for (var a = 0; a < t.length; a++) {
+                            var n = t[a];
+                            (n.enumerable = n.enumerable || !1),
+                                (n.configurable = !0),
+                                "value" in n && (n.writable = !0),
+                                Object.defineProperty(e, n.key, n);
                         }
                     }
-                    return function(t, n, a) {
-                        return n && e(t.prototype, n), a && e(t, a), t;
+                    return function(t, a, n) {
+                        return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
             function b(e, t) {
@@ -1150,7 +1188,7 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var y = (function(e) {
+            var g = (function(e) {
                 function t() {
                     return (
                         b(this, t),
@@ -1165,14 +1203,14 @@
                 }
                 return (
                     v(t, s.a.Component),
-                    h(t, [
+                    d(t, [
                         {
                             key: "render",
                             value: function() {
                                 var e = this.props,
                                     t = e.isActive,
-                                    n = e.index,
-                                    a = e.changeTab,
+                                    a = e.index,
+                                    n = e.changeTab,
                                     o = e.title,
                                     i = e.className,
                                     r = e.updatedTab,
@@ -1182,14 +1220,14 @@
                                 return (
                                     "string" == typeof o &&
                                         o.indexOf(".") > 0 &&
-                                        (o = d.a.translate(o)),
+                                        (o = h.a.translate(o)),
                                     this.props.collapsed
                                         ? ("string" == typeof u &&
                                               (u = u.trim()),
                                           s.a.createElement(
                                               "option",
                                               {
-                                                  value: n,
+                                                  value: a,
                                                   "data-is-link-to": this.props
                                                       .isLinkTo
                                               },
@@ -1209,9 +1247,9 @@
                                                   className: p,
                                                   onClick: l
                                                       ? null
-                                                      : a.bind(
+                                                      : n.bind(
                                                             this,
-                                                            n,
+                                                            a,
                                                             this.props.isLinkTo
                                                         )
                                               },
@@ -1242,7 +1280,7 @@
                     t
                 );
             })();
-            (y.propTypes = {
+            (g.propTypes = {
                 changeTab: i.a.func,
                 isActive: i.a.bool.isRequired,
                 index: i.a.number.isRequired,
@@ -1250,22 +1288,22 @@
                 isLinkTo: i.a.string,
                 subText: i.a.oneOfType([i.a.object, i.a.string])
             }),
-                (y.defaultProps = {
+                (g.defaultProps = {
                     isActive: !1,
                     index: 0,
                     className: "",
                     isLinkTo: "",
                     subText: null
                 });
-            var g = (function(e) {
+            var y = (function(e) {
                 function t(e) {
                     b(this, t);
-                    var n = f(
+                    var a = f(
                         this,
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                     );
                     return (
-                        (n.state = {
+                        (a.state = {
                             activeTab: e.setting
                                 ? e.viewSettings.get(
                                       e.setting,
@@ -1274,13 +1312,13 @@
                                 : e.defaultActiveTab,
                             width: window.innerWidth
                         }),
-                        (n._setDimensions = n._setDimensions.bind(n)),
-                        n
+                        (a._setDimensions = a._setDimensions.bind(a)),
+                        a
                     );
                 }
                 return (
                     v(t, s.a.Component),
-                    h(t, [
+                    d(t, [
                         {
                             key: "componentDidMount",
                             value: function() {
@@ -1326,20 +1364,20 @@
                                     ("" === t
                                         ? (this.props.setting &&
                                               u.a.changeViewSetting(
-                                                  (function(e, t, n) {
+                                                  (function(e, t, a) {
                                                       return (
                                                           t in e
                                                               ? Object.defineProperty(
                                                                     e,
                                                                     t,
                                                                     {
-                                                                        value: n,
+                                                                        value: a,
                                                                         enumerable: !0,
                                                                         configurable: !0,
                                                                         writable: !0
                                                                     }
                                                                 )
-                                                              : (e[t] = n),
+                                                              : (e[t] = a),
                                                           e
                                                       );
                                                   })({}, this.props.setting, e)
@@ -1355,26 +1393,26 @@
                             value: function() {
                                 var e = this,
                                     t = this.props,
-                                    n = t.children,
-                                    a = t.contentClass,
+                                    a = t.children,
+                                    n = t.contentClass,
                                     o = t.tabsClass,
                                     i = t.style,
                                     r = t.segmented,
                                     l =
                                         this.state.width < 900 &&
-                                        s.a.Children.count(n) > 2,
+                                        s.a.Children.count(a) > 2,
                                     u = null,
-                                    p = s.a.Children.map(n, function(t, n) {
+                                    p = s.a.Children.map(a, function(t, a) {
                                         if (!t) return null;
                                         if (l && t.props.disabled) return null;
-                                        var a = n === e.state.activeTab;
+                                        var n = a === e.state.activeTab;
                                         return (
-                                            a && (u = t.props.children),
+                                            n && (u = t.props.children),
                                             s.a.cloneElement(t, {
                                                 collapsed: l,
-                                                isActive: a,
+                                                isActive: n,
                                                 changeTab: e._changeTab.bind(e),
-                                                index: n
+                                                index: a
                                             })
                                         );
                                     }).filter(function(e) {
@@ -1431,17 +1469,17 @@
                                                                   onChange: function(
                                                                       t
                                                                   ) {
-                                                                      var n = parseInt(
+                                                                      var a = parseInt(
                                                                           t
                                                                               .target
                                                                               .value,
                                                                           10
                                                                       );
                                                                       e._changeTab(
-                                                                          n,
+                                                                          a,
                                                                           t
                                                                               .target[
-                                                                              n
+                                                                              a
                                                                           ]
                                                                               .attributes[
                                                                               "data-is-link-to"
@@ -1469,7 +1507,7 @@
                                         ),
                                         s.a.createElement(
                                             "div",
-                                            {className: c()("tab-content", a)},
+                                            {className: c()("tab-content", n)},
                                             u
                                         )
                                     )
@@ -1480,20 +1518,20 @@
                     t
                 );
             })();
-            (g.propTypes = {
+            (y.propTypes = {
                 setting: i.a.string,
                 defaultActiveTab: i.a.number,
                 segmented: i.a.bool
             }),
-                (g.defaultProps = {
+                (y.defaultProps = {
                     active: 0,
                     defaultActiveTab: 0,
                     segmented: !0,
                     contentClass: "",
                     style: {}
                 }),
-                (g.contextTypes = {router: i.a.object.isRequired}),
-                (g = Object(l.connect)(g, {
+                (y.contextTypes = {router: i.a.object.isRequired}),
+                (y = Object(l.connect)(y, {
                     listenTo: function() {
                         return [p.a];
                     },
