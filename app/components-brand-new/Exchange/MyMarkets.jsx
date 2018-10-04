@@ -135,6 +135,14 @@ class MarketGroup extends React.Component {
         let headers = columns.map(header => {
             switch (header.name) {
                 case "market":
+                    let orderDirectionmarket = "";
+
+                    if (this.state.sortBy == "name" && this.state.inverseSort) {
+                        orderDirectionmarket = <span>▲</span>;
+                    } else if (this.state.sortBy == "name") {
+                        orderDirectionmarket = <span>▼</span>;
+                    }
+
                     return (
                         <th
                             key={header.name}
@@ -142,10 +150,22 @@ class MarketGroup extends React.Component {
                             onClick={this._changeSort.bind(this, "name")}
                         >
                             <Translate content="exchange.market" />
+                            {orderDirectionmarket}
                         </th>
                     );
 
                 case "vol":
+                    let orderDirectionvol = "";
+
+                    if (
+                        this.state.sortBy == "volume" &&
+                        this.state.inverseSort
+                    ) {
+                        orderDirectionvol = <span>▲</span>;
+                    } else if (this.state.sortBy == "volume") {
+                        orderDirectionvol = <span>▼</span>;
+                    }
+
                     return (
                         <th
                             key={header.name}
@@ -154,6 +174,7 @@ class MarketGroup extends React.Component {
                             style={{textAlign: "right"}}
                         >
                             <Translate content="exchange.vol_short" />
+                            {orderDirectionvol}
                         </th>
                     );
 
@@ -179,6 +200,17 @@ class MarketGroup extends React.Component {
                     );
 
                 case "change":
+                    let orderDirectionchange = "";
+
+                    if (
+                        this.state.sortBy == "change" &&
+                        this.state.inverseSort
+                    ) {
+                        orderDirectionchange = <span>▲</span>;
+                    } else if (this.state.sortBy == "change") {
+                        orderDirectionchange = <span>▼</span>;
+                    }
+
                     return (
                         <th
                             key={header.name}
@@ -187,6 +219,7 @@ class MarketGroup extends React.Component {
                             style={{textAlign: "right"}}
                         >
                             <Translate content="exchange.change" />
+                            {orderDirectionchange}
                         </th>
                     );
 
