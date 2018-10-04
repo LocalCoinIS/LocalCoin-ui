@@ -12354,7 +12354,8 @@
                         depositAsset: null,
                         withdrawAsset: null,
                         bridgeAsset: null,
-                        alwaysShowAssets: ["LLC", "USD", "CNY"]
+                        alwaysShowAssets: ["LLC", "USD", "CNY"],
+                        hide0balances: !1
                     }),
                     (a.qtyRefs = {}),
                     (a.priceRefs = {}),
@@ -13868,12 +13869,18 @@
                                     }
                                 }),
                                 _) &&
-                                    ((_ = _.filter(function(e, t) {
-                                        var a = E.b.getObject(e);
-                                        return !(
-                                            a &&
-                                            !a.get("balance") &&
-                                            !i[t]
+                                    ((_ = _.filter(function(t, a) {
+                                        var n = E.b.getObject(t);
+                                        return (
+                                            !(
+                                                n &&
+                                                !n.get("balance") &&
+                                                !i[a]
+                                            ) &&
+                                            !(
+                                                e.state.hide0balances &&
+                                                n.get("balance") <= 0
+                                            )
                                         );
                                     })).forEach(function(t, a) {
                                         var r = E.b.getAsset(a),
@@ -14126,6 +14133,55 @@
                                                                         !(
                                                                             "visual" !=
                                                                             c
+                                                                        )
+                                                                    ),
+                                                                    r.a.createElement(
+                                                                        "div",
+                                                                        null,
+                                                                        r.a.createElement(
+                                                                            "label",
+                                                                            {
+                                                                                className:
+                                                                                    "hide0balances"
+                                                                            },
+                                                                            r.a.createElement(
+                                                                                "input",
+                                                                                {
+                                                                                    name:
+                                                                                        "isGoing",
+                                                                                    type:
+                                                                                        "checkbox",
+                                                                                    checked: this
+                                                                                        .state
+                                                                                        .hide0balances,
+                                                                                    onChange: function(
+                                                                                        t
+                                                                                    ) {
+                                                                                        return e.setState(
+                                                                                            {
+                                                                                                hide0balances: !e
+                                                                                                    .state
+                                                                                                    .hide0balances
+                                                                                            }
+                                                                                        );
+                                                                                    }
+                                                                                }
+                                                                            ),
+                                                                            r.a.createElement(
+                                                                                l.a,
+                                                                                {
+                                                                                    content:
+                                                                                        "exchange.hide"
+                                                                                }
+                                                                            ),
+                                                                            " 0 ",
+                                                                            r.a.createElement(
+                                                                                l.a,
+                                                                                {
+                                                                                    content:
+                                                                                        "transfer.balances"
+                                                                                }
+                                                                            )
                                                                         )
                                                                     )
                                                                 )

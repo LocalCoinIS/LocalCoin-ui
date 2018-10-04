@@ -1014,9 +1014,9 @@
                     withDynamic: !0
                 }),
                 T = n(8),
-                j = n(31),
-                N = n(106),
-                B = n(22),
+                B = n(31),
+                j = n(106),
+                N = n(22),
                 q = n(77),
                 I = n(9),
                 P = n.n(I),
@@ -1610,42 +1610,88 @@
                                     var f = n.map(function(t) {
                                             switch (t.name) {
                                                 case "market":
-                                                    return s.a.createElement(
-                                                        "th",
-                                                        {
-                                                            key: t.name,
-                                                            className:
-                                                                "clickable",
-                                                            onClick: e._changeSort.bind(
-                                                                e,
-                                                                "name"
-                                                            )
-                                                        },
-                                                        s.a.createElement(h.a, {
-                                                            content:
-                                                                "exchange.market"
-                                                        })
+                                                    var n = "";
+                                                    return (
+                                                        "name" ==
+                                                            e.state.sortBy &&
+                                                        e.state.inverseSort
+                                                            ? (n = s.a.createElement(
+                                                                  "span",
+                                                                  null,
+                                                                  "▲"
+                                                              ))
+                                                            : "name" ==
+                                                                  e.state
+                                                                      .sortBy &&
+                                                              (n = s.a.createElement(
+                                                                  "span",
+                                                                  null,
+                                                                  "▼"
+                                                              )),
+                                                        s.a.createElement(
+                                                            "th",
+                                                            {
+                                                                key: t.name,
+                                                                className:
+                                                                    "clickable",
+                                                                onClick: e._changeSort.bind(
+                                                                    e,
+                                                                    "name"
+                                                                )
+                                                            },
+                                                            s.a.createElement(
+                                                                h.a,
+                                                                {
+                                                                    content:
+                                                                        "exchange.market"
+                                                                }
+                                                            ),
+                                                            n
+                                                        )
                                                     );
                                                 case "vol":
-                                                    return s.a.createElement(
-                                                        "th",
-                                                        {
-                                                            key: t.name,
-                                                            className:
-                                                                "clickable",
-                                                            onClick: e._changeSort.bind(
-                                                                e,
-                                                                "volume"
+                                                    var a = "";
+                                                    return (
+                                                        "volume" ==
+                                                            e.state.sortBy &&
+                                                        e.state.inverseSort
+                                                            ? (a = s.a.createElement(
+                                                                  "span",
+                                                                  null,
+                                                                  "▲"
+                                                              ))
+                                                            : "volume" ==
+                                                                  e.state
+                                                                      .sortBy &&
+                                                              (a = s.a.createElement(
+                                                                  "span",
+                                                                  null,
+                                                                  "▼"
+                                                              )),
+                                                        s.a.createElement(
+                                                            "th",
+                                                            {
+                                                                key: t.name,
+                                                                className:
+                                                                    "clickable",
+                                                                onClick: e._changeSort.bind(
+                                                                    e,
+                                                                    "volume"
+                                                                ),
+                                                                style: {
+                                                                    textAlign:
+                                                                        "right"
+                                                                }
+                                                            },
+                                                            s.a.createElement(
+                                                                h.a,
+                                                                {
+                                                                    content:
+                                                                        "exchange.vol_short"
+                                                                }
                                                             ),
-                                                            style: {
-                                                                textAlign:
-                                                                    "right"
-                                                            }
-                                                        },
-                                                        s.a.createElement(h.a, {
-                                                            content:
-                                                                "exchange.vol_short"
-                                                        })
+                                                            a
+                                                        )
                                                     );
                                                 case "price":
                                                     return s.a.createElement(
@@ -1681,25 +1727,48 @@
                                                         })
                                                     );
                                                 case "change":
-                                                    return s.a.createElement(
-                                                        "th",
-                                                        {
-                                                            key: t.name,
-                                                            className:
-                                                                "clickable",
-                                                            onClick: e._changeSort.bind(
-                                                                e,
-                                                                "change"
+                                                    var r = "";
+                                                    return (
+                                                        "change" ==
+                                                            e.state.sortBy &&
+                                                        e.state.inverseSort
+                                                            ? (r = s.a.createElement(
+                                                                  "span",
+                                                                  null,
+                                                                  "▲"
+                                                              ))
+                                                            : "change" ==
+                                                                  e.state
+                                                                      .sortBy &&
+                                                              (r = s.a.createElement(
+                                                                  "span",
+                                                                  null,
+                                                                  "▼"
+                                                              )),
+                                                        s.a.createElement(
+                                                            "th",
+                                                            {
+                                                                key: t.name,
+                                                                className:
+                                                                    "clickable",
+                                                                onClick: e._changeSort.bind(
+                                                                    e,
+                                                                    "change"
+                                                                ),
+                                                                style: {
+                                                                    textAlign:
+                                                                        "right"
+                                                                }
+                                                            },
+                                                            s.a.createElement(
+                                                                h.a,
+                                                                {
+                                                                    content:
+                                                                        "exchange.change"
+                                                                }
                                                             ),
-                                                            style: {
-                                                                textAlign:
-                                                                    "right"
-                                                            }
-                                                        },
-                                                        s.a.createElement(h.a, {
-                                                            content:
-                                                                "exchange.change"
-                                                        })
+                                                            r
+                                                        )
                                                     );
                                                 case "issuer":
                                                     return s.a.createElement(
@@ -1746,7 +1815,7 @@
                                                                         "span",
                                                                         null,
                                                                         s.a.createElement(
-                                                                            B.a,
+                                                                            N.a,
                                                                             {
                                                                                 name:
                                                                                     t.quote
@@ -1754,7 +1823,7 @@
                                                                         ),
                                                                         ":",
                                                                         s.a.createElement(
-                                                                            B.a,
+                                                                            N.a,
                                                                             {
                                                                                 name:
                                                                                     t.base
@@ -1762,7 +1831,7 @@
                                                                         )
                                                                     )
                                                                   : s.a.createElement(
-                                                                        B.a,
+                                                                        N.a,
                                                                         {
                                                                             dataPlace:
                                                                                 "left",
@@ -2224,7 +2293,7 @@
                                             0 === e.indexOf(x)
                                         );
                                     }));
-                                var j = [];
+                                var B = [];
                                 c.size &&
                                     c
                                         .filter(function(e) {
@@ -2249,7 +2318,7 @@
                                             T.forEach(function(t) {
                                                 var n = e.symbol + "_" + t;
                                                 t !== e.symbol &&
-                                                    j.push([
+                                                    B.push([
                                                         n,
                                                         {
                                                             quote: e.symbol,
@@ -2258,33 +2327,36 @@
                                                     ]);
                                             });
                                         }),
-                                    (j = j.filter(function(e) {
+                                    (B = B.filter(function(e) {
                                         return !x || e[1].quote === E;
                                     })),
-                                    (j = i.a.Map(j));
-                                var N = C ? r : j;
+                                    (B = i.a.Map(B));
+                                var j = C ? r : B;
                                 C &&
                                     g.size &&
                                     g.forEach(function(e, t) {
-                                        N = N.set(t, e);
+                                        j = j.set(t, e);
                                     }),
-                                    N.size > 0 &&
-                                        (M = N.filter(function(t) {
-                                            if (C) {
-                                                var n = t.quote + "_" + t.base;
-                                                return e.state.myMarketFilter
-                                                    ? -1 !==
-                                                          n.indexOf(
-                                                              e.state
-                                                                  .myMarketFilter
-                                                          )
-                                                    : !(b && !a.has(n));
-                                            }
-                                            return (
-                                                !(E.length < 1) &&
-                                                -1 !== t.quote.indexOf(E)
-                                            );
-                                        })
+                                    j.size > 0 &&
+                                        (M = j
+                                            .filter(function(t) {
+                                                if (C) {
+                                                    var n =
+                                                        t.quote + "_" + t.base;
+                                                    return e.state
+                                                        .myMarketFilter
+                                                        ? -1 !==
+                                                              n.indexOf(
+                                                                  e.state
+                                                                      .myMarketFilter
+                                                              )
+                                                        : !(b && !a.has(n));
+                                                }
+                                                return (
+                                                    !(E.length < 1) &&
+                                                    -1 !== t.quote.indexOf(E)
+                                                );
+                                            })
                                             .map(function(e) {
                                                 var t = e.quote + "_" + e.base;
                                                 return p.includes(e.base)
@@ -2307,16 +2379,16 @@
                                             })
                                             .take(C ? 100 : 20)
                                             .toArray());
-                                var q = M && M.length,
-                                    I = "mymarkets-header clickable",
-                                    D = P()(I, {inactive: !C}),
-                                    F = P()(I, {inactive: C}),
-                                    U = {
+                                var N = M && M.length,
+                                    q = "mymarkets-header clickable",
+                                    I = P()(q, {inactive: !C}),
+                                    D = P()(q, {inactive: C}),
+                                    F = {
                                         minWidth: this.state.minWidth,
                                         minHeight: "6rem"
                                     };
-                                y && (U.height = y);
-                                var V = n(3);
+                                y && (F.height = y);
+                                var U = n(3);
                                 return s.a.createElement(
                                     "div",
                                     {
@@ -2336,12 +2408,12 @@
                                             "div",
                                             {
                                                 ref: "myMarkets",
-                                                className: D,
+                                                className: I,
                                                 onClick: this._changeTab.bind(
                                                     this,
                                                     "my-market"
                                                 ),
-                                                "data-intro": V.translate(
+                                                "data-intro": U.translate(
                                                     "walkthrough.my_markets_tab"
                                                 )
                                             },
@@ -2352,12 +2424,12 @@
                                         s.a.createElement(
                                             "div",
                                             {
-                                                className: F,
+                                                className: D,
                                                 onClick: this._changeTab.bind(
                                                     this,
                                                     "find-market"
                                                 ),
-                                                "data-intro": V.translate(
+                                                "data-intro": U.translate(
                                                     "walkthrough.find_markets_tab"
                                                 )
                                             },
@@ -2726,14 +2798,15 @@
                                                               {active: k === n}
                                                           )
                                                       },
-                                                      s.a.createElement(B.a, {
-                                                          name: t,
-                                                          dataPlace: "left"
-                                                      })
+                                                      s.a.createElement(
+                                                          "span",
+                                                          null,
+                                                          t
+                                                      )
                                                   )
                                                 : null;
                                         }),
-                                        C && q
+                                        C && N
                                             ? s.a.createElement(
                                                   "li",
                                                   {
@@ -2783,7 +2856,7 @@
                                     s.a.createElement(
                                         "div",
                                         {
-                                            style: U,
+                                            style: F,
                                             className:
                                                 "table-container grid-block vertical mymarkets-list",
                                             ref: "favorites"
@@ -2835,7 +2908,7 @@
                                                         e.props.onlyLiquid && C
                                                 });
                                             }),
-                                        k === p.size + 1 && C && q
+                                        k === p.size + 1 && C && N
                                             ? s.a.createElement($, {
                                                   userMarkets: this.props
                                                       .userMarkets,
@@ -2900,7 +2973,7 @@
             })();
             t.a = Object(f.connect)(te, {
                 listenTo: function() {
-                    return [T.a, j.a, N.a];
+                    return [T.a, B.a, j.a];
                 },
                 getProps: function() {
                     return {
@@ -2911,11 +2984,11 @@
                         defaultMarkets: T.a.getState().defaultMarkets,
                         viewSettings: T.a.getState().viewSettings,
                         preferredBases: T.a.getState().preferredBases,
-                        marketStats: j.a.getState().allMarketStats,
+                        marketStats: B.a.getState().allMarketStats,
                         userMarkets: T.a.getState().userMarkets,
-                        searchAssets: N.a.getState().assets,
-                        onlyStars: j.a.getState().onlyStars,
-                        assetsLoading: N.a.getState().assetsLoading
+                        searchAssets: j.a.getState().assets,
+                        onlyStars: B.a.getState().onlyStars,
+                        assetsLoading: j.a.getState().assetsLoading
                     };
                 }
             });

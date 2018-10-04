@@ -5316,42 +5316,88 @@
                                     var h = a.map(function(t) {
                                             switch (t.name) {
                                                 case "market":
-                                                    return s.a.createElement(
-                                                        "th",
-                                                        {
-                                                            key: t.name,
-                                                            className:
-                                                                "clickable",
-                                                            onClick: e._changeSort.bind(
-                                                                e,
-                                                                "name"
-                                                            )
-                                                        },
-                                                        s.a.createElement(m.a, {
-                                                            content:
-                                                                "exchange.market"
-                                                        })
+                                                    var a = "";
+                                                    return (
+                                                        "name" ==
+                                                            e.state.sortBy &&
+                                                        e.state.inverseSort
+                                                            ? (a = s.a.createElement(
+                                                                  "span",
+                                                                  null,
+                                                                  "▲"
+                                                              ))
+                                                            : "name" ==
+                                                                  e.state
+                                                                      .sortBy &&
+                                                              (a = s.a.createElement(
+                                                                  "span",
+                                                                  null,
+                                                                  "▼"
+                                                              )),
+                                                        s.a.createElement(
+                                                            "th",
+                                                            {
+                                                                key: t.name,
+                                                                className:
+                                                                    "clickable",
+                                                                onClick: e._changeSort.bind(
+                                                                    e,
+                                                                    "name"
+                                                                )
+                                                            },
+                                                            s.a.createElement(
+                                                                m.a,
+                                                                {
+                                                                    content:
+                                                                        "exchange.market"
+                                                                }
+                                                            ),
+                                                            a
+                                                        )
                                                     );
                                                 case "vol":
-                                                    return s.a.createElement(
-                                                        "th",
-                                                        {
-                                                            key: t.name,
-                                                            className:
-                                                                "clickable",
-                                                            onClick: e._changeSort.bind(
-                                                                e,
-                                                                "volume"
+                                                    var n = "";
+                                                    return (
+                                                        "volume" ==
+                                                            e.state.sortBy &&
+                                                        e.state.inverseSort
+                                                            ? (n = s.a.createElement(
+                                                                  "span",
+                                                                  null,
+                                                                  "▲"
+                                                              ))
+                                                            : "volume" ==
+                                                                  e.state
+                                                                      .sortBy &&
+                                                              (n = s.a.createElement(
+                                                                  "span",
+                                                                  null,
+                                                                  "▼"
+                                                              )),
+                                                        s.a.createElement(
+                                                            "th",
+                                                            {
+                                                                key: t.name,
+                                                                className:
+                                                                    "clickable",
+                                                                onClick: e._changeSort.bind(
+                                                                    e,
+                                                                    "volume"
+                                                                ),
+                                                                style: {
+                                                                    textAlign:
+                                                                        "right"
+                                                                }
+                                                            },
+                                                            s.a.createElement(
+                                                                m.a,
+                                                                {
+                                                                    content:
+                                                                        "exchange.vol_short"
+                                                                }
                                                             ),
-                                                            style: {
-                                                                textAlign:
-                                                                    "right"
-                                                            }
-                                                        },
-                                                        s.a.createElement(m.a, {
-                                                            content:
-                                                                "exchange.vol_short"
-                                                        })
+                                                            n
+                                                        )
                                                     );
                                                 case "price":
                                                     return s.a.createElement(
@@ -5387,25 +5433,48 @@
                                                         })
                                                     );
                                                 case "change":
-                                                    return s.a.createElement(
-                                                        "th",
-                                                        {
-                                                            key: t.name,
-                                                            className:
-                                                                "clickable",
-                                                            onClick: e._changeSort.bind(
-                                                                e,
-                                                                "change"
+                                                    var r = "";
+                                                    return (
+                                                        "change" ==
+                                                            e.state.sortBy &&
+                                                        e.state.inverseSort
+                                                            ? (r = s.a.createElement(
+                                                                  "span",
+                                                                  null,
+                                                                  "▲"
+                                                              ))
+                                                            : "change" ==
+                                                                  e.state
+                                                                      .sortBy &&
+                                                              (r = s.a.createElement(
+                                                                  "span",
+                                                                  null,
+                                                                  "▼"
+                                                              )),
+                                                        s.a.createElement(
+                                                            "th",
+                                                            {
+                                                                key: t.name,
+                                                                className:
+                                                                    "clickable",
+                                                                onClick: e._changeSort.bind(
+                                                                    e,
+                                                                    "change"
+                                                                ),
+                                                                style: {
+                                                                    textAlign:
+                                                                        "right"
+                                                                }
+                                                            },
+                                                            s.a.createElement(
+                                                                m.a,
+                                                                {
+                                                                    content:
+                                                                        "exchange.change"
+                                                                }
                                                             ),
-                                                            style: {
-                                                                textAlign:
-                                                                    "right"
-                                                            }
-                                                        },
-                                                        s.a.createElement(m.a, {
-                                                            content:
-                                                                "exchange.change"
-                                                        })
+                                                            r
+                                                        )
                                                     );
                                                 case "issuer":
                                                     return s.a.createElement(
@@ -6016,16 +6085,16 @@
                                             })
                                             .take(x ? 100 : 20)
                                             .toArray());
-                                var I = A && A.length,
-                                    F = "mymarkets-header clickable",
-                                    M = B()(F, {inactive: !x}),
-                                    z = B()(F, {inactive: x}),
-                                    U = {
+                                var q = A && A.length,
+                                    I = "mymarkets-header clickable",
+                                    F = B()(I, {inactive: !x}),
+                                    M = B()(I, {inactive: x}),
+                                    z = {
                                         minWidth: this.state.minWidth,
                                         minHeight: "6rem"
                                     };
-                                b && (U.height = b);
-                                var H = a(3);
+                                b && (z.height = b);
+                                var U = a(3);
                                 return s.a.createElement(
                                     "div",
                                     {
@@ -6045,12 +6114,12 @@
                                             "div",
                                             {
                                                 ref: "myMarkets",
-                                                className: M,
+                                                className: F,
                                                 onClick: this._changeTab.bind(
                                                     this,
                                                     "my-market"
                                                 ),
-                                                "data-intro": H.translate(
+                                                "data-intro": U.translate(
                                                     "walkthrough.my_markets_tab"
                                                 )
                                             },
@@ -6061,12 +6130,12 @@
                                         s.a.createElement(
                                             "div",
                                             {
-                                                className: z,
+                                                className: M,
                                                 onClick: this._changeTab.bind(
                                                     this,
                                                     "find-market"
                                                 ),
-                                                "data-intro": H.translate(
+                                                "data-intro": U.translate(
                                                     "walkthrough.find_markets_tab"
                                                 )
                                             },
@@ -6435,14 +6504,15 @@
                                                               {active: v === a}
                                                           )
                                                       },
-                                                      s.a.createElement(q.a, {
-                                                          name: t,
-                                                          dataPlace: "left"
-                                                      })
+                                                      s.a.createElement(
+                                                          "span",
+                                                          null,
+                                                          t
+                                                      )
                                                   )
                                                 : null;
                                         }),
-                                        x && I
+                                        x && q
                                             ? s.a.createElement(
                                                   "li",
                                                   {
@@ -6492,7 +6562,7 @@
                                     s.a.createElement(
                                         "div",
                                         {
-                                            style: U,
+                                            style: z,
                                             className:
                                                 "table-container grid-block vertical mymarkets-list",
                                             ref: "favorites"
@@ -6544,7 +6614,7 @@
                                                         e.props.onlyLiquid && x
                                                 });
                                             }),
-                                        v === p.size + 1 && x && I
+                                        v === p.size + 1 && x && q
                                             ? s.a.createElement($, {
                                                   userMarkets: this.props
                                                       .userMarkets,
@@ -9750,7 +9820,11 @@
                                         ),
                                         r.a.createElement(
                                             "td",
-                                            {"data-tip": f, "data-html": !0},
+                                            {
+                                                "data-tip": f,
+                                                "data-html": !0,
+                                                "data-place": "right"
+                                            },
                                             "left" === i ? m : p
                                         )
                                     );
@@ -10807,25 +10881,7 @@
                                                                           E
                                                                       )
                                                                   ),
-                                                              r.a.createElement(
-                                                                  T.a,
-                                                                  {
-                                                                      className:
-                                                                          "lock-unlock clickable",
-                                                                      onClick: this
-                                                                          .toggleAutoScroll,
-                                                                      name: this
-                                                                          .state
-                                                                          .autoScroll
-                                                                          ? "locked"
-                                                                          : "unlocked",
-                                                                      title: this
-                                                                          .state
-                                                                          .autoScroll
-                                                                          ? "icons.locked.enable_auto_scroll"
-                                                                          : "icons.unlocked.disable_auto_scroll"
-                                                                  }
-                                                              ),
+                                                              "  ",
                                                               !!this.props
                                                                   .latest &&
                                                                   r.a.createElement(
@@ -11419,6 +11475,8 @@
                                                     r.a.createElement(
                                                         "td",
                                                         {
+                                                            "data-place":
+                                                                "right",
                                                             className:
                                                                 "tooltip",
                                                             "data-tip": new Date(

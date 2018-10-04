@@ -65,7 +65,8 @@ class AccountOverview extends React.Component {
                 // "OPEN.MAID",
                 // "OPEN.STEEM",
                 // "OPEN.DASH"
-            ]
+            ],
+            hide0balances: false
         };
 
         this.qtyRefs = {};
@@ -988,6 +989,12 @@ class AccountOverview extends React.Component {
                 ) {
                     return false;
                 } else {
+                    if (
+                        this.state.hide0balances &&
+                        balanceObject.get("balance") <= 0
+                    )
+                        return false;
+
                     return true;
                 }
             });
@@ -1185,6 +1192,26 @@ class AccountOverview extends React.Component {
                                             : () => {},
                                         !(shownAssets != "visual")
                                     )}
+                                    <div>
+                                        <label className="hide0balances">
+                                            <input
+                                                name="isGoing"
+                                                type="checkbox"
+                                                checked={
+                                                    this.state.hide0balances
+                                                }
+                                                onChange={e =>
+                                                    this.setState({
+                                                        hide0balances: !this
+                                                            .state.hide0balances
+                                                    })
+                                                }
+                                            />
+                                            <Translate content="exchange.hide" />
+                                            &nbsp;0&nbsp;
+                                            <Translate content="transfer.balances" />
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
