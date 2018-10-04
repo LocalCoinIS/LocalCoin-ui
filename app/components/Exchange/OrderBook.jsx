@@ -851,20 +851,7 @@ class OrderBook extends React.Component {
                                                 </span>
                                             </span>
                                         )}
-                                        <Icon
-                                            className="lock-unlock clickable"
-                                            onClick={this.toggleAutoScroll}
-                                            name={
-                                                this.state.autoScroll
-                                                    ? "locked"
-                                                    : "unlocked"
-                                            }
-                                            title={
-                                                this.state.autoScroll
-                                                    ? "icons.locked.enable_auto_scroll"
-                                                    : "icons.unlocked.disable_auto_scroll"
-                                            }
-                                        />
+                                        &nbsp;&nbsp;
                                         {!!this.props.latest && (
                                             <span className="right">
                                                 <Translate content="exchange.latest" />{" "}
