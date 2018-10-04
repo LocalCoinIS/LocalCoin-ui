@@ -15,6 +15,7 @@ import cnames from "classnames";
 import utils from "common/utils";
 import LoadingIndicator from "../../components/LoadingIndicator";
 import ls from "common/localStorage";
+import LinkToAssetById from "../../components/Utility/LinkToAssetById";
 
 let accountStorage = new ls("__graphene__");
 
@@ -143,7 +144,10 @@ class Assets extends React.Component {
                         <tr key={asset.symbol}>
                             <td>
                                 <Link to={`/asset/${asset.symbol}`}>
-                                    <AssetName name={asset.symbol} />
+                                    <LinkToAssetById
+                                        showIcon
+                                        asset={asset.id}
+                                    />
                                 </Link>
                             </td>
                             <td>{this.linkToAccount(asset.issuer)}</td>
@@ -204,7 +208,10 @@ class Assets extends React.Component {
                         <tr key={asset.symbol}>
                             <td>
                                 <Link to={`/asset/${asset.symbol}`}>
-                                    <AssetName name={asset.symbol} />
+                                    <LinkToAssetById
+                                        showIcon
+                                        asset={asset.id}
+                                    />
                                 </Link>
                             </td>
                             <td>{this.linkToAccount(asset.issuer)}</td>

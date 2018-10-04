@@ -20,6 +20,7 @@ import FundFeePool from "../../components/Account/FundFeePool";
 import AccountStore from "stores/AccountStore";
 import {connect} from "alt-react";
 import counterpart from "counterpart";
+import LinkToAssetById from "../../components/Utility/LinkToAssetById";
 
 class AssetFlag extends React.Component {
     render() {
@@ -1119,9 +1120,9 @@ class Asset extends React.Component {
                 : null;
 
         return (
-            <div className="content">
+            <div className="content" style={{margin: 20}}>
                 <h2 className="content__heading">
-                    {counterpart.translate("account.asset")} {asset.symbol}
+                    <LinkToAssetById showIcon asset={asset.id} />
                 </h2>
                 {this.renderAboutBox(asset, this.props.asset)}
                 <div className="table-blocks">

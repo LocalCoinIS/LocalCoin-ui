@@ -298,3 +298,7 @@ main[class*="help-"] > .content {
     border-right: 1px solid rgba(128, 128, 128, 0.45);
     background: #fff;
 }
+
+.help-content > h3#asset-symbol- {
+    display: none;
+}
