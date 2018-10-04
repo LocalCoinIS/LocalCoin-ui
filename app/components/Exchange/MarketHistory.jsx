@@ -179,6 +179,7 @@ class MarketHistory extends React.Component {
                             <td>{parsed_order.receives}</td>
                             <td>{parsed_order.pays}</td>
                             <td
+                                data-place="right"
                                 className="tooltip"
                                 data-tip={new Date(
                                     order.time

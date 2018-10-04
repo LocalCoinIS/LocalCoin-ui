@@ -156,7 +156,7 @@ class OrderBookRowHorizontal extends React.Component {
                     {price}
                 </td>
                 <td>{position === "left" ? amount : value}</td>
-                <td data-tip={tdDataTip} data-html={true}>
+                <td data-tip={tdDataTip} data-html={true} data-place="right">
                     {position === "left" ? value : amount}
                 </td>
             </tr>
