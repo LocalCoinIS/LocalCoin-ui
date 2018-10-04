@@ -302,3 +302,9 @@ main[class*="help-"] > .content {
 .help-content > h3#asset-symbol- {
     display: none;
 }
+
+.modal .errorModal {
+    color: rgb(255, 0, 0);
+    margin-top: -23px;
+    margin-bottom: 18px;
+}
