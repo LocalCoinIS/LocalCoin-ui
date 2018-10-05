@@ -10015,8 +10015,8 @@
                                                       base: c,
                                                       quote: l,
                                                       position: e.state.flip
-                                                          ? "right"
-                                                          : "left",
+                                                          ? "left"
+                                                          : "right",
                                                       currentAccount:
                                                           e.props.currentAccount
                                                   })

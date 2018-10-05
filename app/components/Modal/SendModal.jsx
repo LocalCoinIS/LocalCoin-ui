@@ -58,6 +58,7 @@ class SendModal extends React.Component {
             asset: null,
             memo: "",
             error: null,
+            errorAmount: null,
             knownScammer: null,
             propose: false,
             propose_account: "",
@@ -110,6 +111,7 @@ class SendModal extends React.Component {
 
     onSubmit(e) {
         e.preventDefault();
+
         this.setState({error: null});
 
         const {asset} = this.state;
@@ -119,6 +121,36 @@ class SendModal extends React.Component {
             asset_id: asset.get("id"),
             precision: asset.get("precision")
         });
+
+        this.setState({
+            errorAmount: null
+        });
+
+        let feeAmount = this.state.feeAmount;
+        if (feeAmount.asset_id == asset.get("id")) {
+            let sendSumAmount = feeAmount.amount + sendAmount.getAmount();
+
+            let account_balances = this.state.from_account
+                .get("balances")
+                .toJS();
+            let {asset_types} = this._getAvailableAssets();
+            let current_asset_id = asset_types[0];
+
+            let balanceObject = ChainStore.getObject(
+                account_balances[current_asset_id]
+            );
+            let userBalance = balanceObject.get("balance");
+
+            if (sendSumAmount >= userBalance) {
+                this.setState({
+                    errorAmount: counterpart.translate(
+                        "modal.withdraw.cannot_cover"
+                    )
+                });
+
+                return;
+            }
+        }
 
         this.setState({hidden: true});
 
@@ -633,7 +665,12 @@ class SendModal extends React.Component {
                     overlay={true}
                     onClose={this.onClose.bind(this, false)}
                 >
-                    <div className="grid-block vertical no-overflow">
+                    <div
+                        className="grid-block vertical no-overflow"
+                        onMouseDown={() => {
+                            this.setState({errorAmount: null});
+                        }}
+                    >
                         <div
                             className="content-block"
                             style={{textAlign: "center", textTransform: "none"}}
@@ -825,6 +862,15 @@ class SendModal extends React.Component {
                                                 tabIndex={tabIndex++}
                                             />
                                         </div>
+                                    ) : null}
+
+                                    {this.state.errorAmount ? (
+                                        <p
+                                            class="errorModal"
+                                            style={{marginTop: 0}}
+                                        >
+                                            {this.state.errorAmount}
+                                        </p>
                                     ) : null}
 
                                     <div className="content-block transfer-input">
