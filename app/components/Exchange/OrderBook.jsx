@@ -394,7 +394,7 @@ class OrderBook extends React.Component {
                         onClick={this.props.onClick.bind(this, order)}
                         base={base}
                         quote={quote}
-                        position={!this.state.flip ? "left" : "right"}
+                        position={this.state.flip ? "left" : "right"}
                         currentAccount={this.props.currentAccount}
                     />
                 ) : (

@@ -286,7 +286,77 @@ body.localcoin .account-inputs .typeahead__innerList
 .lightTheme .stats .stressed-stat.daily_change.negativ
 	color: #e1424a!important
 body.localcoin
+	#sticky-table-x-wrapper
+		.sticky-table-container 
+			width: 100%
+	.main.settings-faucet-address
+		.content
+			margin: 20px
+	.grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+		div.floating-dropdown
+			height: 28px
+		.dropdown-wrapper
+			padding: 0 15px
+			.dropdown
+				top: 24px
+	.mymarkets-tabs
+		.mymarkets-tab
+			background-color: transparent!important
+			&:hover
+				background-color: #dce6f2!important
+			&.active
+				background-color: #fff!important
+	#sticky-table-column
+		.sticky-table-row.transition-container.clickable
+			.sticky-table-row.order-row.final-row
+				.cell.orderHistoryBid.right,
+				.cell.orderHistoryAsk.right
+					display: none
+	.main.account
+		table.blue-bg.borders td, table.blue-bg.with-borders td
+			border-bottom: 1px solid #fff!important
+	.exchange-layout
+		.mymarkets-tabs
+			.mymarkets-tab
+				padding: 0 14px
+		.table.table-hover.text-right
+			tr.clickable.activeMarket
+				background-color: #000
+	.main.explorer-assets
+		.market-list-wrap
+			table
+				td
+					padding: 1px 16px
+					line-height: 1.5
+	#sticky-table-y-wrapper
+		height: calc(50vh - 35px)!important
+	.left-order-book .order-table-container
+		height: calc(50vh - 50px)
+	.__react_component_tooltip.type-light.place-right:after
+		border-right-color: grey
+	.__react_component_tooltip.type-light.place-top:after
+		border-top-color: grey
+	.__react_component_tooltip.type-light.place-left:after
+		border-left-color: grey
+	.__react_component_tooltip.type-light.place-bottom:after
+		border-bottom-color: grey
+	.navigation_account__link
+		display: inline-flex
+		align-items: center
+	#reserve_asset
+		.modal-header
+			padding-bottom: 0
+		.modal-content
+			padding-top: 0
+		form
+			padding-top: 0
+		h3
+			margin: 0
+		.grid-container 
+			padding-top: 1rem!important
 	#transaction_confirm_modal
+		.grid-content.full-width-content.form-group
+			overflow: visible
 		.modal-header
 			padding: 0
 		.grid-content.modal__header
@@ -316,6 +386,8 @@ body.localcoin
 				display: none
 				
 	.main.explorer-blocks
+		.block-content-header
+			padding: .75rem 0 .5rem 0
 		.grid-block.no-overflow
 			.grid-block.small-12.medium-6.vertical.no-overflow
 				max-width: 65%
@@ -326,6 +398,7 @@ body.localcoin
 				table
 					td:last-child,th:last-child
 						width: 170px
+						text-align: center
 		.txtlabel
 			margin: 0!important
 		table
@@ -333,33 +406,81 @@ body.localcoin
 				font-size: 12px!important
 				span
 					font-size: 12px!important
-				.label.cancel
-					padding: 3px 7px!important
-	.main.account-test-permissions,
-	.main.account-test-whitelist,
-	.main.account-test-signedmessages
+				.label.cancel,
+				.label.warning
+					font-size: 11px!important
+					padding: 2px 4px!important
+					border-radius: 2px!important
+	.main
 		.content
 			padding-top: 0
 			.dashboard__tabs__item
 				padding: 5px 24px
 				h4
 					margin: 0
-	.main[class*="acc-voting"]
-		.content
-			padding-top: 0
-		.dashboard__actions
-			padding: 0
-			.account-inputs.account-selector
-				position: absolute
-				top: -45px
-				right: -60px
-		.dashboard__tabs__item
-			padding: 15px 24px 15px 24px
-			h4,
-			span
-				margin: 0
-				line-height: 1
-	.main.account-localcoin-ico
+	// .main.account-voting-account-votes-workers-short
+	// 	.voting-container .col-xl-3.col-lg-6 .account-inputs.account-selector
+	// 		max-width: 350px!important
+	// 	.dashboard__actions__filters
+	// 		position: absolute
+	// 		top: -27px
+	// 		left: 800px
+	// 	.dashboard__actions__filters + .btn.large.inverted
+	// 		position: absolute
+	// 		top: -46px
+	// 		left: 1038px
+	// 	.voting-container .dashboard__tabs.dashboard__tabs.permissions.small+div .col-xs-12 span[style="float: right;"]
+	// 		right: auto!important
+	// 		left: 1255px!important
+	// 		top: -45px!important
+	// .main[class*="acc-voting"],
+	// .main.account-voting,
+	// .main.account-voting-explorer-witnesses-title,
+	// .main.account-voting-explorer-committee-members-title,
+	// .main.account-voting-account-votes-workers-short
+	// 	.content
+	// 		padding-top: 0
+	// 	.dashboard__actions
+	// 		padding: 0
+	// 		.account-inputs.account-selector
+	// 			position: absolute
+	// 			top: -45px
+	// 			right: -60px
+	// 	.dashboard__tabs__item
+	// 		padding: 15px 24px 15px 24px
+	// 		h4,
+	// 		span
+	// 			margin: 0
+	// 			line-height: 1
+	// .main.account-voting,
+	// .main.account-voting-explorer-witnesses-title,
+	// .main.account-voting-explorer-committee-members-title,
+	// .main.account-voting-account-votes-workers-short
+	// 	.col-xl-3.col-lg-6,
+	// 	.col-xl-9.col-lg-12,
+	// 	.col-xs-12
+	// 		flex: 0 0 100%
+	// 		max-width: 100%
+	// 	.col-xs-12
+	// 		span[style="float: right;"]
+	// 			position: absolute
+	// 			width: auto
+	// 			top: -45px
+	// 			left: 1255px
+	// 	.dashboard__actions
+	// 		.col-xl-3.col-lg-6
+	// 			position: unset
+	// 			span[style="float: right;"]
+	// 				right: auto!important
+	// 				left: 800px!important
+	// 		.account-inputs.account-selector
+	// 			left: 20px
+	// 			right: auto
+	// 			min-width: 350px
+	// 	.dashboard__tabs
+	// 		padding-left: 385px
+	.main.account-localcoin-ico,
+	.main.account
 		.content
 			padding-top: 0
 			.dashboard__table.blue-bg.with-borders
@@ -375,12 +496,15 @@ body.localcoin
 					margin: 0
 					line-height: 1
 			.dashboard__actions
+				min-width: 250px
 				position: absolute
 				top: 0
 				right: 40px
 				width: auto
 				background: transparent
 				padding: 0
+				.select
+					min-width: 250px
 				.col-xl-3.col-lg-6,
 				.col-xl-9.col-lg-12
 					width: 50%
@@ -895,11 +1019,6 @@ body.localcoin
 						font-size: 12px
 				td.text-right
 					font-family: 'Roboto Mono', monospace!important
-	.mymarkets-tabs
-		.mymarkets-tab
-			background-color: #fff
-		.mymarkets-tab.active
-			background-color: #dcdcdc
 	.float-right.buy-sell-deposit
 		margin: 0 0 0 auto
 		a
@@ -1001,7 +1120,7 @@ body.localcoin
 		.exchange-bordered.small-12[style]
 			height: 100%!important
 			.table-container.grid-block.market-right-padding-only.no-overflow.ps-container.ps-theme-default[style]
-				max-height: 230px!important
+				max-height: 255px!important
 				table
 					tr:hover
 						td
@@ -1012,7 +1131,7 @@ body.localcoin
 		.exchange-bordered.small-12[style]
 			height: 100%!important
 			.table-container.grid-block.market-right-padding-only.no-overflow.ps-container.ps-theme-default[style]
-				max-height: 230px!important
+				max-height: 255px!important
 				table
 					tr:hover
 						td
@@ -1047,7 +1166,7 @@ body.localcoin
 			.col-xs-12
 				span[style="float: right;"]
 					position: absolute
-					top: -52px
+					top: -32px
 					right: 20px
 			.col-xl-3.col-lg-6
 				span[style="float: right;"]
@@ -1094,6 +1213,21 @@ body.localcoin
 		margin-top: 45px
 	.login-type-selector
 		margin-bottom: 0
+	.modal-header
+		padding-bottom: 0
+	hr
+		margin: 0
+	.modal-content
+		padding-top: 0
+	form
+		padding-top: 0
+		label
+			margin-bottom: 0!important
+			padding-bottom: 0!important
+		.has-error
+			margin: .5rem 0!important
+			position: relative
+			top: 6px
 #ws_modal_add
 	.with-dropdown
 		border: 0!important
@@ -1128,6 +1262,19 @@ body.localcoin
 
 
 body.localcoin
+	.exchange-layout .medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3 .grid-block.shrink.left-orderbook-header.market-right-padding-only
+		table
+			th:last-child
+				width: 65px!important
+			th:first-child
+				padding: 5px 15px!important
+				// width: 90px!important
+	.exchange-layout .table.order-table.text-right.fixed-table.market-right-padding
+			td:last-child
+				width: 68px!important
+			td:first-child
+				padding: 0px 15px!important
+				// width: 90px!important
 	.service-selector + div.tab-content.grid-block.padding-top.shrink.small-vertical.medium-horizontal
 		margin: 0!important
 	.service-selector + div
@@ -1274,7 +1421,9 @@ body.localcoin .exchange-layout
 					margin-bottom: 0
 					line-height: 1
 			.asset-selector
-				padding-bottom: .5rem!important
+				padding-bottom: 0rem!important
+				.input-area, .inline-label, .typeahead .typeahead__input
+					height: 28px
 		.table.table-hover.text-right
 			td
 				padding: 0!important
@@ -1282,6 +1431,101 @@ body.localcoin .exchange-layout
 
 body.localcoin .exchange-layout .grid-block.wrap.market-stats-container ul.market-stats.stats.top-stats li.stressed-stat.input.clickable
 	border-right: 0!important
+
+@media only screen and (min-width: 1680px)
+	body.localcoin
+		.main.account-voting-account-votes-workers-short
+			.voting-container .col-xl-3.col-lg-6 .account-inputs.account-selector
+				max-width: 350px!important
+			.dashboard__actions__filters
+				position: absolute
+				top: -27px
+				left: 800px
+			.dashboard__actions__filters + .btn.large.inverted
+				position: absolute
+				top: -46px
+				left: 1038px
+			.voting-container .dashboard__tabs.dashboard__tabs.permissions.small+div .col-xs-12 span[style="float: right;"]
+				right: auto!important
+				left: 1255px!important
+				top: -45px!important
+		.main.account-voting-account-votes-workers-short
+			.content
+				padding-top: 0
+			.dashboard__actions
+				padding: 0
+				.account-inputs.account-selector
+					position: absolute
+					top: -45px
+					right: -60px
+			.dashboard__tabs__item
+				padding: 15px 24px 15px 24px
+				h4,
+				span
+					margin: 0
+					line-height: 1
+		.main[class*="acc-voting"],
+		.main.account-voting,
+		.main.account-voting-explorer-witnesses-title,
+		.main.account-voting-explorer-committee-members-title,
+		.main.account-voting-account-votes-workers-short
+			.content
+				padding-top: 0
+			.dashboard__actions
+				padding: 0
+				.account-inputs.account-selector
+					position: absolute
+					top: -45px
+					right: -60px
+			.dashboard__tabs__item
+				padding: 15px 24px 15px 24px
+				h4,
+				span
+					margin: 0
+					line-height: 1
+		.main.account-voting,
+		.main.account-voting-explorer-witnesses-title,
+		.main.account-voting-explorer-committee-members-title,
+		.main.account-voting-account-votes-workers-short
+			.col-xl-3.col-lg-6,
+			.col-xl-9.col-lg-12,
+			.col-xs-12
+				flex: 0 0 100%
+				max-width: 100%
+			.col-xs-12
+				span[style="float: right;"]
+					position: absolute
+					width: auto
+					top: -45px
+					left: 1255px
+			.dashboard__actions
+				.col-xl-3.col-lg-6
+					position: unset
+					span[style="float: right;"]
+						right: auto!important
+						left: 800px!important
+				.account-inputs.account-selector
+					left: 20px
+					right: auto
+					min-width: 350px
+			.dashboard__tabs
+				padding-left: 385px
+
+@media only screen and (max-width: 1450px)
+	body.localcoin
+		.exchange-layout .medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3 .grid-block.shrink.left-orderbook-header.market-right-padding-only
+			table
+				th:last-child
+					width: 65px!important
+				th:first-child
+					padding: 5px 15px!important
+					width: 90px!important
+		.exchange-layout .table.order-table.text-right.fixed-table.market-right-padding
+				td:last-child
+					width: 68px!important
+				td:first-child
+					padding: 0px 15px!important
+					width: 90px!important
 
 @media only screen and (min-width: 1280px)
 	body.localcoin .exchange-layout
@@ -1324,6 +1568,11 @@ body.localcoin .exchange-layout .grid-block.wrap.market-stats-container ul.marke
 				.orderbook-showall
 					margin-top: auto
 	.exchange-layout
+		.order-1.xlarge-order-1.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+			.small-12.medium-6.middle-content.order-1,
+			.small-12.medium-6.middle-content.order-2
+				flex: 0 0 50%!important
+				max-width: 50%!important
 		.exchange-bordered
 			border-right: 0
 		.medium-6
