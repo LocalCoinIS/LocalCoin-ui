@@ -231,10 +231,10 @@ class OrderBook extends React.Component {
         }
     }
 
-    // queryStickyTable = query =>
-    //     this.refs.vertical_sticky_table.table.querySelector(query);
+    queryStickyTable = query =>
+        this.refs.vertical_sticky_table_up.table.querySelector(query);
 
-    //verticalScrollBar = () => this.queryStickyTable("#y-scrollbar");
+    verticalScrollBar = () => this.queryStickyTable("#y-scrollbar");
 
     componentDidMount() {
         if (!this.props.horizontal) {
@@ -253,21 +253,19 @@ class OrderBook extends React.Component {
             let asksContainer = this.refs.hor_asks;
             Ps.initialize(asksContainer);
         }
+
+        this.upVerticalBlockToEndScroll();
     }
 
-    componentWillUpdate() {
-        // if (!this.props.horizontal) {
-        //     const scrollableContainer = this.queryStickyTable(
-        //         "#sticky-table-y-wrapper"
-        //     );
-        //     const centerTextContainer = this.refs.center_text;
-        //     const centeringOffset = 21;
-        //     const scrollTo =
-        //         centerTextContainer.offsetTop -
-        //         elemHeight(scrollableContainer) / 2 +
-        //         centeringOffset;
-        //     this.offset = scrollableContainer.scrollTop - scrollTo;
-        // }
+    componentWillUpdate() {}
+
+    upVerticalBlockToEndScroll() {
+        if (!this.props.horizontal) {
+            const scrollableContainer = this.queryStickyTable(
+                "#sticky-table-y-wrapper"
+            );
+            scrollableContainer.scrollTop = 99999;
+        }
     }
 
     // centerVerticalScrollBar() {

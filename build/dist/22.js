@@ -9842,6 +9842,14 @@
                             (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                         );
                         return (
+                            (a.queryStickyTable = function(e) {
+                                return a.refs.vertical_sticky_table_up.table.querySelector(
+                                    e
+                                );
+                            }),
+                            (a.verticalScrollBar = function() {
+                                return a.queryStickyTable("#y-scrollbar");
+                            }),
                             (a.toggleSpreadValue = function() {
                                 a.setState({
                                     displaySpreadAsPercentage: !a.state
@@ -9916,9 +9924,19 @@
                                         );
                                         v.a.initialize(n);
                                     }
+                                    this.upVerticalBlockToEndScroll();
                                 }
                             },
                             {key: "componentWillUpdate", value: function() {}},
+                            {
+                                key: "upVerticalBlockToEndScroll",
+                                value: function() {
+                                    this.props.horizontal ||
+                                        (this.queryStickyTable(
+                                            "#sticky-table-y-wrapper"
+                                        ).scrollTop = 99999);
+                                }
+                            },
                             {
                                 key: "psUpdate",
                                 value: function() {
