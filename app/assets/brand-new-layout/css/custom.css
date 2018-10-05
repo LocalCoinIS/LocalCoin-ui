@@ -312,3 +312,7 @@ main[class*="help-"] > .content {
 .grid-content .highcharts-label table td {
     color: #fff;
 }
+
+.market-layout .left-column .exchange-buy-orders .sticky-table-row.top-header {
+    display: none;
+}

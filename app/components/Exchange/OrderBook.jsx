@@ -784,7 +784,7 @@ class OrderBook extends React.Component {
             // Vertical orderbook
             return (
                 <div className="left-order-book no-padding no-overflow">
-                    <div className="order-table-container exchange-sell-orders">
+                    <div className="order-table-container exchange-sell-orders vertical-orderbook-up">
                         <StickyTable
                             className="order-table table"
                             ref="vertical_sticky_table_up"
@@ -873,7 +873,7 @@ class OrderBook extends React.Component {
                             </td>
                         )}
                     </div>
-                    <div className="order-table-container exchange-buy-orders">
+                    <div className="order-table-container exchange-buy-orders vertical-orderbook-down">
                         <StickyTable
                             className="order-table table"
                             ref="vertical_sticky_table_down"
