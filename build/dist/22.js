@@ -10718,7 +10718,7 @@
                                             "div",
                                             {
                                                 className:
-                                                    "order-table-container exchange-sell-orders"
+                                                    "order-table-container exchange-sell-orders vertical-orderbook-up"
                                             },
                                             r.a.createElement(
                                                 P.StickyTable,
@@ -10923,7 +10923,7 @@
                                             "div",
                                             {
                                                 className:
-                                                    "order-table-container exchange-buy-orders"
+                                                    "order-table-container exchange-buy-orders vertical-orderbook-down"
                                             },
                                             r.a.createElement(
                                                 P.StickyTable,
