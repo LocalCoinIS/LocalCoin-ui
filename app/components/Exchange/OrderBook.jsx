@@ -21,6 +21,74 @@ class OrderBookRowVertical extends React.Component {
         );
     }
 
+    componentDidMount() {
+        this.updateCeilWith();
+    }
+
+    componentDidUpdate() {
+        this.updateCeilWith();
+    }
+
+    updateCeilWith() {
+        function updateWidth(queryClass, width) {
+            let list = document.getElementsByClassName(queryClass);
+            for (let i in list) {
+                try {
+                    list[i].style.width = width + "px";
+                } catch (e) {}
+            }
+        }
+
+        function getMaxWidth(queryClass) {
+            let max = 0;
+            let list = document.getElementsByClassName(queryClass);
+            for (let i in list) {
+                let width = list[i].offsetWidth;
+                if (width > max) max = width;
+            }
+
+            return max;
+        }
+
+        let queries = {
+            one: "vertical-table-cell-one",
+            two: "vertical-table-cell-two",
+            three: "vertical-table-cell-three"
+        };
+
+        let maxWidth = {
+            one: getMaxWidth(queries.one),
+            two: getMaxWidth(queries.two),
+            three: getMaxWidth(queries.three)
+        };
+
+        updateWidth(queries.one, maxWidth.one);
+        updateWidth(queries.two, maxWidth.two);
+        updateWidth(queries.three, maxWidth.three);
+
+        //set margin header by with left cell bar
+        try {
+            let margin = maxWidth.one + maxWidth.two + maxWidth.three;
+            let header = document.getElementsByClassName(
+                "container-menu-header"
+            )[0];
+            header.style.marginLeft = margin + "px";
+        } catch (e) {}
+    }
+
+    componentWillUnmount() {
+        this.resetHeaderMargin();
+    }
+
+    resetHeaderMargin() {
+        try {
+            let header = document.getElementsByClassName(
+                "container-menu-header"
+            )[0];
+            header.style.marginLeft = 0;
+        } catch (e) {}
+    }
+
     render() {
         let {order, quote, base, final} = this.props;
         const isBid = order.isBid();
@@ -73,12 +141,12 @@ class OrderBookRowVertical extends React.Component {
             <div
                 onClick={this.props.onClick}
                 className={classnames(
-                    "sticky-table-row order-row",
+                    "sticky-table-row order-row vertical-table-cell",
                     {"final-row": final},
                     {"my-order": order.isMine(this.props.currentAccount)}
                 )}
             >
-                <div className="cell left">
+                <div className="cell left vertical-table-cell vertical-table-cell-one">
                     {utils.format_number(
                         order[
                             isBid ? "amountForSale" : "amountToReceive"
@@ -86,7 +154,7 @@ class OrderBookRowVertical extends React.Component {
                         base.get("precision")
                     )}
                 </div>
-                <div className="cell">
+                <div className="cell vertical-table-cell vertical-table-cell-two">
                     {utils.format_number(
                         order[
                             isBid ? "amountToReceive" : "amountForSale"
@@ -95,7 +163,7 @@ class OrderBookRowVertical extends React.Component {
                     )}
                 </div>
                 <div
-                    className={`cell ${integerClass} right`}
+                    className={`cell ${integerClass} right vertical-table-cell-three`}
                     data-tip={tdDataTip}
                     data-html={true}
                     data-place="right"
