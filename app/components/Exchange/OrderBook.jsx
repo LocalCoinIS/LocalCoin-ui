@@ -30,10 +30,45 @@ class OrderBookRowVertical extends React.Component {
             : isBid
                 ? "orderHistoryBid"
                 : "orderHistoryAsk";
+        const translator = require("counterpart");
 
         let price = (
             <PriceText price={order.getPrice()} quote={quote} base={base} />
         );
+
+        let totalBaseCurrency = isBid
+            ? utils.format_number(
+                  order.totalForSale().getAmount({real: true}),
+                  8
+              )
+            : utils.format_number(
+                  order.totalToReceive().getAmount({real: true}),
+                  8
+              );
+
+        let totalQuoteCurrency = !isBid
+            ? utils.format_number(
+                  order.totalForSale().getAmount({real: true}),
+                  8
+              )
+            : utils.format_number(
+                  order.totalToReceive().getAmount({real: true}),
+                  8
+              );
+
+        let tdDataTip =
+            translator.translate("exchange.total") +
+            " " +
+            quote.get("symbol") +
+            " " +
+            totalQuoteCurrency +
+            "<br />" +
+            translator.translate("exchange.total") +
+            " " +
+            base.get("symbol") +
+            " " +
+            totalBaseCurrency;
+
         return (
             <div
                 onClick={this.props.onClick}
@@ -59,7 +94,14 @@ class OrderBookRowVertical extends React.Component {
                         quote.get("precision")
                     )}
                 </div>
-                <div className={`cell ${integerClass} right`}>{price}</div>
+                <div
+                    className={`cell ${integerClass} right`}
+                    data-tip={tdDataTip}
+                    data-html={true}
+                    data-place="right"
+                >
+                    {price}
+                </div>
             </div>
         );
     }
