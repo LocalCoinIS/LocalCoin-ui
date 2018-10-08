@@ -14168,19 +14168,19 @@
                                                                                 }
                                                                             ),
                                                                             r.a.createElement(
-                                                                                l.a,
-                                                                                {
-                                                                                    content:
-                                                                                        "exchange.hide"
-                                                                                }
+                                                                                "span",
+                                                                                null,
+                                                                                y.a.translate(
+                                                                                    "exchange.hide"
+                                                                                ),
+                                                                                " 0 ",
+                                                                                y.a.translate(
+                                                                                    "transfer.balances"
+                                                                                )
                                                                             ),
-                                                                            " 0 ",
                                                                             r.a.createElement(
-                                                                                l.a,
-                                                                                {
-                                                                                    content:
-                                                                                        "transfer.balances"
-                                                                                }
+                                                                                "span",
+                                                                                null
                                                                             )
                                                                         )
                                                                     )
