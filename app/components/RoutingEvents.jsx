@@ -45,6 +45,8 @@ class RoutingEvents {
         try {
             if (currentLocation == "/") return "homepage";
 
+            if (this.isMarket()) return "market left-cell-active";
+
             if (typeof this.router.params.account_name === "undefined")
                 return currentLocation.match(/[a-zA-Z]+/g).join("-");
 
@@ -55,6 +57,13 @@ class RoutingEvents {
         } catch (e) {}
 
         return "";
+    }
+
+    isMarket() {
+        let url = window.location.pathname;
+        if (url.match(/\/market\/\w+_\w+/gi)) return true;
+
+        return false;
     }
 
     updateContentClassByLocation() {
