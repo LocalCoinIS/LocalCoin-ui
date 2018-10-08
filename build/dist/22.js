@@ -139,7 +139,7 @@
                 f = a.n(h),
                 b = a(9),
                 g = a.n(b),
-                y = a(49),
+                y = a(50),
                 _ = a(2),
                 v = a.n(_),
                 k = (function() {
@@ -558,7 +558,7 @@
                 s = a(17),
                 o = a(6),
                 i = a(13),
-                l = a(49),
+                l = a(50),
                 c = a(5),
                 u = a(15),
                 p = a(31),
@@ -566,7 +566,7 @@
                 d = a.n(m),
                 h = a(3),
                 f = a.n(h),
-                b = a(52),
+                b = a(45),
                 g = a.n(b),
                 y = a(271),
                 _ = a(42),
@@ -2400,7 +2400,7 @@
                 });
             var n = a(0),
                 r = a.n(n),
-                s = a(49),
+                s = a(50),
                 o = a(9),
                 i = a.n(o),
                 l = a(35),
@@ -3034,7 +3034,7 @@
                 q = a(139),
                 I = a(321),
                 B = a(64),
-                F = a(52),
+                F = a(45),
                 R = a.n(F);
             a.d(t, "b", function() {
                 return V;
@@ -4145,7 +4145,7 @@
                 d = a(32),
                 h = a(15),
                 f = a(17),
-                b = a(49),
+                b = a(50),
                 g = a(6),
                 y = a(13),
                 _ = (function() {
@@ -6785,7 +6785,7 @@
                     d = a(13),
                     h = a(6),
                     f = a(24),
-                    b = a(52),
+                    b = a(45),
                     g = a.n(b),
                     y = a(3),
                     _ = a.n(y),
@@ -8196,7 +8196,7 @@
                 p = a(5),
                 m = a(13),
                 d = a(6),
-                h = a(52),
+                h = a(45),
                 f = a.n(h),
                 b = a(3),
                 g = a.n(b),
@@ -9518,7 +9518,7 @@
                 c = a(75),
                 u = a(183),
                 p = a(74),
-                m = a(50),
+                m = a(51),
                 d = a.n(m),
                 h = a(76),
                 f = a(2),
@@ -9538,7 +9538,9 @@
                 N = a(22),
                 P = a(491),
                 T = a(12),
-                j = (function() {
+                j = a(45),
+                q = a.n(j),
+                I = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -9552,11 +9554,11 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            function q(e, t) {
+            function B(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function I(e, t) {
+            function F(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -9565,7 +9567,7 @@
                     ? e
                     : t;
             }
-            function B(e, t) {
+            function R(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -9584,11 +9586,11 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var F = (function(e) {
+            var M = (function(e) {
                     function t() {
                         return (
-                            q(this, t),
-                            I(
+                            B(this, t),
+                            F(
                                 this,
                                 (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                     this,
@@ -9598,8 +9600,8 @@
                         );
                     }
                     return (
-                        B(t, r.a.Component),
-                        j(t, [
+                        R(t, r.a.Component),
+                        I(t, [
                             {
                                 key: "shouldComponentUpdate",
                                 value: function(e) {
@@ -9616,7 +9618,7 @@
                             {
                                 key: "componentDidMount",
                                 value: function() {
-                                    this.updateCeilWith();
+                                    q.a.rebuild(), this.updateCeilWith();
                                 }
                             },
                             {
@@ -9800,11 +9802,11 @@
                         t
                     );
                 })(),
-                R = (function(e) {
+                D = (function(e) {
                     function t() {
                         return (
-                            q(this, t),
-                            I(
+                            B(this, t),
+                            F(
                                 this,
                                 (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                     this,
@@ -9814,8 +9816,8 @@
                         );
                     }
                     return (
-                        B(t, r.a.Component),
-                        j(t, [
+                        R(t, r.a.Component),
+                        I(t, [
                             {
                                 key: "shouldComponentUpdate",
                                 value: function(e) {
@@ -9951,10 +9953,10 @@
                         t
                     );
                 })(),
-                M = (function(e) {
+                L = (function(e) {
                     function t(e) {
-                        q(this, t);
-                        var a = I(
+                        B(this, t);
+                        var a = F(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                         );
@@ -9988,8 +9990,8 @@
                         );
                     }
                     return (
-                        B(t, r.a.Component),
-                        j(t, [
+                        R(t, r.a.Component),
+                        I(t, [
                             {
                                 key: "componentWillReceiveProps",
                                 value: function(e) {
@@ -10026,7 +10028,9 @@
                             {
                                 key: "componentDidMount",
                                 value: function() {
-                                    if (this.props.horizontal) {
+                                    if (
+                                        (q.a.rebuild(), this.props.horizontal)
+                                    ) {
                                         var e = this.refs.hor_bids;
                                         v.a.initialize(e);
                                         var t = this.refs.hor_asks;
@@ -10135,7 +10139,7 @@
                                     if (c && l) {
                                         C = n.map(function(t, a) {
                                             return h
-                                                ? r.a.createElement(R, {
+                                                ? r.a.createElement(D, {
                                                       index: a,
                                                       key:
                                                           t.getPrice() +
@@ -10155,7 +10159,7 @@
                                                       currentAccount:
                                                           e.props.currentAccount
                                                   })
-                                                : r.a.createElement(F, {
+                                                : r.a.createElement(M, {
                                                       index: a,
                                                       key:
                                                           t.getPrice() +
@@ -10182,7 +10186,7 @@
                                         }),
                                             (S = j.map(function(t, a) {
                                                 return h
-                                                    ? r.a.createElement(R, {
+                                                    ? r.a.createElement(D, {
                                                           index: a,
                                                           key:
                                                               t.getPrice() +
@@ -10204,7 +10208,7 @@
                                                               e.props
                                                                   .currentAccount
                                                       })
-                                                    : r.a.createElement(F, {
+                                                    : r.a.createElement(M, {
                                                           index: a,
                                                           key:
                                                               t.getPrice() +
@@ -10248,10 +10252,10 @@
                                             }
                                         } catch (e) {}
                                         var B = C.length,
-                                            M = S.length;
+                                            F = S.length;
                                         g || C.splice(y, C.length),
                                             b || S.splice(y, S.length);
-                                        var D = r.a.createElement(
+                                        var R = r.a.createElement(
                                                 "thead",
                                                 null,
                                                 r.a.createElement(
@@ -10526,7 +10530,7 @@
                                                             },
                                                             this.state.flip
                                                                 ? L
-                                                                : D
+                                                                : R
                                                         )
                                                     ),
                                                     r.a.createElement(
@@ -10566,43 +10570,43 @@
                                                                 },
                                                                 S
                                                             )
-                                                        )
-                                                    ),
-                                                    M > y
-                                                        ? r.a.createElement(
-                                                              "div",
-                                                              {
-                                                                  className:
-                                                                      "orderbook-showall"
-                                                              },
-                                                              r.a.createElement(
-                                                                  "a",
+                                                        ),
+                                                        F > y
+                                                            ? r.a.createElement(
+                                                                  "div",
                                                                   {
-                                                                      onClick: this._onToggleShowAll.bind(
-                                                                          this,
-                                                                          "asks"
-                                                                      )
+                                                                      className:
+                                                                          "orderbook-showall"
                                                                   },
                                                                   r.a.createElement(
-                                                                      w.a,
+                                                                      "a",
                                                                       {
-                                                                          content: b
-                                                                              ? "exchange.hide"
-                                                                              : "exchange.show_asks"
-                                                                      }
-                                                                  ),
-                                                                  b
-                                                                      ? null
-                                                                      : r.a.createElement(
-                                                                            "span",
-                                                                            null,
-                                                                            " (",
-                                                                            M,
-                                                                            ")"
-                                                                        )
+                                                                          onClick: this._onToggleShowAll.bind(
+                                                                              this,
+                                                                              "asks"
+                                                                          )
+                                                                      },
+                                                                      r.a.createElement(
+                                                                          w.a,
+                                                                          {
+                                                                              content: b
+                                                                                  ? "exchange.hide"
+                                                                                  : "exchange.show_asks"
+                                                                          }
+                                                                      ),
+                                                                      b
+                                                                          ? null
+                                                                          : r.a.createElement(
+                                                                                "span",
+                                                                                null,
+                                                                                " (",
+                                                                                F,
+                                                                                ")"
+                                                                            )
+                                                                  )
                                                               )
-                                                          )
-                                                        : null
+                                                            : null
+                                                    )
                                                 )
                                             ),
                                             r.a.createElement(
@@ -10747,7 +10751,7 @@
                                                             },
                                                             this.state.flip
                                                                 ? L
-                                                                : D
+                                                                : R
                                                         )
                                                     ),
                                                     r.a.createElement(
@@ -11190,24 +11194,22 @@
                         t
                     );
                 })();
-            (M.defaultProps = {bids: [], asks: [], orders: {}}),
-                (M.propTypes = {
+            (L.defaultProps = {bids: [], asks: [], orders: {}}),
+                (L.propTypes = {
                     bids: b.a.array.isRequired,
                     asks: b.a.array.isRequired,
                     orders: b.a.object.isRequired
                 });
-            var D = M,
-                L = a(7),
-                z = a.n(L),
-                U = a(42),
-                W = a(15),
-                H = a(4),
-                V = a(3),
-                J = a.n(V),
-                Q = a(93),
-                K = a(181),
-                G = a(52),
-                Y = a.n(G),
+            var z = L,
+                U = a(7),
+                W = a.n(U),
+                H = a(42),
+                V = a(15),
+                J = a(4),
+                Q = a(3),
+                K = a.n(Q),
+                G = a(93),
+                Y = a(181),
                 X = a(272),
                 Z = a.n(X),
                 $ = (function() {
@@ -11276,7 +11278,7 @@
                             key: "componentWillMount",
                             value: function() {
                                 this.props.block ||
-                                    K.a.getBlock(this.props.block_number);
+                                    Y.a.getBlock(this.props.block_number);
                             }
                         },
                         {
@@ -11285,7 +11287,7 @@
                                 return (
                                     e.block &&
                                         !this.props.block &&
-                                        setTimeout(Y.a.rebuild, 1e3),
+                                        setTimeout(q.a.rebuild, 1e3),
                                     e.block !== this.props.block
                                 );
                             }
@@ -11308,7 +11310,7 @@
                                           r.a.createElement(
                                               "span",
                                               null,
-                                              J.a.localize(t.timestamp, {
+                                              K.a.localize(t.timestamp, {
                                                   type: "date",
                                                   format: s
                                               })
@@ -11332,13 +11334,13 @@
                 tooltip: !1,
                 component: "span"
             };
-            var te = (ee = Object(W.connect)(ee, {
+            var te = (ee = Object(V.connect)(ee, {
                     listenTo: function() {
-                        return [Q.a];
+                        return [G.a];
                     },
                     getProps: function(e) {
                         return {
-                            block: Q.a.getState().blocks.get(e.block_number)
+                            block: G.a.getState().blocks.get(e.block_number)
                         };
                     }
                 })),
@@ -11356,7 +11358,7 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            var ne = H.c.operations,
+            var ne = J.c.operations,
                 re = (function(e) {
                     function t(e) {
                         !(function(e, t) {
@@ -11413,7 +11415,7 @@
                                 key: "shouldComponentUpdate",
                                 value: function(e, t) {
                                     return (
-                                        !z.a.is(
+                                        !W.a.is(
                                             e.history,
                                             this.props.history
                                         ) ||
@@ -11450,7 +11452,7 @@
                                     var t = this.refs.history;
                                     (t.scrollTop = 0),
                                         v.a.update(t),
-                                        setTimeout(Y.a.rebuild, 1e3);
+                                        setTimeout(q.a.rebuild, 1e3);
                                 }
                             },
                             {
@@ -11518,7 +11520,7 @@
                                                       (o = s),
                                                       (i = !0))
                                                     : ((a = s), (o = n));
-                                                var l = U.a.parse_order_history(
+                                                var l = H.a.parse_order_history(
                                                         t,
                                                         a,
                                                         o,
@@ -11578,7 +11580,7 @@
                                                       (a = s),
                                                       (o = !0))
                                                     : ((t = s), (a = n));
-                                                var i = U.a.parse_order_history(
+                                                var i = H.a.parse_order_history(
                                                     e,
                                                     t,
                                                     a,
@@ -11805,7 +11807,7 @@
                 })();
             (re.defaultProps = {history: []}),
                 (re.propTypes = {history: b.a.object.isRequired});
-            var se = Object(W.connect)(re, {
+            var se = Object(V.connect)(re, {
                     listenTo: function() {
                         return [l.a];
                     },
@@ -11821,10 +11823,10 @@
                 pe = a(440),
                 me = a(18),
                 de = a(182),
-                he = a(47),
+                he = a(48),
                 fe = a(568),
                 be = a.n(fe),
-                ge = a(51),
+                ge = a(52),
                 ye = a.n(ge),
                 _e =
                     Object.assign ||
@@ -12118,7 +12120,7 @@
                                                   r.a.createElement(
                                                       "span",
                                                       {
-                                                          "data-tip": J.a.translate(
+                                                          "data-tip": K.a.translate(
                                                               "tooltip.market_fee",
                                                               {
                                                                   percent:
@@ -12175,9 +12177,9 @@
                                                   )
                                               )
                                             : null,
-                                    Q = k.a.replaceName(this.props.quote),
-                                    K = Q.name,
-                                    G = Q.prefix,
+                                    J = k.a.replaceName(this.props.quote),
+                                    Q = J.name,
+                                    G = J.prefix,
                                     Y = L.charge_market_fee
                                         ? r.a.createElement(
                                               "div",
@@ -12225,7 +12227,7 @@
                                                   r.a.createElement(
                                                       "span",
                                                       {
-                                                          "data-tip": J.a.translate(
+                                                          "data-tip": K.a.translate(
                                                               "tooltip.market_fee",
                                                               {
                                                                   percent:
@@ -12236,7 +12238,7 @@
                                                                   asset:
                                                                       (G ||
                                                                           "") +
-                                                                      K
+                                                                      Q
                                                               }
                                                           ),
                                                           className:
@@ -12290,13 +12292,13 @@
                                         : j.getAmount({real: !0}) >=
                                           parseFloat(C),
                                     ee = u
-                                        ? J.a.translate("exchange.short")
+                                        ? K.a.translate("exchange.short")
                                         : X
-                                            ? J.a.translate("exchange.buy")
-                                            : J.a.translate("exchange.sell"),
+                                            ? K.a.translate("exchange.buy")
+                                            : K.a.translate("exchange.sell"),
                                     te = X
-                                        ? J.a.translate("exchange.buy")
-                                        : J.a.translate("exchange.sell"),
+                                        ? K.a.translate("exchange.buy")
+                                        : K.a.translate("exchange.sell"),
                                     ae = !u && !(j.getAmount() > 0 && $),
                                     ne = !(S > 0),
                                     re = !(C > 0),
@@ -12306,15 +12308,15 @@
                                     }),
                                     le = X ? o.get("symbol") : s.get("symbol"),
                                     ce = ne
-                                        ? J.a.translate(
+                                        ? K.a.translate(
                                               "exchange.invalid_price"
                                           )
                                         : re
-                                            ? J.a.translate(
+                                            ? K.a.translate(
                                                   "exchange.invalid_amount"
                                               )
                                             : ae
-                                                ? J.a.translate(
+                                                ? K.a.translate(
                                                       "exchange.no_balance"
                                                   )
                                                 : null;
@@ -12825,7 +12827,7 @@
                                                                               real: !0
                                                                           }
                                                                       )
-                                                                    : J.a.translate(
+                                                                    : K.a.translate(
                                                                           "transfer.errors.insufficient"
                                                                       ),
                                                                 autoComplete:
@@ -13373,7 +13375,7 @@
                                 key: "_onInputName",
                                 value: function(e, t) {
                                     var a = t.target.value.trim().toUpperCase(),
-                                        n = !H.d.is_valid_symbol_error(a, !0);
+                                        n = !J.d.is_valid_symbol_error(a, !0);
                                     if (
                                         (this.setState({
                                             inputValue: t.target.value.trim(),
@@ -13482,7 +13484,7 @@
                                                 .forEach(function(t) {
                                                     if (!(y > 100)) {
                                                         y++;
-                                                        var a = H.b.getObject(
+                                                        var a = J.b.getObject(
                                                             t.issuer,
                                                             !1,
                                                             !1
@@ -13752,7 +13754,7 @@
                                                                     this,
                                                                     !1
                                                                 ),
-                                                                placeholder: J.a.translate(
+                                                                placeholder: K.a.translate(
                                                                     "exchange.market_picker.search"
                                                                 ),
                                                                 maxLength: "16",
@@ -13808,7 +13810,7 @@
                                                                     this,
                                                                     !0
                                                                 ),
-                                                                placeholder: J.a.translate(
+                                                                placeholder: K.a.translate(
                                                                     "exchange.market_picker.search"
                                                                 ),
                                                                 maxLength: "16",
@@ -14078,8 +14080,8 @@
                                         o = s[0],
                                         i = s[1];
                                     Promise.all([
-                                        Object(H.f)("getAsset", o),
-                                        Object(H.f)("getAsset", i)
+                                        Object(J.f)("getAsset", o),
+                                        Object(J.f)("getAsset", i)
                                     ])
                                         .then(function(a) {
                                             var r = Ie(a, 2),
@@ -14863,7 +14865,7 @@
                                             formatter: function() {
                                                 return (
                                                     "\n\t\t\t\t\t<table>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<td>" +
-                                                    J.a.translate(
+                                                    K.a.translate(
                                                         "exchange.price"
                                                     ) +
                                                     ':</td>\n\t\t\t\t\t\t\t<td style="text-align: right">' +
@@ -14876,7 +14878,7 @@
                                                     "/" +
                                                     x +
                                                     "</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<td>" +
-                                                    J.a.translate(
+                                                    K.a.translate(
                                                         "exchange.quantity"
                                                     ) +
                                                     ':</td>\n\t\t\t\t\t\t\t<td style="text-align: right">' +
@@ -14976,7 +14978,7 @@
                                             dashStyle: "longdash",
                                             value: this.props.LCP,
                                             label: {
-                                                text: J.a.translate(
+                                                text: K.a.translate(
                                                     "explorer.block.call_limit"
                                                 ),
                                                 style: {
@@ -14996,7 +14998,7 @@
                                         dashStyle: "solid",
                                         value: u,
                                         label: {
-                                            text: J.a.translate(
+                                            text: K.a.translate(
                                                 "explorer.block.feed_price"
                                             ),
                                             style: {
@@ -15240,7 +15242,7 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            var nt = H.c.operations,
+            var nt = J.c.operations,
                 rt = Object.keys(nt),
                 st = (function(e) {
                     function t() {
@@ -15342,11 +15344,11 @@
                                 value: function(e) {
                                     return (
                                         !(!e.account || !this.props.account) &&
-                                        (!z.a.is(
+                                        (!W.a.is(
                                             e.account.get("history"),
                                             this.props.account.get("history")
                                         ) ||
-                                            !z.a.is(
+                                            !W.a.is(
                                                 e.account,
                                                 this.props.account
                                             ))
@@ -15736,7 +15738,7 @@
                             {
                                 key: "componentDidUpdate",
                                 value: function() {
-                                    Y.a.rebuild();
+                                    q.a.rebuild();
                                 }
                             },
                             {
@@ -15962,11 +15964,11 @@
                                     t = this._getMR();
                                 return e && "" !== e
                                     ? "danger" === e
-                                        ? J.a.translate("tooltip.cr_danger", {
+                                        ? K.a.translate("tooltip.cr_danger", {
                                               mr: t
                                           })
                                         : "warning" === e
-                                            ? J.a.translate(
+                                            ? K.a.translate(
                                                   "tooltip.cr_warning",
                                                   {mr: t}
                                               )
@@ -16233,7 +16235,7 @@
                                                 : "1.3.0" === q
                                                     ? j
                                                     : null,
-                                        B = I ? H.b.getAsset(I) : null,
+                                        B = I ? J.b.getAsset(I) : null,
                                         F = "",
                                         R = null;
                                     if (!!B && !!B.get("bitasset")) {
@@ -16248,7 +16250,7 @@
                                             ) {
                                                 var L = M[D];
                                                 if (
-                                                    H.b
+                                                    J.b
                                                         .getObject(L)
                                                         .getIn([
                                                             "call_price",
@@ -16279,26 +16281,26 @@
                                         }
                                     }
                                     var W = a(3),
-                                        V =
+                                        H =
                                             !!this.state
                                                 .selectedMarketPickerAsset &&
                                             this.state
                                                 .selectedMarketPickerAsset == y,
-                                        Q =
+                                        V =
                                             !!this.state
                                                 .selectedMarketPickerAsset &&
                                             this.state
                                                 .selectedMarketPickerAsset == b,
-                                        K = [
+                                        Q = [
                                             {
                                                 key: "depth_chart",
-                                                label: J.a.translate(
+                                                label: K.a.translate(
                                                     "exchange.order_depth"
                                                 )
                                             },
                                             {
                                                 key: "price_chart",
-                                                label: J.a.translate(
+                                                label: K.a.translate(
                                                     "exchange.price_history"
                                                 )
                                             }
@@ -16359,7 +16361,7 @@
                                                                       style: {
                                                                           cursor:
                                                                               "pointer",
-                                                                          color: V
+                                                                          color: H
                                                                               ? "#2196f3"
                                                                               : ""
                                                                       }
@@ -16393,7 +16395,7 @@
                                                                       style: {
                                                                           cursor:
                                                                               "pointer",
-                                                                          color: Q
+                                                                          color: V
                                                                               ? "#2196f3"
                                                                               : ""
                                                                       }
@@ -16580,7 +16582,7 @@
                                                                   dt,
                                                                   {
                                                                       ignoreColorChange: !0,
-                                                                      toolTip: J.a.translate(
+                                                                      toolTip: K.a.translate(
                                                                           "tooltip.feed_price"
                                                                       ),
                                                                       ready: p,
@@ -16600,7 +16602,7 @@
                                                                   dt,
                                                                   {
                                                                       ignoreColorChange: !0,
-                                                                      toolTip: J.a.translate(
+                                                                      toolTip: K.a.translate(
                                                                           "tooltip.settle_price"
                                                                       ),
                                                                       ready: p,
@@ -16628,7 +16630,7 @@
                                                             ? r.a.createElement(
                                                                   dt,
                                                                   {
-                                                                      toolTip: J.a.translate(
+                                                                      toolTip: K.a.translate(
                                                                           "tooltip.call_limit"
                                                                       ),
                                                                       ready: p,
@@ -16647,7 +16649,7 @@
                                                             ? r.a.createElement(
                                                                   dt,
                                                                   {
-                                                                      toolTip: J.a.translate(
+                                                                      toolTip: K.a.translate(
                                                                           "tooltip.margin_price"
                                                                       ),
                                                                       ready: p,
@@ -16737,8 +16739,8 @@
                                                         r.a.createElement(
                                                             Et.a,
                                                             {
-                                                                options: K,
-                                                                selected: K.find(
+                                                                options: Q,
+                                                                selected: Q.find(
                                                                     function(
                                                                         e
                                                                     ) {
@@ -17289,16 +17291,16 @@
                                             showBullets: !1,
                                             hideNext: !0,
                                             hidePrev: !0,
-                                            nextLabel: J.a.translate(
+                                            nextLabel: K.a.translate(
                                                 "walkthrough.next_label"
                                             ),
-                                            prevLabel: J.a.translate(
+                                            prevLabel: K.a.translate(
                                                 "walkthrough.prev_label"
                                             ),
-                                            skipLabel: J.a.translate(
+                                            skipLabel: K.a.translate(
                                                 "walkthrough.skip_label"
                                             ),
-                                            doneLabel: J.a.translate(
+                                            doneLabel: K.a.translate(
                                                 "walkthrough.done_label"
                                             )
                                         })
@@ -17412,12 +17414,12 @@
                                         );
                                     })
                                     .forEach(function(e, t) {
-                                        var a = H.b.getObject(e);
+                                        var a = J.b.getObject(e);
                                         c[t] = {
                                             balance: a
                                                 ? parseInt(a.get("balance"), 10)
                                                 : 0,
-                                            fee: n._getFee(H.b.getAsset(t))
+                                            fee: n._getFee(J.b.getAsset(t))
                                         };
                                     });
                                 var p = u(i, c, this.state.sellFeeAssetIdx),
@@ -17486,7 +17488,7 @@
                                 (a = u.for_sale.clone(
                                     a
                                         ? parseInt(
-                                              H.b.getObject(a).toJS().balance,
+                                              J.b.getObject(a).toJS().balance,
                                               10
                                           )
                                         : 0
@@ -17494,7 +17496,7 @@
                                     (n = new me.a({
                                         amount: n
                                             ? parseInt(
-                                                  H.b.getObject(n).toJS()
+                                                  J.b.getObject(n).toJS()
                                                       .balance,
                                                   10
                                               )
@@ -17581,7 +17583,7 @@
                                         ),
                                         fee: {asset_id: t, amount: 0}
                                     }),
-                                    o = U.a.getMarketName(
+                                    o = H.a.getMarketName(
                                         this.props.baseAsset,
                                         this.props.quoteAsset
                                     ),
@@ -17640,7 +17642,7 @@
                                         fee: {asset_id: e, amount: 0}
                                     });
                                 Promise.all([
-                                    Object(H.f)(
+                                    Object(J.f)(
                                         "getAsset",
                                         this.props.quoteAsset.getIn([
                                             "bitasset",
@@ -17682,7 +17684,7 @@
                                 (a = r.for_sale.clone(
                                     a
                                         ? parseInt(
-                                              H.b.getObject(a).get("balance"),
+                                              J.b.getObject(a).get("balance"),
                                               10
                                           )
                                         : 0
@@ -17690,7 +17692,7 @@
                                     (n = new me.a({
                                         amount: n
                                             ? parseInt(
-                                                  H.b.getObject(n).toJS()
+                                                  J.b.getObject(n).toJS()
                                                       .balance,
                                                   10
                                               )
@@ -17719,7 +17721,7 @@
                                 (a = r.for_sale.clone(
                                     a
                                         ? parseInt(
-                                              H.b.getObject(a).get("balance"),
+                                              J.b.getObject(a).get("balance"),
                                               10
                                           )
                                         : 0
@@ -17727,7 +17729,7 @@
                                     (n = new me.a({
                                         amount: n
                                             ? parseInt(
-                                                  H.b.getObject(n).toJS()
+                                                  J.b.getObject(n).toJS()
                                                       .balance,
                                                   10
                                               )
@@ -18178,11 +18180,11 @@
                                     F = T.chartHeight,
                                     R = T.buyDiff,
                                     M = T.sellDiff,
-                                    L = T.width,
-                                    z = T.buySellTop,
-                                    W = this.isMarketFrozen(),
-                                    H = W.isFrozen,
-                                    V = W.frozenAsset,
+                                    D = T.width,
+                                    L = T.buySellTop,
+                                    U = this.isMarketFrozen(),
+                                    W = U.isFrozen,
+                                    V = U.frozenAsset,
                                     J = null,
                                     Q = null,
                                     K = null,
@@ -18236,7 +18238,7 @@
                                         J.get("id").split(".")[2] >
                                         Q.get("id").split(".")[2];
                                     if (
-                                        ((te = U.a.parse_order_history(
+                                        ((te = H.a.parse_order_history(
                                             pe,
                                             de,
                                             fe,
@@ -18249,7 +18251,7 @@
                                         me.pays.asset_id === J.get("id")
                                             ? ((de = J), (fe = Q), (be = !0))
                                             : ((de = Q), (fe = J));
-                                        var ye = U.a.parse_order_history(
+                                        var ye = H.a.parse_order_history(
                                             me,
                                             de,
                                             fe,
@@ -18290,7 +18292,7 @@
                                     ((Pe = c.getIn(["options", "description"])),
                                     (Pe = he.a.parseDescription(Pe).main));
                                 var Te = !1;
-                                L < 1e3 && ((Te = !0), (I = !1));
+                                D < 1e3 && ((Te = !0), (I = !1));
                                 var je = I ? 2 : 1,
                                     qe = (Math.max(
                                         this.state.height > 1100 ? F : F - 125,
@@ -18298,7 +18300,7 @@
                                     ),
                                     this.state.expirationType),
                                     Ie = this.state.expirationCustomTime,
-                                    Be = H
+                                    Be = W
                                         ? null
                                         : r.a.createElement(Ee, {
                                               onBorrow: le
@@ -18329,10 +18331,10 @@
                                                       : "medium-6 xlarge-4",
                                                   this.state.flipBuySell
                                                       ? "order-" +
-                                                        (z ? 2 : 5 * je) +
+                                                        (L ? 2 : 5 * je) +
                                                         " sell-form"
                                                       : "order-" +
-                                                        (z ? 1 : 4 * je) +
+                                                        (L ? 1 : 4 * je) +
                                                         " buy-form"
                                               ),
                                               type: "bid",
@@ -18418,7 +18420,7 @@
                                                         this
                                                     )
                                           }),
-                                    Fe = H
+                                    Fe = W
                                         ? null
                                         : r.a.createElement(Ee, {
                                               onBorrow: ie
@@ -18449,10 +18451,10 @@
                                                       : "medium-6 xlarge-4",
                                                   this.state.flipBuySell
                                                       ? "order-" +
-                                                        (z ? 1 : 4 * je) +
+                                                        (L ? 1 : 4 * je) +
                                                         " buy-form"
                                                       : "order-" +
-                                                        (z ? 2 : 5 * je) +
+                                                        (L ? 2 : 5 * je) +
                                                         " sell-form"
                                               ),
                                               type: "ask",
@@ -18538,7 +18540,7 @@
                                                         this
                                                     )
                                           }),
-                                    Re = r.a.createElement(D, {
+                                    Re = r.a.createElement(z, {
                                         latest: te,
                                         changeClass: ae,
                                         orders: a,
@@ -18565,9 +18567,9 @@
                                         marketReady: d,
                                         wrapperClass:
                                             "order-" +
-                                            (z ? 3 : 1) +
+                                            (L ? 3 : 1) +
                                             " xlarge-order-" +
-                                            (z ? 4 : 1),
+                                            (L ? 4 : 1),
                                         currentAccount: this.props.currentAccount.get(
                                             "id"
                                         )
@@ -18755,7 +18757,7 @@
                                                                           : F -
                                                                             150,
                                                                   mobile:
-                                                                      L < 800
+                                                                      D < 800
                                                               }
                                                           )
                                                       ),
@@ -18785,7 +18787,7 @@
                                                               )
                                                           )
                                                         : null,
-                                                    H
+                                                    W
                                                         ? r.a.createElement(
                                                               "div",
                                                               {
@@ -19326,7 +19328,7 @@
                         t
                     );
                 })(),
-                Ut = Object(H.e)(),
+                Ut = Object(J.e)(),
                 Wt = void 0,
                 Ht = void 0,
                 Vt = void 0,

@@ -743,28 +743,31 @@ class OrderBook extends React.Component {
                                         {askRows}
                                     </TransitionWrapper>
                                 </table>
+                                {totalAsksLength > rowCount ? (
+                                    <div className="orderbook-showall">
+                                        <a
+                                            onClick={this._onToggleShowAll.bind(
+                                                this,
+                                                "asks"
+                                            )}
+                                        >
+                                            <Translate
+                                                content={
+                                                    showAllAsks
+                                                        ? "exchange.hide"
+                                                        : "exchange.show_asks"
+                                                }
+                                            />
+                                            {!showAllAsks ? (
+                                                <span>
+                                                    {" "}
+                                                    ({totalAsksLength})
+                                                </span>
+                                            ) : null}
+                                        </a>
+                                    </div>
+                                ) : null}
                             </div>
-                            {totalAsksLength > rowCount ? (
-                                <div className="orderbook-showall">
-                                    <a
-                                        onClick={this._onToggleShowAll.bind(
-                                            this,
-                                            "asks"
-                                        )}
-                                    >
-                                        <Translate
-                                            content={
-                                                showAllAsks
-                                                    ? "exchange.hide"
-                                                    : "exchange.show_asks"
-                                            }
-                                        />
-                                        {!showAllAsks ? (
-                                            <span> ({totalAsksLength})</span>
-                                        ) : null}
-                                    </a>
-                                </div>
-                            ) : null}
                         </div>
                     </div>
 
