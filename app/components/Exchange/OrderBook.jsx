@@ -10,6 +10,7 @@ import TransitionWrapper from "../Utility/TransitionWrapper";
 import AssetName from "../Utility/AssetName";
 import {StickyTable} from "react-sticky-table";
 import Icon from "../Icon/Icon";
+import ReactTooltip from "react-tooltip";
 
 class OrderBookRowVertical extends React.Component {
     shouldComponentUpdate(np) {
@@ -22,6 +23,7 @@ class OrderBookRowVertical extends React.Component {
     }
 
     componentDidMount() {
+        ReactTooltip.rebuild();
         this.updateCeilWith();
     }
 
@@ -347,6 +349,8 @@ class OrderBook extends React.Component {
     verticalScrollBar = () => this.queryStickyTable("#y-scrollbar");
 
     componentDidMount() {
+        ReactTooltip.rebuild();
+
         if (!this.props.horizontal) {
             let up = this.refs.vertical_sticky_table_up.table.querySelector(
                 "#y-scrollbar"
