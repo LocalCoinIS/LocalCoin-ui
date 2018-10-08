@@ -326,3 +326,11 @@ main[class*="help-"] > .content {
 .vertical-orderbook-up .transition-container .cell {
     width: 100px;
 }
+
+@media only screen and (min-width: 1280px) {
+    body.localcoin
+        .exchange-layout
+        .grid-block.shrink.no-padding.overflow-visible.top-bar.left-cell-active {
+        margin-left: 301px;
+    }
+}
