@@ -1247,7 +1247,7 @@
                     ? e
                     : t;
             }
-            function F(e, t) {
+            function B(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -1266,7 +1266,7 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var B = (function(e) {
+            var F = (function(e) {
                 function t(e) {
                     q(this, t);
                     var a = I(
@@ -1276,7 +1276,7 @@
                     return (a.state = a._initialState(e)), a;
                 }
                 return (
-                    F(t, s.a.Component),
+                    B(t, s.a.Component),
                     j(t, [
                         {
                             key: "_initialState",
@@ -1872,19 +1872,19 @@
                                         )
                                     ),
                                     I = this._getFeedPrice(),
-                                    F =
+                                    B =
                                         this.props.quote_asset.getIn([
                                             "bitasset",
                                             "current_feed",
                                             "maintenance_collateral_ratio"
                                         ]) / 1e3,
-                                    B = (this.props.quote_asset.getIn([
+                                    F = (this.props.quote_asset.getIn([
                                         "bitasset",
                                         "current_feed",
                                         "maximum_short_squeeze_ratio"
                                     ]),
                                     this._isPredictionMarket(this.props));
-                                return !B && isNaN(I)
+                                return !F && isNaN(I)
                                     ? s.a.createElement(
                                           "div",
                                           null,
@@ -1947,7 +1947,7 @@
                                                       : s.a.createElement(O.a, {
                                                             path:
                                                                 "components/" +
-                                                                (B
+                                                                (F
                                                                     ? "BorrowModalPrediction"
                                                                     : "BorrowModal"),
                                                             debt: a.get(
@@ -1959,9 +1959,9 @@
                                                             borrower: this.props.account.get(
                                                                 "name"
                                                             ),
-                                                            mr: F
+                                                            mr: B
                                                         }),
-                                                  B
+                                                  F
                                                       ? null
                                                       : s.a.createElement(
                                                             "div",
@@ -2072,7 +2072,7 @@
                                                                           {
                                                                               noPopOver: !0,
                                                                               quote_amount:
-                                                                                  F *
+                                                                                  B *
                                                                                   this
                                                                                       .state
                                                                                       .short_amount *
@@ -2140,7 +2140,7 @@
                                                             )
                                                           : null
                                                   ),
-                                                  B
+                                                  F
                                                       ? null
                                                       : s.a.createElement(
                                                             "div",
@@ -2286,7 +2286,7 @@
                     t
                 );
             })();
-            (B.propTypes = {
+            (F.propTypes = {
                 quote_asset: f.a.ChainAsset.isRequired,
                 bitasset_balance: f.a.ChainObject,
                 backing_asset: f.a.ChainAsset.isRequired,
@@ -2294,7 +2294,7 @@
                 call_orders: f.a.ChainObjectsList,
                 hasCallOrders: i.a.bool
             }),
-                (B = Object(b.a)(B));
+                (F = Object(b.a)(F));
             var R = (function(e) {
                 function t() {
                     q(this, t);
@@ -2305,7 +2305,7 @@
                     return (e.state = {smallScreen: !1, open: !1}), e;
                 }
                 return (
-                    F(t, s.a.Component),
+                    B(t, s.a.Component),
                     j(t, [
                         {
                             key: "show",
@@ -2359,7 +2359,7 @@
                                                   className:
                                                       "grid-block vertical"
                                               },
-                                              s.a.createElement(B, {
+                                              s.a.createElement(F, {
                                                   quote_asset: t,
                                                   call_orders: n
                                                       .get(
@@ -3033,9 +3033,9 @@
                 j = a(18),
                 q = a(139),
                 I = a(321),
-                F = a(64),
-                B = a(52),
-                R = a.n(B);
+                B = a(64),
+                F = a(52),
+                R = a.n(F);
             a.d(t, "b", function() {
                 return V;
             }),
@@ -3488,7 +3488,7 @@
                                                   style: W,
                                                   onClick: this.props.onFlip
                                               },
-                                              r.a.createElement(F.a, {
+                                              r.a.createElement(B.a, {
                                                   base_amount: n.sellPrice()
                                                       .base.amount,
                                                   base_asset: n.sellPrice().base
@@ -4724,8 +4724,8 @@
                 j = a(106),
                 q = a(22),
                 I = a(77),
-                F = a(9),
-                B = a.n(F),
+                B = a(9),
+                F = a.n(B),
                 R = a(112),
                 M = a(3),
                 D = a.n(M),
@@ -6087,8 +6087,8 @@
                                             .toArray());
                                 var q = A && A.length,
                                     I = "mymarkets-header clickable",
-                                    F = B()(I, {inactive: !x}),
-                                    M = B()(I, {inactive: x}),
+                                    B = F()(I, {inactive: !x}),
+                                    M = F()(I, {inactive: x}),
                                     z = {
                                         minWidth: this.state.minWidth,
                                         minHeight: "6rem"
@@ -6114,7 +6114,7 @@
                                             "div",
                                             {
                                                 ref: "myMarkets",
-                                                className: F,
+                                                className: B,
                                                 onClick: this._changeTab.bind(
                                                     this,
                                                     "my-market"
@@ -6499,7 +6499,7 @@
                                                               e,
                                                               a
                                                           ),
-                                                          className: B()(
+                                                          className: F()(
                                                               "mymarkets-tab",
                                                               {active: v === a}
                                                           )
@@ -6525,7 +6525,7 @@
                                                           this,
                                                           p.size + 1
                                                       ),
-                                                      className: B()(
+                                                      className: F()(
                                                           "mymarkets-tab",
                                                           {
                                                               active:
@@ -8122,7 +8122,7 @@
                         globalObject: "2.0.0"
                     }),
                     (I = Object(d.a)(I));
-                var F = (function(e) {
+                var B = (function(e) {
                     function t() {
                         T(this, t);
                         var e = j(
@@ -8180,7 +8180,7 @@
                         t
                     );
                 })();
-                t.a = F;
+                t.a = B;
             }.call(this, a(29).Buffer));
         },
         440: function(e, t, a) {
@@ -8269,7 +8269,7 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var F = (function(e) {
+            var B = (function(e) {
                 function t(e) {
                     j(this, t);
                     var a = q(
@@ -9383,12 +9383,12 @@
                     t
                 );
             })();
-            (F.propTypes = {
+            (B.propTypes = {
                 sender: d.a.ChainAccount.isRequired,
                 asset: d.a.ChainAsset.isRequired
             }),
-                (F = Object(m.a)(F));
-            var B = (function(e) {
+                (B = Object(m.a)(B));
+            var F = (function(e) {
                 function t() {
                     return (
                         j(this, t),
@@ -9428,7 +9428,7 @@
                                         (t = (n = this.props.bridges.first())
                                             .inputCoinType),
                                     r.a.createElement(
-                                        F,
+                                        B,
                                         P({}, a, {preferredBridge: t}, n.toJS())
                                     )
                                 );
@@ -9438,7 +9438,7 @@
                     t
                 );
             })();
-            B = Object(S.connect)(B, {
+            F = Object(S.connect)(F, {
                 listenTo: function() {
                     return [A.a];
                 },
@@ -9490,7 +9490,7 @@
                                           },
                                           this.state.open
                                               ? r.a.createElement(
-                                                    B,
+                                                    F,
                                                     P({}, this.props, {
                                                         open: this.state.open
                                                     })
@@ -9565,7 +9565,7 @@
                     ? e
                     : t;
             }
-            function F(e, t) {
+            function B(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -9584,7 +9584,7 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var B = (function(e) {
+            var F = (function(e) {
                     function t() {
                         return (
                             q(this, t),
@@ -9598,7 +9598,7 @@
                         );
                     }
                     return (
-                        F(t, r.a.Component),
+                        B(t, r.a.Component),
                         j(t, [
                             {
                                 key: "shouldComponentUpdate",
@@ -9614,31 +9614,134 @@
                                 }
                             },
                             {
+                                key: "componentDidMount",
+                                value: function() {
+                                    this.updateCeilWith();
+                                }
+                            },
+                            {
+                                key: "componentDidUpdate",
+                                value: function() {
+                                    this.updateCeilWith();
+                                }
+                            },
+                            {
+                                key: "updateCeilWith",
+                                value: function() {
+                                    function e(e, t) {
+                                        var a = document.getElementsByClassName(
+                                            e
+                                        );
+                                        for (var n in a)
+                                            try {
+                                                a[n].style.width = t + "px";
+                                            } catch (e) {}
+                                    }
+                                    function t(e) {
+                                        var t = 0,
+                                            a = document.getElementsByClassName(
+                                                e
+                                            );
+                                        for (var n in a) {
+                                            var r = a[n].offsetWidth;
+                                            r > t && (t = r);
+                                        }
+                                        return t;
+                                    }
+                                    var a = "vertical-table-cell-one",
+                                        n = "vertical-table-cell-two",
+                                        r = "vertical-table-cell-three",
+                                        s = {one: t(a), two: t(n), three: t(r)};
+                                    e(a, s.one), e(n, s.two), e(r, s.three);
+                                    try {
+                                        var o = s.one + s.two + s.three;
+                                        document.getElementsByClassName(
+                                            "container-menu-header"
+                                        )[0].style.marginLeft = o + "px";
+                                    } catch (e) {}
+                                }
+                            },
+                            {
+                                key: "componentWillUnmount",
+                                value: function() {
+                                    this.resetHeaderMargin();
+                                }
+                            },
+                            {
+                                key: "resetHeaderMargin",
+                                value: function() {
+                                    try {
+                                        document.getElementsByClassName(
+                                            "container-menu-header"
+                                        )[0].style.marginLeft = 0;
+                                    } catch (e) {}
+                                }
+                            },
+                            {
                                 key: "render",
                                 value: function() {
                                     var e = this.props,
                                         t = e.order,
-                                        a = e.quote,
-                                        n = e.base,
-                                        s = e.final,
-                                        o = t.isBid(),
-                                        i = t.isCall()
+                                        n = e.quote,
+                                        s = e.base,
+                                        o = e.final,
+                                        i = t.isBid(),
+                                        l = t.isCall()
                                             ? "orderHistoryCall"
-                                            : o
+                                            : i
                                                 ? "orderHistoryBid"
                                                 : "orderHistoryAsk",
-                                        l = r.a.createElement(x.a, {
+                                        c = a(3),
+                                        u = r.a.createElement(x.a, {
                                             price: t.getPrice(),
-                                            quote: a,
-                                            base: n
-                                        });
+                                            quote: n,
+                                            base: s
+                                        }),
+                                        p = i
+                                            ? k.a.format_number(
+                                                  t
+                                                      .totalForSale()
+                                                      .getAmount({real: !0}),
+                                                  8
+                                              )
+                                            : k.a.format_number(
+                                                  t
+                                                      .totalToReceive()
+                                                      .getAmount({real: !0}),
+                                                  8
+                                              ),
+                                        m = i
+                                            ? k.a.format_number(
+                                                  t
+                                                      .totalToReceive()
+                                                      .getAmount({real: !0}),
+                                                  8
+                                              )
+                                            : k.a.format_number(
+                                                  t
+                                                      .totalForSale()
+                                                      .getAmount({real: !0}),
+                                                  8
+                                              ),
+                                        d =
+                                            c.translate("exchange.total") +
+                                            " " +
+                                            n.get("symbol") +
+                                            " " +
+                                            m +
+                                            "<br />" +
+                                            c.translate("exchange.total") +
+                                            " " +
+                                            s.get("symbol") +
+                                            " " +
+                                            p;
                                     return r.a.createElement(
                                         "div",
                                         {
                                             onClick: this.props.onClick,
                                             className: A()(
-                                                "sticky-table-row order-row",
-                                                {"final-row": s},
+                                                "sticky-table-row order-row vertical-table-cell",
+                                                {"final-row": o},
                                                 {
                                                     "my-order": t.isMine(
                                                         this.props
@@ -9649,32 +9752,46 @@
                                         },
                                         r.a.createElement(
                                             "div",
-                                            {className: "cell left"},
+                                            {
+                                                className:
+                                                    "cell left vertical-table-cell vertical-table-cell-one"
+                                            },
                                             k.a.format_number(
                                                 t[
-                                                    o
+                                                    i
                                                         ? "amountForSale"
                                                         : "amountToReceive"
+                                                ]().getAmount({real: !0}),
+                                                s.get("precision")
+                                            )
+                                        ),
+                                        r.a.createElement(
+                                            "div",
+                                            {
+                                                className:
+                                                    "cell vertical-table-cell vertical-table-cell-two"
+                                            },
+                                            k.a.format_number(
+                                                t[
+                                                    i
+                                                        ? "amountToReceive"
+                                                        : "amountForSale"
                                                 ]().getAmount({real: !0}),
                                                 n.get("precision")
                                             )
                                         ),
                                         r.a.createElement(
                                             "div",
-                                            {className: "cell"},
-                                            k.a.format_number(
-                                                t[
-                                                    o
-                                                        ? "amountToReceive"
-                                                        : "amountForSale"
-                                                ]().getAmount({real: !0}),
-                                                a.get("precision")
-                                            )
-                                        ),
-                                        r.a.createElement(
-                                            "div",
-                                            {className: "cell " + i + " right"},
-                                            l
+                                            {
+                                                className:
+                                                    "cell " +
+                                                    l +
+                                                    " right vertical-table-cell-three",
+                                                "data-tip": d,
+                                                "data-html": !0,
+                                                "data-place": "right"
+                                            },
+                                            u
                                         )
                                     );
                                 }
@@ -9697,7 +9814,7 @@
                         );
                     }
                     return (
-                        F(t, r.a.Component),
+                        B(t, r.a.Component),
                         j(t, [
                             {
                                 key: "shouldComponentUpdate",
@@ -9871,7 +9988,7 @@
                         );
                     }
                     return (
-                        F(t, r.a.Component),
+                        B(t, r.a.Component),
                         j(t, [
                             {
                                 key: "componentWillReceiveProps",
@@ -10038,7 +10155,7 @@
                                                       currentAccount:
                                                           e.props.currentAccount
                                                   })
-                                                : r.a.createElement(B, {
+                                                : r.a.createElement(F, {
                                                       index: a,
                                                       key:
                                                           t.getPrice() +
@@ -10087,7 +10204,7 @@
                                                               e.props
                                                                   .currentAccount
                                                       })
-                                                    : r.a.createElement(B, {
+                                                    : r.a.createElement(F, {
                                                           index: a,
                                                           key:
                                                               t.getPrice() +
@@ -10130,7 +10247,7 @@
                                                     ));
                                             }
                                         } catch (e) {}
-                                        var F = C.length,
+                                        var B = C.length,
                                             M = S.length;
                                         g || C.splice(y, C.length),
                                             b || S.splice(y, S.length);
@@ -10670,43 +10787,44 @@
                                                                 },
                                                                 C
                                                             )
-                                                        )
-                                                    ),
-                                                    F > y
-                                                        ? r.a.createElement(
-                                                              "div",
-                                                              {
-                                                                  className:
-                                                                      "orderbook-showall"
-                                                              },
-                                                              r.a.createElement(
-                                                                  "a",
+                                                        ),
+                                                        B > y
+                                                            ? r.a.createElement(
+                                                                  "div",
                                                                   {
-                                                                      onClick: this._onToggleShowAll.bind(
-                                                                          this,
-                                                                          "bids"
-                                                                      )
+                                                                      className:
+                                                                          "orderbook-showall"
                                                                   },
                                                                   r.a.createElement(
-                                                                      w.a,
+                                                                      "a",
                                                                       {
-                                                                          content: g
-                                                                              ? "exchange.hide"
-                                                                              : "exchange.show_bids"
-                                                                      }
-                                                                  ),
-                                                                  g
-                                                                      ? null
-                                                                      : r.a.createElement(
-                                                                            "span",
-                                                                            null,
-                                                                            " (",
-                                                                            F,
-                                                                            ")"
-                                                                        )
+                                                                          onClick: this._onToggleShowAll.bind(
+                                                                              this,
+                                                                              "bids"
+                                                                          )
+                                                                      },
+                                                                      r.a.createElement(
+                                                                          w.a,
+                                                                          {
+                                                                              content: g
+                                                                                  ? "exchange.hide"
+                                                                                  : "exchange.show_bids"
+                                                                          }
+                                                                      ),
+                                                                      g
+                                                                          ? null
+                                                                          : r.a.createElement(
+                                                                                "span",
+                                                                                null,
+                                                                                " ",
+                                                                                "(",
+                                                                                B,
+                                                                                ")"
+                                                                            )
+                                                                  )
                                                               )
-                                                          )
-                                                        : null
+                                                            : null
+                                                    )
                                                 )
                                             )
                                         );
@@ -11903,14 +12021,14 @@
                                         asset_id: s.get("asset_id"),
                                         precision: s.get("precision")
                                     }),
-                                    F =
+                                    B =
                                         o.getIn([
                                             "options",
                                             "market_fee_percent"
                                         ]) /
                                             100 +
                                         "%",
-                                    B =
+                                    F =
                                         s.getIn([
                                             "options",
                                             "market_fee_percent"
@@ -11971,7 +12089,7 @@
                                                           "explorer.asset.summary.market_fee"
                                                   }),
                                                   ": ",
-                                                  F
+                                                  B
                                               ),
                                               r.a.createElement(
                                                   "div",
@@ -12078,7 +12196,7 @@
                                                           "explorer.asset.summary.market_fee"
                                                   }),
                                                   ": ",
-                                                  B
+                                                  F
                                               ),
                                               r.a.createElement(
                                                   "div",
@@ -13849,7 +13967,7 @@
                         );
                     };
                 })(),
-                Fe = (function() {
+                Be = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -13863,7 +13981,7 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            function Be(e, t) {
+            function Fe(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
@@ -13887,10 +14005,10 @@
             }
             var Me = (function() {
                     function e() {
-                        Be(this, e);
+                        Fe(this, e);
                     }
                     return (
-                        Fe(e, [
+                        Be(e, [
                             {
                                 key: "update",
                                 value: function(e) {
@@ -13969,7 +14087,7 @@
                                                 o = r[1];
                                             t(
                                                 new function e(t) {
-                                                    Be(this, e),
+                                                    Fe(this, e),
                                                         (this.name = t.ticker),
                                                         (this.ticker =
                                                             t.ticker);
@@ -14815,25 +14933,25 @@
                                         }
                                     };
                                 if (P.length > 0 && T.length > 0) {
-                                    var F = (T[0][0] + P[P.length - 1][0]) / 2;
-                                    (I.xAxis.min = 0.4 * F),
-                                        (I.xAxis.max = 1.6 * F),
+                                    var B = (T[0][0] + P[P.length - 1][0]) / 2;
+                                    (I.xAxis.min = 0.4 * B),
+                                        (I.xAxis.max = 1.6 * B),
                                         I.xAxis.max < T[0][0] &&
                                             (I.xAxis.max = 1.5 * T[0][0]),
                                         I.xAxis.min > P[P.length - 1][0] &&
                                             (I.xAxis.min =
                                                 0.5 * P[P.length - 1][0]);
-                                    var B = 0;
+                                    var F = 0;
                                     P.forEach(function(e) {
                                         e[0] >= I.xAxis.min &&
-                                            (B = Math.max(e[1], B));
+                                            (F = Math.max(e[1], F));
                                     }),
                                         T.forEach(function(e) {
                                             e[0] <= I.xAxis.max &&
-                                                (B = Math.max(e[1], B));
+                                                (F = Math.max(e[1], F));
                                         }),
-                                        (I.yAxis.max = 1.15 * B);
-                                    var R = B > 10 ? 0 : B > 1 ? 2 : 5;
+                                        (I.yAxis.max = 1.15 * F);
+                                    var R = F > 10 ? 0 : F > 1 ? 2 : 5;
                                     I.yAxis.labels.formatter = function() {
                                         return k.a.format_number(this.value, R);
                                     };
@@ -16115,10 +16233,10 @@
                                                 : "1.3.0" === q
                                                     ? j
                                                     : null,
-                                        F = I ? H.b.getAsset(I) : null,
-                                        B = "",
+                                        B = I ? H.b.getAsset(I) : null,
+                                        F = "",
                                         R = null;
-                                    if (!!F && !!F.get("bitasset")) {
+                                    if (!!B && !!B.get("bitasset")) {
                                         if (f.toJS && f.has("call_orders"))
                                             for (
                                                 var M = f
@@ -16138,7 +16256,7 @@
                                                             "asset_id"
                                                         ]) === I
                                                 ) {
-                                                    (B = L), (P = !0);
+                                                    (F = L), (P = !0);
                                                     break;
                                                 }
                                             }
@@ -16501,7 +16619,7 @@
                                                             ? r.a.createElement(
                                                                   kt,
                                                                   {
-                                                                      object: B,
+                                                                      object: F,
                                                                       account: f
                                                                   }
                                                               )
@@ -18056,8 +18174,8 @@
                                     j = T.bid,
                                     q = T.ask,
                                     I = T.leftOrderBook,
-                                    F = T.showDepthChart,
-                                    B = T.chartHeight,
+                                    B = T.showDepthChart,
+                                    F = T.chartHeight,
                                     R = T.buyDiff,
                                     M = T.sellDiff,
                                     L = T.width,
@@ -18175,12 +18293,12 @@
                                 L < 1e3 && ((Te = !0), (I = !1));
                                 var je = I ? 2 : 1,
                                     qe = (Math.max(
-                                        this.state.height > 1100 ? B : B - 125,
+                                        this.state.height > 1100 ? F : F - 125,
                                         300
                                     ),
                                     this.state.expirationType),
                                     Ie = this.state.expirationCustomTime,
-                                    Fe = H
+                                    Be = H
                                         ? null
                                         : r.a.createElement(Ee, {
                                               onBorrow: le
@@ -18300,7 +18418,7 @@
                                                         this
                                                     )
                                           }),
-                                    Be = H
+                                    Fe = H
                                         ? null
                                         : r.a.createElement(Ee, {
                                               onBorrow: ie
@@ -18473,7 +18591,7 @@
                                         feedPrice: g,
                                         marketReady: d,
                                         latestPrice: te,
-                                        showDepthChart: F,
+                                        showDepthChart: B,
                                         marketStats: m,
                                         onToggleCharts: this._toggleCharts.bind(
                                             this
@@ -18482,7 +18600,7 @@
                                             this
                                         ),
                                         showVolumeChart: ne,
-                                        chartHeight: B,
+                                        chartHeight: F,
                                         onChangeChartHeight: this.onChangeChartHeight.bind(
                                             this
                                         )
@@ -18536,7 +18654,7 @@
                                                     id: "CenterContent",
                                                     ref: "center"
                                                 },
-                                                F
+                                                B
                                                     ? r.a.createElement(
                                                           "div",
                                                           {
@@ -18571,8 +18689,8 @@
                                                                       this.state
                                                                           .height >
                                                                       1100
-                                                                          ? B
-                                                                          : B -
+                                                                          ? F
+                                                                          : F -
                                                                             150,
                                                                   onClick: this._depthChartClick.bind(
                                                                       this,
@@ -18633,8 +18751,8 @@
                                                                       this.state
                                                                           .height >
                                                                       1100
-                                                                          ? B
-                                                                          : B -
+                                                                          ? F
+                                                                          : F -
                                                                             150,
                                                                   mobile:
                                                                       L < 800
@@ -18692,8 +18810,8 @@
                                                               )
                                                           )
                                                         : null,
-                                                    Fe,
                                                     Be,
+                                                    Fe,
                                                     r.a.createElement(se, {
                                                         className: A()(
                                                             Te || I
@@ -18971,8 +19089,8 @@
                     volumeData: []
                 });
             var It = qt,
-                Ft = a(180),
-                Bt =
+                Bt = a(180),
+                Ft =
                     Object.assign ||
                     function(e) {
                         for (var t = 1; t < arguments.length; t++) {
@@ -19052,7 +19170,7 @@
                                         .toUpperCase()
                                         .split("_");
                                     return e[0] === e[1]
-                                        ? r.a.createElement(Ft.default, {
+                                        ? r.a.createElement(Bt.default, {
                                               subtitle:
                                                   "market_not_found_subtitle"
                                           })
@@ -19380,13 +19498,13 @@
                                 value: function() {
                                     return null === this.props.quoteAsset ||
                                         null === this.props.baseAsset
-                                        ? r.a.createElement(Ft.default, {
+                                        ? r.a.createElement(Bt.default, {
                                               subtitle:
                                                   "market_not_found_subtitle"
                                           })
                                         : r.a.createElement(
                                               It,
-                                              Bt({}, this.props, {
+                                              Ft({}, this.props, {
                                                   sub: this.state.sub,
                                                   subToMarket: this._subToMarket
                                               })
