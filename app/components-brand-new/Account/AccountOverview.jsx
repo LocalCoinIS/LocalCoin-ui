@@ -1207,9 +1207,16 @@ class AccountOverview extends React.Component {
                                                     })
                                                 }
                                             />
-                                            <Translate content="exchange.hide" />
-                                            &nbsp;0&nbsp;
-                                            <Translate content="transfer.balances" />
+                                            <span>
+                                                {counterpart.translate(
+                                                    "exchange.hide"
+                                                )}
+                                                &nbsp;0&nbsp;
+                                                {counterpart.translate(
+                                                    "transfer.balances"
+                                                )}
+                                            </span>
+                                            <span />
                                         </label>
                                     </div>
                                 </div>
