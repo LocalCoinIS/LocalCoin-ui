@@ -783,28 +783,31 @@ class OrderBook extends React.Component {
                                         {bidRows}
                                     </TransitionWrapper>
                                 </table>
+                                {totalBidsLength > rowCount ? (
+                                    <div className="orderbook-showall">
+                                        <a
+                                            onClick={this._onToggleShowAll.bind(
+                                                this,
+                                                "bids"
+                                            )}
+                                        >
+                                            <Translate
+                                                content={
+                                                    showAllBids
+                                                        ? "exchange.hide"
+                                                        : "exchange.show_bids"
+                                                }
+                                            />
+                                            {!showAllBids ? (
+                                                <span>
+                                                    {" "}
+                                                    ({totalBidsLength})
+                                                </span>
+                                            ) : null}
+                                        </a>
+                                    </div>
+                                ) : null}
                             </div>
-                            {totalBidsLength > rowCount ? (
-                                <div className="orderbook-showall">
-                                    <a
-                                        onClick={this._onToggleShowAll.bind(
-                                            this,
-                                            "bids"
-                                        )}
-                                    >
-                                        <Translate
-                                            content={
-                                                showAllBids
-                                                    ? "exchange.hide"
-                                                    : "exchange.show_bids"
-                                            }
-                                        />
-                                        {!showAllBids ? (
-                                            <span> ({totalBidsLength})</span>
-                                        ) : null}
-                                    </a>
-                                </div>
-                            ) : null}
                         </div>
                     </div>
                 </div>

@@ -316,3 +316,13 @@ main[class*="help-"] > .content {
 .market-layout .left-column .exchange-buy-orders .sticky-table-row.top-header {
     display: none;
 }
+
+.vertical-orderbook-down .final-row,
+.vertical-orderbook-up .final-row {
+    display: none;
+}
+
+.vertical-orderbook-down .transition-container .cell,
+.vertical-orderbook-up .transition-container .cell {
+    width: 100px;
+}
