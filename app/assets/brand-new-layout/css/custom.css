@@ -340,3 +340,8 @@ main[class*="help-"] > .content {
 .vertical-table-cell-three {
     display: block;
 }
+
+.vertical-orderbook-up .sticky-table-y-wrapper > #sticky-table-column,
+.vertical-orderbook-down .sticky-table-y-wrapper > #sticky-table-column {
+    display: none;
+}

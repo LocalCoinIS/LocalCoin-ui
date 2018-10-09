@@ -43,7 +43,12 @@ class RoutingEvents {
         var currentLocation = this.getUrl();
 
         try {
-            if (currentLocation == "/") return "homepage";
+            if (
+                currentLocation == "/" ||
+                currentLocation == "//" ||
+                currentLocation == ""
+            )
+                return "homepage";
 
             if (this.isMarket()) {
                 if (
