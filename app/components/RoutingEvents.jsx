@@ -45,7 +45,15 @@ class RoutingEvents {
         try {
             if (currentLocation == "/") return "homepage";
 
-            if (this.isMarket()) return "market left-cell-active";
+            if (this.isMarket()) {
+                if (
+                    document.getElementsByClassName("vertical-orderbook-up")
+                        .length > 0
+                ) {
+                    return "market left-cell-active";
+                }
+                return "market";
+            }
 
             if (typeof this.router.params.account_name === "undefined")
                 return currentLocation.match(/[a-zA-Z]+/g).join("-");

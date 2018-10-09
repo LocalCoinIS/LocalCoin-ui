@@ -103,6 +103,28 @@ export default class ExchangeHeader extends React.Component {
                 header.style.marginLeft = margin + "px";
             } catch (e) {}
         }
+
+        try {
+            let id = "exchange_header_style";
+            let minus = margin + getMaxWidth("right-column");
+            let style =
+                "@media only screen and (min-width: 1280px) { " +
+                "body.localcoin .exchange-layout .grid-block.shrink.no-padding.overflow-visible.top-bar.left-cell-active { " +
+                "width: calc(100% - " +
+                minus +
+                "px); " +
+                "}}";
+
+            if (document.getElementById(id)) {
+                let styleDom = document.getElementById(id);
+                styleDom.innerHTML = style;
+            } else {
+                let styleDom = document.createElement("style");
+                styleDom.id = id;
+                styleDom.innerHTML = style;
+                document.getElementsByTagName("head")[0].appendChild(styleDom);
+            }
+        } catch (e) {}
     }
 
     render() {

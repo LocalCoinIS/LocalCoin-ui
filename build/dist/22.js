@@ -3059,7 +3059,7 @@
                     return a && e(t.prototype, a), n && e(t, n), t;
                 };
             })();
-            function D(e, t, a) {
+            function L(e, t, a) {
                 return (
                     t in e
                         ? Object.defineProperty(e, t, {
@@ -3072,7 +3072,7 @@
                     e
                 );
             }
-            function L(e, t) {
+            function D(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
@@ -3108,7 +3108,7 @@
                 H = (function(e) {
                     function t() {
                         return (
-                            L(this, t),
+                            D(this, t),
                             z(
                                 this,
                                 (t.__proto__ || Object.getPrototypeOf(t)).apply(
@@ -3317,7 +3317,7 @@
             var V = (function(e) {
                 function t() {
                     return (
-                        L(this, t),
+                        D(this, t),
                         z(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
@@ -3701,7 +3701,7 @@
             V.defaultProps = {showSymbols: !1};
             var J = (function(e) {
                 function t(e) {
-                    L(this, t);
+                    D(this, t);
                     var a = z(
                         this,
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this)
@@ -3742,10 +3742,10 @@
                                     i = a.get("call_orders"),
                                     l = n.get("id"),
                                     c = r.get("id"),
-                                    u = (D((e = {}), n.get("id"), {
+                                    u = (L((e = {}), n.get("id"), {
                                         precision: n.get("precision")
                                     }),
-                                    D(e, r.get("id"), {
+                                    L(e, r.get("id"), {
                                         precision: r.get("precision")
                                     }),
                                     e),
@@ -4728,8 +4728,8 @@
                 F = a.n(B),
                 M = a(112),
                 R = a(3),
-                D = a.n(R),
-                L = a(37),
+                L = a.n(R),
+                D = a(37),
                 z = a(4),
                 U = a(20),
                 W = a.n(U),
@@ -6310,7 +6310,7 @@
                                                               type: "text",
                                                               className:
                                                                   "no-margin market-filter-input",
-                                                              placeholder: D.a.translate(
+                                                              placeholder: L.a.translate(
                                                                   "exchange.filter"
                                                               ),
                                                               maxLength: "16",
@@ -6439,7 +6439,7 @@
                                                                           this,
                                                                           !0
                                                                       ),
-                                                                      placeholder: D.a.translate(
+                                                                      placeholder: L.a.translate(
                                                                           "exchange.search"
                                                                       ),
                                                                       maxLength:
@@ -6578,7 +6578,7 @@
                                                           width: "100%"
                                                       }
                                                   },
-                                                  s.a.createElement(L.a, {
+                                                  s.a.createElement(D.a, {
                                                       type: "three-bounce"
                                                   })
                                               )
@@ -9618,13 +9618,29 @@
                             {
                                 key: "componentDidMount",
                                 value: function() {
-                                    q.a.rebuild(), this.updateCeilWith();
+                                    q.a.rebuild(),
+                                        this.updateCeilWith(),
+                                        this.addLeftCellActive();
                                 }
                             },
                             {
                                 key: "componentDidUpdate",
                                 value: function() {
-                                    this.updateCeilWith();
+                                    this.updateCeilWith(),
+                                        this.addLeftCellActive();
+                                }
+                            },
+                            {
+                                key: "addLeftCellActive",
+                                value: function() {
+                                    var e = document.getElementsByTagName(
+                                        "main"
+                                    )[0];
+                                    -1 ===
+                                        e.className.indexOf(
+                                            "left-cell-active"
+                                        ) &&
+                                        (e.className += " left-cell-active");
                                 }
                             },
                             {
@@ -9655,11 +9671,35 @@
                                         r = "vertical-table-cell-three",
                                         s = {one: t(a), two: t(n), three: t(r)};
                                     e(a, s.one), e(n, s.two), e(r, s.three);
+                                    var o = 0;
                                     try {
-                                        var o = s.one + s.two + s.three;
-                                        document.getElementsByClassName(
-                                            "container-menu-header"
-                                        )[0].style.marginLeft = o + "px";
+                                        (o = s.one + s.two + s.three),
+                                            (document.getElementsByClassName(
+                                                "container-menu-header"
+                                            )[0].style.marginLeft = o + "px");
+                                    } catch (e) {}
+                                    try {
+                                        var i = "exchange_header_style",
+                                            l =
+                                                "@media only screen and (min-width: 1280px) { body.localcoin .exchange-layout .grid-block.shrink.no-padding.overflow-visible.top-bar, body.localcoin .exchange-layout .main .grid-block.shrink.no-padding.overflow-visible.top-bar.left-cell-active { width: calc(100% - " +
+                                                (o + t("right-column")) +
+                                                "px); }}";
+                                        if (document.getElementById(i)) {
+                                            document.getElementById(
+                                                i
+                                            ).innerHTML = l;
+                                        } else {
+                                            var c = document.createElement(
+                                                "style"
+                                            );
+                                            (c.id = i),
+                                                (c.innerHTML = l),
+                                                document
+                                                    .getElementsByTagName(
+                                                        "head"
+                                                    )[0]
+                                                    .appendChild(c);
+                                        }
                                     } catch (e) {}
                                 }
                             },
@@ -9802,7 +9842,7 @@
                         t
                     );
                 })(),
-                D = (function(e) {
+                L = (function(e) {
                     function t() {
                         return (
                             B(this, t),
@@ -9828,6 +9868,32 @@
                                         e.currentAccount !==
                                             this.props.currentAccount
                                     );
+                                }
+                            },
+                            {
+                                key: "rmLeftCellActive",
+                                value: function() {
+                                    var e = document.getElementsByTagName(
+                                        "main"
+                                    )[0];
+                                    e.className.indexOf("left-cell-active") >
+                                        -1 &&
+                                        (e.className = e.className.replace(
+                                            "left-cell-active",
+                                            ""
+                                        ));
+                                }
+                            },
+                            {
+                                key: "componentDidMount",
+                                value: function() {
+                                    this.rmLeftCellActive();
+                                }
+                            },
+                            {
+                                key: "componentDidUpdate",
+                                value: function() {
+                                    this.rmLeftCellActive();
                                 }
                             },
                             {
@@ -9953,7 +10019,7 @@
                         t
                     );
                 })(),
-                L = (function(e) {
+                D = (function(e) {
                     function t(e) {
                         B(this, t);
                         var a = F(
@@ -10139,7 +10205,7 @@
                                     if (c && l) {
                                         C = n.map(function(t, a) {
                                             return h
-                                                ? r.a.createElement(D, {
+                                                ? r.a.createElement(L, {
                                                       index: a,
                                                       key:
                                                           t.getPrice() +
@@ -10186,7 +10252,7 @@
                                         }),
                                             (S = j.map(function(t, a) {
                                                 return h
-                                                    ? r.a.createElement(D, {
+                                                    ? r.a.createElement(L, {
                                                           index: a,
                                                           key:
                                                               t.getPrice() +
@@ -10317,7 +10383,7 @@
                                                     )
                                                 )
                                             ),
-                                            L = r.a.createElement(
+                                            D = r.a.createElement(
                                                 "thead",
                                                 null,
                                                 r.a.createElement(
@@ -10529,7 +10595,7 @@
                                                                     "table order-table table-hover fixed-table text-right"
                                                             },
                                                             this.state.flip
-                                                                ? L
+                                                                ? D
                                                                 : M
                                                         )
                                                     ),
@@ -10751,7 +10817,7 @@
                                                                     "table order-table table-hover fixed-table text-right"
                                                             },
                                                             this.state.flip
-                                                                ? L
+                                                                ? D
                                                                 : M
                                                         )
                                                     ),
@@ -11195,13 +11261,13 @@
                         t
                     );
                 })();
-            (L.defaultProps = {bids: [], asks: [], orders: {}}),
-                (L.propTypes = {
+            (D.defaultProps = {bids: [], asks: [], orders: {}}),
+                (D.propTypes = {
                     bids: b.a.array.isRequired,
                     asks: b.a.array.isRequired,
                     orders: b.a.object.isRequired
                 });
-            var z = L,
+            var z = D,
                 U = a(7),
                 W = a.n(U),
                 H = a(42),
@@ -12060,11 +12126,11 @@
                                                   1e4
                                           ).toFixed(q.precision)
                                         : 0,
-                                    D = he.a.getFlagBooleans(
+                                    L = he.a.getFlagBooleans(
                                         o.getIn(["options", "flags"]),
                                         o.has("bitasset_data_id")
                                     ),
-                                    L = he.a.getFlagBooleans(
+                                    D = he.a.getFlagBooleans(
                                         s.getIn(["options", "flags"]),
                                         s.has("bitasset_data_id")
                                     ),
@@ -12072,9 +12138,9 @@
                                     U = z.name,
                                     W = z.prefix,
                                     H =
-                                        D.charge_market_fee ||
-                                        L.charge_market_fee,
-                                    V = D.charge_market_fee
+                                        L.charge_market_fee ||
+                                        D.charge_market_fee,
+                                    V = L.charge_market_fee
                                         ? r.a.createElement(
                                               "div",
                                               {
@@ -12181,7 +12247,7 @@
                                     J = k.a.replaceName(this.props.quote),
                                     Q = J.name,
                                     G = J.prefix,
-                                    Y = L.charge_market_fee
+                                    Y = D.charge_market_fee
                                         ? r.a.createElement(
                                               "div",
                                               {
@@ -14387,7 +14453,7 @@
                         e
                     );
                 })(),
-                De = [
+                Le = [
                     "America/Argentina/Buenos_Aires",
                     "America/Bogota",
                     "America/Caracas",
@@ -14432,7 +14498,7 @@
                     "Pacific/Honolulu",
                     "US/Mountain"
                 ];
-            var Le = (function() {
+            var De = (function() {
                 function e(e, t) {
                     for (var a = 0; a < t.length; a++) {
                         var n = t[a];
@@ -14495,7 +14561,7 @@
                                         ? Object.setPrototypeOf(e, t)
                                         : (e.__proto__ = t));
                         })(t, r.a.Component),
-                        Le(t, [
+                        De(t, [
                             {
                                 key: "loadTradingView",
                                 value: function(e) {
@@ -14533,7 +14599,7 @@
                                                 locale: e.locale,
                                                 timezone: (function() {
                                                     var e = je.a.tz.guess();
-                                                    if (-1 !== De.indexOf(e))
+                                                    if (-1 !== Le.indexOf(e))
                                                         return e;
                                                     for (
                                                         var t = je()().toISOString(),
@@ -14541,15 +14607,15 @@
                                                                 .tz(t, e)
                                                                 .format(),
                                                             n = 0;
-                                                        n < De.length;
+                                                        n < Le.length;
                                                         n++
                                                     )
                                                         if (
                                                             je.a
-                                                                .tz(t, De[n])
+                                                                .tz(t, Le[n])
                                                                 .format() === a
                                                         )
-                                                            return De[n];
+                                                            return Le[n];
                                                     return (
                                                         console.log(
                                                             "No matching timezone found for " +
@@ -16231,6 +16297,29 @@
                                                 "container-menu-header"
                                             )[0].style.marginLeft = a + "px";
                                         } catch (e) {}
+                                    try {
+                                        var r = "exchange_header_style",
+                                            s =
+                                                "@media only screen and (min-width: 1280px) { body.localcoin .exchange-layout .grid-block.shrink.no-padding.overflow-visible.top-bar.left-cell-active { width: calc(100% - " +
+                                                (a + e("right-column")) +
+                                                "px); }}";
+                                        if (document.getElementById(r)) {
+                                            document.getElementById(
+                                                r
+                                            ).innerHTML = s;
+                                        } else {
+                                            var o = document.createElement(
+                                                "style"
+                                            );
+                                            (o.id = r),
+                                                (o.innerHTML = s),
+                                                document
+                                                    .getElementsByTagName(
+                                                        "head"
+                                                    )[0]
+                                                    .appendChild(o);
+                                        }
+                                    } catch (e) {}
                                 }
                             },
                             {
@@ -16286,21 +16375,21 @@
                                                 var R = f
                                                         .get("call_orders")
                                                         .toJS(),
-                                                    D = 0;
-                                                D < R.length;
-                                                D++
+                                                    L = 0;
+                                                L < R.length;
+                                                L++
                                             ) {
-                                                var L = R[D];
+                                                var D = R[L];
                                                 if (
                                                     J.b
-                                                        .getObject(L)
+                                                        .getObject(D)
                                                         .getIn([
                                                             "call_price",
                                                             "quote",
                                                             "asset_id"
                                                         ]) === I
                                                 ) {
-                                                    (F = L), (P = !0);
+                                                    (F = D), (P = !0);
                                                     break;
                                                 }
                                             }
@@ -18222,8 +18311,8 @@
                                     F = T.chartHeight,
                                     M = T.buyDiff,
                                     R = T.sellDiff,
-                                    D = T.width,
-                                    L = T.buySellTop,
+                                    L = T.width,
+                                    D = T.buySellTop,
                                     U = this.isMarketFrozen(),
                                     W = U.isFrozen,
                                     V = U.frozenAsset,
@@ -18334,7 +18423,7 @@
                                     ((Pe = c.getIn(["options", "description"])),
                                     (Pe = he.a.parseDescription(Pe).main));
                                 var Te = !1;
-                                D < 1e3 && ((Te = !0), (I = !1));
+                                L < 1e3 && ((Te = !0), (I = !1));
                                 var je = I ? 2 : 1,
                                     qe = (Math.max(
                                         this.state.height > 1100 ? F : F - 125,
@@ -18373,10 +18462,10 @@
                                                       : "medium-6 xlarge-4",
                                                   this.state.flipBuySell
                                                       ? "order-" +
-                                                        (L ? 2 : 5 * je) +
+                                                        (D ? 2 : 5 * je) +
                                                         " sell-form"
                                                       : "order-" +
-                                                        (L ? 1 : 4 * je) +
+                                                        (D ? 1 : 4 * je) +
                                                         " buy-form"
                                               ),
                                               type: "bid",
@@ -18493,10 +18582,10 @@
                                                       : "medium-6 xlarge-4",
                                                   this.state.flipBuySell
                                                       ? "order-" +
-                                                        (L ? 1 : 4 * je) +
+                                                        (D ? 1 : 4 * je) +
                                                         " buy-form"
                                                       : "order-" +
-                                                        (L ? 2 : 5 * je) +
+                                                        (D ? 2 : 5 * je) +
                                                         " sell-form"
                                               ),
                                               type: "ask",
@@ -18609,9 +18698,9 @@
                                         marketReady: d,
                                         wrapperClass:
                                             "order-" +
-                                            (L ? 3 : 1) +
+                                            (D ? 3 : 1) +
                                             " xlarge-order-" +
-                                            (L ? 4 : 1),
+                                            (D ? 4 : 1),
                                         currentAccount: this.props.currentAccount.get(
                                             "id"
                                         )
@@ -18799,7 +18888,7 @@
                                                                           : F -
                                                                             150,
                                                                   mobile:
-                                                                      D < 800
+                                                                      L < 800
                                                               }
                                                           )
                                                       ),
@@ -19163,7 +19252,7 @@
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function Dt(e, t) {
+            function Lt(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -19172,7 +19261,7 @@
                     ? e
                     : t;
             }
-            function Lt(e, t) {
+            function Dt(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -19195,7 +19284,7 @@
                     function t() {
                         return (
                             Rt(this, t),
-                            Dt(
+                            Lt(
                                 this,
                                 (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                     this,
@@ -19205,7 +19294,7 @@
                         );
                     }
                     return (
-                        Lt(t, r.a.Component),
+                        Dt(t, r.a.Component),
                         Mt(t, [
                             {
                                 key: "render",
@@ -19379,7 +19468,7 @@
                 Kt = (function(e) {
                     function t() {
                         Rt(this, t);
-                        var e = Dt(
+                        var e = Lt(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                         );
@@ -19390,7 +19479,7 @@
                         );
                     }
                     return (
-                        Lt(t, r.a.Component),
+                        Dt(t, r.a.Component),
                         Mt(t, [
                             {
                                 key: "componentWillMount",

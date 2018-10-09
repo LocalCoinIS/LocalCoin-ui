@@ -25,10 +25,20 @@ class OrderBookRowVertical extends React.Component {
     componentDidMount() {
         ReactTooltip.rebuild();
         this.updateCeilWith();
+        this.addLeftCellActive();
     }
 
     componentDidUpdate() {
         this.updateCeilWith();
+        this.addLeftCellActive();
+    }
+
+    addLeftCellActive() {
+        let forAdd = "left-cell-active";
+        let main = document.getElementsByTagName("main")[0];
+        if (main.className.indexOf(forAdd) === -1) {
+            main.className += " " + forAdd;
+        }
     }
 
     updateCeilWith() {
@@ -68,13 +78,36 @@ class OrderBookRowVertical extends React.Component {
         updateWidth(queries.two, maxWidth.two);
         updateWidth(queries.three, maxWidth.three);
 
+        let margin = 0;
         //set margin header by with left cell bar
         try {
-            let margin = maxWidth.one + maxWidth.two + maxWidth.three;
+            margin = maxWidth.one + maxWidth.two + maxWidth.three;
             let header = document.getElementsByClassName(
                 "container-menu-header"
             )[0];
             header.style.marginLeft = margin + "px";
+        } catch (e) {}
+
+        try {
+            let id = "exchange_header_style";
+            let minus = margin + getMaxWidth("right-column");
+            let style =
+                "@media only screen and (min-width: 1280px) { " +
+                "body.localcoin .exchange-layout .grid-block.shrink.no-padding.overflow-visible.top-bar, body.localcoin .exchange-layout .main .grid-block.shrink.no-padding.overflow-visible.top-bar.left-cell-active { " +
+                "width: calc(100% - " +
+                minus +
+                "px); " +
+                "}}";
+
+            if (document.getElementById(id)) {
+                let styleDom = document.getElementById(id);
+                styleDom.innerHTML = style;
+            } else {
+                let styleDom = document.createElement("style");
+                styleDom.id = id;
+                styleDom.innerHTML = style;
+                document.getElementsByTagName("head")[0].appendChild(styleDom);
+            }
         } catch (e) {}
     }
 
@@ -187,6 +220,22 @@ class OrderBookRowHorizontal extends React.Component {
             np.index !== this.props.index ||
             np.currentAccount !== this.props.currentAccount
         );
+    }
+
+    rmLeftCellActive() {
+        let target = "left-cell-active";
+        let main = document.getElementsByTagName("main")[0];
+        if (main.className.indexOf(target) > -1) {
+            main.className = main.className.replace(target, "");
+        }
+    }
+
+    componentDidMount() {
+        this.rmLeftCellActive();
+    }
+
+    componentDidUpdate() {
+        this.rmLeftCellActive();
     }
 
     render() {

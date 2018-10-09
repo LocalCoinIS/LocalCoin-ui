@@ -1207,6 +1207,7 @@ class AccountOverview extends React.Component {
                                                     })
                                                 }
                                             />
+                                            <span />
                                             <span>
                                                 {counterpart.translate(
                                                     "exchange.hide"
@@ -1216,7 +1217,6 @@ class AccountOverview extends React.Component {
                                                     "transfer.balances"
                                                 )}
                                             </span>
-                                            <span />
                                         </label>
                                     </div>
                                 </div>

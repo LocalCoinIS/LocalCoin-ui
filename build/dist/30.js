@@ -14169,6 +14169,10 @@
                                                                             ),
                                                                             r.a.createElement(
                                                                                 "span",
+                                                                                null
+                                                                            ),
+                                                                            r.a.createElement(
+                                                                                "span",
                                                                                 null,
                                                                                 y.a.translate(
                                                                                     "exchange.hide"
@@ -14177,10 +14181,6 @@
                                                                                 y.a.translate(
                                                                                     "transfer.balances"
                                                                                 )
-                                                                            ),
-                                                                            r.a.createElement(
-                                                                                "span",
-                                                                                null
                                                                             )
                                                                         )
                                                                     )
