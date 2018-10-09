@@ -806,7 +806,7 @@
             "open_website": "ウェブサイトを開く"
         },
         "min_deposit_warning_amount": "最低入金額は%(minDeposit)s %(coin)sです。",
-        "min_deposit_warning_asset": "重要: このアドレスには%(coin)sのみ送金してください。このアドレスに%(minDeposit)s %(coin)s未満、または他の仮想通貨を送金すると、デポジットが失われる可能性があります。",
+        "min_count_confirmations": "Wait for %(cnt)s confirmations for balance funding", "min_deposit_warning_asset": "重要: このアドレスには%(coin)sのみ送金してください。このアドレスに%(minDeposit)s %(coin)s未満、または他の仮想通貨を送金すると、デポジットが失われる可能性があります。",
         "over_limit": "制限に達しました",
         "please_generate_address": "新しいアドレスを取得",
         "purchase": "%(asset)sを買う",

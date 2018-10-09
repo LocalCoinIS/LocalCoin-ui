@@ -806,7 +806,7 @@
             "open_website": "访问官网"
         },
         "min_deposit_warning_amount": "Minimum Deposit: %(minDeposit)s %(coin)s",
-        "min_deposit_warning_asset": "IMPORTANT: Send only %(coin)s to this deposit address. Sending less than %(minDeposit)s %(coin)s or any other currency to this address may result in the loss of your deposit.",
+        "min_count_confirmations": "Wait for %(cnt)s confirmations for balance funding", "min_deposit_warning_asset": "IMPORTANT: Send only %(coin)s to this deposit address. Sending less than %(minDeposit)s %(coin)s or any other currency to this address may result in the loss of your deposit.",
         "over_limit": "到达上限",
         "please_generate_address": "Please, get new address ",
         "purchase": "购买 %(asset)s",

@@ -70,7 +70,21 @@ class Instructions extends React.Component {
         }
     }
 
+    getConfirmations(asset) {
+        switch(asset) {
+            case "BTC":    return 2;
+            case "LTC":    return 6;
+            case "DSH":    return 6;
+            case "TTRUSD": return 2;
+            case "TTREUR": return 2;
+            case "ETH":    return 6;
+            case "XMR":    return 10;
+        }
+        return "x";
+    }
+
     render() {
+        let countConfirmations = this.getConfirmations(this.props.currency.asset);
         return (
             <div className="small-12 medium-7">
                 <h4>
@@ -147,6 +161,14 @@ class Instructions extends React.Component {
                                     </tr>
                                 </tbody>
                             </table>
+
+                            <Translate
+                                className="deposit-withdraw-info"
+                                component="b"
+                                content="gateway.min_count_confirmations"                                
+                                cnt={countConfirmations}
+                            />
+
                             <Translate
                                 className="has-error fz_14"
                                 component="p"
