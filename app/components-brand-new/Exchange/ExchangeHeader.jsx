@@ -63,6 +63,48 @@ export default class ExchangeHeader extends React.Component {
         this.props.onChangeChartHeight({value: this.state.chartHeight});
     }
 
+    componentDidMount() {
+        this.updateMargin();
+    }
+
+    componentDidUpdate() {
+        this.updateMargin();
+    }
+
+    updateMargin() {
+        function getMaxWidth(queryClass) {
+            let max = 0;
+            let list = document.getElementsByClassName(queryClass);
+            for (let i in list) {
+                let width = list[i].offsetWidth;
+                if (width > max) max = width;
+            }
+
+            return max;
+        }
+
+        let queries = [
+            "vertical-table-cell-one",
+            "vertical-table-cell-two",
+            "vertical-table-cell-three"
+        ];
+
+        let margin = 0;
+        for (var i in queries) {
+            margin += getMaxWidth(queries[i]);
+        }
+
+        if (margin > 0) {
+            //set margin header by with left cell bar
+            try {
+                let header = document.getElementsByClassName(
+                    "container-menu-header"
+                )[0];
+                header.style.marginLeft = margin + "px";
+            } catch (e) {}
+        }
+    }
+
     render() {
         const {
             quoteAsset,
