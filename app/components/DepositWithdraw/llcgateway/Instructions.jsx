@@ -87,7 +87,8 @@ class Instructions extends React.Component {
                                         content="gateway.withdraw_to"
                                         asset={this.props.currency.asset}
                                     />
-                                </span>:
+                                </span>
+                                :
                             </label>
                             <div
                                 className="button-group"
@@ -112,7 +113,8 @@ class Instructions extends React.Component {
                                 <Translate
                                     content="gateway.deposit_to"
                                     asset={this.props.currency.asset}
-                                />:
+                                />
+                                :
                             </label>
                             <label className="left-label">
                                 <b>
@@ -134,7 +136,8 @@ class Instructions extends React.Component {
                                         <td>
                                             {counterpart
                                                 .translate("gateway.address")
-                                                .toUpperCase()}:&nbsp;
+                                                .toUpperCase()}
+                                            :&nbsp;
                                             <b>
                                                 <span>
                                                     {this.state.addressText}
@@ -144,6 +147,13 @@ class Instructions extends React.Component {
                                     </tr>
                                 </tbody>
                             </table>
+                            <Translate
+                                className="has-error fz_14"
+                                component="p"
+                                content="gateway.min_deposit_warning_asset"
+                                minDeposit={this.props.currency.minimal}
+                                coin={this.props.currency.asset}
+                            />
                             <div
                                 className="button-group"
                                 style={{paddingTop: 10}}

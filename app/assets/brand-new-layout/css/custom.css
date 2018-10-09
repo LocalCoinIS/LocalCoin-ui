@@ -345,3 +345,7 @@ main[class*="help-"] > .content {
 .vertical-orderbook-down .sticky-table-y-wrapper > #sticky-table-column {
     display: none;
 }
+
+.deposit-withdraw .has-error {
+    color: #f00;
+}
