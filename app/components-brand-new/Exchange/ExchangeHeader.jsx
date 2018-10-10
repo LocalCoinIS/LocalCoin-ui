@@ -12,6 +12,7 @@ import ExchangeHeaderCollateral from "../../components/Exchange/ExchangeHeaderCo
 import BaseModal from "../../components/Modal/BaseModal";
 import ZfApi from "react-foundation-apps/src/utils/foundation-api";
 import DropdownList from "../Utility/DropdownList";
+import { log } from "util";
 
 export default class ExchangeHeader extends React.Component {
     constructor(props) {
@@ -64,15 +65,20 @@ export default class ExchangeHeader extends React.Component {
     }
 
     componentDidMount() {
-        this.updateMargin();
+        let self = this;
+        document.delayedExecution.add("ExchangeHeader_updateMargin", function() {
+            self.updateMargin();
+        }, 100);        
     }
 
     componentDidUpdate() {
-        this.updateMargin();
+        document.delayedExecution.add("ExchangeHeader_updateMargin", function() {
+            self.updateMargin();
+        }, 100);        
     }
 
     updateMargin() {
-        function getMaxWidth(queryClass) {
+        function getMaxWidth(queryClass) {            
             let max = 0;
             let list = document.getElementsByClassName(queryClass);
             for (let i in list) {

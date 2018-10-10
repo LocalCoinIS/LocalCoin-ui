@@ -887,7 +887,8 @@ class Exchange extends React.Component {
         document.fastLoader.show();
 
         let self = this;
-        setTimeout(function() {
+
+        document.delayedExecution.add("_moveOrderBook", function() {
             if(self.state.leftOrderBook) {
                 self.resetHeaderMargin();
             }

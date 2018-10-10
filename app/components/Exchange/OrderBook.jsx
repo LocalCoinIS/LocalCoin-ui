@@ -253,7 +253,7 @@ class OrderBook extends React.Component {
             }
         }
 
-        function getMaxWidth(queryClass) {
+        function getMaxWidth(queryClass) {            
             let max = 0;
             let list = document.getElementsByClassName(queryClass);
             for (let i in list) {
@@ -373,10 +373,13 @@ class OrderBook extends React.Component {
 
     verticalScrollBar = () => this.queryStickyTable("#y-scrollbar");
 
-    componentDidUpdate() {
+    componentDidUpdate() {//delayed execution
         if (!this.props.horizontal) {
-            this.updateCeilWith();
-            this.addLeftCellActive();
+            let self = this;
+            document.delayedExecution.add("orderBook_componentDidUpdate", function() {
+                self.updateCeilWith();
+                self.addLeftCellActive();
+            }, 100);
         }
     }
 
@@ -385,8 +388,11 @@ class OrderBook extends React.Component {
         document.fastLoader.hide();
 
         if (!this.props.horizontal) {
-            this.updateCeilWith();
-            this.addLeftCellActive();
+            let self = this;
+            document.delayedExecution.add("orderBook_componentDidUpdate", function() {
+                self.updateCeilWith();
+                self.addLeftCellActive();
+            }, 100);
 
             
             let up = this.refs.vertical_sticky_table_up.table.querySelector(

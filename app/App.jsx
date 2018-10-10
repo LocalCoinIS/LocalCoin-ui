@@ -14,6 +14,7 @@ import SyncError from "./components/SyncError";
 import DynamicDataTip from "./components/DynamicDataTip";
 import RoutingEvents from "./components/RoutingEvents";
 import FastLoader from "./components/FastLoader";
+import DelayedExecution from "./components/DelayedExecution";
 import LoadingIndicator from "./components/LoadingIndicator";
 import BrowserNotifications from "./components/BrowserNotifications/BrowserNotificationsContainer";
 import Header from "components/Layout/Header";
@@ -412,6 +413,7 @@ class Root extends React.Component {
         }, 500);
 
         document.fastLoader = new FastLoader();
+        document.delayedExecution = new DelayedExecution();
     }
 
     getChildContext() {
