@@ -22,108 +22,6 @@ class OrderBookRowVertical extends React.Component {
         );
     }
 
-    componentDidMount() {
-        ReactTooltip.rebuild();
-        this.updateCeilWith();
-        this.addLeftCellActive();
-    }
-
-    componentDidUpdate() {
-        this.updateCeilWith();
-        this.addLeftCellActive();
-    }
-
-    addLeftCellActive() {
-        let forAdd = "left-cell-active";
-        let main = document.getElementsByTagName("main")[0];
-        if (main.className.indexOf(forAdd) === -1) {
-            main.className += " " + forAdd;
-        }
-    }
-
-    updateCeilWith() {
-        function updateWidth(queryClass, width) {
-            let list = document.getElementsByClassName(queryClass);
-            for (let i in list) {
-                try {
-                    list[i].style.width = width + "px";
-                } catch (e) {}
-            }
-        }
-
-        function getMaxWidth(queryClass) {
-            let max = 0;
-            let list = document.getElementsByClassName(queryClass);
-            for (let i in list) {
-                let width = list[i].offsetWidth;
-                if (width > max) max = width;
-            }
-
-            return max;
-        }
-
-        let queries = {
-            one: "vertical-table-cell-one",
-            two: "vertical-table-cell-two",
-            three: "vertical-table-cell-three"
-        };
-
-        let maxWidth = {
-            one: getMaxWidth(queries.one),
-            two: getMaxWidth(queries.two),
-            three: getMaxWidth(queries.three)
-        };
-
-        updateWidth(queries.one, maxWidth.one);
-        updateWidth(queries.two, maxWidth.two);
-        updateWidth(queries.three, maxWidth.three);
-
-        let margin = 0;
-        //set margin header by with left cell bar
-        try {
-            margin = maxWidth.one + maxWidth.two + maxWidth.three;
-            let header = document.getElementsByClassName(
-                "container-menu-header"
-            )[0];
-            header.style.marginLeft = margin + "px";
-        } catch (e) {}
-
-        try {
-            let id = "exchange_header_style";
-            let minus = margin + getMaxWidth("right-column");
-            let style =
-                "@media only screen and (min-width: 1280px) { " +
-                "body.localcoin .exchange-layout .grid-block.shrink.no-padding.overflow-visible.top-bar, body.localcoin .exchange-layout .main .grid-block.shrink.no-padding.overflow-visible.top-bar.left-cell-active { " +
-                "width: calc(100% - " +
-                minus +
-                "px); " +
-                "}}";
-
-            if (document.getElementById(id)) {
-                let styleDom = document.getElementById(id);
-                styleDom.innerHTML = style;
-            } else {
-                let styleDom = document.createElement("style");
-                styleDom.id = id;
-                styleDom.innerHTML = style;
-                document.getElementsByTagName("head")[0].appendChild(styleDom);
-            }
-        } catch (e) {}
-    }
-
-    componentWillUnmount() {
-        this.resetHeaderMargin();
-    }
-
-    resetHeaderMargin() {
-        try {
-            let header = document.getElementsByClassName(
-                "container-menu-header"
-            )[0];
-            header.style.marginLeft = 0;
-        } catch (e) {}
-    }
-
     render() {
         let {order, quote, base, final} = this.props;
         const isBid = order.isBid();
@@ -337,6 +235,84 @@ class OrderBook extends React.Component {
         };
     }
 
+    addLeftCellActive() {
+        let forAdd = "left-cell-active";
+        let main = document.getElementsByTagName("main")[0];
+        if (main.className.indexOf(forAdd) === -1) {
+            main.className += " " + forAdd;
+        }
+    }
+
+    updateCeilWith() {
+        function updateWidth(queryClass, width) {
+            let list = document.getElementsByClassName(queryClass);
+            for (let i in list) {
+                try {
+                    list[i].style.width = width + "px";
+                } catch (e) {}
+            }
+        }
+
+        function getMaxWidth(queryClass) {
+            let max = 0;
+            let list = document.getElementsByClassName(queryClass);
+            for (let i in list) {
+                let width = list[i].offsetWidth;
+                if (width > max) max = width;
+            }
+
+            return max;
+        }
+
+        let queries = {
+            one: "vertical-table-cell-one",
+            two: "vertical-table-cell-two",
+            three: "vertical-table-cell-three"
+        };
+
+        let maxWidth = {
+            one: getMaxWidth(queries.one),
+            two: getMaxWidth(queries.two),
+            three: getMaxWidth(queries.three)
+        };
+
+        updateWidth(queries.one, maxWidth.one);
+        updateWidth(queries.two, maxWidth.two);
+        updateWidth(queries.three, maxWidth.three);
+
+        let margin = 0;
+        //set margin header by with left cell bar
+        try {
+            margin = maxWidth.one + maxWidth.two + maxWidth.three;
+            let header = document.getElementsByClassName(
+                "container-menu-header"
+            )[0];
+            header.style.marginLeft = margin + "px";
+        } catch (e) {}
+
+        try {
+            let id = "exchange_header_style";
+            let minus = margin + getMaxWidth("right-column");
+            let style =
+                "@media only screen and (min-width: 1280px) { " +
+                "body.localcoin .exchange-layout .grid-block.shrink.no-padding.overflow-visible.top-bar, body.localcoin .exchange-layout .main .grid-block.shrink.no-padding.overflow-visible.top-bar.left-cell-active { " +
+                "width: calc(100% - " +
+                minus +
+                "px); " +
+                "}}";
+
+            if (document.getElementById(id)) {
+                let styleDom = document.getElementById(id);
+                styleDom.innerHTML = style;
+            } else {
+                let styleDom = document.createElement("style");
+                styleDom.id = id;
+                styleDom.innerHTML = style;
+                document.getElementsByTagName("head")[0].appendChild(styleDom);
+            }
+        } catch (e) {}
+    }
+
     // shouldComponentUpdate(nextProps, nextState) {
     //     console.log("calls changed:", !Immutable.is(nextProps.calls, this.props.calls), nextProps.calls && nextProps.calls.toJS(), this.props.calls && this.props.calls.toJS());
     //     const callsChanged = didOrdersChange(nextProps.calls, this.props.calls);
@@ -397,10 +373,21 @@ class OrderBook extends React.Component {
 
     verticalScrollBar = () => this.queryStickyTable("#y-scrollbar");
 
+    componentDidUpdate() {
+        if (!this.props.horizontal) {
+            this.updateCeilWith();
+            this.addLeftCellActive();
+        }
+    }
+
     componentDidMount() {
         ReactTooltip.rebuild();
 
         if (!this.props.horizontal) {
+            this.updateCeilWith();
+            this.addLeftCellActive();
+
+            
             let up = this.refs.vertical_sticky_table_up.table.querySelector(
                 "#y-scrollbar"
             );

@@ -874,7 +874,20 @@ class Exchange extends React.Component {
         });
     }
 
+    resetHeaderMargin() {
+        try {
+            let header = document.getElementsByClassName(
+                "container-menu-header"
+            )[0];
+            header.style.marginLeft = 0;
+        } catch (e) {}
+    }
+
     _moveOrderBook() {
+        if(this.state.leftOrderBook) {
+            this.resetHeaderMargin();
+        }
+
         SettingsActions.changeViewSetting({
             leftOrderBook: !this.state.leftOrderBook
         });
