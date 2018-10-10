@@ -13,6 +13,7 @@ import {IntlProvider} from "react-intl";
 import SyncError from "./components/SyncError";
 import DynamicDataTip from "./components/DynamicDataTip";
 import RoutingEvents from "./components/RoutingEvents";
+import FastLoader from "./components/FastLoader";
 import LoadingIndicator from "./components/LoadingIndicator";
 import BrowserNotifications from "./components/BrowserNotifications/BrowserNotificationsContainer";
 import Header from "components/Layout/Header";
@@ -409,6 +410,8 @@ class Root extends React.Component {
         setInterval(function() {
             re.updateRouter(self.props.router);
         }, 500);
+
+        document.fastLoader = new FastLoader();
     }
 
     getChildContext() {

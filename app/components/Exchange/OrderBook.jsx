@@ -382,6 +382,7 @@ class OrderBook extends React.Component {
 
     componentDidMount() {
         ReactTooltip.rebuild();
+        document.fastLoader.hide();
 
         if (!this.props.horizontal) {
             this.updateCeilWith();

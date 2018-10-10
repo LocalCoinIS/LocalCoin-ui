@@ -884,15 +884,20 @@ class Exchange extends React.Component {
     }
 
     _moveOrderBook() {
-        if(this.state.leftOrderBook) {
-            this.resetHeaderMargin();
-        }
+        document.fastLoader.show();
 
-        SettingsActions.changeViewSetting({
-            leftOrderBook: !this.state.leftOrderBook
-        });
-
-        this.setState({leftOrderBook: !this.state.leftOrderBook});
+        let self = this;
+        setTimeout(function() {
+            if(self.state.leftOrderBook) {
+                self.resetHeaderMargin();
+            }
+    
+            SettingsActions.changeViewSetting({
+                leftOrderBook: !self.state.leftOrderBook
+            });
+    
+            self.setState({leftOrderBook: !self.state.leftOrderBook});
+        }, 100);
     }
 
     _currentPriceClick(type, price) {
