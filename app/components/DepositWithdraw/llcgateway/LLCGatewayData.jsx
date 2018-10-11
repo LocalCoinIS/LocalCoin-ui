@@ -54,7 +54,14 @@ class LLCGatewayData {
         return ret.join("&");
     }
 
-    getUserBalance(account, normalizeValue, byAsset, currencyCoef) {
+    precisionToCoef(precision) {
+        let val = "1";
+        for(let i = 0; i < precision; i++) val += "0";
+
+        return parseInt(val);
+    }
+
+    getUserBalance(account, normalizeValue, byAsset) {
         let list = [];
 
         let normalizeBalance = function(normalizeValue, balance, currencyCoef) {
@@ -74,6 +81,9 @@ class LLCGatewayData {
 
             let balanceId = account_balances[assetId];
             let balanceObject = ChainStore.getObject(balanceId);
+
+            let precision = asset.get("precision");
+            let currencyCoef = this.precisionToCoef(precision);
 
             list[asset.get("symbol")] = normalizeBalance(
                 normalizeValue,

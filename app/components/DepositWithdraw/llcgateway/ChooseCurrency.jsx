@@ -127,7 +127,7 @@ class ChooseCurrency extends React.Component {
             <div>
                 <label className="left-label">
                     <span>
-                        {this.state.type == LLCGateway.DEPOSIT
+                        {this.state.type == LLCGateway.WITHDRAW
                             ? counterpart
                                   .translate("gateway.choose_withdraw")
                                   .toUpperCase()

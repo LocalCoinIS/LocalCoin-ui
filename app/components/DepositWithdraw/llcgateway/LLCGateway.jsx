@@ -37,18 +37,23 @@ class LLCGateway extends React.Component {
                 {title: "gateway.bridge", content: ""}
             ],
             depositWithdrawList: [
-                {title: "gateway.withdraw", content: ""},
-                {title: "gateway.deposit", content: ""}
+                {title: "gateway.deposit", content: ""},
+                {title: "gateway.withdraw", content: ""}                
             ]
         };
     }
+
+    componentDidMount() {
+        this.switchToDeposit();
+    }
+
     onChangeGatewayBridge(title) {
         if (title == "gateway.gateway") {
             this.setState({
                 mode: LLCGateway.GATEWAY,
                 depositWithdrawList: [
-                    {title: "gateway.withdraw", content: ""},
-                    {title: "gateway.deposit", content: ""}
+                    {title: "gateway.deposit", content: ""},
+                    {title: "gateway.withdraw", content: ""}                    
                 ],
                 type: LLCGateway.WITHDRAW
             });
