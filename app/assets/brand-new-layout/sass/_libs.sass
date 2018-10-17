@@ -256,11 +256,6 @@ body.localcoin .account-inputs .typeahead__innerList
 		display: table-cell
 		margin-top: 0
 
-.mymarkets-header.clickable
-	border-bottom-color: #049cce
-.mymarkets-header.clickable.inactive
-	border-bottom-color: transparent
-
 
 
 .exchange-content-header
@@ -286,10 +281,108 @@ body.localcoin .account-inputs .typeahead__innerList
 .lightTheme .stats .stressed-stat.daily_change.negativ
 	color: #e1424a!important
 body.localcoin
+	.main.account-create-asset
+		.amount-selector
+			.left-label
+				padding: 0
+	.balance .balance__list
+		max-height: 50vh
+		overflow-y: auto 
+	.balance .balance__link
+		padding: 4px 44px
+	.exchange-layout
+		.my-order
+			font-weight: bold
+			*
+				font-weight: bold
+	.mymarkets-header.clickable
+		border-bottom-color: transparent
+	.mymarkets-header.clickable.inactive
+		border-bottom-color: #049cce
+	.options__nav__link
+		line-height: 20px
+		min-height: 36px
+		display: flex
+		align-items: center
+	.options__nav__item
+		min-height: 36px
+		display: flex
+		flex-direction: column
+		justify-content: center
+	.mymarkets-header.inactive
+		background-color: #dce6f2
+	#send_modal_header
+		.dropdown
+			min-width: 104px
+			max-width: 104px
+	.main.account .content .dashboard__actions .col-xl-9.col-lg-12
+		.dashboard__actions__filters
+			>div
+				min-width: 280px
+	.node-access-popup
+		width: calc(100% + 1px)
+		right: 0px
+		bottom: 28px
+		.nodes-list .api-status
+			display: flex
+			width: 100%
+			border-bottom: 1px solid rgba(220, 230, 242, 0.5)
+			a
+				margin-left: auto
+				order: 2
+	.__react_component_tooltip
+		padding-top: 8px
+		strong
+			position: relative
+			top: 0px
+	.main.settings-reset
+		.btn.large.inverted
+			padding: 0!important
+	.hide0balances
+		display: flex
+		align-items: center
+		input
+			display: none
+		span:nth-child(2)
+			display: inline-flex
+			align-items: center
+			position: relative
+			min-width: 19px
+			max-width: 19px
+			width: 19px
+			height: 19px
+			background-color: #dce6f2
+			border: 1px solid #7fafe8
+			margin-right: 10px
+		span.disable
+			opacity: 0.5
+		span:nth-child(3)
+			display: inline-flex
+			position: relative
+			top: 1px
+			line-height: 19px
+			color: #001b60
+		input:checked + span:nth-child(2)::before
+			content: ''
+			display: block
+			position: absolute
+			width: 14px
+			height: 14px
+			top: 2px
+			left: 2px
+			right: 0
+			bottom: 0
+			background-image: url("data:image/svg+xml;base64,PHN2ZyBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyNiAyNiIgZmlsbD0iIzM1NGM5YiIgdmlld0JveD0iMCAwIDI2IDI2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Im0uMyAxNGMtLjItLjItLjMtLjUtLjMtLjdzLjEtLjUuMy0uN2wxLjQtMS40Yy40LS40IDEtLjQgMS40IDBsLjEuMSA1LjUgNS45Yy4yLjIuNS4yLjcgMGwxMy40LTEzLjloLjFjLjQtLjQgMS0uNCAxLjQgMGwxLjQgMS40Yy40LjQuNCAxIDAgMS40bC0xNiAxNi42Yy0uMi4yLS40LjMtLjcuM3MtLjUtLjEtLjctLjNsLTcuOC04LjQtLjItLjN6Ij48L3BhdGg+PC9zdmc+")
+			background-repeat: no-repeat
+			background-position: center
+			background-size: contain
 	#sticky-table-x-wrapper
 		.sticky-table-container 
 			width: 100%
-	.main.settings-faucet-address
+	.main.settings-faucet-address,
+	.main.settings-backup,
+	.main.settings-password,
+	.main.settings-wallet
 		.content
 			margin: 20px
 	.grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
@@ -316,12 +409,24 @@ body.localcoin
 		table.blue-bg.borders td, table.blue-bg.with-borders td
 			border-bottom: 1px solid #fff!important
 	.exchange-layout
+		.sticky-table-row.exchange-sell-buy-orders
+			width: 100%
+			.cell.center-cell
+				display: block
+				width: 100%
+				border-top: 1px solid #00195b
+				border-bottom: 1px solid #00195b
 		.mymarkets-tabs
+			min-height: fit-content!important
 			.mymarkets-tab
-				padding: 0 14px
+				padding: 0 5px
+				margin-bottom: 0px
 		.table.table-hover.text-right
 			tr.clickable.activeMarket
-				background-color: #000
+				background-color: transparent
+				td,
+				span
+					color: #000!important
 	.main.explorer-assets
 		.market-list-wrap
 			table
@@ -332,6 +437,7 @@ body.localcoin
 		height: calc(50vh - 35px)!important
 	.left-order-book .order-table-container
 		height: calc(50vh - 50px)
+		padding-top: 16px
 	.__react_component_tooltip.type-light.place-right:after
 		border-right-color: grey
 	.__react_component_tooltip.type-light.place-top:after
@@ -411,6 +517,10 @@ body.localcoin
 					font-size: 11px!important
 					padding: 2px 4px!important
 					border-radius: 2px!important
+				a:not(.inline-block)
+					color: #2964fa!important
+					span
+						color: #2964fa!important
 	.main
 		.content
 			padding-top: 0
@@ -602,6 +712,26 @@ body.localcoin
 			margin-bottom: 0!important
 			.txtlabel
 				margin-top: 15px
+			.txtlabel.warning
+				display: inline-block
+				color: rgb(206, 121, 37)
+				padding: 2px 4px 2px 9px
+				position: relative
+				left: -5px
+				border-radius: 2px
+				line-height: 1
+				background-color: rgb(220, 230, 242)
+				border: 1px solid rgb(206, 121, 37)
+			.txtlabel.cancel
+				display: inline-block
+				color: rgb(0, 25, 91)
+				padding: 2px 4px 2px 9px
+				position: relative
+				left: -5px
+				border-radius: 2px
+				line-height: 1
+				background-color: #dce6f2
+				border: 1px solid rgb(68, 68, 68)
 	.recent-transactions.no-overflow
 		overflow: visible!important
 		.select ul
@@ -999,16 +1129,17 @@ body.localcoin
 				span
 					font-size: 11px
 		.small-12.medium-6.middle-content.order-1
-			.table.order-table.table-hover.fixed-table.text-right
-				.price-integer:nth-child(2)
+			.table
+				.price-integer
 					color: #ea340b
 		.small-12.medium-6.middle-content.order-2
-			.table.order-table.table-hover.fixed-table.text-right
-				.price-integer:nth-child(2)
+			.table
+				.price-integer
 					color: #258a14
-		.medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3
-			.table.order-table.text-right.fixed-table.market-right-padding
-				.price-integer:nth-child(2)
+		.medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3,
+		.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3
+			.table
+				.price-integer
 					color: #258a14
 	.exchange-layout
 		.table.table-hover.text-right
@@ -1069,14 +1200,16 @@ body.localcoin
 
 
 	.cell.orderHistoryAsk.right
-		.price-integer:nth-child(2)
+		.price-integer
 			color: #ea340b
 	.cell.orderHistoryBid.right
-		.price-integer:nth-child(2)
+		.price-integer
 				color: #258a14
 	.left-order-book .cell
 		padding: 0 15px 0 0px
 		font-size: 12px
+		color: #00195b
+
 	.cell.center-cell
 		background-color: #abbfd9
 	.v-align.no-padding.align-center.grid-block.footer.shrink.bottom-header
@@ -1209,8 +1342,11 @@ body.localcoin
 			border: 1px solid #999!important
 			background-color: #fff
 			color: #000
-	.has-error
-		margin-top: 45px
+	.input-area:not(.content-block) + .has-error
+		top: -7px
+		color: #a94442!important
+		span
+			color: #a94442!important
 	.login-type-selector
 		margin-bottom: 0
 	.modal-header
@@ -1260,6 +1396,8 @@ body.localcoin
 			background-color: #fff
 
 
+body.localcoin .footer-info
+	position: relative
 
 body.localcoin
 	.exchange-layout .medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3 .grid-block.shrink.left-orderbook-header.market-right-padding-only
@@ -1511,6 +1649,21 @@ body.localcoin .exchange-layout .grid-block.wrap.market-stats-container ul.marke
 			.dashboard__tabs
 				padding-left: 385px
 
+@media only screen and (max-width: 1680px)
+	body.localcoin .voting-container .dashboard__tabs.dashboard__tabs.permissions.small+div .col-xs-12 span[style="float: right;"]
+		position: relative
+		top: 0
+		right: 0
+		background-color: #c1d0e3
+
+@media only screen and (max-width: 1640px)
+	body.localcoin .main.account-localcoin-ico .content .dashboard__actions, body.localcoin .main.account .content .dashboard__actions
+		position: relative
+		right: 0
+		top: 0
+		width: 100%
+		background: #c1d0e3
+		padding: 6px 0 0 0
 @media only screen and (max-width: 1450px)
 	body.localcoin
 		.exchange-layout .medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3 .grid-block.shrink.left-orderbook-header.market-right-padding-only
@@ -1527,8 +1680,52 @@ body.localcoin .exchange-layout .grid-block.wrap.market-stats-container ul.marke
 					padding: 0px 15px!important
 					width: 90px!important
 
+@media only screen and (max-width: 1200px)
+	body.localcoin
+		.exchange-layout
+			.order-book-button-v
+				display: none!important
+		.main.account-member-stats
+			.grid-content .grid-block
+				margin: 0
+			.grid-content
+				padding-right: 0!important
+	body.localcoin .main.account-localcoin-ico .content .dashboard__actions, body.localcoin .main.account .content .dashboard__actions
+		.row
+			display: flex
+			flex-direction: column
+	body.localcoin .main.account-localcoin-ico .content .dashboard__actions .col-xl-3.col-lg-6, body.localcoin .main.account-localcoin-ico .content .dashboard__actions .col-xl-9.col-lg-12, body.localcoin .main.account .content .dashboard__actions .col-xl-3.col-lg-6, body.localcoin .main.account .content .dashboard__actions .col-xl-9.col-lg-12
+		width: 100%
+		max-width: 100%
+		flex: 0 0 100%
+
 @media only screen and (min-width: 1280px)
 	body.localcoin .exchange-layout
+		.main.market.left-cell-active
+			#CenterContent
+				>.grid-block.no-overflow.wrap.shrink
+					flex-grow: 1
+					.small-12.no-padding.middle-content.medium-6.order-1.buy-form,
+					.small-12.no-padding.middle-content.medium-6.order-2.sell-form
+						max-height: 326px
+					.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3,
+					.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
+						height: calc(100vh - 830px)
+						min-height: 336px
+						.exchange-bordered.small-12
+							height: 100%!important
+							overflow: hidden
+							.table-container.grid-block.market-right-padding-only.no-overflow.ps-container.ps-theme-default
+								max-height: none!important
+			.medium-6
+				flex: 0 0 50%!important
+				max-width: 50%!important
+		.small-12.no-padding.middle-content.medium-6.xlarge-4.order-1.buy-form
+			.exchange-bordered.buy-sell-container
+				height: 326px
+		.small-12.no-padding.middle-content.medium-6.xlarge-4.order-2.sell-form
+			.exchange-bordered.buy-sell-container
+				height: 326px
 		.grid-block.shrink.no-padding.overflow-visible.top-bar
 			width: calc(100% - 280px)
 		.grid-block.shrink.no-padding.overflow-visible.top-bar.left-cell-active
@@ -1565,6 +1762,8 @@ body.localcoin .exchange-layout .grid-block.wrap.market-stats-container ul.marke
 				height: 100%!important
 				.grid-block.ps-container.ps-theme-default
 					max-height: 100%!important
+					display: flex
+					flex-direction: column
 				.orderbook-showall
 					margin-top: auto
 	.exchange-layout
@@ -1586,6 +1785,10 @@ body.localcoin .exchange-layout .grid-block.wrap.market-stats-container ul.marke
 				max-width: 50%!important
 @media only screen and (max-width: 1279px)
 	body.localcoin .exchange-layout
+		.grid-block.ps-container.ps-theme-default.ps-active-y
+			flex-direction: column
+		.order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+			margin: auto
 		.order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
 			.table.order-table.table-hover.fixed-table.text-right.no-overflow,
 			.table.order-table.table-hover.fixed-table.text-right.no-overflow,
@@ -1662,3 +1865,41 @@ body.localcoin .exchange-layout .grid-block.wrap.market-stats-container ul.marke
 				font-size: 10px
 	body.localcoin .exchange-layout .float-right.header-sub-title .inline-block>span
 		font-size: 10px!important
+
+
+@media only screen and (max-width: 1000px)
+	.node-access-popup
+		display: none
+	body.localcoin
+		.main.account-create-asset
+			.create-asset-container .dashboard__tabs.dashboard__tabs.permissions.small+div
+				position: relative
+				right: 0
+				margin: 15px 0 8px 15px
+
+@media only screen and (max-width: 850px)
+	body.localcoin .dashboard__actions__filters label.radio
+		margin: 4px 20px 4px 0
+	body.localcoin .dashboard__actions__filters
+		display: flex
+		flex-direction: row
+		flex-wrap: wrap
+
+@media only screen and (max-width: 640px)
+	body.localcoin
+		#account_login_button
+			width: auto
+		.main.account-create-asset
+			.amount-selector
+				padding: 0!important
+				margin: 5px 0
+
+@media only screen and (max-width: 340px)
+	body.localcoin
+		.grid-block.account-login-options
+			display: flex
+			flex-direction: column
+			margin: 0
+			#account_login_button,
+			#account_login_button2
+				width: 100%
