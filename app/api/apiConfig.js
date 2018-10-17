@@ -67,14 +67,14 @@ export const gdexAPIs = {
 
 export const settingsAPIs = {
     // DEFAULT_WS_NODE: "wss://fake.automatic-selection.com",
-    DEFAULT_WS_NODE: "ws://194.63.142.61:8090",
+    DEFAULT_WS_NODE: "wss://moscow.localcoin.is/",
     WS_NODE_LIST: [
         {
             url: "wss://fake.automatic-selection.com",
             location: {translate: "settings.api_closest"}
         },
         {url: "ws://127.0.0.1:8090", location: "Locally hosted"},
-        {url: "ws://194.63.142.61:8090", location: "Gateis staging"}
+        {url: "wss://moscow.localcoin.is/", location: "Gateis staging"}
     ],
     DEFAULT_FAUCET: "http://194.63.142.61:5000", // 2017-12-infrastructure worker proposal
     TESTNET_FAUCET: "https://faucet.testnet.bitshares.eu",
