@@ -357,7 +357,7 @@ class CreateAccountPassword extends React.Component {
                     {/* If this is not the first account, show dropdown for fee payment account */}
                     {firstAccount ? null : (
                         <div
-                            className="full-width-content form-group no-overflow"
+                            className="full-width-content form-group"
                             style={{paddingTop: 30}}
                         >
                             <label>

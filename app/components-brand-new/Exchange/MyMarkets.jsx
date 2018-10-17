@@ -161,9 +161,9 @@ class MarketGroup extends React.Component {
                         this.state.sortBy == "volume" &&
                         this.state.inverseSort
                     ) {
-                        orderDirectionvol = <span>▲</span>;
-                    } else if (this.state.sortBy == "volume") {
                         orderDirectionvol = <span>▼</span>;
+                    } else if (this.state.sortBy == "volume") {
+                        orderDirectionvol = <span>▲</span>;
                     }
 
                     return (
@@ -389,6 +389,7 @@ class MyMarkets extends React.Component {
             activeFindBase: "USD"
         };
 
+        this._onInputName = this._onInputName.bind(this);
         this._setMinWidth = this._setMinWidth.bind(this);
         this.getAssetList = debounce(AssetActions.getAssetList.defer, 150);
     }
@@ -996,10 +997,7 @@ class MyMarkets extends React.Component {
                                             }}
                                             type="text"
                                             value={this.state.inputValue}
-                                            onChange={this._onInputName.bind(
-                                                this,
-                                                true
-                                            )}
+                                            onChange={this._onInputName}
                                             placeholder={counterpart.translate(
                                                 "exchange.search"
                                             )}
