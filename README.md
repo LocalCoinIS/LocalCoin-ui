@@ -1,3 +1,16 @@
+staging-new-layout рабочая ветка
+live боевая ветка
+
+Правила деплоя
+============
+1. sass файлы https://github.com/livehtml/894_gate_is/tree/master/html/sources/sass переносим в проект (app/assets/brand-new-layout/sass)
+2. код нужно скомпилить перед пушем "npm run build"
+3. льем код в тестовую ветку
+4. если верстка на тестовом http://localcoin.n3.by (localcoin/4H0x5H8m) адекватная, мерждим на live, пушим.
+
+код подтянется через автодеплой. если нужно будет сделать что-то по ssh, не затри права записи веб-сервера на файлы.
+
+
 BitShares-UI
 ============
 [中文版](README_zh.md)
