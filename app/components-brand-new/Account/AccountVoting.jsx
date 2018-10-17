@@ -695,44 +695,52 @@ class AccountVoting extends React.Component {
         );
 
         let proxyInput = (
-            <AccountSelector
-                hideImage
+            <div
                 style={{width: "50%", maxWidth: 350}}
-                account={this.state.current_proxy_input}
-                accountName={this.state.current_proxy_input}
-                onChange={this.onProxyChange.bind(this)}
-                onAccountChanged={this.onProxyAccountFound}
-                typeahead={true}
-                tabIndex={1}
-                placeholder="Proxy not set"
+                data-tip="Search for an account to be used as your proxy for voting"
             >
-                <span
-                    style={{
-                        paddingLeft: 5,
-                        position: "relative",
-                        top: -1,
-                        display: hasProxy ? "" : "none"
-                    }}
+                <AccountSelector
+                    hideImage
+                    account={this.state.current_proxy_input}
+                    accountName={this.state.current_proxy_input}
+                    onChange={this.onProxyChange.bind(this)}
+                    onAccountChanged={this.onProxyAccountFound}
+                    typeahead={true}
+                    tabIndex={1}
+                    placeholder="Proxy not set"
                 >
-                    <Icon name="locked" title="icons.locked.action" size="1x" />
-                </span>
-                <span
-                    style={{
-                        paddingLeft: 5,
-                        position: "relative",
-                        top: 9,
-                        display: !hasProxy ? "" : "none"
-                    }}
-                >
-                    <Link to="/help/voting">
+                    <span
+                        style={{
+                            paddingLeft: 5,
+                            position: "relative",
+                            top: -1,
+                            display: hasProxy ? "" : "none"
+                        }}
+                    >
                         <Icon
-                            name="question-circle"
-                            title="icons.question_circle"
+                            name="locked"
+                            title="icons.locked.action"
                             size="1x"
                         />
-                    </Link>
-                </span>
-            </AccountSelector>
+                    </span>
+                    <span
+                        style={{
+                            paddingLeft: 5,
+                            position: "relative",
+                            top: 9,
+                            display: !hasProxy ? "" : "none"
+                        }}
+                    >
+                        <Link to="/help/voting">
+                            <Icon
+                                name="question-circle"
+                                title="icons.question_circle"
+                                size="1x"
+                            />
+                        </Link>
+                    </span>
+                </AccountSelector>
+            </div>
         );
 
         const showExpired = workerTableIndex === 2;

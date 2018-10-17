@@ -93,6 +93,10 @@ class WalletUnlockModal extends React.Component {
 
     handleModalOpen = () => {
         BackupActions.reset();
+        const hiddenPassError = document.getElementById(
+            "custom-error-password"
+        );
+        hiddenPassError.classList.add("hidden");
         this.setState({isOpen: true}, () => {
             const {passwordLogin} = this.props;
             if (!passwordLogin) {
@@ -173,6 +177,13 @@ class WalletUnlockModal extends React.Component {
         );
 
         if (WalletDb.isLocked()) {
+            console.log("====================================");
+            console.log("this place");
+            console.log("====================================");
+            const hiddenPassError = document.getElementById(
+                "custom-error-password"
+            );
+            hiddenPassError.classList.remove("hidden");
             this.setState({passwordError: true});
         } else {
             const password_input = this.passwordInput();
@@ -220,7 +231,6 @@ class WalletUnlockModal extends React.Component {
 
     handleLogin = e => {
         if (e) e.preventDefault();
-
         const {passwordLogin, backup} = this.props;
         const {walletSelected, accountName} = this.state;
 
@@ -370,9 +380,11 @@ class WalletUnlockModal extends React.Component {
                 id={modalId}
                 ref="modal"
                 overlay={true}
+                noLogo={true}
                 overlayClose={false}
-                modalHeader="header.unlock_short"
-                leftHeader
+                modal
+                // modalHeader="header.unlock_short"
+                // leftHeader
             >
                 <form onSubmit={this.handleLogin} className="full-width">
                     <LoginTypeSelector />
@@ -389,14 +401,20 @@ class WalletUnlockModal extends React.Component {
                                 size={60}
                                 hideImage
                                 placeholder=" "
-                                useHR
+                                // useHR
                                 labelClass="login-label"
-                                reserveErrorSpace
+                                // reserveErrorSpace
                             />
-                            <CustomPasswordInput
-                                password_error={passwordError}
-                                ref="custom_password_input"
-                            />
+                            <div
+                                className="custom-password-title hidden"
+                                id="custom-error-password"
+                            >
+                                <CustomPasswordInput
+                                    password_error={passwordError}
+                                    ref="custom_password_input"
+                                />
+                                <CustomError message={errorMessage} />
+                            </div>
                         </div>
                     ) : (
                         <div>
@@ -462,7 +480,7 @@ class WalletUnlockModal extends React.Component {
                             />
                         </div>
                     )}
-                    <CustomError message={errorMessage} />
+
                     {this.shouldShowBackupWarning() && (
                         <BackupWarning
                             onChange={this.handleAskForBackupChange}

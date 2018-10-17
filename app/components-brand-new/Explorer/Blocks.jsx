@@ -103,7 +103,7 @@ class Blocks extends React.Component {
 
         let maxBlock = nextProps.dynGlobalObject.get("head_block_number");
         if (
-            nextProps.latestBlocks.size >= 20 &&
+            nextProps.latestBlocks.size >= 25 &&
             nextProps.dynGlobalObject.get("head_block_number") !==
                 nextProps.latestBlocks.get(0).id
         ) {
@@ -137,7 +137,7 @@ class Blocks extends React.Component {
             10
         );
         if (maxBlock) {
-            for (let i = 19; i >= 0; i--) {
+            for (let i = 24; i >= 0; i--) {
                 let exists = false;
                 if (this.props.latestBlocks.size > 0) {
                     for (let j = 0; j < this.props.latestBlocks.size; j++) {
@@ -199,7 +199,7 @@ class Blocks extends React.Component {
             blockTimes = [],
             avgTime = 0;
 
-        if (latestBlocks && latestBlocks.size >= 20) {
+        if (latestBlocks && latestBlocks.size >= 25) {
             let previousTime;
 
             let lastBlock, firstBlock;
@@ -230,12 +230,12 @@ class Blocks extends React.Component {
                     previousTime = block.timestamp;
                 });
 
-            // Output block rows for the last 20 blocks
+            // Output block rows for the last 25 blocks
             blocks = latestBlocks
                 .sort((a, b) => {
                     return b.id - a.id;
                 })
-                .take(20)
+                .take(25)
                 .map(block => {
                     return (
                         <tr key={block.id}>
@@ -270,12 +270,12 @@ class Blocks extends React.Component {
                 .sort((a, b) => {
                     return b.block_num - a.block_num;
                 })
-                .take(20)
+                .take(25)
                 .map(trx => {
                     let opIndex = 0;
                     return trx.operations
                         .map(op => {
-                            if (trxIndex > 15) return null;
+                            if (trxIndex > 24) return null;
                             return (
                                 <Operation
                                     key={trxIndex++}
@@ -315,7 +315,8 @@ class Blocks extends React.Component {
                                 />
                             </span>
                             <h2>
-                                #{utils.format_number(
+                                #
+                                {utils.format_number(
                                     dynGlobalObject.get("head_block_number"),
                                     0
                                 )}

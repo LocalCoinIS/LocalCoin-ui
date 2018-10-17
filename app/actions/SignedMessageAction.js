@@ -4,10 +4,10 @@ import {Signature, ChainStore, PublicKey} from "bitsharesjs/es";
 import WalletUnlockActions from "actions/WalletUnlockActions";
 import WalletDb from "stores/WalletDb";
 
-const MSG_HEAD = "-----BEGIN BITSHARES SIGNED MESSAGE-----";
+const MSG_HEAD = "-----BEGIN LOCALCOIN SIGNED MESSAGE-----";
 const MSG_META = "-----BEGIN META-----";
 const MSG_SIGNATURE = "-----BEGIN SIGNATURE-----";
-const MSG_FOOT = "-----END BITSHARES SIGNED MESSAGE-----";
+const MSG_FOOT = "-----END LOCALCOIN SIGNED MESSAGE-----";
 const MSG_SENDER = "account";
 const MSG_PUBLICKEY = "memokey";
 const MSG_BLOCK = "block";

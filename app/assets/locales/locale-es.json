@@ -507,7 +507,7 @@
         "short": "Short",
         "show_asks": "Show all asks",
         "show_bids": "Show all bids",
-        "show_only_liquid": "Show liquid markets only",
+        "show_only_liquid": "Liquid markets only",
         "show_only_star_formatter": "{star_icon} only",
         "sma": "Simple Moving Average",
         "spread": "Spread",
@@ -806,7 +806,8 @@
             "open_website": "Website abierto"
         },
         "min_deposit_warning_amount": "Minimum Deposit: %(minDeposit)s %(coin)s",
-        "min_count_confirmations": "Wait for %(cnt)s confirmations for balance funding", "min_deposit_warning_asset": "IMPORTANT: Send only %(coin)s to this deposit address. Sending less than %(minDeposit)s %(coin)s or any other currency to this address may result in the loss of your deposit.",
+        "min_count_confirmations": "Wait for %(cnt)s confirmations for balance funding",
+        "min_deposit_warning_asset": "IMPORTANT: Send only %(coin)s to this deposit address. Sending less than %(minDeposit)s %(coin)s or any other currency to this address may result in the loss of your deposit.",
         "over_limit": "Límite alcanzado",
         "please_generate_address": "Please, get new address ",
         "purchase": "Compra %(asset)s",

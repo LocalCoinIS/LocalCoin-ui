@@ -16,6 +16,16 @@
     padding-right: 0;
     border-radius: 1px;
 
+    .custom-password-title {
+        position: relative;
+    }
+
+    .hidden {
+        .has-error {
+            display: none;
+        }
+    }
+
     hr {
         margin-top: 0;
         margin-bottom: 0.5rem;
@@ -104,7 +114,8 @@
         }
     }
     .content-block {
-        margin-bottom: 1rem;
+        position: relative;
+        height: auto;
     }
     .login-select {
         padding: 0;
@@ -191,4 +202,33 @@
     .left-menu {
         padding-top: 5em;
     }
+}
+
+#unlock_wallet_modal2 form div.has-error {
+    position: absolute;
+    width: 175px;
+    height: 40px;
+    bottom: -7px;
+    top: auto;
+    right: calc(100% + 15px);
+    padding: 8px 21px;
+    border: 1px solid grey;
+    background-color: #fff;
+}
+#unlock_wallet_modal2 form div.has-error::after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-top: 4px solid transparent;
+    border-left: 8px solid transparent;
+    border-bottom: 4px solid transparent;
+    right: -8px;
+    top: 50%;
+    margin-top: -4px;
+    border-left-color: grey;
+    border-top-style: solid;
+}
+.modal-overlay #unlock_wallet_modal2 {
+    overflow: visible !important;
 }
