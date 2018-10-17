@@ -74,7 +74,7 @@ export const settingsAPIs = {
             location: {translate: "settings.api_closest"}
         },
         {url: "ws://127.0.0.1:8090", location: "Locally hosted"},
-        {url: "wss://moscow.localcoin.is/", location: "Gateis staging"}
+        {url: "wss://moscow.localcoin.is/", location: "LocalCoin Moscow"}
     ],
     DEFAULT_FAUCET: "http://194.63.142.61:5000", // 2017-12-infrastructure worker proposal
     TESTNET_FAUCET: "https://faucet.testnet.bitshares.eu",
