@@ -349,3 +349,4021 @@ main[class*="help-"] > .content {
 .deposit-withdraw .has-error {
     color: #f00;
 }
+
+/* ext */
+.input-area,
+.inline-label,
+.typeahead .typeahead__input {
+    height: 40px;
+}
+
+.typeahead {
+    margin-right: 0;
+}
+
+.typeahead .icon.chevron-down {
+    top: 12px !important;
+}
+
+.typeahead__input {
+    line-height: 1.4;
+}
+
+.typeahead .typeahead__innerList {
+    padding: 0;
+}
+
+.witness-item:hover .witness-item__content {
+    background-color: #f5f5f5;
+}
+.table-witnesses {
+    min-width: 1090px;
+    border-bottom: 1px solid #7fafe8;
+}
+
+.table-witnesses td,
+.table-witnesses th {
+    background-color: transparent;
+    padding: 10px 10px;
+    width: 18%;
+}
+
+.table-witnesses td:first-child,
+.table-witnesses th:first-child {
+    width: 10%;
+}
+
+.table-witnesses th {
+    border-bottom: 1px solid #7fafe8;
+}
+
+.table-witnesses tr:first-child {
+    border-bottom: 0 !important;
+}
+
+.typeahead .typeahead__innerList input {
+    margin: 0 !important;
+    border: 1px solid #7fafe8;
+    border-bottom: 0;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    background-color: #dce6f2;
+    color: #00195b;
+    border-radius: 4px;
+    padding: 0 20px;
+    height: 40px;
+    font-size: 15px;
+}
+
+.typeahead .typeahead__innerList input + div[style] {
+    margin-top: 0 !important;
+    background: #eef3f9;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-left: 1px solid #7fafe8;
+    border-bottom: 1px solid #7fafe8;
+    border-right: 1px solid #7fafe8;
+    max-height: 200px !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+}
+
+.typeahead .typeahead__innerList .typeahead__innerItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    background-color: #eef3f9;
+    color: #00195b;
+    padding: 0 5px 0 20px;
+    cursor: pointer;
+}
+
+.typeahead .typeahead__innerList .typeahead__innerItem:hover {
+    background: #dce6f2;
+    color: #00195b;
+}
+
+div.input-wrapper div.floating-dropdown {
+    width: auto;
+    height: 40px;
+}
+
+.dropdown-wrapper:before {
+    position: absolute;
+    content: "";
+    right: 14px;
+    margin-top: -3.5px;
+    top: 50%;
+    display: inline-block;
+    margin-left: 5px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 7px 5.5px 0 5.5px;
+    border-color: #001b60 transparent transparent transparent;
+}
+
+.dropdown-wrapper > div {
+    line-height: 1.5;
+}
+
+.dropdown-wrapper:after {
+    display: none;
+}
+
+.dropdown-wrapper.active:before {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 5.5px 7px 5.5px;
+    border-color: transparent transparent #001b60 transparent;
+}
+
+.dropdown-wrapper.active .dropdown {
+    display: flex;
+    flex-direction: column;
+    left: auto;
+    top: 43px;
+    border-left: 1px solid #7fafe8;
+    border-right: 1px solid #7fafe8;
+    border-bottom: 1px solid #7fafe8;
+}
+
+.dropdown-wrapper.active .dropdown li {
+    height: 40px;
+    color: #00195b;
+    cursor: pointer;
+    padding-left: 20px;
+}
+
+.dropdown-wrapper > div:first-of-type {
+    margin-right: 20px;
+}
+
+.dropdown-wrapper.inactive {
+    opacity: 0.5;
+}
+
+.button.market-button {
+    border: 1px solid #00195b;
+    line-height: 1;
+    margin: 0 4px 4px 0;
+    border-radius: 2px;
+    font-size: 15px;
+    border-radius: 4px;
+    background-color: #00195b;
+    color: #fff;
+    font-family: "osnovapro", sans-serif;
+    padding: 0px 30px;
+    height: 40px;
+}
+
+.button.market-button:hover {
+    background-color: #132d71;
+    color: #fff;
+}
+
+.button.market-button:active {
+    background-color: #050f2a;
+    color: #fff;
+}
+
+.button.market-button > span {
+    color: inherit;
+}
+
+.button.disabled {
+    border: 1px solid #00195b;
+    line-height: 1;
+    margin: 0 4px 4px 0;
+    border-radius: 2px;
+    font-size: 15px;
+    border-radius: 4px;
+    font-family: "osnovapro", sans-serif;
+    padding: 0px 30px;
+    height: 40px;
+    background-color: #7f8cad !important;
+    border-color: #7f8cad !important;
+    color: #fff !important;
+    pointer-events: none;
+}
+
+.button.disabled:hover {
+    background-color: #7f8cad !important;
+    border-color: #7f8cad !important;
+    color: #fff !important;
+}
+
+.button.disabled:active {
+    background-color: #7f8cad !important;
+    border-color: #7f8cad !important;
+    color: #fff !important;
+}
+
+.button.hollow.primary,
+.button.outline,
+.button {
+    outline: none;
+    background-color: transparent;
+    font-size: 13px;
+    color: #00195b;
+    border: 1px solid #00195b;
+    line-height: 1;
+    padding: 3px 7px;
+    margin: 0 4px 4px 0;
+    border-radius: 2px;
+    font-size: 15px;
+    border-radius: 4px;
+    font-family: "osnovapro", sans-serif;
+    font-weight: normal;
+    padding: 0 24px;
+    height: 40px;
+}
+
+.button.hollow.primary:hover,
+.button.outline:hover,
+.button:hover {
+    background-color: #eef3f9;
+}
+
+.button.hollow.primary:active,
+.button.outline:active,
+.button:active {
+    background-color: #c1d0e3;
+}
+
+body.localcoin .account-inputs .typeahead__innerList input {
+    width: 100%;
+}
+
+.sub-content input:focus {
+    border: 1px solid #999 !important;
+    background-color: #fff;
+    color: #000;
+}
+
+.sub-content input {
+    width: 100%;
+    border-radius: 4px;
+    padding: 0 17px;
+    height: 40px;
+    background-color: #dce6f2;
+    color: #00195b;
+    font-size: 15px;
+    border: 1px solid #7fafe8;
+}
+
+.sub-content input:focus {
+    border: 1px solid #999 !important;
+    background-color: #fff;
+    color: #000;
+}
+
+.txtlabel {
+    display: block;
+    margin-top: 2rem;
+}
+
+.active-witness td {
+    background-color: #dce6f2 !important;
+}
+.active-witness .txtlabel {
+    display: table-cell;
+    margin-top: 0;
+}
+
+body.localcoin .grid-content {
+    padding: 0;
+}
+
+.label.info,
+.label.warning {
+    display: inline-block;
+    color: #ce7925;
+    background-color: #dce6f2;
+    outline: none;
+    font-size: 13px;
+    border: 1px solid #ce7925;
+    line-height: 1;
+    padding: 3px 7px;
+    margin: 0 4px 4px 0;
+    border-radius: 2px;
+}
+
+.label.info > span,
+.label.warning > span {
+    color: inherit;
+}
+
+.label.success {
+    display: inline-block;
+    color: #608c1c;
+    background-color: #dce6f2;
+    outline: none;
+    font-size: 13px;
+    border: 1px solid #608c1c;
+    line-height: 1;
+    padding: 3px 7px;
+    margin: 0 4px 4px 0;
+    border-radius: 2px;
+}
+
+.label.success > span {
+    color: inherit;
+}
+
+body.localcoin .dashboard__table .label {
+    margin-bottom: 0;
+}
+
+.additional-account-options span a {
+    text-decoration: none;
+}
+
+.additional-account-options span a span {
+    color: #2964fa;
+}
+
+.additional-account-options span a span:hover {
+    color: #132d71;
+}
+
+.button.hollow.primary,
+.button.outline,
+.button {
+    outline: none;
+    background-color: transparent;
+    font-size: 13px;
+    line-height: 40px;
+    color: #00195b;
+    border: 1px solid #00195b;
+    line-height: 1;
+    padding: 3px 7px;
+    margin: 0 4px 4px 0;
+    border-radius: 2px;
+    font-size: 15px;
+    border-radius: 4px;
+    font-family: "osnovapro", sans-serif;
+    font-weight: normal;
+    padding: 0 24px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.button.hollow.primary:hover,
+.button.outline:hover,
+.button:hover {
+    background-color: #eef3f9;
+}
+
+.button.hollow.primary:active,
+.button.outline:active,
+.button:active {
+    background-color: #c1d0e3;
+}
+
+.button.hollow.primary:focus,
+.button.outline:focus,
+.button:focus {
+    background-color: #c1d0e3;
+}
+
+body.localcoin .account-inputs .typeahead__innerList input {
+    width: 100%;
+}
+
+.sub-content input {
+    width: 100%;
+    border-radius: 4px;
+    padding: 0 17px;
+    height: 40px;
+    background-color: #dce6f2;
+    color: #00195b;
+    font-size: 15px;
+    border: 1px solid #7fafe8;
+}
+
+.sub-content input:focus {
+    border: 1px solid #999 !important;
+    background-color: #fff;
+    color: #000;
+}
+
+.txtlabel {
+    display: block;
+    margin-top: 2rem;
+}
+
+.active-witness td {
+    background-color: #dce6f2 !important;
+}
+
+.active-witness .txtlabel {
+    display: table-cell;
+    margin-top: 0;
+}
+
+.exchange-content-header {
+    display: flex;
+    align-items: center;
+    background-color: #abbfd9;
+    min-height: 32px;
+}
+
+.exchange-content-header .float-right {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.additional-account-options span a {
+    text-decoration: none;
+}
+
+.additional-account-options span a span {
+    color: #2964fa;
+}
+
+.additional-account-options span a span:hover {
+    color: #132d71;
+}
+
+.lightTheme .stats .stressed-stat.daily_change.positive {
+    color: #488a00 !important;
+}
+
+.lightTheme .stats .stressed-stat.daily_change.negativ {
+    color: #e1424a !important;
+}
+body.localcoin .main.account-create-asset .amount-selector .left-label {
+    padding: 0;
+}
+
+body.localcoin .balance .balance__list {
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+body.localcoin .balance .balance__link {
+    padding: 4px 44px;
+}
+
+body.localcoin .exchange-layout .my-order {
+    font-weight: bold;
+}
+
+body.localcoin .exchange-layout .my-order * {
+    font-weight: bold;
+}
+
+body.localcoin .mymarkets-header.clickable {
+    border-bottom-color: transparent;
+}
+
+body.localcoin .mymarkets-header.clickable.inactive {
+    border-bottom-color: #049cce;
+}
+
+body.localcoin .options__nav__link {
+    line-height: 20px;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+}
+
+body.localcoin .options__nav__item {
+    min-height: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+body.localcoin .mymarkets-header.inactive {
+    background-color: #dce6f2;
+}
+
+body.localcoin #send_modal_header .dropdown {
+    min-width: 104px;
+    max-width: 104px;
+}
+
+body.localcoin
+    .main.account
+    .content
+    .dashboard__actions
+    .col-xl-9.col-lg-12
+    .dashboard__actions__filters
+    > div {
+    min-width: 280px;
+}
+
+body.localcoin .node-access-popup {
+    width: calc(100% + 1px);
+    right: 0px;
+    bottom: 28px;
+}
+
+body.localcoin .node-access-popup .nodes-list .api-status {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid rgba(220, 230, 242, 0.5);
+}
+
+body.localcoin .node-access-popup .nodes-list .api-status a {
+    margin-left: auto;
+    order: 2;
+}
+
+body.localcoin .__react_component_tooltip {
+    padding-top: 8px;
+}
+
+body.localcoin .__react_component_tooltip strong {
+    position: relative;
+    top: 0px;
+}
+
+body.localcoin .main.settings-reset .btn.large.inverted {
+    padding: 0 !important;
+}
+
+body.localcoin .hide0balances {
+    display: flex;
+    align-items: center;
+}
+
+body.localcoin .hide0balances input {
+    display: none;
+}
+
+body.localcoin .hide0balances span:nth-child(2) {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    min-width: 19px;
+    max-width: 19px;
+    width: 19px;
+    height: 19px;
+    background-color: #dce6f2;
+    border: 1px solid #7fafe8;
+    margin-right: 10px;
+}
+
+body.localcoin .hide0balances span.disable {
+    opacity: 0.5;
+}
+
+body.localcoin .hide0balances span:nth-child(3) {
+    display: inline-flex;
+    position: relative;
+    top: 1px;
+    line-height: 19px;
+    color: #001b60;
+}
+
+body.localcoin .hide0balances input:checked + span:nth-child(2)::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    top: 2px;
+    left: 2px;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyNiAyNiIgZmlsbD0iIzM1NGM5YiIgdmlld0JveD0iMCAwIDI2IDI2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Im0uMyAxNGMtLjItLjItLjMtLjUtLjMtLjdzLjEtLjUuMy0uN2wxLjQtMS40Yy40LS40IDEtLjQgMS40IDBsLjEuMSA1LjUgNS45Yy4yLjIuNS4yLjcgMGwxMy40LTEzLjloLjFjLjQtLjQgMS0uNCAxLjQgMGwxLjQgMS40Yy40LjQuNCAxIDAgMS40bC0xNiAxNi42Yy0uMi4yLS40LjMtLjcuM3MtLjUtLjEtLjctLjNsLTcuOC04LjQtLjItLjN6Ij48L3BhdGg+PC9zdmc+");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+body.localcoin #sticky-table-x-wrapper .sticky-table-container {
+    width: 100%;
+}
+
+body.localcoin .main.settings-faucet-address .content,
+body.localcoin .main.settings-backup .content,
+body.localcoin .main.settings-password .content,
+body.localcoin .main.settings-wallet .content {
+    margin: 20px;
+}
+
+body.localcoin
+    .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+    div.floating-dropdown {
+    height: 28px;
+}
+
+body.localcoin
+    .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+    .dropdown-wrapper {
+    padding: 0 15px;
+}
+
+body.localcoin
+    .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+    .dropdown-wrapper
+    .dropdown {
+    top: 24px;
+}
+
+body.localcoin .mymarkets-tabs .mymarkets-tab {
+    background-color: transparent !important;
+}
+
+body.localcoin .mymarkets-tabs .mymarkets-tab:hover {
+    background-color: #dce6f2 !important;
+}
+
+body.localcoin .mymarkets-tabs .mymarkets-tab.active {
+    background-color: #fff !important;
+}
+
+body.localcoin
+    #sticky-table-column
+    .sticky-table-row.transition-container.clickable
+    .sticky-table-row.order-row.final-row
+    .cell.orderHistoryBid.right,
+body.localcoin
+    #sticky-table-column
+    .sticky-table-row.transition-container.clickable
+    .sticky-table-row.order-row.final-row
+    .cell.orderHistoryAsk.right {
+    display: none;
+}
+
+body.localcoin .main.account table.blue-bg.borders td,
+body.localcoin .main.account table.blue-bg.with-borders td {
+    border-bottom: 1px solid #fff !important;
+}
+
+body.localcoin .exchange-layout .sticky-table-row.exchange-sell-buy-orders {
+    width: 100%;
+}
+
+body.localcoin
+    .exchange-layout
+    .sticky-table-row.exchange-sell-buy-orders
+    .cell.center-cell {
+    display: block;
+    width: 100%;
+    border-top: 1px solid #00195b;
+    border-bottom: 1px solid #00195b;
+}
+
+body.localcoin .exchange-layout .mymarkets-tabs {
+    min-height: fit-content !important;
+}
+
+body.localcoin .exchange-layout .mymarkets-tabs .mymarkets-tab {
+    padding: 0 5px;
+    margin-bottom: 0px;
+}
+
+body.localcoin
+    .exchange-layout
+    .table.table-hover.text-right
+    tr.clickable.activeMarket {
+    background-color: transparent;
+}
+
+body.localcoin
+    .exchange-layout
+    .table.table-hover.text-right
+    tr.clickable.activeMarket
+    td,
+body.localcoin
+    .exchange-layout
+    .table.table-hover.text-right
+    tr.clickable.activeMarket
+    span {
+    color: #000 !important;
+}
+
+body.localcoin .main.explorer-assets .market-list-wrap table td {
+    padding: 1px 16px;
+    line-height: 1.5;
+}
+
+body.localcoin #sticky-table-y-wrapper {
+    height: calc(50vh - 35px) !important;
+}
+
+body.localcoin .left-order-book .order-table-container {
+    height: calc(50vh - 50px);
+    padding-top: 16px;
+}
+
+body.localcoin .__react_component_tooltip.type-light.place-right:after {
+    border-right-color: grey;
+}
+
+body.localcoin .__react_component_tooltip.type-light.place-top:after {
+    border-top-color: grey;
+}
+
+body.localcoin .__react_component_tooltip.type-light.place-left:after {
+    border-left-color: grey;
+}
+
+body.localcoin .__react_component_tooltip.type-light.place-bottom:after {
+    border-bottom-color: grey;
+}
+
+body.localcoin .navigation_account__link {
+    display: inline-flex;
+    align-items: center;
+}
+
+body.localcoin #reserve_asset .modal-header {
+    padding-bottom: 0;
+}
+
+body.localcoin #reserve_asset .modal-content {
+    padding-top: 0;
+}
+
+body.localcoin #reserve_asset form {
+    padding-top: 0;
+}
+
+body.localcoin #reserve_asset h3 {
+    margin: 0;
+}
+
+body.localcoin #reserve_asset .grid-container {
+    padding-top: 1rem !important;
+}
+
+body.localcoin
+    #transaction_confirm_modal
+    .grid-content.full-width-content.form-group {
+    overflow: visible;
+}
+
+body.localcoin #transaction_confirm_modal .modal-header {
+    padding: 0;
+}
+
+body.localcoin #transaction_confirm_modal .grid-content.modal__header h3 {
+    margin: 0;
+}
+
+body.localcoin #transaction_confirm_modal .txtlabel {
+    margin-top: 5px;
+}
+
+body.localcoin #transaction_confirm_modal .grid-block.shrink {
+    padding-top: 0 !important;
+}
+
+body.localcoin .content {
+    padding: 0 !important;
+}
+
+body.localcoin .negative-margins {
+    margin: 0 !important;
+}
+
+body.localcoin #send_modal_wrapper .modal-header {
+    padding: 0;
+}
+
+body.localcoin #send_modal_wrapper .left-label,
+body.localcoin #send_modal_wrapper .right-label {
+    margin-bottom: 0;
+    font-size: 14px !important;
+    line-height: 1;
+}
+
+body.localcoin #send_modal_wrapper .modal__logo {
+    display: none;
+}
+
+body.localcoin #send_modal_wrapper .content-block {
+    margin: 0 0 5px 0;
+}
+
+body.localcoin
+    #send_modal_wrapper
+    .content-block
+    div
+    + div[style="margin-top: 10px; font-size: 0.9rem; margin-left: auto; margin-right: auto;"] {
+    display: none;
+}
+
+body.localcoin .main.explorer-blocks .block-content-header {
+    padding: 0.75rem 0 0.5rem 0;
+}
+
+body.localcoin
+    .main.explorer-blocks
+    .grid-block.no-overflow
+    .grid-block.small-12.medium-6.vertical.no-overflow {
+    max-width: 65%;
+    flex: 0 0 65%;
+}
+
+body.localcoin
+    .main.explorer-blocks
+    .grid-block.no-overflow
+    .grid-block.medium-6.show-for-medium.vertical.no-overflow {
+    max-width: 35%;
+    flex: 0 0 35%;
+}
+
+body.localcoin
+    .main.explorer-blocks
+    .grid-block.no-overflow
+    .grid-block.medium-6.show-for-medium.vertical.no-overflow
+    table
+    td:last-child,
+body.localcoin
+    .main.explorer-blocks
+    .grid-block.no-overflow
+    .grid-block.medium-6.show-for-medium.vertical.no-overflow
+    table
+    th:last-child {
+    width: 170px;
+    text-align: center;
+}
+
+body.localcoin .main.explorer-blocks .txtlabel {
+    margin: 0 !important;
+}
+
+body.localcoin .main.explorer-blocks table td {
+    font-size: 12px !important;
+}
+
+body.localcoin .main.explorer-blocks table td span {
+    font-size: 12px !important;
+}
+
+body.localcoin .main.explorer-blocks table td .label.cancel,
+body.localcoin .main.explorer-blocks table td .label.warning {
+    font-size: 11px !important;
+    padding: 2px 4px !important;
+    border-radius: 2px !important;
+}
+
+body.localcoin .main.explorer-blocks table td a:not(.inline-block) {
+    color: #2964fa !important;
+}
+
+body.localcoin .main.explorer-blocks table td a:not(.inline-block) span {
+    color: #2964fa !important;
+}
+
+body.localcoin .main .content {
+    padding-top: 0;
+}
+
+body.localcoin .main .content .dashboard__tabs__item {
+    padding: 5px 24px;
+}
+
+body.localcoin .main .content .dashboard__tabs__item h4 {
+    margin: 0;
+}
+
+body.localcoin .main.account-localcoin-ico .content,
+body.localcoin .main.account .content {
+    padding-top: 0;
+}
+
+body.localcoin
+    .main.account-localcoin-ico
+    .content
+    .dashboard__table.blue-bg.with-borders
+    td,
+body.localcoin
+    .main.account
+    .content
+    .dashboard__table.blue-bg.with-borders
+    td {
+    padding: 0 16px;
+}
+
+body.localcoin
+    .main.account-localcoin-ico
+    .content
+    .dashboard__table.blue-bg.with-borders
+    .dashboard__table__link
+    img,
+body.localcoin
+    .main.account
+    .content
+    .dashboard__table.blue-bg.with-borders
+    .dashboard__table__link
+    img {
+    max-width: 20px;
+    margin: 4px 7px 0 0;
+}
+
+body.localcoin .main.account-localcoin-ico .content .dashboard__tabs__item,
+body.localcoin .main.account .content .dashboard__tabs__item {
+    padding: 5px 24px 0 24px;
+}
+
+body.localcoin .main.account-localcoin-ico .content .dashboard__tabs__item h4,
+body.localcoin .main.account-localcoin-ico .content .dashboard__tabs__item span,
+body.localcoin .main.account .content .dashboard__tabs__item h4,
+body.localcoin .main.account .content .dashboard__tabs__item span {
+    margin: 0;
+    line-height: 1;
+}
+
+body.localcoin .main.account-localcoin-ico .content .dashboard__actions,
+body.localcoin .main.account .content .dashboard__actions {
+    min-width: 250px;
+    position: absolute;
+    top: 0;
+    right: 40px;
+    width: auto;
+    background: transparent;
+    padding: 0;
+}
+
+body.localcoin .main.account-localcoin-ico .content .dashboard__actions .select,
+body.localcoin .main.account .content .dashboard__actions .select {
+    min-width: 250px;
+}
+
+body.localcoin
+    .main.account-localcoin-ico
+    .content
+    .dashboard__actions
+    .col-xl-3.col-lg-6,
+body.localcoin
+    .main.account-localcoin-ico
+    .content
+    .dashboard__actions
+    .col-xl-9.col-lg-12,
+body.localcoin .main.account .content .dashboard__actions .col-xl-3.col-lg-6,
+body.localcoin .main.account .content .dashboard__actions .col-xl-9.col-lg-12 {
+    width: 50%;
+    max-width: 50%;
+    flex: 0 0 50%;
+}
+
+body.localcoin
+    .main.account-localcoin-ico
+    .content
+    .dashboard__actions
+    .col-xl-3.col-lg-6
+    input[type="text"],
+body.localcoin
+    .main.account
+    .content
+    .dashboard__actions
+    .col-xl-3.col-lg-6
+    input[type="text"] {
+    margin: 0;
+    height: 30px;
+    position: relative;
+    top: 4px;
+}
+
+body.localcoin
+    .main.account-localcoin-ico
+    .content
+    .dashboard__actions
+    .dashboard__actions__filters,
+body.localcoin
+    .main.account
+    .content
+    .dashboard__actions
+    .dashboard__actions__filters {
+    position: relative;
+    top: 16px;
+}
+
+body.localcoin .main.homepage .content {
+    padding-top: 0;
+}
+
+body.localcoin .main.homepage .dashboard__tabs.voting .dashboard__tabs__item {
+    padding: 0 24px !important;
+}
+
+body.localcoin
+    .main.homepage
+    .dashboard__tabs.voting
+    .dashboard__tabs__item
+    h4 {
+    margin: 0;
+    line-height: 36px;
+}
+
+body.localcoin .main.homepage .dashboard__actions {
+    padding: 0;
+    width: auto;
+    background: transparent;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+body.localcoin .main.homepage .dashboard__actions .col-xl-3.col-lg-6,
+body.localcoin .main.homepage .dashboard__actions .col-xl-9.col-lg-12 {
+    width: 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+body.localcoin
+    .main.homepage
+    .dashboard__actions
+    .col-xl-3.col-lg-6
+    input[type="text"] {
+    margin: 0;
+    height: 30px;
+    position: relative;
+    top: 3px;
+}
+
+body.localcoin .main.homepage .dashboard__actions .dashboard__actions__filters {
+    position: relative;
+    top: 16px;
+}
+
+body.localcoin #content > div {
+    min-height: calc(100vh - 35px);
+    overflow: hidden;
+}
+
+body.localcoin
+    .modal-content
+    .inline-label
+    input[type="number"]
+    + .btn.large.inverted.no-margin {
+    margin-left: 15px !important;
+}
+
+body.localcoin .modal-content .select {
+    margin-bottom: 15px;
+}
+
+body.localcoin .modal-content input[name="username"] {
+    margin-right: 0;
+}
+
+body.localcoin .main.explorer-blocks table td {
+    padding: 2px 0 !important;
+    line-height: 1;
+}
+
+body.localcoin .main.explorer-blocks table td .label {
+    margin: 0 10px 0 0 !important;
+}
+
+body.localcoin .main.explorer-blocks table td .label.cancel {
+    background-color: #dce6f2;
+}
+
+body.localcoin .main.explorer-blocks table td div {
+    padding: 0 !important;
+}
+
+body.localcoin .main.explorer-markets .table.table-hover.text-right {
+    line-height: 1;
+}
+
+body.localcoin .main.explorer-witnesses .table-witnesses td,
+body.localcoin .main.explorer-committee-members .table-witnesses td {
+    padding: 5px;
+    line-height: 1;
+}
+
+body.localcoin .main.explorer-accounts table td,
+body.localcoin .main.explorer-accounts table th {
+    padding: 5px;
+    line-height: 1;
+}
+
+body.localcoin .main.explorer-accounts table .user {
+    margin-left: 0px;
+}
+
+body.localcoin .main.block h4.text-center {
+    padding: 3px 20px;
+}
+
+body.localcoin .main.block h4.text-center + ul li {
+    margin-bottom: 0;
+    line-height: 1;
+}
+
+body.localcoin .main.block h4.text-center + ul + div {
+    margin-bottom: 0 !important;
+}
+
+body.localcoin .main.block .op-table {
+    margin-bottom: 0 !important;
+}
+
+body.localcoin .main.block .op-table .txtlabel {
+    margin-top: 15px;
+}
+
+body.localcoin .main.block .op-table .txtlabel.warning {
+    display: inline-block;
+    color: #ce7925;
+    padding: 2px 4px 2px 9px;
+    position: relative;
+    left: -5px;
+    border-radius: 2px;
+    line-height: 1;
+    background-color: #dce6f2;
+    border: 1px solid #ce7925;
+}
+
+body.localcoin .main.block .op-table .txtlabel.cancel {
+    display: inline-block;
+    color: #00195b;
+    padding: 2px 4px 2px 9px;
+    position: relative;
+    left: -5px;
+    border-radius: 2px;
+    line-height: 1;
+    background-color: #dce6f2;
+    border: 1px solid #444444;
+}
+
+body.localcoin .recent-transactions.no-overflow {
+    overflow: visible !important;
+}
+
+body.localcoin .recent-transactions.no-overflow .select ul {
+    max-height: none;
+    overflow: visible;
+}
+
+body.localcoin .recent-transactions.no-overflow .dashboard__table td {
+    padding: 2px 16px !important;
+    font-size: 13px !important;
+}
+
+body.localcoin .recent-transactions.no-overflow .dashboard__table td span,
+body.localcoin .recent-transactions.no-overflow .dashboard__table td div {
+    font-size: 13px !important;
+}
+
+body.localcoin .recent-transactions.no-overflow .dashboard__table td .label {
+    font-size: 10px !important;
+    padding: 1px 5px;
+}
+
+body.localcoin .recent-transactions.no-overflow .dashboard__table div {
+    padding: 0 !important;
+}
+
+body.localcoin .inline-block {
+    position: relative;
+}
+
+body.localcoin span.dynamic-tooltiptext {
+    display: block;
+    white-space: normal;
+    margin-left: -160px !important;
+    border: 1px solid grey;
+    background-color: #7e7e7e;
+    border-radius: 3px;
+    font-size: 13px !important;
+    line-height: 1 !important;
+    padding: 8px 21px;
+    width: 320px !important;
+    text-align: left;
+}
+
+body.localcoin
+    .exchange-layout
+    #market-charts
+    + .grid-block.no-overflow.wrap.shrink {
+    flex-grow: 1;
+}
+
+body.localcoin .main.account-localcoin-member-stats .table.key-value-table td,
+body.localcoin
+    .main.account-localcoin-ico-member-stats
+    .table.key-value-table
+    td {
+    line-height: 1;
+}
+
+body.localcoin .no-overflow.explorer_markets {
+    padding: 0 !important;
+}
+
+body.localcoin .inline-block.tooltip,
+body.localcoin .tooltip {
+    position: relative;
+}
+
+body.localcoin .inline-block.tooltip span.dynamic-tooltiptext,
+body.localcoin .tooltip span.dynamic-tooltiptext {
+    margin-left: -160px !important;
+    border: 1px solid grey;
+    background-color: #7e7e7e;
+    border-radius: 3px;
+    font-size: 13px !important;
+    line-height: 1 !important;
+    padding: 8px 21px;
+    width: 320px !important;
+    text-align: left;
+}
+
+body.localcoin
+    .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium {
+    max-width: 280px !important;
+    min-width: 280px !important;
+}
+
+body.localcoin
+    .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+    input[type="text"] {
+    height: 28px !important;
+}
+
+body.localcoin
+    .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+    table.table.table-hover.text-right
+    td {
+    padding: 5px 0 !important;
+}
+
+body.localcoin
+    .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+    table.table.table-hover.text-right
+    td
+    .asset-prefix-replaced,
+body.localcoin
+    .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+    table.table.table-hover.text-right
+    td
+    .asset-prefix-replaced
+    + span {
+    font-size: 9px !important;
+}
+
+body.localcoin
+    .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+    table.table.table-hover.text-right
+    th:last-child,
+body.localcoin
+    .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+    table.table.table-hover.text-right
+    td:last-child {
+    padding: 0;
+    width: 20px;
+}
+
+body.localcoin
+    .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+    table.table.table-hover.text-right
+    th:first-child,
+body.localcoin
+    .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+    table.table.table-hover.text-right
+    td:first-child {
+    padding-left: 5px !important;
+}
+
+body.localcoin .main.explorer-fees .content,
+body.localcoin .main.explorer-markets .content,
+body.localcoin .main.explorer-committee-members .content,
+body.localcoin .main.explorer-accounts .content,
+body.localcoin .main.explorer-assets .content,
+body.localcoin .main.explorer-blocks .content,
+body.localcoin .main.explorer-witnesses .content {
+    padding: 0 !important;
+}
+
+body.localcoin .main.explorer-fees .negative-margins,
+body.localcoin .main.explorer-markets .negative-margins,
+body.localcoin .main.explorer-committee-members .negative-margins,
+body.localcoin .main.explorer-accounts .negative-margins,
+body.localcoin .main.explorer-assets .negative-margins,
+body.localcoin .main.explorer-blocks .negative-margins,
+body.localcoin .main.explorer-witnesses .negative-margins {
+    padding: 0 20px;
+}
+
+body.localcoin .mymarkets-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 0 0 0;
+    padding: 2px 2px 0 2px;
+    min-height: 30px;
+    list-style-type: none;
+    background-color: #9ab1cf;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    box-shadow: inset 0px -2px 2px -1px rgba(0, 25, 91, 0.35);
+}
+
+body.localcoin .mymarkets-tabs .mymarkets-tab {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+    font-size: 15px;
+    color: #000000 !important;
+    padding: 6px 14px 7px 14px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    margin: 0;
+}
+
+body.localcoin .mymarkets-tabs .mymarkets-tab span {
+    color: #000000 !important;
+}
+
+body.localcoin .mymarkets-tabs .mymarkets-tab.active {
+    background-color: #fff !important;
+}
+
+body.localcoin .explorer_markets .table.table-hover.text-right th {
+    background: transparent;
+    text-transform: none;
+}
+
+body.localcoin .op-table > tbody > tr > td:first-child {
+    width: 17rem;
+}
+
+body.localcoin .table.op-table td {
+    padding: 0 5px;
+}
+
+body.localcoin .table.op-table tr:nth-child(even) {
+    background-color: #e0e8f1;
+}
+
+body.localcoin .dashboard__table.blue-bg.with-borders.dashboard-table td > div {
+    line-height: 1;
+}
+
+body.localcoin .order-table .cell,
+body.localcoin .order-table td {
+    font-size: 11px !important;
+}
+
+body.localcoin .asset-card table tr.highlight td:not(:first-child) {
+    background-color: #e0e8f1;
+}
+
+body.localcoin .asset-card table tr.highlight-all td {
+    background-color: #e0e8f1;
+}
+
+body.localcoin .asset-card .card-divider {
+    font-family: "osnovapro-bold", sans-serif;
+    color: #00195b;
+    margin-bottom: 0;
+}
+
+body.localcoin .asset-card .card-divider + table:not([class]) td {
+    padding: 5px 16px;
+    line-height: 1;
+}
+
+body.localcoin .asset-card .card-divider + table:not([class]) th:nth-child(1) {
+    width: 280px;
+}
+
+body.localcoin .asset-card .card-divider + table:not([class]) th:nth-child(2) {
+    width: auto;
+}
+
+body.localcoin .asset-card .card-divider + table:not([class]) th:nth-child(3) {
+    width: 26.36625%;
+}
+
+body.localcoin .asset-card .card-divider + table:not([class]) th:nth-child(4) {
+    width: 27.16523%;
+}
+
+body.localcoin .btn.large.inverted {
+    height: 40px !important;
+    line-height: 40px !important;
+}
+
+body.localcoin .footer-line {
+    height: 30px !important;
+}
+
+body.localcoin .footer-line > .btn.large.inverted {
+    height: 30px !important;
+    line-height: 30px !important;
+    margin-right: 0;
+}
+
+body.localcoin .stressed-stat.hide-order-3 span.value.stat-primary,
+body.localcoin .stressed-stat.hide-order-3 span.symbol-text,
+body.localcoin .stressed-stat.hide-order-4 span.value.stat-primary,
+body.localcoin .stressed-stat.hide-order-4 span.symbol-text {
+    color: #bbbf2b !important;
+}
+
+body.localcoin .stressed-stat.hide-order-3 span.value.stat-primary > span,
+body.localcoin .stressed-stat.hide-order-3 span.symbol-text > span,
+body.localcoin .stressed-stat.hide-order-4 span.value.stat-primary > span,
+body.localcoin .stressed-stat.hide-order-4 span.symbol-text > span {
+    color: #bbbf2b !important;
+}
+
+body.localcoin .table-witnesses-wrap table td.txtlabel,
+body.localcoin .market-list-wrap table td.txtlabel {
+    max-width: none;
+    width: auto;
+    display: block;
+}
+
+body.localcoin .table-witnesses-wrap table tr:hover td,
+body.localcoin .market-list-wrap table tr:hover td {
+    background-color: #f5f5f5;
+}
+
+body.localcoin .exchange-content-header,
+body.localcoin .mymarkets-header {
+    padding: 2.5px 10px;
+    text-transform: none;
+}
+
+body.localcoin .buy-sell-input,
+body.localcoin .buy-sell-label,
+body.localcoin .buy-sell-box {
+    display: flex;
+    align-items: center;
+    height: auto;
+}
+
+body.localcoin .buy-sell-input input,
+body.localcoin .buy-sell-label input,
+body.localcoin .buy-sell-box input {
+    height: 28px;
+}
+
+body.localcoin .buy-sell-input .form-control,
+body.localcoin .buy-sell-label .form-control,
+body.localcoin .buy-sell-box .form-control {
+    color: #00195b;
+    font-weight: normal;
+}
+
+body.localcoin .order-form .vertical {
+    margin-bottom: 10px;
+}
+
+body.localcoin .order-form .grid-content {
+    display: flex;
+    align-items: center;
+}
+
+body.localcoin .order-form .float-right {
+    margin-left: 30px;
+}
+
+body.localcoin .order-form .float-right input.button {
+    padding: 13.6px 16px;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+body.localcoin .order-form table.float-left td.expiration-datetime-picker {
+    padding: 0;
+}
+
+body.localcoin .order-form table.float-left tr:first-child td {
+    padding-top: 0;
+}
+
+body.localcoin .order-form table.float-left tr td:first-child {
+    padding-left: 0;
+}
+
+body.localcoin .order-form table.float-left tr td {
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 0;
+    padding-bottom: 0;
+    line-height: 0.999;
+}
+
+body.localcoin .order-form table.float-left tr td span {
+    font-size: 14px;
+}
+
+body.localcoin .order-form table.float-left tr td select {
+    height: 28px;
+    float: right;
+    width: auto;
+    padding: 0;
+    background: 0 0;
+    border: 0;
+    color: #00195b;
+    border-bottom: 1px dotted #a09f9f;
+    font-size: 14px;
+    height: 28px;
+    margin: 0 0 1px;
+}
+
+body.localcoin .exchange-bordered {
+    overflow: visible;
+}
+
+body.localcoin .exchange-content-header + div {
+    padding-right: 0 !important;
+    width: calc(100% + 1px);
+}
+
+body.localcoin .grid-block.shrink.left-orderbook-header.bottom-header + div {
+    padding-right: 0 !important;
+    width: calc(100% + 1px);
+}
+
+body.localcoin .button {
+    line-height: 40px;
+}
+
+body.localcoin .marketPicker {
+    background-color: #fff;
+}
+
+body.localcoin .block-list header {
+    margin-left: 0;
+}
+
+body.localcoin .button.arrow-down {
+    height: auto;
+}
+
+body.localcoin section input[type="password"]:active,
+body.localcoin section input[type="password"]:focus,
+body.localcoin section input[type="password"]:hover,
+body.localcoin section input[type="text"]:active,
+body.localcoin section input[type="text"]:focus,
+body.localcoin section input[type="text"]:hover {
+    border: 1px solid #bbb;
+    background-color: #fff;
+    color: #000;
+}
+
+body.localcoin .orderbook-showall a {
+    text-decoration: none;
+}
+
+body.localcoin .orderbook-showall a:hover {
+    color: #132d71;
+}
+
+body.localcoin .orderbook-showall a span {
+    color: #2964fa;
+}
+
+body.localcoin .exchange-content-header {
+    background-color: #abbfd9;
+    text-transform: none;
+}
+
+body.localcoin .exchange-content-header.bid {
+    border-bottom: 1px solid #fff;
+}
+
+body.localcoin .exchange-content-header.ask {
+    border-bottom: 1px solid #fff;
+}
+
+body.localcoin .stressed-stat > span {
+    font-size: 18px;
+}
+
+body.localcoin .label-actions > span {
+    font-size: 12px;
+}
+
+body.localcoin
+    .exchange-layout
+    .grid-block.wrap.market-stats-container
+    ul.market-stats.stats.top-stats {
+    margin: 0;
+}
+
+body.localcoin
+    .exchange-layout
+    .grid-block.wrap.market-stats-container
+    ul.market-stats.stats.top-stats
+    .stressed-stat.input.clickable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px !important;
+}
+
+body.localcoin
+    .exchange-layout
+    .grid-block.wrap.market-stats-container
+    ul.market-stats.stats.top-stats
+    .stressed-stat.input.clickable:hover {
+    background-color: rgba(220, 230, 242, 0.5);
+}
+
+body.localcoin
+    .exchange-layout
+    .grid-block.wrap.market-stats-container
+    ul.market-stats.stats.top-stats
+    li {
+    margin: 0;
+    padding: 4px;
+    border-left: 1px solid #abbfd9;
+}
+
+body.localcoin
+    .exchange-layout
+    .grid-block.wrap.market-stats-container
+    ul.market-stats.stats.top-stats
+    li:last-child {
+    border-right: 1px solid #abbfd9;
+}
+
+body.localcoin
+    .exchange-layout
+    .grid-block.wrap.market-stats-container
+    ul.market-stats.stats.top-stats
+    li.stressed-stat {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.4;
+}
+
+body.localcoin
+    .exchange-layout
+    .grid-block.wrap.market-stats-container
+    ul.market-stats.stats.top-stats
+    li.stressed-stat
+    span {
+    font-size: 12px !important;
+    text-align: center;
+}
+
+body.localcoin
+    .exchange-layout
+    .grid-block.wrap.market-stats-container
+    ul.market-stats.stats.top-stats
+    li.stressed-stat
+    .stat-text {
+    text-align: center;
+    order: -1;
+}
+
+body.localcoin .exchange-layout div:first-child .exchange-bordered,
+body.localcoin .exchange-layout div:last-child .exchange-bordered {
+    margin: 0;
+}
+
+body.localcoin .exchange-layout .inline-block > span {
+    line-height: 1 !important;
+    font-size: 16px !important;
+}
+
+body.localcoin
+    .exchange-layout
+    div[class$="grid-block shrink"].grid-block.shrink
+    > div {
+    position: relative;
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+}
+
+body.localcoin
+    .exchange-layout
+    div[class$="grid-block shrink"].grid-block.shrink
+    > div
+    > div:not(.label-actions) {
+    display: flex;
+    align-items: center;
+    padding-left: 0px !important;
+}
+
+body.localcoin
+    .exchange-layout
+    div[class$="grid-block shrink"].grid-block.shrink
+    > div
+    > div:not(.label-actions)
+    span,
+body.localcoin
+    .exchange-layout
+    div[class$="grid-block shrink"].grid-block.shrink
+    > div
+    > div:not(.label-actions)
+    a {
+    order: 2;
+}
+
+body.localcoin
+    .exchange-layout
+    div[class$="grid-block shrink"].grid-block.shrink
+    > div
+    > div:not(.label-actions)
+    span
+    .icon.shuffle.shuffle,
+body.localcoin
+    .exchange-layout
+    div[class$="grid-block shrink"].grid-block.shrink
+    > div
+    > div:not(.label-actions)
+    a
+    .icon.shuffle.shuffle {
+    margin: 0 5px;
+}
+
+body.localcoin
+    .exchange-layout
+    div[class$="grid-block shrink"].grid-block.shrink
+    > div
+    > div:not(.label-actions)
+    a:not([href]) {
+    order: 1;
+    margin-right: 5px;
+}
+
+body.localcoin
+    .exchange-layout
+    div[class$="grid-block shrink"].grid-block.shrink
+    > div
+    > div:not(.label-actions)
+    > span:nth-child(2) {
+    display: none;
+}
+
+body.localcoin
+    .exchange-layout
+    div[class$="grid-block shrink"].grid-block.shrink
+    > div
+    > div:not(.label-actions)
+    > span:nth-child(3) {
+    margin-left: 0px;
+    order: 3;
+}
+
+body.localcoin
+    .exchange-layout
+    div[class$="grid-block shrink"].grid-block.shrink
+    > div
+    .label-actions {
+    position: absolute;
+    top: 12px;
+    left: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    width: 102px;
+}
+
+body.localcoin
+    .exchange-layout
+    div[class$="grid-block shrink"].grid-block.shrink
+    > div
+    .label-actions
+    .stat-text {
+    display: none;
+}
+
+body.localcoin
+    .exchange-layout
+    div[class$="grid-block shrink"].grid-block.shrink
+    span {
+    font-size: 16px !important;
+    line-height: 1 !important;
+}
+
+body.localcoin
+    .exchange-layout
+    div[class$="grid-block shrink"].grid-block.shrink
+    .inline-block
+    > span {
+    font-size: 16px !important;
+    line-height: 1 !important;
+}
+
+body.localcoin
+    .exchange-layout
+    .modal-content
+    form
+    .form-group
+    + div:not([class])
+    .form-group
+    span
+    input:first-child {
+    width: 13% !important;
+    padding: 0 !important;
+    text-align: center !important;
+}
+
+body.localcoin
+    .exchange-layout
+    .modal-content
+    form
+    .form-group
+    + div:not([class])
+    .form-group
+    span
+    + .float-left {
+    float: none;
+}
+
+body.localcoin
+    .exchange-layout
+    .modal-content
+    form
+    div:not([class])
+    + .no-padding.grid-content.button-group.no-overflow
+    .button.success {
+    margin: 0 4px 4px 0 !important;
+    background-color: transparent;
+}
+
+body.localcoin .exchange-layout .sticky-table-row:nth-child(odd) {
+    background-color: transparent;
+}
+
+body.localcoin .exchange-layout .transition-container .cell {
+    font-family: "Roboto Mono", monospace !important;
+}
+
+body.localcoin
+    .exchange-layout
+    .small-12.medium-6.middle-content.order-1
+    .grid-block.shrink.left-orderbook-header.market-right-padding-only,
+body.localcoin
+    .exchange-layout
+    .small-12.medium-6.middle-content.order-2
+    .grid-block.shrink.left-orderbook-header.market-right-padding-only,
+body.localcoin
+    .exchange-layout
+    .medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3
+    .grid-block.shrink.left-orderbook-header.market-right-padding-only,
+body.localcoin
+    .exchange-layout
+    .medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
+    .grid-block.shrink.left-orderbook-header.market-right-padding-only {
+    padding-right: 13px !important;
+    border-bottom: 1px solid #dddddd;
+    background-color: #c1d0e3;
+}
+
+body.localcoin
+    .exchange-layout
+    .small-12.medium-6.middle-content.order-1
+    .grid-block.shrink.left-orderbook-header.market-right-padding-only
+    table
+    th,
+body.localcoin
+    .exchange-layout
+    .small-12.medium-6.middle-content.order-2
+    .grid-block.shrink.left-orderbook-header.market-right-padding-only
+    table
+    th,
+body.localcoin
+    .exchange-layout
+    .medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3
+    .grid-block.shrink.left-orderbook-header.market-right-padding-only
+    table
+    th,
+body.localcoin
+    .exchange-layout
+    .medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
+    .grid-block.shrink.left-orderbook-header.market-right-padding-only
+    table
+    th {
+    border: 0 !important;
+}
+
+body.localcoin
+    .exchange-layout
+    .small-12.medium-6.middle-content.order-1
+    .exchange-content-header.bid
+    + div,
+body.localcoin
+    .exchange-layout
+    .small-12.medium-6.middle-content.order-1
+    .exchange-content-header.ask
+    + div,
+body.localcoin
+    .exchange-layout
+    .small-12.medium-6.middle-content.order-2
+    .exchange-content-header.bid
+    + div,
+body.localcoin
+    .exchange-layout
+    .small-12.medium-6.middle-content.order-2
+    .exchange-content-header.ask
+    + div,
+body.localcoin
+    .exchange-layout
+    .medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3
+    .exchange-content-header.bid
+    + div,
+body.localcoin
+    .exchange-layout
+    .medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3
+    .exchange-content-header.ask
+    + div,
+body.localcoin
+    .exchange-layout
+    .medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
+    .exchange-content-header.bid
+    + div,
+body.localcoin
+    .exchange-layout
+    .medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
+    .exchange-content-header.ask
+    + div {
+    padding-right: 9px !important;
+    border-bottom: 1px solid #dddddd;
+    background-color: #c1d0e3;
+}
+
+body.localcoin
+    .exchange-layout
+    .small-12.medium-6.middle-content.order-1
+    .exchange-content-header.bid
+    + div
+    table
+    th,
+body.localcoin
+    .exchange-layout
+    .small-12.medium-6.middle-content.order-1
+    .exchange-content-header.ask
+    + div
+    table
+    th,
+body.localcoin
+    .exchange-layout
+    .small-12.medium-6.middle-content.order-2
+    .exchange-content-header.bid
+    + div
+    table
+    th,
+body.localcoin
+    .exchange-layout
+    .small-12.medium-6.middle-content.order-2
+    .exchange-content-header.ask
+    + div
+    table
+    th,
+body.localcoin
+    .exchange-layout
+    .medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3
+    .exchange-content-header.bid
+    + div
+    table
+    th,
+body.localcoin
+    .exchange-layout
+    .medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3
+    .exchange-content-header.ask
+    + div
+    table
+    th,
+body.localcoin
+    .exchange-layout
+    .medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
+    .exchange-content-header.bid
+    + div
+    table
+    th,
+body.localcoin
+    .exchange-layout
+    .medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
+    .exchange-content-header.ask
+    + div
+    table
+    th {
+    border: 0 !important;
+}
+
+body.localcoin
+    .exchange-layout
+    .table.order-table.text-right.fixed-table.market-right-padding
+    td,
+body.localcoin
+    .exchange-layout
+    .table.order-table.table-hover.fixed-table.text-right.no-overflow
+    td {
+    padding: 0 5px;
+    text-align: left !important;
+    font-family: "Roboto Mono", monospace !important;
+    position: relative;
+}
+
+body.localcoin
+    .exchange-layout
+    .table.order-table.text-right.fixed-table.market-right-padding
+    td.orderHistoryAsk
+    span,
+body.localcoin
+    .exchange-layout
+    .table.order-table.text-right.fixed-table.market-right-padding
+    td.orderHistoryBid
+    span,
+body.localcoin
+    .exchange-layout
+    .table.order-table.table-hover.fixed-table.text-right.no-overflow
+    td.orderHistoryAsk
+    span,
+body.localcoin
+    .exchange-layout
+    .table.order-table.table-hover.fixed-table.text-right.no-overflow
+    td.orderHistoryBid
+    span {
+    font-size: 11px;
+}
+
+body.localcoin
+    .exchange-layout
+    .small-12.medium-6.middle-content.order-1
+    .table
+    .price-integer {
+    color: #ea340b;
+}
+
+body.localcoin
+    .exchange-layout
+    .small-12.medium-6.middle-content.order-2
+    .table
+    .price-integer {
+    color: #258a14;
+}
+
+body.localcoin
+    .exchange-layout
+    .medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3
+    .table
+    .price-integer,
+body.localcoin
+    .exchange-layout
+    .no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3
+    .table
+    .price-integer {
+    color: #258a14;
+}
+
+body.localcoin .exchange-layout .table.table-hover.text-right tr td {
+    font-size: 12px;
+}
+
+body.localcoin .exchange-layout .table.table-hover.text-right tr td span {
+    font-size: 12px;
+}
+
+body.localcoin .exchange-layout .table.table-hover.text-right tr td.text-right {
+    font-family: "Roboto Mono", monospace !important;
+}
+
+body.localcoin .float-right.buy-sell-deposit {
+    margin: 0 0 0 auto;
+}
+
+body.localcoin .float-right.buy-sell-deposit a {
+    text-decoration: none;
+}
+
+body.localcoin .float-right.buy-sell-deposit a:hover {
+    color: #132d71;
+}
+
+body.localcoin .float-right.buy-sell-deposit a span {
+    color: #2964fa;
+}
+
+body.localcoin .grid-block.main-content.vertical.no-overflow {
+    overflow-y: auto;
+}
+
+body.localcoin .change-up {
+    color: #258a14;
+}
+
+body.localcoin .change-down {
+    color: #ea340b;
+}
+
+body.localcoin .market-stats.stats.top-stats {
+    margin-bottom: 0;
+}
+
+body.localcoin .exchange-layout {
+    overflow: hidden;
+    height: calc(100vh - 65px);
+}
+
+body.localcoin .exchange-layout .inline-block.tooltip {
+    position: relative;
+}
+
+body.localcoin .exchange-layout .inline-block.tooltip span.dynamic-tooltiptext {
+    margin-left: -160px !important;
+    border: 1px solid grey;
+    background-color: #7e7e7e;
+    border-radius: 3px;
+    font-size: 13px !important;
+    line-height: 1 !important;
+    padding: 8px 21px;
+    width: 320px !important;
+    text-align: left;
+}
+
+body.localcoin .exchange-layout .grid-block.no-overflow.wrap.shrink {
+    display: flex;
+    align-items: stretch;
+}
+
+body.localcoin .exchange-layout .grid-block,
+body.localcoin .exchange-layout .grid-content {
+    overflow: visible;
+}
+
+body.localcoin .exchange-layout .grid-block.no-overflow.wrap.shrink,
+body.localcoin .exchange-layout .grid-block.shrink.no-overflow {
+    background-color: #fff;
+}
+
+body.localcoin
+    .exchange-layout
+    .grid-block.small-4.no-margin.no-overflow.buy-sell-label
+    span {
+    line-height: 1.3;
+}
+
+body.localcoin .cell.orderHistoryAsk.right .price-integer {
+    color: #ea340b;
+}
+
+body.localcoin .cell.orderHistoryBid.right .price-integer {
+    color: #258a14;
+}
+
+body.localcoin .left-order-book .cell {
+    padding: 0 15px 0 0px;
+    font-size: 12px;
+    color: #00195b;
+}
+
+body.localcoin .cell.center-cell {
+    background-color: #abbfd9;
+}
+
+body.localcoin
+    .v-align.no-padding.align-center.grid-block.footer.shrink.bottom-header {
+    background-color: #aabfd9;
+}
+
+body.localcoin .icon.thumb-untack,
+body.localcoin .order-book-button-v {
+    cursor: pointer;
+}
+
+body.localcoin #transaction_confirm_modal .modal h3 {
+    margin: 0 !important;
+}
+
+body.localcoin #transaction_confirm_modal .grid-content.modal__header,
+body.localcoin
+    #transaction_confirm_modal
+    .grid-block.vertical.no-padding.no-margin {
+    min-height: 1px !important;
+}
+
+body.localcoin .typeahead + .btn {
+    margin-left: 10px;
+}
+
+body.localcoin .small-12.grid-content {
+    overflow: visible;
+}
+
+body.localcoin .asset-selector[style] {
+    padding-right: 0 !important;
+}
+
+body.localcoin .modal {
+    max-width: 600px;
+}
+
+body.localcoin .page-header + .content-block > span {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+body.localcoin .page-header + .content-block > span .grid-block {
+    width: 100%;
+}
+
+body.localcoin .hide-order-1.stressed-stat.daily_change.positive span {
+    color: #488a00 !important;
+}
+
+body.localcoin .hide-order-1.stressed-stat.daily_change.positive span b {
+    color: #488a00 !important;
+}
+
+body.localcoin .hide-order-1.stressed-stat.daily_change.negative span {
+    color: #e1424a !important;
+}
+
+body.localcoin .hide-order-1.stressed-stat.daily_change.negative span b {
+    color: #e1424a !important;
+}
+
+body.localcoin
+    .medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3,
+body.localcoin
+    .medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6 {
+    height: auto;
+}
+
+body.localcoin
+    .medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3
+    .exchange-bordered.small-12[style],
+body.localcoin
+    .medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
+    .exchange-bordered.small-12[style] {
+    height: 100% !important;
+}
+
+body.localcoin
+    .medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3
+    .exchange-bordered.small-12[style]
+    .table-container.grid-block.market-right-padding-only.no-overflow.ps-container.ps-theme-default[style],
+body.localcoin
+    .medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
+    .exchange-bordered.small-12[style]
+    .table-container.grid-block.market-right-padding-only.no-overflow.ps-container.ps-theme-default[style] {
+    max-height: 255px !important;
+}
+
+body.localcoin
+    .medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3
+    .exchange-bordered.small-12[style]
+    .table-container.grid-block.market-right-padding-only.no-overflow.ps-container.ps-theme-default[style]
+    table
+    tr:hover
+    td,
+body.localcoin
+    .medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
+    .exchange-bordered.small-12[style]
+    .table-container.grid-block.market-right-padding-only.no-overflow.ps-container.ps-theme-default[style]
+    table
+    tr:hover
+    td {
+    background-color: #f5f5f5 !important;
+}
+
+body.localcoin
+    .medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6 {
+    height: auto;
+    margin-bottom: 10px !important;
+}
+
+body.localcoin
+    .medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
+    .exchange-bordered.small-12[style] {
+    height: 100% !important;
+}
+
+body.localcoin
+    .medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
+    .exchange-bordered.small-12[style]
+    .table-container.grid-block.market-right-padding-only.no-overflow.ps-container.ps-theme-default[style] {
+    max-height: 255px !important;
+}
+
+body.localcoin
+    .medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
+    .exchange-bordered.small-12[style]
+    .table-container.grid-block.market-right-padding-only.no-overflow.ps-container.ps-theme-default[style]
+    table
+    tr:hover
+    td {
+    background-color: #f5f5f5 !important;
+}
+
+body.localcoin .table-witnesses .txtlabel {
+    margin: 0;
+}
+
+body.localcoin .create-asset-container {
+    position: relative;
+    margin-bottom: 12px;
+}
+
+body.localcoin
+    .create-asset-container
+    .dashboard__tabs.dashboard__tabs.permissions.small
+    + div {
+    position: absolute;
+    top: 0;
+    right: 12px;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+}
+
+body.localcoin
+    .create-asset-container
+    .dashboard__tabs.dashboard__tabs.permissions.small
+    + div
+    .button {
+    background-color: #fff;
+}
+
+body.localcoin
+    .voting-container
+    table
+    thead
+    tr:nth-child(2)
+    th[style]:not([class]) {
+    display: none;
+}
+
+body.localcoin
+    .voting-container
+    .col-xl-3.col-lg-6
+    .account-inputs.account-selector {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 220px !important;
+}
+
+body.localcoin
+    .voting-container
+    .dashboard__tabs.dashboard__tabs.permissions.small
+    + div
+    .col-xs-12
+    span[style="float: right;"] {
+    position: absolute;
+    top: -32px;
+    right: 20px;
+}
+
+body.localcoin
+    .voting-container
+    .dashboard__tabs.dashboard__tabs.permissions.small
+    + div
+    .col-xl-3.col-lg-6
+    span[style="float: right;"] {
+    position: absolute;
+    top: -45px;
+    right: 15px;
+}
+
+body.localcoin .voting-container .dashboard__actions .row .col-xl-9.col-lg-12 {
+    display: flex;
+    align-items: center;
+}
+
+body.localcoin
+    .voting-container
+    .dashboard__actions
+    .row
+    .dashboard__actions__filters
+    + button {
+    margin-left: auto;
+}
+
+body.localcoin
+    .voting-container
+    .dashboard__actions
+    .row
+    .dashboard__actions__filters {
+    margin-top: 6px;
+}
+
+body.localcoin
+    .voting-container
+    .dashboard__tabs.dashboard__tabs.permissions.small
+    + div {
+    position: relative !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0;
+    display: block !important;
+    align-items: center;
+}
+
+body.localcoin
+    .voting-container
+    .dashboard__tabs.dashboard__tabs.permissions.small
+    + div
+    .button {
+    background-color: #fff;
+}
+
+#unlock_wallet_modal2 {
+    border-radius: 4px;
+    max-width: 500px;
+    width: 100%;
+    overflow: hidden !important;
+}
+
+#unlock_wallet_modal2 input {
+    width: 100%;
+    border-radius: 4px !important;
+    padding: 0 17px;
+    height: 40px;
+    background-color: #dce6f2;
+    color: #00195b;
+    font-size: 15px !important;
+    border: 1px solid #7fafe8;
+}
+
+#unlock_wallet_modal2 input:focus {
+    border: 1px solid #999 !important;
+    background-color: #fff;
+    color: #000;
+}
+
+#unlock_wallet_modal2 .input-area:not(.content-block) + .has-error {
+    top: -7px;
+    color: #a94442 !important;
+}
+
+#unlock_wallet_modal2 .input-area:not(.content-block) + .has-error span {
+    color: #a94442 !important;
+}
+
+#unlock_wallet_modal2 .login-type-selector {
+    margin-bottom: 0;
+}
+
+#unlock_wallet_modal2 .modal-header {
+    padding-bottom: 0;
+}
+
+#unlock_wallet_modal2 hr {
+    margin: 0;
+}
+
+#unlock_wallet_modal2 .modal-content {
+    padding-top: 0;
+}
+
+#unlock_wallet_modal2 form {
+    padding-top: 0;
+}
+
+#unlock_wallet_modal2 form label {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+#unlock_wallet_modal2 form .has-error {
+    margin: 0.5rem 0 !important;
+    position: relative;
+    top: 6px;
+}
+
+#ws_modal_add .with-dropdown {
+    border: 0 !important;
+}
+
+#ws_modal_add .with-dropdown input {
+    max-width: none !important;
+}
+
+#ws_modal_add .with-dropdown label {
+    color: #00195b !important;
+}
+
+#ws_modal_add .with-dropdown label:hover {
+    background-color: transparent;
+}
+
+#help + ul {
+    overflow-x: hidden;
+}
+
+#help + ul li {
+    position: relative;
+    z-index: 1;
+}
+
+#help + ul li:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -20px;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
+    height: 36px;
+    width: calc(100% + 40px);
+    z-index: -1;
+}
+
+#help + ul li a {
+    position: relative;
+}
+
+#help + ul li:hover:before {
+    background-color: #fff;
+}
+
+body.localcoin .footer-info {
+    position: relative;
+}
+
+body.localcoin
+    .exchange-layout
+    .medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3
+    .grid-block.shrink.left-orderbook-header.market-right-padding-only
+    table
+    th:last-child {
+    width: 65px !important;
+}
+
+body.localcoin
+    .exchange-layout
+    .medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3
+    .grid-block.shrink.left-orderbook-header.market-right-padding-only
+    table
+    th:first-child {
+    padding: 5px 15px !important;
+}
+
+body.localcoin
+    .exchange-layout
+    .table.order-table.text-right.fixed-table.market-right-padding
+    td:last-child {
+    width: 68px !important;
+}
+
+body.localcoin
+    .exchange-layout
+    .table.order-table.text-right.fixed-table.market-right-padding
+    td:first-child {
+    padding: 0px 15px !important;
+}
+
+body.localcoin
+    .service-selector
+    + div.tab-content.grid-block.padding-top.shrink.small-vertical.medium-horizontal {
+    margin: 0 !important;
+}
+
+body.localcoin
+    .service-selector
+    + div
+    .small-12.large-8.large-offset-2.grid-content
+    .grid-content.has-error {
+    display: flex;
+    width: 100%;
+    max-width: none;
+    margin: 20px 0 10px 0;
+}
+
+body.localcoin .service-selector {
+    margin-bottom: 15px !important;
+}
+
+body.localcoin
+    .service-selector
+    ul.button-group.no-margin.account-overview.bordered-header.content-block {
+    display: flex;
+    position: relative;
+    background-color: #9bb2cf;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    box-shadow: inset 0px -2px 2px -1px rgba(0, 25, 91, 0.35);
+}
+
+body.localcoin
+    .service-selector
+    ul.button-group.no-margin.account-overview.bordered-header.content-block
+    li {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 15px 24px;
+    cursor: pointer;
+    margin: 0 !important;
+}
+
+body.localcoin
+    .service-selector
+    ul.button-group.no-margin.account-overview.bordered-header.content-block
+    li
+    a {
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+    background-color: transparent !important;
+    border: 0 !important;
+}
+
+body.localcoin
+    .service-selector
+    ul.button-group.no-margin.account-overview.bordered-header.content-block
+    li:after {
+    content: "";
+    position: absolute;
+    right: -1px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 1px;
+    height: 42px;
+    background-color: #cdd9e7;
+    z-index: 1;
+}
+
+body.localcoin
+    .service-selector
+    ul.button-group.no-margin.account-overview.bordered-header.content-block
+    li:first-child {
+    border-top-left-radius: 2px;
+}
+
+body.localcoin
+    .service-selector
+    ul.button-group.no-margin.account-overview.bordered-header.content-block
+    li:first-child:before {
+    box-shadow: none !important;
+}
+
+body.localcoin
+    .service-selector
+    ul.button-group.no-margin.account-overview.bordered-header.content-block
+    li:last-child:after {
+    display: none;
+}
+
+body.localcoin
+    .service-selector
+    ul.button-group.no-margin.account-overview.bordered-header.content-block
+    li
+    .tab-title {
+    display: inline-block;
+    position: relative;
+    z-index: 3;
+    font-size: 18px;
+    font-family: "osnovapro-bold", sans-serif;
+    font-weight: 700;
+    color: #00195b;
+    line-height: 1.4;
+    margin-top: 0.2rem;
+    margin-bottom: 0.5rem;
+}
+
+body.localcoin
+    .service-selector
+    ul.button-group.no-margin.account-overview.bordered-header.content-block
+    li.is-active {
+    box-shadow: 3px 0px 1px -2px rgba(0, 25, 91, 0.35);
+}
+
+body.localcoin
+    .service-selector
+    ul.button-group.no-margin.account-overview.bordered-header.content-block
+    li.is-active:after {
+    right: 0;
+}
+
+body.localcoin
+    .service-selector
+    ul.button-group.no-margin.account-overview.bordered-header.content-block
+    li.is-active:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #c1d0e3;
+    z-index: 2;
+    box-shadow: -3px 0px 1px -2px rgba(0, 25, 91, 0.35);
+}
+
+body.localcoin
+    .service-selector
+    ul.button-group.no-margin.account-overview.bordered-header.content-block
+    li.tabs-action-buttons {
+    position: absolute;
+    right: 12px;
+    top: 0;
+    bottom: 0;
+    padding: 0 !important;
+}
+
+body.localcoin
+    .service-selector
+    ul.button-group.no-margin.account-overview.bordered-header.content-block
+    li.tabs-action-buttons
+    > div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+body.localcoin
+    .service-selector
+    ul.button-group.no-margin.account-overview.bordered-header.content-block
+    li.tabs-action-buttons
+    .button {
+    white-space: nowrap;
+}
+
+body.localcoin
+    .exchange-layout
+    .medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3
+    .table.order-table.text-right.fixed-table.market-right-padding
+    th,
+body.localcoin
+    .exchange-layout
+    .medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
+    .table.order-table.text-right.fixed-table.market-right-padding
+    th {
+    padding: 5px !important;
+    text-transform: none;
+}
+
+body.localcoin
+    .exchange-layout
+    .medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3
+    .table.order-table.text-right.fixed-table.market-right-padding
+    th
+    span,
+body.localcoin
+    .exchange-layout
+    .medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
+    .table.order-table.text-right.fixed-table.market-right-padding
+    th
+    span {
+    text-transform: none;
+}
+
+body.localcoin
+    .exchange-layout
+    .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+    .table.order-table.table-hover.fixed-table.text-right.no-overflow
+    tr:nth-child(odd),
+body.localcoin
+    .exchange-layout
+    .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+    .table.order-table.table-hover.fixed-table.text-right.no-overflow
+    tr:nth-child(odd) {
+    background-color: rgba(220, 230, 242, 0.5);
+}
+
+body.localcoin
+    .exchange-layout
+    .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+    .table.order-table.table-hover.fixed-table.text-right.no-overflow
+    th,
+body.localcoin
+    .exchange-layout
+    .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+    .table.order-table.table-hover.fixed-table.text-right.no-overflow
+    th {
+    padding: 5px !important;
+    text-transform: none;
+}
+
+body.localcoin
+    .exchange-layout
+    .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+    .table.order-table.table-hover.fixed-table.text-right.no-overflow
+    th
+    span,
+body.localcoin
+    .exchange-layout
+    .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+    .table.order-table.table-hover.fixed-table.text-right.no-overflow
+    th
+    span {
+    text-transform: none;
+}
+
+body.localcoin
+    .exchange-layout
+    .table.order-table.text-right.fixed-table.market-right-padding
+    tr:nth-child(odd) {
+    background-color: rgba(220, 230, 242, 0.5);
+}
+
+body.localcoin
+    .exchange-layout
+    .table.order-table.text-right.fixed-table.market-right-padding
+    th {
+    padding: 5px !important;
+    text-transform: none;
+}
+
+body.localcoin
+    .exchange-layout
+    .table.order-table.text-right.fixed-table.market-right-padding
+    th
+    span {
+    text-transform: none;
+}
+
+body.localcoin .exchange-layout .top-header th {
+    text-transform: none !important;
+}
+
+body.localcoin .exchange-layout .top-header th span {
+    text-transform: none !important;
+}
+
+body.localcoin
+    .exchange-layout
+    .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+    .table.order-table.table-hover.fixed-table.text-right
+    th {
+    padding: 5px !important;
+}
+
+body.localcoin
+    .exchange-layout
+    .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+    .mymarkets-tabs {
+    margin-top: 0 !important;
+    max-height: 15px;
+    min-height: 15px;
+}
+
+body.localcoin
+    .exchange-layout
+    .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+    .mymarkets-tabs
+    li
+    .asset-prefix-replaced,
+body.localcoin
+    .exchange-layout
+    .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+    .mymarkets-tabs
+    li
+    .asset-prefix-replaced
+    + span {
+    font-size: 12px !important;
+}
+
+body.localcoin
+    .exchange-layout
+    .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+    .grid-block.shrink.left-orderbook-header.bottom-header
+    + div {
+    padding-top: 0.25rem !important;
+}
+
+body.localcoin
+    .exchange-layout
+    .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+    .grid-block.shrink.left-orderbook-header.bottom-header
+    + div
+    table
+    td
+    label {
+    margin-bottom: 0;
+    line-height: 1;
+}
+
+body.localcoin
+    .exchange-layout
+    .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+    .grid-block.shrink.left-orderbook-header.bottom-header
+    + div
+    .header-area
+    label {
+    margin-bottom: 0;
+    line-height: 1;
+}
+
+body.localcoin
+    .exchange-layout
+    .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+    .grid-block.shrink.left-orderbook-header.bottom-header
+    + div
+    .asset-selector {
+    padding-bottom: 0rem !important;
+}
+
+body.localcoin
+    .exchange-layout
+    .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+    .grid-block.shrink.left-orderbook-header.bottom-header
+    + div
+    .asset-selector
+    .input-area,
+body.localcoin
+    .exchange-layout
+    .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+    .grid-block.shrink.left-orderbook-header.bottom-header
+    + div
+    .asset-selector
+    .inline-label,
+body.localcoin
+    .exchange-layout
+    .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+    .grid-block.shrink.left-orderbook-header.bottom-header
+    + div
+    .asset-selector
+    .typeahead
+    .typeahead__input {
+    height: 28px;
+}
+
+body.localcoin
+    .exchange-layout
+    .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+    .table.table-hover.text-right
+    td {
+    padding: 0 !important;
+    line-height: 1;
+}
+
+body.localcoin
+    .exchange-layout
+    .grid-block.wrap.market-stats-container
+    ul.market-stats.stats.top-stats
+    li.stressed-stat.input.clickable {
+    border-right: 0 !important;
+}
+
+@media only screen and (min-width: 1680px) {
+    body.localcoin
+        .main.account-voting-account-votes-workers-short
+        .voting-container
+        .col-xl-3.col-lg-6
+        .account-inputs.account-selector {
+        max-width: 350px !important;
+    }
+
+    body.localcoin
+        .main.account-voting-account-votes-workers-short
+        .dashboard__actions__filters {
+        position: absolute;
+        top: -27px;
+        left: 800px;
+    }
+
+    body.localcoin
+        .main.account-voting-account-votes-workers-short
+        .dashboard__actions__filters
+        + .btn.large.inverted {
+        position: absolute;
+        top: -46px;
+        left: 1038px;
+    }
+
+    body.localcoin
+        .main.account-voting-account-votes-workers-short
+        .voting-container
+        .dashboard__tabs.dashboard__tabs.permissions.small
+        + div
+        .col-xs-12
+        span[style="float: right;"] {
+        right: auto !important;
+        left: 1255px !important;
+        top: -45px !important;
+    }
+
+    body.localcoin .main.account-voting-account-votes-workers-short .content {
+        padding-top: 0;
+    }
+
+    body.localcoin
+        .main.account-voting-account-votes-workers-short
+        .dashboard__actions {
+        padding: 0;
+    }
+
+    body.localcoin
+        .main.account-voting-account-votes-workers-short
+        .dashboard__actions
+        .account-inputs.account-selector {
+        position: absolute;
+        top: -45px;
+        right: -60px;
+    }
+
+    body.localcoin
+        .main.account-voting-account-votes-workers-short
+        .dashboard__tabs__item {
+        padding: 15px 24px 15px 24px;
+    }
+
+    body.localcoin
+        .main.account-voting-account-votes-workers-short
+        .dashboard__tabs__item
+        h4,
+    body.localcoin
+        .main.account-voting-account-votes-workers-short
+        .dashboard__tabs__item
+        span {
+        margin: 0;
+        line-height: 1;
+    }
+
+    body.localcoin .main[class*="acc-voting"] .content,
+    body.localcoin .main.account-voting .content,
+    body.localcoin .main.account-voting-explorer-witnesses-title .content,
+    body.localcoin
+        .main.account-voting-explorer-committee-members-title
+        .content,
+    body.localcoin .main.account-voting-account-votes-workers-short .content {
+        padding-top: 0;
+    }
+
+    body.localcoin .main[class*="acc-voting"] .dashboard__actions,
+    body.localcoin .main.account-voting .dashboard__actions,
+    body.localcoin
+        .main.account-voting-explorer-witnesses-title
+        .dashboard__actions,
+    body.localcoin
+        .main.account-voting-explorer-committee-members-title
+        .dashboard__actions,
+    body.localcoin
+        .main.account-voting-account-votes-workers-short
+        .dashboard__actions {
+        padding: 0;
+    }
+
+    body.localcoin
+        .main[class*="acc-voting"]
+        .dashboard__actions
+        .account-inputs.account-selector,
+    body.localcoin
+        .main.account-voting
+        .dashboard__actions
+        .account-inputs.account-selector,
+    body.localcoin
+        .main.account-voting-explorer-witnesses-title
+        .dashboard__actions
+        .account-inputs.account-selector,
+    body.localcoin
+        .main.account-voting-explorer-committee-members-title
+        .dashboard__actions
+        .account-inputs.account-selector,
+    body.localcoin
+        .main.account-voting-account-votes-workers-short
+        .dashboard__actions
+        .account-inputs.account-selector {
+        position: absolute;
+        top: -45px;
+        right: -60px;
+    }
+
+    body.localcoin .main[class*="acc-voting"] .dashboard__tabs__item,
+    body.localcoin .main.account-voting .dashboard__tabs__item,
+    body.localcoin
+        .main.account-voting-explorer-witnesses-title
+        .dashboard__tabs__item,
+    body.localcoin
+        .main.account-voting-explorer-committee-members-title
+        .dashboard__tabs__item,
+    body.localcoin
+        .main.account-voting-account-votes-workers-short
+        .dashboard__tabs__item {
+        padding: 15px 24px 15px 24px;
+    }
+
+    body.localcoin .main[class*="acc-voting"] .dashboard__tabs__item h4,
+    body.localcoin .main[class*="acc-voting"] .dashboard__tabs__item span,
+    body.localcoin .main.account-voting .dashboard__tabs__item h4,
+    body.localcoin .main.account-voting .dashboard__tabs__item span,
+    body.localcoin
+        .main.account-voting-explorer-witnesses-title
+        .dashboard__tabs__item
+        h4,
+    body.localcoin
+        .main.account-voting-explorer-witnesses-title
+        .dashboard__tabs__item
+        span,
+    body.localcoin
+        .main.account-voting-explorer-committee-members-title
+        .dashboard__tabs__item
+        h4,
+    body.localcoin
+        .main.account-voting-explorer-committee-members-title
+        .dashboard__tabs__item
+        span,
+    body.localcoin
+        .main.account-voting-account-votes-workers-short
+        .dashboard__tabs__item
+        h4,
+    body.localcoin
+        .main.account-voting-account-votes-workers-short
+        .dashboard__tabs__item
+        span {
+        margin: 0;
+        line-height: 1;
+    }
+
+    body.localcoin .main.account-voting .col-xl-3.col-lg-6,
+    body.localcoin .main.account-voting .col-xl-9.col-lg-12,
+    body.localcoin .main.account-voting .col-xs-12,
+    body.localcoin
+        .main.account-voting-explorer-witnesses-title
+        .col-xl-3.col-lg-6,
+    body.localcoin
+        .main.account-voting-explorer-witnesses-title
+        .col-xl-9.col-lg-12,
+    body.localcoin .main.account-voting-explorer-witnesses-title .col-xs-12,
+    body.localcoin
+        .main.account-voting-explorer-committee-members-title
+        .col-xl-3.col-lg-6,
+    body.localcoin
+        .main.account-voting-explorer-committee-members-title
+        .col-xl-9.col-lg-12,
+    body.localcoin
+        .main.account-voting-explorer-committee-members-title
+        .col-xs-12,
+    body.localcoin
+        .main.account-voting-account-votes-workers-short
+        .col-xl-3.col-lg-6,
+    body.localcoin
+        .main.account-voting-account-votes-workers-short
+        .col-xl-9.col-lg-12,
+    body.localcoin .main.account-voting-account-votes-workers-short .col-xs-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    body.localcoin .main.account-voting .col-xs-12 span[style="float: right;"],
+    body.localcoin
+        .main.account-voting-explorer-witnesses-title
+        .col-xs-12
+        span[style="float: right;"],
+    body.localcoin
+        .main.account-voting-explorer-committee-members-title
+        .col-xs-12
+        span[style="float: right;"],
+    body.localcoin
+        .main.account-voting-account-votes-workers-short
+        .col-xs-12
+        span[style="float: right;"] {
+        position: absolute;
+        width: auto;
+        top: -45px;
+        left: 1255px;
+    }
+
+    body.localcoin .main.account-voting .dashboard__actions .col-xl-3.col-lg-6,
+    body.localcoin
+        .main.account-voting-explorer-witnesses-title
+        .dashboard__actions
+        .col-xl-3.col-lg-6,
+    body.localcoin
+        .main.account-voting-explorer-committee-members-title
+        .dashboard__actions
+        .col-xl-3.col-lg-6,
+    body.localcoin
+        .main.account-voting-account-votes-workers-short
+        .dashboard__actions
+        .col-xl-3.col-lg-6 {
+        position: unset;
+    }
+
+    body.localcoin
+        .main.account-voting
+        .dashboard__actions
+        .col-xl-3.col-lg-6
+        span[style="float: right;"],
+    body.localcoin
+        .main.account-voting-explorer-witnesses-title
+        .dashboard__actions
+        .col-xl-3.col-lg-6
+        span[style="float: right;"],
+    body.localcoin
+        .main.account-voting-explorer-committee-members-title
+        .dashboard__actions
+        .col-xl-3.col-lg-6
+        span[style="float: right;"],
+    body.localcoin
+        .main.account-voting-account-votes-workers-short
+        .dashboard__actions
+        .col-xl-3.col-lg-6
+        span[style="float: right;"] {
+        right: auto !important;
+        left: 800px !important;
+    }
+
+    body.localcoin
+        .main.account-voting
+        .dashboard__actions
+        .account-inputs.account-selector,
+    body.localcoin
+        .main.account-voting-explorer-witnesses-title
+        .dashboard__actions
+        .account-inputs.account-selector,
+    body.localcoin
+        .main.account-voting-explorer-committee-members-title
+        .dashboard__actions
+        .account-inputs.account-selector,
+    body.localcoin
+        .main.account-voting-account-votes-workers-short
+        .dashboard__actions
+        .account-inputs.account-selector {
+        left: 20px;
+        right: auto;
+        min-width: 350px;
+    }
+
+    body.localcoin .main.account-voting .dashboard__tabs,
+    body.localcoin
+        .main.account-voting-explorer-witnesses-title
+        .dashboard__tabs,
+    body.localcoin
+        .main.account-voting-explorer-committee-members-title
+        .dashboard__tabs,
+    body.localcoin
+        .main.account-voting-account-votes-workers-short
+        .dashboard__tabs {
+        padding-left: 385px;
+    }
+}
+
+@media only screen and (max-width: 1680px) {
+    body.localcoin
+        .voting-container
+        .dashboard__tabs.dashboard__tabs.permissions.small
+        + div
+        .col-xs-12
+        span[style="float: right;"] {
+        position: relative;
+        top: 0;
+        right: 0;
+        background-color: #c1d0e3;
+    }
+}
+
+@media only screen and (max-width: 1640px) {
+    body.localcoin .main.account-localcoin-ico .content .dashboard__actions,
+    body.localcoin .main.account .content .dashboard__actions {
+        position: relative;
+        right: 0;
+        top: 0;
+        width: 100%;
+        background: #c1d0e3;
+        padding: 6px 0 0 0;
+    }
+}
+
+@media only screen and (max-width: 1450px) {
+    body.localcoin
+        .exchange-layout
+        .medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3
+        .grid-block.shrink.left-orderbook-header.market-right-padding-only
+        table
+        th:last-child {
+        width: 65px !important;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3
+        .grid-block.shrink.left-orderbook-header.market-right-padding-only
+        table
+        th:first-child {
+        padding: 5px 15px !important;
+        width: 90px !important;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .table.order-table.text-right.fixed-table.market-right-padding
+        td:last-child {
+        width: 68px !important;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .table.order-table.text-right.fixed-table.market-right-padding
+        td:first-child {
+        padding: 0px 15px !important;
+        width: 90px !important;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    body.localcoin .exchange-layout .order-book-button-v {
+        display: none !important;
+    }
+
+    body.localcoin .main.account-member-stats .grid-content .grid-block {
+        margin: 0;
+    }
+
+    body.localcoin .main.account-member-stats .grid-content {
+        padding-right: 0 !important;
+    }
+
+    body.localcoin
+        .main.account-localcoin-ico
+        .content
+        .dashboard__actions
+        .row,
+    body.localcoin .main.account .content .dashboard__actions .row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    body.localcoin
+        .main.account-localcoin-ico
+        .content
+        .dashboard__actions
+        .col-xl-3.col-lg-6,
+    body.localcoin
+        .main.account-localcoin-ico
+        .content
+        .dashboard__actions
+        .col-xl-9.col-lg-12,
+    body.localcoin
+        .main.account
+        .content
+        .dashboard__actions
+        .col-xl-3.col-lg-6,
+    body.localcoin
+        .main.account
+        .content
+        .dashboard__actions
+        .col-xl-9.col-lg-12 {
+        width: 100%;
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    body.localcoin
+        .exchange-layout
+        .main.market.left-cell-active
+        #CenterContent
+        > .grid-block.no-overflow.wrap.shrink {
+        flex-grow: 1;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .main.market.left-cell-active
+        #CenterContent
+        > .grid-block.no-overflow.wrap.shrink
+        .small-12.no-padding.middle-content.medium-6.order-1.buy-form,
+    body.localcoin
+        .exchange-layout
+        .main.market.left-cell-active
+        #CenterContent
+        > .grid-block.no-overflow.wrap.shrink
+        .small-12.no-padding.middle-content.medium-6.order-2.sell-form {
+        max-height: 326px;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .main.market.left-cell-active
+        #CenterContent
+        > .grid-block.no-overflow.wrap.shrink
+        .no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3,
+    body.localcoin
+        .exchange-layout
+        .main.market.left-cell-active
+        #CenterContent
+        > .grid-block.no-overflow.wrap.shrink
+        .small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6 {
+        height: calc(100vh - 830px);
+        min-height: 336px;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .main.market.left-cell-active
+        #CenterContent
+        > .grid-block.no-overflow.wrap.shrink
+        .no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3
+        .exchange-bordered.small-12,
+    body.localcoin
+        .exchange-layout
+        .main.market.left-cell-active
+        #CenterContent
+        > .grid-block.no-overflow.wrap.shrink
+        .small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
+        .exchange-bordered.small-12 {
+        height: 100% !important;
+        overflow: hidden;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .main.market.left-cell-active
+        #CenterContent
+        > .grid-block.no-overflow.wrap.shrink
+        .no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3
+        .exchange-bordered.small-12
+        .table-container.grid-block.market-right-padding-only.no-overflow.ps-container.ps-theme-default,
+    body.localcoin
+        .exchange-layout
+        .main.market.left-cell-active
+        #CenterContent
+        > .grid-block.no-overflow.wrap.shrink
+        .small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
+        .exchange-bordered.small-12
+        .table-container.grid-block.market-right-padding-only.no-overflow.ps-container.ps-theme-default {
+        max-height: none !important;
+    }
+
+    body.localcoin .exchange-layout .main.market.left-cell-active .medium-6 {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .small-12.no-padding.middle-content.medium-6.xlarge-4.order-1.buy-form
+        .exchange-bordered.buy-sell-container {
+        height: 326px;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .small-12.no-padding.middle-content.medium-6.xlarge-4.order-2.sell-form
+        .exchange-bordered.buy-sell-container {
+        height: 326px;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .grid-block.shrink.no-padding.overflow-visible.top-bar {
+        width: calc(100% - 280px);
+    }
+
+    body.localcoin
+        .exchange-layout
+        .grid-block.shrink.no-padding.overflow-visible.top-bar.left-cell-active {
+        width: calc(100% - 535px);
+        margin-left: 257px;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium,
+    body.localcoin .exchange-layout .grid-block.left-column.shrink.no-overflow {
+        margin-top: -42px;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .table.order-table.table-hover.fixed-table.text-right.no-overflow
+        td,
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .table.order-table.table-hover.fixed-table.text-right.no-overflow
+        th,
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .table.order-table.table-hover.fixed-table.text-right.no-overflow
+        td,
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .table.order-table.table-hover.fixed-table.text-right.no-overflow
+        th,
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .table.order-table.table-hover.fixed-table.text-right
+        td,
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .table.order-table.table-hover.fixed-table.text-right
+        th {
+        width: 50% !important;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .table.order-table.table-hover.fixed-table.text-right.no-overflow
+        td:last-child,
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .table.order-table.table-hover.fixed-table.text-right.no-overflow
+        th:last-child,
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .table.order-table.table-hover.fixed-table.text-right.no-overflow
+        td:last-child,
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .table.order-table.table-hover.fixed-table.text-right.no-overflow
+        th:last-child,
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .table.order-table.table-hover.fixed-table.text-right
+        td:last-child,
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .table.order-table.table-hover.fixed-table.text-right
+        th:last-child {
+        text-align: left !important;
+        width: 90px !important;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6 {
+        margin-bottom: 0 !important;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .small-12.no-padding.middle-content.medium-6.xlarge-4.order-1.buy-form,
+    body.localcoin
+        .exchange-layout
+        .small-12.no-padding.middle-content.medium-6.xlarge-4.order-2.sell-form,
+    body.localcoin
+        .exchange-layout
+        .medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3 {
+        max-height: 326px !important;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8 {
+        height: calc(100vh - 830px);
+        min-height: 336px;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .small-12.medium-6.middle-content.order-1,
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .small-12.medium-6.middle-content.order-2 {
+        margin-bottom: 0 !important;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .exchange-bordered {
+        display: flex;
+        flex-direction: column;
+        height: 100% !important;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .exchange-bordered
+        .grid-block.ps-container.ps-theme-default {
+        max-height: 100% !important;
+        display: flex;
+        flex-direction: column;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .exchange-bordered
+        .orderbook-showall {
+        margin-top: auto;
+    }
+
+    .exchange-layout
+        .order-1.xlarge-order-1.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .small-12.medium-6.middle-content.order-1,
+    .exchange-layout
+        .order-1.xlarge-order-1.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .small-12.medium-6.middle-content.order-2 {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+
+    .exchange-layout .exchange-bordered {
+        border-right: 0;
+    }
+
+    .exchange-layout .medium-6 {
+        flex: 0 0 33.33333% !important;
+        max-width: 33.33333% !important;
+    }
+
+    .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8 {
+        flex: 0 0 66.6666% !important;
+        max-width: 66.6666% !important;
+    }
+
+    .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .medium-6 {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+}
+
+@media only screen and (max-width: 1279px) {
+    body.localcoin
+        .exchange-layout
+        .grid-block.ps-container.ps-theme-default.ps-active-y {
+        flex-direction: column;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8 {
+        margin: auto;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .table.order-table.table-hover.fixed-table.text-right.no-overflow
+        td,
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .table.order-table.table-hover.fixed-table.text-right.no-overflow
+        th,
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .table.order-table.table-hover.fixed-table.text-right.no-overflow
+        td,
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .table.order-table.table-hover.fixed-table.text-right.no-overflow
+        th,
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .table.order-table.table-hover.fixed-table.text-right
+        td,
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .table.order-table.table-hover.fixed-table.text-right
+        th {
+        width: 33.3333% !important;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .table.order-table.table-hover.fixed-table.text-right.no-overflow
+        td:last-child,
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .table.order-table.table-hover.fixed-table.text-right.no-overflow
+        th:last-child,
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .table.order-table.table-hover.fixed-table.text-right.no-overflow
+        td:last-child,
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .table.order-table.table-hover.fixed-table.text-right.no-overflow
+        th:last-child,
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .table.order-table.table-hover.fixed-table.text-right
+        td:last-child,
+    body.localcoin
+        .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .table.order-table.table-hover.fixed-table.text-right
+        th:last-child {
+        text-align: left !important;
+        width: 33.3333% !important;
+    }
+
+    .exchange-layout .medium-6 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+
+    .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+
+    .exchange-layout
+        .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+        .medium-6 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+@media only screen and (max-width: 1440px) and (min-width: 1280px) {
+    body.localcoin
+        .exchange-layout
+        .small-12.no-padding.middle-content.medium-6.xlarge-4.order-1.buy-form
+        .asset-prefix-replaced,
+    body.localcoin
+        .exchange-layout
+        .small-12.no-padding.middle-content.medium-6.xlarge-4.order-1.buy-form
+        .asset-prefix-replaced
+        + span,
+    body.localcoin
+        .exchange-layout
+        .small-12.no-padding.middle-content.medium-6.xlarge-4.order-1.buy-form
+        .grid-block.small-4.no-margin.no-overflow.buy-sell-box,
+    body.localcoin
+        .exchange-layout
+        .small-12.no-padding.middle-content.medium-6.xlarge-4.order-2.sell-form
+        .asset-prefix-replaced,
+    body.localcoin
+        .exchange-layout
+        .small-12.no-padding.middle-content.medium-6.xlarge-4.order-2.sell-form
+        .asset-prefix-replaced
+        + span,
+    body.localcoin
+        .exchange-layout
+        .small-12.no-padding.middle-content.medium-6.xlarge-4.order-2.sell-form
+        .grid-block.small-4.no-margin.no-overflow.buy-sell-box {
+        font-size: 11px !important;
+        white-space: normal;
+        word-break: break-word;
+        line-height: 1;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .small-12.no-padding.middle-content.medium-6.order-1.buy-form
+        .grid-block.small-4.no-margin.no-overflow.buy-sell-box,
+    body.localcoin
+        .exchange-layout
+        .small-12.no-padding.middle-content.medium-6.order-1.buy-form
+        .asset-prefix-replaced,
+    body.localcoin
+        .exchange-layout
+        .small-12.no-padding.middle-content.medium-6.order-1.buy-form
+        .asset-prefix-replaced
+        + span,
+    body.localcoin
+        .exchange-layout
+        .small-12.no-padding.middle-content.medium-6.order-2.sell-form
+        .grid-block.small-4.no-margin.no-overflow.buy-sell-box,
+    body.localcoin
+        .exchange-layout
+        .small-12.no-padding.middle-content.medium-6.order-2.sell-form
+        .asset-prefix-replaced,
+    body.localcoin
+        .exchange-layout
+        .small-12.no-padding.middle-content.medium-6.order-2.sell-form
+        .asset-prefix-replaced
+        + span {
+        font-size: 11px !important;
+        white-space: normal;
+        word-break: break-word;
+        line-height: 1;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6 {
+        order: 5 !important;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3 {
+        order: 2 !important;
+    }
+
+    body.localcoin .exchange-layout .exchange-content-header.bid {
+        min-height: 32px;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .table.order-table.table-hover.fixed-table.text-right
+        span,
+    body.localcoin
+        .exchange-layout
+        .table.order-table.text-right.fixed-table.market-right-padding
+        span {
+        font-size: 11px !important;
+    }
+
+    body.localcoin .exchange-layout .mymarkets-header span {
+        font-size: 12px;
+    }
+
+    body.localcoin .exchange-layout .exchange-content-header {
+        font-size: 12px;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .exchange-content-header
+        .float-right.clickable.hide-for-xlarge {
+        padding-left: 0 !important;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .exchange-content-header
+        .inline-block
+        > span {
+        font-size: 12px !important;
+    }
+
+    body.localcoin .exchange-layout .float-right.header-sub-title {
+        font-size: 10px;
+        margin-right: 0;
+        margin-left: auto;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .float-right.header-sub-title
+        .inline-block.tooltip {
+        font-size: 10px;
+    }
+
+    body.localcoin
+        .exchange-layout
+        .float-right.header-sub-title
+        .inline-block
+        > span {
+        font-size: 10px !important;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .node-access-popup {
+        display: none;
+    }
+
+    body.localcoin
+        .main.account-create-asset
+        .create-asset-container
+        .dashboard__tabs.dashboard__tabs.permissions.small
+        + div {
+        position: relative;
+        right: 0;
+        margin: 15px 0 8px 15px;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    body.localcoin .dashboard__actions__filters label.radio {
+        margin: 4px 20px 4px 0;
+    }
+
+    body.localcoin .dashboard__actions__filters {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    body.localcoin #account_login_button {
+        width: auto;
+    }
+
+    body.localcoin .main.account-create-asset .amount-selector {
+        padding: 0 !important;
+        margin: 5px 0;
+    }
+}
+
+@media only screen and (max-width: 340px) {
+    body.localcoin .grid-block.account-login-options {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    body.localcoin .grid-block.account-login-options #account_login_button,
+    body.localcoin .grid-block.account-login-options #account_login_button2 {
+        width: 100%;
+    }
+}
+body.localcoin .btn.large.inverted span {
+    color: #fff !important;
+}
+
+body.localcoin .footer-line {
+    height: 35px;
+}
+
+body.localcoin .btn.large.inverted {
+    height: 35px;
+    line-height: 35px;
+}
+
+body.localcoin .witnesses-board {
+    display: flex;
+}
+
+body.localcoin .witnesses-board__sidetable {
+    min-width: 330px;
+    max-width: 330px;
+    width: 330px;
+    margin-right: 20px;
+}
+
+body.localcoin .witnesses-board__sidetable__row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+}
+
+body.localcoin {
+    padding-top: 35px;
+}
+
+body.localcoin .header {
+    background-color: #001b60;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+}
+
+body.localcoin .footer-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: auto;
+    font-size: 14px;
+    border-left: 1px solid rgba(128, 128, 128, 0.45);
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+body.localcoin .footer-info span {
+    line-height: 1;
+}
+
+body.localcoin .footer-info__status {
+    color: #168e13;
+    margin-bottom: 2px;
+    font-family: roboto-regular, arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: lowercase;
+    font-variant: small-caps;
+}
+
+body.localcoin .footer-info__data {
+    color: #00195b;
+    text-align: right;
+    font-family: roboto-regular, arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: lowercase;
+    font-variant: small-caps;
+}
+
+body.localcoin .footer-info:hover {
+    background-color: rgba(220, 230, 242, 0.5);
+}
+
+body.localcoin .sidebar__menu__link,
+body.localcoin .sidebar__menu__sub__link {
+    padding: 4.5px 30px;
+}
+
+body.localcoin .dashboard__tabs__item:after {
+    content: "";
+    position: absolute;
+    right: -1px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 1px;
+    height: 100%;
+}
+
+body.localcoin .footer-info__status:hover {
+    text-decoration: underline;
+}
