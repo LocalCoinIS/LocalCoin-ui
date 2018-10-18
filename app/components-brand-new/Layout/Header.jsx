@@ -139,6 +139,8 @@ class Header extends React.Component {
             this
         );
         this.onBodyClick = this.onBodyClick.bind(this);
+        this.onBurgerClick = this.onBurgerClick.bind(this);
+        this.closeMobileMenu = this.closeMobileMenu.bind(this);
     }
 
     componentWillMount() {
@@ -196,7 +198,7 @@ class Header extends React.Component {
 
     _showSend(e) {
         e.preventDefault();
-
+        this.closeMobileMenu();
         console.log("_showSend");
 
         if (this.isUnauthorizedUser()) return;
@@ -230,6 +232,7 @@ class Header extends React.Component {
 
     _toggleLock(e) {
         e.preventDefault();
+        this.closeMobileMenu();
         if (WalletDb.isLocked()) {
             WalletUnlockActions.unlock()
                 .then(() => {
@@ -260,7 +263,7 @@ class Header extends React.Component {
 
     _onNavigate(route, e) {
         e.preventDefault();
-
+        this.closeMobileMenu();
         if (
             route !== "/" &&
             route !== "/settings/general" &&
@@ -484,6 +487,20 @@ class Header extends React.Component {
         return balance;
     }
 
+    onBurgerClick(e) {
+        var el = e.target;
+        if (!el.classList.contains("mobile__burger")) {
+            el = el.parentNode;
+        }
+        if (!el.nextSibling.classList.contains("show")) {
+            el.nextSibling.classList.add("show");
+        }
+    }
+
+    closeMobileMenu() {
+        document.querySelector(".mobile__menu").classList.remove("show");
+    }
+
     render() {
         let {active} = this.state;
         let {
@@ -625,11 +642,17 @@ class Header extends React.Component {
             <header className="header">
                 <div className="container-fluid">
                     <div className="mobile">
-                        <span className="mobile__burger">
+                        <span
+                            className="mobile__burger"
+                            onClick={this.onBurgerClick}
+                        >
                             <span />
                         </span>
                         <div className="mobile__menu">
-                            <span className="mobile__menu__close" />
+                            <span
+                                className="mobile__menu__close"
+                                onClick={this.closeMobileMenu}
+                            />
                             <ul className="mobile__list">
                                 <li className="mobile__list__item">
                                     <a
@@ -672,6 +695,69 @@ class Header extends React.Component {
                                         >
                                             {counterpart.translate(
                                                 "header.deposit-withdraw"
+                                            )}
+                                        </a>
+                                    </li>
+                                }
+                                {
+                                    <li className="mobile__list__item">
+                                        <a
+                                            className="mobile__list__link"
+                                            href="#"
+                                            onClick={this._onNavigate.bind(
+                                                this,
+                                                "/explorer/blocks"
+                                            )}
+                                        >
+                                            {counterpart.translate(
+                                                "header.explorer"
+                                            )}
+                                        </a>
+                                    </li>
+                                }
+                                {
+                                    <li className="mobile__list__item">
+                                        <a
+                                            className="mobile__list__link"
+                                            href="#"
+                                            onClick={this._onNavigate.bind(
+                                                this,
+                                                `/account/${currentAccount}/voting`
+                                            )}
+                                        >
+                                            {counterpart.translate(
+                                                "account.voting"
+                                            )}
+                                        </a>
+                                    </li>
+                                }
+                                {
+                                    <li className="mobile__list__item">
+                                        <a
+                                            href="#"
+                                            className="mobile__list__link"
+                                            onClick={this._onNavigate.bind(
+                                                this,
+                                                "/settings/general"
+                                            )}
+                                        >
+                                            {counterpart.translate(
+                                                "header.settings"
+                                            )}
+                                        </a>
+                                    </li>
+                                }
+                                {
+                                    <li className="mobile__list__item">
+                                        <a
+                                            href="#"
+                                            className="mobile__list__link"
+                                            onClick={this._toggleLock.bind(
+                                                this
+                                            )}
+                                        >
+                                            {counterpart.translate(
+                                                "header.unlock_account"
                                             )}
                                         </a>
                                     </li>

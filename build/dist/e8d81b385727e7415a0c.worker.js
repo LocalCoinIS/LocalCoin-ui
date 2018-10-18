@@ -30098,7 +30098,7 @@
                         spec: ">=1.4.2 <2.0.0",
                         type: "range"
                     },
-                    "/home/user/egor_ui/node_modules/bitsharesjs"
+                    "/home/biliba/gateis_ui/node_modules/bitsharesjs"
                 ]
             ],
             _from: "bigi@>=1.4.2 <2.0.0",
@@ -30127,7 +30127,7 @@
             _shasum: "9c665a95f88b8b08fc05cfd731f561859d725825",
             _shrinkwrap: null,
             _spec: "bigi@^1.4.2",
-            _where: "/home/user/egor_ui/node_modules/bitsharesjs",
+            _where: "/home/biliba/gateis_ui/node_modules/bitsharesjs",
             bugs: {url: "https://github.com/cryptocoinjs/bigi/issues"},
             dependencies: {},
             description: "Big integers.",

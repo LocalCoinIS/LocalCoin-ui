@@ -125,7 +125,7 @@
         139: function(e, t, a) {
             "use strict";
             a.d(t, "b", function() {
-                return x;
+                return C;
             }),
                 a.d(t, "a", function() {
                     return N;
@@ -212,7 +212,7 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var C = (function(e) {
+            var x = (function(e) {
                 function t(e) {
                     return (
                         k(this, t),
@@ -348,17 +348,17 @@
                     t
                 );
             })();
-            (C.defaultProps = {
+            (x.defaultProps = {
                 fullPrecision: !0,
                 noDecimals: !1,
                 fullDecimals: !1,
                 hide_asset: !1
             }),
-                (C = Object(l.a)(C, {
+                (x = Object(l.a)(x, {
                     propNames: ["toAsset", "fromAsset", "coreAsset"],
                     defaultProps: {toAsset: "1.3.0", coreAsset: "1.3.0"}
                 }));
-            var x = (function(e) {
+            var C = (function(e) {
                 function t() {
                     return (
                         k(this, t),
@@ -380,14 +380,14 @@
                                 var e = this.props,
                                     t = e.refCallback,
                                     a = w(e, ["refCallback"]);
-                                return r.a.createElement(C, y({}, a, {ref: t}));
+                                return r.a.createElement(x, y({}, a, {ref: t}));
                             }
                         }
                     ]),
                     t
                 );
             })();
-            x = Object(u.connect)(x, {
+            C = Object(u.connect)(C, {
                 listenTo: function() {
                     return [p.a];
                 },
@@ -429,7 +429,7 @@
                                 return isNaN(o)
                                     ? r.a.createElement("span", null, "--")
                                     : r.a.createElement(
-                                          x,
+                                          C,
                                           y(
                                               {
                                                   amount: o,
@@ -650,8 +650,8 @@
                 k = a(86),
                 O = a(16),
                 A = a(64),
-                C = a(3),
-                x = a.n(C),
+                x = a(3),
+                C = a.n(x),
                 N = a(69),
                 S = a(7),
                 P = a.n(S),
@@ -1013,7 +1013,7 @@
                                         n.balance,
                                         this.props.backing_asset.toJS()
                                     ) &&
-                                    (t.collateral_balance = x.a.translate(
+                                    (t.collateral_balance = C.a.translate(
                                         "borrow.errors.collateral"
                                     ));
                                 var r =
@@ -1029,7 +1029,7 @@
                                         ]) / 1e3;
                                 parseFloat(e.collateral_ratio) <
                                 (this._isPredictionMarket(this.props) ? 1 : o)
-                                    ? ((t.below_maintenance = x.a.translate(
+                                    ? ((t.below_maintenance = C.a.translate(
                                           "borrow.errors.below",
                                           {mr: o}
                                       )),
@@ -1038,7 +1038,7 @@
                                           (this._isPredictionMarket(this.props)
                                               ? 1
                                               : o + 0.5) &&
-                                      ((t.close_maintenance = x.a.translate(
+                                      ((t.close_maintenance = C.a.translate(
                                           "borrow.errors.close",
                                           {mr: o}
                                       )),
@@ -1208,13 +1208,13 @@
                                         {disabled: p.collateral_balance || !h},
                                         {success: h}
                                     ),
-                                    C = this._getCurrentPosition(this.props),
+                                    x = this._getCurrentPosition(this.props),
                                     S = s.id ? j.b.getObject(s.id) : null,
                                     P =
                                         (S ? S.get("balance") : 0) -
                                         parseInt(
                                             this.state.collateral * b -
-                                                C.collateral,
+                                                x.collateral,
                                             10
                                         ),
                                     T = o.a.createElement(
@@ -1264,7 +1264,7 @@
                                                       className:
                                                           "disabled-link",
                                                       "data-place": "left",
-                                                      "data-tip": x.a.translate(
+                                                      "data-tip": C.a.translate(
                                                           "borrow.maximize_debt_set_ratio_slider"
                                                       )
                                                   },
@@ -2460,8 +2460,8 @@
                     baseSymbol: s.a.string.isRequired
                 });
             var A = O,
-                C = a(149),
-                x = a(10),
+                x = a(149),
+                C = a(10),
                 N = a(9),
                 S = a.n(N),
                 P = a(12),
@@ -2473,10 +2473,10 @@
                 L = a(47),
                 R = a.n(L);
             a.d(t, "b", function() {
-                return H;
+                return z;
             }),
                 a.d(t, "c", function() {
-                    return z;
+                    return U;
                 }),
                 a.d(t, "a", function() {
                     return J;
@@ -2540,8 +2540,8 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var U = {textAlign: "left"},
-                z = (function(e) {
+            var H = {textAlign: "left"},
+                U = (function(e) {
                     function t() {
                         return (
                             B(this, t),
@@ -2574,7 +2574,7 @@
                                                   null,
                                                   r.a.createElement(
                                                       "th",
-                                                      {style: U, colSpan: "5"},
+                                                      {style: H, colSpan: "5"},
                                                       r.a.createElement(m.a, {
                                                           content:
                                                               "exchange.description"
@@ -2582,7 +2582,7 @@
                                                   ),
                                                   r.a.createElement(
                                                       "th",
-                                                      {style: U},
+                                                      {style: H},
                                                       r.a.createElement(m.a, {
                                                           content:
                                                               "exchange.price"
@@ -2590,7 +2590,7 @@
                                                   ),
                                                   r.a.createElement(
                                                       "th",
-                                                      {style: U},
+                                                      {style: H},
                                                       r.a.createElement(m.a, {
                                                           content:
                                                               "exchange.price_market"
@@ -2749,8 +2749,8 @@
                         t
                     );
                 })();
-            z.defaultProps = {quoteSymbol: null, baseSymbol: null};
-            var H = (function(e) {
+            U.defaultProps = {quoteSymbol: null, baseSymbol: null};
+            var z = (function(e) {
                 function t() {
                     return (
                         B(this, t),
@@ -2821,7 +2821,7 @@
                                               "td",
                                               {
                                                   colSpan: "5",
-                                                  style: U,
+                                                  style: H,
                                                   onClick: this.props.onFlip
                                               },
                                               p
@@ -2921,7 +2921,7 @@
                                           r.a.createElement(
                                               "td",
                                               {
-                                                  style: U,
+                                                  style: H,
                                                   onClick: this.props.onFlip
                                               },
                                               r.a.createElement(D.a, {
@@ -2942,7 +2942,7 @@
                                           r.a.createElement(
                                               "td",
                                               {
-                                                  style: U,
+                                                  style: H,
                                                   onClick: this.props.onFlip
                                               },
                                               r.a.createElement(q.a, {
@@ -3040,7 +3040,7 @@
                                                   className: b,
                                                   style: {paddingLeft: 10}
                                               },
-                                              r.a.createElement(C.a, {
+                                              r.a.createElement(x.a, {
                                                   price: n.getPrice(),
                                                   base: t,
                                                   quote: a
@@ -3134,7 +3134,7 @@
                     t
                 );
             })();
-            H.defaultProps = {showSymbols: !1};
+            z.defaultProps = {showSymbols: !1};
             var J = (function(e) {
                 function t(e) {
                     B(this, t);
@@ -3260,7 +3260,7 @@
                         {
                             key: "_changeTab",
                             value: function(e) {
-                                x.a.changeViewSetting({ordersTab: e}),
+                                C.a.changeViewSetting({ordersTab: e}),
                                     this.setState({activeTab: e});
                                 var t = this.refs.container;
                                 (t.scrollTop = 0),
@@ -3319,7 +3319,7 @@
                                             })
                                             .map(function(t) {
                                                 var o = t.getPrice();
-                                                return r.a.createElement(H, {
+                                                return r.a.createElement(z, {
                                                     price: o,
                                                     key: t.id,
                                                     order: t,
@@ -3342,7 +3342,7 @@
                                             })
                                             .map(function(t) {
                                                 var o = t.getPrice();
-                                                return r.a.createElement(H, {
+                                                return r.a.createElement(z, {
                                                     price: o,
                                                     key: t.id,
                                                     order: t,
@@ -3452,7 +3452,7 @@
                                                         "table order-table text-right fixed-table market-right-padding"
                                                 },
                                                 "my_orders" == l
-                                                    ? r.a.createElement(z, {
+                                                    ? r.a.createElement(U, {
                                                           rightAlign: !0,
                                                           type: "sell",
                                                           baseSymbol: s,
@@ -3803,8 +3803,8 @@
                     k = a(37),
                     O = a(36),
                     A = a(22),
-                    C = a(4),
-                    x = a(182),
+                    x = a(4),
+                    C = a(182),
                     N = a(23),
                     S =
                         Object.assign ||
@@ -3906,7 +3906,7 @@
                         );
                     }
                     return (
-                        I(a, x["a"]),
+                        I(a, C["a"]),
                         P(a, [
                             {
                                 key: "componentWillMount",
@@ -4368,7 +4368,7 @@
                                         r = this._getFee(),
                                         s = this._getGateFee(),
                                         i = this.state.feeStatus[r.asset_id],
-                                        l = C.b.getAsset(r.asset_id),
+                                        l = x.b.getAsset(r.asset_id),
                                         c =
                                             (i && !i.hasBalance) ||
                                             this.state.balanceError ||
@@ -5216,8 +5216,8 @@
                 k = a(23),
                 O = a(172),
                 A = a(15),
-                C = a(8),
-                x = a(10),
+                x = a(8),
+                C = a(10),
                 N = a(146),
                 S = a.n(N),
                 P =
@@ -5589,7 +5589,7 @@
                             value: function(e) {
                                 e.preventDefault(),
                                     (window.open(
-                                        C.a.site_registr,
+                                        x.a.site_registr,
                                         "_blank"
                                     ).opener = null);
                             }
@@ -5597,7 +5597,7 @@
                         {
                             key: "_onDropDownSelect",
                             value: function(e) {
-                                x.a.changeViewSetting({preferredBridge: e});
+                                C.a.changeViewSetting({preferredBridge: e});
                             }
                         },
                         {
@@ -6448,11 +6448,11 @@
             })();
             L = Object(A.connect)(L, {
                 listenTo: function() {
-                    return [C.a];
+                    return [x.a];
                 },
                 getProps: function() {
                     return {
-                        preferredBridge: C.a
+                        preferredBridge: x.a
                             .getState()
                             .viewSettings.get("preferredBridge", "btc")
                     };
@@ -6558,7 +6558,7 @@
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function C(e, t) {
+            function x(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -6567,7 +6567,7 @@
                     ? e
                     : t;
             }
-            function x(e, t) {
+            function C(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -6602,7 +6602,7 @@
             var I = (function(e) {
                 function t(e) {
                     A(this, t);
-                    var a = C(
+                    var a = x(
                         this,
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                     );
@@ -6621,7 +6621,7 @@
                     );
                 }
                 return (
-                    x(t, r.a.Component),
+                    C(t, r.a.Component),
                     O(t, [
                         {
                             key: "componentDidMount",
@@ -7315,7 +7315,7 @@
                 function t() {
                     return (
                         A(this, t),
-                        C(
+                        x(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -7325,7 +7325,7 @@
                     );
                 }
                 return (
-                    x(t, r.a.Component),
+                    C(t, r.a.Component),
                     O(t, [
                         {
                             key: "render",
@@ -7399,7 +7399,7 @@
                     ? e
                     : t;
             }
-            function C(e, t) {
+            function x(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -7418,7 +7418,7 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var x = (function(e) {
+            var C = (function(e) {
                 function t() {
                     O(this, t);
                     var e = A(
@@ -7428,7 +7428,7 @@
                     return (e.state = {amount: 0}), e;
                 }
                 return (
-                    C(t, r.a.Component),
+                    x(t, r.a.Component),
                     k(t, [
                         {
                             key: "onAmountChanged",
@@ -7571,11 +7571,11 @@
                     t
                 );
             })();
-            (x.propTypes = {
+            (C.propTypes = {
                 asset: m.a.ChainAsset.isRequired,
                 account: m.a.ChainAccount.isRequired
             }),
-                (x = Object(f.a)(x));
+                (C = Object(f.a)(C));
             !(function(e) {
                 function t() {
                     O(this, t);
@@ -7585,7 +7585,7 @@
                     );
                     return (e.state = {open: !1}), e;
                 }
-                C(t, r.a.Component),
+                x(t, r.a.Component),
                     k(t, [
                         {
                             key: "show",
@@ -7620,7 +7620,7 @@
                                                   className:
                                                       "grid-block vertical"
                                               },
-                                              r.a.createElement(x, this.props)
+                                              r.a.createElement(C, this.props)
                                           )
                                       )
                                     : null;
@@ -7842,9 +7842,9 @@
                     };
                 }
             });
-            var U = a(22),
-                z = a(17),
-                H = a(64),
+            var H = a(22),
+                U = a(17),
+                z = a(64),
                 J = a(222),
                 K = a(12),
                 G = a(11),
@@ -8159,12 +8159,12 @@
                                                             h
                                                         )
                                                     },
-                                                    r.a.createElement(U.a, {
+                                                    r.a.createElement(H.a, {
                                                         name: t.get("symbol")
                                                     }),
                                                     " :",
                                                     " ",
-                                                    r.a.createElement(U.a, {
+                                                    r.a.createElement(H.a, {
                                                         name: a.get("symbol")
                                                     })
                                                 )
@@ -8183,7 +8183,7 @@
                                                         "/asset/" +
                                                         t.get("symbol")
                                                 },
-                                                r.a.createElement(U.a, {
+                                                r.a.createElement(H.a, {
                                                     noTip: !0,
                                                     name: t.get("symbol")
                                                 })
@@ -8192,7 +8192,7 @@
                                         r.a.createElement(
                                             "td",
                                             {style: re},
-                                            r.a.createElement(z.a, {
+                                            r.a.createElement(U.a, {
                                                 amount: c,
                                                 asset:
                                                     n.call_price.quote.asset_id,
@@ -8203,7 +8203,7 @@
                                         r.a.createElement(
                                             "td",
                                             {style: re},
-                                            r.a.createElement(z.a, {
+                                            r.a.createElement(U.a, {
                                                 amount: n.debt,
                                                 asset:
                                                     n.call_price.quote.asset_id,
@@ -8217,7 +8217,7 @@
                                                 style: re,
                                                 className: "column-hide-medium"
                                             },
-                                            r.a.createElement(z.a, {
+                                            r.a.createElement(U.a, {
                                                 decimalOffset: 5,
                                                 amount: n.collateral,
                                                 asset:
@@ -8258,7 +8258,7 @@
                                                 style: re,
                                                 className: "column-hide-small"
                                             },
-                                            r.a.createElement(H.a, {
+                                            r.a.createElement(z.a, {
                                                 base_amount:
                                                     n.call_price.base.amount,
                                                 base_asset:
@@ -8276,7 +8276,7 @@
                                                 style: re,
                                                 className: "column-hide-small"
                                             },
-                                            r.a.createElement(H.a, {
+                                            r.a.createElement(z.a, {
                                                 base_amount: t.getIn([
                                                     "bitasset",
                                                     "current_feed",
@@ -8305,7 +8305,7 @@
                                                     "center-content column-hide-small",
                                                 style: oe
                                             },
-                                            r.a.createElement(H.a, {
+                                            r.a.createElement(z.a, {
                                                 base_amount:
                                                     n.call_price.base.amount,
                                                 base_asset:
@@ -8580,12 +8580,12 @@
                                                         u
                                                     )
                                                 },
-                                                r.a.createElement(U.a, {
+                                                r.a.createElement(H.a, {
                                                     name: t.get("symbol")
                                                 }),
                                                 " :",
                                                 " ",
-                                                r.a.createElement(U.a, {
+                                                r.a.createElement(H.a, {
                                                     name: a.get("symbol")
                                                 })
                                             )
@@ -8600,7 +8600,7 @@
                                         r.a.createElement(
                                             G.b,
                                             {to: "/asset/" + t.get("symbol")},
-                                            r.a.createElement(U.a, {
+                                            r.a.createElement(H.a, {
                                                 noTip: !0,
                                                 name: t.get("symbol")
                                             })
@@ -8609,7 +8609,7 @@
                                     r.a.createElement(
                                         "td",
                                         {style: re},
-                                        r.a.createElement(z.a, {
+                                        r.a.createElement(U.a, {
                                             amount: i,
                                             asset: t.get("id"),
                                             assetInfo: p,
@@ -8619,7 +8619,7 @@
                                     r.a.createElement(
                                         "td",
                                         {style: re},
-                                        r.a.createElement(z.a, {
+                                        r.a.createElement(U.a, {
                                             amount: 0,
                                             asset: t.get("id"),
                                             assetInfo: p,
@@ -8632,7 +8632,7 @@
                                             style: re,
                                             className: "column-hide-medium"
                                         },
-                                        r.a.createElement(z.a, {
+                                        r.a.createElement(U.a, {
                                             decimalOffset: 5,
                                             amount: 0,
                                             asset: a.get("id")
@@ -9315,7 +9315,7 @@
                         "]"
                     );
                 },
-                Ce = function(e) {
+                xe = function(e) {
                     return e.approved
                         ? r.a.createElement(K.a, {
                               name: "checkmark-circle",
@@ -9330,7 +9330,7 @@
                               title: "icons.cross_circle.operation_failed"
                           });
                 },
-                xe = function(e) {
+                Ce = function(e) {
                     var t = e.available,
                         a = e.permission,
                         n = e.weight,
@@ -9344,7 +9344,7 @@
                             r.a.createElement(
                                 "td",
                                 {colSpan: "2"},
-                                r.a.createElement(Ce, {
+                                r.a.createElement(xe, {
                                     approved: a.isAvailable(t)
                                 }),
                                 a.id.substr(0, 20 - 4 * o),
@@ -9493,7 +9493,7 @@
                                                   r.a.createElement(
                                                       "td",
                                                       {colSpan: "2"},
-                                                      r.a.createElement(Ce, {
+                                                      r.a.createElement(xe, {
                                                           approved: p
                                                       }),
                                                       r.a.createElement(be.a, {
@@ -9556,7 +9556,7 @@
                                                   r.a.createElement(
                                                       "td",
                                                       {colSpan: "2"},
-                                                      r.a.createElement(Ce, {
+                                                      r.a.createElement(xe, {
                                                           approved: p
                                                       }),
                                                       r.a.createElement(be.a, {
@@ -9599,7 +9599,7 @@
                                         o.keys.length &&
                                             o.keys.forEach(function(e) {
                                                 return v.push(
-                                                    r.a.createElement(xe, {
+                                                    r.a.createElement(Ce, {
                                                         key: e.id,
                                                         permission: e,
                                                         available: n,
@@ -9880,7 +9880,7 @@
                     globalObject: "2.0.0"
                 });
             var We = Object(f.a)(Ve),
-                Ue =
+                He =
                     Object.assign ||
                     function(e) {
                         for (var t = 1; t < arguments.length; t++) {
@@ -9891,7 +9891,7 @@
                         }
                         return e;
                     },
-                ze = (function() {
+                Ue = (function() {
                     return function(e, t) {
                         if (Array.isArray(e)) return e;
                         if (Symbol.iterator in Object(e))
@@ -9923,7 +9923,7 @@
                         );
                     };
                 })(),
-                He = (function() {
+                ze = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -10001,7 +10001,7 @@
                     }
                     return (
                         Ge(t, r.a.Component),
-                        He(t, [
+                        ze(t, [
                             {
                                 key: "onActiveAccount",
                                 value: function(e, t, a, n) {
@@ -10291,7 +10291,7 @@
                 }
                 return (
                     Ge(t, r.a.Component),
-                    He(t, [
+                    ze(t, [
                         {
                             key: "componentWillMount",
                             value: function() {
@@ -10341,12 +10341,12 @@
                                     o = t.availableKeys,
                                     s = t.type,
                                     i = Xe(a, n, o),
-                                    l = ze(i, 2),
+                                    l = Ue(i, 2),
                                     c = l[0],
                                     u = l[1];
                                 return r.a.createElement(
                                     Ye,
-                                    Ue({}, this.props, {
+                                    He({}, this.props, {
                                         type: s,
                                         accounts: "approve" === e ? c : n,
                                         keys: "approve" === e ? u : o
@@ -10374,7 +10374,7 @@
                     }
                     return (
                         Ge(t, r.a.Component),
-                        He(t, [
+                        ze(t, [
                             {
                                 key: "componentDidMount",
                                 value: function() {
@@ -11053,7 +11053,7 @@
                                     ? r.a.createElement("span", null, "1.00")
                                     : o
                                         ? r.a.createElement(
-                                              H.a,
+                                              z.a,
                                               ct(
                                                   {
                                                       force_direction:
@@ -11650,8 +11650,8 @@
                     }
                 })),
                 At = (a(9), {}),
-                Ct = 6e4;
-            var xt = a(384),
+                xt = 6e4;
+            var Ct = a(384),
                 Nt = a(223),
                 St =
                     Object.assign ||
@@ -11818,7 +11818,7 @@
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function Ut(e, t) {
+            function Ht(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -11827,7 +11827,7 @@
                     ? e
                     : t;
             }
-            function zt(e, t) {
+            function Ut(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -11847,11 +11847,11 @@
                             : (e.__proto__ = t));
             }
             Rt()(Dt.a.Highcharts), Ft()(Dt.a.Highcharts);
-            var Ht = (function(e) {
+            var zt = (function(e) {
                 function t() {
                     return (
                         Wt(this, t),
-                        Ut(
+                        Ht(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -11861,7 +11861,7 @@
                     );
                 }
                 return (
-                    zt(t, r.a.Component),
+                    Ut(t, r.a.Component),
                     Vt(t, [
                         {
                             key: "render",
@@ -12019,17 +12019,17 @@
                     t
                 );
             })();
-            (Ht.propTypes = {
+            (zt.propTypes = {
                 assets: m.a.ChainAssetsList,
                 preferredAsset: m.a.ChainAsset.isRequired
             }),
-                (Ht.defaultProps = {assets: [], preferredAsset: "1.3.0"}),
-                (Ht = Object(f.a)(Ht));
+                (zt.defaultProps = {assets: [], preferredAsset: "1.3.0"}),
+                (zt = Object(f.a)(zt));
             var Jt = (function(e) {
                 function t() {
                     return (
                         Wt(this, t),
-                        Ut(
+                        Ht(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -12039,7 +12039,7 @@
                     );
                 }
                 return (
-                    zt(t, r.a.Component),
+                    Ut(t, r.a.Component),
                     Vt(t, [
                         {
                             key: "render",
@@ -12052,7 +12052,7 @@
                                         return e.get("asset_type");
                                     });
                                 return r.a.createElement(
-                                    Ht,
+                                    zt,
                                     Bt(
                                         {
                                             preferredAsset: this.props.settings.get(
@@ -12080,7 +12080,7 @@
                     function t() {
                         return (
                             Wt(this, t),
-                            Ut(
+                            Ht(
                                 this,
                                 (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                     this,
@@ -12090,7 +12090,7 @@
                         );
                     }
                     return (
-                        zt(t, r.a.Component),
+                        Ut(t, r.a.Component),
                         Vt(t, [
                             {
                                 key: "render",
@@ -12634,7 +12634,7 @@
                                                                                   t
                                                                               ];
                                                                           },
-                                                                          Ct
+                                                                          xt
                                                                       );
                                                               });
                                                       })
@@ -12916,10 +12916,10 @@
                                                                 "icon-14px"
                                                         })
                                                     ));
-                                                var C = h(s, n.props.account),
-                                                    x = C.isBitAsset,
-                                                    S = C.borrowModal,
-                                                    P = C.borrowLink;
+                                                var x = h(s, n.props.account),
+                                                    C = x.isBitAsset,
+                                                    S = x.borrowModal,
+                                                    P = x.borrowLink;
                                                 f = r.a.createElement(
                                                     "a",
                                                     {
@@ -13239,7 +13239,7 @@
                                                             r.a.createElement(
                                                                 "td",
                                                                 null,
-                                                                x
+                                                                C
                                                                     ? r.a.createElement(
                                                                           "div",
                                                                           {
@@ -13262,7 +13262,7 @@
                                                             r.a.createElement(
                                                                 "td",
                                                                 null,
-                                                                x
+                                                                C
                                                                     ? r.a.createElement(
                                                                           "div",
                                                                           {
@@ -13922,13 +13922,13 @@
                                         balances: w,
                                         hide_asset: !0
                                     }),
-                                    C = r.a.createElement(u.a, {
+                                    x = r.a.createElement(u.a, {
                                         noTip: !0,
                                         balances: s.a.List(),
                                         openOrders: i,
                                         hide_asset: !0
                                     }),
-                                    x = r.a.createElement(u.a, {
+                                    C = r.a.createElement(u.a, {
                                         noTip: !0,
                                         balances: s.a.List(),
                                         debt: f,
@@ -14289,7 +14289,7 @@
                                                                           ),
                                                                           " (",
                                                                           r.a.createElement(
-                                                                              U.a,
+                                                                              H.a,
                                                                               {
                                                                                   name: P,
                                                                                   noTip: !0
@@ -14497,7 +14497,7 @@
                                         },
                                         {
                                             title: "account.open_orders",
-                                            subTitle: C,
+                                            subTitle: x,
                                             content: r.a.createElement(
                                                 Ot,
                                                 this.props,
@@ -14530,7 +14530,7 @@
                                                                         "left"
                                                                 }
                                                             },
-                                                            C
+                                                            x
                                                         ),
                                                         this.props.isMyAccount
                                                             ? r.a.createElement(
@@ -14544,7 +14544,7 @@
                                         },
                                         {
                                             title: "account.collaterals",
-                                            subTitle: x,
+                                            subTitle: C,
                                             content: r.a.createElement(
                                                 ue,
                                                 {
@@ -14586,7 +14586,7 @@
                                                     r.a.createElement(
                                                         "td",
                                                         null,
-                                                        x
+                                                        C
                                                     ),
                                                     r.a.createElement("td", {
                                                         className:
@@ -14672,7 +14672,7 @@
                             key: "render",
                             value: function() {
                                 return r.a.createElement(
-                                    xt.a,
+                                    Ct.a,
                                     Yt({}, this.props, {wrap: aa})
                                 );
                             }
@@ -14690,15 +14690,11 @@
                 return "number" == typeof e && n(e);
             };
         },
-        574: function(e, t, a) {
-            var n;
-            !(function(r) {
+        574: function(e, t) {
+            !(function(t) {
                 "object" == typeof e && e.exports
-                    ? (e.exports = r)
-                    : void 0 ===
-                          (n = function() {
-                              return r;
-                          }.call(t, a, t, e)) || (e.exports = n);
+                    ? (e.exports = t)
+                    : t(Highcharts);
             })(function(e) {
                 !(function(e, t) {
                     var a = e.seriesType,
@@ -14711,20 +14707,19 @@
                         c = t.getColor,
                         u = t.getLevelOptions,
                         p = e.grep,
-                        d = e.isArray,
-                        h = e.isNumber,
-                        m = e.isObject,
-                        f = e.isString,
-                        b = e.pick,
-                        g = e.Series,
-                        v = e.stableSort,
-                        _ = e.Color,
-                        y = e.reduce,
-                        E = function(e, t, a) {
+                        d = e.isNumber,
+                        h = e.isObject,
+                        m = e.isString,
+                        f = e.pick,
+                        b = e.Series,
+                        g = e.stableSort,
+                        v = e.Color,
+                        _ = e.reduce,
+                        y = function(e, t, a) {
                             (a = a || this),
-                                !1 !== (e = t.call(a, e)) && E(e, t, a);
+                                !1 !== (e = t.call(a, e)) && y(e, t, a);
                         },
-                        w = t.updateRootId;
+                        E = t.updateRootId;
                     a(
                         "treemap",
                         "scatter",
@@ -14769,15 +14764,21 @@
                         },
                         {
                             pointArrayMap: ["value"],
+                            axisTypes: n.heatmap
+                                ? ["xAxis", "yAxis", "colorAxis"]
+                                : ["xAxis", "yAxis"],
                             directTouch: !0,
                             optionalAxis: "colorAxis",
                             getSymbol: i,
                             parallelArrays: ["x", "y", "value", "colorValue"],
                             colorKey: "colorValue",
+                            translateColors:
+                                n.heatmap &&
+                                n.heatmap.prototype.translateColors,
+                            colorAttribs:
+                                n.heatmap && n.heatmap.prototype.colorAttribs,
                             trackerGroups: ["group", "dataLabelsGroup"],
                             getListOfParents: function(t, a) {
-                                t = d(t) ? t : [];
-                                var n = d(a) ? a : [];
                                 return (
                                     (function(t, a, n) {
                                         (n = n || this),
@@ -14785,13 +14786,13 @@
                                                 a.call(n, e, r, t);
                                             });
                                     })(
-                                        (a = y(
-                                            t,
+                                        (t = _(
+                                            t || [],
                                             function(e, t, a) {
                                                 return (
                                                     void 0 ===
                                                         e[
-                                                            (t = b(
+                                                            (t = f(
                                                                 t.parent,
                                                                 ""
                                                             ))
@@ -14800,18 +14801,18 @@
                                                     e
                                                 );
                                             },
-                                            {"": []}
+                                            {}
                                         )),
-                                        function(t, a, r) {
-                                            "" !== a &&
-                                                -1 === e.inArray(a, n) &&
+                                        function(t, n, r) {
+                                            "" !== n &&
+                                                -1 === e.inArray(n, a) &&
                                                 (l(t, function(e) {
                                                     r[""].push(e);
                                                 }),
-                                                delete r[a]);
+                                                delete r[n]);
                                         }
                                     ),
-                                    a
+                                    t
                                 );
                             },
                             getTree: function() {
@@ -14825,12 +14826,7 @@
                                 );
                             },
                             init: function(t, a) {
-                                var n = e.colorSeriesMixin;
-                                e.colorSeriesMixin &&
-                                    ((this.translateColors = n.translateColors),
-                                    (this.colorAttribs = n.colorAttribs),
-                                    (this.axisTypes = n.axisTypes)),
-                                    g.prototype.init.call(this, t, a),
+                                b.prototype.init.call(this, t, a),
                                     this.options.allowDrillToNode &&
                                         e.addEvent(
                                             this,
@@ -14887,22 +14883,22 @@
                                             i.push(e),
                                             e.ignore || (o += e.val);
                                     }),
-                                    v(i, function(e, t) {
+                                    g(i, function(e, t) {
                                         return e.sortIndex - t.sortIndex;
                                     }),
-                                    (t = b(c && c.options.value, o)),
+                                    (t = f(c && c.options.value, o)),
                                     c && (c.value = t),
                                     s(e, {
                                         children: i,
                                         childrenTotal: o,
                                         ignore: !(
-                                            b(c && c.visible, !0) && 0 < t
+                                            f(c && c.visible, !0) && 0 < t
                                         ),
                                         isLeaf: e.visible && !o,
                                         levelDynamic:
                                             e.level - (n ? 0 : r.level),
-                                        name: b(c && c.name, ""),
-                                        sortIndex: b(c && c.sortIndex, -t),
+                                        name: f(c && c.name, ""),
+                                        sortIndex: f(c && c.sortIndex, -t),
                                         val: t
                                     }),
                                     e
@@ -14913,7 +14909,7 @@
                                     n = this,
                                     r = n.options,
                                     s = n.mapOptionsToLevel[e.level + 1],
-                                    i = b(
+                                    i = f(
                                         n[s && s.layoutAlgorithm] &&
                                             s.layoutAlgorithm,
                                         r.layoutAlgorithm
@@ -15255,8 +15251,8 @@
                                     t,
                                     a = this,
                                     n = a.options,
-                                    r = w(a);
-                                g.prototype.translate.call(a),
+                                    r = E(a);
+                                b.prototype.translate.call(a),
                                     (t = a.tree = a.getTree()),
                                     (e = a.nodeMap[r]),
                                     (a.mapOptionsToLevel = u({
@@ -15274,7 +15270,7 @@
                                         (a.drillToNode("", !1),
                                         (r = a.rootNode),
                                         (e = a.nodeMap[r])),
-                                    E(a.nodeMap[a.rootNode], function(e) {
+                                    y(a.nodeMap[a.rootNode], function(e) {
                                         var t = !1,
                                             n = e.parent;
                                         return (
@@ -15284,7 +15280,7 @@
                                             t
                                         );
                                     }),
-                                    E(a.nodeMap[a.rootNode].children, function(
+                                    y(a.nodeMap[a.rootNode].children, function(
                                         e
                                     ) {
                                         var t = !1;
@@ -15366,7 +15362,7 @@
                                             r.options.dataLabels
                                         ));
                                 }),
-                                    g.prototype.drawDataLabels.call(this);
+                                    b.prototype.drawDataLabels.call(this);
                             },
                             alignDataLabel: function(e) {
                                 n.column.prototype.alignDataLabel.apply(
@@ -15379,7 +15375,7 @@
                                         });
                             },
                             pointAttribs: function(e, t) {
-                                var a = m(this.mapOptionsToLevel)
+                                var a = h(this.mapOptionsToLevel)
                                         ? this.mapOptionsToLevel
                                         : {},
                                     n = (e && a[e.node.level]) || {},
@@ -15393,7 +15389,7 @@
                                             n.borderColor ||
                                             r.borderColor ||
                                             a.borderColor,
-                                        "stroke-width": b(
+                                        "stroke-width": f(
                                             e && e.borderWidth,
                                             n.borderWidth,
                                             r.borderWidth,
@@ -15413,8 +15409,8 @@
                                           o.indexOf(
                                               "highcharts-internal-node-interactive"
                                           )
-                                            ? ((t = b(r.opacity, a.opacity)),
-                                              (e.fill = _(e.fill)
+                                            ? ((t = f(r.opacity, a.opacity)),
+                                              (e.fill = v(e.fill)
                                                   .setOpacity(t)
                                                   .get()),
                                               (e.cursor = "pointer"))
@@ -15424,7 +15420,7 @@
                                               )
                                                 ? (e.fill = "none")
                                                 : t &&
-                                                  (e.fill = _(e.fill)
+                                                  (e.fill = v(e.fill)
                                                       .brighten(r.brightness)
                                                       .get()),
                                     e
@@ -15460,7 +15456,7 @@
                             },
                             onClickDrillToNode: function(e) {
                                 var t = (e = e.point) && e.drillId;
-                                f(t) && (e.setState(""), this.drillToNode(t));
+                                m(t) && (e.setState(""), this.drillToNode(t));
                             },
                             drillToByGroup: function(e) {
                                 var t = !1;
@@ -15486,7 +15482,7 @@
                             },
                             drillUp: function() {
                                 var e = this.nodeMap[this.rootNode];
-                                e && f(e.parent) && this.drillToNode(e.parent);
+                                e && m(e.parent) && this.drillToNode(e.parent);
                             },
                             drillToNode: function(e, t) {
                                 var a = this.nodeMap[e];
@@ -15498,7 +15494,7 @@
                                               (a && a.name) || e
                                           ),
                                     (this.isDirty = !0),
-                                    b(t, !0) && this.chart.redraw();
+                                    f(t, !0) && this.chart.redraw();
                             },
                             showDrillUpButton: function(e) {
                                 var t = this;
@@ -15542,13 +15538,13 @@
                             buildKDTree: i,
                             drawLegendSymbol: e.LegendSymbolMixin.drawRectangle,
                             getExtremes: function() {
-                                g.prototype.getExtremes.call(
+                                b.prototype.getExtremes.call(
                                     this,
                                     this.colorValueData
                                 ),
                                     (this.valueMin = this.dataMin),
                                     (this.valueMax = this.dataMax),
-                                    g.prototype.getExtremes.call(this);
+                                    b.prototype.getExtremes.call(this);
                             },
                             getExtremesFromAll: !0,
                             bindAxes: function() {
@@ -15566,11 +15562,11 @@
                                     title: null,
                                     tickPositions: []
                                 };
-                                g.prototype.bindAxes.call(this),
+                                b.prototype.bindAxes.call(this),
                                     e.extend(this.yAxis.options, t),
                                     e.extend(this.xAxis.options, t);
                             },
-                            utils: {recursive: E, reduce: y}
+                            utils: {recursive: y, reduce: _}
                         },
                         {
                             getClassName: function() {
@@ -15584,7 +15580,7 @@
                                     a.nodeMap[a.rootNode].level
                                         ? (t += " highcharts-above-level")
                                         : this.node.isLeaf ||
-                                          b(
+                                          f(
                                               n.interactByLeaf,
                                               !n.allowDrillToNode
                                           )
@@ -15596,7 +15592,7 @@
                                 );
                             },
                             isValid: function() {
-                                return this.id || h(this.value);
+                                return this.id || d(this.value);
                             },
                             setState: function(t) {
                                 e.Point.prototype.setState.call(this, t),
@@ -15789,15 +15785,11 @@
                 );
             });
         },
-        575: function(e, t, a) {
-            var n;
-            !(function(r) {
+        575: function(e, t) {
+            !(function(t) {
                 "object" == typeof e && e.exports
-                    ? (e.exports = r)
-                    : void 0 ===
-                          (n = function() {
-                              return r;
-                          }.call(t, a, t, e)) || (e.exports = n);
+                    ? (e.exports = t)
+                    : t(Highcharts);
             })(function(e) {
                 !(function(e) {
                     var t,
