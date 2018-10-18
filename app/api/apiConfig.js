@@ -76,7 +76,7 @@ export const settingsAPIs = {
         {url: "ws://127.0.0.1:8090", location: "Locally hosted"},
         {url: "wss://moscow.localcoin.is/", location: "LocalCoin Moscow"}
     ],
-    DEFAULT_FAUCET: "http://194.63.142.61:5000", // 2017-12-infrastructure worker proposal
+    DEFAULT_FAUCET: "https://faucet.localcoin.is", // 2017-12-infrastructure worker proposal
     TESTNET_FAUCET: "https://faucet.testnet.bitshares.eu",
     RPC_URL: "https://openledger.info/api/"
 };
