@@ -207,6 +207,7 @@
         "total_value": "Total value",
         "trade": "Trade",
         "transactions": {
+            "fee": "Fee",
             "id": "ID",
             "info": "Info",
             "time": "Time",

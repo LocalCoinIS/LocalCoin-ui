@@ -425,6 +425,9 @@ class RecentTransactions extends React.Component {
                                         <Translate content="account.transactions.type" />
                                     </th>
                                     <th style={alignLeft}>
+                                        <Translate content="account.transactions.fee" />
+                                    </th>
+                                    <th style={alignLeft}>
                                         <Translate content="account.transactions.info" />
                                     </th>
                                     <th style={alignLeft}>

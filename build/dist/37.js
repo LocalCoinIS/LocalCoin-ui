@@ -2115,7 +2115,8 @@
                                                 maxWidth: 350
                                             },
                                             "data-tip":
-                                                "Search for an account to be used as your proxy for voting"
+                                                "Search for an account to be used as your proxy for voting",
+                                            "data-place": "right"
                                         },
                                         o.a.createElement(
                                             O.a,

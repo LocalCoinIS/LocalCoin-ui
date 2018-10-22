@@ -177,9 +177,6 @@ class WalletUnlockModal extends React.Component {
         );
 
         if (WalletDb.isLocked()) {
-            console.log("====================================");
-            console.log("this place");
-            console.log("====================================");
             const hiddenPassError = document.getElementById(
                 "custom-error-password"
             );

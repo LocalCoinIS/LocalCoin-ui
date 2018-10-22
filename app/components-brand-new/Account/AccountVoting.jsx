@@ -698,6 +698,7 @@ class AccountVoting extends React.Component {
             <div
                 style={{width: "50%", maxWidth: 350}}
                 data-tip="Search for an account to be used as your proxy for voting"
+                data-place="right"
             >
                 <AccountSelector
                     hideImage

@@ -7173,6 +7173,17 @@
                                                                     s.a,
                                                                     {
                                                                         content:
+                                                                            "account.transactions.fee"
+                                                                    }
+                                                                )
+                                                            ),
+                                                            r.a.createElement(
+                                                                "th",
+                                                                {style: S},
+                                                                r.a.createElement(
+                                                                    s.a,
+                                                                    {
+                                                                        content:
                                                                             "account.transactions.info"
                                                                     }
                                                                 )

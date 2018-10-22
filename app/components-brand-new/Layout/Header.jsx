@@ -906,7 +906,11 @@ class Header extends React.Component {
                                         </g>
                                     </svg>
                                 </span>
-                                <ul className="balance__list">{usedAssets}</ul>
+                                <div className="balance__list-wrap vertical ps-container">
+                                    <ul className="balance__list">
+                                        {usedAssets}
+                                    </ul>
+                                </div>
                             </div>
                         ) : null}
                         {currentAccount ? (

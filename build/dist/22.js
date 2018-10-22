@@ -5137,7 +5137,7 @@
                         );
                     };
                 })(),
-                K = (function() {
+                G = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -5151,11 +5151,11 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            function G(e, t) {
+            function Y(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function Y(e, t) {
+            function K(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -5186,8 +5186,8 @@
             var Z = new Date(),
                 $ = (function(e) {
                     function t(e) {
-                        G(this, t);
-                        var a = Y(
+                        Y(this, t);
+                        var a = K(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                         );
@@ -5195,7 +5195,7 @@
                     }
                     return (
                         X(t, s.a.Component),
-                        K(t, [
+                        G(t, [
                             {
                                 key: "_getInitialState",
                                 value: function(e) {
@@ -5264,12 +5264,31 @@
                             {
                                 key: "_changeSort",
                                 value: function(e) {
-                                    e !== this.state.sortBy
-                                        ? (C.a.changeViewSetting({
-                                              myMarketsSort: e
-                                          }),
-                                          this.setState({sortBy: e}))
-                                        : this._inverseSort();
+                                    var t = this.getCookie(
+                                            "gt_get_volume_sort"
+                                        ),
+                                        a = new Date();
+                                    a.setFullYear(a.getFullYear() + 1),
+                                        "true" == t && "volume" == e
+                                            ? this.setCookie(
+                                                  "gt_get_volume_sort",
+                                                  "false",
+                                                  {expires: a.toGMTString()}
+                                              )
+                                            : ("false" != t && null != t) ||
+                                              "volume" != e ||
+                                              (this.setCookie(
+                                                  "gt_get_volume_sort",
+                                                  "true",
+                                                  {expires: a.toGMTString()}
+                                              ),
+                                              this._inverseSort()),
+                                        e !== this.state.sortBy
+                                            ? (C.a.changeViewSetting({
+                                                  myMarketsSort: e
+                                              }),
+                                              this.setState({sortBy: e}))
+                                            : this._inverseSort();
                                 }
                             },
                             {
@@ -5295,6 +5314,51 @@
                                         r = a[1],
                                         s = !this.props.userMarkets.get(e);
                                     C.a.setUserMarket(n, r, s);
+                                }
+                            },
+                            {
+                                key: "setCookie",
+                                value: function(e, t, a) {
+                                    var n = (a = a || {}).expires;
+                                    if ("number" == typeof n && n) {
+                                        var r = new Date();
+                                        r.setTime(r.getTime() + 1e3 * n),
+                                            (n = a.expires = r);
+                                    }
+                                    n &&
+                                        n.toUTCString &&
+                                        (a.expires = n.toUTCString());
+                                    var s =
+                                        e + "=" + (t = encodeURIComponent(t));
+                                    for (var o in a) {
+                                        s += "; " + o;
+                                        var i = a[o];
+                                        !0 !== i && (s += "=" + i);
+                                    }
+                                    document.cookie = s;
+                                }
+                            },
+                            {
+                                key: "getCookie",
+                                value: function(e) {
+                                    var t = document.cookie,
+                                        a = e + "=",
+                                        n = t.indexOf("; " + a),
+                                        r = null;
+                                    if (-1 == n) {
+                                        if (0 != (n = t.indexOf(a)))
+                                            return null;
+                                        r = document.cookie.indexOf(";", n);
+                                    } else
+                                        (n += 2),
+                                            -1 ==
+                                                (r = document.cookie.indexOf(
+                                                    ";",
+                                                    n
+                                                )) && (r = t.length);
+                                    return decodeURI(
+                                        t.substring(n + a.length, r)
+                                    ).replace(/"/g, "");
                                 }
                             },
                             {
@@ -5356,23 +5420,28 @@
                                                         )
                                                     );
                                                 case "vol":
-                                                    var n = "";
+                                                    var n = "",
+                                                        r = e.getCookie(
+                                                            "gt_get_volume_sort"
+                                                        );
                                                     return (
-                                                        "volume" ==
-                                                            e.state.sortBy &&
-                                                        e.state.inverseSort
-                                                            ? (n = s.a.createElement(
-                                                                  "span",
-                                                                  null,
-                                                                  "▼"
-                                                              ))
-                                                            : "volume" ==
+                                                        "volume" !=
+                                                            e.state.sortBy ||
+                                                        ("false" != r &&
+                                                            null != r)
+                                                            ? "volume" ==
                                                                   e.state
                                                                       .sortBy &&
+                                                              "true" == r &&
                                                               (n = s.a.createElement(
                                                                   "span",
                                                                   null,
                                                                   "▲"
+                                                              ))
+                                                            : (n = s.a.createElement(
+                                                                  "span",
+                                                                  null,
+                                                                  "▼"
                                                               )),
                                                         s.a.createElement(
                                                             "th",
@@ -5433,12 +5502,12 @@
                                                         })
                                                     );
                                                 case "change":
-                                                    var r = "";
+                                                    var o = "";
                                                     return (
                                                         "change" ==
                                                             e.state.sortBy &&
                                                         e.state.inverseSort
-                                                            ? (r = s.a.createElement(
+                                                            ? (o = s.a.createElement(
                                                                   "span",
                                                                   null,
                                                                   "▲"
@@ -5446,7 +5515,7 @@
                                                             : "change" ==
                                                                   e.state
                                                                       .sortBy &&
-                                                              (r = s.a.createElement(
+                                                              (o = s.a.createElement(
                                                                   "span",
                                                                   null,
                                                                   "▼"
@@ -5473,7 +5542,7 @@
                                                                         "exchange.change"
                                                                 }
                                                             ),
-                                                            r
+                                                            o
                                                         )
                                                     );
                                                 case "issuer":
@@ -5575,50 +5644,54 @@
                                             .filter(function(e) {
                                                 return null !== e;
                                             })
-                                            .sort(function(e, t) {
-                                                var a = e.key.split("_"),
-                                                    n = t.key.split("_"),
-                                                    r = o.get(
-                                                        a[0] + "_" + a[1]
-                                                    ),
+                                            .sort(function(t, a) {
+                                                var n = t.key.split("_"),
+                                                    r = a.key.split("_"),
                                                     s = o.get(
                                                         n[0] + "_" + n[1]
+                                                    ),
+                                                    i = o.get(
+                                                        r[0] + "_" + r[1]
+                                                    ),
+                                                    l = e.getCookie(
+                                                        "gt_get_volume_sort"
                                                     );
                                                 switch (u) {
                                                     case "name":
-                                                        return a[0] > n[0]
+                                                        return n[0] > r[0]
                                                             ? p
                                                                 ? -1
                                                                 : 1
-                                                            : a[0] < n[0]
+                                                            : n[0] < r[0]
                                                                 ? p
                                                                     ? 1
                                                                     : -1
-                                                                : a[1] > n[1]
+                                                                : n[1] > r[1]
                                                                     ? p
                                                                         ? -1
                                                                         : 1
-                                                                    : a[1] <
-                                                                      n[1]
+                                                                    : n[1] <
+                                                                      r[1]
                                                                         ? p
                                                                             ? 1
                                                                             : -1
                                                                         : 0;
                                                     case "volume":
-                                                        return r && s
-                                                            ? p
-                                                                ? s.volumeBase -
-                                                                  r.volumeBase
-                                                                : r.volumeBase -
+                                                        return s && i
+                                                            ? "false" == l ||
+                                                              null == l
+                                                                ? i.volumeBase -
                                                                   s.volumeBase
+                                                                : s.volumeBase -
+                                                                  i.volumeBase
                                                             : 0;
                                                     case "change":
-                                                        return r && s
+                                                        return s && i
                                                             ? p
-                                                                ? s.change -
-                                                                  r.change
-                                                                : r.change -
+                                                                ? i.change -
                                                                   s.change
+                                                                : s.change -
+                                                                  i.change
                                                             : 0;
                                                 }
                                             });
@@ -5660,8 +5733,8 @@
             $.defaultProps = {maxRows: 20, onlyLiquid: !1};
             var ee = (function(e) {
                 function t(e) {
-                    G(this, t);
-                    var a = Y(
+                    Y(this, t);
+                    var a = K(
                         this,
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                     );
@@ -5711,7 +5784,7 @@
                 }
                 return (
                     X(t, s.a.Component),
-                    K(t, [
+                    G(t, [
                         {
                             key: "shouldComponentUpdate",
                             value: function(e, t) {
@@ -5836,12 +5909,29 @@
                         {
                             key: "_changeSort",
                             value: function(e) {
-                                e !== this.state.sortBy
-                                    ? (C.a.changeViewSetting({
-                                          myMarketsSort: e
-                                      }),
-                                      this.setState({sortBy: e}))
-                                    : this._inverseSort();
+                                var t = this.getCookie("gt_get_volume_sort"),
+                                    a = new Date();
+                                a.setFullYear(a.getFullYear() + 1),
+                                    "true" == t && "volume" == e
+                                        ? this.setCookie(
+                                              "gt_get_volume_sort",
+                                              "false",
+                                              {expires: a.toGMTString()}
+                                          )
+                                        : ("false" != t && null != t) ||
+                                          "volume" != e ||
+                                          (this.setCookie(
+                                              "gt_get_volume_sort",
+                                              "true",
+                                              {expires: a.toGMTString()}
+                                          ),
+                                          this._inverseSort()),
+                                    e !== this.state.sortBy
+                                        ? (C.a.changeViewSetting({
+                                              myMarketsSort: e
+                                          }),
+                                          this.setState({sortBy: e}))
+                                        : this._inverseSort();
                             }
                         },
                         {
@@ -6653,8 +6743,8 @@
             var te = (function(e) {
                 function t() {
                     return (
-                        G(this, t),
-                        Y(
+                        Y(this, t),
+                        K(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -6665,7 +6755,7 @@
                 }
                 return (
                     X(t, s.a.Component),
-                    K(t, [
+                    G(t, [
                         {
                             key: "render",
                             value: function() {
@@ -11269,9 +11359,9 @@
                 V = a(15),
                 J = a(4),
                 Q = a(3),
-                K = a.n(Q),
-                G = a(93),
-                Y = a(181),
+                G = a.n(Q),
+                Y = a(93),
+                K = a(181),
                 X = a(272),
                 Z = a.n(X),
                 $ = (function() {
@@ -11340,7 +11430,7 @@
                             key: "componentWillMount",
                             value: function() {
                                 this.props.block ||
-                                    Y.a.getBlock(this.props.block_number);
+                                    K.a.getBlock(this.props.block_number);
                             }
                         },
                         {
@@ -11372,7 +11462,7 @@
                                           r.a.createElement(
                                               "span",
                                               null,
-                                              K.a.localize(t.timestamp, {
+                                              G.a.localize(t.timestamp, {
                                                   type: "date",
                                                   format: s
                                               })
@@ -11398,11 +11488,11 @@
             };
             var te = (ee = Object(V.connect)(ee, {
                     listenTo: function() {
-                        return [G.a];
+                        return [Y.a];
                     },
                     getProps: function(e) {
                         return {
-                            block: G.a.getState().blocks.get(e.block_number)
+                            block: Y.a.getState().blocks.get(e.block_number)
                         };
                     }
                 })),
@@ -12182,7 +12272,7 @@
                                                   r.a.createElement(
                                                       "span",
                                                       {
-                                                          "data-tip": K.a.translate(
+                                                          "data-tip": G.a.translate(
                                                               "tooltip.market_fee",
                                                               {
                                                                   percent:
@@ -12241,8 +12331,8 @@
                                             : null,
                                     J = k.a.replaceName(this.props.quote),
                                     Q = J.name,
-                                    G = J.prefix,
-                                    Y = D.charge_market_fee
+                                    Y = J.prefix,
+                                    K = D.charge_market_fee
                                         ? r.a.createElement(
                                               "div",
                                               {
@@ -12289,7 +12379,7 @@
                                                   r.a.createElement(
                                                       "span",
                                                       {
-                                                          "data-tip": K.a.translate(
+                                                          "data-tip": G.a.translate(
                                                               "tooltip.market_fee",
                                                               {
                                                                   percent:
@@ -12298,7 +12388,7 @@
                                                                           "market_fee_percent"
                                                                       ]) / 100,
                                                                   asset:
-                                                                      (G ||
+                                                                      (Y ||
                                                                           "") +
                                                                       Q
                                                               }
@@ -12347,20 +12437,20 @@
                                               )
                                             : null,
                                     X = "bid" === n,
-                                    Z = X && Y ? Y : !X && V ? V : null,
+                                    Z = X && K ? K : !X && V ? V : null,
                                     $ = X
                                         ? j.getAmount({real: !0}) >=
                                           parseFloat(N)
                                         : j.getAmount({real: !0}) >=
                                           parseFloat(C),
                                     ee = u
-                                        ? K.a.translate("exchange.short")
+                                        ? G.a.translate("exchange.short")
                                         : X
-                                            ? K.a.translate("exchange.buy")
-                                            : K.a.translate("exchange.sell"),
+                                            ? G.a.translate("exchange.buy")
+                                            : G.a.translate("exchange.sell"),
                                     te = X
-                                        ? K.a.translate("exchange.buy")
-                                        : K.a.translate("exchange.sell"),
+                                        ? G.a.translate("exchange.buy")
+                                        : G.a.translate("exchange.sell"),
                                     ae = !u && !(j.getAmount() > 0 && $),
                                     ne = !(S > 0),
                                     re = !(C > 0),
@@ -12370,15 +12460,15 @@
                                     }),
                                     le = X ? o.get("symbol") : s.get("symbol"),
                                     ce = ne
-                                        ? K.a.translate(
+                                        ? G.a.translate(
                                               "exchange.invalid_price"
                                           )
                                         : re
-                                            ? K.a.translate(
+                                            ? G.a.translate(
                                                   "exchange.invalid_amount"
                                               )
                                             : ae
-                                                ? K.a.translate(
+                                                ? G.a.translate(
                                                       "exchange.no_balance"
                                                   )
                                                 : null;
@@ -12889,7 +12979,7 @@
                                                                               real: !0
                                                                           }
                                                                       )
-                                                                    : K.a.translate(
+                                                                    : G.a.translate(
                                                                           "transfer.errors.insufficient"
                                                                       ),
                                                                 autoComplete:
@@ -13816,7 +13906,7 @@
                                                                     this,
                                                                     !1
                                                                 ),
-                                                                placeholder: K.a.translate(
+                                                                placeholder: G.a.translate(
                                                                     "exchange.market_picker.search"
                                                                 ),
                                                                 maxLength: "16",
@@ -13872,7 +13962,7 @@
                                                                     this,
                                                                     !0
                                                                 ),
-                                                                placeholder: K.a.translate(
+                                                                placeholder: G.a.translate(
                                                                     "exchange.market_picker.search"
                                                                 ),
                                                                 maxLength: "16",
@@ -14927,7 +15017,7 @@
                                             formatter: function() {
                                                 return (
                                                     "\n\t\t\t\t\t<table>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<td>" +
-                                                    K.a.translate(
+                                                    G.a.translate(
                                                         "exchange.price"
                                                     ) +
                                                     ':</td>\n\t\t\t\t\t\t\t<td style="text-align: right">' +
@@ -14940,7 +15030,7 @@
                                                     "/" +
                                                     x +
                                                     "</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<td>" +
-                                                    K.a.translate(
+                                                    G.a.translate(
                                                         "exchange.quantity"
                                                     ) +
                                                     ':</td>\n\t\t\t\t\t\t\t<td style="text-align: right">' +
@@ -15040,7 +15130,7 @@
                                             dashStyle: "longdash",
                                             value: this.props.LCP,
                                             label: {
-                                                text: K.a.translate(
+                                                text: G.a.translate(
                                                     "explorer.block.call_limit"
                                                 ),
                                                 style: {
@@ -15060,7 +15150,7 @@
                                         dashStyle: "solid",
                                         value: u,
                                         label: {
-                                            text: K.a.translate(
+                                            text: G.a.translate(
                                                 "explorer.block.feed_price"
                                             ),
                                             style: {
@@ -15282,9 +15372,9 @@
                     flat_asks: b.a.array.isRequired,
                     orders: b.a.object.isRequired
                 });
-            var Ke = Qe,
-                Ge = a(222),
-                Ye = a(28),
+            var Ge = Qe,
+                Ye = a(222),
+                Ke = a(28),
                 Xe = a(573),
                 Ze = a.n(Xe),
                 $e = a(20),
@@ -16026,11 +16116,11 @@
                                     t = this._getMR();
                                 return e && "" !== e
                                     ? "danger" === e
-                                        ? K.a.translate("tooltip.cr_danger", {
+                                        ? G.a.translate("tooltip.cr_danger", {
                                               mr: t
                                           })
                                         : "warning" === e
-                                            ? K.a.translate(
+                                            ? G.a.translate(
                                                   "tooltip.cr_warning",
                                                   {mr: t}
                                               )
@@ -16422,13 +16512,13 @@
                                         Q = [
                                             {
                                                 key: "depth_chart",
-                                                label: K.a.translate(
+                                                label: G.a.translate(
                                                     "exchange.order_depth"
                                                 )
                                             },
                                             {
                                                 key: "price_chart",
-                                                label: K.a.translate(
+                                                label: G.a.translate(
                                                     "exchange.price_history"
                                                 )
                                             }
@@ -16710,7 +16800,7 @@
                                                                   dt,
                                                                   {
                                                                       ignoreColorChange: !0,
-                                                                      toolTip: K.a.translate(
+                                                                      toolTip: G.a.translate(
                                                                           "tooltip.feed_price"
                                                                       ),
                                                                       ready: p,
@@ -16730,7 +16820,7 @@
                                                                   dt,
                                                                   {
                                                                       ignoreColorChange: !0,
-                                                                      toolTip: K.a.translate(
+                                                                      toolTip: G.a.translate(
                                                                           "tooltip.settle_price"
                                                                       ),
                                                                       ready: p,
@@ -16758,7 +16848,7 @@
                                                             ? r.a.createElement(
                                                                   dt,
                                                                   {
-                                                                      toolTip: K.a.translate(
+                                                                      toolTip: G.a.translate(
                                                                           "tooltip.call_limit"
                                                                       ),
                                                                       ready: p,
@@ -16777,7 +16867,7 @@
                                                             ? r.a.createElement(
                                                                   dt,
                                                                   {
-                                                                      toolTip: K.a.translate(
+                                                                      toolTip: G.a.translate(
                                                                           "tooltip.margin_price"
                                                                       ),
                                                                       ready: p,
@@ -17419,16 +17509,16 @@
                                             showBullets: !1,
                                             hideNext: !0,
                                             hidePrev: !0,
-                                            nextLabel: K.a.translate(
+                                            nextLabel: G.a.translate(
                                                 "walkthrough.next_label"
                                             ),
-                                            prevLabel: K.a.translate(
+                                            prevLabel: G.a.translate(
                                                 "walkthrough.prev_label"
                                             ),
-                                            skipLabel: K.a.translate(
+                                            skipLabel: G.a.translate(
                                                 "walkthrough.skip_label"
                                             ),
-                                            doneLabel: K.a.translate(
+                                            doneLabel: G.a.translate(
                                                 "walkthrough.done_label"
                                             )
                                         })
@@ -17638,7 +17728,7 @@
                                         n.getAmount()
                                     );
                                 if (!m)
-                                    return Ye.a.addNotification({
+                                    return Ke.a.addNotification({
                                         message:
                                             "Insufficient funds to pay fees",
                                         level: "error"
@@ -17668,7 +17758,7 @@
                                     "is_prediction_market"
                                 ]);
                                 return u.for_sale.gt(a) && !f
-                                    ? Ye.a.addNotification({
+                                    ? Ke.a.addNotification({
                                           message:
                                               "Insufficient funds to place order, you need at least " +
                                               u.for_sale.getAmount({real: !0}) +
@@ -17681,7 +17771,7 @@
                                         ? "sell" === s && f && o
                                             ? this._createPredictionShort(m)
                                             : void this._createLimitOrder(s, m)
-                                        : Ye.a.addNotification({
+                                        : Ke.a.addNotification({
                                               message:
                                                   "Please enter a valid amount and price",
                                               level: "error"
@@ -17740,7 +17830,7 @@
                                             e.error &&
                                                 "wallet locked" !==
                                                     e.error.message &&
-                                                Ye.a.addNotification({
+                                                Ke.a.addNotification({
                                                     message:
                                                         "Unknown error. Failed to place order for " +
                                                         n.to_receive.getAmount({
@@ -17791,7 +17881,7 @@
                                             e.error &&
                                                 "wallet locked" !==
                                                     e.error.message &&
-                                                Ye.a.addNotification({
+                                                Ke.a.addNotification({
                                                     message:
                                                         "Unknown error. Failed to place order for " +
                                                         buyAssetAmount +
@@ -18337,9 +18427,9 @@
                                     V = U.frozenAsset,
                                     J = null,
                                     Q = null,
-                                    K = null,
                                     G = null,
                                     Y = null,
+                                    K = null,
                                     X = null,
                                     Z = void 0,
                                     $ = void 0,
@@ -18359,13 +18449,13 @@
                                         ((Q = c),
                                         ($ = (J = u).get("symbol")),
                                         (Z = Q.get("symbol")),
-                                        (K = t.get("balances").toJS()))
+                                        (G = t.get("balances").toJS()))
                                     )
-                                        for (var re in K)
-                                            re === Q.get("id") && (G = K[re]),
+                                        for (var re in G)
+                                            re === Q.get("id") && (Y = G[re]),
                                                 re === J.get("id") &&
-                                                    (Y = K[re]),
-                                                "1.3.0" === re && (X = K[re]);
+                                                    (K = G[re]),
+                                                "1.3.0" === re && (X = G[re]);
                                     ee = this._getSettlementInfo();
                                 }
                                 var ie = !!c.get("bitasset_data_id"),
@@ -18521,13 +18611,13 @@
                                                   "bid",
                                                   !1
                                               ),
-                                              balance: Y,
+                                              balance: K,
                                               balanceId: J.get("id"),
                                               onSubmit: this._createLimitOrderConfirm.bind(
                                                   this,
                                                   Q,
                                                   J,
-                                                  Y,
+                                                  K,
                                                   X,
                                                   Se,
                                                   "buy"
@@ -18641,13 +18731,13 @@
                                                   "ask",
                                                   !0
                                               ),
-                                              balance: G,
+                                              balance: Y,
                                               balanceId: Q.get("id"),
                                               onSubmit: this._createLimitOrderConfirm.bind(
                                                   this,
                                                   J,
                                                   Q,
-                                                  G,
+                                                  Y,
                                                   X,
                                                   ve,
                                                   "sell"
@@ -18814,7 +18904,7 @@
                                                                   "grid-block vertical no-padding shrink"
                                                           },
                                                           r.a.createElement(
-                                                              Ke,
+                                                              Ge,
                                                               {
                                                                   marketReady: d,
                                                                   orders: a,
@@ -18992,7 +19082,7 @@
                                                             this,
                                                             "buy",
                                                             Se,
-                                                            Y,
+                                                            K,
                                                             X
                                                         ),
                                                         diff: M,
@@ -19005,7 +19095,7 @@
                                                             this,
                                                             "sell",
                                                             ve,
-                                                            G,
+                                                            Y,
                                                             X
                                                         ),
                                                         diff: R,
@@ -19146,7 +19236,7 @@
                                                           )
                                                 ),
                                                 this.props.miniDepthChart
-                                                    ? r.a.createElement(Ke, {
+                                                    ? r.a.createElement(Ge, {
                                                           marketReady: d,
                                                           orders: a,
                                                           showCallLimit: ee,
@@ -19189,7 +19279,7 @@
                                             )
                                         ),
                                         ie
-                                            ? r.a.createElement(Ge.a, {
+                                            ? r.a.createElement(Ye.a, {
                                                   ref: "borrowQuote",
                                                   modalId:
                                                       "borrow_modal_quote_" +
@@ -19204,7 +19294,7 @@
                                               })
                                             : null,
                                         le
-                                            ? r.a.createElement(Ge.a, {
+                                            ? r.a.createElement(Ye.a, {
                                                   ref: "borrowBase",
                                                   modalId:
                                                       "borrow_modal_base_" +
@@ -19466,7 +19556,7 @@
                                                       }
                                                   }
                                               },
-                                              r.a.createElement(Kt, {
+                                              r.a.createElement(Gt, {
                                                   router: this.props.router,
                                                   quoteAsset: e[0],
                                                   baseAsset: e[1]
@@ -19484,7 +19574,7 @@
                 Vt = void 0,
                 Jt = void 0,
                 Qt = void 0,
-                Kt = (function(e) {
+                Gt = (function(e) {
                     function t() {
                         Rt(this, t);
                         var e = Lt(
@@ -19667,17 +19757,17 @@
                         t
                     );
                 })();
-            (Kt.propTypes = {
+            (Gt.propTypes = {
                 currentAccount: le.a.ChainAccount.isRequired,
                 quoteAsset: le.a.ChainAsset.isRequired,
                 baseAsset: le.a.ChainAsset.isRequired,
                 coreAsset: le.a.ChainAsset.isRequired
             }),
-                (Kt.defaultProps = {
+                (Gt.defaultProps = {
                     currentAccount: "1.2.3",
                     coreAsset: "1.3.0"
                 }),
-                (Kt = Object(ce.a)(Kt, {show_loader: !0}));
+                (Gt = Object(ce.a)(Gt, {show_loader: !0}));
             t.default = zt;
         },
         803: function(e, t, a) {
