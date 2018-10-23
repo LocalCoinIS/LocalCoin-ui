@@ -12,7 +12,7 @@
                 c = n(13),
                 u = n(3),
                 p = n.n(u),
-                h = n(172),
+                h = n(181),
                 m = n(17),
                 f = n(7),
                 d = n.n(f),
@@ -424,14 +424,14 @@
                 (C.defaultProps = {disabled: !1}),
                 (t.a = Object(c.a)(C));
         },
-        352: function(e, t, n) {
+        358: function(e, t, n) {
             "use strict";
             var a = n(76),
                 r = n(0),
                 s = n.n(r),
                 o = n(7),
                 i = n.n(o),
-                l = n(58),
+                l = n(54),
                 c = n.n(l),
                 u = n(5),
                 p = n(1),
@@ -1028,7 +1028,7 @@
                 U = n(20),
                 z = n.n(U),
                 V = n(34),
-                H = (function() {
+                G = (function() {
                     function e(e, t) {
                         for (var n = 0; n < t.length; n++) {
                             var a = t[n];
@@ -1042,7 +1042,7 @@
                         return n && e(t.prototype, n), a && e(t, a), t;
                     };
                 })();
-            var G = (function(e) {
+            var H = (function(e) {
                     function t() {
                         !(function(e, t) {
                             if (!(e instanceof t))
@@ -1092,7 +1092,7 @@
                                         ? Object.setPrototypeOf(e, t)
                                         : (e.__proto__ = t));
                         })(t, s.a.Component),
-                        H(t, [
+                        G(t, [
                             {
                                 key: "_onMoveUp",
                                 value: function(e) {
@@ -1558,25 +1558,44 @@
                             {
                                 key: "_changeSort",
                                 value: function(e) {
-                                    var t = this.getCookie(
-                                            "gt_get_volume_sort"
-                                        ),
+                                    var t = this.getCookie("gt_get_sort"),
                                         n = new Date();
                                     n.setFullYear(n.getFullYear() + 1),
-                                        "true" == t && "volume" == e
-                                            ? this.setCookie(
-                                                  "gt_get_volume_sort",
-                                                  "false",
-                                                  {expires: n.toGMTString()}
-                                              )
-                                            : ("false" != t && null != t) ||
+                                        ("vol-true" != t &&
+                                            "name-true" != t &&
+                                            "name-false" != t) ||
+                                        "volume" != e
+                                            ? ("vol-false" != t && null != t) ||
                                               "volume" != e ||
                                               (this.setCookie(
-                                                  "gt_get_volume_sort",
-                                                  "true",
+                                                  "gt_get_sort",
+                                                  "vol-true",
                                                   {expires: n.toGMTString()}
                                               ),
-                                              this._inverseSort()),
+                                              this._inverseSort())
+                                            : this.setCookie(
+                                                  "gt_get_sort",
+                                                  "vol-false",
+                                                  {expires: n.toGMTString()}
+                                              ),
+                                        ("name-true" != t &&
+                                            "vol-true" != t &&
+                                            "vol-false" != t) ||
+                                        "name" != e
+                                            ? ("name-false" != t &&
+                                                  null != t) ||
+                                              "name" != e ||
+                                              (this.setCookie(
+                                                  "gt_get_sort",
+                                                  "name-true",
+                                                  {expires: n.toGMTString()}
+                                              ),
+                                              this._inverseSort())
+                                            : this.setCookie(
+                                                  "gt_get_sort",
+                                                  "name-false",
+                                                  {expires: n.toGMTString()}
+                                              ),
                                         e !== this.state.sortBy
                                             ? (S.a.changeViewSetting({
                                                   myMarketsSort: e
@@ -1674,23 +1693,29 @@
                                     var f = n.map(function(t) {
                                             switch (t.name) {
                                                 case "market":
-                                                    var n = "";
+                                                    var n = "",
+                                                        a = e.getCookie(
+                                                            "gt_get_sort"
+                                                        );
                                                     return (
-                                                        "name" ==
-                                                            e.state.sortBy &&
-                                                        e.state.inverseSort
-                                                            ? (n = s.a.createElement(
-                                                                  "span",
-                                                                  null,
-                                                                  "▲"
-                                                              ))
-                                                            : "name" ==
+                                                        "name" !=
+                                                            e.state.sortBy ||
+                                                        ("name-false" != a &&
+                                                            null != a)
+                                                            ? "name" ==
                                                                   e.state
                                                                       .sortBy &&
+                                                              "name-true" ==
+                                                                  a &&
                                                               (n = s.a.createElement(
                                                                   "span",
                                                                   null,
                                                                   "▼"
+                                                              ))
+                                                            : (n = s.a.createElement(
+                                                                  "span",
+                                                                  null,
+                                                                  "▲"
                                                               )),
                                                         s.a.createElement(
                                                             "th",
@@ -1714,25 +1739,25 @@
                                                         )
                                                     );
                                                 case "vol":
-                                                    var a = "",
-                                                        r = e.getCookie(
-                                                            "gt_get_volume_sort"
+                                                    var r = "",
+                                                        o = e.getCookie(
+                                                            "gt_get_sort"
                                                         );
                                                     return (
                                                         "volume" !=
                                                             e.state.sortBy ||
-                                                        ("false" != r &&
-                                                            null != r)
+                                                        ("vol-false" != o &&
+                                                            null != o)
                                                             ? "volume" ==
                                                                   e.state
                                                                       .sortBy &&
-                                                              "true" == r &&
-                                                              (a = s.a.createElement(
+                                                              "vol-true" == o &&
+                                                              (r = s.a.createElement(
                                                                   "span",
                                                                   null,
                                                                   "▲"
                                                               ))
-                                                            : (a = s.a.createElement(
+                                                            : (r = s.a.createElement(
                                                                   "span",
                                                                   null,
                                                                   "▼"
@@ -1759,7 +1784,7 @@
                                                                         "exchange.vol_short"
                                                                 }
                                                             ),
-                                                            a
+                                                            r
                                                         )
                                                     );
                                                 case "price":
@@ -1796,12 +1821,12 @@
                                                         })
                                                     );
                                                 case "change":
-                                                    var o = "";
+                                                    var i = "";
                                                     return (
                                                         "change" ==
                                                             e.state.sortBy &&
                                                         e.state.inverseSort
-                                                            ? (o = s.a.createElement(
+                                                            ? (i = s.a.createElement(
                                                                   "span",
                                                                   null,
                                                                   "▲"
@@ -1809,7 +1834,7 @@
                                                             : "change" ==
                                                                   e.state
                                                                       .sortBy &&
-                                                              (o = s.a.createElement(
+                                                              (i = s.a.createElement(
                                                                   "span",
                                                                   null,
                                                                   "▼"
@@ -1836,7 +1861,7 @@
                                                                         "exchange.change"
                                                                 }
                                                             ),
-                                                            o
+                                                            i
                                                         )
                                                     );
                                                 case "issuer":
@@ -1948,32 +1973,40 @@
                                                         r[0] + "_" + r[1]
                                                     ),
                                                     l = e.getCookie(
-                                                        "gt_get_volume_sort"
+                                                        "gt_get_sort"
                                                     );
                                                 switch (u) {
                                                     case "name":
-                                                        return a[0] > r[0]
-                                                            ? p
-                                                                ? -1
-                                                                : 1
-                                                            : a[0] < r[0]
+                                                        return (
+                                                            "name-false" == l
+                                                                ? (p = !1)
+                                                                : "name-true" ==
+                                                                      l &&
+                                                                  (p = !0),
+                                                            a[0] > r[0]
                                                                 ? p
-                                                                    ? 1
-                                                                    : -1
-                                                                : a[1] > r[1]
+                                                                    ? -1
+                                                                    : 1
+                                                                : a[0] < r[0]
                                                                     ? p
-                                                                        ? -1
-                                                                        : 1
-                                                                    : a[1] <
+                                                                        ? 1
+                                                                        : -1
+                                                                    : a[1] >
                                                                       r[1]
                                                                         ? p
-                                                                            ? 1
-                                                                            : -1
-                                                                        : 0;
+                                                                            ? -1
+                                                                            : 1
+                                                                        : a[1] <
+                                                                          r[1]
+                                                                            ? p
+                                                                                ? 1
+                                                                                : -1
+                                                                            : 0
+                                                        );
                                                     case "volume":
                                                         return s && i
-                                                            ? "false" == l ||
-                                                              null == l
+                                                            ? "vol-false" ==
+                                                                  l || null == l
                                                                 ? i.volumeBase -
                                                                   s.volumeBase
                                                                 : s.volumeBase -
@@ -2203,20 +2236,20 @@
                         {
                             key: "_changeSort",
                             value: function(e) {
-                                var t = this.getCookie("gt_get_volume_sort"),
+                                var t = this.getCookie("gt_get_sort"),
                                     n = new Date();
                                 n.setFullYear(n.getFullYear() + 1),
-                                    "true" == t && "volume" == e
+                                    "vol-true" == t && "volume" == e
                                         ? this.setCookie(
-                                              "gt_get_volume_sort",
-                                              "false",
+                                              "gt_get_sort",
+                                              "vol-false",
                                               {expires: n.toGMTString()}
                                           )
-                                        : ("false" != t && null != t) ||
+                                        : ("vol-false" != t && null != t) ||
                                           "volume" != e ||
                                           (this.setCookie(
-                                              "gt_get_volume_sort",
-                                              "true",
+                                              "gt_get_sort",
+                                              "vol-true",
                                               {expires: n.toGMTString()}
                                           ),
                                           this._inverseSort()),
@@ -3013,7 +3046,7 @@
                                               })
                                             : null
                                     ),
-                                    s.a.createElement(G, {
+                                    s.a.createElement(H, {
                                         quotes: this.props.preferredBases
                                     })
                                 );
@@ -3090,7 +3123,7 @@
                 l = n(8),
                 c = n(51),
                 u = n.n(c),
-                p = n(352),
+                p = n(358),
                 h = (function() {
                     function e(e, t) {
                         for (var n = 0; n < t.length; n++) {

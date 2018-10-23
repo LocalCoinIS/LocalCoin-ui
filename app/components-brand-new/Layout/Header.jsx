@@ -37,6 +37,7 @@ import {
     unlockIcon
 } from "../../assets/brand-new-layout/img/images";
 import onClickOutside from "react-onclickoutside";
+import Ps from "perfect-scrollbar";
 
 class SettingsMenuUnWrapped extends React.Component {
     constructor(props) {
@@ -164,6 +165,10 @@ class Header extends React.Component {
             capture: false,
             passive: true
         });
+        let topContainer = document.querySelector(".balance__list_scroll");
+        if (topContainer) {
+            Ps.initialize(topContainer);
+        }
     }
 
     componentWillUnmount() {
@@ -906,8 +911,8 @@ class Header extends React.Component {
                                         </g>
                                     </svg>
                                 </span>
-                                <div className="balance__list-wrap vertical ps-container">
-                                    <ul className="balance__list">
+                                <div className="balance__list-wrap ">
+                                    <ul className="balance__list balance__list_scroll">
                                         {usedAssets}
                                     </ul>
                                 </div>

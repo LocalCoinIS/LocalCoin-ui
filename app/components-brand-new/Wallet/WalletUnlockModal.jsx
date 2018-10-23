@@ -230,7 +230,6 @@ class WalletUnlockModal extends React.Component {
         if (e) e.preventDefault();
         const {passwordLogin, backup} = this.props;
         const {walletSelected, accountName} = this.state;
-
         if (!passwordLogin && !walletSelected) {
             this.setState({
                 customError: counterpart.translate(

@@ -477,27 +477,22 @@ body.localcoin
 				background-repeat: no-repeat
 				margin: 0 0 2px 16px
 		&:hover
-			.balance__list
+			.balance__list-wrap
 				opacity: 1
 				visibility: visible
 				width: auto
 				height: auto
+			.balance__list
 				background-color: #001b60
-		&__list
+		&__list-wrap
 			position: absolute
-			top: 52px
+			top: 32px
 			left: -13px
-			display: flex
-			flex-direction: column
-			opacity: 0
-			visibility: hidden
-			margin: 0
-			list-style-type: none
 			height: 0
 			width: 0
-			background-color: #001b60
-			border-radius: 6px
-			padding: 10px 0 14px 0
+			padding-top: 20px
+			opacity: 0
+			visibility: hidden
 			z-index: 2
 			&:before
 				content: ''
@@ -512,7 +507,7 @@ body.localcoin
 				content: ''
 				position: absolute
 				margin: 0 auto
-				top: -9px
+				top: 11px
 				left: 0
 				right: 0
 				width: 0
@@ -520,6 +515,16 @@ body.localcoin
 				border-style: solid
 				border-width: 0 9px 9px 9px
 				border-color: transparent transparent #001b60 transparent
+		&__list
+			position: relative
+			display: flex
+			flex-direction: column
+			margin: 0
+			list-style-type: none
+			border-radius: 6px
+			padding: 10px 0 14px 0
+			background-color: #001b60
+
 		&__link
 			display: block
 			font-size: 18px

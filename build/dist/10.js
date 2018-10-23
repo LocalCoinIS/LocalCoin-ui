@@ -1,233 +1,370 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
     [10],
     {
-        438: function(t, e, r) {
-            var a = r(548),
-                o = r(905),
-                n = r(906),
-                i = "[object Null]",
-                s = "[object Undefined]",
-                u = a ? a.toStringTag : void 0;
-            t.exports = function(t) {
-                return null == t
-                    ? void 0 === t
-                        ? s
-                        : i
-                    : u && u in Object(t)
-                        ? o(t)
-                        : n(t);
-            };
-        },
-        439: function(t, e) {
-            t.exports = function(t) {
-                return null != t && "object" == typeof t;
-            };
-        },
-        547: function(t, e, r) {
+        111: function(e, t, a) {
             "use strict";
-            var a = (function() {
-                    function t(t, e) {
-                        for (var r = 0; r < e.length; r++) {
-                            var a = e[r];
-                            (a.enumerable = a.enumerable || !1),
-                                (a.configurable = !0),
-                                "value" in a && (a.writable = !0),
-                                Object.defineProperty(t, a.key, a);
+            var n = a(0),
+                r = a.n(n),
+                s = a(509),
+                o = a.n(s),
+                i = (function() {
+                    function e(e, t) {
+                        for (var a = 0; a < t.length; a++) {
+                            var n = t[a];
+                            (n.enumerable = n.enumerable || !1),
+                                (n.configurable = !0),
+                                "value" in n && (n.writable = !0),
+                                Object.defineProperty(e, n.key, n);
                         }
                     }
-                    return function(e, r, a) {
-                        return r && t(e.prototype, r), a && t(e, a), e;
+                    return function(t, a, n) {
+                        return a && e(t.prototype, a), n && e(t, n), t;
                     };
-                })(),
-                o = (function(t) {
-                    return t && t.__esModule ? t : {default: t};
-                })(r(893));
-            var n = r(923),
-                i = (function() {
-                    function t(e) {
-                        var r = this;
-                        !(function(t, e) {
-                            if (!(t instanceof e))
-                                throw new TypeError(
-                                    "Cannot call a class as a function"
-                                );
-                        })(this, t),
-                            (0, o.default)(e, function(t, e) {
-                                r[e] = t;
-                            });
-                    }
-                    return (
-                        a(t, [
-                            {
-                                key: "get",
-                                value: function(t) {
-                                    return this[t];
-                                }
-                            },
-                            {
-                                key: "set",
-                                value: function(t, e) {
-                                    this[t] = e;
-                                }
-                            }
-                        ]),
-                        t
-                    );
                 })();
-            if (((t.exports = new i(n)), void 0 !== t.exports.Config))
-                throw new Error(
-                    "default config.json file may not contain a property 'Config'"
-                );
-            t.exports.Config = i;
-        },
-        548: function(t, e, r) {
-            var a = r(549).Symbol;
-            t.exports = a;
-        },
-        549: function(t, e, r) {
-            var a = r(550),
-                o =
-                    "object" == typeof self &&
-                    self &&
-                    self.Object === Object &&
-                    self,
-                n = a || o || Function("return this")();
-            t.exports = n;
-        },
-        550: function(t, e, r) {
-            (function(e) {
-                var r = "object" == typeof e && e && e.Object === Object && e;
-                t.exports = r;
-            }.call(this, r(88)));
-        },
-        551: function(t, e) {
-            var r = Array.isArray;
-            t.exports = r;
-        },
-        552: function(t, e) {
-            var r = 9007199254740991;
-            t.exports = function(t) {
-                return "number" == typeof t && t > -1 && t % 1 == 0 && t <= r;
-            };
-        },
-        553: function(t, e, r) {
-            var a = r(918),
-                o = r(552);
-            t.exports = function(t) {
-                return null != t && o(t.length) && !a(t);
-            };
-        },
-        554: function(t, e, r) {
-            "use strict";
-            Object.defineProperty(e, "__esModule", {value: !0});
-            var a = (function() {
-                function t(t, e) {
-                    for (var r = 0; r < e.length; r++) {
-                        var a = e[r];
-                        (a.enumerable = a.enumerable || !1),
-                            (a.configurable = !0),
-                            "value" in a && (a.writable = !0),
-                            Object.defineProperty(t, a.key, a);
-                    }
+            var l = (function(e) {
+                function t() {
+                    !(function(e, t) {
+                        if (!(e instanceof t))
+                            throw new TypeError(
+                                "Cannot call a class as a function"
+                            );
+                    })(this, t);
+                    var e = (function(e, t) {
+                        if (!e)
+                            throw new ReferenceError(
+                                "this hasn't been initialised - super() hasn't been called"
+                            );
+                        return !t ||
+                            ("object" != typeof t && "function" != typeof t)
+                            ? e
+                            : t;
+                    })(
+                        this,
+                        (t.__proto__ || Object.getPrototypeOf(t)).call(this)
+                    );
+                    return (e.state = {animateEnter: !1}), (e.timer = null), e;
                 }
-                return function(e, r, a) {
-                    return r && t(e.prototype, r), a && t(e, a), e;
-                };
+                return (
+                    (function(e, t) {
+                        if ("function" != typeof t && null !== t)
+                            throw new TypeError(
+                                "Super expression must either be null or a function, not " +
+                                    typeof t
+                            );
+                        (e.prototype = Object.create(t && t.prototype, {
+                            constructor: {
+                                value: e,
+                                enumerable: !1,
+                                writable: !0,
+                                configurable: !0
+                            }
+                        })),
+                            t &&
+                                (Object.setPrototypeOf
+                                    ? Object.setPrototypeOf(e, t)
+                                    : (e.__proto__ = t));
+                    })(t, r.a.Component),
+                    i(t, [
+                        {
+                            key: "componentDidMount",
+                            value: function() {
+                                this.enableAnimation();
+                            }
+                        },
+                        {
+                            key: "resetAnimation",
+                            value: function() {
+                                this.setState({animateEnter: !1}),
+                                    this.enableAnimation();
+                            }
+                        },
+                        {
+                            key: "enableAnimation",
+                            value: function() {
+                                var e = this;
+                                this.timer = setTimeout(function() {
+                                    e.timer && e.setState({animateEnter: !0});
+                                }, 2e3);
+                            }
+                        },
+                        {
+                            key: "componentWillUnmount",
+                            value: function() {
+                                clearTimeout(this.timer), (this.timer = null);
+                            }
+                        },
+                        {
+                            key: "render",
+                            value: function() {
+                                return this.props.children
+                                    ? r.a.createElement(
+                                          o.a,
+                                          {
+                                              className: this.props.className,
+                                              component: this.props.component,
+                                              transitionName: this.props
+                                                  .transitionName,
+                                              transitionEnterTimeout: this.props
+                                                  .enterTimeout,
+                                              transitionEnter: this.state
+                                                  .animateEnter,
+                                              transitionLeave: !1
+                                          },
+                                          this.props.children
+                                      )
+                                    : r.a.createElement(this.props.component);
+                            }
+                        }
+                    ]),
+                    t
+                );
             })();
-            e.jsonRpc = d;
-            var o = s(r(926)),
-                n = s(r(444)),
-                i = s(r(555));
-            function s(t) {
-                return t && t.__esModule ? t : {default: t};
+            (l.defaultProps = {component: "span", enterTimeout: 2e3}),
+                (t.a = l);
+        },
+        138: function(e, t, a) {
+            "use strict";
+            a.d(t, "b", function() {
+                return O;
+            }),
+                a.d(t, "a", function() {
+                    return S;
+                });
+            var n = a(0),
+                r = a.n(n),
+                s = a(17),
+                o = a(6),
+                i = a(13),
+                l = a(50),
+                c = a(5),
+                u = a(15),
+                p = a(31),
+                m = a(1),
+                d = a.n(m),
+                h = a(3),
+                b = a.n(h),
+                f = a(47),
+                _ = a.n(f),
+                g = a(278),
+                y = a(42),
+                v =
+                    Object.assign ||
+                    function(e) {
+                        for (var t = 1; t < arguments.length; t++) {
+                            var a = arguments[t];
+                            for (var n in a)
+                                Object.prototype.hasOwnProperty.call(a, n) &&
+                                    (e[n] = a[n]);
+                        }
+                        return e;
+                    },
+                E = (function() {
+                    function e(e, t) {
+                        for (var a = 0; a < t.length; a++) {
+                            var n = t[a];
+                            (n.enumerable = n.enumerable || !1),
+                                (n.configurable = !0),
+                                "value" in n && (n.writable = !0),
+                                Object.defineProperty(e, n.key, n);
+                        }
+                    }
+                    return function(t, a, n) {
+                        return a && e(t.prototype, a), n && e(t, n), t;
+                    };
+                })();
+            function w(e, t) {
+                var a = {};
+                for (var n in e)
+                    t.indexOf(n) >= 0 ||
+                        (Object.prototype.hasOwnProperty.call(e, n) &&
+                            (a[n] = e[n]));
+                return a;
             }
-            function u(t, e) {
-                if (!(t instanceof e))
+            function k(e, t) {
+                if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function p(t, e) {
-                if (!t)
+            function C(e, t) {
+                if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
                     );
-                return !e || ("object" != typeof e && "function" != typeof e)
-                    ? t
-                    : e;
+                return !t || ("object" != typeof t && "function" != typeof t)
+                    ? e
+                    : t;
             }
-            function c(t, e) {
-                if ("function" != typeof e && null !== e)
+            function A(e, t) {
+                if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
-                            typeof e
+                            typeof t
                     );
-                (t.prototype = Object.create(e && e.prototype, {
+                (e.prototype = Object.create(t && t.prototype, {
                     constructor: {
-                        value: t,
+                        value: e,
                         enumerable: !1,
                         writable: !0,
                         configurable: !0
                     }
                 })),
-                    e &&
+                    t &&
                         (Object.setPrototypeOf
-                            ? Object.setPrototypeOf(t, e)
-                            : (t.__proto__ = e));
+                            ? Object.setPrototypeOf(e, t)
+                            : (e.__proto__ = t));
             }
-            var f = (0, n.default)("steem:http"),
-                l = (function(t) {
-                    function e(t) {
-                        u(this, e);
-                        var r = p(
-                            this,
-                            (e.__proto__ || Object.getPrototypeOf(e)).call(
-                                this,
-                                t.message
-                            )
-                        );
-                        return (
-                            (r.name = "RPCError"),
-                            (r.code = t.code),
-                            (r.data = t.data),
-                            r
-                        );
-                    }
-                    return c(e, Error), e;
-                })();
-            function d(t, e) {
-                var r = e.method,
-                    a = e.id,
-                    n = e.params,
-                    i = {id: a, jsonrpc: "2.0", method: r, params: n};
-                return (0, o.default)(t, {
-                    body: JSON.stringify(i),
-                    method: "post",
-                    mode: "cors",
-                    headers: {
-                        Accept: "application/json, text/plain, */*",
-                        "Content-Type": "application/json"
-                    }
-                })
-                    .then(function(t) {
-                        if (!t.ok)
-                            throw new Error(
-                                "HTTP " + t.status + ": " + t.statusText
-                            );
-                        return t.json();
-                    })
-                    .then(function(t) {
-                        if (t.id !== a)
-                            throw new Error("Invalid response id: " + t.id);
-                        if (t.error) throw new l(t.error);
-                        return t.result;
-                    });
-            }
-            var h = (function(t) {
-                function e() {
+            var N = (function(e) {
+                function t(e) {
                     return (
-                        u(this, e),
-                        p(
+                        k(this, t),
+                        C(
                             this,
-                            (e.__proto__ || Object.getPrototypeOf(e)).apply(
+                            (t.__proto__ || Object.getPrototypeOf(t)).call(
+                                this,
+                                e
+                            )
+                        )
+                    );
+                }
+                return (
+                    A(t, g["a"]),
+                    E(t, [
+                        {
+                            key: "componentDidMount",
+                            value: function() {
+                                _.a.rebuild();
+                            }
+                        },
+                        {
+                            key: "shouldComponentUpdate",
+                            value: function(e) {
+                                return (
+                                    (function e(t, a, n) {
+                                        null === t && (t = Function.prototype);
+                                        var r = Object.getOwnPropertyDescriptor(
+                                            t,
+                                            a
+                                        );
+                                        if (void 0 === r) {
+                                            var s = Object.getPrototypeOf(t);
+                                            return null === s
+                                                ? void 0
+                                                : e(s, a, n);
+                                        }
+                                        if ("value" in r) return r.value;
+                                        var o = r.get;
+                                        return void 0 !== o
+                                            ? o.call(n)
+                                            : void 0;
+                                    })(
+                                        t.prototype.__proto__ ||
+                                            Object.getPrototypeOf(t.prototype),
+                                        "shouldComponentUpdate",
+                                        this
+                                    ).call(this, e) ||
+                                    !c.a.are_equal_shallow(
+                                        e.pulsate,
+                                        this.props.pulsate
+                                    ) ||
+                                    e.toAsset !== this.props.toAsset ||
+                                    e.fromAsset !== this.props.fromAsset ||
+                                    e.amount !== this.props.amount
+                                );
+                            }
+                        },
+                        {
+                            key: "getValue",
+                            value: function() {
+                                var e = this.props,
+                                    t = e.amount,
+                                    a = e.toAsset,
+                                    n = e.fromAsset,
+                                    r = e.fullPrecision,
+                                    s = e.marketStats,
+                                    o = e.coreAsset;
+                                return y.a.convertValue(t, a, n, s, o, r);
+                            }
+                        },
+                        {
+                            key: "render",
+                            value: function() {
+                                var e = this.props,
+                                    t = e.amount,
+                                    a = e.toAsset,
+                                    n = e.fromAsset,
+                                    o = e.fullPrecision,
+                                    i = w(e, [
+                                        "amount",
+                                        "toAsset",
+                                        "fromAsset",
+                                        "fullPrecision"
+                                    ]),
+                                    l = a.get("id"),
+                                    u = a.get("symbol");
+                                o || (t = c.a.get_asset_amount(t, n));
+                                var p = this.getValue();
+                                return p || 0 === p
+                                    ? r.a.createElement(
+                                          s.a,
+                                          v(
+                                              {
+                                                  noPrefix: !0,
+                                                  amount: p,
+                                                  asset: l,
+                                                  decimalOffset:
+                                                      -1 !== u.indexOf("BTC")
+                                                          ? 4
+                                                          : this.props
+                                                                .fullDecimals
+                                                              ? 0
+                                                              : this.props
+                                                                    .noDecimals
+                                                                  ? a.get(
+                                                                        "precision"
+                                                                    )
+                                                                  : a.get(
+                                                                        "precision"
+                                                                    ) - 2
+                                              },
+                                              i
+                                          )
+                                      )
+                                    : r.a.createElement(
+                                          "div",
+                                          {
+                                              className: "tooltip inline-block",
+                                              "data-place": "bottom",
+                                              "data-tip": b.a.translate(
+                                                  "tooltip.no_price"
+                                              ),
+                                              style: {fontSize: "0.9rem"}
+                                          },
+                                          r.a.createElement(d.a, {
+                                              content: "account.no_price"
+                                          })
+                                      );
+                            }
+                        }
+                    ]),
+                    t
+                );
+            })();
+            (N.defaultProps = {
+                fullPrecision: !0,
+                noDecimals: !1,
+                fullDecimals: !1,
+                hide_asset: !1
+            }),
+                (N = Object(l.a)(N, {
+                    propNames: ["toAsset", "fromAsset", "coreAsset"],
+                    defaultProps: {toAsset: "1.3.0", coreAsset: "1.3.0"}
+                }));
+            var O = (function(e) {
+                function t() {
+                    return (
+                        k(this, t),
+                        C(
+                            this,
+                            (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
                                 arguments
                             )
@@ -235,2031 +372,5936 @@
                     );
                 }
                 return (
-                    c(e, i.default),
-                    a(e, [
+                    A(t, r.a.Component),
+                    E(t, [
                         {
-                            key: "send",
-                            value: function(t, e, r) {
-                                this.options.useAppbaseApi &&
-                                    (t = "condenser_api"),
-                                    f("Steem::send", t, e);
-                                var a = e.id || this.id++,
-                                    o = [t, e.method, e.params];
-                                d(this.options.uri, {
-                                    method: "call",
-                                    id: a,
-                                    params: o
-                                }).then(
-                                    function(t) {
-                                        r(null, t);
-                                    },
-                                    function(t) {
-                                        r(t);
-                                    }
-                                );
+                            key: "render",
+                            value: function() {
+                                var e = this.props,
+                                    t = e.refCallback,
+                                    a = w(e, ["refCallback"]);
+                                return r.a.createElement(N, v({}, a, {ref: t}));
                             }
                         }
                     ]),
-                    e
+                    t
                 );
             })();
-            e.default = h;
-        },
-        555: function(t, e, r) {
-            "use strict";
-            Object.defineProperty(e, "__esModule", {value: !0});
-            var a = (function() {
-                    function t(t, e) {
-                        for (var r = 0; r < e.length; r++) {
-                            var a = e[r];
-                            (a.enumerable = a.enumerable || !1),
-                                (a.configurable = !0),
-                                "value" in a && (a.writable = !0),
-                                Object.defineProperty(t, a.key, a);
-                        }
-                    }
-                    return function(e, r, a) {
-                        return r && t(e.prototype, r), a && t(e, a), e;
-                    };
-                })(),
-                o = (function(t) {
-                    return t && t.__esModule ? t : {default: t};
-                })(r(270));
-            var n = (function(t) {
-                function e() {
-                    var t =
-                        arguments.length > 0 && void 0 !== arguments[0]
-                            ? arguments[0]
-                            : {};
-                    !(function(t, e) {
-                        if (!(t instanceof e))
-                            throw new TypeError(
-                                "Cannot call a class as a function"
-                            );
-                    })(this, e);
-                    var r = (function(t, e) {
-                        if (!t)
-                            throw new ReferenceError(
-                                "this hasn't been initialised - super() hasn't been called"
-                            );
-                        return !e ||
-                            ("object" != typeof e && "function" != typeof e)
-                            ? t
-                            : e;
-                    })(
-                        this,
-                        (e.__proto__ || Object.getPrototypeOf(e)).call(this, t)
+            O = Object(u.connect)(O, {
+                listenTo: function() {
+                    return [p.a];
+                },
+                getProps: function() {
+                    return {marketStats: p.a.getState().allMarketStats};
+                }
+            });
+            var S = (function(e) {
+                function t() {
+                    return (
+                        k(this, t),
+                        C(
+                            this,
+                            (t.__proto__ || Object.getPrototypeOf(t)).apply(
+                                this,
+                                arguments
+                            )
+                        )
                     );
-                    return (r.options = t), (r.id = 0), r;
                 }
                 return (
-                    (function(t, e) {
-                        if ("function" != typeof e && null !== e)
+                    A(t, r.a.Component),
+                    E(t, [
+                        {
+                            key: "render",
+                            value: function() {
+                                var e = this.props,
+                                    t = e.balance,
+                                    a = w(e, ["balance"]),
+                                    n = !!t.getIn(["balance", "amount"]),
+                                    s = Number(
+                                        n
+                                            ? t.getIn(["balance", "amount"])
+                                            : t.get("balance")
+                                    ),
+                                    o = n
+                                        ? t.getIn(["balance", "asset_id"])
+                                        : t.get("asset_type");
+                                return isNaN(s)
+                                    ? r.a.createElement("span", null, "--")
+                                    : r.a.createElement(
+                                          O,
+                                          v(
+                                              {
+                                                  amount: s,
+                                                  fromAsset: o,
+                                                  noDecimals: !0
+                                              },
+                                              a
+                                          )
+                                      );
+                            }
+                        }
+                    ]),
+                    t
+                );
+            })();
+            (S.propTypes = {balance: o.a.ChainObject.isRequired}),
+                (S = Object(i.a)(S, {keep_updating: !0}));
+        },
+        150: function(e, t, a) {
+            "use strict";
+            var n = a(0),
+                r = a.n(n),
+                s = a(5),
+                o = (function() {
+                    function e(e, t) {
+                        for (var a = 0; a < t.length; a++) {
+                            var n = t[a];
+                            (n.enumerable = n.enumerable || !1),
+                                (n.configurable = !0),
+                                "value" in n && (n.writable = !0),
+                                Object.defineProperty(e, n.key, n);
+                        }
+                    }
+                    return function(t, a, n) {
+                        return a && e(t.prototype, a), n && e(t, n), t;
+                    };
+                })();
+            var i = (function(e) {
+                function t() {
+                    return (
+                        (function(e, t) {
+                            if (!(e instanceof t))
+                                throw new TypeError(
+                                    "Cannot call a class as a function"
+                                );
+                        })(this, t),
+                        (function(e, t) {
+                            if (!e)
+                                throw new ReferenceError(
+                                    "this hasn't been initialised - super() hasn't been called"
+                                );
+                            return !t ||
+                                ("object" != typeof t && "function" != typeof t)
+                                ? e
+                                : t;
+                        })(
+                            this,
+                            (t.__proto__ || Object.getPrototypeOf(t)).apply(
+                                this,
+                                arguments
+                            )
+                        )
+                    );
+                }
+                return (
+                    (function(e, t) {
+                        if ("function" != typeof t && null !== t)
                             throw new TypeError(
                                 "Super expression must either be null or a function, not " +
-                                    typeof e
+                                    typeof t
                             );
-                        (t.prototype = Object.create(e && e.prototype, {
+                        (e.prototype = Object.create(t && t.prototype, {
                             constructor: {
-                                value: t,
+                                value: e,
                                 enumerable: !1,
                                 writable: !0,
                                 configurable: !0
                             }
                         })),
-                            e &&
+                            t &&
                                 (Object.setPrototypeOf
-                                    ? Object.setPrototypeOf(t, e)
-                                    : (t.__proto__ = e));
-                    })(e, o.default),
-                    a(e, [
+                                    ? Object.setPrototypeOf(e, t)
+                                    : (e.__proto__ = t));
+                    })(t, r.a.Component),
+                    o(t, [
                         {
-                            key: "setOptions",
-                            value: function(t) {
-                                Object.assign(this.options, t), this.stop();
+                            key: "render",
+                            value: function() {
+                                var e = this.props,
+                                    t = e.price,
+                                    a = e.preFormattedPrice,
+                                    n = e.quote,
+                                    o = e.base,
+                                    i = (e.component,
+                                    a || s.a.price_to_text(t, n, o));
+                                return i.full >= 1
+                                    ? r.a.createElement(
+                                          "span",
+                                          null,
+                                          r.a.createElement(
+                                              "span",
+                                              {className: "price-integer"},
+                                              i.int,
+                                              "."
+                                          ),
+                                          i.dec
+                                              ? r.a.createElement(
+                                                    "span",
+                                                    {
+                                                        className:
+                                                            "price-integer"
+                                                    },
+                                                    i.dec
+                                                )
+                                              : null,
+                                          i.trailing
+                                              ? r.a.createElement(
+                                                    "span",
+                                                    {
+                                                        className:
+                                                            "price-decimal"
+                                                    },
+                                                    i.trailing
+                                                )
+                                              : null
+                                      )
+                                    : i.full >= 0.1
+                                        ? r.a.createElement(
+                                              "span",
+                                              null,
+                                              r.a.createElement(
+                                                  "span",
+                                                  {className: "price-decimal"},
+                                                  i.int,
+                                                  "."
+                                              ),
+                                              i.dec
+                                                  ? r.a.createElement(
+                                                        "span",
+                                                        {
+                                                            className:
+                                                                "price-integer"
+                                                        },
+                                                        i.dec
+                                                    )
+                                                  : null,
+                                              i.trailing
+                                                  ? r.a.createElement(
+                                                        "span",
+                                                        {
+                                                            className:
+                                                                "price-decimal"
+                                                        },
+                                                        i.trailing
+                                                    )
+                                                  : null
+                                          )
+                                        : r.a.createElement(
+                                              "span",
+                                              null,
+                                              r.a.createElement(
+                                                  "span",
+                                                  {className: "price-decimal"},
+                                                  i.int,
+                                                  "."
+                                              ),
+                                              i.dec
+                                                  ? r.a.createElement(
+                                                        "span",
+                                                        {
+                                                            className:
+                                                                "price-decimal"
+                                                        },
+                                                        i.dec
+                                                    )
+                                                  : null,
+                                              i.trailing
+                                                  ? r.a.createElement(
+                                                        "span",
+                                                        {
+                                                            className:
+                                                                "price-integer"
+                                                        },
+                                                        i.trailing
+                                                    )
+                                                  : null
+                                          );
                             }
-                        },
-                        {
-                            key: "listenTo",
-                            value: function(t, e, r) {
-                                return (
-                                    t.addEventListener
-                                        ? t.addEventListener(e, r)
-                                        : t.on(e, r),
-                                    function() {
-                                        t.removeEventListener
-                                            ? t.removeEventListener(e, r)
-                                            : t.removeListener(e, r);
-                                    }
-                                );
-                            }
-                        },
-                        {key: "send", value: function() {}},
-                        {key: "start", value: function() {}},
-                        {key: "stop", value: function() {}}
+                        }
                     ]),
-                    e
+                    t
                 );
             })();
-            e.default = n;
+            t.a = i;
         },
-        556: function(t, e, r) {
+        222: function(e, t, a) {
             "use strict";
-            Object.defineProperty(e, "__esModule", {value: !0}),
-                (e.camelCase = function(t) {
-                    return t.replace(a, function(t, e) {
-                        return e.toUpperCase();
-                    });
-                });
-            var a = /_([a-z])/g;
-        },
-        579: function(t, e, r) {
-            "use strict";
-            var a = r(892),
-                o = r(547),
-                n = r(556);
-            t.exports = {api: a, config: o, utils: n};
-        },
-        892: function(t, e, r) {
-            "use strict";
-            var a =
-                    "function" == typeof Symbol &&
-                    "symbol" == typeof Symbol.iterator
-                        ? function(t) {
-                              return typeof t;
-                          }
-                        : function(t) {
-                              return t &&
-                                  "function" == typeof Symbol &&
-                                  t.constructor === Symbol &&
-                                  t !== Symbol.prototype
-                                  ? "symbol"
-                                  : typeof t;
-                          },
-                o = (function() {
-                    function t(t, e) {
-                        for (var r = 0; r < e.length; r++) {
-                            var a = e[r];
-                            (a.enumerable = a.enumerable || !1),
-                                (a.configurable = !0),
-                                "value" in a && (a.writable = !0),
-                                Object.defineProperty(t, a.key, a);
+            var n = a(563),
+                r = a(0),
+                s = a.n(r),
+                o = a(2),
+                i = a.n(o),
+                l = a(20),
+                c = a.n(l),
+                u = a(34),
+                p = a(63),
+                m = a.n(p),
+                d = a(1),
+                h = a.n(d),
+                b = a(6),
+                f = a(13),
+                _ = a(17),
+                g = a(5),
+                y = a(9),
+                v = a.n(y),
+                E = a(43),
+                w = a(57),
+                k = a(86),
+                C = a(16),
+                A = a(65),
+                N = a(3),
+                O = a.n(N),
+                S = a(69),
+                P = a(7),
+                j = a.n(P),
+                x = a(4),
+                T = (function() {
+                    function e(e, t) {
+                        for (var a = 0; a < t.length; a++) {
+                            var n = t[a];
+                            (n.enumerable = n.enumerable || !1),
+                                (n.configurable = !0),
+                                "value" in n && (n.writable = !0),
+                                Object.defineProperty(e, n.key, n);
                         }
                     }
-                    return function(e, r, a) {
-                        return r && t(e.prototype, r), a && t(e, a), e;
+                    return function(t, a, n) {
+                        return a && e(t.prototype, a), n && e(t, n), t;
                     };
-                })(),
-                n = f(r(270)),
-                i = f(r(547)),
-                s = f(r(924)),
-                u = f(r(925)),
-                p = r(556),
-                c = r(554);
-            function f(t) {
-                return t && t.__esModule ? t : {default: t};
+                })();
+            function q(e, t) {
+                if (!(e instanceof t))
+                    throw new TypeError("Cannot call a class as a function");
             }
-            var l = (function(t) {
-                    function e() {
-                        var t =
-                            arguments.length > 0 && void 0 !== arguments[0]
-                                ? arguments[0]
-                                : {};
-                        !(function(t, e) {
-                            if (!(t instanceof e))
-                                throw new TypeError(
-                                    "Cannot call a class as a function"
-                                );
-                        })(this, e);
-                        var r = (function(t, e) {
-                            if (!t)
-                                throw new ReferenceError(
-                                    "this hasn't been initialised - super() hasn't been called"
-                                );
-                            return !e ||
-                                ("object" != typeof e && "function" != typeof e)
-                                ? t
-                                : e;
-                        })(
-                            this,
-                            (e.__proto__ || Object.getPrototypeOf(e)).call(
-                                this,
-                                t
-                            )
-                        );
-                        return (
-                            r._setTransport(t),
-                            r._setLogger(t),
-                            (r.options = t),
-                            (r.seqNo = 0),
-                            s.default.forEach(function(t) {
-                                var e =
-                                        t.method_name ||
-                                        (0, p.camelCase)(t.method),
-                                    a = t.params || [];
-                                (r[e + "With"] = function(e, o) {
-                                    return new Promise(function(o, n) {
-                                        r.send(
-                                            t.api,
-                                            {
-                                                method: t.method,
-                                                params: a.map(function(t) {
-                                                    return e[t];
-                                                })
-                                            },
-                                            function(t, e) {
-                                                t ? n(t) : o(e);
-                                            }
+            function D(e, t) {
+                if (!e)
+                    throw new ReferenceError(
+                        "this hasn't been initialised - super() hasn't been called"
+                    );
+                return !t || ("object" != typeof t && "function" != typeof t)
+                    ? e
+                    : t;
+            }
+            function I(e, t) {
+                if ("function" != typeof t && null !== t)
+                    throw new TypeError(
+                        "Super expression must either be null or a function, not " +
+                            typeof t
+                    );
+                (e.prototype = Object.create(t && t.prototype, {
+                    constructor: {
+                        value: e,
+                        enumerable: !1,
+                        writable: !0,
+                        configurable: !0
+                    }
+                })),
+                    t &&
+                        (Object.setPrototypeOf
+                            ? Object.setPrototypeOf(e, t)
+                            : (e.__proto__ = t));
+            }
+            var F = (function(e) {
+                function t(e) {
+                    q(this, t);
+                    var a = D(
+                        this,
+                        (t.__proto__ || Object.getPrototypeOf(t)).call(this)
+                    );
+                    return (a.state = a._initialState(e)), a;
+                }
+                return (
+                    I(t, s.a.Component),
+                    T(t, [
+                        {
+                            key: "_initialState",
+                            value: function(e) {
+                                var t = e ? this._getCurrentPosition(e) : {};
+                                if (t.collateral) {
+                                    var a = g.a.get_asset_amount(
+                                            t.debt,
+                                            e.quote_asset
+                                        ),
+                                        n = g.a.get_asset_amount(
+                                            t.collateral,
+                                            e.backing_asset
                                         );
+                                    return {
+                                        short_amount: a ? a.toString() : null,
+                                        collateral: n ? n.toString() : null,
+                                        collateral_ratio: this._getCollateralRatio(
+                                            a,
+                                            n
+                                        ),
+                                        errors: this._getInitialErrors(),
+                                        isValid: !1,
+                                        original_position: {
+                                            debt: a,
+                                            collateral: n
+                                        }
+                                    };
+                                }
+                                return {
+                                    short_amount: 0,
+                                    collateral: 0,
+                                    collateral_ratio: this._getInitialCollateralRatio(
+                                        e
+                                    ),
+                                    errors: this._getInitialErrors(),
+                                    isValid: !1,
+                                    original_position: {debt: 0, collateral: 0}
+                                };
+                            }
+                        },
+                        {
+                            key: "componentDidMount",
+                            value: function() {
+                                var e = this._initialState(this.props);
+                                this.setState(e), this._setUpdatedPosition(e);
+                            }
+                        },
+                        {
+                            key: "shouldComponentUpdate",
+                            value: function(e, t) {
+                                return !(
+                                    g.a.are_equal_shallow(t, this.state) &&
+                                    j.a.is(
+                                        e.quote_asset,
+                                        this.props.quote_asset
+                                    ) &&
+                                    !e.backing_asset.get("symbol") !==
+                                        this.props.backing_asset.get(
+                                            "symbol"
+                                        ) &&
+                                    j.a.is(e.account, this.props.account) &&
+                                    j.a.is(
+                                        e.call_orders,
+                                        this.props.call_orders
+                                    )
+                                );
+                            }
+                        },
+                        {
+                            key: "componentWillReceiveProps",
+                            value: function(e) {
+                                var t = this.state,
+                                    a = t.short_amount,
+                                    n = t.collateral,
+                                    r = t.collateral_ratio;
+                                if (
+                                    e.account !== this.props.account ||
+                                    e.hasCallOrders !==
+                                        this.props.hasCallOrders ||
+                                    e.quote_asset.get("id") !==
+                                        this.props.quote_asset.get("id")
+                                ) {
+                                    var s = this._initialState(e),
+                                        o = !1;
+                                    (a || n || r) &&
+                                        ((s.short_amount = a),
+                                        (s.collateral = n),
+                                        (s.collateral_ratio = r),
+                                        (o = !0)),
+                                        this.setState(s),
+                                        o && this._validateFields(s);
+                                }
+                            }
+                        },
+                        {
+                            key: "_getInitialErrors",
+                            value: function() {
+                                return {
+                                    collateral_balance: null,
+                                    ratio_too_high: null
+                                };
+                            }
+                        },
+                        {
+                            key: "confirmClicked",
+                            value: function(e) {
+                                e.preventDefault(),
+                                    c.a.publish(this.props.modalId, "close");
+                            }
+                        },
+                        {
+                            key: "_onBorrowChange",
+                            value: function(e) {
+                                var t = this._getFeedPrice(),
+                                    a = e.amount.replace(/,/g, ""),
+                                    n = {
+                                        short_amount: a,
+                                        collateral: (
+                                            this.state.collateral_ratio *
+                                            (a / t)
+                                        ).toFixed(
+                                            this.props.backing_asset.get(
+                                                "precision"
+                                            )
+                                        ),
+                                        collateral_ratio: this.state
+                                            .collateral_ratio
+                                    };
+                                this.setState(n),
+                                    this._validateFields(n),
+                                    this._setUpdatedPosition(n);
+                            }
+                        },
+                        {
+                            key: "_onCollateralChange",
+                            value: function(e) {
+                                var t = e.amount.replace(/,/g, ""),
+                                    a = this._getFeedPrice(),
+                                    r = t / (this.state.short_amount / a),
+                                    s = this._isPredictionMarket(this.props)
+                                        ? {
+                                              short_amount: t,
+                                              collateral: t,
+                                              collateral_ratio: 1
+                                          }
+                                        : {
+                                              short_amount: this.state
+                                                  .short_amount,
+                                              collateral: t,
+                                              collateral_ratio: Object(n.a)(r)
+                                                  ? r
+                                                  : this._getInitialCollateralRatio(
+                                                        this.props
+                                                    )
+                                          };
+                                this.setState(s),
+                                    this._validateFields(s),
+                                    this._setUpdatedPosition(s);
+                            }
+                        },
+                        {
+                            key: "_onRatioChange",
+                            value: function(e) {
+                                var t = this._getFeedPrice(),
+                                    a = e.target;
+                                new RegExp(/[[:digit:]]/).test(a.value) ||
+                                    (a.value = a.value.replace(/[^0-9.]/g, "")),
+                                    "." == a.value.charAt(0) &&
+                                        (a.value = "0.");
+                                var n = a.value,
+                                    r = {
+                                        short_amount: this.state.short_amount,
+                                        collateral: (
+                                            (this.state.short_amount / t) *
+                                            n
+                                        ).toFixed(
+                                            this.props.backing_asset.get(
+                                                "precision"
+                                            )
+                                        ),
+                                        collateral_ratio: n
+                                    };
+                                this.setState(r),
+                                    this._validateFields(r),
+                                    this._setUpdatedPosition(r);
+                            }
+                        },
+                        {
+                            key: "_maximizeCollateral",
+                            value: function() {
+                                var e = this.props
+                                        ? this._getCurrentPosition(this.props)
+                                        : {},
+                                    t = 0;
+                                e.collateral &&
+                                    (t = g.a.get_asset_amount(
+                                        e.collateral,
+                                        this.props.backing_asset
+                                    ));
+                                var a = Math.floor(
+                                    Math.min(
+                                        this.props.backing_balance.get(
+                                            "balance"
+                                        ) /
+                                            g.a.get_asset_precision(
+                                                this.props.backing_asset
+                                            ) +
+                                            t -
+                                            10,
+                                        (this.state.short_amount /
+                                            this._getFeedPrice()) *
+                                            1e3
+                                    )
+                                );
+                                this._onCollateralChange(
+                                    new Object({amount: a.toString()})
+                                );
+                            }
+                        },
+                        {
+                            key: "_maximizeDebt",
+                            value: function() {
+                                var e = this.props
+                                        ? this._getCurrentPosition(this.props)
+                                        : {},
+                                    t = 0;
+                                e.collateral &&
+                                    (t = g.a.get_asset_amount(
+                                        e.collateral,
+                                        this.props.backing_asset
+                                    ));
+                                var a =
+                                        this.props.backing_balance.get(
+                                            "balance"
+                                        ) /
+                                            g.a.get_asset_precision(
+                                                this.props.backing_asset
+                                            ) +
+                                        t -
+                                        10,
+                                    n = {
+                                        short_amount:
+                                            (a / this.state.collateral_ratio) *
+                                            this._getFeedPrice(),
+                                        collateral: a,
+                                        collateral_ratio: this.state
+                                            .collateral_ratio
+                                    };
+                                this.setState(n),
+                                    this._validateFields(n),
+                                    this._setUpdatedPosition(n);
+                            }
+                        },
+                        {
+                            key: "_payDebt",
+                            value: function() {
+                                var e = this.props
+                                    ? this._getCurrentPosition(this.props)
+                                    : {debt: 0};
+                                if (!(e.debt <= 0)) {
+                                    var t = g.a.get_asset_amount(
+                                        Math.max(
+                                            e.debt -
+                                                this.props.bitasset_balance.get(
+                                                    "balance"
+                                                ),
+                                            0
+                                        ),
+                                        this.props.quote_asset
+                                    );
+                                    this._onBorrowChange({
+                                        amount: t.toString()
                                     });
-                                }),
-                                    (r[e] = function() {
-                                        for (
-                                            var t = arguments.length,
-                                                o = Array(t),
-                                                n = 0;
-                                            n < t;
-                                            n++
+                                }
+                            }
+                        },
+                        {
+                            key: "_setUpdatedPosition",
+                            value: function(e) {
+                                this.setState({
+                                    newPosition:
+                                        parseFloat(e.short_amount) /
+                                        parseFloat(e.collateral)
+                                });
+                            }
+                        },
+                        {
+                            key: "_validateFields",
+                            value: function(e) {
+                                var t = this._getInitialErrors(),
+                                    a = this.state.original_position,
+                                    n = this.props.backing_balance
+                                        ? this.props.backing_balance.toJS()
+                                        : {balance: 0};
+                                parseFloat(e.collateral) - a.collateral >
+                                    g.a.get_asset_amount(
+                                        n.balance,
+                                        this.props.backing_asset.toJS()
+                                    ) &&
+                                    (t.collateral_balance = O.a.translate(
+                                        "borrow.errors.collateral"
+                                    ));
+                                var r =
+                                        e.short_amount >= 0 &&
+                                        e.collateral >= 0 &&
+                                        (e.short_amount != a.debt ||
+                                            e.collateral != a.collateral),
+                                    s =
+                                        this.props.quote_asset.getIn([
+                                            "bitasset",
+                                            "current_feed",
+                                            "maintenance_collateral_ratio"
+                                        ]) / 1e3;
+                                parseFloat(e.collateral_ratio) <
+                                (this._isPredictionMarket(this.props) ? 1 : s)
+                                    ? ((t.below_maintenance = O.a.translate(
+                                          "borrow.errors.below",
+                                          {mr: s}
+                                      )),
+                                      (r = !1))
+                                    : parseFloat(e.collateral_ratio) <
+                                          (this._isPredictionMarket(this.props)
+                                              ? 1
+                                              : s + 0.5) &&
+                                      ((t.close_maintenance = O.a.translate(
+                                          "borrow.errors.close",
+                                          {mr: s}
+                                      )),
+                                      (r = !0)),
+                                    this.setState({errors: t, isValid: r});
+                            }
+                        },
+                        {
+                            key: "_onSubmit",
+                            value: function(e) {
+                                e.preventDefault();
+                                var t = g.a.get_asset_precision(
+                                        this.props.quote_asset.get("precision")
+                                    ),
+                                    a = g.a.get_asset_precision(
+                                        this.props.backing_asset.get(
+                                            "precision"
                                         )
-                                            o[n] = arguments[n];
-                                        var i = a.reduce(function(t, e, r) {
-                                                return (t[e] = o[r]), t;
-                                            }, {}),
-                                            s = o[a.length];
-                                        return r[e + "With"](i, s);
-                                    });
-                            }),
-                            r
+                                    ),
+                                    n = this._getCurrentPosition(this.props),
+                                    r = k.a.new_transaction();
+                                r.add_type_operation("call_order_update", {
+                                    fee: {amount: 0, asset_id: 0},
+                                    funding_account: this.props.account.get(
+                                        "id"
+                                    ),
+                                    delta_collateral: {
+                                        amount: parseInt(
+                                            this.state.collateral * a -
+                                                n.collateral,
+                                            10
+                                        ),
+                                        asset_id: this.props.backing_asset.get(
+                                            "id"
+                                        )
+                                    },
+                                    delta_debt: {
+                                        amount: parseInt(
+                                            this.state.short_amount * t -
+                                                n.debt,
+                                            10
+                                        ),
+                                        asset_id: this.props.quote_asset.get(
+                                            "id"
+                                        )
+                                    }
+                                }),
+                                    C.a
+                                        .process_transaction(r, null, !0)
+                                        .catch(function(e) {}),
+                                    c.a.publish(this.props.modalId, "close");
+                            }
+                        },
+                        {
+                            key: "_getCurrentPosition",
+                            value: function(e) {
+                                var t = {collateral: null, debt: null};
+                                return (
+                                    e &&
+                                        e.hasCallOrders &&
+                                        e.call_orders &&
+                                        (t = (t = e.call_orders
+                                            .filter(function(e) {
+                                                return !!e;
+                                            })
+                                            .find(function(t) {
+                                                return (
+                                                    t.getIn([
+                                                        "call_price",
+                                                        "quote",
+                                                        "asset_id"
+                                                    ]) ===
+                                                    e.quote_asset.get("id")
+                                                );
+                                            }))
+                                            ? t.toJS()
+                                            : {collateral: null, debt: null}),
+                                    t
+                                );
+                            }
+                        },
+                        {
+                            key: "_getFeedPrice",
+                            value: function() {
+                                return this.props
+                                    ? this._isPredictionMarket(this.props)
+                                        ? 1
+                                        : 1 /
+                                          g.a.get_asset_price(
+                                              this.props.quote_asset.getIn([
+                                                  "bitasset",
+                                                  "current_feed",
+                                                  "settlement_price",
+                                                  "quote",
+                                                  "amount"
+                                              ]),
+                                              this.props.backing_asset,
+                                              this.props.quote_asset.getIn([
+                                                  "bitasset",
+                                                  "current_feed",
+                                                  "settlement_price",
+                                                  "base",
+                                                  "amount"
+                                              ]),
+                                              this.props.quote_asset
+                                          )
+                                    : 1;
+                            }
+                        },
+                        {
+                            key: "_getInitialCollateralRatio",
+                            value: function(e) {
+                                return this._isPredictionMarket(e) ? 1 : 0;
+                            }
+                        },
+                        {
+                            key: "_getCollateralRatio",
+                            value: function(e, t) {
+                                return t / (e / this._getFeedPrice());
+                            }
+                        },
+                        {
+                            key: "_isPredictionMarket",
+                            value: function(e) {
+                                return e.quote_asset.getIn([
+                                    "bitasset",
+                                    "is_prediction_market"
+                                ]);
+                            }
+                        },
+                        {
+                            key: "render",
+                            value: function() {
+                                var e = this,
+                                    t = this.props,
+                                    a = t.quote_asset,
+                                    n = t.bitasset_balance,
+                                    r = t.backing_asset,
+                                    o = t.backing_balance,
+                                    i = this.state,
+                                    l = i.short_amount,
+                                    c = i.collateral,
+                                    u = i.collateral_ratio,
+                                    p = i.errors,
+                                    d = i.isValid,
+                                    b = g.a.get_asset_precision(
+                                        this.props.quote_asset.get("precision")
+                                    ),
+                                    f = g.a.get_asset_precision(
+                                        this.props.backing_asset.get(
+                                            "precision"
+                                        )
+                                    );
+                                (u && !isNaN(u) && u > 0 && u < 1e3) || (u = 0),
+                                    (n = n ? n.toJS() : {balance: 0, id: null}),
+                                    (o = o ? o.toJS() : {balance: 0, id: null});
+                                var y = v()("form-group", {
+                                        "has-error": p.collateral_balance
+                                    }),
+                                    k = v()(
+                                        "form-group",
+                                        {"has-error": p.below_maintenance},
+                                        {"has-warning": p.close_maintenance}
+                                    ),
+                                    C = v()(
+                                        "button",
+                                        {disabled: p.collateral_balance || !d},
+                                        {success: d}
+                                    ),
+                                    N = this._getCurrentPosition(this.props),
+                                    P = o.id ? x.b.getObject(o.id) : null,
+                                    j =
+                                        (P ? P.get("balance") : 0) -
+                                        parseInt(
+                                            this.state.collateral * f -
+                                                N.collateral,
+                                            10
+                                        ),
+                                    T = s.a.createElement(
+                                        "span",
+                                        null,
+                                        s.a.createElement(
+                                            "span",
+                                            null,
+                                            s.a.createElement(h.a, {
+                                                component: "span",
+                                                content: "transfer.available"
+                                            }),
+                                            ":",
+                                            " ",
+                                            n.id
+                                                ? s.a.createElement(w.a, {
+                                                      balance: n.id
+                                                  })
+                                                : s.a.createElement(_.a, {
+                                                      amount: 0,
+                                                      asset: a.get("id")
+                                                  })
+                                        ),
+                                        s.a.createElement(
+                                            "a",
+                                            {onClick: this._payDebt.bind(this)},
+                                            s.a.createElement(h.a, {
+                                                content: "borrow.pay_max_debt"
+                                            })
+                                        ),
+                                        "|",
+                                        0 != u
+                                            ? s.a.createElement(
+                                                  "a",
+                                                  {
+                                                      onClick: this._maximizeDebt.bind(
+                                                          this
+                                                      )
+                                                  },
+                                                  s.a.createElement(h.a, {
+                                                      content: "borrow.use_max"
+                                                  })
+                                              )
+                                            : s.a.createElement(
+                                                  "span",
+                                                  {
+                                                      className:
+                                                          "disabled-link",
+                                                      "data-place": "left",
+                                                      "data-tip": O.a.translate(
+                                                          "borrow.maximize_debt_set_ratio_slider"
+                                                      )
+                                                  },
+                                                  s.a.createElement(h.a, {
+                                                      content: "borrow.use_max"
+                                                  })
+                                              )
+                                    ),
+                                    q = s.a.createElement(
+                                        "span",
+                                        null,
+                                        s.a.createElement(
+                                            "span",
+                                            null,
+                                            s.a.createElement(h.a, {
+                                                component: "span",
+                                                content: "transfer.available"
+                                            }),
+                                            ":",
+                                            " ",
+                                            o.id
+                                                ? s.a.createElement(_.a, {
+                                                      amount: j,
+                                                      asset: r.get("id")
+                                                  })
+                                                : s.a.createElement(_.a, {
+                                                      amount: 0,
+                                                      asset: r.get("id")
+                                                  })
+                                        ),
+                                        s.a.createElement(
+                                            "a",
+                                            {
+                                                onClick: this._maximizeCollateral.bind(
+                                                    this
+                                                )
+                                            },
+                                            s.a.createElement(h.a, {
+                                                content: "borrow.use_max"
+                                            })
+                                        )
+                                    ),
+                                    D = this._getFeedPrice(),
+                                    I =
+                                        this.props.quote_asset.getIn([
+                                            "bitasset",
+                                            "current_feed",
+                                            "maintenance_collateral_ratio"
+                                        ]) / 1e3,
+                                    F = (this.props.quote_asset.getIn([
+                                        "bitasset",
+                                        "current_feed",
+                                        "maximum_short_squeeze_ratio"
+                                    ]),
+                                    this._isPredictionMarket(this.props));
+                                return !F && isNaN(D)
+                                    ? s.a.createElement(
+                                          "div",
+                                          null,
+                                          s.a.createElement(
+                                              "form",
+                                              {
+                                                  className:
+                                                      "grid-container text-center no-overflow",
+                                                  noValidate: !0
+                                              },
+                                              s.a.createElement(h.a, {
+                                                  component: "h3",
+                                                  content: "borrow.no_valid",
+                                                  asset_symbol: a.get("symbol")
+                                              })
+                                          ),
+                                          s.a.createElement(
+                                              "div",
+                                              {
+                                                  className:
+                                                      "grid-content button-group text-center no-overflow"
+                                              },
+                                              s.a.createElement(
+                                                  m.a,
+                                                  {close: this.props.modalId},
+                                                  s.a.createElement(
+                                                      "div",
+                                                      {
+                                                          className:
+                                                              " button warning"
+                                                      },
+                                                      s.a.createElement(h.a, {
+                                                          content:
+                                                              "account.perm.cancel"
+                                                      })
+                                                  )
+                                              )
+                                          )
+                                      )
+                                    : s.a.createElement(
+                                          "div",
+                                          null,
+                                          s.a.createElement(
+                                              "form",
+                                              {
+                                                  className:
+                                                      "grid-container small-10 small-offset-1 no-overflow",
+                                                  noValidate: !0
+                                              },
+                                              s.a.createElement(h.a, {
+                                                  component: "h3",
+                                                  content: "borrow.title",
+                                                  asset_symbol: a.get("symbol")
+                                              }),
+                                              s.a.createElement(
+                                                  "div",
+                                                  {style: {textAlign: "left"}},
+                                                  this.props.hide_help
+                                                      ? null
+                                                      : s.a.createElement(S.a, {
+                                                            path:
+                                                                "components/" +
+                                                                (F
+                                                                    ? "BorrowModalPrediction"
+                                                                    : "BorrowModal"),
+                                                            debt: a.get(
+                                                                "symbol"
+                                                            ),
+                                                            collateral: r.get(
+                                                                "symbol"
+                                                            ),
+                                                            borrower: this.props.account.get(
+                                                                "name"
+                                                            ),
+                                                            mr: I
+                                                        }),
+                                                  F
+                                                      ? null
+                                                      : s.a.createElement(
+                                                            "div",
+                                                            {
+                                                                style: {
+                                                                    paddingBottom:
+                                                                        "1rem"
+                                                                }
+                                                            },
+                                                            s.a.createElement(
+                                                                "div",
+                                                                {
+                                                                    className:
+                                                                        "borrow-price-feeds"
+                                                                },
+                                                                s.a.createElement(
+                                                                    "span",
+                                                                    {
+                                                                        className:
+                                                                            "borrow-price-label"
+                                                                    },
+                                                                    s.a.createElement(
+                                                                        h.a,
+                                                                        {
+                                                                            content:
+                                                                                "transaction.feed_price"
+                                                                        }
+                                                                    ),
+                                                                    ": "
+                                                                ),
+                                                                s.a.createElement(
+                                                                    A.a,
+                                                                    {
+                                                                        noPopOver: !0,
+                                                                        quote_amount: a.getIn(
+                                                                            [
+                                                                                "bitasset",
+                                                                                "current_feed",
+                                                                                "settlement_price",
+                                                                                "base",
+                                                                                "amount"
+                                                                            ]
+                                                                        ),
+                                                                        quote_asset: a.getIn(
+                                                                            [
+                                                                                "bitasset",
+                                                                                "current_feed",
+                                                                                "settlement_price",
+                                                                                "base",
+                                                                                "asset_id"
+                                                                            ]
+                                                                        ),
+                                                                        base_asset: a.getIn(
+                                                                            [
+                                                                                "bitasset",
+                                                                                "current_feed",
+                                                                                "settlement_price",
+                                                                                "quote",
+                                                                                "asset_id"
+                                                                            ]
+                                                                        ),
+                                                                        base_amount: a.getIn(
+                                                                            [
+                                                                                "bitasset",
+                                                                                "current_feed",
+                                                                                "settlement_price",
+                                                                                "quote",
+                                                                                "amount"
+                                                                            ]
+                                                                        )
+                                                                    }
+                                                                )
+                                                            ),
+                                                            s.a.createElement(
+                                                                "b",
+                                                                null
+                                                            ),
+                                                            s.a.createElement(
+                                                                "div",
+                                                                {
+                                                                    className:
+                                                                        "borrow-price-final " +
+                                                                        (p.below_maintenance
+                                                                            ? "has-error"
+                                                                            : p.close_maintenance
+                                                                                ? "has-warning"
+                                                                                : "")
+                                                                },
+                                                                s.a.createElement(
+                                                                    "span",
+                                                                    {
+                                                                        className:
+                                                                            "borrow-price-label"
+                                                                    },
+                                                                    s.a.createElement(
+                                                                        h.a,
+                                                                        {
+                                                                            content:
+                                                                                "exchange.your_price"
+                                                                        }
+                                                                    ),
+                                                                    ": "
+                                                                ),
+                                                                this.state
+                                                                    .newPosition
+                                                                    ? s.a.createElement(
+                                                                          A.a,
+                                                                          {
+                                                                              noPopOver: !0,
+                                                                              quote_amount:
+                                                                                  I *
+                                                                                  this
+                                                                                      .state
+                                                                                      .short_amount *
+                                                                                  b,
+                                                                              quote_asset: a.get(
+                                                                                  "id"
+                                                                              ),
+                                                                              base_asset: r.get(
+                                                                                  "id"
+                                                                              ),
+                                                                              base_amount:
+                                                                                  this
+                                                                                      .state
+                                                                                      .collateral *
+                                                                                  f
+                                                                          }
+                                                                      )
+                                                                    : null
+                                                            )
+                                                        ),
+                                                  s.a.createElement(
+                                                      "div",
+                                                      {className: "form-group"},
+                                                      s.a.createElement(E.a, {
+                                                          label:
+                                                              "transaction.borrow_amount",
+                                                          amount: l.toString(),
+                                                          onChange: this._onBorrowChange.bind(
+                                                              this
+                                                          ),
+                                                          asset: a.get("id"),
+                                                          assets: [a.get("id")],
+                                                          display_balance: T,
+                                                          placeholder: "0.0",
+                                                          tabIndex: 1
+                                                      })
+                                                  ),
+                                                  s.a.createElement(
+                                                      "div",
+                                                      {className: y},
+                                                      s.a.createElement(E.a, {
+                                                          label:
+                                                              "transaction.collateral",
+                                                          amount: c.toString(),
+                                                          onChange: this._onCollateralChange.bind(
+                                                              this
+                                                          ),
+                                                          asset: r.get("id"),
+                                                          assets: [r.get("id")],
+                                                          display_balance: q,
+                                                          placeholder: "0.0",
+                                                          tabIndex: 1
+                                                      }),
+                                                      p.collateral_balance
+                                                          ? s.a.createElement(
+                                                                "div",
+                                                                {
+                                                                    className:
+                                                                        "float-left",
+                                                                    style: {
+                                                                        paddingTop: 5
+                                                                    }
+                                                                },
+                                                                p.collateral_balance
+                                                            )
+                                                          : null
+                                                  ),
+                                                  F
+                                                      ? null
+                                                      : s.a.createElement(
+                                                            "div",
+                                                            null,
+                                                            s.a.createElement(
+                                                                "div",
+                                                                {
+                                                                    className: k,
+                                                                    style: {
+                                                                        marginBottom:
+                                                                            "3.5rem"
+                                                                    }
+                                                                },
+                                                                s.a.createElement(
+                                                                    h.a,
+                                                                    {
+                                                                        component:
+                                                                            "label",
+                                                                        content:
+                                                                            "borrow.coll_ratio"
+                                                                    }
+                                                                ),
+                                                                s.a.createElement(
+                                                                    "span",
+                                                                    null,
+                                                                    s.a.createElement(
+                                                                        "input",
+                                                                        {
+                                                                            value:
+                                                                                0 ==
+                                                                                u
+                                                                                    ? null
+                                                                                    : u,
+                                                                            onChange: this._onRatioChange.bind(
+                                                                                this
+                                                                            ),
+                                                                            type:
+                                                                                "text",
+                                                                            style: {
+                                                                                width:
+                                                                                    "12%",
+                                                                                float:
+                                                                                    "right",
+                                                                                marginTop: -10
+                                                                            }
+                                                                        }
+                                                                    ),
+                                                                    s.a.createElement(
+                                                                        "input",
+                                                                        {
+                                                                            style: {
+                                                                                width:
+                                                                                    "85%"
+                                                                            },
+                                                                            min:
+                                                                                "0",
+                                                                            max:
+                                                                                "6",
+                                                                            step:
+                                                                                "0.01",
+                                                                            onChange: this._onRatioChange.bind(
+                                                                                this
+                                                                            ),
+                                                                            value: u,
+                                                                            type:
+                                                                                "range"
+                                                                        }
+                                                                    )
+                                                                ),
+                                                                p.below_maintenance ||
+                                                                p.close_maintenance
+                                                                    ? s.a.createElement(
+                                                                          "div",
+                                                                          {
+                                                                              style: {
+                                                                                  height:
+                                                                                      "1em",
+                                                                                  maxWidth:
+                                                                                      "85%"
+                                                                              },
+                                                                              className:
+                                                                                  "float-left"
+                                                                          },
+                                                                          p.below_maintenance,
+                                                                          p.close_maintenance
+                                                                      )
+                                                                    : null
+                                                            )
+                                                        ),
+                                                  s.a.createElement(
+                                                      "div",
+                                                      {
+                                                          className:
+                                                              "no-padding grid-content button-group no-overflow"
+                                                      },
+                                                      s.a.createElement(
+                                                          "div",
+                                                          {
+                                                              onClick: this._onSubmit.bind(
+                                                                  this
+                                                              ),
+                                                              className: C
+                                                          },
+                                                          s.a.createElement(
+                                                              h.a,
+                                                              {
+                                                                  content:
+                                                                      "borrow.adjust"
+                                                              }
+                                                          )
+                                                      ),
+                                                      s.a.createElement(
+                                                          "div",
+                                                          {
+                                                              onClick: function(
+                                                                  t
+                                                              ) {
+                                                                  t.preventDefault(),
+                                                                      e.setState(
+                                                                          e._initialState(
+                                                                              e.props
+                                                                          )
+                                                                      );
+                                                              },
+                                                              className:
+                                                                  "button hollow primary"
+                                                          },
+                                                          s.a.createElement(
+                                                              h.a,
+                                                              {
+                                                                  content:
+                                                                      "wallet.reset"
+                                                              }
+                                                          )
+                                                      )
+                                                  )
+                                              )
+                                          )
+                                      );
+                            }
+                        }
+                    ]),
+                    t
+                );
+            })();
+            (F.propTypes = {
+                quote_asset: b.a.ChainAsset.isRequired,
+                bitasset_balance: b.a.ChainObject,
+                backing_asset: b.a.ChainAsset.isRequired,
+                backing_balance: b.a.ChainObject,
+                call_orders: b.a.ChainObjectsList,
+                hasCallOrders: i.a.bool
+            }),
+                (F = Object(f.a)(F));
+            var B = (function(e) {
+                function t() {
+                    q(this, t);
+                    var e = D(
+                        this,
+                        (t.__proto__ || Object.getPrototypeOf(t)).call(this)
+                    );
+                    return (e.state = {smallScreen: !1, open: !1}), e;
+                }
+                return (
+                    I(t, s.a.Component),
+                    T(t, [
+                        {
+                            key: "show",
+                            value: function() {
+                                var e = this;
+                                this.setState({open: !0}, function() {
+                                    c.a.publish(e.props.modalId, "open");
+                                });
+                            }
+                        },
+                        {
+                            key: "onClose",
+                            value: function() {
+                                this.setState({open: !1});
+                            }
+                        },
+                        {
+                            key: "componentWillMount",
+                            value: function() {
+                                this.setState({
+                                    smallScreen: window.innerHeight <= 800
+                                });
+                            }
+                        },
+                        {
+                            key: "render",
+                            value: function() {
+                                var e = this.props,
+                                    t = e.quote_asset,
+                                    a = e.backing_asset,
+                                    n = e.account,
+                                    r = n.get("balances").toJS(),
+                                    o = void 0,
+                                    i = void 0;
+                                if (r)
+                                    for (var l in r)
+                                        l === a && (o = r[l]),
+                                            l === t && (i = r[l]);
+                                return this.state.open
+                                    ? s.a.createElement(
+                                          u.a,
+                                          {
+                                              id: this.props.modalId,
+                                              overlay: !0,
+                                              onClose: this.onClose.bind(this),
+                                              ref: this.props.modalId
+                                          },
+                                          s.a.createElement(
+                                              "div",
+                                              {
+                                                  className:
+                                                      "grid-block vertical"
+                                              },
+                                              s.a.createElement(F, {
+                                                  quote_asset: t,
+                                                  call_orders: n
+                                                      .get(
+                                                          "call_orders",
+                                                          Object(P.List)()
+                                                      )
+                                                      .toList(),
+                                                  hasCallOrders:
+                                                      n.get("call_orders") &&
+                                                      n.get("call_orders")
+                                                          .size > 0,
+                                                  modalId: this.props.modalId,
+                                                  bitasset_balance: i,
+                                                  backing_balance: o,
+                                                  backing_asset: a,
+                                                  hide_help: this.state
+                                                      .smallScreen,
+                                                  account: n
+                                              })
+                                          )
+                                      )
+                                    : null;
+                            }
+                        }
+                    ]),
+                    t
+                );
+            })();
+            t.a = B;
+        },
+        333: function(e, t, a) {
+            "use strict";
+            a.d(t, "a", function() {
+                return v;
+            }),
+                a.d(t, "b", function() {
+                    return g;
+                });
+            var n = a(0),
+                r = a.n(n),
+                s = a(50),
+                o = a(9),
+                i = a.n(o),
+                l = a(35),
+                c = a(31),
+                u = a(15),
+                p = a(5),
+                m = a(65),
+                d = a(42),
+                h = (function() {
+                    function e(e, t) {
+                        for (var a = 0; a < t.length; a++) {
+                            var n = t[a];
+                            (n.enumerable = n.enumerable || !1),
+                                (n.configurable = !0),
+                                "value" in n && (n.writable = !0),
+                                Object.defineProperty(e, n.key, n);
+                        }
+                    }
+                    return function(t, a, n) {
+                        return a && e(t.prototype, a), n && e(t, n), t;
+                    };
+                })();
+            function b(e, t) {
+                if (!(e instanceof t))
+                    throw new TypeError("Cannot call a class as a function");
+            }
+            function f(e, t) {
+                if (!e)
+                    throw new ReferenceError(
+                        "this hasn't been initialised - super() hasn't been called"
+                    );
+                return !t || ("object" != typeof t && "function" != typeof t)
+                    ? e
+                    : t;
+            }
+            function _(e, t) {
+                if ("function" != typeof t && null !== t)
+                    throw new TypeError(
+                        "Super expression must either be null or a function, not " +
+                            typeof t
+                    );
+                (e.prototype = Object.create(t && t.prototype, {
+                    constructor: {
+                        value: e,
+                        enumerable: !1,
+                        writable: !0,
+                        configurable: !0
+                    }
+                })),
+                    t &&
+                        (Object.setPrototypeOf
+                            ? Object.setPrototypeOf(e, t)
+                            : (e.__proto__ = t));
+            }
+            var g = (function(e) {
+                    function t(e) {
+                        b(this, t);
+                        var a = f(
+                            this,
+                            (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                         );
+                        a.statsInterval = null;
+                        var n = d.a.getMarketName(e.base, e.quote).marketName;
+                        return (a.state = {marketName: n}), a;
                     }
                     return (
-                        (function(t, e) {
-                            if ("function" != typeof e && null !== e)
-                                throw new TypeError(
-                                    "Super expression must either be null or a function, not " +
-                                        typeof e
-                                );
-                            (t.prototype = Object.create(e && e.prototype, {
-                                constructor: {
-                                    value: t,
-                                    enumerable: !1,
-                                    writable: !0,
-                                    configurable: !0
-                                }
-                            })),
-                                e &&
-                                    (Object.setPrototypeOf
-                                        ? Object.setPrototypeOf(t, e)
-                                        : (t.__proto__ = e));
-                        })(e, n.default),
-                        o(e, [
+                        _(t, r.a.Component),
+                        h(t, [
                             {
-                                key: "_setTransport",
-                                value: function(t) {
-                                    if (
-                                        t.url &&
-                                        t.url.match("^((http|https)?://)")
-                                    )
-                                        (t.uri = t.url),
-                                            (t.transport = "http"),
-                                            (this._transportType = t.transport),
-                                            (this.options = t),
-                                            (this.transport = new u.default.http(
-                                                t
-                                            ));
-                                    else if (
-                                        t.url &&
-                                        t.url.match("^((ws|wss)?://)")
-                                    )
-                                        (t.websocket = t.url),
-                                            (t.transport = "ws"),
-                                            (this._transportType = t.transport),
-                                            (this.options = t),
-                                            (this.transport = new u.default.ws(
-                                                t
-                                            ));
-                                    else if (t.transport)
-                                        if (
-                                            (this.transport &&
-                                                this._transportType !==
-                                                    t.transport &&
-                                                this.transport.stop(),
-                                            (this._transportType = t.transport),
-                                            "string" == typeof t.transport)
-                                        ) {
-                                            if (!u.default[t.transport])
-                                                throw new TypeError(
-                                                    "Invalid `transport`, valid values are `http`, `ws` or a class"
-                                                );
-                                            this.transport = new u.default[
-                                                t.transport
-                                            ](t);
-                                        } else
-                                            this.transport = new t.transport(t);
-                                    else this.transport = new u.default.ws(t);
-                                }
-                            },
-                            {
-                                key: "_setLogger",
-                                value: function(t) {
-                                    if (t.hasOwnProperty("logger"))
-                                        switch (a(t.logger)) {
-                                            case "function":
-                                                this.__logger = {log: t.logger};
-                                                break;
-                                            case "object":
-                                                if (
-                                                    "function" !=
-                                                    typeof t.logger.log
-                                                )
-                                                    throw new Error(
-                                                        "setOptions({logger:{}}) must have a property .log of type function"
-                                                    );
-                                                this.__logger = t.logger;
-                                                break;
-                                            case "undefined":
-                                                if (this.__logger) break;
-                                            default:
-                                                this.__logger = !1;
-                                        }
-                                }
-                            },
-                            {
-                                key: "log",
-                                value: function(t) {
-                                    if (this.__logger)
-                                        if (
+                                key: "_checkStats",
+                                value: function() {
+                                    var e =
+                                            arguments.length > 0 &&
+                                            void 0 !== arguments[0]
+                                                ? arguments[0]
+                                                : {close: {}},
+                                        t =
                                             arguments.length > 1 &&
-                                            "function" ==
-                                                typeof this.__logger[t]
-                                        ) {
-                                            var e = Array.prototype.slice.call(
-                                                arguments,
-                                                1
-                                            );
-                                            this.__logger[t].apply(
-                                                this.__logger,
-                                                e
-                                            );
-                                        } else
-                                            this.__logger.log.apply(
-                                                this.__logger,
-                                                arguments
-                                            );
+                                            void 0 !== arguments[1]
+                                                ? arguments[1]
+                                                : {close: {}};
+                                    return (
+                                        e.volumeBase !== t.volumeBase ||
+                                        !p.a.are_equal_shallow(
+                                            e.close && e.close.base,
+                                            t.close && t.close.base
+                                        ) ||
+                                        !p.a.are_equal_shallow(
+                                            e.close && e.close.quote,
+                                            t.close && t.close.quote
+                                        )
+                                    );
                                 }
                             },
                             {
-                                key: "start",
-                                value: function() {
-                                    return this.transport.start();
-                                }
-                            },
-                            {
-                                key: "stop",
-                                value: function() {
-                                    return this.transport.stop();
-                                }
-                            },
-                            {
-                                key: "send",
-                                value: function(t, e, r) {
-                                    var a = r;
-                                    if (this.__logger) {
-                                        var o = Math.random(),
-                                            n = this;
-                                        this.log("xmit:" + o + ":", e),
-                                            (a = function(t, e) {
-                                                t
-                                                    ? n.log(
-                                                          "error",
-                                                          "rsp:" + o + ":\n\n",
-                                                          t,
-                                                          e
-                                                      )
-                                                    : n.log(
-                                                          "rsp:" + o + ":",
-                                                          e
-                                                      ),
-                                                    r && r.apply(n, arguments);
-                                            });
-                                    }
-                                    return this.transport.send(t, e, a);
-                                }
-                            },
-                            {
-                                key: "call",
-                                value: function(t, e, r) {
-                                    if ("http" === this._transportType) {
-                                        var a = ++this.seqNo;
-                                        (0, c.jsonRpc)(this.options.uri, {
-                                            method: t,
-                                            params: e,
-                                            id: a
-                                        }).then(
-                                            function(t) {
-                                                r(null, t);
-                                            },
-                                            function(t) {
-                                                r(t);
-                                            }
-                                        );
-                                    } else
-                                        r(
-                                            new Error(
-                                                "RPC methods can only be called when using http transport"
+                                key: "shouldComponentUpdate",
+                                value: function(e) {
+                                    return (
+                                        this._checkStats(
+                                            e.allMarketStats.get(
+                                                this.state.marketName
+                                            ),
+                                            this.props.allMarketStats.get(
+                                                this.state.marketName
                                             )
-                                        );
+                                        ) ||
+                                        e.base.get("id") !==
+                                            this.props.base.get("id") ||
+                                        e.quote.get("id") !==
+                                            this.props.quote.get("id")
+                                    );
                                 }
                             },
                             {
-                                key: "setOptions",
-                                value: function(t) {
-                                    Object.assign(this.options, t),
-                                        this._setLogger(t),
-                                        this._setTransport(t),
-                                        this.transport.setOptions(t);
+                                key: "componentWillMount",
+                                value: function() {
+                                    l.a.getMarketStats(
+                                        this.props.base,
+                                        this.props.quote
+                                    ),
+                                        (this.statsChecked = new Date()),
+                                        (this.statsInterval = setInterval(
+                                            l.a.getMarketStats.bind(
+                                                this,
+                                                this.props.base,
+                                                this.props.quote
+                                            ),
+                                            35e3
+                                        ));
                                 }
                             },
                             {
-                                key: "setWebSocket",
-                                value: function(t) {
-                                    this.setOptions({websocket: t});
-                                }
-                            },
-                            {
-                                key: "setUri",
-                                value: function(t) {
-                                    this.setOptions({uri: t});
+                                key: "componentWillUnmount",
+                                value: function() {
+                                    clearInterval(this.statsInterval);
                                 }
                             }
                         ]),
-                        e
-                    );
-                })(),
-                d = new l(i.default);
-            (t.exports = d).Steem = l;
-        },
-        893: function(t, e, r) {
-            t.exports = r(894);
-        },
-        894: function(t, e, r) {
-            var a = r(895),
-                o = r(896),
-                n = r(921),
-                i = r(551);
-            t.exports = function(t, e) {
-                return (i(t) ? a : o)(t, n(e));
-            };
-        },
-        895: function(t, e) {
-            t.exports = function(t, e) {
-                for (
-                    var r = -1, a = null == t ? 0 : t.length;
-                    ++r < a && !1 !== e(t[r], r, t);
-
-                );
-                return t;
-            };
-        },
-        896: function(t, e, r) {
-            var a = r(897),
-                o = r(920)(a);
-            t.exports = o;
-        },
-        897: function(t, e, r) {
-            var a = r(898),
-                o = r(900);
-            t.exports = function(t, e) {
-                return t && a(t, e, o);
-            };
-        },
-        898: function(t, e, r) {
-            var a = r(899)();
-            t.exports = a;
-        },
-        899: function(t, e) {
-            t.exports = function(t) {
-                return function(e, r, a) {
-                    for (
-                        var o = -1, n = Object(e), i = a(e), s = i.length;
-                        s--;
-
-                    ) {
-                        var u = i[t ? s : ++o];
-                        if (!1 === r(n[u], u, n)) break;
-                    }
-                    return e;
-                };
-            };
-        },
-        900: function(t, e, r) {
-            var a = r(901),
-                o = r(914),
-                n = r(553);
-            t.exports = function(t) {
-                return n(t) ? a(t) : o(t);
-            };
-        },
-        901: function(t, e, r) {
-            var a = r(902),
-                o = r(903),
-                n = r(551),
-                i = r(907),
-                s = r(909),
-                u = r(910),
-                p = Object.prototype.hasOwnProperty;
-            t.exports = function(t, e) {
-                var r = n(t),
-                    c = !r && o(t),
-                    f = !r && !c && i(t),
-                    l = !r && !c && !f && u(t),
-                    d = r || c || f || l,
-                    h = d ? a(t.length, String) : [],
-                    _ = h.length;
-                for (var m in t)
-                    (!e && !p.call(t, m)) ||
-                        (d &&
-                            ("length" == m ||
-                                (f && ("offset" == m || "parent" == m)) ||
-                                (l &&
-                                    ("buffer" == m ||
-                                        "byteLength" == m ||
-                                        "byteOffset" == m)) ||
-                                s(m, _))) ||
-                        h.push(m);
-                return h;
-            };
-        },
-        902: function(t, e) {
-            t.exports = function(t, e) {
-                for (var r = -1, a = Array(t); ++r < t; ) a[r] = e(r);
-                return a;
-            };
-        },
-        903: function(t, e, r) {
-            var a = r(904),
-                o = r(439),
-                n = Object.prototype,
-                i = n.hasOwnProperty,
-                s = n.propertyIsEnumerable,
-                u = a(
-                    (function() {
-                        return arguments;
-                    })()
-                )
-                    ? a
-                    : function(t) {
-                          return (
-                              o(t) &&
-                              i.call(t, "callee") &&
-                              !s.call(t, "callee")
-                          );
-                      };
-            t.exports = u;
-        },
-        904: function(t, e, r) {
-            var a = r(438),
-                o = r(439),
-                n = "[object Arguments]";
-            t.exports = function(t) {
-                return o(t) && a(t) == n;
-            };
-        },
-        905: function(t, e, r) {
-            var a = r(548),
-                o = Object.prototype,
-                n = o.hasOwnProperty,
-                i = o.toString,
-                s = a ? a.toStringTag : void 0;
-            t.exports = function(t) {
-                var e = n.call(t, s),
-                    r = t[s];
-                try {
-                    t[s] = void 0;
-                    var a = !0;
-                } catch (t) {}
-                var o = i.call(t);
-                return a && (e ? (t[s] = r) : delete t[s]), o;
-            };
-        },
-        906: function(t, e) {
-            var r = Object.prototype.toString;
-            t.exports = function(t) {
-                return r.call(t);
-            };
-        },
-        907: function(t, e, r) {
-            (function(t) {
-                var a = r(549),
-                    o = r(908),
-                    n = "object" == typeof e && e && !e.nodeType && e,
-                    i = n && "object" == typeof t && t && !t.nodeType && t,
-                    s = i && i.exports === n ? a.Buffer : void 0,
-                    u = (s ? s.isBuffer : void 0) || o;
-                t.exports = u;
-            }.call(this, r(268)(t)));
-        },
-        908: function(t, e) {
-            t.exports = function() {
-                return !1;
-            };
-        },
-        909: function(t, e) {
-            var r = 9007199254740991,
-                a = /^(?:0|[1-9]\d*)$/;
-            t.exports = function(t, e) {
-                var o = typeof t;
-                return (
-                    !!(e = null == e ? r : e) &&
-                    ("number" == o || ("symbol" != o && a.test(t))) &&
-                    t > -1 &&
-                    t % 1 == 0 &&
-                    t < e
-                );
-            };
-        },
-        910: function(t, e, r) {
-            var a = r(911),
-                o = r(912),
-                n = r(913),
-                i = n && n.isTypedArray,
-                s = i ? o(i) : a;
-            t.exports = s;
-        },
-        911: function(t, e, r) {
-            var a = r(438),
-                o = r(552),
-                n = r(439),
-                i = {};
-            (i["[object Float32Array]"] = i["[object Float64Array]"] = i[
-                "[object Int8Array]"
-            ] = i["[object Int16Array]"] = i["[object Int32Array]"] = i[
-                "[object Uint8Array]"
-            ] = i["[object Uint8ClampedArray]"] = i["[object Uint16Array]"] = i[
-                "[object Uint32Array]"
-            ] = !0),
-                (i["[object Arguments]"] = i["[object Array]"] = i[
-                    "[object ArrayBuffer]"
-                ] = i["[object Boolean]"] = i["[object DataView]"] = i[
-                    "[object Date]"
-                ] = i["[object Error]"] = i["[object Function]"] = i[
-                    "[object Map]"
-                ] = i["[object Number]"] = i["[object Object]"] = i[
-                    "[object RegExp]"
-                ] = i["[object Set]"] = i["[object String]"] = i[
-                    "[object WeakMap]"
-                ] = !1),
-                (t.exports = function(t) {
-                    return n(t) && o(t.length) && !!i[a(t)];
-                });
-        },
-        912: function(t, e) {
-            t.exports = function(t) {
-                return function(e) {
-                    return t(e);
-                };
-            };
-        },
-        913: function(t, e, r) {
-            (function(t) {
-                var a = r(550),
-                    o = "object" == typeof e && e && !e.nodeType && e,
-                    n = o && "object" == typeof t && t && !t.nodeType && t,
-                    i = n && n.exports === o && a.process,
-                    s = (function() {
-                        try {
-                            var t = n && n.require && n.require("util").types;
-                            return t || (i && i.binding && i.binding("util"));
-                        } catch (t) {}
-                    })();
-                t.exports = s;
-            }.call(this, r(268)(t)));
-        },
-        914: function(t, e, r) {
-            var a = r(915),
-                o = r(916),
-                n = Object.prototype.hasOwnProperty;
-            t.exports = function(t) {
-                if (!a(t)) return o(t);
-                var e = [];
-                for (var r in Object(t))
-                    n.call(t, r) && "constructor" != r && e.push(r);
-                return e;
-            };
-        },
-        915: function(t, e) {
-            var r = Object.prototype;
-            t.exports = function(t) {
-                var e = t && t.constructor;
-                return t === (("function" == typeof e && e.prototype) || r);
-            };
-        },
-        916: function(t, e, r) {
-            var a = r(917)(Object.keys, Object);
-            t.exports = a;
-        },
-        917: function(t, e) {
-            t.exports = function(t, e) {
-                return function(r) {
-                    return t(e(r));
-                };
-            };
-        },
-        918: function(t, e, r) {
-            var a = r(438),
-                o = r(919),
-                n = "[object AsyncFunction]",
-                i = "[object Function]",
-                s = "[object GeneratorFunction]",
-                u = "[object Proxy]";
-            t.exports = function(t) {
-                if (!o(t)) return !1;
-                var e = a(t);
-                return e == i || e == s || e == n || e == u;
-            };
-        },
-        919: function(t, e) {
-            t.exports = function(t) {
-                var e = typeof t;
-                return null != t && ("object" == e || "function" == e);
-            };
-        },
-        920: function(t, e, r) {
-            var a = r(553);
-            t.exports = function(t, e) {
-                return function(r, o) {
-                    if (null == r) return r;
-                    if (!a(r)) return t(r, o);
-                    for (
-                        var n = r.length, i = e ? n : -1, s = Object(r);
-                        (e ? i-- : ++i < n) && !1 !== o(s[i], i, s);
-
-                    );
-                    return r;
-                };
-            };
-        },
-        921: function(t, e, r) {
-            var a = r(922);
-            t.exports = function(t) {
-                return "function" == typeof t ? t : a;
-            };
-        },
-        922: function(t, e) {
-            t.exports = function(t) {
-                return t;
-            };
-        },
-        923: function(t) {
-            t.exports = {
-                transport: "http",
-                websocket: "wss://gtg.steem.house:8090",
-                uri: "https://api.steemit.com",
-                url: "",
-                dev_uri: "https://api.steemitdev.com",
-                stage_uri: "https://api.steemitstage.com",
-                address_prefix: "STM",
-                chain_id:
-                    "0000000000000000000000000000000000000000000000000000000000000000"
-            };
-        },
-        924: function(t, e, r) {
-            "use strict";
-            Object.defineProperty(e, "__esModule", {value: !0}),
-                (e.default = [
-                    {
-                        api: "database_api",
-                        method: "set_subscribe_callback",
-                        params: ["callback", "clearFilter"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "set_pending_transaction_callback",
-                        params: ["cb"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "set_block_applied_callback",
-                        params: ["cb"]
-                    },
-                    {api: "database_api", method: "cancel_all_subscriptions"},
-                    {
-                        api: "database_api",
-                        method: "get_trending_tags",
-                        params: ["afterTag", "limit"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_tags_used_by_author",
-                        params: ["author"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_post_discussions_by_payout",
-                        params: ["query"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_comment_discussions_by_payout",
-                        params: ["query"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_discussions_by_trending",
-                        params: ["query"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_discussions_by_trending30",
-                        params: ["query"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_discussions_by_created",
-                        params: ["query"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_discussions_by_active",
-                        params: ["query"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_discussions_by_cashout",
-                        params: ["query"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_discussions_by_payout",
-                        params: ["query"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_discussions_by_votes",
-                        params: ["query"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_discussions_by_children",
-                        params: ["query"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_discussions_by_hot",
-                        params: ["query"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_discussions_by_feed",
-                        params: ["query"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_discussions_by_blog",
-                        params: ["query"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_discussions_by_comments",
-                        params: ["query"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_discussions_by_promoted",
-                        params: ["query"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_block_header",
-                        params: ["blockNum"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_block",
-                        params: ["blockNum"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_ops_in_block",
-                        params: ["blockNum", "onlyVirtual"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_state",
-                        params: ["path"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_trending_categories",
-                        params: ["after", "limit"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_best_categories",
-                        params: ["after", "limit"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_active_categories",
-                        params: ["after", "limit"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_recent_categories",
-                        params: ["after", "limit"]
-                    },
-                    {api: "database_api", method: "get_config"},
-                    {
-                        api: "database_api",
-                        method: "get_dynamic_global_properties"
-                    },
-                    {api: "database_api", method: "get_chain_properties"},
-                    {api: "database_api", method: "get_feed_history"},
-                    {
-                        api: "database_api",
-                        method: "get_current_median_history_price"
-                    },
-                    {api: "database_api", method: "get_witness_schedule"},
-                    {api: "database_api", method: "get_hardfork_version"},
-                    {
-                        api: "database_api",
-                        method: "get_next_scheduled_hardfork"
-                    },
-                    {
-                        api: "account_by_key_api",
-                        method: "get_key_references",
-                        params: ["key"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_accounts",
-                        params: ["names"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_account_references",
-                        params: ["accountId"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "lookup_account_names",
-                        params: ["accountNames"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "lookup_accounts",
-                        params: ["lowerBoundName", "limit"]
-                    },
-                    {api: "database_api", method: "get_account_count"},
-                    {
-                        api: "database_api",
-                        method: "get_conversion_requests",
-                        params: ["accountName"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_account_history",
-                        params: ["account", "from", "limit"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_owner_history",
-                        params: ["account"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_recovery_request",
-                        params: ["account"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_escrow",
-                        params: ["from", "escrowId"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_withdraw_routes",
-                        params: ["account", "withdrawRouteType"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_account_bandwidth",
-                        params: ["account", "bandwidthType"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_savings_withdraw_from",
-                        params: ["account"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_savings_withdraw_to",
-                        params: ["account"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_order_book",
-                        params: ["limit"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_open_orders",
-                        params: ["owner"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_liquidity_queue",
-                        params: ["startAccount", "limit"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_transaction_hex",
-                        params: ["trx"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_transaction",
-                        params: ["trxId"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_required_signatures",
-                        params: ["trx", "availableKeys"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_potential_signatures",
-                        params: ["trx"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "verify_authority",
-                        params: ["trx"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "verify_account_authority",
-                        params: ["nameOrId", "signers"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_active_votes",
-                        params: ["author", "permlink"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_account_votes",
-                        params: ["voter"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_content",
-                        params: ["author", "permlink"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_content_replies",
-                        params: ["author", "permlink"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_discussions_by_author_before_date",
-                        params: [
-                            "author",
-                            "startPermlink",
-                            "beforeDate",
-                            "limit"
-                        ]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_replies_by_last_update",
-                        params: ["startAuthor", "startPermlink", "limit"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_witnesses",
-                        params: ["witnessIds"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_witness_by_account",
-                        params: ["accountName"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_witnesses_by_vote",
-                        params: ["from", "limit"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "lookup_witness_accounts",
-                        params: ["lowerBoundName", "limit"]
-                    },
-                    {api: "database_api", method: "get_witness_count"},
-                    {api: "database_api", method: "get_active_witnesses"},
-                    {api: "database_api", method: "get_miner_queue"},
-                    {
-                        api: "database_api",
-                        method: "get_reward_fund",
-                        params: ["name"]
-                    },
-                    {
-                        api: "database_api",
-                        method: "get_vesting_delegations",
-                        params: ["account", "from", "limit"]
-                    },
-                    {
-                        api: "login_api",
-                        method: "login",
-                        params: ["username", "password"]
-                    },
-                    {
-                        api: "login_api",
-                        method: "get_api_by_name",
-                        params: ["database_api"]
-                    },
-                    {api: "login_api", method: "get_version"},
-                    {
-                        api: "follow_api",
-                        method: "get_followers",
-                        params: [
-                            "following",
-                            "startFollower",
-                            "followType",
-                            "limit"
-                        ]
-                    },
-                    {
-                        api: "follow_api",
-                        method: "get_following",
-                        params: [
-                            "follower",
-                            "startFollowing",
-                            "followType",
-                            "limit"
-                        ]
-                    },
-                    {
-                        api: "follow_api",
-                        method: "get_follow_count",
-                        params: ["account"]
-                    },
-                    {
-                        api: "follow_api",
-                        method: "get_feed_entries",
-                        params: ["account", "entryId", "limit"]
-                    },
-                    {
-                        api: "follow_api",
-                        method: "get_feed",
-                        params: ["account", "entryId", "limit"]
-                    },
-                    {
-                        api: "follow_api",
-                        method: "get_blog_entries",
-                        params: ["account", "entryId", "limit"]
-                    },
-                    {
-                        api: "follow_api",
-                        method: "get_blog",
-                        params: ["account", "entryId", "limit"]
-                    },
-                    {
-                        api: "follow_api",
-                        method: "get_account_reputations",
-                        params: ["lowerBoundName", "limit"]
-                    },
-                    {
-                        api: "follow_api",
-                        method: "get_reblogged_by",
-                        params: ["author", "permlink"]
-                    },
-                    {
-                        api: "follow_api",
-                        method: "get_blog_authors",
-                        params: ["blogAccount"]
-                    },
-                    {
-                        api: "network_broadcast_api",
-                        method: "broadcast_transaction",
-                        params: ["trx"]
-                    },
-                    {
-                        api: "network_broadcast_api",
-                        method: "broadcast_transaction_with_callback",
-                        params: ["confirmationCallback", "trx"]
-                    },
-                    {
-                        api: "network_broadcast_api",
-                        method: "broadcast_transaction_synchronous",
-                        params: ["trx"]
-                    },
-                    {
-                        api: "network_broadcast_api",
-                        method: "broadcast_block",
-                        params: ["b"]
-                    },
-                    {
-                        api: "network_broadcast_api",
-                        method: "set_max_block_age",
-                        params: ["maxBlockAge"]
-                    },
-                    {
-                        api: "market_history_api",
-                        method: "get_ticker",
-                        params: []
-                    },
-                    {
-                        api: "market_history_api",
-                        method: "get_volume",
-                        params: []
-                    },
-                    {
-                        api: "market_history_api",
-                        method: "get_order_book",
-                        method_name: "getMarketOrderBook",
-                        params: ["limit"]
-                    },
-                    {
-                        api: "market_history_api",
-                        method: "get_trade_history",
-                        params: ["start", "end", "limit"]
-                    },
-                    {
-                        api: "market_history_api",
-                        method: "get_recent_trades",
-                        params: ["limit"]
-                    },
-                    {
-                        api: "market_history_api",
-                        method: "get_market_history",
-                        params: ["bucket_seconds", "start", "end"]
-                    },
-                    {
-                        api: "market_history_api",
-                        method: "get_market_history_buckets",
-                        params: []
-                    }
-                ]);
-        },
-        925: function(t, e, r) {
-            "use strict";
-            Object.defineProperty(e, "__esModule", {value: !0});
-            var a = n(r(554)),
-                o = n(r(927));
-            function n(t) {
-                return t && t.__esModule ? t : {default: t};
-            }
-            e.default = {http: a.default, ws: o.default};
-        },
-        926: function(t, e) {
-            var r = {};
-            !(function(t) {
-                "use strict";
-                if (!t.fetch) {
-                    var e = {
-                        searchParams: "URLSearchParams" in t,
-                        iterable: "Symbol" in t && "iterator" in Symbol,
-                        blob:
-                            "FileReader" in t &&
-                            "Blob" in t &&
-                            (function() {
-                                try {
-                                    return new Blob(), !0;
-                                } catch (t) {
-                                    return !1;
-                                }
-                            })(),
-                        formData: "FormData" in t,
-                        arrayBuffer: "ArrayBuffer" in t
-                    };
-                    if (e.arrayBuffer)
-                        var r = [
-                                "[object Int8Array]",
-                                "[object Uint8Array]",
-                                "[object Uint8ClampedArray]",
-                                "[object Int16Array]",
-                                "[object Uint16Array]",
-                                "[object Int32Array]",
-                                "[object Uint32Array]",
-                                "[object Float32Array]",
-                                "[object Float64Array]"
-                            ],
-                            a = function(t) {
-                                return t && DataView.prototype.isPrototypeOf(t);
-                            },
-                            o =
-                                ArrayBuffer.isView ||
-                                function(t) {
-                                    return (
-                                        t &&
-                                        r.indexOf(
-                                            Object.prototype.toString.call(t)
-                                        ) > -1
-                                    );
-                                };
-                    (c.prototype.append = function(t, e) {
-                        (t = s(t)), (e = u(e));
-                        var r = this.map[t];
-                        this.map[t] = r ? r + "," + e : e;
-                    }),
-                        (c.prototype.delete = function(t) {
-                            delete this.map[s(t)];
-                        }),
-                        (c.prototype.get = function(t) {
-                            return (t = s(t)), this.has(t) ? this.map[t] : null;
-                        }),
-                        (c.prototype.has = function(t) {
-                            return this.map.hasOwnProperty(s(t));
-                        }),
-                        (c.prototype.set = function(t, e) {
-                            this.map[s(t)] = u(e);
-                        }),
-                        (c.prototype.forEach = function(t, e) {
-                            for (var r in this.map)
-                                this.map.hasOwnProperty(r) &&
-                                    t.call(e, this.map[r], r, this);
-                        }),
-                        (c.prototype.keys = function() {
-                            var t = [];
-                            return (
-                                this.forEach(function(e, r) {
-                                    t.push(r);
-                                }),
-                                p(t)
-                            );
-                        }),
-                        (c.prototype.values = function() {
-                            var t = [];
-                            return (
-                                this.forEach(function(e) {
-                                    t.push(e);
-                                }),
-                                p(t)
-                            );
-                        }),
-                        (c.prototype.entries = function() {
-                            var t = [];
-                            return (
-                                this.forEach(function(e, r) {
-                                    t.push([r, e]);
-                                }),
-                                p(t)
-                            );
-                        }),
-                        e.iterable &&
-                            (c.prototype[Symbol.iterator] =
-                                c.prototype.entries);
-                    var n = ["DELETE", "GET", "HEAD", "OPTIONS", "POST", "PUT"];
-                    (m.prototype.clone = function() {
-                        return new m(this, {body: this._bodyInit});
-                    }),
-                        _.call(m.prototype),
-                        _.call(y.prototype),
-                        (y.prototype.clone = function() {
-                            return new y(this._bodyInit, {
-                                status: this.status,
-                                statusText: this.statusText,
-                                headers: new c(this.headers),
-                                url: this.url
-                            });
-                        }),
-                        (y.error = function() {
-                            var t = new y(null, {status: 0, statusText: ""});
-                            return (t.type = "error"), t;
-                        });
-                    var i = [301, 302, 303, 307, 308];
-                    (y.redirect = function(t, e) {
-                        if (-1 === i.indexOf(e))
-                            throw new RangeError("Invalid status code");
-                        return new y(null, {status: e, headers: {location: t}});
-                    }),
-                        (t.Headers = c),
-                        (t.Request = m),
-                        (t.Response = y),
-                        (t.fetch = function(t, r) {
-                            return new Promise(function(a, o) {
-                                var n = new m(t, r),
-                                    i = new XMLHttpRequest();
-                                (i.onload = function() {
-                                    var t = {
-                                        status: i.status,
-                                        statusText: i.statusText,
-                                        headers: (function(t) {
-                                            var e = new c();
-                                            return (
-                                                t
-                                                    .split(/\r?\n/)
-                                                    .forEach(function(t) {
-                                                        var r = t.split(":"),
-                                                            a = r
-                                                                .shift()
-                                                                .trim();
-                                                        if (a) {
-                                                            var o = r
-                                                                .join(":")
-                                                                .trim();
-                                                            e.append(a, o);
-                                                        }
-                                                    }),
-                                                e
-                                            );
-                                        })(i.getAllResponseHeaders() || "")
-                                    };
-                                    t.url =
-                                        "responseURL" in i
-                                            ? i.responseURL
-                                            : t.headers.get("X-Request-URL");
-                                    var e =
-                                        "response" in i
-                                            ? i.response
-                                            : i.responseText;
-                                    a(new y(e, t));
-                                }),
-                                    (i.onerror = function() {
-                                        o(
-                                            new TypeError(
-                                                "Network request failed"
-                                            )
-                                        );
-                                    }),
-                                    (i.ontimeout = function() {
-                                        o(
-                                            new TypeError(
-                                                "Network request failed"
-                                            )
-                                        );
-                                    }),
-                                    i.open(n.method, n.url, !0),
-                                    "include" === n.credentials &&
-                                        (i.withCredentials = !0),
-                                    "responseType" in i &&
-                                        e.blob &&
-                                        (i.responseType = "blob"),
-                                    n.headers.forEach(function(t, e) {
-                                        i.setRequestHeader(e, t);
-                                    }),
-                                    i.send(
-                                        void 0 === n._bodyInit
-                                            ? null
-                                            : n._bodyInit
-                                    );
-                            });
-                        }),
-                        (t.fetch.polyfill = !0);
-                }
-                function s(t) {
-                    if (
-                        ("string" != typeof t && (t = String(t)),
-                        /[^a-z0-9\-#$%&'*+.\^_`|~]/i.test(t))
-                    )
-                        throw new TypeError(
-                            "Invalid character in header field name"
-                        );
-                    return t.toLowerCase();
-                }
-                function u(t) {
-                    return "string" != typeof t && (t = String(t)), t;
-                }
-                function p(t) {
-                    var r = {
-                        next: function() {
-                            var e = t.shift();
-                            return {done: void 0 === e, value: e};
-                        }
-                    };
-                    return (
-                        e.iterable &&
-                            (r[Symbol.iterator] = function() {
-                                return r;
-                            }),
-                        r
-                    );
-                }
-                function c(t) {
-                    (this.map = {}),
-                        t instanceof c
-                            ? t.forEach(function(t, e) {
-                                  this.append(e, t);
-                              }, this)
-                            : Array.isArray(t)
-                                ? t.forEach(function(t) {
-                                      this.append(t[0], t[1]);
-                                  }, this)
-                                : t &&
-                                  Object.getOwnPropertyNames(t).forEach(
-                                      function(e) {
-                                          this.append(e, t[e]);
-                                      },
-                                      this
-                                  );
-                }
-                function f(t) {
-                    if (t.bodyUsed)
-                        return Promise.reject(new TypeError("Already read"));
-                    t.bodyUsed = !0;
-                }
-                function l(t) {
-                    return new Promise(function(e, r) {
-                        (t.onload = function() {
-                            e(t.result);
-                        }),
-                            (t.onerror = function() {
-                                r(t.error);
-                            });
-                    });
-                }
-                function d(t) {
-                    var e = new FileReader(),
-                        r = l(e);
-                    return e.readAsArrayBuffer(t), r;
-                }
-                function h(t) {
-                    if (t.slice) return t.slice(0);
-                    var e = new Uint8Array(t.byteLength);
-                    return e.set(new Uint8Array(t)), e.buffer;
-                }
-                function _() {
-                    return (
-                        (this.bodyUsed = !1),
-                        (this._initBody = function(t) {
-                            if (((this._bodyInit = t), t))
-                                if ("string" == typeof t) this._bodyText = t;
-                                else if (
-                                    e.blob &&
-                                    Blob.prototype.isPrototypeOf(t)
-                                )
-                                    this._bodyBlob = t;
-                                else if (
-                                    e.formData &&
-                                    FormData.prototype.isPrototypeOf(t)
-                                )
-                                    this._bodyFormData = t;
-                                else if (
-                                    e.searchParams &&
-                                    URLSearchParams.prototype.isPrototypeOf(t)
-                                )
-                                    this._bodyText = t.toString();
-                                else if (e.arrayBuffer && e.blob && a(t))
-                                    (this._bodyArrayBuffer = h(t.buffer)),
-                                        (this._bodyInit = new Blob([
-                                            this._bodyArrayBuffer
-                                        ]));
-                                else {
-                                    if (
-                                        !e.arrayBuffer ||
-                                        (!ArrayBuffer.prototype.isPrototypeOf(
-                                            t
-                                        ) &&
-                                            !o(t))
-                                    )
-                                        throw new Error(
-                                            "unsupported BodyInit type"
-                                        );
-                                    this._bodyArrayBuffer = h(t);
-                                }
-                            else this._bodyText = "";
-                            this.headers.get("content-type") ||
-                                ("string" == typeof t
-                                    ? this.headers.set(
-                                          "content-type",
-                                          "text/plain;charset=UTF-8"
-                                      )
-                                    : this._bodyBlob && this._bodyBlob.type
-                                        ? this.headers.set(
-                                              "content-type",
-                                              this._bodyBlob.type
-                                          )
-                                        : e.searchParams &&
-                                          URLSearchParams.prototype.isPrototypeOf(
-                                              t
-                                          ) &&
-                                          this.headers.set(
-                                              "content-type",
-                                              "application/x-www-form-urlencoded;charset=UTF-8"
-                                          ));
-                        }),
-                        e.blob &&
-                            ((this.blob = function() {
-                                var t = f(this);
-                                if (t) return t;
-                                if (this._bodyBlob)
-                                    return Promise.resolve(this._bodyBlob);
-                                if (this._bodyArrayBuffer)
-                                    return Promise.resolve(
-                                        new Blob([this._bodyArrayBuffer])
-                                    );
-                                if (this._bodyFormData)
-                                    throw new Error(
-                                        "could not read FormData body as blob"
-                                    );
-                                return Promise.resolve(
-                                    new Blob([this._bodyText])
-                                );
-                            }),
-                            (this.arrayBuffer = function() {
-                                return this._bodyArrayBuffer
-                                    ? f(this) ||
-                                          Promise.resolve(this._bodyArrayBuffer)
-                                    : this.blob().then(d);
-                            })),
-                        (this.text = function() {
-                            var t = f(this);
-                            if (t) return t;
-                            if (this._bodyBlob)
-                                return (function(t) {
-                                    var e = new FileReader(),
-                                        r = l(e);
-                                    return e.readAsText(t), r;
-                                })(this._bodyBlob);
-                            if (this._bodyArrayBuffer)
-                                return Promise.resolve(
-                                    (function(t) {
-                                        for (
-                                            var e = new Uint8Array(t),
-                                                r = new Array(e.length),
-                                                a = 0;
-                                            a < e.length;
-                                            a++
-                                        )
-                                            r[a] = String.fromCharCode(e[a]);
-                                        return r.join("");
-                                    })(this._bodyArrayBuffer)
-                                );
-                            if (this._bodyFormData)
-                                throw new Error(
-                                    "could not read FormData body as text"
-                                );
-                            return Promise.resolve(this._bodyText);
-                        }),
-                        e.formData &&
-                            (this.formData = function() {
-                                return this.text().then(b);
-                            }),
-                        (this.json = function() {
-                            return this.text().then(JSON.parse);
-                        }),
-                        this
-                    );
-                }
-                function m(t, e) {
-                    var r = (e = e || {}).body;
-                    if (t instanceof m) {
-                        if (t.bodyUsed) throw new TypeError("Already read");
-                        (this.url = t.url),
-                            (this.credentials = t.credentials),
-                            e.headers || (this.headers = new c(t.headers)),
-                            (this.method = t.method),
-                            (this.mode = t.mode),
-                            r ||
-                                null == t._bodyInit ||
-                                ((r = t._bodyInit), (t.bodyUsed = !0));
-                    } else this.url = String(t);
-                    if (
-                        ((this.credentials =
-                            e.credentials || this.credentials || "omit"),
-                        (!e.headers && this.headers) ||
-                            (this.headers = new c(e.headers)),
-                        (this.method = (function(t) {
-                            var e = t.toUpperCase();
-                            return n.indexOf(e) > -1 ? e : t;
-                        })(e.method || this.method || "GET")),
-                        (this.mode = e.mode || this.mode || null),
-                        (this.referrer = null),
-                        ("GET" === this.method || "HEAD" === this.method) && r)
-                    )
-                        throw new TypeError(
-                            "Body not allowed for GET or HEAD requests"
-                        );
-                    this._initBody(r);
-                }
-                function b(t) {
-                    var e = new FormData();
-                    return (
                         t
-                            .trim()
-                            .split("&")
-                            .forEach(function(t) {
-                                if (t) {
-                                    var r = t.split("="),
-                                        a = r.shift().replace(/\+/g, " "),
-                                        o = r.join("=").replace(/\+/g, " ");
-                                    e.append(
-                                        decodeURIComponent(a),
-                                        decodeURIComponent(o)
-                                    );
-                                }
-                            }),
-                        e
                     );
-                }
-                function y(t, e) {
-                    e || (e = {}),
-                        (this.type = "default"),
-                        (this.status = "status" in e ? e.status : 200),
-                        (this.ok = this.status >= 200 && this.status < 300),
-                        (this.statusText =
-                            "statusText" in e ? e.statusText : "OK"),
-                        (this.headers = new c(e.headers)),
-                        (this.url = e.url || ""),
-                        this._initBody(t);
-                }
-            })(void 0 !== r ? r : this);
-            var a = r.fetch;
-            (a.fetch = a),
-                (a.Response = r.Response),
-                (a.Headers = r.Headers),
-                (a.Request = r.Request),
-                (t.exports = a);
-        },
-        927: function(t, e, r) {
-            "use strict";
-            Object.defineProperty(e, "__esModule", {value: !0});
-            var a = (function() {
-                    function t(t, e) {
-                        for (var r = 0; r < e.length; r++) {
-                            var a = e[r];
-                            (a.enumerable = a.enumerable || !1),
-                                (a.configurable = !0),
-                                "value" in a && (a.writable = !0),
-                                Object.defineProperty(t, a.key, a);
-                        }
-                    }
-                    return function(e, r, a) {
-                        return r && t(e.prototype, r), a && t(e, a), e;
-                    };
                 })(),
-                o = s(r(928)),
-                n = s(r(444)),
-                i = s(r(555));
-            function s(t) {
-                return t && t.__esModule ? t : {default: t};
-            }
-            var u = void 0;
-            if (o.default) u = r(929);
-            else {
-                if ("undefined" == typeof window)
-                    throw new Error("Couldn't decide on a `WebSocket` class");
-                u = window.WebSocket;
-            }
-            var p = (0, n.default)("steem:ws"),
-                c = (function(t) {
-                    function e() {
-                        var t =
-                            arguments.length > 0 && void 0 !== arguments[0]
-                                ? arguments[0]
-                                : {};
-                        !(function(t, e) {
-                            if (!(t instanceof e))
-                                throw new TypeError(
-                                    "Cannot call a class as a function"
-                                );
-                        })(this, e);
-                        var r = (function(t, e) {
-                            if (!t)
-                                throw new ReferenceError(
-                                    "this hasn't been initialised - super() hasn't been called"
-                                );
-                            return !e ||
-                                ("object" != typeof e && "function" != typeof e)
-                                ? t
-                                : e;
-                        })(
-                            this,
-                            (e.__proto__ || Object.getPrototypeOf(e)).call(
+                y = (function(e) {
+                    function t(e) {
+                        return (
+                            b(this, t),
+                            f(
                                 this,
-                                Object.assign({id: 0}, t)
+                                (t.__proto__ || Object.getPrototypeOf(t)).call(
+                                    this,
+                                    e
+                                )
                             )
                         );
+                    }
+                    return (
+                        _(t, g),
+                        h(t, [
+                            {
+                                key: "shouldComponentUpdate",
+                                value: function(e) {
+                                    return (function e(t, a, n) {
+                                        null === t && (t = Function.prototype);
+                                        var r = Object.getOwnPropertyDescriptor(
+                                            t,
+                                            a
+                                        );
+                                        if (void 0 === r) {
+                                            var s = Object.getPrototypeOf(t);
+                                            return null === s
+                                                ? void 0
+                                                : e(s, a, n);
+                                        }
+                                        if ("value" in r) return r.value;
+                                        var o = r.get;
+                                        return void 0 !== o
+                                            ? o.call(n)
+                                            : void 0;
+                                    })(
+                                        t.prototype.__proto__ ||
+                                            Object.getPrototypeOf(t.prototype),
+                                        "shouldComponentUpdate",
+                                        this
+                                    ).call(this, e);
+                                }
+                            },
+                            {
+                                key: "render",
+                                value: function() {
+                                    var e = this.props.allMarketStats,
+                                        t = this.state.marketName,
+                                        a = e.get(t),
+                                        n = a && a.price ? a.price : null;
+                                    return r.a.createElement(
+                                        "span",
+                                        {
+                                            className: i()(
+                                                "",
+                                                this.props.className
+                                            )
+                                        },
+                                        n
+                                            ? r.a.createElement(m.a, {
+                                                  base_amount: n.base.amount,
+                                                  base_asset: n.base.asset_id,
+                                                  quote_amount: n.quote.amount,
+                                                  quote_asset: n.quote.asset_id,
+                                                  force_direction: this.props
+                                                      .force_direction,
+                                                  hide_symbols: this.props
+                                                      .hide_symbols
+                                              })
+                                            : "n/a"
+                                    );
+                                }
+                            }
+                        ]),
+                        t
+                    );
+                })();
+            y = Object(s.a)(y, {propNames: ["quote", "base"]});
+            var v = (function(e) {
+                function t() {
+                    return (
+                        b(this, t),
+                        f(
+                            this,
+                            (t.__proto__ || Object.getPrototypeOf(t)).apply(
+                                this,
+                                arguments
+                            )
+                        )
+                    );
+                }
+                return (
+                    _(t, r.a.Component),
+                    h(t, [
+                        {
+                            key: "render",
+                            value: function() {
+                                return r.a.createElement(y, this.props);
+                            }
+                        }
+                    ]),
+                    t
+                );
+            })();
+            v = Object(u.connect)(v, {
+                listenTo: function() {
+                    return [c.a];
+                },
+                getProps: function() {
+                    return {allMarketStats: c.a.getState().allMarketStats};
+                }
+            });
+        },
+        334: function(e, t, a) {
+            "use strict";
+            var n = a(0),
+                r = a.n(n),
+                s = a(2),
+                o = a.n(s),
+                i = a(11),
+                l = a(3),
+                c = a.n(l),
+                u = a(54),
+                p = a.n(u),
+                m = a(5),
+                d = a(1),
+                h = a.n(d),
+                b = a(22),
+                f = a(279),
+                _ = a.n(f),
+                g = a(111),
+                y = (function() {
+                    function e(e, t) {
+                        for (var a = 0; a < t.length; a++) {
+                            var n = t[a];
+                            (n.enumerable = n.enumerable || !1),
+                                (n.configurable = !0),
+                                "value" in n && (n.writable = !0),
+                                Object.defineProperty(e, n.key, n);
+                        }
+                    }
+                    return function(t, a, n) {
+                        return a && e(t.prototype, a), n && e(t, n), t;
+                    };
+                })();
+            function v(e, t) {
+                if (!(e instanceof t))
+                    throw new TypeError("Cannot call a class as a function");
+            }
+            function E(e, t) {
+                if (!e)
+                    throw new ReferenceError(
+                        "this hasn't been initialised - super() hasn't been called"
+                    );
+                return !t || ("object" != typeof t && "function" != typeof t)
+                    ? e
+                    : t;
+            }
+            function w(e, t) {
+                if ("function" != typeof t && null !== t)
+                    throw new TypeError(
+                        "Super expression must either be null or a function, not " +
+                            typeof t
+                    );
+                (e.prototype = Object.create(t && t.prototype, {
+                    constructor: {
+                        value: e,
+                        enumerable: !1,
+                        writable: !0,
+                        configurable: !0
+                    }
+                })),
+                    t &&
+                        (Object.setPrototypeOf
+                            ? Object.setPrototypeOf(e, t)
+                            : (e.__proto__ = t));
+            }
+            (function(e) {
+                function t() {
+                    return (
+                        v(this, t),
+                        E(
+                            this,
+                            (t.__proto__ || Object.getPrototypeOf(t)).apply(
+                                this,
+                                arguments
+                            )
+                        )
+                    );
+                }
+                return (
+                    w(t, r.a.Component),
+                    y(t, [
+                        {
+                            key: "render",
+                            value: function() {
+                                var e = this.props,
+                                    t = e.baseSymbol,
+                                    a = e.quoteSymbol;
+                                return r.a.createElement(
+                                    "thead",
+                                    null,
+                                    r.a.createElement(
+                                        "tr",
+                                        null,
+                                        r.a.createElement(
+                                            "th",
+                                            {style: {textAlign: "right"}},
+                                            r.a.createElement(h.a, {
+                                                content: "exchange.price"
+                                            }),
+                                            r.a.createElement("br", null),
+                                            t
+                                                ? r.a.createElement(
+                                                      "span",
+                                                      {
+                                                          className:
+                                                              "header-sub-title"
+                                                      },
+                                                      "(",
+                                                      r.a.createElement(b.a, {
+                                                          name: t
+                                                      }),
+                                                      "/",
+                                                      r.a.createElement(b.a, {
+                                                          name: a
+                                                      }),
+                                                      ")"
+                                                  )
+                                                : null
+                                        ),
+                                        r.a.createElement(
+                                            "th",
+                                            {style: {textAlign: "right"}},
+                                            r.a.createElement(h.a, {
+                                                content: "transfer.amount"
+                                            }),
+                                            r.a.createElement("br", null),
+                                            a
+                                                ? r.a.createElement(
+                                                      "span",
+                                                      {
+                                                          className:
+                                                              "header-sub-title"
+                                                      },
+                                                      "(",
+                                                      r.a.createElement(b.a, {
+                                                          name: a
+                                                      }),
+                                                      ")"
+                                                  )
+                                                : null
+                                        ),
+                                        r.a.createElement(
+                                            "th",
+                                            {style: {textAlign: "right"}},
+                                            r.a.createElement(h.a, {
+                                                content:
+                                                    "transaction.settlement_date"
+                                            }),
+                                            r.a.createElement("br", null),
+                                            r.a.createElement(
+                                                "span",
+                                                {
+                                                    style: {
+                                                        visibility: "hidden"
+                                                    },
+                                                    className:
+                                                        "header-sub-title"
+                                                },
+                                                "d"
+                                            )
+                                        )
+                                    )
+                                );
+                            }
+                        }
+                    ]),
+                    t
+                );
+            })().defaultProps = {quoteSymbol: null, baseSymbol: null};
+            var k = (function(e) {
+                function t() {
+                    return (
+                        v(this, t),
+                        E(
+                            this,
+                            (t.__proto__ || Object.getPrototypeOf(t)).apply(
+                                this,
+                                arguments
+                            )
+                        )
+                    );
+                }
+                return (
+                    w(t, r.a.Component),
+                    y(t, [
+                        {
+                            key: "render",
+                            value: function() {
+                                var e = this.props,
+                                    t = e.base,
+                                    a = e.quote,
+                                    n = e.order,
+                                    s = e.showSymbols,
+                                    o =
+                                        "1.3.0" == t.get("id")
+                                            ? n.getPrice() /
+                                              (1 + n.offset_percent / 1e4)
+                                            : n.getPrice() *
+                                              (1 + n.offset_percent / 1e4),
+                                    i = s ? " " + a.get("symbol") : null;
+                                return r.a.createElement(
+                                    "tr",
+                                    {style: {paddingRight: 5}},
+                                    r.a.createElement(
+                                        "td",
+                                        {
+                                            style: {
+                                                textAlign: "right",
+                                                width: "25%"
+                                            }
+                                        },
+                                        m.a.format_number(
+                                            o,
+                                            a.get("precision")
+                                        ),
+                                        " ",
+                                        i
+                                    ),
+                                    r.a.createElement(
+                                        "td",
+                                        {
+                                            style: {
+                                                textAlign: "right",
+                                                width: "25%"
+                                            }
+                                        },
+                                        m.a.format_number(
+                                            n[
+                                                n.isBid()
+                                                    ? "amountToReceive"
+                                                    : "amountForSale"
+                                            ]().getAmount({real: !0}),
+                                            a.get("precision")
+                                        )
+                                    ),
+                                    r.a.createElement(
+                                        "td",
+                                        {
+                                            style: {
+                                                textAlign: "right",
+                                                width: "25%"
+                                            }
+                                        },
+                                        m.a.format_number(
+                                            n[
+                                                n.isBid()
+                                                    ? "amountForSale"
+                                                    : "amountToReceive"
+                                            ]().getAmount({real: !0}),
+                                            t.get("precision")
+                                        )
+                                    ),
+                                    r.a.createElement(
+                                        "td",
+                                        {
+                                            style: {
+                                                textAlign: "right",
+                                                width: "25%"
+                                            },
+                                            className: "tooltip",
+                                            "data-tip": new Date(
+                                                n.settlement_date
+                                            )
+                                        },
+                                        c.a.localize(
+                                            new Date(n.settlement_date),
+                                            {
+                                                type: "date",
+                                                format:
+                                                    -1 !==
+                                                    _()()
+                                                        .toLowerCase()
+                                                        .indexOf("en-us")
+                                                        ? "market_history_us"
+                                                        : "market_history"
+                                            }
+                                        )
+                                    )
+                                );
+                            }
+                        }
+                    ]),
+                    t
+                );
+            })();
+            k.defaultProps = {showSymbols: !1, invert: !1};
+            var C = (function(e) {
+                function t() {
+                    return (
+                        v(this, t),
+                        E(
+                            this,
+                            (t.__proto__ || Object.getPrototypeOf(t)).apply(
+                                this,
+                                arguments
+                            )
+                        )
+                    );
+                }
+                return (
+                    w(t, r.a.Component),
+                    y(t, [
+                        {
+                            key: "shouldComponentUpdate",
+                            value: function(e) {
+                                return (
+                                    e.currentAccount !==
+                                        this.props.currentAccount ||
+                                    e.orders !== this.props.orders
+                                );
+                            }
+                        },
+                        {
+                            key: "render",
+                            value: function() {
+                                var e = this.props,
+                                    t = e.orders,
+                                    a = e.base,
+                                    n = e.quote,
+                                    s = null;
+                                if (!(t.size > 0 && a && n)) return null;
+                                var o = 0;
+                                return (
+                                    (s = t
+                                        .sort(function(e, t) {
+                                            return e.isBefore(t) ? -1 : 1;
+                                        })
+                                        .map(function(e) {
+                                            return Date.now() <
+                                                e.settlement_date
+                                                ? r.a.createElement(k, {
+                                                      key: o++,
+                                                      order: e,
+                                                      base: a,
+                                                      quote: n
+                                                  })
+                                                : null;
+                                        })
+                                        .toArray()),
+                                    r.a.createElement(
+                                        g.a,
+                                        {
+                                            component: "tbody",
+                                            transitionName: "newrow"
+                                        },
+                                        s
+                                    )
+                                );
+                            }
+                        }
+                    ]),
+                    t
+                );
+            })();
+            (C.defaultProps = {
+                base: {},
+                quote: {},
+                orders: {},
+                quoteSymbol: "",
+                baseSymbol: ""
+            }),
+                (C.propTypes = {
+                    base: o.a.object.isRequired,
+                    quote: o.a.object.isRequired,
+                    orders: o.a.object.isRequired,
+                    quoteSymbol: o.a.string.isRequired,
+                    baseSymbol: o.a.string.isRequired
+                });
+            var A = C,
+                N = a(150),
+                O = a(10),
+                S = a(9),
+                P = a.n(S),
+                j = a(12),
+                x = a(4),
+                T = a(18),
+                q = a(138),
+                D = a(333),
+                I = a(65),
+                F = a(47),
+                B = a.n(F);
+            a.d(t, "b", function() {
+                return J;
+            }),
+                a.d(t, "c", function() {
+                    return W;
+                }),
+                a.d(t, "a", function() {
+                    return H;
+                });
+            var R = (function() {
+                function e(e, t) {
+                    for (var a = 0; a < t.length; a++) {
+                        var n = t[a];
+                        (n.enumerable = n.enumerable || !1),
+                            (n.configurable = !0),
+                            "value" in n && (n.writable = !0),
+                            Object.defineProperty(e, n.key, n);
+                    }
+                }
+                return function(t, a, n) {
+                    return a && e(t.prototype, a), n && e(t, n), t;
+                };
+            })();
+            function L(e, t, a) {
+                return (
+                    t in e
+                        ? Object.defineProperty(e, t, {
+                              value: a,
+                              enumerable: !0,
+                              configurable: !0,
+                              writable: !0
+                          })
+                        : (e[t] = a),
+                    e
+                );
+            }
+            function M(e, t) {
+                if (!(e instanceof t))
+                    throw new TypeError("Cannot call a class as a function");
+            }
+            function z(e, t) {
+                if (!e)
+                    throw new ReferenceError(
+                        "this hasn't been initialised - super() hasn't been called"
+                    );
+                return !t || ("object" != typeof t && "function" != typeof t)
+                    ? e
+                    : t;
+            }
+            function U(e, t) {
+                if ("function" != typeof t && null !== t)
+                    throw new TypeError(
+                        "Super expression must either be null or a function, not " +
+                            typeof t
+                    );
+                (e.prototype = Object.create(t && t.prototype, {
+                    constructor: {
+                        value: e,
+                        enumerable: !1,
+                        writable: !0,
+                        configurable: !0
+                    }
+                })),
+                    t &&
+                        (Object.setPrototypeOf
+                            ? Object.setPrototypeOf(e, t)
+                            : (e.__proto__ = t));
+            }
+            var V = {textAlign: "left"},
+                W = (function(e) {
+                    function t() {
                         return (
-                            (r._requests = new Map()),
-                            (r.inFlight = 0),
-                            (r.isOpen = !1),
-                            r
+                            M(this, t),
+                            z(
+                                this,
+                                (t.__proto__ || Object.getPrototypeOf(t)).apply(
+                                    this,
+                                    arguments
+                                )
+                            )
                         );
                     }
                     return (
-                        (function(t, e) {
-                            if ("function" != typeof e && null !== e)
-                                throw new TypeError(
-                                    "Super expression must either be null or a function, not " +
-                                        typeof e
+                        U(t, r.a.Component),
+                        R(t, [
+                            {
+                                key: "render",
+                                value: function() {
+                                    var e = this.props,
+                                        t = e.baseSymbol,
+                                        a = e.quoteSymbol,
+                                        n = e.dashboard,
+                                        s = e.isMyAccount;
+                                    return n
+                                        ? r.a.createElement(
+                                              "thead",
+                                              null,
+                                              r.a.createElement(
+                                                  "tr",
+                                                  null,
+                                                  r.a.createElement(
+                                                      "th",
+                                                      {style: V, colSpan: "5"},
+                                                      r.a.createElement(h.a, {
+                                                          content:
+                                                              "exchange.description"
+                                                      })
+                                                  ),
+                                                  r.a.createElement(
+                                                      "th",
+                                                      {style: V},
+                                                      r.a.createElement(h.a, {
+                                                          content:
+                                                              "exchange.price"
+                                                      })
+                                                  ),
+                                                  r.a.createElement(
+                                                      "th",
+                                                      {style: V},
+                                                      r.a.createElement(h.a, {
+                                                          content:
+                                                              "exchange.price_market"
+                                                      })
+                                                  ),
+                                                  r.a.createElement(
+                                                      "th",
+                                                      {
+                                                          style: {
+                                                              textAlign: "right"
+                                                          }
+                                                      },
+                                                      r.a.createElement(h.a, {
+                                                          content:
+                                                              "exchange.value"
+                                                      })
+                                                  ),
+                                                  r.a.createElement(
+                                                      "th",
+                                                      null,
+                                                      r.a.createElement(h.a, {
+                                                          content:
+                                                              "account.trade"
+                                                      })
+                                                  ),
+                                                  s
+                                                      ? r.a.createElement(
+                                                            "th",
+                                                            {
+                                                                id:
+                                                                    "cancelAllOrders",
+                                                                style: {
+                                                                    cursor:
+                                                                        "pointer"
+                                                                }
+                                                            },
+                                                            r.a.createElement(
+                                                                h.a,
+                                                                {
+                                                                    content:
+                                                                        "wallet.cancel"
+                                                                }
+                                                            )
+                                                        )
+                                                      : null
+                                              )
+                                          )
+                                        : r.a.createElement(
+                                              "thead",
+                                              null,
+                                              r.a.createElement(
+                                                  "tr",
+                                                  null,
+                                                  r.a.createElement(
+                                                      "th",
+                                                      {
+                                                          style: {
+                                                              textAlign: this
+                                                                  .props
+                                                                  .leftAlign
+                                                                  ? "left"
+                                                                  : ""
+                                                          }
+                                                      },
+                                                      r.a.createElement(h.a, {
+                                                          className:
+                                                              "header-sub-title",
+                                                          content:
+                                                              "exchange.price"
+                                                      })
+                                                  ),
+                                                  r.a.createElement(
+                                                      "th",
+                                                      {
+                                                          style: this.props
+                                                              .leftAlign
+                                                              ? {
+                                                                    textAlign:
+                                                                        "left"
+                                                                }
+                                                              : null
+                                                      },
+                                                      t
+                                                          ? r.a.createElement(
+                                                                "span",
+                                                                {
+                                                                    className:
+                                                                        "header-sub-title"
+                                                                },
+                                                                r.a.createElement(
+                                                                    b.a,
+                                                                    {
+                                                                        dataPlace:
+                                                                            "top",
+                                                                        name: a
+                                                                    }
+                                                                )
+                                                            )
+                                                          : null
+                                                  ),
+                                                  r.a.createElement(
+                                                      "th",
+                                                      {
+                                                          style: this.props
+                                                              .leftAlign
+                                                              ? {
+                                                                    textAlign:
+                                                                        "left"
+                                                                }
+                                                              : null
+                                                      },
+                                                      t
+                                                          ? r.a.createElement(
+                                                                "span",
+                                                                {
+                                                                    className:
+                                                                        "header-sub-title"
+                                                                },
+                                                                r.a.createElement(
+                                                                    b.a,
+                                                                    {
+                                                                        dataPlace:
+                                                                            "top",
+                                                                        name: t
+                                                                    }
+                                                                )
+                                                            )
+                                                          : null
+                                                  ),
+                                                  r.a.createElement(
+                                                      "th",
+                                                      {
+                                                          style: {
+                                                              textAlign: this
+                                                                  .props
+                                                                  .leftAlign
+                                                                  ? "left"
+                                                                  : ""
+                                                          }
+                                                      },
+                                                      r.a.createElement(h.a, {
+                                                          className:
+                                                              "header-sub-title",
+                                                          content:
+                                                              "transaction.expiration"
+                                                      })
+                                                  ),
+                                                  r.a.createElement("th", {
+                                                      style: {width: "6%"}
+                                                  })
+                                              )
+                                          );
+                                }
+                            }
+                        ]),
+                        t
+                    );
+                })();
+            W.defaultProps = {quoteSymbol: null, baseSymbol: null};
+            var J = (function(e) {
+                function t() {
+                    return (
+                        M(this, t),
+                        z(
+                            this,
+                            (t.__proto__ || Object.getPrototypeOf(t)).apply(
+                                this,
+                                arguments
+                            )
+                        )
+                    );
+                }
+                return (
+                    U(t, r.a.Component),
+                    R(t, [
+                        {
+                            key: "shouldComponentUpdate",
+                            value: function(e) {
+                                return (
+                                    e.order.for_sale !==
+                                        this.props.order.for_sale ||
+                                    e.order.id !== this.props.order.id ||
+                                    e.quote !== this.props.quote ||
+                                    e.base !== this.props.base ||
+                                    e.order.market_base !==
+                                        this.props.order.market_base
                                 );
-                            (t.prototype = Object.create(e && e.prototype, {
-                                constructor: {
-                                    value: t,
-                                    enumerable: !1,
-                                    writable: !0,
-                                    configurable: !0
-                                }
-                            })),
-                                e &&
-                                    (Object.setPrototypeOf
-                                        ? Object.setPrototypeOf(t, e)
-                                        : (t.__proto__ = e));
-                        })(e, i.default),
-                        a(e, [
-                            {
-                                key: "start",
-                                value: function() {
-                                    var t = this;
-                                    return this.startPromise
-                                        ? this.startPromise
-                                        : ((this.startPromise = new Promise(
-                                              function(e, r) {
-                                                  (t.ws = new u(
-                                                      t.options.websocket
-                                                  )),
-                                                      (t.ws.onerror = function(
-                                                          e
-                                                      ) {
-                                                          (t.startPromise = null),
-                                                              r(e);
-                                                      }),
-                                                      (t.ws.onopen = function() {
-                                                          (t.isOpen = !0),
-                                                              (t.ws.onerror = t.onError.bind(
-                                                                  t
-                                                              )),
-                                                              (t.ws.onmessage = t.onMessage.bind(
-                                                                  t
-                                                              )),
-                                                              (t.ws.onclose = t.onClose.bind(
-                                                                  t
-                                                              )),
-                                                              e();
-                                                      });
-                                              }
-                                          )),
-                                          this.startPromise);
-                                }
-                            },
-                            {
-                                key: "stop",
-                                value: function() {
-                                    p("Stopping..."),
-                                        (this.startPromise = null),
-                                        (this.isOpen = !1),
-                                        this._requests.clear(),
-                                        this.ws &&
-                                            ((this.ws.onerror = this.ws.onmessage = this.ws.onclose = null),
-                                            this.ws.close(),
-                                            (this.ws = null));
-                                }
-                            },
-                            {
-                                key: "send",
-                                value: function(t, e, r) {
-                                    var a = this;
-                                    return (
-                                        p("Steem::send", t, e),
-                                        this.start().then(function() {
-                                            var o = {};
-                                            new Promise(function(t, e) {
-                                                (o.resolve = function(e) {
-                                                    t(e), r(null, e);
-                                                }),
-                                                    (o.reject = function(t) {
-                                                        e(t), r(t);
-                                                    });
-                                            }),
-                                                a.options.useAppbaseApi &&
-                                                    (t = "condenser_api");
-                                            var n = {
-                                                deferral: o,
-                                                startedAt: Date.now(),
-                                                message: {
-                                                    id: e.id || a.id++,
-                                                    method: "call",
-                                                    jsonrpc: "2.0",
-                                                    params: [
-                                                        t,
-                                                        e.method,
-                                                        e.params
-                                                    ]
-                                                }
-                                            };
-                                            return (
-                                                a.inFlight++,
-                                                a._requests.set(
-                                                    n.message.id,
-                                                    n
-                                                ),
-                                                a.ws.send(
-                                                    JSON.stringify(n.message)
-                                                ),
-                                                o
-                                            );
+                            }
+                        },
+                        {
+                            key: "render",
+                            value: function() {
+                                var e = this.props,
+                                    t = e.base,
+                                    a = e.quote,
+                                    n = e.order,
+                                    s = e.showSymbols,
+                                    o = e.dashboard,
+                                    l = e.isMyAccount,
+                                    u = e.settings,
+                                    p = n.isBid(),
+                                    d = n.isCall(),
+                                    f = d
+                                        ? "orderHistoryCall"
+                                        : p
+                                            ? "orderHistoryBid"
+                                            : "orderHistoryAsk",
+                                    _ = s
+                                        ? r.a.createElement(
+                                              "span",
+                                              null,
+                                              " " +
+                                                  t.get("symbol") +
+                                                  "/" +
+                                                  a.get("symbol")
+                                          )
+                                        : null,
+                                    g = s ? " " + t.get("symbol") : null,
+                                    y = s ? " " + a.get("symbol") : null,
+                                    v = u ? u.get("unit") : "1.3.0",
+                                    E = p ? "value positive" : "value negative",
+                                    w = p ? "value negative" : "value positive";
+                                return o
+                                    ? r.a.createElement(
+                                          "tr",
+                                          {key: n.id, className: "clickable"},
+                                          r.a.createElement(
+                                              "td",
+                                              {
+                                                  colSpan: "5",
+                                                  style: V,
+                                                  onClick: this.props.onFlip
+                                              },
+                                              p
+                                                  ? r.a.createElement(h.a, {
+                                                        content:
+                                                            "exchange.buy_description",
+                                                        baseAsset: m.a.format_number(
+                                                            n[
+                                                                p
+                                                                    ? "amountToReceive"
+                                                                    : "amountForSale"
+                                                            ]().getAmount({
+                                                                real: !0
+                                                            }),
+                                                            t.get("precision"),
+                                                            !1
+                                                        ),
+                                                        quoteAsset: m.a.format_number(
+                                                            n[
+                                                                p
+                                                                    ? "amountForSale"
+                                                                    : "amountToReceive"
+                                                            ]().getAmount({
+                                                                real: !0
+                                                            }),
+                                                            a.get("precision"),
+                                                            !1
+                                                        ),
+                                                        baseName: r.a.createElement(
+                                                            b.a,
+                                                            {
+                                                                noTip: !0,
+                                                                customClass: E,
+                                                                name: a.get(
+                                                                    "symbol"
+                                                                )
+                                                            }
+                                                        ),
+                                                        quoteName: r.a.createElement(
+                                                            b.a,
+                                                            {
+                                                                noTip: !0,
+                                                                customClass: w,
+                                                                name: t.get(
+                                                                    "symbol"
+                                                                )
+                                                            }
+                                                        )
+                                                    })
+                                                  : r.a.createElement(h.a, {
+                                                        content:
+                                                            "exchange.sell_description",
+                                                        baseAsset: m.a.format_number(
+                                                            n[
+                                                                p
+                                                                    ? "amountToReceive"
+                                                                    : "amountForSale"
+                                                            ]().getAmount({
+                                                                real: !0
+                                                            }),
+                                                            t.get("precision"),
+                                                            !1
+                                                        ),
+                                                        quoteAsset: m.a.format_number(
+                                                            n[
+                                                                p
+                                                                    ? "amountForSale"
+                                                                    : "amountToReceive"
+                                                            ]().getAmount({
+                                                                real: !0
+                                                            }),
+                                                            a.get("precision"),
+                                                            !1
+                                                        ),
+                                                        baseName: r.a.createElement(
+                                                            b.a,
+                                                            {
+                                                                noTip: !0,
+                                                                customClass: E,
+                                                                name: a.get(
+                                                                    "symbol"
+                                                                )
+                                                            }
+                                                        ),
+                                                        quoteName: r.a.createElement(
+                                                            b.a,
+                                                            {
+                                                                noTip: !0,
+                                                                customClass: w,
+                                                                name: t.get(
+                                                                    "symbol"
+                                                                )
+                                                            }
+                                                        )
+                                                    })
+                                          ),
+                                          r.a.createElement(
+                                              "td",
+                                              {
+                                                  style: V,
+                                                  onClick: this.props.onFlip
+                                              },
+                                              r.a.createElement(I.a, {
+                                                  base_amount: n.sellPrice()
+                                                      .base.amount,
+                                                  base_asset: n.sellPrice().base
+                                                      .asset_id,
+                                                  quote_amount: n.sellPrice()
+                                                      .quote.amount,
+                                                  quote_asset: n.sellPrice()
+                                                      .quote.asset_id,
+                                                  force_direction: t.get(
+                                                      "symbol"
+                                                  ),
+                                                  hide_symbols: !0
+                                              })
+                                          ),
+                                          r.a.createElement(
+                                              "td",
+                                              {
+                                                  style: V,
+                                                  onClick: this.props.onFlip
+                                              },
+                                              r.a.createElement(D.a, {
+                                                  base: t.get("id"),
+                                                  quote: a.get("id"),
+                                                  force_direction: t.get(
+                                                      "symbol"
+                                                  ),
+                                                  hide_symbols: !0,
+                                                  hide_asset: !0
+                                              })
+                                          ),
+                                          r.a.createElement(
+                                              "td",
+                                              {
+                                                  style: {textAlign: "right"},
+                                                  onClick: this.props.onFlip
+                                              },
+                                              r.a.createElement(q.b, {
+                                                  hide_asset: !0,
+                                                  amount: n
+                                                      .amountForSale()
+                                                      .getAmount(),
+                                                  fromAsset: n.amountForSale()
+                                                      .asset_id,
+                                                  noDecimals: !0,
+                                                  toAsset: v
+                                              }),
+                                              " ",
+                                              r.a.createElement(b.a, {name: v})
+                                          ),
+                                          r.a.createElement(
+                                              "td",
+                                              null,
+                                              r.a.createElement(
+                                                  i.b,
+                                                  {
+                                                      to:
+                                                          "/market/" +
+                                                          a.get("symbol") +
+                                                          "_" +
+                                                          t.get("symbol")
+                                                  },
+                                                  r.a.createElement(j.a, {
+                                                      name: "trade",
+                                                      title:
+                                                          "icons.trade.trade",
+                                                      className: "icon-14px"
+                                                  })
+                                              )
+                                          ),
+                                          l
+                                              ? r.a.createElement(
+                                                    "td",
+                                                    {
+                                                        className:
+                                                            "text-center",
+                                                        style: {
+                                                            padding: "2px 5px"
+                                                        }
+                                                    },
+                                                    d
+                                                        ? null
+                                                        : r.a.createElement(
+                                                              "span",
+                                                              {
+                                                                  style: {
+                                                                      marginRight: 0
+                                                                  },
+                                                                  className:
+                                                                      "order-cancel"
+                                                              },
+                                                              r.a.createElement(
+                                                                  "input",
+                                                                  {
+                                                                      type:
+                                                                          "checkbox",
+                                                                      className:
+                                                                          "orderCancel",
+                                                                      onChange: this
+                                                                          .props
+                                                                          .onCheckCancel
+                                                                  }
+                                                              )
+                                                          )
+                                                )
+                                              : null
+                                      )
+                                    : r.a.createElement(
+                                          "tr",
+                                          {key: n.id},
+                                          r.a.createElement(
+                                              "td",
+                                              {
+                                                  className: f,
+                                                  style: {paddingLeft: 10}
+                                              },
+                                              r.a.createElement(N.a, {
+                                                  price: n.getPrice(),
+                                                  base: t,
+                                                  quote: a
+                                              }),
+                                              _
+                                          ),
+                                          r.a.createElement(
+                                              "td",
+                                              null,
+                                              m.a.format_number(
+                                                  n[
+                                                      p
+                                                          ? "amountToReceive"
+                                                          : "amountForSale"
+                                                  ]().getAmount({real: !0}),
+                                                  a.get("precision")
+                                              ),
+                                              " ",
+                                              y
+                                          ),
+                                          r.a.createElement(
+                                              "td",
+                                              null,
+                                              m.a.format_number(
+                                                  n[
+                                                      p
+                                                          ? "amountForSale"
+                                                          : "amountToReceive"
+                                                  ]().getAmount({real: !0}),
+                                                  t.get("precision")
+                                              ),
+                                              " ",
+                                              g
+                                          ),
+                                          r.a.createElement(
+                                              "td",
+                                              {
+                                                  style: {
+                                                      width: "25%",
+                                                      textAlign: "right"
+                                                  },
+                                                  className: "tooltip",
+                                                  "data-tip": new Date(
+                                                      n.expiration
+                                                  )
+                                              },
+                                              d
+                                                  ? null
+                                                  : c.a.localize(
+                                                        new Date(n.expiration),
+                                                        {
+                                                            type: "date",
+                                                            format:
+                                                                "short_custom"
+                                                        }
+                                                    )
+                                          ),
+                                          r.a.createElement(
+                                              "td",
+                                              {
+                                                  className: "text-center",
+                                                  style: {width: "6%"}
+                                              },
+                                              d
+                                                  ? null
+                                                  : r.a.createElement(
+                                                        "a",
+                                                        {
+                                                            style: {
+                                                                marginRight: 0
+                                                            },
+                                                            className:
+                                                                "order-cancel",
+                                                            onClick: this.props
+                                                                .onCancel
+                                                        },
+                                                        r.a.createElement(j.a, {
+                                                            name:
+                                                                "cross-circle",
+                                                            title:
+                                                                "icons.cross_circle.cancel_order",
+                                                            className:
+                                                                "icon-14px"
+                                                        })
+                                                    )
+                                          )
+                                      );
+                            }
+                        }
+                    ]),
+                    t
+                );
+            })();
+            J.defaultProps = {showSymbols: !1};
+            var H = (function(e) {
+                function t(e) {
+                    M(this, t);
+                    var a = z(
+                        this,
+                        (t.__proto__ || Object.getPrototypeOf(t)).call(this)
+                    );
+                    return (
+                        (a.state = {activeTab: e.activeTab}),
+                        (a._getOrders = a._getOrders.bind(a)),
+                        a
+                    );
+                }
+                return (
+                    U(t, r.a.Component),
+                    R(t, [
+                        {
+                            key: "componentDidMount",
+                            value: function() {
+                                var e = this.refs.container;
+                                e && p.a.initialize(e);
+                            }
+                        },
+                        {
+                            key: "componentDidUpdate",
+                            value: function() {
+                                var e = this.refs.container;
+                                e && p.a.update(e);
+                            }
+                        },
+                        {
+                            key: "_getOrders",
+                            value: function() {
+                                var e,
+                                    t = this.props,
+                                    a = t.currentAccount,
+                                    n = t.base,
+                                    r = t.quote,
+                                    s = t.feedPrice,
+                                    o = a.get("orders"),
+                                    i = a.get("call_orders"),
+                                    l = n.get("id"),
+                                    c = r.get("id"),
+                                    u = (L((e = {}), n.get("id"), {
+                                        precision: n.get("precision")
+                                    }),
+                                    L(e, r.get("id"), {
+                                        precision: r.get("precision")
+                                    }),
+                                    e),
+                                    p = o
+                                        .toArray()
+                                        .map(function(e) {
+                                            var t = x.b.getObject(e);
+                                            if (!t) return null;
+                                            var a = t.getIn([
+                                                    "sell_price",
+                                                    "base",
+                                                    "asset_id"
+                                                ]),
+                                                n = t.getIn([
+                                                    "sell_price",
+                                                    "quote",
+                                                    "asset_id"
+                                                ]);
+                                            return (a === l && n === c) ||
+                                                (a === c && n === l)
+                                                ? new T.d(
+                                                      t.toJS(),
+                                                      u,
+                                                      r.get("id")
+                                                  )
+                                                : void 0;
                                         })
+                                        .filter(function(e) {
+                                            return !!e;
+                                        }),
+                                    m = i
+                                        .toArray()
+                                        .map(function(e) {
+                                            try {
+                                                var t = x.b.getObject(e);
+                                                if (!t) return null;
+                                                var a = t.getIn([
+                                                        "call_price",
+                                                        "base",
+                                                        "asset_id"
+                                                    ]),
+                                                    n = t.getIn([
+                                                        "call_price",
+                                                        "quote",
+                                                        "asset_id"
+                                                    ]);
+                                                if (
+                                                    (a === l && n === c) ||
+                                                    (a === c && n === l)
+                                                )
+                                                    return s
+                                                        ? new T.b(
+                                                              t.toJS(),
+                                                              u,
+                                                              r.get("id"),
+                                                              s
+                                                          )
+                                                        : null;
+                                            } catch (e) {
+                                                return null;
+                                            }
+                                        })
+                                        .filter(function(e) {
+                                            return !!e;
+                                        })
+                                        .filter(function(e) {
+                                            try {
+                                                return e.isMarginCalled();
+                                            } catch (e) {
+                                                return !1;
+                                            }
+                                        });
+                                return p.concat(m);
+                            }
+                        },
+                        {
+                            key: "_changeTab",
+                            value: function(e) {
+                                O.a.changeViewSetting({ordersTab: e}),
+                                    this.setState({activeTab: e});
+                                var t = this.refs.container;
+                                (t.scrollTop = 0),
+                                    p.a.update(t),
+                                    setTimeout(B.a.rebuild, 1e3);
+                            }
+                        },
+                        {
+                            key: "render",
+                            value: function() {
+                                var e = this,
+                                    t = this.props,
+                                    a = t.base,
+                                    n = t.quote,
+                                    s = t.quoteSymbol,
+                                    o = t.baseSymbol,
+                                    i = t.settleOrders,
+                                    l = this.state.activeTab;
+                                if (!a || !n) return null;
+                                var c = void 0,
+                                    u = !!(
+                                        a.get("bitasset_data_id") && i.size > 0
+                                    ),
+                                    p = !!(
+                                        n.get("bitasset_data_id") && i.size > 0
+                                    );
+                                if (
+                                    ((l && (u || p)) || (l = "my_orders"),
+                                    "my_orders" == l)
+                                ) {
+                                    var m = this._getOrders(),
+                                        d = r.a.createElement(
+                                            "tr",
+                                            null,
+                                            r.a.createElement(
+                                                "td",
+                                                {
+                                                    style: {
+                                                        textAlign: "center"
+                                                    },
+                                                    colSpan: "5"
+                                                },
+                                                r.a.createElement(h.a, {
+                                                    content: "account.no_orders"
+                                                })
+                                            )
+                                        ),
+                                        f = m
+                                            .filter(function(e) {
+                                                return e.isBid();
+                                            })
+                                            .sort(function(e, t) {
+                                                return (
+                                                    t.getPrice() - e.getPrice()
+                                                );
+                                            })
+                                            .map(function(t) {
+                                                var s = t.getPrice();
+                                                return r.a.createElement(J, {
+                                                    price: s,
+                                                    key: t.id,
+                                                    order: t,
+                                                    base: a,
+                                                    quote: n,
+                                                    onCancel: e.props.onCancel.bind(
+                                                        e,
+                                                        t.id
+                                                    )
+                                                });
+                                            }),
+                                        _ = m
+                                            .filter(function(e) {
+                                                return !e.isBid();
+                                            })
+                                            .sort(function(e, t) {
+                                                return (
+                                                    e.getPrice() - t.getPrice()
+                                                );
+                                            })
+                                            .map(function(t) {
+                                                var s = t.getPrice();
+                                                return r.a.createElement(J, {
+                                                    price: s,
+                                                    key: t.id,
+                                                    order: t,
+                                                    base: a,
+                                                    quote: n,
+                                                    onCancel: e.props.onCancel.bind(
+                                                        e,
+                                                        t.id
+                                                    )
+                                                });
+                                            }),
+                                        y = [];
+                                    _.length && (y = y.concat(_)),
+                                        f.length && (y = y.concat(f)),
+                                        y.sort(function(e, t) {
+                                            return (
+                                                e.props.price - t.props.price
+                                            );
+                                        }),
+                                        (c = r.a.createElement(
+                                            g.a,
+                                            {
+                                                component: "tbody",
+                                                transitionName: "newrow"
+                                            },
+                                            y.length ? y : d
+                                        ));
+                                }
+                                l &&
+                                    "open_settlement" == l &&
+                                    (c = r.a.createElement(A, {
+                                        key: "settle_orders",
+                                        orders: i,
+                                        base: a,
+                                        quote: n,
+                                        baseSymbol: o,
+                                        quoteSymbol: s
+                                    }));
+                                var v = "mymarkets-header clickable",
+                                    E = P()(v, {inactive: "my_orders" !== l}),
+                                    w = P()(v, {
+                                        inactive: "open_settlement" !== l
+                                    }),
+                                    k = u || p ? "50%" : "100%",
+                                    C = u || p ? "inherit" : "none";
+                                return r.a.createElement(
+                                    "div",
+                                    {
+                                        style: {marginBottom: "15px"},
+                                        key: "open_orders",
+                                        className: this.props.className
+                                    },
+                                    r.a.createElement(
+                                        "div",
+                                        {
+                                            className:
+                                                "exchange-bordered small-12",
+                                            style: {height: 266}
+                                        },
+                                        r.a.createElement(
+                                            "div",
+                                            {
+                                                className:
+                                                    "grid-block shrink left-orderbook-header"
+                                            },
+                                            r.a.createElement(
+                                                "div",
+                                                {
+                                                    style: {width: k},
+                                                    className: E,
+                                                    onClick: this._changeTab.bind(
+                                                        this,
+                                                        "my_orders"
+                                                    )
+                                                },
+                                                r.a.createElement(h.a, {
+                                                    content:
+                                                        "exchange.my_orders"
+                                                })
+                                            ),
+                                            r.a.createElement(
+                                                "div",
+                                                {
+                                                    style: {display: C},
+                                                    className: w,
+                                                    onClick: this._changeTab.bind(
+                                                        this,
+                                                        "open_settlement"
+                                                    )
+                                                },
+                                                r.a.createElement(h.a, {
+                                                    content:
+                                                        "exchange.settle_orders"
+                                                })
+                                            )
+                                        ),
+                                        r.a.createElement(
+                                            "div",
+                                            {
+                                                className:
+                                                    "grid-block shrink left-orderbook-header market-right-padding-only"
+                                            },
+                                            r.a.createElement(
+                                                "table",
+                                                {
+                                                    className:
+                                                        "table order-table text-right fixed-table market-right-padding"
+                                                },
+                                                "my_orders" == l
+                                                    ? r.a.createElement(W, {
+                                                          rightAlign: !0,
+                                                          type: "sell",
+                                                          baseSymbol: o,
+                                                          quoteSymbol: s
+                                                      })
+                                                    : r.a.createElement(
+                                                          "thead",
+                                                          null,
+                                                          r.a.createElement(
+                                                              "tr",
+                                                              null,
+                                                              r.a.createElement(
+                                                                  "th",
+                                                                  null,
+                                                                  r.a.createElement(
+                                                                      h.a,
+                                                                      {
+                                                                          className:
+                                                                              "header-sub-title",
+                                                                          content:
+                                                                              "exchange.price"
+                                                                      }
+                                                                  )
+                                                              ),
+                                                              r.a.createElement(
+                                                                  "th",
+                                                                  null,
+                                                                  r.a.createElement(
+                                                                      "span",
+                                                                      {
+                                                                          className:
+                                                                              "header-sub-title"
+                                                                      },
+                                                                      r.a.createElement(
+                                                                          b.a,
+                                                                          {
+                                                                              dataPlace:
+                                                                                  "top",
+                                                                              name: s
+                                                                          }
+                                                                      )
+                                                                  )
+                                                              ),
+                                                              r.a.createElement(
+                                                                  "th",
+                                                                  null,
+                                                                  r.a.createElement(
+                                                                      "span",
+                                                                      {
+                                                                          className:
+                                                                              "header-sub-title"
+                                                                      },
+                                                                      r.a.createElement(
+                                                                          b.a,
+                                                                          {
+                                                                              dataPlace:
+                                                                                  "top",
+                                                                              name: o
+                                                                          }
+                                                                      )
+                                                                  )
+                                                              ),
+                                                              r.a.createElement(
+                                                                  "th",
+                                                                  null
+                                                              )
+                                                          )
+                                                      )
+                                            )
+                                        ),
+                                        r.a.createElement(
+                                            "div",
+                                            {
+                                                className:
+                                                    "table-container grid-block market-right-padding-only no-overflow",
+                                                ref: "container",
+                                                style: {
+                                                    overflow: "hidden",
+                                                    maxHeight: 200
+                                                }
+                                            },
+                                            r.a.createElement(
+                                                "table",
+                                                {
+                                                    className:
+                                                        "table order-table text-right fixed-table market-right-padding"
+                                                },
+                                                c
+                                            )
+                                        )
+                                    )
+                                );
+                            }
+                        }
+                    ]),
+                    t
+                );
+            })();
+            (H.defaultProps = {
+                base: {},
+                quote: {},
+                orders: {},
+                quoteSymbol: "",
+                baseSymbol: ""
+            }),
+                (H.propTypes = {
+                    base: o.a.object.isRequired,
+                    quote: o.a.object.isRequired,
+                    orders: o.a.object.isRequired,
+                    quoteSymbol: o.a.string.isRequired,
+                    baseSymbol: o.a.string.isRequired
+                });
+        },
+        450: function(e, t, a) {
+            "use strict";
+            (function(e) {
+                var n = a(76),
+                    r = a(0),
+                    s = a.n(r),
+                    o = a(20),
+                    i = a.n(o),
+                    l = a(34),
+                    c = a(1),
+                    u = a.n(c),
+                    p = a(18),
+                    m = a(5),
+                    d = a(13),
+                    h = a(6),
+                    b = a(24),
+                    f = a(47),
+                    _ = a.n(f),
+                    g = a(3),
+                    y = a.n(g),
+                    v = a(25),
+                    E = a(164),
+                    w = a(12),
+                    k = a(37),
+                    C = a(36),
+                    A = a(22),
+                    N = a(4),
+                    O = a(184),
+                    S = a(23),
+                    P =
+                        Object.assign ||
+                        function(e) {
+                            for (var t = 1; t < arguments.length; t++) {
+                                var a = arguments[t];
+                                for (var n in a)
+                                    Object.prototype.hasOwnProperty.call(
+                                        a,
+                                        n
+                                    ) && (e[n] = a[n]);
+                            }
+                            return e;
+                        },
+                    j = (function() {
+                        function e(e, t) {
+                            for (var a = 0; a < t.length; a++) {
+                                var n = t[a];
+                                (n.enumerable = n.enumerable || !1),
+                                    (n.configurable = !0),
+                                    "value" in n && (n.writable = !0),
+                                    Object.defineProperty(e, n.key, n);
+                            }
+                        }
+                        return function(t, a, n) {
+                            return a && e(t.prototype, a), n && e(t, n), t;
+                        };
+                    })();
+                function x(e, t) {
+                    if (!(e instanceof t))
+                        throw new TypeError(
+                            "Cannot call a class as a function"
+                        );
+                }
+                function T(e, t) {
+                    if (!e)
+                        throw new ReferenceError(
+                            "this hasn't been initialised - super() hasn't been called"
+                        );
+                    return !t ||
+                        ("object" != typeof t && "function" != typeof t)
+                        ? e
+                        : t;
+                }
+                function q(e, t) {
+                    if ("function" != typeof t && null !== t)
+                        throw new TypeError(
+                            "Super expression must either be null or a function, not " +
+                                typeof t
+                        );
+                    (e.prototype = Object.create(t && t.prototype, {
+                        constructor: {
+                            value: e,
+                            enumerable: !1,
+                            writable: !0,
+                            configurable: !0
+                        }
+                    })),
+                        t &&
+                            (Object.setPrototypeOf
+                                ? Object.setPrototypeOf(e, t)
+                                : (e.__proto__ = t));
+                }
+                var D = (function(t) {
+                    function a(e) {
+                        x(this, a);
+                        var t = T(
+                            this,
+                            (a.__proto__ || Object.getPrototypeOf(a)).call(this)
+                        );
+                        return (
+                            (t.state = {
+                                toAddress: v.a.getLast(e.walletType),
+                                withdrawValue: "",
+                                amountError: null,
+                                symbol: e.asset.get("symbol"),
+                                to_withdraw: new p.a({
+                                    asset_id: e.asset.get("id"),
+                                    precision: e.asset.get("precision")
+                                }),
+                                fee_asset_id: "1.3.0",
+                                feeStatus: {},
+                                loading: !1,
+                                emptyAddressDeposit: !1
+                            }),
+                            t._validateAddress(t.state.toAddress, e),
+                            (t.addDepositAddress = t.addDepositAddress.bind(t)),
+                            (t._checkFeeStatus = t._checkFeeStatus.bind(t)),
+                            (t._checkBalance = t._checkBalance.bind(t)),
+                            (t._getCurrentBalance = t._getCurrentBalance.bind(
+                                t
+                            )),
+                            (t._getFee = t._getFee.bind(t)),
+                            (t._updateFee = Object(n.a)(
+                                t._updateFee.bind(t),
+                                250
+                            )),
+                            t
+                        );
+                    }
+                    return (
+                        q(a, O["a"]),
+                        j(a, [
+                            {
+                                key: "componentWillMount",
+                                value: function() {
+                                    this._getDepositAddress(),
+                                        this._updateFee(),
+                                        this._checkFeeStatus();
+                                }
+                            },
+                            {
+                                key: "componentWillReceiveProps",
+                                value: function(e) {
+                                    e.asset &&
+                                        this.props.asset &&
+                                        e.asset.get("id") !==
+                                            this.props.asset.get("id") &&
+                                        this.setState(
+                                            {
+                                                to_withdraw: new p.a({
+                                                    asset_id: e.asset.get("id"),
+                                                    precision: e.asset.get(
+                                                        "precision"
+                                                    )
+                                                }),
+                                                gateFee: e.asset.get("gateFee"),
+                                                intermediateAccount: e.asset.get(
+                                                    "intermediateAccount"
+                                                ),
+                                                symbol: e.asset.get("symbol"),
+                                                memo: "",
+                                                withdrawValue: "",
+                                                receive_address: null,
+                                                toAddress: v.a.getLast(
+                                                    e.walletType
+                                                )
+                                            },
+                                            this._getDepositAddress
+                                        );
+                                }
+                            },
+                            {
+                                key: "_getDepositAddress",
+                                value: function() {
+                                    if (this.props.backingCoinType) {
+                                        var e = Object(v.j)({
+                                            coin:
+                                                "open." +
+                                                this.props.backingCoinType.toLowerCase(),
+                                            account: this.props.account,
+                                            stateCallback: this
+                                                .addDepositAddress
+                                        });
+                                        e
+                                            ? this.setState({
+                                                  receive_address: e
+                                              })
+                                            : Object(v.l)(
+                                                  this._getDepositObject()
+                                              );
+                                    }
+                                }
+                            },
+                            {
+                                key: "_getDepositObject",
+                                value: function() {
+                                    return {
+                                        inputCoinType: this.props.backingCoinType.toLowerCase(),
+                                        outputCoinType: this.props.symbol.toLowerCase(),
+                                        outputAddress: this.props.sender.get(
+                                            "name"
+                                        ),
+                                        stateCallback: this.addDepositAddress
+                                    };
+                                }
+                            },
+                            {
+                                key: "requestDepositAddressLoad",
+                                value: function() {
+                                    this.setState({
+                                        loading: !0,
+                                        emptyAddressDeposit: !1
+                                    }),
+                                        Object(v.l)(this._getDepositObject());
+                                }
+                            },
+                            {
+                                key: "addDepositAddress",
+                                value: function(e) {
+                                    e.error &&
+                                        ("no_address" === e.error.message
+                                            ? this.setState({
+                                                  emptyAddressDeposit: !0
+                                              })
+                                            : this.setState({
+                                                  emptyAddressDeposit: !1
+                                              })),
+                                        this.setState({
+                                            receive_address: e,
+                                            loading: !1
+                                        });
+                                }
+                            },
+                            {
+                                key: "componentDidUpdate",
+                                value: function() {
+                                    _.a.rebuild();
+                                }
+                            },
+                            {
+                                key: "onSubmit",
+                                value: function(t) {
+                                    if (
+                                        (t.preventDefault(),
+                                        0 ===
+                                            this.state.to_withdraw.getAmount())
+                                    )
+                                        return this.setState({
+                                            amountError: "transfer.errors.pos"
+                                        });
+                                    if (this.props.intermediateAccount) {
+                                        var a = this._getFee(),
+                                            n = this._getGateFee(),
+                                            r = this.state.to_withdraw.clone(),
+                                            s = r.clone(
+                                                this._getCurrentBalance().get(
+                                                    "balance"
+                                                )
+                                            );
+                                        r.plus(n),
+                                            s.lt(r) &&
+                                                (r = this.state.to_withdraw.clone()),
+                                            b.a.transfer(
+                                                this.props.sender.get("id"),
+                                                this.props.intermediateAccount,
+                                                this.state.to_withdraw.getAmount(),
+                                                this.state.to_withdraw.asset_id,
+                                                this.props.backingCoinType.toLowerCase() +
+                                                    ":" +
+                                                    this.state.toAddress +
+                                                    (this.state.memo
+                                                        ? ":" +
+                                                          new e(
+                                                              this.state.memo,
+                                                              "utf-8"
+                                                          )
+                                                        : ""),
+                                                null,
+                                                a.asset_id
+                                            );
+                                    }
+                                }
+                            },
+                            {
+                                key: "_updateAmount",
+                                value: function() {
+                                    var e = this._getFee(),
+                                        t = this._getCurrentBalance(),
+                                        a = new p.a({
+                                            amount: t ? t.get("balance") : 0,
+                                            asset_id: this.props.asset.get(
+                                                "id"
+                                            ),
+                                            precision: this.props.asset.get(
+                                                "precision"
+                                            )
+                                        });
+                                    a.asset_id === e.asset_id && a.minus(e),
+                                        this.state.to_withdraw.setAmount({
+                                            sats: a.getAmount()
+                                        }),
+                                        this.setState(
+                                            {
+                                                withdrawValue: a.getAmount({
+                                                    real: !0
+                                                }),
+                                                amountError: null
+                                            },
+                                            this._checkBalance
+                                        );
+                                }
+                            },
+                            {
+                                key: "_checkFeeStatus",
+                                value: function() {
+                                    var e = this,
+                                        t =
+                                            arguments.length > 0 &&
+                                            void 0 !== arguments[0]
+                                                ? arguments[0]
+                                                : this.props.sender;
+                                    if (t) {
+                                        var a = [
+                                                "1.3.0",
+                                                this.state.to_withdraw.asset_id
+                                            ],
+                                            n = {},
+                                            r = [];
+                                        a.forEach(function(a) {
+                                            r.push(
+                                                Object(C.b)({
+                                                    accountID: t.get("id"),
+                                                    feeID: a,
+                                                    options: [
+                                                        "price_per_kbyte"
+                                                    ],
+                                                    data: {
+                                                        type: "memo",
+                                                        content:
+                                                            e.props.backingCoinType.toLowerCase() +
+                                                            ":" +
+                                                            e.state.toAddress +
+                                                            (e.state.memo
+                                                                ? ":" +
+                                                                  e.state.memo
+                                                                : "")
+                                                    }
+                                                })
+                                            );
+                                        }),
+                                            Promise.all(r)
+                                                .then(function(t) {
+                                                    a.forEach(function(e, a) {
+                                                        n[e] = t[a];
+                                                    }),
+                                                        m.a.are_equal_shallow(
+                                                            e.state.feeStatus,
+                                                            n
+                                                        ) ||
+                                                            e.setState({
+                                                                feeStatus: n
+                                                            }),
+                                                        e._checkBalance();
+                                                })
+                                                .catch(function(e) {
+                                                    console.error(e);
+                                                });
+                                    }
+                                }
+                            },
+                            {
+                                key: "_updateFee",
+                                value: function() {
+                                    var e = this,
+                                        t =
+                                            arguments.length > 0 &&
+                                            void 0 !== arguments[0]
+                                                ? arguments[0]
+                                                : this.state.fee_asset_id;
+                                    if (!this.props.sender) return null;
+                                    Object(C.b)({
+                                        accountID: this.props.sender.get("id"),
+                                        feeID: t,
+                                        options: ["price_per_kbyte"],
+                                        data: {
+                                            type: "memo",
+                                            content:
+                                                this.props.backingCoinType.toLowerCase() +
+                                                ":" +
+                                                this.state.toAddress +
+                                                (this.state.memo
+                                                    ? ":" + this.state.memo
+                                                    : "")
+                                        }
+                                    }).then(function(t) {
+                                        var a = t.fee,
+                                            n = t.hasBalance,
+                                            r = t.hasPoolBalance;
+                                        e.setState(
+                                            {
+                                                feeAmount: a,
+                                                hasBalance: n,
+                                                hasPoolBalance: r,
+                                                error: !n || !r
+                                            },
+                                            e._checkFeeStatus
+                                        );
+                                    });
+                                }
+                            },
+                            {
+                                key: "_getCurrentBalance",
+                                value: function() {
+                                    var e = this;
+                                    return this.props.balances.find(function(
+                                        t
+                                    ) {
+                                        return (
+                                            t &&
+                                            t.get("asset_type") ===
+                                                e.props.asset.get("id")
+                                        );
+                                    });
+                                }
+                            },
+                            {
+                                key: "_checkBalance",
+                                value: function() {
+                                    var e = this.state,
+                                        t = e.feeAmount,
+                                        a = e.to_withdraw,
+                                        n = this.props.asset,
+                                        r = this._getCurrentBalance();
+                                    if (r && t) {
+                                        var s = Object(C.a)(
+                                            a.getAmount({real: !0}),
+                                            n,
+                                            this._getFee(),
+                                            r,
+                                            this._getGateFee()
+                                        );
+                                        if (null !== s)
+                                            return (
+                                                this.state.balanceError !==
+                                                    !s &&
+                                                    this.setState({
+                                                        balanceError: !s
+                                                    }),
+                                                s
+                                            );
+                                    }
+                                }
+                            },
+                            {
+                                key: "_getFee",
+                                value: function() {
+                                    var e = {
+                                        getAmount: function() {
+                                            return 0;
+                                        },
+                                        asset_id: this.state.fee_asset_id
+                                    };
+                                    if (
+                                        !this.state.feeStatus ||
+                                        !this.state.feeAmount
+                                    )
+                                        return e;
+                                    var t = this.state.feeStatus["1.3.0"],
+                                        a = this.state.feeStatus[
+                                            this.state.to_withdraw.asset_id
+                                        ];
+                                    return t && t.hasBalance
+                                        ? t.fee
+                                        : t &&
+                                          !t.hasBalance &&
+                                          a &&
+                                          a.hasBalance
+                                            ? a.fee
+                                            : t
+                                                ? t.fee
+                                                : e;
+                                }
+                            },
+                            {
+                                key: "_onInputAmount",
+                                value: function(e) {
+                                    try {
+                                        this.state.to_withdraw.setAmount({
+                                            real: parseFloat(
+                                                e.target.value || 0
+                                            )
+                                        }),
+                                            this.setState(
+                                                {
+                                                    withdrawValue:
+                                                        e.target.value,
+                                                    amountError: null
+                                                },
+                                                this._checkBalance
+                                            );
+                                    } catch (e) {
+                                        console.error("err:", e);
+                                    }
+                                }
+                            },
+                            {
+                                key: "_onInputTo",
+                                value: function(e) {
+                                    var t = e.target.value.trim();
+                                    this.setState({
+                                        withdraw_address_check_in_progress: !0,
+                                        withdraw_address_selected: t,
+                                        validAddress: null,
+                                        toAddress: t
+                                    }),
+                                        this._validateAddress(t);
+                                }
+                            },
+                            {
+                                key: "_onMemoChanged",
+                                value: function(e) {
+                                    this.setState(
+                                        {memo: e.target.value},
+                                        this._updateFee
                                     );
                                 }
                             },
                             {
-                                key: "onError",
-                                value: function(t) {
-                                    var e = !0,
-                                        r = !1,
-                                        a = void 0;
-                                    try {
-                                        for (
-                                            var o,
-                                                n = this._requests[
-                                                    Symbol.iterator
-                                                ]();
-                                            !(e = (o = n.next()).done);
-                                            e = !0
-                                        ) {
-                                            o.value.deferral.reject(t);
-                                        }
-                                    } catch (t) {
-                                        (r = !0), (a = t);
-                                    } finally {
-                                        try {
-                                            !e && n.return && n.return();
-                                        } finally {
-                                            if (r) throw a;
-                                        }
-                                    }
-                                    this.stop();
+                                key: "_validateAddress",
+                                value: function(e) {
+                                    var t = this,
+                                        a =
+                                            arguments.length > 1 &&
+                                            void 0 !== arguments[1]
+                                                ? arguments[1]
+                                                : this.props;
+                                    Object(v.m)({
+                                        url: S.e.BASE,
+                                        walletType: a.walletType,
+                                        newAddress: e
+                                    })
+                                        .then(function(a) {
+                                            t.state.toAddress === e &&
+                                                t.setState({
+                                                    withdraw_address_check_in_progress: !1,
+                                                    validAddress: !!a
+                                                });
+                                        })
+                                        .catch(function(e) {
+                                            console.error(
+                                                "Error when validating address:",
+                                                e
+                                            );
+                                        });
+                                }
+                            },
+                            {
+                                key: "_openRegistrarSite",
+                                value: function(e) {
+                                    e.preventDefault(),
+                                        (window.open(
+                                            SettingsStore.site_registr,
+                                            "_blank"
+                                        ).opener = null);
+                                }
+                            },
+                            {
+                                key: "_getGateFee",
+                                value: function() {
+                                    var e = this.props,
+                                        t = e.gateFee,
+                                        a = e.asset;
+                                    return new p.a({
+                                        real: parseFloat(
+                                            t ? t.replace(",", "") : 0
+                                        ),
+                                        asset_id: a.get("id"),
+                                        precision: a.get("precision")
+                                    });
+                                }
+                            },
+                            {
+                                key: "_renderWithdraw",
+                                value: function() {
+                                    var e = this.state.amountError,
+                                        t = m.a.replaceName(this.props.asset)
+                                            .name,
+                                        a = 1,
+                                        n = this.props.supportsMemos,
+                                        r = this._getFee(),
+                                        o = this._getGateFee(),
+                                        i = this.state.feeStatus[r.asset_id],
+                                        l = N.b.getAsset(r.asset_id),
+                                        c =
+                                            (i && !i.hasBalance) ||
+                                            this.state.balanceError ||
+                                            !this.state.toAddress ||
+                                            !this.state.withdrawValue;
+                                    return s.a.createElement(
+                                        "div",
+                                        null,
+                                        s.a.createElement(
+                                            "p",
+                                            null,
+                                            s.a.createElement(u.a, {
+                                                content:
+                                                    "gateway.withdraw_funds",
+                                                asset: t
+                                            })
+                                        ),
+                                        this._renderCurrentBalance(),
+                                        s.a.createElement(
+                                            "div",
+                                            {
+                                                className:
+                                                    "SimpleTrade__withdraw-row"
+                                            },
+                                            s.a.createElement(
+                                                "label",
+                                                {className: "left-label"},
+                                                y.a.translate(
+                                                    "modal.withdraw.amount"
+                                                )
+                                            ),
+                                            s.a.createElement(
+                                                "div",
+                                                {
+                                                    className:
+                                                        "inline-label input-wrapper"
+                                                },
+                                                s.a.createElement("input", {
+                                                    tabIndex: a++,
+                                                    type: "number",
+                                                    min: "0",
+                                                    onKeyPress: this.onKeyPress.bind(
+                                                        this
+                                                    ),
+                                                    value: this.state
+                                                        .withdrawValue,
+                                                    onChange: this._onInputAmount.bind(
+                                                        this
+                                                    )
+                                                }),
+                                                s.a.createElement(
+                                                    "div",
+                                                    {
+                                                        className:
+                                                            "form-label select floating-dropdown"
+                                                    },
+                                                    s.a.createElement(
+                                                        "div",
+                                                        {
+                                                            className:
+                                                                "dropdown-wrapper inactive"
+                                                        },
+                                                        s.a.createElement(
+                                                            "div",
+                                                            null,
+                                                            t
+                                                        )
+                                                    )
+                                                )
+                                            ),
+                                            e
+                                                ? s.a.createElement(
+                                                      "p",
+                                                      {
+                                                          className:
+                                                              "has-error no-margin",
+                                                          style: {
+                                                              paddingTop: 10
+                                                          }
+                                                      },
+                                                      s.a.createElement(u.a, {
+                                                          content: e
+                                                      })
+                                                  )
+                                                : null,
+                                            this.state.balanceError
+                                                ? s.a.createElement(
+                                                      "p",
+                                                      {
+                                                          className:
+                                                              "has-error no-margin",
+                                                          style: {
+                                                              paddingTop: 10
+                                                          }
+                                                      },
+                                                      s.a.createElement(u.a, {
+                                                          content:
+                                                              "transfer.errors.insufficient"
+                                                      })
+                                                  )
+                                                : null
+                                        ),
+                                        s.a.createElement(
+                                            "div",
+                                            {
+                                                className:
+                                                    "SimpleTrade__withdraw-row"
+                                            },
+                                            s.a.createElement(
+                                                "label",
+                                                {className: "left-label"},
+                                                y.a.translate("transfer.fee")
+                                            ),
+                                            s.a.createElement(
+                                                "div",
+                                                {
+                                                    className:
+                                                        "inline-label input-wrapper"
+                                                },
+                                                s.a.createElement("input", {
+                                                    type: "text",
+                                                    disabled: !0,
+                                                    value: r.getAmount({
+                                                        real: !0
+                                                    })
+                                                }),
+                                                s.a.createElement(
+                                                    "div",
+                                                    {
+                                                        className:
+                                                            "form-label select floating-dropdown"
+                                                    },
+                                                    s.a.createElement(
+                                                        "div",
+                                                        {
+                                                            className:
+                                                                "dropdown-wrapper inactive"
+                                                        },
+                                                        s.a.createElement(
+                                                            "div",
+                                                            null,
+                                                            l
+                                                                ? s.a.createElement(
+                                                                      A.a,
+                                                                      {
+                                                                          name: l.get(
+                                                                              "symbol"
+                                                                          )
+                                                                      }
+                                                                  )
+                                                                : null
+                                                        )
+                                                    )
+                                                )
+                                            ),
+                                            i && !i.hasBalance
+                                                ? s.a.createElement(
+                                                      "p",
+                                                      {
+                                                          className:
+                                                              "has-error no-margin",
+                                                          style: {
+                                                              paddingTop: 10
+                                                          }
+                                                      },
+                                                      s.a.createElement(u.a, {
+                                                          content:
+                                                              "transfer.errors.insufficient"
+                                                      })
+                                                  )
+                                                : null
+                                        ),
+                                        s.a.createElement(
+                                            "div",
+                                            {
+                                                className:
+                                                    "SimpleTrade__withdraw-row"
+                                            },
+                                            s.a.createElement(
+                                                "label",
+                                                {className: "left-label"},
+                                                y.a.translate("gateway.fee")
+                                            ),
+                                            s.a.createElement(
+                                                "div",
+                                                {
+                                                    className:
+                                                        "inline-label input-wrapper"
+                                                },
+                                                s.a.createElement("input", {
+                                                    type: "text",
+                                                    disabled: !0,
+                                                    value: o.getAmount({
+                                                        real: !0
+                                                    })
+                                                }),
+                                                s.a.createElement(
+                                                    "div",
+                                                    {
+                                                        className:
+                                                            "form-label select floating-dropdown"
+                                                    },
+                                                    s.a.createElement(
+                                                        "div",
+                                                        {
+                                                            className:
+                                                                "dropdown-wrapper inactive"
+                                                        },
+                                                        s.a.createElement(
+                                                            "div",
+                                                            null,
+                                                            s.a.createElement(
+                                                                A.a,
+                                                                {
+                                                                    name: this.props.asset.get(
+                                                                        "symbol"
+                                                                    )
+                                                                }
+                                                            )
+                                                        )
+                                                    )
+                                                )
+                                            ),
+                                            i && !i.hasBalance
+                                                ? s.a.createElement(
+                                                      "p",
+                                                      {
+                                                          className:
+                                                              "has-error no-margin",
+                                                          style: {
+                                                              paddingTop: 10
+                                                          }
+                                                      },
+                                                      s.a.createElement(u.a, {
+                                                          content:
+                                                              "transfer.errors.insufficient"
+                                                      })
+                                                  )
+                                                : null
+                                        ),
+                                        s.a.createElement(
+                                            "div",
+                                            {
+                                                className:
+                                                    "SimpleTrade__withdraw-row"
+                                            },
+                                            s.a.createElement(
+                                                "label",
+                                                {className: "left-label"},
+                                                y.a.translate(
+                                                    "modal.withdraw.address"
+                                                )
+                                            ),
+                                            s.a.createElement(
+                                                "div",
+                                                {
+                                                    className:
+                                                        "inline-label input-wrapper"
+                                                },
+                                                s.a.createElement("input", {
+                                                    placeholder: y.a.translate(
+                                                        "gateway.withdraw_placeholder",
+                                                        {asset: t}
+                                                    ),
+                                                    tabIndex: a++,
+                                                    type: "text",
+                                                    value: this.state.toAddress,
+                                                    onChange: this._onInputTo.bind(
+                                                        this
+                                                    )
+                                                }),
+                                                s.a.createElement(
+                                                    "div",
+                                                    {
+                                                        className:
+                                                            "form-label select floating-dropdown"
+                                                    },
+                                                    s.a.createElement(
+                                                        "div",
+                                                        {
+                                                            className:
+                                                                "dropdown-wrapper inactive"
+                                                        },
+                                                        s.a.createElement(
+                                                            "div",
+                                                            {
+                                                                "data-place":
+                                                                    "right",
+                                                                "data-tip": y.a.translate(
+                                                                    "tooltip.withdraw_address",
+                                                                    {asset: t}
+                                                                )
+                                                            },
+                                                            "?"
+                                                        )
+                                                    )
+                                                )
+                                            ),
+                                            !this.state.validAddress &&
+                                            this.state.toAddress
+                                                ? s.a.createElement(
+                                                      "div",
+                                                      {
+                                                          className:
+                                                              "has-error",
+                                                          style: {
+                                                              paddingTop: 10
+                                                          }
+                                                      },
+                                                      s.a.createElement(u.a, {
+                                                          content:
+                                                              "gateway.valid_address",
+                                                          coin_type: t
+                                                      })
+                                                  )
+                                                : null
+                                        ),
+                                        n
+                                            ? s.a.createElement(
+                                                  "div",
+                                                  {
+                                                      className:
+                                                          "SimpleTrade__withdraw-row"
+                                                  },
+                                                  s.a.createElement(
+                                                      "label",
+                                                      {className: "left-label"},
+                                                      y.a.translate(
+                                                          "transfer.memo"
+                                                      )
+                                                  ),
+                                                  s.a.createElement(
+                                                      "div",
+                                                      {
+                                                          className:
+                                                              "inline-label input-wrapper"
+                                                      },
+                                                      s.a.createElement(
+                                                          "textarea",
+                                                          {
+                                                              rows: "3",
+                                                              value: this.state
+                                                                  .memo,
+                                                              tabIndex: a++,
+                                                              onChange: this._onMemoChanged.bind(
+                                                                  this
+                                                              )
+                                                          }
+                                                      )
+                                                  ),
+                                                  !this.state.validAddress &&
+                                                  this.state.toAddress
+                                                      ? s.a.createElement(
+                                                            "div",
+                                                            {
+                                                                className:
+                                                                    "has-error",
+                                                                style: {
+                                                                    paddingTop: 10
+                                                                }
+                                                            },
+                                                            s.a.createElement(
+                                                                u.a,
+                                                                {
+                                                                    content:
+                                                                        "gateway.valid_address",
+                                                                    coin_type: t
+                                                                }
+                                                            )
+                                                        )
+                                                      : null
+                                              )
+                                            : null,
+                                        s.a.createElement(
+                                            "div",
+                                            {
+                                                className:
+                                                    "button-group SimpleTrade__withdraw-row"
+                                            },
+                                            s.a.createElement(
+                                                "button",
+                                                {
+                                                    tabIndex: a++,
+                                                    className:
+                                                        "button" +
+                                                        (c ? " disabled" : ""),
+                                                    onClick: this.onSubmit.bind(
+                                                        this
+                                                    ),
+                                                    type: "submit"
+                                                },
+                                                s.a.createElement(u.a, {
+                                                    content:
+                                                        "gateway.withdraw_now"
+                                                })
+                                            )
+                                        )
+                                    );
+                                }
+                            },
+                            {
+                                key: "_renderDeposit",
+                                value: function() {
+                                    var e = this.state,
+                                        t = e.receive_address,
+                                        a = e.loading,
+                                        n = e.emptyAddressDeposit,
+                                        r = m.a.replaceName(this.props.asset)
+                                            .name,
+                                        o = t && "memo" in t && t.memo,
+                                        i = (t && t.address) || "",
+                                        l = 1;
+                                    return s.a.createElement(
+                                        "div",
+                                        {className: i ? "" : "no-overflow"},
+                                        s.a.createElement(
+                                            "p",
+                                            null,
+                                            s.a.createElement(u.a, {
+                                                unsafe: !0,
+                                                content: "gateway.add_funds",
+                                                account: this.props.sender.get(
+                                                    "name"
+                                                )
+                                            })
+                                        ),
+                                        this._renderCurrentBalance(),
+                                        s.a.createElement(
+                                            "div",
+                                            {
+                                                className:
+                                                    "SimpleTrade__withdraw-row"
+                                            },
+                                            s.a.createElement(
+                                                "p",
+                                                {
+                                                    style: {marginBottom: 10},
+                                                    "data-place": "right",
+                                                    "data-tip": y.a.translate(
+                                                        "tooltip.deposit_tip",
+                                                        {asset: r}
+                                                    )
+                                                },
+                                                s.a.createElement(u.a, {
+                                                    className: "help-tooltip",
+                                                    content:
+                                                        "gateway.deposit_to",
+                                                    asset: r
+                                                }),
+                                                ":",
+                                                s.a.createElement(
+                                                    "label",
+                                                    {
+                                                        className:
+                                                            "fz_12 left-label"
+                                                    },
+                                                    s.a.createElement(u.a, {
+                                                        content:
+                                                            "gateway.deposit_notice_delay"
+                                                    })
+                                                )
+                                            ),
+                                            i
+                                                ? s.a.createElement(
+                                                      "label",
+                                                      null,
+                                                      n
+                                                          ? s.a.createElement(
+                                                                u.a,
+                                                                {
+                                                                    content:
+                                                                        "gateway.please_generate_address"
+                                                                }
+                                                            )
+                                                          : s.a.createElement(
+                                                                "span",
+                                                                {
+                                                                    className:
+                                                                        "inline-label"
+                                                                },
+                                                                s.a.createElement(
+                                                                    "input",
+                                                                    {
+                                                                        readOnly: !0,
+                                                                        type:
+                                                                            "text",
+                                                                        value: i
+                                                                    }
+                                                                ),
+                                                                s.a.createElement(
+                                                                    E.a,
+                                                                    {text: i}
+                                                                ),
+                                                                " "
+                                                            )
+                                                  )
+                                                : s.a.createElement(k.a, {
+                                                      type: "three-bounce"
+                                                  }),
+                                            o
+                                                ? s.a.createElement(
+                                                      "label",
+                                                      null,
+                                                      s.a.createElement(
+                                                          "span",
+                                                          {
+                                                              className:
+                                                                  "inline-label"
+                                                          },
+                                                          s.a.createElement(
+                                                              "input",
+                                                              {
+                                                                  readOnly: !0,
+                                                                  type: "text",
+                                                                  value:
+                                                                      y.a.translate(
+                                                                          "transfer.memo"
+                                                                      ) +
+                                                                      ": " +
+                                                                      t.memo
+                                                              }
+                                                          ),
+                                                          s.a.createElement(
+                                                              E.a,
+                                                              {text: t.memo}
+                                                          )
+                                                      )
+                                                  )
+                                                : null,
+                                            t && t.error
+                                                ? s.a.createElement(
+                                                      "div",
+                                                      {
+                                                          className:
+                                                              "has-error",
+                                                          style: {
+                                                              paddingTop: 10
+                                                          }
+                                                      },
+                                                      t.error.message
+                                                  )
+                                                : null
+                                        ),
+                                        s.a.createElement(
+                                            "div",
+                                            {
+                                                className:
+                                                    "button-group SimpleTrade__withdraw-row"
+                                            },
+                                            s.a.createElement(
+                                                "button",
+                                                {
+                                                    tabIndex: l++,
+                                                    className:
+                                                        "button spinner-button-circle",
+                                                    onClick: this.requestDepositAddressLoad.bind(
+                                                        this
+                                                    ),
+                                                    type: "submit"
+                                                },
+                                                a
+                                                    ? s.a.createElement(k.a, {
+                                                          type: "circle"
+                                                      })
+                                                    : null,
+                                                s.a.createElement(u.a, {
+                                                    content:
+                                                        "gateway.generate_new"
+                                                })
+                                            )
+                                        )
+                                    );
+                                }
+                            },
+                            {
+                                key: "_renderCurrentBalance",
+                                value: function() {
+                                    var e = m.a.replaceName(this.props.asset)
+                                            .name,
+                                        t = "deposit" === this.props.action,
+                                        a = this._getCurrentBalance(),
+                                        n = a
+                                            ? new p.a({
+                                                  asset_id: a.get("asset_type"),
+                                                  precision: this.props.asset.get(
+                                                      "precision"
+                                                  ),
+                                                  amount: a.get("balance")
+                                              })
+                                            : null,
+                                        r = t
+                                            ? s.a.createElement(
+                                                  "span",
+                                                  {
+                                                      style: {
+                                                          border:
+                                                              "2px solid black",
+                                                          borderLeft: "none"
+                                                      },
+                                                      className: "form-label"
+                                                  },
+                                                  e
+                                              )
+                                            : s.a.createElement(
+                                                  "button",
+                                                  {
+                                                      "data-place": "right",
+                                                      "data-tip": y.a.translate(
+                                                          "tooltip.withdraw_full"
+                                                      ),
+                                                      className: "button",
+                                                      style: {
+                                                          border:
+                                                              "2px solid black",
+                                                          borderLeft: "none"
+                                                      },
+                                                      onClick: this._updateAmount.bind(
+                                                          this,
+                                                          a
+                                                              ? parseInt(
+                                                                    a.get(
+                                                                        "balance"
+                                                                    ),
+                                                                    10
+                                                                )
+                                                              : 0
+                                                      )
+                                                  },
+                                                  s.a.createElement(w.a, {
+                                                      name: "clippy",
+                                                      title:
+                                                          "icons.clippy.withdraw_full"
+                                                  })
+                                              );
+                                    return s.a.createElement(
+                                        "div",
+                                        {
+                                            className:
+                                                "SimpleTrade__withdraw-row",
+                                            style: {fontSize: "1rem"}
+                                        },
+                                        s.a.createElement(
+                                            "label",
+                                            {style: {fontSize: "1rem"}},
+                                            y.a.translate(
+                                                "gateway.balance_asset",
+                                                {asset: e}
+                                            ),
+                                            ":",
+                                            s.a.createElement(
+                                                "span",
+                                                {className: "inline-label"},
+                                                s.a.createElement("input", {
+                                                    disabled: !0,
+                                                    style: {
+                                                        color: "black",
+                                                        border:
+                                                            "2px solid black",
+                                                        padding: 10,
+                                                        width: "100%"
+                                                    },
+                                                    value: n
+                                                        ? n.getAmount({
+                                                              real: !0
+                                                          })
+                                                        : 0
+                                                }),
+                                                r
+                                            )
+                                        )
+                                    );
+                                }
+                            },
+                            {
+                                key: "render",
+                                value: function() {
+                                    var e = this.props,
+                                        t = e.asset,
+                                        a = "deposit" === e.action;
+                                    if (!t) return null;
+                                    var n = m.a.replaceName(t).name,
+                                        r = this.props.isDown
+                                            ? s.a.createElement(
+                                                  "div",
+                                                  null,
+                                                  s.a.createElement(u.a, {
+                                                      className:
+                                                          "txtlabel cancel",
+                                                      content:
+                                                          "gateway.unavailable_OPEN",
+                                                      component: "p"
+                                                  })
+                                              )
+                                            : this.props.isAvailable
+                                                ? a
+                                                    ? this._renderDeposit()
+                                                    : this._renderWithdraw()
+                                                : s.a.createElement(
+                                                      "div",
+                                                      null,
+                                                      s.a.createElement(u.a, {
+                                                          className:
+                                                              "txtlabel cancel",
+                                                          content:
+                                                              "gateway.unavailable",
+                                                          component: "p"
+                                                      })
+                                                  );
+                                    return s.a.createElement(
+                                        "div",
+                                        {className: "SimpleTrade__modal"},
+                                        s.a.createElement(
+                                            "div",
+                                            {className: "Modal__header"},
+                                            s.a.createElement(
+                                                "h3",
+                                                null,
+                                                s.a.createElement(u.a, {
+                                                    content: a
+                                                        ? "gateway.deposit"
+                                                        : "modal.withdraw.submit"
+                                                }),
+                                                " ",
+                                                n
+                                            )
+                                        ),
+                                        s.a.createElement("div", {
+                                            className: "Modal__divider"
+                                        }),
+                                        s.a.createElement(
+                                            "div",
+                                            {
+                                                className:
+                                                    "grid-block vertical no-overflow",
+                                                style: {
+                                                    zIndex: 1002,
+                                                    paddingLeft: "2rem",
+                                                    paddingRight: "2rem",
+                                                    paddingTop: "1rem"
+                                                }
+                                            },
+                                            r
+                                        )
+                                    );
+                                }
+                            }
+                        ]),
+                        a
+                    );
+                })();
+                (D.propTypes = {
+                    sender: h.a.ChainAccount.isRequired,
+                    asset: h.a.ChainAsset.isRequired,
+                    coreAsset: h.a.ChainAsset.isRequired,
+                    globalObject: h.a.ChainAsset.isRequired
+                }),
+                    (D.defaultProps = {
+                        coreAsset: "1.3.0",
+                        globalObject: "2.0.0"
+                    }),
+                    (D = Object(d.a)(D));
+                var I = (function(e) {
+                    function t() {
+                        x(this, t);
+                        var e = T(
+                            this,
+                            (t.__proto__ || Object.getPrototypeOf(t)).call(this)
+                        );
+                        return (e.state = {open: !1}), e;
+                    }
+                    return (
+                        q(t, s.a.Component),
+                        j(t, [
+                            {
+                                key: "show",
+                                value: function() {
+                                    var e = this;
+                                    this.setState({open: !0}, function() {
+                                        i.a.publish(e.props.modalId, "open");
+                                    });
                                 }
                             },
                             {
                                 key: "onClose",
                                 value: function() {
-                                    var t = new Error("Connection was closed"),
-                                        e = !0,
-                                        r = !1,
-                                        a = void 0;
-                                    try {
-                                        for (
-                                            var o,
-                                                n = this._requests[
-                                                    Symbol.iterator
-                                                ]();
-                                            !(e = (o = n.next()).done);
-                                            e = !0
-                                        ) {
-                                            o.value.deferral.reject(t);
-                                        }
-                                    } catch (t) {
-                                        (r = !0), (a = t);
-                                    } finally {
-                                        try {
-                                            !e && n.return && n.return();
-                                        } finally {
-                                            if (r) throw a;
-                                        }
-                                    }
-                                    this._requests.clear();
+                                    this.setState({open: !1});
                                 }
                             },
                             {
-                                key: "onMessage",
-                                value: function(t) {
-                                    var e = JSON.parse(t.data);
-                                    if (
-                                        (p("-- Steem.onMessage --\x3e", e.id),
-                                        !this._requests.has(e.id))
-                                    )
-                                        throw new Error(
-                                            "Panic: no request in queue for message id " +
-                                                e.id
-                                        );
-                                    var r = this._requests.get(e.id);
-                                    this._requests.delete(e.id);
-                                    var a = e.error;
-                                    if (a) {
-                                        var o = new Error(
-                                            (a.message ||
-                                                "Failed to complete operation") +
-                                                " (see err.payload for the full error payload)"
-                                        );
-                                        (o.payload = e), r.deferral.reject(o);
-                                    } else
-                                        this.emit(
-                                            "track-performance",
-                                            r.message.method,
-                                            Date.now() - r.startedAt
-                                        ),
-                                            r.deferral.resolve(e.result);
+                                key: "render",
+                                value: function() {
+                                    return this.state.open
+                                        ? s.a.createElement(
+                                              l.a,
+                                              {
+                                                  className: "test",
+                                                  onClose: this.onClose.bind(
+                                                      this
+                                                  ),
+                                                  overlay: !0,
+                                                  id: this.props.modalId
+                                              },
+                                              this.state.open
+                                                  ? s.a.createElement(
+                                                        D,
+                                                        P({}, this.props, {
+                                                            open: this.state
+                                                                .open
+                                                        })
+                                                    )
+                                                  : null
+                                          )
+                                        : null;
                                 }
                             }
                         ]),
-                        e
+                        t
                     );
                 })();
-            e.default = c;
+                t.a = I;
+            }.call(this, a(29).Buffer));
         },
-        928: function(t, e, r) {
-            (function(e) {
-                t.exports = !1;
-                try {
-                    t.exports =
-                        "[object process]" ===
-                        Object.prototype.toString.call(e.process);
-                } catch (t) {}
-            }.call(this, r(88)));
+        451: function(e, t, a) {
+            "use strict";
+            var n = a(0),
+                r = a.n(n),
+                s = a(20),
+                o = a.n(s),
+                i = a(34),
+                l = a(1),
+                c = a.n(l),
+                u = a(18),
+                p = a(5),
+                m = a(13),
+                d = a(6),
+                h = a(47),
+                b = a.n(h),
+                f = a(3),
+                _ = a.n(f),
+                g = a(25),
+                y = a(221),
+                v = a(164),
+                E = a(12),
+                w = a(37),
+                k = a(23),
+                C = a(181),
+                A = a(15),
+                N = a(8),
+                O = a(10),
+                S = a(148),
+                P = a.n(S),
+                j =
+                    Object.assign ||
+                    function(e) {
+                        for (var t = 1; t < arguments.length; t++) {
+                            var a = arguments[t];
+                            for (var n in a)
+                                Object.prototype.hasOwnProperty.call(a, n) &&
+                                    (e[n] = a[n]);
+                        }
+                        return e;
+                    },
+                x = (function() {
+                    function e(e, t) {
+                        for (var a = 0; a < t.length; a++) {
+                            var n = t[a];
+                            (n.enumerable = n.enumerable || !1),
+                                (n.configurable = !0),
+                                "value" in n && (n.writable = !0),
+                                Object.defineProperty(e, n.key, n);
+                        }
+                    }
+                    return function(t, a, n) {
+                        return a && e(t.prototype, a), n && e(t, n), t;
+                    };
+                })();
+            function T(e, t) {
+                if (!(e instanceof t))
+                    throw new TypeError("Cannot call a class as a function");
+            }
+            function q(e, t) {
+                if (!e)
+                    throw new ReferenceError(
+                        "this hasn't been initialised - super() hasn't been called"
+                    );
+                return !t || ("object" != typeof t && "function" != typeof t)
+                    ? e
+                    : t;
+            }
+            function D(e, t) {
+                if ("function" != typeof t && null !== t)
+                    throw new TypeError(
+                        "Super expression must either be null or a function, not " +
+                            typeof t
+                    );
+                (e.prototype = Object.create(t && t.prototype, {
+                    constructor: {
+                        value: e,
+                        enumerable: !1,
+                        writable: !0,
+                        configurable: !0
+                    }
+                })),
+                    t &&
+                        (Object.setPrototypeOf
+                            ? Object.setPrototypeOf(e, t)
+                            : (e.__proto__ = t));
+            }
+            var I = (function(e) {
+                function t(e) {
+                    T(this, t);
+                    var a = q(
+                        this,
+                        (t.__proto__ || Object.getPrototypeOf(t)).call(this)
+                    );
+                    return (
+                        (a.state = {
+                            toAddress: g.a.getLast(e.walletType),
+                            withdrawValue: "",
+                            amountError: null,
+                            inputAmount: 0,
+                            receiveLoading: !1,
+                            limitLoading: !0,
+                            apiError: !1
+                        }),
+                        a._validateAddress(a.state.toAddress, e),
+                        (a.deposit_address_cache = new y.a()),
+                        a
+                    );
+                }
+                return (
+                    D(t, r.a.Component),
+                    x(t, [
+                        {
+                            key: "onClose",
+                            value: function() {
+                                o.a.publish(this.props.modalId, "close");
+                            }
+                        },
+                        {
+                            key: "componentWillMount",
+                            value: function() {
+                                this._getDepositAddress();
+                            }
+                        },
+                        {
+                            key: "componentDidMount",
+                            value: function() {
+                                this._getDepositLimit(), this._estimateOutput();
+                            }
+                        },
+                        {
+                            key: "componentWillReceiveProps",
+                            value: function(e) {
+                                (e.inputCoinType === this.props.inputCoinType &&
+                                    e.outputCoinType ===
+                                        this.props.outputCoinType) ||
+                                    (this._getDepositLimit(e),
+                                    this._estimateOutput(e),
+                                    this._getDepositAddress(e));
+                            }
+                        },
+                        {
+                            key: "shouldComponentUpdate",
+                            value: function(e, t) {
+                                return (
+                                    e.inputCoinType !==
+                                        this.props.inputCoinType ||
+                                    e.outputCoinType !==
+                                        this.props.outputCoinType ||
+                                    e.sender !== this.props.sender ||
+                                    e.asset !== this.props.asset ||
+                                    e.isAvailable !== this.props.isAvailable ||
+                                    e.isDown !== this.props.isDown ||
+                                    !p.a.are_equal_shallow(t, this.state)
+                                );
+                            }
+                        },
+                        {
+                            key: "_getDepositLimit",
+                            value: function() {
+                                var e = this,
+                                    t =
+                                        arguments.length > 0 &&
+                                        void 0 !== arguments[0]
+                                            ? arguments[0]
+                                            : this.props;
+                                this.setState({limitLoading: !0}),
+                                    Object(g.k)(
+                                        t.inputCoinType,
+                                        t.outputCoinType
+                                    )
+                                        .then(function(t) {
+                                            e.setState({
+                                                depositLimit: t.depositLimit,
+                                                limitLoading: !1
+                                            });
+                                        })
+                                        .catch(function(t) {
+                                            console.log(
+                                                "deposit limit error:",
+                                                t
+                                            ),
+                                                e.setState({
+                                                    depositLimit: null,
+                                                    limitLoading: !1
+                                                });
+                                        });
+                            }
+                        },
+                        {
+                            key: "_onAmountChange",
+                            value: function(e, t) {
+                                var a = new RegExp(/[[:digit:]]/),
+                                    n = t.target;
+                                switch (
+                                    (a.test(n.value) ||
+                                        (n.value = n.value.replace(
+                                            /[^0-9.]/g,
+                                            ""
+                                        )),
+                                    "." == n.value.charAt(0) &&
+                                        (n.value = "0."),
+                                    n.value.charAt(n.value.length) !=
+                                        n.value.search(".") &&
+                                        n.value.substr(1),
+                                    (n.value = p.a.limitByPrecision(
+                                        n.value,
+                                        8
+                                    )),
+                                    e)
+                                ) {
+                                    case "input":
+                                        this.setState(
+                                            {inputAmount: n.value},
+                                            this._estimateOutput.bind(this)
+                                        );
+                                        break;
+                                    case "output":
+                                        this.setState(
+                                            {outputAmount: n.value},
+                                            this._estimateInput.bind(this)
+                                        );
+                                }
+                            }
+                        },
+                        {
+                            key: "_estimateOutput",
+                            value: function() {
+                                var e = this,
+                                    t =
+                                        arguments.length > 0 &&
+                                        void 0 !== arguments[0]
+                                            ? arguments[0]
+                                            : this.props;
+                                this.setState({
+                                    receiveAmount: 0,
+                                    sendAmount: this.state.inputAmount
+                                }),
+                                    this.state.inputAmount &&
+                                        (this.setState({receiveLoading: !0}),
+                                        Object(g.c)(
+                                            this.state.inputAmount,
+                                            t.inputCoinType,
+                                            t.outputCoinType
+                                        )
+                                            .then(function(t) {
+                                                e.setState({
+                                                    inputAmount: t.inputAmount,
+                                                    receiveAmount:
+                                                        t.outputAmount,
+                                                    receiveLoading: !1
+                                                });
+                                            })
+                                            .catch(function(t) {
+                                                console.log(
+                                                    "receive amount err:",
+                                                    t
+                                                ),
+                                                    e.setState({
+                                                        receiveLoading: !1,
+                                                        apiError: !0
+                                                    });
+                                            }));
+                            }
+                        },
+                        {
+                            key: "_estimateInput",
+                            value: function() {
+                                var e = this,
+                                    t =
+                                        arguments.length > 0 &&
+                                        void 0 !== arguments[0]
+                                            ? arguments[0]
+                                            : this.props;
+                                this.setState({
+                                    receiveAmount: this.state.outputAmount,
+                                    sendAmount: 0
+                                }),
+                                    this.state.outputAmount &&
+                                        (this.setState({receiveLoading: !0}),
+                                        Object(g.b)(
+                                            this.state.outputAmount,
+                                            t.inputCoinType,
+                                            t.outputCoinType
+                                        )
+                                            .then(function(t) {
+                                                e.setState({
+                                                    inputAmount: t.inputAmount,
+                                                    sendAmount: p.a.limitByPrecision(
+                                                        t.inputAmount,
+                                                        8
+                                                    ),
+                                                    receiveLoading: !1
+                                                });
+                                            })
+                                            .catch(function(t) {
+                                                console.log(
+                                                    "send amount err:",
+                                                    t
+                                                ),
+                                                    e.setState({
+                                                        receiveLoading: !1,
+                                                        apiError: !0
+                                                    });
+                                            }));
+                            }
+                        },
+                        {
+                            key: "_getDepositAddress",
+                            value: function() {
+                                var e =
+                                    arguments.length > 0 &&
+                                    void 0 !== arguments[0]
+                                        ? arguments[0]
+                                        : this.props;
+                                if (e.inputCoinType) {
+                                    this.setState({receive_address: null}),
+                                        Object(g.l)(this._getDepositObject(e));
+                                }
+                            }
+                        },
+                        {
+                            key: "_getDepositObject",
+                            value: function() {
+                                var e = this,
+                                    t =
+                                        arguments.length > 0 &&
+                                        void 0 !== arguments[0]
+                                            ? arguments[0]
+                                            : this.props;
+                                return {
+                                    inputCoinType: t.inputCoinType.toLowerCase(),
+                                    outputCoinType: t.outputCoinType.toLowerCase(),
+                                    outputAddress: t.sender.get("name"),
+                                    url: k.a.BASE,
+                                    stateCallback: function(a) {
+                                        e.addDepositAddress(
+                                            t.inputCoinType.toLowerCase(),
+                                            t.outputCoinType.toLowerCase(),
+                                            t.sender.get("name"),
+                                            a
+                                        );
+                                    }
+                                };
+                            }
+                        },
+                        {
+                            key: "addDepositAddress",
+                            value: function(e, t, a, n) {
+                                this.deposit_address_cache.cacheInputAddress(
+                                    "blocktrades",
+                                    a,
+                                    e,
+                                    t,
+                                    n.address,
+                                    n.memo
+                                ),
+                                    this.setState({receive_address: n});
+                            }
+                        },
+                        {
+                            key: "componentDidUpdate",
+                            value: function() {
+                                b.a.rebuild();
+                            }
+                        },
+                        {
+                            key: "_validateAddress",
+                            value: function(e) {
+                                var t = this,
+                                    a =
+                                        arguments.length > 1 &&
+                                        void 0 !== arguments[1]
+                                            ? arguments[1]
+                                            : this.props;
+                                Object(g.m)({
+                                    walletType: a.walletType,
+                                    newAddress: e
+                                })
+                                    .then(function(a) {
+                                        t.state.toAddress === e &&
+                                            t.setState({
+                                                withdraw_address_check_in_progress: !1,
+                                                validAddress: a
+                                            });
+                                    })
+                                    .catch(function(e) {
+                                        console.error(
+                                            "Error when validating address:",
+                                            e
+                                        );
+                                    });
+                            }
+                        },
+                        {
+                            key: "_openRegistrarSite",
+                            value: function(e) {
+                                e.preventDefault(),
+                                    (window.open(
+                                        N.a.site_registr,
+                                        "_blank"
+                                    ).opener = null);
+                            }
+                        },
+                        {
+                            key: "_onDropDownSelect",
+                            value: function(e) {
+                                O.a.changeViewSetting({preferredBridge: e});
+                            }
+                        },
+                        {
+                            key: "onBlockTradesContact",
+                            value: function() {
+                                console.log("Open New Tab"),
+                                    window
+                                        .open(
+                                            "https://www.blocktrades.us/contact",
+                                            "_blank"
+                                        )
+                                        .focus();
+                            }
+                        },
+                        {
+                            key: "_renderDeposit",
+                            value: function() {
+                                var e = p.a.replaceName(this.props.asset),
+                                    t = e.name,
+                                    a = e.prefix,
+                                    n = this.state,
+                                    s = n.receive_address,
+                                    o = n.apiError,
+                                    i = s && "memo" in s && s.memo,
+                                    l = (s && s.address) || "",
+                                    u = r.a.createElement(
+                                        "div",
+                                        {
+                                            className: "QR",
+                                            style: {textAlign: "center"}
+                                        },
+                                        r.a.createElement(P.a, {
+                                            size: 140,
+                                            value: l
+                                        })
+                                    ),
+                                    m = Object.keys(this.props.bridges.toJS()),
+                                    d = this.props.inputCoinType.toUpperCase(),
+                                    h = (a || "") + t,
+                                    b = (
+                                        this.state.receiveAmount /
+                                        this.state.inputAmount
+                                    ).toFixed(4),
+                                    f = h + "/" + d,
+                                    g =
+                                        this.state.inputAmount >
+                                            parseFloat(
+                                                this.state.depositLimit
+                                            ) ||
+                                        this.state.sendAmount >
+                                            parseFloat(this.state.depositLimit),
+                                    y = g
+                                        ? {border: "1px solid #a94442"}
+                                        : null;
+                                return r.a.createElement(
+                                    "div",
+                                    {className: "modal__body"},
+                                    r.a.createElement(
+                                        "div",
+                                        {className: "container-row"},
+                                        r.a.createElement(
+                                            "label",
+                                            {className: "left-label"},
+                                            r.a.createElement(c.a, {
+                                                content: "modal.buy.asset"
+                                            })
+                                        ),
+                                        r.a.createElement(
+                                            "div",
+                                            {
+                                                className:
+                                                    "inline-label input-wrapper"
+                                            },
+                                            r.a.createElement("input", {
+                                                disabled: !0,
+                                                type: "text",
+                                                defaultValue: h
+                                            })
+                                        )
+                                    ),
+                                    r.a.createElement(
+                                        "div",
+                                        {className: "container-row"},
+                                        r.a.createElement(
+                                            "div",
+                                            {className: "grid-block"},
+                                            r.a.createElement(
+                                                "label",
+                                                {className: "left-label"},
+                                                r.a.createElement(c.a, {
+                                                    content: "modal.buy.bridge"
+                                                })
+                                            ),
+                                            r.a.createElement(
+                                                "span",
+                                                {
+                                                    "data-tip": _.a.translate(
+                                                        "tooltip.bridge_TRADE"
+                                                    ),
+                                                    className:
+                                                        "inline-block tooltip",
+                                                    onClick: this.onBlockTradesContact.bind(
+                                                        this
+                                                    )
+                                                },
+                                                " ",
+                                                r.a.createElement(E.a, {
+                                                    style: {
+                                                        position: "relative",
+                                                        top: 0
+                                                    },
+                                                    name: "question-circle",
+                                                    title:
+                                                        "icons.question_circle"
+                                                })
+                                            )
+                                        ),
+                                        r.a.createElement(
+                                            "div",
+                                            {
+                                                className:
+                                                    "inline-label input-wrapper"
+                                            },
+                                            r.a.createElement("input", {
+                                                disabled: !0,
+                                                type: "text",
+                                                defaultValue: "BLOCKTRADES"
+                                            }),
+                                            " "
+                                        )
+                                    ),
+                                    r.a.createElement(
+                                        "span",
+                                        {
+                                            style: o
+                                                ? {display: "none"}
+                                                : {display: ""}
+                                        },
+                                        r.a.createElement(
+                                            "div",
+                                            {
+                                                className:
+                                                    "container-row double-row"
+                                            },
+                                            r.a.createElement(
+                                                "div",
+                                                {
+                                                    className:
+                                                        "no-margin no-padding"
+                                                },
+                                                r.a.createElement(
+                                                    "div",
+                                                    {
+                                                        className: "small-6",
+                                                        style: {
+                                                            paddingRight: 10
+                                                        }
+                                                    },
+                                                    r.a.createElement(
+                                                        "div",
+                                                        {
+                                                            className:
+                                                                "grid-block"
+                                                        },
+                                                        r.a.createElement(
+                                                            "label",
+                                                            {
+                                                                className:
+                                                                    "left-label"
+                                                            },
+                                                            r.a.createElement(
+                                                                c.a,
+                                                                {
+                                                                    content:
+                                                                        "transfer.send"
+                                                                }
+                                                            )
+                                                        ),
+                                                        g
+                                                            ? r.a.createElement(
+                                                                  "div",
+                                                                  {
+                                                                      className:
+                                                                          "error-msg inline-block tooltip",
+                                                                      "data-tip": _.a.translate(
+                                                                          "tooltip.over_limit"
+                                                                      )
+                                                                  },
+                                                                  r.a.createElement(
+                                                                      c.a,
+                                                                      {
+                                                                          content:
+                                                                              "gateway.over_limit"
+                                                                      }
+                                                                  ),
+                                                                  " ",
+                                                                  r.a.createElement(
+                                                                      E.a,
+                                                                      {
+                                                                          name:
+                                                                              "question-circle",
+                                                                          title:
+                                                                              "icons.question_circle"
+                                                                      }
+                                                                  )
+                                                              )
+                                                            : null
+                                                    ),
+                                                    r.a.createElement(
+                                                        "div",
+                                                        {
+                                                            className:
+                                                                "inline-label input-wrapper"
+                                                        },
+                                                        r.a.createElement(
+                                                            "input",
+                                                            {
+                                                                style: y,
+                                                                type: "text",
+                                                                value: this
+                                                                    .state
+                                                                    .sendAmount,
+                                                                onInput: this._onAmountChange.bind(
+                                                                    this,
+                                                                    "input"
+                                                                )
+                                                            }
+                                                        ),
+                                                        r.a.createElement(
+                                                            "div",
+                                                            {
+                                                                className:
+                                                                    "form-label select floating-dropdown"
+                                                            },
+                                                            r.a.createElement(
+                                                                C.a,
+                                                                {
+                                                                    entries: m,
+                                                                    values: m.reduce(
+                                                                        function(
+                                                                            e,
+                                                                            t
+                                                                        ) {
+                                                                            return (
+                                                                                t &&
+                                                                                    (e[
+                                                                                        t
+                                                                                    ] = t),
+                                                                                e
+                                                                            );
+                                                                        },
+                                                                        {}
+                                                                    ),
+                                                                    singleEntry:
+                                                                        m[0],
+                                                                    value:
+                                                                        this
+                                                                            .props
+                                                                            .preferredBridge ||
+                                                                        m[0],
+                                                                    onChange: this
+                                                                        ._onDropDownSelect,
+                                                                    upperCase: !0
+                                                                }
+                                                            )
+                                                        )
+                                                    )
+                                                ),
+                                                r.a.createElement(
+                                                    "div",
+                                                    {
+                                                        className: "small-6",
+                                                        style: {paddingLeft: 10}
+                                                    },
+                                                    r.a.createElement(
+                                                        "label",
+                                                        {
+                                                            className:
+                                                                "left-label"
+                                                        },
+                                                        r.a.createElement(c.a, {
+                                                            content:
+                                                                "gateway.deposit_limit"
+                                                        })
+                                                    ),
+                                                    r.a.createElement(
+                                                        "div",
+                                                        {
+                                                            className:
+                                                                "inline-label input-wrapper"
+                                                        },
+                                                        r.a.createElement(
+                                                            "input",
+                                                            {
+                                                                disabled: !0,
+                                                                type: "number",
+                                                                value:
+                                                                    (this.state
+                                                                        .depositLimit &&
+                                                                        parseFloat(
+                                                                            this
+                                                                                .state
+                                                                                .depositLimit
+                                                                        ).toFixed(
+                                                                            4
+                                                                        )) ||
+                                                                    0
+                                                            }
+                                                        ),
+                                                        r.a.createElement(
+                                                            "div",
+                                                            {
+                                                                className:
+                                                                    "input-right-symbol"
+                                                            },
+                                                            d
+                                                        )
+                                                    )
+                                                )
+                                            )
+                                        ),
+                                        r.a.createElement(
+                                            "div",
+                                            {
+                                                className:
+                                                    "container-row double-row"
+                                            },
+                                            r.a.createElement(
+                                                "div",
+                                                {
+                                                    className:
+                                                        "no-margin no-padding"
+                                                },
+                                                r.a.createElement(
+                                                    "div",
+                                                    {
+                                                        className: "small-6",
+                                                        style: {
+                                                            paddingRight: 10
+                                                        }
+                                                    },
+                                                    r.a.createElement(
+                                                        "label",
+                                                        {
+                                                            className:
+                                                                "left-label"
+                                                        },
+                                                        r.a.createElement(c.a, {
+                                                            content:
+                                                                "exchange.receive"
+                                                        })
+                                                    ),
+                                                    r.a.createElement(
+                                                        "div",
+                                                        {
+                                                            className:
+                                                                "inline-label input-wrapper"
+                                                        },
+                                                        r.a.createElement(
+                                                            "input",
+                                                            {
+                                                                style: y,
+                                                                type: "text",
+                                                                value: this
+                                                                    .state
+                                                                    .receiveAmount,
+                                                                onInput: this._onAmountChange.bind(
+                                                                    this,
+                                                                    "output"
+                                                                )
+                                                            }
+                                                        ),
+                                                        r.a.createElement(
+                                                            "div",
+                                                            {
+                                                                className:
+                                                                    "input-right-symbol"
+                                                            },
+                                                            h
+                                                        )
+                                                    )
+                                                ),
+                                                r.a.createElement(
+                                                    "div",
+                                                    {
+                                                        className: "small-6",
+                                                        style: {paddingLeft: 10}
+                                                    },
+                                                    r.a.createElement(
+                                                        "div",
+                                                        {
+                                                            className:
+                                                                "grid-block"
+                                                        },
+                                                        r.a.createElement(
+                                                            "label",
+                                                            {
+                                                                className:
+                                                                    "left-label"
+                                                            },
+                                                            r.a.createElement(
+                                                                c.a,
+                                                                {
+                                                                    content:
+                                                                        "exchange.price"
+                                                                }
+                                                            ),
+                                                            "  ",
+                                                            this.state
+                                                                .receiveLoading
+                                                                ? r.a.createElement(
+                                                                      c.a,
+                                                                      {
+                                                                          content:
+                                                                              "footer.loading"
+                                                                      }
+                                                                  )
+                                                                : ""
+                                                        )
+                                                    ),
+                                                    r.a.createElement(
+                                                        "div",
+                                                        {
+                                                            className:
+                                                                "inline-label input-wrapper"
+                                                        },
+                                                        r.a.createElement(
+                                                            "input",
+                                                            {
+                                                                disabled: !0,
+                                                                type: "number",
+                                                                value: g ? 0 : b
+                                                            }
+                                                        ),
+                                                        r.a.createElement(
+                                                            "div",
+                                                            {
+                                                                className:
+                                                                    "input-right-symbol"
+                                                            },
+                                                            f
+                                                        )
+                                                    )
+                                                )
+                                            )
+                                        ),
+                                        l
+                                            ? r.a.createElement(
+                                                  "div",
+                                                  {className: "container-row"},
+                                                  i ? null : u,
+                                                  r.a.createElement(
+                                                      "div",
+                                                      {className: "grid-block"},
+                                                      r.a.createElement(
+                                                          "div",
+                                                          {
+                                                              className:
+                                                                  "copyIcon"
+                                                          },
+                                                          r.a.createElement(
+                                                              v.a,
+                                                              {
+                                                                  text: l,
+                                                                  className:
+                                                                      "copyIcon"
+                                                              }
+                                                          )
+                                                      ),
+                                                      r.a.createElement(
+                                                          "div",
+                                                          null,
+                                                          r.a.createElement(
+                                                              c.a,
+                                                              {
+                                                                  component:
+                                                                      "div",
+                                                                  style: {
+                                                                      fontSize:
+                                                                          "0.8rem",
+                                                                      fontWeight:
+                                                                          "bold",
+                                                                      paddingBottom:
+                                                                          "0.3rem"
+                                                                  },
+                                                                  content:
+                                                                      "gateway.purchase_notice",
+                                                                  inputAsset: d,
+                                                                  outputAsset: h
+                                                              }
+                                                          ),
+                                                          r.a.createElement(
+                                                              "div",
+                                                              {
+                                                                  className:
+                                                                      "modal__highlight"
+                                                              },
+                                                              l
+                                                          )
+                                                      )
+                                                  ),
+                                                  i
+                                                      ? r.a.createElement(
+                                                            "div",
+                                                            {
+                                                                className:
+                                                                    "grid-block",
+                                                                style: {
+                                                                    marginTop:
+                                                                        "10px"
+                                                                }
+                                                            },
+                                                            r.a.createElement(
+                                                                "div",
+                                                                {
+                                                                    className:
+                                                                        "copyIcon"
+                                                                },
+                                                                r.a.createElement(
+                                                                    v.a,
+                                                                    {
+                                                                        text:
+                                                                            s.memo,
+                                                                        className:
+                                                                            "copyIcon"
+                                                                    }
+                                                                )
+                                                            ),
+                                                            r.a.createElement(
+                                                                "div",
+                                                                null,
+                                                                r.a.createElement(
+                                                                    c.a,
+                                                                    {
+                                                                        unsafe: !0,
+                                                                        content:
+                                                                            "gateway.purchase_notice_memo",
+                                                                        component:
+                                                                            "div",
+                                                                        style: {
+                                                                            fontSize:
+                                                                                "0.8rem",
+                                                                            fontWeight:
+                                                                                "bold",
+                                                                            paddingBottom:
+                                                                                "0.3rem"
+                                                                        }
+                                                                    }
+                                                                ),
+                                                                r.a.createElement(
+                                                                    "div",
+                                                                    {
+                                                                        className:
+                                                                            "modal__highlight"
+                                                                    },
+                                                                    s.memo
+                                                                )
+                                                            )
+                                                        )
+                                                      : null
+                                              )
+                                            : r.a.createElement(
+                                                  "div",
+                                                  {
+                                                      style: {
+                                                          textAlign: "center"
+                                                      }
+                                                  },
+                                                  r.a.createElement(w.a, {
+                                                      type: "three-bounce"
+                                                  })
+                                              ),
+                                        r.a.createElement(
+                                            "div",
+                                            null,
+                                            r.a.createElement(
+                                                "div",
+                                                {
+                                                    className:
+                                                        "no-margin no-padding"
+                                                },
+                                                r.a.createElement(
+                                                    "button",
+                                                    {
+                                                        className:
+                                                            "button primary hollow",
+                                                        onClick: this.onClose.bind(
+                                                            this
+                                                        )
+                                                    },
+                                                    r.a.createElement(c.a, {
+                                                        content:
+                                                            "transfer.close"
+                                                    })
+                                                )
+                                            )
+                                        )
+                                    ),
+                                    r.a.createElement(
+                                        "span",
+                                        {
+                                            style: o
+                                                ? {display: ""}
+                                                : {display: "none"}
+                                        },
+                                        r.a.createElement(
+                                            "div",
+                                            {
+                                                className:
+                                                    "container-row double-row"
+                                            },
+                                            r.a.createElement(c.a, {
+                                                className: "txtlabel cancel",
+                                                content:
+                                                    "gateway.unavailable_TRADE",
+                                                component: "h3"
+                                            }),
+                                            r.a.createElement(
+                                                "button",
+                                                {
+                                                    className:
+                                                        "button primary hollow",
+                                                    onClick: this.onClose.bind(
+                                                        this
+                                                    )
+                                                },
+                                                r.a.createElement(c.a, {
+                                                    content: "transfer.close"
+                                                })
+                                            )
+                                        )
+                                    )
+                                );
+                            }
+                        },
+                        {
+                            key: "_renderCurrentBalance",
+                            value: function() {
+                                var e = this,
+                                    t = p.a.replaceName(this.props.asset).name,
+                                    a = "deposit" === this.props.action,
+                                    n = this.props.balances.find(function(t) {
+                                        return (
+                                            t &&
+                                            t.get("asset_type") ===
+                                                e.props.asset.get("id")
+                                        );
+                                    }),
+                                    s = n
+                                        ? new u.a({
+                                              asset_id: n.get("asset_type"),
+                                              precision: this.props.asset.get(
+                                                  "precision"
+                                              ),
+                                              amount: n.get("balance")
+                                          })
+                                        : null,
+                                    o = a
+                                        ? r.a.createElement(
+                                              "span",
+                                              {
+                                                  style: {
+                                                      border: "2px solid black",
+                                                      borderLeft: "none"
+                                                  },
+                                                  className: "form-label"
+                                              },
+                                              t
+                                          )
+                                        : r.a.createElement(
+                                              "button",
+                                              {
+                                                  "data-place": "right",
+                                                  "data-tip": _.a.translate(
+                                                      "tooltip.withdraw_full"
+                                                  ),
+                                                  className: "button",
+                                                  style: {
+                                                      border: "2px solid black",
+                                                      borderLeft: "none"
+                                                  },
+                                                  onClick: this._updateAmount.bind(
+                                                      this,
+                                                      n
+                                                          ? parseInt(
+                                                                n.get(
+                                                                    "balance"
+                                                                ),
+                                                                10
+                                                            )
+                                                          : 0
+                                                  )
+                                              },
+                                              r.a.createElement(E.a, {
+                                                  name: "clippy",
+                                                  title:
+                                                      "icons.clippy.withdraw_full"
+                                              })
+                                          );
+                                return r.a.createElement(
+                                    "div",
+                                    {
+                                        className: "SimpleTrade__withdraw-row",
+                                        style: {fontSize: "1rem"}
+                                    },
+                                    r.a.createElement(
+                                        "label",
+                                        {style: {fontSize: "1rem"}},
+                                        _.a.translate("gateway.balance_asset", {
+                                            asset: t
+                                        }),
+                                        ":",
+                                        r.a.createElement(
+                                            "span",
+                                            {className: "inline-label"},
+                                            r.a.createElement("input", {
+                                                disabled: !0,
+                                                style: {
+                                                    color: "black",
+                                                    border: "2px solid black",
+                                                    padding: 10,
+                                                    width: "100%"
+                                                },
+                                                value: s
+                                                    ? s.getAmount({real: !0})
+                                                    : 0
+                                            }),
+                                            o
+                                        )
+                                    )
+                                );
+                            }
+                        },
+                        {
+                            key: "render",
+                            value: function() {
+                                return this.props.asset
+                                    ? r.a.createElement(
+                                          "div",
+                                          {
+                                              className:
+                                                  "grid-block vertical no-overflow"
+                                          },
+                                          r.a.createElement(
+                                              "div",
+                                              {className: "modal__header"},
+                                              r.a.createElement(c.a, {
+                                                  component: "p",
+                                                  content: "modal.buy.title"
+                                              })
+                                          ),
+                                          this.props.isDown
+                                              ? r.a.createElement(
+                                                    "div",
+                                                    {
+                                                        style: {
+                                                            textAlign: "center"
+                                                        }
+                                                    },
+                                                    r.a.createElement(c.a, {
+                                                        className:
+                                                            "txtlabel cancel",
+                                                        content:
+                                                            "gateway.unavailable_TRADE",
+                                                        component: "p"
+                                                    })
+                                                )
+                                              : this.props.isAvailable
+                                                  ? this._renderDeposit()
+                                                  : r.a.createElement(
+                                                        "div",
+                                                        {
+                                                            style: {
+                                                                textAlign:
+                                                                    "center"
+                                                            }
+                                                        },
+                                                        r.a.createElement(c.a, {
+                                                            className:
+                                                                "txtlabel cancel",
+                                                            content:
+                                                                "gateway.unavailable",
+                                                            component: "p"
+                                                        })
+                                                    )
+                                      )
+                                    : null;
+                            }
+                        }
+                    ]),
+                    t
+                );
+            })();
+            (I.propTypes = {
+                sender: d.a.ChainAccount.isRequired,
+                asset: d.a.ChainAsset.isRequired
+            }),
+                (I = Object(m.a)(I));
+            var F = (function(e) {
+                function t() {
+                    return (
+                        T(this, t),
+                        q(
+                            this,
+                            (t.__proto__ || Object.getPrototypeOf(t)).apply(
+                                this,
+                                arguments
+                            )
+                        )
+                    );
+                }
+                return (
+                    D(t, r.a.Component),
+                    x(t, [
+                        {
+                            key: "render",
+                            value: function() {
+                                var e = this.props,
+                                    t = e.preferredBridge,
+                                    a = (function(e, t) {
+                                        var a = {};
+                                        for (var n in e)
+                                            t.indexOf(n) >= 0 ||
+                                                (Object.prototype.hasOwnProperty.call(
+                                                    e,
+                                                    n
+                                                ) &&
+                                                    (a[n] = e[n]));
+                                        return a;
+                                    })(e, ["preferredBridge"]),
+                                    n = this.props.bridges.get(
+                                        this.props.preferredBridge
+                                    );
+                                return (
+                                    n ||
+                                        (t = (n = this.props.bridges.first())
+                                            .inputCoinType),
+                                    r.a.createElement(
+                                        I,
+                                        j({}, a, {preferredBridge: t}, n.toJS())
+                                    )
+                                );
+                            }
+                        }
+                    ]),
+                    t
+                );
+            })();
+            F = Object(A.connect)(F, {
+                listenTo: function() {
+                    return [N.a];
+                },
+                getProps: function() {
+                    return {
+                        preferredBridge: N.a
+                            .getState()
+                            .viewSettings.get("preferredBridge", "btc")
+                    };
+                }
+            });
+            var B = (function(e) {
+                function t() {
+                    T(this, t);
+                    var e = q(
+                        this,
+                        (t.__proto__ || Object.getPrototypeOf(t)).call(this)
+                    );
+                    return (e.state = {open: !1}), e;
+                }
+                return (
+                    D(t, r.a.Component),
+                    x(t, [
+                        {
+                            key: "show",
+                            value: function() {
+                                var e = this;
+                                this.setState({open: !0}, function() {
+                                    o.a.publish(e.props.modalId, "open");
+                                });
+                            }
+                        },
+                        {
+                            key: "onClose",
+                            value: function() {
+                                this.setState({open: !1});
+                            }
+                        },
+                        {
+                            key: "render",
+                            value: function() {
+                                return this.props.bridges && this.state.open
+                                    ? r.a.createElement(
+                                          i.a,
+                                          {
+                                              id: this.props.modalId,
+                                              onClose: this.onClose.bind(this),
+                                              overlay: !0
+                                          },
+                                          this.state.open
+                                              ? r.a.createElement(
+                                                    F,
+                                                    j({}, this.props, {
+                                                        open: this.state.open
+                                                    })
+                                                )
+                                              : null
+                                      )
+                                    : null;
+                            }
+                        }
+                    ]),
+                    t
+                );
+            })();
+            t.a = B;
         }
     }
 ]);
