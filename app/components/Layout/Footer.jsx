@@ -57,7 +57,7 @@ class Footer extends React.Component {
     checkNewVersionAvailable() {
         if (__ELECTRON__) {
             fetch(
-                "https://api.github.com/repos/bitshares/bitshares-ui/releases/latest"
+                "https://api.github.com/repos/localcoinis/localcoin-ui/releases/latest"
             )
                 .then(res => {
                     return res.json();
@@ -93,7 +93,7 @@ class Footer extends React.Component {
 
         if (hintData.length == 0) {
             window.open(
-                "http://docs.bitshares.org/bitshares/user/index.html",
+                "http://docs.localcoin.is/localcoin/user/index.html",
                 "_blank"
             );
         } else {

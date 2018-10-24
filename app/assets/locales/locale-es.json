@@ -1042,8 +1042,8 @@
     "migration": {
         "announcement_1": "En un esfuerzo por proporcionar una mayor seguridad para el monedero basado en la web, lo estamos migrando, con efecto inmediato a la dirección a continuación. Por favor, asegúrese de actualizar los marcadores que pueda tener.",
         "text_1": "Cartera local detecta",
-        "text_2": "Haga una copia de seguridad de su billetera ahora y restaure el archivo de respaldo a <a href='https://wallet.LocalCoin.org' target='blank' rel='noopener noreferrer'>https://wallet.LocalCoin.org</a>, cuál será su nueva dirección para la billetera web. Gracias por su apoyo continuo.",
-        "text_3": "Please use <a href='https://wallet.LocalCoin.org' target='blank' rel='noopener noreferrer'>https://wallet.LocalCoin.org</a> a partir de ahora, sus credenciales existentes le permitirán iniciar sesión allí también.",
+        "text_2": "Haga una copia de seguridad de su billetera ahora y restaure el archivo de respaldo a <a href='https://wallet.LocalCoin.is' target='blank' rel='noopener noreferrer'>https://wallet.LocalCoin.is</a>, cuál será su nueva dirección para la billetera web. Gracias por su apoyo continuo.",
+        "text_3": "Please use <a href='https://wallet.LocalCoin.is' target='blank' rel='noopener noreferrer'>https://wallet.LocalCoin.is</a> a partir de ahora, sus credenciales existentes le permitirán iniciar sesión allí también.",
         "title": "Aviso"
     },
     "modal": {

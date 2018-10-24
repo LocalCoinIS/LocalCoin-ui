@@ -2,7 +2,7 @@
 
  * [Introducción](index.md)
  * [Glosario](glossary.md)
- * [BitShares](introduction/bitshares.md)
+ * [LocalCoin](introduction/localcoin.md)
  * [Billetera](introduction/wallets.md)
  * [Backups](introduction/backups.md)
  * [Blockchain](introduction/blockchain.md)

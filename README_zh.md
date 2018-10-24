@@ -22,7 +22,7 @@ nvm use v6
 Node 安装完成后，获取项目的源代码：
 
 ```
-git clone https://github.com/bitshares/bitshares-ui.git
+git clone https://github.com/localcoinis/localcoin-ui.git
 cd bitshares-ui
 ```
 

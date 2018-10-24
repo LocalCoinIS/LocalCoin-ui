@@ -1,6 +1,6 @@
 #### Содержание
 
-- [BitShares](introduction/bitshares.md)
+- [LocalCoin](introduction/localcoin.md)
 - [Кошелек](introduction/wallets.md)
 - [Резервные копии](introduction/backups.md)
 - [Блокчейн](introduction/blockchain.md)
