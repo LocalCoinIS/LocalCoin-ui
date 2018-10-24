@@ -911,7 +911,7 @@ class Header extends React.Component {
                                         </g>
                                     </svg>
                                 </span>
-                                <div className="balance__list-wrap ">
+                                <div className="balance__list-wrap test">
                                     <ul className="balance__list balance__list_scroll">
                                         {usedAssets}
                                     </ul>
