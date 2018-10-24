@@ -23,19 +23,24 @@ class LinkToAssetById extends React.Component {
             >
                 {this.props.showIcon ? (
                     <img
-                        src={"/asset-symbols/" + symbol.toLowerCase() + ".png"}
+                        src={"/asset-symbols/" + symbol.toLowerCase() + ".svg"}
                         onError={e => {
+                            console.log("====================================");
+                            console.log("tmp");
+                            console.log("====================================");
                             var img = new Image();
+                            e.target.remove();
+                            img.alt = "tesft";
                             img.src =
                                 "/asset-symbols/" +
                                 symbol.toLowerCase() +
-                                ".svg";
-                            if (img.height != 0) {
-                                e.target.src =
+                                ".png";
+                            if (img.width != 0) {
+                                img.src =
                                     "/asset-symbols/" +
                                     symbol.toLowerCase() +
-                                    ".svg";
-                            } else e.target.src = "/asset-symbols/coin.png";
+                                    ".png";
+                            } else img.src = "/asset-symbols/coin.png";
                         }}
                         alt={`ico-${symbol}`}
                     />
