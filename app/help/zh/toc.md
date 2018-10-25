@@ -2,7 +2,7 @@
 
  * [介绍](index.md)
  * [词汇表](glossary.md)
- * [LocalCoin当地硬币](introduction/localcoin.md)
+ * [LocalCoin本地硬币](introduction/localcoin.md)
  * [钱包](introduction/wallets.md)
  * [备份](introduction/backups.md)
  * [区块链](introduction/blockchain.md)
