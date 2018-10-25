@@ -11,10 +11,10 @@ echo $unamestr
 echo $TRAVIS_TAG
 if [[ "$unamestr" == 'Linux' && -n $TRAVIS_TAG ]]
 then
-    ## wallet.bitshares.org subdomain (independent repo)
+    ## wallet.localcoin.is subdomain (independent repo)
     echo "Pushing new wallet subdomain repo"
-    git clone https://github.com:${GITHUB_TOKEN}@github.com/${WALLET_REPO} $TRAVIS_BUILD_DIR/wallet.bitshares.org
-    cd $TRAVIS_BUILD_DIR/wallet.bitshares.org
+    git clone https://github.com:${GITHUB_TOKEN}@github.com/${WALLET_REPO} $TRAVIS_BUILD_DIR/wallet.localcoin.is
+    cd $TRAVIS_BUILD_DIR/wallet.localcoin.is
     git checkout gh-pages
     rm -rf ./*
     git checkout ./CNAME
@@ -28,7 +28,7 @@ echo $TRAVIS_BRANCH
 echo $TRAVIS_PULL_REQUEST
 if [ $unamestr = 'Linux' ] && [ $TRAVIS_BRANCH = 'staging' ] && [ -z $TRAVIS_PULL_REQUEST_BRANCH ]
 then
-    ## wallet.bitshares.org subdomain (independent repo)
+    ## wallet.localcoin.is subdomain (independent repo)
     echo "Pushing new staging subdomain repo"
     git clone https://github.com:${GITHUB_TOKEN}@github.com/${STAGING_REPO} $TRAVIS_BUILD_DIR/staging.bitshares.org
     cd $TRAVIS_BUILD_DIR/staging.bitshares.org

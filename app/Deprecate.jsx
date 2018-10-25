@@ -33,7 +33,7 @@ export default class Deprecate extends React.Component {
 
                         <Translate content="migration.title" component="h2" />
                         <Translate content="migration.announcement_1" unsafe component="p" />
-                        <p><a href="https://wallet.bitshares.org" target='blank' rel='noopener noreferrer'>https://wallet.bitshares.org</a></p>
+                        <p><a href="https://wallet.localcoin.is" target='blank' rel='noopener noreferrer'>https://wallet.localcoin.is</a></p>
 
                         {this.hasWallet() ? this.renderForWallet() : this.renderForCloud()}
 
