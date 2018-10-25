@@ -52,7 +52,7 @@
         "intro_text_1": "<b>比特股2.0</b>是一个基于区块链构建的去中心化交易所（通称DEX）。 DEX有着工业级的业务处理能力，能够永不停歇地提供公正和透明的服务，这里有比特股首创的bitCNY,bitUSD等智能货币，用户可以在这里根据自己的需要发行用户定义资产（UIA），也可以买卖通用的数字资产如BTC、ETH等。",
         "intro_text_2": "发行用户定义资产（UIA），也可以买卖通用的数字资产如BTC、ETH等。",
         "intro_text_3": "尽情享受交易的乐趣吧！",
-        "intro_text_4": "<br/>网站：&nbsp;&nbsp;&nbsp;&nbsp;<a target='_blank' rel='noopener noreferrer' href='https://LocalCoin.org'>https://LocalCoin.org</a><br/>论坛：&nbsp;&nbsp;&nbsp;&nbsp;<a target='_blank' rel='noopener noreferrer' href='https://LocalCointalk.org'>https://LocalCointalk.org</a><br/>GitHub：<a target='_blank' rel='noopener noreferrer' href='https://github.com/LocalCoin/LocalCoin-core'>https://github.com/LocalCoin/LocalCoin-core</a>",
+        "intro_text_4": "<br/>网站：&nbsp;&nbsp;&nbsp;&nbsp;<a target='_blank' rel='noopener noreferrer' href='https://LocalCoin.is'>https://LocalCoin.is</a><br/>论坛：&nbsp;&nbsp;&nbsp;&nbsp;<a target='_blank' rel='noopener noreferrer' href='https://LocalCointalk.org'>https://LocalCointalk.org</a><br/>GitHub：<a target='_blank' rel='noopener noreferrer' href='https://github.com/localcoinis/localcoin-core'>https://github.com/localcoinis/localcoin-core</a>",
         "intro_text_title": "欢迎使用比特股去中心化交易所！",
         "login_with": "Login with",
         "market_actions": "市场操作",
@@ -507,7 +507,7 @@
         "short": "Short",
         "show_asks": "Show all asks",
         "show_bids": "Show all bids",
-        "show_only_liquid": "Show liquid markets only",
+        "show_only_liquid": "Liquid markets",
         "show_only_star_formatter": "{star_icon} only",
         "sma": "Simple Moving Average",
         "spread": "Spread",
@@ -1042,8 +1042,8 @@
     "migration": {
         "announcement_1": "为了提高浏览器钱包的安全性，我们已经将服务迁移至以下地址。请更新您的书签。",
         "text_1": "检测到本地钱包",
-        "text_2": "请立刻备份钱包，并在 <a href='https://wallet.LocalCoin.org' target='blank' rel='noopener noreferrer'>https://wallet.LocalCoin.org</a>将钱包恢复。请今后使用此地址访问浏览器钱包。感谢您一贯的支持。",
-        "text_3": "请今后使用 <a href='https://wallet.LocalCoin.org' target='blank' rel='noopener noreferrer'>https://wallet.LocalCoin.org</a> 访问浏览器钱包。您当前的账户和密码不变，可以继续使用。",
+        "text_2": "请立刻备份钱包，并在 <a href='https://wallet.LocalCoin.is' target='blank' rel='noopener noreferrer'>https://wallet.LocalCoin.is</a>将钱包恢复。请今后使用此地址访问浏览器钱包。感谢您一贯的支持。",
+        "text_3": "请今后使用 <a href='https://wallet.LocalCoin.is' target='blank' rel='noopener noreferrer'>https://wallet.LocalCoin.is</a> 访问浏览器钱包。您当前的账户和密码不变，可以继续使用。",
         "title": "迁移提示"
     },
     "modal": {

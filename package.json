@@ -2,7 +2,7 @@
   "name": "BitShares2-light",
   "version": "2.0.180526",
   "description": "Advanced wallet interface for the BitShares financial blockchain.",
-  "homepage": "https://github.com/bitshares/bitshares-ui",
+  "homepage": "https://github.com/localcoinis/localcoin-ui",
   "author": "Sigve Kvalsvik <kvalsvik.crypto@gmail.com>",
   "contributors": [
     "James Calfee",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/bitshares/bitshares-ui"
+    "url": "git://github.com/localcoinis/localcoin-ui"
   },
   "main": "build/electron/index.js",
   "scripts": {

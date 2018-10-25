@@ -67,14 +67,15 @@ export const gdexAPIs = {
 
 export const settingsAPIs = {
     // DEFAULT_WS_NODE: "wss://fake.automatic-selection.com",
-    DEFAULT_WS_NODE: "wss://moscow.localcoin.is/",
+    DEFAULT_WS_NODE: "wss://moscow.localcoin.is",
     WS_NODE_LIST: [
         {
             url: "wss://fake.automatic-selection.com",
             location: {translate: "settings.api_closest"}
         },
         {url: "ws://127.0.0.1:8090", location: "Locally hosted"},
-        {url: "wss://moscow.localcoin.is/", location: "LocalCoin Moscow"}
+        {url: "wss://moscow.localcoin.is", location: "Russia - Moscow"},
+        {url: "wss://localcoin.airdroptelegramknights.io", location: "North America - USA - New Jersey"}
     ],
     DEFAULT_FAUCET: "https://faucet.localcoin.is", // 2017-12-infrastructure worker proposal
     TESTNET_FAUCET: "https://faucet.testnet.bitshares.eu",

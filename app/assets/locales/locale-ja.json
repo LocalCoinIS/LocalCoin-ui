@@ -507,7 +507,7 @@
         "short": "Short",
         "show_asks": "Show all asks",
         "show_bids": "Show all bids",
-        "show_only_liquid": "Show liquid markets only",
+        "show_only_liquid": "Liquid markets",
         "show_only_star_formatter": "{star_icon} only",
         "sma": "Simple Moving Average",
         "spread": "Spread",
@@ -1042,8 +1042,8 @@
     "migration": {
         "announcement_1": "In an effort to provide enhanced security for the web-based wallet, we are migrating it, effective immediately to the address below. Please be sure to update any bookmarks you may have.",
         "text_1": "Local wallet detected",
-        "text_2": "Please backup your wallet now and restore the backup file to <a href='https://wallet.LocalCoin.org' target='blank' rel='noopener noreferrer'>https://wallet.LocalCoin.org</a>, which will be your new address for the web wallet. Thanks for your continued support.",
-        "text_3": "Please use <a href='https://wallet.LocalCoin.org' target='blank' rel='noopener noreferrer'>https://wallet.LocalCoin.org</a> from now on, your existing credentials will let you login there as well.",
+        "text_2": "Please backup your wallet now and restore the backup file to <a href='https://wallet.LocalCoin.is' target='blank' rel='noopener noreferrer'>https://wallet.LocalCoin.is</a>, which will be your new address for the web wallet. Thanks for your continued support.",
+        "text_3": "Please use <a href='https://wallet.LocalCoin.is' target='blank' rel='noopener noreferrer'>https://wallet.LocalCoin.is</a> from now on, your existing credentials will let you login there as well.",
         "title": "Notice"
     },
     "modal": {
@@ -1689,7 +1689,7 @@
         "has_wallet": "最初のLocalCoinアカウントを作成すると、自動的にLocalCoinウォレットも作成され、ブラウザに格納されます。このウォレットはあなたのパスワードで暗号化されており、アカウントに付属する秘密キーを含んでいます。このウォレットのバックアップを作成することが大切です！",
         "import_20_notice1": "LLC 2.0+ バックアップを最初にインポートする",
         "import_20_notice2": "(お持ちの場合)",
-        "import_backup": "LocalCoin 2.0バックアップ (.bin ファイル) をインポートする",
+        "import_backup": "LocalCoinバックアップ (.bin ファイル) をインポートする",
         "import_backup_choose": "以下のダイアログでバックアップファイルを選択してください。ファイルはどこにもアップロードされず、ブラウザから離れないため、この操作は安全です。",
         "import_balance": "残高をインポートする",
         "import_bts": "LLC 0.9.3c キーエクスポートをインポートする",

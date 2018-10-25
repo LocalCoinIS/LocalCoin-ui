@@ -941,18 +941,6 @@ body.localcoin #sticky-table-x-wrapper .sticky-table-container {
     width: 100%;
 }
 
-body.localcoin .exchange-sell-orders .sticky-table .sticky-table-x-wrapper {
-    display: table;
-}
-
-body.localcoin
-    .exchange-sell-orders
-    #sticky-table-x-wrapper
-    .sticky-table-container {
-    vertical-align: bottom;
-    display: table-cell;
-}
-
 body.localcoin .main.settings-faucet-address .content,
 body.localcoin .main.settings-backup .content,
 body.localcoin .main.settings-password .content,
@@ -1058,7 +1046,7 @@ body.localcoin .main.explorer-assets .market-list-wrap table td {
 }
 
 body.localcoin #sticky-table-y-wrapper {
-    height: calc(50vh - 66px) !important;
+    height: calc(50vh - 35px) !important;
 }
 
 body.localcoin .left-order-book .order-table-container {

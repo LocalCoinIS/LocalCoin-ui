@@ -2,7 +2,7 @@
 
  * [介绍](index.md)
  * [词汇表](glossary.md)
- * [BitShares比特股](introduction/bitshares.md)
+ * [LocalCoin比特股](introduction/localcoin.md)
  * [钱包](introduction/wallets.md)
  * [备份](introduction/backups.md)
  * [区块链](introduction/blockchain.md)

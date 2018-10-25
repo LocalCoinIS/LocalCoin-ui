@@ -507,7 +507,7 @@
         "short": "Short",
         "show_asks": "Show all asks",
         "show_bids": "Show all bids",
-        "show_only_liquid": "Show liquid markets only",
+        "show_only_liquid": "Liquid markets",
         "show_only_star_formatter": "{star_icon} only",
         "sma": "Simple Moving Average",
         "spread": "Spread",
@@ -1042,8 +1042,8 @@
     "migration": {
         "announcement_1": "In an effort to provide enhanced security for the web-based wallet, we are migrating it, effective immediately to the address below. Please be sure to update any bookmarks you may have.",
         "text_1": "Local wallet detected",
-        "text_2": "Please backup your wallet now and restore the backup file to <a href='https://wallet.LocalCoin.org' target='blank' rel='noopener noreferrer'>https://wallet.LocalCoin.org</a>, which will be your new address for the web wallet. Thanks for your continued support.",
-        "text_3": "Please use <a href='https://wallet.LocalCoin.org' target='blank' rel='noopener noreferrer'>https://wallet.LocalCoin.org</a> from now on, your existing credentials will let you login there as well.",
+        "text_2": "Please backup your wallet now and restore the backup file to <a href='https://wallet.LocalCoin.is' target='blank' rel='noopener noreferrer'>https://wallet.LocalCoin.is</a>, which will be your new address for the web wallet. Thanks for your continued support.",
+        "text_3": "Please use <a href='https://wallet.LocalCoin.is' target='blank' rel='noopener noreferrer'>https://wallet.LocalCoin.is</a> from now on, your existing credentials will let you login there as well.",
         "title": "Notice"
     },
     "modal": {
@@ -1689,7 +1689,7 @@
         "has_wallet": "When you create your first LocalCoin account, a LocalCoin local wallet will be automatically created as well and stored in your browser. This local wallet is encrypted with your password, and will contain any private keys belonging to your accounts. It is important that you take the time to backup this wallet once created!",
         "import_20_notice1": "Import your LLC 2.0+ BACKUP first",
         "import_20_notice2": "(if you have one)",
-        "import_backup": "Import LocalCoin 2.0 backup (.bin file)",
+        "import_backup": "Import LocalCoin backup (.bin file)",
         "import_backup_choose": "Please select your backup file in the dialog below. This is completely safe as the file is not uploaded anywhere and never leaves your browser.",
         "import_balance": "Import balance(s)",
         "import_bts": "Import a LLC 0.9.3c key export",

@@ -22,7 +22,7 @@ nvm use v6
 Node 安装完成后，获取项目的源代码：
 
 ```
-git clone https://github.com/bitshares/bitshares-ui.git
+git clone https://github.com/localcoinis/localcoin-ui.git
 cd bitshares-ui
 ```
 
@@ -46,7 +46,7 @@ npm start
 
 ## 测试网络
 
-默认情况下，bitshares-ui 会连接到正常比特股网络。切换到 Xeroc 运行的测试网络也很容易，在设置页面的接入点设置中选择 *Public Testnet Server* 即可。如果你需要创建帐号，你同时需要修改水龙头设置。测试网络的水龙头地址是 https://testnet.bitshares.eu 。
+默认情况下，bitshares-ui 会连接到正常比特股网络。切换到 Xeroc 运行的测试网络也很容易，在设置页面的接入点设置中选择 *Public Testnet Server* 即可。如果你需要创建帐号，你同时需要修改水龙头设置。测试网络的水龙头地址是 https://testnet.localcoin.is 。
 
 UI 会刷新并连接到测试网络，你可以通过水龙头创建账户并收到一些用于测试的 LLC。
 
@@ -86,7 +86,7 @@ __Mac__
 
 Bitshares UI 团队由[这个工作提案](http://www.bitshares.foundation/workers/2017-08-bill-butler)支持。此提案提供用来支付协调者、赏金和比特股基金的资金。
 
-如果你想参与贡献，可以加入 [Telegram 群组](https://t.me/BitSharesDEX)进行提问并获取帮助。你也可以加入 [Discord 服务器](https://discord.gg/GsjQfAJ)。
+如果你想参与贡献，可以加入 [Telegram 群组](https://t.me/LocalCoinIS)进行提问并获取帮助。你也可以加入 [Discord 服务器](https://discord.gg/)。
 
 - 协调者: Bill Butler, @billbutler
 - 主开发者: Sigve Kvalsvik, @sigvek

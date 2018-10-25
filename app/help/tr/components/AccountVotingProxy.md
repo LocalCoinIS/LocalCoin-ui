@@ -1,1 +1,1 @@
-Bir vekil adınıza oy kullanımını yönetir. BitShares forumunda vekil olarak görev almaya gnüllü kişileri bulabilirsiniz  [BitSharestalk](https://bitsharestalk.org/index.php/board,75.0.html). 
+Bir vekil adınıza oy kullanımını yönetir. LocalCoin forumunda vekil olarak görev almaya gnüllü kişileri bulabilirsiniz  [LocalCointalk](https://localcointalk.org/index.php/board,75.0.html). 

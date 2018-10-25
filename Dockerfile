@@ -12,7 +12,7 @@ COPY keys /root/.ssh
 RUN npm install -g browserify cross-env
 
 # We copy the code from the docker-compose-yml
-# RUN git clone https://github.com/bitshares/bitshares-ui.git /bitshares-ui
+# RUN git clone https://github.com/localcoinis/localcoin-ui.git /bitshares-ui
 RUN mkdir /bitshares-ui
 WORKDIR /bitshares-ui
 
