@@ -72,7 +72,7 @@ class FeeGroup extends React.Component {
 
             let feeRateForLTM = network_fee;
             if (opId === 10) {
-                // See https://github.com/bitshares/bitshares-ui/issues/996
+                // See https://github.com/localcoinis/localcoin-ui/issues/996
                 feeRateForLTM = 0.5 + 0.5 * network_fee;
             }
 

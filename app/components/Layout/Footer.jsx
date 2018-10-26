@@ -57,7 +57,7 @@ class Footer extends React.Component {
     checkNewVersionAvailable() {
         if (__ELECTRON__) {
             fetch(
-                "https://api.github.com/repos/bitshares/bitshares-ui/releases/latest"
+                "https://api.github.com/repos/localcoinis/localcoin-ui/releases/latest"
             )
                 .then(res => {
                     return res.json();
@@ -93,7 +93,7 @@ class Footer extends React.Component {
 
         if (hintData.length == 0) {
             window.open(
-                "http://docs.bitshares.org/bitshares/user/index.html",
+                "http://docs.localcoin.is/localcoin/user/index.html",
                 "_blank"
             );
         } else {
@@ -228,14 +228,14 @@ class Footer extends React.Component {
                         </div>
                         {synced ? null : (
                             <div className="grid-block shrink txtlabel cancel">
-                                <Translate content="footer.nosync" />&nbsp;
-                                &nbsp;
+                                <Translate content="footer.nosync" />
+                                &nbsp; &nbsp;
                             </div>
                         )}
                         {!connected ? (
                             <div className="grid-block shrink txtlabel error">
-                                <Translate content="footer.connection" />&nbsp;
-                                &nbsp;
+                                <Translate content="footer.connection" />
+                                &nbsp; &nbsp;
                             </div>
                         ) : null}
                         {this.props.backup_recommended ? (
@@ -295,16 +295,18 @@ class Footer extends React.Component {
                                             <span className="footer-block-title">
                                                 <Translate content="footer.latency" />
                                             </span>
-                                            &nbsp;{!connected
+                                            &nbsp;
+                                            {!connected
                                                 ? "-"
                                                 : !activeNode.ping
                                                     ? "-"
-                                                    : activeNode.ping +
-                                                      "ms"}&nbsp;/&nbsp;
+                                                    : activeNode.ping + "ms"}
+                                            &nbsp;/&nbsp;
                                             <span className="footer-block-title">
                                                 <Translate content="footer.block" />
                                             </span>
-                                            &nbsp;#{block_height}
+                                            &nbsp;#
+                                            {block_height}
                                         </span>
                                     </div>
                                 </div>

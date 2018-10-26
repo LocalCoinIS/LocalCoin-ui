@@ -188,7 +188,10 @@ class WalletUnlockModal extends React.Component {
                 password_input.clear();
             } else {
                 password_input.value = "";
-                if (cloudMode) AccountActions.setPasswordAccount(account);
+                if (cloudMode) {
+                    AccountActions.setPasswordAccount(account);
+                    AccountStore.tryToSetCurrentAccount();
+                }
             }
             WalletUnlockActions.change();
             if (stopAskingForBackup) WalletActions.setBackupDate();

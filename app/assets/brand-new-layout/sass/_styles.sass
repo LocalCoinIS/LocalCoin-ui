@@ -377,7 +377,7 @@ body.localcoin
 
 	// .sticky-footer
 	// 	flex-grow: 1
-	
+
 	.footer-line
 		display: flex
 		align-items: center
@@ -515,6 +515,9 @@ body.localcoin
 				border-style: solid
 				border-width: 0 9px 9px 9px
 				border-color: transparent transparent #001b60 transparent
+		&__list-wrap.disabled
+			&:after
+				display: none
 		&__list
 			position: relative
 			display: flex
@@ -544,7 +547,7 @@ body.localcoin
 	.user
 		display: flex
 		align-items: center
-		margin-left: 22px	
+		margin-left: 22px
 		&__icon
 			display: inline-block
 			max-width: 24px
@@ -608,7 +611,7 @@ body.localcoin
 		&__descr
 			max-width: 158px
 			margin: 15px auto 15px auto
-			line-height: 1.3	
+			line-height: 1.3
 			text-align: center
 			color: #00195b
 		&__user
@@ -631,8 +634,8 @@ body.localcoin
 			&__item.active
 				background-color: #ffffff
 				border-top-color: transparent
-				.sidebar__menu__link 
-					font-family: $osnovapro-bold 
+				.sidebar__menu__link
+					font-family: $osnovapro-bold
 			&__item.active + .sidebar__menu__item
 				border-top-color: transparent
 			&__item.noborder
@@ -714,8 +717,8 @@ body.localcoin
 				&__item.active
 					background-color: #ffffff
 					border-top-color: transparent
-					.sidebar__menu__sub__link 
-						font-family: $osnovapro-bold 
+					.sidebar__menu__sub__link
+						font-family: $osnovapro-bold
 				&__item.active + .sidebar__menu__sub__item
 					border-top-color: transparent
 				&__link
@@ -742,7 +745,7 @@ body.localcoin
 			color: inherit
 	.btn.large
 		font-size: 15px
-		font-family: $osnovapro-bold 
+		font-family: $osnovapro-bold
 		border-radius: 4px
 		padding: 0px 12px
 		height: 40px
@@ -941,7 +944,7 @@ body.localcoin
 			margin: 8px 0 0 0
 			cursor: pointer
 
-			span:after, span:before 
+			span:after, span:before
 				content: ""
 				position: absolute
 				left: 0
@@ -950,7 +953,7 @@ body.localcoin
 			span:after
 				top: 18px
 
-			span 
+			span
 				position: relative
 				display: block
 
@@ -963,13 +966,13 @@ body.localcoin
 				border-radius: 2px
 
 
-			&.on span 
+			&.on span
 				background-color: transparent
 
-			&.on span:before 
+			&.on span:before
 				transform: rotate(45deg) translate(-1px, 0px)
 
-			&.on span:after 
+			&.on span:after
 				transform: rotate(-45deg) translate(6px, -7px)
 		&__accounts
 			display: block

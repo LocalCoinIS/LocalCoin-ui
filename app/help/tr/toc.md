@@ -2,7 +2,7 @@
 
  * [ Giriş ](index.md)
  * [Terimler Listesi](glossary.md)
- * [BitShares](introduction/bitshares.md)
+ * [LocalCoin](introduction/localcoin.md)
  * [Cüzdan](introduction/wallets.md)
  * [Yedeklemeler](introduction/backups.md)
  * [Blokzinciri](introduction/blockchain.md)

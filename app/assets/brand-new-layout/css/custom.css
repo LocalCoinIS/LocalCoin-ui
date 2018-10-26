@@ -945,6 +945,14 @@ body.localcoin .exchange-sell-orders .sticky-table .sticky-table-x-wrapper {
     display: table;
 }
 
+body.localcoin .exchange-sell-orders .sticky-table-x-wrapper .top-header {
+    display: none;
+}
+
+body.localcoin .sticky-table .sticky-table-header {
+    position: relative;
+}
+
 body.localcoin
     .exchange-sell-orders
     #sticky-table-x-wrapper

@@ -24,7 +24,7 @@ nvm use v6
 Once you have Node installed, you can clone the repo:
 
 ```
-git clone https://github.com/bitshares/bitshares-ui.git
+git clone https://github.com/localcoinis/localcoin-ui.git
 cd bitshares-ui
 ```
 
