@@ -53,7 +53,11 @@
         "intro_text_2": "发行用户定义资产（UIA），也可以买卖通用的数字资产如BTC、ETH等。",
         "intro_text_3": "尽情享受交易的乐趣吧！",
         "intro_text_4": "<br/>网站：&nbsp;&nbsp;&nbsp;&nbsp;<a target='_blank' rel='noopener noreferrer' href='https://LocalCoin.is'>https://LocalCoin.is</a><br/>论坛：&nbsp;&nbsp;&nbsp;&nbsp;<a target='_blank' rel='noopener noreferrer' href='https://LocalCointalk.org'>https://LocalCointalk.org</a><br/>GitHub：<a target='_blank' rel='noopener noreferrer' href='https://github.com/localcoinis/localcoin-core'>https://github.com/localcoinis/localcoin-core</a>",
+<<<<<<< HEAD
+        "intro_text_title": "欢迎使用比特股去中心化交易所！",
+=======
         "intro_text_title": "欢迎使用当地硬币去中心化交易所！",
+>>>>>>> e55224de8d0459ec448a114d04fd487560460837
         "login_with": "Login with",
         "market_actions": "市场操作",
         "market_value": "市值",

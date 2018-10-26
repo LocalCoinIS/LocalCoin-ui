@@ -658,15 +658,17 @@
                 })(),
                 P = n(9),
                 D = n.n(P),
-                C = n(5),
-                B = n(7),
-                A = n.n(B),
-                H = n(151),
-                z = n(17),
-                S = n(54),
-                L = n.n(S),
-                W = n(111),
-                R = (function() {
+                C = n(44),
+                B = n.n(C),
+                A = n(5),
+                H = n(7),
+                z = n.n(H),
+                S = n(151),
+                L = n(17),
+                W = n(54),
+                R = n.n(W),
+                U = n(111),
+                I = (function() {
                     function e(e, t) {
                         for (var n = 0; n < t.length; n++) {
                             var a = t[n];
@@ -680,11 +682,11 @@
                         return n && e(t.prototype, n), a && e(t, a), t;
                     };
                 })();
-            function U(e, t) {
+            function G(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function I(e, t) {
+            function M(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -693,7 +695,7 @@
                     ? e
                     : t;
             }
-            function G(e, t) {
+            function q(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -713,11 +715,11 @@
                             : (e.__proto__ = t));
             }
             n(5084);
-            var M = (function(e) {
+            var F = (function(e) {
                     function t() {
                         return (
-                            U(this, t),
-                            I(
+                            G(this, t),
+                            M(
                                 this,
                                 (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                     this,
@@ -727,8 +729,8 @@
                         );
                     }
                     return (
-                        G(t, r.a.Component),
-                        R(t, [
+                        q(t, r.a.Component),
+                        I(t, [
                             {
                                 key: "shouldComponentUpdate",
                                 value: function(e) {
@@ -753,7 +755,7 @@
                                         ? r.a.createElement(
                                               "h3",
                                               {className: n},
-                                              r.a.createElement(H.a, {time: e})
+                                              r.a.createElement(S.a, {time: e})
                                           )
                                         : null;
                                 }
@@ -762,10 +764,10 @@
                         t
                     );
                 })(),
-                q = (function(e) {
+                J = (function(e) {
                     function t(e) {
-                        U(this, t);
-                        var n = I(
+                        G(this, t);
+                        var n = M(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).call(
                                 this,
@@ -783,8 +785,8 @@
                         );
                     }
                     return (
-                        G(t, r.a.Component),
-                        R(t, [
+                        q(t, r.a.Component),
+                        I(t, [
                             {
                                 key: "_getBlock",
                                 value: function(e, t) {
@@ -835,20 +837,20 @@
                                 value: function() {
                                     this._getInitialBlocks();
                                     var e = this.refs.operations;
-                                    L.a.initialize(e);
+                                    R.a.initialize(e);
                                     var t = this.refs.blocks;
-                                    L.a.initialize(t), this._updateHeight();
+                                    R.a.initialize(t), this._updateHeight();
                                 }
                             },
                             {
                                 key: "shouldComponentUpdate",
                                 value: function(e, t) {
                                     return (
-                                        !A.a.is(
+                                        !z.a.is(
                                             e.latestBlocks,
                                             this.props.latestBlocks
                                         ) ||
-                                        !C.a.are_equal_shallow(t, this.state)
+                                        !A.a.are_equal_shallow(t, this.state)
                                     );
                                 }
                             },
@@ -913,9 +915,9 @@
                                 key: "psUpdate",
                                 value: function() {
                                     var e = this.refs.operations;
-                                    L.a.update(e);
+                                    R.a.update(e);
                                     var t = this.refs.blocks;
-                                    L.a.update(t);
+                                    R.a.update(t);
                                 }
                             },
                             {
@@ -967,7 +969,8 @@
                                                           ]),
                                                           (N = e.timestamp))
                                                         : (j = e.timestamp),
-                                                    (O = e.timestamp);
+                                                    (O = e.timestamp),
+                                                    B.a.rebuild();
                                             }),
                                             (h = t
                                                 .sort(function(e, t) {
@@ -989,7 +992,7 @@
                                                                         e.id
                                                                 },
                                                                 "#",
-                                                                C.a.format_number(
+                                                                A.a.format_number(
                                                                     e.id,
                                                                     0
                                                                 )
@@ -1022,7 +1025,7 @@
                                                         r.a.createElement(
                                                             "td",
                                                             null,
-                                                            C.a.format_number(
+                                                            A.a.format_number(
                                                                 e.transactions
                                                                     .length,
                                                                 0
@@ -1114,7 +1117,7 @@
                                                         "h2",
                                                         null,
                                                         "#",
-                                                        C.a.format_number(
+                                                        A.a.format_number(
                                                             o.get(
                                                                 "head_block_number"
                                                             ),
@@ -1144,7 +1147,7 @@
                                                                 "explorer.blocks.last_block"
                                                         })
                                                     ),
-                                                    r.a.createElement(M, {
+                                                    r.a.createElement(F, {
                                                         blockTime: g
                                                     })
                                                 )
@@ -1173,7 +1176,7 @@
                                                     r.a.createElement(
                                                         "h2",
                                                         null,
-                                                        C.a.format_number(E, 2)
+                                                        A.a.format_number(E, 2)
                                                     )
                                                 )
                                             ),
@@ -1201,7 +1204,7 @@
                                                     r.a.createElement(
                                                         "h2",
                                                         null,
-                                                        C.a.format_number(
+                                                        A.a.format_number(
                                                             w / 2,
                                                             2
                                                         ),
@@ -1306,7 +1309,7 @@
                                                     r.a.createElement(
                                                         "h2",
                                                         null,
-                                                        C.a.format_number(
+                                                        A.a.format_number(
                                                             k / y || 0,
                                                             2
                                                         )
@@ -1383,7 +1386,7 @@
                                                         {className: "txtlabel"},
                                                         d
                                                             ? r.a.createElement(
-                                                                  z.a,
+                                                                  L.a,
                                                                   {
                                                                       amount: d.get(
                                                                           "current_supply"
@@ -1482,7 +1485,7 @@
                                                         {className: "txtlabel"},
                                                         d
                                                             ? r.a.createElement(
-                                                                  z.a,
+                                                                  L.a,
                                                                   {
                                                                       amount: d.get(
                                                                           "confidential_supply"
@@ -1699,7 +1702,7 @@
                                                                 )
                                                             ),
                                                             r.a.createElement(
-                                                                W.a,
+                                                                U.a,
                                                                 {
                                                                     component:
                                                                         "tbody",
@@ -1720,11 +1723,11 @@
                         t
                     );
                 })();
-            (q.propTypes = {
+            (J.propTypes = {
                 globalObject: d.a.ChainObject.isRequired,
                 dynGlobalObject: d.a.ChainObject.isRequired
             }),
-                (q.defaultProps = {
+                (J.defaultProps = {
                     globalObject: "2.0.0",
                     dynGlobalObject: "2.1.0",
                     latestBlocks: {},
@@ -1732,13 +1735,13 @@
                     accounts: {},
                     height: 1
                 }),
-                (q = Object(h.a)(q, {show_loader: !0}));
-            var F = (q = Object(v.a)(q, {
+                (J = Object(h.a)(J, {show_loader: !0}));
+            var K = (J = Object(v.a)(J, {
                     propNames: ["coreAsset"],
                     withDynamic: !0
                 })),
-                J = n(122),
-                K = (function() {
+                Q = n(122),
+                V = (function() {
                     function e(e, t) {
                         for (var n = 0; n < t.length; n++) {
                             var a = t[n];
@@ -1752,7 +1755,7 @@
                         return n && e(t.prototype, n), a && e(t, a), t;
                     };
                 })();
-            var Q = (function(e) {
+            var X = (function(e) {
                 function t() {
                     return (
                         (function(e, t) {
@@ -1799,7 +1802,7 @@
                                     ? Object.setPrototypeOf(e, t)
                                     : (e.__proto__ = t));
                     })(t, r.a.Component),
-                    K(t, [
+                    V(t, [
                         {
                             key: "render",
                             value: function() {
@@ -1818,12 +1821,12 @@
                                             }
                                         }
                                     },
-                                    r.a.createElement(F, null)
+                                    r.a.createElement(K, null)
                                 );
                                 return r.a.createElement(
                                     "div",
                                     {className: "content"},
-                                    r.a.createElement(J.a, {
+                                    r.a.createElement(Q.a, {
                                         defaultActiveTab:
                                             "explorer.blocks.title",
                                         defaultContent: e
@@ -1835,7 +1838,7 @@
                     t
                 );
             })();
-            t.default = Q;
+            t.default = X;
         }
     }
 ]);

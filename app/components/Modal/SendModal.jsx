@@ -140,8 +140,7 @@ class SendModal extends React.Component {
                 account_balances[current_asset_id]
             );
             let userBalance = balanceObject.get("balance");
-
-            if (sendSumAmount >= userBalance) {
+            if (sendSumAmount > userBalance) {
                 this.setState({
                     errorAmount: counterpart.translate(
                         "modal.withdraw.cannot_cover"
@@ -866,7 +865,7 @@ class SendModal extends React.Component {
 
                                     {this.state.errorAmount ? (
                                         <p
-                                            class="errorModal"
+                                            className="errorModal"
                                             style={{marginTop: 0}}
                                         >
                                             {this.state.errorAmount}

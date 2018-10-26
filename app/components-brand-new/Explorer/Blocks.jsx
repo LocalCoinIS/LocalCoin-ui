@@ -11,6 +11,7 @@ import AssetWrapper from "../../components/Utility/AssetWrapper";
 import TransactionChart from "../../components/Explorer/TransactionChart";
 import BlocktimeChart from "../../components/Explorer/BlocktimeChart";
 import classNames from "classnames";
+import ReactTooltip from "react-tooltip";
 import utils from "common/utils";
 import Immutable from "immutable";
 import TimeAgo from "../../components/Utility/TimeAgo";
@@ -228,6 +229,7 @@ class Blocks extends React.Component {
                         firstBlock = block.timestamp;
                     }
                     previousTime = block.timestamp;
+                    ReactTooltip.rebuild();
                 });
 
             // Output block rows for the last 25 blocks
