@@ -465,7 +465,6 @@ class Header extends React.Component {
         let currentAccount = ChainStore.getAccount(
             AccountStore.getState().currentAccount
         );
-
         if (!currentAccount) return "";
 
         currentAccount.get("balances").forEach((balanceId, asset_type) => {
@@ -488,7 +487,18 @@ class Header extends React.Component {
                 />
             );
         });
-
+        if (balance == "0" && document.querySelector(".balance__list-wrap")) {
+            document
+                .querySelector(".balance__list-wrap")
+                .classList.add("disabled");
+        } else if (
+            balance != "0" &&
+            document.querySelector(".balance__list-wrap")
+        ) {
+            document
+                .querySelector(".balance__list-wrap")
+                .classList.remove("disabled");
+        }
         return balance;
     }
 
@@ -515,7 +525,6 @@ class Header extends React.Component {
             passwordAccount,
             height
         } = this.props;
-
         let tradingAccounts = AccountStore.getMyAccounts();
         let maxHeight = Math.max(40, height - 67 - 36) + "px";
 
@@ -911,7 +920,7 @@ class Header extends React.Component {
                                         </g>
                                     </svg>
                                 </span>
-                                <div className="balance__list-wrap test">
+                                <div className="balance__list-wrap">
                                     <ul className="balance__list balance__list_scroll">
                                         {usedAssets}
                                     </ul>

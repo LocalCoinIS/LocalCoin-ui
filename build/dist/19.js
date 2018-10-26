@@ -888,7 +888,7 @@
                 (T.defaultProps = {asset: "1.3.0"}),
                 (T = Object(u.a)(T));
         },
-        4968: function(e, t, a) {
+        4966: function(e, t, a) {
             "use strict";
             a.r(t),
                 function(e) {

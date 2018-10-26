@@ -1058,7 +1058,7 @@
                 (M.defaultProps = {asset: "1.3.0"}),
                 (M = Object(u.a)(M));
         },
-        4984: function(e, t, a) {
+        4982: function(e, t, a) {
             "use strict";
             a.r(t);
             var n = a(0),

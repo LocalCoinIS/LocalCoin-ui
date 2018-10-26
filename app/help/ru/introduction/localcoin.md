@@ -16,8 +16,13 @@
 
 Если вы являетесь разработчиком программного обеспечения, то можете поучаствовать в баунти-программе здесь:
 
+<<<<<<< HEAD:app/help/ru/introduction/localcoin.md
 - [Github UI](https://github.com/localcoinis/localcoin-ui)
 - [Github Core](https://github.com/localcoinis/localcoin-core) 
+=======
+- [Github UI](https://github.com/bocalcoin/bocalcoin-ui)
+- [Github Core](https://github.com/bocalcoin/bocalcoin-core) 
+>>>>>>> e55224de8d0459ec448a114d04fd487560460837:app/help/ru/introduction/localcoin.md
 
 ## Введение
 

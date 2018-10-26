@@ -941,6 +941,26 @@ body.localcoin #sticky-table-x-wrapper .sticky-table-container {
     width: 100%;
 }
 
+body.localcoin .exchange-sell-orders .sticky-table .sticky-table-x-wrapper {
+    display: table;
+}
+
+body.localcoin .exchange-sell-orders .sticky-table-x-wrapper .top-header {
+    display: none;
+}
+
+body.localcoin .sticky-table .sticky-table-header {
+    position: relative;
+}
+
+body.localcoin
+    .exchange-sell-orders
+    #sticky-table-x-wrapper
+    .sticky-table-container {
+    vertical-align: bottom;
+    display: table-cell;
+}
+
 body.localcoin .main.settings-faucet-address .content,
 body.localcoin .main.settings-backup .content,
 body.localcoin .main.settings-password .content,

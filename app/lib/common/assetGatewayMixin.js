@@ -165,7 +165,8 @@ function gatewaySelector(args) {
                         <Translate content="modal.deposit_withdraw.gateway" />
                         {selectedGateway ? (
                             <span style={{cursor: "pointer"}}>
-                                &nbsp;<Icon
+                                &nbsp;
+                                <Icon
                                     name="question-circle"
                                     title="icons.question_circle"
                                     onClick={_openGatewaySite.bind(this)}

@@ -8,7 +8,7 @@ import counterpart from "counterpart";
 import SignedMessageAction from "../../actions/SignedMessageAction";
 import SignedMessage from "../Account/SignedMessage";
 
-/** This component gives a user interface for signing and verifying messages with the bitShares memo key.
+/** This component gives a user interface for signing and verifying messages with the LocalCoin memo key.
  *  It consists of two tabs:
  *    - Sign message tab (code prefix: tabSM)
  *    - Verify message tab (code prefix: tabVM)

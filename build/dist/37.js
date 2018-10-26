@@ -327,7 +327,7 @@
             (I.propTypes = {balance: s.a.ChainObject.isRequired}),
                 (I = Object(i.a)(I, {keep_updating: !0}));
         },
-        4989: function(e, t, n) {
+        4987: function(e, t, n) {
             "use strict";
             n.r(t);
             var a = n(0),
