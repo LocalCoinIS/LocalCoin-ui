@@ -7,7 +7,7 @@
 ### Localcoin Chat
 You can chat with other member of the Localcoin community in real time at:
 
-- [Telegram](https://t.me/LocalCoinDEX)
+- [Telegram](https://t.me/LocalCoinIS)
 - [Discord](https://discord.gg/GsjQfAJ)
 
 ### Developers

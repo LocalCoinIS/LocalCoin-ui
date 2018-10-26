@@ -8,8 +8,8 @@
 
 Вы можете общаться с другими членами сообщества Localcoin в реальном времени здесь:
 
-- [Telegram](https://t.me/LocalCoinDEX)
-- [Telegram (ru)](https://t.me/LocalCoinDEX_RU)
+- [Telegram](https://t.me/LocalCoinIS)
+- [Telegram (ru)](https://t.me/LocalCoinRU)
 - [Discord](https://discord.gg/GsjQfAJ)
 
 ### Разработчики

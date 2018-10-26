@@ -7,4 +7,4 @@ Rudex is a gateway service built on the Localcoin Exchange. A gateway service is
 
 ## Support
 - [Open a Ticket](https://rudex.freshdesk.com)
-- [Telegram Chat](https://t.me/LocalCoinDEX_RU)
+- [Telegram Chat](https://t.me/LocalCoinRU)
