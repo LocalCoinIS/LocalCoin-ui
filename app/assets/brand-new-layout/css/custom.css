@@ -1066,7 +1066,7 @@ body.localcoin .main.explorer-assets .market-list-wrap table td {
 }
 
 body.localcoin #sticky-table-y-wrapper {
-    height: calc(50vh - 66px) !important;
+    height: calc(50vh - 35px) !important;
 }
 
 body.localcoin .left-order-book .order-table-container {

@@ -396,7 +396,7 @@ Release 2.0.171101
 ---------------------------------------------------------------------
 New features
 --------
-- #634 The hosted wallet is now available at wallet.bitshares.org
+- #634 The hosted wallet is now available at wallet.localcoin.is
 - #530 Withdraw amounts now factor in the gate fee
 - #538 The voting page has been completely revamped
 - #579 The margin position tab now includes a set of default assets

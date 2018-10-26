@@ -1689,7 +1689,7 @@
         "has_wallet": "Quando crei il tuo primo account LocalCoin, un portafoglio LocalCoin viene creato automaticamente e memorizzato nel tuo browser. Questo portafoglio è crittografato con la tua password, e contiene tutte le chiavi private che appartengono al tuo account. È molto importante che dedichi il tempo necessario per creare un backup di questo portafoglio, dopo la creazione!",
         "import_20_notice1": "Importa prima il tuo BACKUP LLC 2.0+",
         "import_20_notice2": "(se ne hai uno)",
-        "import_backup": "Importa backup LocalCoin 2.0 (file .bin)",
+        "import_backup": "Importa backup LocalCoin (file .bin)",
         "import_backup_choose": "Seleziona il tuo file di backup nella finestra di dialogo sotto. Farlo è sicuro perché il file non è mai caricato online e non lascia il tuo browser.",
         "import_balance": "Importa saldo/i",
         "import_bts": "Importa un'esportazione chiavi LLC 0.9.3c",
