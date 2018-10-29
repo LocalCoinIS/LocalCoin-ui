@@ -12,8 +12,8 @@
                 c = a(3),
                 u = a.n(c),
                 p = a(43),
-                h = a(77),
-                d = a(4),
+                d = a(77),
+                h = a(4),
                 m = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
@@ -90,7 +90,7 @@
                                     t &&
                                         t.forEach(function(t, n) {
                                             if (n == e.props.assetId) {
-                                                var r = d.b.getObject(t);
+                                                var r = h.b.getObject(t);
                                                 a = r.get("balance");
                                             }
                                         }),
@@ -110,7 +110,7 @@
                                 t <= 0 || t > a
                                     ? this.setState({showError: !0})
                                     : (this.setState({showError: !1}),
-                                      h.a.reserveAsset(
+                                      d.a.reserveAsset(
                                           t,
                                           this.props.assetId,
                                           this.props.account.get("id")
@@ -226,8 +226,8 @@
                 c = a(6),
                 u = a(13),
                 p = a(5),
-                h = a(4),
-                d = a(111),
+                d = a(4),
+                h = a(111),
                 m = a(54),
                 f = a.n(m),
                 b = a(3),
@@ -284,7 +284,7 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var N = h.c.operations,
+            var N = d.c.operations,
                 S = {textAlign: "left"},
                 j = {textAlign: "right"};
             function P(e, t) {
@@ -634,7 +634,7 @@
                                     c = t.style,
                                     u = (t.maxHeight, this.state),
                                     p = u.limit,
-                                    h = (u.headerHeight,
+                                    d = (u.headerHeight,
                                     1 === a.length && a[0]
                                         ? a[0].get("id")
                                         : null),
@@ -670,7 +670,7 @@
                                               op: e.op,
                                               result: e.result,
                                               block: e.block_num,
-                                              current: h,
+                                              current: d,
                                               hideFee: !0,
                                               inverted: !1,
                                               hideOpLabel: n,
@@ -900,7 +900,7 @@
                                                         )
                                                     ),
                                                     r.a.createElement(
-                                                        d.a,
+                                                        h.a,
                                                         {
                                                             component: "tbody",
                                                             transitionName:
@@ -1070,8 +1070,8 @@
                 c = a(57),
                 u = a(108),
                 p = a(20),
-                h = a.n(p),
-                d = a(34),
+                d = a.n(p),
+                h = a(34),
                 m = a(6),
                 f = a(13),
                 b = a(5),
@@ -1151,7 +1151,7 @@
                             key: "onSubmit",
                             value: function(e) {
                                 e.preventDefault(),
-                                    h.a.publish("settlement_modal", "close");
+                                    d.a.publish("settlement_modal", "close");
                                 var t = b.a.get_asset_precision(
                                         this.props.asset.get("precision")
                                     ),
@@ -1206,10 +1206,10 @@
                                 var p = b.a.get_asset_precision(
                                         t.get("precision")
                                     ),
-                                    h = n ? n.replace(/,/g, "") : 0,
-                                    d =
-                                        parseFloat(h) > 0 &&
-                                        parseFloat(h) * p <= parseFloat(u)
+                                    d = n ? n.replace(/,/g, "") : 0,
+                                    h =
+                                        parseFloat(d) > 0 &&
+                                        parseFloat(d) * p <= parseFloat(u)
                                             ? "button success"
                                             : "button disabled",
                                     m = r.a.createElement(
@@ -1263,7 +1263,7 @@
                                             {className: "content-block"},
                                             r.a.createElement("input", {
                                                 type: "submit",
-                                                className: d,
+                                                className: h,
                                                 onClick: this.onSubmit.bind(
                                                     this
                                                 ),
@@ -1301,7 +1301,7 @@
                             value: function() {
                                 var e = this;
                                 this.setState({open: !0}, function() {
-                                    h.a.publish(e.props.modalId, "open");
+                                    d.a.publish(e.props.modalId, "open");
                                 });
                             }
                         },
@@ -1316,7 +1316,7 @@
                             value: function() {
                                 return this.state.open
                                     ? r.a.createElement(
-                                          d.a,
+                                          h.a,
                                           {
                                               id: this.props.modalId,
                                               onClose: this.onClose.bind(this),
@@ -1829,8 +1829,8 @@
                                         ),
                                         c = this._getBalance(),
                                         p = this._getStatusClass(),
-                                        h = "/asset/" + t.get("symbol"),
-                                        d =
+                                        d = "/asset/" + t.get("symbol"),
+                                        h =
                                             "/market/" +
                                             t.get("symbol") +
                                             "_" +
@@ -1844,10 +1844,10 @@
                                                 r.a.createElement(
                                                     "a",
                                                     {
-                                                        href: h,
+                                                        href: d,
                                                         onClick: this._onNavigate.bind(
                                                             this,
-                                                            h
+                                                            d
                                                         )
                                                     },
                                                     r.a.createElement(l.a, {
@@ -1862,10 +1862,10 @@
                                                 r.a.createElement(
                                                     "a",
                                                     {
-                                                        href: d,
+                                                        href: h,
                                                         onClick: this._onNavigate.bind(
                                                             this,
-                                                            d
+                                                            h
                                                         )
                                                     },
                                                     r.a.createElement(B.a, {
@@ -2685,8 +2685,8 @@
                     );
                 },
                 pe = a(447),
-                he = a(256),
-                de = a(117),
+                de = a(256),
+                he = a(117),
                 me = a(14),
                 fe = a(201),
                 be = a(40),
@@ -3189,13 +3189,13 @@
                                     c = e.hideRoot,
                                     u = this.state.expanded,
                                     p = je(o, a, n),
-                                    h = o.isNested(),
-                                    d = o.isMultiSig(),
+                                    d = o.isNested(),
+                                    h = o.isMultiSig(),
                                     m = Ie(o.weight, i) || 1,
                                     f = Pe(o, a, n),
                                     b = s >= l,
                                     g =
-                                        h || d
+                                        d || h
                                             ? r.a.createElement(
                                                   "tr",
                                                   null,
@@ -3277,7 +3277,7 @@
                                                   r.a.createElement(
                                                       "td",
                                                       null,
-                                                      !h && m
+                                                      !d && m
                                                           ? (m && 2 === m.length
                                                                 ? "  "
                                                                 : "") +
@@ -3288,7 +3288,7 @@
                                               ),
                                     v = [];
                                 return (
-                                    (h || d) &&
+                                    (d || h) &&
                                         u &&
                                         (o.accounts.forEach(function(e) {
                                             v.push(
@@ -3441,7 +3441,7 @@
                                         c = this.state,
                                         u = c.requiredPermissions,
                                         p = (c.required, c.available),
-                                        h = c.expanded;
+                                        d = c.expanded;
                                     (p = Object(fe.a)(p)),
                                         (o = o.toJS()),
                                         a && (p.push(a), o.push(a)),
@@ -3450,11 +3450,11 @@
                                                 p.splice(p.indexOf(n), 1),
                                             -1 !== o.indexOf(n) &&
                                                 o.splice(o.indexOf(n), 1));
-                                    var d = u.reduce(function(e, t) {
+                                    var h = u.reduce(function(e, t) {
                                             return e + (je(t, p, o) ? 1 : 0);
                                         }, 0),
                                         m = u.length,
-                                        f = d === m,
+                                        f = h === m,
                                         b = f && !s && !l,
                                         g = f && s,
                                         v = i
@@ -3462,7 +3462,7 @@
                                             .get("max_authority_depth"),
                                         y = 1 === u.length,
                                         _ = y ? u[0] : null,
-                                        E = !y && d + " / " + m,
+                                        E = !y && h + " / " + m,
                                         w = u.map(function(t) {
                                             return r.a.createElement(Fe, {
                                                 key: t.id,
@@ -3510,15 +3510,15 @@
                                                 r.a.createElement(Oe, {
                                                     onToggle: this
                                                         .handleExpandToggle,
-                                                    expanded: h
+                                                    expanded: d
                                                 }),
-                                            !h &&
+                                            !d &&
                                                 u.some(function(e) {
                                                     return Ne(v, e, 0);
                                                 }) &&
                                                 r.a.createElement(Ee, null)
                                         ),
-                                        h && r.a.createElement("table", null, w)
+                                        d && r.a.createElement("table", null, w)
                                     );
                                 }
                             }
@@ -3776,7 +3776,7 @@
                                     var l = g.a.new_transaction();
                                     l.add_type_operation("proposal_update", o),
                                         v.a.process_transaction(l, null, !0, s),
-                                        h.a.publish(
+                                        d.a.publish(
                                             this.props.modalId,
                                             "close"
                                         );
@@ -3792,7 +3792,7 @@
                             {
                                 key: "onCancel",
                                 value: function() {
-                                    h.a.publish(this.props.modalId, "close");
+                                    d.a.publish(this.props.modalId, "close");
                                 }
                             },
                             {
@@ -3907,7 +3907,7 @@
                                                             "modal.proposals.pay_with",
                                                         component: "label"
                                                     }),
-                                                    r.a.createElement(de.a, {
+                                                    r.a.createElement(he.a, {
                                                         account_names: u,
                                                         onChange: this.onChangePayee.bind(
                                                             this
@@ -3934,7 +3934,7 @@
                                                               }
                                                           ),
                                                           r.a.createElement(
-                                                              de.a,
+                                                              he.a,
                                                               {
                                                                   account_names: n.concat(
                                                                       s
@@ -4088,7 +4088,7 @@
                                 key: "componentDidMount",
                                 value: function() {
                                     var e = this;
-                                    h.a.subscribe(this.props.modalId, function(
+                                    d.a.subscribe(this.props.modalId, function(
                                         t,
                                         a
                                     ) {
@@ -4099,7 +4099,7 @@
                             {
                                 key: "show",
                                 value: function() {
-                                    h.a.publish(this.props.modalId, "open");
+                                    d.a.publish(this.props.modalId, "open");
                                 }
                             },
                             {
@@ -4109,7 +4109,7 @@
                                         t = e.modalId;
                                     e.proposal;
                                     return r.a.createElement(
-                                        d.a,
+                                        h.a,
                                         {id: t, overlay: !0, ref: t},
                                         this.state.open
                                             ? r.a.createElement(
@@ -4294,7 +4294,7 @@
                                                                 "to"
                                                             ]) && (o = !0),
                                                         r.a.createElement(
-                                                            he.b,
+                                                            de.b,
                                                             {
                                                                 key:
                                                                     a.proposal.get(
@@ -4319,7 +4319,7 @@
                                                 .toArray(),
                                             u = e._canReject(a.proposal.toJS()),
                                             p = a.proposal.get("id"),
-                                            h = a.proposal.get(
+                                            d = a.proposal.get(
                                                 "required_active_approvals"
                                             ).size
                                                 ? "active"
@@ -4338,17 +4338,17 @@
                                                                 ? " first"
                                                                 : "")
                                                     },
-                                                    r.a.createElement(he.a, {
+                                                    r.a.createElement(de.a, {
                                                         id: i,
                                                         expiration: s
                                                     })
                                                 )
                                             )
                                         );
-                                        var d = ge.listToIDs(
+                                        var h = ge.listToIDs(
                                                 a.proposal.get(
                                                     "available_" +
-                                                        h +
+                                                        d +
                                                         "_approvals"
                                                 )
                                             ),
@@ -4360,12 +4360,12 @@
                                             f = ge.listToIDs(
                                                 a.proposal.get(
                                                     "required_" +
-                                                        h +
+                                                        d +
                                                         "_approvals"
                                                 )
                                             ),
-                                            b = ge.unnest(f, h),
-                                            g = Xe(b, d, m),
+                                            b = ge.unnest(f, d),
+                                            g = Xe(b, h, m),
                                             v = $e(g, 2),
                                             y = v[0],
                                             E = v[1],
@@ -4376,7 +4376,7 @@
                                                     !a.proposal
                                                         .get(
                                                             "available_" +
-                                                                h +
+                                                                d +
                                                                 "_approvals"
                                                         )
                                                         .includes(e) &&
@@ -4441,7 +4441,7 @@
                                                             proposal: a.proposal.get(
                                                                 "id"
                                                             ),
-                                                            type: h
+                                                            type: d
                                                         })
                                                     ),
                                                     r.a.createElement(
@@ -4642,7 +4642,7 @@
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function ht(e, t) {
+            function dt(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -4651,7 +4651,7 @@
                     ? e
                     : t;
             }
-            function dt(e, t) {
+            function ht(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -4674,7 +4674,7 @@
                 function t() {
                     return (
                         pt(this, t),
-                        ht(
+                        dt(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -4684,7 +4684,7 @@
                     );
                 }
                 return (
-                    dt(t, st["a"]),
+                    ht(t, st["a"]),
                     ut(t, [
                         {
                             key: "shouldComponentUpdate",
@@ -4796,7 +4796,7 @@
                     function t() {
                         return (
                             pt(this, t),
-                            ht(
+                            dt(
                                 this,
                                 (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                     this,
@@ -4806,7 +4806,7 @@
                         );
                     }
                     return (
-                        dt(t, r.a.Component),
+                        ht(t, r.a.Component),
                         ut(t, [
                             {
                                 key: "render",
@@ -5088,13 +5088,13 @@
                                         u = {},
                                         p = {};
                                     if (!a.get("orders")) return null;
-                                    var h = a.get("orders"),
-                                        d = h.size;
+                                    var d = a.get("orders"),
+                                        h = d.size;
                                     i &&
-                                        (h = this._getFilteredOrders.call(
+                                        (d = this._getFilteredOrders.call(
                                             this
                                         )),
-                                        h.forEach(function(t) {
+                                        d.forEach(function(t) {
                                             var a = E.b.getObject(t).toJS(),
                                                 o = E.b.getAsset(
                                                     a.sell_price.base.asset_id
@@ -5119,11 +5119,11 @@
                                                         )
                                                     }),
                                                     s),
-                                                    h = lt.a.getMarketName(o, i)
+                                                    d = lt.a.getMarketName(o, i)
                                                         .marketName,
-                                                    d = n.get(h);
-                                                u[h] ||
-                                                    (u[h] = d
+                                                    h = n.get(d);
+                                                u[d] ||
+                                                    (u[d] = h
                                                         ? {
                                                               base: {
                                                                   id: o.get(
@@ -5175,21 +5175,21 @@
                                                 var m = new _t.d(
                                                         a,
                                                         l,
-                                                        u[h].quote.id
+                                                        u[d].quote.id
                                                     ),
                                                     f = E.b.getAsset(
-                                                        u[h].base.id
+                                                        u[d].base.id
                                                     ),
                                                     b = E.b.getAsset(
-                                                        u[h].quote.id
+                                                        u[d].quote.id
                                                     );
-                                                p[h] || (p[h] = []),
-                                                    p[h].push(
+                                                p[d] || (p[d] = []),
+                                                    p[d].push(
                                                         r.a.createElement(
                                                             vt.b,
                                                             {
                                                                 ref:
-                                                                    u[h].base
+                                                                    u[d].base
                                                                         .symbol,
                                                                 key: a.id,
                                                                 order: m,
@@ -5212,7 +5212,7 @@
                                                                         .settings,
                                                                 onFlip: e.onFlip.bind(
                                                                     e,
-                                                                    h
+                                                                    d
                                                                 ),
                                                                 onCheckCancel: e.onCheckCancel.bind(
                                                                     e,
@@ -5254,7 +5254,7 @@
                                                     r.a.createElement(
                                                         "div",
                                                         {className: "col-lg-9"},
-                                                        h && d
+                                                        d && h
                                                             ? r.a.createElement(
                                                                   "input",
                                                                   {
@@ -5637,8 +5637,8 @@
                                                         b.a.get_asset_precision(
                                                             o.get("precision")
                                                         ),
-                                                    h = (p / s) * 100;
-                                                return h < 0.5
+                                                    d = (p / s) * 100;
+                                                return d < 0.5
                                                     ? null
                                                     : p >= 1
                                                         ? {
@@ -5649,7 +5649,7 @@
                                                                   " (" +
                                                                   (0 === s
                                                                       ? 0
-                                                                      : h.toFixed(
+                                                                      : d.toFixed(
                                                                             2
                                                                         )) +
                                                                   "%)",
@@ -6084,14 +6084,14 @@
                             value: function(e, t) {
                                 t.preventDefault(),
                                     this.setState({reserve: e}),
-                                    h.a.publish("reserve_asset", "open");
+                                    d.a.publish("reserve_asset", "open");
                             }
                         },
                         {
                             key: "_reserveAsset",
                             value: function(e, t) {
                                 t.preventDefault(),
-                                    h.a.publish("reserve_asset", "close");
+                                    d.a.publish("reserve_asset", "close");
                                 var a = this.state.issue,
                                     n = this.props.assets.get(a.asset_id);
                                 (a.amount *= b.a.get_asset_precision(
@@ -6487,8 +6487,8 @@
                                     l = i.hiddenAssets,
                                     u = i.orders,
                                     p = s.get("unit") || o.get("symbol"),
-                                    h = s.get("showAssetPercent", !1),
-                                    d = function(e, t) {
+                                    d = s.get("showAssetPercent", !1),
+                                    h = function(e, t) {
                                         var a = e && e.has("bitasset_data_id"),
                                             o = "cp_modal_" + e.get("id");
                                         return {
@@ -6625,7 +6625,7 @@
                                                                 "icon-14px"
                                                         })
                                                     ));
-                                                var A = d(i, n.props.account),
+                                                var A = h(i, n.props.account),
                                                     C = A.isBitAsset,
                                                     S = A.borrowModal,
                                                     j = A.borrowLink;
@@ -6830,7 +6830,7 @@
                                                                       )
                                                                     : null
                                                             ),
-                                                            h
+                                                            d
                                                                 ? r.a.createElement(
                                                                       "td",
                                                                       {
@@ -7168,7 +7168,7 @@
                                                         p =
                                                             "1.3.0" !==
                                                             t.get("id"),
-                                                        h = nt.a.parseDescription(
+                                                        d = nt.a.parseDescription(
                                                             t.getIn([
                                                                 "options",
                                                                 "description"
@@ -7178,10 +7178,10 @@
                                                         t
                                                             .get("symbol")
                                                             .indexOf("OPEN.") ||
-                                                        h ||
-                                                        (h = "USD");
+                                                        d ||
+                                                        (d = "USD");
                                                     var f =
-                                                            h ||
+                                                            d ||
                                                             (o
                                                                 ? o.get(
                                                                       "symbol"
@@ -7212,7 +7212,7 @@
                                                                   )
                                                               )
                                                             : "-",
-                                                        g = d(
+                                                        g = h(
                                                             t,
                                                             n.props.account
                                                         ),
@@ -8335,7 +8335,7 @@
                                         inner: !0
                                     }),
                                     r.a.createElement(
-                                        d.a,
+                                        h.a,
                                         {id: "reserve_asset", overlay: !0},
                                         r.a.createElement("br", null),
                                         r.a.createElement(
@@ -8345,7 +8345,7 @@
                                                 assetId: this.state.reserve,
                                                 account: a,
                                                 onClose: function() {
-                                                    h.a.publish(
+                                                    d.a.publish(
                                                         "reserve_asset",
                                                         "close"
                                                     );
@@ -8399,11 +8399,15 @@
                 return "number" == typeof e && n(e);
             };
         },
-        574: function(e, t) {
-            !(function(t) {
+        574: function(e, t, a) {
+            var n;
+            !(function(r) {
                 "object" == typeof e && e.exports
-                    ? (e.exports = t)
-                    : t(Highcharts);
+                    ? (e.exports = r)
+                    : void 0 ===
+                          (n = function() {
+                              return r;
+                          }.call(t, a, t, e)) || (e.exports = n);
             })(function(e) {
                 !(function(e, t) {
                     var a = e.seriesType,
@@ -8416,19 +8420,20 @@
                         c = t.getColor,
                         u = t.getLevelOptions,
                         p = e.grep,
+                        d = e.isArray,
                         h = e.isNumber,
-                        d = e.isObject,
-                        m = e.isString,
-                        f = e.pick,
-                        b = e.Series,
-                        g = e.stableSort,
-                        v = e.Color,
-                        y = e.reduce,
-                        _ = function(e, t, a) {
+                        m = e.isObject,
+                        f = e.isString,
+                        b = e.pick,
+                        g = e.Series,
+                        v = e.stableSort,
+                        y = e.Color,
+                        _ = e.reduce,
+                        E = function(e, t, a) {
                             (a = a || this),
-                                !1 !== (e = t.call(a, e)) && _(e, t, a);
+                                !1 !== (e = t.call(a, e)) && E(e, t, a);
                         },
-                        E = t.updateRootId;
+                        w = t.updateRootId;
                     a(
                         "treemap",
                         "scatter",
@@ -8473,21 +8478,15 @@
                         },
                         {
                             pointArrayMap: ["value"],
-                            axisTypes: n.heatmap
-                                ? ["xAxis", "yAxis", "colorAxis"]
-                                : ["xAxis", "yAxis"],
                             directTouch: !0,
                             optionalAxis: "colorAxis",
                             getSymbol: s,
                             parallelArrays: ["x", "y", "value", "colorValue"],
                             colorKey: "colorValue",
-                            translateColors:
-                                n.heatmap &&
-                                n.heatmap.prototype.translateColors,
-                            colorAttribs:
-                                n.heatmap && n.heatmap.prototype.colorAttribs,
                             trackerGroups: ["group", "dataLabelsGroup"],
                             getListOfParents: function(t, a) {
+                                t = d(t) ? t : [];
+                                var n = d(a) ? a : [];
                                 return (
                                     (function(t, a, n) {
                                         (n = n || this),
@@ -8495,13 +8494,13 @@
                                                 a.call(n, e, r, t);
                                             });
                                     })(
-                                        (t = y(
-                                            t || [],
+                                        (a = _(
+                                            t,
                                             function(e, t, a) {
                                                 return (
                                                     void 0 ===
                                                         e[
-                                                            (t = f(
+                                                            (t = b(
                                                                 t.parent,
                                                                 ""
                                                             ))
@@ -8510,18 +8509,18 @@
                                                     e
                                                 );
                                             },
-                                            {}
+                                            {"": []}
                                         )),
-                                        function(t, n, r) {
-                                            "" !== n &&
-                                                -1 === e.inArray(n, a) &&
+                                        function(t, a, r) {
+                                            "" !== a &&
+                                                -1 === e.inArray(a, n) &&
                                                 (l(t, function(e) {
                                                     r[""].push(e);
                                                 }),
-                                                delete r[n]);
+                                                delete r[a]);
                                         }
                                     ),
-                                    t
+                                    a
                                 );
                             },
                             getTree: function() {
@@ -8535,7 +8534,12 @@
                                 );
                             },
                             init: function(t, a) {
-                                b.prototype.init.call(this, t, a),
+                                var n = e.colorSeriesMixin;
+                                e.colorSeriesMixin &&
+                                    ((this.translateColors = n.translateColors),
+                                    (this.colorAttribs = n.colorAttribs),
+                                    (this.axisTypes = n.axisTypes)),
+                                    g.prototype.init.call(this, t, a),
                                     this.options.allowDrillToNode &&
                                         e.addEvent(
                                             this,
@@ -8592,22 +8596,22 @@
                                             s.push(e),
                                             e.ignore || (o += e.val);
                                     }),
-                                    g(s, function(e, t) {
+                                    v(s, function(e, t) {
                                         return e.sortIndex - t.sortIndex;
                                     }),
-                                    (t = f(c && c.options.value, o)),
+                                    (t = b(c && c.options.value, o)),
                                     c && (c.value = t),
                                     i(e, {
                                         children: s,
                                         childrenTotal: o,
                                         ignore: !(
-                                            f(c && c.visible, !0) && 0 < t
+                                            b(c && c.visible, !0) && 0 < t
                                         ),
                                         isLeaf: e.visible && !o,
                                         levelDynamic:
                                             e.level - (n ? 0 : r.level),
-                                        name: f(c && c.name, ""),
-                                        sortIndex: f(c && c.sortIndex, -t),
+                                        name: b(c && c.name, ""),
+                                        sortIndex: b(c && c.sortIndex, -t),
                                         val: t
                                     }),
                                     e
@@ -8618,7 +8622,7 @@
                                     n = this,
                                     r = n.options,
                                     i = n.mapOptionsToLevel[e.level + 1],
-                                    s = f(
+                                    s = b(
                                         n[i && i.layoutAlgorithm] &&
                                             i.layoutAlgorithm,
                                         r.layoutAlgorithm
@@ -8827,20 +8831,20 @@
                                     c,
                                     u = a.lW,
                                     p = a.lH,
-                                    h = a.plot,
-                                    d = 0,
+                                    d = a.plot,
+                                    h = 0,
                                     m = a.elArr.length - 1;
                                 t
                                     ? ((u = a.nW), (p = a.nH))
                                     : (c = a.elArr[a.elArr.length - 1]),
                                     l(a.elArr, function(e) {
-                                        (t || d < m) &&
+                                        (t || h < m) &&
                                             (0 === a.direction
-                                                ? ((r = h.x),
-                                                  (o = h.y),
+                                                ? ((r = d.x),
+                                                  (o = d.y),
                                                   (s = e / (i = u)))
-                                                : ((r = h.x),
-                                                  (o = h.y),
+                                                : ((r = d.x),
+                                                  (o = d.y),
                                                   (i = e / (s = p))),
                                             n.push({
                                                 x: r,
@@ -8849,20 +8853,20 @@
                                                 height: s
                                             }),
                                             0 === a.direction
-                                                ? (h.y += s)
-                                                : (h.x += i)),
-                                            (d += 1);
+                                                ? (d.y += s)
+                                                : (d.x += i)),
+                                            (h += 1);
                                     }),
                                     a.reset(),
                                     0 === a.direction
                                         ? (a.width -= u)
                                         : (a.height -= p),
-                                    (h.y =
-                                        h.parent.y +
-                                        (h.parent.height - a.height)),
-                                    (h.x =
-                                        h.parent.x +
-                                        (h.parent.width - a.width)),
+                                    (d.y =
+                                        d.parent.y +
+                                        (d.parent.height - a.height)),
+                                    (d.x =
+                                        d.parent.x +
+                                        (d.parent.width - a.width)),
                                     e && (a.direction = 1 - a.direction),
                                     t || a.addElement(c);
                             },
@@ -8916,8 +8920,8 @@
                                     c = [],
                                     u = t.direction,
                                     p = t.x,
-                                    h = t.y,
-                                    d = t.width,
+                                    d = t.y,
+                                    h = t.width,
                                     m = t.height;
                                 return (
                                     l(a, function(a) {
@@ -8926,12 +8930,12 @@
                                             t.height *
                                             t.width),
                                             (r = p),
-                                            (o = h),
+                                            (o = d),
                                             0 === u
-                                                ? ((d -= i = n / (s = m)),
+                                                ? ((h -= i = n / (s = m)),
                                                   (p += i))
-                                                : ((m -= s = n / (i = d)),
-                                                  (h += s)),
+                                                : ((m -= s = n / (i = h)),
+                                                  (d += s)),
                                             c.push({
                                                 x: r,
                                                 y: o,
@@ -8960,8 +8964,8 @@
                                     t,
                                     a = this,
                                     n = a.options,
-                                    r = E(a);
-                                b.prototype.translate.call(a),
+                                    r = w(a);
+                                g.prototype.translate.call(a),
                                     (t = a.tree = a.getTree()),
                                     (e = a.nodeMap[r]),
                                     (a.mapOptionsToLevel = u({
@@ -8979,7 +8983,7 @@
                                         (a.drillToNode("", !1),
                                         (r = a.rootNode),
                                         (e = a.nodeMap[r])),
-                                    _(a.nodeMap[a.rootNode], function(e) {
+                                    E(a.nodeMap[a.rootNode], function(e) {
                                         var t = !1,
                                             n = e.parent;
                                         return (
@@ -8989,7 +8993,7 @@
                                             t
                                         );
                                     }),
-                                    _(a.nodeMap[a.rootNode].children, function(
+                                    E(a.nodeMap[a.rootNode].children, function(
                                         e
                                     ) {
                                         var t = !1;
@@ -9071,7 +9075,7 @@
                                             r.options.dataLabels
                                         ));
                                 }),
-                                    b.prototype.drawDataLabels.call(this);
+                                    g.prototype.drawDataLabels.call(this);
                             },
                             alignDataLabel: function(e) {
                                 n.column.prototype.alignDataLabel.apply(
@@ -9084,7 +9088,7 @@
                                         });
                             },
                             pointAttribs: function(e, t) {
-                                var a = d(this.mapOptionsToLevel)
+                                var a = m(this.mapOptionsToLevel)
                                         ? this.mapOptionsToLevel
                                         : {},
                                     n = (e && a[e.node.level]) || {},
@@ -9098,7 +9102,7 @@
                                             n.borderColor ||
                                             r.borderColor ||
                                             a.borderColor,
-                                        "stroke-width": f(
+                                        "stroke-width": b(
                                             e && e.borderWidth,
                                             n.borderWidth,
                                             r.borderWidth,
@@ -9118,8 +9122,8 @@
                                           o.indexOf(
                                               "highcharts-internal-node-interactive"
                                           )
-                                            ? ((t = f(r.opacity, a.opacity)),
-                                              (e.fill = v(e.fill)
+                                            ? ((t = b(r.opacity, a.opacity)),
+                                              (e.fill = y(e.fill)
                                                   .setOpacity(t)
                                                   .get()),
                                               (e.cursor = "pointer"))
@@ -9129,7 +9133,7 @@
                                               )
                                                 ? (e.fill = "none")
                                                 : t &&
-                                                  (e.fill = v(e.fill)
+                                                  (e.fill = y(e.fill)
                                                       .brighten(r.brightness)
                                                       .get()),
                                     e
@@ -9165,7 +9169,7 @@
                             },
                             onClickDrillToNode: function(e) {
                                 var t = (e = e.point) && e.drillId;
-                                m(t) && (e.setState(""), this.drillToNode(t));
+                                f(t) && (e.setState(""), this.drillToNode(t));
                             },
                             drillToByGroup: function(e) {
                                 var t = !1;
@@ -9191,7 +9195,7 @@
                             },
                             drillUp: function() {
                                 var e = this.nodeMap[this.rootNode];
-                                e && m(e.parent) && this.drillToNode(e.parent);
+                                e && f(e.parent) && this.drillToNode(e.parent);
                             },
                             drillToNode: function(e, t) {
                                 var a = this.nodeMap[e];
@@ -9203,7 +9207,7 @@
                                               (a && a.name) || e
                                           ),
                                     (this.isDirty = !0),
-                                    f(t, !0) && this.chart.redraw();
+                                    b(t, !0) && this.chart.redraw();
                             },
                             showDrillUpButton: function(e) {
                                 var t = this;
@@ -9247,13 +9251,13 @@
                             buildKDTree: s,
                             drawLegendSymbol: e.LegendSymbolMixin.drawRectangle,
                             getExtremes: function() {
-                                b.prototype.getExtremes.call(
+                                g.prototype.getExtremes.call(
                                     this,
                                     this.colorValueData
                                 ),
                                     (this.valueMin = this.dataMin),
                                     (this.valueMax = this.dataMax),
-                                    b.prototype.getExtremes.call(this);
+                                    g.prototype.getExtremes.call(this);
                             },
                             getExtremesFromAll: !0,
                             bindAxes: function() {
@@ -9271,11 +9275,11 @@
                                     title: null,
                                     tickPositions: []
                                 };
-                                b.prototype.bindAxes.call(this),
+                                g.prototype.bindAxes.call(this),
                                     e.extend(this.yAxis.options, t),
                                     e.extend(this.xAxis.options, t);
                             },
-                            utils: {recursive: _, reduce: y}
+                            utils: {recursive: E, reduce: _}
                         },
                         {
                             getClassName: function() {
@@ -9289,7 +9293,7 @@
                                     a.nodeMap[a.rootNode].level
                                         ? (t += " highcharts-above-level")
                                         : this.node.isLeaf ||
-                                          f(
+                                          b(
                                               n.interactByLeaf,
                                               !n.allowDrillToNode
                                           )
@@ -9335,10 +9339,10 @@
                                     c = a.mapOptionsToLevel,
                                     u = a.parentColor,
                                     p = a.parentColorIndex,
-                                    h = a.series,
-                                    d = a.colors,
+                                    d = a.series,
+                                    h = a.colors,
                                     m = a.siblings,
-                                    f = h.points;
+                                    f = d.points;
                                 return (
                                     t &&
                                         ((f = f[t.i]),
@@ -9346,12 +9350,12 @@
                                         (n = f && t.colorByPoint) &&
                                             ((o =
                                                 f.index %
-                                                (d
-                                                    ? d.length
-                                                    : h.chart.options.chart
+                                                (h
+                                                    ? h.length
+                                                    : d.chart.options.chart
                                                           .colorCount)),
-                                            (r = d && d[o])),
-                                        (d = f && f.options.color),
+                                            (r = h && h[o])),
+                                        (h = f && f.options.color),
                                         (n = t && t.color),
                                         (c = u) &&
                                             (c =
@@ -9364,7 +9368,7 @@
                                                           )
                                                           .get()
                                                     : u),
-                                        (n = s(d, n, r, c, h.color)),
+                                        (n = s(h, n, r, c, d.color)),
                                         (i = s(
                                             f && f.options.colorIndex,
                                             t && t.colorIndex,
@@ -9438,7 +9442,7 @@
                                     c = r.points[n.i],
                                     u = (c && c.options) || {},
                                     p = 0,
-                                    h = [];
+                                    d = [];
                                 return (
                                     a(n, {
                                         levelDynamic:
@@ -9463,13 +9467,13 @@
                                             visible: n.visible
                                         }),
                                             (t = e(t, i)),
-                                            h.push(t),
+                                            d.push(t),
                                             t.visible && (p += t.val);
                                     }),
                                     (n.visible = 0 < p || n.visible),
                                     (o = s(u.value, p)),
                                     a(n, {
-                                        children: h,
+                                        children: d,
                                         childrenTotal: p,
                                         isLeaf: n.visible && !p,
                                         val: o
@@ -9494,11 +9498,15 @@
                 );
             });
         },
-        575: function(e, t) {
-            !(function(t) {
+        575: function(e, t, a) {
+            var n;
+            !(function(r) {
                 "object" == typeof e && e.exports
-                    ? (e.exports = t)
-                    : t(Highcharts);
+                    ? (e.exports = r)
+                    : void 0 ===
+                          (n = function() {
+                              return r;
+                          }.call(t, a, t, e)) || (e.exports = n);
             })(function(e) {
                 !(function(e) {
                     var t,
@@ -9512,8 +9520,8 @@
                         c = e.Legend,
                         u = e.LegendSymbolMixin,
                         p = e.noop,
-                        h = e.merge,
-                        d = e.pick;
+                        d = e.merge,
+                        h = e.pick;
                     e.ColorAxis ||
                         ((t = e.ColorAxis = function() {
                             this.init.apply(this, arguments);
@@ -9551,7 +9559,7 @@
                                 var a,
                                     r = "vertical" !== e.options.legend.layout;
                                 (this.coll = "colorAxis"),
-                                    (a = h(
+                                    (a = d(
                                         this.defaultColorAxisOptions,
                                         {side: r ? 2 : 1, reversed: !r},
                                         t,
@@ -9579,7 +9587,7 @@
                                 (this.dataClasses = t = []),
                                     (this.legendItems = []),
                                     i(e.dataClasses, function(e, i) {
-                                        (e = h(e)),
+                                        (e = d(e)),
                                             t.push(e),
                                             e.color ||
                                                 ("category" === s.dataClassColor
@@ -9718,16 +9726,16 @@
                                 var a = e.padding,
                                     n = e.options,
                                     r = this.horiz,
-                                    o = d(
+                                    o = h(
                                         n.symbolWidth,
                                         r ? this.defaultLegendLength : 12
                                     ),
-                                    i = d(
+                                    i = h(
                                         n.symbolHeight,
                                         r ? 12 : this.defaultLegendLength
                                     ),
-                                    s = d(n.labelPadding, r ? 16 : 30);
-                                n = d(n.itemDistance, 10);
+                                    s = h(n.labelPadding, r ? 16 : 30);
+                                n = h(n.itemDistance, 10);
                                 this.setLegendColor(),
                                     (t.legendSymbol = this.chart.renderer
                                         .rect(0, e.baseline - 11, o, i)
@@ -9840,7 +9848,7 @@
                                                 e.legendGroup.destroy();
                                         }),
                                         (a.isDirtyLegend = !0)),
-                                    (a.options[this.coll] = h(
+                                    (a.options[this.coll] = d(
                                         this.userOptions,
                                         e
                                     )),
@@ -9864,8 +9872,8 @@
                                     c = o.valueSuffix || "";
                                 return (
                                     r.length ||
-                                        i(this.dataClasses, function(o, h) {
-                                            var d = !0,
+                                        i(this.dataClasses, function(o, d) {
+                                            var h = !0,
                                                 m = o.from,
                                                 f = o.to;
                                             (t = ""),
@@ -9896,7 +9904,7 @@
                                                             setState: p,
                                                             isDataClass: !0,
                                                             setVisible: function() {
-                                                                (d = this.visible = !d),
+                                                                (h = this.visible = !h),
                                                                     i(
                                                                         a.series,
                                                                         function(
@@ -9908,9 +9916,9 @@
                                                                                     e
                                                                                 ) {
                                                                                     e.dataClass ===
-                                                                                        h &&
+                                                                                        d &&
                                                                                         e.setVisible(
-                                                                                            d
+                                                                                            h
                                                                                         );
                                                                                 }
                                                                             );
@@ -9918,7 +9926,7 @@
                                                                     ),
                                                                     n.legend.colorizeItem(
                                                                         this,
-                                                                        d
+                                                                        h
                                                                     );
                                                             }
                                                         },

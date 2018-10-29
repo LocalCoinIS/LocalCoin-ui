@@ -50,4 +50,3 @@ Workers receive pay from a fixed daily budget on a first-come, first-serve basis
 * 5 worker proposals with a positive votes total, with daily pay requests of 100k LLC each
 
 Now the four workers with the most votes will all receive 100k LLC each per day, but once they've been paid the worker budget is empty. Therefore the fifth worker will receive nothing.
-

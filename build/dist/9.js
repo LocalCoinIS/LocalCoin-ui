@@ -98,7 +98,7 @@
             (function(e) {
                 var r = "object" == typeof e && e && e.Object === Object && e;
                 t.exports = r;
-            }.call(this, r(88)));
+            }.call(this, r(89)));
         },
         557: function(t, e) {
             var r = Array.isArray;
@@ -2251,15 +2251,8 @@
                 })();
             e.default = c;
         },
-        914: function(t, e, r) {
-            (function(e) {
-                t.exports = !1;
-                try {
-                    t.exports =
-                        "[object process]" ===
-                        Object.prototype.toString.call(e.process);
-                } catch (t) {}
-            }.call(this, r(88)));
+        914: function(t, e) {
+            t.exports = !1;
         }
     }
 ]);
