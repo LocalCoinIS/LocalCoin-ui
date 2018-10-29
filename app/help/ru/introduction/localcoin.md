@@ -10,7 +10,7 @@
 
 - [Telegram](https://t.me/LocalCoinIS)
 - [Telegram (ru)](https://t.me/LocalCoinRU)
-- [Discord](https://discord.gg/GsjQfAJ)
+- [Discord](https://discord.gg/)
 
 ### Разработчики
 
