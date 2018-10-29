@@ -3355,7 +3355,7 @@
                 N = a(22),
                 P = a(498),
                 T = a(12),
-                I = a(44),
+                I = a(43),
                 B = a.n(I),
                 F = (function() {
                     function e(e, t) {
@@ -4732,7 +4732,7 @@
                                         "div",
                                         {
                                             className:
-                                                "left-order-book no-padding no-overflow"
+                                                "left-order-book no-padding"
                                         },
                                         n.a.createElement(
                                             "div",
@@ -4750,15 +4750,12 @@
                                                 },
                                                 n.a.createElement(
                                                     "div",
-                                                    {
-                                                        className:
-                                                            "sticky-table-row top-header"
-                                                    },
+                                                    null,
                                                     n.a.createElement(
                                                         "div",
                                                         {
                                                             className:
-                                                                "cell header-cell left"
+                                                                "header-cell left vertical-table-cell-one custom-sticky-header"
                                                         },
                                                         n.a.createElement(
                                                             "span",
@@ -4776,7 +4773,7 @@
                                                         "div",
                                                         {
                                                             className:
-                                                                "cell header-cell"
+                                                                "header-cell vertical-table-cell-two custom-sticky-header"
                                                         },
                                                         n.a.createElement(
                                                             "span",
@@ -4794,7 +4791,7 @@
                                                         "div",
                                                         {
                                                             className:
-                                                                "cell header-cell right"
+                                                                " header-cell right vertical-table-cell-three custom-sticky-header"
                                                         },
                                                         n.a.createElement(w.a, {
                                                             className:

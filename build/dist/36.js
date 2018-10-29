@@ -125,7 +125,7 @@
         447: function(e, t, n) {
             "use strict";
             n.d(t, "a", function() {
-                return F;
+                return R;
             });
             var a = n(0),
                 r = n.n(a),
@@ -148,7 +148,9 @@
                 g = n(2),
                 E = n.n(g),
                 k = n(58),
-                C = (function() {
+                C = n(43),
+                x = n.n(C),
+                A = (function() {
                     function e(e, t) {
                         for (var n = 0; n < t.length; n++) {
                             var a = t[n];
@@ -162,11 +164,11 @@
                         return n && e(t.prototype, n), a && e(t, a), t;
                     };
                 })();
-            function x(e, t) {
+            function I(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function A(e, t) {
+            function N(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -175,7 +177,7 @@
                     ? e
                     : t;
             }
-            function I(e, t) {
+            function O(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -194,23 +196,23 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var N = m.c.operations,
-                O = {textAlign: "left"},
-                P = {textAlign: "right"};
-            function S(e, t) {
+            var P = m.c.operations,
+                S = {textAlign: "left"},
+                j = {textAlign: "right"};
+            function T(e, t) {
                 return t.block_num === e.block_num
                     ? t.virtual_op - e.virtual_op
                     : t.block_num - e.block_num;
             }
-            function j(e) {
+            function F(e) {
                 return e
                     ? '"' + e.textContent.replace(/[\s\t\r\n]/gi, " ") + '"'
                     : "";
             }
-            var F = (function(e) {
+            var R = (function(e) {
                 function t(e) {
-                    x(this, t);
-                    var n = A(
+                    I(this, t);
+                    var n = N(
                         this,
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                     );
@@ -222,6 +224,7 @@
                             openFilter: !1,
                             filter: "all"
                         }),
+                        (n._updateTooltip = n._updateTooltip.bind(n)),
                         (n._downloadCSV = n._downloadCSV.bind(n)),
                         (n._findActiveFilter = n._findActiveFilter.bind(n)),
                         (n._renderFilters = n._renderFilters.bind(n)),
@@ -229,12 +232,15 @@
                     );
                 }
                 return (
-                    I(t, r.a.Component),
-                    C(t, [
+                    O(t, r.a.Component),
+                    A(t, [
                         {
                             key: "componentDidMount",
                             value: function() {
-                                if (!this.props.fullHeight) {
+                                if (
+                                    (this._updateTooltip(),
+                                    !this.props.fullHeight)
+                                ) {
                                     var e = this.refs.transactions;
                                     v.a.initialize(e), this._setHeaderHeight();
                                 }
@@ -304,7 +310,10 @@
                         {
                             key: "componentDidUpdate",
                             value: function() {
-                                if (this.state.csvExport) {
+                                if (
+                                    (this._updateTooltip(),
+                                    this.state.csvExport)
+                                ) {
                                     this.state.csvExport = !1;
                                     var e = document.getElementById(
                                             "csv_export_container"
@@ -322,10 +331,10 @@
                                             var c = o.value.childNodes;
                                             "" !== t && (t += "\n"),
                                                 (t += [
-                                                    j(c[0]),
-                                                    j(c[1]),
-                                                    j(c[2]),
-                                                    j(c[3])
+                                                    F(c[0]),
+                                                    F(c[1]),
+                                                    F(c[2]),
+                                                    F(c[3])
                                                 ].join(","));
                                         }
                                     } catch (e) {
@@ -411,7 +420,7 @@
                                 return (
                                     t &&
                                         (a = a.filter(function(e) {
-                                            return e.op[0] === N[t];
+                                            return e.op[0] === P[t];
                                         })),
                                     n &&
                                         (a = a.filter(function(e) {
@@ -460,6 +469,12 @@
                                 return e.find(function(e) {
                                     return e === t.state.filter;
                                 });
+                            }
+                        },
+                        {
+                            key: "_updateTooltip",
+                            value: function() {
+                                x.a.rebuild();
                             }
                         },
                         {
@@ -555,9 +570,10 @@
                                             ? this.state.filter
                                             : o,
                                         i
-                                    ).sort(S),
-                                    v = d.length,
-                                    _ = null;
+                                    ).sort(T),
+                                    v = d.length;
+                                x.a.rebuild();
+                                var _ = null;
                                 _ = [
                                     "all",
                                     "transfer",
@@ -575,7 +591,7 @@
                                           return r.a.createElement(c.a, {
                                               includeOperationId: !0,
                                               operationId: e.id,
-                                              style: O,
+                                              style: S,
                                               key: e.id,
                                               op: e.op,
                                               result: e.result,
@@ -617,7 +633,7 @@
                                                         "column-hide-tiny"
                                                 }),
                                                 r.a.createElement("td", {
-                                                    style: P
+                                                    style: j
                                                 }),
                                                 r.a.createElement(
                                                     "td",
@@ -749,7 +765,7 @@
                                                                 {
                                                                     className:
                                                                         "column-hide-tiny",
-                                                                    style: O
+                                                                    style: S
                                                                 },
                                                                 r.a.createElement(
                                                                     s.a,
@@ -764,19 +780,20 @@
                                                                 {
                                                                     className:
                                                                         "column-hide-tiny",
-                                                                    style: O
+                                                                    style: S
                                                                 },
                                                                 r.a.createElement(
                                                                     s.a,
                                                                     {
                                                                         content:
-                                                                            "account.transactions.type"
+                                                                            "account.transactions.type",
+                                                                        onLoad: this._updateTooltip()
                                                                     }
                                                                 )
                                                             ),
                                                             r.a.createElement(
                                                                 "th",
-                                                                {style: O},
+                                                                {style: S},
                                                                 r.a.createElement(
                                                                     s.a,
                                                                     {
@@ -787,7 +804,7 @@
                                                             ),
                                                             r.a.createElement(
                                                                 "th",
-                                                                {style: O},
+                                                                {style: S},
                                                                 r.a.createElement(
                                                                     s.a,
                                                                     {
@@ -798,7 +815,7 @@
                                                             ),
                                                             r.a.createElement(
                                                                 "th",
-                                                                {style: O},
+                                                                {style: S},
                                                                 r.a.createElement(
                                                                     s.a,
                                                                     {
@@ -915,7 +932,7 @@
                     t
                 );
             })();
-            (F.propTypes = {
+            (R.propTypes = {
                 accountsList: l.a.ChainAccountsList.isRequired,
                 compactView: E.a.bool,
                 limit: E.a.number,
@@ -923,18 +940,18 @@
                 fullHeight: E.a.bool,
                 showFilters: E.a.bool
             }),
-                (F.defaultProps = {
+                (R.defaultProps = {
                     limit: 25,
                     maxHeight: 500,
                     fullHeight: !1,
                     showFilters: !1
                 }),
-                (F = Object(u.a)(F));
-            var R = (function(e) {
+                (R = Object(u.a)(R));
+            var K = (function(e) {
                 function t() {
                     return (
-                        x(this, t),
-                        A(
+                        I(this, t),
+                        N(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -944,8 +961,8 @@
                     );
                 }
                 return (
-                    I(t, r.a.Component),
-                    C(t, [
+                    O(t, r.a.Component),
+                    A(t, [
                         {
                             key: "render",
                             value: function() {
@@ -960,13 +977,13 @@
                     t
                 );
             })();
-            (R.propTypes = {
+            (K.propTypes = {
                 asset: l.a.ChainAsset.isRequired,
                 to: l.a.ChainAccount.isRequired,
                 fromAccount: l.a.ChainAccount.isRequired
             }),
-                (R.defaultProps = {asset: "1.3.0"}),
-                (R = Object(u.a)(R));
+                (K.defaultProps = {asset: "1.3.0"}),
+                (K = Object(u.a)(K));
         },
         4992: function(e, t, n) {
             "use strict";
@@ -1457,8 +1474,8 @@
             };
             var S = Object(b.a)(P, {autosubscribe: !1}),
                 j = n(289),
-                F = n(16),
-                R = (function() {
+                T = n(16),
+                F = (function() {
                     function e(e, t) {
                         for (var n = 0; n < t.length; n++) {
                             var a = t[n];
@@ -1472,7 +1489,7 @@
                         return n && e(t.prototype, n), a && e(t, a), t;
                     };
                 })();
-            var K = (function(e) {
+            var R = (function(e) {
                     function t() {
                         !(function(e, t) {
                             if (!(e instanceof t))
@@ -1527,7 +1544,7 @@
                                         ? Object.setPrototypeOf(e, t)
                                         : (e.__proto__ = t));
                         })(t, r.a.Component),
-                        R(t, [
+                        F(t, [
                             {key: "onSubmit", value: function() {}},
                             {
                                 key: "onPasswordChange",
@@ -1535,21 +1552,21 @@
                                     var t = e.valid,
                                         n = this.props.account.get("name"),
                                         a = t
-                                            ? F.a.generateKeyFromPassword(
+                                            ? T.a.generateKeyFromPassword(
                                                   n,
                                                   "active",
                                                   e.value
                                               ).pubKey
                                             : null,
                                         r = t
-                                            ? F.a.generateKeyFromPassword(
+                                            ? T.a.generateKeyFromPassword(
                                                   n,
                                                   "owner",
                                                   e.value
                                               ).pubKey
                                             : null,
                                         o = t
-                                            ? F.a.generateKeyFromPassword(
+                                            ? T.a.generateKeyFromPassword(
                                                   n,
                                                   "active",
                                                   e.value
@@ -1900,7 +1917,7 @@
                         t
                     );
                 })(),
-                T = n(363),
+                K = n(363),
                 H = n(104),
                 D = n(69),
                 U = (n(447), n(28)),
@@ -1918,7 +1935,7 @@
                         return n && e(t.prototype, n), a && e(t, a), t;
                     };
                 })();
-            var M = (function(e) {
+            var L = (function(e) {
                 function t(e) {
                     !(function(e, t) {
                         if (!(e instanceof t))
@@ -2551,7 +2568,7 @@
                                                         })
                                                     )
                                                 ),
-                                                r.a.createElement(T.a, {
+                                                r.a.createElement(K.a, {
                                                     ref: "memo_key",
                                                     value: this.state.memo_key,
                                                     label:
@@ -2572,7 +2589,7 @@
                                             content: r.a.createElement(
                                                 "div",
                                                 null,
-                                                r.a.createElement(K, {
+                                                r.a.createElement(R, {
                                                     active: this.state
                                                         .password_active,
                                                     owner: this.state
@@ -2625,7 +2642,7 @@
                     t
                 );
             })();
-            t.default = M;
+            t.default = L;
         }
     }
 ]);

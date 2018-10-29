@@ -332,15 +332,11 @@
                     ]);
                 })(i(0), i(713)));
         },
-        713: function(t, e, i) {
-            var s;
-            !(function(n, o) {
+        713: function(t, e) {
+            !(function(e, i) {
                 "object" == typeof t && t.exports
-                    ? (t.exports = n.document ? o(n) : o)
-                    : void 0 ===
-                          (s = function() {
-                              return o(n);
-                          }.call(e, i, e, t)) || (t.exports = s);
+                    ? (t.exports = e.document ? i(e) : i)
+                    : (e.Highcharts = i(e));
             })("undefined" != typeof window ? window : this, function(t) {
                 var e = (function() {
                     var e = void 0 === t ? window : t,
@@ -361,7 +357,7 @@
                         ? e.Highcharts.error(16, !0)
                         : {
                               product: "Highcharts",
-                              version: "6.1.2",
+                              version: "6.1.1",
                               deg2rad: (2 * Math.PI) / 360,
                               doc: i,
                               hasBidiBug: h,
@@ -605,23 +601,17 @@
                                             : (o(s, i), r(i, s))),
                                     [i, s]
                                 );
-                            },
-                            fillSetter: function() {
-                                t.Fx.prototype.strokeSetter.apply(
-                                    this,
-                                    arguments
-                                );
-                            },
-                            strokeSetter: function() {
-                                this.elem.attr(
-                                    this.prop,
-                                    t
-                                        .color(this.start)
-                                        .tweenTo(t.color(this.end), this.pos),
-                                    null,
-                                    !0
-                                );
                             }
+                        }),
+                        (t.Fx.prototype.fillSetter = t.Fx.prototype.strokeSetter = function() {
+                            this.elem.attr(
+                                this.prop,
+                                t
+                                    .color(this.start)
+                                    .tweenTo(t.color(this.end), this.pos),
+                                null,
+                                !0
+                            );
                         }),
                         (t.merge = function() {
                             var e,
@@ -1361,7 +1351,11 @@
                                         }
                                     }
                                 ],
-                                names: {white: "#ffffff", black: "#000000"},
+                                names: {
+                                    none: "rgba(255,255,255,0)",
+                                    white: "#ffffff",
+                                    black: "#000000"
+                                },
                                 init: function(e) {
                                     var i, n, o, r;
                                     if (
@@ -1550,7 +1544,7 @@
                             g(e.prototype, {
                                 opacity: 1,
                                 SVG_NS: E,
-                                textProps: "direction fontSize fontWeight fontFamily fontStyle color lineHeight width textAlign textDecoration textOverflow textOutline cursor".split(
+                                textProps: "direction fontSize fontWeight fontFamily fontStyle color lineHeight width textAlign textDecoration textOverflow textOutline".split(
                                     " "
                                 ),
                                 init: function(t, e) {
@@ -2697,7 +2691,7 @@
                                             u.getElementsByTagName("base")
                                                 .length
                                                 ? R.location.href
-                                                      .split("#")[0]
+                                                      .replace(/#.*?$/, "")
                                                       .replace(/<[^>]*>/g, "")
                                                       .replace(
                                                           /([\('\)])/g,
@@ -2709,7 +2703,7 @@
                                             .add()
                                             .element.appendChild(
                                                 u.createTextNode(
-                                                    "Created with Highcharts 6.1.2"
+                                                    "Created with Highcharts 6.1.1"
                                                 )
                                             ),
                                         (this.defs = this.createElement(
@@ -3178,14 +3172,10 @@
                                     }
                                 },
                                 getContrast: function(t) {
-                                    return (
-                                        ((t = a(t).rgba)[0] *= 1),
-                                        (t[1] *= 1.2),
-                                        (t[2] *= 0.5),
-                                        459 < t[0] + t[1] + t[2]
-                                            ? "#000000"
-                                            : "#FFFFFF"
-                                    );
+                                    return 510 <
+                                        (t = a(t).rgba)[0] + t[1] + t[2]
+                                        ? "#000000"
+                                        : "#FFFFFF";
                                 },
                                 button: function(t, e, i, n, o, r, a, h, l) {
                                     var c,
@@ -4185,9 +4175,8 @@
                             htmlCss: function(t) {
                                 var e = this.element;
                                 return (
-                                    ((e =
-                                        t && "SPAN" === e.tagName && t.width) ||
-                                        (this.textWidth && !e)) &&
+                                    (e =
+                                        t && "SPAN" === e.tagName && t.width) &&
                                         (delete t.width,
                                         (this.textWidth = e),
                                         this.htmlUpdateTransform()),
@@ -4272,11 +4261,10 @@
                                                 ((p = t.fontMetrics(
                                                     e.style.fontSize
                                                 ).b),
-                                                !n(f) ||
-                                                    (f ===
+                                                n(f) &&
+                                                    f !==
                                                         (this.oldRotation ||
                                                             0) &&
-                                                        l === this.oldAlign) ||
                                                     this.setSpanRotation(
                                                         f,
                                                         c,
@@ -4300,8 +4288,7 @@
                                                     h + (this.yCorr || 0) + "px"
                                             }),
                                             (this.cTT = m),
-                                            (this.oldRotation = f),
-                                            (this.oldAlign = l);
+                                            (this.oldRotation = f);
                                     }
                                 } else this.alignOnAdd = !0;
                             },
@@ -4517,60 +4504,60 @@
                         }),
                             (t.Time.prototype = {
                                 defaultOptions: {},
-                                update: function(t) {
-                                    var e = o(t && t.useUTC, !0),
-                                        i = this;
-                                    (this.options = t = n(
+                                update: function(e) {
+                                    var i = o(e && e.useUTC, !0),
+                                        s = this;
+                                    (this.options = e = n(
                                         !0,
                                         this.options || {},
-                                        t
+                                        e
                                     )),
-                                        (this.Date = t.Date || a.Date),
+                                        (this.Date = e.Date || a.Date),
                                         (this.timezoneOffset =
-                                            (this.useUTC = e) &&
-                                            t.timezoneOffset),
+                                            (this.useUTC = i) &&
+                                            e.timezoneOffset),
                                         (this.getTimezoneOffset = this.timezoneOffsetFunction()),
                                         (this.variableTimezone = !(
-                                            e &&
-                                            !t.getTimezoneOffset &&
-                                            !t.timezone
+                                            i &&
+                                            !e.getTimezoneOffset &&
+                                            !e.timezone
                                         )) || this.timezoneOffset
                                             ? ((this.get = function(t, e) {
-                                                  var s = e.getTime(),
+                                                  var i = e.getTime(),
                                                       n =
-                                                          s -
-                                                          i.getTimezoneOffset(
+                                                          i -
+                                                          s.getTimezoneOffset(
                                                               e
                                                           );
                                                   return (
                                                       e.setTime(n),
                                                       (t = e["getUTC" + t]()),
-                                                      e.setTime(s),
+                                                      e.setTime(i),
                                                       t
                                                   );
                                               }),
-                                              (this.set = function(t, e, s) {
-                                                  var n;
-                                                  "Milliseconds" === t ||
-                                                  "Seconds" === t ||
-                                                  ("Minutes" === t &&
-                                                      0 ==
-                                                          e.getTimezoneOffset() %
-                                                              60)
-                                                      ? e["set" + t](s)
-                                                      : ((n = i.getTimezoneOffset(
-                                                            e
+                                              (this.set = function(e, i, n) {
+                                                  var o;
+                                                  -1 !==
+                                                  t.inArray(e, [
+                                                      "Milliseconds",
+                                                      "Seconds",
+                                                      "Minutes"
+                                                  ])
+                                                      ? i["set" + e](n)
+                                                      : ((o = s.getTimezoneOffset(
+                                                            i
                                                         )),
-                                                        (n = e.getTime() - n),
-                                                        e.setTime(n),
-                                                        e["setUTC" + t](s),
-                                                        (t = i.getTimezoneOffset(
-                                                            e
+                                                        (o = i.getTime() - o),
+                                                        i.setTime(o),
+                                                        i["setUTC" + e](n),
+                                                        (e = s.getTimezoneOffset(
+                                                            i
                                                         )),
-                                                        (n = e.getTime() + t),
-                                                        e.setTime(n));
+                                                        (o = i.getTime() + e),
+                                                        i.setTime(o));
                                               }))
-                                            : e
+                                            : i
                                                 ? ((this.get = function(t, e) {
                                                       return e["getUTC" + t]();
                                                   }),
@@ -5051,7 +5038,7 @@
                             },
                             credits: {
                                 enabled: !0,
-                                href: "https://www.highcharts.com",
+                                href: "http://www.highcharts.com",
                                 position: {
                                     align: "right",
                                     x: -10,
@@ -5137,7 +5124,7 @@
                                             ]),
                                         (this.isFirst = p),
                                         (this.isLast = u),
-                                        (n = {
+                                        (n = s.labelFormatter.call({
                                             axis: s,
                                             chart: o,
                                             isFirst: p,
@@ -5147,8 +5134,7 @@
                                                 ? e(s.lin2log(l))
                                                 : l,
                                             pos: c
-                                        }),
-                                        (n = s.labelFormatter.call(n, n)),
+                                        })),
                                         i(h)
                                             ? h && h.attr({text: n})
                                             : ((this.label = h =
@@ -5570,12 +5556,12 @@
                                 endOnTick: !1,
                                 labels: {
                                     enabled: !0,
-                                    x: 0,
                                     style: {
                                         color: "#666666",
                                         cursor: "default",
                                         fontSize: "11px"
-                                    }
+                                    },
+                                    x: 0
                                 },
                                 maxPadding: 0.01,
                                 minorTickLength: 2,
@@ -5584,8 +5570,8 @@
                                 startOfWeek: 1,
                                 startOnTick: !1,
                                 tickLength: 10,
-                                tickPixelInterval: 100,
                                 tickmarkPlacement: "between",
+                                tickPixelInterval: 100,
                                 tickPosition: "outside",
                                 title: {
                                     align: "middle",
@@ -5602,11 +5588,11 @@
                             },
                             defaultYAxisOptions: {
                                 endOnTick: !0,
-                                maxPadding: 0.05,
-                                minPadding: 0.05,
                                 tickPixelInterval: 72,
                                 showLastLabel: !0,
                                 labels: {x: -8},
+                                maxPadding: 0.05,
+                                minPadding: 0.05,
                                 startOnTick: !0,
                                 title: {rotation: 270, text: "Values"},
                                 stackLabels: {
@@ -6886,7 +6872,7 @@
                                     ((t =
                                         m > 0.5 * s.chartHeight
                                             ? 0.33 * s.chartHeight
-                                            : m),
+                                            : s.chartHeight),
                                     g || (e = "ellipsis")),
                                     (this.labelAlign =
                                         a.align ||
@@ -6979,31 +6965,31 @@
                                     e,
                                     i,
                                     s = this,
-                                    n = (b = s.chart).renderer,
+                                    n = (y = s.chart).renderer,
                                     o = s.options,
                                     r = s.tickPositions,
                                     a = s.ticks,
                                     l = s.horiz,
                                     c = s.side,
                                     p =
-                                        b.inverted && !s.isZAxis
+                                        y.inverted && !s.isZAxis
                                             ? [1, 0, 3, 2][c]
                                             : c,
+                                    u = 0,
                                     f = 0,
-                                    g = 0,
-                                    m = o.title,
-                                    x = o.labels,
-                                    v = 0,
-                                    y = b.axisOffset,
-                                    b = b.clipOffset,
-                                    k = [-1, 1, 1, -1][c],
-                                    w = o.className,
-                                    T = s.axisParent,
-                                    A = this.tickSize("tick");
+                                    g = o.title,
+                                    m = o.labels,
+                                    x = 0,
+                                    v = y.axisOffset,
+                                    y = y.clipOffset,
+                                    b = [-1, 1, 1, -1][c],
+                                    k = o.className,
+                                    w = s.axisParent,
+                                    T = this.tickSize("tick");
                                 (t = s.hasData()),
                                     (s.showAxis = e = t || S(o.showEmpty, !0)),
                                     (s.staggerLines =
-                                        s.horiz && x.staggerLines),
+                                        s.horiz && m.staggerLines),
                                     s.axisGroup ||
                                         ((s.gridGroup = n
                                             .g("grid")
@@ -7012,9 +6998,9 @@
                                                 "highcharts-" +
                                                     this.coll.toLowerCase() +
                                                     "-grid " +
-                                                    (w || "")
+                                                    (k || "")
                                             )
-                                            .add(T)),
+                                            .add(w)),
                                         (s.axisGroup = n
                                             .g("axis")
                                             .attr({zIndex: o.zIndex || 2})
@@ -7022,19 +7008,19 @@
                                                 "highcharts-" +
                                                     this.coll.toLowerCase() +
                                                     " " +
-                                                    (w || "")
+                                                    (k || "")
                                             )
-                                            .add(T)),
+                                            .add(w)),
                                         (s.labelGroup = n
                                             .g("axis-labels")
-                                            .attr({zIndex: x.zIndex || 7})
+                                            .attr({zIndex: m.zIndex || 7})
                                             .addClass(
                                                 "highcharts-" +
                                                     s.coll.toLowerCase() +
                                                     "-labels " +
-                                                    (w || "")
+                                                    (k || "")
                                             )
-                                            .add(T))),
+                                            .add(w))),
                                     t || s.isLinked
                                         ? (d(r, function(t, e) {
                                               s.generateTick(t, e);
@@ -7046,38 +7032,38 @@
                                               {1: "left", 3: "right"}[c] ===
                                                   s.labelAlign),
                                           S(
-                                              x.reserveSpace,
+                                              m.reserveSpace,
                                               "center" === s.labelAlign || null,
                                               s.reserveSpaceDefault
                                           ) &&
                                               d(r, function(t) {
-                                                  v = Math.max(
+                                                  x = Math.max(
                                                       a[t].getLabelSize(),
-                                                      v
+                                                      x
                                                   );
                                               }),
                                           s.staggerLines &&
-                                              (v *= s.staggerLines),
+                                              (x *= s.staggerLines),
                                           (s.labelOffset =
-                                              v * (s.opposite ? -1 : 1)))
+                                              x * (s.opposite ? -1 : 1)))
                                         : M(a, function(t, e) {
                                               t.destroy(), delete a[e];
                                           }),
-                                    m &&
-                                        m.text &&
-                                        !1 !== m.enabled &&
+                                    g &&
+                                        g.text &&
+                                        !1 !== g.enabled &&
                                         (s.addTitle(e),
                                         e &&
-                                            !1 !== m.reserveSpace &&
-                                            ((s.titleOffset = f = s.axisTitle.getBBox()[
+                                            !1 !== g.reserveSpace &&
+                                            ((s.titleOffset = u = s.axisTitle.getBBox()[
                                                 l ? "height" : "width"
                                             ]),
-                                            (i = m.offset),
-                                            (g = h(i)
+                                            (i = g.offset),
+                                            (f = h(i)
                                                 ? 0
-                                                : S(m.margin, l ? 5 : 10)))),
+                                                : S(g.margin, l ? 5 : 10)))),
                                     s.renderLine(),
-                                    (s.offset = k * S(o.offset, y[c])),
+                                    (s.offset = b * S(o.offset, v[c])),
                                     (s.tickRotCorr = s.tickRotCorr || {
                                         x: 0,
                                         y: 0
@@ -7088,26 +7074,26 @@
                                             : 2 === c
                                                 ? s.tickRotCorr.y
                                                 : 0),
-                                    (g = Math.abs(v) + g),
-                                    v &&
-                                        (g =
-                                            g -
+                                    (f = Math.abs(x) + f),
+                                    x &&
+                                        (f =
+                                            f -
                                             n +
-                                            k *
+                                            b *
                                                 (l
                                                     ? S(
-                                                          x.y,
+                                                          m.y,
                                                           s.tickRotCorr.y +
-                                                              8 * k
+                                                              8 * b
                                                       )
-                                                    : x.x)),
-                                    (s.axisTitleMargin = S(i, g)),
-                                    (y[c] = Math.max(
-                                        y[c],
-                                        s.axisTitleMargin + f + k * s.offset,
-                                        g,
-                                        t && r.length && A
-                                            ? A[0] + k * s.offset
+                                                    : m.x)),
+                                    (s.axisTitleMargin = S(i, f)),
+                                    (v[c] = Math.max(
+                                        v[c],
+                                        s.axisTitleMargin + u + b * s.offset,
+                                        f,
+                                        t && r.length && T
+                                            ? T[0] + b * s.offset
                                             : 0
                                     )),
                                     (o = o.offset
@@ -7116,8 +7102,7 @@
                                           Math.floor(
                                               s.axisLine.strokeWidth() / 2
                                           )),
-                                    (b[p] = Math.max(b[p], o)),
-                                    u(this, "afterGetOffset");
+                                    (y[p] = Math.max(y[p], o));
                             },
                             getLinePath: function(t) {
                                 var e = this.chart,
@@ -7386,7 +7371,7 @@
                                 )
                                     for (t = n.length; t--; ) n[t].destroy();
                                 for (e in (d(
-                                    "stackTotalGroup axisLine axisTitle axisGroup gridGroup labelGroup cross scrollbar".split(
+                                    "stackTotalGroup axisLine axisTitle axisGroup gridGroup labelGroup cross".split(
                                         " "
                                     ),
                                     function(t) {
@@ -7984,9 +7969,7 @@
                                                 t.css(e, {
                                                     position: "absolute",
                                                     top: "1px",
-                                                    pointerEvents:
-                                                        s.style &&
-                                                        s.style.pointerEvents
+                                                    pointerEvents: "none"
                                                 }),
                                                 t.doc.body.appendChild(e),
                                                 (this.renderer = i = new t.Renderer(
@@ -8116,59 +8099,56 @@
                                 getAnchor: function(t, e) {
                                     var s,
                                         n,
-                                        o = this.chart,
-                                        a = o.pointer,
-                                        h = o.inverted,
-                                        c = o.plotTop,
-                                        d = o.plotLeft,
+                                        o,
+                                        a = this.chart,
+                                        h = a.inverted,
+                                        c = a.plotTop,
+                                        d = a.plotLeft,
                                         p = 0,
                                         u = 0;
                                     return (
-                                        (t = l(t)),
-                                        (this.followPointer && e) ||
-                                        (a.followTouchMove &&
+                                        (s = (t = l(t))[0].tooltipPos),
+                                        this.followPointer &&
                                             e &&
-                                            "touchmove" === e.type)
-                                            ? (void 0 === e.chartX &&
-                                                  (e = a.normalize(e)),
-                                              (t = [
-                                                  e.chartX - o.plotLeft,
-                                                  e.chartY - c
-                                              ]))
-                                            : t[0].tooltipPos
-                                                ? (t = t[0].tooltipPos)
-                                                : (i(t, function(t) {
-                                                      (s = t.series.yAxis),
-                                                          (n = t.series.xAxis),
-                                                          (p +=
-                                                              t.plotX +
-                                                              (!h && n
-                                                                  ? n.left - d
-                                                                  : 0)),
-                                                          (u +=
-                                                              (t.plotLow
-                                                                  ? (t.plotLow +
-                                                                        t.plotHigh) /
-                                                                    2
-                                                                  : t.plotY) +
-                                                              (!h && s
-                                                                  ? s.top - c
-                                                                  : 0));
-                                                  }),
-                                                  (p /= t.length),
-                                                  (u /= t.length),
-                                                  (t = [
-                                                      h ? o.plotWidth - u : p,
-                                                      this.shared &&
-                                                      !h &&
-                                                      1 < t.length &&
-                                                      e
-                                                          ? e.chartY - c
-                                                          : h
-                                                              ? o.plotHeight - p
-                                                              : u
-                                                  ])),
-                                        r(t, Math.round)
+                                            (void 0 === e.chartX &&
+                                                (e = a.pointer.normalize(e)),
+                                            (s = [
+                                                e.chartX - a.plotLeft,
+                                                e.chartY - c
+                                            ])),
+                                        s ||
+                                            (i(t, function(t) {
+                                                (n = t.series.yAxis),
+                                                    (o = t.series.xAxis),
+                                                    (p +=
+                                                        t.plotX +
+                                                        (!h && o
+                                                            ? o.left - d
+                                                            : 0)),
+                                                    (u +=
+                                                        (t.plotLow
+                                                            ? (t.plotLow +
+                                                                  t.plotHigh) /
+                                                              2
+                                                            : t.plotY) +
+                                                        (!h && n
+                                                            ? n.top - c
+                                                            : 0));
+                                            }),
+                                            (p /= t.length),
+                                            (u /= t.length),
+                                            (s = [
+                                                h ? a.plotWidth - u : p,
+                                                this.shared &&
+                                                !h &&
+                                                1 < t.length &&
+                                                e
+                                                    ? e.chartY - c
+                                                    : h
+                                                        ? a.plotHeight - p
+                                                        : u
+                                            ])),
+                                        r(s, Math.round)
                                     );
                                 },
                                 getPosition: function(t, i, s) {
@@ -8927,13 +8907,9 @@
                                         )).hoverPoint;
                                     if (
                                         ((o = c.hoverPoints),
-                                        (c = c.hoverSeries),
                                         (n =
-                                            i && "touchmove" === i.type
-                                                ? !0 === this.followTouchMove
-                                                : c &&
-                                                  c.tooltipOptions
-                                                      .followPointer),
+                                            (c = c.hoverSeries) &&
+                                            c.tooltipOptions.followPointer),
                                         (l = l && c && !c.noSharedTooltip),
                                         d &&
                                             (d !== r.hoverPoint ||
@@ -9017,31 +8993,15 @@
                                             ? r &&
                                               h &&
                                               (r.refresh(h),
-                                              r.shared && o
-                                                  ? a(o, function(t) {
-                                                        t.setState(t.state, !0),
-                                                            t.series.xAxis
-                                                                .crosshair &&
-                                                                t.series.xAxis.drawCrosshair(
-                                                                    null,
-                                                                    t
-                                                                ),
-                                                            t.series.yAxis
-                                                                .crosshair &&
-                                                                t.series.yAxis.drawCrosshair(
-                                                                    null,
-                                                                    t
-                                                                );
-                                                    })
-                                                  : n &&
-                                                    (n.setState(n.state, !0),
-                                                    a(i.axes, function(t) {
-                                                        t.crosshair &&
-                                                            t.drawCrosshair(
-                                                                null,
-                                                                n
-                                                            );
-                                                    })))
+                                              n &&
+                                                  (n.setState(n.state, !0),
+                                                  a(i.axes, function(t) {
+                                                      t.crosshair &&
+                                                          t.drawCrosshair(
+                                                              null,
+                                                              n
+                                                          );
+                                                  })))
                                             : (n && n.onMouseOut(),
                                               o &&
                                                   a(o, function(t) {
@@ -10272,11 +10232,7 @@
                                                         .height),
                                                     i.push({
                                                         target: n.visible
-                                                            ? (o
-                                                                  ? o.plotY
-                                                                  : n.xAxis
-                                                                        .height) -
-                                                              0.3 * r
+                                                            ? o.plotY - 0.3 * r
                                                             : e.plotHeight,
                                                         size: r,
                                                         item: n
@@ -11917,17 +11873,13 @@
                                             ".highcharts-credits",
                                             ".highcharts-legend",
                                             ".highcharts-subtitle",
-                                            ".highcharts-title",
-                                            ".highcharts-legend-checkbox"
+                                            ".highcharts-title"
                                         ],
                                         function(i) {
                                             t.each(
                                                 s.querySelectorAll(i),
                                                 function(t) {
-                                                    (t.namespaceURI === e.SVG_NS
-                                                        ? e.box
-                                                        : e.box.parentNode
-                                                    ).appendChild(t),
+                                                    e.box.appendChild(t),
                                                         (t.style.pointerEvents =
                                                             "auto");
                                                 }
@@ -11941,7 +11893,6 @@
                                     (i =
                                         this.chartWidth +
                                         this.scrollablePixels),
-                                    t.stop(this.container),
                                     (this.container.style.width = i + "px"),
                                     this.renderer.boxWrapper.attr({
                                         width: i,
@@ -11953,7 +11904,6 @@
                                             this.chartHeight
                                         ].join(" ")
                                     }),
-                                    this.chartBackground.attr({width: i}),
                                     n &&
                                         ((i = this.options.chart
                                             .scrollablePlotArea)
@@ -12370,7 +12320,7 @@
                                         marker: {},
                                         halo: {size: 10, opacity: 0.25}
                                     },
-                                    select: {}
+                                    select: {marker: {}}
                                 },
                                 stickyTracking: !0,
                                 turboThreshold: 1e3,
@@ -12727,7 +12677,6 @@
                                             !a.cropped &&
                                             !a.hasGroupedData &&
                                             a.visible &&
-                                            !a.isSeriesBoosting &&
                                             (r = this.updateData(e)),
                                         !r)
                                     ) {
@@ -12835,8 +12784,7 @@
                                                     this.forceCrop) &&
                                                 (s[o - 1] < c || s[0] > d
                                                     ? ((s = []), (n = []))
-                                                    : this.yData &&
-                                                      (s[0] < c ||
+                                                    : (s[0] < c ||
                                                           s[o - 1] > d) &&
                                                       ((s = (i = this.cropData(
                                                           this.xData,
@@ -14095,35 +14043,31 @@
                                                   rotation: i.rotation,
                                                   visibility: "hidden"
                                               })
-                                              .add(t)),
-                                        (this.label.labelrank = e.plotHeight);
+                                              .add(t));
                                 },
                                 setOffset: function(t, e) {
                                     var i = this.axis,
                                         s = i.chart,
-                                        o = i.translate(
+                                        n = i.translate(
                                             i.usePercentage ? 100 : this.total,
                                             0,
                                             0,
                                             0,
                                             1
                                         ),
-                                        r = i.translate(0);
-                                    r = n(o) && Math.abs(o - r);
+                                        o = i.translate(0);
+                                    o = Math.abs(n - o);
                                     (t = s.xAxis[0].translate(this.x) + t),
-                                        (i =
-                                            n(o) &&
-                                            this.getStackBox(
-                                                s,
-                                                this,
-                                                t,
-                                                o,
-                                                e,
-                                                r,
-                                                i
-                                            )),
+                                        (i = this.getStackBox(
+                                            s,
+                                            this,
+                                            t,
+                                            n,
+                                            e,
+                                            o,
+                                            i
+                                        )),
                                         (e = this.label) &&
-                                            i &&
                                             (e.align(
                                                 this.alignOptions,
                                                 null,
@@ -16402,8 +16346,7 @@
                                                                   .text(
                                                                       a,
                                                                       0,
-                                                                      -9999,
-                                                                      f.useHTML
+                                                                      -9999
                                                                   )
                                                                   .addClass(
                                                                       "highcharts-data-label"
@@ -16528,7 +16471,7 @@
                                           (e.alignAttr = l))
                                         : (e.align(i, null, s),
                                           (l = e.alignAttr)),
-                                    m && 0 <= s.height
+                                    m
                                         ? (t.isLabelJustified = this.justifyDataLabel(
                                               e,
                                               i,
@@ -16938,13 +16881,9 @@
                                                                       .width +
                                                                   "px",
                                                               textOverflow:
-                                                                  (
-                                                                      this
-                                                                          .options
-                                                                          .dataLabels
-                                                                          .style ||
-                                                                      {}
-                                                                  )
+                                                                  this.options
+                                                                      .dataLabels
+                                                                      .style
                                                                       .textOverflow ||
                                                                   "ellipsis"
                                                           }),
@@ -17140,8 +17079,7 @@
                                     r,
                                     a,
                                     h = t.length,
-                                    l = this.renderer,
-                                    c = function(t, e, i, s, n, o, r, a) {
+                                    l = function(t, e, i, s, n, o, r, a) {
                                         return !(
                                             n > t + i ||
                                             n + r < t ||
@@ -17157,10 +17095,7 @@
                                             n =
                                                 2 *
                                                 (t.box ? 0 : t.padding || 0);
-                                        if (
-                                            ((s = 0),
-                                            t && (!t.alignAttr || t.placed))
-                                        )
+                                        if (t && (!t.alignAttr || t.placed))
                                             return (
                                                 (e = t.alignAttr || {
                                                     x: t.attr("x"),
@@ -17170,19 +17105,14 @@
                                                 t.width ||
                                                     ((s = t.getBBox()),
                                                     (t.width = s.width),
-                                                    (t.height = s.height),
-                                                    (s = l.fontMetrics(
-                                                        null,
-                                                        t.element
-                                                    ).h)),
+                                                    (t.height = s.height)),
                                                 {
                                                     x:
                                                         e.x +
                                                         (i.translateX || 0),
                                                     y:
                                                         e.y +
-                                                        (i.translateY || 0) -
-                                                        s,
+                                                        (i.translateY || 0),
                                                     width: t.width - n,
                                                     height: t.height - n
                                                 }
@@ -17219,7 +17149,7 @@
                                                 n !== o &&
                                                 0 !== n.newOpacity &&
                                                 0 !== o.newOpacity &&
-                                                (r = c(
+                                                (r = l(
                                                     a.x,
                                                     a.y,
                                                     a.width,
@@ -17308,9 +17238,12 @@
                                                     }),
                                                 d && t[s].on("touchstart", i),
                                                 t.options.cursor &&
-                                                    t[s].css(o).css({
-                                                        cursor: t.options.cursor
-                                                    }));
+                                                    t[s]
+                                                        .css(o)
+                                                        .css({
+                                                            cursor:
+                                                                t.options.cursor
+                                                        }));
                                         }),
                                         (t._hasTracking = !0)),
                                     c(this, "afterDrawTracker");
@@ -17447,8 +17380,6 @@
                                         "input",
                                         {
                                             type: "checkbox",
-                                            className:
-                                                "highcharts-legend-checkbox",
                                             checked: t.selected,
                                             defaultChecked: t.selected
                                         },
@@ -17826,9 +17757,11 @@
                                                           (this.graphic || f)
                                                               .parentGroup
                                                       )),
-                                              v.show()[e ? "animate" : "attr"]({
-                                                  d: this.haloPath(s.size)
-                                              }),
+                                              v
+                                                  .show()
+                                                  [e ? "animate" : "attr"]({
+                                                      d: this.haloPath(s.size)
+                                                  }),
                                               v.attr({
                                                   class:
                                                       "highcharts-halo highcharts-color-" +
