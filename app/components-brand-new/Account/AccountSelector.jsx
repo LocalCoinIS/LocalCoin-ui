@@ -336,6 +336,8 @@ class AccountSelector extends React.Component {
             <div
                 className="account-inputs account-selector"
                 style={this.props.style}
+                data-tip="Search for an account to be used as your proxy for voting"
+                data-place="right"
             >
                 <div className="content-area">
                     {this.props.label ? (

@@ -695,11 +695,7 @@ class AccountVoting extends React.Component {
         );
 
         let proxyInput = (
-            <div
-                style={{width: "50%", maxWidth: 350}}
-                data-tip="Search for an account to be used as your proxy for voting"
-                data-place="right"
-            >
+            <div style={{width: "50%", maxWidth: 350}}>
                 <AccountSelector
                     hideImage
                     account={this.state.current_proxy_input}

@@ -17308,12 +17308,9 @@
                                                     }),
                                                 d && t[s].on("touchstart", i),
                                                 t.options.cursor &&
-                                                    t[s]
-                                                        .css(o)
-                                                        .css({
-                                                            cursor:
-                                                                t.options.cursor
-                                                        }));
+                                                    t[s].css(o).css({
+                                                        cursor: t.options.cursor
+                                                    }));
                                         }),
                                         (t._hasTracking = !0)),
                                     c(this, "afterDrawTracker");
@@ -17829,11 +17826,9 @@
                                                           (this.graphic || f)
                                                               .parentGroup
                                                       )),
-                                              v
-                                                  .show()
-                                                  [e ? "animate" : "attr"]({
-                                                      d: this.haloPath(s.size)
-                                                  }),
+                                              v.show()[e ? "animate" : "attr"]({
+                                                  d: this.haloPath(s.size)
+                                              }),
                                               v.attr({
                                                   class:
                                                       "highcharts-halo highcharts-color-" +

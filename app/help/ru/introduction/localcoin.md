@@ -17,7 +17,7 @@
 Если вы являетесь разработчиком программного обеспечения, то можете поучаствовать в баунти-программе здесь:
 
 - [Github UI](https://github.com/localcoinis/localcoin-ui)
-- [Github Core](https://github.com/localcoinis/localcoin-core)
+- [Github Core](https://github.com/localcoinis/localcoin-core) 
 
 ## Введение
 

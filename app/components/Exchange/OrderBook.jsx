@@ -253,7 +253,7 @@ class OrderBook extends React.Component {
             }
         }
 
-        function getMaxWidth(queryClass) {            
+        function getMaxWidth(queryClass) {
             let max = 0;
             let list = document.getElementsByClassName(queryClass);
             for (let i in list) {
@@ -373,13 +373,18 @@ class OrderBook extends React.Component {
 
     verticalScrollBar = () => this.queryStickyTable("#y-scrollbar");
 
-    componentDidUpdate() {//delayed execution
+    componentDidUpdate() {
+        //delayed execution
         if (!this.props.horizontal) {
             let self = this;
-            document.delayedExecution.add("orderBook_componentDidUpdate", function() {
-                self.updateCeilWith();
-                self.addLeftCellActive();
-            }, 100);
+            document.delayedExecution.add(
+                "orderBook_componentDidUpdate",
+                function() {
+                    self.updateCeilWith();
+                    self.addLeftCellActive();
+                },
+                100
+            );
         }
     }
 
@@ -389,12 +394,15 @@ class OrderBook extends React.Component {
 
         if (!this.props.horizontal) {
             let self = this;
-            document.delayedExecution.add("orderBook_componentDidUpdate", function() {
-                self.updateCeilWith();
-                self.addLeftCellActive();
-            }, 100);
+            document.delayedExecution.add(
+                "orderBook_componentDidUpdate",
+                function() {
+                    self.updateCeilWith();
+                    self.addLeftCellActive();
+                },
+                100
+            );
 
-            
             let up = this.refs.vertical_sticky_table_up.table.querySelector(
                 "#y-scrollbar"
             );
@@ -944,24 +952,24 @@ class OrderBook extends React.Component {
             }
             // Vertical orderbook
             return (
-                <div className="left-order-book no-padding no-overflow">
+                <div className="left-order-book no-padding">
                     <div className="order-table-container exchange-sell-orders vertical-orderbook-up">
                         <StickyTable
                             className="order-table table"
                             ref="vertical_sticky_table_up"
                         >
-                            <div className="sticky-table-row top-header">
-                                <div className="cell header-cell left">
+                            <div>
+                                <div className="header-cell left vertical-table-cell-one custom-sticky-header">
                                     <span className="header-sub-title">
                                         <AssetName name={baseSymbol} />
                                     </span>
                                 </div>
-                                <div className="cell header-cell">
+                                <div className="header-cell vertical-table-cell-two custom-sticky-header">
                                     <span className="header-sub-title">
                                         <AssetName name={quoteSymbol} />
                                     </span>
                                 </div>
-                                <div className="cell header-cell right">
+                                <div className=" header-cell right vertical-table-cell-three custom-sticky-header">
                                     <Translate
                                         className="header-sub-title"
                                         content="exchange.price"
