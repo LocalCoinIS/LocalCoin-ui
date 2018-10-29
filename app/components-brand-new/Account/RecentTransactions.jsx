@@ -13,6 +13,7 @@ import Icon from "../../components/Icon/Icon";
 import cnames from "classnames";
 import PropTypes from "prop-types";
 import {csvIcon} from "../../assets/brand-new-layout/img/images";
+import ReactTooltip from "react-tooltip";
 
 const {operations} = grapheneChainTypes;
 const alignLeft = {textAlign: "left"};
@@ -56,12 +57,14 @@ class RecentTransactions extends React.Component {
             openFilter: false,
             filter: "all"
         };
+        this._updateTooltip = this._updateTooltip.bind(this);
         this._downloadCSV = this._downloadCSV.bind(this);
         this._findActiveFilter = this._findActiveFilter.bind(this);
         this._renderFilters = this._renderFilters.bind(this);
     }
 
     componentDidMount() {
+        this._updateTooltip();
         if (!this.props.fullHeight) {
             let t = this.refs.transactions;
             ps.initialize(t);
@@ -72,7 +75,6 @@ class RecentTransactions extends React.Component {
 
     _setHeaderHeight() {
         let height = this.refs.header.offsetHeight;
-
         if (height !== this.state.headerHeight) {
             this.setState({
                 headerHeight: height
@@ -123,6 +125,7 @@ class RecentTransactions extends React.Component {
     }
 
     componentDidUpdate() {
+        this._updateTooltip();
         if (this.state.csvExport) {
             this.state.csvExport = false;
             const csv_export_container = document.getElementById(
@@ -234,6 +237,10 @@ class RecentTransactions extends React.Component {
         return items.find(title => title === this.state.filter);
     }
 
+    _updateTooltip() {
+        ReactTooltip.rebuild();
+    }
+
     _renderFilters(items) {
         const activeFilter = this._findActiveFilter(items);
         return activeFilter ? (
@@ -306,6 +313,7 @@ class RecentTransactions extends React.Component {
         ).sort(compareOps);
         let historyCount = history.length;
 
+        ReactTooltip.rebuild();
         // style = style ? style : {};
         // style.width = "100%";
         // style.height = "100%";
@@ -422,7 +430,10 @@ class RecentTransactions extends React.Component {
                                         className="column-hide-tiny"
                                         style={alignLeft}
                                     >
-                                        <Translate content="account.transactions.type" />
+                                        <Translate
+                                            content="account.transactions.type"
+                                            onLoad={this._updateTooltip()}
+                                        />
                                     </th>
                                     <th style={alignLeft}>
                                         <Translate content="account.transactions.fee" />

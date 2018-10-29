@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 [Workers](introduction/workers) are a unique concept to LocalCoin. They are proposals to provide services in return for a salary from the blockchain itself. A proposal should include a link to a website or forum thread that explains the purpose of the proposal, a collection of proposals can be found here: [LocalCointalk - Stakeholder Proposals Board](https://localcointalk.org/index.php/board,75.0.html).
-=======
-[Workers](introduction/workers) are a unique concept to LocalCoin. They are proposals to provide services in return for a salary from the blockchain itself. A proposal should include a link to a website or forum thread that explains the purpose of the proposal, a collection of proposals can be found here: [LocalCointalk - Stakeholder Proposals Board](https://bocalcointalk.org/index.php/board,75.0.html).
->>>>>>> e55224de8d0459ec448a114d04fd487560460837

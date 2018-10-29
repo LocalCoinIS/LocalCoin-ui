@@ -75,15 +75,10 @@ export const settingsAPIs = {
         },
         {url: "ws://127.0.0.1:8090", location: "Locally hosted"},
         {url: "wss://moscow.localcoin.is", location: "Russia - Moscow"},
-<<<<<<< HEAD
-        {url: "wss://localcoin.airdroptelegramknights.io", location: "North America - USA - New Jersey"}
-=======
         {
             url: "wss://localcoin.airdroptelegramknights.io",
             location: "North America - USA - New Jersey"
-        },
-        {url: "wss://bts.proxyhosts.info/wss", location: "TEST"}
->>>>>>> e55224de8d0459ec448a114d04fd487560460837
+        }
     ],
     DEFAULT_FAUCET: "https://faucet.localcoin.is", // 2017-12-infrastructure worker proposal
     TESTNET_FAUCET: "https://faucet.testnet.bitshares.eu",

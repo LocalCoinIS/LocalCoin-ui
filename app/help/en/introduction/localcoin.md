@@ -13,13 +13,8 @@ You can chat with other member of the Localcoin community in real time at:
 ### Developers
 If you are a software developer, you may contribute via a bounty system at:
 
-<<<<<<< HEAD:app/help/en/introduction/localcoin.md
 - [Github UI](https://github.com/localcoinis/localcoin-ui)
 - [Github Core](https://github.com/localcoinis/localcoin-core) 
-=======
-- [Github UI](https://github.com/bocalcoin/bocalcoin-ui)
-- [Github Core](https://github.com/bocalcoin/bocalcoin-core) 
->>>>>>> e55224de8d0459ec448a114d04fd487560460837:app/help/en/introduction/localcoin.md
 
 ## Introduction
 Welcome to the worlds fastest decentralized exchange (The DEX).
