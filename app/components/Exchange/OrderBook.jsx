@@ -958,7 +958,7 @@ class OrderBook extends React.Component {
                             className="order-table table"
                             ref="vertical_sticky_table_up"
                         >
-                            <div>
+                            <div className="custom-sticky-header-wrap">
                                 <div className="header-cell left vertical-table-cell-one custom-sticky-header">
                                     <span className="header-sub-title">
                                         <AssetName name={baseSymbol} />

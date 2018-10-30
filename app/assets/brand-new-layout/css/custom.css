@@ -4394,8 +4394,15 @@ body.localcoin .footer-info__status:hover {
 }
 
 .sticky-table .sticky-table-corner,
-body.localcoin .sticky-table .sticky-table-header {
-    display: none;
+body.localcoin
+    .sticky-table
+    .sticky-table-y-wrapper
+    .custom-sticky-header-wrap {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
 }
 
 .sticky-table-header .sticky-table-container {

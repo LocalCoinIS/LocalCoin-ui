@@ -1415,6 +1415,13 @@ class AccountOverview extends React.Component {
             />
         );
 
+        const accountProposals = (
+            <Proposals
+                className="dashboard-table"
+                account={account.get("id")}
+            />
+        );
+
         const items = [
             {
                 title: "account.portfolio",
@@ -1435,6 +1442,11 @@ class AccountOverview extends React.Component {
                 title: "account.activity",
                 subTitle: "",
                 content: accountActivity
+            },
+            {
+                title: "account.proposed_transactions",
+                subTitle: "",
+                content: accountProposals
             }
         ];
 
