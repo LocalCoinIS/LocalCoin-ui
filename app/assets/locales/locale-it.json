@@ -927,8 +927,8 @@
         },
         "dashboard": "Dashboard",
         "deposit": {
-            "deposit": "Deposit",
-            "deposit_withdraw": "Finance"
+            "deposit": "Deposita",
+            "deposit_withdraw": "Deposita/Preleva"
         },
         "disconnected": "API Node is disconnected",
         "dollar": {

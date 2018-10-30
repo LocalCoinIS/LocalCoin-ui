@@ -53,7 +53,7 @@
         "intro_text_2": "<b>The DEX</b> is inherently decentralized, enabling you to trade the LocalCoin core token (LLC) and a range of trustless price-stable, market-pegged assets such as bitUSD, bitCNY, bitBTC, bitGold and more. These assets can all be traded with <b>zero</b> counter-party risk, putting you in total control of your funds.",
         "intro_text_3": "<b>The DEX</b> also enables creation of user-issued assets (UIAs), which can be traded against any other UIAs or trustless assets on the platform.  One well-known issuer on The DEX is <b>OpenLedger</b>, offering a host of assets including BTC, ETH, STEEM, DASH, LTC, DOGE, and many more",
         "intro_text_4": "This gives cryptocurrency traders a unique blend of traditional and decentralized trading, all in a familiar exchange interface. Happy trading!",
-        "intro_text_title": "Welcome to LocalCoin",
+        "intro_text_title": "로컬코인 이용을 환영합니다",
         "login_with": "Login with",
         "market_actions": "Market actions",
         "market_value": "시장가치",
@@ -355,7 +355,7 @@
             "workers_short": "Workers"
         },
         "voting": "투표",
-        "welcome": "비트쉐어 2.0 이용을 환영합니다",
+        "welcome": "로컬코인 이용을 환영합니다",
         "whitelist": {
             "add": "Add to whitelist",
             "add_black": "Add to blacklist",
@@ -724,7 +724,7 @@
         "loading": "가져오는 중...",
         "nosync": "Your active node is out of sync",
         "synced": "Synced",
-        "title": "비트쉐어 2.0",
+        "title": "로컬코인 2.0",
         "unsynced": "Out of sync",
         "update_available": "UPDATE AVAILABLE"
     },
@@ -888,7 +888,7 @@
         "payments_beta": "Send (Beta)",
         "payments_legacy": "Send (legacy)",
         "settings": "설정",
-        "title": "비트쉐어 2.0",
+        "title": "로컬코인 2.0",
         "unlock": "잠금해제",
         "unlock_password": "Log in using a password",
         "unlock_short": "Login",
@@ -928,7 +928,7 @@
         "dashboard": "Dashboard",
         "deposit": {
             "deposit": "Deposit",
-            "deposit_withdraw": "Finance"
+            "deposit_withdraw": "입출금"
         },
         "disconnected": "API Node is disconnected",
         "dollar": {
@@ -1687,13 +1687,13 @@
         "generated": "Generated password",
         "go_get_started": "Getting Started",
         "has_wallet": "When you create your first LocalCoin account, a LocalCoin local wallet will be automatically created as well and stored in your browser. This local wallet is encrypted with your password, and will contain any private keys belonging to your accounts. It is important that you take the time to backup this wallet once created!",
-        "import_20_notice1": "비트쉐어 2.0백업을 먼저 가져오세요",
+        "import_20_notice1": "로컬코인 2.0백업을 먼저 가져오세요",
         "import_20_notice2": "(만약 가지고 있으시다면)",
         "import_backup": "백업파일 불러오기",
         "import_backup_choose": "Please select your backup file in the dialog below. This is completely safe as the file is not uploaded anywhere and never leaves your browser.",
         "import_balance": "Import balance(s)",
         "import_bts": "Import a LLC 0.9.3c key export",
-        "import_bts1": "비트쉐어 0.9.3c에서 가져오기",
+        "import_bts1": "로컬코인 0.9.3c에서 가져오기",
         "import_key_success": "Successfully imported %(count)s keys.",
         "import_keys": "키 가져오기",
         "import_keys_tool": "키 가져오기 도구",

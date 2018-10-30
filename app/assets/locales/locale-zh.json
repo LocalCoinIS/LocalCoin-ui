@@ -927,8 +927,8 @@
         },
         "dashboard": "Dashboard",
         "deposit": {
-            "deposit": "Deposit",
-            "deposit_withdraw": "Finance"
+            "deposit": "充值",
+            "deposit_withdraw": "充值/提现"
         },
         "disconnected": "API Node is disconnected",
         "dollar": {
