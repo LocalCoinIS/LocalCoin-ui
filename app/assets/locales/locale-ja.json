@@ -22,7 +22,7 @@
         "create_new": "新しいアカウントを作成する",
         "deposit": "LLCをデポジットする",
         "deposit_address": "あなたのデポジットアドレスはあなたのアカウント名です。",
-        "deposit_withdraw": "入金 / 出金",
+        "deposit_withdraw": "入金/出金",
         "eq_value": "相当額",
         "eq_value_header": "Value ({asset})",
         "errors": {
@@ -928,7 +928,7 @@
         "dashboard": "Dashboard",
         "deposit": {
             "deposit": "入金",
-            "deposit_withdraw": "入金 / 出金"
+            "deposit_withdraw": "入金/出金"
         },
         "disconnected": "API Node is disconnected",
         "dollar": {
