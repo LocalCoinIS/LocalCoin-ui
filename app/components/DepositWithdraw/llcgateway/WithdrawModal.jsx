@@ -85,7 +85,6 @@ class WithdrawModal extends React.Component {
     getBalance() {
         if (!this.props.account) return 0;
         if (!this.props.currency.asset) return 0;
-console.log(this.props.currency);
 
         let balance = new LLCGatewayData().getUserBalance(
             this.props.account,

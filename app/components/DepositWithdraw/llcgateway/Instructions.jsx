@@ -28,13 +28,13 @@ class Instructions extends React.Component {
         try {
             if (this.state.clipboardText)
                 e.clipboardData.setData("text/plain", this.state.clipboardText);
-            else
-                e.clipboardData.setData(
-                    "text/plain",
-                    counterpart
-                        .translate("gateway.use_copy_button")
-                        .toUpperCase()
-                );
+            // else
+            //     e.clipboardData.setData(
+            //         "text/plain",
+            //         counterpart
+            //             .translate("gateway.use_copy_button")
+            //             .toUpperCase()
+            //     );
             e.preventDefault();
         } catch (err) {
             console.error(err);
@@ -71,20 +71,29 @@ class Instructions extends React.Component {
     }
 
     getConfirmations(asset) {
-        switch(asset) {
-            case "BTC":    return 2;
-            case "LTC":    return 6;
-            case "DSH":    return 6;
-            case "TTRUSD": return 2;
-            case "TTREUR": return 2;
-            case "ETH":    return 6;
-            case "XMR":    return 10;
+        switch (asset) {
+            case "BTC":
+                return 2;
+            case "LTC":
+                return 6;
+            case "DSH":
+                return 6;
+            case "TTRUSD":
+                return 2;
+            case "TTREUR":
+                return 2;
+            case "ETH":
+                return 6;
+            case "XMR":
+                return 10;
         }
         return "x";
     }
 
     render() {
-        let countConfirmations = this.getConfirmations(this.props.currency.asset);
+        let countConfirmations = this.getConfirmations(
+            this.props.currency.asset
+        );
         return (
             <div className="small-12 medium-7">
                 <h4>
@@ -165,7 +174,7 @@ class Instructions extends React.Component {
                             <Translate
                                 className="deposit-withdraw-info"
                                 component="b"
-                                content="gateway.min_count_confirmations"                                
+                                content="gateway.min_count_confirmations"
                                 cnt={countConfirmations}
                             />
 
