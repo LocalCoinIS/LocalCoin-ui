@@ -168,6 +168,7 @@
         "polo_scam": "このアカウントは実際のPoloniexアカウントではありません。このアカウントに送信してください: poloniexwallet",
         "portfolio": "残高",
         "propose_from": "提案元",
+        "proposed_transactions": "提案された取引",
         "qty": "数量",
         "quote": "Quote",
         "recent": "最近のアクティビティ",
@@ -692,6 +693,7 @@
             "rank": "ランク",
             "table": "テーブルビュー",
             "title": "証人"
+            "filter_by_name": "名前でフィルタリングする"
         },
         "workers": {
             "create": "新しいワーカー提案を作成する",

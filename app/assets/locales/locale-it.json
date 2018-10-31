@@ -168,6 +168,7 @@
         "polo_scam": "Questo non è il vero account Poloniex, per favore invia al seguente account: poloniexwallet.",
         "portfolio": "Il mio Portfolio",
         "propose_from": "Proponi da",
+        "proposed_transactions": "Transazioni proposte",
         "qty": "Qtà",
         "quote": "Quote",
         "recent": "Attività recente",
@@ -692,6 +693,7 @@
             "rank": "Posizione",
             "table": "Visualizzazione a tabella",
             "title": "Witness"
+            "filter_by_name": "Filtrer par nom"
         },
         "workers": {
             "create": "Crea una nuova worker proposal",

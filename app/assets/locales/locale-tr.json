@@ -168,6 +168,7 @@
         "polo_scam": "Bu hesap Poloniex'e ait değildir. Lütfen alıcıyı poloniexwallet olarak değiştirin.",
         "portfolio": "Portfolio",
         "propose_from": "Teklifi sunan",
+        "proposed_transactions": "Teklif edilmiş işlemler",
         "qty": "Qty",
         "quote": "Quote",
         "recent": "Son Hareketler",
@@ -692,6 +693,7 @@
             "rank": "Sıralama",
             "table": "Tablo görünümü",
             "title": "Tanıklar"
+            "filter_by_name": "İsme Göre Filtrele"
         },
         "workers": {
             "create": "Create a new worker proposal",
