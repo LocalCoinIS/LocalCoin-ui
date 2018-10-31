@@ -1,11 +1,9 @@
 import React from "react";
-import SettingsStore from "stores/SettingsStore";
 import counterpart from "counterpart";
 import ChooseCurrency from "./ChooseCurrency";
 import Summary from "./Summary";
 import Instructions from "./Instructions";
 import LLCGatewayData from "./LLCGatewayData";
-import accountUtils from "common/account_utils";
 import {RecentTransactions} from "../../Account/RecentTransactions";
 import Immutable from "immutable";
 import Tabs from "components-brand-new/Utility/Tabs";
@@ -38,7 +36,7 @@ class LLCGateway extends React.Component {
             ],
             depositWithdrawList: [
                 {title: "gateway.deposit", content: ""},
-                {title: "gateway.withdraw", content: ""}                
+                {title: "gateway.withdraw", content: ""}
             ]
         };
     }
@@ -53,7 +51,7 @@ class LLCGateway extends React.Component {
                 mode: LLCGateway.GATEWAY,
                 depositWithdrawList: [
                     {title: "gateway.deposit", content: ""},
-                    {title: "gateway.withdraw", content: ""}                    
+                    {title: "gateway.withdraw", content: ""}
                 ],
                 type: LLCGateway.WITHDRAW
             });
@@ -127,11 +125,37 @@ class LLCGateway extends React.Component {
         return (
             <div className="grid-content no-padding">
                 <div className="content-block">
-                    <Tabs
+                    {/* <Tabs
                         onChange={this.onChangeGatewayBridge}
                         items={this.state.gatewayBridgeList}
                         inner={true}
-                    />
+                    /> */}
+                    <div className="dashboard">
+                        <div className="dashboard__tabs">
+                            <div className="select dashboard__mobileselect">
+                                <span className="placeholder">
+                                    {counterpart.translate("gateway.gateway")}
+                                </span>
+                                <ul>
+                                    <li>
+                                        {counterpart.translate(
+                                            "gateway.bridge"
+                                        )}
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="dashboard__tabs__item active">
+                                <h4>
+                                    {counterpart.translate("gateway.gateway")}
+                                </h4>
+                            </div>
+                            <div className="dashboard__tabs__item">
+                                <h4>
+                                    {counterpart.translate("gateway.bridge")}
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
                     <br />
 
                     <div>
