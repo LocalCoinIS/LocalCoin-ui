@@ -204,9 +204,18 @@ class Header extends React.Component {
     _showSend(e) {
         e.preventDefault();
         this.closeMobileMenu();
-        console.log("_showSend");
-
         if (this.isUnauthorizedUser()) return;
+        else if (this.props.locked)
+            if (WalletDb.isLocked()) {
+                WalletUnlockActions.unlock()
+                    .then(() => {
+                        AccountActions.tryToSetCurrentAccount();
+                        this.send_modal.show();
+                    })
+                    .catch(() => {});
+            } else {
+                WalletUnlockActions.lock();
+            }
         else if (this.send_modal) this.send_modal.show();
 
         this._closeDropdown();
@@ -810,7 +819,7 @@ class Header extends React.Component {
                                 {
                                     <li className="navigation__item">
                                         <a
-                                            className="navigation__link"
+                                            className="navigation__link "
                                             href="#"
                                             onClick={this._showSend.bind(this)}
                                         >

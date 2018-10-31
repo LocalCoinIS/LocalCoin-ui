@@ -8,13 +8,13 @@
 You can chat with other member of the Localcoin community in real time at:
 
 - [Telegram](https://t.me/LocalCoinIS)
-- [Discord](https://discord.gg/GsjQfAJ)
+- [Discord](https://discord.gg/)
 
 ### Developers
 If you are a software developer, you may contribute via a bounty system at:
 
 - [Github UI](https://github.com/localcoinis/localcoin-ui)
-- [Github Core](https://github.com/localcoinis/localcoin-core)
+- [Github Core](https://github.com/localcoinis/localcoin-core) 
 
 ## Introduction
 Welcome to the worlds fastest decentralized exchange (The DEX).

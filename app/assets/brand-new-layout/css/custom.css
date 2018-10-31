@@ -146,6 +146,11 @@ label,
     margin-top: -10px;
 }
 
+.switch input + label {
+    margin-left: 0;
+    margin-right: 0;
+}
+
 .switch input:checked + label {
     background: #195d0e;
 }
@@ -4386,4 +4391,25 @@ body.localcoin .dashboard__tabs__item:after {
 
 body.localcoin .footer-info__status:hover {
     text-decoration: underline;
+}
+
+.sticky-table .sticky-table-corner,
+body.localcoin
+    .sticky-table
+    .sticky-table-y-wrapper
+    .custom-sticky-header-wrap {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.sticky-table-header .sticky-table-container {
+    width: 100%;
+}
+.custom-sticky-header {
+    display: table-cell;
+    padding: 0 15px 0 0;
+    text-align: right;
 }

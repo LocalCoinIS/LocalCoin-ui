@@ -10,14 +10,14 @@
 
 - [Telegram](https://t.me/LocalCoinIS)
 - [Telegram (ru)](https://t.me/LocalCoinRU)
-- [Discord](https://discord.gg/GsjQfAJ)
+- [Discord](https://discord.gg/)
 
 ### Разработчики
 
 Если вы являетесь разработчиком программного обеспечения, то можете поучаствовать в баунти-программе здесь:
 
 - [Github UI](https://github.com/localcoinis/localcoin-ui)
-- [Github Core](https://github.com/localcoinis/localcoin-core)
+- [Github Core](https://github.com/localcoinis/localcoin-core) 
 
 ## Введение
 
