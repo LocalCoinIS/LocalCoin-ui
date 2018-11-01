@@ -56,6 +56,10 @@ class LLCBridgeModal extends React.Component {
         this.setState({isActiveThisModal: ""});
     }
 
+    showModal() {
+        this.setState({isActiveThisModal: "is-active"});
+    }
+
     loadAssetCourse(asset, cb) {
         let self = this;
         new LLCGatewayData().getPairsCourse(function(courses) {

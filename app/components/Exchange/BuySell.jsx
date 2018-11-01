@@ -18,10 +18,39 @@ import assetUtils from "common/asset_utils";
 import DatePicker from "react-datepicker2/src/";
 import moment from "moment";
 import Icon from "../Icon/Icon";
-// import LLCBridgeModal from "../DepositWithdraw/llcgateway/LLCBridgeModal";
-// import LLCGatewayData from "../DepositWithdraw/llcgateway/LLCGatewayData";
+import LLCGatewayData from "../DepositWithdraw/llcgateway/LLCGatewayData";
 
 class BuySell extends React.Component {
+    constructor(props) {
+        super(props);
+
+        let {quote, base} = props;
+
+        this.state = {
+            currencyHasInbridge: false
+        };
+
+        let self = this;
+
+        if (base.get("symbol") === "LLC" || quote.get("symbol") === "LLC") {
+            let currencyForBridge =
+                base.get("symbol") === "LLC"
+                    ? quote.get("symbol")
+                    : base.get("symbol");
+            new LLCGatewayData().getAllowCurrency(function(bridgeCurrencies) {
+                if (typeof bridgeCurrencies.deposit === "undefined") return;
+
+                for (let i in bridgeCurrencies.deposit) {
+                    if (currencyForBridge !== bridgeCurrencies.deposit[i].asset)
+                        continue;
+                    self.setState({currencyHasInbridge: true}, function() {
+                        self.forceUpdate();
+                    });
+                }
+            });
+        }
+    }
+
     static propTypes = {
         balance: ChainTypes.ChainObject,
         type: PropTypes.string,
@@ -379,8 +408,6 @@ class BuySell extends React.Component {
 
         return (
             <div className={this.props.className}>
-                {/* <LLCBridgeModal account={this.props.currentAccount} asset="BTC" /> */}
-
                 <div className="exchange-bordered buy-sell-container">
                     <div
                         className={"exchange-content-header " + type}
@@ -443,9 +470,12 @@ class BuySell extends React.Component {
                                 {caret}
                             </div>
                         }
-                        {this.props.currentBridges ? (
+
+                        {this.state.currencyHasInbridge &&
+                        this.props[isBid ? "base" : "quote"].get("symbol") !==
+                            "LLC" ? (
                             <div className="float-right buy-sell-deposit">
-                                <a onClick={this._onBuy.bind(this)}>
+                                <a onClick={this.props.onShowModal}>
                                     <TranslateWithLinks
                                         string="exchange.buysell_formatter"
                                         noLink
@@ -467,9 +497,9 @@ class BuySell extends React.Component {
                                 </a>
                             </div>
                         ) : null}
-                        {this.props.backedCoin ? (
+                        {/* this.props.backedCoin */ false ? (
                             <div className="float-right buy-sell-deposit">
-                                <a onClick={this._onDeposit.bind(this)}>
+                                <a onClick={this.props.onShowModal}>
                                     <TranslateWithLinks
                                         string="exchange.buysell_formatter"
                                         noLink
@@ -491,9 +521,9 @@ class BuySell extends React.Component {
                                 </a>
                             </div>
                         ) : null}
-                        {this.props.onBorrow ? (
+                        {/* this.props.onBorrow */ false ? (
                             <div className="float-right buy-sell-deposit">
-                                <a onClick={this.props.onBorrow}>
+                                <a onClick={this.props.onShowModal}>
                                     <TranslateWithLinks
                                         string="exchange.buysell_formatter"
                                         noLink
