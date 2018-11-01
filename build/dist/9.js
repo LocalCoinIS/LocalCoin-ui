@@ -1,10 +1,10 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
     [9],
     {
-        444: function(t, e, r) {
-            var a = r(554),
-                o = r(891),
-                n = r(892),
+        445: function(t, e, r) {
+            var a = r(555),
+                o = r(892),
+                n = r(893),
                 i = "[object Null]",
                 s = "[object Undefined]",
                 u = a ? a.toStringTag : void 0;
@@ -18,12 +18,12 @@
                         : n(t);
             };
         },
-        445: function(t, e) {
+        446: function(t, e) {
             t.exports = function(t) {
                 return null != t && "object" == typeof t;
             };
         },
-        553: function(t, e, r) {
+        554: function(t, e, r) {
             "use strict";
             var a = (function() {
                     function t(t, e) {
@@ -41,8 +41,8 @@
                 })(),
                 o = (function(t) {
                     return t && t.__esModule ? t : {default: t};
-                })(r(879));
-            var n = r(909),
+                })(r(880));
+            var n = r(910),
                 i = (function() {
                     function t(e) {
                         var r = this;
@@ -80,12 +80,12 @@
                 );
             t.exports.Config = i;
         },
-        554: function(t, e, r) {
-            var a = r(555).Symbol;
+        555: function(t, e, r) {
+            var a = r(556).Symbol;
             t.exports = a;
         },
-        555: function(t, e, r) {
-            var a = r(556),
+        556: function(t, e, r) {
+            var a = r(557),
                 o =
                     "object" == typeof self &&
                     self &&
@@ -94,30 +94,30 @@
                 n = a || o || Function("return this")();
             t.exports = n;
         },
-        556: function(t, e, r) {
+        557: function(t, e, r) {
             (function(e) {
                 var r = "object" == typeof e && e && e.Object === Object && e;
                 t.exports = r;
-            }.call(this, r(88)));
+            }.call(this, r(89)));
         },
-        557: function(t, e) {
+        558: function(t, e) {
             var r = Array.isArray;
             t.exports = r;
         },
-        558: function(t, e) {
+        559: function(t, e) {
             var r = 9007199254740991;
             t.exports = function(t) {
                 return "number" == typeof t && t > -1 && t % 1 == 0 && t <= r;
             };
         },
-        559: function(t, e, r) {
-            var a = r(904),
-                o = r(558);
+        560: function(t, e, r) {
+            var a = r(905),
+                o = r(559);
             t.exports = function(t) {
                 return null != t && o(t.length) && !a(t);
             };
         },
-        560: function(t, e, r) {
+        561: function(t, e, r) {
             "use strict";
             Object.defineProperty(e, "__esModule", {value: !0});
             var a = (function() {
@@ -135,9 +135,9 @@
                 };
             })();
             e.jsonRpc = d;
-            var o = s(r(912)),
-                n = s(r(448)),
-                i = s(r(561));
+            var o = s(r(913)),
+                n = s(r(449)),
+                i = s(r(562));
             function s(t) {
                 return t && t.__esModule ? t : {default: t};
             }
@@ -265,7 +265,7 @@
             })();
             e.default = h;
         },
-        561: function(t, e, r) {
+        562: function(t, e, r) {
             "use strict";
             Object.defineProperty(e, "__esModule", {value: !0});
             var a = (function() {
@@ -284,7 +284,7 @@
                 })(),
                 o = (function(t) {
                     return t && t.__esModule ? t : {default: t};
-                })(r(277));
+                })(r(278));
             var n = (function(t) {
                 function e() {
                     var t =
@@ -363,7 +363,7 @@
             })();
             e.default = n;
         },
-        562: function(t, e, r) {
+        563: function(t, e, r) {
             "use strict";
             Object.defineProperty(e, "__esModule", {value: !0}),
                 (e.camelCase = function(t) {
@@ -373,14 +373,14 @@
                 });
             var a = /_([a-z])/g;
         },
-        579: function(t, e, r) {
+        580: function(t, e, r) {
             "use strict";
-            var a = r(878),
-                o = r(553),
-                n = r(562);
+            var a = r(879),
+                o = r(554),
+                n = r(563);
             t.exports = {api: a, config: o, utils: n};
         },
-        878: function(t, e, r) {
+        879: function(t, e, r) {
             "use strict";
             var a =
                     "function" == typeof Symbol &&
@@ -410,12 +410,12 @@
                         return r && t(e.prototype, r), a && t(e, a), e;
                     };
                 })(),
-                n = f(r(277)),
-                i = f(r(553)),
-                s = f(r(910)),
-                u = f(r(911)),
-                p = r(562),
-                c = r(560);
+                n = f(r(278)),
+                i = f(r(554)),
+                s = f(r(911)),
+                u = f(r(912)),
+                p = r(563),
+                c = r(561);
             function f(t) {
                 return t && t.__esModule ? t : {default: t};
             }
@@ -699,19 +699,19 @@
                 d = new l(i.default);
             (t.exports = d).Steem = l;
         },
-        879: function(t, e, r) {
-            t.exports = r(880);
-        },
         880: function(t, e, r) {
-            var a = r(881),
-                o = r(882),
-                n = r(907),
-                i = r(557);
+            t.exports = r(881);
+        },
+        881: function(t, e, r) {
+            var a = r(882),
+                o = r(883),
+                n = r(908),
+                i = r(558);
             t.exports = function(t, e) {
                 return (i(t) ? a : o)(t, n(e));
             };
         },
-        881: function(t, e) {
+        882: function(t, e) {
             t.exports = function(t, e) {
                 for (
                     var r = -1, a = null == t ? 0 : t.length;
@@ -721,23 +721,23 @@
                 return t;
             };
         },
-        882: function(t, e, r) {
-            var a = r(883),
-                o = r(906)(a);
-            t.exports = o;
-        },
         883: function(t, e, r) {
             var a = r(884),
-                o = r(886);
+                o = r(907)(a);
+            t.exports = o;
+        },
+        884: function(t, e, r) {
+            var a = r(885),
+                o = r(887);
             t.exports = function(t, e) {
                 return t && a(t, e, o);
             };
         },
-        884: function(t, e, r) {
-            var a = r(885)();
+        885: function(t, e, r) {
+            var a = r(886)();
             t.exports = a;
         },
-        885: function(t, e) {
+        886: function(t, e) {
             t.exports = function(t) {
                 return function(e, r, a) {
                     for (
@@ -752,21 +752,21 @@
                 };
             };
         },
-        886: function(t, e, r) {
-            var a = r(887),
-                o = r(900),
-                n = r(559);
+        887: function(t, e, r) {
+            var a = r(888),
+                o = r(901),
+                n = r(560);
             t.exports = function(t) {
                 return n(t) ? a(t) : o(t);
             };
         },
-        887: function(t, e, r) {
-            var a = r(888),
-                o = r(889),
-                n = r(557),
-                i = r(893),
-                s = r(895),
-                u = r(896),
+        888: function(t, e, r) {
+            var a = r(889),
+                o = r(890),
+                n = r(558),
+                i = r(894),
+                s = r(896),
+                u = r(897),
                 p = Object.prototype.hasOwnProperty;
             t.exports = function(t, e) {
                 var r = n(t),
@@ -790,15 +790,15 @@
                 return h;
             };
         },
-        888: function(t, e) {
+        889: function(t, e) {
             t.exports = function(t, e) {
                 for (var r = -1, a = Array(t); ++r < t; ) a[r] = e(r);
                 return a;
             };
         },
-        889: function(t, e, r) {
-            var a = r(890),
-                o = r(445),
+        890: function(t, e, r) {
+            var a = r(891),
+                o = r(446),
                 n = Object.prototype,
                 i = n.hasOwnProperty,
                 s = n.propertyIsEnumerable,
@@ -817,16 +817,16 @@
                       };
             t.exports = u;
         },
-        890: function(t, e, r) {
-            var a = r(444),
-                o = r(445),
+        891: function(t, e, r) {
+            var a = r(445),
+                o = r(446),
                 n = "[object Arguments]";
             t.exports = function(t) {
                 return o(t) && a(t) == n;
             };
         },
-        891: function(t, e, r) {
-            var a = r(554),
+        892: function(t, e, r) {
+            var a = r(555),
                 o = Object.prototype,
                 n = o.hasOwnProperty,
                 i = o.toString,
@@ -842,29 +842,29 @@
                 return a && (e ? (t[s] = r) : delete t[s]), o;
             };
         },
-        892: function(t, e) {
+        893: function(t, e) {
             var r = Object.prototype.toString;
             t.exports = function(t) {
                 return r.call(t);
             };
         },
-        893: function(t, e, r) {
+        894: function(t, e, r) {
             (function(t) {
-                var a = r(555),
-                    o = r(894),
+                var a = r(556),
+                    o = r(895),
                     n = "object" == typeof e && e && !e.nodeType && e,
                     i = n && "object" == typeof t && t && !t.nodeType && t,
                     s = i && i.exports === n ? a.Buffer : void 0,
                     u = (s ? s.isBuffer : void 0) || o;
                 t.exports = u;
-            }.call(this, r(275)(t)));
+            }.call(this, r(276)(t)));
         },
-        894: function(t, e) {
+        895: function(t, e) {
             t.exports = function() {
                 return !1;
             };
         },
-        895: function(t, e) {
+        896: function(t, e) {
             var r = 9007199254740991,
                 a = /^(?:0|[1-9]\d*)$/;
             t.exports = function(t, e) {
@@ -878,18 +878,18 @@
                 );
             };
         },
-        896: function(t, e, r) {
-            var a = r(897),
-                o = r(898),
-                n = r(899),
+        897: function(t, e, r) {
+            var a = r(898),
+                o = r(899),
+                n = r(900),
                 i = n && n.isTypedArray,
                 s = i ? o(i) : a;
             t.exports = s;
         },
-        897: function(t, e, r) {
-            var a = r(444),
-                o = r(558),
-                n = r(445),
+        898: function(t, e, r) {
+            var a = r(445),
+                o = r(559),
+                n = r(446),
                 i = {};
             (i["[object Float32Array]"] = i["[object Float64Array]"] = i[
                 "[object Int8Array]"
@@ -913,16 +913,16 @@
                     return n(t) && o(t.length) && !!i[a(t)];
                 });
         },
-        898: function(t, e) {
+        899: function(t, e) {
             t.exports = function(t) {
                 return function(e) {
                     return t(e);
                 };
             };
         },
-        899: function(t, e, r) {
+        900: function(t, e, r) {
             (function(t) {
-                var a = r(556),
+                var a = r(557),
                     o = "object" == typeof e && e && !e.nodeType && e,
                     n = o && "object" == typeof t && t && !t.nodeType && t,
                     i = n && n.exports === o && a.process,
@@ -933,11 +933,11 @@
                         } catch (t) {}
                     })();
                 t.exports = s;
-            }.call(this, r(275)(t)));
+            }.call(this, r(276)(t)));
         },
-        900: function(t, e, r) {
-            var a = r(901),
-                o = r(902),
+        901: function(t, e, r) {
+            var a = r(902),
+                o = r(903),
                 n = Object.prototype.hasOwnProperty;
             t.exports = function(t) {
                 if (!a(t)) return o(t);
@@ -947,27 +947,27 @@
                 return e;
             };
         },
-        901: function(t, e) {
+        902: function(t, e) {
             var r = Object.prototype;
             t.exports = function(t) {
                 var e = t && t.constructor;
                 return t === (("function" == typeof e && e.prototype) || r);
             };
         },
-        902: function(t, e, r) {
-            var a = r(903)(Object.keys, Object);
+        903: function(t, e, r) {
+            var a = r(904)(Object.keys, Object);
             t.exports = a;
         },
-        903: function(t, e) {
+        904: function(t, e) {
             t.exports = function(t, e) {
                 return function(r) {
                     return t(e(r));
                 };
             };
         },
-        904: function(t, e, r) {
-            var a = r(444),
-                o = r(905),
+        905: function(t, e, r) {
+            var a = r(445),
+                o = r(906),
                 n = "[object AsyncFunction]",
                 i = "[object Function]",
                 s = "[object GeneratorFunction]",
@@ -978,14 +978,14 @@
                 return e == i || e == s || e == n || e == u;
             };
         },
-        905: function(t, e) {
+        906: function(t, e) {
             t.exports = function(t) {
                 var e = typeof t;
                 return null != t && ("object" == e || "function" == e);
             };
         },
-        906: function(t, e, r) {
-            var a = r(559);
+        907: function(t, e, r) {
+            var a = r(560);
             t.exports = function(t, e) {
                 return function(r, o) {
                     if (null == r) return r;
@@ -999,18 +999,18 @@
                 };
             };
         },
-        907: function(t, e, r) {
-            var a = r(908);
+        908: function(t, e, r) {
+            var a = r(909);
             t.exports = function(t) {
                 return "function" == typeof t ? t : a;
             };
         },
-        908: function(t, e) {
+        909: function(t, e) {
             t.exports = function(t) {
                 return t;
             };
         },
-        909: function(t) {
+        910: function(t) {
             t.exports = {
                 transport: "http",
                 websocket: "wss://gtg.steem.house:8090",
@@ -1023,7 +1023,7 @@
                     "0000000000000000000000000000000000000000000000000000000000000000"
             };
         },
-        910: function(t, e, r) {
+        911: function(t, e, r) {
             "use strict";
             Object.defineProperty(e, "__esModule", {value: !0}),
                 (e.default = [
@@ -1503,17 +1503,17 @@
                     }
                 ]);
         },
-        911: function(t, e, r) {
+        912: function(t, e, r) {
             "use strict";
             Object.defineProperty(e, "__esModule", {value: !0});
-            var a = n(r(560)),
-                o = n(r(913));
+            var a = n(r(561)),
+                o = n(r(914));
             function n(t) {
                 return t && t.__esModule ? t : {default: t};
             }
             e.default = {http: a.default, ws: o.default};
         },
-        912: function(t, e) {
+        913: function(t, e) {
             var r = {};
             !(function(t) {
                 "use strict";
@@ -1973,7 +1973,7 @@
                 (a.Request = r.Request),
                 (t.exports = a);
         },
-        913: function(t, e, r) {
+        914: function(t, e, r) {
             "use strict";
             Object.defineProperty(e, "__esModule", {value: !0});
             var a = (function() {
@@ -1990,14 +1990,14 @@
                         return r && t(e.prototype, r), a && t(e, a), e;
                     };
                 })(),
-                o = s(r(914)),
-                n = s(r(448)),
-                i = s(r(561));
+                o = s(r(915)),
+                n = s(r(449)),
+                i = s(r(562));
             function s(t) {
                 return t && t.__esModule ? t : {default: t};
             }
             var u = void 0;
-            if (o.default) u = r(915);
+            if (o.default) u = r(916);
             else {
                 if ("undefined" == typeof window)
                     throw new Error("Couldn't decide on a `WebSocket` class");
@@ -2251,15 +2251,8 @@
                 })();
             e.default = c;
         },
-        914: function(t, e, r) {
-            (function(e) {
-                t.exports = !1;
-                try {
-                    t.exports =
-                        "[object process]" ===
-                        Object.prototype.toString.call(e.process);
-                } catch (t) {}
-            }.call(this, r(88)));
+        915: function(t, e) {
+            t.exports = !1;
         }
     }
 ]);

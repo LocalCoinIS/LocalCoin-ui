@@ -64,7 +64,7 @@
             "use strict";
             var n = a(0),
                 s = a.n(n),
-                i = a(509),
+                i = a(510),
                 r = a.n(i),
                 o = (function() {
                     function e(e, t) {
@@ -181,7 +181,142 @@
             (l.defaultProps = {component: "span", enterTimeout: 2e3}),
                 (t.a = l);
         },
-        128: function(e, t, a) {
+        112: function(e, t, a) {
+            "use strict";
+            var n = a(4),
+                s = (function() {
+                    function e(e, t) {
+                        for (var a = 0; a < t.length; a++) {
+                            var n = t[a];
+                            (n.enumerable = n.enumerable || !1),
+                                (n.configurable = !0),
+                                "value" in n && (n.writable = !0),
+                                Object.defineProperty(e, n.key, n);
+                        }
+                    }
+                    return function(t, a, n) {
+                        return a && e(t.prototype, a), n && e(t, n), t;
+                    };
+                })();
+            var i = (function() {
+                function e() {
+                    !(function(e, t) {
+                        if (!(e instanceof t))
+                            throw new TypeError(
+                                "Cannot call a class as a function"
+                            );
+                    })(this, e),
+                        (this.getPairsCourse = function(e) {
+                            this.ajax(e, "GetPairsCourse");
+                        });
+                }
+                return (
+                    s(e, [
+                        {
+                            key: "getBaseUrl",
+                            value: function() {
+                                return "https://llcgateway.localcoin.is/";
+                            }
+                        },
+                        {
+                            key: "getAllowCurrency",
+                            value: function(e) {
+                                this.ajax(e, "GetAllowCurrency");
+                            }
+                        },
+                        {
+                            key: "сreatePaymentAddress",
+                            value: function(e, t, a, n) {
+                                this.ajax(
+                                    function(e) {
+                                        n(e.address);
+                                    },
+                                    "CreatePaymentAddress",
+                                    {account: e, asset: t, type: a}
+                                );
+                            }
+                        },
+                        {
+                            key: "validateAddress",
+                            value: function(e, t, a) {
+                                this.ajax(a, "ValidateAddress", {
+                                    address: e,
+                                    currency: t
+                                });
+                            }
+                        },
+                        {
+                            key: "ajax",
+                            value: function(e, t, a) {
+                                void 0 === a && (a = null);
+                                var n =
+                                    this.getBaseUrl() +
+                                    "?methodnameaction=" +
+                                    t;
+                                a && (n += "&" + this.encodeQueryData(a)),
+                                    fetch(n)
+                                        .then(function(e) {
+                                            return e.json();
+                                        })
+                                        .then(e);
+                            }
+                        },
+                        {
+                            key: "encodeQueryData",
+                            value: function(e) {
+                                var t = [];
+                                for (var a in e)
+                                    t.push(
+                                        encodeURIComponent(a) +
+                                            "=" +
+                                            encodeURIComponent(e[a])
+                                    );
+                                return t.join("&");
+                            }
+                        },
+                        {
+                            key: "precisionToCoef",
+                            value: function(e) {
+                                for (var t = "1", a = 0; a < e; a++) t += "0";
+                                return parseInt(t);
+                            }
+                        },
+                        {
+                            key: "getUserBalance",
+                            value: function(e, t, a) {
+                                var s = [],
+                                    i = function(e, t, a) {
+                                        return e ? (t ? t / a : 0) : t;
+                                    },
+                                    r = e.get("balances").toJS();
+                                for (var o in r) {
+                                    var l = n.b.getAsset(o);
+                                    if (l) {
+                                        var c = r[o],
+                                            u = n.b.getObject(c),
+                                            p = l.get("precision"),
+                                            d = this.precisionToCoef(p);
+                                        s[l.get("symbol")] = i(
+                                            t,
+                                            u.get("balance"),
+                                            d
+                                        );
+                                    }
+                                }
+                                return void 0 !== a
+                                    ? void 0 !== s[a]
+                                        ? s[a]
+                                        : 0
+                                    : s;
+                            }
+                        }
+                    ]),
+                    e
+                );
+            })();
+            t.a = i;
+        },
+        129: function(e, t, a) {
             "use strict";
             a.d(t, "a", function() {
                 return I;
@@ -193,8 +328,8 @@
                 s = a.n(n),
                 i = a(1),
                 r = a.n(i),
-                o = a(121),
-                l = a(146),
+                o = a(122),
+                l = a(149),
                 c = a(6),
                 u = a(13),
                 p = a(5),
@@ -947,7 +1082,7 @@
                 (P.defaultProps = {asset: "1.3.0"}),
                 (P = Object(u.a)(P));
         },
-        363: function(e, t, a) {
+        364: function(e, t, a) {
             "use strict";
             (function(e) {
                 var n = a(76),
@@ -969,7 +1104,7 @@
                     v = a.n(g),
                     b = a(25),
                     w = a(4),
-                    E = a(147),
+                    E = a(150),
                     k = a.n(E),
                     C = a(36),
                     A = a(18),
@@ -2212,7 +2347,7 @@
                     (t.a = Object(p.a)(T));
             }.call(this, a(29).Buffer));
         },
-        4979: function(e, t, a) {
+        4980: function(e, t, a) {
             "use strict";
             a.r(t);
             var n = a(0),
@@ -2226,7 +2361,7 @@
                 p = a(6),
                 d = a(13),
                 m = a(4),
-                h = a(363),
+                h = a(364),
                 _ = a(34),
                 f = a(20),
                 y = a.n(f),
@@ -3193,7 +3328,7 @@
             var x = Object(d.a)(T),
                 j = a(8),
                 I = a(10),
-                P = a(128),
+                P = a(129),
                 W = a(7),
                 D = a.n(W),
                 B = (a(9),
@@ -5148,11 +5283,11 @@
                 );
             })();
             ne.propTypes = {rpc_url: N.a.string, account: p.a.ChainAccount};
-            Object(d.a)(ne), a(795);
+            Object(d.a)(ne), a(796);
             var se = a(69),
                 ie = a(14),
-                re = (a(796), a(577)),
-                oe = a(147),
+                re = (a(797), a(578)),
+                oe = a(150),
                 le = a.n(oe),
                 ce = (function() {
                     function e(e, t) {
@@ -6876,7 +7011,7 @@
                         e
                     );
                 })(),
-                Te = a(148),
+                Te = a(151),
                 xe = a.n(Te),
                 je = a(76),
                 Ie = a(36),
@@ -10371,7 +10506,7 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            var at = new (a(797))(
+            var at = new (a(798))(
                     "-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCH+QtHPKcWxdL25xL4pCuu16tKh6yPx/TFnd/8\ncSt2TC+sPuYsD0h/sy4VKNxhBb7F7U/TLXjMxNcSfPVPjPM3X2LvOlmU9LOEcJGrmlmOOiyO/kws\nyKKOhR4UyZ1NghhfHjuyDBj6V8fCL+xBZTJWsh/X61Z0wLCwOzXcQCsNJwIDAQAB\n-----END PUBLIC KEY-----"
                 ),
                 nt = (function(e) {
@@ -11601,8 +11736,8 @@
             })();
             it.propTypes = {account: N.a.string, action: N.a.string};
             var rt = Object(d.a)(it),
-                ot = a(578),
-                lt = a(221),
+                ot = a(579),
+                lt = a(230),
                 ct = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
@@ -13151,139 +13286,9 @@
                         return {viewSettings: j.a.getState().viewSettings};
                     }
                 }),
-                (function() {
-                    function e(e, t) {
-                        for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
-                        }
-                    }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
-                    };
-                })());
-            var ft = (function() {
-                    function e() {
-                        !(function(e, t) {
-                            if (!(e instanceof t))
-                                throw new TypeError(
-                                    "Cannot call a class as a function"
-                                );
-                        })(this, e),
-                            (this.getPairsCourse = function(e) {
-                                this.ajax(e, "GetPairsCourse");
-                            });
-                    }
-                    return (
-                        _t(e, [
-                            {
-                                key: "getBaseUrl",
-                                value: function() {
-                                    return "https://llcgateway.localcoin.is/";
-                                }
-                            },
-                            {
-                                key: "getAllowCurrency",
-                                value: function(e) {
-                                    this.ajax(e, "GetAllowCurrency");
-                                }
-                            },
-                            {
-                                key: "сreatePaymentAddress",
-                                value: function(e, t, a, n) {
-                                    this.ajax(
-                                        function(e) {
-                                            n(e.address);
-                                        },
-                                        "CreatePaymentAddress",
-                                        {account: e, asset: t, type: a}
-                                    );
-                                }
-                            },
-                            {
-                                key: "validateAddress",
-                                value: function(e, t, a) {
-                                    this.ajax(a, "ValidateAddress", {
-                                        address: e,
-                                        currency: t
-                                    });
-                                }
-                            },
-                            {
-                                key: "ajax",
-                                value: function(e, t, a) {
-                                    void 0 === a && (a = null);
-                                    var n =
-                                        this.getBaseUrl() +
-                                        "?methodnameaction=" +
-                                        t;
-                                    a && (n += "&" + this.encodeQueryData(a)),
-                                        fetch(n)
-                                            .then(function(e) {
-                                                return e.json();
-                                            })
-                                            .then(e);
-                                }
-                            },
-                            {
-                                key: "encodeQueryData",
-                                value: function(e) {
-                                    var t = [];
-                                    for (var a in e)
-                                        t.push(
-                                            encodeURIComponent(a) +
-                                                "=" +
-                                                encodeURIComponent(e[a])
-                                        );
-                                    return t.join("&");
-                                }
-                            },
-                            {
-                                key: "precisionToCoef",
-                                value: function(e) {
-                                    for (var t = "1", a = 0; a < e; a++)
-                                        t += "0";
-                                    return parseInt(t);
-                                }
-                            },
-                            {
-                                key: "getUserBalance",
-                                value: function(e, t, a) {
-                                    var n = [],
-                                        s = function(e, t, a) {
-                                            return e ? (t ? t / a : 0) : t;
-                                        },
-                                        i = e.get("balances").toJS();
-                                    for (var r in i) {
-                                        var o = m.b.getAsset(r);
-                                        if (o) {
-                                            var l = i[r],
-                                                c = m.b.getObject(l),
-                                                u = o.get("precision"),
-                                                p = this.precisionToCoef(u);
-                                            n[o.get("symbol")] = s(
-                                                t,
-                                                c.get("balance"),
-                                                p
-                                            );
-                                        }
-                                    }
-                                    return void 0 !== a
-                                        ? void 0 !== n[a]
-                                            ? n[a]
-                                            : 0
-                                        : n;
-                                }
-                            }
-                        ]),
-                        e
-                    );
-                })(),
-                yt = a(102),
-                gt = (function() {
+                a(112)),
+                ft = a(102),
+                yt = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -13297,7 +13302,7 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            var vt = (function(e) {
+            var gt = (function(e) {
                     function t(e) {
                         !(function(e, t) {
                             if (!(e instanceof t))
@@ -13353,7 +13358,7 @@
                                         ? Object.setPrototypeOf(e, t)
                                         : (e.__proto__ = t));
                         })(t, s.a.Component),
-                        gt(t, [
+                        yt(t, [
                             {
                                 key: "getCurrency",
                                 value: function() {
@@ -13376,7 +13381,7 @@
                                 key: "getAllowCurrencies",
                                 value: function() {
                                     var e = this;
-                                    new ft().getAllowCurrency(function(t) {
+                                    new _t.a().getAllowCurrency(function(t) {
                                         e.setState({currencies: t}, function() {
                                             e.getCurrency() &&
                                                 e.props.bullet.setCurrency(
@@ -13441,7 +13446,7 @@
                                             s.a.createElement(
                                                 "span",
                                                 null,
-                                                this.state.type == xt.WITHDRAW
+                                                this.state.type == Tt.WITHDRAW
                                                     ? A.a
                                                           .translate(
                                                               "gateway.choose_withdraw"
@@ -13456,7 +13461,7 @@
                                             ":",
                                             " "
                                         ),
-                                        s.a.createElement(yt.a, {
+                                        s.a.createElement(ft.a, {
                                             options: t,
                                             selected: {
                                                 key: a ? a.asset : null,
@@ -13473,7 +13478,7 @@
                         t
                     );
                 })(),
-                bt = (function() {
+                vt = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -13487,7 +13492,7 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            var wt = (function(e) {
+            var bt = (function(e) {
                     function t(e) {
                         !(function(e, t) {
                             if (!(e instanceof t))
@@ -13533,7 +13538,7 @@
                                         ? Object.setPrototypeOf(e, t)
                                         : (e.__proto__ = t));
                         })(t, s.a.Component),
-                        bt(t, [
+                        vt(t, [
                             {
                                 key: "componentWillReceiveProps",
                                 value: function(e) {
@@ -13549,7 +13554,7 @@
                                         s.a.createElement(
                                             "h4",
                                             null,
-                                            this.state.type == xt.WITHDRAW
+                                            this.state.type == Tt.WITHDRAW
                                                 ? A.a.translate(
                                                       "gateway.withdraw_summary"
                                                   )
@@ -13573,7 +13578,7 @@
                                                             "td",
                                                             null,
                                                             this.state.type ==
-                                                            xt.DEPOSIT
+                                                            Tt.DEPOSIT
                                                                 ? A.a.translate(
                                                                       "gateway.asset_to_deposit"
                                                                   )
@@ -13594,7 +13599,7 @@
                                                                 }
                                                             },
                                                             this.state.type ==
-                                                            xt.DEPOSIT
+                                                            Tt.DEPOSIT
                                                                 ? this.props
                                                                       .currency
                                                                       .currency
@@ -13630,7 +13635,7 @@
                                                                 null,
                                                                 this.state
                                                                     .type ==
-                                                                xt.WITHDRAW
+                                                                Tt.WITHDRAW
                                                                     ? this.props
                                                                           .currency
                                                                           .currency
@@ -13680,7 +13685,7 @@
                                                         )
                                                     ),
                                                     this.state.type ==
-                                                    xt.DEPOSIT
+                                                    Tt.DEPOSIT
                                                         ? s.a.createElement(
                                                               "tr",
                                                               null,
@@ -13775,8 +13780,8 @@
                         t
                     );
                 })(),
-                Et = (a(152), a(39)),
-                kt = (function() {
+                wt = (a(155), a(39)),
+                Et = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -13790,7 +13795,7 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            var Ct = (function(e) {
+            var kt = (function(e) {
                     function t(e) {
                         !(function(e, t) {
                             if (!(e instanceof t))
@@ -13862,7 +13867,7 @@
                                         ? Object.setPrototypeOf(e, t)
                                         : (e.__proto__ = t));
                         })(t, s.a.Component),
-                        kt(t, [
+                        Et(t, [
                             {
                                 key: "getAssetId",
                                 value: function() {
@@ -13879,7 +13884,7 @@
                                 value: function() {
                                     return this.props.account &&
                                         this.props.currency.asset &&
-                                        new ft().getUserBalance(
+                                        new _t.a().getUserBalance(
                                             this.props.account,
                                             !0,
                                             this.props.currency.asset,
@@ -13912,7 +13917,7 @@
                                 value: function() {
                                     if (!this.props.account) return 0;
                                     if (!this.props.currency.asset) return 0;
-                                    var e = new ft().getUserBalance(
+                                    var e = new _t.a().getUserBalance(
                                         this.props.account,
                                         !0,
                                         this.props.currency.asset,
@@ -13960,7 +13965,7 @@
                                     if (this.wdAddr)
                                         if (this.props.account)
                                             if (this.props.currency.asset) {
-                                                var e = new ft().getUserBalance(
+                                                var e = new _t.a().getUserBalance(
                                                     this.props.account,
                                                     !0,
                                                     this.props.currency.asset,
@@ -14008,7 +14013,9 @@
                                 key: "validateAddr",
                                 value: function(e, t, a) {
                                     var n = this;
-                                    new ft().validateAddress(e, t, function(e) {
+                                    new _t.a().validateAddress(e, t, function(
+                                        e
+                                    ) {
                                         var t =
                                             "true" == e ||
                                             "True" == e ||
@@ -14060,10 +14067,10 @@
                                                 )
                                                 .then(function() {
                                                     e.resetForm.call(e),
-                                                        Et.a.unlisten(
+                                                        wt.a.unlisten(
                                                             e.onTrxIncluded
                                                         ),
-                                                        Et.a.listen(
+                                                        wt.a.listen(
                                                             e.onTrxIncluded
                                                         );
                                                 })
@@ -14087,11 +14094,11 @@
                                 key: "onTrxIncluded",
                                 value: function(e) {
                                     e.included && e.broadcasted_transaction
-                                        ? (Et.a.unlisten(this.onTrxIncluded),
-                                          Et.a.reset())
+                                        ? (wt.a.unlisten(this.onTrxIncluded),
+                                          wt.a.reset())
                                         : e.closed &&
-                                          (Et.a.unlisten(this.onTrxIncluded),
-                                          Et.a.reset());
+                                          (wt.a.unlisten(this.onTrxIncluded),
+                                          wt.a.reset());
                                 }
                             },
                             {
@@ -14658,7 +14665,7 @@
                         t
                     );
                 })(),
-                At = (function() {
+                Ct = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -14672,7 +14679,7 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            var St = (function(e) {
+            var At = (function(e) {
                     function t(e) {
                         !(function(e, t) {
                             if (!(e instanceof t))
@@ -14729,7 +14736,7 @@
                                         ? Object.setPrototypeOf(e, t)
                                         : (e.__proto__ = t));
                         })(t, s.a.Component),
-                        At(t, [
+                        Ct(t, [
                             {
                                 key: "_copy",
                                 value: function(e) {
@@ -14813,7 +14820,7 @@
                                         s.a.createElement(
                                             "h4",
                                             null,
-                                            this.state.type == xt.WITHDRAW
+                                            this.state.type == Tt.WITHDRAW
                                                 ? A.a.translate(
                                                       "gateway.withdraw_inst"
                                                   )
@@ -14829,7 +14836,7 @@
                                                     fontSize: "1.1rem"
                                                 }
                                             },
-                                            this.state.type == xt.WITHDRAW
+                                            this.state.type == Tt.WITHDRAW
                                                 ? s.a.createElement(
                                                       "div",
                                                       null,
@@ -15018,7 +15025,7 @@
                                                       )
                                                   )
                                         ),
-                                        s.a.createElement(Ct, {
+                                        s.a.createElement(kt, {
                                             bullet: this,
                                             active: this.state.modalActive,
                                             account: this.props.account,
@@ -15031,8 +15038,8 @@
                         t
                     );
                 })(),
-                Nt = a(105),
-                Ot = (function() {
+                St = a(105),
+                Nt = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -15046,7 +15053,7 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            var Tt = (function(e) {
+            var Ot = (function(e) {
                 function t(e) {
                     !(function(e, t) {
                         if (!(e instanceof t))
@@ -15111,7 +15118,7 @@
                                     ? Object.setPrototypeOf(e, t)
                                     : (e.__proto__ = t));
                     })(t, s.a.Component),
-                    Ot(t, [
+                    Nt(t, [
                         {
                             key: "componentDidMount",
                             value: function() {
@@ -15197,7 +15204,7 @@
                                 var n = this;
                                 e &&
                                     t &&
-                                    new ft().сreatePaymentAddress(
+                                    new _t.a().сreatePaymentAddress(
                                         e,
                                         t,
                                         a,
@@ -15299,7 +15306,7 @@
                                                     s.a.createElement(
                                                         "div",
                                                         {className: "medium-4"},
-                                                        s.a.createElement(vt, {
+                                                        s.a.createElement(gt, {
                                                             account: this.props
                                                                 .account,
                                                             type: this.state
@@ -15332,7 +15339,7 @@
                                                         t.BRIDGE
                                                             ? null
                                                             : s.a.createElement(
-                                                                  Nt.a,
+                                                                  St.a,
                                                                   {
                                                                       onChange: this
                                                                           .onChangeDepositWithdraw,
@@ -15351,13 +15358,13 @@
                                                     className:
                                                         "rudex__gateway grid-block no-padding no-margin"
                                                 },
-                                                s.a.createElement(wt, {
+                                                s.a.createElement(bt, {
                                                     account: this.props.account,
                                                     type: this.state.type,
                                                     currency: this.state
                                                         .currency
                                                 }),
-                                                s.a.createElement(St, {
+                                                s.a.createElement(At, {
                                                     depositAddress: this.state
                                                         .depositAddress,
                                                     account: this.props.account,
@@ -15414,13 +15421,13 @@
                     t
                 );
             })();
-            (Tt.label = "LLCGateway"),
-                (Tt.WITHDRAW = "withdraw"),
-                (Tt.DEPOSIT = "deposit"),
-                (Tt.GATEWAY = "0"),
-                (Tt.BRIDGE = "1");
-            var xt = Tt,
-                jt = (function() {
+            (Ot.label = "LLCGateway"),
+                (Ot.WITHDRAW = "withdraw"),
+                (Ot.DEPOSIT = "deposit"),
+                (Ot.GATEWAY = "0"),
+                (Ot.BRIDGE = "1");
+            var Tt = Ot,
+                xt = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -15434,11 +15441,11 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            function It(e, t) {
+            function jt(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function Pt(e, t) {
+            function It(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -15447,7 +15454,7 @@
                     ? e
                     : t;
             }
-            function Wt(e, t) {
+            function Pt(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -15466,10 +15473,10 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var Dt = (function(e) {
+            var Wt = (function(e) {
                 function t(e) {
-                    It(this, t);
-                    var a = Pt(
+                    jt(this, t);
+                    var a = It(
                         this,
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                     );
@@ -15500,8 +15507,8 @@
                     );
                 }
                 return (
-                    Wt(t, s.a.Component),
-                    jt(t, [
+                    Pt(t, s.a.Component),
+                    xt(t, [
                         {
                             key: "shouldComponentUpdate",
                             value: function(e, t) {
@@ -15581,8 +15588,8 @@
                                     n = this.props.account;
                                 return (
                                     a.push({
-                                        name: xt.label,
-                                        template: s.a.createElement(xt, {
+                                        name: Tt.label,
+                                        template: s.a.createElement(Tt, {
                                             account: n
                                         })
                                     }),
@@ -15631,7 +15638,7 @@
                                         "RUDEX",
                                         "TRADE",
                                         "BITKAPITAL",
-                                        xt.label
+                                        Tt.label
                                     ][i],
                                     d = n.get(p);
                                 return s.a.createElement(
@@ -15703,7 +15710,7 @@
                                                         content:
                                                             "gateway.service"
                                                     }),
-                                                    s.a.createElement(yt.a, {
+                                                    s.a.createElement(ft.a, {
                                                         options: c,
                                                         selected: {
                                                             key: i,
@@ -15807,17 +15814,17 @@
                     t
                 );
             })();
-            (Dt.propTypes = {
+            (Wt.propTypes = {
                 account: p.a.ChainAccount.isRequired,
                 contained: N.a.bool
             }),
-                (Dt.defaultProps = {contained: !1}),
-                (Dt = Object(d.a)(Dt));
-            var Bt = (function(e) {
+                (Wt.defaultProps = {contained: !1}),
+                (Wt = Object(d.a)(Wt));
+            var Dt = (function(e) {
                 function t() {
                     return (
-                        It(this, t),
-                        Pt(
+                        jt(this, t),
+                        It(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -15827,8 +15834,8 @@
                     );
                 }
                 return (
-                    Wt(t, s.a.Component),
-                    jt(t, [
+                    Pt(t, s.a.Component),
+                    xt(t, [
                         {
                             key: "componentWillMount",
                             value: function() {
@@ -15838,14 +15845,14 @@
                         {
                             key: "render",
                             value: function() {
-                                return s.a.createElement(Dt, this.props);
+                                return s.a.createElement(Wt, this.props);
                             }
                         }
                     ]),
                     t
                 );
             })();
-            t.default = Object(i.connect)(Bt, {
+            t.default = Object(i.connect)(Dt, {
                 listenTo: function() {
                     return [ie.a, j.a, fe.a];
                 },
@@ -15870,7 +15877,7 @@
                 }
             });
         },
-        577: function(e, t, a) {
+        578: function(e, t, a) {
             "use strict";
             (function(e) {
                 var n = a(76),
@@ -15892,7 +15899,7 @@
                     v = a.n(g),
                     b = a(110),
                     w = a(4),
-                    E = a(147),
+                    E = a(150),
                     k = a.n(E),
                     C = a(36),
                     A = a(18),
@@ -17179,7 +17186,7 @@
                     (t.a = Object(p.a)(T));
             }.call(this, a(29).Buffer));
         },
-        578: function(e, t, a) {
+        579: function(e, t, a) {
             "use strict";
             (function(e) {
                 var n = a(76),
@@ -17201,7 +17208,7 @@
                     v = a.n(g),
                     b = a(25),
                     w = a(4),
-                    E = a(147),
+                    E = a(150),
                     k = a.n(E),
                     C = a(36),
                     A = a(18),
@@ -18523,7 +18530,7 @@
                     (t.a = Object(p.a)(T));
             }.call(this, a(29).Buffer));
         },
-        795: function(e, t, a) {
+        796: function(e, t, a) {
             "use strict";
             (function(e) {
                 var t = a(76),
@@ -18537,8 +18544,8 @@
                     u = a(20),
                     p = a.n(u),
                     d = a(92),
-                    m = a(363),
-                    h = a(221),
+                    m = a(364),
+                    h = a(230),
                     _ = a(5),
                     f = a(24),
                     y = a(39),
@@ -21720,7 +21727,7 @@
                 Object(l.a)(W);
             }.call(this, a(29).Buffer));
         },
-        796: function(e, t, a) {
+        797: function(e, t, a) {
             "use strict";
             (function(e) {
                 var t = a(0),
@@ -22025,8 +22032,8 @@
                 Object(i.a)(f);
             }.call(this, a(29).Buffer));
         },
-        819: function(e, t) {},
         820: function(e, t) {},
+        821: function(e, t) {},
         92: function(e, t, a) {
             "use strict";
             var n = a(0),

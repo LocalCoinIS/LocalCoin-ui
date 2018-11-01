@@ -1,7 +1,7 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
     [15],
     {
-        138: function(e, t, n) {
+        140: function(e, t, n) {
             "use strict";
             n.d(t, "b", function() {
                 return A;
@@ -24,7 +24,7 @@
                 h = n.n(b),
                 y = n(43),
                 d = n.n(y),
-                g = n(278),
+                g = n(279),
                 v = n(42),
                 O =
                     Object.assign ||
@@ -327,12 +327,12 @@
             (C.propTypes = {balance: i.a.ChainObject.isRequired}),
                 (C = Object(l.a)(C, {keep_updating: !0}));
         },
-        4991: function(e, t, n) {
+        4992: function(e, t, n) {
             "use strict";
             n.r(t);
             var r = n(0),
                 a = n.n(r),
-                o = n(122),
+                o = n(123),
                 i = n(8),
                 l = n(51),
                 s = n.n(l),
@@ -348,7 +348,7 @@
                 g = n(6),
                 v = n(13),
                 O = n(17),
-                _ = n(138),
+                _ = n(140),
                 E = n(4),
                 k = (function() {
                     function e(e, t) {
