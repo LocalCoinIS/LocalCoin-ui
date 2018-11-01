@@ -1,7 +1,7 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
     [30],
     {
-        358: function(e, t, a) {
+        357: function(e, t, a) {
             "use strict";
             var n = a(0),
                 r = a.n(n),
@@ -212,7 +212,7 @@
             })();
             t.a = f;
         },
-        447: function(e, t, a) {
+        446: function(e, t, a) {
             "use strict";
             a.d(t, "a", function() {
                 return L;
@@ -221,8 +221,8 @@
                 r = a.n(n),
                 o = a(1),
                 i = a.n(o),
-                s = a(122),
-                l = a(149),
+                s = a(121),
+                l = a(146),
                 c = a(6),
                 u = a(13),
                 p = a(5),
@@ -1354,14 +1354,14 @@
                         }
                     ]);
             })();
-            var N = a(140),
+            var N = a(138),
                 S = a(79),
                 j = a(50),
                 P = a(15),
                 I = a(31),
                 T = a(43),
                 M = a.n(T),
-                L = a(334),
+                L = a(333),
                 D =
                     Object.assign ||
                     function(e) {
@@ -1571,7 +1571,7 @@
             var B = a(22),
                 U = a(17),
                 z = a(64),
-                K = a(231),
+                K = a(222),
                 G = a(12),
                 J = a(11),
                 X = a(32),
@@ -2701,11 +2701,11 @@
                         )
                     );
                 },
-                pe = a(447),
-                de = a(263),
+                pe = a(446),
+                de = a(256),
                 he = a(117),
                 me = a(14),
-                fe = a(202),
+                fe = a(201),
                 be = a(40),
                 ge = {
                     AccountPermission: function(e, t, a) {
@@ -4628,7 +4628,7 @@
                 ot = a(51),
                 it = a.n(ot),
                 st = a(8),
-                lt = a(279),
+                lt = a(278),
                 ct = a(42),
                 ut =
                     Object.assign ||
@@ -4865,8 +4865,8 @@
                     );
                 })(),
                 gt = a(107),
-                vt = (a(259), a(450), a(451), a(105)),
-                yt = a(335),
+                vt = (a(250), a(449), a(450), a(105)),
+                yt = a(334),
                 _t = a(35),
                 Et = a(18),
                 wt = (function() {
@@ -5377,8 +5377,8 @@
                 })),
                 At = (a(9), {}),
                 Ct = 6e4;
-            var Nt = a(391),
-                St = a(229),
+            var Nt = a(390),
+                St = a(220),
                 jt =
                     Object.assign ||
                     function(e) {
@@ -5509,11 +5509,11 @@
                 title: Z.a.string.isRequired
             };
             var Mt = Tt,
-                Lt = (a(260), a(133)),
+                Lt = (a(251), a(131)),
                 Dt = a.n(Lt),
-                Rt = a(575),
+                Rt = a(574),
                 qt = a.n(Rt),
-                Ft = a(576),
+                Ft = a(575),
                 Vt = a.n(Ft),
                 Ht =
                     Object.assign ||
@@ -5850,7 +5850,7 @@
                     );
                 })(),
                 Xt = a(103),
-                Yt = a(358),
+                Yt = a(357),
                 Zt =
                     Object.assign ||
                     function(e) {
@@ -8418,22 +8418,18 @@
             })();
             t.default = ra;
         },
-        564: function(e, t, a) {
+        563: function(e, t, a) {
             "use strict";
             var n = a(63).a.isFinite;
             t.a = function(e) {
                 return "number" == typeof e && n(e);
             };
         },
-        575: function(e, t, a) {
-            var n;
-            !(function(r) {
+        574: function(e, t) {
+            !(function(t) {
                 "object" == typeof e && e.exports
-                    ? (e.exports = r)
-                    : void 0 ===
-                          (n = function() {
-                              return r;
-                          }.call(t, a, t, e)) || (e.exports = n);
+                    ? (e.exports = t)
+                    : t(Highcharts);
             })(function(e) {
                 !(function(e, t) {
                     var a = e.seriesType,
@@ -8446,20 +8442,19 @@
                         c = t.getColor,
                         u = t.getLevelOptions,
                         p = e.grep,
-                        d = e.isArray,
-                        h = e.isNumber,
-                        m = e.isObject,
-                        f = e.isString,
-                        b = e.pick,
-                        g = e.Series,
-                        v = e.stableSort,
-                        y = e.Color,
-                        _ = e.reduce,
-                        E = function(e, t, a) {
+                        d = e.isNumber,
+                        h = e.isObject,
+                        m = e.isString,
+                        f = e.pick,
+                        b = e.Series,
+                        g = e.stableSort,
+                        v = e.Color,
+                        y = e.reduce,
+                        _ = function(e, t, a) {
                             (a = a || this),
-                                !1 !== (e = t.call(a, e)) && E(e, t, a);
+                                !1 !== (e = t.call(a, e)) && _(e, t, a);
                         },
-                        w = t.updateRootId;
+                        E = t.updateRootId;
                     a(
                         "treemap",
                         "scatter",
@@ -8504,15 +8499,21 @@
                         },
                         {
                             pointArrayMap: ["value"],
+                            axisTypes: n.heatmap
+                                ? ["xAxis", "yAxis", "colorAxis"]
+                                : ["xAxis", "yAxis"],
                             directTouch: !0,
                             optionalAxis: "colorAxis",
                             getSymbol: s,
                             parallelArrays: ["x", "y", "value", "colorValue"],
                             colorKey: "colorValue",
+                            translateColors:
+                                n.heatmap &&
+                                n.heatmap.prototype.translateColors,
+                            colorAttribs:
+                                n.heatmap && n.heatmap.prototype.colorAttribs,
                             trackerGroups: ["group", "dataLabelsGroup"],
                             getListOfParents: function(t, a) {
-                                t = d(t) ? t : [];
-                                var n = d(a) ? a : [];
                                 return (
                                     (function(t, a, n) {
                                         (n = n || this),
@@ -8520,13 +8521,13 @@
                                                 a.call(n, e, r, t);
                                             });
                                     })(
-                                        (a = _(
-                                            t,
+                                        (t = y(
+                                            t || [],
                                             function(e, t, a) {
                                                 return (
                                                     void 0 ===
                                                         e[
-                                                            (t = b(
+                                                            (t = f(
                                                                 t.parent,
                                                                 ""
                                                             ))
@@ -8535,18 +8536,18 @@
                                                     e
                                                 );
                                             },
-                                            {"": []}
+                                            {}
                                         )),
-                                        function(t, a, r) {
-                                            "" !== a &&
-                                                -1 === e.inArray(a, n) &&
+                                        function(t, n, r) {
+                                            "" !== n &&
+                                                -1 === e.inArray(n, a) &&
                                                 (l(t, function(e) {
                                                     r[""].push(e);
                                                 }),
-                                                delete r[a]);
+                                                delete r[n]);
                                         }
                                     ),
-                                    a
+                                    t
                                 );
                             },
                             getTree: function() {
@@ -8560,12 +8561,7 @@
                                 );
                             },
                             init: function(t, a) {
-                                var n = e.colorSeriesMixin;
-                                e.colorSeriesMixin &&
-                                    ((this.translateColors = n.translateColors),
-                                    (this.colorAttribs = n.colorAttribs),
-                                    (this.axisTypes = n.axisTypes)),
-                                    g.prototype.init.call(this, t, a),
+                                b.prototype.init.call(this, t, a),
                                     this.options.allowDrillToNode &&
                                         e.addEvent(
                                             this,
@@ -8622,22 +8618,22 @@
                                             s.push(e),
                                             e.ignore || (o += e.val);
                                     }),
-                                    v(s, function(e, t) {
+                                    g(s, function(e, t) {
                                         return e.sortIndex - t.sortIndex;
                                     }),
-                                    (t = b(c && c.options.value, o)),
+                                    (t = f(c && c.options.value, o)),
                                     c && (c.value = t),
                                     i(e, {
                                         children: s,
                                         childrenTotal: o,
                                         ignore: !(
-                                            b(c && c.visible, !0) && 0 < t
+                                            f(c && c.visible, !0) && 0 < t
                                         ),
                                         isLeaf: e.visible && !o,
                                         levelDynamic:
                                             e.level - (n ? 0 : r.level),
-                                        name: b(c && c.name, ""),
-                                        sortIndex: b(c && c.sortIndex, -t),
+                                        name: f(c && c.name, ""),
+                                        sortIndex: f(c && c.sortIndex, -t),
                                         val: t
                                     }),
                                     e
@@ -8648,7 +8644,7 @@
                                     n = this,
                                     r = n.options,
                                     i = n.mapOptionsToLevel[e.level + 1],
-                                    s = b(
+                                    s = f(
                                         n[i && i.layoutAlgorithm] &&
                                             i.layoutAlgorithm,
                                         r.layoutAlgorithm
@@ -8990,8 +8986,8 @@
                                     t,
                                     a = this,
                                     n = a.options,
-                                    r = w(a);
-                                g.prototype.translate.call(a),
+                                    r = E(a);
+                                b.prototype.translate.call(a),
                                     (t = a.tree = a.getTree()),
                                     (e = a.nodeMap[r]),
                                     (a.mapOptionsToLevel = u({
@@ -9009,7 +9005,7 @@
                                         (a.drillToNode("", !1),
                                         (r = a.rootNode),
                                         (e = a.nodeMap[r])),
-                                    E(a.nodeMap[a.rootNode], function(e) {
+                                    _(a.nodeMap[a.rootNode], function(e) {
                                         var t = !1,
                                             n = e.parent;
                                         return (
@@ -9019,7 +9015,7 @@
                                             t
                                         );
                                     }),
-                                    E(a.nodeMap[a.rootNode].children, function(
+                                    _(a.nodeMap[a.rootNode].children, function(
                                         e
                                     ) {
                                         var t = !1;
@@ -9101,7 +9097,7 @@
                                             r.options.dataLabels
                                         ));
                                 }),
-                                    g.prototype.drawDataLabels.call(this);
+                                    b.prototype.drawDataLabels.call(this);
                             },
                             alignDataLabel: function(e) {
                                 n.column.prototype.alignDataLabel.apply(
@@ -9114,7 +9110,7 @@
                                         });
                             },
                             pointAttribs: function(e, t) {
-                                var a = m(this.mapOptionsToLevel)
+                                var a = h(this.mapOptionsToLevel)
                                         ? this.mapOptionsToLevel
                                         : {},
                                     n = (e && a[e.node.level]) || {},
@@ -9128,7 +9124,7 @@
                                             n.borderColor ||
                                             r.borderColor ||
                                             a.borderColor,
-                                        "stroke-width": b(
+                                        "stroke-width": f(
                                             e && e.borderWidth,
                                             n.borderWidth,
                                             r.borderWidth,
@@ -9148,8 +9144,8 @@
                                           o.indexOf(
                                               "highcharts-internal-node-interactive"
                                           )
-                                            ? ((t = b(r.opacity, a.opacity)),
-                                              (e.fill = y(e.fill)
+                                            ? ((t = f(r.opacity, a.opacity)),
+                                              (e.fill = v(e.fill)
                                                   .setOpacity(t)
                                                   .get()),
                                               (e.cursor = "pointer"))
@@ -9159,7 +9155,7 @@
                                               )
                                                 ? (e.fill = "none")
                                                 : t &&
-                                                  (e.fill = y(e.fill)
+                                                  (e.fill = v(e.fill)
                                                       .brighten(r.brightness)
                                                       .get()),
                                     e
@@ -9195,7 +9191,7 @@
                             },
                             onClickDrillToNode: function(e) {
                                 var t = (e = e.point) && e.drillId;
-                                f(t) && (e.setState(""), this.drillToNode(t));
+                                m(t) && (e.setState(""), this.drillToNode(t));
                             },
                             drillToByGroup: function(e) {
                                 var t = !1;
@@ -9221,7 +9217,7 @@
                             },
                             drillUp: function() {
                                 var e = this.nodeMap[this.rootNode];
-                                e && f(e.parent) && this.drillToNode(e.parent);
+                                e && m(e.parent) && this.drillToNode(e.parent);
                             },
                             drillToNode: function(e, t) {
                                 var a = this.nodeMap[e];
@@ -9233,7 +9229,7 @@
                                               (a && a.name) || e
                                           ),
                                     (this.isDirty = !0),
-                                    b(t, !0) && this.chart.redraw();
+                                    f(t, !0) && this.chart.redraw();
                             },
                             showDrillUpButton: function(e) {
                                 var t = this;
@@ -9277,13 +9273,13 @@
                             buildKDTree: s,
                             drawLegendSymbol: e.LegendSymbolMixin.drawRectangle,
                             getExtremes: function() {
-                                g.prototype.getExtremes.call(
+                                b.prototype.getExtremes.call(
                                     this,
                                     this.colorValueData
                                 ),
                                     (this.valueMin = this.dataMin),
                                     (this.valueMax = this.dataMax),
-                                    g.prototype.getExtremes.call(this);
+                                    b.prototype.getExtremes.call(this);
                             },
                             getExtremesFromAll: !0,
                             bindAxes: function() {
@@ -9301,11 +9297,11 @@
                                     title: null,
                                     tickPositions: []
                                 };
-                                g.prototype.bindAxes.call(this),
+                                b.prototype.bindAxes.call(this),
                                     e.extend(this.yAxis.options, t),
                                     e.extend(this.xAxis.options, t);
                             },
-                            utils: {recursive: E, reduce: _}
+                            utils: {recursive: _, reduce: y}
                         },
                         {
                             getClassName: function() {
@@ -9319,7 +9315,7 @@
                                     a.nodeMap[a.rootNode].level
                                         ? (t += " highcharts-above-level")
                                         : this.node.isLeaf ||
-                                          b(
+                                          f(
                                               n.interactByLeaf,
                                               !n.allowDrillToNode
                                           )
@@ -9331,7 +9327,7 @@
                                 );
                             },
                             isValid: function() {
-                                return this.id || h(this.value);
+                                return this.id || d(this.value);
                             },
                             setState: function(t) {
                                 e.Point.prototype.setState.call(this, t),
@@ -9524,15 +9520,11 @@
                 );
             });
         },
-        576: function(e, t, a) {
-            var n;
-            !(function(r) {
+        575: function(e, t) {
+            !(function(t) {
                 "object" == typeof e && e.exports
-                    ? (e.exports = r)
-                    : void 0 ===
-                          (n = function() {
-                              return r;
-                          }.call(t, a, t, e)) || (e.exports = n);
+                    ? (e.exports = t)
+                    : t(Highcharts);
             })(function(e) {
                 !(function(e) {
                     var t,

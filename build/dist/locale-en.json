@@ -168,7 +168,7 @@
         "polo_scam": "This account is not the real Poloniex account, please send to this account: poloniexwallet.",
         "portfolio": "Portfolio",
         "propose_from": "Propose From",
-        "proposed_transactions": "Proposed transactions",
+        "proposed_transactions": "Proposed",
         "qty": "Qty",
         "quote": "Quote",
         "recent": "Recent activity",
@@ -680,7 +680,7 @@
             "pending_approval": "Pending approval.",
             "pending_review": "Approved, review time.",
             "review": "Review",
-            "title": "Proposed transactions"
+            "title": "Proposed "
         },
         "witnesses": {
             "budget": "Remaining budget",
@@ -693,7 +693,8 @@
             "pay": "Pay-per-block",
             "rank": "Rank",
             "table": "Table view",
-            "title": "Witnesses"
+            "title": "Witnesses",
+            "filter_by_name": "Filter By Name"
         },
         "workers": {
             "create": "Create a new worker proposal",

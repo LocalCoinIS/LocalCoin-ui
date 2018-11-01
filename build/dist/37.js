@@ -1,7 +1,7 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
     [37],
     {
-        140: function(e, t, n) {
+        138: function(e, t, n) {
             "use strict";
             n.d(t, "b", function() {
                 return j;
@@ -24,7 +24,7 @@
                 _ = n.n(h),
                 f = n(43),
                 v = n.n(f),
-                g = n(279),
+                g = n(278),
                 b = n(42),
                 y =
                     Object.assign ||
@@ -327,7 +327,7 @@
             (I.propTypes = {balance: s.a.ChainObject.isRequired}),
                 (I = Object(i.a)(I, {keep_updating: !0}));
         },
-        4988: function(e, t, n) {
+        4987: function(e, t, n) {
             "use strict";
             n.r(t);
             var a = n(0),
@@ -345,7 +345,7 @@
                 _ = n(17),
                 f = n(40),
                 v = n(13),
-                g = n(140),
+                g = n(138),
                 b = n(12),
                 y = n(2),
                 E = n.n(y),
@@ -672,7 +672,7 @@
             }),
                 (x.defaultProps = {tempComponent: "tr"});
             var k = Object(v.a)(x),
-                O = n(166),
+                O = n(163),
                 A = (function() {
                     function e(e, t) {
                         for (var n = 0; n < t.length; n++) {
@@ -1812,13 +1812,10 @@
                                         {}
                                     ).then(function(t) {
                                         null === z(t, 1)[0]
-                                            ? e.setState(
-                                                  {
-                                                      lastBudgetObject:
-                                                          "2.13." + (c - 1)
-                                                  },
-                                                  e.getBudgetObject
-                                              )
+                                            ? e.setState({
+                                                  lastBudgetObject:
+                                                      "2.13." + (c - 1)
+                                              })
                                             : (L.a.setLastBudgetObject(i),
                                               e.setState({
                                                   lastBudgetObject: i

@@ -168,6 +168,7 @@
         "polo_scam": "Questo non è il vero account Poloniex, per favore invia al seguente account: poloniexwallet.",
         "portfolio": "Il mio Portfolio",
         "propose_from": "Proponi da",
+        "proposed_transactions": "Transazioni proposte",
         "qty": "Qtà",
         "quote": "Quote",
         "recent": "Attività recente",
@@ -507,8 +508,8 @@
         "short": "Short",
         "show_asks": "Mostra tutte le ask",
         "show_bids": "Mostra tutte le bid",
-        "show_only_liquid": "Show liquid markets only",
-        "show_only_star_formatter": "Show {star_icon} only",
+        "show_only_liquid": "Liquid markets only",
+        "show_only_star_formatter": "{star_icon} only",
         "sma": "Simple Moving Average",
         "spread": "Spread",
         "squeeze": "Prezzo Margin Call",
@@ -691,7 +692,8 @@
             "pay": "Paga-per-blocco",
             "rank": "Posizione",
             "table": "Visualizzazione a tabella",
-            "title": "Witness"
+            "title": "Witness",
+            "filter_by_name": "Filtrer par nom"
         },
         "workers": {
             "create": "Crea una nuova worker proposal",
@@ -876,7 +878,7 @@
         "create_asset": "Crea Asset",
         "current": "Account corrente",
         "dashboard": "Dashboard",
-        "deposit-withdraw": "Finance",
+        "deposit-withdraw": "Deposita/Preleva",
         "exchange": "Exchange",
         "explorer": "Esplora",
         "help": "Aiuto",

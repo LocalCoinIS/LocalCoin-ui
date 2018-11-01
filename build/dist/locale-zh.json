@@ -168,6 +168,7 @@
         "polo_scam": "注意：这个账户不是交易所 Poloniex 的存款账户，请发送至 poloniexwallet。",
         "portfolio": "资产清单",
         "propose_from": "发起账户",
+        "proposed_transactions": "提案",
         "qty": "数量",
         "quote": "市场价",
         "recent": "近期活动",
@@ -507,8 +508,8 @@
         "short": "做空",
         "show_asks": "显示所有卖单",
         "show_bids": "显示所有买单",
-        "show_only_liquid": "Show liquid markets only",
-        "show_only_star_formatter": "Show {star_icon} only",
+        "show_only_liquid": "Liquid markets only",
+        "show_only_star_formatter": "{star_icon} only",
         "sma": "算数移动平均线(SMA)",
         "spread": "买卖价差",
         "squeeze": "强制平仓价",
@@ -691,7 +692,8 @@
             "pay": "每块奖励",
             "rank": "排名",
             "table": "表格视图",
-            "title": "见证人"
+            "title": "见证人",
+            "filter_by_name": "按名称过滤"
         },
         "workers": {
             "create": "创建一个新的预算项目提案",
@@ -876,7 +878,7 @@
         "create_asset": "创建资产",
         "current": "当前账户",
         "dashboard": "资产总览",
-        "deposit-withdraw": "Finance",
+        "deposit-withdraw": "充值/提现",
         "exchange": "交易",
         "explorer": "浏览",
         "help": "帮助",
@@ -946,7 +948,7 @@
             "sort_accounts": "Sort by favorites",
             "symbol": "Add/remove symbol from favorites"
         },
-        "filter": "Filter",
+        "filter": "筛选",
         "folder": "Accounts",
         "hamburger": "Open menu",
         "hamburger_x": "Close menu",

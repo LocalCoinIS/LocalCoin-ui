@@ -168,6 +168,7 @@
         "polo_scam": "Bu hesap Poloniex'e ait değildir. Lütfen alıcıyı poloniexwallet olarak değiştirin.",
         "portfolio": "Portfolio",
         "propose_from": "Teklifi sunan",
+        "proposed_transactions": "Teklif edilmiş işlemler",
         "qty": "Qty",
         "quote": "Quote",
         "recent": "Son Hareketler",
@@ -507,8 +508,8 @@
         "short": "Kısa pozisyon",
         "show_asks": "Tümünü göster",
         "show_bids": "Tüm alışları göster",
-        "show_only_liquid": "Show liquid markets only",
-        "show_only_star_formatter": "Show {star_icon} only",
+        "show_only_liquid": "Liquid markets only",
+        "show_only_star_formatter": "{star_icon} only",
         "sma": "Basit Hareketli Ortalama",
         "spread": "Makas",
         "squeeze": "Teminat Tamamlama Çağrısı Fiyatı",
@@ -691,7 +692,8 @@
             "pay": "Blok başına ödeme",
             "rank": "Sıralama",
             "table": "Tablo görünümü",
-            "title": "Tanıklar"
+            "title": "Tanıklar",
+            "filter_by_name": "İsme Göre Filtrele"
         },
         "workers": {
             "create": "Create a new worker proposal",
@@ -876,7 +878,7 @@
         "create_asset": "Dijital Varlık Oluştur",
         "current": "Kullanılan Hesap",
         "dashboard": "Ana Sayfa",
-        "deposit-withdraw": "Finance",
+        "deposit-withdraw": "Yatır/Çek",
         "exchange": "Takas",
         "explorer": "İncele",
         "help": "Yardım",

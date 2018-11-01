@@ -22,7 +22,7 @@
         "create_new": "Create A New Account",
         "deposit": "Deposit LLC",
         "deposit_address": "Your deposit address is your account name",
-        "deposit_withdraw": "Finance",
+        "deposit_withdraw": "Déposer/Retirer",
         "eq_value": "Estimated",
         "eq_value_header": "Value ({asset})",
         "errors": {
@@ -168,6 +168,7 @@
         "polo_scam": "This account is not the real Poloniex account, please send to this account: poloniexwallet.",
         "portfolio": "Portfolio",
         "propose_from": "Propose From",
+        "proposed_transactions": "Propositions",
         "qty": "Qty",
         "quote": "Quote",
         "recent": "Activité recent",
@@ -876,7 +877,7 @@
         "create_asset": "Créér un actif",
         "current": "Mon Compte",
         "dashboard": "Accueil",
-        "deposit-withdraw": "Finance",
+        "deposit-withdraw": "Déposer/Retirer",
         "exchange": "Échange",
         "explorer": "Explorer",
         "help": "Help",
@@ -928,7 +929,7 @@
         "dashboard": "Dashboard",
         "deposit": {
             "deposit": "Deposit",
-            "deposit_withdraw": "Finance"
+            "deposit_withdraw": "Déposer/Retirer"
         },
         "disconnected": "API Node is disconnected",
         "dollar": {

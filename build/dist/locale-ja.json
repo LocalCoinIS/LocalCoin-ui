@@ -22,7 +22,7 @@
         "create_new": "新しいアカウントを作成する",
         "deposit": "LLCをデポジットする",
         "deposit_address": "あなたのデポジットアドレスはあなたのアカウント名です。",
-        "deposit_withdraw": "入金 / 出金",
+        "deposit_withdraw": "入金/出金",
         "eq_value": "相当額",
         "eq_value_header": "Value ({asset})",
         "errors": {
@@ -168,6 +168,7 @@
         "polo_scam": "このアカウントは実際のPoloniexアカウントではありません。このアカウントに送信してください: poloniexwallet",
         "portfolio": "残高",
         "propose_from": "提案元",
+        "proposed_transactions": "提案された取引",
         "qty": "数量",
         "quote": "Quote",
         "recent": "最近のアクティビティ",
@@ -507,7 +508,7 @@
         "short": "ショート",
         "show_asks": "すべての売り注文を見る",
         "show_bids": "すべての買い注文を見る",
-        "show_only_liquid": "Show liquid markets only",
+        "show_only_liquid": "Liquid markets only",
         "show_only_star_formatter": "{star_icon}のみ表示",
         "sma": "単純移動平均",
         "spread": "スプレッド",
@@ -691,7 +692,8 @@
             "pay": "1ブロックあたりの報酬",
             "rank": "ランク",
             "table": "テーブルビュー",
-            "title": "証人"
+            "title": "証人",
+            "filter_by_name": "名前でフィルタリングする"
         },
         "workers": {
             "create": "新しいワーカー提案を作成する",
@@ -928,7 +930,7 @@
         "dashboard": "Dashboard",
         "deposit": {
             "deposit": "入金",
-            "deposit_withdraw": "入金 / 出金"
+            "deposit_withdraw": "入金/出金"
         },
         "disconnected": "API Node is disconnected",
         "dollar": {

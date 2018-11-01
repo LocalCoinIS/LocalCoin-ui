@@ -168,6 +168,7 @@
         "polo_scam": "This account is not the real Poloniex account, please send to this account: poloniexwallet.",
         "portfolio": "Portfolio",
         "propose_from": "Propose From",
+        "proposed_transactions": "제안서",
         "qty": "Qty",
         "quote": "Quote",
         "recent": "최근 활동",
@@ -691,7 +692,8 @@
             "pay": "초당 지불액",
             "rank": "순위",
             "table": "테이블뷰",
-            "title": "증인"
+            "title": "증인",
+            "filter_by_name": "이름으로 필터링"
         },
         "workers": {
             "create": "Create a new worker proposal",
@@ -876,7 +878,7 @@
         "create_asset": "자산 생성",
         "current": "현재 계정",
         "dashboard": "전체보기",
-        "deposit-withdraw": "Finance",
+        "deposit-withdraw": "입출금",
         "exchange": "거래소",
         "explorer": "탐색기",
         "help": "도움말",

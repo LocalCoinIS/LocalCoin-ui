@@ -452,8 +452,10 @@ class AccountVoting extends React.Component {
                 if (lbo === null) {
                     // The object does not exist, the id was too high
                     this.setState(
-                        {lastBudgetObject: `2.13.${newIDInt - 1}`},
-                        this.getBudgetObject
+                        {
+                            lastBudgetObject: `2.13.${newIDInt - 1}`
+                        } /*,
+                        this.getBudgetObject*/
                     );
                 } else {
                     SettingsStore.setLastBudgetObject(newID);

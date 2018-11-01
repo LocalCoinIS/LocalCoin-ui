@@ -5,7 +5,7 @@
             "use strict";
             var n = a(0),
                 r = a.n(n),
-                s = a(510),
+                s = a(509),
                 o = a.n(s),
                 i = (function() {
                     function e(e, t) {
@@ -122,7 +122,7 @@
             (l.defaultProps = {component: "span", enterTimeout: 2e3}),
                 (t.a = l);
         },
-        140: function(e, t, a) {
+        138: function(e, t, a) {
             "use strict";
             a.d(t, "b", function() {
                 return O;
@@ -145,7 +145,7 @@
                 b = a.n(h),
                 f = a(43),
                 _ = a.n(f),
-                g = a(279),
+                g = a(278),
                 y = a(42),
                 v =
                     Object.assign ||
@@ -448,7 +448,7 @@
             (S.propTypes = {balance: o.a.ChainObject.isRequired}),
                 (S = Object(i.a)(S, {keep_updating: !0}));
         },
-        153: function(e, t, a) {
+        150: function(e, t, a) {
             "use strict";
             var n = a(0),
                 r = a.n(n),
@@ -625,9 +625,9 @@
             })();
             t.a = i;
         },
-        231: function(e, t, a) {
+        222: function(e, t, a) {
             "use strict";
-            var n = a(564),
+            var n = a(563),
                 r = a(0),
                 s = a.n(r),
                 o = a(2),
@@ -1826,7 +1826,7 @@
             })();
             t.a = B;
         },
-        334: function(e, t, a) {
+        333: function(e, t, a) {
             "use strict";
             a.d(t, "a", function() {
                 return v;
@@ -2092,7 +2092,7 @@
                 }
             });
         },
-        335: function(e, t, a) {
+        334: function(e, t, a) {
             "use strict";
             var n = a(0),
                 r = a.n(n),
@@ -2107,7 +2107,7 @@
                 d = a(1),
                 h = a.n(d),
                 b = a(22),
-                f = a(280),
+                f = a(279),
                 _ = a.n(f),
                 g = a(111),
                 y = (function() {
@@ -2460,15 +2460,15 @@
                     baseSymbol: o.a.string.isRequired
                 });
             var A = C,
-                N = a(153),
+                N = a(150),
                 O = a(10),
                 S = a(9),
                 P = a.n(S),
                 j = a(12),
                 x = a(4),
                 T = a(18),
-                q = a(140),
-                D = a(334),
+                q = a(138),
+                D = a(333),
                 I = a(64),
                 F = a(43),
                 B = a.n(F);
@@ -3566,7 +3566,7 @@
                     baseSymbol: o.a.string.isRequired
                 });
         },
-        450: function(e, t, a) {
+        449: function(e, t, a) {
             "use strict";
             (function(e) {
                 var n = a(76),
@@ -3587,13 +3587,13 @@
                     g = a(3),
                     y = a.n(g),
                     v = a(25),
-                    E = a(132),
+                    E = a(164),
                     w = a(12),
                     k = a(37),
                     C = a(36),
                     A = a(22),
                     N = a(4),
-                    O = a(185),
+                    O = a(184),
                     S = a(23),
                     P =
                         Object.assign ||
@@ -4980,7 +4980,7 @@
                 t.a = I;
             }.call(this, a(29).Buffer));
         },
-        451: function(e, t, a) {
+        450: function(e, t, a) {
             "use strict";
             var n = a(0),
                 r = a.n(n),
@@ -4998,16 +4998,16 @@
                 f = a(3),
                 _ = a.n(f),
                 g = a(25),
-                y = a(230),
-                v = a(132),
+                y = a(221),
+                v = a(164),
                 E = a(12),
                 w = a(37),
                 k = a(23),
-                C = a(147),
+                C = a(181),
                 A = a(15),
                 N = a(8),
                 O = a(10),
-                S = a(151),
+                S = a(148),
                 P = a.n(S),
                 j =
                     Object.assign ||

@@ -1,7 +1,7 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
     [34],
     {
-        5000: function(e, t, n) {
+        4999: function(e, t, n) {
             "use strict";
             n.r(t);
             var a = n(0),
@@ -115,7 +115,7 @@
             f.propTypes = {stat_object: l.a.ChainObject.isRequired};
             var b = Object(u.a)(f),
                 d = n(24),
-                h = n(154),
+                h = n(151),
                 g = n(69),
                 v = n(66),
                 _ = (n(72),
@@ -455,8 +455,9 @@
                                                                   r.a.createElement(
                                                                       "h5",
                                                                       null,
+                                                                      "https://",
                                                                       document.domain +
-                                                                          "?r=" +
+                                                                          "/?r=" +
                                                                           a.name
                                                                   )
                                                               )
