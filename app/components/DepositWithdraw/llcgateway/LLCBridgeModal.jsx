@@ -6,7 +6,11 @@ import CopyButton from "../../Utility/CopyButton";
 import LLCGatewayData from "./LLCGatewayData";
 
 class LLCBridgeModal extends React.Component {
+    static MODE_BRIDGE = "1";
+    static PRESICTION = 4;
     currencies = [];
+    courses = [];
+    inputValue = 0;
 
     constructor(props) {
         super(props);
@@ -24,8 +28,9 @@ class LLCBridgeModal extends React.Component {
             assetValues: []
         };
 
-        this.chooseAsset = this.chooseAsset.bind(this);
+        this.onChooseAsset = this.onChooseAsset.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.handleSendInput = this.handleSendInput.bind(this);
 
         new LLCGatewayData().getAllowCurrency(function(response) {
             self.currencies = response.deposit;
@@ -39,7 +44,7 @@ class LLCBridgeModal extends React.Component {
                     self.currencies[i].asset;
             }
 
-            self.chooseAsset(props.asset);
+            self.onChooseAsset(props.asset);
             self.setState({
                 assets: assets,
                 assetValues: assetValues
@@ -51,21 +56,35 @@ class LLCBridgeModal extends React.Component {
         this.setState({isActiveThisModal: ""});
     }
 
-    loadAssetCourse(asset) {
-        // (new LLCGatewayData())
-        //     .
-        //after update course
-        //this.updateReceive();
+    loadAssetCourse(asset, cb) {
+        let self = this;
+        new LLCGatewayData().getPairsCourse(function(courses) {
+            self.courses = courses.list;
+            cb(asset);
+        });
     }
 
-    chooseAsset(asset) {
+    onChooseAsset(asset) {
+        var self = this;
+
+        //update asset view
         var currentCurrency = this.findCurrentCurrency(asset);
         this.setState({
             asset: asset,
             confirmations: this.getCountConfirmations(asset),
             minimal: currentCurrency ? currentCurrency.minimal : 0
         });
-        this.loadAssetCourse(asset);
+        this.loadAssetCourse(asset, this.updateReceive.bind(this));
+
+        //update address
+        new LLCGatewayData().сreatePaymentAddress(
+            this.props.account.get("name"),
+            asset,
+            LLCBridgeModal.MODE_BRIDGE,
+            function(address) {
+                self.setState({address: address});
+            }
+        );
     }
 
     getCountConfirmations(asset) {
@@ -98,32 +117,29 @@ class LLCBridgeModal extends React.Component {
         return null;
     }
 
-    updateReceive() {}
+    updateReceive(asset) {
+        let course = this.getCourseByAsset(asset);
+        let val = parseFloat(this.inputValue) * parseFloat(course.coef);
+        if (isNaN(val)) val = 0;
 
-    _onAmountChange(value, e) {
-        const regexp_numeral = new RegExp(/[[:digit:]]/);
-        const target = e.target;
+        this.setState({
+            receiveAmount: val.toFixed(LLCBridgeModal.PRESICTION)
+        });
+    }
 
-        // Ensure input is valid
-        if (!regexp_numeral.test(target.value)) {
-            target.value = target.value.replace(/[^0-9.]/g, "");
+    getCourseByAsset(asset) {
+        for (var i in this.courses) {
+            let course = this.courses[i];
+            if (course.to == asset) return course;
         }
 
-        // Catch initial decimal input
-        if (target.value.charAt(0) == ".") {
-            target.value = "0.";
-        }
+        return null;
+    }
 
-        // Catch double decimal and remove if invalid
-        if (
-            target.value.charAt(target.value.length) != target.value.search(".")
-        ) {
-            target.value.substr(1);
-        }
-
-        target.value = utils.limitByPrecision(target.value, 8);
-
-        console.log(target.value);
+    handleSendInput(e) {
+        e.preventDefault();
+        this.inputValue = parseFloat(e.target.value.replace(",", "."));
+        this.updateReceive(this.state.asset);
     }
 
     render() {
@@ -154,9 +170,9 @@ class LLCBridgeModal extends React.Component {
                 </div>
                 <div className="inline-label input-wrapper">
                     <input
-                        type="text"
-                        value="0"
-                        onInput={this._onAmountChange.bind(this, "input")}
+                        type="number"
+                        defaultValue={0}
+                        onChange={this.handleSendInput}
                     />
                     <div className="form-label select floating-dropdown">
                         <FloatingDropdown
@@ -164,7 +180,7 @@ class LLCBridgeModal extends React.Component {
                             values={this.state.assetValues}
                             singleEntry={this.state.asset}
                             value={this.state.asset}
-                            onChange={this.chooseAsset}
+                            onChange={this.onChooseAsset}
                         />
                     </div>
                 </div>
@@ -237,7 +253,9 @@ class LLCBridgeModal extends React.Component {
                         inputAsset={this.state.asset}
                         outputAsset="LLC"
                     />
-                    <div className="modal__highlight">{this.state.address}</div>
+                    <div className="modal__highlight bridge_modal_address">
+                        {this.state.address}
+                    </div>
                 </div>
             </div>
         );

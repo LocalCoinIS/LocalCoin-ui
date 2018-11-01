@@ -4413,3 +4413,7 @@ body.localcoin
     padding: 0 15px 0 0;
     text-align: right;
 }
+
+.bridge_modal_address {
+    word-break: break-all;
+}

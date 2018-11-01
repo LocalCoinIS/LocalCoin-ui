@@ -9,6 +9,10 @@ class LLCGatewayData {
         this.ajax(cb, "GetAllowCurrency");
     }
 
+    getPairsCourse = function(cb) {
+        this.ajax(cb, "GetPairsCourse");
+    };
+
     сreatePaymentAddress(account, asset, mode, cb) {
         this.ajax(
             function(data) {

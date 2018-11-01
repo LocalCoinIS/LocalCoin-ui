@@ -254,7 +254,7 @@ export default class ExchangeHeader extends React.Component {
 
         return (
             <div className="grid-block shrink no-padding overflow-visible top-bar container-menu-header">
-                {/* <LLCBridgeModal asset="BTC" /> */}
+                {/* <LLCBridgeModal account={account} asset="BTC" /> */}
                 <div className="grid-block overflow-visible">
                     <div className="grid-block shrink">
                         <div style={{padding: "10px"}}>
