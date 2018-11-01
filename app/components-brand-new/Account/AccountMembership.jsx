@@ -181,7 +181,7 @@ class AccountMembership extends React.Component {
                                         </h4>
                                         <Translate content="account.member.referral_text" />
                                         :
-                                        <h5>https://{`${document.domain}?r=${
+                                        <h5>https://{`${document.domain}/?r=${
                                             account.name
                                         }`}</h5>
                                     </div>
