@@ -11,14 +11,14 @@
 #### 手续费分配
 每次 {account} 支付交易手续费时，该手续费将分配给多个不同账户。网络将收取 {networkFee}%，引荐 {account} 的推荐人账户将获得 {lifetimeFee}%。
 
-_注册人账户_ 是在 {account} 注册时代其支付注册费的账户。注册人账户可自行决定剩余的 {referrerTotalFee}% 手续费如何在它自己及它的 _合作推荐人_ 之间分配。
+_注册人账户_ 是在 {account} 注册时代其支付注册费的账户。注册人账户可自行决定剩余的 {referrerTotalFee}% 手续费如何在它自己及它的 _[合作推荐人](https://how.localcoin.is/en/latest/user_guide/accounts/referral.html)_ 之间分配。
 
 {account}的注册人账户决定与它的_合作推荐人_分享{referrerFee}%手续费，自己保留{registrarFee}%。
-                            
-                            
+
+
 #### 待结费用
 {account} 支付的手续费每个维护周期 ({maintenanceInterval} 秒)在网络、推荐人和注册人之间结算一次。下一个维护时间在 {nextMaintenanceTime}。
-                 
+
 #### 待解冻金额
 
 大部分获取手续费的利益账户可立即使用资金，但金额超过{vestingThreshold}的费用(比如支付升级终身会员的手续费、注册高级账户名的手续费等)则需要暂时冻结，并在{vestingPeriod}天内线性解冻释放。

@@ -12,5 +12,5 @@
 - [Эмитированные пользователем активы](assets/uia.md)
 - [Приватизированные BitAssets](assets/privbitassets.md)
 - [Децентрализованная биржа](dex/introduction.md)
-- [ТОрги](dex/trading.md)
+- [Торги](dex/trading.md)
 - [Короткая продажа BitAssets](dex/shorting.md)
