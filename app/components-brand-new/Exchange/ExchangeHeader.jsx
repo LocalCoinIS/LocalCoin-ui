@@ -12,8 +12,6 @@ import ExchangeHeaderCollateral from "../../components/Exchange/ExchangeHeaderCo
 import BaseModal from "../../components/Modal/BaseModal";
 import ZfApi from "react-foundation-apps/src/utils/foundation-api";
 import DropdownList from "../Utility/DropdownList";
-import LLCBridgeModal from "../../components/DepositWithdraw/llcgateway/LLCBridgeModal";
-import LLCGatewayData from "../../components/DepositWithdraw/llcgateway/LLCGatewayData";
 
 export default class ExchangeHeader extends React.Component {
     constructor(props) {
@@ -254,7 +252,6 @@ export default class ExchangeHeader extends React.Component {
 
         return (
             <div className="grid-block shrink no-padding overflow-visible top-bar container-menu-header">
-                {/* <LLCBridgeModal account={account} asset="BTC" /> */}
                 <div className="grid-block overflow-visible">
                     <div className="grid-block shrink">
                         <div style={{padding: "10px"}}>
