@@ -6,8 +6,10 @@ import CopyButton from "../../Utility/CopyButton";
 import LLCGatewayData from "./LLCGatewayData";
 
 class LLCBridgeModal extends React.Component {
+    static DEFAULT_CURRENCY = "BTC";
     static MODE_BRIDGE = "1";
     static PRESICTION = 4;
+
     currencies = [];
     courses = [];
     inputValue = 0;
@@ -21,7 +23,7 @@ class LLCBridgeModal extends React.Component {
             account: null,
             receiveAmount: 0,
             assets: [],
-            asset: props.asset,
+            asset: LLCBridgeModal.DEFAULT_CURRENCY,
             address: "",
             minimal: 0,
             confirmations: 0,
@@ -35,17 +37,25 @@ class LLCBridgeModal extends React.Component {
         new LLCGatewayData().getAllowCurrency(function(response) {
             self.currencies = response.deposit;
 
+            let thisAsset = LLCBridgeModal.DEFAULT_CURRENCY;
             if (!self.currencies) return;
             let assets = [],
                 assetValues = [];
+
             for (var i in self.currencies) {
+                if (!self.currencies[i].asset) continue;
+
                 assets.push(self.currencies[i].asset);
                 assetValues[self.currencies[i].asset] =
                     self.currencies[i].asset;
+
+                if (self.currencies[i].asset === props.asset)
+                    thisAsset = props.asset;
             }
 
-            self.onChooseAsset(props.asset);
+            self.onChooseAsset(thisAsset);
             self.setState({
+                asset: thisAsset,
                 assets: assets,
                 assetValues: assetValues
             });

@@ -23,32 +23,6 @@ import LLCGatewayData from "../DepositWithdraw/llcgateway/LLCGatewayData";
 class BuySell extends React.Component {
     constructor(props) {
         super(props);
-
-        let {quote, base} = props;
-
-        this.state = {
-            currencyHasInbridge: false
-        };
-
-        let self = this;
-
-        if (base.get("symbol") === "LLC" || quote.get("symbol") === "LLC") {
-            let currencyForBridge =
-                base.get("symbol") === "LLC"
-                    ? quote.get("symbol")
-                    : base.get("symbol");
-            new LLCGatewayData().getAllowCurrency(function(bridgeCurrencies) {
-                if (typeof bridgeCurrencies.deposit === "undefined") return;
-
-                for (let i in bridgeCurrencies.deposit) {
-                    if (currencyForBridge !== bridgeCurrencies.deposit[i].asset)
-                        continue;
-                    self.setState({currencyHasInbridge: true}, function() {
-                        self.forceUpdate();
-                    });
-                }
-            });
-        }
     }
 
     static propTypes = {
@@ -406,6 +380,9 @@ class BuySell extends React.Component {
 
         const minExpirationDate = moment();
 
+        let currencyHasInbridge =
+            base.get("symbol") === "LLC" || quote.get("symbol") === "LLC";
+
         return (
             <div className={this.props.className}>
                 <div className="exchange-bordered buy-sell-container">
@@ -471,7 +448,7 @@ class BuySell extends React.Component {
                             </div>
                         }
 
-                        {this.state.currencyHasInbridge &&
+                        {currencyHasInbridge &&
                         this.props[isBid ? "base" : "quote"].get("symbol") !==
                             "LLC" ? (
                             <div className="float-right buy-sell-deposit">
@@ -521,7 +498,7 @@ class BuySell extends React.Component {
                                 </a>
                             </div>
                         ) : null}
-                        {/* this.props.onBorrow */ false ? (
+                        {this.props.onBorrow ? (
                             <div className="float-right buy-sell-deposit">
                                 <a onClick={this.props.onShowModal}>
                                     <TranslateWithLinks
