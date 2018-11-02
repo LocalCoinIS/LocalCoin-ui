@@ -7,7 +7,7 @@
 - [Голосование](voting.md)
 - [Аккаунты](accounts/general.md)
 - [Разрешения](accounts/permissions.md)
-- [Членство](accounts/membership.md)
+- [Премиум аккаунт](accounts/membership.md)
 - [Системные активы](assets/mpa.md)
 - [Эмитированные пользователем активы](assets/uia.md)
 - [Приватизированные BitAssets](assets/privbitassets.md)

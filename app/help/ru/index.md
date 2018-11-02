@@ -18,7 +18,7 @@ LocalCoin 2.0 - это платформа Финансовых Смарт-Кон
 
 - [Введение](accounts/general.md)
 - [Разрешения](accounts/permissions.md)
-- [Членство](accounts/membership.md)
+- [Премиум аккаунт](accounts/membership.md)
 
 ## Активы
 
