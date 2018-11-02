@@ -4152,53 +4152,7 @@
                                         S = null;
                                     if (c && l) {
                                         C = n.map(function(t, a) {
-                                            return m
-                                                ? r.a.createElement(L, {
-                                                      index: a,
-                                                      key:
-                                                          t.getPrice() +
-                                                          (t.isCall()
-                                                              ? "_call"
-                                                              : ""),
-                                                      order: t,
-                                                      onClick: e.props.onClick.bind(
-                                                          e,
-                                                          t
-                                                      ),
-                                                      base: c,
-                                                      quote: l,
-                                                      position: e.state.flip
-                                                          ? "left"
-                                                          : "right",
-                                                      currentAccount:
-                                                          e.props.currentAccount
-                                                  })
-                                                : r.a.createElement(R, {
-                                                      index: a,
-                                                      key:
-                                                          t.getPrice() +
-                                                          (t.isCall()
-                                                              ? "_call"
-                                                              : ""),
-                                                      order: t,
-                                                      onClick: e.props.onClick.bind(
-                                                          e,
-                                                          t
-                                                      ),
-                                                      base: c,
-                                                      quote: l,
-                                                      final: 0 === a,
-                                                      currentAccount:
-                                                          e.props.currentAccount
-                                                  });
-                                        });
-                                        var I = s;
-                                        I.sort(function(e, t) {
-                                            return m
-                                                ? e.getPrice() - t.getPrice()
-                                                : t.getPrice() - e.getPrice();
-                                        }),
-                                            (S = I.map(function(t, a) {
+                                            if (!(a > 100))
                                                 return m
                                                     ? r.a.createElement(L, {
                                                           index: a,
@@ -4214,7 +4168,6 @@
                                                           ),
                                                           base: c,
                                                           quote: l,
-                                                          type: t.type,
                                                           position: e.state.flip
                                                               ? "left"
                                                               : "right",
@@ -4236,12 +4189,64 @@
                                                           ),
                                                           base: c,
                                                           quote: l,
-                                                          type: t.type,
                                                           final: 0 === a,
                                                           currentAccount:
                                                               e.props
                                                                   .currentAccount
                                                       });
+                                        });
+                                        var I = s;
+                                        I.sort(function(e, t) {
+                                            return m
+                                                ? e.getPrice() - t.getPrice()
+                                                : t.getPrice() - e.getPrice();
+                                        }),
+                                            (S = I.map(function(t, a) {
+                                                if (!(a > 100))
+                                                    return m
+                                                        ? r.a.createElement(L, {
+                                                              index: a,
+                                                              key:
+                                                                  t.getPrice() +
+                                                                  (t.isCall()
+                                                                      ? "_call"
+                                                                      : ""),
+                                                              order: t,
+                                                              onClick: e.props.onClick.bind(
+                                                                  e,
+                                                                  t
+                                                              ),
+                                                              base: c,
+                                                              quote: l,
+                                                              type: t.type,
+                                                              position: e.state
+                                                                  .flip
+                                                                  ? "left"
+                                                                  : "right",
+                                                              currentAccount:
+                                                                  e.props
+                                                                      .currentAccount
+                                                          })
+                                                        : r.a.createElement(R, {
+                                                              index: a,
+                                                              key:
+                                                                  t.getPrice() +
+                                                                  (t.isCall()
+                                                                      ? "_call"
+                                                                      : ""),
+                                                              order: t,
+                                                              onClick: e.props.onClick.bind(
+                                                                  e,
+                                                                  t
+                                                              ),
+                                                              base: c,
+                                                              quote: l,
+                                                              type: t.type,
+                                                              final: 0 === a,
+                                                              currentAccount:
+                                                                  e.props
+                                                                      .currentAccount
+                                                          });
                                             }));
                                     }
                                     if (this.props.horizontal) {

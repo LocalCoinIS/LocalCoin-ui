@@ -56,9 +56,9 @@ class AccountOverview extends React.Component {
             withdrawAsset: null,
             bridgeAsset: null,
             alwaysShowAssets: [
-                "LLC",
-                "USD",
-                "CNY"
+                "LLC" //,
+                //"USD",
+                //"CNY"
                 // "OPEN.BTC",
                 // "OPEN.USDT",
                 // "OPEN.ETH",
@@ -76,7 +76,6 @@ class AccountOverview extends React.Component {
         for (let key in this.sortFunctions) {
             this.sortFunctions[key] = this.sortFunctions[key].bind(this);
         }
-
         this._handleFilterInput = this._handleFilterInput.bind(this);
     }
 
@@ -444,7 +443,6 @@ class AccountOverview extends React.Component {
                 assetAmount,
                 asset
             );
-
             balances.push(
                 <tr key={asset.get("symbol")} style={{maxWidth: "100rem"}}>
                     <td style={{textAlign: "left"}}>
@@ -524,16 +522,16 @@ class AccountOverview extends React.Component {
                         )}
                     </td>
                     <td>
-                        {canDeposit && this.props.isMyAccount ? (
+                        {canDeposit ? (
                             <span>
                                 <Icon
                                     style={{cursor: "pointer"}}
                                     name="deposit"
                                     title="icons.deposit.deposit"
                                     className="icon-14x"
-                                    onClick={this._showDepositModal.bind(
+                                    onClick={this._onNavigate.bind(
                                         this,
-                                        assetName
+                                        "/deposit-withdraw"
                                     )}
                                 />
                             </span>
@@ -1035,7 +1033,7 @@ class AccountOverview extends React.Component {
             includedBalances = included;
             let hidden = this._renderBalances(
                 hiddenBalancesList,
-                !this.state.filterValue ? this.state.alwaysShowAsset : null
+                !this.state.filterValue ? this.state.alwaysShowAssets : null
             );
             hiddenBalances = hidden;
         }
