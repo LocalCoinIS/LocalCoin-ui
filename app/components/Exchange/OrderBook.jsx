@@ -545,10 +545,12 @@ class OrderBook extends React.Component {
                     quote={quote}
                 />
             ));
+        let limitOfRows = 100;
         let bidRows = null,
             askRows = null;
         if (base && quote) {
             bidRows = combinedBids.map((order, index) => {
+                if (index > limitOfRows) return;
                 return horizontal ? (
                     <OrderBookRowHorizontal
                         index={index}
@@ -583,6 +585,7 @@ class OrderBook extends React.Component {
                 }
             });
             askRows = tempAsks.map((order, index) => {
+                if (index > limitOfRows) return;
                 return horizontal ? (
                     <OrderBookRowHorizontal
                         index={index}

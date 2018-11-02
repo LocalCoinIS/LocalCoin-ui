@@ -376,7 +376,7 @@
                               "Secure random number generation is not supported by this browser.\nUse Chrome, Firefox or Internet Explorer 11"
                           );
                       });
-            }.call(this, r(89), r(100)));
+            }.call(this, r(88), r(100)));
         },
         275: function(e, t, r) {
             e.exports = {
@@ -5285,7 +5285,7 @@
                             m
                         );
                 };
-            }.call(this, r(89), r(100)));
+            }.call(this, r(88), r(100)));
         },
         802: function(e, t, r) {
             var i = r(803),
@@ -7214,7 +7214,7 @@
                             spec: ">=6.0.0 <7.0.0",
                             type: "range"
                         },
-                        "/home/user/egor_ui/node_modules/browserify-sign"
+                        "/home/biliba/gateis_ui/node_modules/browserify-sign"
                     ]
                 ],
                 _from: "elliptic@>=6.0.0 <7.0.0",
@@ -7244,7 +7244,7 @@
                 _shasum: "c2d0b7776911b86722c632c3c06c60f2f819939a",
                 _shrinkwrap: null,
                 _spec: "elliptic@^6.0.0",
-                _where: "/home/user/egor_ui/node_modules/browserify-sign",
+                _where: "/home/biliba/gateis_ui/node_modules/browserify-sign",
                 author: {name: "Fedor Indutny", email: "fedor@indutny.com"},
                 bugs: {url: "https://github.com/indutny/elliptic/issues"},
                 dependencies: {
@@ -12695,7 +12695,7 @@
                           return u(i, r, t.length), p(t, r, i);
                       }))
                     : ((t.randomFill = n), (t.randomFillSync = n));
-            }.call(this, r(89), r(100)));
+            }.call(this, r(88), r(100)));
         },
         866: function(e, t, r) {
             (function(t) {
