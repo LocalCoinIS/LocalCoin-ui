@@ -500,7 +500,7 @@ class BuySell extends React.Component {
                         ) : null}
                         {this.props.onBorrow ? (
                             <div className="float-right buy-sell-deposit">
-                                <a onClick={this.props.onShowModal}>
+                                <a onClick={this.props.onBorrow}>
                                     <TranslateWithLinks
                                         string="exchange.buysell_formatter"
                                         noLink
