@@ -1,8 +1,8 @@
 Please work off the staging branch and make pull requests to that branch. The master branch will only be updated for new releases.
 
-The Bitshares UI team is supported by this [worker proposal](http://www.bitshares.foundation/workers/2017-08-bill-butler). It provides the funds needed to pay the coordinator and the bounties and the Bitshares Foundation.
+The Localcoin UI team is supported by this [worker proposal](http://www.bitshares.foundation/workers/2017-08-bill-butler). It provides the funds needed to pay the coordinator and the bounties and the Localcoin Foundation.
 
-If you would like to get involved, we have a [Telegram chatroom](https://t.me/LocalCoinIS) where you can ask questions and get help. You may also join [BitShares on Discord](https://discord.gg/)
+If you would like to get involved, we have a [Telegram chatroom](https://t.me/LocalCoinIS) where you can ask questions and get help. You may also join [LocalCoin on Discord](https://discord.gg/)
 
 - Coordinator: Bill Butler, @billbutler
 - Lead Developer: Sigve Kvalsvik, @sigvek
@@ -11,7 +11,7 @@ If you would like to get involved, we have a [Telegram chatroom](https://t.me/Lo
 
 ## 贡献
 
-Bitshares UI团队被这一[工作提案](https://steemit.com/bitshares/@billbutler/translated-by-zhaomu-l)支持。它提供用来支付协调者，悬赏金和本地硬币基金的资金。
+Localcoin UI团队被这一[工作提案](https://steemit.com/bitshares/@billbutler/translated-by-zhaomu-l)支持。它提供用来支付协调者，悬赏金和本地硬币基金的资金。
 
 如果你想参与贡献，我们有一个[Telegram 聊天室](https://t.me/LocalCoinIS)，在这里你可以问问题并得到帮助。
 
@@ -25,7 +25,7 @@ Bitshares UI团队被这一[工作提案](https://steemit.com/bitshares/@billbut
 - Milestones are numbered YYMMDD and refer to the **anticipated release date**.
 - Bugs are always worked before enhancements
 - Developers should work each issue according to a numbered branch corresponding to the issue `git checkout -b 123`
-- We pay **bounties** for issues that have been estimated. An estimated issue is prefixed with a number in brackets like this: `[2] An nasty bug`. In this example, the bug is valued at two hours ($125 per hour). If you fix this issue according to these guidelines and your PR is accepted, this will earn you $250 bitUSD. You must have a Bitshares wallet and a Bitshares account to receive payment.
+- We pay **bounties** for issues that have been estimated. An estimated issue is prefixed with a number in brackets like this: `[2] An nasty bug`. In this example, the bug is valued at two hours ($125 per hour). If you fix this issue according to these guidelines and your PR is accepted, this will earn you $250 bitUSD. You must have a Localcoin wallet and a Localcoin account to receive payment.
 - If an issue is already claimed (assigned), do not attempt to claim it. Issues claimed by outside developers will indicate an assignment to wmbutler, but will mention the developer's github account in this the comments.
 - To claim an issue, simply leave a comment with your request to claim.
 - Do not claim an issue if you will be unable to complete it by the date indicated on the Milestone name. Milestone 170901 will be pushed on September 1, 2017.

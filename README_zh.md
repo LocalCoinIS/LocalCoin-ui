@@ -1,7 +1,7 @@
 LocalCoin-UI
 ============
 
-这是一个连接 BitShares API 的轻钱包。BitShares API 由 *witness_node* 程序提供。
+这是一个连接 LocalCoin API 的轻钱包。LocalCoin API 由 *witness_node* 程序提供。
 
 这个钱包*将所有的密钥存储在本地浏览器上*，*不会把你的密钥暴露给任何人*，因为它会先在本地对交易签名，再传输到 API 服务器上，由服务器广播至区块链网络。钱包由用户选择的密码加密并储存在浏览器数据库中。
 
@@ -84,7 +84,7 @@ __Mac__
 
 请在 staging 分支上进行工作，并将 PR 提交到该分支中。master 分支只在发布新版本时进行更新。
 
-Bitshares UI 团队由[这个工作提案](http://www.bitshares.foundation/workers/2017-08-bill-butler)支持。此提案提供用来支付协调者、赏金和本地硬币基金的资金。
+Localcoin UI 团队由[这个工作提案](http://www.bitshares.foundation/workers/2017-08-bill-butler)支持。此提案提供用来支付协调者、赏金和本地硬币基金的资金。
 
 如果你想参与贡献，可以加入 [Telegram 群组](https://t.me/LocalCoinIS)进行提问并获取帮助。你也可以加入 [Discord 服务器](https://discord.gg/)。
 

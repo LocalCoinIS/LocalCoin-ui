@@ -30,8 +30,8 @@ if [ $unamestr = 'Linux' ] && [ $TRAVIS_BRANCH = 'staging' ] && [ -z $TRAVIS_PUL
 then
     ## wallet.localcoin.is subdomain (independent repo)
     echo "Pushing new staging subdomain repo"
-    git clone https://github.com:${GITHUB_TOKEN}@github.com/${STAGING_REPO} $TRAVIS_BUILD_DIR/staging.bitshares.org
-    cd $TRAVIS_BUILD_DIR/staging.bitshares.org
+    git clone https://github.com:${GITHUB_TOKEN}@github.com/${STAGING_REPO} $TRAVIS_BUILD_DIR/staging.localcoin.is
+    cd $TRAVIS_BUILD_DIR/staging.localcoin.is
     rm -rf ./*
     git checkout ./CNAME
     cp -Rv $TRAVIS_BUILD_DIR/build/hash-history/* .

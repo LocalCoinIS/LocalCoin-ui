@@ -79,6 +79,6 @@ export const settingsAPIs = {
         {url: "wss://bts.proxyhosts.info/wss", location: "TEST"}
     ],
     DEFAULT_FAUCET: "https://faucet.localcoin.is", // 2017-12-infrastructure worker proposal
-    TESTNET_FAUCET: "https://faucet.testnet.bitshares.eu",
+    TESTNET_FAUCET: "https://faucet.testnet.localcoin.is",
     RPC_URL: "https://openledger.info/api/"
 };

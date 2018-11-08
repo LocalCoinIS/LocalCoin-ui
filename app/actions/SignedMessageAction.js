@@ -18,7 +18,7 @@ const MSG_DATE = "timestamp";
  *    - Verify a given message
  *
  *  The message format that is underlying is as follows:
- *  -----BEGIN BITSHARES SIGNED MESSAGE-----
+ *  -----BEGIN LOCALCOIN SIGNED MESSAGE-----
  *  <message from the account>
  *  -----BEGIN META-----
  *  account=<account name>
@@ -27,7 +27,7 @@ const MSG_DATE = "timestamp";
  *  timestamp=<current time>
  *  -----BEGIN SIGNATURE-----
  *  <signature>
- *  -----END BITSHARES SIGNED MESSAGE-----
+ *  -----END LOCALCOIN SIGNED MESSAGE-----
  *
  *    @author Stefan Schiessl <stefan.schiessl@blockchainprojectsbv.com>
  */

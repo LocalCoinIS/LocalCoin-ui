@@ -1,7 +1,7 @@
 {
-  "name": "BitShares2-light",
+  "name": "LocalCoin2-light",
   "version": "2.0.180526",
-  "description": "Advanced wallet interface for the BitShares financial blockchain.",
+  "description": "Advanced wallet interface for the LocalCoin financial blockchain.",
   "homepage": "https://github.com/localcoinis/localcoin-ui",
   "author": "Sigve Kvalsvik <kvalsvik.crypto@gmail.com>",
   "contributors": [
@@ -80,7 +80,7 @@
   },
   "browsersList": "electron 1.7",
   "build": {
-    "productName": "BitShares",
+    "productName": "LocalCoin",
     "appId": "org.bitshares.graphene",
     "files": [
       "build/electron",
@@ -120,7 +120,7 @@
         "deb",
         "AppImage"
       ],
-      "synopsis": "BitShares: Cryptocurrency and Decentralized Exchange"
+      "synopsis": "LocalCoin: Cryptocurrency and Decentralized Exchange"
     },
     "directories": {
       "buildResources": "resources",

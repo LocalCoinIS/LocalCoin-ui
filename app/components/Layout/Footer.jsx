@@ -40,7 +40,7 @@ class Footer extends React.Component {
     componentDidMount() {
         this.checkNewVersionAvailable.call(this);
 
-        this.downloadLink = "https://bitshares.org/download";
+        this.downloadLink = "https://localcoin.is/download";
     }
 
     shouldComponentUpdate(nextProps, nextState) {
