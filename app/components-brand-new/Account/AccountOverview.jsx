@@ -1463,6 +1463,13 @@ class AccountOverview extends React.Component {
                         />
                     </div>
                 </BaseModal>
+                <SettleModal
+                    id="send_modal_header"
+                    refCallback={e => {
+                        if (e) this.settlement_modal = e;
+                    }}
+                    from_name={account}
+                />
             </div>
         );
     }
