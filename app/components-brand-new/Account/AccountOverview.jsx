@@ -212,8 +212,14 @@ class AccountOverview extends React.Component {
         this.setState({
             settleAsset: id
         });
-
         this.refs.settlement_modal.show();
+        console.log("====================================");
+        console.log(this.refs.settlement_modal);
+        console.log("====================================");
+        // let settleRef = "settlement_modal";
+        // this.refs[settleRef].show();
+
+        // ZfApi.publish("settle_asset", "open");
     }
 
     _hideAsset(asset, status) {
@@ -1232,6 +1238,7 @@ class AccountOverview extends React.Component {
                     from_name={this.props.account.get("name")}
                     asset_id={this.state.send_asset || "1.3.0"}
                 />
+
                 {shownAssets != "visual" ? (
                     <div className="dashboard__adaptive">
                         <table className="dashboard__table blue-bg with-borders">
@@ -1447,7 +1454,7 @@ class AccountOverview extends React.Component {
                 content: accountProposals
             }
         ];
-
+        let settleRef = "settlement_modal";
         return (
             <div>
                 <Tabs items={items} inner={true} />
@@ -1463,12 +1470,17 @@ class AccountOverview extends React.Component {
                         />
                     </div>
                 </BaseModal>
+                <div />
                 <SettleModal
-                    id="send_modal_header"
-                    refCallback={e => {
-                        if (e) this.settlement_modal = e;
-                    }}
-                    from_name={account}
+                    id="settle_asset"
+                    ref={"settlement_modal"}
+                    assetId={this.state.settleAsset}
+                    modalId={"settle_modal"}
+                    account={account}
+
+                    // onClose={() => {
+                    //     this.refs.settlement_modal.onClose();
+                    // }}
                 />
             </div>
         );

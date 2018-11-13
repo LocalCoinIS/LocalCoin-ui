@@ -88,7 +88,8 @@ export default class TranslateWithLinks extends React.Component {
                                     asset={key.value.asset_id}
                                     decimalOffset={key.decimalOffset}
                                     hide_asset
-                                />&nbsp;
+                                />
+                                &nbsp;
                                 {this.linkToAsset(key.value.asset_id)}
                             </span>
                         );
@@ -102,6 +103,7 @@ export default class TranslateWithLinks extends React.Component {
                                 base_amount={key.value.base.amount}
                                 quote_asset={key.value.quote.asset_id}
                                 quote_amount={key.value.quote.amount}
+                                noPopOver
                             />
                         );
                         break;

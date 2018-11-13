@@ -238,7 +238,7 @@
                 E = a(2),
                 w = a.n(E),
                 k = a(58),
-                x = a(43),
+                x = a(42),
                 O = a.n(x),
                 A = (function() {
                     function e(e, t) {
@@ -1332,30 +1332,20 @@
                             {
                                 key: "render",
                                 value: function() {
-                                    return this.state.open
-                                        ? r.a.createElement(
-                                              h.a,
-                                              {
-                                                  id: this.props.modalId,
-                                                  onClose: this.onClose.bind(
-                                                      this
-                                                  ),
-                                                  overlay: !0,
-                                                  ref: "settlement_modal"
-                                              },
-                                              r.a.createElement(
-                                                  "div",
-                                                  {
-                                                      className:
-                                                          "grid-block vertical"
-                                                  },
-                                                  r.a.createElement(
-                                                      C,
-                                                      this.props
-                                                  )
-                                              )
-                                          )
-                                        : null;
+                                    return r.a.createElement(
+                                        h.a,
+                                        {
+                                            id: this.props.modalId,
+                                            onClose: this.onClose.bind(this),
+                                            overlay: !0,
+                                            ref: "settlement_modal"
+                                        },
+                                        r.a.createElement(
+                                            "div",
+                                            {className: "grid-block vertical"},
+                                            r.a.createElement(C, null)
+                                        )
+                                    );
                                 }
                             }
                         ]),
@@ -1367,7 +1357,7 @@
                 P = a(50),
                 I = a(15),
                 T = a(31),
-                L = a(43),
+                L = a(42),
                 M = a.n(L),
                 D = a(334),
                 R =
@@ -4637,7 +4627,7 @@
                 st = a.n(it),
                 lt = a(8),
                 ct = a(279),
-                ut = a(42),
+                ut = a(43),
                 pt =
                     Object.assign ||
                     function(e) {
@@ -6433,7 +6423,14 @@
                             value: function(e, t) {
                                 t.preventDefault(),
                                     this.setState({settleAsset: e}),
-                                    this.refs.settlement_modal.show();
+                                    this.refs.settlement_modal.show(),
+                                    console.log(
+                                        "===================================="
+                                    ),
+                                    console.log(this.refs.settlement_modal),
+                                    console.log(
+                                        "===================================="
+                                    );
                             }
                         },
                         {
@@ -8385,12 +8382,13 @@
                                             })
                                         )
                                     ),
+                                    r.a.createElement("div", null),
                                     r.a.createElement(N, {
-                                        id: "send_modal_header",
-                                        refCallback: function(t) {
-                                            t && (e.settlement_modal = t);
-                                        },
-                                        from_name: a
+                                        id: "settle_asset",
+                                        ref: "settlement_modal",
+                                        assetId: this.state.settleAsset,
+                                        modalId: "settle_modal",
+                                        account: a
                                     })
                                 );
                             }
