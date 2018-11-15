@@ -19,7 +19,7 @@ LocalCoin(当地硬币) 2.0 是一个金融智能合约平台，该平台基于[
  * [会员级别](accounts/membership.md)
 
 ## 资产
- * [市场锚定资产](assets/mpa.md) (BitUSD, BitEUR, BitGOLD, Bit\*,...)
+ * [市场锚定资产](assets/mpa.md) (USD, EUR, GOLD, Bit\*,...)
  * [用户发行资产](assets/uia.md)
  * [私有比特资产](assets/privbitassets.md)
 

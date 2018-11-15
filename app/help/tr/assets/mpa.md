@@ -18,8 +18,8 @@ güvence  altına alma ve hesap görme işlemleri ağın  kendi sorumluluğuna b
 anlatılacaktır.
 
 Bu, piyasaya-sabitli-varlıkların mevcut bir alt kümesidir:
-* BitUSD
-* BitCNY
-* BitEUR
-* BitGOLD
+* USD
+* CNY
+* EUR
+* GOLD
 * ...

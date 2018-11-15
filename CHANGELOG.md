@@ -708,7 +708,7 @@ New features
 - New modal for quick deposit/withdraw of OPEN.X assets on account overview page
 - A set of default assets are available for deposits on the account overview page
 - New summary of open orders on account overview page
-- Set precision for bitCNY and bitUSD to 5 in orderbook display
+- Set precision for bitCNY and USD to 5 in orderbook display
 - Flip CNY:OPEN.BTC market in dashboard
 - Add bitSilver asset icon
 - Add Chinese intro text by bitcrab

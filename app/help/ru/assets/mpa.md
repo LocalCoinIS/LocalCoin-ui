@@ -8,8 +8,8 @@
 
 Это подгруппа доступных привязанных к рынку активов:
 
-* BitUSD
-* BitCNY
-* BitEUR
-* BitGOLD
+* USD
+* CNY
+* EUR
+* GOLD
 * ...

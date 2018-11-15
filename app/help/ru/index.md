@@ -22,7 +22,7 @@ LocalCoin 2.0 - это платформа Финансовых Смарт-Кон
 
 ## Активы
 
-- [Привязанные к рынку активы](assets/mpa.md) (BitUSD, BitEUR, BitGOLD, Bit\*,...)
+- [Привязанные к рынку активы](assets/mpa.md) (USD, EUR, GOLD, Bit\*,...)
 - [Эмитированные пользователем активы](assets/uia.md)
 - [Приватизированные BitAssets](assets/privbitassets.md)
 

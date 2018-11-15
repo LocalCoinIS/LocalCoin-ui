@@ -23,7 +23,7 @@ kavramlarını tanımlar.
  * [Üyelikler](accounts/membership.md)
 
 ## Aktifler
- * [Piyasa Sabitli Varlıklar](assets/mpa.md) (BitUSD, BitEUR, BitGOLD, Bit\*,...)
+ * [Piyasa Sabitli Varlıklar](assets/mpa.md) (USD, EUR, GOLD, Bit\*,...)
  * [Kullanıcı Aktifleri](assets/uia.md)
  * [Özelleştirilmiş Varlıklar](assets/privbitassets.md)
 

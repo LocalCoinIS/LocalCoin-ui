@@ -12,7 +12,7 @@
  * [账户](accounts/general.md)
  * [权限](accounts/permissions.md)
  * [会员等级](accounts/membership.md)
- * [市场锚定资产](assets/mpa.md) (BitUSD, BitEUR, BitGOLD, Bit\*,...)
+ * [市场锚定资产](assets/mpa.md) (USD, EUR, GOLD, Bit\*,...)
  * [用户发行资产](assets/uia.md)
  * [私有比特资产](assets/privbitassets.md)
  * [去中心化交易所](dex/introduction.md)

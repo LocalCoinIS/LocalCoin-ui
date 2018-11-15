@@ -41,7 +41,7 @@ müşteriye kalmıştır.
   algoritmasıdır.  Verilen bir takım işlem-emri  için her zaman bu emirlerin 
   kanıtlanabilir şekilde eşleştirilmiş olduğunu teyit edebilirsiniz.
 * **Teminata Bağlanmış** :
-  LocalCoin'in en büyük özelliklerinden biri de bitUSD, bitEUR, bitCNY gibi 
+  LocalCoin'in en büyük özelliklerinden biri de USD, EUR, CNY gibi 
   *akıllıparalar*dır. Kolaylık olsun diye bu varlıklar cüzdan içerisinde USD,EUR,CNY 
   diye kısaltılmışlardır. Bu dijital kuponlar dayandıkları fiziksel varlıkla aynı değeri 
   temsil ederler. Yani bu cüzdandaki 1 USD nin değeri 1 dolardır ve o şekilde 

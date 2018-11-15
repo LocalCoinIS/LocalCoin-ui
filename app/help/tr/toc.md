@@ -12,7 +12,7 @@
  * [Hesaplar](accounts/general.md)
  * [İzinler](accounts/permissions.md)
  * [Üyelikler](accounts/membership.md)
- * [Piyasaya Sabitli Aktifler](assets/mpa.md) (BitUSD, BitEUR, BitGOLD, Bit\*,...)
+ * [Piyasaya Sabitli Aktifler](assets/mpa.md) (USD, EUR, GOLD, Bit\*,...)
  * [Kullanıcı Aktifler](assets/uia.md)
  * [Özelleştirilmiş BitAktifler](assets/privbitassets.md)
  * [Merkezsiz/dağıtık Borsa](dex/introduction.md)
