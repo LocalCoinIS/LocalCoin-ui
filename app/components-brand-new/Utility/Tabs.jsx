@@ -37,7 +37,6 @@ class Tabs extends React.Component {
 
     handleClickOutside() {
         this.setState({openMobileSelect: false});
-        console.log("outside tab");
     }
 
     _findActiveTab(items) {

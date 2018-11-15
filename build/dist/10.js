@@ -5,7 +5,7 @@
             "use strict";
             var n = a(0),
                 r = a.n(n),
-                s = a(510),
+                s = a(511),
                 o = a.n(s),
                 i = (function() {
                     function e(e, t) {
@@ -122,7 +122,142 @@
             (l.defaultProps = {component: "span", enterTimeout: 2e3}),
                 (t.a = l);
         },
-        140: function(e, t, a) {
+        113: function(e, t, a) {
+            "use strict";
+            var n = a(4),
+                r = (function() {
+                    function e(e, t) {
+                        for (var a = 0; a < t.length; a++) {
+                            var n = t[a];
+                            (n.enumerable = n.enumerable || !1),
+                                (n.configurable = !0),
+                                "value" in n && (n.writable = !0),
+                                Object.defineProperty(e, n.key, n);
+                        }
+                    }
+                    return function(t, a, n) {
+                        return a && e(t.prototype, a), n && e(t, n), t;
+                    };
+                })();
+            var s = (function() {
+                function e() {
+                    !(function(e, t) {
+                        if (!(e instanceof t))
+                            throw new TypeError(
+                                "Cannot call a class as a function"
+                            );
+                    })(this, e),
+                        (this.getPairsCourse = function(e) {
+                            this.ajax(e, "GetPairsCourse");
+                        });
+                }
+                return (
+                    r(e, [
+                        {
+                            key: "getBaseUrl",
+                            value: function() {
+                                return "https://llcgateway.localcoin.is/";
+                            }
+                        },
+                        {
+                            key: "getAllowCurrency",
+                            value: function(e) {
+                                this.ajax(e, "GetAllowCurrency");
+                            }
+                        },
+                        {
+                            key: "сreatePaymentAddress",
+                            value: function(e, t, a, n) {
+                                this.ajax(
+                                    function(e) {
+                                        n(e.address);
+                                    },
+                                    "CreatePaymentAddress",
+                                    {account: e, asset: t, type: a}
+                                );
+                            }
+                        },
+                        {
+                            key: "validateAddress",
+                            value: function(e, t, a) {
+                                this.ajax(a, "ValidateAddress", {
+                                    address: e,
+                                    currency: t
+                                });
+                            }
+                        },
+                        {
+                            key: "ajax",
+                            value: function(e, t, a) {
+                                void 0 === a && (a = null);
+                                var n =
+                                    this.getBaseUrl() +
+                                    "?methodnameaction=" +
+                                    t;
+                                a && (n += "&" + this.encodeQueryData(a)),
+                                    fetch(n)
+                                        .then(function(e) {
+                                            return e.json();
+                                        })
+                                        .then(e);
+                            }
+                        },
+                        {
+                            key: "encodeQueryData",
+                            value: function(e) {
+                                var t = [];
+                                for (var a in e)
+                                    t.push(
+                                        encodeURIComponent(a) +
+                                            "=" +
+                                            encodeURIComponent(e[a])
+                                    );
+                                return t.join("&");
+                            }
+                        },
+                        {
+                            key: "precisionToCoef",
+                            value: function(e) {
+                                for (var t = "1", a = 0; a < e; a++) t += "0";
+                                return parseInt(t);
+                            }
+                        },
+                        {
+                            key: "getUserBalance",
+                            value: function(e, t, a) {
+                                var r = [],
+                                    s = function(e, t, a) {
+                                        return e ? (t ? t / a : 0) : t;
+                                    },
+                                    o = e.get("balances").toJS();
+                                for (var i in o) {
+                                    var l = n.b.getAsset(i);
+                                    if (l) {
+                                        var c = o[i],
+                                            u = n.b.getObject(c),
+                                            p = l.get("precision"),
+                                            m = this.precisionToCoef(p);
+                                        r[l.get("symbol")] = s(
+                                            t,
+                                            u.get("balance"),
+                                            m
+                                        );
+                                    }
+                                }
+                                return void 0 !== a
+                                    ? void 0 !== r[a]
+                                        ? r[a]
+                                        : 0
+                                    : r;
+                            }
+                        }
+                    ]),
+                    e
+                );
+            })();
+            t.a = s;
+        },
+        143: function(e, t, a) {
             "use strict";
             a.d(t, "b", function() {
                 return O;
@@ -142,12 +277,12 @@
                 m = a(1),
                 d = a.n(m),
                 h = a(3),
-                b = a.n(h),
-                f = a(42),
-                _ = a.n(f),
+                f = a.n(h),
+                b = a(42),
+                _ = a.n(b),
                 g = a(279),
-                y = a(43),
-                v =
+                v = a(43),
+                y =
                     Object.assign ||
                     function(e) {
                         for (var t = 1; t < arguments.length; t++) {
@@ -281,7 +416,7 @@
                                     r = e.fullPrecision,
                                     s = e.marketStats,
                                     o = e.coreAsset;
-                                return y.a.convertValue(t, a, n, s, o, r);
+                                return v.a.convertValue(t, a, n, s, o, r);
                             }
                         },
                         {
@@ -305,7 +440,7 @@
                                 return p || 0 === p
                                     ? r.a.createElement(
                                           s.a,
-                                          v(
+                                          y(
                                               {
                                                   noPrefix: !0,
                                                   amount: p,
@@ -333,7 +468,7 @@
                                           {
                                               className: "tooltip inline-block",
                                               "data-place": "bottom",
-                                              "data-tip": b.a.translate(
+                                              "data-tip": f.a.translate(
                                                   "tooltip.no_price"
                                               ),
                                               style: {fontSize: "0.9rem"}
@@ -380,7 +515,7 @@
                                 var e = this.props,
                                     t = e.refCallback,
                                     a = w(e, ["refCallback"]);
-                                return r.a.createElement(N, v({}, a, {ref: t}));
+                                return r.a.createElement(N, y({}, a, {ref: t}));
                             }
                         }
                     ]),
@@ -430,7 +565,7 @@
                                     ? r.a.createElement("span", null, "--")
                                     : r.a.createElement(
                                           O,
-                                          v(
+                                          y(
                                               {
                                                   amount: s,
                                                   fromAsset: o,
@@ -448,7 +583,7 @@
             (S.propTypes = {balance: o.a.ChainObject.isRequired}),
                 (S = Object(i.a)(S, {keep_updating: !0}));
         },
-        153: function(e, t, a) {
+        155: function(e, t, a) {
             "use strict";
             var n = a(0),
                 r = a.n(n),
@@ -627,7 +762,7 @@
         },
         231: function(e, t, a) {
             "use strict";
-            var n = a(564),
+            var n = a(565),
                 r = a(0),
                 s = a.n(r),
                 o = a(2),
@@ -639,12 +774,12 @@
                 m = a.n(p),
                 d = a(1),
                 h = a.n(d),
-                b = a(6),
-                f = a(13),
+                f = a(6),
+                b = a(13),
                 _ = a(17),
                 g = a(5),
-                y = a(9),
-                v = a.n(y),
+                v = a(9),
+                y = a.n(v),
                 E = a(44),
                 w = a(57),
                 k = a(86),
@@ -654,9 +789,9 @@
                 O = a.n(N),
                 S = a(69),
                 P = a(7),
-                j = a.n(P),
-                x = a(4),
-                T = (function() {
+                T = a.n(P),
+                j = a(4),
+                x = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -702,7 +837,7 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var F = (function(e) {
+            var R = (function(e) {
                 function t(e) {
                     q(this, t);
                     var a = D(
@@ -713,7 +848,7 @@
                 }
                 return (
                     I(t, s.a.Component),
-                    T(t, [
+                    x(t, [
                         {
                             key: "_initialState",
                             value: function(e) {
@@ -766,7 +901,7 @@
                             value: function(e, t) {
                                 return !(
                                     g.a.are_equal_shallow(t, this.state) &&
-                                    j.a.is(
+                                    T.a.is(
                                         e.quote_asset,
                                         this.props.quote_asset
                                     ) &&
@@ -774,8 +909,8 @@
                                         this.props.backing_asset.get(
                                             "symbol"
                                         ) &&
-                                    j.a.is(e.account, this.props.account) &&
-                                    j.a.is(
+                                    T.a.is(e.account, this.props.account) &&
+                                    T.a.is(
                                         e.call_orders,
                                         this.props.call_orders
                                     )
@@ -1184,10 +1319,10 @@
                                     u = i.collateral_ratio,
                                     p = i.errors,
                                     d = i.isValid,
-                                    b = g.a.get_asset_precision(
+                                    f = g.a.get_asset_precision(
                                         this.props.quote_asset.get("precision")
                                     ),
-                                    f = g.a.get_asset_precision(
+                                    b = g.a.get_asset_precision(
                                         this.props.backing_asset.get(
                                             "precision"
                                         )
@@ -1195,29 +1330,29 @@
                                 (u && !isNaN(u) && u > 0 && u < 1e3) || (u = 0),
                                     (n = n ? n.toJS() : {balance: 0, id: null}),
                                     (o = o ? o.toJS() : {balance: 0, id: null});
-                                var y = v()("form-group", {
+                                var v = y()("form-group", {
                                         "has-error": p.collateral_balance
                                     }),
-                                    k = v()(
+                                    k = y()(
                                         "form-group",
                                         {"has-error": p.below_maintenance},
                                         {"has-warning": p.close_maintenance}
                                     ),
-                                    C = v()(
+                                    C = y()(
                                         "button",
                                         {disabled: p.collateral_balance || !d},
                                         {success: d}
                                     ),
                                     N = this._getCurrentPosition(this.props),
-                                    P = o.id ? x.b.getObject(o.id) : null,
-                                    j =
+                                    P = o.id ? j.b.getObject(o.id) : null,
+                                    T =
                                         (P ? P.get("balance") : 0) -
                                         parseInt(
-                                            this.state.collateral * f -
+                                            this.state.collateral * b -
                                                 N.collateral,
                                             10
                                         ),
-                                    T = s.a.createElement(
+                                    x = s.a.createElement(
                                         "span",
                                         null,
                                         s.a.createElement(
@@ -1287,7 +1422,7 @@
                                             " ",
                                             o.id
                                                 ? s.a.createElement(_.a, {
-                                                      amount: j,
+                                                      amount: T,
                                                       asset: r.get("id")
                                                   })
                                                 : s.a.createElement(_.a, {
@@ -1314,13 +1449,13 @@
                                             "current_feed",
                                             "maintenance_collateral_ratio"
                                         ]) / 1e3,
-                                    F = (this.props.quote_asset.getIn([
+                                    R = (this.props.quote_asset.getIn([
                                         "bitasset",
                                         "current_feed",
                                         "maximum_short_squeeze_ratio"
                                     ]),
                                     this._isPredictionMarket(this.props));
-                                return !F && isNaN(D)
+                                return !R && isNaN(D)
                                     ? s.a.createElement(
                                           "div",
                                           null,
@@ -1383,7 +1518,7 @@
                                                       : s.a.createElement(S.a, {
                                                             path:
                                                                 "components/" +
-                                                                (F
+                                                                (R
                                                                     ? "BorrowModalPrediction"
                                                                     : "BorrowModal"),
                                                             debt: a.get(
@@ -1397,7 +1532,7 @@
                                                             ),
                                                             mr: I
                                                         }),
-                                                  F
+                                                  R
                                                       ? null
                                                       : s.a.createElement(
                                                             "div",
@@ -1512,7 +1647,7 @@
                                                                                   this
                                                                                       .state
                                                                                       .short_amount *
-                                                                                  b,
+                                                                                  f,
                                                                               quote_asset: a.get(
                                                                                   "id"
                                                                               ),
@@ -1523,7 +1658,7 @@
                                                                                   this
                                                                                       .state
                                                                                       .collateral *
-                                                                                  f
+                                                                                  b
                                                                           }
                                                                       )
                                                                     : null
@@ -1541,14 +1676,14 @@
                                                           ),
                                                           asset: a.get("id"),
                                                           assets: [a.get("id")],
-                                                          display_balance: T,
+                                                          display_balance: x,
                                                           placeholder: "0.0",
                                                           tabIndex: 1
                                                       })
                                                   ),
                                                   s.a.createElement(
                                                       "div",
-                                                      {className: y},
+                                                      {className: v},
                                                       s.a.createElement(E.a, {
                                                           label:
                                                               "transaction.collateral",
@@ -1576,7 +1711,7 @@
                                                             )
                                                           : null
                                                   ),
-                                                  F
+                                                  R
                                                       ? null
                                                       : s.a.createElement(
                                                             "div",
@@ -1722,16 +1857,16 @@
                     t
                 );
             })();
-            (F.propTypes = {
-                quote_asset: b.a.ChainAsset.isRequired,
-                bitasset_balance: b.a.ChainObject,
-                backing_asset: b.a.ChainAsset.isRequired,
-                backing_balance: b.a.ChainObject,
-                call_orders: b.a.ChainObjectsList,
+            (R.propTypes = {
+                quote_asset: f.a.ChainAsset.isRequired,
+                bitasset_balance: f.a.ChainObject,
+                backing_asset: f.a.ChainAsset.isRequired,
+                backing_balance: f.a.ChainObject,
+                call_orders: f.a.ChainObjectsList,
                 hasCallOrders: i.a.bool
             }),
-                (F = Object(f.a)(F));
-            var B = (function(e) {
+                (R = Object(b.a)(R));
+            var F = (function(e) {
                 function t() {
                     q(this, t);
                     var e = D(
@@ -1742,7 +1877,7 @@
                 }
                 return (
                     I(t, s.a.Component),
-                    T(t, [
+                    x(t, [
                         {
                             key: "show",
                             value: function() {
@@ -1795,7 +1930,7 @@
                                                   className:
                                                       "grid-block vertical"
                                               },
-                                              s.a.createElement(F, {
+                                              s.a.createElement(R, {
                                                   quote_asset: t,
                                                   call_orders: n
                                                       .get(
@@ -1824,12 +1959,12 @@
                     t
                 );
             })();
-            t.a = B;
+            t.a = F;
         },
         334: function(e, t, a) {
             "use strict";
             a.d(t, "a", function() {
-                return v;
+                return y;
             }),
                 a.d(t, "b", function() {
                     return g;
@@ -1859,11 +1994,11 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            function b(e, t) {
+            function f(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function f(e, t) {
+            function b(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -1893,8 +2028,8 @@
             }
             var g = (function(e) {
                     function t(e) {
-                        b(this, t);
-                        var a = f(
+                        f(this, t);
+                        var a = b(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                         );
@@ -1978,11 +2113,11 @@
                         t
                     );
                 })(),
-                y = (function(e) {
+                v = (function(e) {
                     function t(e) {
                         return (
-                            b(this, t),
-                            f(
+                            f(this, t),
+                            b(
                                 this,
                                 (t.__proto__ || Object.getPrototypeOf(t)).call(
                                     this,
@@ -2056,12 +2191,12 @@
                         t
                     );
                 })();
-            y = Object(s.a)(y, {propNames: ["quote", "base"]});
-            var v = (function(e) {
+            v = Object(s.a)(v, {propNames: ["quote", "base"]});
+            var y = (function(e) {
                 function t() {
                     return (
-                        b(this, t),
-                        f(
+                        f(this, t),
+                        b(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -2076,14 +2211,14 @@
                         {
                             key: "render",
                             value: function() {
-                                return r.a.createElement(y, this.props);
+                                return r.a.createElement(v, this.props);
                             }
                         }
                     ]),
                     t
                 );
             })();
-            v = Object(u.connect)(v, {
+            y = Object(u.connect)(y, {
                 listenTo: function() {
                     return [c.a];
                 },
@@ -2106,11 +2241,11 @@
                 m = a(5),
                 d = a(1),
                 h = a.n(d),
-                b = a(22),
-                f = a(280),
-                _ = a.n(f),
+                f = a(22),
+                b = a(280),
+                _ = a.n(b),
                 g = a(111),
-                y = (function() {
+                v = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -2124,7 +2259,7 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            function v(e, t) {
+            function y(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
@@ -2159,7 +2294,7 @@
             (function(e) {
                 function t() {
                     return (
-                        v(this, t),
+                        y(this, t),
                         E(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
@@ -2171,7 +2306,7 @@
                 }
                 return (
                     w(t, r.a.Component),
-                    y(t, [
+                    v(t, [
                         {
                             key: "render",
                             value: function() {
@@ -2199,11 +2334,11 @@
                                                               "header-sub-title"
                                                       },
                                                       "(",
-                                                      r.a.createElement(b.a, {
+                                                      r.a.createElement(f.a, {
                                                           name: t
                                                       }),
                                                       "/",
-                                                      r.a.createElement(b.a, {
+                                                      r.a.createElement(f.a, {
                                                           name: a
                                                       }),
                                                       ")"
@@ -2225,7 +2360,7 @@
                                                               "header-sub-title"
                                                       },
                                                       "(",
-                                                      r.a.createElement(b.a, {
+                                                      r.a.createElement(f.a, {
                                                           name: a
                                                       }),
                                                       ")"
@@ -2263,7 +2398,7 @@
             var k = (function(e) {
                 function t() {
                     return (
-                        v(this, t),
+                        y(this, t),
                         E(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
@@ -2275,7 +2410,7 @@
                 }
                 return (
                     w(t, r.a.Component),
-                    y(t, [
+                    v(t, [
                         {
                             key: "render",
                             value: function() {
@@ -2380,7 +2515,7 @@
             var C = (function(e) {
                 function t() {
                     return (
-                        v(this, t),
+                        y(this, t),
                         E(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
@@ -2392,7 +2527,7 @@
                 }
                 return (
                     w(t, r.a.Component),
-                    y(t, [
+                    v(t, [
                         {
                             key: "shouldComponentUpdate",
                             value: function(e) {
@@ -2460,18 +2595,18 @@
                     baseSymbol: o.a.string.isRequired
                 });
             var A = C,
-                N = a(153),
+                N = a(155),
                 O = a(10),
                 S = a(9),
                 P = a.n(S),
-                j = a(12),
-                x = a(4),
-                T = a(18),
-                q = a(140),
+                T = a(12),
+                j = a(4),
+                x = a(18),
+                q = a(143),
                 D = a(334),
                 I = a(64),
-                F = a(42),
-                B = a.n(F);
+                R = a(42),
+                F = a.n(R);
             a.d(t, "b", function() {
                 return J;
             }),
@@ -2479,9 +2614,9 @@
                     return W;
                 }),
                 a.d(t, "a", function() {
-                    return H;
+                    return G;
                 });
-            var R = (function() {
+            var B = (function() {
                 function e(e, t) {
                     for (var a = 0; a < t.length; a++) {
                         var n = t[a];
@@ -2512,7 +2647,7 @@
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function z(e, t) {
+            function U(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -2521,7 +2656,7 @@
                     ? e
                     : t;
             }
-            function U(e, t) {
+            function V(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -2540,12 +2675,12 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var V = {textAlign: "left"},
+            var z = {textAlign: "left"},
                 W = (function(e) {
                     function t() {
                         return (
                             M(this, t),
-                            z(
+                            U(
                                 this,
                                 (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                     this,
@@ -2555,8 +2690,8 @@
                         );
                     }
                     return (
-                        U(t, r.a.Component),
-                        R(t, [
+                        V(t, r.a.Component),
+                        B(t, [
                             {
                                 key: "render",
                                 value: function() {
@@ -2574,7 +2709,7 @@
                                                   null,
                                                   r.a.createElement(
                                                       "th",
-                                                      {style: V, colSpan: "5"},
+                                                      {style: z, colSpan: "5"},
                                                       r.a.createElement(h.a, {
                                                           content:
                                                               "exchange.description"
@@ -2582,7 +2717,7 @@
                                                   ),
                                                   r.a.createElement(
                                                       "th",
-                                                      {style: V},
+                                                      {style: z},
                                                       r.a.createElement(h.a, {
                                                           content:
                                                               "exchange.price"
@@ -2590,7 +2725,7 @@
                                                   ),
                                                   r.a.createElement(
                                                       "th",
-                                                      {style: V},
+                                                      {style: z},
                                                       r.a.createElement(h.a, {
                                                           content:
                                                               "exchange.price_market"
@@ -2681,7 +2816,7 @@
                                                                         "header-sub-title"
                                                                 },
                                                                 r.a.createElement(
-                                                                    b.a,
+                                                                    f.a,
                                                                     {
                                                                         dataPlace:
                                                                             "top",
@@ -2710,7 +2845,7 @@
                                                                         "header-sub-title"
                                                                 },
                                                                 r.a.createElement(
-                                                                    b.a,
+                                                                    f.a,
                                                                     {
                                                                         dataPlace:
                                                                             "top",
@@ -2754,7 +2889,7 @@
                 function t() {
                     return (
                         M(this, t),
-                        z(
+                        U(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -2764,8 +2899,8 @@
                     );
                 }
                 return (
-                    U(t, r.a.Component),
-                    R(t, [
+                    V(t, r.a.Component),
+                    B(t, [
                         {
                             key: "shouldComponentUpdate",
                             value: function(e) {
@@ -2793,7 +2928,7 @@
                                     u = e.settings,
                                     p = n.isBid(),
                                     d = n.isCall(),
-                                    f = d
+                                    b = d
                                         ? "orderHistoryCall"
                                         : p
                                             ? "orderHistoryBid"
@@ -2809,8 +2944,8 @@
                                           )
                                         : null,
                                     g = s ? " " + t.get("symbol") : null,
-                                    y = s ? " " + a.get("symbol") : null,
-                                    v = u ? u.get("unit") : "1.3.0",
+                                    v = s ? " " + a.get("symbol") : null,
+                                    y = u ? u.get("unit") : "1.3.0",
                                     E = p ? "value positive" : "value negative",
                                     w = p ? "value negative" : "value positive";
                                 return o
@@ -2821,7 +2956,7 @@
                                               "td",
                                               {
                                                   colSpan: "5",
-                                                  style: V,
+                                                  style: z,
                                                   onClick: this.props.onFlip
                                               },
                                               p
@@ -2851,7 +2986,7 @@
                                                             !1
                                                         ),
                                                         baseName: r.a.createElement(
-                                                            b.a,
+                                                            f.a,
                                                             {
                                                                 noTip: !0,
                                                                 customClass: E,
@@ -2861,7 +2996,7 @@
                                                             }
                                                         ),
                                                         quoteName: r.a.createElement(
-                                                            b.a,
+                                                            f.a,
                                                             {
                                                                 noTip: !0,
                                                                 customClass: w,
@@ -2897,7 +3032,7 @@
                                                             !1
                                                         ),
                                                         baseName: r.a.createElement(
-                                                            b.a,
+                                                            f.a,
                                                             {
                                                                 noTip: !0,
                                                                 customClass: E,
@@ -2907,7 +3042,7 @@
                                                             }
                                                         ),
                                                         quoteName: r.a.createElement(
-                                                            b.a,
+                                                            f.a,
                                                             {
                                                                 noTip: !0,
                                                                 customClass: w,
@@ -2921,7 +3056,7 @@
                                           r.a.createElement(
                                               "td",
                                               {
-                                                  style: V,
+                                                  style: z,
                                                   onClick: this.props.onFlip
                                               },
                                               r.a.createElement(I.a, {
@@ -2942,7 +3077,7 @@
                                           r.a.createElement(
                                               "td",
                                               {
-                                                  style: V,
+                                                  style: z,
                                                   onClick: this.props.onFlip
                                               },
                                               r.a.createElement(D.a, {
@@ -2969,10 +3104,10 @@
                                                   fromAsset: n.amountForSale()
                                                       .asset_id,
                                                   noDecimals: !0,
-                                                  toAsset: v
+                                                  toAsset: y
                                               }),
                                               " ",
-                                              r.a.createElement(b.a, {name: v})
+                                              r.a.createElement(f.a, {name: y})
                                           ),
                                           r.a.createElement(
                                               "td",
@@ -2986,7 +3121,7 @@
                                                           "_" +
                                                           t.get("symbol")
                                                   },
-                                                  r.a.createElement(j.a, {
+                                                  r.a.createElement(T.a, {
                                                       name: "trade",
                                                       title:
                                                           "icons.trade.trade",
@@ -3037,7 +3172,7 @@
                                           r.a.createElement(
                                               "td",
                                               {
-                                                  className: f,
+                                                  className: b,
                                                   style: {paddingLeft: 10}
                                               },
                                               r.a.createElement(N.a, {
@@ -3059,7 +3194,7 @@
                                                   a.get("precision")
                                               ),
                                               " ",
-                                              y
+                                              v
                                           ),
                                           r.a.createElement(
                                               "td",
@@ -3117,7 +3252,7 @@
                                                             onClick: this.props
                                                                 .onCancel
                                                         },
-                                                        r.a.createElement(j.a, {
+                                                        r.a.createElement(T.a, {
                                                             name:
                                                                 "cross-circle",
                                                             title:
@@ -3135,10 +3270,10 @@
                 );
             })();
             J.defaultProps = {showSymbols: !1};
-            var H = (function(e) {
+            var G = (function(e) {
                 function t(e) {
                     M(this, t);
-                    var a = z(
+                    var a = U(
                         this,
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                     );
@@ -3149,8 +3284,8 @@
                     );
                 }
                 return (
-                    U(t, r.a.Component),
-                    R(t, [
+                    V(t, r.a.Component),
+                    B(t, [
                         {
                             key: "componentDidMount",
                             value: function() {
@@ -3188,7 +3323,7 @@
                                     p = o
                                         .toArray()
                                         .map(function(e) {
-                                            var t = x.b.getObject(e);
+                                            var t = j.b.getObject(e);
                                             if (!t) return null;
                                             var a = t.getIn([
                                                     "sell_price",
@@ -3202,7 +3337,7 @@
                                                 ]);
                                             return (a === l && n === c) ||
                                                 (a === c && n === l)
-                                                ? new T.d(
+                                                ? new x.d(
                                                       t.toJS(),
                                                       u,
                                                       r.get("id")
@@ -3216,7 +3351,7 @@
                                         .toArray()
                                         .map(function(e) {
                                             try {
-                                                var t = x.b.getObject(e);
+                                                var t = j.b.getObject(e);
                                                 if (!t) return null;
                                                 var a = t.getIn([
                                                         "call_price",
@@ -3233,7 +3368,7 @@
                                                     (a === c && n === l)
                                                 )
                                                     return s
-                                                        ? new T.b(
+                                                        ? new x.b(
                                                               t.toJS(),
                                                               u,
                                                               r.get("id"),
@@ -3265,7 +3400,7 @@
                                 var t = this.refs.container;
                                 (t.scrollTop = 0),
                                     p.a.update(t),
-                                    setTimeout(B.a.rebuild, 1e3);
+                                    setTimeout(F.a.rebuild, 1e3);
                             }
                         },
                         {
@@ -3308,7 +3443,7 @@
                                                 })
                                             )
                                         ),
-                                        f = m
+                                        b = m
                                             .filter(function(e) {
                                                 return e.isBid();
                                             })
@@ -3354,10 +3489,10 @@
                                                     )
                                                 });
                                             }),
-                                        y = [];
-                                    _.length && (y = y.concat(_)),
-                                        f.length && (y = y.concat(f)),
-                                        y.sort(function(e, t) {
+                                        v = [];
+                                    _.length && (v = v.concat(_)),
+                                        b.length && (v = v.concat(b)),
+                                        v.sort(function(e, t) {
                                             return (
                                                 e.props.price - t.props.price
                                             );
@@ -3368,7 +3503,7 @@
                                                 component: "tbody",
                                                 transitionName: "newrow"
                                             },
-                                            y.length ? y : d
+                                            v.length ? v : d
                                         ));
                                 }
                                 l &&
@@ -3381,9 +3516,9 @@
                                         baseSymbol: o,
                                         quoteSymbol: s
                                     }));
-                                var v = "mymarkets-header clickable",
-                                    E = P()(v, {inactive: "my_orders" !== l}),
-                                    w = P()(v, {
+                                var y = "mymarkets-header clickable",
+                                    E = P()(y, {inactive: "my_orders" !== l}),
+                                    w = P()(y, {
                                         inactive: "open_settlement" !== l
                                     }),
                                     k = u || p ? "50%" : "100%",
@@ -3487,7 +3622,7 @@
                                                                               "header-sub-title"
                                                                       },
                                                                       r.a.createElement(
-                                                                          b.a,
+                                                                          f.a,
                                                                           {
                                                                               dataPlace:
                                                                                   "top",
@@ -3506,7 +3641,7 @@
                                                                               "header-sub-title"
                                                                       },
                                                                       r.a.createElement(
-                                                                          b.a,
+                                                                          f.a,
                                                                           {
                                                                               dataPlace:
                                                                                   "top",
@@ -3551,14 +3686,14 @@
                     t
                 );
             })();
-            (H.defaultProps = {
+            (G.defaultProps = {
                 base: {},
                 quote: {},
                 orders: {},
                 quoteSymbol: "",
                 baseSymbol: ""
             }),
-                (H.propTypes = {
+                (G.propTypes = {
                     base: o.a.object.isRequired,
                     quote: o.a.object.isRequired,
                     orders: o.a.object.isRequired,
@@ -3566,7 +3701,493 @@
                     baseSymbol: o.a.string.isRequired
                 });
         },
-        450: function(e, t, a) {
+        363: function(e, t, a) {
+            "use strict";
+            var n = a(0),
+                r = a.n(n),
+                s = a(3),
+                o = a.n(s),
+                i = a(1),
+                l = a.n(i),
+                c = a(150),
+                u = a(134),
+                p = a(113),
+                m = (function() {
+                    function e(e, t) {
+                        for (var a = 0; a < t.length; a++) {
+                            var n = t[a];
+                            (n.enumerable = n.enumerable || !1),
+                                (n.configurable = !0),
+                                "value" in n && (n.writable = !0),
+                                Object.defineProperty(e, n.key, n);
+                        }
+                    }
+                    return function(t, a, n) {
+                        return a && e(t.prototype, a), n && e(t, n), t;
+                    };
+                })();
+            var d = (function(e) {
+                function t(e) {
+                    !(function(e, t) {
+                        if (!(e instanceof t))
+                            throw new TypeError(
+                                "Cannot call a class as a function"
+                            );
+                    })(this, t);
+                    var a = (function(e, t) {
+                        if (!e)
+                            throw new ReferenceError(
+                                "this hasn't been initialised - super() hasn't been called"
+                            );
+                        return !t ||
+                            ("object" != typeof t && "function" != typeof t)
+                            ? e
+                            : t;
+                    })(
+                        this,
+                        (t.__proto__ || Object.getPrototypeOf(t)).call(this, e)
+                    );
+                    (a.currencies = []), (a.courses = []), (a.inputValue = 0);
+                    var n = a;
+                    return (
+                        (a.state = {
+                            isActiveThisModal: "is-active",
+                            account: null,
+                            receiveAmount: 0,
+                            assets: [],
+                            asset: t.DEFAULT_CURRENCY,
+                            address: "",
+                            minimal: 0,
+                            confirmations: 0,
+                            assetValues: []
+                        }),
+                        (a.onChooseAsset = a.onChooseAsset.bind(a)),
+                        (a.closeModal = a.closeModal.bind(a)),
+                        (a.handleSendInput = a.handleSendInput.bind(a)),
+                        new p.a().getAllowCurrency(function(a) {
+                            n.currencies = a.deposit;
+                            var r = t.DEFAULT_CURRENCY;
+                            if (n.currencies) {
+                                var s = [],
+                                    o = [];
+                                for (var i in n.currencies)
+                                    n.currencies[i].asset &&
+                                        (s.push(n.currencies[i].asset),
+                                        (o[n.currencies[i].asset] =
+                                            n.currencies[i].asset),
+                                        n.currencies[i].asset === e.asset &&
+                                            (r = e.asset));
+                                n.onChooseAsset(r),
+                                    n.setState({
+                                        asset: r,
+                                        assets: s,
+                                        assetValues: o
+                                    });
+                            }
+                        }),
+                        a
+                    );
+                }
+                return (
+                    (function(e, t) {
+                        if ("function" != typeof t && null !== t)
+                            throw new TypeError(
+                                "Super expression must either be null or a function, not " +
+                                    typeof t
+                            );
+                        (e.prototype = Object.create(t && t.prototype, {
+                            constructor: {
+                                value: e,
+                                enumerable: !1,
+                                writable: !0,
+                                configurable: !0
+                            }
+                        })),
+                            t &&
+                                (Object.setPrototypeOf
+                                    ? Object.setPrototypeOf(e, t)
+                                    : (e.__proto__ = t));
+                    })(t, r.a.Component),
+                    m(t, [
+                        {
+                            key: "closeModal",
+                            value: function() {
+                                this.setState({isActiveThisModal: ""});
+                            }
+                        },
+                        {
+                            key: "showModal",
+                            value: function() {
+                                this.setState({isActiveThisModal: "is-active"});
+                            }
+                        },
+                        {
+                            key: "loadAssetCourse",
+                            value: function(e, t) {
+                                var a = this;
+                                new p.a().getPairsCourse(function(n) {
+                                    (a.courses = n.list), t(e);
+                                });
+                            }
+                        },
+                        {
+                            key: "onChooseAsset",
+                            value: function(e) {
+                                var a = this,
+                                    n = this.findCurrentCurrency(e);
+                                this.setState({
+                                    asset: e,
+                                    confirmations: this.getCountConfirmations(
+                                        e
+                                    ),
+                                    minimal: n ? n.minimal : 0
+                                }),
+                                    this.loadAssetCourse(
+                                        e,
+                                        this.updateReceive.bind(this)
+                                    ),
+                                    new p.a().сreatePaymentAddress(
+                                        this.props.account.get("name"),
+                                        e,
+                                        t.MODE_BRIDGE,
+                                        function(e) {
+                                            a.setState({address: e});
+                                        }
+                                    );
+                            }
+                        },
+                        {
+                            key: "getCountConfirmations",
+                            value: function(e) {
+                                switch (e) {
+                                    case "BTC":
+                                        return 2;
+                                    case "LTC":
+                                    case "DASH":
+                                        return 6;
+                                    case "USDT":
+                                        return 2;
+                                    case "ETH":
+                                        return 6;
+                                    case "XMR":
+                                        return 10;
+                                }
+                                return 6;
+                            }
+                        },
+                        {
+                            key: "findCurrentCurrency",
+                            value: function(e) {
+                                for (var t in (void 0 === e &&
+                                    (e = this.state.asset),
+                                this.currencies)) {
+                                    var a = this.currencies[t];
+                                    if (a.asset == e) return a;
+                                }
+                                return null;
+                            }
+                        },
+                        {
+                            key: "updateReceive",
+                            value: function(e) {
+                                var a = this.getCourseByAsset(e),
+                                    n =
+                                        parseFloat(this.inputValue) *
+                                        parseFloat(a.coef);
+                                isNaN(n) && (n = 0),
+                                    this.setState({
+                                        receiveAmount: n.toFixed(t.PRESICTION)
+                                    });
+                            }
+                        },
+                        {
+                            key: "getCourseByAsset",
+                            value: function(e) {
+                                for (var t in this.courses) {
+                                    var a = this.courses[t];
+                                    if (a.to == e) return a;
+                                }
+                                return null;
+                            }
+                        },
+                        {
+                            key: "handleSendInput",
+                            value: function(e) {
+                                e.preventDefault(),
+                                    (this.inputValue = parseFloat(
+                                        e.target.value.replace(",", ".")
+                                    )),
+                                    this.updateReceive(this.state.asset);
+                            }
+                        },
+                        {
+                            key: "render",
+                            value: function() {
+                                var e = r.a.createElement(
+                                        "div",
+                                        {
+                                            className: "button-group",
+                                            style: {marginTop: 10}
+                                        },
+                                        r.a.createElement(
+                                            "div",
+                                            {
+                                                onClick: this.closeModal,
+                                                className: "button"
+                                            },
+                                            r.a.createElement(
+                                                "span",
+                                                null,
+                                                o.a.translate(
+                                                    "modal.withdraw.cancel"
+                                                )
+                                            )
+                                        )
+                                    ),
+                                    t = r.a.createElement(
+                                        "div",
+                                        {
+                                            className: "small-6",
+                                            style: {
+                                                paddingTop: 10,
+                                                paddingRight: 10,
+                                                float: "left",
+                                                width: "49%"
+                                            }
+                                        },
+                                        r.a.createElement(
+                                            "div",
+                                            {className: "grid-block"},
+                                            r.a.createElement(
+                                                "label",
+                                                {className: "left-label"},
+                                                r.a.createElement(l.a, {
+                                                    content: "transfer.send"
+                                                })
+                                            )
+                                        ),
+                                        r.a.createElement(
+                                            "div",
+                                            {
+                                                className:
+                                                    "inline-label input-wrapper"
+                                            },
+                                            r.a.createElement("input", {
+                                                type: "number",
+                                                defaultValue: 0,
+                                                onChange: this.handleSendInput
+                                            }),
+                                            r.a.createElement(
+                                                "div",
+                                                {
+                                                    className:
+                                                        "form-label select floating-dropdown"
+                                                },
+                                                r.a.createElement(c.a, {
+                                                    entries: this.state.assets,
+                                                    values: this.state
+                                                        .assetValues,
+                                                    singleEntry: this.state
+                                                        .asset,
+                                                    value: this.state.asset,
+                                                    onChange: this.onChooseAsset
+                                                })
+                                            )
+                                        )
+                                    ),
+                                    a = r.a.createElement(
+                                        "div",
+                                        {
+                                            className: "small-6",
+                                            style: {
+                                                paddingTop: 10,
+                                                paddingRight: 10,
+                                                float: "left",
+                                                width: "49%"
+                                            }
+                                        },
+                                        r.a.createElement(
+                                            "label",
+                                            {className: "left-label"},
+                                            r.a.createElement(l.a, {
+                                                content: "exchange.receive"
+                                            })
+                                        ),
+                                        r.a.createElement(
+                                            "div",
+                                            {
+                                                className:
+                                                    "inline-label input-wrapper"
+                                            },
+                                            r.a.createElement("input", {
+                                                type: "text",
+                                                value: this.state.receiveAmount
+                                            }),
+                                            r.a.createElement(
+                                                "div",
+                                                {
+                                                    className:
+                                                        "input-right-symbol"
+                                                },
+                                                "LLC"
+                                            )
+                                        )
+                                    ),
+                                    n = r.a.createElement(
+                                        "div",
+                                        null,
+                                        r.a.createElement("br", null),
+                                        r.a.createElement("br", null),
+                                        r.a.createElement("br", null),
+                                        r.a.createElement("br", null),
+                                        r.a.createElement(l.a, {
+                                            content: "gateway.rudex.min_amount",
+                                            minAmount: this.state.minimal,
+                                            symbol: this.state.asset
+                                        }),
+                                        r.a.createElement("br", null),
+                                        r.a.createElement("br", null),
+                                        r.a.createElement(l.a, {
+                                            className: "deposit-withdraw-info",
+                                            component: "b",
+                                            content:
+                                                "gateway.min_count_confirmations",
+                                            cnt: this.state.confirmations
+                                        }),
+                                        r.a.createElement("br", null),
+                                        r.a.createElement("br", null),
+                                        r.a.createElement(l.a, {
+                                            component: "span",
+                                            style: {fontSize: "0.8rem"},
+                                            content:
+                                                "gateway.min_deposit_warning_asset",
+                                            minDeposit: this.state.minimal || 0,
+                                            coin: this.state.asset
+                                        })
+                                    ),
+                                    s = r.a.createElement(
+                                        "div",
+                                        {className: "grid-block"},
+                                        r.a.createElement(u.a, {
+                                            text: this.state.address,
+                                            className: "copyIcon"
+                                        }),
+                                        r.a.createElement(
+                                            "div",
+                                            null,
+                                            r.a.createElement(l.a, {
+                                                component: "div",
+                                                style: {
+                                                    fontSize: "0.8rem",
+                                                    fontWeight: "bold",
+                                                    paddingBottom: "0.3rem"
+                                                },
+                                                content:
+                                                    "gateway.purchase_notice",
+                                                inputAsset: this.state.asset,
+                                                outputAsset: "LLC"
+                                            }),
+                                            r.a.createElement(
+                                                "div",
+                                                {
+                                                    className:
+                                                        "modal__highlight bridge_modal_address"
+                                                },
+                                                this.state.address
+                                            )
+                                        )
+                                    );
+                                return r.a.createElement(
+                                    "div",
+                                    {
+                                        className:
+                                            "modal-overlay " +
+                                            this.state.isActiveThisModal
+                                    },
+                                    r.a.createElement(
+                                        "div",
+                                        {
+                                            id:
+                                                "withdraw_asset_rudex-scorum_RUDEX.SCR",
+                                            "data-closable": "true",
+                                            className:
+                                                "modal fadeIn ng-enter is-active ng-enter-active"
+                                        },
+                                        r.a.createElement(
+                                            "a",
+                                            {
+                                                onClick: this.closeModal,
+                                                href: "javascript:void(0)",
+                                                className: "close-button"
+                                            },
+                                            "×"
+                                        ),
+                                        r.a.createElement("br", null),
+                                        r.a.createElement(
+                                            "div",
+                                            {className: "grid-block vertical"},
+                                            r.a.createElement(
+                                                "form",
+                                                {
+                                                    className:
+                                                        "grid-block vertical full-width-content"
+                                                },
+                                                r.a.createElement(
+                                                    "div",
+                                                    {
+                                                        className:
+                                                            "grid-container"
+                                                    },
+                                                    r.a.createElement(
+                                                        "div",
+                                                        {
+                                                            className:
+                                                                "content-block"
+                                                        },
+                                                        r.a.createElement(
+                                                            "h3",
+                                                            null,
+                                                            r.a.createElement(
+                                                                "span",
+                                                                null,
+                                                                o.a.translate(
+                                                                    "exchange.buy"
+                                                                ),
+                                                                " ",
+                                                                "LLC"
+                                                            )
+                                                        )
+                                                    ),
+                                                    t,
+                                                    a,
+                                                    n,
+                                                    r.a.createElement(
+                                                        "br",
+                                                        null
+                                                    ),
+                                                    s,
+                                                    r.a.createElement(
+                                                        "br",
+                                                        null
+                                                    ),
+                                                    e
+                                                )
+                                            )
+                                        )
+                                    )
+                                );
+                            }
+                        }
+                    ]),
+                    t
+                );
+            })();
+            (d.DEFAULT_CURRENCY = "BTC"),
+                (d.MODE_BRIDGE = "1"),
+                (d.PRESICTION = 4),
+                (t.a = d);
+        },
+        451: function(e, t, a) {
             "use strict";
             (function(e) {
                 var n = a(76),
@@ -3581,13 +4202,13 @@
                     m = a(5),
                     d = a(13),
                     h = a(6),
-                    b = a(24),
-                    f = a(42),
-                    _ = a.n(f),
+                    f = a(24),
+                    b = a(42),
+                    _ = a.n(b),
                     g = a(3),
-                    y = a.n(g),
-                    v = a(25),
-                    E = a(132),
+                    v = a.n(g),
+                    y = a(25),
+                    E = a(134),
                     w = a(12),
                     k = a(37),
                     C = a(36),
@@ -3608,7 +4229,7 @@
                             }
                             return e;
                         },
-                    j = (function() {
+                    T = (function() {
                         function e(e, t) {
                             for (var a = 0; a < t.length; a++) {
                                 var n = t[a];
@@ -3622,13 +4243,13 @@
                             return a && e(t.prototype, a), n && e(t, n), t;
                         };
                     })();
-                function x(e, t) {
+                function j(e, t) {
                     if (!(e instanceof t))
                         throw new TypeError(
                             "Cannot call a class as a function"
                         );
                 }
-                function T(e, t) {
+                function x(e, t) {
                     if (!e)
                         throw new ReferenceError(
                             "this hasn't been initialised - super() hasn't been called"
@@ -3659,14 +4280,14 @@
                 }
                 var D = (function(t) {
                     function a(e) {
-                        x(this, a);
-                        var t = T(
+                        j(this, a);
+                        var t = x(
                             this,
                             (a.__proto__ || Object.getPrototypeOf(a)).call(this)
                         );
                         return (
                             (t.state = {
-                                toAddress: v.a.getLast(e.walletType),
+                                toAddress: y.a.getLast(e.walletType),
                                 withdrawValue: "",
                                 amountError: null,
                                 symbol: e.asset.get("symbol"),
@@ -3696,7 +4317,7 @@
                     }
                     return (
                         q(a, O["a"]),
-                        j(a, [
+                        T(a, [
                             {
                                 key: "componentWillMount",
                                 value: function() {
@@ -3728,7 +4349,7 @@
                                                 memo: "",
                                                 withdrawValue: "",
                                                 receive_address: null,
-                                                toAddress: v.a.getLast(
+                                                toAddress: y.a.getLast(
                                                     e.walletType
                                                 )
                                             },
@@ -3740,7 +4361,7 @@
                                 key: "_getDepositAddress",
                                 value: function() {
                                     if (this.props.backingCoinType) {
-                                        var e = Object(v.j)({
+                                        var e = Object(y.j)({
                                             coin:
                                                 "open." +
                                                 this.props.backingCoinType.toLowerCase(),
@@ -3752,7 +4373,7 @@
                                             ? this.setState({
                                                   receive_address: e
                                               })
-                                            : Object(v.l)(
+                                            : Object(y.l)(
                                                   this._getDepositObject()
                                               );
                                     }
@@ -3778,7 +4399,7 @@
                                         loading: !0,
                                         emptyAddressDeposit: !1
                                     }),
-                                        Object(v.l)(this._getDepositObject());
+                                        Object(y.l)(this._getDepositObject());
                                 }
                             },
                             {
@@ -3827,7 +4448,7 @@
                                         r.plus(n),
                                             s.lt(r) &&
                                                 (r = this.state.to_withdraw.clone()),
-                                            b.a.transfer(
+                                            f.a.transfer(
                                                 this.props.sender.get("id"),
                                                 this.props.intermediateAccount,
                                                 this.state.to_withdraw.getAmount(),
@@ -4101,7 +4722,7 @@
                                             void 0 !== arguments[1]
                                                 ? arguments[1]
                                                 : this.props;
-                                    Object(v.m)({
+                                    Object(y.m)({
                                         url: S.e.BASE,
                                         walletType: a.walletType,
                                         newAddress: e
@@ -4185,7 +4806,7 @@
                                             s.a.createElement(
                                                 "label",
                                                 {className: "left-label"},
-                                                y.a.translate(
+                                                v.a.translate(
                                                     "modal.withdraw.amount"
                                                 )
                                             ),
@@ -4269,7 +4890,7 @@
                                             s.a.createElement(
                                                 "label",
                                                 {className: "left-label"},
-                                                y.a.translate("transfer.fee")
+                                                v.a.translate("transfer.fee")
                                             ),
                                             s.a.createElement(
                                                 "div",
@@ -4339,7 +4960,7 @@
                                             s.a.createElement(
                                                 "label",
                                                 {className: "left-label"},
-                                                y.a.translate("gateway.fee")
+                                                v.a.translate("gateway.fee")
                                             ),
                                             s.a.createElement(
                                                 "div",
@@ -4407,7 +5028,7 @@
                                             s.a.createElement(
                                                 "label",
                                                 {className: "left-label"},
-                                                y.a.translate(
+                                                v.a.translate(
                                                     "modal.withdraw.address"
                                                 )
                                             ),
@@ -4418,7 +5039,7 @@
                                                         "inline-label input-wrapper"
                                                 },
                                                 s.a.createElement("input", {
-                                                    placeholder: y.a.translate(
+                                                    placeholder: v.a.translate(
                                                         "gateway.withdraw_placeholder",
                                                         {asset: t}
                                                     ),
@@ -4446,7 +5067,7 @@
                                                             {
                                                                 "data-place":
                                                                     "right",
-                                                                "data-tip": y.a.translate(
+                                                                "data-tip": v.a.translate(
                                                                     "tooltip.withdraw_address",
                                                                     {asset: t}
                                                                 )
@@ -4485,7 +5106,7 @@
                                                   s.a.createElement(
                                                       "label",
                                                       {className: "left-label"},
-                                                      y.a.translate(
+                                                      v.a.translate(
                                                           "transfer.memo"
                                                       )
                                                   ),
@@ -4596,7 +5217,7 @@
                                                 {
                                                     style: {marginBottom: 10},
                                                     "data-place": "right",
-                                                    "data-tip": y.a.translate(
+                                                    "data-tip": v.a.translate(
                                                         "tooltip.deposit_tip",
                                                         {asset: r}
                                                     )
@@ -4673,7 +5294,7 @@
                                                                   readOnly: !0,
                                                                   type: "text",
                                                                   value:
-                                                                      y.a.translate(
+                                                                      v.a.translate(
                                                                           "transfer.memo"
                                                                       ) +
                                                                       ": " +
@@ -4765,7 +5386,7 @@
                                                   "button",
                                                   {
                                                       "data-place": "right",
-                                                      "data-tip": y.a.translate(
+                                                      "data-tip": v.a.translate(
                                                           "tooltip.withdraw_full"
                                                       ),
                                                       className: "button",
@@ -4802,7 +5423,7 @@
                                         s.a.createElement(
                                             "label",
                                             {style: {fontSize: "1rem"}},
-                                            y.a.translate(
+                                            v.a.translate(
                                                 "gateway.balance_asset",
                                                 {asset: e}
                                             ),
@@ -4921,8 +5542,8 @@
                     (D = Object(d.a)(D));
                 var I = (function(e) {
                     function t() {
-                        x(this, t);
-                        var e = T(
+                        j(this, t);
+                        var e = x(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                         );
@@ -4930,7 +5551,7 @@
                     }
                     return (
                         q(t, s.a.Component),
-                        j(t, [
+                        T(t, [
                             {
                                 key: "show",
                                 value: function() {
@@ -4980,7 +5601,7 @@
                 t.a = I;
             }.call(this, a(29).Buffer));
         },
-        451: function(e, t, a) {
+        452: function(e, t, a) {
             "use strict";
             var n = a(0),
                 r = a.n(n),
@@ -4994,22 +5615,22 @@
                 m = a(13),
                 d = a(6),
                 h = a(42),
-                b = a.n(h),
-                f = a(3),
-                _ = a.n(f),
+                f = a.n(h),
+                b = a(3),
+                _ = a.n(b),
                 g = a(25),
-                y = a(230),
-                v = a(132),
+                v = a(230),
+                y = a(134),
                 E = a(12),
                 w = a(37),
                 k = a(23),
-                C = a(147),
+                C = a(150),
                 A = a(15),
                 N = a(8),
                 O = a(10),
-                S = a(151),
+                S = a(154),
                 P = a.n(S),
-                j =
+                T =
                     Object.assign ||
                     function(e) {
                         for (var t = 1; t < arguments.length; t++) {
@@ -5020,7 +5641,7 @@
                         }
                         return e;
                     },
-                x = (function() {
+                j = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -5034,7 +5655,7 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            function T(e, t) {
+            function x(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
@@ -5068,7 +5689,7 @@
             }
             var I = (function(e) {
                 function t(e) {
-                    T(this, t);
+                    x(this, t);
                     var a = q(
                         this,
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this)
@@ -5084,13 +5705,13 @@
                             apiError: !1
                         }),
                         a._validateAddress(a.state.toAddress, e),
-                        (a.deposit_address_cache = new y.a()),
+                        (a.deposit_address_cache = new v.a()),
                         a
                     );
                 }
                 return (
                     D(t, r.a.Component),
-                    x(t, [
+                    j(t, [
                         {
                             key: "onClose",
                             value: function() {
@@ -5342,7 +5963,7 @@
                         {
                             key: "componentDidUpdate",
                             value: function() {
-                                b.a.rebuild();
+                                f.a.rebuild();
                             }
                         },
                         {
@@ -5426,11 +6047,11 @@
                                     m = Object.keys(this.props.bridges.toJS()),
                                     d = this.props.inputCoinType.toUpperCase(),
                                     h = (a || "") + t,
-                                    b = (
+                                    f = (
                                         this.state.receiveAmount /
                                         this.state.inputAmount
                                     ).toFixed(4),
-                                    f = h + "/" + d,
+                                    b = h + "/" + d,
                                     g =
                                         this.state.inputAmount >
                                             parseFloat(
@@ -5438,7 +6059,7 @@
                                             ) ||
                                         this.state.sendAmount >
                                             parseFloat(this.state.depositLimit),
-                                    y = g
+                                    v = g
                                         ? {border: "1px solid #a94442"}
                                         : null;
                                 return r.a.createElement(
@@ -5604,7 +6225,7 @@
                                                         r.a.createElement(
                                                             "input",
                                                             {
-                                                                style: y,
+                                                                style: v,
                                                                 type: "text",
                                                                 value: this
                                                                     .state
@@ -5748,7 +6369,7 @@
                                                         r.a.createElement(
                                                             "input",
                                                             {
-                                                                style: y,
+                                                                style: v,
                                                                 type: "text",
                                                                 value: this
                                                                     .state
@@ -5818,7 +6439,7 @@
                                                             {
                                                                 disabled: !0,
                                                                 type: "number",
-                                                                value: g ? 0 : b
+                                                                value: g ? 0 : f
                                                             }
                                                         ),
                                                         r.a.createElement(
@@ -5827,7 +6448,7 @@
                                                                 className:
                                                                     "input-right-symbol"
                                                             },
-                                                            f
+                                                            b
                                                         )
                                                     )
                                                 )
@@ -5848,7 +6469,7 @@
                                                                   "copyIcon"
                                                           },
                                                           r.a.createElement(
-                                                              v.a,
+                                                              y.a,
                                                               {
                                                                   text: l,
                                                                   className:
@@ -5906,7 +6527,7 @@
                                                                         "copyIcon"
                                                                 },
                                                                 r.a.createElement(
-                                                                    v.a,
+                                                                    y.a,
                                                                     {
                                                                         text:
                                                                             s.memo,
@@ -6185,10 +6806,10 @@
                 asset: d.a.ChainAsset.isRequired
             }),
                 (I = Object(m.a)(I));
-            var F = (function(e) {
+            var R = (function(e) {
                 function t() {
                     return (
-                        T(this, t),
+                        x(this, t),
                         q(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
@@ -6200,7 +6821,7 @@
                 }
                 return (
                     D(t, r.a.Component),
-                    x(t, [
+                    j(t, [
                         {
                             key: "render",
                             value: function() {
@@ -6226,7 +6847,7 @@
                                             .inputCoinType),
                                     r.a.createElement(
                                         I,
-                                        j({}, a, {preferredBridge: t}, n.toJS())
+                                        T({}, a, {preferredBridge: t}, n.toJS())
                                     )
                                 );
                             }
@@ -6235,7 +6856,7 @@
                     t
                 );
             })();
-            F = Object(A.connect)(F, {
+            R = Object(A.connect)(R, {
                 listenTo: function() {
                     return [N.a];
                 },
@@ -6247,9 +6868,9 @@
                     };
                 }
             });
-            var B = (function(e) {
+            var F = (function(e) {
                 function t() {
-                    T(this, t);
+                    x(this, t);
                     var e = q(
                         this,
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this)
@@ -6258,7 +6879,7 @@
                 }
                 return (
                     D(t, r.a.Component),
-                    x(t, [
+                    j(t, [
                         {
                             key: "show",
                             value: function() {
@@ -6287,8 +6908,8 @@
                                           },
                                           this.state.open
                                               ? r.a.createElement(
-                                                    F,
-                                                    j({}, this.props, {
+                                                    R,
+                                                    T({}, this.props, {
                                                         open: this.state.open
                                                     })
                                                 )
@@ -6301,7 +6922,7 @@
                     t
                 );
             })();
-            t.a = B;
+            t.a = F;
         }
     }
 ]);

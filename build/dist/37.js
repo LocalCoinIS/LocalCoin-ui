@@ -1,7 +1,7 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
     [37],
     {
-        140: function(e, t, n) {
+        143: function(e, t, n) {
             "use strict";
             n.d(t, "b", function() {
                 return j;
@@ -327,7 +327,7 @@
             (I.propTypes = {balance: s.a.ChainObject.isRequired}),
                 (I = Object(i.a)(I, {keep_updating: !0}));
         },
-        4988: function(e, t, n) {
+        4990: function(e, t, n) {
             "use strict";
             n.r(t);
             var a = n(0),
@@ -345,7 +345,7 @@
                 _ = n(17),
                 f = n(40),
                 v = n(13),
-                g = n(140),
+                g = n(143),
                 b = n(12),
                 y = n(2),
                 E = n.n(y),
@@ -672,7 +672,7 @@
             }),
                 (x.defaultProps = {tempComponent: "tr"});
             var k = Object(v.a)(x),
-                O = n(166),
+                O = n(132),
                 A = (function() {
                     function e(e, t) {
                         for (var n = 0; n < t.length; n++) {
@@ -1205,7 +1205,7 @@
             var T = Object(v.a)(P),
                 R = n(9),
                 B = n.n(R),
-                V = n(105),
+                V = n(104),
                 D = n(11),
                 W = n(119),
                 q = n(22),

@@ -3,16 +3,16 @@
     {
         112: function(e, t, a) {
             "use strict";
-            var n = a(0),
-                r = a.n(n),
-                s = a(1),
-                o = a.n(s),
+            var r = a(0),
+                n = a.n(r),
+                o = a(1),
+                s = a.n(o),
                 i = a(4),
                 l = a(6),
                 c = a(13),
                 u = a(3),
                 p = a.n(u),
-                h = a(147),
+                h = a(150),
                 d = a(17),
                 m = a(7),
                 f = a.n(m),
@@ -24,15 +24,15 @@
                 k = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
+                            var r = t[a];
+                            (r.enumerable = r.enumerable || !1),
+                                (r.configurable = !0),
+                                "value" in r && (r.writable = !0),
+                                Object.defineProperty(e, r.key, r);
                         }
                     }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
+                    return function(t, a, r) {
+                        return a && e(t.prototype, a), r && e(t, r), t;
                     };
                 })();
             function E(e, t) {
@@ -67,7 +67,7 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var S = (function(e) {
+            var x = (function(e) {
                 function t() {
                     return (
                         E(this, t),
@@ -81,14 +81,14 @@
                     );
                 }
                 return (
-                    C(t, r.a.Component),
+                    C(t, n.a.Component),
                     k(t, [
                         {
                             key: "render",
                             value: function() {
                                 return 0 !== this.props.assets.length &&
                                     this.props.value
-                                    ? r.a.createElement(h.a, {
+                                    ? n.a.createElement(h.a, {
                                           entries: this.props.assets
                                               .map(function(e) {
                                                   return e && e.get("symbol");
@@ -110,7 +110,7 @@
                                               {}
                                           ),
                                           singleEntry: this.props.assets[0]
-                                              ? r.a.createElement(d.a, {
+                                              ? n.a.createElement(d.a, {
                                                     asset: this.props.assets[0].get(
                                                         "id"
                                                     ),
@@ -128,9 +128,9 @@
                     t
                 );
             })();
-            (S.propTypes = {value: _.a.string, onChange: _.a.func}),
-                (S = Object(y.a)(S, {asList: !0}));
-            var x = (function(e) {
+            (x.propTypes = {value: _.a.string, onChange: _.a.func}),
+                (x = Object(y.a)(x, {asList: !0}));
+            var S = (function(e) {
                 function t() {
                     return (
                         E(this, t),
@@ -144,7 +144,7 @@
                     );
                 }
                 return (
-                    C(t, r.a.Component),
+                    C(t, n.a.Component),
                     k(t, [
                         {
                             key: "getAsset",
@@ -258,65 +258,65 @@
                                 var e = this.props,
                                     t = e.disabled,
                                     a = e.noLabel,
-                                    n = this.getError(),
-                                    s = void 0;
+                                    r = this.getError(),
+                                    o = void 0;
                                 t ||
                                     (this.props.asset
-                                        ? (s = this.props.asset.get("symbol"))
-                                        : !n &&
+                                        ? (o = this.props.asset.get("symbol"))
+                                        : !r &&
                                           this.props.assetInput &&
-                                          (n = p.a.translate(
+                                          (r = p.a.translate(
                                               "explorer.asset.not_found",
                                               {name: this.props.assetInput}
                                           )));
                                 var i = b()("button", {
                                     disabled:
                                         !this.props.asset ||
-                                        n ||
+                                        r ||
                                         this.props.disableActionButton
                                 });
-                                return r.a.createElement(
+                                return n.a.createElement(
                                     "div",
                                     {
                                         className: "asset-selector",
                                         style: this.props.style
                                     },
-                                    r.a.createElement(
+                                    n.a.createElement(
                                         "div",
                                         null,
-                                        r.a.createElement(
+                                        n.a.createElement(
                                             "div",
                                             {className: "header-area"},
-                                            n || a
+                                            r || a
                                                 ? null
-                                                : r.a.createElement(
+                                                : n.a.createElement(
                                                       "label",
                                                       {
                                                           className:
                                                               "right-label"
                                                       },
                                                       "  ",
-                                                      r.a.createElement(
+                                                      n.a.createElement(
                                                           "span",
                                                           null,
-                                                          s
+                                                          o
                                                       )
                                                   ),
-                                            r.a.createElement(o.a, {
+                                            n.a.createElement(s.a, {
                                                 component: "label",
                                                 content: this.props.label
                                             })
                                         ),
-                                        r.a.createElement(
+                                        n.a.createElement(
                                             "div",
                                             {className: "input-area"},
-                                            r.a.createElement(
+                                            n.a.createElement(
                                                 "div",
                                                 {
                                                     className:
                                                         "inline-label input-wrapper"
                                                 },
-                                                r.a.createElement("input", {
+                                                n.a.createElement("input", {
                                                     style: this.props
                                                         .inputStyle,
                                                     disabled: this.props
@@ -341,14 +341,14 @@
                                                     tabIndex: this.props
                                                         .tabIndex
                                                 }),
-                                                r.a.createElement(
+                                                n.a.createElement(
                                                     "div",
                                                     {
                                                         className:
                                                             "form-label select floating-dropdown"
                                                     },
                                                     this.props.asset
-                                                        ? r.a.createElement(S, {
+                                                        ? n.a.createElement(x, {
                                                               ref: this.props
                                                                   .refCallback,
                                                               value: this.props.asset.get(
@@ -366,7 +366,7 @@
                                                 ),
                                                 this.props.children,
                                                 this.props.onAction
-                                                    ? r.a.createElement(
+                                                    ? n.a.createElement(
                                                           "button",
                                                           {
                                                               className: i,
@@ -374,8 +374,8 @@
                                                                   this
                                                               )
                                                           },
-                                                          r.a.createElement(
-                                                              o.a,
+                                                          n.a.createElement(
+                                                              s.a,
                                                               {
                                                                   content: this
                                                                       .props
@@ -386,20 +386,20 @@
                                                     : null
                                             )
                                         ),
-                                        r.a.createElement(
+                                        n.a.createElement(
                                             "div",
                                             {
                                                 className: "error-area",
                                                 style: {paddingBottom: "10px"}
                                             },
-                                            r.a.createElement(
+                                            n.a.createElement(
                                                 "span",
                                                 {
                                                     style: {
                                                         wordBreak: "break-all"
                                                     }
                                                 },
-                                                n
+                                                r
                                             )
                                         )
                                     )
@@ -410,7 +410,7 @@
                     t
                 );
             })();
-            (x.propTypes = {
+            (S.propTypes = {
                 label: _.a.string,
                 error: _.a.string,
                 placeholder: _.a.string,
@@ -421,151 +421,16 @@
                 tabIndex: _.a.number,
                 disableActionButton: _.a.string
             }),
-                (x.defaultProps = {disabled: !1}),
-                (t.a = Object(c.a)(x));
+                (S.defaultProps = {disabled: !1}),
+                (t.a = Object(c.a)(S));
         },
-        113: function(e, t, a) {
-            "use strict";
-            var n = a(4),
-                r = (function() {
-                    function e(e, t) {
-                        for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
-                        }
-                    }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
-                    };
-                })();
-            var s = (function() {
-                function e() {
-                    !(function(e, t) {
-                        if (!(e instanceof t))
-                            throw new TypeError(
-                                "Cannot call a class as a function"
-                            );
-                    })(this, e),
-                        (this.getPairsCourse = function(e) {
-                            this.ajax(e, "GetPairsCourse");
-                        });
-                }
-                return (
-                    r(e, [
-                        {
-                            key: "getBaseUrl",
-                            value: function() {
-                                return "https://llcgateway.localcoin.is/";
-                            }
-                        },
-                        {
-                            key: "getAllowCurrency",
-                            value: function(e) {
-                                this.ajax(e, "GetAllowCurrency");
-                            }
-                        },
-                        {
-                            key: "сreatePaymentAddress",
-                            value: function(e, t, a, n) {
-                                this.ajax(
-                                    function(e) {
-                                        n(e.address);
-                                    },
-                                    "CreatePaymentAddress",
-                                    {account: e, asset: t, type: a}
-                                );
-                            }
-                        },
-                        {
-                            key: "validateAddress",
-                            value: function(e, t, a) {
-                                this.ajax(a, "ValidateAddress", {
-                                    address: e,
-                                    currency: t
-                                });
-                            }
-                        },
-                        {
-                            key: "ajax",
-                            value: function(e, t, a) {
-                                void 0 === a && (a = null);
-                                var n =
-                                    this.getBaseUrl() +
-                                    "?methodnameaction=" +
-                                    t;
-                                a && (n += "&" + this.encodeQueryData(a)),
-                                    fetch(n)
-                                        .then(function(e) {
-                                            return e.json();
-                                        })
-                                        .then(e);
-                            }
-                        },
-                        {
-                            key: "encodeQueryData",
-                            value: function(e) {
-                                var t = [];
-                                for (var a in e)
-                                    t.push(
-                                        encodeURIComponent(a) +
-                                            "=" +
-                                            encodeURIComponent(e[a])
-                                    );
-                                return t.join("&");
-                            }
-                        },
-                        {
-                            key: "precisionToCoef",
-                            value: function(e) {
-                                for (var t = "1", a = 0; a < e; a++) t += "0";
-                                return parseInt(t);
-                            }
-                        },
-                        {
-                            key: "getUserBalance",
-                            value: function(e, t, a) {
-                                var r = [],
-                                    s = function(e, t, a) {
-                                        return e ? (t ? t / a : 0) : t;
-                                    },
-                                    o = e.get("balances").toJS();
-                                for (var i in o) {
-                                    var l = n.b.getAsset(i);
-                                    if (l) {
-                                        var c = o[i],
-                                            u = n.b.getObject(c),
-                                            p = l.get("precision"),
-                                            h = this.precisionToCoef(p);
-                                        r[l.get("symbol")] = s(
-                                            t,
-                                            u.get("balance"),
-                                            h
-                                        );
-                                    }
-                                }
-                                return void 0 !== a
-                                    ? void 0 !== r[a]
-                                        ? r[a]
-                                        : 0
-                                    : r;
-                            }
-                        }
-                    ]),
-                    e
-                );
-            })();
-            t.a = s;
-        },
-        152: function(e, t, a) {
+        133: function(e, t, a) {
             "use strict";
             a.r(t);
-            var n = a(0),
-                r = a.n(n),
-                s = a(11),
-                o = a(15),
+            var r = a(0),
+                n = a.n(r),
+                o = a(11),
+                s = a(15),
                 i = a(8),
                 l = a(1),
                 c = a.n(l),
@@ -573,15 +438,15 @@
                 p = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
+                            var r = t[a];
+                            (r.enumerable = r.enumerable || !1),
+                                (r.configurable = !0),
+                                "value" in r && (r.writable = !0),
+                                Object.defineProperty(e, r.key, r);
                         }
                     }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
+                    return function(t, a, r) {
+                        return a && e(t.prototype, a), r && e(t, r), t;
                     };
                 })();
             var h = (function(e) {
@@ -630,51 +495,51 @@
                                 (Object.setPrototypeOf
                                     ? Object.setPrototypeOf(e, t)
                                     : (e.__proto__ = t));
-                    })(t, r.a.Component),
+                    })(t, n.a.Component),
                     p(t, [
                         {
                             key: "render",
                             value: function() {
-                                return r.a.createElement(
+                                return n.a.createElement(
                                     "div",
                                     {className: "page-404"},
-                                    r.a.createElement(
+                                    n.a.createElement(
                                         "div",
                                         {className: "page-404-container"},
-                                        r.a.createElement(
+                                        n.a.createElement(
                                             "div",
                                             {className: "page-404-logo"},
-                                            r.a.createElement("img", {
+                                            n.a.createElement("img", {
                                                 src: u.logoLight,
                                                 height: "50px",
                                                 width: "50px",
                                                 alt: "Logo"
                                             })
                                         ),
-                                        r.a.createElement(
+                                        n.a.createElement(
                                             "div",
                                             {className: "page-404-title"},
-                                            r.a.createElement(c.a, {
+                                            n.a.createElement(c.a, {
                                                 content:
                                                     "page404.page_not_found_title"
                                             })
                                         ),
-                                        r.a.createElement(
+                                        n.a.createElement(
                                             "div",
                                             {className: "page-404-subtitle"},
-                                            r.a.createElement(c.a, {
+                                            n.a.createElement(c.a, {
                                                 content:
                                                     "page404." +
                                                     this.props.subtitle
                                             })
                                         ),
-                                        r.a.createElement(
+                                        n.a.createElement(
                                             "div",
                                             {className: "page-404-button-back"},
-                                            r.a.createElement(
-                                                s.b,
+                                            n.a.createElement(
+                                                o.b,
                                                 {to: "/"},
-                                                r.a.createElement(c.a, {
+                                                n.a.createElement(c.a, {
                                                     component: "button",
                                                     className:
                                                         "btn large inverted flat",
@@ -691,7 +556,7 @@
                 );
             })();
             (h.defaultProps = {subtitle: "page_not_found_subtitle"}),
-                (t.default = h = Object(o.connect)(h, {
+                (t.default = h = Object(s.connect)(h, {
                     listenTo: function() {
                         return [i.a];
                     },
@@ -702,11 +567,11 @@
         },
         359: function(e, t, a) {
             "use strict";
-            var n = a(76),
-                r = a(0),
-                s = a.n(r),
-                o = a(7),
-                i = a.n(o),
+            var r = a(76),
+                n = a(0),
+                o = a.n(n),
+                s = a(7),
+                i = a.n(s),
                 l = a(54),
                 c = a.n(l),
                 u = a(5),
@@ -721,15 +586,15 @@
                 v = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
+                            var r = t[a];
+                            (r.enumerable = r.enumerable || !1),
+                                (r.configurable = !0),
+                                "value" in r && (r.writable = !0),
+                                Object.defineProperty(e, r.key, r);
                         }
                     }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
+                    return function(t, a, r) {
+                        return a && e(t.prototype, a), r && e(t, r), t;
                     };
                 })();
             var _ = (function(e) {
@@ -778,13 +643,13 @@
                                 (Object.setPrototypeOf
                                     ? Object.setPrototypeOf(e, t)
                                     : (e.__proto__ = t));
-                    })(t, s.a.Component),
+                    })(t, o.a.Component),
                     v(t, [
                         {
                             key: "render",
                             value: function() {
                                 return this.props.account
-                                    ? s.a.createElement(
+                                    ? o.a.createElement(
                                           "span",
                                           null,
                                           this.props.account.get("name")
@@ -802,23 +667,23 @@
                 E = a(12),
                 w = a(35),
                 C = a(10),
-                S = a(2),
-                x = a.n(S),
+                x = a(2),
+                S = a.n(x),
                 A = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
+                            var r = t[a];
+                            (r.enumerable = r.enumerable || !1),
+                                (r.configurable = !0),
+                                "value" in r && (r.writable = !0),
+                                Object.defineProperty(e, r.key, r);
                         }
                     }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
+                    return function(t, a, r) {
+                        return a && e(t.prototype, a), r && e(t, r), t;
                     };
                 })();
-            var N = (function(e) {
+            var O = (function(e) {
                 function t() {
                     !(function(e, t) {
                         if (!(e instanceof t))
@@ -860,7 +725,7 @@
                                 (Object.setPrototypeOf
                                     ? Object.setPrototypeOf(e, t)
                                     : (e.__proto__ = t));
-                    })(t, s.a.Component),
+                    })(t, o.a.Component),
                     A(t, [
                         {
                             key: "_onClick",
@@ -916,19 +781,19 @@
                                 var e = this,
                                     t = this.props,
                                     a = t.quote,
-                                    n = t.base,
-                                    r = (t.noSymbols, t.stats),
-                                    o = t.starred;
-                                if (!a || !n) return null;
-                                var i = a.get("symbol") + "_" + n.get("symbol"),
-                                    l = a.get("symbol") + "/" + n.get("symbol"),
+                                    r = t.base,
+                                    n = (t.noSymbols, t.stats),
+                                    s = t.starred;
+                                if (!a || !r) return null;
+                                var i = a.get("symbol") + "_" + r.get("symbol"),
+                                    l = a.get("symbol") + "/" + r.get("symbol"),
                                     c = this.props.getDynamicObject(
                                         a.get("dynamic_asset_data_id")
                                     ),
                                     p = this.props.getDynamicObject(
-                                        n.get("dynamic_asset_data_id")
+                                        r.get("dynamic_asset_data_id")
                                     ),
-                                    h = u.a.convertPrice(a, n),
+                                    h = u.a.convertPrice(a, r),
                                     d = {};
                                 this.props.leftAlign && (d.textAlign = "left");
                                 var m = "button outline",
@@ -946,20 +811,20 @@
                                         .map(function(t) {
                                             switch (t.name) {
                                                 case "star":
-                                                    var d = o
+                                                    var d = s
                                                         ? "gold-star"
                                                         : "grey-star";
-                                                    return s.a.createElement(
+                                                    return o.a.createElement(
                                                         "td",
                                                         {
                                                             onClick: e._onStar.bind(
                                                                 e,
                                                                 a.get("symbol"),
-                                                                n.get("symbol")
+                                                                r.get("symbol")
                                                             ),
                                                             key: t.index
                                                         },
-                                                        s.a.createElement(E.a, {
+                                                        o.a.createElement(E.a, {
                                                             className: d,
                                                             name: "fi-star",
                                                             title:
@@ -967,10 +832,10 @@
                                                         })
                                                     );
                                                 case "vol":
-                                                    var b = r
-                                                        ? r.volumeBase
+                                                    var b = n
+                                                        ? n.volumeBase
                                                         : 0;
-                                                    return s.a.createElement(
+                                                    return o.a.createElement(
                                                         "td",
                                                         {
                                                             onClick: e._onClick.bind(
@@ -985,8 +850,8 @@
                                                     );
                                                 case "change":
                                                     var y = u.a.format_number(
-                                                            r && r.change
-                                                                ? r.change
+                                                            n && n.change
+                                                                ? n.change
                                                                 : 0,
                                                             2
                                                         ),
@@ -996,7 +861,7 @@
                                                                 : y > 0
                                                                     ? "change-up"
                                                                     : "change-down";
-                                                    return s.a.createElement(
+                                                    return o.a.createElement(
                                                         "td",
                                                         {
                                                             onClick: e._onClick.bind(
@@ -1011,7 +876,7 @@
                                                         y + "%"
                                                     );
                                                 case "marketName":
-                                                    return s.a.createElement(
+                                                    return o.a.createElement(
                                                         "td",
                                                         {
                                                             onClick: e._onClick.bind(
@@ -1020,7 +885,7 @@
                                                             ),
                                                             key: t.index
                                                         },
-                                                        s.a.createElement(
+                                                        o.a.createElement(
                                                             "div",
                                                             {
                                                                 className: m,
@@ -1044,7 +909,7 @@
                                                                     .props
                                                                     .name);
                                                     } catch (e) {}
-                                                    return s.a.createElement(
+                                                    return o.a.createElement(
                                                         "td",
                                                         {
                                                             onClick: e._onClick.bind(
@@ -1057,25 +922,25 @@
                                                     );
                                                 case "price":
                                                     var w =
-                                                            r && r.price
-                                                                ? r.price.toReal()
-                                                                : r &&
-                                                                  r.close &&
-                                                                  r.close.quote
+                                                            n && n.price
+                                                                ? n.price.toReal()
+                                                                : n &&
+                                                                  n.close &&
+                                                                  n.close.quote
                                                                       .amount &&
-                                                                  r.close.base
+                                                                  n.close.base
                                                                       .amount
                                                                     ? u.a.get_asset_price(
-                                                                          r
+                                                                          n
                                                                               .close
                                                                               .quote
                                                                               .amount,
                                                                           a,
-                                                                          r
+                                                                          n
                                                                               .close
                                                                               .base
                                                                               .amount,
-                                                                          n,
+                                                                          r,
                                                                           !0
                                                                       )
                                                                     : u.a.get_asset_price(
@@ -1085,7 +950,7 @@
                                                                           a,
                                                                           h.base
                                                                               .amount,
-                                                                          n,
+                                                                          r,
                                                                           !0
                                                                       ),
                                                         C = 6;
@@ -1098,9 +963,9 @@
                                                                 "GOLD",
                                                                 "SILVER"
                                                             ].indexOf(
-                                                                n.get("symbol")
+                                                                r.get("symbol")
                                                             ) && (C = 8),
-                                                        s.a.createElement(
+                                                        o.a.createElement(
                                                             "td",
                                                             {
                                                                 onClick: e._onClick.bind(
@@ -1122,7 +987,7 @@
                                                         )
                                                     );
                                                 case "quoteSupply":
-                                                    return s.a.createElement(
+                                                    return o.a.createElement(
                                                         "td",
                                                         {
                                                             onClick: e._onClick.bind(
@@ -1132,7 +997,7 @@
                                                             key: t.index
                                                         },
                                                         c
-                                                            ? s.a.createElement(
+                                                            ? o.a.createElement(
                                                                   f.a,
                                                                   {
                                                                       style: {
@@ -1153,7 +1018,7 @@
                                                             : null
                                                     );
                                                 case "baseSupply":
-                                                    return s.a.createElement(
+                                                    return o.a.createElement(
                                                         "td",
                                                         {
                                                             onClick: e._onClick.bind(
@@ -1163,7 +1028,7 @@
                                                             key: t.index
                                                         },
                                                         p
-                                                            ? s.a.createElement(
+                                                            ? o.a.createElement(
                                                                   f.a,
                                                                   {
                                                                       style: {
@@ -1176,7 +1041,7 @@
                                                                           ),
                                                                           10
                                                                       ),
-                                                                      asset: n.get(
+                                                                      asset: r.get(
                                                                           "id"
                                                                       )
                                                                   }
@@ -1184,7 +1049,7 @@
                                                             : null
                                                     );
                                                 case "issuer":
-                                                    return s.a.createElement(
+                                                    return o.a.createElement(
                                                         "td",
                                                         {
                                                             onClick: e._onClick.bind(
@@ -1193,14 +1058,14 @@
                                                             ),
                                                             key: t.index
                                                         },
-                                                        s.a.createElement(k, {
+                                                        o.a.createElement(k, {
                                                             account: a.get(
                                                                 "issuer"
                                                             )
                                                         })
                                                     );
                                                 case "add":
-                                                    return s.a.createElement(
+                                                    return o.a.createElement(
                                                         "td",
                                                         {
                                                             style: {
@@ -1213,7 +1078,7 @@
                                                                 i
                                                             )
                                                         },
-                                                        s.a.createElement(
+                                                        o.a.createElement(
                                                             "input",
                                                             {
                                                                 type:
@@ -1235,7 +1100,7 @@
                                                         )
                                                     );
                                                 case "remove":
-                                                    return s.a.createElement(
+                                                    return o.a.createElement(
                                                         "td",
                                                         {
                                                             key: t.index,
@@ -1245,7 +1110,7 @@
                                                                 e.props
                                                                     .removeMarket
                                                         },
-                                                        s.a.createElement(
+                                                        o.a.createElement(
                                                             "span",
                                                             {
                                                                 style: {
@@ -1270,7 +1135,7 @@
                                 return (
                                     this.props.current &&
                                         (y += " activeMarket"),
-                                    s.a.createElement(
+                                    o.a.createElement(
                                         "tr",
                                         {className: y, style: d},
                                         b
@@ -1282,9 +1147,9 @@
                     t
                 );
             })();
-            (N.defaultProps = {noSymbols: !1}),
-                (N.contextTypes = {router: x.a.object.isRequired});
-            var O = Object(g.a)(N, {
+            (O.defaultProps = {noSymbols: !1}),
+                (O.contextTypes = {router: S.a.object.isRequired});
+            var N = Object(g.a)(O, {
                     propNames: ["quote", "base"],
                     defaultProps: {tempComponent: "tr"},
                     withDynamic: !0
@@ -1295,8 +1160,8 @@
                 B = a(22),
                 M = a(77),
                 F = a(9),
-                j = a.n(F),
-                q = a(112),
+                q = a.n(F),
+                j = a(112),
                 R = a(3),
                 L = a.n(R),
                 D = a(37),
@@ -1307,15 +1172,15 @@
                 V = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
+                            var r = t[a];
+                            (r.enumerable = r.enumerable || !1),
+                                (r.configurable = !0),
+                                "value" in r && (r.writable = !0),
+                                Object.defineProperty(e, r.key, r);
                         }
                     }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
+                    return function(t, a, r) {
+                        return a && e(t.prototype, a), r && e(t, r), t;
                     };
                 })();
             var J = (function(e) {
@@ -1367,7 +1232,7 @@
                                     (Object.setPrototypeOf
                                         ? Object.setPrototypeOf(e, t)
                                         : (e.__proto__ = t));
-                        })(t, s.a.Component),
+                        })(t, o.a.Component),
                         V(t, [
                             {
                                 key: "_onMoveUp",
@@ -1453,7 +1318,7 @@
                                     var e = this,
                                         t = this.state.error,
                                         a = this.props.quotes.size;
-                                    return s.a.createElement(
+                                    return o.a.createElement(
                                         H.a,
                                         {
                                             id: "quote_selection",
@@ -1462,29 +1327,29 @@
                                                 "exchange.quote_selection",
                                             noLogo: !0
                                         },
-                                        s.a.createElement(
+                                        o.a.createElement(
                                             "section",
                                             {
                                                 className:
                                                     "block-list no-border-bottom"
                                             },
-                                            s.a.createElement(
+                                            o.a.createElement(
                                                 "table",
                                                 {className: "table"},
-                                                s.a.createElement(
+                                                o.a.createElement(
                                                     "thead",
                                                     null,
-                                                    s.a.createElement(
+                                                    o.a.createElement(
                                                         "tr",
                                                         null,
-                                                        s.a.createElement(
+                                                        o.a.createElement(
                                                             "th",
                                                             null
                                                         ),
-                                                        s.a.createElement(
+                                                        o.a.createElement(
                                                             "th",
                                                             null,
-                                                            s.a.createElement(
+                                                            o.a.createElement(
                                                                 h.a,
                                                                 {
                                                                     content:
@@ -1492,7 +1357,7 @@
                                                                 }
                                                             )
                                                         ),
-                                                        s.a.createElement(
+                                                        o.a.createElement(
                                                             "th",
                                                             {
                                                                 style: {
@@ -1500,7 +1365,7 @@
                                                                         "center"
                                                                 }
                                                             },
-                                                            s.a.createElement(
+                                                            o.a.createElement(
                                                                 h.a,
                                                                 {
                                                                     content:
@@ -1508,7 +1373,7 @@
                                                                 }
                                                             )
                                                         ),
-                                                        s.a.createElement(
+                                                        o.a.createElement(
                                                             "th",
                                                             {
                                                                 style: {
@@ -1516,7 +1381,7 @@
                                                                         "center"
                                                                 }
                                                             },
-                                                            s.a.createElement(
+                                                            o.a.createElement(
                                                                 h.a,
                                                                 {
                                                                     content:
@@ -1524,7 +1389,7 @@
                                                                 }
                                                             )
                                                         ),
-                                                        s.a.createElement(
+                                                        o.a.createElement(
                                                             "th",
                                                             {
                                                                 style: {
@@ -1532,7 +1397,7 @@
                                                                         "center"
                                                                 }
                                                             },
-                                                            s.a.createElement(
+                                                            o.a.createElement(
                                                                 h.a,
                                                                 {
                                                                     content:
@@ -1542,33 +1407,33 @@
                                                         )
                                                     )
                                                 ),
-                                                s.a.createElement(
+                                                o.a.createElement(
                                                     "tbody",
                                                     null,
                                                     this.props.quotes.map(
-                                                        function(t, n) {
-                                                            return s.a.createElement(
+                                                        function(t, r) {
+                                                            return o.a.createElement(
                                                                 "tr",
                                                                 {key: t},
-                                                                s.a.createElement(
+                                                                o.a.createElement(
                                                                     "td",
                                                                     null,
-                                                                    n + 1
+                                                                    r + 1
                                                                 ),
-                                                                s.a.createElement(
+                                                                o.a.createElement(
                                                                     "td",
                                                                     null,
                                                                     t
                                                                 ),
-                                                                s.a.createElement(
+                                                                o.a.createElement(
                                                                     "td",
                                                                     {
                                                                         className:
                                                                             "text-center"
                                                                     },
-                                                                    n !==
+                                                                    r !==
                                                                         a - 1 &&
-                                                                        s.a.createElement(
+                                                                        o.a.createElement(
                                                                             E.a,
                                                                             {
                                                                                 onClick: e._onMoveDown.bind(
@@ -1582,14 +1447,14 @@
                                                                             }
                                                                         )
                                                                 ),
-                                                                s.a.createElement(
+                                                                o.a.createElement(
                                                                     "td",
                                                                     {
                                                                         className:
                                                                             "text-center"
                                                                     },
-                                                                    0 !== n &&
-                                                                        s.a.createElement(
+                                                                    0 !== r &&
+                                                                        o.a.createElement(
                                                                             E.a,
                                                                             {
                                                                                 onClick: e._onMoveUp.bind(
@@ -1603,14 +1468,14 @@
                                                                             }
                                                                         )
                                                                 ),
-                                                                s.a.createElement(
+                                                                o.a.createElement(
                                                                     "td",
                                                                     {
                                                                         className:
                                                                             "text-center"
                                                                     },
                                                                     a > 1 &&
-                                                                        s.a.createElement(
+                                                                        o.a.createElement(
                                                                             E.a,
                                                                             {
                                                                                 onClick: e._onRemove.bind(
@@ -1629,13 +1494,13 @@
                                                     )
                                                 )
                                             ),
-                                            s.a.createElement("br", null),
-                                            s.a.createElement("br", null),
-                                            s.a.createElement("br", null),
-                                            s.a.createElement(
+                                            o.a.createElement("br", null),
+                                            o.a.createElement("br", null),
+                                            o.a.createElement("br", null),
+                                            o.a.createElement(
                                                 "div",
                                                 null,
-                                                s.a.createElement(q.a, {
+                                                o.a.createElement(j.a, {
                                                     label:
                                                         "exchange.custom_quote",
                                                     onChange: this._onInputBackingAsset.bind(
@@ -1661,7 +1526,7 @@
                                                     disableActionButton: !!t,
                                                     noLabel: !0
                                                 }),
-                                                s.a.createElement(
+                                                o.a.createElement(
                                                     "div",
                                                     {className: "error-area"},
                                                     t
@@ -1681,23 +1546,23 @@
                         if (Symbol.iterator in Object(e))
                             return (function(e, t) {
                                 var a = [],
-                                    n = !0,
-                                    r = !1,
-                                    s = void 0;
+                                    r = !0,
+                                    n = !1,
+                                    o = void 0;
                                 try {
                                     for (
-                                        var o, i = e[Symbol.iterator]();
-                                        !(n = (o = i.next()).done) &&
-                                        (a.push(o.value), !t || a.length !== t);
-                                        n = !0
+                                        var s, i = e[Symbol.iterator]();
+                                        !(r = (s = i.next()).done) &&
+                                        (a.push(s.value), !t || a.length !== t);
+                                        r = !0
                                     );
                                 } catch (e) {
-                                    (r = !0), (s = e);
+                                    (n = !0), (o = e);
                                 } finally {
                                     try {
-                                        !n && i.return && i.return();
+                                        !r && i.return && i.return();
                                     } finally {
-                                        if (r) throw s;
+                                        if (n) throw o;
                                     }
                                 }
                                 return a;
@@ -1707,21 +1572,21 @@
                         );
                     };
                 })(),
-                G = (function() {
+                Y = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
+                            var r = t[a];
+                            (r.enumerable = r.enumerable || !1),
+                                (r.configurable = !0),
+                                "value" in r && (r.writable = !0),
+                                Object.defineProperty(e, r.key, r);
                         }
                     }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
+                    return function(t, a, r) {
+                        return a && e(t.prototype, a), r && e(t, r), t;
                     };
                 })();
-            function Y(e, t) {
+            function G(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
@@ -1756,7 +1621,7 @@
             var Z = new Date(),
                 $ = (function(e) {
                     function t(e) {
-                        Y(this, t);
+                        G(this, t);
                         var a = K(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).call(this)
@@ -1764,8 +1629,8 @@
                         return (a.state = a._getInitialState(e)), a;
                     }
                     return (
-                        X(t, s.a.Component),
-                        G(t, [
+                        X(t, o.a.Component),
+                        Y(t, [
                             {
                                 key: "_getInitialState",
                                 value: function(e) {
@@ -1899,32 +1764,32 @@
                                 value: function(e) {
                                     var t = e.split("_"),
                                         a = Q(t, 2),
-                                        n = a[0],
-                                        r = a[1],
-                                        s = !this.props.userMarkets.get(e);
-                                    C.a.setUserMarket(n, r, s);
+                                        r = a[0],
+                                        n = a[1],
+                                        o = !this.props.userMarkets.get(e);
+                                    C.a.setUserMarket(r, n, o);
                                 }
                             },
                             {
                                 key: "setCookie",
                                 value: function(e, t, a) {
-                                    var n = (a = a || {}).expires;
-                                    if ("number" == typeof n && n) {
-                                        var r = new Date();
-                                        r.setTime(r.getTime() + 1e3 * n),
-                                            (n = a.expires = r);
+                                    var r = (a = a || {}).expires;
+                                    if ("number" == typeof r && r) {
+                                        var n = new Date();
+                                        n.setTime(n.getTime() + 1e3 * r),
+                                            (r = a.expires = n);
                                     }
-                                    n &&
-                                        n.toUTCString &&
-                                        (a.expires = n.toUTCString());
-                                    var s =
+                                    r &&
+                                        r.toUTCString &&
+                                        (a.expires = r.toUTCString());
+                                    var o =
                                         e + "=" + (t = encodeURIComponent(t));
-                                    for (var o in a) {
-                                        s += "; " + o;
-                                        var i = a[o];
-                                        !0 !== i && (s += "=" + i);
+                                    for (var s in a) {
+                                        o += "; " + s;
+                                        var i = a[s];
+                                        !0 !== i && (o += "=" + i);
                                     }
-                                    document.cookie = s;
+                                    document.cookie = o;
                                 }
                             },
                             {
@@ -1932,21 +1797,21 @@
                                 value: function(e) {
                                     var t = document.cookie,
                                         a = e + "=",
-                                        n = t.indexOf("; " + a),
-                                        r = null;
-                                    if (-1 == n) {
-                                        if (0 != (n = t.indexOf(a)))
+                                        r = t.indexOf("; " + a),
+                                        n = null;
+                                    if (-1 == r) {
+                                        if (0 != (r = t.indexOf(a)))
                                             return null;
-                                        r = document.cookie.indexOf(";", n);
+                                        n = document.cookie.indexOf(";", r);
                                     } else
-                                        (n += 2),
+                                        (r += 2),
                                             -1 ==
-                                                (r = document.cookie.indexOf(
+                                                (n = document.cookie.indexOf(
                                                     ";",
-                                                    n
-                                                )) && (r = t.length);
+                                                    r
+                                                )) && (n = t.length);
                                     return decodeURI(
-                                        t.substring(n + a.length, r)
+                                        t.substring(r + a.length, n)
                                     ).replace(/"/g, "");
                                 }
                             },
@@ -1956,44 +1821,44 @@
                                     var e = this,
                                         t = this.props,
                                         a = t.columns,
-                                        n = t.markets,
-                                        r = t.base,
-                                        o = t.marketStats,
+                                        r = t.markets,
+                                        n = t.base,
+                                        s = t.marketStats,
                                         i = t.starredMarkets,
                                         l = t.current,
                                         c = this.state,
                                         u = c.sortBy,
                                         p = c.inverseSort,
                                         d = c.open;
-                                    if (!n || !n.length) return null;
+                                    if (!r || !r.length) return null;
                                     var m = a.map(function(t) {
                                             switch (t.name) {
                                                 case "market":
                                                     var a = "",
-                                                        n = e.getCookie(
+                                                        r = e.getCookie(
                                                             "gt_get_sort"
                                                         );
                                                     return (
                                                         "name" !=
                                                             e.state.sortBy ||
-                                                        ("name-false" != n &&
-                                                            null != n)
+                                                        ("name-false" != r &&
+                                                            null != r)
                                                             ? "name" ==
                                                                   e.state
                                                                       .sortBy &&
                                                               "name-true" ==
-                                                                  n &&
-                                                              (a = s.a.createElement(
+                                                                  r &&
+                                                              (a = o.a.createElement(
                                                                   "span",
                                                                   null,
                                                                   "▼"
                                                               ))
-                                                            : (a = s.a.createElement(
+                                                            : (a = o.a.createElement(
                                                                   "span",
                                                                   null,
                                                                   "▲"
                                                               )),
-                                                        s.a.createElement(
+                                                        o.a.createElement(
                                                             "th",
                                                             {
                                                                 key: t.name,
@@ -2004,7 +1869,7 @@
                                                                     "name"
                                                                 )
                                                             },
-                                                            s.a.createElement(
+                                                            o.a.createElement(
                                                                 h.a,
                                                                 {
                                                                     content:
@@ -2015,30 +1880,30 @@
                                                         )
                                                     );
                                                 case "vol":
-                                                    var r = "",
-                                                        o = e.getCookie(
+                                                    var n = "",
+                                                        s = e.getCookie(
                                                             "gt_get_sort"
                                                         );
                                                     return (
                                                         "volume" !=
                                                             e.state.sortBy ||
-                                                        ("vol-false" != o &&
-                                                            null != o)
+                                                        ("vol-false" != s &&
+                                                            null != s)
                                                             ? "volume" ==
                                                                   e.state
                                                                       .sortBy &&
-                                                              "vol-true" == o &&
-                                                              (r = s.a.createElement(
+                                                              "vol-true" == s &&
+                                                              (n = o.a.createElement(
                                                                   "span",
                                                                   null,
                                                                   "▲"
                                                               ))
-                                                            : (r = s.a.createElement(
+                                                            : (n = o.a.createElement(
                                                                   "span",
                                                                   null,
                                                                   "▼"
                                                               )),
-                                                        s.a.createElement(
+                                                        o.a.createElement(
                                                             "th",
                                                             {
                                                                 key: t.name,
@@ -2053,18 +1918,18 @@
                                                                         "right"
                                                                 }
                                                             },
-                                                            s.a.createElement(
+                                                            o.a.createElement(
                                                                 h.a,
                                                                 {
                                                                     content:
                                                                         "exchange.vol_short"
                                                                 }
                                                             ),
-                                                            r
+                                                            n
                                                         )
                                                     );
                                                 case "price":
-                                                    return s.a.createElement(
+                                                    return o.a.createElement(
                                                         "th",
                                                         {
                                                             key: t.name,
@@ -2073,25 +1938,25 @@
                                                                     "right"
                                                             }
                                                         },
-                                                        s.a.createElement(h.a, {
+                                                        o.a.createElement(h.a, {
                                                             content:
                                                                 "exchange.price"
                                                         })
                                                     );
                                                 case "quoteSupply":
-                                                    return s.a.createElement(
+                                                    return o.a.createElement(
                                                         "th",
                                                         {key: t.name},
-                                                        s.a.createElement(h.a, {
+                                                        o.a.createElement(h.a, {
                                                             content:
                                                                 "exchange.base_supply"
                                                         })
                                                     );
                                                 case "baseSupply":
-                                                    return s.a.createElement(
+                                                    return o.a.createElement(
                                                         "th",
                                                         {key: t.name},
-                                                        s.a.createElement(h.a, {
+                                                        o.a.createElement(h.a, {
                                                             content:
                                                                 "exchange.quote_supply"
                                                         })
@@ -2102,7 +1967,7 @@
                                                         "change" ==
                                                             e.state.sortBy &&
                                                         e.state.inverseSort
-                                                            ? (i = s.a.createElement(
+                                                            ? (i = o.a.createElement(
                                                                   "span",
                                                                   null,
                                                                   "▲"
@@ -2110,12 +1975,12 @@
                                                             : "change" ==
                                                                   e.state
                                                                       .sortBy &&
-                                                              (i = s.a.createElement(
+                                                              (i = o.a.createElement(
                                                                   "span",
                                                                   null,
                                                                   "▼"
                                                               )),
-                                                        s.a.createElement(
+                                                        o.a.createElement(
                                                             "th",
                                                             {
                                                                 key: t.name,
@@ -2130,7 +1995,7 @@
                                                                         "right"
                                                                 }
                                                             },
-                                                            s.a.createElement(
+                                                            o.a.createElement(
                                                                 h.a,
                                                                 {
                                                                     content:
@@ -2141,16 +2006,16 @@
                                                         )
                                                     );
                                                 case "issuer":
-                                                    return s.a.createElement(
+                                                    return o.a.createElement(
                                                         "th",
                                                         {key: t.name},
-                                                        s.a.createElement(h.a, {
+                                                        o.a.createElement(h.a, {
                                                             content:
                                                                 "explorer.assets.issuer"
                                                         })
                                                     );
                                                 case "add":
-                                                    return s.a.createElement(
+                                                    return o.a.createElement(
                                                         "th",
                                                         {
                                                             key: t.name,
@@ -2159,32 +2024,32 @@
                                                                     "right"
                                                             }
                                                         },
-                                                        s.a.createElement(h.a, {
+                                                        o.a.createElement(h.a, {
                                                             content:
                                                                 "account.perm.confirm_add"
                                                         })
                                                     );
                                                 default:
-                                                    return s.a.createElement(
+                                                    return o.a.createElement(
                                                         "th",
                                                         {key: t.name}
                                                     );
                                             }
                                         }),
-                                        f = n
+                                        f = r
                                             .map(function(t) {
                                                 return e.props.onlyLiquid &&
-                                                    o.get(t.id) &&
-                                                    0 == o.get(t.id).volumeBase
+                                                    s.get(t.id) &&
+                                                    0 == s.get(t.id).volumeBase
                                                     ? null
-                                                    : s.a.createElement(O, {
+                                                    : o.a.createElement(N, {
                                                           key: t.id,
                                                           name:
-                                                              "others" === r
-                                                                  ? s.a.createElement(
+                                                              "others" === n
+                                                                  ? o.a.createElement(
                                                                         "span",
                                                                         null,
-                                                                        s.a.createElement(
+                                                                        o.a.createElement(
                                                                             B.a,
                                                                             {
                                                                                 name:
@@ -2192,7 +2057,7 @@
                                                                             }
                                                                         ),
                                                                         ":",
-                                                                        s.a.createElement(
+                                                                        o.a.createElement(
                                                                             B.a,
                                                                             {
                                                                                 name:
@@ -2200,7 +2065,7 @@
                                                                             }
                                                                         )
                                                                     )
-                                                                  : s.a.createElement(
+                                                                  : o.a.createElement(
                                                                         B.a,
                                                                         {
                                                                             dataPlace:
@@ -2215,7 +2080,7 @@
                                                           leftAlign: !0,
                                                           compact: !0,
                                                           noSymbols: !0,
-                                                          stats: o.get(t.id),
+                                                          stats: s.get(t.id),
                                                           starred: i.has(t.id),
                                                           current: l === t.id,
                                                           isChecked: e.props.userMarkets.has(
@@ -2240,13 +2105,13 @@
                                                 return null !== e;
                                             })
                                             .sort(function(t, a) {
-                                                var n = t.key.split("_"),
-                                                    r = a.key.split("_"),
-                                                    s = o.get(
-                                                        n[0] + "_" + n[1]
-                                                    ),
-                                                    i = o.get(
+                                                var r = t.key.split("_"),
+                                                    n = a.key.split("_"),
+                                                    o = s.get(
                                                         r[0] + "_" + r[1]
+                                                    ),
+                                                    i = s.get(
+                                                        n[0] + "_" + n[1]
                                                     ),
                                                     l = e.getCookie(
                                                         "gt_get_sort"
@@ -2259,66 +2124,66 @@
                                                                 : "name-true" ==
                                                                       l &&
                                                                   (p = !0),
-                                                            n[0] > r[0]
+                                                            r[0] > n[0]
                                                                 ? p
                                                                     ? -1
                                                                     : 1
-                                                                : n[0] < r[0]
+                                                                : r[0] < n[0]
                                                                     ? p
                                                                         ? 1
                                                                         : -1
-                                                                    : n[1] >
-                                                                      r[1]
+                                                                    : r[1] >
+                                                                      n[1]
                                                                         ? p
                                                                             ? -1
                                                                             : 1
-                                                                        : n[1] <
-                                                                          r[1]
+                                                                        : r[1] <
+                                                                          n[1]
                                                                             ? p
                                                                                 ? 1
                                                                                 : -1
                                                                             : 0
                                                         );
                                                     case "volume":
-                                                        return s && i
+                                                        return o && i
                                                             ? "vol-false" ==
                                                                   l || null == l
                                                                 ? i.volumeBase -
-                                                                  s.volumeBase
-                                                                : s.volumeBase -
+                                                                  o.volumeBase
+                                                                : o.volumeBase -
                                                                   i.volumeBase
                                                             : 0;
                                                     case "change":
-                                                        return s && i
+                                                        return o && i
                                                             ? p
                                                                 ? i.change -
-                                                                  s.change
-                                                                : s.change -
+                                                                  o.change
+                                                                : o.change -
                                                                   i.change
                                                             : 0;
                                                 }
                                             });
-                                    return s.a.createElement(
+                                    return o.a.createElement(
                                         "div",
                                         {style: {paddingRight: 10}},
                                         d
-                                            ? s.a.createElement(
+                                            ? o.a.createElement(
                                                   "table",
                                                   {
                                                       className:
                                                           "table table-hover text-right"
                                                   },
-                                                  s.a.createElement(
+                                                  o.a.createElement(
                                                       "thead",
                                                       null,
-                                                      s.a.createElement(
+                                                      o.a.createElement(
                                                           "tr",
                                                           null,
                                                           m
                                                       )
                                                   ),
                                                   f && f.length
-                                                      ? s.a.createElement(
+                                                      ? o.a.createElement(
                                                             "tbody",
                                                             null,
                                                             f
@@ -2336,7 +2201,7 @@
             $.defaultProps = {maxRows: 20, onlyLiquid: !1};
             var ee = (function(e) {
                 function t(e) {
-                    Y(this, t);
+                    G(this, t);
                     var a = K(
                         this,
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this)
@@ -2378,7 +2243,7 @@
                         }),
                         (a._onInputName = a._onInputName.bind(a)),
                         (a._setMinWidth = a._setMinWidth.bind(a)),
-                        (a.getAssetList = Object(n.a)(
+                        (a.getAssetList = Object(r.a)(
                             M.a.getAssetList.defer,
                             150
                         )),
@@ -2386,8 +2251,8 @@
                     );
                 }
                 return (
-                    X(t, s.a.Component),
-                    G(t, [
+                    X(t, o.a.Component),
+                    Y(t, [
                         {
                             key: "shouldComponentUpdate",
                             value: function(e, t) {
@@ -2574,29 +2439,29 @@
                                     arguments[1];
                                 if (e || "" === e) {
                                     var a = new Date(),
-                                        n = e.toUpperCase().split(":"),
-                                        r = n[0],
-                                        s = 2 === n.length ? n[1] : null;
+                                        r = e.toUpperCase().split(":"),
+                                        n = r[0],
+                                        o = 2 === r.length ? r[1] : null;
                                     if (
                                         (this.setState({
-                                            lookupQuote: r,
-                                            lookupBase: s
+                                            lookupQuote: n,
+                                            lookupBase: o
                                         }),
                                         C.a.changeViewSetting.defer({
                                             marketLookupInput: e.toUpperCase()
                                         }),
-                                        this.state.lookupQuote !== r || t)
+                                        this.state.lookupQuote !== n || t)
                                     ) {
-                                        if (r.length < 1 || a - Z <= 250)
+                                        if (n.length < 1 || a - Z <= 250)
                                             return !1;
-                                        this.getAssetList(r, 50);
+                                        this.getAssetList(n, 50);
                                     } else if (
-                                        s &&
-                                        this.state.lookupBase !== s
+                                        o &&
+                                        this.state.lookupBase !== o
                                     ) {
-                                        if (s.length < 1 || a - Z <= 250)
+                                        if (o.length < 1 || a - Z <= 250)
                                             return !1;
-                                        this.getAssetList(s, 50);
+                                        this.getAssetList(o, 50);
                                     }
                                 }
                             }
@@ -2631,9 +2496,9 @@
                             value: function() {
                                 var e = this,
                                     t = this.props,
-                                    n = t.starredMarkets,
-                                    r = t.defaultMarkets,
-                                    o = t.marketStats,
+                                    r = t.starredMarkets,
+                                    n = t.defaultMarkets,
+                                    s = t.marketStats,
                                     l = t.columns,
                                     c = t.searchAssets,
                                     u = t.assetsLoading,
@@ -2647,29 +2512,29 @@
                                     _ = v.activeMarketTab,
                                     k = v.activeTab,
                                     E = v.lookupQuote,
-                                    S = v.lookupBase,
-                                    x = s.a.createElement("tr", null),
+                                    x = v.lookupBase,
+                                    S = o.a.createElement("tr", null),
                                     A = "my-market" === k,
-                                    N = p.map(function(e) {
+                                    O = p.map(function(e) {
                                         return e;
                                     });
                                 A ||
                                     (p = (p = p.clear()).push(
                                         this.state.activeFindBase
                                     ));
-                                var O = {},
+                                var N = {},
                                     P = [];
                                 E || (E = "OPEN."),
                                     A || (_ = 0),
                                     c
                                         .filter(function(e) {
-                                            return S && S.length
-                                                ? 0 === e.symbol.indexOf(S)
+                                            return x && x.length
+                                                ? 0 === e.symbol.indexOf(x)
                                                 : -1 !== e.symbol.indexOf(E);
                                         })
                                         .forEach(function(e) {
-                                            S && S.length
-                                                ? 0 === e.symbol.indexOf(S) &&
+                                            x && x.length
+                                                ? 0 === e.symbol.indexOf(x) &&
                                                   P.push(e.symbol)
                                                 : p.includes(e.symbol) &&
                                                   e.symbol.length >= E.length &&
@@ -2681,16 +2546,16 @@
                                         p
                                             .filter(function(e) {
                                                 return (
-                                                    !S ||
-                                                    !S.length ||
-                                                    0 === e.indexOf(S)
+                                                    !x ||
+                                                    !x.length ||
+                                                    0 === e.indexOf(x)
                                                 );
                                             })
                                             .toArray()
                                     )).filter(function(e) {
                                         return (
-                                            !(S && S.length > 1) ||
-                                            0 === e.indexOf(S)
+                                            !(x && x.length > 1) ||
+                                            0 === e.indexOf(x)
                                         );
                                     }));
                                 var T = [];
@@ -2728,17 +2593,17 @@
                                             });
                                         }),
                                     (T = T.filter(function(e) {
-                                        return !S || e[1].quote === E;
+                                        return !x || e[1].quote === E;
                                     })),
                                     (T = i.a.Map(T));
-                                var I = A ? r : T;
+                                var I = A ? n : T;
                                 A &&
                                     y.size &&
                                     y.forEach(function(e, t) {
                                         I = I.set(t, e);
                                     }),
                                     I.size > 0 &&
-                                        (x = I.filter(function(t) {
+                                        (S = I.filter(function(t) {
                                             if (A) {
                                                 var a = t.quote + "_" + t.base;
                                                 return e.state.myMarketFilter
@@ -2747,7 +2612,7 @@
                                                               e.state
                                                                   .myMarketFilter
                                                           )
-                                                    : !(b && !n.has(a));
+                                                    : !(b && !r.has(a));
                                             }
                                             return (
                                                 !(E.length < 1) &&
@@ -2757,9 +2622,9 @@
                                             .map(function(e) {
                                                 var t = e.quote + "_" + e.base;
                                                 return p.includes(e.base)
-                                                    ? (O[e.base] ||
-                                                          (O[e.base] = []),
-                                                      O[e.base].push({
+                                                    ? (N[e.base] ||
+                                                          (N[e.base] = []),
+                                                      N[e.base].push({
                                                           id: t,
                                                           quote: e.quote,
                                                           base: e.base
@@ -2776,17 +2641,17 @@
                                             })
                                             .take(A ? 100 : 20)
                                             .toArray());
-                                var B = x && x.length,
+                                var B = S && S.length,
                                     M = "mymarkets-header clickable",
-                                    F = j()(M, {inactive: !A}),
-                                    R = j()(M, {inactive: A}),
+                                    F = q()(M, {inactive: !A}),
+                                    R = q()(M, {inactive: A}),
                                     z = {
                                         minWidth: this.state.minWidth,
                                         minHeight: "6rem"
                                     };
                                 g && (z.height = g);
                                 var U = a(3);
-                                return s.a.createElement(
+                                return o.a.createElement(
                                     "div",
                                     {
                                         className:
@@ -2794,14 +2659,14 @@
                                             " explorer_markets",
                                         style: this.props.style
                                     },
-                                    s.a.createElement(
+                                    o.a.createElement(
                                         "div",
                                         {
                                             style: this.props.headerStyle,
                                             className:
                                                 "grid-block shrink left-orderbook-header bottom-header"
                                         },
-                                        s.a.createElement(
+                                        o.a.createElement(
                                             "div",
                                             {
                                                 ref: "myMarkets",
@@ -2814,11 +2679,11 @@
                                                     "walkthrough.my_markets_tab"
                                                 )
                                             },
-                                            s.a.createElement(h.a, {
+                                            o.a.createElement(h.a, {
                                                 content: "exchange.market_name"
                                             })
                                         ),
-                                        s.a.createElement(
+                                        o.a.createElement(
                                             "div",
                                             {
                                                 className: R,
@@ -2830,13 +2695,13 @@
                                                     "walkthrough.find_markets_tab"
                                                 )
                                             },
-                                            s.a.createElement(h.a, {
+                                            o.a.createElement(h.a, {
                                                 content: "exchange.more"
                                             })
                                         )
                                     ),
                                     this.props.controls
-                                        ? s.a.createElement(
+                                        ? o.a.createElement(
                                               "div",
                                               {
                                                   className:
@@ -2844,7 +2709,7 @@
                                                   style: {padding: "1rem 0"}
                                               },
                                               this.props.controls
-                                                  ? s.a.createElement(
+                                                  ? o.a.createElement(
                                                         "div",
                                                         {
                                                             style: {
@@ -2858,7 +2723,7 @@
                                           )
                                         : null,
                                     A
-                                        ? s.a.createElement(
+                                        ? o.a.createElement(
                                               "div",
                                               {
                                                   className:
@@ -2869,17 +2734,17 @@
                                                       padding: "0.75rem 0.5rem"
                                                   }
                                               },
-                                              s.a.createElement(
+                                              o.a.createElement(
                                                   "div",
                                                   null,
-                                                  s.a.createElement(
+                                                  o.a.createElement(
                                                       "label",
                                                       {
                                                           style: {
                                                               margin: "3px 0 0"
                                                           }
                                                       },
-                                                      s.a.createElement(
+                                                      o.a.createElement(
                                                           "input",
                                                           {
                                                               style: {
@@ -2904,7 +2769,7 @@
                                                               }
                                                           }
                                                       ),
-                                                      s.a.createElement(
+                                                      o.a.createElement(
                                                           "span",
                                                           {
                                                               style: {
@@ -2912,7 +2777,7 @@
                                                                       "0.4rem"
                                                               }
                                                           },
-                                                          s.a.createElement(
+                                                          o.a.createElement(
                                                               h.a,
                                                               {
                                                                   content:
@@ -2921,14 +2786,14 @@
                                                           )
                                                       )
                                                   ),
-                                                  s.a.createElement(
+                                                  o.a.createElement(
                                                       "label",
                                                       {
                                                           style: {
                                                               margin: "3px 0 0"
                                                           }
                                                       },
-                                                      s.a.createElement(
+                                                      o.a.createElement(
                                                           "input",
                                                           {
                                                               style: {
@@ -2947,7 +2812,7 @@
                                                               }
                                                           }
                                                       ),
-                                                      s.a.createElement(
+                                                      o.a.createElement(
                                                           "span",
                                                           {
                                                               style: {
@@ -2955,7 +2820,7 @@
                                                                       "0.4rem"
                                                               }
                                                           },
-                                                          s.a.createElement(
+                                                          o.a.createElement(
                                                               d.a,
                                                               {
                                                                   string:
@@ -2977,13 +2842,13 @@
                                                       )
                                                   )
                                               ),
-                                              s.a.createElement(
+                                              o.a.createElement(
                                                   "div",
                                                   {className: "search-wrapper"},
-                                                  s.a.createElement(
+                                                  o.a.createElement(
                                                       "form",
                                                       null,
-                                                      s.a.createElement(
+                                                      o.a.createElement(
                                                           "input",
                                                           {
                                                               autoComplete:
@@ -3014,7 +2879,7 @@
                                                                   .handleSearchUpdate
                                                           }
                                                       ),
-                                                      s.a.createElement(
+                                                      o.a.createElement(
                                                           "button",
                                                           {
                                                               className:
@@ -3027,7 +2892,7 @@
                                                   )
                                               )
                                           )
-                                        : s.a.createElement(
+                                        : o.a.createElement(
                                               "div",
                                               {
                                                   style: {
@@ -3036,29 +2901,29 @@
                                                       padding: "0.75rem 0.5rem"
                                                   }
                                               },
-                                              s.a.createElement(
+                                              o.a.createElement(
                                                   "table",
                                                   null,
-                                                  s.a.createElement(
+                                                  o.a.createElement(
                                                       "tbody",
                                                       null,
-                                                      s.a.createElement(
+                                                      o.a.createElement(
                                                           "tr",
                                                           {
                                                               style: {
                                                                   width: "100%"
                                                               }
                                                           },
-                                                          s.a.createElement(
+                                                          o.a.createElement(
                                                               "td",
                                                               null,
-                                                              s.a.createElement(
-                                                                  q.a,
+                                                              o.a.createElement(
+                                                                  j.a,
                                                                   {
                                                                       onAssetSelect: this._onFoundBaseAsset.bind(
                                                                           this
                                                                       ),
-                                                                      assets: N,
+                                                                      assets: O,
                                                                       onChange: this._onInputBaseAsset.bind(
                                                                           this
                                                                       ),
@@ -3089,20 +2954,20 @@
                                                               )
                                                           )
                                                       ),
-                                                      s.a.createElement(
+                                                      o.a.createElement(
                                                           "tr",
                                                           {
                                                               style: {
                                                                   width: "100%"
                                                               }
                                                           },
-                                                          s.a.createElement(
+                                                          o.a.createElement(
                                                               "td",
                                                               null,
-                                                              s.a.createElement(
+                                                              o.a.createElement(
                                                                   "label",
                                                                   null,
-                                                                  s.a.createElement(
+                                                                  o.a.createElement(
                                                                       h.a,
                                                                       {
                                                                           content:
@@ -3111,7 +2976,7 @@
                                                                   ),
                                                                   ":"
                                                               ),
-                                                              s.a.createElement(
+                                                              o.a.createElement(
                                                                   "input",
                                                                   {
                                                                       style: {
@@ -3140,7 +3005,7 @@
                                                               ),
                                                               this.state
                                                                   .assetNameError
-                                                                  ? s.a.createElement(
+                                                                  ? o.a.createElement(
                                                                         "div",
                                                                         {
                                                                             className:
@@ -3149,7 +3014,7 @@
                                                                                 paddingTop: 10
                                                                             }
                                                                         },
-                                                                        s.a.createElement(
+                                                                        o.a.createElement(
                                                                             "span",
                                                                             {
                                                                                 style: {
@@ -3157,7 +3022,7 @@
                                                                                         "break-all"
                                                                                 }
                                                                             },
-                                                                            s.a.createElement(
+                                                                            o.a.createElement(
                                                                                 h.a,
                                                                                 {
                                                                                     content:
@@ -3175,12 +3040,12 @@
                                                   )
                                               )
                                           ),
-                                    s.a.createElement(
+                                    o.a.createElement(
                                         "ul",
                                         {className: "mymarkets-tabs"},
                                         p.map(function(t, a) {
                                             return t
-                                                ? s.a.createElement(
+                                                ? o.a.createElement(
                                                       "li",
                                                       {
                                                           key: t,
@@ -3188,12 +3053,12 @@
                                                               e,
                                                               a
                                                           ),
-                                                          className: j()(
+                                                          className: q()(
                                                               "mymarkets-tab",
                                                               {active: _ === a}
                                                           )
                                                       },
-                                                      s.a.createElement(
+                                                      o.a.createElement(
                                                           "span",
                                                           null,
                                                           t
@@ -3202,7 +3067,7 @@
                                                 : null;
                                         }),
                                         A && B
-                                            ? s.a.createElement(
+                                            ? o.a.createElement(
                                                   "li",
                                                   {
                                                       key: "others",
@@ -3214,7 +3079,7 @@
                                                           this,
                                                           p.size + 1
                                                       ),
-                                                      className: j()(
+                                                      className: q()(
                                                           "mymarkets-tab",
                                                           {
                                                               active:
@@ -3223,13 +3088,13 @@
                                                           }
                                                       )
                                                   },
-                                                  s.a.createElement(h.a, {
+                                                  o.a.createElement(h.a, {
                                                       content: "exchange.others"
                                                   })
                                               )
                                             : null,
                                         A &&
-                                            s.a.createElement(
+                                            o.a.createElement(
                                                 "li",
                                                 {
                                                     key: "quote_edit",
@@ -3248,7 +3113,7 @@
                                                 " + "
                                             )
                                     ),
-                                    s.a.createElement(
+                                    o.a.createElement(
                                         "div",
                                         {
                                             style: z,
@@ -3257,7 +3122,7 @@
                                             ref: "favorites"
                                         },
                                         u
-                                            ? s.a.createElement(
+                                            ? o.a.createElement(
                                                   "div",
                                                   {
                                                       style: {
@@ -3267,7 +3132,7 @@
                                                           width: "100%"
                                                       }
                                                   },
-                                                  s.a.createElement(D.a, {
+                                                  o.a.createElement(D.a, {
                                                       type: "three-bounce"
                                                   })
                                               )
@@ -3277,7 +3142,7 @@
                                                 return e === p.get(_);
                                             })
                                             .map(function(t, a) {
-                                                return s.a.createElement($, {
+                                                return o.a.createElement($, {
                                                     userMarkets:
                                                         e.props.userMarkets,
                                                     defaultMarkets:
@@ -3286,14 +3151,14 @@
                                                     allowChange: !1,
                                                     key: t,
                                                     current: m,
-                                                    starredMarkets: n,
-                                                    marketStats: o,
+                                                    starredMarkets: r,
+                                                    marketStats: s,
                                                     viewSettings: f,
                                                     columns: A
                                                         ? l
                                                         : e.props.findColumns ||
                                                           l,
-                                                    markets: O[t],
+                                                    markets: N[t],
                                                     base: t,
                                                     maxRows: A ? 20 : 10,
                                                     findMarketTab: !A,
@@ -3304,16 +3169,16 @@
                                                 });
                                             }),
                                         _ === p.size + 1 && A && B
-                                            ? s.a.createElement($, {
+                                            ? o.a.createElement($, {
                                                   userMarkets: this.props
                                                       .userMarkets,
                                                   index: p.size,
                                                   current: m,
-                                                  starredMarkets: n,
-                                                  marketStats: o,
+                                                  starredMarkets: r,
+                                                  marketStats: s,
                                                   viewSettings: f,
                                                   columns: l,
-                                                  markets: x,
+                                                  markets: S,
                                                   base: "others",
                                                   maxRows: A ? 20 : 10,
                                                   findMarketTab: !A,
@@ -3322,7 +3187,7 @@
                                               })
                                             : null
                                     ),
-                                    s.a.createElement(J, {
+                                    o.a.createElement(J, {
                                         quotes: this.props.preferredBases
                                     })
                                 );
@@ -3338,12 +3203,12 @@
                     core: "1.3.0",
                     setMinWidth: !1
                 }),
-                (ee.contextTypes = {router: x.a.object.isRequired}),
+                (ee.contextTypes = {router: S.a.object.isRequired}),
                 (ee = Object(y.a)(ee));
             var te = (function(e) {
                 function t() {
                     return (
-                        Y(this, t),
+                        G(this, t),
                         K(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
@@ -3354,12 +3219,12 @@
                     );
                 }
                 return (
-                    X(t, s.a.Component),
-                    G(t, [
+                    X(t, o.a.Component),
+                    Y(t, [
                         {
                             key: "render",
                             value: function() {
-                                return s.a.createElement(ee, this.props);
+                                return o.a.createElement(ee, this.props);
                             }
                         }
                     ]),
@@ -3458,13 +3323,13 @@
                 }
             };
         },
-        4981: function(e, t, a) {
+        4982: function(e, t, a) {
             "use strict";
             a.r(t);
-            var n = a(0),
-                r = a.n(n),
-                s = a(31),
-                o = a(14),
+            var r = a(0),
+                n = a.n(r),
+                o = a(31),
+                s = a(14),
                 i = a(106),
                 l = a(8),
                 c = a(75),
@@ -3483,34 +3348,34 @@
                 E = a(1),
                 w = a.n(E),
                 C = a(10),
-                S = a(9),
-                x = a.n(S),
-                A = a(153),
-                N = a(111),
-                O = a(22),
-                P = a(499),
+                x = a(9),
+                S = a.n(x),
+                A = a(155),
+                O = a(111),
+                N = a(22),
+                P = a(500),
                 T = a(12),
                 I = a(42),
                 B = a.n(I),
                 M = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
+                            var r = t[a];
+                            (r.enumerable = r.enumerable || !1),
+                                (r.configurable = !0),
+                                "value" in r && (r.writable = !0),
+                                Object.defineProperty(e, r.key, r);
                         }
                     }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
+                    return function(t, a, r) {
+                        return a && e(t.prototype, a), r && e(t, r), t;
                     };
                 })();
             function F(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function j(e, t) {
+            function q(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -3519,7 +3384,7 @@
                     ? e
                     : t;
             }
-            function q(e, t) {
+            function j(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -3542,7 +3407,7 @@
                     function t() {
                         return (
                             F(this, t),
-                            j(
+                            q(
                                 this,
                                 (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                     this,
@@ -3552,7 +3417,7 @@
                         );
                     }
                     return (
-                        q(t, r.a.Component),
+                        j(t, n.a.Component),
                         M(t, [
                             {
                                 key: "shouldComponentUpdate",
@@ -3572,9 +3437,9 @@
                                 value: function() {
                                     var e = this.props,
                                         t = e.order,
-                                        n = e.quote,
-                                        s = e.base,
-                                        o = e.final,
+                                        r = e.quote,
+                                        o = e.base,
+                                        s = e.final,
                                         i = t.isBid(),
                                         l = t.isCall()
                                             ? "orderHistoryCall"
@@ -3582,10 +3447,10 @@
                                                 ? "orderHistoryBid"
                                                 : "orderHistoryAsk",
                                         c = a(3),
-                                        u = r.a.createElement(A.a, {
+                                        u = n.a.createElement(A.a, {
                                             price: t.getPrice(),
-                                            quote: n,
-                                            base: s
+                                            quote: r,
+                                            base: o
                                         }),
                                         p = i
                                             ? k.a.format_number(
@@ -3616,22 +3481,22 @@
                                         d =
                                             c.translate("exchange.total") +
                                             " " +
-                                            n.get("symbol") +
+                                            r.get("symbol") +
                                             " " +
                                             h +
                                             "<br />" +
                                             c.translate("exchange.total") +
                                             " " +
-                                            s.get("symbol") +
+                                            o.get("symbol") +
                                             " " +
                                             p;
-                                    return r.a.createElement(
+                                    return n.a.createElement(
                                         "div",
                                         {
                                             onClick: this.props.onClick,
-                                            className: x()(
+                                            className: S()(
                                                 "sticky-table-row order-row vertical-table-cell",
-                                                {"final-row": o},
+                                                {"final-row": s},
                                                 {
                                                     "my-order": t.isMine(
                                                         this.props
@@ -3640,7 +3505,7 @@
                                                 }
                                             )
                                         },
-                                        r.a.createElement(
+                                        n.a.createElement(
                                             "div",
                                             {
                                                 className:
@@ -3652,10 +3517,10 @@
                                                         ? "amountForSale"
                                                         : "amountToReceive"
                                                 ]().getAmount({real: !0}),
-                                                s.get("precision")
+                                                o.get("precision")
                                             )
                                         ),
-                                        r.a.createElement(
+                                        n.a.createElement(
                                             "div",
                                             {
                                                 className:
@@ -3667,10 +3532,10 @@
                                                         ? "amountToReceive"
                                                         : "amountForSale"
                                                 ]().getAmount({real: !0}),
-                                                n.get("precision")
+                                                r.get("precision")
                                             )
                                         ),
-                                        r.a.createElement(
+                                        n.a.createElement(
                                             "div",
                                             {
                                                 className:
@@ -3694,7 +3559,7 @@
                     function t() {
                         return (
                             F(this, t),
-                            j(
+                            q(
                                 this,
                                 (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                     this,
@@ -3704,7 +3569,7 @@
                         );
                     }
                     return (
-                        q(t, r.a.Component),
+                        j(t, n.a.Component),
                         M(t, [
                             {
                                 key: "shouldComponentUpdate",
@@ -3749,69 +3614,69 @@
                                 value: function() {
                                     var e = a(3),
                                         t = this.props,
-                                        n = t.order,
-                                        s = t.quote,
-                                        o = t.base,
+                                        r = t.order,
+                                        o = t.quote,
+                                        s = t.base,
                                         i = t.position,
-                                        l = n.isBid(),
-                                        c = n.isCall()
+                                        l = r.isBid(),
+                                        c = r.isCall()
                                             ? "orderHistoryCall"
                                             : l
                                                 ? "orderHistoryBid"
                                                 : "orderHistoryAsk",
-                                        u = r.a.createElement(A.a, {
-                                            price: n.getPrice(),
-                                            quote: s,
-                                            base: o
+                                        u = n.a.createElement(A.a, {
+                                            price: r.getPrice(),
+                                            quote: o,
+                                            base: s
                                         }),
                                         p = l
                                             ? k.a.format_number(
-                                                  n
+                                                  r
                                                       .amountToReceive()
                                                       .getAmount({real: !0}),
-                                                  s.get("precision")
+                                                  o.get("precision")
                                               )
                                             : k.a.format_number(
-                                                  n
+                                                  r
                                                       .amountForSale()
                                                       .getAmount({real: !0}),
-                                                  s.get("precision")
+                                                  o.get("precision")
                                               ),
                                         h = l
                                             ? k.a.format_number(
-                                                  n
+                                                  r
                                                       .amountForSale()
                                                       .getAmount({real: !0}),
-                                                  o.get("precision")
+                                                  s.get("precision")
                                               )
                                             : k.a.format_number(
-                                                  n
+                                                  r
                                                       .amountToReceive()
                                                       .getAmount({real: !0}),
-                                                  o.get("precision")
+                                                  s.get("precision")
                                               ),
                                         d = l
                                             ? k.a.format_number(
-                                                  n
+                                                  r
                                                       .totalForSale()
                                                       .getAmount({real: !0}),
                                                   8
                                               )
                                             : k.a.format_number(
-                                                  n
+                                                  r
                                                       .totalToReceive()
                                                       .getAmount({real: !0}),
                                                   8
                                               ),
                                         m = l
                                             ? k.a.format_number(
-                                                  n
+                                                  r
                                                       .totalToReceive()
                                                       .getAmount({real: !0}),
                                                   8
                                               )
                                             : k.a.format_number(
-                                                  n
+                                                  r
                                                       .totalForSale()
                                                       .getAmount({real: !0}),
                                                   8
@@ -3819,26 +3684,26 @@
                                         f =
                                             e.translate("exchange.total") +
                                             " " +
-                                            s.get("symbol") +
+                                            o.get("symbol") +
                                             " " +
                                             m +
                                             "<br />" +
                                             e.translate("exchange.total") +
                                             " " +
-                                            o.get("symbol") +
+                                            s.get("symbol") +
                                             " " +
                                             d;
-                                    return r.a.createElement(
+                                    return n.a.createElement(
                                         "tr",
                                         {
                                             onClick: this.props.onClick,
-                                            className: n.isMine(
+                                            className: r.isMine(
                                                 this.props.currentAccount
                                             )
                                                 ? "my-order"
                                                 : ""
                                         },
-                                        r.a.createElement(
+                                        n.a.createElement(
                                             "td",
                                             {
                                                 style: {width: "25%"},
@@ -3846,12 +3711,12 @@
                                             },
                                             u
                                         ),
-                                        r.a.createElement(
+                                        n.a.createElement(
                                             "td",
                                             null,
                                             "left" === i ? p : h
                                         ),
-                                        r.a.createElement(
+                                        n.a.createElement(
                                             "td",
                                             {
                                                 "data-tip": f,
@@ -3870,7 +3735,7 @@
                 D = (function(e) {
                     function t(e) {
                         F(this, t);
-                        var a = j(
+                        var a = q(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                         );
@@ -3904,7 +3769,7 @@
                         );
                     }
                     return (
-                        q(t, r.a.Component),
+                        j(t, n.a.Component),
                         M(t, [
                             {
                                 key: "addLeftCellActive",
@@ -3926,9 +3791,9 @@
                                         var a = document.getElementsByClassName(
                                             e
                                         );
-                                        for (var n in a)
+                                        for (var r in a)
                                             try {
-                                                a[n].style.width = t + "px";
+                                                a[r].style.width = t + "px";
                                             } catch (e) {}
                                     }
                                     function t(e) {
@@ -3936,29 +3801,29 @@
                                             a = document.getElementsByClassName(
                                                 e
                                             );
-                                        for (var n in a) {
-                                            var r = a[n].offsetWidth;
-                                            r > t && (t = r);
+                                        for (var r in a) {
+                                            var n = a[r].offsetWidth;
+                                            n > t && (t = n);
                                         }
                                         return t;
                                     }
                                     var a = "vertical-table-cell-one",
-                                        n = "vertical-table-cell-two",
-                                        r = "vertical-table-cell-three",
-                                        s = {one: t(a), two: t(n), three: t(r)};
-                                    e(a, s.one), e(n, s.two), e(r, s.three);
-                                    var o = 0;
+                                        r = "vertical-table-cell-two",
+                                        n = "vertical-table-cell-three",
+                                        o = {one: t(a), two: t(r), three: t(n)};
+                                    e(a, o.one), e(r, o.two), e(n, o.three);
+                                    var s = 0;
                                     try {
-                                        (o = s.one + s.two + s.three),
+                                        (s = o.one + o.two + o.three),
                                             (document.getElementsByClassName(
                                                 "container-menu-header"
-                                            )[0].style.marginLeft = o + "px");
+                                            )[0].style.marginLeft = s + "px");
                                     } catch (e) {}
                                     try {
                                         var i = "exchange_header_style",
                                             l =
                                                 "@media only screen and (min-width: 1280px) { body.localcoin .exchange-layout .grid-block.shrink.no-padding.overflow-visible.top-bar, body.localcoin .exchange-layout .main .grid-block.shrink.no-padding.overflow-visible.top-bar.left-cell-active { width: calc(100% - " +
-                                                (o + t("right-column")) +
+                                                (s + t("right-column")) +
                                                 "px); }}";
                                         if (document.getElementById(i)) {
                                             document.getElementById(
@@ -4050,14 +3915,14 @@
                                             },
                                             100
                                         );
-                                        var n = this.refs.vertical_sticky_table_up.table.querySelector(
-                                            "#y-scrollbar"
-                                        );
-                                        _.a.initialize(n);
-                                        var r = this.refs.vertical_sticky_table_down.table.querySelector(
+                                        var r = this.refs.vertical_sticky_table_up.table.querySelector(
                                             "#y-scrollbar"
                                         );
                                         _.a.initialize(r);
+                                        var n = this.refs.vertical_sticky_table_down.table.querySelector(
+                                            "#y-scrollbar"
+                                        );
+                                        _.a.initialize(n);
                                     }
                                     this.upVerticalBlockToEndScroll();
                                 }
@@ -4115,9 +3980,9 @@
                                 value: function() {
                                     var e = this,
                                         t = this.props,
-                                        n = t.combinedBids,
-                                        s = t.combinedAsks,
-                                        o = t.highestBid,
+                                        r = t.combinedBids,
+                                        o = t.combinedAsks,
+                                        s = t.highestBid,
                                         i = t.lowestAsk,
                                         l = t.quote,
                                         c = t.base,
@@ -4131,30 +3996,30 @@
                                         b = f.showAllBids,
                                         y = f.rowCount,
                                         v = f.displaySpreadAsPercentage,
-                                        _ = !i.sell_price && !o.sell_price,
+                                        _ = !i.sell_price && !s.sell_price,
                                         E =
-                                            !(!i.sell_price || !o.sell_price) &&
+                                            !(!i.sell_price || !s.sell_price) &&
                                             (v
                                                 ? (
                                                       100 *
                                                       (i._real_price /
-                                                          o._real_price -
+                                                          s._real_price -
                                                           1)
                                                   ).toFixed(2) + "%"
-                                                : r.a.createElement(A.a, {
+                                                : n.a.createElement(A.a, {
                                                       price:
                                                           i._real_price -
-                                                          o._real_price,
+                                                          s._real_price,
                                                       base: c,
                                                       quote: l
                                                   })),
                                         C = null,
-                                        S = null;
+                                        x = null;
                                     if (c && l) {
-                                        C = n.map(function(t, a) {
+                                        C = r.map(function(t, a) {
                                             if (!(a > 100))
                                                 return m
-                                                    ? r.a.createElement(L, {
+                                                    ? n.a.createElement(L, {
                                                           index: a,
                                                           key:
                                                               t.getPrice() +
@@ -4175,7 +4040,7 @@
                                                               e.props
                                                                   .currentAccount
                                                       })
-                                                    : r.a.createElement(R, {
+                                                    : n.a.createElement(R, {
                                                           index: a,
                                                           key:
                                                               t.getPrice() +
@@ -4195,16 +4060,16 @@
                                                                   .currentAccount
                                                       });
                                         });
-                                        var I = s;
+                                        var I = o;
                                         I.sort(function(e, t) {
                                             return m
                                                 ? e.getPrice() - t.getPrice()
                                                 : t.getPrice() - e.getPrice();
                                         }),
-                                            (S = I.map(function(t, a) {
+                                            (x = I.map(function(t, a) {
                                                 if (!(a > 100))
                                                     return m
-                                                        ? r.a.createElement(L, {
+                                                        ? n.a.createElement(L, {
                                                               index: a,
                                                               key:
                                                                   t.getPrice() +
@@ -4227,7 +4092,7 @@
                                                                   e.props
                                                                       .currentAccount
                                                           })
-                                                        : r.a.createElement(R, {
+                                                        : n.a.createElement(R, {
                                                               index: a,
                                                               key:
                                                                   t.getPrice() +
@@ -4271,22 +4136,22 @@
                                             }
                                         } catch (e) {}
                                         var F = C.length,
-                                            j = S.length;
+                                            q = x.length;
                                         b || C.splice(y, C.length),
-                                            g || S.splice(y, S.length);
-                                        var q = r.a.createElement(
+                                            g || x.splice(y, x.length);
+                                        var j = n.a.createElement(
                                                 "thead",
                                                 null,
-                                                r.a.createElement(
+                                                n.a.createElement(
                                                     "tr",
                                                     {
                                                         key: "top-header",
                                                         className: "top-header"
                                                     },
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "th",
                                                         null,
-                                                        r.a.createElement(w.a, {
+                                                        n.a.createElement(w.a, {
                                                             className:
                                                                 (this.state.flip
                                                                     ? "ask-total"
@@ -4296,17 +4161,17 @@
                                                                 "exchange.price"
                                                         })
                                                     ),
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "th",
                                                         null,
-                                                        r.a.createElement(
+                                                        n.a.createElement(
                                                             "span",
                                                             {
                                                                 className:
                                                                     "header-sub-title"
                                                             },
-                                                            r.a.createElement(
-                                                                O.a,
+                                                            n.a.createElement(
+                                                                N.a,
                                                                 {
                                                                     dataPlace:
                                                                         "top",
@@ -4315,17 +4180,17 @@
                                                             )
                                                         )
                                                     ),
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "th",
                                                         null,
-                                                        r.a.createElement(
+                                                        n.a.createElement(
                                                             "span",
                                                             {
                                                                 className:
                                                                     "header-sub-title"
                                                             },
-                                                            r.a.createElement(
-                                                                O.a,
+                                                            n.a.createElement(
+                                                                N.a,
                                                                 {
                                                                     dataPlace:
                                                                         "top",
@@ -4336,19 +4201,19 @@
                                                     )
                                                 )
                                             ),
-                                            D = r.a.createElement(
+                                            D = n.a.createElement(
                                                 "thead",
                                                 null,
-                                                r.a.createElement(
+                                                n.a.createElement(
                                                     "tr",
                                                     {
                                                         key: "top-header",
                                                         className: "top-header"
                                                     },
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "th",
                                                         null,
-                                                        r.a.createElement(w.a, {
+                                                        n.a.createElement(w.a, {
                                                             className:
                                                                 (this.state.flip
                                                                     ? "bid-total"
@@ -4358,17 +4223,17 @@
                                                                 "exchange.price"
                                                         })
                                                     ),
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "th",
                                                         null,
-                                                        r.a.createElement(
+                                                        n.a.createElement(
                                                             "span",
                                                             {
                                                                 className:
                                                                     "header-sub-title"
                                                             },
-                                                            r.a.createElement(
-                                                                O.a,
+                                                            n.a.createElement(
+                                                                N.a,
                                                                 {
                                                                     dataPlace:
                                                                         "top",
@@ -4377,17 +4242,17 @@
                                                             )
                                                         )
                                                     ),
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "th",
                                                         null,
-                                                        r.a.createElement(
+                                                        n.a.createElement(
                                                             "span",
                                                             {
                                                                 className:
                                                                     "header-sub-title"
                                                             },
-                                                            r.a.createElement(
-                                                                O.a,
+                                                            n.a.createElement(
+                                                                N.a,
                                                                 {
                                                                     dataPlace:
                                                                         "top",
@@ -4399,31 +4264,31 @@
                                                 )
                                             ),
                                             z = a(3);
-                                        return r.a.createElement(
+                                        return n.a.createElement(
                                             "div",
                                             {
-                                                className: x()(
+                                                className: S()(
                                                     this.props.wrapperClass,
                                                     "grid-block orderbook no-padding small-vertical medium-horizontal align-spaced no-overflow small-12 xlarge-8"
                                                 )
                                             },
-                                            r.a.createElement(
+                                            n.a.createElement(
                                                 "div",
                                                 {
-                                                    className: x()(
+                                                    className: S()(
                                                         "small-12 medium-6 middle-content",
                                                         this.state.flip
                                                             ? "order-1"
                                                             : "order-2"
                                                     )
                                                 },
-                                                r.a.createElement(
+                                                n.a.createElement(
                                                     "div",
                                                     {
                                                         className:
                                                             "exchange-bordered"
                                                     },
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "div",
                                                         {
                                                             className:
@@ -4432,12 +4297,12 @@
                                                                 "walkthrough.sell_orders"
                                                             )
                                                         },
-                                                        r.a.createElement(w.a, {
+                                                        n.a.createElement(w.a, {
                                                             content:
                                                                 "exchange.asks"
                                                         }),
                                                         this.state.flip
-                                                            ? r.a.createElement(
+                                                            ? n.a.createElement(
                                                                   "div",
                                                                   {
                                                                       style: {
@@ -4445,7 +4310,7 @@
                                                                               "inline-block"
                                                                       }
                                                                   },
-                                                                  r.a.createElement(
+                                                                  n.a.createElement(
                                                                       "span",
                                                                       {
                                                                           onClick: this._flipBuySell.bind(
@@ -4469,7 +4334,7 @@
                                                                       " ",
                                                                       "⇆"
                                                                   ),
-                                                                  r.a.createElement(
+                                                                  n.a.createElement(
                                                                       "span",
                                                                       {
                                                                           className:
@@ -4478,7 +4343,7 @@
                                                                               .props
                                                                               .moveOrderBook
                                                                       },
-                                                                      r.a.createElement(
+                                                                      n.a.createElement(
                                                                           T.a,
                                                                           {
                                                                               name:
@@ -4492,7 +4357,7 @@
                                                                   )
                                                               )
                                                             : null,
-                                                        r.a.createElement(
+                                                        n.a.createElement(
                                                             "div",
                                                             {
                                                                 style: {
@@ -4502,14 +4367,14 @@
                                                                 className:
                                                                     "float-right header-sub-title"
                                                             },
-                                                            r.a.createElement(
+                                                            n.a.createElement(
                                                                 w.a,
                                                                 {
                                                                     content:
                                                                         "exchange.total"
                                                                 }
                                                             ),
-                                                            r.a.createElement(
+                                                            n.a.createElement(
                                                                 "span",
                                                                 null,
                                                                 ": "
@@ -4520,20 +4385,20 @@
                                                                     "precision"
                                                                 )
                                                             ),
-                                                            r.a.createElement(
+                                                            n.a.createElement(
                                                                 "span",
                                                                 null,
                                                                 " ",
                                                                 "(",
-                                                                r.a.createElement(
-                                                                    O.a,
+                                                                n.a.createElement(
+                                                                    N.a,
                                                                     {name: h}
                                                                 ),
                                                                 ")"
                                                             )
                                                         )
                                                     ),
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "div",
                                                         {
                                                             style: {
@@ -4541,7 +4406,7 @@
                                                                     "0.6rem"
                                                             }
                                                         },
-                                                        r.a.createElement(
+                                                        n.a.createElement(
                                                             "table",
                                                             {
                                                                 className:
@@ -4549,10 +4414,10 @@
                                                             },
                                                             this.state.flip
                                                                 ? D
-                                                                : q
+                                                                : j
                                                         )
                                                     ),
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "div",
                                                         {
                                                             className:
@@ -4566,7 +4431,7 @@
                                                                 maxHeight: 210
                                                             }
                                                         },
-                                                        r.a.createElement(
+                                                        n.a.createElement(
                                                             "table",
                                                             {
                                                                 style: {
@@ -4575,8 +4440,8 @@
                                                                 className:
                                                                     "table order-table table-hover fixed-table text-right no-overflow"
                                                             },
-                                                            r.a.createElement(
-                                                                N.a,
+                                                            n.a.createElement(
+                                                                O.a,
                                                                 {
                                                                     ref:
                                                                         "askTransition",
@@ -4587,17 +4452,17 @@
                                                                     transitionName:
                                                                         "newrow"
                                                                 },
-                                                                S
+                                                                x
                                                             )
                                                         ),
-                                                        j > y
-                                                            ? r.a.createElement(
+                                                        q > y
+                                                            ? n.a.createElement(
                                                                   "div",
                                                                   {
                                                                       className:
                                                                           "orderbook-showall"
                                                                   },
-                                                                  r.a.createElement(
+                                                                  n.a.createElement(
                                                                       "a",
                                                                       {
                                                                           onClick: this._onToggleShowAll.bind(
@@ -4605,7 +4470,7 @@
                                                                               "asks"
                                                                           )
                                                                       },
-                                                                      r.a.createElement(
+                                                                      n.a.createElement(
                                                                           w.a,
                                                                           {
                                                                               content: g
@@ -4615,12 +4480,12 @@
                                                                       ),
                                                                       g
                                                                           ? null
-                                                                          : r.a.createElement(
+                                                                          : n.a.createElement(
                                                                                 "span",
                                                                                 null,
                                                                                 " ",
                                                                                 "(",
-                                                                                j,
+                                                                                q,
                                                                                 ")"
                                                                             )
                                                                   )
@@ -4629,23 +4494,23 @@
                                                     )
                                                 )
                                             ),
-                                            r.a.createElement(
+                                            n.a.createElement(
                                                 "div",
                                                 {
-                                                    className: x()(
+                                                    className: S()(
                                                         "small-12 medium-6 middle-content",
                                                         this.state.flip
                                                             ? "order-2"
                                                             : "order-1"
                                                     )
                                                 },
-                                                r.a.createElement(
+                                                n.a.createElement(
                                                     "div",
                                                     {
                                                         className:
                                                             "exchange-bordered"
                                                     },
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "div",
                                                         {
                                                             className:
@@ -4654,13 +4519,13 @@
                                                                 "walkthrough.buy_orders"
                                                             )
                                                         },
-                                                        r.a.createElement(w.a, {
+                                                        n.a.createElement(w.a, {
                                                             content:
                                                                 "exchange.bids"
                                                         }),
                                                         this.state.flip
                                                             ? null
-                                                            : r.a.createElement(
+                                                            : n.a.createElement(
                                                                   "div",
                                                                   {
                                                                       style: {
@@ -4668,7 +4533,7 @@
                                                                               "inline-block"
                                                                       }
                                                                   },
-                                                                  r.a.createElement(
+                                                                  n.a.createElement(
                                                                       "span",
                                                                       {
                                                                           onClick: this._flipBuySell.bind(
@@ -4692,7 +4557,7 @@
                                                                       " ",
                                                                       "⇆"
                                                                   ),
-                                                                  r.a.createElement(
+                                                                  n.a.createElement(
                                                                       "span",
                                                                       {
                                                                           className:
@@ -4701,7 +4566,7 @@
                                                                               .props
                                                                               .moveOrderBook
                                                                       },
-                                                                      r.a.createElement(
+                                                                      n.a.createElement(
                                                                           T.a,
                                                                           {
                                                                               name:
@@ -4714,7 +4579,7 @@
                                                                       )
                                                                   )
                                                               ),
-                                                        r.a.createElement(
+                                                        n.a.createElement(
                                                             "div",
                                                             {
                                                                 style: {
@@ -4724,14 +4589,14 @@
                                                                 className:
                                                                     "float-right header-sub-title"
                                                             },
-                                                            r.a.createElement(
+                                                            n.a.createElement(
                                                                 w.a,
                                                                 {
                                                                     content:
                                                                         "exchange.total"
                                                                 }
                                                             ),
-                                                            r.a.createElement(
+                                                            n.a.createElement(
                                                                 "span",
                                                                 null,
                                                                 ": "
@@ -4742,20 +4607,20 @@
                                                                     "precision"
                                                                 )
                                                             ),
-                                                            r.a.createElement(
+                                                            n.a.createElement(
                                                                 "span",
                                                                 null,
                                                                 " ",
                                                                 "(",
-                                                                r.a.createElement(
-                                                                    O.a,
+                                                                n.a.createElement(
+                                                                    N.a,
                                                                     {name: d}
                                                                 ),
                                                                 ")"
                                                             )
                                                         )
                                                     ),
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "div",
                                                         {
                                                             style: {
@@ -4763,7 +4628,7 @@
                                                                     "0.6rem"
                                                             }
                                                         },
-                                                        r.a.createElement(
+                                                        n.a.createElement(
                                                             "table",
                                                             {
                                                                 className:
@@ -4771,10 +4636,10 @@
                                                             },
                                                             this.state.flip
                                                                 ? D
-                                                                : q
+                                                                : j
                                                         )
                                                     ),
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "div",
                                                         {
                                                             className:
@@ -4788,7 +4653,7 @@
                                                                 maxHeight: 210
                                                             }
                                                         },
-                                                        r.a.createElement(
+                                                        n.a.createElement(
                                                             "table",
                                                             {
                                                                 style: {
@@ -4797,8 +4662,8 @@
                                                                 className:
                                                                     "table order-table table-hover fixed-table text-right no-overflow"
                                                             },
-                                                            r.a.createElement(
-                                                                N.a,
+                                                            n.a.createElement(
+                                                                O.a,
                                                                 {
                                                                     ref:
                                                                         "bidTransition",
@@ -4813,13 +4678,13 @@
                                                             )
                                                         ),
                                                         F > y
-                                                            ? r.a.createElement(
+                                                            ? n.a.createElement(
                                                                   "div",
                                                                   {
                                                                       className:
                                                                           "orderbook-showall"
                                                                   },
-                                                                  r.a.createElement(
+                                                                  n.a.createElement(
                                                                       "a",
                                                                       {
                                                                           onClick: this._onToggleShowAll.bind(
@@ -4827,7 +4692,7 @@
                                                                               "bids"
                                                                           )
                                                                       },
-                                                                      r.a.createElement(
+                                                                      n.a.createElement(
                                                                           w.a,
                                                                           {
                                                                               content: b
@@ -4837,7 +4702,7 @@
                                                                       ),
                                                                       b
                                                                           ? null
-                                                                          : r.a.createElement(
+                                                                          : n.a.createElement(
                                                                                 "span",
                                                                                 null,
                                                                                 " ",
@@ -4868,19 +4733,19 @@
                                             (U.className +=
                                                 " left-cell-active");
                                     }
-                                    return r.a.createElement(
+                                    return n.a.createElement(
                                         "div",
                                         {
                                             className:
                                                 "left-order-book no-padding"
                                         },
-                                        r.a.createElement(
+                                        n.a.createElement(
                                             "div",
                                             {
                                                 className:
                                                     "order-table-container exchange-sell-orders vertical-orderbook-up"
                                             },
-                                            r.a.createElement(
+                                            n.a.createElement(
                                                 P.StickyTable,
                                                 {
                                                     className:
@@ -4888,55 +4753,55 @@
                                                     ref:
                                                         "vertical_sticky_table_up"
                                                 },
-                                                r.a.createElement(
+                                                n.a.createElement(
                                                     "div",
                                                     {
                                                         className:
                                                             "custom-sticky-header-wrap"
                                                     },
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "div",
                                                         {
                                                             className:
                                                                 "header-cell left vertical-table-cell-one custom-sticky-header"
                                                         },
-                                                        r.a.createElement(
+                                                        n.a.createElement(
                                                             "span",
                                                             {
                                                                 className:
                                                                     "header-sub-title"
                                                             },
-                                                            r.a.createElement(
-                                                                O.a,
+                                                            n.a.createElement(
+                                                                N.a,
                                                                 {name: d}
                                                             )
                                                         )
                                                     ),
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "div",
                                                         {
                                                             className:
                                                                 "header-cell vertical-table-cell-two custom-sticky-header"
                                                         },
-                                                        r.a.createElement(
+                                                        n.a.createElement(
                                                             "span",
                                                             {
                                                                 className:
                                                                     "header-sub-title"
                                                             },
-                                                            r.a.createElement(
-                                                                O.a,
+                                                            n.a.createElement(
+                                                                N.a,
                                                                 {name: h}
                                                             )
                                                         )
                                                     ),
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "div",
                                                         {
                                                             className:
                                                                 " header-cell right vertical-table-cell-three custom-sticky-header"
                                                         },
-                                                        r.a.createElement(w.a, {
+                                                        n.a.createElement(w.a, {
                                                             className:
                                                                 "header-sub-title",
                                                             content:
@@ -4944,8 +4809,8 @@
                                                         })
                                                     )
                                                 ),
-                                                r.a.createElement(
-                                                    N.a,
+                                                n.a.createElement(
+                                                    O.a,
                                                     {
                                                         ref: "askTransition",
                                                         className:
@@ -4953,16 +4818,16 @@
                                                         component: "div",
                                                         transitionName: "newrow"
                                                     },
-                                                    S.length > 0
-                                                        ? S
+                                                    x.length > 0
+                                                        ? x
                                                         : _ ||
-                                                          r.a.createElement(
+                                                          n.a.createElement(
                                                               "div",
                                                               {
                                                                   className:
                                                                       "sticky-table-row"
                                                               },
-                                                              r.a.createElement(
+                                                              n.a.createElement(
                                                                   "td",
                                                                   {
                                                                       className:
@@ -4976,7 +4841,7 @@
                                                 )
                                             )
                                         ),
-                                        r.a.createElement(
+                                        n.a.createElement(
                                             "div",
                                             {
                                                 className:
@@ -4984,39 +4849,39 @@
                                                 ref: "center_text"
                                             },
                                             _
-                                                ? r.a.createElement(
+                                                ? n.a.createElement(
                                                       "td",
                                                       {
                                                           colSpan: 3,
                                                           className:
                                                               "no-orders padtop"
                                                       },
-                                                      r.a.createElement(w.a, {
+                                                      n.a.createElement(w.a, {
                                                           content:
                                                               "exchange.no_orders"
                                                       })
                                                   )
-                                                : r.a.createElement(
+                                                : n.a.createElement(
                                                       "td",
                                                       {
                                                           className:
                                                               "cell center-cell",
                                                           colSpan: "3"
                                                       },
-                                                      r.a.createElement(
+                                                      n.a.createElement(
                                                           "div",
                                                           {
                                                               className:
                                                                   "orderbook-latest-price"
                                                           },
-                                                          r.a.createElement(
+                                                          n.a.createElement(
                                                               "div",
                                                               {
                                                                   className:
                                                                       "text-center spread"
                                                               },
                                                               !!E &&
-                                                                  r.a.createElement(
+                                                                  n.a.createElement(
                                                                       "span",
                                                                       {
                                                                           className:
@@ -5024,7 +4889,7 @@
                                                                           onClick: this
                                                                               .toggleSpreadValue
                                                                       },
-                                                                      r.a.createElement(
+                                                                      n.a.createElement(
                                                                           w.a,
                                                                           {
                                                                               content:
@@ -5032,7 +4897,7 @@
                                                                           }
                                                                       ),
                                                                       " ",
-                                                                      r.a.createElement(
+                                                                      n.a.createElement(
                                                                           "span",
                                                                           {
                                                                               className:
@@ -5044,13 +4909,13 @@
                                                               "  ",
                                                               !!this.props
                                                                   .latest &&
-                                                                  r.a.createElement(
+                                                                  n.a.createElement(
                                                                       "span",
                                                                       {
                                                                           className:
                                                                               "right"
                                                                       },
-                                                                      r.a.createElement(
+                                                                      n.a.createElement(
                                                                           w.a,
                                                                           {
                                                                               content:
@@ -5058,14 +4923,14 @@
                                                                           }
                                                                       ),
                                                                       " ",
-                                                                      r.a.createElement(
+                                                                      n.a.createElement(
                                                                           "span",
                                                                           {
                                                                               className: this
                                                                                   .props
                                                                                   .changeClass
                                                                           },
-                                                                          r.a.createElement(
+                                                                          n.a.createElement(
                                                                               A.a,
                                                                               {
                                                                                   preFormattedPrice: this
@@ -5079,13 +4944,13 @@
                                                       )
                                                   )
                                         ),
-                                        r.a.createElement(
+                                        n.a.createElement(
                                             "div",
                                             {
                                                 className:
                                                     "order-table-container exchange-buy-orders vertical-orderbook-down"
                                             },
-                                            r.a.createElement(
+                                            n.a.createElement(
                                                 P.StickyTable,
                                                 {
                                                     className:
@@ -5093,55 +4958,55 @@
                                                     ref:
                                                         "vertical_sticky_table_down"
                                                 },
-                                                r.a.createElement(
+                                                n.a.createElement(
                                                     "div",
                                                     {
                                                         className:
                                                             "sticky-table-row top-header"
                                                     },
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "div",
                                                         {
                                                             className:
                                                                 "cell header-cell left"
                                                         },
-                                                        r.a.createElement(
+                                                        n.a.createElement(
                                                             "span",
                                                             {
                                                                 className:
                                                                     "header-sub-title"
                                                             },
-                                                            r.a.createElement(
-                                                                O.a,
+                                                            n.a.createElement(
+                                                                N.a,
                                                                 {name: d}
                                                             )
                                                         )
                                                     ),
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "div",
                                                         {
                                                             className:
                                                                 "cell header-cell"
                                                         },
-                                                        r.a.createElement(
+                                                        n.a.createElement(
                                                             "span",
                                                             {
                                                                 className:
                                                                     "header-sub-title"
                                                             },
-                                                            r.a.createElement(
-                                                                O.a,
+                                                            n.a.createElement(
+                                                                N.a,
                                                                 {name: h}
                                                             )
                                                         )
                                                     ),
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "div",
                                                         {
                                                             className:
                                                                 "cell header-cell right"
                                                         },
-                                                        r.a.createElement(w.a, {
+                                                        n.a.createElement(w.a, {
                                                             className:
                                                                 "header-sub-title",
                                                             content:
@@ -5149,8 +5014,8 @@
                                                         })
                                                     )
                                                 ),
-                                                r.a.createElement(
-                                                    N.a,
+                                                n.a.createElement(
+                                                    O.a,
                                                     {
                                                         ref: "bidTransition",
                                                         className:
@@ -5161,13 +5026,13 @@
                                                     C.length > 0
                                                         ? C
                                                         : _ ||
-                                                          r.a.createElement(
+                                                          n.a.createElement(
                                                               "div",
                                                               {
                                                                   className:
                                                                       "sticky-table-row"
                                                               },
-                                                              r.a.createElement(
+                                                              n.a.createElement(
                                                                   "td",
                                                                   {
                                                                       className:
@@ -5175,7 +5040,7 @@
                                                                       colSpan:
                                                                           "3"
                                                                   },
-                                                                  r.a.createElement(
+                                                                  n.a.createElement(
                                                                       w.a,
                                                                       {
                                                                           content:
@@ -5187,19 +5052,19 @@
                                                 )
                                             )
                                         ),
-                                        r.a.createElement(
+                                        n.a.createElement(
                                             "div",
                                             {
                                                 className:
                                                     "v-align no-padding align-center grid-block footer shrink bottom-header"
                                             },
-                                            r.a.createElement(
+                                            n.a.createElement(
                                                 "div",
                                                 {
                                                     onClick: this.props
                                                         .moveOrderBook
                                                 },
-                                                r.a.createElement(T.a, {
+                                                n.a.createElement(T.a, {
                                                     name: "thumb-untack",
                                                     title: "icons.thumb_untack",
                                                     className:
@@ -5227,23 +5092,23 @@
                 V = a(15),
                 J = a(4),
                 Q = a(3),
-                G = a.n(Q),
-                Y = a(93),
+                Y = a.n(Q),
+                G = a(93),
                 K = a(183),
                 X = a(280),
                 Z = a.n(X),
                 $ = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
+                            var r = t[a];
+                            (r.enumerable = r.enumerable || !1),
+                                (r.configurable = !0),
+                                "value" in r && (r.writable = !0),
+                                Object.defineProperty(e, r.key, r);
                         }
                     }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
+                    return function(t, a, r) {
+                        return a && e(t.prototype, a), r && e(t, r), t;
                     };
                 })();
             var ee = (function(e) {
@@ -5292,7 +5157,7 @@
                                 (Object.setPrototypeOf
                                     ? Object.setPrototypeOf(e, t)
                                     : (e.__proto__ = t));
-                    })(t, r.a.Component),
+                    })(t, n.a.Component),
                     $(t, [
                         {
                             key: "componentWillMount",
@@ -5318,25 +5183,25 @@
                                 var e = this.props,
                                     t = e.block,
                                     a = e.tooltip,
-                                    n = e.component,
-                                    s = e.format;
+                                    r = e.component,
+                                    o = e.format;
                                 return t
-                                    ? r.a.createElement(
-                                          n,
+                                    ? n.a.createElement(
+                                          r,
                                           {
                                               className: a ? "tooltip" : "",
                                               "data-tip": a ? t.timestamp : ""
                                           },
-                                          r.a.createElement(
+                                          n.a.createElement(
                                               "span",
                                               null,
-                                              G.a.localize(t.timestamp, {
+                                              Y.a.localize(t.timestamp, {
                                                   type: "date",
-                                                  format: s
+                                                  format: o
                                               })
                                           )
                                       )
-                                    : r.a.createElement(n);
+                                    : n.a.createElement(r);
                             }
                         }
                     ]),
@@ -5356,30 +5221,30 @@
             };
             var te = (ee = Object(V.connect)(ee, {
                     listenTo: function() {
-                        return [Y.a];
+                        return [G.a];
                     },
                     getProps: function(e) {
                         return {
-                            block: Y.a.getState().blocks.get(e.block_number)
+                            block: G.a.getState().blocks.get(e.block_number)
                         };
                     }
                 })),
                 ae = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
+                            var r = t[a];
+                            (r.enumerable = r.enumerable || !1),
+                                (r.configurable = !0),
+                                "value" in r && (r.writable = !0),
+                                Object.defineProperty(e, r.key, r);
                         }
                     }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
+                    return function(t, a, r) {
+                        return a && e(t.prototype, a), r && e(t, r), t;
                     };
                 })();
-            var ne = J.c.operations,
-                re = (function(e) {
+            var re = J.c.operations,
+                ne = (function(e) {
                     function t(e) {
                         !(function(e, t) {
                             if (!(e instanceof t))
@@ -5429,7 +5294,7 @@
                                     (Object.setPrototypeOf
                                         ? Object.setPrototypeOf(e, t)
                                         : (e.__proto__ = t));
-                        })(t, r.a.Component),
+                        })(t, n.a.Component),
                         ae(t, [
                             {
                                 key: "shouldComponentUpdate",
@@ -5481,9 +5346,9 @@
                                     var e = this.props,
                                         t = e.history,
                                         a = e.myHistory,
-                                        n = e.base,
-                                        s = e.quote,
-                                        o = e.baseSymbol,
+                                        r = e.base,
+                                        o = e.quote,
+                                        s = e.baseSymbol,
                                         i = e.quoteSymbol,
                                         l = e.isNullAccount,
                                         c = this.state.activeTab,
@@ -5494,33 +5359,33 @@
                                     ) {
                                         var p = -1,
                                             h =
-                                                n.get("id").split(".")[2] >
-                                                s.get("id").split(".")[2];
+                                                r.get("id").split(".")[2] >
+                                                o.get("id").split(".")[2];
                                         u = a
                                             .filter(function(e) {
                                                 return (
                                                     e.getIn(["op", 0]) ===
-                                                    ne.fill_order
+                                                    re.fill_order
                                                 );
                                             })
                                             .filter(function(e) {
-                                                var t = s.get("id"),
-                                                    a = n.get("id"),
-                                                    r = e.getIn([
+                                                var t = o.get("id"),
+                                                    a = r.get("id"),
+                                                    n = e.getIn([
                                                         "op",
                                                         1,
                                                         "pays",
                                                         "asset_id"
                                                     ]),
-                                                    o = e.getIn([
+                                                    s = e.getIn([
                                                         "op",
                                                         1,
                                                         "receives",
                                                         "asset_id"
                                                     ]);
                                                 return (
-                                                    (t === r || t === o) &&
-                                                    (a === r || a === o)
+                                                    (t === n || t === s) &&
+                                                    (a === n || a === s)
                                                 );
                                             })
                                             .sort(function(e, t) {
@@ -5533,45 +5398,45 @@
                                                 var t = e.toJS().op[1];
                                                 p++;
                                                 var a = void 0,
-                                                    o = void 0,
+                                                    s = void 0,
                                                     i = !1;
-                                                t.pays.asset_id === n.get("id")
-                                                    ? ((a = n),
-                                                      (o = s),
+                                                t.pays.asset_id === r.get("id")
+                                                    ? ((a = r),
+                                                      (s = o),
                                                       (i = !0))
-                                                    : ((a = s), (o = n));
+                                                    : ((a = o), (s = r));
                                                 var l = H.a.parse_order_history(
                                                         t,
                                                         a,
-                                                        o,
+                                                        s,
                                                         i,
                                                         h
                                                     ),
                                                     c = e.get("block_num");
-                                                return r.a.createElement(
+                                                return n.a.createElement(
                                                     "tr",
                                                     {key: "my_history_" + p},
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "td",
                                                         {
                                                             className:
                                                                 l.className
                                                         },
-                                                        r.a.createElement(A.a, {
+                                                        n.a.createElement(A.a, {
                                                             preFormattedPrice: l
                                                         })
                                                     ),
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "td",
                                                         null,
                                                         l.receives
                                                     ),
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "td",
                                                         null,
                                                         l.pays
                                                     ),
-                                                    r.a.createElement(te, {
+                                                    n.a.createElement(te, {
                                                         component: "td",
                                                         block_number: c,
                                                         tooltip: !0
@@ -5583,8 +5448,8 @@
                                         var d = 0,
                                             m = -1,
                                             f =
-                                                n.get("id").split(".")[2] >
-                                                s.get("id").split(".")[2];
+                                                r.get("id").split(".")[2] >
+                                                o.get("id").split(".")[2];
                                         u = this.props.history
                                             .filter(function() {
                                                 return ++d % 2 == 0;
@@ -5594,43 +5459,43 @@
                                                 m++;
                                                 var t = void 0,
                                                     a = void 0,
-                                                    o = !1;
-                                                e.pays.asset_id === n.get("id")
-                                                    ? ((t = n),
-                                                      (a = s),
-                                                      (o = !0))
-                                                    : ((t = s), (a = n));
+                                                    s = !1;
+                                                e.pays.asset_id === r.get("id")
+                                                    ? ((t = r),
+                                                      (a = o),
+                                                      (s = !0))
+                                                    : ((t = o), (a = r));
                                                 var i = H.a.parse_order_history(
                                                     e,
                                                     t,
                                                     a,
-                                                    o,
+                                                    s,
                                                     f
                                                 );
-                                                return r.a.createElement(
+                                                return n.a.createElement(
                                                     "tr",
                                                     {key: "history_" + m},
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "td",
                                                         {
                                                             className:
                                                                 i.className
                                                         },
-                                                        r.a.createElement(A.a, {
+                                                        n.a.createElement(A.a, {
                                                             preFormattedPrice: i
                                                         })
                                                     ),
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "td",
                                                         null,
                                                         i.receives
                                                     ),
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "td",
                                                         null,
                                                         i.pays
                                                     ),
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "td",
                                                         {
                                                             "data-place":
@@ -5650,21 +5515,21 @@
                                             .toArray();
                                     }
                                     var g = "mymarkets-header clickable",
-                                        b = x()(g, {
+                                        b = S()(g, {
                                             inactive: "my_history" === c
                                         }),
-                                        y = x()(g, {inactive: "history" === c});
-                                    return r.a.createElement(
+                                        y = S()(g, {inactive: "history" === c});
+                                    return n.a.createElement(
                                         "div",
                                         {className: this.props.className},
-                                        r.a.createElement(
+                                        n.a.createElement(
                                             "div",
                                             {
                                                 className:
                                                     "exchange-bordered small-12",
                                                 style: {height: 266}
                                             },
-                                            r.a.createElement(
+                                            n.a.createElement(
                                                 "div",
                                                 {
                                                     style: this.props
@@ -5672,10 +5537,10 @@
                                                     className:
                                                         "grid-block shrink left-orderbook-header bottom-header"
                                                 },
-                                                r.a.createElement(
+                                                n.a.createElement(
                                                     "div",
                                                     {
-                                                        className: x()(y, {
+                                                        className: S()(y, {
                                                             disabled: l
                                                         }),
                                                         onClick: this._changeTab.bind(
@@ -5683,12 +5548,12 @@
                                                             "my_history"
                                                         )
                                                     },
-                                                    r.a.createElement(w.a, {
+                                                    n.a.createElement(w.a, {
                                                         content:
                                                             "exchange.my_history"
                                                     })
                                                 ),
-                                                r.a.createElement(
+                                                n.a.createElement(
                                                     "div",
                                                     {
                                                         className: b,
@@ -5697,34 +5562,34 @@
                                                             "history"
                                                         )
                                                     },
-                                                    r.a.createElement(w.a, {
+                                                    n.a.createElement(w.a, {
                                                         content:
                                                             "exchange.history"
                                                     })
                                                 )
                                             ),
-                                            r.a.createElement(
+                                            n.a.createElement(
                                                 "div",
                                                 {
                                                     className:
                                                         "grid-block shrink left-orderbook-header market-right-padding-only"
                                                 },
-                                                r.a.createElement(
+                                                n.a.createElement(
                                                     "table",
                                                     {
                                                         className:
                                                             "table order-table text-right fixed-table market-right-padding"
                                                     },
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "thead",
                                                         null,
-                                                        r.a.createElement(
+                                                        n.a.createElement(
                                                             "tr",
                                                             null,
-                                                            r.a.createElement(
+                                                            n.a.createElement(
                                                                 "th",
                                                                 null,
-                                                                r.a.createElement(
+                                                                n.a.createElement(
                                                                     w.a,
                                                                     {
                                                                         className:
@@ -5734,17 +5599,17 @@
                                                                     }
                                                                 )
                                                             ),
-                                                            r.a.createElement(
+                                                            n.a.createElement(
                                                                 "th",
                                                                 null,
-                                                                r.a.createElement(
+                                                                n.a.createElement(
                                                                     "span",
                                                                     {
                                                                         className:
                                                                             "header-sub-title"
                                                                     },
-                                                                    r.a.createElement(
-                                                                        O.a,
+                                                                    n.a.createElement(
+                                                                        N.a,
                                                                         {
                                                                             dataPlace:
                                                                                 "top",
@@ -5753,29 +5618,29 @@
                                                                     )
                                                                 )
                                                             ),
-                                                            r.a.createElement(
+                                                            n.a.createElement(
                                                                 "th",
                                                                 null,
-                                                                r.a.createElement(
+                                                                n.a.createElement(
                                                                     "span",
                                                                     {
                                                                         className:
                                                                             "header-sub-title"
                                                                     },
-                                                                    r.a.createElement(
-                                                                        O.a,
+                                                                    n.a.createElement(
+                                                                        N.a,
                                                                         {
                                                                             dataPlace:
                                                                                 "top",
-                                                                            name: o
+                                                                            name: s
                                                                         }
                                                                     )
                                                                 )
                                                             ),
-                                                            r.a.createElement(
+                                                            n.a.createElement(
                                                                 "th",
                                                                 null,
-                                                                r.a.createElement(
+                                                                n.a.createElement(
                                                                     w.a,
                                                                     {
                                                                         className:
@@ -5789,7 +5654,7 @@
                                                     )
                                                 )
                                             ),
-                                            r.a.createElement(
+                                            n.a.createElement(
                                                 "div",
                                                 {
                                                     className:
@@ -5800,14 +5665,14 @@
                                                         overflow: "hidden"
                                                     }
                                                 },
-                                                r.a.createElement(
+                                                n.a.createElement(
                                                     "table",
                                                     {
                                                         className:
                                                             "table order-table text-right fixed-table market-right-padding"
                                                     },
-                                                    r.a.createElement(
-                                                        N.a,
+                                                    n.a.createElement(
+                                                        O.a,
                                                         {
                                                             component: "tbody",
                                                             transitionName:
@@ -5825,9 +5690,9 @@
                         t
                     );
                 })();
-            (re.defaultProps = {history: []}),
-                (re.propTypes = {history: g.a.object.isRequired});
-            var se = Object(V.connect)(re, {
+            (ne.defaultProps = {history: []}),
+                (ne.propTypes = {history: g.a.object.isRequired});
+            var oe = Object(V.connect)(ne, {
                     listenTo: function() {
                         return [l.a];
                     },
@@ -5835,46 +5700,45 @@
                         return {viewSettings: l.a.getState().viewSettings};
                     }
                 }),
-                oe = a(359),
+                se = a(359),
                 ie = a(33),
                 le = a(6),
                 ce = a(13),
-                ue = a(450),
-                pe = a(451),
+                ue = a(451),
+                pe = a(452),
                 he = a(18),
                 de = a(185),
                 me = a(48),
-                fe = a(569),
+                fe = a(570),
                 ge = a.n(fe),
                 be = a(52),
                 ye = a.n(be),
-                ve = a(113),
-                _e =
-                    Object.assign ||
+                ve = (a(113),
+                Object.assign ||
                     function(e) {
                         for (var t = 1; t < arguments.length; t++) {
                             var a = arguments[t];
-                            for (var n in a)
-                                Object.prototype.hasOwnProperty.call(a, n) &&
-                                    (e[n] = a[n]);
+                            for (var r in a)
+                                Object.prototype.hasOwnProperty.call(a, r) &&
+                                    (e[r] = a[r]);
                         }
                         return e;
-                    },
-                ke = (function() {
+                    }),
+                _e = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
+                            var r = t[a];
+                            (r.enumerable = r.enumerable || !1),
+                                (r.configurable = !0),
+                                "value" in r && (r.writable = !0),
+                                Object.defineProperty(e, r.key, r);
                         }
                     }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
+                    return function(t, a, r) {
+                        return a && e(t.prototype, a), r && e(t, r), t;
                     };
                 })();
-            var Ee = (function(e) {
+            var ke = (function(e) {
                 function t(e) {
                     return (
                         (function(e, t) {
@@ -5920,8 +5784,8 @@
                                 (Object.setPrototypeOf
                                     ? Object.setPrototypeOf(e, t)
                                     : (e.__proto__ = t));
-                    })(t, r.a.Component),
-                    ke(t, [
+                    })(t, n.a.Component),
+                    _e(t, [
                         {
                             key: "shouldComponentUpdate",
                             value: function(e) {
@@ -5997,9 +5861,9 @@
                             value: function() {
                                 var e = this,
                                     t = this.props,
-                                    n = t.type,
-                                    s = t.quote,
-                                    o = t.base,
+                                    r = t.type,
+                                    o = t.quote,
+                                    s = t.base,
                                     i = t.amountChange,
                                     c = t.fee,
                                     u = t.isPredictionMarket,
@@ -6015,28 +5879,20 @@
                                     _ = t.hasFeeBalance,
                                     E = t.backedCoin,
                                     C = void 0,
-                                    S = void 0,
-                                    N = void 0,
+                                    x = void 0,
+                                    O = void 0,
                                     P = this.props.isOpen
-                                        ? r.a.createElement("span", null, "▼")
-                                        : r.a.createElement("span", null, "▲");
+                                        ? n.a.createElement("span", null, "▼")
+                                        : n.a.createElement("span", null, "▲");
                                 this.props.amount && (C = this.props.amount),
-                                    this.props.price && (S = this.props.price),
-                                    this.props.total && (N = this.props.total);
+                                    this.props.price && (x = this.props.price),
+                                    this.props.total && (O = this.props.total);
                                 var I = new he.a({
                                         amount: d ? d.get("balance") : 0,
                                         precision: f,
                                         asset_id: this.props.balanceId
                                     }),
                                     B = new he.a({
-                                        amount: o.getIn([
-                                            "options",
-                                            "max_market_fee"
-                                        ]),
-                                        asset_id: o.get("asset_id"),
-                                        precision: o.get("precision")
-                                    }),
-                                    M = new he.a({
                                         amount: s.getIn([
                                             "options",
                                             "max_market_fee"
@@ -6044,25 +5900,33 @@
                                         asset_id: s.get("asset_id"),
                                         precision: s.get("precision")
                                     }),
-                                    F =
-                                        o.getIn([
+                                    M = new he.a({
+                                        amount: o.getIn([
                                             "options",
-                                            "market_fee_percent"
-                                        ]) /
-                                            100 +
-                                        "%",
-                                    j =
+                                            "max_market_fee"
+                                        ]),
+                                        asset_id: o.get("asset_id"),
+                                        precision: o.get("precision")
+                                    }),
+                                    F =
                                         s.getIn([
                                             "options",
                                             "market_fee_percent"
                                         ]) /
                                             100 +
                                         "%",
-                                    q = C
+                                    q =
+                                        o.getIn([
+                                            "options",
+                                            "market_fee_percent"
+                                        ]) /
+                                            100 +
+                                        "%",
+                                    j = C
                                         ? Math.min(
                                               M.getAmount({real: !0}),
                                               (C *
-                                                  s.getIn([
+                                                  o.getIn([
                                                       "options",
                                                       "market_fee_percent"
                                                   ])) /
@@ -6072,8 +5936,8 @@
                                     R = C
                                         ? Math.min(
                                               B.getAmount({real: !0}),
-                                              (N *
-                                                  o.getIn([
+                                              (O *
+                                                  s.getIn([
                                                       "options",
                                                       "market_fee_percent"
                                                   ])) /
@@ -6081,12 +5945,12 @@
                                           ).toFixed(B.precision)
                                         : 0,
                                     L = me.a.getFlagBooleans(
-                                        o.getIn(["options", "flags"]),
-                                        o.has("bitasset_data_id")
-                                    ),
-                                    D = me.a.getFlagBooleans(
                                         s.getIn(["options", "flags"]),
                                         s.has("bitasset_data_id")
+                                    ),
+                                    D = me.a.getFlagBooleans(
+                                        o.getIn(["options", "flags"]),
+                                        o.has("bitasset_data_id")
                                     ),
                                     z = k.a.replaceName(this.props.base),
                                     U = z.name,
@@ -6095,32 +5959,32 @@
                                         L.charge_market_fee ||
                                         D.charge_market_fee,
                                     V = L.charge_market_fee
-                                        ? r.a.createElement(
+                                        ? n.a.createElement(
                                               "div",
                                               {
                                                   className:
                                                       "grid-block no-padding buy-sell-row"
                                               },
-                                              r.a.createElement(
+                                              n.a.createElement(
                                                   "div",
                                                   {
                                                       className:
                                                           "grid-block small-4 no-margin no-overflow buy-sell-label"
                                                   },
-                                                  r.a.createElement(w.a, {
+                                                  n.a.createElement(w.a, {
                                                       content:
                                                           "explorer.asset.summary.market_fee"
                                                   }),
                                                   ": ",
                                                   F
                                               ),
-                                              r.a.createElement(
+                                              n.a.createElement(
                                                   "div",
                                                   {
                                                       className:
                                                           "grid-block small-4 no-margin no-overflow buy-sell-input"
                                                   },
-                                                  r.a.createElement("input", {
+                                                  n.a.createElement("input", {
                                                       disabled: !0,
                                                       type: "text",
                                                       id: "baseMarketFee",
@@ -6128,24 +5992,24 @@
                                                       autoComplete: "off"
                                                   })
                                               ),
-                                              r.a.createElement(
+                                              n.a.createElement(
                                                   "div",
                                                   {
                                                       className:
                                                           "grid-block small-4 no-margin no-overflow buy-sell-box"
                                                   },
-                                                  r.a.createElement(O.a, {
+                                                  n.a.createElement(N.a, {
                                                       noTip: !0,
-                                                      name: o.get("symbol")
+                                                      name: s.get("symbol")
                                                   }),
-                                                  r.a.createElement(
+                                                  n.a.createElement(
                                                       "span",
                                                       {
-                                                          "data-tip": G.a.translate(
+                                                          "data-tip": Y.a.translate(
                                                               "tooltip.market_fee",
                                                               {
                                                                   percent:
-                                                                      o.getIn([
+                                                                      s.getIn([
                                                                           "options",
                                                                           "market_fee_percent"
                                                                       ]) / 100,
@@ -6159,7 +6023,7 @@
                                                               "inline-block tooltip"
                                                       },
                                                       " ",
-                                                      r.a.createElement(T.a, {
+                                                      n.a.createElement(T.a, {
                                                           style: {
                                                               position:
                                                                   "relative",
@@ -6174,13 +6038,13 @@
                                               )
                                           )
                                         : H
-                                            ? r.a.createElement(
+                                            ? n.a.createElement(
                                                   "div",
                                                   {
                                                       className:
                                                           "grid-block no-padding buy-sell-row"
                                                   },
-                                                  r.a.createElement(
+                                                  n.a.createElement(
                                                       "div",
                                                       {
                                                           style: {
@@ -6190,7 +6054,7 @@
                                                           className:
                                                               "grid-block small-3 no-margin no-overflow buy-sell-label"
                                                       },
-                                                      r.a.createElement(w.a, {
+                                                      n.a.createElement(w.a, {
                                                           content:
                                                               "explorer.asset.summary.market_fee"
                                                       }),
@@ -6200,64 +6064,64 @@
                                             : null,
                                     J = k.a.replaceName(this.props.quote),
                                     Q = J.name,
-                                    Y = J.prefix,
+                                    G = J.prefix,
                                     K = D.charge_market_fee
-                                        ? r.a.createElement(
+                                        ? n.a.createElement(
                                               "div",
                                               {
                                                   className:
                                                       "grid-block no-padding buy-sell-row"
                                               },
-                                              r.a.createElement(
+                                              n.a.createElement(
                                                   "div",
                                                   {
                                                       className:
                                                           "grid-block small-4 no-margin no-overflow buy-sell-label"
                                                   },
-                                                  r.a.createElement(w.a, {
+                                                  n.a.createElement(w.a, {
                                                       content:
                                                           "explorer.asset.summary.market_fee"
                                                   }),
                                                   ": ",
-                                                  j
+                                                  q
                                               ),
-                                              r.a.createElement(
+                                              n.a.createElement(
                                                   "div",
                                                   {
                                                       className:
                                                           "grid-block small-4 no-margin no-overflow buy-sell-input"
                                                   },
-                                                  r.a.createElement("input", {
+                                                  n.a.createElement("input", {
                                                       disabled: !0,
                                                       type: "text",
                                                       id: "quoteMarketFee",
-                                                      value: q,
+                                                      value: j,
                                                       autoComplete: "off"
                                                   })
                                               ),
-                                              r.a.createElement(
+                                              n.a.createElement(
                                                   "div",
                                                   {
                                                       className:
                                                           "grid-block small-4 no-margin no-overflow buy-sell-box"
                                                   },
-                                                  r.a.createElement(O.a, {
+                                                  n.a.createElement(N.a, {
                                                       noTip: !0,
-                                                      name: s.get("symbol")
+                                                      name: o.get("symbol")
                                                   }),
-                                                  r.a.createElement(
+                                                  n.a.createElement(
                                                       "span",
                                                       {
-                                                          "data-tip": G.a.translate(
+                                                          "data-tip": Y.a.translate(
                                                               "tooltip.market_fee",
                                                               {
                                                                   percent:
-                                                                      s.getIn([
+                                                                      o.getIn([
                                                                           "options",
                                                                           "market_fee_percent"
                                                                       ]) / 100,
                                                                   asset:
-                                                                      (Y ||
+                                                                      (G ||
                                                                           "") +
                                                                       Q
                                                               }
@@ -6266,7 +6130,7 @@
                                                               "inline-block tooltip"
                                                       },
                                                       " ",
-                                                      r.a.createElement(T.a, {
+                                                      n.a.createElement(T.a, {
                                                           style: {
                                                               position:
                                                                   "relative",
@@ -6281,13 +6145,13 @@
                                               )
                                           )
                                         : H
-                                            ? r.a.createElement(
+                                            ? n.a.createElement(
                                                   "div",
                                                   {
                                                       className:
                                                           "grid-block no-padding buy-sell-row"
                                                   },
-                                                  r.a.createElement(
+                                                  n.a.createElement(
                                                       "div",
                                                       {
                                                           style: {
@@ -6297,7 +6161,7 @@
                                                           className:
                                                               "grid-block small-3 no-margin no-overflow buy-sell-label"
                                                       },
-                                                      r.a.createElement(w.a, {
+                                                      n.a.createElement(w.a, {
                                                           content:
                                                               "explorer.asset.summary.market_fee"
                                                       }),
@@ -6305,39 +6169,39 @@
                                                   )
                                               )
                                             : null,
-                                    X = "bid" === n,
+                                    X = "bid" === r,
                                     Z = X && K ? K : !X && V ? V : null,
                                     $ = X
                                         ? I.getAmount({real: !0}) >=
-                                          parseFloat(N)
+                                          parseFloat(O)
                                         : I.getAmount({real: !0}) >=
                                           parseFloat(C),
                                     ee = u
-                                        ? G.a.translate("exchange.short")
+                                        ? Y.a.translate("exchange.short")
                                         : X
-                                            ? G.a.translate("exchange.buy")
-                                            : G.a.translate("exchange.sell"),
+                                            ? Y.a.translate("exchange.buy")
+                                            : Y.a.translate("exchange.sell"),
                                     te = X
-                                        ? G.a.translate("exchange.buy")
-                                        : G.a.translate("exchange.sell"),
+                                        ? Y.a.translate("exchange.buy")
+                                        : Y.a.translate("exchange.sell"),
                                     ae = !u && !(I.getAmount() > 0 && $),
-                                    ne = !(S > 0),
-                                    re = !(C > 0),
-                                    se = ae || ne || re,
-                                    oe = x()("button buySellButton", n, {
-                                        disabled: se
+                                    re = !(x > 0),
+                                    ne = !(C > 0),
+                                    oe = ae || re || ne,
+                                    se = S()("button buySellButton", r, {
+                                        disabled: oe
                                     }),
-                                    le = X ? o.get("symbol") : s.get("symbol"),
-                                    ce = ne
-                                        ? G.a.translate(
+                                    le = X ? s.get("symbol") : o.get("symbol"),
+                                    ce = re
+                                        ? Y.a.translate(
                                               "exchange.invalid_price"
                                           )
-                                        : re
-                                            ? G.a.translate(
+                                        : ne
+                                            ? Y.a.translate(
                                                   "exchange.invalid_amount"
                                               )
                                             : ae
-                                                ? G.a.translate(
+                                                ? Y.a.translate(
                                                       "exchange.no_balance"
                                                   )
                                                 : null;
@@ -6361,16 +6225,16 @@
                                     be = v.map(function(e) {
                                         var t = k.a.replaceName(e),
                                             a = t.name,
-                                            n = t.prefix;
-                                        return r.a.createElement(
+                                            r = t.prefix;
+                                        return n.a.createElement(
                                             "option",
                                             {key: e.get("id"), value: fe++},
-                                            n,
+                                            r,
                                             a
                                         );
                                     }),
-                                    ve = void 0;
-                                ve =
+                                    _e = void 0;
+                                _e =
                                     y.get("symbol") === le
                                         ? I.clone(I.getAmount() - c.getAmount())
                                         : I;
@@ -6379,820 +6243,801 @@
                                     ),
                                     Ee = (ke.name, ke.prefix, a(3)),
                                     we = null;
-                                "bid" == n &&
+                                "bid" == r &&
                                     (we = Ee.translate("walkthrough.buy_form")),
-                                    "ask" == n &&
+                                    "ask" == r &&
                                         (we = Ee.translate(
                                             "walkthrough.sell_form"
                                         ));
                                 var Ce = Object.keys(
                                         this.props.expirations
                                     ).map(function(t, a) {
-                                        return r.a.createElement(
+                                        return n.a.createElement(
                                             "option",
                                             {value: t, key: t},
                                             e.props.expirations[t].title
                                         );
                                     }),
-                                    Se = l.a.getState().settings.get("themes"),
-                                    xe = ye()(),
+                                    xe = l.a.getState().settings.get("themes"),
+                                    Se = ye()(),
                                     Ae =
-                                        "LLC" === o.get("symbol") ||
-                                        "LLC" === s.get("symbol");
-                                return (
-                                    console.log("--------------"),
-                                    console.log(X),
-                                    console.log(this.props),
-                                    console.log("--------------"),
-                                    r.a.createElement(
+                                        "LLC" === s.get("symbol") ||
+                                        "LLC" === o.get("symbol");
+                                return n.a.createElement(
+                                    "div",
+                                    {className: this.props.className},
+                                    n.a.createElement(
                                         "div",
-                                        {className: this.props.className},
-                                        r.a.createElement(
+                                        {
+                                            className:
+                                                "exchange-bordered buy-sell-container"
+                                        },
+                                        n.a.createElement(
                                             "div",
                                             {
                                                 className:
-                                                    "exchange-bordered buy-sell-container"
+                                                    "exchange-content-header " +
+                                                    r,
+                                                "data-intro": we
                                             },
-                                            r.a.createElement(
+                                            n.a.createElement(
+                                                "span",
+                                                null,
+                                                n.a.createElement(ie.a, {
+                                                    string:
+                                                        "exchange.buysell_formatter",
+                                                    noLink: !0,
+                                                    noTip: !1,
+                                                    keys: [
+                                                        {
+                                                            type: "asset",
+                                                            value: o.get(
+                                                                "symbol"
+                                                            ),
+                                                            arg: "asset"
+                                                        },
+                                                        {
+                                                            type: "translate",
+                                                            value: u
+                                                                ? "exchange.short"
+                                                                : X
+                                                                    ? "exchange.buy"
+                                                                    : "exchange.sell",
+                                                            arg: "direction"
+                                                        }
+                                                    ]
+                                                })
+                                            ),
+                                            this.props.onFlip
+                                                ? n.a.createElement(
+                                                      "span",
+                                                      {
+                                                          onClick: this.props
+                                                              .onFlip,
+                                                          style: {
+                                                              cursor: "pointer",
+                                                              fontSize: "1rem"
+                                                          },
+                                                          className:
+                                                              "flip-arrow"
+                                                      },
+                                                      " ",
+                                                      "⇆"
+                                                  )
+                                                : "null",
+                                            this.props.onTogglePosition
+                                                ? n.a.createElement(
+                                                      "span",
+                                                      {
+                                                          onClick: this.props
+                                                              .onTogglePosition,
+                                                          style: {
+                                                              cursor: "pointer",
+                                                              fontSize: "1rem"
+                                                          },
+                                                          className:
+                                                              "flip-arrow"
+                                                      },
+                                                      " ",
+                                                      "⇅"
+                                                  )
+                                                : "null",
+                                            n.a.createElement(
                                                 "div",
                                                 {
+                                                    onClick: this.props
+                                                        .onToggleOpen,
                                                     className:
-                                                        "exchange-content-header " +
-                                                        n,
-                                                    "data-intro": we
+                                                        "float-right clickable hide-for-xlarge",
+                                                    style: {paddingLeft: 10}
                                                 },
-                                                r.a.createElement(
-                                                    "span",
-                                                    null,
-                                                    r.a.createElement(ie.a, {
-                                                        string:
-                                                            "exchange.buysell_formatter",
-                                                        noLink: !0,
-                                                        noTip: !1,
-                                                        keys: [
-                                                            {
-                                                                type: "asset",
-                                                                value: s.get(
-                                                                    "symbol"
-                                                                ),
-                                                                arg: "asset"
-                                                            },
-                                                            {
-                                                                type:
-                                                                    "translate",
-                                                                value: u
-                                                                    ? "exchange.short"
-                                                                    : X
-                                                                        ? "exchange.buy"
-                                                                        : "exchange.sell",
-                                                                arg: "direction"
-                                                            }
-                                                        ]
-                                                    })
-                                                ),
-                                                this.props.onFlip
-                                                    ? r.a.createElement(
-                                                          "span",
-                                                          {
-                                                              onClick: this
-                                                                  .props.onFlip,
-                                                              style: {
-                                                                  cursor:
-                                                                      "pointer",
-                                                                  fontSize:
-                                                                      "1rem"
-                                                              },
-                                                              className:
-                                                                  "flip-arrow"
-                                                          },
-                                                          " ",
-                                                          "⇆"
-                                                      )
-                                                    : "null",
-                                                this.props.onTogglePosition
-                                                    ? r.a.createElement(
-                                                          "span",
+                                                P
+                                            ),
+                                            Ae &&
+                                            "LLC" !==
+                                                this.props[
+                                                    X ? "base" : "quote"
+                                                ].get("symbol")
+                                                ? n.a.createElement(
+                                                      "div",
+                                                      {
+                                                          className:
+                                                              "float-right buy-sell-deposit"
+                                                      },
+                                                      n.a.createElement(
+                                                          "a",
                                                           {
                                                               onClick: this
                                                                   .props
-                                                                  .onTogglePosition,
-                                                              style: {
-                                                                  cursor:
-                                                                      "pointer",
-                                                                  fontSize:
-                                                                      "1rem"
-                                                              },
-                                                              className:
-                                                                  "flip-arrow"
+                                                                  .onShowModal
                                                           },
-                                                          " ",
-                                                          "⇅"
-                                                      )
-                                                    : "null",
-                                                r.a.createElement(
-                                                    "div",
-                                                    {
-                                                        onClick: this.props
-                                                            .onToggleOpen,
-                                                        className:
-                                                            "float-right clickable hide-for-xlarge",
-                                                        style: {paddingLeft: 10}
-                                                    },
-                                                    P
-                                                ),
-                                                Ae &&
-                                                "LLC" !==
-                                                    this.props[
-                                                        X ? "base" : "quote"
-                                                    ].get("symbol")
-                                                    ? r.a.createElement(
-                                                          "div",
-                                                          {
-                                                              className:
-                                                                  "float-right buy-sell-deposit"
-                                                          },
-                                                          r.a.createElement(
-                                                              "a",
+                                                          n.a.createElement(
+                                                              ie.a,
                                                               {
-                                                                  onClick: this
-                                                                      .props
-                                                                      .onShowModal
-                                                              },
-                                                              r.a.createElement(
-                                                                  ie.a,
-                                                                  {
-                                                                      string:
-                                                                          "exchange.buysell_formatter",
-                                                                      noLink: !0,
-                                                                      noTip: !0,
-                                                                      keys: [
-                                                                          {
-                                                                              type:
-                                                                                  "asset",
-                                                                              value: this.props.base.get(
-                                                                                  "symbol"
-                                                                              ),
-                                                                              arg:
-                                                                                  "asset"
-                                                                          },
-                                                                          {
-                                                                              type:
-                                                                                  "translate",
-                                                                              value:
-                                                                                  "exchange.buy",
-                                                                              arg:
-                                                                                  "direction"
-                                                                          }
-                                                                      ]
-                                                                  }
-                                                              )
+                                                                  string:
+                                                                      "exchange.buysell_formatter",
+                                                                  noLink: !0,
+                                                                  noTip: !0,
+                                                                  keys: [
+                                                                      {
+                                                                          type:
+                                                                              "asset",
+                                                                          value: this.props.base.get(
+                                                                              "symbol"
+                                                                          ),
+                                                                          arg:
+                                                                              "asset"
+                                                                      },
+                                                                      {
+                                                                          type:
+                                                                              "translate",
+                                                                          value:
+                                                                              "exchange.buy",
+                                                                          arg:
+                                                                              "direction"
+                                                                      }
+                                                                  ]
+                                                              }
                                                           )
                                                       )
-                                                    : null,
-                                                null,
-                                                this.props.onBorrow
-                                                    ? r.a.createElement(
-                                                          "div",
+                                                  )
+                                                : null,
+                                            null,
+                                            this.props.onBorrow
+                                                ? n.a.createElement(
+                                                      "div",
+                                                      {
+                                                          className:
+                                                              "float-right buy-sell-deposit"
+                                                      },
+                                                      n.a.createElement(
+                                                          "a",
                                                           {
-                                                              className:
-                                                                  "float-right buy-sell-deposit"
+                                                              onClick: this
+                                                                  .props
+                                                                  .onBorrow
                                                           },
-                                                          r.a.createElement(
-                                                              "a",
+                                                          n.a.createElement(
+                                                              ie.a,
                                                               {
-                                                                  onClick: this
-                                                                      .props
-                                                                      .onBorrow
-                                                              },
-                                                              r.a.createElement(
-                                                                  ie.a,
-                                                                  {
-                                                                      string:
-                                                                          "exchange.buysell_formatter",
-                                                                      noLink: !0,
-                                                                      keys: [
-                                                                          {
-                                                                              type:
-                                                                                  "asset",
-                                                                              value: this.props[
-                                                                                  X
-                                                                                      ? "base"
-                                                                                      : "quote"
-                                                                              ].get(
-                                                                                  "symbol"
-                                                                              ),
-                                                                              arg:
-                                                                                  "asset"
-                                                                          },
-                                                                          {
-                                                                              type:
-                                                                                  "translate",
-                                                                              value:
-                                                                                  "exchange.borrow",
-                                                                              arg:
-                                                                                  "direction"
-                                                                          }
-                                                                      ]
-                                                                  }
-                                                              )
+                                                                  string:
+                                                                      "exchange.buysell_formatter",
+                                                                  noLink: !0,
+                                                                  keys: [
+                                                                      {
+                                                                          type:
+                                                                              "asset",
+                                                                          value: this.props[
+                                                                              X
+                                                                                  ? "base"
+                                                                                  : "quote"
+                                                                          ].get(
+                                                                              "symbol"
+                                                                          ),
+                                                                          arg:
+                                                                              "asset"
+                                                                      },
+                                                                      {
+                                                                          type:
+                                                                              "translate",
+                                                                          value:
+                                                                              "exchange.borrow",
+                                                                          arg:
+                                                                              "direction"
+                                                                      }
+                                                                  ]
+                                                              }
                                                           )
                                                       )
-                                                    : null
-                                            ),
-                                            r.a.createElement(
-                                                "form",
+                                                  )
+                                                : null
+                                        ),
+                                        n.a.createElement(
+                                            "form",
+                                            {
+                                                className:
+                                                    (this.props.isOpen
+                                                        ? ""
+                                                        : "hide-container ") +
+                                                    "order-form",
+                                                noValidate: !0
+                                            },
+                                            n.a.createElement(
+                                                "div",
                                                 {
                                                     className:
-                                                        (this.props.isOpen
-                                                            ? ""
-                                                            : "hide-container ") +
-                                                        "order-form",
-                                                    noValidate: !0
+                                                        "grid-block vertical no-overflow no-padding"
                                                 },
-                                                r.a.createElement(
+                                                n.a.createElement(
                                                     "div",
                                                     {
                                                         className:
-                                                            "grid-block vertical no-overflow no-padding"
+                                                            "grid-block no-padding buy-sell-row"
                                                     },
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "div",
                                                         {
                                                             className:
-                                                                "grid-block no-padding buy-sell-row"
+                                                                "grid-block small-3 no-margin no-overflow buy-sell-label"
                                                         },
-                                                        r.a.createElement(
-                                                            "div",
-                                                            {
-                                                                className:
-                                                                    "grid-block small-3 no-margin no-overflow buy-sell-label"
-                                                            },
-                                                            r.a.createElement(
-                                                                w.a,
-                                                                {
-                                                                    content:
-                                                                        "exchange.price"
-                                                                }
-                                                            ),
-                                                            ":"
-                                                        ),
-                                                        r.a.createElement(
-                                                            "div",
-                                                            {
-                                                                className:
-                                                                    "grid-block small-5 no-margin no-overflow buy-sell-input"
-                                                            },
-                                                            r.a.createElement(
-                                                                de.b,
-                                                                {
-                                                                    id:
-                                                                        n +
-                                                                        "Price",
-                                                                    value: S,
-                                                                    onChange: p,
-                                                                    autoComplete:
-                                                                        "off",
-                                                                    placeholder:
-                                                                        "0.0"
-                                                                }
-                                                            )
-                                                        ),
-                                                        r.a.createElement(
-                                                            "div",
-                                                            {
-                                                                className:
-                                                                    "grid-block small-4 no-margin no-overflow buy-sell-box"
-                                                            },
-                                                            r.a.createElement(
-                                                                O.a,
-                                                                {
-                                                                    dataPlace:
-                                                                        "right",
-                                                                    name: o.get(
-                                                                        "symbol"
-                                                                    )
-                                                                }
-                                                            ),
-                                                            " / ",
-                                                            r.a.createElement(
-                                                                O.a,
-                                                                {
-                                                                    dataPlace:
-                                                                        "right",
-                                                                    name: s.get(
-                                                                        "symbol"
-                                                                    )
-                                                                }
-                                                            )
-                                                        )
+                                                        n.a.createElement(w.a, {
+                                                            content:
+                                                                "exchange.price"
+                                                        }),
+                                                        ":"
                                                     ),
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "div",
                                                         {
                                                             className:
-                                                                "grid-block no-padding buy-sell-row"
+                                                                "grid-block small-5 no-margin no-overflow buy-sell-input"
                                                         },
-                                                        r.a.createElement(
-                                                            "div",
+                                                        n.a.createElement(
+                                                            de.b,
                                                             {
-                                                                className:
-                                                                    "grid-block small-3 no-margin no-overflow buy-sell-label"
-                                                            },
-                                                            r.a.createElement(
-                                                                w.a,
-                                                                {
-                                                                    content:
-                                                                        "transfer.amount"
-                                                                }
-                                                            ),
-                                                            ":"
-                                                        ),
-                                                        r.a.createElement(
-                                                            "div",
-                                                            {
-                                                                className:
-                                                                    "grid-block small-5 no-margin no-overflow buy-sell-input"
-                                                            },
-                                                            r.a.createElement(
-                                                                de.b,
-                                                                {
-                                                                    id:
-                                                                        n +
-                                                                        "Amount",
-                                                                    value: C,
-                                                                    onChange: i,
-                                                                    autoComplete:
-                                                                        "off",
-                                                                    placeholder:
-                                                                        "0.0"
-                                                                }
-                                                            )
-                                                        ),
-                                                        r.a.createElement(
-                                                            "div",
-                                                            {
-                                                                className:
-                                                                    "grid-block small-4 no-margin no-overflow buy-sell-box"
-                                                            },
-                                                            r.a.createElement(
-                                                                O.a,
-                                                                {
-                                                                    dataPlace:
-                                                                        "right",
-                                                                    name: s.get(
-                                                                        "symbol"
-                                                                    )
-                                                                }
-                                                            )
+                                                                id: r + "Price",
+                                                                value: x,
+                                                                onChange: p,
+                                                                autoComplete:
+                                                                    "off",
+                                                                placeholder:
+                                                                    "0.0"
+                                                            }
                                                         )
                                                     ),
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "div",
                                                         {
                                                             className:
-                                                                "grid-block buy-sell-row bottom-row"
+                                                                "grid-block small-4 no-margin no-overflow buy-sell-box"
                                                         },
-                                                        r.a.createElement(
-                                                            "div",
-                                                            {
-                                                                className:
-                                                                    "grid-block small-3 no-margin no-overflow buy-sell-label"
-                                                            },
-                                                            r.a.createElement(
-                                                                w.a,
-                                                                {
-                                                                    content:
-                                                                        "exchange.total"
-                                                                }
-                                                            ),
-                                                            ":"
-                                                        ),
-                                                        r.a.createElement(
-                                                            "div",
-                                                            {
-                                                                className:
-                                                                    "grid-block small-5 no-margin no-overflow buy-sell-input"
-                                                            },
-                                                            r.a.createElement(
-                                                                de.b,
-                                                                {
-                                                                    id:
-                                                                        n +
-                                                                        "Total",
-                                                                    value: N,
-                                                                    onChange: m,
-                                                                    autoComplete:
-                                                                        "off",
-                                                                    placeholder:
-                                                                        "0.0"
-                                                                }
+                                                        n.a.createElement(N.a, {
+                                                            dataPlace: "right",
+                                                            name: s.get(
+                                                                "symbol"
                                                             )
-                                                        ),
-                                                        r.a.createElement(
-                                                            "div",
-                                                            {
-                                                                className:
-                                                                    "grid-block small-4 no-margin no-overflow buy-sell-box"
-                                                            },
-                                                            r.a.createElement(
-                                                                O.a,
-                                                                {
-                                                                    dataPlace:
-                                                                        "right",
-                                                                    name: o.get(
-                                                                        "symbol"
-                                                                    )
-                                                                }
+                                                        }),
+                                                        " / ",
+                                                        n.a.createElement(N.a, {
+                                                            dataPlace: "right",
+                                                            name: o.get(
+                                                                "symbol"
                                                             )
-                                                        )
-                                                    ),
-                                                    r.a.createElement(
-                                                        "div",
-                                                        {
-                                                            className:
-                                                                "grid-block no-padding buy-sell-row"
-                                                        },
-                                                        r.a.createElement(
-                                                            "div",
-                                                            {
-                                                                className:
-                                                                    "grid-block small-3 no-margin no-overflow buy-sell-label"
-                                                            },
-                                                            r.a.createElement(
-                                                                w.a,
-                                                                {
-                                                                    content:
-                                                                        "transfer.fee"
-                                                                }
-                                                            ),
-                                                            ":"
-                                                        ),
-                                                        r.a.createElement(
-                                                            "div",
-                                                            {
-                                                                className:
-                                                                    "grid-block small-5 no-margin no-overflow buy-sell-input"
-                                                            },
-                                                            r.a.createElement(
-                                                                "input",
-                                                                {
-                                                                    className: _
-                                                                        ? ""
-                                                                        : "no-balance",
-                                                                    disabled: !0,
-                                                                    type:
-                                                                        "text",
-                                                                    id:
-                                                                        n +
-                                                                        "Fee",
-                                                                    value: _
-                                                                        ? c.getAmount(
-                                                                              {
-                                                                                  real: !0
-                                                                              }
-                                                                          )
-                                                                        : G.a.translate(
-                                                                              "transfer.errors.insufficient"
-                                                                          ),
-                                                                    autoComplete:
-                                                                        "off"
-                                                                }
-                                                            )
-                                                        ),
-                                                        r.a.createElement(
-                                                            "div",
-                                                            {
-                                                                className:
-                                                                    "grid-block small-4 no-margin no-overflow buy-sell-box",
-                                                                style: {
-                                                                    paddingLeft:
-                                                                        1 !==
-                                                                        v.length
-                                                                            ? 0
-                                                                            : 5
-                                                                }
-                                                            },
-                                                            r.a.createElement(
-                                                                "select",
-                                                                {
-                                                                    style:
-                                                                        1 ===
-                                                                        v.length
-                                                                            ? {
-                                                                                  background:
-                                                                                      "none"
-                                                                              }
-                                                                            : null,
-                                                                    disabled:
-                                                                        1 ===
-                                                                        v.length,
-                                                                    value: v.indexOf(
-                                                                        this
-                                                                            .props
-                                                                            .feeAsset
-                                                                    ),
-                                                                    className:
-                                                                        "form-control" +
-                                                                        (1 !==
-                                                                        v.length
-                                                                            ? " buysell-select"
-                                                                            : ""),
-                                                                    onChange: this
-                                                                        .props
-                                                                        .onChangeFeeAsset
-                                                                },
-                                                                be
-                                                            )
-                                                        )
-                                                    ),
-                                                    Z
+                                                        })
+                                                    )
                                                 ),
-                                                r.a.createElement(
+                                                n.a.createElement(
                                                     "div",
-                                                    null,
-                                                    r.a.createElement(
+                                                    {
+                                                        className:
+                                                            "grid-block no-padding buy-sell-row"
+                                                    },
+                                                    n.a.createElement(
                                                         "div",
                                                         {
                                                             className:
-                                                                "grid-content clear-fix no-padding"
+                                                                "grid-block small-3 no-margin no-overflow buy-sell-label"
                                                         },
-                                                        r.a.createElement(
-                                                            "table",
+                                                        n.a.createElement(w.a, {
+                                                            content:
+                                                                "transfer.amount"
+                                                        }),
+                                                        ":"
+                                                    ),
+                                                    n.a.createElement(
+                                                        "div",
+                                                        {
+                                                            className:
+                                                                "grid-block small-5 no-margin no-overflow buy-sell-input"
+                                                        },
+                                                        n.a.createElement(
+                                                            de.b,
                                                             {
+                                                                id:
+                                                                    r +
+                                                                    "Amount",
+                                                                value: C,
+                                                                onChange: i,
+                                                                autoComplete:
+                                                                    "off",
+                                                                placeholder:
+                                                                    "0.0"
+                                                            }
+                                                        )
+                                                    ),
+                                                    n.a.createElement(
+                                                        "div",
+                                                        {
+                                                            className:
+                                                                "grid-block small-4 no-margin no-overflow buy-sell-box"
+                                                        },
+                                                        n.a.createElement(N.a, {
+                                                            dataPlace: "right",
+                                                            name: o.get(
+                                                                "symbol"
+                                                            )
+                                                        })
+                                                    )
+                                                ),
+                                                n.a.createElement(
+                                                    "div",
+                                                    {
+                                                        className:
+                                                            "grid-block buy-sell-row bottom-row"
+                                                    },
+                                                    n.a.createElement(
+                                                        "div",
+                                                        {
+                                                            className:
+                                                                "grid-block small-3 no-margin no-overflow buy-sell-label"
+                                                        },
+                                                        n.a.createElement(w.a, {
+                                                            content:
+                                                                "exchange.total"
+                                                        }),
+                                                        ":"
+                                                    ),
+                                                    n.a.createElement(
+                                                        "div",
+                                                        {
+                                                            className:
+                                                                "grid-block small-5 no-margin no-overflow buy-sell-input"
+                                                        },
+                                                        n.a.createElement(
+                                                            de.b,
+                                                            {
+                                                                id: r + "Total",
+                                                                value: O,
+                                                                onChange: m,
+                                                                autoComplete:
+                                                                    "off",
+                                                                placeholder:
+                                                                    "0.0"
+                                                            }
+                                                        )
+                                                    ),
+                                                    n.a.createElement(
+                                                        "div",
+                                                        {
+                                                            className:
+                                                                "grid-block small-4 no-margin no-overflow buy-sell-box"
+                                                        },
+                                                        n.a.createElement(N.a, {
+                                                            dataPlace: "right",
+                                                            name: s.get(
+                                                                "symbol"
+                                                            )
+                                                        })
+                                                    )
+                                                ),
+                                                n.a.createElement(
+                                                    "div",
+                                                    {
+                                                        className:
+                                                            "grid-block no-padding buy-sell-row"
+                                                    },
+                                                    n.a.createElement(
+                                                        "div",
+                                                        {
+                                                            className:
+                                                                "grid-block small-3 no-margin no-overflow buy-sell-label"
+                                                        },
+                                                        n.a.createElement(w.a, {
+                                                            content:
+                                                                "transfer.fee"
+                                                        }),
+                                                        ":"
+                                                    ),
+                                                    n.a.createElement(
+                                                        "div",
+                                                        {
+                                                            className:
+                                                                "grid-block small-5 no-margin no-overflow buy-sell-input"
+                                                        },
+                                                        n.a.createElement(
+                                                            "input",
+                                                            {
+                                                                className: _
+                                                                    ? ""
+                                                                    : "no-balance",
+                                                                disabled: !0,
+                                                                type: "text",
+                                                                id: r + "Fee",
+                                                                value: _
+                                                                    ? c.getAmount(
+                                                                          {
+                                                                              real: !0
+                                                                          }
+                                                                      )
+                                                                    : Y.a.translate(
+                                                                          "transfer.errors.insufficient"
+                                                                      ),
+                                                                autoComplete:
+                                                                    "off"
+                                                            }
+                                                        )
+                                                    ),
+                                                    n.a.createElement(
+                                                        "div",
+                                                        {
+                                                            className:
+                                                                "grid-block small-4 no-margin no-overflow buy-sell-box",
+                                                            style: {
+                                                                paddingLeft:
+                                                                    1 !==
+                                                                    v.length
+                                                                        ? 0
+                                                                        : 5
+                                                            }
+                                                        },
+                                                        n.a.createElement(
+                                                            "select",
+                                                            {
+                                                                style:
+                                                                    1 ===
+                                                                    v.length
+                                                                        ? {
+                                                                              background:
+                                                                                  "none"
+                                                                          }
+                                                                        : null,
+                                                                disabled:
+                                                                    1 ===
+                                                                    v.length,
+                                                                value: v.indexOf(
+                                                                    this.props
+                                                                        .feeAsset
+                                                                ),
                                                                 className:
-                                                                    "float-left"
+                                                                    "form-control" +
+                                                                    (1 !==
+                                                                    v.length
+                                                                        ? " buysell-select"
+                                                                        : ""),
+                                                                onChange: this
+                                                                    .props
+                                                                    .onChangeFeeAsset
                                                             },
-                                                            r.a.createElement(
-                                                                "tbody",
-                                                                null,
-                                                                r.a.createElement(
-                                                                    "tr",
-                                                                    {
-                                                                        className:
-                                                                            "buy-sell-info"
-                                                                    },
-                                                                    r.a.createElement(
-                                                                        "td",
-                                                                        null,
-                                                                        r.a.createElement(
-                                                                            w.a,
-                                                                            {
-                                                                                content:
-                                                                                    "exchange.balance"
-                                                                            }
-                                                                        ),
-                                                                        ":"
+                                                            be
+                                                        )
+                                                    )
+                                                ),
+                                                Z
+                                            ),
+                                            n.a.createElement(
+                                                "div",
+                                                null,
+                                                n.a.createElement(
+                                                    "div",
+                                                    {
+                                                        className:
+                                                            "grid-content clear-fix no-padding"
+                                                    },
+                                                    n.a.createElement(
+                                                        "table",
+                                                        {
+                                                            className:
+                                                                "float-left"
+                                                        },
+                                                        n.a.createElement(
+                                                            "tbody",
+                                                            null,
+                                                            n.a.createElement(
+                                                                "tr",
+                                                                {
+                                                                    className:
+                                                                        "buy-sell-info"
+                                                                },
+                                                                n.a.createElement(
+                                                                    "td",
+                                                                    null,
+                                                                    n.a.createElement(
+                                                                        w.a,
+                                                                        {
+                                                                            content:
+                                                                                "exchange.balance"
+                                                                        }
                                                                     ),
-                                                                    r.a.createElement(
-                                                                        "td",
+                                                                    ":"
+                                                                ),
+                                                                n.a.createElement(
+                                                                    "td",
+                                                                    {
+                                                                        style: {
+                                                                            paddingLeft: 5,
+                                                                            textAlign:
+                                                                                "right"
+                                                                        }
+                                                                    },
+                                                                    n.a.createElement(
+                                                                        "span",
                                                                         {
                                                                             style: {
-                                                                                paddingLeft: 5,
-                                                                                textAlign:
-                                                                                    "right"
-                                                                            }
-                                                                        },
-                                                                        r.a.createElement(
-                                                                            "span",
-                                                                            {
-                                                                                style: {
-                                                                                    borderBottom:
-                                                                                        "#A09F9F 1px dotted",
-                                                                                    cursor:
-                                                                                        "pointer"
-                                                                                },
-                                                                                onClick: this._addBalance.bind(
-                                                                                    this,
-                                                                                    ve
-                                                                                )
+                                                                                borderBottom:
+                                                                                    "#A09F9F 1px dotted",
+                                                                                cursor:
+                                                                                    "pointer"
                                                                             },
-                                                                            k.a.format_number(
-                                                                                I.getAmount(
-                                                                                    {
-                                                                                        real: !0
-                                                                                    }
-                                                                                ),
-                                                                                f
-                                                                            ),
-                                                                            " ",
-                                                                            r.a.createElement(
-                                                                                O.a,
-                                                                                {
-                                                                                    name: le
-                                                                                }
+                                                                            onClick: this._addBalance.bind(
+                                                                                this,
+                                                                                _e
                                                                             )
+                                                                        },
+                                                                        k.a.format_number(
+                                                                            I.getAmount(
+                                                                                {
+                                                                                    real: !0
+                                                                                }
+                                                                            ),
+                                                                            f
+                                                                        ),
+                                                                        " ",
+                                                                        n.a.createElement(
+                                                                            N.a,
+                                                                            {
+                                                                                name: le
+                                                                            }
                                                                         )
                                                                     )
-                                                                ),
-                                                                r.a.createElement(
-                                                                    "tr",
+                                                                )
+                                                            ),
+                                                            n.a.createElement(
+                                                                "tr",
+                                                                {
+                                                                    className:
+                                                                        "buy-sell-info"
+                                                                },
+                                                                n.a.createElement(
+                                                                    "td",
                                                                     {
-                                                                        className:
-                                                                            "buy-sell-info"
+                                                                        style: {
+                                                                            paddingTop: 5
+                                                                        }
                                                                     },
-                                                                    r.a.createElement(
-                                                                        "td",
-                                                                        {
-                                                                            style: {
-                                                                                paddingTop: 5
-                                                                            }
-                                                                        },
-                                                                        X
-                                                                            ? r.a.createElement(
-                                                                                  w.a,
-                                                                                  {
-                                                                                      content:
-                                                                                          "exchange.lowest_ask"
-                                                                                  }
-                                                                              )
-                                                                            : r.a.createElement(
-                                                                                  w.a,
-                                                                                  {
-                                                                                      content:
-                                                                                          "exchange.highest_bid"
-                                                                                  }
-                                                                              ),
-                                                                        ": "
-                                                                    ),
-                                                                    g
-                                                                        ? r.a.createElement(
-                                                                              "td",
+                                                                    X
+                                                                        ? n.a.createElement(
+                                                                              w.a,
+                                                                              {
+                                                                                  content:
+                                                                                      "exchange.lowest_ask"
+                                                                              }
+                                                                          )
+                                                                        : n.a.createElement(
+                                                                              w.a,
+                                                                              {
+                                                                                  content:
+                                                                                      "exchange.highest_bid"
+                                                                              }
+                                                                          ),
+                                                                    ": "
+                                                                ),
+                                                                g
+                                                                    ? n.a.createElement(
+                                                                          "td",
+                                                                          {
+                                                                              style: {
+                                                                                  paddingLeft: 5,
+                                                                                  textAlign:
+                                                                                      "right",
+                                                                                  paddingTop: 5,
+                                                                                  verticalAlign:
+                                                                                      "bottom"
+                                                                              }
+                                                                          },
+                                                                          n.a.createElement(
+                                                                              "span",
                                                                               {
                                                                                   style: {
-                                                                                      paddingLeft: 5,
-                                                                                      textAlign:
-                                                                                          "right",
-                                                                                      paddingTop: 5,
-                                                                                      verticalAlign:
-                                                                                          "bottom"
-                                                                                  }
-                                                                              },
-                                                                              r.a.createElement(
-                                                                                  "span",
-                                                                                  {
-                                                                                      style: {
-                                                                                          borderBottom:
-                                                                                              "#A09F9F 1px dotted",
-                                                                                          cursor:
-                                                                                              "pointer"
-                                                                                      },
-                                                                                      onClick: this.props.setPrice.bind(
-                                                                                          this,
-                                                                                          n,
-                                                                                          b.sellPrice()
-                                                                                      )
+                                                                                      borderBottom:
+                                                                                          "#A09F9F 1px dotted",
+                                                                                      cursor:
+                                                                                          "pointer"
                                                                                   },
-                                                                                  r.a.createElement(
-                                                                                      A.a,
-                                                                                      {
-                                                                                          price: g,
-                                                                                          quote: s,
-                                                                                          base: o
-                                                                                      }
-                                                                                  ),
-                                                                                  " ",
-                                                                                  r.a.createElement(
-                                                                                      O.a,
-                                                                                      {
-                                                                                          name: o.get(
-                                                                                              "symbol"
-                                                                                          )
-                                                                                      }
-                                                                                  ),
-                                                                                  "/",
-                                                                                  r.a.createElement(
-                                                                                      O.a,
-                                                                                      {
-                                                                                          name: s.get(
-                                                                                              "symbol"
-                                                                                          )
-                                                                                      }
+                                                                                  onClick: this.props.setPrice.bind(
+                                                                                      this,
+                                                                                      r,
+                                                                                      b.sellPrice()
                                                                                   )
+                                                                              },
+                                                                              n.a.createElement(
+                                                                                  A.a,
+                                                                                  {
+                                                                                      price: g,
+                                                                                      quote: o,
+                                                                                      base: s
+                                                                                  }
+                                                                              ),
+                                                                              " ",
+                                                                              n.a.createElement(
+                                                                                  N.a,
+                                                                                  {
+                                                                                      name: s.get(
+                                                                                          "symbol"
+                                                                                      )
+                                                                                  }
+                                                                              ),
+                                                                              "/",
+                                                                              n.a.createElement(
+                                                                                  N.a,
+                                                                                  {
+                                                                                      name: o.get(
+                                                                                          "symbol"
+                                                                                      )
+                                                                                  }
                                                                               )
                                                                           )
-                                                                        : null
+                                                                      )
+                                                                    : null
+                                                            ),
+                                                            n.a.createElement(
+                                                                "tr",
+                                                                {
+                                                                    className:
+                                                                        "buy-sell-info"
+                                                                },
+                                                                n.a.createElement(
+                                                                    "td",
+                                                                    {
+                                                                        style: {
+                                                                            paddingTop: 5
+                                                                        }
+                                                                    },
+                                                                    n.a.createElement(
+                                                                        w.a,
+                                                                        {
+                                                                            content:
+                                                                                "transaction.expiration"
+                                                                        }
+                                                                    ),
+                                                                    ":"
                                                                 ),
-                                                                r.a.createElement(
-                                                                    "tr",
+                                                                n.a.createElement(
+                                                                    "td",
                                                                     {
                                                                         className:
-                                                                            "buy-sell-info"
+                                                                            "expiration-datetime-picker"
                                                                     },
-                                                                    r.a.createElement(
-                                                                        "td",
+                                                                    n.a.createElement(
+                                                                        "select",
                                                                         {
-                                                                            style: {
-                                                                                paddingTop: 5
-                                                                            }
+                                                                            onChange: this
+                                                                                .props
+                                                                                .onExpirationTypeChange,
+                                                                            value: this
+                                                                                .props
+                                                                                .expirationType
                                                                         },
-                                                                        r.a.createElement(
-                                                                            w.a,
-                                                                            {
-                                                                                content:
-                                                                                    "transaction.expiration"
-                                                                            }
-                                                                        ),
-                                                                        ":"
+                                                                        Ce
                                                                     ),
-                                                                    r.a.createElement(
-                                                                        "td",
-                                                                        {
-                                                                            className:
-                                                                                "expiration-datetime-picker"
-                                                                        },
-                                                                        r.a.createElement(
-                                                                            "select",
-                                                                            {
-                                                                                onChange: this
-                                                                                    .props
-                                                                                    .onExpirationTypeChange,
-                                                                                value: this
-                                                                                    .props
-                                                                                    .expirationType
-                                                                            },
-                                                                            Ce
-                                                                        ),
-                                                                        "SPECIFIC" ===
-                                                                        this
-                                                                            .props
-                                                                            .expirationType
-                                                                            ? r.a.createElement(
-                                                                                  ge.a,
-                                                                                  {
-                                                                                      pickerPosition:
-                                                                                          "bottom center",
-                                                                                      wrapperClassName: Se,
-                                                                                      timePicker: !0,
-                                                                                      min: xe,
-                                                                                      inputFormat:
-                                                                                          "Do MMM YYYY hh:mm A",
-                                                                                      value: this
-                                                                                          .props
-                                                                                          .expirationCustomTime,
-                                                                                      onChange: this
-                                                                                          .props
-                                                                                          .onExpirationCustomChange
-                                                                                  }
-                                                                              )
-                                                                            : null
-                                                                    )
+                                                                    "SPECIFIC" ===
+                                                                    this.props
+                                                                        .expirationType
+                                                                        ? n.a.createElement(
+                                                                              ge.a,
+                                                                              {
+                                                                                  pickerPosition:
+                                                                                      "bottom center",
+                                                                                  wrapperClassName: xe,
+                                                                                  timePicker: !0,
+                                                                                  min: Se,
+                                                                                  inputFormat:
+                                                                                      "Do MMM YYYY hh:mm A",
+                                                                                  value: this
+                                                                                      .props
+                                                                                      .expirationCustomTime,
+                                                                                  onChange: this
+                                                                                      .props
+                                                                                      .onExpirationCustomChange
+                                                                              }
+                                                                          )
+                                                                        : null
                                                                 )
                                                             )
-                                                        ),
-                                                        ce
-                                                            ? r.a.createElement(
-                                                                  "div",
+                                                        )
+                                                    ),
+                                                    ce
+                                                        ? n.a.createElement(
+                                                              "div",
+                                                              {
+                                                                  className:
+                                                                      "float-right",
+                                                                  "data-tip": ce,
+                                                                  "data-place":
+                                                                      "right"
+                                                              },
+                                                              n.a.createElement(
+                                                                  "input",
                                                                   {
-                                                                      className:
-                                                                          "float-right",
-                                                                      "data-tip": ce,
-                                                                      "data-place":
-                                                                          "right"
-                                                                  },
-                                                                  r.a.createElement(
-                                                                      "input",
-                                                                      {
-                                                                          style: {
-                                                                              margin: 0
-                                                                          },
-                                                                          className: oe,
-                                                                          type:
-                                                                              "submit",
-                                                                          onClick: h.bind(
-                                                                              this,
-                                                                              !0
-                                                                          ),
-                                                                          value: ee
-                                                                      }
-                                                                  )
+                                                                      style: {
+                                                                          margin: 0
+                                                                      },
+                                                                      className: se,
+                                                                      type:
+                                                                          "submit",
+                                                                      onClick: h.bind(
+                                                                          this,
+                                                                          !0
+                                                                      ),
+                                                                      value: ee
+                                                                  }
                                                               )
-                                                            : r.a.createElement(
-                                                                  "div",
+                                                          )
+                                                        : n.a.createElement(
+                                                              "div",
+                                                              {
+                                                                  className:
+                                                                      "float-right",
+                                                                  "data-tip": ""
+                                                              },
+                                                              n.a.createElement(
+                                                                  "input",
                                                                   {
-                                                                      className:
-                                                                          "float-right",
-                                                                      "data-tip":
-                                                                          ""
+                                                                      style: {
+                                                                          margin: 0
+                                                                      },
+                                                                      className: se,
+                                                                      type:
+                                                                          "submit",
+                                                                      onClick: h.bind(
+                                                                          this,
+                                                                          !0
+                                                                      ),
+                                                                      value: ee
+                                                                  }
+                                                              )
+                                                          ),
+                                                    ce && u
+                                                        ? n.a.createElement(
+                                                              "div",
+                                                              {
+                                                                  style: {
+                                                                      paddingRight: 10
                                                                   },
-                                                                  r.a.createElement(
-                                                                      "input",
-                                                                      {
-                                                                          style: {
-                                                                              margin: 0
-                                                                          },
-                                                                          className: oe,
-                                                                          type:
-                                                                              "submit",
-                                                                          onClick: h.bind(
-                                                                              this,
-                                                                              !0
-                                                                          ),
-                                                                          value: ee
-                                                                      }
-                                                                  )
-                                                              ),
-                                                        ce && u
-                                                            ? r.a.createElement(
+                                                                  className:
+                                                                      "float-right",
+                                                                  "data-tip": ce,
+                                                                  "data-place":
+                                                                      "right"
+                                                              },
+                                                              n.a.createElement(
+                                                                  "input",
+                                                                  {
+                                                                      style: {
+                                                                          margin: 0
+                                                                      },
+                                                                      className: se,
+                                                                      type:
+                                                                          "submit",
+                                                                      onClick: h.bind(
+                                                                          this,
+                                                                          !1
+                                                                      ),
+                                                                      value: te
+                                                                  }
+                                                              )
+                                                          )
+                                                        : u
+                                                            ? n.a.createElement(
                                                                   "div",
                                                                   {
                                                                       style: {
@@ -7200,17 +7045,16 @@
                                                                       },
                                                                       className:
                                                                           "float-right",
-                                                                      "data-tip": ce,
-                                                                      "data-place":
-                                                                          "right"
+                                                                      "data-tip":
+                                                                          ""
                                                                   },
-                                                                  r.a.createElement(
+                                                                  n.a.createElement(
                                                                       "input",
                                                                       {
                                                                           style: {
                                                                               margin: 0
                                                                           },
-                                                                          className: oe,
+                                                                          className: se,
                                                                           type:
                                                                               "submit",
                                                                           onClick: h.bind(
@@ -7221,85 +7065,51 @@
                                                                       }
                                                                   )
                                                               )
-                                                            : u
-                                                                ? r.a.createElement(
-                                                                      "div",
-                                                                      {
-                                                                          style: {
-                                                                              paddingRight: 10
-                                                                          },
-                                                                          className:
-                                                                              "float-right",
-                                                                          "data-tip":
-                                                                              ""
-                                                                      },
-                                                                      r.a.createElement(
-                                                                          "input",
-                                                                          {
-                                                                              style: {
-                                                                                  margin: 0
-                                                                              },
-                                                                              className: oe,
-                                                                              type:
-                                                                                  "submit",
-                                                                              onClick: h.bind(
-                                                                                  this,
-                                                                                  !1
-                                                                              ),
-                                                                              value: te
-                                                                          }
-                                                                      )
-                                                                  )
-                                                                : null
-                                                    )
+                                                            : null
                                                 )
                                             )
+                                        )
+                                    ),
+                                    n.a.createElement(
+                                        ue.a,
+                                        ve(
+                                            {
+                                                ref: "deposit_modal",
+                                                action: "deposit",
+                                                fiatModal: !1,
+                                                account: this.props.currentAccount.get(
+                                                    "name"
+                                                ),
+                                                sender: this.props.currentAccount.get(
+                                                    "id"
+                                                ),
+                                                asset: this.props[
+                                                    X ? "base" : "quote"
+                                                ].get("id"),
+                                                modalId:
+                                                    "simple_deposit_modal" +
+                                                    ("bid" === r ? "" : "_ask"),
+                                                balances: [this.props.balance]
+                                            },
+                                            E
+                                        )
+                                    ),
+                                    n.a.createElement(pe.a, {
+                                        ref: "bridge_modal",
+                                        action: "deposit",
+                                        account: this.props.currentAccount.get(
+                                            "name"
                                         ),
-                                        r.a.createElement(
-                                            ue.a,
-                                            _e(
-                                                {
-                                                    ref: "deposit_modal",
-                                                    action: "deposit",
-                                                    fiatModal: !1,
-                                                    account: this.props.currentAccount.get(
-                                                        "name"
-                                                    ),
-                                                    sender: this.props.currentAccount.get(
-                                                        "id"
-                                                    ),
-                                                    asset: this.props[
-                                                        X ? "base" : "quote"
-                                                    ].get("id"),
-                                                    modalId:
-                                                        "simple_deposit_modal" +
-                                                        ("bid" === n
-                                                            ? ""
-                                                            : "_ask"),
-                                                    balances: [
-                                                        this.props.balance
-                                                    ]
-                                                },
-                                                E
-                                            )
+                                        sender: this.props.currentAccount.get(
+                                            "id"
                                         ),
-                                        r.a.createElement(pe.a, {
-                                            ref: "bridge_modal",
-                                            action: "deposit",
-                                            account: this.props.currentAccount.get(
-                                                "name"
-                                            ),
-                                            sender: this.props.currentAccount.get(
-                                                "id"
-                                            ),
-                                            asset: this.props.balanceId,
-                                            modalId:
-                                                "simple_bridge_modal" +
-                                                ("bid" === n ? "" : "_ask"),
-                                            balances: [this.props.balance],
-                                            bridges: this.props.currentBridges
-                                        })
-                                    )
+                                        asset: this.props.balanceId,
+                                        modalId:
+                                            "simple_bridge_modal" +
+                                            ("bid" === r ? "" : "_ask"),
+                                        balances: [this.props.balance],
+                                        bridges: this.props.currentBridges
+                                    })
                                 );
                             }
                         }
@@ -7307,7 +7117,7 @@
                     t
                 );
             })();
-            (Ee.propTypes = {
+            (ke.propTypes = {
                 balance: le.a.ChainObject,
                 type: g.a.string,
                 amountChange: g.a.func.isRequired,
@@ -7316,26 +7126,26 @@
                 onExpirationTypeChange: g.a.func.isRequired,
                 onExpirationCustomChange: g.a.func.isRequired
             }),
-                (Ee.defaultProps = {type: "bid"});
-            var we = Object(ce.a)(Ee),
-                Ce = a(11),
-                Se = a(37),
+                (ke.defaultProps = {type: "bid"});
+            var Ee = Object(ce.a)(ke),
+                we = a(11),
+                Ce = a(37),
                 xe = a(77),
-                Ae = (function() {
+                Se = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
+                            var r = t[a];
+                            (r.enumerable = r.enumerable || !1),
+                                (r.configurable = !0),
+                                "value" in r && (r.writable = !0),
+                                Object.defineProperty(e, r.key, r);
                         }
                     }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
+                    return function(t, a, r) {
+                        return a && e(t.prototype, a), r && e(t, r), t;
                     };
                 })();
-            var Ne = new Date(),
+            var Ae = new Date(),
                 Oe = (function(e) {
                     function t() {
                         !(function(e, t) {
@@ -7390,8 +7200,8 @@
                                     (Object.setPrototypeOf
                                         ? Object.setPrototypeOf(e, t)
                                         : (e.__proto__ = t));
-                        })(t, r.a.Component),
-                        Ae(t, [
+                        })(t, n.a.Component),
+                        Se(t, [
                             {
                                 key: "_onSelectIssuer",
                                 value: function(e) {
@@ -7407,7 +7217,7 @@
                                 key: "_onInputName",
                                 value: function(e, t) {
                                     var a = t.target.value.trim().toUpperCase(),
-                                        n = !J.d.is_valid_symbol_error(a, !0);
+                                        r = !J.d.is_valid_symbol_error(a, !0);
                                     if (
                                         (this.setState({
                                             inputValue: t.target.value.trim(),
@@ -7415,7 +7225,7 @@
                                             issuersList: "",
                                             filterByIssuerName: null
                                         }),
-                                        a && a.length >= 3 && !n)
+                                        a && a.length >= 3 && !r)
                                     )
                                         return this.setState({
                                             assetNameError: !0
@@ -7436,15 +7246,15 @@
                                             void 0 !== arguments[2] &&
                                             arguments[2];
                                     if (e || "" === e) {
-                                        var n = new Date(),
-                                            r = e.toUpperCase();
+                                        var r = new Date(),
+                                            n = e.toUpperCase();
                                         if (
-                                            (this.setState({lookupQuote: r}),
-                                            this.state.lookupQuote !== r || a)
+                                            (this.setState({lookupQuote: n}),
+                                            this.state.lookupQuote !== n || a)
                                         ) {
-                                            if (r.length < 1 || n - Ne <= 250)
+                                            if (n.length < 1 || r - Ae <= 250)
                                                 return !1;
-                                            this.getAssetList(r, 25, t);
+                                            this.getAssetList(n, 25, t);
                                         }
                                     }
                                 }
@@ -7467,13 +7277,13 @@
                                     var e = this,
                                         t = this.props,
                                         a = t.searchAssets,
-                                        n = t.assetsLoading,
-                                        s = t.marketPickerAsset,
-                                        o = this.state,
-                                        i = o.lookupQuote,
-                                        l = o.marketPickerTab,
-                                        c = o.filterByIssuerName,
-                                        u = o.inputValue,
+                                        r = t.assetsLoading,
+                                        o = t.marketPickerAsset,
+                                        s = this.state,
+                                        i = s.lookupQuote,
+                                        l = s.marketPickerTab,
+                                        c = s.filterByIssuerName,
+                                        u = s.inputValue,
                                         p = this.props.baseAsset.get("symbol"),
                                         h = this.props.quoteAsset.get("symbol"),
                                         d = [],
@@ -7522,14 +7332,14 @@
                                                             !1
                                                         );
                                                         if (a) {
-                                                            var n = e.props.baseAsset.get(
+                                                            var r = e.props.baseAsset.get(
                                                                     "symbol"
                                                                 ),
-                                                                r =
+                                                                n =
                                                                     t.symbol +
                                                                     "_" +
-                                                                    n;
-                                                            n === t.symbol ||
+                                                                    r;
+                                                            r === t.symbol ||
                                                                 (c &&
                                                                     c !=
                                                                         a.get(
@@ -7544,11 +7354,11 @@
                                                                     "filter" !=
                                                                         l) ||
                                                                 d.push([
-                                                                    r,
+                                                                    n,
                                                                     {
                                                                         quote:
                                                                             t.symbol,
-                                                                        base: n,
+                                                                        base: r,
                                                                         issuer: a.get(
                                                                             "name"
                                                                         )
@@ -7576,7 +7386,7 @@
                                                         : 0;
                                             })
                                             .map(function(e) {
-                                                return r.a.createElement(
+                                                return n.a.createElement(
                                                     "option",
                                                     {key: e, value: e},
                                                     e
@@ -7594,22 +7404,22 @@
                                                 var a =
                                                     e.props.quoteAsset.get(
                                                         "symbol"
-                                                    ) == s;
-                                                return r.a.createElement(
+                                                    ) == o;
+                                                return n.a.createElement(
                                                     "li",
                                                     {key: t[0]},
-                                                    r.a.createElement(O.a, {
+                                                    n.a.createElement(N.a, {
                                                         name: t[1].quote
                                                     }),
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "span",
                                                         {
                                                             style: {
                                                                 float: "right"
                                                             }
                                                         },
-                                                        r.a.createElement(
-                                                            Ce.b,
+                                                        n.a.createElement(
+                                                            we.b,
                                                             {
                                                                 onClick: function() {
                                                                     e.props.onToggleMarketPicker(
@@ -7628,7 +7438,7 @@
                                                                       "_" +
                                                                       t[1].quote
                                                             },
-                                                            r.a.createElement(
+                                                            n.a.createElement(
                                                                 w.a,
                                                                 {
                                                                     content:
@@ -7639,29 +7449,29 @@
                                                     )
                                                 );
                                             })),
-                                        r.a.createElement(
+                                        n.a.createElement(
                                             "div",
                                             {className: "marketPicker"},
-                                            r.a.createElement(
+                                            n.a.createElement(
                                                 "div",
                                                 {
                                                     className:
                                                         "marketPicker__header"
                                                 },
-                                                r.a.createElement(
+                                                n.a.createElement(
                                                     "div",
                                                     {
                                                         className:
                                                             "marketPicker__filterType"
                                                     },
-                                                    r.a.createElement(w.a, {
+                                                    n.a.createElement(w.a, {
                                                         className:
                                                             "marketPicker__filterHeader",
                                                         component: "span",
                                                         content:
                                                             "exchange.market_picker.search_mode"
                                                     }),
-                                                    r.a.createElement(T.a, {
+                                                    n.a.createElement(T.a, {
                                                         style: {
                                                             marginLeft: 5,
                                                             cursor: "pointer"
@@ -7682,7 +7492,7 @@
                                                         name: "filter",
                                                         title: "icons.filter"
                                                     }),
-                                                    r.a.createElement(T.a, {
+                                                    n.a.createElement(T.a, {
                                                         style: {
                                                             marginLeft: 5,
                                                             cursor: "pointer"
@@ -7702,7 +7512,7 @@
                                                         title: "icons.zoom"
                                                     })
                                                 ),
-                                                r.a.createElement(w.a, {
+                                                n.a.createElement(w.a, {
                                                     className:
                                                         "marketPicker__title",
                                                     component: "span",
@@ -7710,31 +7520,31 @@
                                                         "exchange.market_picker.title"
                                                 })
                                             ),
-                                            r.a.createElement(
+                                            n.a.createElement(
                                                 "div",
                                                 {
                                                     className:
                                                         "marketPicker__subHeader"
                                                 },
-                                                r.a.createElement(w.a, {
+                                                n.a.createElement(w.a, {
                                                     content:
                                                         "exchange.market_picker.sub_title"
                                                 }),
                                                 " ",
-                                                r.a.createElement(
-                                                    Ce.b,
+                                                n.a.createElement(
+                                                    we.b,
                                                     {
-                                                        to: "/asset/" + s,
+                                                        to: "/asset/" + o,
                                                         style: {
                                                             cursor: "pointer",
                                                             color:
                                                                 "lightblue !important"
                                                         }
                                                     },
-                                                    r.a.createElement(O.a, {
-                                                        name: s
+                                                    n.a.createElement(N.a, {
+                                                        name: o
                                                     }),
-                                                    r.a.createElement(T.a, {
+                                                    n.a.createElement(T.a, {
                                                         className: "blue-icon",
                                                         style: {marginLeft: 5},
                                                         name: "info-circle-o",
@@ -7743,8 +7553,8 @@
                                                     })
                                                 )
                                             ),
-                                            r.a.createElement("hr", null),
-                                            r.a.createElement(
+                                            n.a.createElement("hr", null),
+                                            n.a.createElement(
                                                 "div",
                                                 {
                                                     id: "search",
@@ -7755,19 +7565,19 @@
                                                                 : "none"
                                                     }
                                                 },
-                                                r.a.createElement(
+                                                n.a.createElement(
                                                     "div",
                                                     null,
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "section",
                                                         {
                                                             className:
                                                                 "block-list no-border-bottom"
                                                         },
-                                                        r.a.createElement(
+                                                        n.a.createElement(
                                                             "header",
                                                             null,
-                                                            r.a.createElement(
+                                                            n.a.createElement(
                                                                 w.a,
                                                                 {
                                                                     component:
@@ -7777,7 +7587,7 @@
                                                                 }
                                                             )
                                                         ),
-                                                        r.a.createElement(
+                                                        n.a.createElement(
                                                             "input",
                                                             {
                                                                 type: "text",
@@ -7786,7 +7596,7 @@
                                                                     this,
                                                                     !1
                                                                 ),
-                                                                placeholder: G.a.translate(
+                                                                placeholder: Y.a.translate(
                                                                     "exchange.market_picker.search"
                                                                 ),
                                                                 maxLength: "16",
@@ -7796,7 +7606,7 @@
                                                     )
                                                 )
                                             ),
-                                            r.a.createElement(
+                                            n.a.createElement(
                                                 "div",
                                                 {
                                                     id: "filter",
@@ -7811,19 +7621,19 @@
                                                                 : ""
                                                     }
                                                 },
-                                                r.a.createElement(
+                                                n.a.createElement(
                                                     "div",
                                                     null,
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "section",
                                                         {
                                                             className:
                                                                 "block-list no-border-bottom"
                                                         },
-                                                        r.a.createElement(
+                                                        n.a.createElement(
                                                             "header",
                                                             null,
-                                                            r.a.createElement(
+                                                            n.a.createElement(
                                                                 w.a,
                                                                 {
                                                                     component:
@@ -7833,7 +7643,7 @@
                                                                 }
                                                             )
                                                         ),
-                                                        r.a.createElement(
+                                                        n.a.createElement(
                                                             "input",
                                                             {
                                                                 type: "text",
@@ -7842,7 +7652,7 @@
                                                                     this,
                                                                     !0
                                                                 ),
-                                                                placeholder: G.a.translate(
+                                                                placeholder: Y.a.translate(
                                                                     "exchange.market_picker.search"
                                                                 ),
                                                                 maxLength: "16",
@@ -7851,19 +7661,19 @@
                                                         )
                                                     )
                                                 ),
-                                                r.a.createElement(
+                                                n.a.createElement(
                                                     "div",
                                                     null,
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "section",
                                                         {
                                                             className:
                                                                 "block-list no-border-bottom"
                                                         },
-                                                        r.a.createElement(
+                                                        n.a.createElement(
                                                             "header",
                                                             null,
-                                                            r.a.createElement(
+                                                            n.a.createElement(
                                                                 w.a,
                                                                 {
                                                                     component:
@@ -7873,16 +7683,16 @@
                                                                 }
                                                             )
                                                         ),
-                                                        r.a.createElement(
+                                                        n.a.createElement(
                                                             "ul",
                                                             null,
-                                                            r.a.createElement(
+                                                            n.a.createElement(
                                                                 "li",
                                                                 {
                                                                     className:
                                                                         "with-dropdpwn"
                                                                 },
-                                                                r.a.createElement(
+                                                                n.a.createElement(
                                                                     "select",
                                                                     {
                                                                         className:
@@ -7894,7 +7704,7 @@
                                                                             border: 0
                                                                         }
                                                                     },
-                                                                    r.a.createElement(
+                                                                    n.a.createElement(
                                                                         "option",
                                                                         {
                                                                             key:
@@ -7902,7 +7712,7 @@
                                                                             value:
                                                                                 "0"
                                                                         },
-                                                                        r.a.createElement(
+                                                                        n.a.createElement(
                                                                             w.a,
                                                                             {
                                                                                 content:
@@ -7917,21 +7727,21 @@
                                                     )
                                                 )
                                             ),
-                                            r.a.createElement(
+                                            n.a.createElement(
                                                 "section",
                                                 {
                                                     className:
                                                         "block-list no-border-bottom"
                                                 },
-                                                r.a.createElement(w.a, {
+                                                n.a.createElement(w.a, {
                                                     component: "header",
                                                     content:
                                                         "exchange.market_picker.results",
                                                     total_assets: d.length
                                                 })
                                             ),
-                                            n && d.length
-                                                ? r.a.createElement(
+                                            r && d.length
+                                                ? n.a.createElement(
                                                       "div",
                                                       {
                                                           style: {
@@ -7939,14 +7749,14 @@
                                                                   "center"
                                                           }
                                                       },
-                                                      r.a.createElement(Se.a, {
+                                                      n.a.createElement(Ce.a, {
                                                           type: "three-bounce"
                                                       })
                                                   )
-                                                : r.a.createElement(
+                                                : n.a.createElement(
                                                       "div",
                                                       {className: "results"},
-                                                      r.a.createElement(
+                                                      n.a.createElement(
                                                           "ul",
                                                           {
                                                               style: {
@@ -7964,34 +7774,34 @@
                         t
                     );
                 })(),
-                Pe = a(362),
-                Te = a.n(Pe),
-                Ie = a(311),
-                Be = a.n(Ie),
-                Me = a(103),
-                Fe = (function() {
+                Ne = a(362),
+                Pe = a.n(Ne),
+                Te = a(311),
+                Ie = a.n(Te),
+                Be = a(102),
+                Me = (function() {
                     return function(e, t) {
                         if (Array.isArray(e)) return e;
                         if (Symbol.iterator in Object(e))
                             return (function(e, t) {
                                 var a = [],
-                                    n = !0,
-                                    r = !1,
-                                    s = void 0;
+                                    r = !0,
+                                    n = !1,
+                                    o = void 0;
                                 try {
                                     for (
-                                        var o, i = e[Symbol.iterator]();
-                                        !(n = (o = i.next()).done) &&
-                                        (a.push(o.value), !t || a.length !== t);
-                                        n = !0
+                                        var s, i = e[Symbol.iterator]();
+                                        !(r = (s = i.next()).done) &&
+                                        (a.push(s.value), !t || a.length !== t);
+                                        r = !0
                                     );
                                 } catch (e) {
-                                    (r = !0), (s = e);
+                                    (n = !0), (o = e);
                                 } finally {
                                     try {
-                                        !n && i.return && i.return();
+                                        !r && i.return && i.return();
                                     } finally {
-                                        if (r) throw s;
+                                        if (n) throw o;
                                     }
                                 }
                                 return a;
@@ -8001,63 +7811,63 @@
                         );
                     };
                 })(),
-                je = (function() {
+                Fe = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
+                            var r = t[a];
+                            (r.enumerable = r.enumerable || !1),
+                                (r.configurable = !0),
+                                "value" in r && (r.writable = !0),
+                                Object.defineProperty(e, r.key, r);
                         }
                     }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
+                    return function(t, a, r) {
+                        return a && e(t.prototype, a), r && e(t, r), t;
                     };
                 })();
             function qe(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function Re(e) {
+            function je(e) {
                 return e
                     .map(function(e) {
                         var t = e / 60,
                             a = t / 60 / 24,
-                            n = a / 7;
+                            r = a / 7;
                         if (t < 1) return e + "S";
                         if (a < 1 && parseInt(t, 10) === t) return t.toString();
-                        if (n < 1) {
+                        if (r < 1) {
                             if (a >= 1 && parseInt(a, 10) === a)
                                 return 1 === a ? "D" : a + "D";
-                        } else if (n >= 1 && parseInt(n, 10) === n) return n + "D";
+                        } else if (r >= 1 && parseInt(r, 10) === r) return r + "D";
                         return null;
                     })
                     .filter(function(e) {
                         return !!e;
                     });
             }
-            var Le = (function() {
+            var Re = (function() {
                     function e() {
                         qe(this, e);
                     }
                     return (
-                        je(e, [
+                        Fe(e, [
                             {
                                 key: "update",
                                 value: function(e) {
                                     for (var t in e)
                                         switch (t) {
                                             case "resolutions":
-                                                this.supported_resolutions = Re(
+                                                this.supported_resolutions = je(
                                                     e.resolutions
                                                 );
                                                 break;
                                             case "onMarketChange":
-                                                s.a.unsubscribe(
+                                                o.a.unsubscribe(
                                                     "market_change"
                                                 ),
-                                                    s.a.subscribe(
+                                                    o.a.subscribe(
                                                         "market_change",
                                                         e[t]
                                                     );
@@ -8070,7 +7880,7 @@
                             {
                                 key: "clearSubs",
                                 value: function() {
-                                    s.a.clearSubs();
+                                    o.a.clearSubs();
                                 }
                             },
                             {
@@ -8098,54 +7908,54 @@
                             },
                             {
                                 key: "searchSymbols",
-                                value: function(e, t, a, n) {
+                                value: function(e, t, a, r) {
                                     console.log("searchSymbols", e, t, a),
-                                        n([]);
+                                        r([]);
                                 }
                             },
                             {
                                 key: "resolveSymbol",
                                 value: function(e, t, a) {
-                                    var n = this,
-                                        r = e.split("_"),
-                                        s = Fe(r, 2),
-                                        o = s[0],
-                                        i = s[1];
+                                    var r = this,
+                                        n = e.split("_"),
+                                        o = Me(n, 2),
+                                        s = o[0],
+                                        i = o[1];
                                     Promise.all([
-                                        Object(J.f)("getAsset", o),
+                                        Object(J.f)("getAsset", s),
                                         Object(J.f)("getAsset", i)
                                     ])
                                         .then(function(a) {
-                                            var r = Fe(a, 2),
-                                                s = r[0],
-                                                o = r[1];
+                                            var n = Me(a, 2),
+                                                o = n[0],
+                                                s = n[1];
                                             t(
                                                 new function e(t) {
                                                     qe(this, e),
                                                         (this.name = t.ticker),
                                                         (this.ticker =
                                                             t.ticker);
-                                                    var a = Object(Me.c)(
+                                                    var a = Object(Be.c)(
                                                             t.quoteAsset
                                                         ),
-                                                        n = Object(Me.c)(
+                                                        r = Object(Be.c)(
                                                             t.baseAsset
                                                         ),
-                                                        r =
-                                                            a === n
+                                                        n =
+                                                            a === r
                                                                 ? a
-                                                                : a && !n
+                                                                : a && !r
                                                                     ? a
-                                                                    : !a && n
-                                                                        ? n
+                                                                    : !a && r
+                                                                        ? r
                                                                         : a +
                                                                           " / " +
-                                                                          n,
-                                                        s = k.a.replaceName(
+                                                                          r,
+                                                        o = k.a.replaceName(
                                                             t.baseAsset
                                                         ),
-                                                        o = s.name,
-                                                        i = s.prefix,
+                                                        s = o.name,
+                                                        i = o.prefix,
                                                         l = k.a.replaceName(
                                                             t.quoteAsset
                                                         ),
@@ -8157,14 +7967,14 @@
                                                         c +
                                                         " / " +
                                                         (i || "") +
-                                                        o +
+                                                        s +
                                                         " " +
-                                                        (r
-                                                            ? "(" + r + ")"
+                                                        (n
+                                                            ? "(" + n + ")"
                                                             : "")),
                                                         (this.type = "bitcoin"),
                                                         (this.session = "24x7"),
-                                                        (this.timezone = Be.a.tz.guess()),
+                                                        (this.timezone = Ie.a.tz.guess()),
                                                         (this.data_status =
                                                             "streaming"),
                                                         (this.supported_resolutions =
@@ -8253,10 +8063,10 @@
                                                         ));
                                                 }({
                                                     ticker: e,
-                                                    quoteAsset: s,
-                                                    baseAsset: o,
+                                                    quoteAsset: o,
+                                                    baseAsset: s,
                                                     resolutions:
-                                                        n.supported_resolutions
+                                                        r.supported_resolutions
                                                 })
                                             );
                                         })
@@ -8265,18 +8075,18 @@
                             },
                             {
                                 key: "getBars",
-                                value: function(e, t, a, n, r, s, o) {
+                                value: function(e, t, a, r, n, o, s) {
                                     var i = this;
-                                    (a *= 1e3), (n *= 1e3);
+                                    (a *= 1e3), (r *= 1e3);
                                     var l = this._getHistory();
                                     if (
                                         ((this.latestBar = l[l.length - 1]),
                                         (l = l.filter(function(e) {
-                                            return e.time >= a && e.time <= n;
+                                            return e.time >= a && e.time <= r;
                                         })),
                                         this.interval !== t)
                                     ) {
-                                        if (!o) return;
+                                        if (!s) return;
                                         var c = (function(e) {
                                             return "D" === e
                                                 ? 86400
@@ -8341,63 +8151,63 @@
                                                                             e.time >=
                                                                                 a &&
                                                                             e.time <=
-                                                                                n
+                                                                                r
                                                                         );
                                                                     }
                                                                 )),
                                                                 (i.interval = t),
                                                                 !e.length)
                                                             )
-                                                                return r(e, {
+                                                                return n(e, {
                                                                     noData: !0
                                                                 });
-                                                            r(e);
+                                                            n(e);
                                                         });
                                                 })
                                         );
                                     }
                                     if (((this.interval = t), !l.length))
-                                        return r(l, {noData: !0});
-                                    r(l);
+                                        return n(l, {noData: !0});
+                                    n(l);
                                 }
                             },
                             {
                                 key: "_getHistory",
                                 value: function() {
-                                    return s.a.getState().priceData;
+                                    return o.a.getState().priceData;
                                 }
                             },
                             {
                                 key: "subscribeBars",
-                                value: function(e, t, a, n, r) {
-                                    var o = this;
-                                    s.a.unsubscribe("subscribeBars"),
-                                        r(),
-                                        s.a.subscribe(
+                                value: function(e, t, a, r, n) {
+                                    var s = this;
+                                    o.a.unsubscribe("subscribeBars"),
+                                        n(),
+                                        o.a.subscribe(
                                             "subscribeBars",
                                             function() {
-                                                var e = o._getHistory(),
+                                                var e = s._getHistory(),
                                                     t = e.filter(function(e) {
                                                         return (
-                                                            !o.latestBar ||
+                                                            !s.latestBar ||
                                                             e.time >
-                                                                o.latestBar.time
+                                                                s.latestBar.time
                                                         );
                                                     });
                                                 if (t.length)
                                                     t.forEach(function(e) {
                                                         a(e);
                                                     }),
-                                                        (o.latestBar =
+                                                        (s.latestBar =
                                                             t[t.length - 1]);
                                                 else {
-                                                    var n = !1;
-                                                    for (var r in o.latestBar)
-                                                        o.latestBar[r] !==
+                                                    var r = !1;
+                                                    for (var n in s.latestBar)
+                                                        s.latestBar[n] !==
                                                             e[e.length - 1][
-                                                                r
-                                                            ] && (n = !0);
-                                                    n && a(e[e.length - 1]);
+                                                                n
+                                                            ] && (r = !0);
+                                                    r && a(e[e.length - 1]);
                                                 }
                                             }
                                         );
@@ -8418,7 +8228,7 @@
                         e
                     );
                 })(),
-                De = [
+                Le = [
                     "America/Argentina/Buenos_Aires",
                     "America/Bogota",
                     "America/Caracas",
@@ -8463,22 +8273,22 @@
                     "Pacific/Honolulu",
                     "US/Mountain"
                 ];
-            var ze = (function() {
+            var De = (function() {
                 function e(e, t) {
                     for (var a = 0; a < t.length; a++) {
-                        var n = t[a];
-                        (n.enumerable = n.enumerable || !1),
-                            (n.configurable = !0),
-                            "value" in n && (n.writable = !0),
-                            Object.defineProperty(e, n.key, n);
+                        var r = t[a];
+                        (r.enumerable = r.enumerable || !1),
+                            (r.configurable = !0),
+                            "value" in r && (r.writable = !0),
+                            Object.defineProperty(e, r.key, r);
                     }
                 }
-                return function(t, a, n) {
-                    return a && e(t.prototype, a), n && e(t, n), t;
+                return function(t, a, r) {
+                    return a && e(t.prototype, a), r && e(t, r), t;
                 };
             })();
-            var Ue = a(790),
-                We = (function(e) {
+            var ze = a(791),
+                Ue = (function(e) {
                     function t() {
                         return (
                             (function(e, t) {
@@ -8525,14 +8335,14 @@
                                     (Object.setPrototypeOf
                                         ? Object.setPrototypeOf(e, t)
                                         : (e.__proto__ = t));
-                        })(t, r.a.Component),
-                        ze(t, [
+                        })(t, n.a.Component),
+                        De(t, [
                             {
                                 key: "loadTradingView",
                                 value: function(e) {
                                     var t = this,
                                         a = e.dataFeed,
-                                        n = Te.a[e.theme];
+                                        r = Pe.a[e.theme];
                                     a &&
                                         (this.tvWidget ||
                                             (a.update({
@@ -8541,15 +8351,15 @@
                                                     e.quoteSymbol +
                                                     "_" +
                                                     e.baseSymbol,
-                                                interval: Re([e.bucketSize])[0]
+                                                interval: je([e.bucketSize])[0]
                                             }),
-                                            (this.tvWidget = new Ue.widget({
+                                            (this.tvWidget = new ze.widget({
                                                 fullscreen: !1,
                                                 symbol:
                                                     e.quoteSymbol +
                                                     "_" +
                                                     e.baseSymbol,
-                                                interval: Re([e.bucketSize])[0],
+                                                interval: je([e.bucketSize])[0],
                                                 library_path:
                                                     "/charting_library/",
                                                 datafeed: a,
@@ -8563,24 +8373,24 @@
                                                 autosize: !0,
                                                 locale: e.locale,
                                                 timezone: (function() {
-                                                    var e = Be.a.tz.guess();
-                                                    if (-1 !== De.indexOf(e))
+                                                    var e = Ie.a.tz.guess();
+                                                    if (-1 !== Le.indexOf(e))
                                                         return e;
                                                     for (
-                                                        var t = Be()().toISOString(),
-                                                            a = Be.a
+                                                        var t = Ie()().toISOString(),
+                                                            a = Ie.a
                                                                 .tz(t, e)
                                                                 .format(),
-                                                            n = 0;
-                                                        n < De.length;
-                                                        n++
+                                                            r = 0;
+                                                        r < Le.length;
+                                                        r++
                                                     )
                                                         if (
-                                                            Be.a
-                                                                .tz(t, De[n])
+                                                            Ie.a
+                                                                .tz(t, Le[r])
                                                                 .format() === a
                                                         )
-                                                            return De[n];
+                                                            return Le[r];
                                                     return (
                                                         console.log(
                                                             "No matching timezone found for " +
@@ -8590,18 +8400,18 @@
                                                         "Europe/London"
                                                     );
                                                 })(),
-                                                toolbar_bg: n.bgColor,
+                                                toolbar_bg: r.bgColor,
                                                 overrides: {
                                                     "paneProperties.background":
-                                                        n.bgColor,
+                                                        r.bgColor,
                                                     "paneProperties.horzGridProperties.color":
-                                                        n.axisLineColor,
+                                                        r.axisLineColor,
                                                     "paneProperties.vertGridProperties.color":
-                                                        n.axisLineColor,
+                                                        r.axisLineColor,
                                                     "scalesProperties.lineColor":
-                                                        n.axisLineColor,
+                                                        r.axisLineColor,
                                                     "scalesProperties.textColor":
-                                                        n.textColor
+                                                        r.textColor
                                                 },
                                                 theme: e.theme,
                                                 custom_css_url:
@@ -8649,7 +8459,7 @@
                                     this.tvWidget &&
                                         this.tvWidget.setSymbol(
                                             e,
-                                            Re([this.props.bucketSize])[0]
+                                            je([this.props.bucketSize])[0]
                                         );
                                 }
                             },
@@ -8678,10 +8488,10 @@
                             {
                                 key: "render",
                                 value: function() {
-                                    return r.a.createElement(
+                                    return n.a.createElement(
                                         "div",
                                         {className: "small-12"},
-                                        r.a.createElement("div", {
+                                        n.a.createElement("div", {
                                             className: "exchange-bordered",
                                             style: {
                                                 marginTop: 10,
@@ -8699,24 +8509,24 @@
                         t
                     );
                 })(),
-                He = a(202),
-                Ve = a(133),
-                Je = a.n(Ve),
-                Qe = (function() {
+                We = a(210),
+                He = a(135),
+                Ve = a.n(He),
+                Je = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
+                            var r = t[a];
+                            (r.enumerable = r.enumerable || !1),
+                                (r.configurable = !0),
+                                "value" in r && (r.writable = !0),
+                                Object.defineProperty(e, r.key, r);
                         }
                     }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
+                    return function(t, a, r) {
+                        return a && e(t.prototype, a), r && e(t, r), t;
                     };
                 })();
-            var Ge = (function(e) {
+            var Qe = (function(e) {
                 function t() {
                     return (
                         (function(e, t) {
@@ -8762,8 +8572,8 @@
                                 (Object.setPrototypeOf
                                     ? Object.setPrototypeOf(e, t)
                                     : (e.__proto__ = t));
-                    })(t, r.a.Component),
-                    Qe(t, [
+                    })(t, n.a.Component),
+                    Je(t, [
                         {
                             key: "shouldComponentUpdate",
                             value: function(e) {
@@ -8838,7 +8648,7 @@
                                     void 0 !== arguments[0]
                                         ? arguments[0]
                                         : this.props;
-                                return Te.a[e.theme];
+                                return Pe.a[e.theme];
                             }
                         },
                         {
@@ -8847,9 +8657,9 @@
                                 var e = this.props,
                                     t = e.flat_bids,
                                     a = e.flat_asks,
-                                    n = e.flat_calls,
-                                    s = e.flat_settles,
-                                    o = e.totalBids,
+                                    r = e.flat_calls,
+                                    o = e.flat_settles,
+                                    s = e.totalBids,
                                     i = e.totalAsks,
                                     l = e.base,
                                     c = e.quote,
@@ -8866,15 +8676,15 @@
                                     _ = p.axisLineColor,
                                     E = k.a.replaceName(l),
                                     C = E.name,
-                                    S = E.prefix,
-                                    x = k.a.replaceName(c),
-                                    A = x.name,
-                                    N = x.prefix;
-                                (C = (S || "") + C), (A = (N || "") + A);
-                                var P = Object(He.a)(t),
-                                    T = Object(He.a)(a),
-                                    I = Object(He.a)(n),
-                                    B = Object(He.a)(s),
+                                    x = E.prefix,
+                                    S = k.a.replaceName(c),
+                                    A = S.name,
+                                    O = S.prefix;
+                                (C = (x || "") + C), (A = (O || "") + A);
+                                var P = Object(We.a)(t),
+                                    T = Object(We.a)(a),
+                                    I = Object(We.a)(r),
+                                    B = Object(We.a)(o),
                                     M = {
                                         chart: {
                                             type: "area",
@@ -8897,7 +8707,7 @@
                                             formatter: function() {
                                                 return (
                                                     "\n\t\t\t\t\t<table>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<td>" +
-                                                    G.a.translate(
+                                                    Y.a.translate(
                                                         "exchange.price"
                                                     ) +
                                                     ':</td>\n\t\t\t\t\t\t\t<td style="text-align: right">' +
@@ -8910,7 +8720,7 @@
                                                     "/" +
                                                     A +
                                                     "</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<td>" +
-                                                    G.a.translate(
+                                                    Y.a.translate(
                                                         "exchange.quantity"
                                                     ) +
                                                     ':</td>\n\t\t\t\t\t\t\t<td style="text-align: right">' +
@@ -8975,19 +8785,19 @@
                                         M.xAxis.min > P[P.length - 1][0] &&
                                             (M.xAxis.min =
                                                 0.5 * P[P.length - 1][0]);
-                                    var j = 0;
+                                    var q = 0;
                                     P.forEach(function(e) {
                                         e[0] >= M.xAxis.min &&
-                                            (j = Math.max(e[1], j));
+                                            (q = Math.max(e[1], q));
                                     }),
                                         T.forEach(function(e) {
                                             e[0] <= M.xAxis.max &&
-                                                (j = Math.max(e[1], j));
+                                                (q = Math.max(e[1], q));
                                         }),
-                                        (M.yAxis.max = 1.15 * j);
-                                    var q = j > 10 ? 0 : j > 1 ? 2 : 5;
+                                        (M.yAxis.max = 1.15 * q);
+                                    var j = q > 10 ? 0 : q > 1 ? 2 : 5;
                                     M.yAxis.labels.formatter = function() {
-                                        return k.a.format_number(this.value, q);
+                                        return k.a.format_number(this.value, j);
                                     };
                                 } else
                                     P.length && !T.length
@@ -9010,7 +8820,7 @@
                                             dashStyle: "longdash",
                                             value: this.props.LCP,
                                             label: {
-                                                text: G.a.translate(
+                                                text: Y.a.translate(
                                                     "explorer.block.call_limit"
                                                 ),
                                                 style: {
@@ -9030,7 +8840,7 @@
                                         dashStyle: "solid",
                                         value: u,
                                         label: {
-                                            text: G.a.translate(
+                                            text: Y.a.translate(
                                                 "explorer.block.feed_price"
                                             ),
                                             style: {
@@ -9083,7 +8893,7 @@
                                             click: this.props.onClick.bind(this)
                                         }),
                                     this.props.noFrame
-                                        ? r.a.createElement(
+                                        ? n.a.createElement(
                                               "div",
                                               {
                                                   className:
@@ -9091,24 +8901,24 @@
                                               },
                                               P.length || T.length || I.length
                                                   ? null
-                                                  : r.a.createElement(
+                                                  : n.a.createElement(
                                                         "span",
                                                         {className: "no-data"},
-                                                        r.a.createElement(w.a, {
+                                                        n.a.createElement(w.a, {
                                                             content:
                                                                 "exchange.no_data"
                                                         })
                                                     ),
                                               this.props.noText
                                                   ? null
-                                                  : r.a.createElement(
+                                                  : n.a.createElement(
                                                         "p",
                                                         {
                                                             className:
                                                                 "bid-total"
                                                         },
                                                         k.a.format_number(
-                                                            o,
+                                                            s,
                                                             l.get("precision")
                                                         ),
                                                         " ",
@@ -9116,7 +8926,7 @@
                                                     ),
                                               this.props.noText
                                                   ? null
-                                                  : r.a.createElement(
+                                                  : n.a.createElement(
                                                         "p",
                                                         {
                                                             className:
@@ -9130,25 +8940,25 @@
                                                         A
                                                     ),
                                               P || T || I
-                                                  ? r.a.createElement(Je.a, {
+                                                  ? n.a.createElement(Ve.a, {
                                                         config: M
                                                     })
                                                   : null
                                           )
-                                        : r.a.createElement(
+                                        : n.a.createElement(
                                               "div",
                                               {
                                                   className:
                                                       "grid-content no-overflow no-padding middle-content"
                                               },
-                                              r.a.createElement(
+                                              n.a.createElement(
                                                   "div",
                                                   {
                                                       className:
                                                           "exchange-bordered",
                                                       style: {margin: 10}
                                                   },
-                                                  r.a.createElement(
+                                                  n.a.createElement(
                                                       "div",
                                                       {
                                                           className:
@@ -9156,21 +8966,21 @@
                                                       },
                                                       this.props.noText
                                                           ? null
-                                                          : r.a.createElement(
+                                                          : n.a.createElement(
                                                                 "span",
                                                                 {
                                                                     className:
                                                                         "bid-total"
                                                                 },
                                                                 k.a.format_number(
-                                                                    o,
+                                                                    s,
                                                                     l.get(
                                                                         "precision"
                                                                     )
                                                                 ),
                                                                 " ",
-                                                                r.a.createElement(
-                                                                    O.a,
+                                                                n.a.createElement(
+                                                                    N.a,
                                                                     {
                                                                         name: l.get(
                                                                             "symbol"
@@ -9180,7 +8990,7 @@
                                                             ),
                                                       this.props.noText
                                                           ? null
-                                                          : r.a.createElement(
+                                                          : n.a.createElement(
                                                                 "span",
                                                                 {
                                                                     className:
@@ -9193,8 +9003,8 @@
                                                                     )
                                                                 ),
                                                                 " ",
-                                                                r.a.createElement(
-                                                                    O.a,
+                                                                n.a.createElement(
+                                                                    N.a,
                                                                     {
                                                                         name: c.get(
                                                                             "symbol"
@@ -9207,13 +9017,13 @@
                                                   T.length ||
                                                   I.length
                                                       ? null
-                                                      : r.a.createElement(
+                                                      : n.a.createElement(
                                                             "span",
                                                             {
                                                                 className:
                                                                     "no-data"
                                                             },
-                                                            r.a.createElement(
+                                                            n.a.createElement(
                                                                 w.a,
                                                                 {
                                                                     content:
@@ -9222,8 +9032,8 @@
                                                             )
                                                         ),
                                                   P || T || I
-                                                      ? r.a.createElement(
-                                                            Je.a,
+                                                      ? n.a.createElement(
+                                                            Ve.a,
                                                             {
                                                                 ref:
                                                                     "depthChart",
@@ -9240,42 +9050,42 @@
                     t
                 );
             })();
-            (Ge.defaultProps = {
+            (Qe.defaultProps = {
                 flat_bids: [],
                 flat_asks: [],
                 orders: {},
                 noText: !1,
                 noFrame: !0
             }),
-                (Ge.propTypes = {
+                (Qe.propTypes = {
                     flat_bids: g.a.array.isRequired,
                     flat_asks: g.a.array.isRequired,
                     orders: g.a.object.isRequired
                 });
-            var Ye = Ge,
-                Ke = a(231),
-                Xe = a(28),
-                Ze = a(574),
-                $e = a.n(Ze),
-                et = a(20),
-                tt = a.n(et),
-                at = a(149),
-                nt = (function() {
+            var Ye = Qe,
+                Ge = a(231),
+                Ke = a(28),
+                Xe = a(575),
+                Ze = a.n(Xe),
+                $e = a(20),
+                et = a.n($e),
+                tt = a(152),
+                at = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
+                            var r = t[a];
+                            (r.enumerable = r.enumerable || !1),
+                                (r.configurable = !0),
+                                "value" in r && (r.writable = !0),
+                                Object.defineProperty(e, r.key, r);
                         }
                     }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
+                    return function(t, a, r) {
+                        return a && e(t.prototype, a), r && e(t, r), t;
                     };
                 })();
             var rt = J.c.operations,
-                st = Object.keys(rt),
+                nt = Object.keys(rt),
                 ot = (function(e) {
                     function t() {
                         return (
@@ -9323,8 +9133,8 @@
                                     (Object.setPrototypeOf
                                         ? Object.setPrototypeOf(e, t)
                                         : (e.__proto__ = t));
-                        })(t, r.a.Component),
-                        nt(t, [
+                        })(t, n.a.Component),
+                        at(t, [
                             {
                                 key: "componentWillReceiveProps",
                                 value: function(e) {
@@ -9356,14 +9166,14 @@
                                                     : null;
                                         a &&
                                             t &&
-                                            "fill_order" === st[a.op[0]] &&
+                                            "fill_order" === nt[a.op[0]] &&
                                             ((!t && a.id) || a.id !== t.id) &&
-                                            (tt.a.publish(
+                                            (et.a.publish(
                                                 "account-notify",
                                                 "open"
                                             ),
                                             setTimeout(function() {
-                                                tt.a.publish(
+                                                et.a.publish(
                                                     "account-notify",
                                                     "close"
                                                 );
@@ -9392,7 +9202,7 @@
                                 value: function() {
                                     var e = this.props.account;
                                     if (!e)
-                                        return r.a.createElement("div", null);
+                                        return n.a.createElement("div", null);
                                     var t = void 0,
                                         a = void 0;
                                     return (
@@ -9403,7 +9213,7 @@
                                                 .get("history")
                                                 .first()
                                                 .toJS()) &&
-                                            (a = r.a.createElement(at.a, {
+                                            (a = n.a.createElement(tt.a, {
                                                 key: t.id,
                                                 op: t.op,
                                                 result: t.result,
@@ -9413,25 +9223,25 @@
                                                 hideFee: !0
                                             })),
                                         t
-                                            ? r.a.createElement(
-                                                  $e.a.Static,
+                                            ? n.a.createElement(
+                                                  Ze.a.Static,
                                                   {
                                                       id: "account-notify",
                                                       title: null,
                                                       image: "",
                                                       wrapperElement: "div"
                                                   },
-                                                  r.a.createElement(
+                                                  n.a.createElement(
                                                       "table",
                                                       {className: "table"},
-                                                      r.a.createElement(
+                                                      n.a.createElement(
                                                           "tbody",
                                                           null,
                                                           a
                                                       )
                                                   )
                                               )
-                                            : r.a.createElement("div", null)
+                                            : n.a.createElement("div", null)
                                     );
                                 }
                             }
@@ -9440,22 +9250,22 @@
                     );
                 })();
             ot.propTypes = {account: le.a.ChainAccount.isRequired};
-            var it = (ot = Object(ce.a)(ot)),
-                lt = (function() {
+            var st = (ot = Object(ce.a)(ot)),
+                it = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
+                            var r = t[a];
+                            (r.enumerable = r.enumerable || !1),
+                                (r.configurable = !0),
+                                "value" in r && (r.writable = !0),
+                                Object.defineProperty(e, r.key, r);
                         }
                     }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
+                    return function(t, a, r) {
+                        return a && e(t.prototype, a), r && e(t, r), t;
                     };
                 })();
-            var ct = (function(e) {
+            var lt = (function(e) {
                     function t() {
                         return (
                             (function(e, t) {
@@ -9502,23 +9312,23 @@
                                     (Object.setPrototypeOf
                                         ? Object.setPrototypeOf(e, t)
                                         : (e.__proto__ = t));
-                        })(t, r.a.Component),
-                        lt(t, [
+                        })(t, n.a.Component),
+                        it(t, [
                             {
                                 key: "render",
                                 value: function() {
-                                    return r.a.createElement(
+                                    return n.a.createElement(
                                         d.a,
                                         {
-                                            stores: [o.a],
+                                            stores: [s.a],
                                             inject: {
                                                 account: function() {
-                                                    return o.a.getState()
+                                                    return s.a.getState()
                                                         .currentAccount;
                                                 }
                                             }
                                         },
-                                        r.a.createElement(it, null)
+                                        n.a.createElement(st, null)
                                     );
                                 }
                             }
@@ -9526,22 +9336,22 @@
                         t
                     );
                 })(),
-                ut = a(34),
-                pt = (function() {
+                ct = a(34),
+                ut = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
+                            var r = t[a];
+                            (r.enumerable = r.enumerable || !1),
+                                (r.configurable = !0),
+                                "value" in r && (r.writable = !0),
+                                Object.defineProperty(e, r.key, r);
                         }
                     }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
+                    return function(t, a, r) {
+                        return a && e(t.prototype, a), r && e(t, r), t;
                     };
                 })();
-            var ht = (function(e) {
+            var pt = (function(e) {
                     function t() {
                         return (
                             (function(e, t) {
@@ -9588,13 +9398,13 @@
                                     (Object.setPrototypeOf
                                         ? Object.setPrototypeOf(e, t)
                                         : (e.__proto__ = t));
-                        })(t, r.a.Component),
-                        pt(t, [
+                        })(t, n.a.Component),
+                        ut(t, [
                             {
                                 key: "show",
                                 value: function() {
                                     var e = "modal_confirm_" + this.props.type;
-                                    tt.a.publish(e, "open");
+                                    et.a.publish(e, "open");
                                 }
                             },
                             {
@@ -9602,7 +9412,7 @@
                                 value: function(e, t) {
                                     var a = "modal_confirm_" + this.props.type;
                                     t.preventDefault(),
-                                        tt.a.publish(a, "close"),
+                                        et.a.publish(a, "close"),
                                         e && this.props.onForce();
                                 }
                             },
@@ -9612,19 +9422,19 @@
                                     var e = this.props,
                                         t = e.type,
                                         a = e.diff,
-                                        n = e.hasOrders;
-                                    return r.a.createElement(
-                                        ut.a,
+                                        r = e.hasOrders;
+                                    return n.a.createElement(
+                                        ct.a,
                                         {id: "modal_confirm_" + t, overlay: !0},
-                                        r.a.createElement(w.a, {
+                                        n.a.createElement(w.a, {
                                             component: "h3",
                                             content: "transaction.confirm"
                                         }),
-                                        r.a.createElement(
+                                        n.a.createElement(
                                             "div",
                                             {className: "grid-block vertical"},
-                                            n
-                                                ? r.a.createElement(w.a, {
+                                            r
+                                                ? n.a.createElement(w.a, {
                                                       content:
                                                           "exchange.confirm_" +
                                                           t,
@@ -9633,18 +9443,18 @@
                                                           2
                                                       )
                                                   })
-                                                : r.a.createElement(w.a, {
+                                                : n.a.createElement(w.a, {
                                                       content:
                                                           "exchange.confirm_no_orders_" +
                                                           t
                                                   }),
-                                            r.a.createElement(
+                                            n.a.createElement(
                                                 "div",
                                                 {
                                                     className: "button-group",
                                                     style: {paddingTop: "2rem"}
                                                 },
-                                                r.a.createElement("input", {
+                                                n.a.createElement("input", {
                                                     onClick: this._onForce.bind(
                                                         this,
                                                         !0
@@ -9653,7 +9463,7 @@
                                                     type: "submit",
                                                     value: "Yes"
                                                 }),
-                                                r.a.createElement("input", {
+                                                n.a.createElement("input", {
                                                     onClick: this._onForce.bind(
                                                         this,
                                                         !1
@@ -9671,21 +9481,21 @@
                         t
                     );
                 })(),
-                dt = (function() {
+                ht = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
+                            var r = t[a];
+                            (r.enumerable = r.enumerable || !1),
+                                (r.configurable = !0),
+                                "value" in r && (r.writable = !0),
+                                Object.defineProperty(e, r.key, r);
                         }
                     }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
+                    return function(t, a, r) {
+                        return a && e(t.prototype, a), r && e(t, r), t;
                     };
                 })();
-            var mt = (function(e) {
+            var dt = (function(e) {
                     function t() {
                         !(function(e, t) {
                             if (!(e instanceof t))
@@ -9734,8 +9544,8 @@
                                     (Object.setPrototypeOf
                                         ? Object.setPrototypeOf(e, t)
                                         : (e.__proto__ = t));
-                        })(t, r.a.Component),
-                        dt(t, [
+                        })(t, n.a.Component),
+                        ht(t, [
                             {
                                 key: "shouldComponentUpdate",
                                 value: function(e) {
@@ -9754,9 +9564,9 @@
                                 value: function(e) {
                                     var t = {change: 0},
                                         a = e.market,
-                                        n = this.state.curMarket !== a,
-                                        r = null != this.state.curMarket && n;
-                                    (t.marketChange = r),
+                                        r = this.state.curMarket !== a,
+                                        n = null != this.state.curMarket && r;
+                                    (t.marketChange = n),
                                         (t.curMarket = a),
                                         (t.prevAsset = this.state.marketAsset),
                                         e.ready &&
@@ -9779,9 +9589,9 @@
                                     var e = this.props,
                                         t = e.base,
                                         a = e.quote,
-                                        n = e.price,
-                                        s = e.content,
-                                        o = e.ready,
+                                        r = e.price,
+                                        o = e.content,
+                                        s = e.ready,
                                         i = e.volume,
                                         l = e.toolTip,
                                         c = e.ignoreColorChange,
@@ -9797,12 +9607,12 @@
                                                 ? "pulsate green"
                                                 : "pulsate red");
                                     var d = i
-                                        ? k.a.format_volume(n)
-                                        : k.a.price_text(n, a, t);
-                                    return r.a.createElement(
+                                        ? k.a.format_volume(r)
+                                        : k.a.price_text(r, a, t);
+                                    return n.a.createElement(
                                         "li",
                                         {
-                                            className: x()(
+                                            className: S()(
                                                 "stressed-stat",
                                                 this.props.className,
                                                 h
@@ -9811,32 +9621,32 @@
                                             "data-place": "bottom",
                                             "data-tip": l
                                         },
-                                        r.a.createElement(
+                                        n.a.createElement(
                                             "span",
                                             null,
-                                            r.a.createElement(
+                                            n.a.createElement(
                                                 "span",
                                                 {
                                                     className:
                                                         "value stat-primary"
                                                 },
-                                                o ? d : 0,
+                                                s ? d : 0,
                                                 " "
                                             ),
-                                            r.a.createElement(
+                                            n.a.createElement(
                                                 "span",
                                                 {className: "symbol-text"},
-                                                r.a.createElement(O.a, {
+                                                n.a.createElement(N.a, {
                                                     name: t.get("symbol")
                                                 })
                                             )
                                         ),
-                                        s
-                                            ? r.a.createElement(
+                                        o
+                                            ? n.a.createElement(
                                                   "div",
                                                   {className: "stat-text"},
-                                                  r.a.createElement(w.a, {
-                                                      content: s
+                                                  n.a.createElement(w.a, {
+                                                      content: o
                                                   })
                                               )
                                             : null
@@ -9847,36 +9657,36 @@
                         t
                     );
                 })(),
-                ft =
+                mt =
                     Object.assign ||
                     function(e) {
                         for (var t = 1; t < arguments.length; t++) {
                             var a = arguments[t];
-                            for (var n in a)
-                                Object.prototype.hasOwnProperty.call(a, n) &&
-                                    (e[n] = a[n]);
+                            for (var r in a)
+                                Object.prototype.hasOwnProperty.call(a, r) &&
+                                    (e[r] = a[r]);
                         }
                         return e;
                     },
-                gt = (function() {
+                ft = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
+                            var r = t[a];
+                            (r.enumerable = r.enumerable || !1),
+                                (r.configurable = !0),
+                                "value" in r && (r.writable = !0),
+                                Object.defineProperty(e, r.key, r);
                         }
                     }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
+                    return function(t, a, r) {
+                        return a && e(t.prototype, a), r && e(t, r), t;
                     };
                 })();
-            function bt(e, t) {
+            function gt(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function yt(e, t) {
+            function bt(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -9885,7 +9695,7 @@
                     ? e
                     : t;
             }
-            function vt(e, t) {
+            function yt(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -9904,11 +9714,11 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var _t = (function(e) {
+            var vt = (function(e) {
                 function t() {
                     return (
-                        bt(this, t),
-                        yt(
+                        gt(this, t),
+                        bt(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -9918,8 +9728,8 @@
                     );
                 }
                 return (
-                    vt(t, r.a.Component),
-                    gt(t, [
+                    yt(t, n.a.Component),
+                    ft(t, [
                         {
                             key: "_getFeedPrice",
                             value: function() {
@@ -9996,11 +9806,11 @@
                                     t = this._getMR();
                                 return e && "" !== e
                                     ? "danger" === e
-                                        ? G.a.translate("tooltip.cr_danger", {
+                                        ? Y.a.translate("tooltip.cr_danger", {
                                               mr: t
                                           })
                                         : "warning" === e
-                                            ? G.a.translate(
+                                            ? Y.a.translate(
                                                   "tooltip.cr_warning",
                                                   {mr: t}
                                               )
@@ -10018,10 +9828,10 @@
                                         this.props.debtAsset
                                     ),
                                     this._getStatusClass());
-                                return r.a.createElement(
+                                return n.a.createElement(
                                     "li",
                                     {
-                                        className: x()(
+                                        className: S()(
                                             "stressed-stat",
                                             this.props.className
                                         ),
@@ -10029,13 +9839,13 @@
                                         "data-place": "bottom",
                                         "data-tip": this._getCRTip()
                                     },
-                                    r.a.createElement(
+                                    n.a.createElement(
                                         "span",
                                         null,
-                                        r.a.createElement(
+                                        n.a.createElement(
                                             "span",
                                             {
-                                                className: x()(
+                                                className: S()(
                                                     "value stat-primary",
                                                     a
                                                 )
@@ -10043,10 +9853,10 @@
                                             k.a.format_number(t, 2)
                                         )
                                     ),
-                                    r.a.createElement(
+                                    n.a.createElement(
                                         "div",
                                         {className: "stat-text"},
-                                        r.a.createElement(w.a, {
+                                        n.a.createElement(w.a, {
                                             content: "header.collateral_ratio"
                                         })
                                     )
@@ -10057,16 +9867,16 @@
                     t
                 );
             })();
-            (_t.propTypes = {
+            (vt.propTypes = {
                 debtAsset: le.a.ChainAsset.isRequired,
                 collateralAsset: le.a.ChainAsset.isRequired
             }),
-                (_t = Object(ce.a)(_t));
-            var kt = (function(e) {
+                (vt = Object(ce.a)(vt));
+            var _t = (function(e) {
                 function t() {
                     return (
-                        bt(this, t),
-                        yt(
+                        gt(this, t),
+                        bt(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -10076,30 +9886,30 @@
                     );
                 }
                 return (
-                    vt(t, r.a.Component),
-                    gt(t, [
+                    yt(t, n.a.Component),
+                    ft(t, [
                         {
                             key: "render",
                             value: function() {
                                 var e = this.props,
                                     t = e.object,
                                     a = e.account,
-                                    n = t.getIn([
+                                    r = t.getIn([
                                         "call_price",
                                         "quote",
                                         "asset_id"
                                     ]),
-                                    s = t.getIn([
+                                    o = t.getIn([
                                         "call_price",
                                         "base",
                                         "asset_id"
                                     ]);
-                                return r.a.createElement(
-                                    _t,
-                                    ft(
+                                return n.a.createElement(
+                                    vt,
+                                    mt(
                                         {
-                                            debtAsset: n,
-                                            collateralAsset: s,
+                                            debtAsset: r,
+                                            collateralAsset: o,
                                             account: a
                                         },
                                         this.props
@@ -10111,24 +9921,24 @@
                     t
                 );
             })();
-            kt.propTypes = {object: le.a.ChainObject.isRequired};
-            var Et = (kt = Object(ce.a)(kt)),
-                wt = a(102),
-                Ct = (function() {
+            _t.propTypes = {object: le.a.ChainObject.isRequired};
+            var kt = (_t = Object(ce.a)(_t)),
+                Et = a(101),
+                wt = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
+                            var r = t[a];
+                            (r.enumerable = r.enumerable || !1),
+                                (r.configurable = !0),
+                                "value" in r && (r.writable = !0),
+                                Object.defineProperty(e, r.key, r);
                         }
                     }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
+                    return function(t, a, r) {
+                        return a && e(t.prototype, a), r && e(t, r), t;
                     };
                 })();
-            var St = (function(e) {
+            var Ct = (function(e) {
                     function t(e) {
                         !(function(e, t) {
                             if (!(e instanceof t))
@@ -10177,8 +9987,8 @@
                                     (Object.setPrototypeOf
                                         ? Object.setPrototypeOf(e, t)
                                         : (e.__proto__ = t));
-                        })(t, r.a.Component),
-                        Ct(t, [
+                        })(t, n.a.Component),
+                        wt(t, [
                             {
                                 key: "shouldComponentUpdate",
                                 value: function(e) {
@@ -10244,9 +10054,9 @@
                                             a = document.getElementsByClassName(
                                                 e
                                             );
-                                        for (var n in a) {
-                                            var r = a[n].offsetWidth;
-                                            r > t && (t = r);
+                                        for (var r in a) {
+                                            var n = a[r].offsetWidth;
+                                            n > t && (t = n);
                                         }
                                         return t;
                                     }
@@ -10256,7 +10066,7 @@
                                             "vertical-table-cell-three"
                                         ],
                                         a = 0;
-                                    for (var n in t) a += e(t[n]);
+                                    for (var r in t) a += e(t[r]);
                                     if (a > 0)
                                         try {
                                             document.getElementsByClassName(
@@ -10264,26 +10074,26 @@
                                             )[0].style.marginLeft = a + "px";
                                         } catch (e) {}
                                     try {
-                                        var r = "exchange_header_style",
-                                            s =
+                                        var n = "exchange_header_style",
+                                            o =
                                                 "@media only screen and (min-width: 1280px) { body.localcoin .exchange-layout .grid-block.shrink.no-padding.overflow-visible.top-bar.left-cell-active { width: calc(100% - " +
                                                 (a + e("right-column")) +
                                                 "px); }}";
-                                        if (document.getElementById(r)) {
+                                        if (document.getElementById(n)) {
                                             document.getElementById(
-                                                r
-                                            ).innerHTML = s;
+                                                n
+                                            ).innerHTML = o;
                                         } else {
-                                            var o = document.createElement(
+                                            var s = document.createElement(
                                                 "style"
                                             );
-                                            (o.id = r),
-                                                (o.innerHTML = s),
+                                            (s.id = n),
+                                                (s.innerHTML = o),
                                                 document
                                                     .getElementsByTagName(
                                                         "head"
                                                     )[0]
-                                                    .appendChild(o);
+                                                    .appendChild(s);
                                         }
                                     } catch (e) {}
                                 }
@@ -10293,9 +10103,9 @@
                                 value: function() {
                                     var e = this,
                                         t = this.props,
-                                        n = t.quoteAsset,
-                                        s = t.baseAsset,
-                                        o = t.starredMarkets,
+                                        r = t.quoteAsset,
+                                        o = t.baseAsset,
+                                        s = t.starredMarkets,
                                         i = t.hasPrediction,
                                         l = t.feedPrice,
                                         c = t.showCallLimit,
@@ -10305,10 +10115,10 @@
                                         d = t.marketStats,
                                         m = t.showDepthChart,
                                         f = t.account,
-                                        g = s.get("symbol"),
-                                        y = n.get("symbol"),
+                                        g = o.get("symbol"),
+                                        y = r.get("symbol"),
                                         v = y + "_" + g,
-                                        _ = o.has(v)
+                                        _ = s.has(v)
                                             ? "gold-star"
                                             : "grey-star",
                                         k = d.get("change"),
@@ -10319,13 +10129,13 @@
                                                     ? "negative"
                                                     : "positive",
                                         C = d.get("volumeBase"),
-                                        S = d.get("volumeQuote"),
-                                        x = k > 0 ? "+" + k : k,
-                                        A = this.state.volumeShowQuote ? S : C,
-                                        N = this.state.volumeShowQuote ? n : s,
+                                        x = d.get("volumeQuote"),
+                                        S = k > 0 ? "+" + k : k,
+                                        A = this.state.volumeShowQuote ? x : C,
+                                        O = this.state.volumeShowQuote ? r : o,
                                         P = !1,
-                                        I = n.get("id"),
-                                        B = s.get("id"),
+                                        I = r.get("id"),
+                                        B = o.get("id"),
                                         M =
                                             "1.3.0" === I
                                                 ? B
@@ -10333,8 +10143,8 @@
                                                     ? I
                                                     : null,
                                         F = M ? J.b.getAsset(M) : null,
-                                        j = "",
-                                        q = null;
+                                        q = "",
+                                        j = null;
                                     if (!!F && !!F.get("bitasset")) {
                                         if (f.toJS && f.has("call_orders"))
                                             for (
@@ -10355,23 +10165,23 @@
                                                             "asset_id"
                                                         ]) === M
                                                 ) {
-                                                    (j = D), (P = !0);
+                                                    (q = D), (P = !0);
                                                     break;
                                                 }
                                             }
                                         var z =
-                                            "1.3.0" == s.get("id")
-                                                ? n
-                                                : "1.3.0" == n.get("id")
-                                                    ? s
+                                            "1.3.0" == o.get("id")
+                                                ? r
+                                                : "1.3.0" == r.get("id")
+                                                    ? o
                                                     : null;
                                         if (z && l) {
                                             var U = z
                                                 .getIn(["bitasset", "options"])
                                                 .toJS()
                                                 .force_settlement_offset_percent;
-                                            q =
-                                                "1.3.0" == s.get("id")
+                                            j =
+                                                "1.3.0" == o.get("id")
                                                     ? l.toReal() / (1 + U / 1e4)
                                                     : l.toReal() *
                                                       (1 + U / 1e4);
@@ -10391,52 +10201,52 @@
                                         Q = [
                                             {
                                                 key: "depth_chart",
-                                                label: G.a.translate(
+                                                label: Y.a.translate(
                                                     "exchange.order_depth"
                                                 )
                                             },
                                             {
                                                 key: "price_chart",
-                                                label: G.a.translate(
+                                                label: Y.a.translate(
                                                     "exchange.price_history"
                                                 )
                                             }
                                         ];
-                                    return r.a.createElement(
+                                    return n.a.createElement(
                                         "div",
                                         {
                                             className:
                                                 "grid-block shrink no-padding overflow-visible top-bar container-menu-header"
                                         },
-                                        r.a.createElement(
+                                        n.a.createElement(
                                             "div",
                                             {
                                                 className:
                                                     "grid-block overflow-visible"
                                             },
-                                            r.a.createElement(
+                                            n.a.createElement(
                                                 "div",
                                                 {
                                                     className:
                                                         "grid-block shrink"
                                                 },
-                                                r.a.createElement(
+                                                n.a.createElement(
                                                     "div",
                                                     {style: {padding: "10px"}},
                                                     i
-                                                        ? r.a.createElement(
+                                                        ? n.a.createElement(
                                                               "a",
                                                               {
                                                                   className:
                                                                       "market-symbol"
                                                               },
-                                                              r.a.createElement(
+                                                              n.a.createElement(
                                                                   "span",
                                                                   null,
                                                                   y + " : " + g
                                                               )
                                                           )
-                                                        : r.a.createElement(
+                                                        : n.a.createElement(
                                                               "div",
                                                               {
                                                                   style: {
@@ -10448,7 +10258,7 @@
                                                                           "1px"
                                                                   }
                                                               },
-                                                              r.a.createElement(
+                                                              n.a.createElement(
                                                                   "span",
                                                                   {
                                                                       onClick: this.marketPicker.bind(
@@ -10463,8 +10273,8 @@
                                                                               : ""
                                                                       }
                                                                   },
-                                                                  r.a.createElement(
-                                                                      O.a,
+                                                                  n.a.createElement(
+                                                                      N.a,
                                                                       {
                                                                           name: y,
                                                                           replace: !0,
@@ -10472,7 +10282,7 @@
                                                                       }
                                                                   )
                                                               ),
-                                                              r.a.createElement(
+                                                              n.a.createElement(
                                                                   "span",
                                                                   {
                                                                       style: {
@@ -10482,7 +10292,7 @@
                                                                   },
                                                                   "/"
                                                               ),
-                                                              r.a.createElement(
+                                                              n.a.createElement(
                                                                   "span",
                                                                   {
                                                                       onClick: this.marketPicker.bind(
@@ -10497,8 +10307,8 @@
                                                                               : ""
                                                                       }
                                                                   },
-                                                                  r.a.createElement(
-                                                                      O.a,
+                                                                  n.a.createElement(
+                                                                      N.a,
                                                                       {
                                                                           name: g,
                                                                           replace: !0,
@@ -10506,8 +10316,8 @@
                                                                       }
                                                                   )
                                                               ),
-                                                              r.a.createElement(
-                                                                  Ce.b,
+                                                              n.a.createElement(
+                                                                  we.b,
                                                                   {
                                                                       onClick: function() {
                                                                           b.a.switchMarket();
@@ -10521,7 +10331,7 @@
                                                                           "walkthrough.switch_button"
                                                                       )
                                                                   },
-                                                                  r.a.createElement(
+                                                                  n.a.createElement(
                                                                       T.a,
                                                                       {
                                                                           className:
@@ -10533,8 +10343,8 @@
                                                                       }
                                                                   )
                                                               ),
-                                                              r.a.createElement(
-                                                                  Ce.b,
+                                                              n.a.createElement(
+                                                                  we.b,
                                                                   {
                                                                       onClick: function() {
                                                                           e._addMarket(
@@ -10550,7 +10360,7 @@
                                                                           "walkthrough.favourite_button"
                                                                       )
                                                                   },
-                                                                  r.a.createElement(
+                                                                  n.a.createElement(
                                                                       T.a,
                                                                       {
                                                                           className: _,
@@ -10562,13 +10372,13 @@
                                                                   )
                                                               )
                                                           ),
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "div",
                                                         {
                                                             className:
                                                                 "label-actions"
                                                         },
-                                                        r.a.createElement(w.a, {
+                                                        n.a.createElement(w.a, {
                                                             component: "span",
                                                             style: {
                                                                 padding:
@@ -10582,66 +10392,66 @@
                                                     )
                                                 )
                                             ),
-                                            r.a.createElement(
+                                            n.a.createElement(
                                                 "div",
                                                 {
                                                     className:
                                                         "grid-block vertical",
                                                     style: {overflow: "visible"}
                                                 },
-                                                r.a.createElement(
+                                                n.a.createElement(
                                                     "div",
                                                     {
                                                         className:
                                                             "grid-block wrap market-stats-container"
                                                     },
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "ul",
                                                         {
                                                             className:
                                                                 "market-stats stats top-stats"
                                                         },
                                                         h
-                                                            ? r.a.createElement(
-                                                                  mt,
+                                                            ? n.a.createElement(
+                                                                  dt,
                                                                   {
                                                                       ignoreColorChange: !0,
                                                                       ready: p,
                                                                       price:
                                                                           h.full,
-                                                                      quote: n,
-                                                                      base: s,
+                                                                      quote: r,
+                                                                      base: o,
                                                                       market: v,
                                                                       content:
                                                                           "exchange.latest"
                                                                   }
                                                               )
                                                             : null,
-                                                        r.a.createElement(
+                                                        n.a.createElement(
                                                             "li",
                                                             {
                                                                 className:
                                                                     "hide-order-1 stressed-stat daily_change " +
                                                                     E
                                                             },
-                                                            r.a.createElement(
+                                                            n.a.createElement(
                                                                 "span",
                                                                 null,
-                                                                r.a.createElement(
+                                                                n.a.createElement(
                                                                     "b",
                                                                     {
                                                                         className:
                                                                             "value"
                                                                     },
-                                                                    p ? x : 0
+                                                                    p ? S : 0
                                                                 ),
-                                                                r.a.createElement(
+                                                                n.a.createElement(
                                                                     "span",
                                                                     null,
                                                                     " %"
                                                                 )
                                                             ),
-                                                            r.a.createElement(
+                                                            n.a.createElement(
                                                                 w.a,
                                                                 {
                                                                     component:
@@ -10654,8 +10464,8 @@
                                                             )
                                                         ),
                                                         C >= 0
-                                                            ? r.a.createElement(
-                                                                  mt,
+                                                            ? n.a.createElement(
+                                                                  dt,
                                                                   {
                                                                       ignoreColorChange: !0,
                                                                       onClick: this.changeVolumeBase.bind(
@@ -10667,7 +10477,7 @@
                                                                       price: A,
                                                                       className:
                                                                           "hide-order-2 clickable",
-                                                                      base: N,
+                                                                      base: O,
                                                                       market: v,
                                                                       content:
                                                                           "exchange.volume_24"
@@ -10675,19 +10485,19 @@
                                                               )
                                                             : null,
                                                         !i && l
-                                                            ? r.a.createElement(
-                                                                  mt,
+                                                            ? n.a.createElement(
+                                                                  dt,
                                                                   {
                                                                       ignoreColorChange: !0,
-                                                                      toolTip: G.a.translate(
+                                                                      toolTip: Y.a.translate(
                                                                           "tooltip.feed_price"
                                                                       ),
                                                                       ready: p,
                                                                       className:
                                                                           "hide-order-3",
                                                                       price: l.toReal(),
-                                                                      quote: n,
-                                                                      base: s,
+                                                                      quote: r,
+                                                                      base: o,
                                                                       market: v,
                                                                       content:
                                                                           "exchange.feed_price"
@@ -10695,19 +10505,19 @@
                                                               )
                                                             : null,
                                                         !i && l
-                                                            ? r.a.createElement(
-                                                                  mt,
+                                                            ? n.a.createElement(
+                                                                  dt,
                                                                   {
                                                                       ignoreColorChange: !0,
-                                                                      toolTip: G.a.translate(
+                                                                      toolTip: Y.a.translate(
                                                                           "tooltip.settle_price"
                                                                       ),
                                                                       ready: p,
                                                                       className:
                                                                           "hide-order-4",
-                                                                      price: q,
-                                                                      quote: n,
-                                                                      base: s,
+                                                                      price: j,
+                                                                      quote: r,
+                                                                      base: o,
                                                                       market: v,
                                                                       content:
                                                                           "exchange.settle"
@@ -10715,27 +10525,27 @@
                                                               )
                                                             : null,
                                                         P
-                                                            ? r.a.createElement(
-                                                                  Et,
+                                                            ? n.a.createElement(
+                                                                  kt,
                                                                   {
-                                                                      object: j,
+                                                                      object: q,
                                                                       account: f
                                                                   }
                                                               )
                                                             : null,
                                                         u && c
-                                                            ? r.a.createElement(
-                                                                  mt,
+                                                            ? n.a.createElement(
+                                                                  dt,
                                                                   {
-                                                                      toolTip: G.a.translate(
+                                                                      toolTip: Y.a.translate(
                                                                           "tooltip.call_limit"
                                                                       ),
                                                                       ready: p,
                                                                       className:
                                                                           "hide-order-5 is-call",
                                                                       price: u,
-                                                                      quote: n,
-                                                                      base: s,
+                                                                      quote: r,
+                                                                      base: o,
                                                                       market: v,
                                                                       content:
                                                                           "explorer.block.call_limit"
@@ -10743,10 +10553,10 @@
                                                               )
                                                             : null,
                                                         l && c
-                                                            ? r.a.createElement(
-                                                                  mt,
+                                                            ? n.a.createElement(
+                                                                  dt,
                                                                   {
-                                                                      toolTip: G.a.translate(
+                                                                      toolTip: Y.a.translate(
                                                                           "tooltip.margin_price"
                                                                       ),
                                                                       ready: p,
@@ -10757,8 +10567,8 @@
                                                                               real: !0
                                                                           }
                                                                       ),
-                                                                      quote: n,
-                                                                      base: s,
+                                                                      quote: r,
+                                                                      base: o,
                                                                       market: v,
                                                                       content:
                                                                           "exchange.squeeze"
@@ -10766,13 +10576,13 @@
                                                               )
                                                             : null
                                                     ),
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "ul",
                                                         {
                                                             className:
                                                                 "market-stats stats top-stats"
                                                         },
-                                                        r.a.createElement(
+                                                        n.a.createElement(
                                                             "li",
                                                             {
                                                                 className:
@@ -10782,13 +10592,13 @@
                                                                         "16px"
                                                                 },
                                                                 onClick: function() {
-                                                                    tt.a.publish(
+                                                                    et.a.publish(
                                                                         "chart_options",
                                                                         "open"
                                                                     );
                                                                 }
                                                             },
-                                                            r.a.createElement(
+                                                            n.a.createElement(
                                                                 w.a,
                                                                 {
                                                                     content:
@@ -10800,8 +10610,8 @@
                                                 )
                                             )
                                         ),
-                                        r.a.createElement(
-                                            ut.a,
+                                        n.a.createElement(
+                                            ct.a,
                                             {
                                                 id: "chart_options",
                                                 overlay: !0,
@@ -10809,32 +10619,32 @@
                                                     "exchange.chart_modal",
                                                 noLogo: !0
                                             },
-                                            r.a.createElement(
+                                            n.a.createElement(
                                                 "section",
                                                 {
                                                     className:
                                                         "block-list no-border-bottom"
                                                 },
-                                                r.a.createElement(
+                                                n.a.createElement(
                                                     "header",
                                                     null,
-                                                    r.a.createElement(w.a, {
+                                                    n.a.createElement(w.a, {
                                                         content:
                                                             "exchange.chart_type"
                                                     }),
                                                     ":"
                                                 ),
-                                                r.a.createElement(
+                                                n.a.createElement(
                                                     "ul",
                                                     null,
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "li",
                                                         {
                                                             className:
                                                                 "with-dropdown"
                                                         },
-                                                        r.a.createElement(
-                                                            wt.a,
+                                                        n.a.createElement(
+                                                            Et.a,
                                                             {
                                                                 options: Q,
                                                                 selected: Q.find(
@@ -10859,31 +10669,31 @@
                                                     )
                                                 )
                                             ),
-                                            r.a.createElement(
+                                            n.a.createElement(
                                                 "section",
                                                 {
                                                     className:
                                                         "block-list no-border-bottom"
                                                 },
-                                                r.a.createElement(
+                                                n.a.createElement(
                                                     "header",
                                                     null,
-                                                    r.a.createElement(w.a, {
+                                                    n.a.createElement(w.a, {
                                                         content:
                                                             "exchange.chart_height"
                                                     }),
                                                     ":"
                                                 ),
-                                                r.a.createElement(
+                                                n.a.createElement(
                                                     "label",
                                                     null,
-                                                    r.a.createElement(
+                                                    n.a.createElement(
                                                         "span",
                                                         {
                                                             className:
                                                                 "inline-label"
                                                         },
-                                                        r.a.createElement(
+                                                        n.a.createElement(
                                                             "input",
                                                             {
                                                                 onKeyDown: function(
@@ -10911,7 +10721,7 @@
                                                                 }
                                                             }
                                                         ),
-                                                        r.a.createElement(
+                                                        n.a.createElement(
                                                             "button",
                                                             {
                                                                 className:
@@ -10933,508 +10743,33 @@
                     );
                 })(),
                 xt = a(21),
-                At = a(36),
-                Nt = a(295),
-                Ot = a.n(Nt),
-                Pt = a(147),
-                Tt = a(132),
-                It = (function() {
-                    function e(e, t) {
-                        for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
-                        }
-                    }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
-                    };
-                })();
-            var Bt = (function(e) {
-                function t(e) {
-                    !(function(e, t) {
-                        if (!(e instanceof t))
-                            throw new TypeError(
-                                "Cannot call a class as a function"
-                            );
-                    })(this, t);
-                    var a = (function(e, t) {
-                        if (!e)
-                            throw new ReferenceError(
-                                "this hasn't been initialised - super() hasn't been called"
-                            );
-                        return !t ||
-                            ("object" != typeof t && "function" != typeof t)
-                            ? e
-                            : t;
-                    })(
-                        this,
-                        (t.__proto__ || Object.getPrototypeOf(t)).call(this, e)
-                    );
-                    (a.currencies = []), (a.courses = []), (a.inputValue = 0);
-                    var n = a;
-                    return (
-                        (a.state = {
-                            isActiveThisModal: "is-active",
-                            account: null,
-                            receiveAmount: 0,
-                            assets: [],
-                            asset: t.DEFAULT_CURRENCY,
-                            address: "",
-                            minimal: 0,
-                            confirmations: 0,
-                            assetValues: []
-                        }),
-                        (a.onChooseAsset = a.onChooseAsset.bind(a)),
-                        (a.closeModal = a.closeModal.bind(a)),
-                        (a.handleSendInput = a.handleSendInput.bind(a)),
-                        new ve.a().getAllowCurrency(function(a) {
-                            n.currencies = a.deposit;
-                            var r = t.DEFAULT_CURRENCY;
-                            if (n.currencies) {
-                                var s = [],
-                                    o = [];
-                                for (var i in n.currencies)
-                                    n.currencies[i].asset &&
-                                        (s.push(n.currencies[i].asset),
-                                        (o[n.currencies[i].asset] =
-                                            n.currencies[i].asset),
-                                        n.currencies[i].asset === e.asset &&
-                                            (r = e.asset));
-                                n.onChooseAsset(r),
-                                    n.setState({
-                                        asset: r,
-                                        assets: s,
-                                        assetValues: o
-                                    });
-                            }
-                        }),
-                        a
-                    );
-                }
-                return (
-                    (function(e, t) {
-                        if ("function" != typeof t && null !== t)
-                            throw new TypeError(
-                                "Super expression must either be null or a function, not " +
-                                    typeof t
-                            );
-                        (e.prototype = Object.create(t && t.prototype, {
-                            constructor: {
-                                value: e,
-                                enumerable: !1,
-                                writable: !0,
-                                configurable: !0
-                            }
-                        })),
-                            t &&
-                                (Object.setPrototypeOf
-                                    ? Object.setPrototypeOf(e, t)
-                                    : (e.__proto__ = t));
-                    })(t, r.a.Component),
-                    It(t, [
-                        {
-                            key: "closeModal",
-                            value: function() {
-                                this.setState({isActiveThisModal: ""});
-                            }
-                        },
-                        {
-                            key: "showModal",
-                            value: function() {
-                                this.setState({isActiveThisModal: "is-active"});
-                            }
-                        },
-                        {
-                            key: "loadAssetCourse",
-                            value: function(e, t) {
-                                var a = this;
-                                new ve.a().getPairsCourse(function(n) {
-                                    (a.courses = n.list), t(e);
-                                });
-                            }
-                        },
-                        {
-                            key: "onChooseAsset",
-                            value: function(e) {
-                                var a = this,
-                                    n = this.findCurrentCurrency(e);
-                                this.setState({
-                                    asset: e,
-                                    confirmations: this.getCountConfirmations(
-                                        e
-                                    ),
-                                    minimal: n ? n.minimal : 0
-                                }),
-                                    this.loadAssetCourse(
-                                        e,
-                                        this.updateReceive.bind(this)
-                                    ),
-                                    new ve.a().сreatePaymentAddress(
-                                        this.props.account.get("name"),
-                                        e,
-                                        t.MODE_BRIDGE,
-                                        function(e) {
-                                            a.setState({address: e});
-                                        }
-                                    );
-                            }
-                        },
-                        {
-                            key: "getCountConfirmations",
-                            value: function(e) {
-                                switch (e) {
-                                    case "BTC":
-                                        return 2;
-                                    case "LTC":
-                                    case "DASH":
-                                        return 6;
-                                    case "USDT":
-                                        return 2;
-                                    case "ETH":
-                                        return 6;
-                                    case "XMR":
-                                        return 10;
-                                }
-                                return 6;
-                            }
-                        },
-                        {
-                            key: "findCurrentCurrency",
-                            value: function(e) {
-                                for (var t in (void 0 === e &&
-                                    (e = this.state.asset),
-                                this.currencies)) {
-                                    var a = this.currencies[t];
-                                    if (a.asset == e) return a;
-                                }
-                                return null;
-                            }
-                        },
-                        {
-                            key: "updateReceive",
-                            value: function(e) {
-                                var a = this.getCourseByAsset(e),
-                                    n =
-                                        parseFloat(this.inputValue) *
-                                        parseFloat(a.coef);
-                                isNaN(n) && (n = 0),
-                                    this.setState({
-                                        receiveAmount: n.toFixed(t.PRESICTION)
-                                    });
-                            }
-                        },
-                        {
-                            key: "getCourseByAsset",
-                            value: function(e) {
-                                for (var t in this.courses) {
-                                    var a = this.courses[t];
-                                    if (a.to == e) return a;
-                                }
-                                return null;
-                            }
-                        },
-                        {
-                            key: "handleSendInput",
-                            value: function(e) {
-                                e.preventDefault(),
-                                    (this.inputValue = parseFloat(
-                                        e.target.value.replace(",", ".")
-                                    )),
-                                    this.updateReceive(this.state.asset);
-                            }
-                        },
-                        {
-                            key: "render",
-                            value: function() {
-                                var e = r.a.createElement(
-                                        "div",
-                                        {
-                                            className: "button-group",
-                                            style: {marginTop: 10}
-                                        },
-                                        r.a.createElement(
-                                            "div",
-                                            {
-                                                onClick: this.closeModal,
-                                                className: "button"
-                                            },
-                                            r.a.createElement(
-                                                "span",
-                                                null,
-                                                G.a.translate(
-                                                    "modal.withdraw.cancel"
-                                                )
-                                            )
-                                        )
-                                    ),
-                                    t = r.a.createElement(
-                                        "div",
-                                        {
-                                            className: "small-6",
-                                            style: {
-                                                paddingTop: 10,
-                                                paddingRight: 10,
-                                                float: "left",
-                                                width: "49%"
-                                            }
-                                        },
-                                        r.a.createElement(
-                                            "div",
-                                            {className: "grid-block"},
-                                            r.a.createElement(
-                                                "label",
-                                                {className: "left-label"},
-                                                r.a.createElement(w.a, {
-                                                    content: "transfer.send"
-                                                })
-                                            )
-                                        ),
-                                        r.a.createElement(
-                                            "div",
-                                            {
-                                                className:
-                                                    "inline-label input-wrapper"
-                                            },
-                                            r.a.createElement("input", {
-                                                type: "number",
-                                                defaultValue: 0,
-                                                onChange: this.handleSendInput
-                                            }),
-                                            r.a.createElement(
-                                                "div",
-                                                {
-                                                    className:
-                                                        "form-label select floating-dropdown"
-                                                },
-                                                r.a.createElement(Pt.a, {
-                                                    entries: this.state.assets,
-                                                    values: this.state
-                                                        .assetValues,
-                                                    singleEntry: this.state
-                                                        .asset,
-                                                    value: this.state.asset,
-                                                    onChange: this.onChooseAsset
-                                                })
-                                            )
-                                        )
-                                    ),
-                                    a = r.a.createElement(
-                                        "div",
-                                        {
-                                            className: "small-6",
-                                            style: {
-                                                paddingTop: 10,
-                                                paddingRight: 10,
-                                                float: "left",
-                                                width: "49%"
-                                            }
-                                        },
-                                        r.a.createElement(
-                                            "label",
-                                            {className: "left-label"},
-                                            r.a.createElement(w.a, {
-                                                content: "exchange.receive"
-                                            })
-                                        ),
-                                        r.a.createElement(
-                                            "div",
-                                            {
-                                                className:
-                                                    "inline-label input-wrapper"
-                                            },
-                                            r.a.createElement("input", {
-                                                type: "text",
-                                                value: this.state.receiveAmount
-                                            }),
-                                            r.a.createElement(
-                                                "div",
-                                                {
-                                                    className:
-                                                        "input-right-symbol"
-                                                },
-                                                "LLC"
-                                            )
-                                        )
-                                    ),
-                                    n = r.a.createElement(
-                                        "div",
-                                        null,
-                                        r.a.createElement("br", null),
-                                        r.a.createElement("br", null),
-                                        r.a.createElement("br", null),
-                                        r.a.createElement("br", null),
-                                        r.a.createElement(w.a, {
-                                            content: "gateway.rudex.min_amount",
-                                            minAmount: this.state.minimal,
-                                            symbol: this.state.asset
-                                        }),
-                                        r.a.createElement("br", null),
-                                        r.a.createElement("br", null),
-                                        r.a.createElement(w.a, {
-                                            className: "deposit-withdraw-info",
-                                            component: "b",
-                                            content:
-                                                "gateway.min_count_confirmations",
-                                            cnt: this.state.confirmations
-                                        }),
-                                        r.a.createElement("br", null),
-                                        r.a.createElement("br", null),
-                                        r.a.createElement(w.a, {
-                                            component: "span",
-                                            style: {fontSize: "0.8rem"},
-                                            content:
-                                                "gateway.min_deposit_warning_asset",
-                                            minDeposit: this.state.minimal || 0,
-                                            coin: this.state.asset
-                                        })
-                                    ),
-                                    s = r.a.createElement(
-                                        "div",
-                                        {className: "grid-block"},
-                                        r.a.createElement(Tt.a, {
-                                            text: this.state.address,
-                                            className: "copyIcon"
-                                        }),
-                                        r.a.createElement(
-                                            "div",
-                                            null,
-                                            r.a.createElement(w.a, {
-                                                component: "div",
-                                                style: {
-                                                    fontSize: "0.8rem",
-                                                    fontWeight: "bold",
-                                                    paddingBottom: "0.3rem"
-                                                },
-                                                content:
-                                                    "gateway.purchase_notice",
-                                                inputAsset: this.state.asset,
-                                                outputAsset: "LLC"
-                                            }),
-                                            r.a.createElement(
-                                                "div",
-                                                {
-                                                    className:
-                                                        "modal__highlight bridge_modal_address"
-                                                },
-                                                this.state.address
-                                            )
-                                        )
-                                    );
-                                return r.a.createElement(
-                                    "div",
-                                    {
-                                        className:
-                                            "modal-overlay " +
-                                            this.state.isActiveThisModal
-                                    },
-                                    r.a.createElement(
-                                        "div",
-                                        {
-                                            id:
-                                                "withdraw_asset_rudex-scorum_RUDEX.SCR",
-                                            "data-closable": "true",
-                                            className:
-                                                "modal fadeIn ng-enter is-active ng-enter-active"
-                                        },
-                                        r.a.createElement(
-                                            "a",
-                                            {
-                                                onClick: this.closeModal,
-                                                href: "javascript:void(0)",
-                                                className: "close-button"
-                                            },
-                                            "×"
-                                        ),
-                                        r.a.createElement("br", null),
-                                        r.a.createElement(
-                                            "div",
-                                            {className: "grid-block vertical"},
-                                            r.a.createElement(
-                                                "form",
-                                                {
-                                                    className:
-                                                        "grid-block vertical full-width-content"
-                                                },
-                                                r.a.createElement(
-                                                    "div",
-                                                    {
-                                                        className:
-                                                            "grid-container"
-                                                    },
-                                                    r.a.createElement(
-                                                        "div",
-                                                        {
-                                                            className:
-                                                                "content-block"
-                                                        },
-                                                        r.a.createElement(
-                                                            "h3",
-                                                            null,
-                                                            r.a.createElement(
-                                                                "span",
-                                                                null,
-                                                                G.a.translate(
-                                                                    "exchange.buy"
-                                                                ),
-                                                                " ",
-                                                                "LLC"
-                                                            )
-                                                        )
-                                                    ),
-                                                    t,
-                                                    a,
-                                                    n,
-                                                    r.a.createElement(
-                                                        "br",
-                                                        null
-                                                    ),
-                                                    s,
-                                                    r.a.createElement(
-                                                        "br",
-                                                        null
-                                                    ),
-                                                    e
-                                                )
-                                            )
-                                        )
-                                    )
-                                );
-                            }
-                        }
-                    ]),
-                    t
-                );
-            })();
-            (Bt.DEFAULT_CURRENCY = "BTC"),
-                (Bt.MODE_BRIDGE = "1"),
-                (Bt.PRESICTION = 4);
-            var Mt = Bt,
-                Ft = (function() {
+                St = a(36),
+                At = a(295),
+                Ot = a.n(At),
+                Nt = a(363),
+                Pt = (function() {
                     return function(e, t) {
                         if (Array.isArray(e)) return e;
                         if (Symbol.iterator in Object(e))
                             return (function(e, t) {
                                 var a = [],
-                                    n = !0,
-                                    r = !1,
-                                    s = void 0;
+                                    r = !0,
+                                    n = !1,
+                                    o = void 0;
                                 try {
                                     for (
-                                        var o, i = e[Symbol.iterator]();
-                                        !(n = (o = i.next()).done) &&
-                                        (a.push(o.value), !t || a.length !== t);
-                                        n = !0
+                                        var s, i = e[Symbol.iterator]();
+                                        !(r = (s = i.next()).done) &&
+                                        (a.push(s.value), !t || a.length !== t);
+                                        r = !0
                                     );
                                 } catch (e) {
-                                    (r = !0), (s = e);
+                                    (n = !0), (o = e);
                                 } finally {
                                     try {
-                                        !n && i.return && i.return();
+                                        !r && i.return && i.return();
                                     } finally {
-                                        if (r) throw s;
+                                        if (n) throw o;
                                     }
                                 }
                                 return a;
@@ -11444,32 +10779,32 @@
                         );
                     };
                 })(),
-                jt =
+                Tt =
                     Object.assign ||
                     function(e) {
                         for (var t = 1; t < arguments.length; t++) {
                             var a = arguments[t];
-                            for (var n in a)
-                                Object.prototype.hasOwnProperty.call(a, n) &&
-                                    (e[n] = a[n]);
+                            for (var r in a)
+                                Object.prototype.hasOwnProperty.call(a, r) &&
+                                    (e[r] = a[r]);
                         }
                         return e;
                     },
-                qt = (function() {
+                It = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
+                            var r = t[a];
+                            (r.enumerable = r.enumerable || !1),
+                                (r.configurable = !0),
+                                "value" in r && (r.writable = !0),
+                                Object.defineProperty(e, r.key, r);
                         }
                     }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
+                    return function(t, a, r) {
+                        return a && e(t.prototype, a), r && e(t, r), t;
                     };
                 })();
-            function Rt(e, t, a) {
+            function Bt(e, t, a) {
                 return (
                     t in e
                         ? Object.defineProperty(e, t, {
@@ -11482,7 +10817,7 @@
                     e
                 );
             }
-            var Lt = (function(e) {
+            var Mt = (function(e) {
                 function t(e) {
                     !(function(e, t) {
                         if (!(e instanceof t))
@@ -11566,7 +10901,7 @@
                                 }
                             }
                         }),
-                        (a.state = jt({}, a._initialState(e), {
+                        (a.state = Tt({}, a._initialState(e), {
                             expirationType: {
                                 bid:
                                     e.exchange.getIn([
@@ -11620,8 +10955,8 @@
                                 (Object.setPrototypeOf
                                     ? Object.setPrototypeOf(e, t)
                                     : (e.__proto__ = t));
-                    })(t, r.a.Component),
-                    qt(t, [
+                    })(t, n.a.Component),
+                    It(t, [
                         {
                             key: "onShowModal",
                             value: function() {
@@ -11637,14 +10972,14 @@
                         {
                             key: "_handleExpirationChange",
                             value: function(e, t) {
-                                var a = jt(
+                                var a = Tt(
                                     {},
                                     this.state.expirationType,
-                                    Rt({}, e, t.target.value)
+                                    Bt({}, e, t.target.value)
                                 );
                                 "SPECIFIC" !== t.target.value &&
                                     C.a.setExchangeLastExpiration(
-                                        jt(
+                                        Tt(
                                             {},
                                             (this.props.exchange.has(
                                                 "lastExpiration"
@@ -11653,7 +10988,7 @@
                                                     .get("lastExpiration")
                                                     .toJS()) ||
                                                 {},
-                                            Rt({}, e, t.target.value)
+                                            Bt({}, e, t.target.value)
                                         )
                                     ),
                                     this.setState({expirationType: a});
@@ -11662,10 +10997,10 @@
                         {
                             key: "_handleCustomExpirationChange",
                             value: function(e, t) {
-                                var a = jt(
+                                var a = Tt(
                                     {},
                                     this.state.expirationCustomTime,
-                                    Rt({}, e, t)
+                                    Bt({}, e, t)
                                 );
                                 this.setState({expirationCustomTime: a});
                             }
@@ -11695,7 +11030,7 @@
                                     base: a.for_sale,
                                     quote: a.to_receive
                                 });
-                                var n = {
+                                var r = {
                                     forSaleText: "",
                                     toReceiveText: "",
                                     priceText: "",
@@ -11709,15 +11044,15 @@
                                     })
                                 };
                                 return (
-                                    (n.price = new he.f({
-                                        base: n.for_sale,
-                                        quote: n.to_receive
+                                    (r.price = new he.f({
+                                        base: r.for_sale,
+                                        quote: r.to_receive
                                     })),
                                     {
                                         history: [],
                                         buySellOpen: t.get("buySellOpen", !0),
                                         bid: a,
-                                        ask: n,
+                                        ask: r,
                                         flipBuySell: t.get("flipBuySell", !1),
                                         favorite: !1,
                                         showDepthChart: t.get(
@@ -11771,7 +11106,7 @@
                             key: "componentDidMount",
                             value: function() {
                                 C.a.changeViewSetting.defer(
-                                    Rt(
+                                    Bt(
                                         {},
                                         this._getLastMarketKey(),
                                         this.props.quoteAsset.get("symbol") +
@@ -11812,26 +11147,26 @@
                                         void 0 !== arguments[1]
                                             ? arguments[1]
                                             : this.props.currentAccount,
-                                    n = {},
-                                    r = [];
+                                    r = {},
+                                    n = [];
                                 t.forEach(function(e) {
-                                    r.push(
-                                        Object(At.b)({
+                                    n.push(
+                                        Object(St.b)({
                                             accountID: a.get("id"),
                                             feeID: e.get("id"),
                                             type: "limit_order_create"
                                         })
                                     );
                                 }),
-                                    Promise.all(r)
+                                    Promise.all(n)
                                         .then(function(a) {
                                             t.forEach(function(e, t) {
-                                                n[e.get("id")] = a[t];
+                                                r[e.get("id")] = a[t];
                                             }),
                                                 k.a.are_equal_shallow(
                                                     e.state.feeStatus,
-                                                    n
-                                                ) || e.setState({feeStatus: n});
+                                                    r
+                                                ) || e.setState({feeStatus: r});
                                         })
                                         .catch(function(t) {
                                             console.log(
@@ -11853,8 +11188,8 @@
                                     a !== this.state.width
                                 ) {
                                     this.setState({height: t, width: a});
-                                    var n = this.refs.center;
-                                    n && _.a.update(n);
+                                    var r = this.refs.center;
+                                    r && _.a.update(r);
                                 }
                             }
                         },
@@ -11878,16 +11213,16 @@
                                             showBullets: !1,
                                             hideNext: !0,
                                             hidePrev: !0,
-                                            nextLabel: G.a.translate(
+                                            nextLabel: Y.a.translate(
                                                 "walkthrough.next_label"
                                             ),
-                                            prevLabel: G.a.translate(
+                                            prevLabel: Y.a.translate(
                                                 "walkthrough.prev_label"
                                             ),
-                                            skipLabel: G.a.translate(
+                                            skipLabel: Y.a.translate(
                                                 "walkthrough.skip_label"
                                             ),
-                                            doneLabel: G.a.translate(
+                                            doneLabel: Y.a.translate(
                                                 "walkthrough.done_label"
                                             )
                                         })
@@ -11931,7 +11266,7 @@
                                     return (
                                         this.setState(this._initialState(e)),
                                         C.a.changeViewSetting(
-                                            Rt(
+                                            Bt(
                                                 {},
                                                 this._getLastMarketKey(),
                                                 e.quoteAsset.get("symbol") +
@@ -11954,50 +11289,50 @@
                         {
                             key: "_getFeeAssets",
                             value: function(e, t, a) {
-                                var n = this,
-                                    r = this.props.currentAccount,
-                                    s = this.state.feeStatus;
-                                function o(e, t) {
+                                var r = this,
+                                    n = this.props.currentAccount,
+                                    o = this.state.feeStatus;
+                                function s(e, t) {
                                     -1 === e.indexOf(t) && e.push(t);
                                 }
                                 var i = [a, e === a ? t : e];
-                                o(i, e), o(i, t);
+                                s(i, e), s(i, t);
                                 var l = [a, t === a ? e : t];
-                                o(l, e), o(l, t);
+                                s(l, e), s(l, t);
                                 var c = {};
-                                function u(e, t, n) {
-                                    var r = void 0;
+                                function u(e, t, r) {
+                                    var n = void 0;
                                     return (
                                         (e = e.filter(function(e) {
                                             return (
                                                 !!t[e.get("id")] &&
                                                 ((function(e) {
                                                     return (
-                                                        s[e] &&
-                                                        s[e].hasPoolBalance
+                                                        o[e] &&
+                                                        o[e].hasPoolBalance
                                                     );
                                                 })(e.get("id")) &&
                                                     (function(e) {
                                                         return (
-                                                            s[e] &&
-                                                            s[e].hasBalance
+                                                            o[e] &&
+                                                            o[e].hasBalance
                                                         );
                                                     })(e.get("id")))
                                             );
                                         })).length
-                                            ? (r = e[Math.min(e.length - 1, n)])
-                                            : ((r = a), e.push(a)),
-                                        {assets: e, asset: r}
+                                            ? (n = e[Math.min(e.length - 1, r)])
+                                            : ((n = a), e.push(a)),
+                                        {assets: e, asset: n}
                                     );
                                 }
-                                r.get("balances", [])
-                                    .filter(function(a, n) {
+                                n.get("balances", [])
+                                    .filter(function(a, r) {
                                         return (
                                             [
                                                 "1.3.0",
                                                 e.get("id"),
                                                 t.get("id")
-                                            ].indexOf(n) >= 0
+                                            ].indexOf(r) >= 0
                                         );
                                     })
                                     .forEach(function(e, t) {
@@ -12006,7 +11341,7 @@
                                             balance: a
                                                 ? parseInt(a.get("balance"), 10)
                                                 : 0,
-                                            fee: n._getFee(J.b.getAsset(t))
+                                            fee: r._getFee(J.b.getAsset(t))
                                         };
                                     });
                                 var p = u(i, c, this.state.sellFeeAssetIdx),
@@ -12041,17 +11376,17 @@
                         },
                         {
                             key: "_verifyFee",
-                            value: function(e, t, a, n) {
-                                var r = this._getFee();
+                            value: function(e, t, a, r) {
+                                var n = this._getFee();
                                 return "1.3.0" === e.asset_id
-                                    ? r.getAmount() <= n
+                                    ? n.getAmount() <= r
                                         ? "1.3.0"
                                         : null
                                     : (t.asset_id === e.asset_id
                                           ? e.getAmount() + t.getAmount()
                                           : t.getAmount()) <= a
                                         ? e.asset_id
-                                        : r.getAmount() <= n &&
+                                        : n.getAmount() <= r &&
                                           "1.3.0" !== e.asset_id
                                             ? "1.3.0"
                                             : null;
@@ -12059,8 +11394,8 @@
                         },
                         {
                             key: "_createLimitOrderConfirm",
-                            value: function(e, t, a, n, r, s) {
-                                var o =
+                            value: function(e, t, a, r, n, o) {
+                                var s =
                                     !(
                                         arguments.length > 6 &&
                                         void 0 !== arguments[6]
@@ -12070,7 +11405,7 @@
                                     l = i.highestBid,
                                     c = i.lowestAsk,
                                     u = this.state[
-                                        "sell" === s ? "ask" : "bid"
+                                        "sell" === o ? "ask" : "bid"
                                     ];
                                 (a = u.for_sale.clone(
                                     a
@@ -12080,29 +11415,29 @@
                                           )
                                         : 0
                                 )),
-                                    (n = new he.a({
-                                        amount: n
+                                    (r = new he.a({
+                                        amount: r
                                             ? parseInt(
-                                                  J.b.getObject(n).toJS()
+                                                  J.b.getObject(r).toJS()
                                                       .balance,
                                                   10
                                               )
                                             : 0
                                     }));
-                                var p = this._getFee(r),
+                                var p = this._getFee(n),
                                     h = this._verifyFee(
                                         p,
                                         u.for_sale,
                                         a.getAmount(),
-                                        n.getAmount()
+                                        r.getAmount()
                                     );
                                 if (!h)
-                                    return Xe.a.addNotification({
+                                    return Ke.a.addNotification({
                                         message:
                                             "Insufficient funds to pay fees",
                                         level: "error"
                                     });
-                                if ("buy" === s && c) {
+                                if ("buy" === o && c) {
                                     var d =
                                         this.state.bid.price.toReal() /
                                         c.getPrice();
@@ -12111,7 +11446,7 @@
                                             this.refs.buy.show(),
                                             this.setState({buyDiff: d})
                                         );
-                                } else if ("sell" === s && l) {
+                                } else if ("sell" === o && l) {
                                     var m =
                                         1 /
                                         (this.state.ask.price.toReal() /
@@ -12127,7 +11462,7 @@
                                     "is_prediction_market"
                                 ]);
                                 return u.for_sale.gt(a) && !f
-                                    ? Xe.a.addNotification({
+                                    ? Ke.a.addNotification({
                                           message:
                                               "Insufficient funds to place order, you need at least " +
                                               u.for_sale.getAmount({real: !0}) +
@@ -12137,10 +11472,10 @@
                                       })
                                     : u.for_sale.getAmount() > 0 &&
                                       u.to_receive.getAmount() > 0
-                                        ? "sell" === s && f && o
+                                        ? "sell" === o && f && s
                                             ? this._createPredictionShort(h)
-                                            : void this._createLimitOrder(s, h)
-                                        : Xe.a.addNotification({
+                                            : void this._createLimitOrder(o, h)
+                                        : Ke.a.addNotification({
                                               message:
                                                   "Please enter a valid amount and price",
                                               level: "error"
@@ -12151,9 +11486,9 @@
                             key: "_createLimitOrder",
                             value: function(e, t) {
                                 var a = "sell" === e ? "ask" : "bid",
-                                    n = this.state[a],
-                                    r = null;
-                                r =
+                                    r = this.state[a],
+                                    n = null;
+                                n =
                                     "SPECIFIC" === this.state.expirationType[a]
                                         ? this.EXPIRATIONS[
                                               this.state.expirationType[a]
@@ -12161,21 +11496,21 @@
                                         : this.EXPIRATIONS[
                                               this.state.expirationType[a]
                                           ].get();
-                                var s = new he.e({
-                                        for_sale: n.for_sale,
-                                        expiration: new Date(r || !1),
-                                        to_receive: n.to_receive,
+                                var o = new he.e({
+                                        for_sale: r.for_sale,
+                                        expiration: new Date(n || !1),
+                                        to_receive: r.to_receive,
                                         seller: this.props.currentAccount.get(
                                             "id"
                                         ),
                                         fee: {asset_id: t, amount: 0}
                                     }),
-                                    o = H.a.getMarketName(
+                                    s = H.a.getMarketName(
                                         this.props.baseAsset,
                                         this.props.quoteAsset
                                     ),
-                                    i = o.marketName,
-                                    l = o.first,
+                                    i = s.marketName,
+                                    l = s.first,
                                     c = this.props.marketDirections.get(i);
                                 if (
                                     (c &&
@@ -12191,22 +11526,22 @@
                                 return (
                                     console.log(
                                         "order:",
-                                        JSON.stringify(s.toObject())
+                                        JSON.stringify(o.toObject())
                                     ),
                                     b.a
-                                        .createLimitOrder2(s)
+                                        .createLimitOrder2(o)
                                         .then(function(e) {
                                             e.error &&
                                                 "wallet locked" !==
                                                     e.error.message &&
-                                                Xe.a.addNotification({
+                                                Ke.a.addNotification({
                                                     message:
                                                         "Unknown error. Failed to place order for " +
-                                                        n.to_receive.getAmount({
+                                                        r.to_receive.getAmount({
                                                             real: !0
                                                         }) +
                                                         " " +
-                                                        n.to_receive.asset_id,
+                                                        r.to_receive.asset_id,
                                                     level: "error"
                                                 });
                                         })
@@ -12238,19 +11573,19 @@
                                         ])
                                     )
                                 ]).then(function(e) {
-                                    var t = Ft(e, 1)[0],
-                                        n = new he.a({
+                                    var t = Pt(e, 1)[0],
+                                        r = new he.a({
                                             amount: a.amount_for_sale.getAmount(),
                                             asset_id: t.get("id"),
                                             precision: t.get("precision")
                                         });
                                     b.a
-                                        .createPredictionShort(a, n)
+                                        .createPredictionShort(a, r)
                                         .then(function(e) {
                                             e.error &&
                                                 "wallet locked" !==
                                                     e.error.message &&
-                                                Xe.a.addNotification({
+                                                Ke.a.addNotification({
                                                     message:
                                                         "Unknown error. Failed to place order for " +
                                                         buyAssetAmount +
@@ -12264,11 +11599,11 @@
                         },
                         {
                             key: "_forceBuy",
-                            value: function(e, t, a, n) {
-                                var r = this.state[
+                            value: function(e, t, a, r) {
+                                var n = this.state[
                                     "sell" === e ? "ask" : "bid"
                                 ];
-                                (a = r.for_sale.clone(
+                                (a = n.for_sale.clone(
                                     a
                                         ? parseInt(
                                               J.b.getObject(a).get("balance"),
@@ -12276,24 +11611,24 @@
                                           )
                                         : 0
                                 )),
-                                    (n = new he.a({
-                                        amount: n
+                                    (r = new he.a({
+                                        amount: r
                                             ? parseInt(
-                                                  J.b.getObject(n).toJS()
+                                                  J.b.getObject(r).toJS()
                                                       .balance,
                                                   10
                                               )
                                             : 0
                                     }));
-                                var s = this._getFee(t),
-                                    o = this._verifyFee(
-                                        s,
-                                        r.for_sale,
+                                var o = this._getFee(t),
+                                    s = this._verifyFee(
+                                        o,
+                                        n.for_sale,
                                         a.getAmount(),
-                                        n.getAmount()
+                                        r.getAmount()
                                     );
-                                o
-                                    ? this._createLimitOrder(e, o)
+                                s
+                                    ? this._createLimitOrder(e, s)
                                     : console.error(
                                           "Unable to pay fees, aborting limit order creation"
                                       );
@@ -12301,11 +11636,11 @@
                         },
                         {
                             key: "_forceSell",
-                            value: function(e, t, a, n) {
-                                var r = this.state[
+                            value: function(e, t, a, r) {
+                                var n = this.state[
                                     "sell" === e ? "ask" : "bid"
                                 ];
-                                (a = r.for_sale.clone(
+                                (a = n.for_sale.clone(
                                     a
                                         ? parseInt(
                                               J.b.getObject(a).get("balance"),
@@ -12313,24 +11648,24 @@
                                           )
                                         : 0
                                 )),
-                                    (n = new he.a({
-                                        amount: n
+                                    (r = new he.a({
+                                        amount: r
                                             ? parseInt(
-                                                  J.b.getObject(n).toJS()
+                                                  J.b.getObject(r).toJS()
                                                       .balance,
                                                   10
                                               )
                                             : 0
                                     }));
-                                var s = this._getFee(t),
-                                    o = this._verifyFee(
-                                        s,
-                                        r.for_sale,
+                                var o = this._getFee(t),
+                                    s = this._verifyFee(
+                                        o,
+                                        n.for_sale,
                                         a.getAmount(),
-                                        n.getAmount()
+                                        r.getAmount()
                                     );
-                                o
-                                    ? this._createLimitOrder(e, o)
+                                s
+                                    ? this._createLimitOrder(e, s)
                                     : console.error(
                                           "Unable to pay fees, aborting limit order creation"
                                       );
@@ -12359,32 +11694,32 @@
                             key: "_depthChartClick",
                             value: function(e, t, a) {
                                 a.preventDefault();
-                                var n = this.state,
-                                    r = n.bid,
-                                    s = n.ask;
-                                (r.price = new he.f({
+                                var r = this.state,
+                                    n = r.bid,
+                                    o = r.ask;
+                                (n.price = new he.f({
                                     base: this.state.bid.for_sale,
                                     quote: this.state.bid.to_receive,
                                     real: a.xAxis[0].value
                                 })),
-                                    (r.priceText = r.price.toReal()),
-                                    (s.price = new he.f({
+                                    (n.priceText = n.price.toReal()),
+                                    (o.price = new he.f({
                                         base: this.state.ask.to_receive,
                                         quote: this.state.ask.for_sale,
                                         real: a.xAxis[0].value
                                     })),
-                                    (s.priceText = s.price.toReal());
-                                var o = {
-                                    bid: r,
-                                    ask: s,
-                                    depthLine: r.price.toReal()
+                                    (o.priceText = o.price.toReal());
+                                var s = {
+                                    bid: n,
+                                    ask: o,
+                                    depthLine: n.price.toReal()
                                 };
-                                this._setForSale(r, !0) ||
-                                    this._setReceive(r, !0),
-                                    this._setReceive(s) || this._setForSale(s),
-                                    this._setPriceText(r, !0),
-                                    this._setPriceText(s, !1),
-                                    this.setState(o);
+                                this._setForSale(n, !0) ||
+                                    this._setReceive(n, !0),
+                                    this._setReceive(o) || this._setForSale(o),
+                                    this._setPriceText(n, !0),
+                                    this._setPriceText(o, !1),
+                                    this.setState(s);
                             }
                         },
                         {
@@ -12468,14 +11803,14 @@
                             key: "_currentPriceClick",
                             value: function(e, t) {
                                 var a = "bid" === e,
-                                    n = this.state[e];
-                                (n.price = t[a ? "invert" : "clone"]()),
-                                    (n.priceText = n.price.toReal()),
+                                    r = this.state[e];
+                                (r.price = t[a ? "invert" : "clone"]()),
+                                    (r.priceText = r.price.toReal()),
                                     a
-                                        ? this._setForSale(n, a) ||
-                                          this._setReceive(n, a)
-                                        : this._setReceive(n, a) ||
-                                          this._setForSale(n, a),
+                                        ? this._setForSale(r, a) ||
+                                          this._setReceive(r, a)
+                                        : this._setReceive(r, a) ||
+                                          this._setForSale(r, a),
                                     this.forceUpdate();
                             }
                         },
@@ -12484,27 +11819,27 @@
                             value: function(e) {
                                 var t = e.isBid(),
                                     a = e.totalToReceive({noCache: !0}),
-                                    n = a.times(e.sellPrice()),
-                                    r = new he.f({
-                                        base: t ? n : a,
-                                        quote: t ? a : n
+                                    r = a.times(e.sellPrice()),
+                                    n = new he.f({
+                                        base: t ? r : a,
+                                        quote: t ? a : r
                                     }),
-                                    s = this.state[t ? "bid" : "ask"];
-                                (s.price = r), (s.priceText = r.toReal());
-                                var o = Rt({}, t ? "ask" : "bid", {
+                                    o = this.state[t ? "bid" : "ask"];
+                                (o.price = n), (o.priceText = n.toReal());
+                                var s = Bt({}, t ? "ask" : "bid", {
                                     for_sale: a,
                                     forSaleText: a.getAmount({real: !0}),
-                                    to_receive: n,
-                                    toReceiveText: n.getAmount({real: !0}),
-                                    price: r,
-                                    priceText: r.toReal()
+                                    to_receive: r,
+                                    toReceiveText: r.getAmount({real: !0}),
+                                    price: n,
+                                    priceText: n.toReal()
                                 });
                                 t
-                                    ? this._setForSale(s, t) ||
-                                      this._setReceive(s, t)
-                                    : this._setReceive(s, t) ||
-                                      this._setForSale(s, t),
-                                    this.setState(o);
+                                    ? this._setForSale(o, t) ||
+                                      this._setReceive(o, t)
+                                    : this._setReceive(o, t) ||
+                                      this._setForSale(o, t),
+                                    this.setState(s);
                             }
                         },
                         {
@@ -12525,17 +11860,17 @@
                                 var e = this.props,
                                     t = e.lowestCallPrice,
                                     a = e.feedPrice,
-                                    n = e.quoteAsset,
-                                    r = !1;
+                                    r = e.quoteAsset,
+                                    n = !1;
                                 return (
                                     a &&
-                                        (r = a.inverted
+                                        (n = a.inverted
                                             ? t <= a.toReal()
                                             : t >= a.toReal()),
                                     !(
-                                        !r ||
+                                        !n ||
                                         !t ||
-                                        n.getIn([
+                                        r.getIn([
                                             "bitasset",
                                             "is_prediction_market"
                                         ])
@@ -12567,11 +11902,11 @@
                             value: function(e) {
                                 var t = e.value,
                                     a = e.increase,
-                                    n =
+                                    r =
                                         t ||
                                         this.state.chartHeight + (a ? 20 : -20);
-                                this.setState({chartHeight: n}),
-                                    C.a.changeViewSetting({chartHeight: n});
+                                this.setState({chartHeight: r}),
+                                    C.a.changeViewSetting({chartHeight: r});
                             }
                         },
                         {
@@ -12641,10 +11976,10 @@
                             key: "_setPriceText",
                             value: function(e, t) {
                                 var a = e[t ? "for_sale" : "to_receive"],
-                                    n = e[t ? "to_receive" : "for_sale"];
+                                    r = e[t ? "to_receive" : "for_sale"];
                                 a.hasAmount() &&
-                                    n.hasAmount() &&
-                                    (e.priceText = new he.f({base: a, quote: n})
+                                    r.hasAmount() &&
+                                    (e.priceText = new he.f({base: a, quote: r})
                                         .toReal()
                                         .toString());
                             }
@@ -12653,17 +11988,17 @@
                             key: "_onInputPrice",
                             value: function(e, t) {
                                 var a = this.state[e],
-                                    n = "bid" === e;
+                                    r = "bid" === e;
                                 (a.price = new he.f({
-                                    base: a[n ? "for_sale" : "to_receive"],
-                                    quote: a[n ? "to_receive" : "for_sale"],
+                                    base: a[r ? "for_sale" : "to_receive"],
+                                    quote: a[r ? "to_receive" : "for_sale"],
                                     real: parseFloat(t.target.value) || 0
                                 })),
-                                    n
-                                        ? this._setForSale(a, n) ||
-                                          this._setReceive(a, n)
-                                        : this._setReceive(a, n) ||
-                                          this._setForSale(a, n),
+                                    r
+                                        ? this._setForSale(a, r) ||
+                                          this._setReceive(a, r)
+                                        : this._setReceive(a, r) ||
+                                          this._setForSale(a, r),
                                     (a.priceText = t.target.value),
                                     this.forceUpdate();
                             }
@@ -12671,30 +12006,30 @@
                         {
                             key: "_onInputSell",
                             value: function(e, t, a) {
-                                var n = this.state[e];
-                                n.for_sale.setAmount({
+                                var r = this.state[e];
+                                r.for_sale.setAmount({
                                     real: parseFloat(a.target.value) || 0
                                 }),
-                                    n.price.isValid()
-                                        ? this._setReceive(n, t)
-                                        : this._setPrice(n),
-                                    (n.forSaleText = a.target.value),
-                                    this._setPriceText(n, "bid" === e),
+                                    r.price.isValid()
+                                        ? this._setReceive(r, t)
+                                        : this._setPrice(r),
+                                    (r.forSaleText = a.target.value),
+                                    this._setPriceText(r, "bid" === e),
                                     this.forceUpdate();
                             }
                         },
                         {
                             key: "_onInputReceive",
                             value: function(e, t, a) {
-                                var n = this.state[e];
-                                n.to_receive.setAmount({
+                                var r = this.state[e];
+                                r.to_receive.setAmount({
                                     real: parseFloat(a.target.value) || 0
                                 }),
-                                    n.price.isValid()
-                                        ? this._setForSale(n, t)
-                                        : this._setPrice(n),
-                                    (n.toReceiveText = a.target.value),
-                                    this._setPriceText(n, "bid" === e),
+                                    r.price.isValid()
+                                        ? this._setForSale(r, t)
+                                        : this._setPrice(r),
+                                    (r.toReceiveText = a.target.value),
+                                    this._setPriceText(r, "bid" === e),
                                     this.forceUpdate();
                             }
                         },
@@ -12704,36 +12039,36 @@
                                 var e = this.props,
                                     t = e.baseAsset,
                                     a = e.quoteAsset,
-                                    n = t
+                                    r = t
                                         .getIn(["options", "whitelist_markets"])
                                         .toJS(),
-                                    r = a
+                                    n = a
                                         .getIn(["options", "whitelist_markets"])
                                         .toJS(),
-                                    s = t
+                                    o = t
                                         .getIn(["options", "blacklist_markets"])
                                         .toJS(),
-                                    o = a
+                                    s = a
                                         .getIn(["options", "blacklist_markets"])
                                         .toJS();
-                                return r.length && -1 === r.indexOf(t.get("id"))
+                                return n.length && -1 === n.indexOf(t.get("id"))
                                     ? {
                                           isFrozen: !0,
                                           frozenAsset: a.get("symbol")
                                       }
-                                    : n.length && -1 === n.indexOf(a.get("id"))
+                                    : r.length && -1 === r.indexOf(a.get("id"))
                                         ? {
                                               isFrozen: !0,
                                               frozenAsset: t.get("symbol")
                                           }
-                                        : o.length &&
-                                          -1 !== o.indexOf(t.get("id"))
+                                        : s.length &&
+                                          -1 !== s.indexOf(t.get("id"))
                                             ? {
                                                   isFrozen: !0,
                                                   frozenAsset: a.get("symbol")
                                               }
-                                            : s.length &&
-                                              -1 !== s.indexOf(a.get("id"))
+                                            : o.length &&
+                                              -1 !== o.indexOf(a.get("id"))
                                                 ? {
                                                       isFrozen: !0,
                                                       frozenAsset: t.get(
@@ -12757,9 +12092,9 @@
                                 var e = this.props,
                                     t = e.currentAccount,
                                     a = e.marketLimitOrders,
-                                    n = e.marketCallOrders,
-                                    s = e.marketData,
-                                    o = e.activeMarketHistory,
+                                    r = e.marketCallOrders,
+                                    o = e.marketData,
+                                    s = e.activeMarketHistory,
                                     i = e.invertedCalls,
                                     l = e.starredMarkets,
                                     c = e.quoteAsset,
@@ -12773,21 +12108,21 @@
                                     b = e.feedPrice,
                                     v = e.buckets,
                                     _ = e.coreAsset,
-                                    k = s.combinedBids,
-                                    E = s.combinedAsks,
-                                    C = s.lowestAsk,
-                                    S = s.highestBid,
-                                    A = s.flatBids,
-                                    N = s.flatAsks,
-                                    O = s.flatCalls,
-                                    P = s.flatSettles,
+                                    k = o.combinedBids,
+                                    E = o.combinedAsks,
+                                    C = o.lowestAsk,
+                                    x = o.highestBid,
+                                    A = o.flatBids,
+                                    O = o.flatAsks,
+                                    N = o.flatCalls,
+                                    P = o.flatSettles,
                                     T = this.state,
                                     I = T.bid,
                                     B = T.ask,
                                     M = T.leftOrderBook,
                                     F = T.showDepthChart,
-                                    j = T.chartHeight,
-                                    q = T.buyDiff,
+                                    q = T.chartHeight,
+                                    j = T.buyDiff,
                                     R = T.sellDiff,
                                     L = T.width,
                                     D = T.buySellTop,
@@ -12796,8 +12131,8 @@
                                     V = U.frozenAsset,
                                     J = null,
                                     Q = null,
-                                    G = null,
                                     Y = null,
+                                    G = null,
                                     K = null,
                                     X = null,
                                     Z = void 0,
@@ -12805,7 +12140,7 @@
                                     ee = !1,
                                     te = void 0,
                                     ae = void 0,
-                                    ne = this.props.viewSettings.get(
+                                    re = this.props.viewSettings.get(
                                         "showVolumeChart",
                                         !0
                                     );
@@ -12818,23 +12153,23 @@
                                         ((Q = c),
                                         ($ = (J = u).get("symbol")),
                                         (Z = Q.get("symbol")),
-                                        (G = t.get("balances").toJS()))
+                                        (Y = t.get("balances").toJS()))
                                     )
-                                        for (var re in G)
-                                            re === Q.get("id") && (Y = G[re]),
-                                                re === J.get("id") &&
-                                                    (K = G[re]),
-                                                "1.3.0" === re && (X = G[re]);
+                                        for (var ne in Y)
+                                            ne === Q.get("id") && (G = Y[ne]),
+                                                ne === J.get("id") &&
+                                                    (K = Y[ne]),
+                                                "1.3.0" === ne && (X = Y[ne]);
                                     ee = this._getSettlementInfo();
                                 }
                                 var ie = !!c.get("bitasset_data_id"),
                                     le = !!u.get("bitasset_data_id"),
                                     ce =
-                                        C && S
-                                            ? C.getPrice() - S.getPrice()
+                                        C && x
+                                            ? C.getPrice() - x.getPrice()
                                             : 0;
-                                if (o.size) {
-                                    var ue = o.take(3),
+                                if (s.size) {
+                                    var ue = s.take(3),
                                         pe = ue.first(),
                                         he = ue.last(),
                                         de = void 0,
@@ -12883,9 +12218,9 @@
                                 var ve = this._getFeeAssets(Q, J, _),
                                     _e = ve.sellFeeAsset,
                                     ke = ve.sellFeeAssets,
-                                    Ee = ve.sellFee,
-                                    Ce = ve.buyFeeAsset,
-                                    xe = ve.buyFeeAssets,
+                                    we = ve.sellFee,
+                                    xe = ve.buyFeeAsset,
+                                    Se = ve.buyFeeAssets,
                                     Ae = ve.buyFee,
                                     Ne =
                                         J.getIn([
@@ -12904,14 +12239,14 @@
                                 L < 1e3 && ((Te = !0), (M = !1));
                                 var Ie = M ? 2 : 1,
                                     Be = (Math.max(
-                                        this.state.height > 1100 ? j : j - 125,
+                                        this.state.height > 1100 ? q : q - 125,
                                         300
                                     ),
                                     this.state.expirationType),
                                     Me = this.state.expirationCustomTime,
                                     Fe = W
                                         ? null
-                                        : r.a.createElement(we, {
+                                        : n.a.createElement(Ee, {
                                               onShowModal: this.onShowModal,
                                               onBorrow: le
                                                   ? this._borrowBase.bind(this)
@@ -12934,7 +12269,7 @@
                                               onToggleOpen: this._toggleOpenBuySell.bind(
                                                   this
                                               ),
-                                              className: x()(
+                                              className: S()(
                                                   "small-12 no-padding middle-content",
                                                   M || Te
                                                       ? "medium-6"
@@ -12989,7 +12324,7 @@
                                                   J,
                                                   K,
                                                   X,
-                                                  Ce,
+                                                  xe,
                                                   "buy"
                                               ),
                                               balancePrecision: J.get(
@@ -13008,8 +12343,8 @@
                                               hasFeeBalance: this.state
                                                   .feeStatus[Ae.asset_id]
                                                   .hasBalance,
-                                              feeAssets: xe,
-                                              feeAsset: Ce,
+                                              feeAssets: Se,
+                                              feeAsset: xe,
                                               onChangeFeeAsset: this.onChangeFeeAsset.bind(
                                                   this,
                                                   "buy"
@@ -13030,9 +12365,9 @@
                                                         this
                                                     )
                                           }),
-                                    je = W
+                                    qe = W
                                         ? null
-                                        : r.a.createElement(we, {
+                                        : n.a.createElement(Ee, {
                                               onShowModal: this.onShowModal,
                                               onBorrow: ie
                                                   ? this._borrowQuote.bind(this)
@@ -13055,7 +12390,7 @@
                                               onToggleOpen: this._toggleOpenBuySell.bind(
                                                   this
                                               ),
-                                              className: x()(
+                                              className: S()(
                                                   "small-12 no-padding middle-content",
                                                   M || Te
                                                       ? "medium-6"
@@ -13102,13 +12437,13 @@
                                                   "ask",
                                                   !0
                                               ),
-                                              balance: Y,
+                                              balance: G,
                                               balanceId: Q.get("id"),
                                               onSubmit: this._createLimitOrderConfirm.bind(
                                                   this,
                                                   J,
                                                   Q,
-                                                  Y,
+                                                  G,
                                                   X,
                                                   _e,
                                                   "sell"
@@ -13122,12 +12457,12 @@
                                               totalPrecision: J.get(
                                                   "precision"
                                               ),
-                                              currentPrice: S.getPrice(),
-                                              currentPriceObject: S,
+                                              currentPrice: x.getPrice(),
+                                              currentPriceObject: x,
                                               account: t.get("name"),
-                                              fee: Ee,
+                                              fee: we,
                                               hasFeeBalance: this.state
-                                                  .feeStatus[Ee.asset_id]
+                                                  .feeStatus[we.asset_id]
                                                   .hasBalance,
                                               feeAssets: ke,
                                               feeAsset: _e,
@@ -13151,15 +12486,15 @@
                                                         this
                                                     )
                                           }),
-                                    qe = r.a.createElement(z, {
+                                    je = n.a.createElement(z, {
                                         latest: te,
                                         changeClass: ae,
                                         orders: a,
-                                        calls: n,
+                                        calls: r,
                                         invertedCalls: i,
                                         combinedBids: k,
                                         combinedAsks: E,
-                                        highestBid: S,
+                                        highestBid: x,
                                         lowestAsk: C,
                                         totalBids: g.bid,
                                         totalAsks: g.ask,
@@ -13185,11 +12520,11 @@
                                             "id"
                                         )
                                     });
-                                return r.a.createElement(
+                                return n.a.createElement(
                                     "div",
                                     {className: "grid-block vertical"},
                                     this.state.isBridgeModalVisible
-                                        ? r.a.createElement(Mt, {
+                                        ? n.a.createElement(Nt.a, {
                                               account: this.props
                                                   .currentAccount,
                                               asset:
@@ -13200,15 +12535,15 @@
                                         : null,
                                     this.props.marketReady
                                         ? null
-                                        : r.a.createElement(Se.a, null),
-                                    r.a.createElement(St, {
+                                        : n.a.createElement(Ce.a, null),
+                                    n.a.createElement(Ct, {
                                         account: this.props.currentAccount,
                                         quoteAsset: c,
                                         baseAsset: u,
                                         hasPrediction: Ne,
                                         starredMarkets: l,
                                         lowestAsk: C,
-                                        highestBid: S,
+                                        highestBid: x,
                                         lowestCallPrice: p,
                                         showCallLimit: ee,
                                         feedPrice: b,
@@ -13222,22 +12557,22 @@
                                         onToggleMarketPicker: this._toggleMarketPicker.bind(
                                             this
                                         ),
-                                        showVolumeChart: ne,
-                                        chartHeight: j,
+                                        showVolumeChart: re,
+                                        chartHeight: q,
                                         onChangeChartHeight: this.onChangeChartHeight.bind(
                                             this
                                         )
                                     }),
-                                    r.a.createElement(
+                                    n.a.createElement(
                                         "div",
                                         {
                                             className:
                                                 "grid-block page-layout market-layout"
                                         },
                                         this.state.showMarketPicker
-                                            ? r.a.createElement(
+                                            ? n.a.createElement(
                                                   Oe,
-                                                  jt(
+                                                  Tt(
                                                       {
                                                           marketPickerAsset: this
                                                               .state
@@ -13250,26 +12585,26 @@
                                                   )
                                               )
                                             : null,
-                                        r.a.createElement(ct, null),
+                                        n.a.createElement(lt, null),
                                         M
-                                            ? r.a.createElement(
+                                            ? n.a.createElement(
                                                   "div",
                                                   {
                                                       className:
                                                           "grid-block left-column shrink no-overflow"
                                                   },
-                                                  qe
+                                                  je
                                               )
                                             : null,
-                                        r.a.createElement(
+                                        n.a.createElement(
                                             "div",
                                             {
                                                 style: {paddingTop: 0},
-                                                className: x()(
+                                                className: S()(
                                                     "grid-block main-content vertical no-overflow"
                                                 )
                                             },
-                                            r.a.createElement(
+                                            n.a.createElement(
                                                 "div",
                                                 {
                                                     className:
@@ -13278,23 +12613,23 @@
                                                     ref: "center"
                                                 },
                                                 F
-                                                    ? r.a.createElement(
+                                                    ? n.a.createElement(
                                                           "div",
                                                           {
                                                               className:
                                                                   "grid-block vertical no-padding shrink"
                                                           },
-                                                          r.a.createElement(
+                                                          n.a.createElement(
                                                               Ye,
                                                               {
                                                                   marketReady: d,
                                                                   orders: a,
                                                                   showCallLimit: ee,
-                                                                  call_orders: n,
-                                                                  flat_asks: N,
+                                                                  call_orders: r,
+                                                                  flat_asks: O,
                                                                   flat_bids: A,
                                                                   flat_calls: ee
-                                                                      ? O
+                                                                      ? N
                                                                       : [],
                                                                   flat_settles:
                                                                       this.props.settings.get(
@@ -13312,8 +12647,8 @@
                                                                       this.state
                                                                           .height >
                                                                       1100
-                                                                          ? j
-                                                                          : j -
+                                                                          ? q
+                                                                          : q -
                                                                             150,
                                                                   onClick: this._depthChartClick.bind(
                                                                       this,
@@ -13341,7 +12676,7 @@
                                                               }
                                                           )
                                                       )
-                                                    : r.a.createElement(
+                                                    : n.a.createElement(
                                                           "div",
                                                           {
                                                               className:
@@ -13349,8 +12684,8 @@
                                                               id:
                                                                   "market-charts"
                                                           },
-                                                          r.a.createElement(
-                                                              We,
+                                                          n.a.createElement(
+                                                              Ue,
                                                               {
                                                                   locale: this
                                                                       .props
@@ -13374,22 +12709,22 @@
                                                                       this.state
                                                                           .height >
                                                                       1100
-                                                                          ? j
-                                                                          : j -
+                                                                          ? q
+                                                                          : q -
                                                                             150,
                                                                   mobile:
                                                                       L < 800
                                                               }
                                                           )
                                                       ),
-                                                r.a.createElement(
+                                                n.a.createElement(
                                                     "div",
                                                     {
                                                         className:
                                                             "grid-block no-overflow wrap shrink"
                                                     },
                                                     Ne
-                                                        ? r.a.createElement(
+                                                        ? n.a.createElement(
                                                               "div",
                                                               {
                                                                   className:
@@ -13401,7 +12736,7 @@
                                                                           "1.2rem"
                                                                   }
                                                               },
-                                                              r.a.createElement(
+                                                              n.a.createElement(
                                                                   "p",
                                                                   null,
                                                                   Pe
@@ -13409,7 +12744,7 @@
                                                           )
                                                         : null,
                                                     W
-                                                        ? r.a.createElement(
+                                                        ? n.a.createElement(
                                                               "div",
                                                               {
                                                                   className:
@@ -13421,7 +12756,7 @@
                                                                           "1.2rem"
                                                                   }
                                                               },
-                                                              r.a.createElement(
+                                                              n.a.createElement(
                                                                   w.a,
                                                                   {
                                                                       content:
@@ -13434,9 +12769,9 @@
                                                           )
                                                         : null,
                                                     Fe,
-                                                    je,
-                                                    r.a.createElement(se, {
-                                                        className: x()(
+                                                    qe,
+                                                    n.a.createElement(oe, {
+                                                        className: S()(
                                                             Te || M
                                                                 ? ""
                                                                 : "medium-6 xlarge-4",
@@ -13445,7 +12780,7 @@
                                                         headerStyle: {
                                                             paddingTop: 0
                                                         },
-                                                        history: o,
+                                                        history: s,
                                                         currentAccount: t,
                                                         myHistory: t.get(
                                                             "history"
@@ -13455,41 +12790,41 @@
                                                         baseSymbol: $,
                                                         quoteSymbol: Z
                                                     }),
-                                                    M ? null : qe,
-                                                    r.a.createElement(ht, {
+                                                    M ? null : je,
+                                                    n.a.createElement(pt, {
                                                         type: "buy",
                                                         ref: "buy",
                                                         onForce: this._forceBuy.bind(
                                                             this,
                                                             "buy",
-                                                            Ce,
+                                                            xe,
                                                             K,
                                                             X
                                                         ),
-                                                        diff: q,
+                                                        diff: j,
                                                         hasOrders: E.length > 0
                                                     }),
-                                                    r.a.createElement(ht, {
+                                                    n.a.createElement(pt, {
                                                         type: "sell",
                                                         ref: "sell",
                                                         onForce: this._forceSell.bind(
                                                             this,
                                                             "sell",
                                                             _e,
-                                                            Y,
+                                                            G,
                                                             X
                                                         ),
                                                         diff: R,
                                                         hasOrders: k.length > 0
                                                     }),
                                                     a.size > 0 && J && Q
-                                                        ? r.a.createElement(
+                                                        ? n.a.createElement(
                                                               y.a,
                                                               {
                                                                   smallScreen: this
                                                                       .props
                                                                       .smallScreen,
-                                                                  className: x()(
+                                                                  className: S()(
                                                                       Te || M
                                                                           ? ""
                                                                           : "medium-6 xlarge-4",
@@ -13522,7 +12857,7 @@
                                                 )
                                             )
                                         ),
-                                        r.a.createElement(
+                                        n.a.createElement(
                                             "div",
                                             {
                                                 className:
@@ -13533,13 +12868,13 @@
                                                     maxWidth: 400
                                                 }
                                             },
-                                            r.a.createElement(
+                                            n.a.createElement(
                                                 "div",
                                                 {
                                                     className:
                                                         "grid-block no-padding no-margin vertical"
                                                 },
-                                                r.a.createElement(oe.a, {
+                                                n.a.createElement(se.a, {
                                                     className:
                                                         "left-order-book no-padding no-overflow",
                                                     headerStyle: {
@@ -13579,7 +12914,7 @@
                                                     current: Z + "_" + $
                                                 })
                                             ),
-                                            r.a.createElement(
+                                            n.a.createElement(
                                                 "div",
                                                 {
                                                     style: {
@@ -13591,7 +12926,7 @@
                                                     className:
                                                         "grid-block no-margin vertical shrink"
                                                 },
-                                                r.a.createElement(
+                                                n.a.createElement(
                                                     "div",
                                                     {
                                                         onClick: this._toggleMiniChart.bind(
@@ -13605,27 +12940,27 @@
                                                         }
                                                     },
                                                     this.props.miniDepthChart
-                                                        ? r.a.createElement(
+                                                        ? n.a.createElement(
                                                               "span",
                                                               null,
                                                               "▼"
                                                           )
-                                                        : r.a.createElement(
+                                                        : n.a.createElement(
                                                               "span",
                                                               null,
                                                               "▲"
                                                           )
                                                 ),
                                                 this.props.miniDepthChart
-                                                    ? r.a.createElement(Ye, {
+                                                    ? n.a.createElement(Ye, {
                                                           marketReady: d,
                                                           orders: a,
                                                           showCallLimit: ee,
-                                                          call_orders: n,
-                                                          flat_asks: N,
+                                                          call_orders: r,
+                                                          flat_asks: O,
                                                           flat_bids: A,
                                                           flat_calls: ee
-                                                              ? O
+                                                              ? N
                                                               : [],
                                                           flat_settles:
                                                               this.props.settings.get(
@@ -13660,7 +12995,7 @@
                                             )
                                         ),
                                         ie
-                                            ? r.a.createElement(Ke.a, {
+                                            ? n.a.createElement(Ge.a, {
                                                   ref: "borrowQuote",
                                                   modalId:
                                                       "borrow_modal_quote_" +
@@ -13675,7 +13010,7 @@
                                               })
                                             : null,
                                         le
-                                            ? r.a.createElement(Ke.a, {
+                                            ? n.a.createElement(Ge.a, {
                                                   ref: "borrowBase",
                                                   modalId:
                                                       "borrow_modal_base_" +
@@ -13697,52 +13032,52 @@
                     t
                 );
             })();
-            (Lt.propTypes = {
+            (Mt.propTypes = {
                 marketCallOrders: g.a.object.isRequired,
                 activeMarketHistory: g.a.object.isRequired,
                 viewSettings: g.a.object.isRequired,
                 priceData: g.a.array.isRequired,
                 volumeData: g.a.array.isRequired
             }),
-                (Lt.defaultProps = {
+                (Mt.defaultProps = {
                     marketCallOrders: [],
                     activeMarketHistory: {},
                     viewSettings: {},
                     priceData: [],
                     volumeData: []
                 });
-            var Dt = Lt,
-                zt = a(152),
-                Ut =
+            var Ft = Mt,
+                qt = a(133),
+                jt =
                     Object.assign ||
                     function(e) {
                         for (var t = 1; t < arguments.length; t++) {
                             var a = arguments[t];
-                            for (var n in a)
-                                Object.prototype.hasOwnProperty.call(a, n) &&
-                                    (e[n] = a[n]);
+                            for (var r in a)
+                                Object.prototype.hasOwnProperty.call(a, r) &&
+                                    (e[r] = a[r]);
                         }
                         return e;
                     },
-                Wt = (function() {
+                Rt = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
+                            var r = t[a];
+                            (r.enumerable = r.enumerable || !1),
+                                (r.configurable = !0),
+                                "value" in r && (r.writable = !0),
+                                Object.defineProperty(e, r.key, r);
                         }
                     }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
+                    return function(t, a, r) {
+                        return a && e(t.prototype, a), r && e(t, r), t;
                     };
                 })();
-            function Ht(e, t) {
+            function Lt(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function Vt(e, t) {
+            function Dt(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -13751,7 +13086,7 @@
                     ? e
                     : t;
             }
-            function Jt(e, t) {
+            function zt(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -13770,11 +13105,11 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var Qt = (function(e) {
+            var Ut = (function(e) {
                     function t() {
                         return (
-                            Ht(this, t),
-                            Vt(
+                            Lt(this, t),
+                            Dt(
                                 this,
                                 (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                     this,
@@ -13784,8 +13119,8 @@
                         );
                     }
                     return (
-                        Jt(t, r.a.Component),
-                        Wt(t, [
+                        zt(t, n.a.Component),
+                        Rt(t, [
                             {
                                 key: "render",
                                 value: function() {
@@ -13793,16 +13128,16 @@
                                         .toUpperCase()
                                         .split("_");
                                     return e[0] === e[1]
-                                        ? r.a.createElement(zt.default, {
+                                        ? n.a.createElement(qt.default, {
                                               subtitle:
                                                   "market_not_found_subtitle"
                                           })
-                                        : r.a.createElement(
+                                        : n.a.createElement(
                                               d.a,
                                               {
                                                   stores: [
-                                                      s.a,
                                                       o.a,
+                                                      s.a,
                                                       l.a,
                                                       p.a,
                                                       u.a
@@ -13817,63 +13152,63 @@
                                                               .locked;
                                                       },
                                                       marketLimitOrders: function() {
-                                                          return s.a.getState()
+                                                          return o.a.getState()
                                                               .marketLimitOrders;
                                                       },
                                                       marketCallOrders: function() {
-                                                          return s.a.getState()
+                                                          return o.a.getState()
                                                               .marketCallOrders;
                                                       },
                                                       invertedCalls: function() {
-                                                          return s.a.getState()
+                                                          return o.a.getState()
                                                               .invertedCalls;
                                                       },
                                                       marketSettleOrders: function() {
-                                                          return s.a.getState()
+                                                          return o.a.getState()
                                                               .marketSettleOrders;
                                                       },
                                                       marketData: function() {
-                                                          return s.a.getState()
+                                                          return o.a.getState()
                                                               .marketData;
                                                       },
                                                       totals: function() {
-                                                          return s.a.getState()
+                                                          return o.a.getState()
                                                               .totals;
                                                       },
                                                       priceData: function() {
-                                                          return s.a.getState()
+                                                          return o.a.getState()
                                                               .priceData;
                                                       },
                                                       volumeData: function() {
-                                                          return s.a.getState()
+                                                          return o.a.getState()
                                                               .volumeData;
                                                       },
                                                       activeMarketHistory: function() {
-                                                          return s.a.getState()
+                                                          return o.a.getState()
                                                               .activeMarketHistory;
                                                       },
                                                       bucketSize: function() {
-                                                          return s.a.getState()
+                                                          return o.a.getState()
                                                               .bucketSize;
                                                       },
                                                       buckets: function() {
-                                                          return s.a.getState()
+                                                          return o.a.getState()
                                                               .buckets;
                                                       },
                                                       lowestCallPrice: function() {
-                                                          return s.a.getState()
+                                                          return o.a.getState()
                                                               .lowestCallPrice;
                                                       },
                                                       feedPrice: function() {
-                                                          return s.a.getState()
+                                                          return o.a.getState()
                                                               .feedPrice;
                                                       },
                                                       currentAccount: function() {
-                                                          return o.a.getState()
+                                                          return s.a.getState()
                                                               .currentAccount;
                                                       },
                                                       myActiveAccounts: function() {
-                                                          return o.a.getState()
+                                                          return s.a.getState()
                                                               .myActiveAccounts;
                                                       },
                                                       viewSettings: function() {
@@ -13897,11 +13232,11 @@
                                                               .marketDirections;
                                                       },
                                                       marketStats: function() {
-                                                          return s.a.getState()
+                                                          return o.a.getState()
                                                               .marketStats;
                                                       },
                                                       marketReady: function() {
-                                                          return s.a.getState()
+                                                          return o.a.getState()
                                                               .marketReady;
                                                       },
                                                       backedCoins: function() {
@@ -13933,11 +13268,11 @@
                                                               );
                                                       },
                                                       dataFeed: function() {
-                                                          return new Le();
+                                                          return new Re();
                                                       }
                                                   }
                                               },
-                                              r.a.createElement(ea, {
+                                              n.a.createElement(Gt, {
                                                   router: this.props.router,
                                                   quoteAsset: e[0],
                                                   baseAsset: e[1]
@@ -13949,16 +13284,16 @@
                         t
                     );
                 })(),
-                Gt = Object(J.e)(),
+                Wt = Object(J.e)(),
+                Ht = void 0,
+                Vt = void 0,
+                Jt = void 0,
+                Qt = void 0,
                 Yt = void 0,
-                Kt = void 0,
-                Xt = void 0,
-                Zt = void 0,
-                $t = void 0,
-                ea = (function(e) {
+                Gt = (function(e) {
                     function t() {
-                        Ht(this, t);
-                        var e = Vt(
+                        Lt(this, t);
+                        var e = Dt(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                         );
@@ -13969,8 +13304,8 @@
                         );
                     }
                     return (
-                        Jt(t, r.a.Component),
-                        Wt(t, [
+                        zt(t, n.a.Component),
+                        Rt(t, [
                             {
                                 key: "componentWillMount",
                                 value: function() {
@@ -13980,51 +13315,51 @@
                                         (this.props.quoteAsset.toJS &&
                                             this.props.baseAsset.toJS &&
                                             this._subToMarket(this.props),
-                                        Gt.on(
+                                        Wt.on(
                                             "cancel-order",
-                                            (Kt = b.a.cancelLimitOrderSuccess)
+                                            (Vt = b.a.cancelLimitOrderSuccess)
                                         ),
-                                        Gt.on(
+                                        Wt.on(
                                             "close-call",
-                                            (Yt = b.a.closeCallOrderSuccess)
+                                            (Ht = b.a.closeCallOrderSuccess)
                                         ),
-                                        Gt.on(
+                                        Wt.on(
                                             "call-order-update",
-                                            (Xt = function(t) {
+                                            (Jt = function(t) {
                                                 var a =
                                                         t.call_price.base
                                                             .asset_id,
-                                                    n =
+                                                    r =
                                                         t.call_price.quote
                                                             .asset_id,
-                                                    r = e.props.baseAsset.get(
+                                                    n = e.props.baseAsset.get(
                                                         "id"
                                                     ),
-                                                    s = e.props.quoteAsset.get(
+                                                    o = e.props.quoteAsset.get(
                                                         "id"
                                                     );
-                                                (a !== r && a !== s) ||
-                                                    (n !== r && n !== s) ||
+                                                (a !== n && a !== o) ||
+                                                    (r !== n && r !== o) ||
                                                     b.a.callOrderUpdate(t);
                                             })
                                         ),
-                                        Gt.on(
+                                        Wt.on(
                                             "bitasset-update",
-                                            (Zt = b.a.feedUpdate)
+                                            (Qt = b.a.feedUpdate)
                                         ),
-                                        Gt.on(
+                                        Wt.on(
                                             "settle-order-update",
-                                            ($t = function(t) {
+                                            (Yt = function(t) {
                                                 var a = market_utils.isMarketAsset(
                                                         e.props.quoteAsset,
                                                         e.props.baseAsset
                                                     ),
-                                                    n = a.isMarketAsset,
-                                                    r = a.marketAsset;
-                                                n &&
-                                                    r.id ===
+                                                    r = a.isMarketAsset,
+                                                    n = a.marketAsset;
+                                                r &&
+                                                    n.id ===
                                                         t.balance.asset_id &&
-                                                    b.a.settleOrderUpdate(r.id);
+                                                    b.a.settleOrderUpdate(n.id);
                                             })
                                         ));
                                 }
@@ -14090,29 +13425,29 @@
                                             t.get("id"),
                                             a.get("id")
                                         ),
-                                        Gt &&
-                                            (Gt.off("cancel-order", Kt),
-                                            Gt.off("close-call", Yt),
-                                            Gt.off("call-order-update", Xt),
-                                            Gt.off("bitasset-update", Zt),
-                                            Gt.off("settle-order-update", $t)));
+                                        Wt &&
+                                            (Wt.off("cancel-order", Vt),
+                                            Wt.off("close-call", Ht),
+                                            Wt.off("call-order-update", Jt),
+                                            Wt.off("bitasset-update", Qt),
+                                            Wt.off("settle-order-update", Yt)));
                                 }
                             },
                             {
                                 key: "_subToMarket",
                                 value: function(e, t) {
                                     var a = e.quoteAsset,
-                                        n = e.baseAsset,
-                                        r = e.bucketSize;
-                                    t && (r = t),
+                                        r = e.baseAsset,
+                                        n = e.bucketSize;
+                                    t && (n = t),
                                         a.get("id") &&
-                                            n.get("id") &&
-                                            (b.a.subscribeMarket.defer(n, a, r),
+                                            r.get("id") &&
+                                            (b.a.subscribeMarket.defer(r, a, n),
                                             this.setState({
                                                 sub:
                                                     a.get("id") +
                                                     "_" +
-                                                    n.get("id")
+                                                    r.get("id")
                                             }));
                                 }
                             },
@@ -14121,13 +13456,13 @@
                                 value: function() {
                                     return null === this.props.quoteAsset ||
                                         null === this.props.baseAsset
-                                        ? r.a.createElement(zt.default, {
+                                        ? n.a.createElement(qt.default, {
                                               subtitle:
                                                   "market_not_found_subtitle"
                                           })
-                                        : r.a.createElement(
-                                              Dt,
-                                              Ut({}, this.props, {
+                                        : n.a.createElement(
+                                              Ft,
+                                              jt({}, this.props, {
                                                   sub: this.state.sub,
                                                   subToMarket: this._subToMarket
                                               })
@@ -14138,54 +13473,54 @@
                         t
                     );
                 })();
-            (ea.propTypes = {
+            (Gt.propTypes = {
                 currentAccount: le.a.ChainAccount.isRequired,
                 quoteAsset: le.a.ChainAsset.isRequired,
                 baseAsset: le.a.ChainAsset.isRequired,
                 coreAsset: le.a.ChainAsset.isRequired
             }),
-                (ea.defaultProps = {
+                (Gt.defaultProps = {
                     currentAccount: "1.2.3",
                     coreAsset: "1.3.0"
                 }),
-                (ea = Object(ce.a)(ea, {show_loader: !0}));
-            t.default = Qt;
+                (Gt = Object(ce.a)(Gt, {show_loader: !0}));
+            t.default = Ut;
         },
-        790: function(e, t, a) {
+        791: function(e, t, a) {
             !(function(e) {
                 "use strict";
                 function t(e, a) {
-                    var r = n({}, e);
-                    for (var s in a)
-                        "object" != typeof e[s] ||
-                        null === e[s] ||
-                        Array.isArray(e[s])
-                            ? void 0 !== a[s] && (r[s] = a[s])
-                            : (r[s] = t(e[s], a[s]));
-                    return r;
+                    var n = r({}, e);
+                    for (var o in a)
+                        "object" != typeof e[o] ||
+                        null === e[o] ||
+                        Array.isArray(e[o])
+                            ? void 0 !== a[o] && (n[o] = a[o])
+                            : (n[o] = t(e[o], a[o]));
+                    return n;
                 }
                 function a() {
                     return "1.12 (internal id 7580da73 @ 2018-05-14 05:13:04.428607)";
                 }
-                var n =
+                var r =
                         Object.assign ||
                         function(e) {
                             for (
                                 var t,
                                     a = arguments,
-                                    n = 1,
-                                    r = arguments.length;
-                                n < r;
-                                n++
+                                    r = 1,
+                                    n = arguments.length;
+                                r < n;
+                                r++
                             )
-                                for (var s in (t = a[n]))
+                                for (var o in (t = a[r]))
                                     Object.prototype.hasOwnProperty.call(
                                         t,
-                                        s
-                                    ) && (e[s] = t[s]);
+                                        o
+                                    ) && (e[o] = t[o]);
                             return e;
                         },
-                    r = {
+                    n = {
                         mobile: {
                             disabled_features: [
                                 "left_toolbar",
@@ -14199,7 +13534,7 @@
                             enabled_features: []
                         }
                     },
-                    s = {
+                    o = {
                         width: 800,
                         height: 500,
                         symbol: "AA",
@@ -14236,7 +13571,7 @@
                         charts_storage_api_version: "1.0",
                         favorites: {intervals: [], chartTypes: []}
                     },
-                    o = (function() {
+                    s = (function() {
                         function e(e) {
                             if (
                                 ((this._id =
@@ -14252,8 +13587,8 @@
                                 !e.datafeed)
                             )
                                 throw new Error("Datafeed is not defined");
-                            if (((this._options = t(s, e)), e.preset)) {
-                                var a = r[e.preset];
+                            if (((this._options = t(o, e)), e.preset)) {
+                                var a = n[e.preset];
                                 a
                                     ? (void 0 !==
                                       this._options.disabled_features
@@ -14345,9 +13680,9 @@
                                 e,
                                 t,
                                 a,
-                                n
+                                r
                             ) {
-                                this._innerAPI().saveChartToServer(e, t, a, n);
+                                this._innerAPI().saveChartToServer(e, t, a, r);
                             }),
                             (e.prototype.removeChartFromServer = function(
                                 e,
@@ -14442,20 +13777,20 @@
                                             this._options.container_id
                                     );
                                 a.innerHTML = t;
-                                var n = this._getIFrameElement();
+                                var r = this._getIFrameElement();
                                 (this._options.autosize ||
                                     this._options.fullscreen) &&
-                                    ((n.style.width = "100%"),
+                                    ((r.style.width = "100%"),
                                     this._options.fullscreen ||
-                                        (n.style.height = "100%")),
+                                        (r.style.height = "100%")),
                                     window.addEventListener(
                                         "resize",
                                         this._onWindowResize
                                     ),
                                     this._onWindowResize();
-                                var r = function() {
-                                    n.removeEventListener("load", r, !1),
-                                        n.contentWindow.widgetReady(function() {
+                                var n = function() {
+                                    r.removeEventListener("load", n, !1),
+                                        r.contentWindow.widgetReady(function() {
                                             e._ready = !0;
                                             for (
                                                 var t = 0, a = e._readyHandlers;
@@ -14463,10 +13798,10 @@
                                                 t++
                                             )
                                                 a[t].call(e);
-                                            n.contentWindow.initializationFinished();
+                                            r.contentWindow.initializationFinished();
                                         });
                                 };
-                                n.addEventListener("load", r, !1);
+                                r.addEventListener("load", n, !1);
                             }),
                             (e.prototype._render = function() {
                                 var e = window;
@@ -14653,7 +13988,7 @@
                     (e.onready = function(e) {
                         window.addEventListener("DOMContentLoaded", e, !1);
                     }),
-                    (e.widget = o),
+                    (e.widget = s),
                     Object.defineProperty(e, "__esModule", {value: !0});
             })(t);
         }

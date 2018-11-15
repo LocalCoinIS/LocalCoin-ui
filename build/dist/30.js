@@ -212,17 +212,17 @@
             })();
             t.a = f;
         },
-        447: function(e, t, a) {
+        448: function(e, t, a) {
             "use strict";
             a.d(t, "a", function() {
-                return M;
+                return L;
             });
             var n = a(0),
                 r = a.n(n),
                 o = a(1),
                 i = a.n(o),
                 s = a(122),
-                l = a(149),
+                l = a(152),
                 c = a(6),
                 u = a(13),
                 p = a(5),
@@ -294,12 +294,12 @@
                     ? t.virtual_op - e.virtual_op
                     : t.block_num - e.block_num;
             }
-            function L(e) {
+            function M(e) {
                 return e
                     ? '"' + e.textContent.replace(/[\s\t\r\n]/gi, " ") + '"'
                     : "";
             }
-            var M = (function(e) {
+            var L = (function(e) {
                 function t(e) {
                     C(this, t);
                     var a = N(
@@ -421,10 +421,10 @@
                                             var l = o.value.childNodes;
                                             "" !== t && (t += "\n"),
                                                 (t += [
-                                                    L(l[0]),
-                                                    L(l[1]),
-                                                    L(l[2]),
-                                                    L(l[3])
+                                                    M(l[0]),
+                                                    M(l[1]),
+                                                    M(l[2]),
+                                                    M(l[3])
                                                 ].join(","));
                                         }
                                     } catch (e) {
@@ -1022,7 +1022,7 @@
                     t
                 );
             })();
-            (M.propTypes = {
+            (L.propTypes = {
                 accountsList: c.a.ChainAccountsList.isRequired,
                 compactView: w.a.bool,
                 limit: w.a.number,
@@ -1030,13 +1030,13 @@
                 fullHeight: w.a.bool,
                 showFilters: w.a.bool
             }),
-                (M.defaultProps = {
+                (L.defaultProps = {
                     limit: 25,
                     maxHeight: 500,
                     fullHeight: !1,
                     showFilters: !1
                 }),
-                (M = Object(u.a)(M));
+                (L = Object(u.a)(L));
             var D = (function(e) {
                 function t() {
                     return (
@@ -1187,7 +1187,13 @@
                                     v.a
                                         .process_transaction(n, null, !0)
                                         .then(function(e) {
-                                            return !0;
+                                            return (
+                                                console.log(
+                                                    "asset settle result:",
+                                                    e
+                                                ),
+                                                !0
+                                            );
                                         })
                                         .catch(function(e) {
                                             return (
@@ -1343,7 +1349,7 @@
                                         r.a.createElement(
                                             "div",
                                             {className: "grid-block vertical"},
-                                            r.a.createElement(C, null)
+                                            r.a.createElement(C, this.props)
                                         )
                                     );
                                 }
@@ -1352,13 +1358,13 @@
                         t
                     );
                 })(),
-                S = a(140),
+                S = a(143),
                 j = a(79),
                 P = a(50),
                 I = a(15),
                 T = a(31),
-                L = a(42),
-                M = a.n(L),
+                M = a(42),
+                L = a.n(M),
                 D = a(334),
                 R =
                     Object.assign ||
@@ -1417,7 +1423,7 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var W = (function(e) {
+            var B = (function(e) {
                 function t(e) {
                     return (
                         F(this, t),
@@ -1436,7 +1442,7 @@
                         {
                             key: "componentDidMount",
                             value: function() {
-                                M.a.rebuild();
+                                L.a.rebuild();
                             }
                         },
                         {
@@ -1505,16 +1511,16 @@
                     t
                 );
             })();
-            (W.defaultProps = {
+            (B.defaultProps = {
                 fullPrecision: !1,
                 noDecimals: !1,
                 hide_asset: !1
             }),
-                (W = Object(P.a)(W, {
+                (B = Object(P.a)(B, {
                     propNames: ["quote", "base"],
                     defaultProps: {quote: "1.3.0"}
                 }));
-            var B = (function(e) {
+            var W = (function(e) {
                 function t() {
                     return (
                         F(this, t),
@@ -1546,14 +1552,14 @@
                                                     (a[n] = e[n]));
                                         return a;
                                     })(e, ["refCallback"]);
-                                return r.a.createElement(W, R({}, a, {ref: t}));
+                                return r.a.createElement(B, R({}, a, {ref: t}));
                             }
                         }
                     ]),
                     t
                 );
             })();
-            B = Object(I.connect)(B, {
+            W = Object(I.connect)(W, {
                 listenTo: function() {
                     return [T.a];
                 },
@@ -2699,11 +2705,11 @@
                         )
                     );
                 },
-                de = a(447),
+                de = a(448),
                 he = a(263),
                 me = a(118),
                 fe = a(14),
-                be = a(202),
+                be = a(210),
                 ge = a(40),
                 ve = {
                     AccountPermission: function(e, t, a) {
@@ -2944,7 +2950,7 @@
                             {
                                 key: "componentDidMount",
                                 value: function() {
-                                    M.a.rebuild();
+                                    L.a.rebuild();
                                 }
                             },
                             {
@@ -3115,7 +3121,7 @@
                 Te = function(e, t) {
                     return t && t > 10 ? b.a.get_percentage(e, t) : e;
                 },
-                Le =
+                Me =
                     Object.assign ||
                     function(e) {
                         for (var t = 1; t < arguments.length; t++) {
@@ -3126,7 +3132,7 @@
                         }
                         return e;
                     },
-                Me = (function() {
+                Le = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -3189,7 +3195,7 @@
                 }
                 return (
                     qe(t, r.a.Component),
-                    Me(t, [
+                    Le(t, [
                         {
                             key: "render",
                             value: function() {
@@ -3413,7 +3419,7 @@
                     }
                     return (
                         qe(t, r.a.Component),
-                        Me(t, [
+                        Le(t, [
                             {
                                 key: "componentWillMount",
                                 value: function() {
@@ -3551,7 +3557,7 @@
                     removed: null
                 }),
                 (He = Object(f.a)(He));
-            var We = (function(e) {
+            var Be = (function(e) {
                 function t() {
                     return (
                         De(this, t),
@@ -3566,7 +3572,7 @@
                 }
                 return (
                     qe(t, r.a.Component),
-                    Me(t, [
+                    Le(t, [
                         {
                             key: "render",
                             value: function() {
@@ -3578,7 +3584,7 @@
                                     i = t.get("required_" + a + "_approvals");
                                 return r.a.createElement(
                                     He,
-                                    Le({}, this.props, {
+                                    Me({}, this.props, {
                                         required: i,
                                         available: n,
                                         availableKeys: o,
@@ -3593,17 +3599,17 @@
                     t
                 );
             })();
-            (We.propTypes = {
+            (Be.propTypes = {
                 proposal: m.a.ChainObject.isRequired,
                 type: Q.a.string.isRequired,
                 globalObject: m.a.ChainObject.isRequired
             }),
-                (We.defaultProps = {
+                (Be.defaultProps = {
                     type: "active",
                     added: null,
                     globalObject: "2.0.0"
                 });
-            var Be = Object(f.a)(We),
+            var We = Object(f.a)(Be),
                 Ue =
                     Object.assign ||
                     function(e) {
@@ -3886,7 +3892,7 @@
                                                     className: "content-block",
                                                     style: {paddingRight: "20%"}
                                                 },
-                                                r.a.createElement(Be, {
+                                                r.a.createElement(We, {
                                                     expanded: !0,
                                                     proposal: t.get("id"),
                                                     type: a,
@@ -4452,7 +4458,7 @@
                                                     r.a.createElement(
                                                         "td",
                                                         null,
-                                                        r.a.createElement(Be, {
+                                                        r.a.createElement(We, {
                                                             proposal: a.proposal.get(
                                                                 "id"
                                                             ),
@@ -4863,7 +4869,7 @@
                     );
                 })(),
                 vt = a(107),
-                yt = (a(259), a(450), a(451), a(105)),
+                yt = (a(259), a(451), a(452), a(104)),
                 _t = a(335),
                 Et = a(35),
                 wt = a(18),
@@ -5375,7 +5381,7 @@
                 })),
                 Ct = (a(9), {}),
                 Nt = 6e4;
-            var St = a(391),
+            var St = a(392),
                 jt = a(229),
                 Pt =
                     Object.assign ||
@@ -5411,7 +5417,7 @@
                     ? e
                     : t;
             }
-            var Lt = (function(e) {
+            var Mt = (function(e) {
                 function t() {
                     var e, a, n;
                     !(function(e, t) {
@@ -5500,20 +5506,20 @@
                     t
                 );
             })();
-            Lt.propTypes = {
+            Mt.propTypes = {
                 duration: Q.a.number.isRequired,
                 offIcon: Q.a.string.isRequired,
                 onIcon: Q.a.string.isRequired,
                 title: Q.a.string.isRequired
             };
-            var Mt = Lt,
-                Dt = (a(260), a(133)),
+            var Lt = Mt,
+                Dt = (a(260), a(135)),
                 Rt = a.n(Dt),
-                qt = a(575),
+                qt = a(576),
                 Ft = a.n(qt),
-                Vt = a(576),
+                Vt = a(577),
                 Ht = a.n(Vt),
-                Wt =
+                Bt =
                     Object.assign ||
                     function(e) {
                         for (var t = 1; t < arguments.length; t++) {
@@ -5524,7 +5530,7 @@
                         }
                         return e;
                     },
-                Bt = (function() {
+                Wt = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -5586,7 +5592,7 @@
                 }
                 return (
                     Kt(t, r.a.Component),
-                    Bt(t, [
+                    Wt(t, [
                         {
                             key: "render",
                             value: function() {
@@ -5764,7 +5770,7 @@
                 }
                 return (
                     Kt(t, r.a.Component),
-                    Bt(t, [
+                    Wt(t, [
                         {
                             key: "render",
                             value: function() {
@@ -5777,7 +5783,7 @@
                                     });
                                 return r.a.createElement(
                                     Gt,
-                                    Wt(
+                                    Bt(
                                         {
                                             preferredAsset: this.props.settings.get(
                                                 "unit",
@@ -5815,7 +5821,7 @@
                     }
                     return (
                         Kt(t, r.a.Component),
-                        Bt(t, [
+                        Wt(t, [
                             {
                                 key: "render",
                                 value: function() {
@@ -5836,7 +5842,7 @@
                                         },
                                         r.a.createElement(
                                             Jt,
-                                            Wt({}, this.props, {
+                                            Bt({}, this.props, {
                                                 ref: this.props.refCallback
                                             })
                                         )
@@ -5847,9 +5853,10 @@
                         t
                     );
                 })(),
-                Yt = a(103),
+                Yt = a(102),
                 Zt = a(358),
-                Qt =
+                Qt = a(363),
+                $t =
                     Object.assign ||
                     function(e) {
                         for (var t = 1; t < arguments.length; t++) {
@@ -5860,7 +5867,7 @@
                         }
                         return e;
                     },
-                $t = (function() {
+                ea = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -5874,7 +5881,7 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            function ea(e, t, a) {
+            function ta(e, t, a) {
                 return (
                     t in e
                         ? Object.defineProperty(e, t, {
@@ -5887,11 +5894,11 @@
                     e
                 );
             }
-            function ta(e, t) {
+            function aa(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function aa(e, t) {
+            function na(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -5900,7 +5907,7 @@
                     ? e
                     : t;
             }
-            function na(e, t) {
+            function ra(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -5919,10 +5926,10 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var ra = (function(e) {
+            var oa = (function(e) {
                 function t(e) {
-                    ta(this, t);
-                    var a = aa(
+                    aa(this, t);
+                    var a = na(
                         this,
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                     );
@@ -6015,21 +6022,19 @@
                         }
                     }),
                     (a._renderBuy = function(e, t, n, o, i) {
-                        return "LLC" === e && i <= 1e5
+                        return "LLC" === e
                             ? r.a.createElement(
                                   "span",
                                   null,
+                                  a.state.isBridgeModalVisible
+                                      ? r.a.createElement(Qt.a, {
+                                            account: a.props.account
+                                        })
+                                      : null,
                                   r.a.createElement(
                                       "a",
-                                      {
-                                          onClick: a._showDepositWithdraw.bind(
-                                              a,
-                                              "bridge_modal",
-                                              n,
-                                              !1
-                                          )
-                                      },
-                                      r.a.createElement(Mt, {
+                                      {onClick: a.onShowModal},
+                                      r.a.createElement(Lt, {
                                           onIcon: "dollar",
                                           offIcon: "dollar-green",
                                           title: "icons.dollar.buy",
@@ -6038,28 +6043,7 @@
                                       })
                                   )
                               )
-                            : t && a.props.isMyAccount
-                                ? r.a.createElement(
-                                      "span",
-                                      null,
-                                      r.a.createElement(
-                                          "a",
-                                          {
-                                              onClick: a._showDepositWithdraw.bind(
-                                                  a,
-                                                  "bridge_modal",
-                                                  n,
-                                                  !1
-                                              )
-                                          },
-                                          r.a.createElement(J.a, {
-                                              name: "dollar",
-                                              title: "icons.dollar.buy",
-                                              className: "icon-14px"
-                                          })
-                                      )
-                                  )
-                                : o;
+                            : o;
                     }),
                     (a.state = {
                         sortKey: e.viewSettings.get(
@@ -6079,7 +6063,8 @@
                         withdrawAsset: null,
                         bridgeAsset: null,
                         alwaysShowAssets: ["LLC"],
-                        hide0balances: !1
+                        hide0balances: !1,
+                        isBridgeModalVisible: !1
                     }),
                     (a.qtyRefs = {}),
                     (a.priceRefs = {}),
@@ -6088,12 +6073,26 @@
                     a.sortFunctions))
                         a.sortFunctions[n] = a.sortFunctions[n].bind(a);
                     return (
-                        (a._handleFilterInput = a._handleFilterInput.bind(a)), a
+                        (a._handleFilterInput = a._handleFilterInput.bind(a)),
+                        (a.onShowModal = a.onShowModal.bind(a)),
+                        a
                     );
                 }
                 return (
-                    na(t, r.a.Component),
-                    $t(t, [
+                    ra(t, r.a.Component),
+                    ea(t, [
+                        {
+                            key: "onShowModal",
+                            value: function() {
+                                var e = this;
+                                this.setState(
+                                    {isBridgeModalVisible: !1},
+                                    function() {
+                                        e.setState({isBridgeModalVisible: !0});
+                                    }
+                                );
+                            }
+                        },
                         {
                             key: "_reserveButtonClick",
                             value: function(e, t) {
@@ -6459,7 +6458,7 @@
                                     o = this;
                                 n.preventDefault(),
                                     this.setState(
-                                        (ea(
+                                        (ta(
                                             (r = {}),
                                             "bridge_modal" === e
                                                 ? "bridgeAsset"
@@ -6468,7 +6467,7 @@
                                                     : "withdrawAsset",
                                             t
                                         ),
-                                        ea(r, "fiatModal", a),
+                                        ta(r, "fiatModal", a),
                                         r),
                                         function() {
                                             o.refs[e].show();
@@ -6535,7 +6534,7 @@
                                                       "a",
                                                       {
                                                           onClick: function() {
-                                                              M.a.hide(),
+                                                              L.a.hide(),
                                                                   n.refs[
                                                                       o
                                                                   ].show();
@@ -6668,18 +6667,18 @@
                                                 var P = !l.includes(a),
                                                     I = !!t.get("balance"),
                                                     T = !!u[a],
-                                                    L = Object(Yt.b)(
+                                                    M = Object(Yt.b)(
                                                         i.get("symbol"),
                                                         n.props.backedCoins
                                                     ),
-                                                    M =
-                                                        (L &&
-                                                            L.depositAllowed) ||
+                                                    L =
+                                                        (M &&
+                                                            M.depositAllowed) ||
                                                         "LLC" ==
                                                             i.get("symbol"),
                                                     D =
-                                                        L &&
-                                                        L.withdrawalAllowed &&
+                                                        M &&
+                                                        M.withdrawalAllowed &&
                                                         I &&
                                                         0 != t.get("balance"),
                                                     R = !!n.props.bridgeCoins.get(
@@ -6787,7 +6786,7 @@
                                                                         "column-hide-small"
                                                                 },
                                                                 r.a.createElement(
-                                                                    B,
+                                                                    W,
                                                                     {
                                                                         refCallback: function(
                                                                             e
@@ -6895,7 +6894,7 @@
                                                             r.a.createElement(
                                                                 "td",
                                                                 null,
-                                                                M
+                                                                L
                                                                     ? r.a.createElement(
                                                                           "span",
                                                                           null,
@@ -7751,7 +7750,7 @@
                                         )
                                     );
                                 var T = o.get("showAssetPercent", !1),
-                                    L = (this.props.backedCoins
+                                    M = (this.props.backedCoins
                                         .get("OPEN", [])
                                         .find(function(t) {
                                             return (
@@ -8360,7 +8359,7 @@
                                     "div",
                                     null,
                                     r.a.createElement(yt.a, {
-                                        items: L,
+                                        items: M,
                                         inner: !0
                                     }),
                                     r.a.createElement(
@@ -8388,7 +8387,10 @@
                                         ref: "settlement_modal",
                                         assetId: this.state.settleAsset,
                                         modalId: "settle_modal",
-                                        account: a
+                                        account: a,
+                                        onClose: function() {
+                                            e.refs.settlement_modal.onClose();
+                                        }
                                     })
                                 );
                             }
@@ -8397,12 +8399,12 @@
                     t
                 );
             })();
-            ra = Object(P.a)(ra, {propNames: ["core_asset"]});
-            var oa = (function(e) {
+            oa = Object(P.a)(oa, {propNames: ["core_asset"]});
+            var ia = (function(e) {
                 function t() {
                     return (
-                        ta(this, t),
-                        aa(
+                        aa(this, t),
+                        na(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -8412,14 +8414,14 @@
                     );
                 }
                 return (
-                    na(t, r.a.Component),
-                    $t(t, [
+                    ra(t, r.a.Component),
+                    ea(t, [
                         {
                             key: "render",
                             value: function() {
                                 return r.a.createElement(
                                     St.a,
-                                    Qt({}, this.props, {wrap: ra})
+                                    $t({}, this.props, {wrap: oa})
                                 );
                             }
                         }
@@ -8427,16 +8429,16 @@
                     t
                 );
             })();
-            t.default = oa;
+            t.default = ia;
         },
-        564: function(e, t, a) {
+        565: function(e, t, a) {
             "use strict";
             var n = a(63).a.isFinite;
             t.a = function(e) {
                 return "number" == typeof e && n(e);
             };
         },
-        575: function(e, t) {
+        576: function(e, t) {
             !(function(t) {
                 "object" == typeof e && e.exports
                     ? (e.exports = t)
@@ -9531,7 +9533,7 @@
                 );
             });
         },
-        576: function(e, t) {
+        577: function(e, t) {
             !(function(t) {
                 "object" == typeof e && e.exports
                     ? (e.exports = t)

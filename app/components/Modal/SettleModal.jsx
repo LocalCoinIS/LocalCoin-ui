@@ -53,7 +53,7 @@ class ModalContent extends React.Component {
         });
         return WalletDb.process_transaction(tr, null, true)
             .then(result => {
-                // console.log("asset settle result:", result);
+                console.log("asset settle result:", result);
                 // this.dispatch(account_id);
                 return true;
             })
@@ -170,7 +170,7 @@ class SettleModal extends React.Component {
                 ref="settlement_modal"
             >
                 <div className="grid-block vertical">
-                    <ModalContent />
+                    <ModalContent {...this.props} />
                 </div>
             </BaseModal>
         );

@@ -40,6 +40,7 @@ import AssetWrapper from "../../components/Utility/AssetWrapper";
 import ReserveAssetModal from "../../components/Modal/ReserveAssetModal";
 import BaseModal from "../../components/Modal/BaseModal";
 import ZfApi from "react-foundation-apps/src/utils/foundation-api";
+import LLCBridgeModal from "../../components/DepositWithdraw/llcgateway/LLCBridgeModal";
 
 class AccountOverview extends React.Component {
     constructor(props) {
@@ -66,7 +67,8 @@ class AccountOverview extends React.Component {
                 // "OPEN.STEEM",
                 // "OPEN.DASH"
             ],
-            hide0balances: false
+            hide0balances: false,
+            isBridgeModalVisible: false
         };
 
         this.qtyRefs = {};
@@ -77,6 +79,22 @@ class AccountOverview extends React.Component {
             this.sortFunctions[key] = this.sortFunctions[key].bind(this);
         }
         this._handleFilterInput = this._handleFilterInput.bind(this);
+        this.onShowModal = this.onShowModal.bind(this);
+    }
+
+    onShowModal() {
+        let self = this;
+
+        this.setState(
+            {
+                isBridgeModalVisible: false
+            },
+            function() {
+                self.setState({
+                    isBridgeModalVisible: true
+                });
+            }
+        );
     }
 
     _reserveButtonClick(assetId, e) {
@@ -266,18 +284,14 @@ class AccountOverview extends React.Component {
     }
 
     _renderBuy = (symbol, canBuy, assetName, emptyCell, balance) => {
-        if (symbol === "LLC" && balance <= 100000) {
+        if (symbol === "LLC") {
             // Precision of 5, 1 = 10^5
             return (
                 <span>
-                    <a
-                        onClick={this._showDepositWithdraw.bind(
-                            this,
-                            "bridge_modal",
-                            assetName,
-                            false
-                        )}
-                    >
+                    {this.state.isBridgeModalVisible ? (
+                        <LLCBridgeModal account={this.props.account} />
+                    ) : null}
+                    <a onClick={this.onShowModal}>
                         <PulseIcon
                             onIcon="dollar"
                             offIcon="dollar-green"
@@ -289,26 +303,7 @@ class AccountOverview extends React.Component {
                 </span>
             );
         } else {
-            return canBuy && this.props.isMyAccount ? (
-                <span>
-                    <a
-                        onClick={this._showDepositWithdraw.bind(
-                            this,
-                            "bridge_modal",
-                            assetName,
-                            false
-                        )}
-                    >
-                        <Icon
-                            name="dollar"
-                            title="icons.dollar.buy"
-                            className="icon-14px"
-                        />
-                    </a>
-                </span>
-            ) : (
-                emptyCell
-            );
+            return emptyCell;
         }
     };
 
@@ -1473,14 +1468,13 @@ class AccountOverview extends React.Component {
                 <div />
                 <SettleModal
                     id="settle_asset"
-                    ref={"settlement_modal"}
+                    ref="settlement_modal"
                     assetId={this.state.settleAsset}
-                    modalId={"settle_modal"}
+                    modalId="settle_modal"
                     account={account}
-
-                    // onClose={() => {
-                    //     this.refs.settlement_modal.onClose();
-                    // }}
+                    onClose={() => {
+                        this.refs.settlement_modal.onClose();
+                    }}
                 />
             </div>
         );
