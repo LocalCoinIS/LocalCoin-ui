@@ -1,7 +1,7 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
     [15],
     {
-        140: function(e, t, n) {
+        143: function(e, t, n) {
             "use strict";
             n.d(t, "b", function() {
                 return A;
@@ -327,7 +327,7 @@
             (C.propTypes = {balance: i.a.ChainObject.isRequired}),
                 (C = Object(l.a)(C, {keep_updating: !0}));
         },
-        4992: function(e, t, n) {
+        4993: function(e, t, n) {
             "use strict";
             n.r(t);
             var r = n(0),
@@ -348,7 +348,7 @@
                 g = n(6),
                 v = n(13),
                 O = n(17),
-                _ = n(140),
+                _ = n(143),
                 E = n(4),
                 k = (function() {
                     function e(e, t) {

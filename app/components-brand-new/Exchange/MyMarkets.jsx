@@ -784,7 +784,6 @@ class MyMarkets extends React.Component {
         const myMarketTab = activeTab === "my-market";
 
         let defaultBases = preferredBases.map(a => a);
-
         if (!myMarketTab) {
             preferredBases = preferredBases.clear();
             preferredBases = preferredBases.push(this.state.activeFindBase);
