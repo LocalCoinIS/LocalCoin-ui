@@ -1404,7 +1404,7 @@
                     ? e
                     : t;
             }
-            function H(e, t) {
+            function B(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -1423,7 +1423,7 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var B = (function(e) {
+            var H = (function(e) {
                 function t(e) {
                     return (
                         F(this, t),
@@ -1437,7 +1437,7 @@
                     );
                 }
                 return (
-                    H(t, D["b"]),
+                    B(t, D["b"]),
                     q(t, [
                         {
                             key: "componentDidMount",
@@ -1511,12 +1511,12 @@
                     t
                 );
             })();
-            (B.defaultProps = {
+            (H.defaultProps = {
                 fullPrecision: !1,
                 noDecimals: !1,
                 hide_asset: !1
             }),
-                (B = Object(P.a)(B, {
+                (H = Object(P.a)(H, {
                     propNames: ["quote", "base"],
                     defaultProps: {quote: "1.3.0"}
                 }));
@@ -1534,7 +1534,7 @@
                     );
                 }
                 return (
-                    H(t, r.a.Component),
+                    B(t, r.a.Component),
                     q(t, [
                         {
                             key: "render",
@@ -1552,7 +1552,7 @@
                                                     (a[n] = e[n]));
                                         return a;
                                     })(e, ["refCallback"]);
-                                return r.a.createElement(B, R({}, a, {ref: t}));
+                                return r.a.createElement(H, R({}, a, {ref: t}));
                             }
                         }
                     ]),
@@ -3393,7 +3393,7 @@
             }),
                 (Fe.defaultProps = {level: 0});
             var Ve = Object(f.a)(Fe),
-                He = (function(e) {
+                Be = (function(e) {
                     function t(e) {
                         De(this, t);
                         var a = Re(
@@ -3547,17 +3547,17 @@
                         t
                     );
                 })();
-            (He.propTypes = {
+            (Be.propTypes = {
                 required: m.a.ChainAccountsList,
                 available: m.a.ChainAccountsList
             }),
-                (He.defaultProps = {
+                (Be.defaultProps = {
                     type: "active",
                     added: null,
                     removed: null
                 }),
-                (He = Object(f.a)(He));
-            var Be = (function(e) {
+                (Be = Object(f.a)(Be));
+            var He = (function(e) {
                 function t() {
                     return (
                         De(this, t),
@@ -3583,7 +3583,7 @@
                                     o = t.get("available_key_approvals"),
                                     i = t.get("required_" + a + "_approvals");
                                 return r.a.createElement(
-                                    He,
+                                    Be,
                                     Me({}, this.props, {
                                         required: i,
                                         available: n,
@@ -3599,17 +3599,17 @@
                     t
                 );
             })();
-            (Be.propTypes = {
+            (He.propTypes = {
                 proposal: m.a.ChainObject.isRequired,
                 type: Q.a.string.isRequired,
                 globalObject: m.a.ChainObject.isRequired
             }),
-                (Be.defaultProps = {
+                (He.defaultProps = {
                     type: "active",
                     added: null,
                     globalObject: "2.0.0"
                 });
-            var We = Object(f.a)(Be),
+            var We = Object(f.a)(He),
                 Ue =
                     Object.assign ||
                     function(e) {
@@ -5518,8 +5518,8 @@
                 qt = a(576),
                 Ft = a.n(qt),
                 Vt = a(577),
-                Ht = a.n(Vt),
-                Bt =
+                Bt = a.n(Vt),
+                Ht =
                     Object.assign ||
                     function(e) {
                         for (var t = 1; t < arguments.length; t++) {
@@ -5576,7 +5576,7 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            Ft()(Rt.a.Highcharts), Ht()(Rt.a.Highcharts);
+            Ft()(Rt.a.Highcharts), Bt()(Rt.a.Highcharts);
             var Gt = (function(e) {
                 function t() {
                     return (
@@ -5783,7 +5783,7 @@
                                     });
                                 return r.a.createElement(
                                     Gt,
-                                    Bt(
+                                    Ht(
                                         {
                                             preferredAsset: this.props.settings.get(
                                                 "unit",
@@ -5842,7 +5842,7 @@
                                         },
                                         r.a.createElement(
                                             Jt,
-                                            Bt({}, this.props, {
+                                            Ht({}, this.props, {
                                                 ref: this.props.refCallback
                                             })
                                         )
@@ -5933,7 +5933,10 @@
                         this,
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                     );
-                    for (var n in ((a.sortFunctions = {
+                    for (var n in ((a.updateModal = function() {
+                        a.setState({isBridgeModalVisible: !1});
+                    }),
+                    (a.sortFunctions = {
                         qty: function(e, t, a) {
                             return Number(this.qtyRefs[e.key]) <
                                 Number(this.qtyRefs[t.key])
@@ -8360,7 +8363,8 @@
                                     null,
                                     r.a.createElement(yt.a, {
                                         items: M,
-                                        inner: !0
+                                        inner: !0,
+                                        updateModal: this.updateModal
                                     }),
                                     r.a.createElement(
                                         h.a,

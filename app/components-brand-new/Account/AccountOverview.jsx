@@ -97,6 +97,9 @@ class AccountOverview extends React.Component {
         );
     }
 
+    updateModal = () => {
+        this.setState({isBridgeModalVisible: false});
+    };
     _reserveButtonClick(assetId, e) {
         e.preventDefault();
         this.setState({reserve: assetId});
@@ -1452,7 +1455,11 @@ class AccountOverview extends React.Component {
         let settleRef = "settlement_modal";
         return (
             <div>
-                <Tabs items={items} inner={true} />
+                <Tabs
+                    items={items}
+                    inner={true}
+                    updateModal={this.updateModal}
+                />
                 <BaseModal id="reserve_asset" overlay={true}>
                     <br />
                     <div className="grid-block vertical">
