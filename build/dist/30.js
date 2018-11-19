@@ -8387,14 +8387,10 @@
                                     ),
                                     r.a.createElement("div", null),
                                     r.a.createElement(N, {
-                                        id: "settle_asset",
                                         ref: "settlement_modal",
-                                        assetId: this.state.settleAsset,
-                                        modalId: "settle_modal",
-                                        account: a,
-                                        onClose: function() {
-                                            e.refs.settlement_modal.onClose();
-                                        }
+                                        modalId: "settlement_modal",
+                                        asset: this.state.settleAsset,
+                                        account: a.get("name")
                                     })
                                 );
                             }

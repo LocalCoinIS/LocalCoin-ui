@@ -1474,14 +1474,10 @@ class AccountOverview extends React.Component {
                 </BaseModal>
                 <div />
                 <SettleModal
-                    id="settle_asset"
                     ref="settlement_modal"
-                    assetId={this.state.settleAsset}
-                    modalId="settle_modal"
-                    account={account}
-                    onClose={() => {
-                        this.refs.settlement_modal.onClose();
-                    }}
+                    modalId="settlement_modal"
+                    asset={this.state.settleAsset}
+                    account={account.get("name")}
                 />
             </div>
         );
