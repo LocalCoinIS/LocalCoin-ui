@@ -122,7 +122,7 @@
             (c.defaultProps = {component: "span", enterTimeout: 2e3}),
                 (t.a = c);
         },
-        129: function(e, t, a) {
+        130: function(e, t, a) {
             "use strict";
             a.d(t, "a", function() {
                 return I;
@@ -134,7 +134,7 @@
                 o = a.n(n),
                 r = a(1),
                 s = a.n(r),
-                i = a(122),
+                i = a(123),
                 c = a(152),
                 l = a(6),
                 u = a(13),
@@ -900,15 +900,15 @@
                         c = a(24),
                         l = a(1),
                         u = a.n(l),
-                        m = a(118),
+                        m = a(114),
                         h = a(105),
                         f = a(14),
-                        p = a(44),
+                        p = a(43),
                         d = a(5),
                         b = a(3),
                         _ = a.n(b),
                         v = a(39),
-                        g = a(129),
+                        g = a(130),
                         y = a(7),
                         E = a.n(y),
                         k = a(4),
@@ -1582,7 +1582,10 @@
                                                         _.a.translate("propose")
                                                     ),
                                                     ")"
-                                                ));
+                                                )),
+                                                console.log("-------------"),
+                                                console.log(e),
+                                                console.log("-------------");
                                             var j = this._getAvailableAssets(),
                                                 I = j.asset_types,
                                                 T = j.fee_asset_types,

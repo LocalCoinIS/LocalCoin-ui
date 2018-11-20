@@ -426,13 +426,17 @@ class Transfer extends React.Component {
             from_error = (
                 <span>
                     {counterpart.translate("account.errors.not_yours")}
-                    &nbsp;(<a onClick={this.onPropose.bind(this, true)}>
+                    &nbsp;(
+                    <a onClick={this.onPropose.bind(this, true)}>
                         {counterpart.translate("propose")}
-                    </a>)
+                    </a>
+                    )
                 </span>
             );
         }
-
+        console.log("-------------");
+        console.log(from_error);
+        console.log("-------------");
         let {asset_types, fee_asset_types} = this._getAvailableAssets();
         let balance = null;
 
@@ -462,7 +466,8 @@ class Transfer extends React.Component {
                         <Translate
                             component="span"
                             content="transfer.available"
-                        />:{" "}
+                        />
+                        :{" "}
                         <BalanceComponent
                             balance={account_balances[current_asset_id]}
                         />
@@ -547,7 +552,9 @@ class Transfer extends React.Component {
                                 asset={
                                     asset_types.length > 0 && asset
                                         ? asset.get("id")
-                                        : asset_id ? asset_id : asset_types[0]
+                                        : asset_id
+                                            ? asset_id
+                                            : asset_types[0]
                                 }
                                 assets={asset_types}
                                 display_balance={balance}
@@ -726,15 +733,18 @@ class Transfer extends React.Component {
     }
 }
 
-export default connect(Transfer, {
-    listenTo() {
-        return [AccountStore];
-    },
-    getProps() {
-        return {
-            currentAccount: AccountStore.getState().currentAccount,
-            passwordAccount: AccountStore.getState().passwordAccount,
-            contactsList: AccountStore.getState().accountContacts
-        };
+export default connect(
+    Transfer,
+    {
+        listenTo() {
+            return [AccountStore];
+        },
+        getProps() {
+            return {
+                currentAccount: AccountStore.getState().currentAccount,
+                passwordAccount: AccountStore.getState().passwordAccount,
+                contactsList: AccountStore.getState().accountContacts
+            };
+        }
     }
-});
+);

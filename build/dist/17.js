@@ -976,7 +976,7 @@
             (N.defaultProps = {assets: {}}),
                 (N.propTypes = {assets: u.a.object.isRequired});
             var T = N,
-                U = a(123),
+                U = a(124),
                 I = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {

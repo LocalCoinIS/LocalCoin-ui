@@ -1740,7 +1740,7 @@
                     propNames: ["coreAsset"],
                     withDynamic: !0
                 })),
-                Q = n(123),
+                Q = n(124),
                 V = (function() {
                     function e(e, t) {
                         for (var n = 0; n < t.length; n++) {
