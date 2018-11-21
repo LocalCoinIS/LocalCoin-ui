@@ -460,9 +460,9 @@ class BuySell extends React.Component {
                                         keys={[
                                             {
                                                 type: "asset",
-                                                value: this.props.base.get(
-                                                    "symbol"
-                                                ),
+                                                value: this.props[
+                                                    isBid ? "quote" : "base"
+                                                ].get("symbol"),
                                                 arg: "asset"
                                             },
                                             {

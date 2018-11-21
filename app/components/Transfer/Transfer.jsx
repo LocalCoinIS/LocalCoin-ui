@@ -434,9 +434,7 @@ class Transfer extends React.Component {
                 </span>
             );
         }
-        console.log("-------------");
-        console.log(from_error);
-        console.log("-------------");
+
         let {asset_types, fee_asset_types} = this._getAvailableAssets();
         let balance = null;
 

@@ -503,6 +503,7 @@ class SendModal extends React.Component {
     }
 
     onPropose(e) {
+        e.preventDefault();
         let {
             propose,
             orig_account,
@@ -511,7 +512,6 @@ class SendModal extends React.Component {
             from_account,
             from_name
         } = this.state;
-        e.preventDefault();
 
         if (!to_account || !to_name || to_name == from_name) return;
 
@@ -569,6 +569,14 @@ class SendModal extends React.Component {
         this.setState({
             activeTab: tab
         });
+
+        if (tab === "send-tab") {
+            document.querySelector(".send-tab").classList.add("active");
+            document.querySelector(".transfer-tab").classList.remove("active");
+        } else {
+            document.querySelector(".transfer-tab").classList.add("active");
+            document.querySelector(".send-tab").classList.remove("active");
+        }
     }
 
     render() {
@@ -601,16 +609,14 @@ class SendModal extends React.Component {
                 <span>
                     {counterpart.translate("account.errors.not_yours")}
                     &nbsp;(
-                    <a onClick={this.onPropose.bind(this, true)}>
+                    <a onClick={this.onPropose.bind(this)}>
                         {counterpart.translate("propose")}
                     </a>
                     )
                 </span>
             );
         }
-        console.log("-------------");
-        console.log(from_error);
-        console.log("-------------");
+
         let {asset_types, fee_asset_types} = this._getAvailableAssets();
         let balance = null;
         let balance_fee = null;
@@ -727,7 +733,7 @@ class SendModal extends React.Component {
                                     }}
                                 >
                                     <span
-                                        className="send-tab"
+                                        className="send-tab active"
                                         onClick={this._changeTab.bind(
                                             this,
                                             "send-tab"
@@ -760,7 +766,7 @@ class SendModal extends React.Component {
                                     }}
                                 >
                                     <span
-                                        className="send-tab"
+                                        className="send-tab active"
                                         onClick={this._changeTab.bind(
                                             this,
                                             "send-tab"

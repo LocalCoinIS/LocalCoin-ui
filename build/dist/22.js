@@ -6382,7 +6382,11 @@
                                                                       {
                                                                           type:
                                                                               "asset",
-                                                                          value: this.props.base.get(
+                                                                          value: this.props[
+                                                                              X
+                                                                                  ? "quote"
+                                                                                  : "base"
+                                                                          ].get(
                                                                               "symbol"
                                                                           ),
                                                                           arg:

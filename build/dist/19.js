@@ -1582,10 +1582,7 @@
                                                         _.a.translate("propose")
                                                     ),
                                                     ")"
-                                                )),
-                                                console.log("-------------"),
-                                                console.log(e),
-                                                console.log("-------------");
+                                                ));
                                             var j = this._getAvailableAssets(),
                                                 I = j.asset_types,
                                                 T = j.fee_asset_types,

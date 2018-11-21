@@ -330,6 +330,11 @@ form.full-width {
     .account-selector .error-area {
         display: none;
     }
+
+    .transfer-form .account-selector .error-area {
+        position: static;
+        display: block;
+    }
 }
 
 button.red,
