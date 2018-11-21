@@ -2,7 +2,7 @@ Please work off the staging branch and make pull requests to that branch. The ma
 
 The Localcoin UI team is supported by this [worker proposal](http://www.bitshares.foundation/workers/2017-08-bill-butler). It provides the funds needed to pay the coordinator and the bounties and the Localcoin Foundation.
 
-If you would like to get involved, we have a [Telegram chatroom](https://t.me/LocalCoinIS) where you can ask questions and get help. You may also join [LocalCoin on Discord](https://discord.gg/)
+If you would like to get involved, we have a [Telegram chatroom](https://t.me/LocalCoinIS) where you can ask questions and get help. You may also join [LocalCoin on Discord](https://discord.gg/vkVzbfj)
 
 - Coordinator: Bill Butler, @billbutler
 - Lead Developer: Sigve Kvalsvik, @sigvek

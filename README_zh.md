@@ -86,7 +86,7 @@ __Mac__
 
 Localcoin UI 团队由[这个工作提案](http://www.bitshares.foundation/workers/2017-08-bill-butler)支持。此提案提供用来支付协调者、赏金和本地硬币基金的资金。
 
-如果你想参与贡献，可以加入 [Telegram 群组](https://t.me/LocalCoinIS)进行提问并获取帮助。你也可以加入 [Discord 服务器](https://discord.gg/)。
+如果你想参与贡献，可以加入 [Telegram 群组](https://t.me/LocalCoinIS)进行提问并获取帮助。你也可以加入 [Discord 服务器](https://discord.gg/vkVzbfj)。
 
 - 协调者: Bill Butler, @billbutler
 - 主开发者: Sigve Kvalsvik, @sigvek
