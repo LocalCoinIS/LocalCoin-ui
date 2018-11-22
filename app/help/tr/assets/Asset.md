@@ -19,7 +19,7 @@ paylaştırılır. Ağımız {networkFee}% pay alırken, {account} adlı hesabı
 {account} adlı hesabın kayıt işlem ücretini ödeyen hesabın adı _kayıtçı_dır. Kayıtçı geri kalan
 {referrerTotalFee}% miktarı kendileri ve _Bağlı Getirici_ arasında nasıl pay edileceğini kendi belirler.
 
-{account} adlı hesabın kayıtçısı toplam ücretin {referrerFee}% kadarki kısmını _[Bağlı Getirici](https://how.localcoin.is/en/latest/user_guide/accounts/referral.html)_ yle paylaşmayı ve {registrarFee}% kadarki kısmını kendine bırakmayı tercih etti.
+{account} adlı hesabın kayıtçısı toplam ücretin {referrerFee}% kadarki kısmını [Bağlı Getirici](https://how.localcoin.is/en/latest/user_guide/accounts/referral.html) yle paylaşmayı ve {registrarFee}% kadarki kısmını kendine bırakmayı tercih etti.
 
 
 #### Bekleyen Ücretler

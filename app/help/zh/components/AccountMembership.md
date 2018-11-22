@@ -11,7 +11,7 @@
 #### 手续费分配
 每次 {account} 支付交易手续费时，该手续费将分配给多个不同账户。网络将收取 {networkFee}%，引荐 {account} 的推荐人账户将获得 {lifetimeFee}%。
 
-_注册人账户_ 是在 {account} 注册时代其支付注册费的账户。注册人账户可自行决定剩余的 {referrerTotalFee}% 手续费如何在它自己及它的 _[合作推荐人](https://how.localcoin.is/en/latest/user_guide/accounts/referral.html)_ 之间分配。
+_注册人账户_ 是在 {account} 注册时代其支付注册费的账户。注册人账户可自行决定剩余的 {referrerTotalFee}% 手续费如何在它自己及它的 [合作推荐人](https://how.localcoin.is/en/latest/user_guide/accounts/referral.html) 之间分配。
 
 {account}的注册人账户决定与它的_合作推荐人_分享{referrerFee}%手续费，自己保留{registrarFee}%。
 

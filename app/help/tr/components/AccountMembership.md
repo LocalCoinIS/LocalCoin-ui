@@ -9,6 +9,7 @@ sadece {price}dir.
 
 Eğer ömür-boyu üyelik fazla geliyorsa,  {price} miktarında bir ücret karşılığında bir  
 yıllığına abone olarak gelecek yıl için {feesCashback}% para iadesi alabilirsiniz.
+![GitHub Logo](/images/logo.png)
 
 [# fee-division]
 #### Ücret Paylaşımı
@@ -18,7 +19,7 @@ paylaştırılır. Ağımız {networkFee}% pay alırken, {account} adlı hesabı
 {account} adlı hesabın kayıt işlem ücretini ödeyen hesabın adı _kayıtçı_dır. Kayıtçı geri kalan
 {referrerTotalFee}% miktarı kendileri ve _Bağlı Getirici_ arasında nasıl pay edileceğini kendi belirler.
 
-{account} adlı hesabın kayıtçısı toplam ücretin {referrerFee}% kadarki kısmını _Bağlı Getirici[Bağlı Getirici](https://how.localcoin.iss/en/latest/user_guide/accounts/referral.html)_ yle paylaşmayı ve {registrarFee}% kadarki kısmını kendine bırakmayı tercih etti.
+{account} adlı hesabın kayıtçısı toplam ücretin {referrerFee}% kadarki kısmını [Bağlı Getirici](https://how.localcoin.is/en/latest/user_guide/accounts/referral.html) yle paylaşmayı ve {registrarFee}% kadarki kısmını kendine bırakmayı tercih etti.
 
 
 #### Bekleyen Ücretler
