@@ -177,9 +177,6 @@ class WalletUnlockModal extends React.Component {
         );
 
         if (WalletDb.isLocked()) {
-            console.log("====================================");
-            console.log("this place");
-            console.log("====================================");
             const hiddenPassError = document.getElementById(
                 "custom-error-password"
             );
@@ -191,7 +188,10 @@ class WalletUnlockModal extends React.Component {
                 password_input.clear();
             } else {
                 password_input.value = "";
-                if (cloudMode) AccountActions.setPasswordAccount(account);
+                if (cloudMode) {
+                    AccountActions.setPasswordAccount(account);
+                    AccountStore.tryToSetCurrentAccount();
+                }
             }
             WalletUnlockActions.change();
             if (stopAskingForBackup) WalletActions.setBackupDate();
@@ -233,7 +233,6 @@ class WalletUnlockModal extends React.Component {
         if (e) e.preventDefault();
         const {passwordLogin, backup} = this.props;
         const {walletSelected, accountName} = this.state;
-
         if (!passwordLogin && !walletSelected) {
             this.setState({
                 customError: counterpart.translate(

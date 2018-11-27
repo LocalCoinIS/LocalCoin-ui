@@ -2,15 +2,16 @@ import {ChainStore} from "bitsharesjs/es";
 
 class LLCGatewayData {
     getBaseUrl() {
-        // if (window.location.host == "localhost:8080")
-        //     return "http://localhost:8081/LLCGatewayWCF/";
-
-        return "http://194.63.140.239:8081/LLCGatewayWCF/";
+        return "https://llcgateway.localcoin.is/";
     }
 
     getAllowCurrency(cb) {
         this.ajax(cb, "GetAllowCurrency");
     }
+
+    getPairsCourse = function(cb) {
+        this.ajax(cb, "GetPairsCourse");
+    };
 
     сreatePaymentAddress(account, asset, mode, cb) {
         this.ajax(
@@ -35,10 +36,8 @@ class LLCGatewayData {
 
     ajax(cb, action, params) {
         if (typeof params === "undefined") params = null;
-
-        let url = this.getBaseUrl() + action;
-
-        if (params) url += "?" + this.encodeQueryData(params);
+        let url = this.getBaseUrl() + "?methodnameaction=" + action;
+        if (params) url += "&" + this.encodeQueryData(params);
 
         fetch(url)
             .then(res => {
@@ -56,7 +55,7 @@ class LLCGatewayData {
 
     precisionToCoef(precision) {
         let val = "1";
-        for(let i = 0; i < precision; i++) val += "0";
+        for (let i = 0; i < precision; i++) val += "0";
 
         return parseInt(val);
     }

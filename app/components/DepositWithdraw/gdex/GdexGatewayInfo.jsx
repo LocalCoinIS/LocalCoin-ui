@@ -142,13 +142,13 @@ class GdexGatewayInfo extends React.Component {
         try {
             if (this.state.clipboardText)
                 e.clipboardData.setData("text/plain", this.state.clipboardText);
-            else
-                e.clipboardData.setData(
-                    "text/plain",
-                    counterpart
-                        .translate("gateway.use_copy_button")
-                        .toUpperCase()
-                );
+            // else
+            //     e.clipboardData.setData(
+            //         "text/plain",
+            //         counterpart
+            //             .translate("gateway.use_copy_button")
+            //             .toUpperCase()
+            //     );
             e.preventDefault();
         } catch (err) {
             console.error(err);
@@ -288,7 +288,8 @@ class GdexGatewayInfo extends React.Component {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <Translate content="gateway.balance" />:
+                                            <Translate content="gateway.balance" />
+                                            :
                                         </td>
                                         <td
                                             style={{
@@ -319,7 +320,8 @@ class GdexGatewayInfo extends React.Component {
                             <Translate
                                 content="gateway.deposit_to"
                                 asset={coin.outerSymbol}
-                            />:
+                            />
+                            :
                         </label>
                         <p style={{color: "red"}}>
                             <Translate
@@ -340,7 +342,8 @@ class GdexGatewayInfo extends React.Component {
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <Translate content="gateway.address" />:
+                                            <Translate content="gateway.address" />
+                                            :
                                         </td>
                                         <td>{deposit_address_fragment}</td>
                                         <td>
@@ -370,7 +373,8 @@ class GdexGatewayInfo extends React.Component {
                                     {memoText ? (
                                         <tr>
                                             <td>
-                                                <Translate content="gateway.memo" />:
+                                                <Translate content="gateway.memo" />
+                                                :
                                             </td>
                                             <td>{memoText}</td>
                                             <td>
@@ -473,7 +477,8 @@ class GdexGatewayInfo extends React.Component {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <Translate content="gateway.balance" />:
+                                            <Translate content="gateway.balance" />
+                                            :
                                         </td>
                                         <td
                                             style={{
@@ -504,7 +509,8 @@ class GdexGatewayInfo extends React.Component {
                             <Translate
                                 content="gateway.withdraw_to"
                                 asset={this.props.deposit_asset}
-                            />:
+                            />
+                            :
                         </label>
                         <div className="button-group" style={{paddingTop: 20}}>
                             <button

@@ -13,10 +13,10 @@ import counterpart from "counterpart";
 
 const autoSelectAPI = "wss://fake.automatic-selection.com";
 const testnetAPI = settingsAPIs.WS_NODE_LIST.find(
-    a => a.url.indexOf("node.testnet.bitshares.eu") !== -1
+    a => a.url.indexOf("node.testnet.localcoin.is") !== -1
 );
 const testnetAPI2 = settingsAPIs.WS_NODE_LIST.find(
-    a => a.url.indexOf("testnet.nodes.bitshares.ws") !== -1
+    a => a.url.indexOf("testnet.nodes.Localcoin.is") !== -1
 );
 
 /**

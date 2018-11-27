@@ -1,10 +1,10 @@
 # Voting
 
-> Voting is important in Bitshares in the same way it is important to the community in which you live. The weight of your vote is directly correlated to the number of LLC you own. If you aren't heavily involved in the community, you are encouraged to choose a proxy who represents your interests. If you would like to be more involved in the community, check out these [channels](/help/introduction/bitshares).
+> Voting is important in Localcoin in the same way it is important to the community in which you live. The weight of your vote is directly correlated to the number of LLC you own. If you aren't heavily involved in the community, you are encouraged to choose a proxy who represents your interests. If you would like to be more involved in the community, check out these [channels](/help/introduction/localcoin).
 
 ## Proxy
 
-You may choose to **not** be active in the governance of Bitshares. If this is the case, it's important that you choose someone in the Bitshares community who you identify with and set that entity as your proxy. This gives them to the power to vote on your behalf with your LLC shares backing their vote. This is similar to electing a representative.
+You may choose to **not** be active in the governance of Localcoin. If this is the case, it's important that you choose someone in the Localcoin community who you identify with and set that entity as your proxy. This gives them to the power to vote on your behalf with your LLC shares backing their vote. This is similar to electing a representative.
 
 ## Witnesses
 
@@ -14,12 +14,12 @@ Witnesses are entities that work for the blockchain by constructing new blocks. 
 
 Who exactly is allowed to *produce* a block at which time instant is defined by a
 consensus mechanism called *Delegated Proof of Stake*. In essence, you, the
-shareholders of BitShares can cast a vote for your preferred block producers on the blockchain. Those *witnesses* with the most votes are allowed to produce blocks.
+shareholders of LocalCoin can cast a vote for your preferred block producers on the blockchain. Those *witnesses* with the most votes are allowed to produce blocks.
 
 
 ## Committee
 
-The committee is a set of entities that are approved by the shareholders and set policy for the Bitshares blockchain including:
+The committee is a set of entities that are approved by the shareholders and set policy for the Localcoin blockchain including:
 
 * Transaction and trading fees
 * Blockchain parameters, such as block size, block interval
@@ -50,4 +50,3 @@ Workers receive pay from a fixed daily budget on a first-come, first-serve basis
 * 5 worker proposals with a positive votes total, with daily pay requests of 100k LLC each
 
 Now the four workers with the most votes will all receive 100k LLC each per day, but once they've been paid the worker budget is empty. Therefore the fifth worker will receive nothing.
-

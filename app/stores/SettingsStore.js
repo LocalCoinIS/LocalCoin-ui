@@ -200,9 +200,18 @@ class SettingsStore {
                 ]
             };
 
-            let bases = {};
+            let bases = {
+                markets_4018d784: getMyMarketsBases(),
+                markets_39f5e2ed: [
+                    // TESTNET
+                    "TEST"
+                ]
+            };
 
-            let coreAssets = {};
+            let coreAssets = {
+                markets_4018d784: "BTS",
+                markets_39f5e2ed: "TEST"
+            };
             let coreAsset = coreAssets[this.starredKey] || "LLC";
             this.defaults.unit[0] = coreAsset;
 

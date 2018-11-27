@@ -240,9 +240,8 @@ class ImportKeys extends Component {
                                 filter_status[
                                     filter_status.length - 1
                                 ] = status;
-                            else
-                                // new account
-                                filter_status.push(status);
+                            // new account
+                            else filter_status.push(status);
                         }
                         update_state({genesis_filter_status: filter_status});
                     });
@@ -252,7 +251,7 @@ class ImportKeys extends Component {
     }
 
     /**
-    LLC 1.0 hosted wallet backup (wallet.bitshares.org) is supported.
+    LLC 1.0 hosted wallet backup (wallet.localcoin.is) is supported.
 
     LLC 1.0 native wallets should use wallet_export_keys instead of a wallet backup.
 
@@ -684,7 +683,7 @@ class ImportKeys extends Component {
                                     <span>
                                         Filtering{" "}
                                         {Math.round(
-                                            status.count / status.total * 100
+                                            (status.count / status.total) * 100
                                         )}{" "}
                                         %{" "}
                                     </span>
@@ -743,9 +742,11 @@ class ImportKeys extends Component {
                     {!import_ready ? null : (
                         <span>
                             {" "}
-                            (<a onClick={this.reset.bind(this)}>
+                            (
+                            <a onClick={this.reset.bind(this)}>
                                 <Translate content="wallet.reset" />
-                            </a>)
+                            </a>
+                            )
                         </span>
                     )}
                 </div>
@@ -811,13 +812,15 @@ class ImportKeys extends Component {
                                             <Translate content="wallet.bts_09_export" />
                                             {this.state.no_file ? null : (
                                                 <span>
-                                                    &nbsp; (<a
+                                                    &nbsp; (
+                                                    <a
                                                         onClick={this.reset.bind(
                                                             this
                                                         )}
                                                     >
                                                         Reset
-                                                    </a>)
+                                                    </a>
+                                                    )
                                                 </span>
                                             )}
                                         </label>
@@ -941,15 +944,18 @@ class ImportKeys extends Component {
     }
 }
 
-ImportKeys = connect(ImportKeys, {
-    listenTo() {
-        return [ImportKeysStore];
-    },
-    getProps() {
-        return {
-            importing: ImportKeysStore.getState().importing
-        };
+ImportKeys = connect(
+    ImportKeys,
+    {
+        listenTo() {
+            return [ImportKeysStore];
+        },
+        getProps() {
+            return {
+                importing: ImportKeysStore.getState().importing
+            };
+        }
     }
-});
+);
 
 export default ImportKeys;

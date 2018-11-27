@@ -18,7 +18,7 @@ const MSG_DATE = "timestamp";
  *    - Verify a given message
  *
  *  The message format that is underlying is as follows:
- *  -----BEGIN BITSHARES SIGNED MESSAGE-----
+ *  -----BEGIN LOCALCOIN SIGNED MESSAGE-----
  *  <message from the account>
  *  -----BEGIN META-----
  *  account=<account name>
@@ -27,7 +27,7 @@ const MSG_DATE = "timestamp";
  *  timestamp=<current time>
  *  -----BEGIN SIGNATURE-----
  *  <signature>
- *  -----END BITSHARES SIGNED MESSAGE-----
+ *  -----END LOCALCOIN SIGNED MESSAGE-----
  *
  *    @author Stefan Schiessl <stefan.schiessl@blockchainprojectsbv.com>
  */
@@ -42,7 +42,7 @@ class SignedMessageAction {
      *              meta : Dictionary with the meta data
      *                      account : Account name of the signer
      *                      key : Memo public key of the signer
-     *                      block : Current last irreversible block of the bitShares blockchain
+     *                      block : Current last irreversible block of the LocalCoin blockchain
      *                      timestamp : Time the message was signed in UTC format
      *              signed : Seperate string that contains all data that will be signed (content + meta)
      *              signature : Signature of the signed data

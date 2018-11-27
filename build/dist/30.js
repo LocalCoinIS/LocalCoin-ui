@@ -1,3579 +1,14 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
     [30],
     {
-        111: function(e, t, a) {
-            "use strict";
-            var n = a(0),
-                r = a.n(n),
-                o = a(502),
-                s = a.n(o),
-                i = (function() {
-                    function e(e, t) {
-                        for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
-                        }
-                    }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
-                    };
-                })();
-            var l = (function(e) {
-                function t() {
-                    !(function(e, t) {
-                        if (!(e instanceof t))
-                            throw new TypeError(
-                                "Cannot call a class as a function"
-                            );
-                    })(this, t);
-                    var e = (function(e, t) {
-                        if (!e)
-                            throw new ReferenceError(
-                                "this hasn't been initialised - super() hasn't been called"
-                            );
-                        return !t ||
-                            ("object" != typeof t && "function" != typeof t)
-                            ? e
-                            : t;
-                    })(
-                        this,
-                        (t.__proto__ || Object.getPrototypeOf(t)).call(this)
-                    );
-                    return (e.state = {animateEnter: !1}), (e.timer = null), e;
-                }
-                return (
-                    (function(e, t) {
-                        if ("function" != typeof t && null !== t)
-                            throw new TypeError(
-                                "Super expression must either be null or a function, not " +
-                                    typeof t
-                            );
-                        (e.prototype = Object.create(t && t.prototype, {
-                            constructor: {
-                                value: e,
-                                enumerable: !1,
-                                writable: !0,
-                                configurable: !0
-                            }
-                        })),
-                            t &&
-                                (Object.setPrototypeOf
-                                    ? Object.setPrototypeOf(e, t)
-                                    : (e.__proto__ = t));
-                    })(t, r.a.Component),
-                    i(t, [
-                        {
-                            key: "componentDidMount",
-                            value: function() {
-                                this.enableAnimation();
-                            }
-                        },
-                        {
-                            key: "resetAnimation",
-                            value: function() {
-                                this.setState({animateEnter: !1}),
-                                    this.enableAnimation();
-                            }
-                        },
-                        {
-                            key: "enableAnimation",
-                            value: function() {
-                                var e = this;
-                                this.timer = setTimeout(function() {
-                                    e.timer && e.setState({animateEnter: !0});
-                                }, 2e3);
-                            }
-                        },
-                        {
-                            key: "componentWillUnmount",
-                            value: function() {
-                                clearTimeout(this.timer), (this.timer = null);
-                            }
-                        },
-                        {
-                            key: "render",
-                            value: function() {
-                                return this.props.children
-                                    ? r.a.createElement(
-                                          s.a,
-                                          {
-                                              className: this.props.className,
-                                              component: this.props.component,
-                                              transitionName: this.props
-                                                  .transitionName,
-                                              transitionEnterTimeout: this.props
-                                                  .enterTimeout,
-                                              transitionEnter: this.state
-                                                  .animateEnter,
-                                              transitionLeave: !1
-                                          },
-                                          this.props.children
-                                      )
-                                    : r.a.createElement(this.props.component);
-                            }
-                        }
-                    ]),
-                    t
-                );
-            })();
-            (l.defaultProps = {component: "span", enterTimeout: 2e3}),
-                (t.a = l);
-        },
-        139: function(e, t, a) {
-            "use strict";
-            a.d(t, "b", function() {
-                return x;
-            }),
-                a.d(t, "a", function() {
-                    return N;
-                });
-            var n = a(0),
-                r = a.n(n),
-                o = a(17),
-                s = a(6),
-                i = a(13),
-                l = a(50),
-                c = a(5),
-                u = a(15),
-                p = a(31),
-                d = a(1),
-                h = a.n(d),
-                m = a(3),
-                f = a.n(m),
-                b = a(47),
-                g = a.n(b),
-                v = a(271),
-                _ = a(42),
-                y =
-                    Object.assign ||
-                    function(e) {
-                        for (var t = 1; t < arguments.length; t++) {
-                            var a = arguments[t];
-                            for (var n in a)
-                                Object.prototype.hasOwnProperty.call(a, n) &&
-                                    (e[n] = a[n]);
-                        }
-                        return e;
-                    },
-                E = (function() {
-                    function e(e, t) {
-                        for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
-                        }
-                    }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
-                    };
-                })();
-            function w(e, t) {
-                var a = {};
-                for (var n in e)
-                    t.indexOf(n) >= 0 ||
-                        (Object.prototype.hasOwnProperty.call(e, n) &&
-                            (a[n] = e[n]));
-                return a;
-            }
-            function k(e, t) {
-                if (!(e instanceof t))
-                    throw new TypeError("Cannot call a class as a function");
-            }
-            function O(e, t) {
-                if (!e)
-                    throw new ReferenceError(
-                        "this hasn't been initialised - super() hasn't been called"
-                    );
-                return !t || ("object" != typeof t && "function" != typeof t)
-                    ? e
-                    : t;
-            }
-            function A(e, t) {
-                if ("function" != typeof t && null !== t)
-                    throw new TypeError(
-                        "Super expression must either be null or a function, not " +
-                            typeof t
-                    );
-                (e.prototype = Object.create(t && t.prototype, {
-                    constructor: {
-                        value: e,
-                        enumerable: !1,
-                        writable: !0,
-                        configurable: !0
-                    }
-                })),
-                    t &&
-                        (Object.setPrototypeOf
-                            ? Object.setPrototypeOf(e, t)
-                            : (e.__proto__ = t));
-            }
-            var C = (function(e) {
-                function t(e) {
-                    return (
-                        k(this, t),
-                        O(
-                            this,
-                            (t.__proto__ || Object.getPrototypeOf(t)).call(
-                                this,
-                                e
-                            )
-                        )
-                    );
-                }
-                return (
-                    A(t, v["a"]),
-                    E(t, [
-                        {
-                            key: "componentDidMount",
-                            value: function() {
-                                g.a.rebuild();
-                            }
-                        },
-                        {
-                            key: "shouldComponentUpdate",
-                            value: function(e) {
-                                return (
-                                    (function e(t, a, n) {
-                                        null === t && (t = Function.prototype);
-                                        var r = Object.getOwnPropertyDescriptor(
-                                            t,
-                                            a
-                                        );
-                                        if (void 0 === r) {
-                                            var o = Object.getPrototypeOf(t);
-                                            return null === o
-                                                ? void 0
-                                                : e(o, a, n);
-                                        }
-                                        if ("value" in r) return r.value;
-                                        var s = r.get;
-                                        return void 0 !== s
-                                            ? s.call(n)
-                                            : void 0;
-                                    })(
-                                        t.prototype.__proto__ ||
-                                            Object.getPrototypeOf(t.prototype),
-                                        "shouldComponentUpdate",
-                                        this
-                                    ).call(this, e) ||
-                                    !c.a.are_equal_shallow(
-                                        e.pulsate,
-                                        this.props.pulsate
-                                    ) ||
-                                    e.toAsset !== this.props.toAsset ||
-                                    e.fromAsset !== this.props.fromAsset ||
-                                    e.amount !== this.props.amount
-                                );
-                            }
-                        },
-                        {
-                            key: "getValue",
-                            value: function() {
-                                var e = this.props,
-                                    t = e.amount,
-                                    a = e.toAsset,
-                                    n = e.fromAsset,
-                                    r = e.fullPrecision,
-                                    o = e.marketStats,
-                                    s = e.coreAsset;
-                                return _.a.convertValue(t, a, n, o, s, r);
-                            }
-                        },
-                        {
-                            key: "render",
-                            value: function() {
-                                var e = this.props,
-                                    t = e.amount,
-                                    a = e.toAsset,
-                                    n = e.fromAsset,
-                                    s = e.fullPrecision,
-                                    i = w(e, [
-                                        "amount",
-                                        "toAsset",
-                                        "fromAsset",
-                                        "fullPrecision"
-                                    ]),
-                                    l = a.get("id"),
-                                    u = a.get("symbol");
-                                s || (t = c.a.get_asset_amount(t, n));
-                                var p = this.getValue();
-                                return p || 0 === p
-                                    ? r.a.createElement(
-                                          o.a,
-                                          y(
-                                              {
-                                                  noPrefix: !0,
-                                                  amount: p,
-                                                  asset: l,
-                                                  decimalOffset:
-                                                      -1 !== u.indexOf("BTC")
-                                                          ? 4
-                                                          : this.props
-                                                                .fullDecimals
-                                                              ? 0
-                                                              : this.props
-                                                                    .noDecimals
-                                                                  ? a.get(
-                                                                        "precision"
-                                                                    )
-                                                                  : a.get(
-                                                                        "precision"
-                                                                    ) - 2
-                                              },
-                                              i
-                                          )
-                                      )
-                                    : r.a.createElement(
-                                          "div",
-                                          {
-                                              className: "tooltip inline-block",
-                                              "data-place": "bottom",
-                                              "data-tip": f.a.translate(
-                                                  "tooltip.no_price"
-                                              ),
-                                              style: {fontSize: "0.9rem"}
-                                          },
-                                          r.a.createElement(h.a, {
-                                              content: "account.no_price"
-                                          })
-                                      );
-                            }
-                        }
-                    ]),
-                    t
-                );
-            })();
-            (C.defaultProps = {
-                fullPrecision: !0,
-                noDecimals: !1,
-                fullDecimals: !1,
-                hide_asset: !1
-            }),
-                (C = Object(l.a)(C, {
-                    propNames: ["toAsset", "fromAsset", "coreAsset"],
-                    defaultProps: {toAsset: "1.3.0", coreAsset: "1.3.0"}
-                }));
-            var x = (function(e) {
-                function t() {
-                    return (
-                        k(this, t),
-                        O(
-                            this,
-                            (t.__proto__ || Object.getPrototypeOf(t)).apply(
-                                this,
-                                arguments
-                            )
-                        )
-                    );
-                }
-                return (
-                    A(t, r.a.Component),
-                    E(t, [
-                        {
-                            key: "render",
-                            value: function() {
-                                var e = this.props,
-                                    t = e.refCallback,
-                                    a = w(e, ["refCallback"]);
-                                return r.a.createElement(C, y({}, a, {ref: t}));
-                            }
-                        }
-                    ]),
-                    t
-                );
-            })();
-            x = Object(u.connect)(x, {
-                listenTo: function() {
-                    return [p.a];
-                },
-                getProps: function() {
-                    return {marketStats: p.a.getState().allMarketStats};
-                }
-            });
-            var N = (function(e) {
-                function t() {
-                    return (
-                        k(this, t),
-                        O(
-                            this,
-                            (t.__proto__ || Object.getPrototypeOf(t)).apply(
-                                this,
-                                arguments
-                            )
-                        )
-                    );
-                }
-                return (
-                    A(t, r.a.Component),
-                    E(t, [
-                        {
-                            key: "render",
-                            value: function() {
-                                var e = this.props,
-                                    t = e.balance,
-                                    a = w(e, ["balance"]),
-                                    n = !!t.getIn(["balance", "amount"]),
-                                    o = Number(
-                                        n
-                                            ? t.getIn(["balance", "amount"])
-                                            : t.get("balance")
-                                    ),
-                                    s = n
-                                        ? t.getIn(["balance", "asset_id"])
-                                        : t.get("asset_type");
-                                return isNaN(o)
-                                    ? r.a.createElement("span", null, "--")
-                                    : r.a.createElement(
-                                          x,
-                                          y(
-                                              {
-                                                  amount: o,
-                                                  fromAsset: s,
-                                                  noDecimals: !0
-                                              },
-                                              a
-                                          )
-                                      );
-                            }
-                        }
-                    ]),
-                    t
-                );
-            })();
-            (N.propTypes = {balance: s.a.ChainObject.isRequired}),
-                (N = Object(i.a)(N, {keep_updating: !0}));
-        },
-        149: function(e, t, a) {
-            "use strict";
-            var n = a(0),
-                r = a.n(n),
-                o = a(5),
-                s = (function() {
-                    function e(e, t) {
-                        for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
-                        }
-                    }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
-                    };
-                })();
-            var i = (function(e) {
-                function t() {
-                    return (
-                        (function(e, t) {
-                            if (!(e instanceof t))
-                                throw new TypeError(
-                                    "Cannot call a class as a function"
-                                );
-                        })(this, t),
-                        (function(e, t) {
-                            if (!e)
-                                throw new ReferenceError(
-                                    "this hasn't been initialised - super() hasn't been called"
-                                );
-                            return !t ||
-                                ("object" != typeof t && "function" != typeof t)
-                                ? e
-                                : t;
-                        })(
-                            this,
-                            (t.__proto__ || Object.getPrototypeOf(t)).apply(
-                                this,
-                                arguments
-                            )
-                        )
-                    );
-                }
-                return (
-                    (function(e, t) {
-                        if ("function" != typeof t && null !== t)
-                            throw new TypeError(
-                                "Super expression must either be null or a function, not " +
-                                    typeof t
-                            );
-                        (e.prototype = Object.create(t && t.prototype, {
-                            constructor: {
-                                value: e,
-                                enumerable: !1,
-                                writable: !0,
-                                configurable: !0
-                            }
-                        })),
-                            t &&
-                                (Object.setPrototypeOf
-                                    ? Object.setPrototypeOf(e, t)
-                                    : (e.__proto__ = t));
-                    })(t, r.a.Component),
-                    s(t, [
-                        {
-                            key: "render",
-                            value: function() {
-                                var e = this.props,
-                                    t = e.price,
-                                    a = e.preFormattedPrice,
-                                    n = e.quote,
-                                    s = e.base,
-                                    i = (e.component,
-                                    a || o.a.price_to_text(t, n, s));
-                                return i.full >= 1
-                                    ? r.a.createElement(
-                                          "span",
-                                          null,
-                                          r.a.createElement(
-                                              "span",
-                                              {className: "price-integer"},
-                                              i.int,
-                                              "."
-                                          ),
-                                          i.dec
-                                              ? r.a.createElement(
-                                                    "span",
-                                                    {
-                                                        className:
-                                                            "price-integer"
-                                                    },
-                                                    i.dec
-                                                )
-                                              : null,
-                                          i.trailing
-                                              ? r.a.createElement(
-                                                    "span",
-                                                    {
-                                                        className:
-                                                            "price-decimal"
-                                                    },
-                                                    i.trailing
-                                                )
-                                              : null
-                                      )
-                                    : i.full >= 0.1
-                                        ? r.a.createElement(
-                                              "span",
-                                              null,
-                                              r.a.createElement(
-                                                  "span",
-                                                  {className: "price-decimal"},
-                                                  i.int,
-                                                  "."
-                                              ),
-                                              i.dec
-                                                  ? r.a.createElement(
-                                                        "span",
-                                                        {
-                                                            className:
-                                                                "price-integer"
-                                                        },
-                                                        i.dec
-                                                    )
-                                                  : null,
-                                              i.trailing
-                                                  ? r.a.createElement(
-                                                        "span",
-                                                        {
-                                                            className:
-                                                                "price-decimal"
-                                                        },
-                                                        i.trailing
-                                                    )
-                                                  : null
-                                          )
-                                        : r.a.createElement(
-                                              "span",
-                                              null,
-                                              r.a.createElement(
-                                                  "span",
-                                                  {className: "price-decimal"},
-                                                  i.int,
-                                                  "."
-                                              ),
-                                              i.dec
-                                                  ? r.a.createElement(
-                                                        "span",
-                                                        {
-                                                            className:
-                                                                "price-decimal"
-                                                        },
-                                                        i.dec
-                                                    )
-                                                  : null,
-                                              i.trailing
-                                                  ? r.a.createElement(
-                                                        "span",
-                                                        {
-                                                            className:
-                                                                "price-integer"
-                                                        },
-                                                        i.trailing
-                                                    )
-                                                  : null
-                                          );
-                            }
-                        }
-                    ]),
-                    t
-                );
-            })();
-            t.a = i;
-        },
-        222: function(e, t, a) {
-            "use strict";
-            var n = a(519),
-                r = a(0),
-                o = a.n(r),
-                s = a(2),
-                i = a.n(s),
-                l = a(20),
-                c = a.n(l),
-                u = a(34),
-                p = a(63),
-                d = a.n(p),
-                h = a(1),
-                m = a.n(h),
-                f = a(6),
-                b = a(13),
-                g = a(17),
-                v = a(5),
-                _ = a(9),
-                y = a.n(_),
-                E = a(43),
-                w = a(56),
-                k = a(86),
-                O = a(16),
-                A = a(64),
-                C = a(3),
-                x = a.n(C),
-                N = a(69),
-                S = a(7),
-                P = a.n(S),
-                j = a(4),
-                T = (function() {
-                    function e(e, t) {
-                        for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
-                        }
-                    }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
-                    };
-                })();
-            function I(e, t) {
-                if (!(e instanceof t))
-                    throw new TypeError("Cannot call a class as a function");
-            }
-            function q(e, t) {
-                if (!e)
-                    throw new ReferenceError(
-                        "this hasn't been initialised - super() hasn't been called"
-                    );
-                return !t || ("object" != typeof t && "function" != typeof t)
-                    ? e
-                    : t;
-            }
-            function D(e, t) {
-                if ("function" != typeof t && null !== t)
-                    throw new TypeError(
-                        "Super expression must either be null or a function, not " +
-                            typeof t
-                    );
-                (e.prototype = Object.create(t && t.prototype, {
-                    constructor: {
-                        value: e,
-                        enumerable: !1,
-                        writable: !0,
-                        configurable: !0
-                    }
-                })),
-                    t &&
-                        (Object.setPrototypeOf
-                            ? Object.setPrototypeOf(e, t)
-                            : (e.__proto__ = t));
-            }
-            var L = (function(e) {
-                function t(e) {
-                    I(this, t);
-                    var a = q(
-                        this,
-                        (t.__proto__ || Object.getPrototypeOf(t)).call(this)
-                    );
-                    return (a.state = a._initialState(e)), a;
-                }
-                return (
-                    D(t, o.a.Component),
-                    T(t, [
-                        {
-                            key: "_initialState",
-                            value: function(e) {
-                                var t = e ? this._getCurrentPosition(e) : {};
-                                if (t.collateral) {
-                                    var a = v.a.get_asset_amount(
-                                            t.debt,
-                                            e.quote_asset
-                                        ),
-                                        n = v.a.get_asset_amount(
-                                            t.collateral,
-                                            e.backing_asset
-                                        );
-                                    return {
-                                        short_amount: a ? a.toString() : null,
-                                        collateral: n ? n.toString() : null,
-                                        collateral_ratio: this._getCollateralRatio(
-                                            a,
-                                            n
-                                        ),
-                                        errors: this._getInitialErrors(),
-                                        isValid: !1,
-                                        original_position: {
-                                            debt: a,
-                                            collateral: n
-                                        }
-                                    };
-                                }
-                                return {
-                                    short_amount: 0,
-                                    collateral: 0,
-                                    collateral_ratio: this._getInitialCollateralRatio(
-                                        e
-                                    ),
-                                    errors: this._getInitialErrors(),
-                                    isValid: !1,
-                                    original_position: {debt: 0, collateral: 0}
-                                };
-                            }
-                        },
-                        {
-                            key: "componentDidMount",
-                            value: function() {
-                                var e = this._initialState(this.props);
-                                this.setState(e), this._setUpdatedPosition(e);
-                            }
-                        },
-                        {
-                            key: "shouldComponentUpdate",
-                            value: function(e, t) {
-                                return !(
-                                    v.a.are_equal_shallow(t, this.state) &&
-                                    P.a.is(
-                                        e.quote_asset,
-                                        this.props.quote_asset
-                                    ) &&
-                                    !e.backing_asset.get("symbol") !==
-                                        this.props.backing_asset.get(
-                                            "symbol"
-                                        ) &&
-                                    P.a.is(e.account, this.props.account) &&
-                                    P.a.is(
-                                        e.call_orders,
-                                        this.props.call_orders
-                                    )
-                                );
-                            }
-                        },
-                        {
-                            key: "componentWillReceiveProps",
-                            value: function(e) {
-                                var t = this.state,
-                                    a = t.short_amount,
-                                    n = t.collateral,
-                                    r = t.collateral_ratio;
-                                if (
-                                    e.account !== this.props.account ||
-                                    e.hasCallOrders !==
-                                        this.props.hasCallOrders ||
-                                    e.quote_asset.get("id") !==
-                                        this.props.quote_asset.get("id")
-                                ) {
-                                    var o = this._initialState(e),
-                                        s = !1;
-                                    (a || n || r) &&
-                                        ((o.short_amount = a),
-                                        (o.collateral = n),
-                                        (o.collateral_ratio = r),
-                                        (s = !0)),
-                                        this.setState(o),
-                                        s && this._validateFields(o);
-                                }
-                            }
-                        },
-                        {
-                            key: "_getInitialErrors",
-                            value: function() {
-                                return {
-                                    collateral_balance: null,
-                                    ratio_too_high: null
-                                };
-                            }
-                        },
-                        {
-                            key: "confirmClicked",
-                            value: function(e) {
-                                e.preventDefault(),
-                                    c.a.publish(this.props.modalId, "close");
-                            }
-                        },
-                        {
-                            key: "_onBorrowChange",
-                            value: function(e) {
-                                var t = this._getFeedPrice(),
-                                    a = e.amount.replace(/,/g, ""),
-                                    n = {
-                                        short_amount: a,
-                                        collateral: (
-                                            this.state.collateral_ratio *
-                                            (a / t)
-                                        ).toFixed(
-                                            this.props.backing_asset.get(
-                                                "precision"
-                                            )
-                                        ),
-                                        collateral_ratio: this.state
-                                            .collateral_ratio
-                                    };
-                                this.setState(n),
-                                    this._validateFields(n),
-                                    this._setUpdatedPosition(n);
-                            }
-                        },
-                        {
-                            key: "_onCollateralChange",
-                            value: function(e) {
-                                var t = e.amount.replace(/,/g, ""),
-                                    a = this._getFeedPrice(),
-                                    r = t / (this.state.short_amount / a),
-                                    o = this._isPredictionMarket(this.props)
-                                        ? {
-                                              short_amount: t,
-                                              collateral: t,
-                                              collateral_ratio: 1
-                                          }
-                                        : {
-                                              short_amount: this.state
-                                                  .short_amount,
-                                              collateral: t,
-                                              collateral_ratio: Object(n.a)(r)
-                                                  ? r
-                                                  : this._getInitialCollateralRatio(
-                                                        this.props
-                                                    )
-                                          };
-                                this.setState(o),
-                                    this._validateFields(o),
-                                    this._setUpdatedPosition(o);
-                            }
-                        },
-                        {
-                            key: "_onRatioChange",
-                            value: function(e) {
-                                var t = this._getFeedPrice(),
-                                    a = e.target;
-                                new RegExp(/[[:digit:]]/).test(a.value) ||
-                                    (a.value = a.value.replace(/[^0-9.]/g, "")),
-                                    "." == a.value.charAt(0) &&
-                                        (a.value = "0.");
-                                var n = a.value,
-                                    r = {
-                                        short_amount: this.state.short_amount,
-                                        collateral: (
-                                            (this.state.short_amount / t) *
-                                            n
-                                        ).toFixed(
-                                            this.props.backing_asset.get(
-                                                "precision"
-                                            )
-                                        ),
-                                        collateral_ratio: n
-                                    };
-                                this.setState(r),
-                                    this._validateFields(r),
-                                    this._setUpdatedPosition(r);
-                            }
-                        },
-                        {
-                            key: "_maximizeCollateral",
-                            value: function() {
-                                var e = this.props
-                                        ? this._getCurrentPosition(this.props)
-                                        : {},
-                                    t = 0;
-                                e.collateral &&
-                                    (t = v.a.get_asset_amount(
-                                        e.collateral,
-                                        this.props.backing_asset
-                                    ));
-                                var a = Math.floor(
-                                    Math.min(
-                                        this.props.backing_balance.get(
-                                            "balance"
-                                        ) /
-                                            v.a.get_asset_precision(
-                                                this.props.backing_asset
-                                            ) +
-                                            t -
-                                            10,
-                                        (this.state.short_amount /
-                                            this._getFeedPrice()) *
-                                            1e3
-                                    )
-                                );
-                                this._onCollateralChange(
-                                    new Object({amount: a.toString()})
-                                );
-                            }
-                        },
-                        {
-                            key: "_maximizeDebt",
-                            value: function() {
-                                var e = this.props
-                                        ? this._getCurrentPosition(this.props)
-                                        : {},
-                                    t = 0;
-                                e.collateral &&
-                                    (t = v.a.get_asset_amount(
-                                        e.collateral,
-                                        this.props.backing_asset
-                                    ));
-                                var a =
-                                        this.props.backing_balance.get(
-                                            "balance"
-                                        ) /
-                                            v.a.get_asset_precision(
-                                                this.props.backing_asset
-                                            ) +
-                                        t -
-                                        10,
-                                    n = {
-                                        short_amount:
-                                            (a / this.state.collateral_ratio) *
-                                            this._getFeedPrice(),
-                                        collateral: a,
-                                        collateral_ratio: this.state
-                                            .collateral_ratio
-                                    };
-                                this.setState(n),
-                                    this._validateFields(n),
-                                    this._setUpdatedPosition(n);
-                            }
-                        },
-                        {
-                            key: "_payDebt",
-                            value: function() {
-                                var e = this.props
-                                    ? this._getCurrentPosition(this.props)
-                                    : {debt: 0};
-                                if (!(e.debt <= 0)) {
-                                    var t = v.a.get_asset_amount(
-                                        Math.max(
-                                            e.debt -
-                                                this.props.bitasset_balance.get(
-                                                    "balance"
-                                                ),
-                                            0
-                                        ),
-                                        this.props.quote_asset
-                                    );
-                                    this._onBorrowChange({
-                                        amount: t.toString()
-                                    });
-                                }
-                            }
-                        },
-                        {
-                            key: "_setUpdatedPosition",
-                            value: function(e) {
-                                this.setState({
-                                    newPosition:
-                                        parseFloat(e.short_amount) /
-                                        parseFloat(e.collateral)
-                                });
-                            }
-                        },
-                        {
-                            key: "_validateFields",
-                            value: function(e) {
-                                var t = this._getInitialErrors(),
-                                    a = this.state.original_position,
-                                    n = this.props.backing_balance
-                                        ? this.props.backing_balance.toJS()
-                                        : {balance: 0};
-                                parseFloat(e.collateral) - a.collateral >
-                                    v.a.get_asset_amount(
-                                        n.balance,
-                                        this.props.backing_asset.toJS()
-                                    ) &&
-                                    (t.collateral_balance = x.a.translate(
-                                        "borrow.errors.collateral"
-                                    ));
-                                var r =
-                                        e.short_amount >= 0 &&
-                                        e.collateral >= 0 &&
-                                        (e.short_amount != a.debt ||
-                                            e.collateral != a.collateral),
-                                    o =
-                                        this.props.quote_asset.getIn([
-                                            "bitasset",
-                                            "current_feed",
-                                            "maintenance_collateral_ratio"
-                                        ]) / 1e3;
-                                parseFloat(e.collateral_ratio) <
-                                (this._isPredictionMarket(this.props) ? 1 : o)
-                                    ? ((t.below_maintenance = x.a.translate(
-                                          "borrow.errors.below",
-                                          {mr: o}
-                                      )),
-                                      (r = !1))
-                                    : parseFloat(e.collateral_ratio) <
-                                          (this._isPredictionMarket(this.props)
-                                              ? 1
-                                              : o + 0.5) &&
-                                      ((t.close_maintenance = x.a.translate(
-                                          "borrow.errors.close",
-                                          {mr: o}
-                                      )),
-                                      (r = !0)),
-                                    this.setState({errors: t, isValid: r});
-                            }
-                        },
-                        {
-                            key: "_onSubmit",
-                            value: function(e) {
-                                e.preventDefault();
-                                var t = v.a.get_asset_precision(
-                                        this.props.quote_asset.get("precision")
-                                    ),
-                                    a = v.a.get_asset_precision(
-                                        this.props.backing_asset.get(
-                                            "precision"
-                                        )
-                                    ),
-                                    n = this._getCurrentPosition(this.props),
-                                    r = k.a.new_transaction();
-                                r.add_type_operation("call_order_update", {
-                                    fee: {amount: 0, asset_id: 0},
-                                    funding_account: this.props.account.get(
-                                        "id"
-                                    ),
-                                    delta_collateral: {
-                                        amount: parseInt(
-                                            this.state.collateral * a -
-                                                n.collateral,
-                                            10
-                                        ),
-                                        asset_id: this.props.backing_asset.get(
-                                            "id"
-                                        )
-                                    },
-                                    delta_debt: {
-                                        amount: parseInt(
-                                            this.state.short_amount * t -
-                                                n.debt,
-                                            10
-                                        ),
-                                        asset_id: this.props.quote_asset.get(
-                                            "id"
-                                        )
-                                    }
-                                }),
-                                    O.a
-                                        .process_transaction(r, null, !0)
-                                        .catch(function(e) {}),
-                                    c.a.publish(this.props.modalId, "close");
-                            }
-                        },
-                        {
-                            key: "_getCurrentPosition",
-                            value: function(e) {
-                                var t = {collateral: null, debt: null};
-                                return (
-                                    e &&
-                                        e.hasCallOrders &&
-                                        e.call_orders &&
-                                        (t = (t = e.call_orders
-                                            .filter(function(e) {
-                                                return !!e;
-                                            })
-                                            .find(function(t) {
-                                                return (
-                                                    t.getIn([
-                                                        "call_price",
-                                                        "quote",
-                                                        "asset_id"
-                                                    ]) ===
-                                                    e.quote_asset.get("id")
-                                                );
-                                            }))
-                                            ? t.toJS()
-                                            : {collateral: null, debt: null}),
-                                    t
-                                );
-                            }
-                        },
-                        {
-                            key: "_getFeedPrice",
-                            value: function() {
-                                return this.props
-                                    ? this._isPredictionMarket(this.props)
-                                        ? 1
-                                        : 1 /
-                                          v.a.get_asset_price(
-                                              this.props.quote_asset.getIn([
-                                                  "bitasset",
-                                                  "current_feed",
-                                                  "settlement_price",
-                                                  "quote",
-                                                  "amount"
-                                              ]),
-                                              this.props.backing_asset,
-                                              this.props.quote_asset.getIn([
-                                                  "bitasset",
-                                                  "current_feed",
-                                                  "settlement_price",
-                                                  "base",
-                                                  "amount"
-                                              ]),
-                                              this.props.quote_asset
-                                          )
-                                    : 1;
-                            }
-                        },
-                        {
-                            key: "_getInitialCollateralRatio",
-                            value: function(e) {
-                                return this._isPredictionMarket(e) ? 1 : 0;
-                            }
-                        },
-                        {
-                            key: "_getCollateralRatio",
-                            value: function(e, t) {
-                                return t / (e / this._getFeedPrice());
-                            }
-                        },
-                        {
-                            key: "_isPredictionMarket",
-                            value: function(e) {
-                                return e.quote_asset.getIn([
-                                    "bitasset",
-                                    "is_prediction_market"
-                                ]);
-                            }
-                        },
-                        {
-                            key: "render",
-                            value: function() {
-                                var e = this,
-                                    t = this.props,
-                                    a = t.quote_asset,
-                                    n = t.bitasset_balance,
-                                    r = t.backing_asset,
-                                    s = t.backing_balance,
-                                    i = this.state,
-                                    l = i.short_amount,
-                                    c = i.collateral,
-                                    u = i.collateral_ratio,
-                                    p = i.errors,
-                                    h = i.isValid,
-                                    f = v.a.get_asset_precision(
-                                        this.props.quote_asset.get("precision")
-                                    ),
-                                    b = v.a.get_asset_precision(
-                                        this.props.backing_asset.get(
-                                            "precision"
-                                        )
-                                    );
-                                (u && !isNaN(u) && u > 0 && u < 1e3) || (u = 0),
-                                    (n = n ? n.toJS() : {balance: 0, id: null}),
-                                    (s = s ? s.toJS() : {balance: 0, id: null});
-                                var _ = y()("form-group", {
-                                        "has-error": p.collateral_balance
-                                    }),
-                                    k = y()(
-                                        "form-group",
-                                        {"has-error": p.below_maintenance},
-                                        {"has-warning": p.close_maintenance}
-                                    ),
-                                    O = y()(
-                                        "button",
-                                        {disabled: p.collateral_balance || !h},
-                                        {success: h}
-                                    ),
-                                    C = this._getCurrentPosition(this.props),
-                                    S = s.id ? j.b.getObject(s.id) : null,
-                                    P =
-                                        (S ? S.get("balance") : 0) -
-                                        parseInt(
-                                            this.state.collateral * b -
-                                                C.collateral,
-                                            10
-                                        ),
-                                    T = o.a.createElement(
-                                        "span",
-                                        null,
-                                        o.a.createElement(
-                                            "span",
-                                            null,
-                                            o.a.createElement(m.a, {
-                                                component: "span",
-                                                content: "transfer.available"
-                                            }),
-                                            ":",
-                                            " ",
-                                            n.id
-                                                ? o.a.createElement(w.a, {
-                                                      balance: n.id
-                                                  })
-                                                : o.a.createElement(g.a, {
-                                                      amount: 0,
-                                                      asset: a.get("id")
-                                                  })
-                                        ),
-                                        o.a.createElement(
-                                            "a",
-                                            {onClick: this._payDebt.bind(this)},
-                                            o.a.createElement(m.a, {
-                                                content: "borrow.pay_max_debt"
-                                            })
-                                        ),
-                                        "|",
-                                        0 != u
-                                            ? o.a.createElement(
-                                                  "a",
-                                                  {
-                                                      onClick: this._maximizeDebt.bind(
-                                                          this
-                                                      )
-                                                  },
-                                                  o.a.createElement(m.a, {
-                                                      content: "borrow.use_max"
-                                                  })
-                                              )
-                                            : o.a.createElement(
-                                                  "span",
-                                                  {
-                                                      className:
-                                                          "disabled-link",
-                                                      "data-place": "left",
-                                                      "data-tip": x.a.translate(
-                                                          "borrow.maximize_debt_set_ratio_slider"
-                                                      )
-                                                  },
-                                                  o.a.createElement(m.a, {
-                                                      content: "borrow.use_max"
-                                                  })
-                                              )
-                                    ),
-                                    I = o.a.createElement(
-                                        "span",
-                                        null,
-                                        o.a.createElement(
-                                            "span",
-                                            null,
-                                            o.a.createElement(m.a, {
-                                                component: "span",
-                                                content: "transfer.available"
-                                            }),
-                                            ":",
-                                            " ",
-                                            s.id
-                                                ? o.a.createElement(g.a, {
-                                                      amount: P,
-                                                      asset: r.get("id")
-                                                  })
-                                                : o.a.createElement(g.a, {
-                                                      amount: 0,
-                                                      asset: r.get("id")
-                                                  })
-                                        ),
-                                        o.a.createElement(
-                                            "a",
-                                            {
-                                                onClick: this._maximizeCollateral.bind(
-                                                    this
-                                                )
-                                            },
-                                            o.a.createElement(m.a, {
-                                                content: "borrow.use_max"
-                                            })
-                                        )
-                                    ),
-                                    q = this._getFeedPrice(),
-                                    D =
-                                        this.props.quote_asset.getIn([
-                                            "bitasset",
-                                            "current_feed",
-                                            "maintenance_collateral_ratio"
-                                        ]) / 1e3,
-                                    L = (this.props.quote_asset.getIn([
-                                        "bitasset",
-                                        "current_feed",
-                                        "maximum_short_squeeze_ratio"
-                                    ]),
-                                    this._isPredictionMarket(this.props));
-                                return !L && isNaN(q)
-                                    ? o.a.createElement(
-                                          "div",
-                                          null,
-                                          o.a.createElement(
-                                              "form",
-                                              {
-                                                  className:
-                                                      "grid-container text-center no-overflow",
-                                                  noValidate: !0
-                                              },
-                                              o.a.createElement(m.a, {
-                                                  component: "h3",
-                                                  content: "borrow.no_valid",
-                                                  asset_symbol: a.get("symbol")
-                                              })
-                                          ),
-                                          o.a.createElement(
-                                              "div",
-                                              {
-                                                  className:
-                                                      "grid-content button-group text-center no-overflow"
-                                              },
-                                              o.a.createElement(
-                                                  d.a,
-                                                  {close: this.props.modalId},
-                                                  o.a.createElement(
-                                                      "div",
-                                                      {
-                                                          className:
-                                                              " button warning"
-                                                      },
-                                                      o.a.createElement(m.a, {
-                                                          content:
-                                                              "account.perm.cancel"
-                                                      })
-                                                  )
-                                              )
-                                          )
-                                      )
-                                    : o.a.createElement(
-                                          "div",
-                                          null,
-                                          o.a.createElement(
-                                              "form",
-                                              {
-                                                  className:
-                                                      "grid-container small-10 small-offset-1 no-overflow",
-                                                  noValidate: !0
-                                              },
-                                              o.a.createElement(m.a, {
-                                                  component: "h3",
-                                                  content: "borrow.title",
-                                                  asset_symbol: a.get("symbol")
-                                              }),
-                                              o.a.createElement(
-                                                  "div",
-                                                  {style: {textAlign: "left"}},
-                                                  this.props.hide_help
-                                                      ? null
-                                                      : o.a.createElement(N.a, {
-                                                            path:
-                                                                "components/" +
-                                                                (L
-                                                                    ? "BorrowModalPrediction"
-                                                                    : "BorrowModal"),
-                                                            debt: a.get(
-                                                                "symbol"
-                                                            ),
-                                                            collateral: r.get(
-                                                                "symbol"
-                                                            ),
-                                                            borrower: this.props.account.get(
-                                                                "name"
-                                                            ),
-                                                            mr: D
-                                                        }),
-                                                  L
-                                                      ? null
-                                                      : o.a.createElement(
-                                                            "div",
-                                                            {
-                                                                style: {
-                                                                    paddingBottom:
-                                                                        "1rem"
-                                                                }
-                                                            },
-                                                            o.a.createElement(
-                                                                "div",
-                                                                {
-                                                                    className:
-                                                                        "borrow-price-feeds"
-                                                                },
-                                                                o.a.createElement(
-                                                                    "span",
-                                                                    {
-                                                                        className:
-                                                                            "borrow-price-label"
-                                                                    },
-                                                                    o.a.createElement(
-                                                                        m.a,
-                                                                        {
-                                                                            content:
-                                                                                "transaction.feed_price"
-                                                                        }
-                                                                    ),
-                                                                    ": "
-                                                                ),
-                                                                o.a.createElement(
-                                                                    A.a,
-                                                                    {
-                                                                        noPopOver: !0,
-                                                                        quote_amount: a.getIn(
-                                                                            [
-                                                                                "bitasset",
-                                                                                "current_feed",
-                                                                                "settlement_price",
-                                                                                "base",
-                                                                                "amount"
-                                                                            ]
-                                                                        ),
-                                                                        quote_asset: a.getIn(
-                                                                            [
-                                                                                "bitasset",
-                                                                                "current_feed",
-                                                                                "settlement_price",
-                                                                                "base",
-                                                                                "asset_id"
-                                                                            ]
-                                                                        ),
-                                                                        base_asset: a.getIn(
-                                                                            [
-                                                                                "bitasset",
-                                                                                "current_feed",
-                                                                                "settlement_price",
-                                                                                "quote",
-                                                                                "asset_id"
-                                                                            ]
-                                                                        ),
-                                                                        base_amount: a.getIn(
-                                                                            [
-                                                                                "bitasset",
-                                                                                "current_feed",
-                                                                                "settlement_price",
-                                                                                "quote",
-                                                                                "amount"
-                                                                            ]
-                                                                        )
-                                                                    }
-                                                                )
-                                                            ),
-                                                            o.a.createElement(
-                                                                "b",
-                                                                null
-                                                            ),
-                                                            o.a.createElement(
-                                                                "div",
-                                                                {
-                                                                    className:
-                                                                        "borrow-price-final " +
-                                                                        (p.below_maintenance
-                                                                            ? "has-error"
-                                                                            : p.close_maintenance
-                                                                                ? "has-warning"
-                                                                                : "")
-                                                                },
-                                                                o.a.createElement(
-                                                                    "span",
-                                                                    {
-                                                                        className:
-                                                                            "borrow-price-label"
-                                                                    },
-                                                                    o.a.createElement(
-                                                                        m.a,
-                                                                        {
-                                                                            content:
-                                                                                "exchange.your_price"
-                                                                        }
-                                                                    ),
-                                                                    ": "
-                                                                ),
-                                                                this.state
-                                                                    .newPosition
-                                                                    ? o.a.createElement(
-                                                                          A.a,
-                                                                          {
-                                                                              noPopOver: !0,
-                                                                              quote_amount:
-                                                                                  D *
-                                                                                  this
-                                                                                      .state
-                                                                                      .short_amount *
-                                                                                  f,
-                                                                              quote_asset: a.get(
-                                                                                  "id"
-                                                                              ),
-                                                                              base_asset: r.get(
-                                                                                  "id"
-                                                                              ),
-                                                                              base_amount:
-                                                                                  this
-                                                                                      .state
-                                                                                      .collateral *
-                                                                                  b
-                                                                          }
-                                                                      )
-                                                                    : null
-                                                            )
-                                                        ),
-                                                  o.a.createElement(
-                                                      "div",
-                                                      {className: "form-group"},
-                                                      o.a.createElement(E.a, {
-                                                          label:
-                                                              "transaction.borrow_amount",
-                                                          amount: l.toString(),
-                                                          onChange: this._onBorrowChange.bind(
-                                                              this
-                                                          ),
-                                                          asset: a.get("id"),
-                                                          assets: [a.get("id")],
-                                                          display_balance: T,
-                                                          placeholder: "0.0",
-                                                          tabIndex: 1
-                                                      })
-                                                  ),
-                                                  o.a.createElement(
-                                                      "div",
-                                                      {className: _},
-                                                      o.a.createElement(E.a, {
-                                                          label:
-                                                              "transaction.collateral",
-                                                          amount: c.toString(),
-                                                          onChange: this._onCollateralChange.bind(
-                                                              this
-                                                          ),
-                                                          asset: r.get("id"),
-                                                          assets: [r.get("id")],
-                                                          display_balance: I,
-                                                          placeholder: "0.0",
-                                                          tabIndex: 1
-                                                      }),
-                                                      p.collateral_balance
-                                                          ? o.a.createElement(
-                                                                "div",
-                                                                {
-                                                                    className:
-                                                                        "float-left",
-                                                                    style: {
-                                                                        paddingTop: 5
-                                                                    }
-                                                                },
-                                                                p.collateral_balance
-                                                            )
-                                                          : null
-                                                  ),
-                                                  L
-                                                      ? null
-                                                      : o.a.createElement(
-                                                            "div",
-                                                            null,
-                                                            o.a.createElement(
-                                                                "div",
-                                                                {
-                                                                    className: k,
-                                                                    style: {
-                                                                        marginBottom:
-                                                                            "3.5rem"
-                                                                    }
-                                                                },
-                                                                o.a.createElement(
-                                                                    m.a,
-                                                                    {
-                                                                        component:
-                                                                            "label",
-                                                                        content:
-                                                                            "borrow.coll_ratio"
-                                                                    }
-                                                                ),
-                                                                o.a.createElement(
-                                                                    "span",
-                                                                    null,
-                                                                    o.a.createElement(
-                                                                        "input",
-                                                                        {
-                                                                            value:
-                                                                                0 ==
-                                                                                u
-                                                                                    ? null
-                                                                                    : u,
-                                                                            onChange: this._onRatioChange.bind(
-                                                                                this
-                                                                            ),
-                                                                            type:
-                                                                                "text",
-                                                                            style: {
-                                                                                width:
-                                                                                    "12%",
-                                                                                float:
-                                                                                    "right",
-                                                                                marginTop: -10
-                                                                            }
-                                                                        }
-                                                                    ),
-                                                                    o.a.createElement(
-                                                                        "input",
-                                                                        {
-                                                                            style: {
-                                                                                width:
-                                                                                    "85%"
-                                                                            },
-                                                                            min:
-                                                                                "0",
-                                                                            max:
-                                                                                "6",
-                                                                            step:
-                                                                                "0.01",
-                                                                            onChange: this._onRatioChange.bind(
-                                                                                this
-                                                                            ),
-                                                                            value: u,
-                                                                            type:
-                                                                                "range"
-                                                                        }
-                                                                    )
-                                                                ),
-                                                                p.below_maintenance ||
-                                                                p.close_maintenance
-                                                                    ? o.a.createElement(
-                                                                          "div",
-                                                                          {
-                                                                              style: {
-                                                                                  height:
-                                                                                      "1em",
-                                                                                  maxWidth:
-                                                                                      "85%"
-                                                                              },
-                                                                              className:
-                                                                                  "float-left"
-                                                                          },
-                                                                          p.below_maintenance,
-                                                                          p.close_maintenance
-                                                                      )
-                                                                    : null
-                                                            )
-                                                        ),
-                                                  o.a.createElement(
-                                                      "div",
-                                                      {
-                                                          className:
-                                                              "no-padding grid-content button-group no-overflow"
-                                                      },
-                                                      o.a.createElement(
-                                                          "div",
-                                                          {
-                                                              onClick: this._onSubmit.bind(
-                                                                  this
-                                                              ),
-                                                              className: O
-                                                          },
-                                                          o.a.createElement(
-                                                              m.a,
-                                                              {
-                                                                  content:
-                                                                      "borrow.adjust"
-                                                              }
-                                                          )
-                                                      ),
-                                                      o.a.createElement(
-                                                          "div",
-                                                          {
-                                                              onClick: function(
-                                                                  t
-                                                              ) {
-                                                                  t.preventDefault(),
-                                                                      e.setState(
-                                                                          e._initialState(
-                                                                              e.props
-                                                                          )
-                                                                      );
-                                                              },
-                                                              className:
-                                                                  "button hollow primary"
-                                                          },
-                                                          o.a.createElement(
-                                                              m.a,
-                                                              {
-                                                                  content:
-                                                                      "wallet.reset"
-                                                              }
-                                                          )
-                                                      )
-                                                  )
-                                              )
-                                          )
-                                      );
-                            }
-                        }
-                    ]),
-                    t
-                );
-            })();
-            (L.propTypes = {
-                quote_asset: f.a.ChainAsset.isRequired,
-                bitasset_balance: f.a.ChainObject,
-                backing_asset: f.a.ChainAsset.isRequired,
-                backing_balance: f.a.ChainObject,
-                call_orders: f.a.ChainObjectsList,
-                hasCallOrders: i.a.bool
-            }),
-                (L = Object(b.a)(L));
-            var R = (function(e) {
-                function t() {
-                    I(this, t);
-                    var e = q(
-                        this,
-                        (t.__proto__ || Object.getPrototypeOf(t)).call(this)
-                    );
-                    return (e.state = {smallScreen: !1, open: !1}), e;
-                }
-                return (
-                    D(t, o.a.Component),
-                    T(t, [
-                        {
-                            key: "show",
-                            value: function() {
-                                var e = this;
-                                this.setState({open: !0}, function() {
-                                    c.a.publish(e.props.modalId, "open");
-                                });
-                            }
-                        },
-                        {
-                            key: "onClose",
-                            value: function() {
-                                this.setState({open: !1});
-                            }
-                        },
-                        {
-                            key: "componentWillMount",
-                            value: function() {
-                                this.setState({
-                                    smallScreen: window.innerHeight <= 800
-                                });
-                            }
-                        },
-                        {
-                            key: "render",
-                            value: function() {
-                                var e = this.props,
-                                    t = e.quote_asset,
-                                    a = e.backing_asset,
-                                    n = e.account,
-                                    r = n.get("balances").toJS(),
-                                    s = void 0,
-                                    i = void 0;
-                                if (r)
-                                    for (var l in r)
-                                        l === a && (s = r[l]),
-                                            l === t && (i = r[l]);
-                                return this.state.open
-                                    ? o.a.createElement(
-                                          u.a,
-                                          {
-                                              id: this.props.modalId,
-                                              overlay: !0,
-                                              onClose: this.onClose.bind(this),
-                                              ref: this.props.modalId
-                                          },
-                                          o.a.createElement(
-                                              "div",
-                                              {
-                                                  className:
-                                                      "grid-block vertical"
-                                              },
-                                              o.a.createElement(L, {
-                                                  quote_asset: t,
-                                                  call_orders: n
-                                                      .get(
-                                                          "call_orders",
-                                                          Object(S.List)()
-                                                      )
-                                                      .toList(),
-                                                  hasCallOrders:
-                                                      n.get("call_orders") &&
-                                                      n.get("call_orders")
-                                                          .size > 0,
-                                                  modalId: this.props.modalId,
-                                                  bitasset_balance: i,
-                                                  backing_balance: s,
-                                                  backing_asset: a,
-                                                  hide_help: this.state
-                                                      .smallScreen,
-                                                  account: n
-                                              })
-                                          )
-                                      )
-                                    : null;
-                            }
-                        }
-                    ]),
-                    t
-                );
-            })();
-            t.a = R;
-        },
-        321: function(e, t, a) {
-            "use strict";
-            a.d(t, "a", function() {
-                return y;
-            }),
-                a.d(t, "b", function() {
-                    return v;
-                });
-            var n = a(0),
-                r = a.n(n),
-                o = a(50),
-                s = a(9),
-                i = a.n(s),
-                l = a(35),
-                c = a(31),
-                u = a(15),
-                p = a(5),
-                d = a(64),
-                h = a(42),
-                m = (function() {
-                    function e(e, t) {
-                        for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
-                        }
-                    }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
-                    };
-                })();
-            function f(e, t) {
-                if (!(e instanceof t))
-                    throw new TypeError("Cannot call a class as a function");
-            }
-            function b(e, t) {
-                if (!e)
-                    throw new ReferenceError(
-                        "this hasn't been initialised - super() hasn't been called"
-                    );
-                return !t || ("object" != typeof t && "function" != typeof t)
-                    ? e
-                    : t;
-            }
-            function g(e, t) {
-                if ("function" != typeof t && null !== t)
-                    throw new TypeError(
-                        "Super expression must either be null or a function, not " +
-                            typeof t
-                    );
-                (e.prototype = Object.create(t && t.prototype, {
-                    constructor: {
-                        value: e,
-                        enumerable: !1,
-                        writable: !0,
-                        configurable: !0
-                    }
-                })),
-                    t &&
-                        (Object.setPrototypeOf
-                            ? Object.setPrototypeOf(e, t)
-                            : (e.__proto__ = t));
-            }
-            var v = (function(e) {
-                    function t(e) {
-                        f(this, t);
-                        var a = b(
-                            this,
-                            (t.__proto__ || Object.getPrototypeOf(t)).call(this)
-                        );
-                        a.statsInterval = null;
-                        var n = h.a.getMarketName(e.base, e.quote).marketName;
-                        return (a.state = {marketName: n}), a;
-                    }
-                    return (
-                        g(t, r.a.Component),
-                        m(t, [
-                            {
-                                key: "_checkStats",
-                                value: function() {
-                                    var e =
-                                            arguments.length > 0 &&
-                                            void 0 !== arguments[0]
-                                                ? arguments[0]
-                                                : {close: {}},
-                                        t =
-                                            arguments.length > 1 &&
-                                            void 0 !== arguments[1]
-                                                ? arguments[1]
-                                                : {close: {}};
-                                    return (
-                                        e.volumeBase !== t.volumeBase ||
-                                        !p.a.are_equal_shallow(
-                                            e.close && e.close.base,
-                                            t.close && t.close.base
-                                        ) ||
-                                        !p.a.are_equal_shallow(
-                                            e.close && e.close.quote,
-                                            t.close && t.close.quote
-                                        )
-                                    );
-                                }
-                            },
-                            {
-                                key: "shouldComponentUpdate",
-                                value: function(e) {
-                                    return (
-                                        this._checkStats(
-                                            e.allMarketStats.get(
-                                                this.state.marketName
-                                            ),
-                                            this.props.allMarketStats.get(
-                                                this.state.marketName
-                                            )
-                                        ) ||
-                                        e.base.get("id") !==
-                                            this.props.base.get("id") ||
-                                        e.quote.get("id") !==
-                                            this.props.quote.get("id")
-                                    );
-                                }
-                            },
-                            {
-                                key: "componentWillMount",
-                                value: function() {
-                                    l.a.getMarketStats(
-                                        this.props.base,
-                                        this.props.quote
-                                    ),
-                                        (this.statsChecked = new Date()),
-                                        (this.statsInterval = setInterval(
-                                            l.a.getMarketStats.bind(
-                                                this,
-                                                this.props.base,
-                                                this.props.quote
-                                            ),
-                                            35e3
-                                        ));
-                                }
-                            },
-                            {
-                                key: "componentWillUnmount",
-                                value: function() {
-                                    clearInterval(this.statsInterval);
-                                }
-                            }
-                        ]),
-                        t
-                    );
-                })(),
-                _ = (function(e) {
-                    function t(e) {
-                        return (
-                            f(this, t),
-                            b(
-                                this,
-                                (t.__proto__ || Object.getPrototypeOf(t)).call(
-                                    this,
-                                    e
-                                )
-                            )
-                        );
-                    }
-                    return (
-                        g(t, v),
-                        m(t, [
-                            {
-                                key: "shouldComponentUpdate",
-                                value: function(e) {
-                                    return (function e(t, a, n) {
-                                        null === t && (t = Function.prototype);
-                                        var r = Object.getOwnPropertyDescriptor(
-                                            t,
-                                            a
-                                        );
-                                        if (void 0 === r) {
-                                            var o = Object.getPrototypeOf(t);
-                                            return null === o
-                                                ? void 0
-                                                : e(o, a, n);
-                                        }
-                                        if ("value" in r) return r.value;
-                                        var s = r.get;
-                                        return void 0 !== s
-                                            ? s.call(n)
-                                            : void 0;
-                                    })(
-                                        t.prototype.__proto__ ||
-                                            Object.getPrototypeOf(t.prototype),
-                                        "shouldComponentUpdate",
-                                        this
-                                    ).call(this, e);
-                                }
-                            },
-                            {
-                                key: "render",
-                                value: function() {
-                                    var e = this.props.allMarketStats,
-                                        t = this.state.marketName,
-                                        a = e.get(t),
-                                        n = a && a.price ? a.price : null;
-                                    return r.a.createElement(
-                                        "span",
-                                        {
-                                            className: i()(
-                                                "",
-                                                this.props.className
-                                            )
-                                        },
-                                        n
-                                            ? r.a.createElement(d.a, {
-                                                  base_amount: n.base.amount,
-                                                  base_asset: n.base.asset_id,
-                                                  quote_amount: n.quote.amount,
-                                                  quote_asset: n.quote.asset_id,
-                                                  force_direction: this.props
-                                                      .force_direction,
-                                                  hide_symbols: this.props
-                                                      .hide_symbols
-                                              })
-                                            : "n/a"
-                                    );
-                                }
-                            }
-                        ]),
-                        t
-                    );
-                })();
-            _ = Object(o.a)(_, {propNames: ["quote", "base"]});
-            var y = (function(e) {
-                function t() {
-                    return (
-                        f(this, t),
-                        b(
-                            this,
-                            (t.__proto__ || Object.getPrototypeOf(t)).apply(
-                                this,
-                                arguments
-                            )
-                        )
-                    );
-                }
-                return (
-                    g(t, r.a.Component),
-                    m(t, [
-                        {
-                            key: "render",
-                            value: function() {
-                                return r.a.createElement(_, this.props);
-                            }
-                        }
-                    ]),
-                    t
-                );
-            })();
-            y = Object(u.connect)(y, {
-                listenTo: function() {
-                    return [c.a];
-                },
-                getProps: function() {
-                    return {allMarketStats: c.a.getState().allMarketStats};
-                }
-            });
-        },
-        322: function(e, t, a) {
-            "use strict";
-            var n = a(0),
-                r = a.n(n),
-                o = a(2),
-                s = a.n(o),
-                i = a(11),
-                l = a(3),
-                c = a.n(l),
-                u = a(58),
-                p = a.n(u),
-                d = a(5),
-                h = a(1),
-                m = a.n(h),
-                f = a(22),
-                b = a(272),
-                g = a.n(b),
-                v = a(111),
-                _ = (function() {
-                    function e(e, t) {
-                        for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
-                        }
-                    }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
-                    };
-                })();
-            function y(e, t) {
-                if (!(e instanceof t))
-                    throw new TypeError("Cannot call a class as a function");
-            }
-            function E(e, t) {
-                if (!e)
-                    throw new ReferenceError(
-                        "this hasn't been initialised - super() hasn't been called"
-                    );
-                return !t || ("object" != typeof t && "function" != typeof t)
-                    ? e
-                    : t;
-            }
-            function w(e, t) {
-                if ("function" != typeof t && null !== t)
-                    throw new TypeError(
-                        "Super expression must either be null or a function, not " +
-                            typeof t
-                    );
-                (e.prototype = Object.create(t && t.prototype, {
-                    constructor: {
-                        value: e,
-                        enumerable: !1,
-                        writable: !0,
-                        configurable: !0
-                    }
-                })),
-                    t &&
-                        (Object.setPrototypeOf
-                            ? Object.setPrototypeOf(e, t)
-                            : (e.__proto__ = t));
-            }
-            (function(e) {
-                function t() {
-                    return (
-                        y(this, t),
-                        E(
-                            this,
-                            (t.__proto__ || Object.getPrototypeOf(t)).apply(
-                                this,
-                                arguments
-                            )
-                        )
-                    );
-                }
-                return (
-                    w(t, r.a.Component),
-                    _(t, [
-                        {
-                            key: "render",
-                            value: function() {
-                                var e = this.props,
-                                    t = e.baseSymbol,
-                                    a = e.quoteSymbol;
-                                return r.a.createElement(
-                                    "thead",
-                                    null,
-                                    r.a.createElement(
-                                        "tr",
-                                        null,
-                                        r.a.createElement(
-                                            "th",
-                                            {style: {textAlign: "right"}},
-                                            r.a.createElement(m.a, {
-                                                content: "exchange.price"
-                                            }),
-                                            r.a.createElement("br", null),
-                                            t
-                                                ? r.a.createElement(
-                                                      "span",
-                                                      {
-                                                          className:
-                                                              "header-sub-title"
-                                                      },
-                                                      "(",
-                                                      r.a.createElement(f.a, {
-                                                          name: t
-                                                      }),
-                                                      "/",
-                                                      r.a.createElement(f.a, {
-                                                          name: a
-                                                      }),
-                                                      ")"
-                                                  )
-                                                : null
-                                        ),
-                                        r.a.createElement(
-                                            "th",
-                                            {style: {textAlign: "right"}},
-                                            r.a.createElement(m.a, {
-                                                content: "transfer.amount"
-                                            }),
-                                            r.a.createElement("br", null),
-                                            a
-                                                ? r.a.createElement(
-                                                      "span",
-                                                      {
-                                                          className:
-                                                              "header-sub-title"
-                                                      },
-                                                      "(",
-                                                      r.a.createElement(f.a, {
-                                                          name: a
-                                                      }),
-                                                      ")"
-                                                  )
-                                                : null
-                                        ),
-                                        r.a.createElement(
-                                            "th",
-                                            {style: {textAlign: "right"}},
-                                            r.a.createElement(m.a, {
-                                                content:
-                                                    "transaction.settlement_date"
-                                            }),
-                                            r.a.createElement("br", null),
-                                            r.a.createElement(
-                                                "span",
-                                                {
-                                                    style: {
-                                                        visibility: "hidden"
-                                                    },
-                                                    className:
-                                                        "header-sub-title"
-                                                },
-                                                "d"
-                                            )
-                                        )
-                                    )
-                                );
-                            }
-                        }
-                    ]),
-                    t
-                );
-            })().defaultProps = {quoteSymbol: null, baseSymbol: null};
-            var k = (function(e) {
-                function t() {
-                    return (
-                        y(this, t),
-                        E(
-                            this,
-                            (t.__proto__ || Object.getPrototypeOf(t)).apply(
-                                this,
-                                arguments
-                            )
-                        )
-                    );
-                }
-                return (
-                    w(t, r.a.Component),
-                    _(t, [
-                        {
-                            key: "render",
-                            value: function() {
-                                var e = this.props,
-                                    t = e.base,
-                                    a = e.quote,
-                                    n = e.order,
-                                    o = e.showSymbols,
-                                    s =
-                                        "1.3.0" == t.get("id")
-                                            ? n.getPrice() /
-                                              (1 + n.offset_percent / 1e4)
-                                            : n.getPrice() *
-                                              (1 + n.offset_percent / 1e4),
-                                    i = o ? " " + a.get("symbol") : null;
-                                return r.a.createElement(
-                                    "tr",
-                                    {style: {paddingRight: 5}},
-                                    r.a.createElement(
-                                        "td",
-                                        {
-                                            style: {
-                                                textAlign: "right",
-                                                width: "25%"
-                                            }
-                                        },
-                                        d.a.format_number(
-                                            s,
-                                            a.get("precision")
-                                        ),
-                                        " ",
-                                        i
-                                    ),
-                                    r.a.createElement(
-                                        "td",
-                                        {
-                                            style: {
-                                                textAlign: "right",
-                                                width: "25%"
-                                            }
-                                        },
-                                        d.a.format_number(
-                                            n[
-                                                n.isBid()
-                                                    ? "amountToReceive"
-                                                    : "amountForSale"
-                                            ]().getAmount({real: !0}),
-                                            a.get("precision")
-                                        )
-                                    ),
-                                    r.a.createElement(
-                                        "td",
-                                        {
-                                            style: {
-                                                textAlign: "right",
-                                                width: "25%"
-                                            }
-                                        },
-                                        d.a.format_number(
-                                            n[
-                                                n.isBid()
-                                                    ? "amountForSale"
-                                                    : "amountToReceive"
-                                            ]().getAmount({real: !0}),
-                                            t.get("precision")
-                                        )
-                                    ),
-                                    r.a.createElement(
-                                        "td",
-                                        {
-                                            style: {
-                                                textAlign: "right",
-                                                width: "25%"
-                                            },
-                                            className: "tooltip",
-                                            "data-tip": new Date(
-                                                n.settlement_date
-                                            )
-                                        },
-                                        c.a.localize(
-                                            new Date(n.settlement_date),
-                                            {
-                                                type: "date",
-                                                format:
-                                                    -1 !==
-                                                    g()()
-                                                        .toLowerCase()
-                                                        .indexOf("en-us")
-                                                        ? "market_history_us"
-                                                        : "market_history"
-                                            }
-                                        )
-                                    )
-                                );
-                            }
-                        }
-                    ]),
-                    t
-                );
-            })();
-            k.defaultProps = {showSymbols: !1, invert: !1};
-            var O = (function(e) {
-                function t() {
-                    return (
-                        y(this, t),
-                        E(
-                            this,
-                            (t.__proto__ || Object.getPrototypeOf(t)).apply(
-                                this,
-                                arguments
-                            )
-                        )
-                    );
-                }
-                return (
-                    w(t, r.a.Component),
-                    _(t, [
-                        {
-                            key: "shouldComponentUpdate",
-                            value: function(e) {
-                                return (
-                                    e.currentAccount !==
-                                        this.props.currentAccount ||
-                                    e.orders !== this.props.orders
-                                );
-                            }
-                        },
-                        {
-                            key: "render",
-                            value: function() {
-                                var e = this.props,
-                                    t = e.orders,
-                                    a = e.base,
-                                    n = e.quote,
-                                    o = null;
-                                if (!(t.size > 0 && a && n)) return null;
-                                var s = 0;
-                                return (
-                                    (o = t
-                                        .sort(function(e, t) {
-                                            return e.isBefore(t) ? -1 : 1;
-                                        })
-                                        .map(function(e) {
-                                            return Date.now() <
-                                                e.settlement_date
-                                                ? r.a.createElement(k, {
-                                                      key: s++,
-                                                      order: e,
-                                                      base: a,
-                                                      quote: n
-                                                  })
-                                                : null;
-                                        })
-                                        .toArray()),
-                                    r.a.createElement(
-                                        v.a,
-                                        {
-                                            component: "tbody",
-                                            transitionName: "newrow"
-                                        },
-                                        o
-                                    )
-                                );
-                            }
-                        }
-                    ]),
-                    t
-                );
-            })();
-            (O.defaultProps = {
-                base: {},
-                quote: {},
-                orders: {},
-                quoteSymbol: "",
-                baseSymbol: ""
-            }),
-                (O.propTypes = {
-                    base: s.a.object.isRequired,
-                    quote: s.a.object.isRequired,
-                    orders: s.a.object.isRequired,
-                    quoteSymbol: s.a.string.isRequired,
-                    baseSymbol: s.a.string.isRequired
-                });
-            var A = O,
-                C = a(149),
-                x = a(10),
-                N = a(9),
-                S = a.n(N),
-                P = a(12),
-                j = a(4),
-                T = a(18),
-                I = a(139),
-                q = a(321),
-                D = a(64),
-                L = a(47),
-                R = a.n(L);
-            a.d(t, "b", function() {
-                return H;
-            }),
-                a.d(t, "c", function() {
-                    return z;
-                }),
-                a.d(t, "a", function() {
-                    return J;
-                });
-            var M = (function() {
-                function e(e, t) {
-                    for (var a = 0; a < t.length; a++) {
-                        var n = t[a];
-                        (n.enumerable = n.enumerable || !1),
-                            (n.configurable = !0),
-                            "value" in n && (n.writable = !0),
-                            Object.defineProperty(e, n.key, n);
-                    }
-                }
-                return function(t, a, n) {
-                    return a && e(t.prototype, a), n && e(t, n), t;
-                };
-            })();
-            function F(e, t, a) {
-                return (
-                    t in e
-                        ? Object.defineProperty(e, t, {
-                              value: a,
-                              enumerable: !0,
-                              configurable: !0,
-                              writable: !0
-                          })
-                        : (e[t] = a),
-                    e
-                );
-            }
-            function B(e, t) {
-                if (!(e instanceof t))
-                    throw new TypeError("Cannot call a class as a function");
-            }
-            function V(e, t) {
-                if (!e)
-                    throw new ReferenceError(
-                        "this hasn't been initialised - super() hasn't been called"
-                    );
-                return !t || ("object" != typeof t && "function" != typeof t)
-                    ? e
-                    : t;
-            }
-            function W(e, t) {
-                if ("function" != typeof t && null !== t)
-                    throw new TypeError(
-                        "Super expression must either be null or a function, not " +
-                            typeof t
-                    );
-                (e.prototype = Object.create(t && t.prototype, {
-                    constructor: {
-                        value: e,
-                        enumerable: !1,
-                        writable: !0,
-                        configurable: !0
-                    }
-                })),
-                    t &&
-                        (Object.setPrototypeOf
-                            ? Object.setPrototypeOf(e, t)
-                            : (e.__proto__ = t));
-            }
-            var U = {textAlign: "left"},
-                z = (function(e) {
-                    function t() {
-                        return (
-                            B(this, t),
-                            V(
-                                this,
-                                (t.__proto__ || Object.getPrototypeOf(t)).apply(
-                                    this,
-                                    arguments
-                                )
-                            )
-                        );
-                    }
-                    return (
-                        W(t, r.a.Component),
-                        M(t, [
-                            {
-                                key: "render",
-                                value: function() {
-                                    var e = this.props,
-                                        t = e.baseSymbol,
-                                        a = e.quoteSymbol,
-                                        n = e.dashboard,
-                                        o = e.isMyAccount;
-                                    return n
-                                        ? r.a.createElement(
-                                              "thead",
-                                              null,
-                                              r.a.createElement(
-                                                  "tr",
-                                                  null,
-                                                  r.a.createElement(
-                                                      "th",
-                                                      {style: U, colSpan: "5"},
-                                                      r.a.createElement(m.a, {
-                                                          content:
-                                                              "exchange.description"
-                                                      })
-                                                  ),
-                                                  r.a.createElement(
-                                                      "th",
-                                                      {style: U},
-                                                      r.a.createElement(m.a, {
-                                                          content:
-                                                              "exchange.price"
-                                                      })
-                                                  ),
-                                                  r.a.createElement(
-                                                      "th",
-                                                      {style: U},
-                                                      r.a.createElement(m.a, {
-                                                          content:
-                                                              "exchange.price_market"
-                                                      })
-                                                  ),
-                                                  r.a.createElement(
-                                                      "th",
-                                                      {
-                                                          style: {
-                                                              textAlign: "right"
-                                                          }
-                                                      },
-                                                      r.a.createElement(m.a, {
-                                                          content:
-                                                              "exchange.value"
-                                                      })
-                                                  ),
-                                                  r.a.createElement(
-                                                      "th",
-                                                      null,
-                                                      r.a.createElement(m.a, {
-                                                          content:
-                                                              "account.trade"
-                                                      })
-                                                  ),
-                                                  o
-                                                      ? r.a.createElement(
-                                                            "th",
-                                                            {
-                                                                id:
-                                                                    "cancelAllOrders",
-                                                                style: {
-                                                                    cursor:
-                                                                        "pointer"
-                                                                }
-                                                            },
-                                                            r.a.createElement(
-                                                                m.a,
-                                                                {
-                                                                    content:
-                                                                        "wallet.cancel"
-                                                                }
-                                                            )
-                                                        )
-                                                      : null
-                                              )
-                                          )
-                                        : r.a.createElement(
-                                              "thead",
-                                              null,
-                                              r.a.createElement(
-                                                  "tr",
-                                                  null,
-                                                  r.a.createElement(
-                                                      "th",
-                                                      {
-                                                          style: {
-                                                              textAlign: this
-                                                                  .props
-                                                                  .leftAlign
-                                                                  ? "left"
-                                                                  : ""
-                                                          }
-                                                      },
-                                                      r.a.createElement(m.a, {
-                                                          className:
-                                                              "header-sub-title",
-                                                          content:
-                                                              "exchange.price"
-                                                      })
-                                                  ),
-                                                  r.a.createElement(
-                                                      "th",
-                                                      {
-                                                          style: this.props
-                                                              .leftAlign
-                                                              ? {
-                                                                    textAlign:
-                                                                        "left"
-                                                                }
-                                                              : null
-                                                      },
-                                                      t
-                                                          ? r.a.createElement(
-                                                                "span",
-                                                                {
-                                                                    className:
-                                                                        "header-sub-title"
-                                                                },
-                                                                r.a.createElement(
-                                                                    f.a,
-                                                                    {
-                                                                        dataPlace:
-                                                                            "top",
-                                                                        name: a
-                                                                    }
-                                                                )
-                                                            )
-                                                          : null
-                                                  ),
-                                                  r.a.createElement(
-                                                      "th",
-                                                      {
-                                                          style: this.props
-                                                              .leftAlign
-                                                              ? {
-                                                                    textAlign:
-                                                                        "left"
-                                                                }
-                                                              : null
-                                                      },
-                                                      t
-                                                          ? r.a.createElement(
-                                                                "span",
-                                                                {
-                                                                    className:
-                                                                        "header-sub-title"
-                                                                },
-                                                                r.a.createElement(
-                                                                    f.a,
-                                                                    {
-                                                                        dataPlace:
-                                                                            "top",
-                                                                        name: t
-                                                                    }
-                                                                )
-                                                            )
-                                                          : null
-                                                  ),
-                                                  r.a.createElement(
-                                                      "th",
-                                                      {
-                                                          style: {
-                                                              textAlign: this
-                                                                  .props
-                                                                  .leftAlign
-                                                                  ? "left"
-                                                                  : ""
-                                                          }
-                                                      },
-                                                      r.a.createElement(m.a, {
-                                                          className:
-                                                              "header-sub-title",
-                                                          content:
-                                                              "transaction.expiration"
-                                                      })
-                                                  ),
-                                                  r.a.createElement("th", {
-                                                      style: {width: "6%"}
-                                                  })
-                                              )
-                                          );
-                                }
-                            }
-                        ]),
-                        t
-                    );
-                })();
-            z.defaultProps = {quoteSymbol: null, baseSymbol: null};
-            var H = (function(e) {
-                function t() {
-                    return (
-                        B(this, t),
-                        V(
-                            this,
-                            (t.__proto__ || Object.getPrototypeOf(t)).apply(
-                                this,
-                                arguments
-                            )
-                        )
-                    );
-                }
-                return (
-                    W(t, r.a.Component),
-                    M(t, [
-                        {
-                            key: "shouldComponentUpdate",
-                            value: function(e) {
-                                return (
-                                    e.order.for_sale !==
-                                        this.props.order.for_sale ||
-                                    e.order.id !== this.props.order.id ||
-                                    e.quote !== this.props.quote ||
-                                    e.base !== this.props.base ||
-                                    e.order.market_base !==
-                                        this.props.order.market_base
-                                );
-                            }
-                        },
-                        {
-                            key: "render",
-                            value: function() {
-                                var e = this.props,
-                                    t = e.base,
-                                    a = e.quote,
-                                    n = e.order,
-                                    o = e.showSymbols,
-                                    s = e.dashboard,
-                                    l = e.isMyAccount,
-                                    u = e.settings,
-                                    p = n.isBid(),
-                                    h = n.isCall(),
-                                    b = h
-                                        ? "orderHistoryCall"
-                                        : p
-                                            ? "orderHistoryBid"
-                                            : "orderHistoryAsk",
-                                    g = o
-                                        ? r.a.createElement(
-                                              "span",
-                                              null,
-                                              " " +
-                                                  t.get("symbol") +
-                                                  "/" +
-                                                  a.get("symbol")
-                                          )
-                                        : null,
-                                    v = o ? " " + t.get("symbol") : null,
-                                    _ = o ? " " + a.get("symbol") : null,
-                                    y = u ? u.get("unit") : "1.3.0",
-                                    E = p ? "value positive" : "value negative",
-                                    w = p ? "value negative" : "value positive";
-                                return s
-                                    ? r.a.createElement(
-                                          "tr",
-                                          {key: n.id, className: "clickable"},
-                                          r.a.createElement(
-                                              "td",
-                                              {
-                                                  colSpan: "5",
-                                                  style: U,
-                                                  onClick: this.props.onFlip
-                                              },
-                                              p
-                                                  ? r.a.createElement(m.a, {
-                                                        content:
-                                                            "exchange.buy_description",
-                                                        baseAsset: d.a.format_number(
-                                                            n[
-                                                                p
-                                                                    ? "amountToReceive"
-                                                                    : "amountForSale"
-                                                            ]().getAmount({
-                                                                real: !0
-                                                            }),
-                                                            t.get("precision"),
-                                                            !1
-                                                        ),
-                                                        quoteAsset: d.a.format_number(
-                                                            n[
-                                                                p
-                                                                    ? "amountForSale"
-                                                                    : "amountToReceive"
-                                                            ]().getAmount({
-                                                                real: !0
-                                                            }),
-                                                            a.get("precision"),
-                                                            !1
-                                                        ),
-                                                        baseName: r.a.createElement(
-                                                            f.a,
-                                                            {
-                                                                noTip: !0,
-                                                                customClass: E,
-                                                                name: a.get(
-                                                                    "symbol"
-                                                                )
-                                                            }
-                                                        ),
-                                                        quoteName: r.a.createElement(
-                                                            f.a,
-                                                            {
-                                                                noTip: !0,
-                                                                customClass: w,
-                                                                name: t.get(
-                                                                    "symbol"
-                                                                )
-                                                            }
-                                                        )
-                                                    })
-                                                  : r.a.createElement(m.a, {
-                                                        content:
-                                                            "exchange.sell_description",
-                                                        baseAsset: d.a.format_number(
-                                                            n[
-                                                                p
-                                                                    ? "amountToReceive"
-                                                                    : "amountForSale"
-                                                            ]().getAmount({
-                                                                real: !0
-                                                            }),
-                                                            t.get("precision"),
-                                                            !1
-                                                        ),
-                                                        quoteAsset: d.a.format_number(
-                                                            n[
-                                                                p
-                                                                    ? "amountForSale"
-                                                                    : "amountToReceive"
-                                                            ]().getAmount({
-                                                                real: !0
-                                                            }),
-                                                            a.get("precision"),
-                                                            !1
-                                                        ),
-                                                        baseName: r.a.createElement(
-                                                            f.a,
-                                                            {
-                                                                noTip: !0,
-                                                                customClass: E,
-                                                                name: a.get(
-                                                                    "symbol"
-                                                                )
-                                                            }
-                                                        ),
-                                                        quoteName: r.a.createElement(
-                                                            f.a,
-                                                            {
-                                                                noTip: !0,
-                                                                customClass: w,
-                                                                name: t.get(
-                                                                    "symbol"
-                                                                )
-                                                            }
-                                                        )
-                                                    })
-                                          ),
-                                          r.a.createElement(
-                                              "td",
-                                              {
-                                                  style: U,
-                                                  onClick: this.props.onFlip
-                                              },
-                                              r.a.createElement(D.a, {
-                                                  base_amount: n.sellPrice()
-                                                      .base.amount,
-                                                  base_asset: n.sellPrice().base
-                                                      .asset_id,
-                                                  quote_amount: n.sellPrice()
-                                                      .quote.amount,
-                                                  quote_asset: n.sellPrice()
-                                                      .quote.asset_id,
-                                                  force_direction: t.get(
-                                                      "symbol"
-                                                  ),
-                                                  hide_symbols: !0
-                                              })
-                                          ),
-                                          r.a.createElement(
-                                              "td",
-                                              {
-                                                  style: U,
-                                                  onClick: this.props.onFlip
-                                              },
-                                              r.a.createElement(q.a, {
-                                                  base: t.get("id"),
-                                                  quote: a.get("id"),
-                                                  force_direction: t.get(
-                                                      "symbol"
-                                                  ),
-                                                  hide_symbols: !0,
-                                                  hide_asset: !0
-                                              })
-                                          ),
-                                          r.a.createElement(
-                                              "td",
-                                              {
-                                                  style: {textAlign: "right"},
-                                                  onClick: this.props.onFlip
-                                              },
-                                              r.a.createElement(I.b, {
-                                                  hide_asset: !0,
-                                                  amount: n
-                                                      .amountForSale()
-                                                      .getAmount(),
-                                                  fromAsset: n.amountForSale()
-                                                      .asset_id,
-                                                  noDecimals: !0,
-                                                  toAsset: y
-                                              }),
-                                              " ",
-                                              r.a.createElement(f.a, {name: y})
-                                          ),
-                                          r.a.createElement(
-                                              "td",
-                                              null,
-                                              r.a.createElement(
-                                                  i.b,
-                                                  {
-                                                      to:
-                                                          "/market/" +
-                                                          a.get("symbol") +
-                                                          "_" +
-                                                          t.get("symbol")
-                                                  },
-                                                  r.a.createElement(P.a, {
-                                                      name: "trade",
-                                                      title:
-                                                          "icons.trade.trade",
-                                                      className: "icon-14px"
-                                                  })
-                                              )
-                                          ),
-                                          l
-                                              ? r.a.createElement(
-                                                    "td",
-                                                    {
-                                                        className:
-                                                            "text-center",
-                                                        style: {
-                                                            padding: "2px 5px"
-                                                        }
-                                                    },
-                                                    h
-                                                        ? null
-                                                        : r.a.createElement(
-                                                              "span",
-                                                              {
-                                                                  style: {
-                                                                      marginRight: 0
-                                                                  },
-                                                                  className:
-                                                                      "order-cancel"
-                                                              },
-                                                              r.a.createElement(
-                                                                  "input",
-                                                                  {
-                                                                      type:
-                                                                          "checkbox",
-                                                                      className:
-                                                                          "orderCancel",
-                                                                      onChange: this
-                                                                          .props
-                                                                          .onCheckCancel
-                                                                  }
-                                                              )
-                                                          )
-                                                )
-                                              : null
-                                      )
-                                    : r.a.createElement(
-                                          "tr",
-                                          {key: n.id},
-                                          r.a.createElement(
-                                              "td",
-                                              {
-                                                  className: b,
-                                                  style: {paddingLeft: 10}
-                                              },
-                                              r.a.createElement(C.a, {
-                                                  price: n.getPrice(),
-                                                  base: t,
-                                                  quote: a
-                                              }),
-                                              g
-                                          ),
-                                          r.a.createElement(
-                                              "td",
-                                              null,
-                                              d.a.format_number(
-                                                  n[
-                                                      p
-                                                          ? "amountToReceive"
-                                                          : "amountForSale"
-                                                  ]().getAmount({real: !0}),
-                                                  a.get("precision")
-                                              ),
-                                              " ",
-                                              _
-                                          ),
-                                          r.a.createElement(
-                                              "td",
-                                              null,
-                                              d.a.format_number(
-                                                  n[
-                                                      p
-                                                          ? "amountForSale"
-                                                          : "amountToReceive"
-                                                  ]().getAmount({real: !0}),
-                                                  t.get("precision")
-                                              ),
-                                              " ",
-                                              v
-                                          ),
-                                          r.a.createElement(
-                                              "td",
-                                              {
-                                                  style: {
-                                                      width: "25%",
-                                                      textAlign: "right"
-                                                  },
-                                                  className: "tooltip",
-                                                  "data-tip": new Date(
-                                                      n.expiration
-                                                  )
-                                              },
-                                              h
-                                                  ? null
-                                                  : c.a.localize(
-                                                        new Date(n.expiration),
-                                                        {
-                                                            type: "date",
-                                                            format:
-                                                                "short_custom"
-                                                        }
-                                                    )
-                                          ),
-                                          r.a.createElement(
-                                              "td",
-                                              {
-                                                  className: "text-center",
-                                                  style: {width: "6%"}
-                                              },
-                                              h
-                                                  ? null
-                                                  : r.a.createElement(
-                                                        "a",
-                                                        {
-                                                            style: {
-                                                                marginRight: 0
-                                                            },
-                                                            className:
-                                                                "order-cancel",
-                                                            onClick: this.props
-                                                                .onCancel
-                                                        },
-                                                        r.a.createElement(P.a, {
-                                                            name:
-                                                                "cross-circle",
-                                                            title:
-                                                                "icons.cross_circle.cancel_order",
-                                                            className:
-                                                                "icon-14px"
-                                                        })
-                                                    )
-                                          )
-                                      );
-                            }
-                        }
-                    ]),
-                    t
-                );
-            })();
-            H.defaultProps = {showSymbols: !1};
-            var J = (function(e) {
-                function t(e) {
-                    B(this, t);
-                    var a = V(
-                        this,
-                        (t.__proto__ || Object.getPrototypeOf(t)).call(this)
-                    );
-                    return (
-                        (a.state = {activeTab: e.activeTab}),
-                        (a._getOrders = a._getOrders.bind(a)),
-                        a
-                    );
-                }
-                return (
-                    W(t, r.a.Component),
-                    M(t, [
-                        {
-                            key: "componentDidMount",
-                            value: function() {
-                                var e = this.refs.container;
-                                e && p.a.initialize(e);
-                            }
-                        },
-                        {
-                            key: "componentDidUpdate",
-                            value: function() {
-                                var e = this.refs.container;
-                                e && p.a.update(e);
-                            }
-                        },
-                        {
-                            key: "_getOrders",
-                            value: function() {
-                                var e,
-                                    t = this.props,
-                                    a = t.currentAccount,
-                                    n = t.base,
-                                    r = t.quote,
-                                    o = t.feedPrice,
-                                    s = a.get("orders"),
-                                    i = a.get("call_orders"),
-                                    l = n.get("id"),
-                                    c = r.get("id"),
-                                    u = (F((e = {}), n.get("id"), {
-                                        precision: n.get("precision")
-                                    }),
-                                    F(e, r.get("id"), {
-                                        precision: r.get("precision")
-                                    }),
-                                    e),
-                                    p = s
-                                        .toArray()
-                                        .map(function(e) {
-                                            var t = j.b.getObject(e);
-                                            if (!t) return null;
-                                            var a = t.getIn([
-                                                    "sell_price",
-                                                    "base",
-                                                    "asset_id"
-                                                ]),
-                                                n = t.getIn([
-                                                    "sell_price",
-                                                    "quote",
-                                                    "asset_id"
-                                                ]);
-                                            return (a === l && n === c) ||
-                                                (a === c && n === l)
-                                                ? new T.d(
-                                                      t.toJS(),
-                                                      u,
-                                                      r.get("id")
-                                                  )
-                                                : void 0;
-                                        })
-                                        .filter(function(e) {
-                                            return !!e;
-                                        }),
-                                    d = i
-                                        .toArray()
-                                        .map(function(e) {
-                                            try {
-                                                var t = j.b.getObject(e);
-                                                if (!t) return null;
-                                                var a = t.getIn([
-                                                        "call_price",
-                                                        "base",
-                                                        "asset_id"
-                                                    ]),
-                                                    n = t.getIn([
-                                                        "call_price",
-                                                        "quote",
-                                                        "asset_id"
-                                                    ]);
-                                                if (
-                                                    (a === l && n === c) ||
-                                                    (a === c && n === l)
-                                                )
-                                                    return o
-                                                        ? new T.b(
-                                                              t.toJS(),
-                                                              u,
-                                                              r.get("id"),
-                                                              o
-                                                          )
-                                                        : null;
-                                            } catch (e) {
-                                                return null;
-                                            }
-                                        })
-                                        .filter(function(e) {
-                                            return !!e;
-                                        })
-                                        .filter(function(e) {
-                                            try {
-                                                return e.isMarginCalled();
-                                            } catch (e) {
-                                                return !1;
-                                            }
-                                        });
-                                return p.concat(d);
-                            }
-                        },
-                        {
-                            key: "_changeTab",
-                            value: function(e) {
-                                x.a.changeViewSetting({ordersTab: e}),
-                                    this.setState({activeTab: e});
-                                var t = this.refs.container;
-                                (t.scrollTop = 0),
-                                    p.a.update(t),
-                                    setTimeout(R.a.rebuild, 1e3);
-                            }
-                        },
-                        {
-                            key: "render",
-                            value: function() {
-                                var e = this,
-                                    t = this.props,
-                                    a = t.base,
-                                    n = t.quote,
-                                    o = t.quoteSymbol,
-                                    s = t.baseSymbol,
-                                    i = t.settleOrders,
-                                    l = this.state.activeTab;
-                                if (!a || !n) return null;
-                                var c = void 0,
-                                    u = !!(
-                                        a.get("bitasset_data_id") && i.size > 0
-                                    ),
-                                    p = !!(
-                                        n.get("bitasset_data_id") && i.size > 0
-                                    );
-                                if (
-                                    ((l && (u || p)) || (l = "my_orders"),
-                                    "my_orders" == l)
-                                ) {
-                                    var d = this._getOrders(),
-                                        h = r.a.createElement(
-                                            "tr",
-                                            null,
-                                            r.a.createElement(
-                                                "td",
-                                                {
-                                                    style: {
-                                                        textAlign: "center"
-                                                    },
-                                                    colSpan: "5"
-                                                },
-                                                r.a.createElement(m.a, {
-                                                    content: "account.no_orders"
-                                                })
-                                            )
-                                        ),
-                                        b = d
-                                            .filter(function(e) {
-                                                return e.isBid();
-                                            })
-                                            .sort(function(e, t) {
-                                                return (
-                                                    t.getPrice() - e.getPrice()
-                                                );
-                                            })
-                                            .map(function(t) {
-                                                var o = t.getPrice();
-                                                return r.a.createElement(H, {
-                                                    price: o,
-                                                    key: t.id,
-                                                    order: t,
-                                                    base: a,
-                                                    quote: n,
-                                                    onCancel: e.props.onCancel.bind(
-                                                        e,
-                                                        t.id
-                                                    )
-                                                });
-                                            }),
-                                        g = d
-                                            .filter(function(e) {
-                                                return !e.isBid();
-                                            })
-                                            .sort(function(e, t) {
-                                                return (
-                                                    e.getPrice() - t.getPrice()
-                                                );
-                                            })
-                                            .map(function(t) {
-                                                var o = t.getPrice();
-                                                return r.a.createElement(H, {
-                                                    price: o,
-                                                    key: t.id,
-                                                    order: t,
-                                                    base: a,
-                                                    quote: n,
-                                                    onCancel: e.props.onCancel.bind(
-                                                        e,
-                                                        t.id
-                                                    )
-                                                });
-                                            }),
-                                        _ = [];
-                                    g.length && (_ = _.concat(g)),
-                                        b.length && (_ = _.concat(b)),
-                                        _.sort(function(e, t) {
-                                            return (
-                                                e.props.price - t.props.price
-                                            );
-                                        }),
-                                        (c = r.a.createElement(
-                                            v.a,
-                                            {
-                                                component: "tbody",
-                                                transitionName: "newrow"
-                                            },
-                                            _.length ? _ : h
-                                        ));
-                                }
-                                l &&
-                                    "open_settlement" == l &&
-                                    (c = r.a.createElement(A, {
-                                        key: "settle_orders",
-                                        orders: i,
-                                        base: a,
-                                        quote: n,
-                                        baseSymbol: s,
-                                        quoteSymbol: o
-                                    }));
-                                var y = "mymarkets-header clickable",
-                                    E = S()(y, {inactive: "my_orders" !== l}),
-                                    w = S()(y, {
-                                        inactive: "open_settlement" !== l
-                                    }),
-                                    k = u || p ? "50%" : "100%",
-                                    O = u || p ? "inherit" : "none";
-                                return r.a.createElement(
-                                    "div",
-                                    {
-                                        style: {marginBottom: "15px"},
-                                        key: "open_orders",
-                                        className: this.props.className
-                                    },
-                                    r.a.createElement(
-                                        "div",
-                                        {
-                                            className:
-                                                "exchange-bordered small-12",
-                                            style: {height: 266}
-                                        },
-                                        r.a.createElement(
-                                            "div",
-                                            {
-                                                className:
-                                                    "grid-block shrink left-orderbook-header"
-                                            },
-                                            r.a.createElement(
-                                                "div",
-                                                {
-                                                    style: {width: k},
-                                                    className: E,
-                                                    onClick: this._changeTab.bind(
-                                                        this,
-                                                        "my_orders"
-                                                    )
-                                                },
-                                                r.a.createElement(m.a, {
-                                                    content:
-                                                        "exchange.my_orders"
-                                                })
-                                            ),
-                                            r.a.createElement(
-                                                "div",
-                                                {
-                                                    style: {display: O},
-                                                    className: w,
-                                                    onClick: this._changeTab.bind(
-                                                        this,
-                                                        "open_settlement"
-                                                    )
-                                                },
-                                                r.a.createElement(m.a, {
-                                                    content:
-                                                        "exchange.settle_orders"
-                                                })
-                                            )
-                                        ),
-                                        r.a.createElement(
-                                            "div",
-                                            {
-                                                className:
-                                                    "grid-block shrink left-orderbook-header market-right-padding-only"
-                                            },
-                                            r.a.createElement(
-                                                "table",
-                                                {
-                                                    className:
-                                                        "table order-table text-right fixed-table market-right-padding"
-                                                },
-                                                "my_orders" == l
-                                                    ? r.a.createElement(z, {
-                                                          rightAlign: !0,
-                                                          type: "sell",
-                                                          baseSymbol: s,
-                                                          quoteSymbol: o
-                                                      })
-                                                    : r.a.createElement(
-                                                          "thead",
-                                                          null,
-                                                          r.a.createElement(
-                                                              "tr",
-                                                              null,
-                                                              r.a.createElement(
-                                                                  "th",
-                                                                  null,
-                                                                  r.a.createElement(
-                                                                      m.a,
-                                                                      {
-                                                                          className:
-                                                                              "header-sub-title",
-                                                                          content:
-                                                                              "exchange.price"
-                                                                      }
-                                                                  )
-                                                              ),
-                                                              r.a.createElement(
-                                                                  "th",
-                                                                  null,
-                                                                  r.a.createElement(
-                                                                      "span",
-                                                                      {
-                                                                          className:
-                                                                              "header-sub-title"
-                                                                      },
-                                                                      r.a.createElement(
-                                                                          f.a,
-                                                                          {
-                                                                              dataPlace:
-                                                                                  "top",
-                                                                              name: o
-                                                                          }
-                                                                      )
-                                                                  )
-                                                              ),
-                                                              r.a.createElement(
-                                                                  "th",
-                                                                  null,
-                                                                  r.a.createElement(
-                                                                      "span",
-                                                                      {
-                                                                          className:
-                                                                              "header-sub-title"
-                                                                      },
-                                                                      r.a.createElement(
-                                                                          f.a,
-                                                                          {
-                                                                              dataPlace:
-                                                                                  "top",
-                                                                              name: s
-                                                                          }
-                                                                      )
-                                                                  )
-                                                              ),
-                                                              r.a.createElement(
-                                                                  "th",
-                                                                  null
-                                                              )
-                                                          )
-                                                      )
-                                            )
-                                        ),
-                                        r.a.createElement(
-                                            "div",
-                                            {
-                                                className:
-                                                    "table-container grid-block market-right-padding-only no-overflow",
-                                                ref: "container",
-                                                style: {
-                                                    overflow: "hidden",
-                                                    maxHeight: 200
-                                                }
-                                            },
-                                            r.a.createElement(
-                                                "table",
-                                                {
-                                                    className:
-                                                        "table order-table text-right fixed-table market-right-padding"
-                                                },
-                                                c
-                                            )
-                                        )
-                                    )
-                                );
-                            }
-                        }
-                    ]),
-                    t
-                );
-            })();
-            (J.defaultProps = {
-                base: {},
-                quote: {},
-                orders: {},
-                quoteSymbol: "",
-                baseSymbol: ""
-            }),
-                (J.propTypes = {
-                    base: s.a.object.isRequired,
-                    quote: s.a.object.isRequired,
-                    orders: s.a.object.isRequired,
-                    quoteSymbol: s.a.string.isRequired,
-                    baseSymbol: s.a.string.isRequired
-                });
-        },
-        351: function(e, t, a) {
+        358: function(e, t, a) {
             "use strict";
             var n = a(0),
                 r = a.n(n),
                 o = a(1),
-                s = a.n(o),
-                i = a(5),
-                l = a(56),
+                i = a.n(o),
+                s = a(5),
+                l = a(57),
                 c = a(3),
                 u = a.n(c),
                 p = a(43),
@@ -3666,7 +101,7 @@
                         {
                             key: "onSubmit",
                             value: function() {
-                                var e = i.a.get_asset_precision(
+                                var e = s.a.get_asset_precision(
                                         this.state.asset.get("precision")
                                     ),
                                     t = this.state.amount.replace(/,/g, "");
@@ -3694,7 +129,7 @@
                                         className:
                                             "grid-block vertical full-width-content"
                                     },
-                                    r.a.createElement(s.a, {
+                                    r.a.createElement(i.a, {
                                         component: "h3",
                                         content: "modal.reserve.title"
                                     }),
@@ -3777,2770 +212,35 @@
             })();
             t.a = f;
         },
-        440: function(e, t, a) {
-            "use strict";
-            (function(e) {
-                var n = a(76),
-                    r = a(0),
-                    o = a.n(r),
-                    s = a(20),
-                    i = a.n(s),
-                    l = a(34),
-                    c = a(1),
-                    u = a.n(c),
-                    p = a(18),
-                    d = a(5),
-                    h = a(13),
-                    m = a(6),
-                    f = a(24),
-                    b = a(47),
-                    g = a.n(b),
-                    v = a(3),
-                    _ = a.n(v),
-                    y = a(25),
-                    E = a(161),
-                    w = a(12),
-                    k = a(37),
-                    O = a(36),
-                    A = a(22),
-                    C = a(4),
-                    x = a(182),
-                    N = a(23),
-                    S =
-                        Object.assign ||
-                        function(e) {
-                            for (var t = 1; t < arguments.length; t++) {
-                                var a = arguments[t];
-                                for (var n in a)
-                                    Object.prototype.hasOwnProperty.call(
-                                        a,
-                                        n
-                                    ) && (e[n] = a[n]);
-                            }
-                            return e;
-                        },
-                    P = (function() {
-                        function e(e, t) {
-                            for (var a = 0; a < t.length; a++) {
-                                var n = t[a];
-                                (n.enumerable = n.enumerable || !1),
-                                    (n.configurable = !0),
-                                    "value" in n && (n.writable = !0),
-                                    Object.defineProperty(e, n.key, n);
-                            }
-                        }
-                        return function(t, a, n) {
-                            return a && e(t.prototype, a), n && e(t, n), t;
-                        };
-                    })();
-                function j(e, t) {
-                    if (!(e instanceof t))
-                        throw new TypeError(
-                            "Cannot call a class as a function"
-                        );
-                }
-                function T(e, t) {
-                    if (!e)
-                        throw new ReferenceError(
-                            "this hasn't been initialised - super() hasn't been called"
-                        );
-                    return !t ||
-                        ("object" != typeof t && "function" != typeof t)
-                        ? e
-                        : t;
-                }
-                function I(e, t) {
-                    if ("function" != typeof t && null !== t)
-                        throw new TypeError(
-                            "Super expression must either be null or a function, not " +
-                                typeof t
-                        );
-                    (e.prototype = Object.create(t && t.prototype, {
-                        constructor: {
-                            value: e,
-                            enumerable: !1,
-                            writable: !0,
-                            configurable: !0
-                        }
-                    })),
-                        t &&
-                            (Object.setPrototypeOf
-                                ? Object.setPrototypeOf(e, t)
-                                : (e.__proto__ = t));
-                }
-                var q = (function(t) {
-                    function a(e) {
-                        j(this, a);
-                        var t = T(
-                            this,
-                            (a.__proto__ || Object.getPrototypeOf(a)).call(this)
-                        );
-                        return (
-                            (t.state = {
-                                toAddress: y.a.getLast(e.walletType),
-                                withdrawValue: "",
-                                amountError: null,
-                                symbol: e.asset.get("symbol"),
-                                to_withdraw: new p.a({
-                                    asset_id: e.asset.get("id"),
-                                    precision: e.asset.get("precision")
-                                }),
-                                fee_asset_id: "1.3.0",
-                                feeStatus: {},
-                                loading: !1,
-                                emptyAddressDeposit: !1
-                            }),
-                            t._validateAddress(t.state.toAddress, e),
-                            (t.addDepositAddress = t.addDepositAddress.bind(t)),
-                            (t._checkFeeStatus = t._checkFeeStatus.bind(t)),
-                            (t._checkBalance = t._checkBalance.bind(t)),
-                            (t._getCurrentBalance = t._getCurrentBalance.bind(
-                                t
-                            )),
-                            (t._getFee = t._getFee.bind(t)),
-                            (t._updateFee = Object(n.a)(
-                                t._updateFee.bind(t),
-                                250
-                            )),
-                            t
-                        );
-                    }
-                    return (
-                        I(a, x["a"]),
-                        P(a, [
-                            {
-                                key: "componentWillMount",
-                                value: function() {
-                                    this._getDepositAddress(),
-                                        this._updateFee(),
-                                        this._checkFeeStatus();
-                                }
-                            },
-                            {
-                                key: "componentWillReceiveProps",
-                                value: function(e) {
-                                    e.asset &&
-                                        this.props.asset &&
-                                        e.asset.get("id") !==
-                                            this.props.asset.get("id") &&
-                                        this.setState(
-                                            {
-                                                to_withdraw: new p.a({
-                                                    asset_id: e.asset.get("id"),
-                                                    precision: e.asset.get(
-                                                        "precision"
-                                                    )
-                                                }),
-                                                gateFee: e.asset.get("gateFee"),
-                                                intermediateAccount: e.asset.get(
-                                                    "intermediateAccount"
-                                                ),
-                                                symbol: e.asset.get("symbol"),
-                                                memo: "",
-                                                withdrawValue: "",
-                                                receive_address: null,
-                                                toAddress: y.a.getLast(
-                                                    e.walletType
-                                                )
-                                            },
-                                            this._getDepositAddress
-                                        );
-                                }
-                            },
-                            {
-                                key: "_getDepositAddress",
-                                value: function() {
-                                    if (this.props.backingCoinType) {
-                                        var e = Object(y.j)({
-                                            coin:
-                                                "open." +
-                                                this.props.backingCoinType.toLowerCase(),
-                                            account: this.props.account,
-                                            stateCallback: this
-                                                .addDepositAddress
-                                        });
-                                        e
-                                            ? this.setState({
-                                                  receive_address: e
-                                              })
-                                            : Object(y.l)(
-                                                  this._getDepositObject()
-                                              );
-                                    }
-                                }
-                            },
-                            {
-                                key: "_getDepositObject",
-                                value: function() {
-                                    return {
-                                        inputCoinType: this.props.backingCoinType.toLowerCase(),
-                                        outputCoinType: this.props.symbol.toLowerCase(),
-                                        outputAddress: this.props.sender.get(
-                                            "name"
-                                        ),
-                                        stateCallback: this.addDepositAddress
-                                    };
-                                }
-                            },
-                            {
-                                key: "requestDepositAddressLoad",
-                                value: function() {
-                                    this.setState({
-                                        loading: !0,
-                                        emptyAddressDeposit: !1
-                                    }),
-                                        Object(y.l)(this._getDepositObject());
-                                }
-                            },
-                            {
-                                key: "addDepositAddress",
-                                value: function(e) {
-                                    e.error &&
-                                        ("no_address" === e.error.message
-                                            ? this.setState({
-                                                  emptyAddressDeposit: !0
-                                              })
-                                            : this.setState({
-                                                  emptyAddressDeposit: !1
-                                              })),
-                                        this.setState({
-                                            receive_address: e,
-                                            loading: !1
-                                        });
-                                }
-                            },
-                            {
-                                key: "componentDidUpdate",
-                                value: function() {
-                                    g.a.rebuild();
-                                }
-                            },
-                            {
-                                key: "onSubmit",
-                                value: function(t) {
-                                    if (
-                                        (t.preventDefault(),
-                                        0 ===
-                                            this.state.to_withdraw.getAmount())
-                                    )
-                                        return this.setState({
-                                            amountError: "transfer.errors.pos"
-                                        });
-                                    if (this.props.intermediateAccount) {
-                                        var a = this._getFee(),
-                                            n = this._getGateFee(),
-                                            r = this.state.to_withdraw.clone(),
-                                            o = r.clone(
-                                                this._getCurrentBalance().get(
-                                                    "balance"
-                                                )
-                                            );
-                                        r.plus(n),
-                                            o.lt(r) &&
-                                                (r = this.state.to_withdraw.clone()),
-                                            f.a.transfer(
-                                                this.props.sender.get("id"),
-                                                this.props.intermediateAccount,
-                                                this.state.to_withdraw.getAmount(),
-                                                this.state.to_withdraw.asset_id,
-                                                this.props.backingCoinType.toLowerCase() +
-                                                    ":" +
-                                                    this.state.toAddress +
-                                                    (this.state.memo
-                                                        ? ":" +
-                                                          new e(
-                                                              this.state.memo,
-                                                              "utf-8"
-                                                          )
-                                                        : ""),
-                                                null,
-                                                a.asset_id
-                                            );
-                                    }
-                                }
-                            },
-                            {
-                                key: "_updateAmount",
-                                value: function() {
-                                    var e = this._getFee(),
-                                        t = this._getCurrentBalance(),
-                                        a = new p.a({
-                                            amount: t ? t.get("balance") : 0,
-                                            asset_id: this.props.asset.get(
-                                                "id"
-                                            ),
-                                            precision: this.props.asset.get(
-                                                "precision"
-                                            )
-                                        });
-                                    a.asset_id === e.asset_id && a.minus(e),
-                                        this.state.to_withdraw.setAmount({
-                                            sats: a.getAmount()
-                                        }),
-                                        this.setState(
-                                            {
-                                                withdrawValue: a.getAmount({
-                                                    real: !0
-                                                }),
-                                                amountError: null
-                                            },
-                                            this._checkBalance
-                                        );
-                                }
-                            },
-                            {
-                                key: "_checkFeeStatus",
-                                value: function() {
-                                    var e = this,
-                                        t =
-                                            arguments.length > 0 &&
-                                            void 0 !== arguments[0]
-                                                ? arguments[0]
-                                                : this.props.sender;
-                                    if (t) {
-                                        var a = [
-                                                "1.3.0",
-                                                this.state.to_withdraw.asset_id
-                                            ],
-                                            n = {},
-                                            r = [];
-                                        a.forEach(function(a) {
-                                            r.push(
-                                                Object(O.b)({
-                                                    accountID: t.get("id"),
-                                                    feeID: a,
-                                                    options: [
-                                                        "price_per_kbyte"
-                                                    ],
-                                                    data: {
-                                                        type: "memo",
-                                                        content:
-                                                            e.props.backingCoinType.toLowerCase() +
-                                                            ":" +
-                                                            e.state.toAddress +
-                                                            (e.state.memo
-                                                                ? ":" +
-                                                                  e.state.memo
-                                                                : "")
-                                                    }
-                                                })
-                                            );
-                                        }),
-                                            Promise.all(r)
-                                                .then(function(t) {
-                                                    a.forEach(function(e, a) {
-                                                        n[e] = t[a];
-                                                    }),
-                                                        d.a.are_equal_shallow(
-                                                            e.state.feeStatus,
-                                                            n
-                                                        ) ||
-                                                            e.setState({
-                                                                feeStatus: n
-                                                            }),
-                                                        e._checkBalance();
-                                                })
-                                                .catch(function(e) {
-                                                    console.error(e);
-                                                });
-                                    }
-                                }
-                            },
-                            {
-                                key: "_updateFee",
-                                value: function() {
-                                    var e = this,
-                                        t =
-                                            arguments.length > 0 &&
-                                            void 0 !== arguments[0]
-                                                ? arguments[0]
-                                                : this.state.fee_asset_id;
-                                    if (!this.props.sender) return null;
-                                    Object(O.b)({
-                                        accountID: this.props.sender.get("id"),
-                                        feeID: t,
-                                        options: ["price_per_kbyte"],
-                                        data: {
-                                            type: "memo",
-                                            content:
-                                                this.props.backingCoinType.toLowerCase() +
-                                                ":" +
-                                                this.state.toAddress +
-                                                (this.state.memo
-                                                    ? ":" + this.state.memo
-                                                    : "")
-                                        }
-                                    }).then(function(t) {
-                                        var a = t.fee,
-                                            n = t.hasBalance,
-                                            r = t.hasPoolBalance;
-                                        e.setState(
-                                            {
-                                                feeAmount: a,
-                                                hasBalance: n,
-                                                hasPoolBalance: r,
-                                                error: !n || !r
-                                            },
-                                            e._checkFeeStatus
-                                        );
-                                    });
-                                }
-                            },
-                            {
-                                key: "_getCurrentBalance",
-                                value: function() {
-                                    var e = this;
-                                    return this.props.balances.find(function(
-                                        t
-                                    ) {
-                                        return (
-                                            t &&
-                                            t.get("asset_type") ===
-                                                e.props.asset.get("id")
-                                        );
-                                    });
-                                }
-                            },
-                            {
-                                key: "_checkBalance",
-                                value: function() {
-                                    var e = this.state,
-                                        t = e.feeAmount,
-                                        a = e.to_withdraw,
-                                        n = this.props.asset,
-                                        r = this._getCurrentBalance();
-                                    if (r && t) {
-                                        var o = Object(O.a)(
-                                            a.getAmount({real: !0}),
-                                            n,
-                                            this._getFee(),
-                                            r,
-                                            this._getGateFee()
-                                        );
-                                        if (null !== o)
-                                            return (
-                                                this.state.balanceError !==
-                                                    !o &&
-                                                    this.setState({
-                                                        balanceError: !o
-                                                    }),
-                                                o
-                                            );
-                                    }
-                                }
-                            },
-                            {
-                                key: "_getFee",
-                                value: function() {
-                                    var e = {
-                                        getAmount: function() {
-                                            return 0;
-                                        },
-                                        asset_id: this.state.fee_asset_id
-                                    };
-                                    if (
-                                        !this.state.feeStatus ||
-                                        !this.state.feeAmount
-                                    )
-                                        return e;
-                                    var t = this.state.feeStatus["1.3.0"],
-                                        a = this.state.feeStatus[
-                                            this.state.to_withdraw.asset_id
-                                        ];
-                                    return t && t.hasBalance
-                                        ? t.fee
-                                        : t &&
-                                          !t.hasBalance &&
-                                          a &&
-                                          a.hasBalance
-                                            ? a.fee
-                                            : t
-                                                ? t.fee
-                                                : e;
-                                }
-                            },
-                            {
-                                key: "_onInputAmount",
-                                value: function(e) {
-                                    try {
-                                        this.state.to_withdraw.setAmount({
-                                            real: parseFloat(
-                                                e.target.value || 0
-                                            )
-                                        }),
-                                            this.setState(
-                                                {
-                                                    withdrawValue:
-                                                        e.target.value,
-                                                    amountError: null
-                                                },
-                                                this._checkBalance
-                                            );
-                                    } catch (e) {
-                                        console.error("err:", e);
-                                    }
-                                }
-                            },
-                            {
-                                key: "_onInputTo",
-                                value: function(e) {
-                                    var t = e.target.value.trim();
-                                    this.setState({
-                                        withdraw_address_check_in_progress: !0,
-                                        withdraw_address_selected: t,
-                                        validAddress: null,
-                                        toAddress: t
-                                    }),
-                                        this._validateAddress(t);
-                                }
-                            },
-                            {
-                                key: "_onMemoChanged",
-                                value: function(e) {
-                                    this.setState(
-                                        {memo: e.target.value},
-                                        this._updateFee
-                                    );
-                                }
-                            },
-                            {
-                                key: "_validateAddress",
-                                value: function(e) {
-                                    var t = this,
-                                        a =
-                                            arguments.length > 1 &&
-                                            void 0 !== arguments[1]
-                                                ? arguments[1]
-                                                : this.props;
-                                    Object(y.m)({
-                                        url: N.e.BASE,
-                                        walletType: a.walletType,
-                                        newAddress: e
-                                    })
-                                        .then(function(a) {
-                                            t.state.toAddress === e &&
-                                                t.setState({
-                                                    withdraw_address_check_in_progress: !1,
-                                                    validAddress: !!a
-                                                });
-                                        })
-                                        .catch(function(e) {
-                                            console.error(
-                                                "Error when validating address:",
-                                                e
-                                            );
-                                        });
-                                }
-                            },
-                            {
-                                key: "_openRegistrarSite",
-                                value: function(e) {
-                                    e.preventDefault(),
-                                        (window.open(
-                                            SettingsStore.site_registr,
-                                            "_blank"
-                                        ).opener = null);
-                                }
-                            },
-                            {
-                                key: "_getGateFee",
-                                value: function() {
-                                    var e = this.props,
-                                        t = e.gateFee,
-                                        a = e.asset;
-                                    return new p.a({
-                                        real: parseFloat(
-                                            t ? t.replace(",", "") : 0
-                                        ),
-                                        asset_id: a.get("id"),
-                                        precision: a.get("precision")
-                                    });
-                                }
-                            },
-                            {
-                                key: "_renderWithdraw",
-                                value: function() {
-                                    var e = this.state.amountError,
-                                        t = d.a.replaceName(this.props.asset)
-                                            .name,
-                                        a = 1,
-                                        n = this.props.supportsMemos,
-                                        r = this._getFee(),
-                                        s = this._getGateFee(),
-                                        i = this.state.feeStatus[r.asset_id],
-                                        l = C.b.getAsset(r.asset_id),
-                                        c =
-                                            (i && !i.hasBalance) ||
-                                            this.state.balanceError ||
-                                            !this.state.toAddress ||
-                                            !this.state.withdrawValue;
-                                    return o.a.createElement(
-                                        "div",
-                                        null,
-                                        o.a.createElement(
-                                            "p",
-                                            null,
-                                            o.a.createElement(u.a, {
-                                                content:
-                                                    "gateway.withdraw_funds",
-                                                asset: t
-                                            })
-                                        ),
-                                        this._renderCurrentBalance(),
-                                        o.a.createElement(
-                                            "div",
-                                            {
-                                                className:
-                                                    "SimpleTrade__withdraw-row"
-                                            },
-                                            o.a.createElement(
-                                                "label",
-                                                {className: "left-label"},
-                                                _.a.translate(
-                                                    "modal.withdraw.amount"
-                                                )
-                                            ),
-                                            o.a.createElement(
-                                                "div",
-                                                {
-                                                    className:
-                                                        "inline-label input-wrapper"
-                                                },
-                                                o.a.createElement("input", {
-                                                    tabIndex: a++,
-                                                    type: "number",
-                                                    min: "0",
-                                                    onKeyPress: this.onKeyPress.bind(
-                                                        this
-                                                    ),
-                                                    value: this.state
-                                                        .withdrawValue,
-                                                    onChange: this._onInputAmount.bind(
-                                                        this
-                                                    )
-                                                }),
-                                                o.a.createElement(
-                                                    "div",
-                                                    {
-                                                        className:
-                                                            "form-label select floating-dropdown"
-                                                    },
-                                                    o.a.createElement(
-                                                        "div",
-                                                        {
-                                                            className:
-                                                                "dropdown-wrapper inactive"
-                                                        },
-                                                        o.a.createElement(
-                                                            "div",
-                                                            null,
-                                                            t
-                                                        )
-                                                    )
-                                                )
-                                            ),
-                                            e
-                                                ? o.a.createElement(
-                                                      "p",
-                                                      {
-                                                          className:
-                                                              "has-error no-margin",
-                                                          style: {
-                                                              paddingTop: 10
-                                                          }
-                                                      },
-                                                      o.a.createElement(u.a, {
-                                                          content: e
-                                                      })
-                                                  )
-                                                : null,
-                                            this.state.balanceError
-                                                ? o.a.createElement(
-                                                      "p",
-                                                      {
-                                                          className:
-                                                              "has-error no-margin",
-                                                          style: {
-                                                              paddingTop: 10
-                                                          }
-                                                      },
-                                                      o.a.createElement(u.a, {
-                                                          content:
-                                                              "transfer.errors.insufficient"
-                                                      })
-                                                  )
-                                                : null
-                                        ),
-                                        o.a.createElement(
-                                            "div",
-                                            {
-                                                className:
-                                                    "SimpleTrade__withdraw-row"
-                                            },
-                                            o.a.createElement(
-                                                "label",
-                                                {className: "left-label"},
-                                                _.a.translate("transfer.fee")
-                                            ),
-                                            o.a.createElement(
-                                                "div",
-                                                {
-                                                    className:
-                                                        "inline-label input-wrapper"
-                                                },
-                                                o.a.createElement("input", {
-                                                    type: "text",
-                                                    disabled: !0,
-                                                    value: r.getAmount({
-                                                        real: !0
-                                                    })
-                                                }),
-                                                o.a.createElement(
-                                                    "div",
-                                                    {
-                                                        className:
-                                                            "form-label select floating-dropdown"
-                                                    },
-                                                    o.a.createElement(
-                                                        "div",
-                                                        {
-                                                            className:
-                                                                "dropdown-wrapper inactive"
-                                                        },
-                                                        o.a.createElement(
-                                                            "div",
-                                                            null,
-                                                            l
-                                                                ? o.a.createElement(
-                                                                      A.a,
-                                                                      {
-                                                                          name: l.get(
-                                                                              "symbol"
-                                                                          )
-                                                                      }
-                                                                  )
-                                                                : null
-                                                        )
-                                                    )
-                                                )
-                                            ),
-                                            i && !i.hasBalance
-                                                ? o.a.createElement(
-                                                      "p",
-                                                      {
-                                                          className:
-                                                              "has-error no-margin",
-                                                          style: {
-                                                              paddingTop: 10
-                                                          }
-                                                      },
-                                                      o.a.createElement(u.a, {
-                                                          content:
-                                                              "transfer.errors.insufficient"
-                                                      })
-                                                  )
-                                                : null
-                                        ),
-                                        o.a.createElement(
-                                            "div",
-                                            {
-                                                className:
-                                                    "SimpleTrade__withdraw-row"
-                                            },
-                                            o.a.createElement(
-                                                "label",
-                                                {className: "left-label"},
-                                                _.a.translate("gateway.fee")
-                                            ),
-                                            o.a.createElement(
-                                                "div",
-                                                {
-                                                    className:
-                                                        "inline-label input-wrapper"
-                                                },
-                                                o.a.createElement("input", {
-                                                    type: "text",
-                                                    disabled: !0,
-                                                    value: s.getAmount({
-                                                        real: !0
-                                                    })
-                                                }),
-                                                o.a.createElement(
-                                                    "div",
-                                                    {
-                                                        className:
-                                                            "form-label select floating-dropdown"
-                                                    },
-                                                    o.a.createElement(
-                                                        "div",
-                                                        {
-                                                            className:
-                                                                "dropdown-wrapper inactive"
-                                                        },
-                                                        o.a.createElement(
-                                                            "div",
-                                                            null,
-                                                            o.a.createElement(
-                                                                A.a,
-                                                                {
-                                                                    name: this.props.asset.get(
-                                                                        "symbol"
-                                                                    )
-                                                                }
-                                                            )
-                                                        )
-                                                    )
-                                                )
-                                            ),
-                                            i && !i.hasBalance
-                                                ? o.a.createElement(
-                                                      "p",
-                                                      {
-                                                          className:
-                                                              "has-error no-margin",
-                                                          style: {
-                                                              paddingTop: 10
-                                                          }
-                                                      },
-                                                      o.a.createElement(u.a, {
-                                                          content:
-                                                              "transfer.errors.insufficient"
-                                                      })
-                                                  )
-                                                : null
-                                        ),
-                                        o.a.createElement(
-                                            "div",
-                                            {
-                                                className:
-                                                    "SimpleTrade__withdraw-row"
-                                            },
-                                            o.a.createElement(
-                                                "label",
-                                                {className: "left-label"},
-                                                _.a.translate(
-                                                    "modal.withdraw.address"
-                                                )
-                                            ),
-                                            o.a.createElement(
-                                                "div",
-                                                {
-                                                    className:
-                                                        "inline-label input-wrapper"
-                                                },
-                                                o.a.createElement("input", {
-                                                    placeholder: _.a.translate(
-                                                        "gateway.withdraw_placeholder",
-                                                        {asset: t}
-                                                    ),
-                                                    tabIndex: a++,
-                                                    type: "text",
-                                                    value: this.state.toAddress,
-                                                    onChange: this._onInputTo.bind(
-                                                        this
-                                                    )
-                                                }),
-                                                o.a.createElement(
-                                                    "div",
-                                                    {
-                                                        className:
-                                                            "form-label select floating-dropdown"
-                                                    },
-                                                    o.a.createElement(
-                                                        "div",
-                                                        {
-                                                            className:
-                                                                "dropdown-wrapper inactive"
-                                                        },
-                                                        o.a.createElement(
-                                                            "div",
-                                                            {
-                                                                "data-place":
-                                                                    "right",
-                                                                "data-tip": _.a.translate(
-                                                                    "tooltip.withdraw_address",
-                                                                    {asset: t}
-                                                                )
-                                                            },
-                                                            "?"
-                                                        )
-                                                    )
-                                                )
-                                            ),
-                                            !this.state.validAddress &&
-                                            this.state.toAddress
-                                                ? o.a.createElement(
-                                                      "div",
-                                                      {
-                                                          className:
-                                                              "has-error",
-                                                          style: {
-                                                              paddingTop: 10
-                                                          }
-                                                      },
-                                                      o.a.createElement(u.a, {
-                                                          content:
-                                                              "gateway.valid_address",
-                                                          coin_type: t
-                                                      })
-                                                  )
-                                                : null
-                                        ),
-                                        n
-                                            ? o.a.createElement(
-                                                  "div",
-                                                  {
-                                                      className:
-                                                          "SimpleTrade__withdraw-row"
-                                                  },
-                                                  o.a.createElement(
-                                                      "label",
-                                                      {className: "left-label"},
-                                                      _.a.translate(
-                                                          "transfer.memo"
-                                                      )
-                                                  ),
-                                                  o.a.createElement(
-                                                      "div",
-                                                      {
-                                                          className:
-                                                              "inline-label input-wrapper"
-                                                      },
-                                                      o.a.createElement(
-                                                          "textarea",
-                                                          {
-                                                              rows: "3",
-                                                              value: this.state
-                                                                  .memo,
-                                                              tabIndex: a++,
-                                                              onChange: this._onMemoChanged.bind(
-                                                                  this
-                                                              )
-                                                          }
-                                                      )
-                                                  ),
-                                                  !this.state.validAddress &&
-                                                  this.state.toAddress
-                                                      ? o.a.createElement(
-                                                            "div",
-                                                            {
-                                                                className:
-                                                                    "has-error",
-                                                                style: {
-                                                                    paddingTop: 10
-                                                                }
-                                                            },
-                                                            o.a.createElement(
-                                                                u.a,
-                                                                {
-                                                                    content:
-                                                                        "gateway.valid_address",
-                                                                    coin_type: t
-                                                                }
-                                                            )
-                                                        )
-                                                      : null
-                                              )
-                                            : null,
-                                        o.a.createElement(
-                                            "div",
-                                            {
-                                                className:
-                                                    "button-group SimpleTrade__withdraw-row"
-                                            },
-                                            o.a.createElement(
-                                                "button",
-                                                {
-                                                    tabIndex: a++,
-                                                    className:
-                                                        "button" +
-                                                        (c ? " disabled" : ""),
-                                                    onClick: this.onSubmit.bind(
-                                                        this
-                                                    ),
-                                                    type: "submit"
-                                                },
-                                                o.a.createElement(u.a, {
-                                                    content:
-                                                        "gateway.withdraw_now"
-                                                })
-                                            )
-                                        )
-                                    );
-                                }
-                            },
-                            {
-                                key: "_renderDeposit",
-                                value: function() {
-                                    var e = this.state,
-                                        t = e.receive_address,
-                                        a = e.loading,
-                                        n = e.emptyAddressDeposit,
-                                        r = d.a.replaceName(this.props.asset)
-                                            .name,
-                                        s = t && "memo" in t && t.memo,
-                                        i = (t && t.address) || "",
-                                        l = 1;
-                                    return o.a.createElement(
-                                        "div",
-                                        {className: i ? "" : "no-overflow"},
-                                        o.a.createElement(
-                                            "p",
-                                            null,
-                                            o.a.createElement(u.a, {
-                                                unsafe: !0,
-                                                content: "gateway.add_funds",
-                                                account: this.props.sender.get(
-                                                    "name"
-                                                )
-                                            })
-                                        ),
-                                        this._renderCurrentBalance(),
-                                        o.a.createElement(
-                                            "div",
-                                            {
-                                                className:
-                                                    "SimpleTrade__withdraw-row"
-                                            },
-                                            o.a.createElement(
-                                                "p",
-                                                {
-                                                    style: {marginBottom: 10},
-                                                    "data-place": "right",
-                                                    "data-tip": _.a.translate(
-                                                        "tooltip.deposit_tip",
-                                                        {asset: r}
-                                                    )
-                                                },
-                                                o.a.createElement(u.a, {
-                                                    className: "help-tooltip",
-                                                    content:
-                                                        "gateway.deposit_to",
-                                                    asset: r
-                                                }),
-                                                ":",
-                                                o.a.createElement(
-                                                    "label",
-                                                    {
-                                                        className:
-                                                            "fz_12 left-label"
-                                                    },
-                                                    o.a.createElement(u.a, {
-                                                        content:
-                                                            "gateway.deposit_notice_delay"
-                                                    })
-                                                )
-                                            ),
-                                            i
-                                                ? o.a.createElement(
-                                                      "label",
-                                                      null,
-                                                      n
-                                                          ? o.a.createElement(
-                                                                u.a,
-                                                                {
-                                                                    content:
-                                                                        "gateway.please_generate_address"
-                                                                }
-                                                            )
-                                                          : o.a.createElement(
-                                                                "span",
-                                                                {
-                                                                    className:
-                                                                        "inline-label"
-                                                                },
-                                                                o.a.createElement(
-                                                                    "input",
-                                                                    {
-                                                                        readOnly: !0,
-                                                                        type:
-                                                                            "text",
-                                                                        value: i
-                                                                    }
-                                                                ),
-                                                                o.a.createElement(
-                                                                    E.a,
-                                                                    {text: i}
-                                                                ),
-                                                                " "
-                                                            )
-                                                  )
-                                                : o.a.createElement(k.a, {
-                                                      type: "three-bounce"
-                                                  }),
-                                            s
-                                                ? o.a.createElement(
-                                                      "label",
-                                                      null,
-                                                      o.a.createElement(
-                                                          "span",
-                                                          {
-                                                              className:
-                                                                  "inline-label"
-                                                          },
-                                                          o.a.createElement(
-                                                              "input",
-                                                              {
-                                                                  readOnly: !0,
-                                                                  type: "text",
-                                                                  value:
-                                                                      _.a.translate(
-                                                                          "transfer.memo"
-                                                                      ) +
-                                                                      ": " +
-                                                                      t.memo
-                                                              }
-                                                          ),
-                                                          o.a.createElement(
-                                                              E.a,
-                                                              {text: t.memo}
-                                                          )
-                                                      )
-                                                  )
-                                                : null,
-                                            t && t.error
-                                                ? o.a.createElement(
-                                                      "div",
-                                                      {
-                                                          className:
-                                                              "has-error",
-                                                          style: {
-                                                              paddingTop: 10
-                                                          }
-                                                      },
-                                                      t.error.message
-                                                  )
-                                                : null
-                                        ),
-                                        o.a.createElement(
-                                            "div",
-                                            {
-                                                className:
-                                                    "button-group SimpleTrade__withdraw-row"
-                                            },
-                                            o.a.createElement(
-                                                "button",
-                                                {
-                                                    tabIndex: l++,
-                                                    className:
-                                                        "button spinner-button-circle",
-                                                    onClick: this.requestDepositAddressLoad.bind(
-                                                        this
-                                                    ),
-                                                    type: "submit"
-                                                },
-                                                a
-                                                    ? o.a.createElement(k.a, {
-                                                          type: "circle"
-                                                      })
-                                                    : null,
-                                                o.a.createElement(u.a, {
-                                                    content:
-                                                        "gateway.generate_new"
-                                                })
-                                            )
-                                        )
-                                    );
-                                }
-                            },
-                            {
-                                key: "_renderCurrentBalance",
-                                value: function() {
-                                    var e = d.a.replaceName(this.props.asset)
-                                            .name,
-                                        t = "deposit" === this.props.action,
-                                        a = this._getCurrentBalance(),
-                                        n = a
-                                            ? new p.a({
-                                                  asset_id: a.get("asset_type"),
-                                                  precision: this.props.asset.get(
-                                                      "precision"
-                                                  ),
-                                                  amount: a.get("balance")
-                                              })
-                                            : null,
-                                        r = t
-                                            ? o.a.createElement(
-                                                  "span",
-                                                  {
-                                                      style: {
-                                                          border:
-                                                              "2px solid black",
-                                                          borderLeft: "none"
-                                                      },
-                                                      className: "form-label"
-                                                  },
-                                                  e
-                                              )
-                                            : o.a.createElement(
-                                                  "button",
-                                                  {
-                                                      "data-place": "right",
-                                                      "data-tip": _.a.translate(
-                                                          "tooltip.withdraw_full"
-                                                      ),
-                                                      className: "button",
-                                                      style: {
-                                                          border:
-                                                              "2px solid black",
-                                                          borderLeft: "none"
-                                                      },
-                                                      onClick: this._updateAmount.bind(
-                                                          this,
-                                                          a
-                                                              ? parseInt(
-                                                                    a.get(
-                                                                        "balance"
-                                                                    ),
-                                                                    10
-                                                                )
-                                                              : 0
-                                                      )
-                                                  },
-                                                  o.a.createElement(w.a, {
-                                                      name: "clippy",
-                                                      title:
-                                                          "icons.clippy.withdraw_full"
-                                                  })
-                                              );
-                                    return o.a.createElement(
-                                        "div",
-                                        {
-                                            className:
-                                                "SimpleTrade__withdraw-row",
-                                            style: {fontSize: "1rem"}
-                                        },
-                                        o.a.createElement(
-                                            "label",
-                                            {style: {fontSize: "1rem"}},
-                                            _.a.translate(
-                                                "gateway.balance_asset",
-                                                {asset: e}
-                                            ),
-                                            ":",
-                                            o.a.createElement(
-                                                "span",
-                                                {className: "inline-label"},
-                                                o.a.createElement("input", {
-                                                    disabled: !0,
-                                                    style: {
-                                                        color: "black",
-                                                        border:
-                                                            "2px solid black",
-                                                        padding: 10,
-                                                        width: "100%"
-                                                    },
-                                                    value: n
-                                                        ? n.getAmount({
-                                                              real: !0
-                                                          })
-                                                        : 0
-                                                }),
-                                                r
-                                            )
-                                        )
-                                    );
-                                }
-                            },
-                            {
-                                key: "render",
-                                value: function() {
-                                    var e = this.props,
-                                        t = e.asset,
-                                        a = "deposit" === e.action;
-                                    if (!t) return null;
-                                    var n = d.a.replaceName(t).name,
-                                        r = this.props.isDown
-                                            ? o.a.createElement(
-                                                  "div",
-                                                  null,
-                                                  o.a.createElement(u.a, {
-                                                      className:
-                                                          "txtlabel cancel",
-                                                      content:
-                                                          "gateway.unavailable_OPEN",
-                                                      component: "p"
-                                                  })
-                                              )
-                                            : this.props.isAvailable
-                                                ? a
-                                                    ? this._renderDeposit()
-                                                    : this._renderWithdraw()
-                                                : o.a.createElement(
-                                                      "div",
-                                                      null,
-                                                      o.a.createElement(u.a, {
-                                                          className:
-                                                              "txtlabel cancel",
-                                                          content:
-                                                              "gateway.unavailable",
-                                                          component: "p"
-                                                      })
-                                                  );
-                                    return o.a.createElement(
-                                        "div",
-                                        {className: "SimpleTrade__modal"},
-                                        o.a.createElement(
-                                            "div",
-                                            {className: "Modal__header"},
-                                            o.a.createElement(
-                                                "h3",
-                                                null,
-                                                o.a.createElement(u.a, {
-                                                    content: a
-                                                        ? "gateway.deposit"
-                                                        : "modal.withdraw.submit"
-                                                }),
-                                                " ",
-                                                n
-                                            )
-                                        ),
-                                        o.a.createElement("div", {
-                                            className: "Modal__divider"
-                                        }),
-                                        o.a.createElement(
-                                            "div",
-                                            {
-                                                className:
-                                                    "grid-block vertical no-overflow",
-                                                style: {
-                                                    zIndex: 1002,
-                                                    paddingLeft: "2rem",
-                                                    paddingRight: "2rem",
-                                                    paddingTop: "1rem"
-                                                }
-                                            },
-                                            r
-                                        )
-                                    );
-                                }
-                            }
-                        ]),
-                        a
-                    );
-                })();
-                (q.propTypes = {
-                    sender: m.a.ChainAccount.isRequired,
-                    asset: m.a.ChainAsset.isRequired,
-                    coreAsset: m.a.ChainAsset.isRequired,
-                    globalObject: m.a.ChainAsset.isRequired
-                }),
-                    (q.defaultProps = {
-                        coreAsset: "1.3.0",
-                        globalObject: "2.0.0"
-                    }),
-                    (q = Object(h.a)(q));
-                var D = (function(e) {
-                    function t() {
-                        j(this, t);
-                        var e = T(
-                            this,
-                            (t.__proto__ || Object.getPrototypeOf(t)).call(this)
-                        );
-                        return (e.state = {open: !1}), e;
-                    }
-                    return (
-                        I(t, o.a.Component),
-                        P(t, [
-                            {
-                                key: "show",
-                                value: function() {
-                                    var e = this;
-                                    this.setState({open: !0}, function() {
-                                        i.a.publish(e.props.modalId, "open");
-                                    });
-                                }
-                            },
-                            {
-                                key: "onClose",
-                                value: function() {
-                                    this.setState({open: !1});
-                                }
-                            },
-                            {
-                                key: "render",
-                                value: function() {
-                                    return this.state.open
-                                        ? o.a.createElement(
-                                              l.a,
-                                              {
-                                                  className: "test",
-                                                  onClose: this.onClose.bind(
-                                                      this
-                                                  ),
-                                                  overlay: !0,
-                                                  id: this.props.modalId
-                                              },
-                                              this.state.open
-                                                  ? o.a.createElement(
-                                                        q,
-                                                        S({}, this.props, {
-                                                            open: this.state
-                                                                .open
-                                                        })
-                                                    )
-                                                  : null
-                                          )
-                                        : null;
-                                }
-                            }
-                        ]),
-                        t
-                    );
-                })();
-                t.a = D;
-            }.call(this, a(29).Buffer));
-        },
-        441: function(e, t, a) {
-            "use strict";
-            var n = a(0),
-                r = a.n(n),
-                o = a(20),
-                s = a.n(o),
-                i = a(34),
-                l = a(1),
-                c = a.n(l),
-                u = a(18),
-                p = a(5),
-                d = a(13),
-                h = a(6),
-                m = a(47),
-                f = a.n(m),
-                b = a(3),
-                g = a.n(b),
-                v = a(25),
-                _ = a(221),
-                y = a(161),
-                E = a(12),
-                w = a(37),
-                k = a(23),
-                O = a(172),
-                A = a(15),
-                C = a(8),
-                x = a(10),
-                N = a(146),
-                S = a.n(N),
-                P =
-                    Object.assign ||
-                    function(e) {
-                        for (var t = 1; t < arguments.length; t++) {
-                            var a = arguments[t];
-                            for (var n in a)
-                                Object.prototype.hasOwnProperty.call(a, n) &&
-                                    (e[n] = a[n]);
-                        }
-                        return e;
-                    },
-                j = (function() {
-                    function e(e, t) {
-                        for (var a = 0; a < t.length; a++) {
-                            var n = t[a];
-                            (n.enumerable = n.enumerable || !1),
-                                (n.configurable = !0),
-                                "value" in n && (n.writable = !0),
-                                Object.defineProperty(e, n.key, n);
-                        }
-                    }
-                    return function(t, a, n) {
-                        return a && e(t.prototype, a), n && e(t, n), t;
-                    };
-                })();
-            function T(e, t) {
-                if (!(e instanceof t))
-                    throw new TypeError("Cannot call a class as a function");
-            }
-            function I(e, t) {
-                if (!e)
-                    throw new ReferenceError(
-                        "this hasn't been initialised - super() hasn't been called"
-                    );
-                return !t || ("object" != typeof t && "function" != typeof t)
-                    ? e
-                    : t;
-            }
-            function q(e, t) {
-                if ("function" != typeof t && null !== t)
-                    throw new TypeError(
-                        "Super expression must either be null or a function, not " +
-                            typeof t
-                    );
-                (e.prototype = Object.create(t && t.prototype, {
-                    constructor: {
-                        value: e,
-                        enumerable: !1,
-                        writable: !0,
-                        configurable: !0
-                    }
-                })),
-                    t &&
-                        (Object.setPrototypeOf
-                            ? Object.setPrototypeOf(e, t)
-                            : (e.__proto__ = t));
-            }
-            var D = (function(e) {
-                function t(e) {
-                    T(this, t);
-                    var a = I(
-                        this,
-                        (t.__proto__ || Object.getPrototypeOf(t)).call(this)
-                    );
-                    return (
-                        (a.state = {
-                            toAddress: v.a.getLast(e.walletType),
-                            withdrawValue: "",
-                            amountError: null,
-                            inputAmount: 0,
-                            receiveLoading: !1,
-                            limitLoading: !0,
-                            apiError: !1
-                        }),
-                        a._validateAddress(a.state.toAddress, e),
-                        (a.deposit_address_cache = new _.a()),
-                        a
-                    );
-                }
-                return (
-                    q(t, r.a.Component),
-                    j(t, [
-                        {
-                            key: "onClose",
-                            value: function() {
-                                s.a.publish(this.props.modalId, "close");
-                            }
-                        },
-                        {
-                            key: "componentWillMount",
-                            value: function() {
-                                this._getDepositAddress();
-                            }
-                        },
-                        {
-                            key: "componentDidMount",
-                            value: function() {
-                                this._getDepositLimit(), this._estimateOutput();
-                            }
-                        },
-                        {
-                            key: "componentWillReceiveProps",
-                            value: function(e) {
-                                (e.inputCoinType === this.props.inputCoinType &&
-                                    e.outputCoinType ===
-                                        this.props.outputCoinType) ||
-                                    (this._getDepositLimit(e),
-                                    this._estimateOutput(e),
-                                    this._getDepositAddress(e));
-                            }
-                        },
-                        {
-                            key: "shouldComponentUpdate",
-                            value: function(e, t) {
-                                return (
-                                    e.inputCoinType !==
-                                        this.props.inputCoinType ||
-                                    e.outputCoinType !==
-                                        this.props.outputCoinType ||
-                                    e.sender !== this.props.sender ||
-                                    e.asset !== this.props.asset ||
-                                    e.isAvailable !== this.props.isAvailable ||
-                                    e.isDown !== this.props.isDown ||
-                                    !p.a.are_equal_shallow(t, this.state)
-                                );
-                            }
-                        },
-                        {
-                            key: "_getDepositLimit",
-                            value: function() {
-                                var e = this,
-                                    t =
-                                        arguments.length > 0 &&
-                                        void 0 !== arguments[0]
-                                            ? arguments[0]
-                                            : this.props;
-                                this.setState({limitLoading: !0}),
-                                    Object(v.k)(
-                                        t.inputCoinType,
-                                        t.outputCoinType
-                                    )
-                                        .then(function(t) {
-                                            e.setState({
-                                                depositLimit: t.depositLimit,
-                                                limitLoading: !1
-                                            });
-                                        })
-                                        .catch(function(t) {
-                                            console.log(
-                                                "deposit limit error:",
-                                                t
-                                            ),
-                                                e.setState({
-                                                    depositLimit: null,
-                                                    limitLoading: !1
-                                                });
-                                        });
-                            }
-                        },
-                        {
-                            key: "_onAmountChange",
-                            value: function(e, t) {
-                                var a = new RegExp(/[[:digit:]]/),
-                                    n = t.target;
-                                switch (
-                                    (a.test(n.value) ||
-                                        (n.value = n.value.replace(
-                                            /[^0-9.]/g,
-                                            ""
-                                        )),
-                                    "." == n.value.charAt(0) &&
-                                        (n.value = "0."),
-                                    n.value.charAt(n.value.length) !=
-                                        n.value.search(".") &&
-                                        n.value.substr(1),
-                                    (n.value = p.a.limitByPrecision(
-                                        n.value,
-                                        8
-                                    )),
-                                    e)
-                                ) {
-                                    case "input":
-                                        this.setState(
-                                            {inputAmount: n.value},
-                                            this._estimateOutput.bind(this)
-                                        );
-                                        break;
-                                    case "output":
-                                        this.setState(
-                                            {outputAmount: n.value},
-                                            this._estimateInput.bind(this)
-                                        );
-                                }
-                            }
-                        },
-                        {
-                            key: "_estimateOutput",
-                            value: function() {
-                                var e = this,
-                                    t =
-                                        arguments.length > 0 &&
-                                        void 0 !== arguments[0]
-                                            ? arguments[0]
-                                            : this.props;
-                                this.setState({
-                                    receiveAmount: 0,
-                                    sendAmount: this.state.inputAmount
-                                }),
-                                    this.state.inputAmount &&
-                                        (this.setState({receiveLoading: !0}),
-                                        Object(v.c)(
-                                            this.state.inputAmount,
-                                            t.inputCoinType,
-                                            t.outputCoinType
-                                        )
-                                            .then(function(t) {
-                                                e.setState({
-                                                    inputAmount: t.inputAmount,
-                                                    receiveAmount:
-                                                        t.outputAmount,
-                                                    receiveLoading: !1
-                                                });
-                                            })
-                                            .catch(function(t) {
-                                                console.log(
-                                                    "receive amount err:",
-                                                    t
-                                                ),
-                                                    e.setState({
-                                                        receiveLoading: !1,
-                                                        apiError: !0
-                                                    });
-                                            }));
-                            }
-                        },
-                        {
-                            key: "_estimateInput",
-                            value: function() {
-                                var e = this,
-                                    t =
-                                        arguments.length > 0 &&
-                                        void 0 !== arguments[0]
-                                            ? arguments[0]
-                                            : this.props;
-                                this.setState({
-                                    receiveAmount: this.state.outputAmount,
-                                    sendAmount: 0
-                                }),
-                                    this.state.outputAmount &&
-                                        (this.setState({receiveLoading: !0}),
-                                        Object(v.b)(
-                                            this.state.outputAmount,
-                                            t.inputCoinType,
-                                            t.outputCoinType
-                                        )
-                                            .then(function(t) {
-                                                e.setState({
-                                                    inputAmount: t.inputAmount,
-                                                    sendAmount: p.a.limitByPrecision(
-                                                        t.inputAmount,
-                                                        8
-                                                    ),
-                                                    receiveLoading: !1
-                                                });
-                                            })
-                                            .catch(function(t) {
-                                                console.log(
-                                                    "send amount err:",
-                                                    t
-                                                ),
-                                                    e.setState({
-                                                        receiveLoading: !1,
-                                                        apiError: !0
-                                                    });
-                                            }));
-                            }
-                        },
-                        {
-                            key: "_getDepositAddress",
-                            value: function() {
-                                var e =
-                                    arguments.length > 0 &&
-                                    void 0 !== arguments[0]
-                                        ? arguments[0]
-                                        : this.props;
-                                if (e.inputCoinType) {
-                                    this.setState({receive_address: null}),
-                                        Object(v.l)(this._getDepositObject(e));
-                                }
-                            }
-                        },
-                        {
-                            key: "_getDepositObject",
-                            value: function() {
-                                var e = this,
-                                    t =
-                                        arguments.length > 0 &&
-                                        void 0 !== arguments[0]
-                                            ? arguments[0]
-                                            : this.props;
-                                return {
-                                    inputCoinType: t.inputCoinType.toLowerCase(),
-                                    outputCoinType: t.outputCoinType.toLowerCase(),
-                                    outputAddress: t.sender.get("name"),
-                                    url: k.a.BASE,
-                                    stateCallback: function(a) {
-                                        e.addDepositAddress(
-                                            t.inputCoinType.toLowerCase(),
-                                            t.outputCoinType.toLowerCase(),
-                                            t.sender.get("name"),
-                                            a
-                                        );
-                                    }
-                                };
-                            }
-                        },
-                        {
-                            key: "addDepositAddress",
-                            value: function(e, t, a, n) {
-                                this.deposit_address_cache.cacheInputAddress(
-                                    "blocktrades",
-                                    a,
-                                    e,
-                                    t,
-                                    n.address,
-                                    n.memo
-                                ),
-                                    this.setState({receive_address: n});
-                            }
-                        },
-                        {
-                            key: "componentDidUpdate",
-                            value: function() {
-                                f.a.rebuild();
-                            }
-                        },
-                        {
-                            key: "_validateAddress",
-                            value: function(e) {
-                                var t = this,
-                                    a =
-                                        arguments.length > 1 &&
-                                        void 0 !== arguments[1]
-                                            ? arguments[1]
-                                            : this.props;
-                                Object(v.m)({
-                                    walletType: a.walletType,
-                                    newAddress: e
-                                })
-                                    .then(function(a) {
-                                        t.state.toAddress === e &&
-                                            t.setState({
-                                                withdraw_address_check_in_progress: !1,
-                                                validAddress: a
-                                            });
-                                    })
-                                    .catch(function(e) {
-                                        console.error(
-                                            "Error when validating address:",
-                                            e
-                                        );
-                                    });
-                            }
-                        },
-                        {
-                            key: "_openRegistrarSite",
-                            value: function(e) {
-                                e.preventDefault(),
-                                    (window.open(
-                                        C.a.site_registr,
-                                        "_blank"
-                                    ).opener = null);
-                            }
-                        },
-                        {
-                            key: "_onDropDownSelect",
-                            value: function(e) {
-                                x.a.changeViewSetting({preferredBridge: e});
-                            }
-                        },
-                        {
-                            key: "onBlockTradesContact",
-                            value: function() {
-                                console.log("Open New Tab"),
-                                    window
-                                        .open(
-                                            "https://www.blocktrades.us/contact",
-                                            "_blank"
-                                        )
-                                        .focus();
-                            }
-                        },
-                        {
-                            key: "_renderDeposit",
-                            value: function() {
-                                var e = p.a.replaceName(this.props.asset),
-                                    t = e.name,
-                                    a = e.prefix,
-                                    n = this.state,
-                                    o = n.receive_address,
-                                    s = n.apiError,
-                                    i = o && "memo" in o && o.memo,
-                                    l = (o && o.address) || "",
-                                    u = r.a.createElement(
-                                        "div",
-                                        {
-                                            className: "QR",
-                                            style: {textAlign: "center"}
-                                        },
-                                        r.a.createElement(S.a, {
-                                            size: 140,
-                                            value: l
-                                        })
-                                    ),
-                                    d = Object.keys(this.props.bridges.toJS()),
-                                    h = this.props.inputCoinType.toUpperCase(),
-                                    m = (a || "") + t,
-                                    f = (
-                                        this.state.receiveAmount /
-                                        this.state.inputAmount
-                                    ).toFixed(4),
-                                    b = m + "/" + h,
-                                    v =
-                                        this.state.inputAmount >
-                                            parseFloat(
-                                                this.state.depositLimit
-                                            ) ||
-                                        this.state.sendAmount >
-                                            parseFloat(this.state.depositLimit),
-                                    _ = v
-                                        ? {border: "1px solid #a94442"}
-                                        : null;
-                                return r.a.createElement(
-                                    "div",
-                                    {className: "modal__body"},
-                                    r.a.createElement(
-                                        "div",
-                                        {className: "container-row"},
-                                        r.a.createElement(
-                                            "label",
-                                            {className: "left-label"},
-                                            r.a.createElement(c.a, {
-                                                content: "modal.buy.asset"
-                                            })
-                                        ),
-                                        r.a.createElement(
-                                            "div",
-                                            {
-                                                className:
-                                                    "inline-label input-wrapper"
-                                            },
-                                            r.a.createElement("input", {
-                                                disabled: !0,
-                                                type: "text",
-                                                defaultValue: m
-                                            })
-                                        )
-                                    ),
-                                    r.a.createElement(
-                                        "div",
-                                        {className: "container-row"},
-                                        r.a.createElement(
-                                            "div",
-                                            {className: "grid-block"},
-                                            r.a.createElement(
-                                                "label",
-                                                {className: "left-label"},
-                                                r.a.createElement(c.a, {
-                                                    content: "modal.buy.bridge"
-                                                })
-                                            ),
-                                            r.a.createElement(
-                                                "span",
-                                                {
-                                                    "data-tip": g.a.translate(
-                                                        "tooltip.bridge_TRADE"
-                                                    ),
-                                                    className:
-                                                        "inline-block tooltip",
-                                                    onClick: this.onBlockTradesContact.bind(
-                                                        this
-                                                    )
-                                                },
-                                                " ",
-                                                r.a.createElement(E.a, {
-                                                    style: {
-                                                        position: "relative",
-                                                        top: 0
-                                                    },
-                                                    name: "question-circle",
-                                                    title:
-                                                        "icons.question_circle"
-                                                })
-                                            )
-                                        ),
-                                        r.a.createElement(
-                                            "div",
-                                            {
-                                                className:
-                                                    "inline-label input-wrapper"
-                                            },
-                                            r.a.createElement("input", {
-                                                disabled: !0,
-                                                type: "text",
-                                                defaultValue: "BLOCKTRADES"
-                                            }),
-                                            " "
-                                        )
-                                    ),
-                                    r.a.createElement(
-                                        "span",
-                                        {
-                                            style: s
-                                                ? {display: "none"}
-                                                : {display: ""}
-                                        },
-                                        r.a.createElement(
-                                            "div",
-                                            {
-                                                className:
-                                                    "container-row double-row"
-                                            },
-                                            r.a.createElement(
-                                                "div",
-                                                {
-                                                    className:
-                                                        "no-margin no-padding"
-                                                },
-                                                r.a.createElement(
-                                                    "div",
-                                                    {
-                                                        className: "small-6",
-                                                        style: {
-                                                            paddingRight: 10
-                                                        }
-                                                    },
-                                                    r.a.createElement(
-                                                        "div",
-                                                        {
-                                                            className:
-                                                                "grid-block"
-                                                        },
-                                                        r.a.createElement(
-                                                            "label",
-                                                            {
-                                                                className:
-                                                                    "left-label"
-                                                            },
-                                                            r.a.createElement(
-                                                                c.a,
-                                                                {
-                                                                    content:
-                                                                        "transfer.send"
-                                                                }
-                                                            )
-                                                        ),
-                                                        v
-                                                            ? r.a.createElement(
-                                                                  "div",
-                                                                  {
-                                                                      className:
-                                                                          "error-msg inline-block tooltip",
-                                                                      "data-tip": g.a.translate(
-                                                                          "tooltip.over_limit"
-                                                                      )
-                                                                  },
-                                                                  r.a.createElement(
-                                                                      c.a,
-                                                                      {
-                                                                          content:
-                                                                              "gateway.over_limit"
-                                                                      }
-                                                                  ),
-                                                                  " ",
-                                                                  r.a.createElement(
-                                                                      E.a,
-                                                                      {
-                                                                          name:
-                                                                              "question-circle",
-                                                                          title:
-                                                                              "icons.question_circle"
-                                                                      }
-                                                                  )
-                                                              )
-                                                            : null
-                                                    ),
-                                                    r.a.createElement(
-                                                        "div",
-                                                        {
-                                                            className:
-                                                                "inline-label input-wrapper"
-                                                        },
-                                                        r.a.createElement(
-                                                            "input",
-                                                            {
-                                                                style: _,
-                                                                type: "text",
-                                                                value: this
-                                                                    .state
-                                                                    .sendAmount,
-                                                                onInput: this._onAmountChange.bind(
-                                                                    this,
-                                                                    "input"
-                                                                )
-                                                            }
-                                                        ),
-                                                        r.a.createElement(
-                                                            "div",
-                                                            {
-                                                                className:
-                                                                    "form-label select floating-dropdown"
-                                                            },
-                                                            r.a.createElement(
-                                                                O.a,
-                                                                {
-                                                                    entries: d,
-                                                                    values: d.reduce(
-                                                                        function(
-                                                                            e,
-                                                                            t
-                                                                        ) {
-                                                                            return (
-                                                                                t &&
-                                                                                    (e[
-                                                                                        t
-                                                                                    ] = t),
-                                                                                e
-                                                                            );
-                                                                        },
-                                                                        {}
-                                                                    ),
-                                                                    singleEntry:
-                                                                        d[0],
-                                                                    value:
-                                                                        this
-                                                                            .props
-                                                                            .preferredBridge ||
-                                                                        d[0],
-                                                                    onChange: this
-                                                                        ._onDropDownSelect,
-                                                                    upperCase: !0
-                                                                }
-                                                            )
-                                                        )
-                                                    )
-                                                ),
-                                                r.a.createElement(
-                                                    "div",
-                                                    {
-                                                        className: "small-6",
-                                                        style: {paddingLeft: 10}
-                                                    },
-                                                    r.a.createElement(
-                                                        "label",
-                                                        {
-                                                            className:
-                                                                "left-label"
-                                                        },
-                                                        r.a.createElement(c.a, {
-                                                            content:
-                                                                "gateway.deposit_limit"
-                                                        })
-                                                    ),
-                                                    r.a.createElement(
-                                                        "div",
-                                                        {
-                                                            className:
-                                                                "inline-label input-wrapper"
-                                                        },
-                                                        r.a.createElement(
-                                                            "input",
-                                                            {
-                                                                disabled: !0,
-                                                                type: "number",
-                                                                value:
-                                                                    (this.state
-                                                                        .depositLimit &&
-                                                                        parseFloat(
-                                                                            this
-                                                                                .state
-                                                                                .depositLimit
-                                                                        ).toFixed(
-                                                                            4
-                                                                        )) ||
-                                                                    0
-                                                            }
-                                                        ),
-                                                        r.a.createElement(
-                                                            "div",
-                                                            {
-                                                                className:
-                                                                    "input-right-symbol"
-                                                            },
-                                                            h
-                                                        )
-                                                    )
-                                                )
-                                            )
-                                        ),
-                                        r.a.createElement(
-                                            "div",
-                                            {
-                                                className:
-                                                    "container-row double-row"
-                                            },
-                                            r.a.createElement(
-                                                "div",
-                                                {
-                                                    className:
-                                                        "no-margin no-padding"
-                                                },
-                                                r.a.createElement(
-                                                    "div",
-                                                    {
-                                                        className: "small-6",
-                                                        style: {
-                                                            paddingRight: 10
-                                                        }
-                                                    },
-                                                    r.a.createElement(
-                                                        "label",
-                                                        {
-                                                            className:
-                                                                "left-label"
-                                                        },
-                                                        r.a.createElement(c.a, {
-                                                            content:
-                                                                "exchange.receive"
-                                                        })
-                                                    ),
-                                                    r.a.createElement(
-                                                        "div",
-                                                        {
-                                                            className:
-                                                                "inline-label input-wrapper"
-                                                        },
-                                                        r.a.createElement(
-                                                            "input",
-                                                            {
-                                                                style: _,
-                                                                type: "text",
-                                                                value: this
-                                                                    .state
-                                                                    .receiveAmount,
-                                                                onInput: this._onAmountChange.bind(
-                                                                    this,
-                                                                    "output"
-                                                                )
-                                                            }
-                                                        ),
-                                                        r.a.createElement(
-                                                            "div",
-                                                            {
-                                                                className:
-                                                                    "input-right-symbol"
-                                                            },
-                                                            m
-                                                        )
-                                                    )
-                                                ),
-                                                r.a.createElement(
-                                                    "div",
-                                                    {
-                                                        className: "small-6",
-                                                        style: {paddingLeft: 10}
-                                                    },
-                                                    r.a.createElement(
-                                                        "div",
-                                                        {
-                                                            className:
-                                                                "grid-block"
-                                                        },
-                                                        r.a.createElement(
-                                                            "label",
-                                                            {
-                                                                className:
-                                                                    "left-label"
-                                                            },
-                                                            r.a.createElement(
-                                                                c.a,
-                                                                {
-                                                                    content:
-                                                                        "exchange.price"
-                                                                }
-                                                            ),
-                                                            "  ",
-                                                            this.state
-                                                                .receiveLoading
-                                                                ? r.a.createElement(
-                                                                      c.a,
-                                                                      {
-                                                                          content:
-                                                                              "footer.loading"
-                                                                      }
-                                                                  )
-                                                                : ""
-                                                        )
-                                                    ),
-                                                    r.a.createElement(
-                                                        "div",
-                                                        {
-                                                            className:
-                                                                "inline-label input-wrapper"
-                                                        },
-                                                        r.a.createElement(
-                                                            "input",
-                                                            {
-                                                                disabled: !0,
-                                                                type: "number",
-                                                                value: v ? 0 : f
-                                                            }
-                                                        ),
-                                                        r.a.createElement(
-                                                            "div",
-                                                            {
-                                                                className:
-                                                                    "input-right-symbol"
-                                                            },
-                                                            b
-                                                        )
-                                                    )
-                                                )
-                                            )
-                                        ),
-                                        l
-                                            ? r.a.createElement(
-                                                  "div",
-                                                  {className: "container-row"},
-                                                  i ? null : u,
-                                                  r.a.createElement(
-                                                      "div",
-                                                      {className: "grid-block"},
-                                                      r.a.createElement(
-                                                          "div",
-                                                          {
-                                                              className:
-                                                                  "copyIcon"
-                                                          },
-                                                          r.a.createElement(
-                                                              y.a,
-                                                              {
-                                                                  text: l,
-                                                                  className:
-                                                                      "copyIcon"
-                                                              }
-                                                          )
-                                                      ),
-                                                      r.a.createElement(
-                                                          "div",
-                                                          null,
-                                                          r.a.createElement(
-                                                              c.a,
-                                                              {
-                                                                  component:
-                                                                      "div",
-                                                                  style: {
-                                                                      fontSize:
-                                                                          "0.8rem",
-                                                                      fontWeight:
-                                                                          "bold",
-                                                                      paddingBottom:
-                                                                          "0.3rem"
-                                                                  },
-                                                                  content:
-                                                                      "gateway.purchase_notice",
-                                                                  inputAsset: h,
-                                                                  outputAsset: m
-                                                              }
-                                                          ),
-                                                          r.a.createElement(
-                                                              "div",
-                                                              {
-                                                                  className:
-                                                                      "modal__highlight"
-                                                              },
-                                                              l
-                                                          )
-                                                      )
-                                                  ),
-                                                  i
-                                                      ? r.a.createElement(
-                                                            "div",
-                                                            {
-                                                                className:
-                                                                    "grid-block",
-                                                                style: {
-                                                                    marginTop:
-                                                                        "10px"
-                                                                }
-                                                            },
-                                                            r.a.createElement(
-                                                                "div",
-                                                                {
-                                                                    className:
-                                                                        "copyIcon"
-                                                                },
-                                                                r.a.createElement(
-                                                                    y.a,
-                                                                    {
-                                                                        text:
-                                                                            o.memo,
-                                                                        className:
-                                                                            "copyIcon"
-                                                                    }
-                                                                )
-                                                            ),
-                                                            r.a.createElement(
-                                                                "div",
-                                                                null,
-                                                                r.a.createElement(
-                                                                    c.a,
-                                                                    {
-                                                                        unsafe: !0,
-                                                                        content:
-                                                                            "gateway.purchase_notice_memo",
-                                                                        component:
-                                                                            "div",
-                                                                        style: {
-                                                                            fontSize:
-                                                                                "0.8rem",
-                                                                            fontWeight:
-                                                                                "bold",
-                                                                            paddingBottom:
-                                                                                "0.3rem"
-                                                                        }
-                                                                    }
-                                                                ),
-                                                                r.a.createElement(
-                                                                    "div",
-                                                                    {
-                                                                        className:
-                                                                            "modal__highlight"
-                                                                    },
-                                                                    o.memo
-                                                                )
-                                                            )
-                                                        )
-                                                      : null
-                                              )
-                                            : r.a.createElement(
-                                                  "div",
-                                                  {
-                                                      style: {
-                                                          textAlign: "center"
-                                                      }
-                                                  },
-                                                  r.a.createElement(w.a, {
-                                                      type: "three-bounce"
-                                                  })
-                                              ),
-                                        r.a.createElement(
-                                            "div",
-                                            null,
-                                            r.a.createElement(
-                                                "div",
-                                                {
-                                                    className:
-                                                        "no-margin no-padding"
-                                                },
-                                                r.a.createElement(
-                                                    "button",
-                                                    {
-                                                        className:
-                                                            "button primary hollow",
-                                                        onClick: this.onClose.bind(
-                                                            this
-                                                        )
-                                                    },
-                                                    r.a.createElement(c.a, {
-                                                        content:
-                                                            "transfer.close"
-                                                    })
-                                                )
-                                            )
-                                        )
-                                    ),
-                                    r.a.createElement(
-                                        "span",
-                                        {
-                                            style: s
-                                                ? {display: ""}
-                                                : {display: "none"}
-                                        },
-                                        r.a.createElement(
-                                            "div",
-                                            {
-                                                className:
-                                                    "container-row double-row"
-                                            },
-                                            r.a.createElement(c.a, {
-                                                className: "txtlabel cancel",
-                                                content:
-                                                    "gateway.unavailable_TRADE",
-                                                component: "h3"
-                                            }),
-                                            r.a.createElement(
-                                                "button",
-                                                {
-                                                    className:
-                                                        "button primary hollow",
-                                                    onClick: this.onClose.bind(
-                                                        this
-                                                    )
-                                                },
-                                                r.a.createElement(c.a, {
-                                                    content: "transfer.close"
-                                                })
-                                            )
-                                        )
-                                    )
-                                );
-                            }
-                        },
-                        {
-                            key: "_renderCurrentBalance",
-                            value: function() {
-                                var e = this,
-                                    t = p.a.replaceName(this.props.asset).name,
-                                    a = "deposit" === this.props.action,
-                                    n = this.props.balances.find(function(t) {
-                                        return (
-                                            t &&
-                                            t.get("asset_type") ===
-                                                e.props.asset.get("id")
-                                        );
-                                    }),
-                                    o = n
-                                        ? new u.a({
-                                              asset_id: n.get("asset_type"),
-                                              precision: this.props.asset.get(
-                                                  "precision"
-                                              ),
-                                              amount: n.get("balance")
-                                          })
-                                        : null,
-                                    s = a
-                                        ? r.a.createElement(
-                                              "span",
-                                              {
-                                                  style: {
-                                                      border: "2px solid black",
-                                                      borderLeft: "none"
-                                                  },
-                                                  className: "form-label"
-                                              },
-                                              t
-                                          )
-                                        : r.a.createElement(
-                                              "button",
-                                              {
-                                                  "data-place": "right",
-                                                  "data-tip": g.a.translate(
-                                                      "tooltip.withdraw_full"
-                                                  ),
-                                                  className: "button",
-                                                  style: {
-                                                      border: "2px solid black",
-                                                      borderLeft: "none"
-                                                  },
-                                                  onClick: this._updateAmount.bind(
-                                                      this,
-                                                      n
-                                                          ? parseInt(
-                                                                n.get(
-                                                                    "balance"
-                                                                ),
-                                                                10
-                                                            )
-                                                          : 0
-                                                  )
-                                              },
-                                              r.a.createElement(E.a, {
-                                                  name: "clippy",
-                                                  title:
-                                                      "icons.clippy.withdraw_full"
-                                              })
-                                          );
-                                return r.a.createElement(
-                                    "div",
-                                    {
-                                        className: "SimpleTrade__withdraw-row",
-                                        style: {fontSize: "1rem"}
-                                    },
-                                    r.a.createElement(
-                                        "label",
-                                        {style: {fontSize: "1rem"}},
-                                        g.a.translate("gateway.balance_asset", {
-                                            asset: t
-                                        }),
-                                        ":",
-                                        r.a.createElement(
-                                            "span",
-                                            {className: "inline-label"},
-                                            r.a.createElement("input", {
-                                                disabled: !0,
-                                                style: {
-                                                    color: "black",
-                                                    border: "2px solid black",
-                                                    padding: 10,
-                                                    width: "100%"
-                                                },
-                                                value: o
-                                                    ? o.getAmount({real: !0})
-                                                    : 0
-                                            }),
-                                            s
-                                        )
-                                    )
-                                );
-                            }
-                        },
-                        {
-                            key: "render",
-                            value: function() {
-                                return this.props.asset
-                                    ? r.a.createElement(
-                                          "div",
-                                          {
-                                              className:
-                                                  "grid-block vertical no-overflow"
-                                          },
-                                          r.a.createElement(
-                                              "div",
-                                              {className: "modal__header"},
-                                              r.a.createElement(c.a, {
-                                                  component: "p",
-                                                  content: "modal.buy.title"
-                                              })
-                                          ),
-                                          this.props.isDown
-                                              ? r.a.createElement(
-                                                    "div",
-                                                    {
-                                                        style: {
-                                                            textAlign: "center"
-                                                        }
-                                                    },
-                                                    r.a.createElement(c.a, {
-                                                        className:
-                                                            "txtlabel cancel",
-                                                        content:
-                                                            "gateway.unavailable_TRADE",
-                                                        component: "p"
-                                                    })
-                                                )
-                                              : this.props.isAvailable
-                                                  ? this._renderDeposit()
-                                                  : r.a.createElement(
-                                                        "div",
-                                                        {
-                                                            style: {
-                                                                textAlign:
-                                                                    "center"
-                                                            }
-                                                        },
-                                                        r.a.createElement(c.a, {
-                                                            className:
-                                                                "txtlabel cancel",
-                                                            content:
-                                                                "gateway.unavailable",
-                                                            component: "p"
-                                                        })
-                                                    )
-                                      )
-                                    : null;
-                            }
-                        }
-                    ]),
-                    t
-                );
-            })();
-            (D.propTypes = {
-                sender: h.a.ChainAccount.isRequired,
-                asset: h.a.ChainAsset.isRequired
-            }),
-                (D = Object(d.a)(D));
-            var L = (function(e) {
-                function t() {
-                    return (
-                        T(this, t),
-                        I(
-                            this,
-                            (t.__proto__ || Object.getPrototypeOf(t)).apply(
-                                this,
-                                arguments
-                            )
-                        )
-                    );
-                }
-                return (
-                    q(t, r.a.Component),
-                    j(t, [
-                        {
-                            key: "render",
-                            value: function() {
-                                var e = this.props,
-                                    t = e.preferredBridge,
-                                    a = (function(e, t) {
-                                        var a = {};
-                                        for (var n in e)
-                                            t.indexOf(n) >= 0 ||
-                                                (Object.prototype.hasOwnProperty.call(
-                                                    e,
-                                                    n
-                                                ) &&
-                                                    (a[n] = e[n]));
-                                        return a;
-                                    })(e, ["preferredBridge"]),
-                                    n = this.props.bridges.get(
-                                        this.props.preferredBridge
-                                    );
-                                return (
-                                    n ||
-                                        (t = (n = this.props.bridges.first())
-                                            .inputCoinType),
-                                    r.a.createElement(
-                                        D,
-                                        P({}, a, {preferredBridge: t}, n.toJS())
-                                    )
-                                );
-                            }
-                        }
-                    ]),
-                    t
-                );
-            })();
-            L = Object(A.connect)(L, {
-                listenTo: function() {
-                    return [C.a];
-                },
-                getProps: function() {
-                    return {
-                        preferredBridge: C.a
-                            .getState()
-                            .viewSettings.get("preferredBridge", "btc")
-                    };
-                }
-            });
-            var R = (function(e) {
-                function t() {
-                    T(this, t);
-                    var e = I(
-                        this,
-                        (t.__proto__ || Object.getPrototypeOf(t)).call(this)
-                    );
-                    return (e.state = {open: !1}), e;
-                }
-                return (
-                    q(t, r.a.Component),
-                    j(t, [
-                        {
-                            key: "show",
-                            value: function() {
-                                var e = this;
-                                this.setState({open: !0}, function() {
-                                    s.a.publish(e.props.modalId, "open");
-                                });
-                            }
-                        },
-                        {
-                            key: "onClose",
-                            value: function() {
-                                this.setState({open: !1});
-                            }
-                        },
-                        {
-                            key: "render",
-                            value: function() {
-                                return this.props.bridges && this.state.open
-                                    ? r.a.createElement(
-                                          i.a,
-                                          {
-                                              id: this.props.modalId,
-                                              onClose: this.onClose.bind(this),
-                                              overlay: !0
-                                          },
-                                          this.state.open
-                                              ? r.a.createElement(
-                                                    L,
-                                                    P({}, this.props, {
-                                                        open: this.state.open
-                                                    })
-                                                )
-                                              : null
-                                      )
-                                    : null;
-                            }
-                        }
-                    ]),
-                    t
-                );
-            })();
-            t.a = R;
-        },
-        442: function(e, t, a) {
+        448: function(e, t, a) {
             "use strict";
             a.d(t, "a", function() {
-                return I;
+                return L;
             });
             var n = a(0),
                 r = a.n(n),
                 o = a(1),
-                s = a.n(o),
-                i = a(121),
-                l = a(147),
+                i = a.n(o),
+                s = a(123),
+                l = a(152),
                 c = a(6),
                 u = a(13),
                 p = a(5),
                 d = a(4),
                 h = a(111),
-                m = a(58),
+                m = a(54),
                 f = a.n(m),
                 b = a(3),
                 g = a.n(b),
                 v = a(12),
-                _ = a(9),
-                y = a.n(_),
+                y = a(9),
+                _ = a.n(y),
                 E = a(2),
                 w = a.n(E),
-                k = a(57),
-                O = (function() {
+                k = a(58),
+                x = a(42),
+                O = a.n(x),
+                A = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -6554,11 +254,11 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            function A(e, t) {
+            function C(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function C(e, t) {
+            function N(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -6567,7 +267,7 @@
                     ? e
                     : t;
             }
-            function x(e, t) {
+            function S(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -6586,23 +286,23 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var N = d.c.operations,
-                S = {textAlign: "left"},
-                P = {textAlign: "right"};
-            function j(e, t) {
+            var j = d.c.operations,
+                P = {textAlign: "left"},
+                I = {textAlign: "right"};
+            function T(e, t) {
                 return t.block_num === e.block_num
                     ? t.virtual_op - e.virtual_op
                     : t.block_num - e.block_num;
             }
-            function T(e) {
+            function M(e) {
                 return e
                     ? '"' + e.textContent.replace(/[\s\t\r\n]/gi, " ") + '"'
                     : "";
             }
-            var I = (function(e) {
+            var L = (function(e) {
                 function t(e) {
-                    A(this, t);
-                    var a = C(
+                    C(this, t);
+                    var a = N(
                         this,
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                     );
@@ -6614,6 +314,7 @@
                             openFilter: !1,
                             filter: "all"
                         }),
+                        (a._updateTooltip = a._updateTooltip.bind(a)),
                         (a._downloadCSV = a._downloadCSV.bind(a)),
                         (a._findActiveFilter = a._findActiveFilter.bind(a)),
                         (a._renderFilters = a._renderFilters.bind(a)),
@@ -6621,12 +322,15 @@
                     );
                 }
                 return (
-                    x(t, r.a.Component),
-                    O(t, [
+                    S(t, r.a.Component),
+                    A(t, [
                         {
                             key: "componentDidMount",
                             value: function() {
-                                if (!this.props.fullHeight) {
+                                if (
+                                    (this._updateTooltip(),
+                                    !this.props.fullHeight)
+                                ) {
                                     var e = this.refs.transactions;
                                     f.a.initialize(e), this._setHeaderHeight();
                                 }
@@ -6696,7 +400,10 @@
                         {
                             key: "componentDidUpdate",
                             value: function() {
-                                if (this.state.csvExport) {
+                                if (
+                                    (this._updateTooltip(),
+                                    this.state.csvExport)
+                                ) {
                                     this.state.csvExport = !1;
                                     var e = document.getElementById(
                                             "csv_export_container"
@@ -6707,24 +414,24 @@
                                         r = void 0;
                                     try {
                                         for (
-                                            var o, s = e[Symbol.iterator]();
-                                            !(a = (o = s.next()).done);
+                                            var o, i = e[Symbol.iterator]();
+                                            !(a = (o = i.next()).done);
                                             a = !0
                                         ) {
                                             var l = o.value.childNodes;
                                             "" !== t && (t += "\n"),
                                                 (t += [
-                                                    T(l[0]),
-                                                    T(l[1]),
-                                                    T(l[2]),
-                                                    T(l[3])
+                                                    M(l[0]),
+                                                    M(l[1]),
+                                                    M(l[2]),
+                                                    M(l[3])
                                                 ].join(","));
                                         }
                                     } catch (e) {
                                         (n = !0), (r = e);
                                     } finally {
                                         try {
-                                            !a && s.return && s.return();
+                                            !a && i.return && i.return();
                                         } finally {
                                             if (n) throw r;
                                         }
@@ -6733,7 +440,7 @@
                                             type: "text/csv;charset=utf-8"
                                         }),
                                         u = new Date();
-                                    Object(i.saveAs)(
+                                    Object(s.saveAs)(
                                         c,
                                         "btshist-" +
                                             u.getFullYear() +
@@ -6767,8 +474,8 @@
                                 var n = [],
                                     r = new Set(),
                                     o = !0,
-                                    s = !1,
-                                    i = void 0;
+                                    i = !1,
+                                    s = void 0;
                                 try {
                                     for (
                                         var l, c = e[Symbol.iterator]();
@@ -6792,18 +499,18 @@
                                         }
                                     }
                                 } catch (e) {
-                                    (s = !0), (i = e);
+                                    (i = !0), (s = e);
                                 } finally {
                                     try {
                                         !o && c.return && c.return();
                                     } finally {
-                                        if (s) throw i;
+                                        if (i) throw s;
                                     }
                                 }
                                 return (
                                     t &&
                                         (n = n.filter(function(e) {
-                                            return e.op[0] === N[t];
+                                            return e.op[0] === j[t];
                                         })),
                                     a &&
                                         (n = n.filter(function(e) {
@@ -6855,6 +562,12 @@
                             }
                         },
                         {
+                            key: "_updateTooltip",
+                            value: function() {
+                                O.a.rebuild();
+                            }
+                        },
+                        {
                             key: "_renderFilters",
                             value: function(e) {
                                 var t = this,
@@ -6863,7 +576,7 @@
                                     ? r.a.createElement(
                                           "div",
                                           {
-                                              className: y()("select", {
+                                              className: _()("select", {
                                                   "is-open": this.state
                                                       .openFilter
                                               })
@@ -6932,7 +645,7 @@
                                     a = t.accountsList,
                                     n = t.compactView,
                                     o = t.filter,
-                                    i = t.customFilter,
+                                    s = t.customFilter,
                                     c = t.style,
                                     u = (t.maxHeight, this.state),
                                     p = u.limit,
@@ -6946,10 +659,11 @@
                                         "all" !== this.state.filter
                                             ? this.state.filter
                                             : o,
-                                        i
-                                    ).sort(j),
-                                    f = m.length,
-                                    b = null;
+                                        s
+                                    ).sort(T),
+                                    f = m.length;
+                                O.a.rebuild();
+                                var b = null;
                                 b = [
                                     "all",
                                     "transfer",
@@ -6962,12 +676,12 @@
                                     "witness_withdraw_pay",
                                     "vesting_balance_withdraw"
                                 ];
-                                var _ = m.length
+                                var y = m.length
                                     ? m.slice(0, p).map(function(e) {
                                           return r.a.createElement(l.a, {
                                               includeOperationId: !0,
                                               operationId: e.id,
-                                              style: S,
+                                              style: P,
                                               key: e.id,
                                               op: e.op,
                                               result: e.result,
@@ -6986,7 +700,7 @@
                                               r.a.createElement(
                                                   "td",
                                                   {colSpan: n ? "2" : "3"},
-                                                  r.a.createElement(s.a, {
+                                                  r.a.createElement(i.a, {
                                                       content:
                                                           "operation.no_recent"
                                                   })
@@ -6997,7 +711,7 @@
                                     ((this.props.showMore &&
                                         f > this.props.limit) ||
                                         p < f) &&
-                                        _.push(
+                                        y.push(
                                             r.a.createElement(
                                                 "tr",
                                                 {
@@ -7009,7 +723,7 @@
                                                         "column-hide-tiny"
                                                 }),
                                                 r.a.createElement("td", {
-                                                    style: P
+                                                    style: I
                                                 }),
                                                 r.a.createElement(
                                                     "td",
@@ -7071,7 +785,7 @@
                                                                   ? this.props
                                                                         .title
                                                                   : r.a.createElement(
-                                                                        s.a,
+                                                                        i.a,
                                                                         {
                                                                             content:
                                                                                 "account.recent"
@@ -7141,10 +855,10 @@
                                                                 {
                                                                     className:
                                                                         "column-hide-tiny",
-                                                                    style: S
+                                                                    style: P
                                                                 },
                                                                 r.a.createElement(
-                                                                    s.a,
+                                                                    i.a,
                                                                     {
                                                                         content:
                                                                             "account.transactions.id"
@@ -7156,21 +870,33 @@
                                                                 {
                                                                     className:
                                                                         "column-hide-tiny",
-                                                                    style: S
+                                                                    style: P
                                                                 },
                                                                 r.a.createElement(
-                                                                    s.a,
+                                                                    i.a,
                                                                     {
                                                                         content:
-                                                                            "account.transactions.type"
+                                                                            "account.transactions.type",
+                                                                        onLoad: this._updateTooltip()
                                                                     }
                                                                 )
                                                             ),
                                                             r.a.createElement(
                                                                 "th",
-                                                                {style: S},
+                                                                {style: P},
                                                                 r.a.createElement(
-                                                                    s.a,
+                                                                    i.a,
+                                                                    {
+                                                                        content:
+                                                                            "account.transactions.fee"
+                                                                    }
+                                                                )
+                                                            ),
+                                                            r.a.createElement(
+                                                                "th",
+                                                                {style: P},
+                                                                r.a.createElement(
+                                                                    i.a,
                                                                     {
                                                                         content:
                                                                             "account.transactions.info"
@@ -7179,9 +905,9 @@
                                                             ),
                                                             r.a.createElement(
                                                                 "th",
-                                                                {style: S},
+                                                                {style: P},
                                                                 r.a.createElement(
-                                                                    s.a,
+                                                                    i.a,
                                                                     {
                                                                         content:
                                                                             "account.transactions.time"
@@ -7197,7 +923,7 @@
                                                             transitionName:
                                                                 "newrow"
                                                         },
-                                                        _
+                                                        y
                                                     )
                                                 )
                                             ),
@@ -7296,7 +1022,7 @@
                     t
                 );
             })();
-            (I.propTypes = {
+            (L.propTypes = {
                 accountsList: c.a.ChainAccountsList.isRequired,
                 compactView: w.a.bool,
                 limit: w.a.number,
@@ -7304,18 +1030,18 @@
                 fullHeight: w.a.bool,
                 showFilters: w.a.bool
             }),
-                (I.defaultProps = {
+                (L.defaultProps = {
                     limit: 25,
                     maxHeight: 500,
                     fullHeight: !1,
                     showFilters: !1
                 }),
-                (I = Object(u.a)(I));
-            var q = (function(e) {
+                (L = Object(u.a)(L));
+            var D = (function(e) {
                 function t() {
                     return (
-                        A(this, t),
-                        C(
+                        C(this, t),
+                        N(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -7325,8 +1051,8 @@
                     );
                 }
                 return (
-                    x(t, r.a.Component),
-                    O(t, [
+                    S(t, r.a.Component),
+                    A(t, [
                         {
                             key: "render",
                             value: function() {
@@ -7341,24 +1067,24 @@
                     t
                 );
             })();
-            (q.propTypes = {
+            (D.propTypes = {
                 asset: c.a.ChainAsset.isRequired,
                 to: c.a.ChainAccount.isRequired,
                 fromAccount: c.a.ChainAccount.isRequired
             }),
-                (q.defaultProps = {asset: "1.3.0"}),
-                (q = Object(u.a)(q));
+                (D.defaultProps = {asset: "1.3.0"}),
+                (D = Object(u.a)(D));
         },
-        4984: function(e, t, a) {
+        4983: function(e, t, a) {
             "use strict";
             a.r(t);
             var n = a(0),
                 r = a.n(n),
                 o = a(7),
-                s = a.n(o),
-                i = a(1),
-                l = a.n(i),
-                c = a(56),
+                i = a.n(o),
+                s = a(1),
+                l = a.n(s),
+                c = a(57),
                 u = a(108),
                 p = a(20),
                 d = a.n(p),
@@ -7368,8 +1094,8 @@
                 b = a(5),
                 g = a(86),
                 v = a(16),
-                _ = a(3),
-                y = a.n(_),
+                y = a(3),
+                _ = a.n(y),
                 E = a(4),
                 w = a(43),
                 k = (function() {
@@ -7386,11 +1112,11 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            function O(e, t) {
+            function x(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function A(e, t) {
+            function O(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -7399,7 +1125,7 @@
                     ? e
                     : t;
             }
-            function C(e, t) {
+            function A(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -7418,17 +1144,17 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var x = (function(e) {
+            var C = (function(e) {
                 function t() {
-                    O(this, t);
-                    var e = A(
+                    x(this, t);
+                    var e = O(
                         this,
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                     );
                     return (e.state = {amount: 0}), e;
                 }
                 return (
-                    C(t, r.a.Component),
+                    A(t, r.a.Component),
                     k(t, [
                         {
                             key: "onAmountChanged",
@@ -7461,7 +1187,13 @@
                                     v.a
                                         .process_transaction(n, null, !0)
                                         .then(function(e) {
-                                            return !0;
+                                            return (
+                                                console.log(
+                                                    "asset settle result:",
+                                                    e
+                                                ),
+                                                !0
+                                            );
                                         })
                                         .catch(function(e) {
                                             return (
@@ -7484,15 +1216,15 @@
                                     n = this.state.amount;
                                 if (!t) return null;
                                 var o = t.get("id"),
-                                    s = a.get("balances"),
-                                    i = null,
+                                    i = a.get("balances"),
+                                    s = null,
                                     u = 0;
-                                s &&
-                                    s.forEach(function(e) {
+                                i &&
+                                    i.forEach(function(e) {
                                         var t = E.b.getObject(e);
                                         if (!t.get("balance")) return null;
                                         t.get("asset_type") === o &&
-                                            ((i = e), (u = t.get("balance")));
+                                            ((s = e), (u = t.get("balance")));
                                     });
                                 var p = b.a.get_asset_precision(
                                         t.get("precision")
@@ -7510,9 +1242,9 @@
                                             content: "exchange.balance"
                                         }),
                                         ": ",
-                                        i
+                                        s
                                             ? r.a.createElement(c.a, {
-                                                  balance: i
+                                                  balance: s
                                               })
                                             : "0 " + t.get("symbol")
                                     );
@@ -7558,7 +1290,7 @@
                                                 onClick: this.onSubmit.bind(
                                                     this
                                                 ),
-                                                value: y.a.translate(
+                                                value: _.a.translate(
                                                     "modal.settle.submit"
                                                 )
                                             })
@@ -7571,72 +1303,70 @@
                     t
                 );
             })();
-            (x.propTypes = {
+            (C.propTypes = {
                 asset: m.a.ChainAsset.isRequired,
                 account: m.a.ChainAccount.isRequired
             }),
-                (x = Object(f.a)(x));
-            !(function(e) {
-                function t() {
-                    O(this, t);
-                    var e = A(
-                        this,
-                        (t.__proto__ || Object.getPrototypeOf(t)).call(this)
+                (C = Object(f.a)(C));
+            var N = (function(e) {
+                    function t() {
+                        x(this, t);
+                        var e = O(
+                            this,
+                            (t.__proto__ || Object.getPrototypeOf(t)).call(this)
+                        );
+                        return (e.state = {open: !1}), e;
+                    }
+                    return (
+                        A(t, r.a.Component),
+                        k(t, [
+                            {
+                                key: "show",
+                                value: function() {
+                                    var e = this;
+                                    this.setState({open: !0}, function() {
+                                        d.a.publish(e.props.modalId, "open");
+                                    });
+                                }
+                            },
+                            {
+                                key: "onClose",
+                                value: function() {
+                                    this.setState({open: !1});
+                                }
+                            },
+                            {
+                                key: "render",
+                                value: function() {
+                                    return r.a.createElement(
+                                        h.a,
+                                        {
+                                            id: this.props.modalId,
+                                            onClose: this.onClose.bind(this),
+                                            overlay: !0,
+                                            ref: "settlement_modal"
+                                        },
+                                        r.a.createElement(
+                                            "div",
+                                            {className: "grid-block vertical"},
+                                            r.a.createElement(C, this.props)
+                                        )
+                                    );
+                                }
+                            }
+                        ]),
+                        t
                     );
-                    return (e.state = {open: !1}), e;
-                }
-                C(t, r.a.Component),
-                    k(t, [
-                        {
-                            key: "show",
-                            value: function() {
-                                var e = this;
-                                this.setState({open: !0}, function() {
-                                    d.a.publish(e.props.modalId, "open");
-                                });
-                            }
-                        },
-                        {
-                            key: "onClose",
-                            value: function() {
-                                this.setState({open: !1});
-                            }
-                        },
-                        {
-                            key: "render",
-                            value: function() {
-                                return this.state.open
-                                    ? r.a.createElement(
-                                          h.a,
-                                          {
-                                              id: this.props.modalId,
-                                              onClose: this.onClose.bind(this),
-                                              overlay: !0,
-                                              ref: "settlement_modal"
-                                          },
-                                          r.a.createElement(
-                                              "div",
-                                              {
-                                                  className:
-                                                      "grid-block vertical"
-                                              },
-                                              r.a.createElement(x, this.props)
-                                          )
-                                      )
-                                    : null;
-                            }
-                        }
-                    ]);
-            })();
-            var N = a(139),
-                S = a(79),
+                })(),
+                S = a(143),
+                j = a(79),
                 P = a(50),
-                j = a(15),
+                I = a(15),
                 T = a(31),
-                I = a(47),
-                q = a.n(I),
-                D = a(321),
-                L =
+                M = a(42),
+                L = a.n(M),
+                D = a(334),
+                R =
                     Object.assign ||
                     function(e) {
                         for (var t = 1; t < arguments.length; t++) {
@@ -7647,7 +1377,7 @@
                         }
                         return e;
                     },
-                R = (function() {
+                q = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -7661,11 +1391,11 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            function M(e, t) {
+            function F(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function F(e, t) {
+            function V(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -7693,11 +1423,11 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var V = (function(e) {
+            var H = (function(e) {
                 function t(e) {
                     return (
-                        M(this, t),
-                        F(
+                        F(this, t),
+                        V(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).call(
                                 this,
@@ -7708,11 +1438,11 @@
                 }
                 return (
                     B(t, D["b"]),
-                    R(t, [
+                    q(t, [
                         {
                             key: "componentDidMount",
                             value: function() {
-                                q.a.rebuild();
+                                L.a.rebuild();
                             }
                         },
                         {
@@ -7732,9 +1462,9 @@
                                                 : e(o, a, n);
                                         }
                                         if ("value" in r) return r.value;
-                                        var s = r.get;
-                                        return void 0 !== s
-                                            ? s.call(n)
+                                        var i = r.get;
+                                        return void 0 !== i
+                                            ? i.call(n)
                                             : void 0;
                                     })(
                                         t.prototype.__proto__ ||
@@ -7763,7 +1493,7 @@
                                             : parseFloat(e) < 0
                                                 ? "change-down"
                                                 : "change-up",
-                                    a = r.a.createElement(S.b, {
+                                    a = r.a.createElement(j.b, {
                                         style: "decimal",
                                         value: e,
                                         minimumFractionDigits: 2,
@@ -7781,20 +1511,20 @@
                     t
                 );
             })();
-            (V.defaultProps = {
+            (H.defaultProps = {
                 fullPrecision: !1,
                 noDecimals: !1,
                 hide_asset: !1
             }),
-                (V = Object(P.a)(V, {
+                (H = Object(P.a)(H, {
                     propNames: ["quote", "base"],
                     defaultProps: {quote: "1.3.0"}
                 }));
             var W = (function(e) {
                 function t() {
                     return (
-                        M(this, t),
-                        F(
+                        F(this, t),
+                        V(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -7805,7 +1535,7 @@
                 }
                 return (
                     B(t, r.a.Component),
-                    R(t, [
+                    q(t, [
                         {
                             key: "render",
                             value: function() {
@@ -7822,14 +1552,14 @@
                                                     (a[n] = e[n]));
                                         return a;
                                     })(e, ["refCallback"]);
-                                return r.a.createElement(V, L({}, a, {ref: t}));
+                                return r.a.createElement(H, R({}, a, {ref: t}));
                             }
                         }
                     ]),
                     t
                 );
             })();
-            W = Object(j.connect)(W, {
+            W = Object(I.connect)(W, {
                 listenTo: function() {
                     return [T.a];
                 },
@@ -7844,14 +1574,14 @@
             });
             var U = a(22),
                 z = a(17),
-                H = a(64),
-                J = a(222),
-                K = a(12),
-                G = a(11),
-                X = a(32),
-                Y = a(2),
-                Z = a.n(Y),
-                Q =
+                K = a(64),
+                G = a(231),
+                J = a(12),
+                X = a(11),
+                Y = a(33),
+                Z = a(2),
+                Q = a.n(Z),
+                $ =
                     Object.assign ||
                     function(e) {
                         for (var t = 1; t < arguments.length; t++) {
@@ -7862,7 +1592,7 @@
                         }
                         return e;
                     },
-                $ = (function() {
+                ee = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -7876,7 +1606,7 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            function ee(e, t, a) {
+            function te(e, t, a) {
                 return (
                     t in e
                         ? Object.defineProperty(e, t, {
@@ -7889,11 +1619,11 @@
                     e
                 );
             }
-            function te(e, t) {
+            function ae(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function ae(e, t) {
+            function ne(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -7902,7 +1632,7 @@
                     ? e
                     : t;
             }
-            function ne(e, t) {
+            function re(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -7921,13 +1651,13 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var re = {textAlign: "right"},
-                oe = {textAlign: "left"},
+            var oe = {textAlign: "right"},
+                ie = {textAlign: "left"},
                 se = (function(e) {
                     function t() {
                         return (
-                            te(this, t),
-                            ae(
+                            ae(this, t),
+                            ne(
                                 this,
                                 (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                     this,
@@ -7937,8 +1667,8 @@
                         );
                     }
                     return (
-                        ne(t, r.a.Component),
-                        $(t, [
+                        re(t, r.a.Component),
+                        ee(t, [
                             {
                                 key: "_onUpdatePosition",
                                 value: function(e) {
@@ -8086,12 +1816,12 @@
                                         t = this._getMR();
                                     return e && "" !== e
                                         ? "danger" === e
-                                            ? y.a.translate(
+                                            ? _.a.translate(
                                                   "tooltip.cr_danger",
                                                   {mr: t}
                                               )
                                             : "warning" === e
-                                                ? y.a.translate(
+                                                ? _.a.translate(
                                                       "tooltip.cr_warning",
                                                       {mr: t}
                                                   )
@@ -8113,8 +1843,8 @@
                                         t = e.debtAsset,
                                         a = e.collateralAsset,
                                         n = e.object.toJS(),
-                                        s = this._getCollateralRatio(),
-                                        i = b.a.get_asset_amount(
+                                        i = this._getCollateralRatio(),
+                                        s = b.a.get_asset_amount(
                                             n.debt,
                                             this.props.debtAsset
                                         ),
@@ -8175,9 +1905,9 @@
                                         {className: "margin-row"},
                                         r.a.createElement(
                                             "td",
-                                            {style: oe},
+                                            {style: ie},
                                             r.a.createElement(
-                                                G.b,
+                                                X.b,
                                                 {
                                                     to:
                                                         "/asset/" +
@@ -8191,7 +1921,7 @@
                                         ),
                                         r.a.createElement(
                                             "td",
-                                            {style: re},
+                                            {style: oe},
                                             r.a.createElement(z.a, {
                                                 amount: c,
                                                 asset:
@@ -8202,7 +1932,7 @@
                                         ),
                                         r.a.createElement(
                                             "td",
-                                            {style: re},
+                                            {style: oe},
                                             r.a.createElement(z.a, {
                                                 amount: n.debt,
                                                 asset:
@@ -8214,7 +1944,7 @@
                                         r.a.createElement(
                                             "td",
                                             {
-                                                style: re,
+                                                style: oe,
                                                 className: "column-hide-medium"
                                             },
                                             r.a.createElement(z.a, {
@@ -8231,20 +1961,20 @@
                                                 "data-tip": this._getCRTip(),
                                                 className: "center-content " + p
                                             },
-                                            b.a.format_number(s, 2)
+                                            b.a.format_number(i, 2)
                                         ),
                                         r.a.createElement(
                                             "td",
-                                            {style: re},
+                                            {style: oe},
                                             r.a.createElement(u.a, {
                                                 noTip: !0,
                                                 balances: Object(o.List)(),
-                                                debt: ee(
+                                                debt: te(
                                                     {},
                                                     t.get("id"),
                                                     n.debt
                                                 ),
-                                                collateral: ee(
+                                                collateral: te(
                                                     {},
                                                     a.get("id"),
                                                     parseInt(n.collateral, 10)
@@ -8255,10 +1985,10 @@
                                         r.a.createElement(
                                             "td",
                                             {
-                                                style: re,
+                                                style: oe,
                                                 className: "column-hide-small"
                                             },
-                                            r.a.createElement(H.a, {
+                                            r.a.createElement(K.a, {
                                                 base_amount:
                                                     n.call_price.base.amount,
                                                 base_asset:
@@ -8273,10 +2003,10 @@
                                         r.a.createElement(
                                             "td",
                                             {
-                                                style: re,
+                                                style: oe,
                                                 className: "column-hide-small"
                                             },
-                                            r.a.createElement(H.a, {
+                                            r.a.createElement(K.a, {
                                                 base_amount: t.getIn([
                                                     "bitasset",
                                                     "current_feed",
@@ -8303,9 +2033,9 @@
                                             {
                                                 className:
                                                     "center-content column-hide-small",
-                                                style: oe
+                                                style: ie
                                             },
-                                            r.a.createElement(H.a, {
+                                            r.a.createElement(K.a, {
                                                 base_amount:
                                                     n.call_price.base.amount,
                                                 base_asset:
@@ -8324,7 +2054,7 @@
                                                 "div",
                                                 {
                                                     "data-place": "left",
-                                                    "data-tip": y.a.translate(
+                                                    "data-tip": _.a.translate(
                                                         "tooltip.update_position"
                                                     ),
                                                     style: {paddingBottom: 5}
@@ -8336,7 +2066,7 @@
                                                             this
                                                         )
                                                     },
-                                                    r.a.createElement(K.a, {
+                                                    r.a.createElement(J.a, {
                                                         name: "adjust",
                                                         title: "icons.adjust",
                                                         className:
@@ -8352,10 +2082,10 @@
                                                 "div",
                                                 {
                                                     "data-place": "left",
-                                                    "data-tip": y.a.translate(
+                                                    "data-tip": _.a.translate(
                                                         "tooltip.close_position",
                                                         {
-                                                            amount: i,
+                                                            amount: s,
                                                             asset: t.get(
                                                                 "symbol"
                                                             )
@@ -8370,7 +2100,7 @@
                                                             this
                                                         )
                                                     },
-                                                    r.a.createElement(K.a, {
+                                                    r.a.createElement(J.a, {
                                                         name: "cross-circle",
                                                         title:
                                                             "icons.cross_circle.close_position",
@@ -8379,7 +2109,7 @@
                                                 )
                                             ),
                                             t
-                                                ? r.a.createElement(J.a, {
+                                                ? r.a.createElement(G.a, {
                                                       ref:
                                                           "cp_modal_" +
                                                           n.call_price.quote
@@ -8413,13 +2143,13 @@
                 collateralAsset: m.a.ChainAsset.isRequired
             }),
                 (se.defaultProps = {tempComponent: "tr"}),
-                (se.contextTypes = {router: Z.a.object}),
+                (se.contextTypes = {router: Q.a.object}),
                 (se = Object(f.a)(se));
-            var ie = (function(e) {
+            var le = (function(e) {
                 function t() {
                     return (
-                        te(this, t),
-                        ae(
+                        ae(this, t),
+                        ne(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -8429,8 +2159,8 @@
                     );
                 }
                 return (
-                    ne(t, r.a.Component),
-                    $(t, [
+                    re(t, r.a.Component),
+                    ee(t, [
                         {
                             key: "render",
                             value: function() {
@@ -8449,7 +2179,7 @@
                                     ]);
                                 return r.a.createElement(
                                     se,
-                                    Q(
+                                    $(
                                         {
                                             debtAsset: n,
                                             collateralAsset: o,
@@ -8464,13 +2194,13 @@
                     t
                 );
             })();
-            (ie.propTypes = {object: m.a.ChainObject.isRequired}),
-                (ie = Object(f.a)(ie));
-            var le = (function(e) {
+            (le.propTypes = {object: m.a.ChainObject.isRequired}),
+                (le = Object(f.a)(le));
+            var ce = (function(e) {
                 function t() {
                     return (
-                        te(this, t),
-                        ae(
+                        ae(this, t),
+                        ne(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -8480,8 +2210,8 @@
                     );
                 }
                 return (
-                    ne(t, r.a.Component),
-                    $(t, [
+                    re(t, r.a.Component),
+                    ee(t, [
                         {
                             key: "_onUpdatePosition",
                             value: function(e) {
@@ -8532,13 +2262,13 @@
                                     a = e.collateralAsset,
                                     n = e.account,
                                     o = t.get("id"),
-                                    s = n.get("balances"),
-                                    i = 0;
-                                s &&
-                                    s.forEach(function(e, t) {
+                                    i = n.get("balances"),
+                                    s = 0;
+                                i &&
+                                    i.forEach(function(e, t) {
                                         if (t == o) {
                                             var a = E.b.getObject(e);
-                                            i = a.get("balance");
+                                            s = a.get("balance");
                                         }
                                     });
                                 var c = "/asset/" + t.get("symbol"),
@@ -8596,9 +2326,9 @@
                                     {className: "margin-row"},
                                     r.a.createElement(
                                         "td",
-                                        {style: oe},
+                                        {style: ie},
                                         r.a.createElement(
-                                            G.b,
+                                            X.b,
                                             {to: "/asset/" + t.get("symbol")},
                                             r.a.createElement(U.a, {
                                                 noTip: !0,
@@ -8608,9 +2338,9 @@
                                     ),
                                     r.a.createElement(
                                         "td",
-                                        {style: re},
+                                        {style: oe},
                                         r.a.createElement(z.a, {
-                                            amount: i,
+                                            amount: s,
                                             asset: t.get("id"),
                                             assetInfo: p,
                                             hide_asset: !0
@@ -8618,7 +2348,7 @@
                                     ),
                                     r.a.createElement(
                                         "td",
-                                        {style: re},
+                                        {style: oe},
                                         r.a.createElement(z.a, {
                                             amount: 0,
                                             asset: t.get("id"),
@@ -8629,7 +2359,7 @@
                                     r.a.createElement(
                                         "td",
                                         {
-                                            style: re,
+                                            style: oe,
                                             className: "column-hide-medium"
                                         },
                                         r.a.createElement(z.a, {
@@ -8639,19 +2369,19 @@
                                         })
                                     ),
                                     r.a.createElement("td", null),
-                                    r.a.createElement("td", {style: re}),
+                                    r.a.createElement("td", {style: oe}),
                                     r.a.createElement("td", {
-                                        style: re,
+                                        style: oe,
                                         className: "column-hide-small"
                                     }),
                                     r.a.createElement("td", {
-                                        style: re,
+                                        style: oe,
                                         className: "column-hide-small"
                                     }),
                                     r.a.createElement("td", {
                                         className:
                                             "center-content column-hide-small",
-                                        style: oe
+                                        style: ie
                                     }),
                                     r.a.createElement(
                                         "td",
@@ -8660,7 +2390,7 @@
                                             "div",
                                             {
                                                 "data-place": "left",
-                                                "data-tip": y.a.translate(
+                                                "data-tip": _.a.translate(
                                                     "tooltip.update_position"
                                                 ),
                                                 style: {paddingBottom: 5}
@@ -8672,7 +2402,7 @@
                                                         this
                                                     )
                                                 },
-                                                r.a.createElement(K.a, {
+                                                r.a.createElement(J.a, {
                                                     name: "adjust",
                                                     title: "icons.adjust",
                                                     className:
@@ -8685,7 +2415,7 @@
                                         "td",
                                         null,
                                         t
-                                            ? r.a.createElement(J.a, {
+                                            ? r.a.createElement(G.a, {
                                                   ref:
                                                       "cp_modal_" + t.get("id"),
                                                   modalId:
@@ -8707,18 +2437,18 @@
                     t
                 );
             })();
-            (le.propTypes = {
+            (ce.propTypes = {
                 debtAsset: m.a.ChainAsset.isRequired,
                 collateralAsset: m.a.ChainAsset.isRequired
             }),
-                (le.defaultProps = {tempComponent: "tr"}),
-                (le.contextTypes = {router: Z.a.object}),
-                (le = Object(f.a)(le));
-            var ce = (function(e) {
+                (ce.defaultProps = {tempComponent: "tr"}),
+                (ce.contextTypes = {router: Q.a.object}),
+                (ce = Object(f.a)(ce));
+            var ue = (function(e) {
                 function t() {
                     return (
-                        te(this, t),
-                        ae(
+                        ae(this, t),
+                        ne(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -8728,8 +2458,8 @@
                     );
                 }
                 return (
-                    ne(t, r.a.Component),
-                    $(t, [
+                    re(t, r.a.Component),
+                    ee(t, [
                         {
                             key: "render",
                             value: function() {
@@ -8767,10 +2497,10 @@
                                     !o.length)
                                 )
                                     return null;
-                                var s = o.map(function(t) {
+                                var i = o.map(function(t) {
                                     return r.a.createElement(
-                                        le,
-                                        Q(
+                                        ce,
+                                        $(
                                             {
                                                 key: t.get("id"),
                                                 debtAsset: t.get("id"),
@@ -8785,16 +2515,16 @@
                                         )
                                     );
                                 });
-                                return r.a.createElement("tbody", null, s);
+                                return r.a.createElement("tbody", null, i);
                             }
                         }
                     ]),
                     t
                 );
             })();
-            (ce.propTypes = {callOrders: m.a.ChainObjectsList}),
-                (ce = Object(f.a)(ce)),
-                (ce = Object(P.a)(ce, {
+            (ue.propTypes = {callOrders: m.a.ChainObjectsList}),
+                (ue = Object(f.a)(ue)),
+                (ue = Object(P.a)(ue, {
                     propNames: ["bitAssets"],
                     defaultProps: {
                         bitAssets: [
@@ -8811,12 +2541,12 @@
                     },
                     asList: !0
                 }));
-            var ue = function(e) {
+            var pe = function(e) {
                     var t = e.callOrders,
                         a = e.account,
                         n = e.className,
                         o = e.children,
-                        i = e.preferredUnit;
+                        s = e.preferredUnit;
                     return r.a.createElement(
                         "div",
                         {className: "dashboard__adaptive"},
@@ -8831,21 +2561,21 @@
                                     null,
                                     r.a.createElement(
                                         "th",
-                                        {style: oe},
+                                        {style: ie},
                                         r.a.createElement(l.a, {
                                             content: "explorer.asset.title"
                                         })
                                     ),
                                     r.a.createElement(
                                         "th",
-                                        {style: re},
+                                        {style: oe},
                                         r.a.createElement(l.a, {
                                             content: "exchange.balance"
                                         })
                                     ),
                                     r.a.createElement(
                                         "th",
-                                        {style: re},
+                                        {style: oe},
                                         r.a.createElement(l.a, {
                                             content: "transaction.borrow_amount"
                                         })
@@ -8853,7 +2583,7 @@
                                     r.a.createElement(
                                         "th",
                                         {
-                                            style: re,
+                                            style: oe,
                                             className: "column-hide-medium"
                                         },
                                         r.a.createElement(l.a, {
@@ -8869,7 +2599,7 @@
                                                 className:
                                                     "tooltip inline-block",
                                                 "data-place": "top",
-                                                "data-tip": y.a.translate(
+                                                "data-tip": _.a.translate(
                                                     "tooltip.coll_ratio"
                                                 )
                                             },
@@ -8881,13 +2611,13 @@
                                     r.a.createElement(
                                         "th",
                                         null,
-                                        r.a.createElement(X.a, {
+                                        r.a.createElement(Y.a, {
                                             noLink: !0,
                                             string: "account.total",
                                             keys: [
                                                 {
                                                     type: "asset",
-                                                    value: i,
+                                                    value: s,
                                                     arg: "asset"
                                                 }
                                             ]
@@ -8896,7 +2626,7 @@
                                     r.a.createElement(
                                         "th",
                                         {
-                                            style: re,
+                                            style: oe,
                                             className: "column-hide-small"
                                         },
                                         r.a.createElement(
@@ -8905,7 +2635,7 @@
                                                 className:
                                                     "tooltip inline-block",
                                                 "data-place": "top",
-                                                "data-tip": y.a.translate(
+                                                "data-tip": _.a.translate(
                                                     "tooltip.call_price"
                                                 )
                                             },
@@ -8917,7 +2647,7 @@
                                     r.a.createElement(
                                         "th",
                                         {
-                                            style: re,
+                                            style: oe,
                                             className: "column-hide-small"
                                         },
                                         r.a.createElement(l.a, {
@@ -8928,7 +2658,7 @@
                                         "th",
                                         {
                                             className: "column-hide-small",
-                                            style: oe
+                                            style: ie
                                         },
                                         r.a.createElement(l.a, {
                                             content: "explorer.assets.units"
@@ -8960,28 +2690,28 @@
                                         );
                                     })
                                     .map(function(e) {
-                                        return r.a.createElement(ie, {
+                                        return r.a.createElement(le, {
                                             key: e,
                                             object: e,
                                             account: a
                                         });
                                     })
                             ),
-                            r.a.createElement(ce, {
+                            r.a.createElement(ue, {
                                 account: a,
-                                callOrders: s.a.List(t)
+                                callOrders: i.a.List(t)
                             }),
                             r.a.createElement("tbody", null, o)
                         )
                     );
                 },
-                pe = a(442),
-                de = a(255),
-                he = a(117),
-                me = a(14),
-                fe = a(201),
-                be = a(40),
-                ge = {
+                de = a(448),
+                he = a(263),
+                me = a(114),
+                fe = a(14),
+                be = a(210),
+                ge = a(40),
+                ve = {
                     AccountPermission: function(e, t, a) {
                         var n = this;
                         (this.id = e.get("id")),
@@ -9144,7 +2874,7 @@
                         var t =
                             arguments.length > 1 && void 0 !== arguments[1]
                                 ? arguments[1]
-                                : s.a.List();
+                                : i.a.List();
                         return e.size
                             ? (e.forEach(function(e) {
                                   t.includes(e.get(0)) ||
@@ -9154,7 +2884,7 @@
                             : t;
                     }
                 },
-                ve = (function() {
+                ye = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -9216,11 +2946,11 @@
                                         ? Object.setPrototypeOf(e, t)
                                         : (e.__proto__ = t));
                         })(t, r.a.Component),
-                        ve(t, [
+                        ye(t, [
                             {
                                 key: "componentDidMount",
                                 value: function() {
-                                    q.a.rebuild();
+                                    L.a.rebuild();
                                 }
                             },
                             {
@@ -9236,7 +2966,7 @@
                                         {
                                             className: "tooltip " + t,
                                             "data-html": !0,
-                                            "data-tip": n || y.a.translate(o)
+                                            "data-tip": n || _.a.translate(o)
                                         },
                                         a
                                     );
@@ -9246,7 +2976,7 @@
                         t
                     );
                 })(),
-                ye = function() {
+                Ee = function() {
                     return r.a.createElement(
                         _e,
                         {
@@ -9257,7 +2987,7 @@
                         "/!\\"
                     );
                 },
-                Ee = function() {
+                we = function() {
                     return r.a.createElement(
                         _e,
                         {
@@ -9268,7 +2998,7 @@
                         "/!\\"
                     );
                 },
-                we = function() {
+                ke = function() {
                     return r.a.createElement(
                         _e,
                         {
@@ -9280,7 +3010,7 @@
                         })
                     );
                 },
-                ke = function() {
+                xe = function() {
                     return r.a.createElement(
                         _e,
                         {
@@ -9317,20 +3047,20 @@
                 },
                 Ce = function(e) {
                     return e.approved
-                        ? r.a.createElement(K.a, {
+                        ? r.a.createElement(J.a, {
                               name: "checkmark-circle",
                               size: "1x",
                               className: "success",
                               title: "icons.checkmark_circle.operation_succeed"
                           })
-                        : r.a.createElement(K.a, {
+                        : r.a.createElement(J.a, {
                               name: "cross-circle",
                               size: "1x",
                               className: "error",
                               title: "icons.cross_circle.operation_failed"
                           });
                 },
-                xe = function(e) {
+                Ne = function(e) {
                     var t = e.available,
                         a = e.permission,
                         n = e.weight,
@@ -9354,7 +3084,7 @@
                         )
                     );
                 },
-                Ne = function e(t, a) {
+                Se = function e(t, a) {
                     var n =
                         arguments.length > 2 && void 0 !== arguments[2]
                             ? arguments[2]
@@ -9367,7 +3097,7 @@
                             }))
                     );
                 },
-                Se = function(e, t, a) {
+                je = function(e, t, a) {
                     return (
                         e.accounts.reduce(function(e, n) {
                             return e + (Pe(n, t, a) ? n.weight : 0);
@@ -9379,10 +3109,10 @@
                 },
                 Pe = function(e, t, a) {
                     return e.isNested() || e.isMultiSig()
-                        ? Se(e, t, a) >= e.threshold
+                        ? je(e, t, a) >= e.threshold
                         : e.isAvailable(t);
                 },
-                je = function(e, t, a) {
+                Ie = function(e, t, a) {
                     return e && e.threshold > 10
                         ? b.a.get_percentage(e.getStatus(t, a), e.threshold) +
                               " / 100%"
@@ -9391,7 +3121,7 @@
                 Te = function(e, t) {
                     return t && t > 10 ? b.a.get_percentage(e, t) : e;
                 },
-                Ie =
+                Me =
                     Object.assign ||
                     function(e) {
                         for (var t = 1; t < arguments.length; t++) {
@@ -9402,7 +3132,7 @@
                         }
                         return e;
                     },
-                qe = (function() {
+                Le = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -9420,7 +3150,7 @@
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function Le(e, t) {
+            function Re(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -9429,7 +3159,7 @@
                     ? e
                     : t;
             }
-            function Re(e, t) {
+            function qe(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -9448,10 +3178,10 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var Me = (function(e) {
+            var Fe = (function(e) {
                 function t(e) {
                     De(this, t);
-                    var a = Le(
+                    var a = Re(
                         this,
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this, e)
                     );
@@ -9464,8 +3194,8 @@
                     );
                 }
                 return (
-                    Re(t, r.a.Component),
-                    qe(t, [
+                    qe(t, r.a.Component),
+                    Le(t, [
                         {
                             key: "render",
                             value: function() {
@@ -9474,17 +3204,17 @@
                                     a = e.available,
                                     n = e.availableKeys,
                                     o = e.permission,
-                                    s = e.threshold,
-                                    i = e.level,
+                                    i = e.threshold,
+                                    s = e.level,
                                     l = e.maxAuthorityDepth,
                                     c = e.hideRoot,
                                     u = this.state.expanded,
                                     p = Pe(o, a, n),
                                     d = o.isNested(),
                                     h = o.isMultiSig(),
-                                    m = Te(o.weight, s) || 1,
-                                    f = je(o, a, n),
-                                    b = i >= l,
+                                    m = Te(o.weight, i) || 1,
+                                    f = Ie(o, a, n),
+                                    b = s >= l,
                                     g =
                                         d || h
                                             ? r.a.createElement(
@@ -9496,7 +3226,7 @@
                                                       r.a.createElement(Ce, {
                                                           approved: p
                                                       }),
-                                                      r.a.createElement(be.a, {
+                                                      r.a.createElement(ge.a, {
                                                           subpage:
                                                               "permissions",
                                                           account: t.get("id")
@@ -9539,13 +3269,13 @@
                                                           ),
                                                       b
                                                           ? r.a.createElement(
-                                                                ye,
+                                                                Ee,
                                                                 null
                                                             )
-                                                          : Ne(l, o, i) &&
+                                                          : Se(l, o, s) &&
                                                             !u &&
                                                             r.a.createElement(
-                                                                Ee,
+                                                                we,
                                                                 null
                                                             )
                                                   )
@@ -9559,7 +3289,7 @@
                                                       r.a.createElement(Ce, {
                                                           approved: p
                                                       }),
-                                                      r.a.createElement(be.a, {
+                                                      r.a.createElement(ge.a, {
                                                           subpage:
                                                               "permissions",
                                                           account: t.get("id")
@@ -9583,7 +3313,7 @@
                                         u &&
                                         (o.accounts.forEach(function(e) {
                                             v.push(
-                                                r.a.createElement(Fe, {
+                                                r.a.createElement(Ve, {
                                                     key: e.id,
                                                     account: e.id,
                                                     accounts: e.accounts,
@@ -9591,7 +3321,7 @@
                                                     available: a,
                                                     availableKeys: n,
                                                     threshold: o.threshold,
-                                                    level: i + 1,
+                                                    level: s + 1,
                                                     maxAuthorityDepth: l
                                                 })
                                             );
@@ -9599,12 +3329,12 @@
                                         o.keys.length &&
                                             o.keys.forEach(function(e) {
                                                 return v.push(
-                                                    r.a.createElement(xe, {
+                                                    r.a.createElement(Ne, {
                                                         key: e.id,
                                                         permission: e,
                                                         available: n,
-                                                        level: i + (c ? 0 : 1),
-                                                        weight: Te(e.weight, s)
+                                                        level: s + (c ? 0 : 1),
+                                                        weight: Te(e.weight, i)
                                                     })
                                                 );
                                             })),
@@ -9637,7 +3367,7 @@
                                                           )
                                                       ),
                                                       u &&
-                                                          0 === i &&
+                                                          0 === s &&
                                                           r.a.createElement(
                                                               "div",
                                                               {
@@ -9656,17 +3386,17 @@
                     t
                 );
             })();
-            (Me.propTypes = {
+            (Fe.propTypes = {
                 account: m.a.ChainAccount.isRequired,
                 accounts: m.a.ChainAccountsList,
-                level: Z.a.number.isRequired
+                level: Q.a.number.isRequired
             }),
-                (Me.defaultProps = {level: 0});
-            var Fe = Object(f.a)(Me),
+                (Fe.defaultProps = {level: 0});
+            var Ve = Object(f.a)(Fe),
                 Be = (function(e) {
                     function t(e) {
                         De(this, t);
-                        var a = Le(
+                        var a = Re(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).call(
                                 this,
@@ -9688,8 +3418,8 @@
                         );
                     }
                     return (
-                        Re(t, r.a.Component),
-                        qe(t, [
+                        qe(t, r.a.Component),
+                        Le(t, [
                             {
                                 key: "componentWillMount",
                                 value: function() {
@@ -9706,10 +3436,10 @@
                             {
                                 key: "_updateState",
                                 value: function() {
-                                    var e = ge.listToIDs(this.props.required),
-                                        t = ge.listToIDs(this.props.available);
+                                    var e = ve.listToIDs(this.props.required),
+                                        t = ve.listToIDs(this.props.available);
                                     this.setState({
-                                        requiredPermissions: ge.unnest(
+                                        requiredPermissions: ve.unnest(
                                             e,
                                             this.props.type
                                         ),
@@ -9726,14 +3456,14 @@
                                         a = (t.type, t.added),
                                         n = t.removed,
                                         o = t.availableKeys,
-                                        s = t.globalObject,
-                                        i = t.reviewPeriodTime,
+                                        i = t.globalObject,
+                                        s = t.reviewPeriodTime,
                                         l = t.noFail,
                                         c = this.state,
                                         u = c.requiredPermissions,
                                         p = (c.required, c.available),
                                         d = c.expanded;
-                                    (p = Object(fe.a)(p)),
+                                    (p = Object(be.a)(p)),
                                         (o = o.toJS()),
                                         a && (p.push(a), o.push(a)),
                                         n &&
@@ -9746,26 +3476,26 @@
                                         }, 0),
                                         m = u.length,
                                         f = h === m,
-                                        b = f && !i && !l,
-                                        g = f && i,
-                                        v = s
+                                        b = f && !s && !l,
+                                        g = f && s,
+                                        v = i
                                             .get("parameters")
                                             .get("max_authority_depth"),
-                                        _ = 1 === u.length,
-                                        y = _ ? u[0] : null,
-                                        E = !_ && h + " / " + m,
+                                        y = 1 === u.length,
+                                        _ = y ? u[0] : null,
+                                        E = !y && h + " / " + m,
                                         w = u.map(function(t) {
-                                            return r.a.createElement(Fe, {
+                                            return r.a.createElement(Ve, {
                                                 key: t.id,
                                                 account: t.id,
                                                 accounts: t.accounts,
                                                 permission: t,
                                                 available: p,
                                                 availableKeys: o,
-                                                expanded: e.props.expanded || _,
+                                                expanded: e.props.expanded || y,
                                                 level: 0,
                                                 maxAuthorityDepth: v,
-                                                hideRoot: _
+                                                hideRoot: y
                                             });
                                         });
                                     return r.a.createElement(
@@ -9778,16 +3508,16 @@
                                                 ? r.a.createElement(Oe, null)
                                                 : g
                                                     ? r.a.createElement(
-                                                          ke,
+                                                          xe,
                                                           null
                                                       )
                                                     : r.a.createElement(
-                                                          we,
+                                                          ke,
                                                           null
                                                       ),
                                             " ",
-                                            y
-                                                ? y.threshold > 1 && je(y, p, o)
+                                            _
+                                                ? _.threshold > 1 && Ie(_, p, o)
                                                 : r.a.createElement(
                                                       "span",
                                                       null,
@@ -9795,9 +3525,9 @@
                                                       E,
                                                       ")"
                                                   ),
-                                            (!y ||
-                                                y.isMultiSig() ||
-                                                y.isNested()) &&
+                                            (!_ ||
+                                                _.isMultiSig() ||
+                                                _.isNested()) &&
                                                 r.a.createElement(Ae, {
                                                     onToggle: this
                                                         .handleExpandToggle,
@@ -9805,9 +3535,9 @@
                                                 }),
                                             !d &&
                                                 u.some(function(e) {
-                                                    return Ne(v, e, 0);
+                                                    return Se(v, e, 0);
                                                 }) &&
-                                                r.a.createElement(Ee, null)
+                                                r.a.createElement(we, null)
                                         ),
                                         d && r.a.createElement("table", null, w)
                                     );
@@ -9827,11 +3557,11 @@
                     removed: null
                 }),
                 (Be = Object(f.a)(Be));
-            var Ve = (function(e) {
+            var He = (function(e) {
                 function t() {
                     return (
                         De(this, t),
-                        Le(
+                        Re(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -9841,8 +3571,8 @@
                     );
                 }
                 return (
-                    Re(t, r.a.Component),
-                    qe(t, [
+                    qe(t, r.a.Component),
+                    Le(t, [
                         {
                             key: "render",
                             value: function() {
@@ -9851,11 +3581,11 @@
                                     a = e.type,
                                     n = t.get("available_" + a + "_approvals"),
                                     o = t.get("available_key_approvals"),
-                                    s = t.get("required_" + a + "_approvals");
+                                    i = t.get("required_" + a + "_approvals");
                                 return r.a.createElement(
                                     Be,
-                                    Ie({}, this.props, {
-                                        required: s,
+                                    Me({}, this.props, {
+                                        required: i,
                                         available: n,
                                         availableKeys: o,
                                         reviewPeriodTime: t.get(
@@ -9869,17 +3599,17 @@
                     t
                 );
             })();
-            (Ve.propTypes = {
+            (He.propTypes = {
                 proposal: m.a.ChainObject.isRequired,
-                type: Z.a.string.isRequired,
+                type: Q.a.string.isRequired,
                 globalObject: m.a.ChainObject.isRequired
             }),
-                (Ve.defaultProps = {
+                (He.defaultProps = {
                     type: "active",
                     added: null,
                     globalObject: "2.0.0"
                 });
-            var We = Object(f.a)(Ve),
+            var We = Object(f.a)(He),
                 Ue =
                     Object.assign ||
                     function(e) {
@@ -9902,16 +3632,16 @@
                                     o = void 0;
                                 try {
                                     for (
-                                        var s, i = e[Symbol.iterator]();
-                                        !(n = (s = i.next()).done) &&
-                                        (a.push(s.value), !t || a.length !== t);
+                                        var i, s = e[Symbol.iterator]();
+                                        !(n = (i = s.next()).done) &&
+                                        (a.push(i.value), !t || a.length !== t);
                                         n = !0
                                     );
                                 } catch (e) {
                                     (r = !0), (o = e);
                                 } finally {
                                     try {
-                                        !n && i.return && i.return();
+                                        !n && s.return && s.return();
                                     } finally {
                                         if (r) throw o;
                                     }
@@ -9923,7 +3653,7 @@
                         );
                     };
                 })(),
-                He = (function() {
+                Ke = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -9937,11 +3667,11 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            function Je(e, t) {
+            function Ge(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function Ke(e, t) {
+            function Je(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -9950,7 +3680,7 @@
                     ? e
                     : t;
             }
-            function Ge(e, t) {
+            function Xe(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -9969,7 +3699,7 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var Xe = function(e, t, a) {
+            var Ye = function(e, t, a) {
                     var n = [];
                     e.forEach(function(e) {
                         n = n.concat(e.getMissingSigs(t));
@@ -9982,10 +3712,10 @@
                         [n, r]
                     );
                 },
-                Ye = (function(e) {
+                Ze = (function(e) {
                     function t(e) {
-                        Je(this, t);
-                        var a = Ke(
+                        Ge(this, t);
+                        var a = Je(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                         );
@@ -10000,8 +3730,8 @@
                         );
                     }
                     return (
-                        Ge(t, r.a.Component),
-                        He(t, [
+                        Xe(t, r.a.Component),
+                        Ke(t, [
                             {
                                 key: "onActiveAccount",
                                 value: function(e, t, a, n) {
@@ -10033,8 +3763,8 @@
                                             key_approvals_to_add: [],
                                             key_approvals_to_remove: []
                                         }),
-                                        s = "approve" === this.props.action,
-                                        i = [];
+                                        i = "approve" === this.props.action,
+                                        s = [];
                                     ["active", "owner", "key"].forEach(function(
                                         e
                                     ) {
@@ -10047,13 +3777,13 @@
                                                         e +
                                                         "_approvals"
                                                 ].indexOf(n);
-                                            ((s && !r) || (!s && r)) &&
+                                            ((i && !r) || (!i && r)) &&
                                                 ("approve" === t.props.action
                                                     ? ((o[
                                                           e +
                                                               "_approvals_to_add"
                                                       ] = [n]),
-                                                      "key" === e && i.push(n))
+                                                      "key" === e && s.push(n))
                                                     : "reject" ===
                                                           t.props.action &&
                                                       ((o[
@@ -10061,12 +3791,12 @@
                                                               "_approvals_to_remove"
                                                       ] = [n]),
                                                       "key" === e &&
-                                                          i.push(n)));
+                                                          s.push(n)));
                                         }
                                     });
                                     var l = g.a.new_transaction();
                                     l.add_type_operation("proposal_update", o),
-                                        v.a.process_transaction(l, null, !0, i),
+                                        v.a.process_transaction(l, null, !0, s),
                                         d.a.publish(
                                             this.props.modalId,
                                             "close"
@@ -10094,12 +3824,12 @@
                                         a = e.type,
                                         n = [],
                                         o = {},
-                                        s = "approve" === this.props.action;
+                                        i = "approve" === this.props.action;
                                     this.props.accounts.length &&
                                         this.props.accounts.forEach(function(
                                             e
                                         ) {
-                                            (s
+                                            (i
                                                 ? e &&
                                                   !t
                                                       .get(
@@ -10121,21 +3851,21 @@
                                                 )),
                                                 n.push(e.get("name")));
                                         });
-                                    var i = [],
+                                    var s = [],
                                         c = {};
                                     this.props.keys.length &&
                                         this.props.keys.forEach(function(e) {
-                                            var a = me.a.isMyKey(e),
+                                            var a = fe.a.isMyKey(e),
                                                 n = t
                                                     .get(
                                                         "available_key_approvals"
                                                     )
                                                     .includes(e);
-                                            ((a && s && !n) ||
-                                                (a && !s && n)) &&
-                                                ((c[e] = !0), i.push(e));
+                                            ((a && i && !n) ||
+                                                (a && !i && n)) &&
+                                                ((c[e] = !0), s.push(e));
                                         });
-                                    var u = me.a.getMyAccounts();
+                                    var u = fe.a.getMyAccounts();
                                     return r.a.createElement(
                                         "form",
                                         {
@@ -10151,7 +3881,7 @@
                                                 r.a.createElement(
                                                     "h4",
                                                     null,
-                                                    s
+                                                    i
                                                         ? "Add approval"
                                                         : "Remove approval"
                                                 )
@@ -10166,13 +3896,13 @@
                                                     expanded: !0,
                                                     proposal: t.get("id"),
                                                     type: a,
-                                                    added: s
+                                                    added: i
                                                         ? this.state.key
                                                             ? this.state.key
                                                             : this.state[a] ||
                                                               null
                                                         : null,
-                                                    removed: s
+                                                    removed: i
                                                         ? null
                                                         : this.state.key
                                                             ? this.state.key
@@ -10198,14 +3928,14 @@
                                                             "modal.proposals.pay_with",
                                                         component: "label"
                                                     }),
-                                                    r.a.createElement(he.a, {
+                                                    r.a.createElement(me.a, {
                                                         account_names: u,
                                                         onChange: this.onChangePayee.bind(
                                                             this
                                                         )
                                                     })
                                                 ),
-                                                n.length || i.length
+                                                n.length || s.length
                                                     ? r.a.createElement(
                                                           "div",
                                                           {
@@ -10217,7 +3947,7 @@
                                                               {
                                                                   content:
                                                                       "modal.proposals.approval_" +
-                                                                      (s
+                                                                      (i
                                                                           ? "add"
                                                                           : "remove"),
                                                                   component:
@@ -10225,10 +3955,10 @@
                                                               }
                                                           ),
                                                           r.a.createElement(
-                                                              he.a,
+                                                              me.a,
                                                               {
                                                                   account_names: n.concat(
-                                                                      i
+                                                                      s
                                                                   ),
                                                                   onChange: this.onActiveAccount.bind(
                                                                       this,
@@ -10252,7 +3982,7 @@
                                                         this,
                                                         t
                                                     ),
-                                                    value: s
+                                                    value: i
                                                         ? "Approve"
                                                         : "Remove"
                                                 }),
@@ -10278,20 +4008,20 @@
                         t
                     );
                 })();
-            (Ye.propTypes = {accounts: m.a.ChainAccountsList}),
-                (Ye = Object(f.a)(Ye));
-            var Ze = (function(e) {
+            (Ze.propTypes = {accounts: m.a.ChainAccountsList}),
+                (Ze = Object(f.a)(Ze));
+            var Qe = (function(e) {
                 function t() {
-                    Je(this, t);
-                    var e = Ke(
+                    Ge(this, t);
+                    var e = Je(
                         this,
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                     );
                     return (e._updateState = e._updateState.bind(e)), e;
                 }
                 return (
-                    Ge(t, r.a.Component),
-                    He(t, [
+                    Xe(t, r.a.Component),
+                    Ke(t, [
                         {
                             key: "componentWillMount",
                             value: function() {
@@ -10314,17 +4044,17 @@
                                     t.get("required_active_approvals").size
                                         ? "active"
                                         : "owner"),
-                                    n = ge.listToIDs(
+                                    n = ve.listToIDs(
                                         t.get("required_" + a + "_approvals")
                                     ),
-                                    r = ge.listToIDs(
+                                    r = ve.listToIDs(
                                         t.get("available_" + a + "_approvals")
                                     ),
-                                    o = ge.listToIDs(
+                                    o = ve.listToIDs(
                                         t.get("available_key_approvals")
                                     );
                                 this.setState({
-                                    requiredPermissions: ge.unnest(n, a),
+                                    requiredPermissions: ve.unnest(n, a),
                                     available: r,
                                     availableKeys: o,
                                     type: a
@@ -10339,15 +4069,15 @@
                                     a = t.requiredPermissions,
                                     n = t.available,
                                     o = t.availableKeys,
-                                    s = t.type,
-                                    i = Xe(a, n, o),
-                                    l = ze(i, 2),
+                                    i = t.type,
+                                    s = Ye(a, n, o),
+                                    l = ze(s, 2),
                                     c = l[0],
                                     u = l[1];
                                 return r.a.createElement(
-                                    Ye,
+                                    Ze,
                                     Ue({}, this.props, {
-                                        type: s,
+                                        type: i,
                                         accounts: "approve" === e ? c : n,
                                         keys: "approve" === e ? u : o
                                     })
@@ -10358,23 +4088,23 @@
                     t
                 );
             })();
-            (Ze.propTypes = {
+            (Qe.propTypes = {
                 account: m.a.ChainAccount.isRequired,
                 proposal: m.a.ChainObject.isRequired
             }),
-                (Ze = Object(f.a)(Ze));
-            var Qe = (function(e) {
+                (Qe = Object(f.a)(Qe));
+            var $e = (function(e) {
                     function t() {
-                        Je(this, t);
-                        var e = Ke(
+                        Ge(this, t);
+                        var e = Je(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                         );
                         return (e.state = {open: !1}), e;
                     }
                     return (
-                        Ge(t, r.a.Component),
-                        He(t, [
+                        Xe(t, r.a.Component),
+                        Ke(t, [
                             {
                                 key: "componentDidMount",
                                 value: function() {
@@ -10410,7 +4140,7 @@
                                                           "grid-block vertical"
                                                   },
                                                   r.a.createElement(
-                                                      Ze,
+                                                      Qe,
                                                       this.props
                                                   )
                                               )
@@ -10422,7 +4152,7 @@
                         t
                     );
                 })(),
-                $e = (function() {
+                et = (function() {
                     return function(e, t) {
                         if (Array.isArray(e)) return e;
                         if (Symbol.iterator in Object(e))
@@ -10433,16 +4163,16 @@
                                     o = void 0;
                                 try {
                                     for (
-                                        var s, i = e[Symbol.iterator]();
-                                        !(n = (s = i.next()).done) &&
-                                        (a.push(s.value), !t || a.length !== t);
+                                        var i, s = e[Symbol.iterator]();
+                                        !(n = (i = s.next()).done) &&
+                                        (a.push(i.value), !t || a.length !== t);
                                         n = !0
                                     );
                                 } catch (e) {
                                     (r = !0), (o = e);
                                 } finally {
                                     try {
-                                        !n && i.return && i.return();
+                                        !n && s.return && s.return();
                                     } finally {
                                         if (r) throw o;
                                     }
@@ -10454,7 +4184,7 @@
                         );
                     };
                 })(),
-                et = (function() {
+                tt = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -10468,7 +4198,7 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            var tt = (function(e) {
+            var at = (function(e) {
                 function t() {
                     !(function(e, t) {
                         if (!(e instanceof t))
@@ -10511,7 +4241,7 @@
                                     ? Object.setPrototypeOf(e, t)
                                     : (e.__proto__ = t));
                     })(t, n["Component"]),
-                    et(t, [
+                    tt(t, [
                         {
                             key: "componentDidMount",
                             value: function() {
@@ -10572,8 +4302,8 @@
                                     })
                                     .reduce(function(t, a, n) {
                                         var o = !1,
-                                            s = a.proposal.get("id"),
-                                            i = a.proposal.get(
+                                            i = a.proposal.get("id"),
+                                            s = a.proposal.get(
                                                 "expiration_time"
                                             ),
                                             c = a.operations
@@ -10585,7 +4315,7 @@
                                                                 "to"
                                                             ]) && (o = !0),
                                                         r.a.createElement(
-                                                            de.b,
+                                                            he.b,
                                                             {
                                                                 key:
                                                                     a.proposal.get(
@@ -10593,7 +4323,7 @@
                                                                     ) +
                                                                     "_operation_" +
                                                                     t,
-                                                                expiration: i,
+                                                                expiration: s,
                                                                 index: t,
                                                                 op: e.toJS(),
                                                                 inverted: !1,
@@ -10602,7 +4332,7 @@
                                                                 hideExpiration: !0,
                                                                 hideDate: !0,
                                                                 proposal: !0,
-                                                                id: s
+                                                                id: i
                                                             }
                                                         )
                                                     );
@@ -10629,40 +4359,40 @@
                                                                 ? " first"
                                                                 : "")
                                                     },
-                                                    r.a.createElement(de.a, {
-                                                        id: s,
-                                                        expiration: i
+                                                    r.a.createElement(he.a, {
+                                                        id: i,
+                                                        expiration: s
                                                     })
                                                 )
                                             )
                                         );
-                                        var h = ge.listToIDs(
+                                        var h = ve.listToIDs(
                                                 a.proposal.get(
                                                     "available_" +
                                                         d +
                                                         "_approvals"
                                                 )
                                             ),
-                                            m = ge.listToIDs(
+                                            m = ve.listToIDs(
                                                 a.proposal.get(
                                                     "available_key_approvals"
                                                 )
                                             ),
-                                            f = ge.listToIDs(
+                                            f = ve.listToIDs(
                                                 a.proposal.get(
                                                     "required_" +
                                                         d +
                                                         "_approvals"
                                                 )
                                             ),
-                                            b = ge.unnest(f, d),
-                                            g = Xe(b, h, m),
-                                            v = $e(g, 2),
-                                            _ = v[0],
+                                            b = ve.unnest(f, d),
+                                            g = Ye(b, h, m),
+                                            v = et(g, 2),
+                                            y = v[0],
                                             E = v[1],
                                             w = [];
-                                        _.length &&
-                                            _.forEach(function(e) {
+                                        y.length &&
+                                            y.forEach(function(e) {
                                                 e &&
                                                     !a.proposal
                                                         .get(
@@ -10676,7 +4406,7 @@
                                         var k = [];
                                         E.length &&
                                             E.forEach(function(e) {
-                                                me.a.isMyKey(e) &&
+                                                fe.a.isMyKey(e) &&
                                                     !a.proposal
                                                         .get(
                                                             "available_key_approvals"
@@ -10684,7 +4414,7 @@
                                                         .includes(e) &&
                                                     k.push(e);
                                             });
-                                        var O = w.length + k.length > 0;
+                                        var x = w.length + k.length > 0;
                                         return (
                                             t.push(
                                                 r.a.createElement(
@@ -10714,7 +4444,7 @@
                                                                         t
                                                                 },
                                                                 r.a.createElement(
-                                                                    be.a,
+                                                                    ge.a,
                                                                     {
                                                                         subpage:
                                                                             "permissions",
@@ -10745,7 +4475,7 @@
                                                             ? r.a.createElement(
                                                                   "div",
                                                                   {
-                                                                      "data-tip": y.a.translate(
+                                                                      "data-tip": _.a.translate(
                                                                           "tooltip.propose_scam"
                                                                       ),
                                                                       className:
@@ -10756,7 +4486,7 @@
                                                             : r.a.createElement(
                                                                   "button",
                                                                   {
-                                                                      onClick: O
+                                                                      onClick: x
                                                                           ? e._onApproveModal.bind(
                                                                                 e,
                                                                                 p,
@@ -10765,7 +4495,7 @@
                                                                           : function() {},
                                                                       className:
                                                                           "button primary hollow" +
-                                                                          (O
+                                                                          (x
                                                                               ? ""
                                                                               : " hidden")
                                                                   },
@@ -10781,7 +4511,7 @@
                                                                       )
                                                                   )
                                                               ),
-                                                        r.a.createElement(Qe, {
+                                                        r.a.createElement($e, {
                                                             ref: p + "_approve",
                                                             modalId:
                                                                 p + "_approve",
@@ -10812,7 +4542,7 @@
                                                                   )
                                                               )
                                                             : null,
-                                                        r.a.createElement(Qe, {
+                                                        r.a.createElement($e, {
                                                             ref: p + "_reject",
                                                             modalId:
                                                                 p + "_reject",
@@ -10895,16 +4625,16 @@
                     t
                 );
             })();
-            tt.propTypes = {account: m.a.ChainAccount.isRequired};
-            Object(f.a)(tt);
-            var at = a(10),
-                nt = a(48),
-                rt = a(51),
-                ot = a.n(rt),
-                st = a(8),
-                it = a(271),
-                lt = a(42),
-                ct =
+            at.propTypes = {account: m.a.ChainAccount.isRequired};
+            var nt = Object(f.a)(at),
+                rt = a(10),
+                ot = a(48),
+                it = a(51),
+                st = a.n(it),
+                lt = a(8),
+                ct = a(279),
+                ut = a(44),
+                pt =
                     Object.assign ||
                     function(e) {
                         for (var t = 1; t < arguments.length; t++) {
@@ -10915,7 +4645,7 @@
                         }
                         return e;
                     },
-                ut = (function() {
+                dt = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -10929,11 +4659,11 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            function pt(e, t) {
+            function ht(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function dt(e, t) {
+            function mt(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -10942,7 +4672,7 @@
                     ? e
                     : t;
             }
-            function ht(e, t) {
+            function ft(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -10961,11 +4691,11 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var mt = (function(e) {
+            var bt = (function(e) {
                 function t() {
                     return (
-                        pt(this, t),
-                        dt(
+                        ht(this, t),
+                        mt(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -10975,8 +4705,8 @@
                     );
                 }
                 return (
-                    ht(t, it["a"]),
-                    ut(t, [
+                    ft(t, ct["a"]),
+                    dt(t, [
                         {
                             key: "shouldComponentUpdate",
                             value: function(e, a) {
@@ -10994,9 +4724,9 @@
                                                 : e(o, a, n);
                                         }
                                         if ("value" in r) return r.value;
-                                        var s = r.get;
-                                        return void 0 !== s
-                                            ? s.call(n)
+                                        var i = r.get;
+                                        return void 0 !== i
+                                            ? i.call(n)
                                             : void 0;
                                     })(
                                         t.prototype.__proto__ ||
@@ -11028,7 +4758,7 @@
                                     n = t.fromAsset,
                                     r = t.toAsset,
                                     o = t.marketStats;
-                                return lt.a.getFinalPrice(a, n, r, o, e);
+                                return ut.a.getFinalPrice(a, n, r, o, e);
                             }
                         },
                         {
@@ -11053,8 +4783,8 @@
                                     ? r.a.createElement("span", null, "1.00")
                                     : o
                                         ? r.a.createElement(
-                                              H.a,
-                                              ct(
+                                              K.a,
+                                              pt(
                                                   {
                                                       force_direction:
                                                           !!a &&
@@ -11078,16 +4808,16 @@
                     t
                 );
             })();
-            (mt.defaultProps = {forceDirection: !0}),
-                (mt = Object(P.a)(mt, {
+            (bt.defaultProps = {forceDirection: !0}),
+                (bt = Object(P.a)(bt, {
                     propNames: ["toAsset", "fromAsset", "coreAsset"],
                     defaultProps: {toAsset: "1.3.0", coreAsset: "1.3.0"}
                 }));
-            var ft = (function(e) {
+            var gt = (function(e) {
                     function t() {
                         return (
-                            pt(this, t),
-                            dt(
+                            ht(this, t),
+                            mt(
                                 this,
                                 (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                     this,
@@ -11097,21 +4827,21 @@
                         );
                     }
                     return (
-                        ht(t, r.a.Component),
-                        ut(t, [
+                        ft(t, r.a.Component),
+                        dt(t, [
                             {
                                 key: "render",
                                 value: function() {
                                     var e = this;
                                     return r.a.createElement(
-                                        ot.a,
+                                        st.a,
                                         {
-                                            stores: [st.a, T.a],
+                                            stores: [lt.a, T.a],
                                             inject: {
                                                 toAsset: function() {
                                                     return (
                                                         e.props.toAsset ||
-                                                        st.a
+                                                        lt.a
                                                             .getState()
                                                             .settings.get(
                                                                 "unit",
@@ -11126,8 +4856,8 @@
                                             }
                                         },
                                         r.a.createElement(
-                                            mt,
-                                            ct({}, this.props, {
+                                            bt,
+                                            pt({}, this.props, {
                                                 ref: this.props.refCallback
                                             })
                                         )
@@ -11138,12 +4868,12 @@
                         t
                     );
                 })(),
-                bt = a(107),
-                gt = (a(252), a(440), a(441), a(104)),
-                vt = a(322),
-                _t = a(35),
-                yt = a(18),
-                Et = (function() {
+                vt = a(107),
+                yt = (a(259), a(451), a(452), a(104)),
+                _t = a(335),
+                Et = a(35),
+                wt = a(18),
+                kt = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -11157,7 +4887,7 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            function wt(e, t, a) {
+            function xt(e, t, a) {
                 return (
                     t in e
                         ? Object.defineProperty(e, t, {
@@ -11170,7 +4900,7 @@
                     e
                 );
             }
-            var kt = (function(e) {
+            var Ot = (function(e) {
                     function t(e) {
                         !(function(e, t) {
                             if (!(e instanceof t))
@@ -11218,7 +4948,7 @@
                                         ? Object.setPrototypeOf(e, t)
                                         : (e.__proto__ = t));
                         })(t, r.a.Component),
-                        Et(t, [
+                        kt(t, [
                             {
                                 key: "componentDidMount",
                                 value: function() {
@@ -11263,10 +4993,10 @@
                                                 a.sell_price.quote.asset_id
                                             ),
                                             o = n.get("symbol").toLowerCase(),
-                                            s = r.get("symbol").toLowerCase();
+                                            i = r.get("symbol").toLowerCase();
                                         return (
                                             o.indexOf(e) > -1 ||
-                                            s.indexOf(e) > -1
+                                            i.indexOf(e) > -1
                                         );
                                     });
                                 }
@@ -11275,7 +5005,7 @@
                                 key: "_cancelLimitOrder",
                                 value: function(e, t) {
                                     t.preventDefault(),
-                                        _t.a
+                                        Et.a
                                             .cancelLimitOrder(
                                                 this.props.account.get("id"),
                                                 e,
@@ -11293,7 +5023,7 @@
                                 key: "_cancelLimitOrders",
                                 value: function(e) {
                                     var t = this;
-                                    _t.a
+                                    Et.a
                                         .cancelLimitOrders(
                                             this.props.account.get("id"),
                                             this.state.selectedOrders
@@ -11316,7 +5046,7 @@
                                     (t[e] = !this.props.marketDirections.get(
                                         e
                                     )),
-                                        at.a.changeMarketDirection(t);
+                                        rt.a.changeMarketDirection(t);
                                 }
                             },
                             {
@@ -11371,9 +5101,9 @@
                                         a = t.account,
                                         n = t.marketDirections,
                                         o = this.state,
-                                        s = o.filterValue,
-                                        i = o.selectedOrders,
-                                        c = y.a.translate(
+                                        i = o.filterValue,
+                                        s = o.selectedOrders,
+                                        c = _.a.translate(
                                             "account.perm.cancel"
                                         ),
                                         u = {},
@@ -11381,7 +5111,7 @@
                                     if (!a.get("orders")) return null;
                                     var d = a.get("orders"),
                                         h = d.size;
-                                    s &&
+                                    i &&
                                         (d = this._getFilteredOrders.call(
                                             this
                                         )),
@@ -11390,13 +5120,13 @@
                                                 o = E.b.getAsset(
                                                     a.sell_price.base.asset_id
                                                 ),
-                                                s = E.b.getAsset(
+                                                i = E.b.getAsset(
                                                     a.sell_price.quote.asset_id
                                                 );
-                                            if (o && s) {
-                                                var i,
-                                                    l = (wt(
-                                                        (i = {}),
+                                            if (o && i) {
+                                                var s,
+                                                    l = (xt(
+                                                        (s = {}),
                                                         o.get("id"),
                                                         {
                                                             precision: o.get(
@@ -11404,13 +5134,13 @@
                                                             )
                                                         }
                                                     ),
-                                                    wt(i, s.get("id"), {
-                                                        precision: s.get(
+                                                    xt(s, i.get("id"), {
+                                                        precision: i.get(
                                                             "precision"
                                                         )
                                                     }),
-                                                    i),
-                                                    d = lt.a.getMarketName(o, s)
+                                                    s),
+                                                    d = ut.a.getMarketName(o, i)
                                                         .marketName,
                                                     h = n.get(d);
                                                 u[d] ||
@@ -11428,26 +5158,26 @@
                                                                   )
                                                               },
                                                               quote: {
-                                                                  id: s.get(
+                                                                  id: i.get(
                                                                       "id"
                                                                   ),
-                                                                  symbol: s.get(
+                                                                  symbol: i.get(
                                                                       "symbol"
                                                                   ),
-                                                                  precision: s.get(
+                                                                  precision: i.get(
                                                                       "precision"
                                                                   )
                                                               }
                                                           }
                                                         : {
                                                               base: {
-                                                                  id: s.get(
+                                                                  id: i.get(
                                                                       "id"
                                                                   ),
-                                                                  symbol: s.get(
+                                                                  symbol: i.get(
                                                                       "symbol"
                                                                   ),
-                                                                  precision: s.get(
+                                                                  precision: i.get(
                                                                       "precision"
                                                                   )
                                                               },
@@ -11463,7 +5193,7 @@
                                                                   )
                                                               }
                                                           });
-                                                var m = new yt.d(
+                                                var m = new wt.d(
                                                         a,
                                                         l,
                                                         u[d].quote.id
@@ -11477,7 +5207,7 @@
                                                 p[d] || (p[d] = []),
                                                     p[d].push(
                                                         r.a.createElement(
-                                                            vt.b,
+                                                            _t.b,
                                                             {
                                                                 ref:
                                                                     u[d].base
@@ -11551,7 +5281,7 @@
                                                                   {
                                                                       type:
                                                                           "text",
-                                                                      placeholder: y.a.translate(
+                                                                      placeholder: _.a.translate(
                                                                           "account.filter_orders"
                                                                       ),
                                                                       style: {
@@ -11570,7 +5300,7 @@
                                                                   }
                                                               )
                                                             : null,
-                                                        i.length
+                                                        s.length
                                                             ? r.a.createElement(
                                                                   "button",
                                                                   {
@@ -11589,7 +5319,7 @@
                                                                   )
                                                               )
                                                             : null,
-                                                        i.length
+                                                        s.length
                                                             ? r.a.createElement(
                                                                   "button",
                                                                   {
@@ -11621,7 +5351,7 @@
                                                     className:
                                                         "dashboard__table blue-bg with-borders"
                                                 },
-                                                r.a.createElement(vt.c, {
+                                                r.a.createElement(_t.c, {
                                                     settings: this.props
                                                         .settings,
                                                     dashboard: !0,
@@ -11639,21 +5369,21 @@
                         t
                     );
                 })(),
-                Ot = (kt = Object(j.connect)(kt, {
+                At = (Ot = Object(I.connect)(Ot, {
                     listenTo: function() {
-                        return [st.a];
+                        return [lt.a];
                     },
                     getProps: function() {
                         return {
-                            marketDirections: st.a.getState().marketDirections
+                            marketDirections: lt.a.getState().marketDirections
                         };
                     }
                 })),
-                At = (a(9), {}),
-                Ct = 6e4;
-            var xt = a(384),
-                Nt = a(223),
-                St =
+                Ct = (a(9), {}),
+                Nt = 6e4;
+            var St = a(392),
+                jt = a(229),
+                Pt =
                     Object.assign ||
                     function(e) {
                         for (var t = 1; t < arguments.length; t++) {
@@ -11664,7 +5394,7 @@
                         }
                         return e;
                     },
-                Pt = (function() {
+                It = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -11678,7 +5408,7 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            function jt(e, t) {
+            function Tt(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -11687,7 +5417,7 @@
                     ? e
                     : t;
             }
-            var Tt = (function(e) {
+            var Mt = (function(e) {
                 function t() {
                     var e, a, n;
                     !(function(e, t) {
@@ -11697,13 +5427,13 @@
                             );
                     })(this, t);
                     for (
-                        var r = arguments.length, o = Array(r), s = 0;
-                        s < r;
-                        s++
+                        var r = arguments.length, o = Array(r), i = 0;
+                        i < r;
+                        i++
                     )
-                        o[s] = arguments[s];
+                        o[i] = arguments[i];
                     return (
-                        (a = n = jt(
+                        (a = n = Tt(
                             this,
                             (e =
                                 t.__proto__ ||
@@ -11720,7 +5450,7 @@
                                 o = void 0 === r ? t : r;
                             n.setState({name: o === t ? a : t});
                         }),
-                        jt(n, a)
+                        Tt(n, a)
                     );
                 }
                 return (
@@ -11743,7 +5473,7 @@
                                     ? Object.setPrototypeOf(e, t)
                                     : (e.__proto__ = t));
                     })(t, n["Component"]),
-                    Pt(t, [
+                    It(t, [
                         {
                             key: "componentDidMount",
                             value: function() {
@@ -11765,10 +5495,10 @@
                                     a = e.rest,
                                     n = (this.state || {}).name,
                                     o = void 0 === n ? t : n,
-                                    s = this.props.title;
+                                    i = this.props.title;
                                 return r.a.createElement(
-                                    K.a,
-                                    St({name: o, title: s}, a)
+                                    J.a,
+                                    Pt({name: o, title: i}, a)
                                 );
                             }
                         }
@@ -11776,20 +5506,20 @@
                     t
                 );
             })();
-            Tt.propTypes = {
-                duration: Z.a.number.isRequired,
-                offIcon: Z.a.string.isRequired,
-                onIcon: Z.a.string.isRequired,
-                title: Z.a.string.isRequired
+            Mt.propTypes = {
+                duration: Q.a.number.isRequired,
+                offIcon: Q.a.string.isRequired,
+                onIcon: Q.a.string.isRequired,
+                title: Q.a.string.isRequired
             };
-            var It = Tt,
-                qt = (a(253), a(131)),
-                Dt = a.n(qt),
-                Lt = a(574),
-                Rt = a.n(Lt),
-                Mt = a(575),
-                Ft = a.n(Mt),
-                Bt =
+            var Lt = Mt,
+                Dt = (a(260), a(135)),
+                Rt = a.n(Dt),
+                qt = a(576),
+                Ft = a.n(qt),
+                Vt = a(577),
+                Bt = a.n(Vt),
+                Ht =
                     Object.assign ||
                     function(e) {
                         for (var t = 1; t < arguments.length; t++) {
@@ -11800,7 +5530,7 @@
                         }
                         return e;
                     },
-                Vt = (function() {
+                Wt = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -11814,11 +5544,11 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            function Wt(e, t) {
+            function Ut(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function Ut(e, t) {
+            function zt(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -11827,7 +5557,7 @@
                     ? e
                     : t;
             }
-            function zt(e, t) {
+            function Kt(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -11846,12 +5576,12 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            Rt()(Dt.a.Highcharts), Ft()(Dt.a.Highcharts);
-            var Ht = (function(e) {
+            Ft()(Rt.a.Highcharts), Bt()(Rt.a.Highcharts);
+            var Gt = (function(e) {
                 function t() {
                     return (
-                        Wt(this, t),
-                        Ut(
+                        Ut(this, t),
+                        zt(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -11861,8 +5591,8 @@
                     );
                 }
                 return (
-                    zt(t, r.a.Component),
-                    Vt(t, [
+                    Kt(t, r.a.Component),
+                    Wt(t, [
                         {
                             key: "render",
                             value: function() {
@@ -11871,25 +5601,25 @@
                                     a = e.core_asset,
                                     n = e.marketStats,
                                     o = e.preferredAsset,
-                                    s = null;
+                                    i = null;
                                 if (t && t.length > 0) {
-                                    var i = 0;
-                                    (s = t.forEach(function(e) {
+                                    var s = 0;
+                                    (i = t.forEach(function(e) {
                                         if (e) {
                                             var t =
                                                     "string" == typeof e
                                                         ? E.b.getObject(e)
                                                         : e,
                                                 r = t.get("asset_type"),
-                                                s = E.b.getAsset(r);
-                                            if (s && o) {
+                                                i = E.b.getAsset(r);
+                                            if (i && o) {
                                                 var l = Number(
                                                         t.get("balance")
                                                     ),
-                                                    c = lt.a.convertValue(
+                                                    c = ut.a.convertValue(
                                                         l,
                                                         o,
-                                                        s,
+                                                        i,
                                                         n,
                                                         a
                                                     );
@@ -11897,25 +5627,25 @@
                                                     var u = b.a.get_asset_precision(
                                                         o.get("precision")
                                                     );
-                                                    i += c / u;
+                                                    s += c / u;
                                                 }
                                             }
                                         }
                                     })),
-                                        (s = t
+                                        (i = t
                                             .map(function(e, t) {
                                                 if (!e) return null;
                                                 var r =
                                                         "string" == typeof e
                                                             ? E.b.getObject(e)
                                                             : e,
-                                                    s = r.get("asset_type"),
-                                                    l = E.b.getAsset(s);
+                                                    i = r.get("asset_type"),
+                                                    l = E.b.getAsset(i);
                                                 if (!l) return null;
                                                 var c = Number(
                                                         r.get("balance")
                                                     ),
-                                                    u = lt.a.convertValue(
+                                                    u = ut.a.convertValue(
                                                         c,
                                                         o,
                                                         l,
@@ -11928,7 +5658,7 @@
                                                         b.a.get_asset_precision(
                                                             o.get("precision")
                                                         ),
-                                                    d = (p / i) * 100;
+                                                    d = (p / s) * 100;
                                                 return d < 0.5
                                                     ? null
                                                     : p >= 1
@@ -11938,14 +5668,14 @@
                                                                       "symbol"
                                                                   ) +
                                                                   " (" +
-                                                                  (0 === i
+                                                                  (0 === s
                                                                       ? 0
                                                                       : d.toFixed(
                                                                             2
                                                                         )) +
                                                                   "%)",
                                                               value: p,
-                                                              color: Dt.a.Highcharts.getOptions()
+                                                              color: Rt.a.Highcharts.getOptions()
                                                                   .colors[t]
                                                           }
                                                         : null;
@@ -11954,10 +5684,10 @@
                                                 return !!e;
                                             }));
                                 }
-                                s &&
-                                    1 === s.length &&
-                                    0 === s[0].value &&
-                                    (s = null);
+                                i &&
+                                    1 === i.length &&
+                                    0 === i[0].value &&
+                                    (i = null);
                                 var l = {
                                     chart: {
                                         backgroundColor: "rgba(255, 0, 0, 0)",
@@ -11977,7 +5707,7 @@
                                                         "<b>" +
                                                         this.name +
                                                         "</b>: " +
-                                                        Dt.a.Highcharts.numberFormat(
+                                                        Rt.a.Highcharts.numberFormat(
                                                             this.value,
                                                             0
                                                         ) +
@@ -12003,7 +5733,7 @@
                                                     }
                                                 }
                                             ],
-                                            data: s
+                                            data: i
                                         }
                                     ],
                                     title: {text: null}
@@ -12011,7 +5741,7 @@
                                 return r.a.createElement(
                                     "div",
                                     {className: "account-treemap"},
-                                    r.a.createElement(Dt.a, {config: l})
+                                    r.a.createElement(Rt.a, {config: l})
                                 );
                             }
                         }
@@ -12019,17 +5749,17 @@
                     t
                 );
             })();
-            (Ht.propTypes = {
+            (Gt.propTypes = {
                 assets: m.a.ChainAssetsList,
                 preferredAsset: m.a.ChainAsset.isRequired
             }),
-                (Ht.defaultProps = {assets: [], preferredAsset: "1.3.0"}),
-                (Ht = Object(f.a)(Ht));
+                (Gt.defaultProps = {assets: [], preferredAsset: "1.3.0"}),
+                (Gt = Object(f.a)(Gt));
             var Jt = (function(e) {
                 function t() {
                     return (
-                        Wt(this, t),
-                        Ut(
+                        Ut(this, t),
+                        zt(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -12039,8 +5769,8 @@
                     );
                 }
                 return (
-                    zt(t, r.a.Component),
-                    Vt(t, [
+                    Kt(t, r.a.Component),
+                    Wt(t, [
                         {
                             key: "render",
                             value: function() {
@@ -12052,8 +5782,8 @@
                                         return e.get("asset_type");
                                     });
                                 return r.a.createElement(
-                                    Ht,
-                                    Bt(
+                                    Gt,
+                                    Ht(
                                         {
                                             preferredAsset: this.props.settings.get(
                                                 "unit",
@@ -12076,11 +5806,11 @@
             }),
                 (Jt.defaultProps = {balanceObjects: [], core_asset: "1.3.0"}),
                 (Jt = Object(f.a)(Jt));
-            var Kt = (function(e) {
+            var Xt = (function(e) {
                     function t() {
                         return (
-                            Wt(this, t),
-                            Ut(
+                            Ut(this, t),
+                            zt(
                                 this,
                                 (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                     this,
@@ -12090,29 +5820,29 @@
                         );
                     }
                     return (
-                        zt(t, r.a.Component),
-                        Vt(t, [
+                        Kt(t, r.a.Component),
+                        Wt(t, [
                             {
                                 key: "render",
                                 value: function() {
                                     return r.a.createElement(
-                                        ot.a,
+                                        st.a,
                                         {
-                                            stores: [st.a, T.a],
+                                            stores: [lt.a, T.a],
                                             inject: {
                                                 marketStats: function() {
                                                     return T.a.getState()
                                                         .allMarketStats;
                                                 },
                                                 settings: function() {
-                                                    return st.a.getState()
+                                                    return lt.a.getState()
                                                         .settings;
                                                 }
                                             }
                                         },
                                         r.a.createElement(
                                             Jt,
-                                            Bt({}, this.props, {
+                                            Ht({}, this.props, {
                                                 ref: this.props.refCallback
                                             })
                                         )
@@ -12123,9 +5853,10 @@
                         t
                     );
                 })(),
-                Gt = a(103),
-                Xt = a(351),
-                Yt =
+                Yt = a(102),
+                Zt = a(358),
+                Qt = a(363),
+                $t =
                     Object.assign ||
                     function(e) {
                         for (var t = 1; t < arguments.length; t++) {
@@ -12136,7 +5867,7 @@
                         }
                         return e;
                     },
-                Zt = (function() {
+                ea = (function() {
                     function e(e, t) {
                         for (var a = 0; a < t.length; a++) {
                             var n = t[a];
@@ -12150,7 +5881,7 @@
                         return a && e(t.prototype, a), n && e(t, n), t;
                     };
                 })();
-            function Qt(e, t, a) {
+            function ta(e, t, a) {
                 return (
                     t in e
                         ? Object.defineProperty(e, t, {
@@ -12163,11 +5894,11 @@
                     e
                 );
             }
-            function $t(e, t) {
+            function aa(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function ea(e, t) {
+            function na(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -12176,7 +5907,7 @@
                     ? e
                     : t;
             }
-            function ta(e, t) {
+            function ra(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -12195,14 +5926,17 @@
                             ? Object.setPrototypeOf(e, t)
                             : (e.__proto__ = t));
             }
-            var aa = (function(e) {
+            var oa = (function(e) {
                 function t(e) {
-                    $t(this, t);
-                    var a = ea(
+                    aa(this, t);
+                    var a = na(
                         this,
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                     );
-                    for (var n in ((a.sortFunctions = {
+                    for (var n in ((a.updateModal = function() {
+                        a.setState({isBridgeModalVisible: !1});
+                    }),
+                    (a.sortFunctions = {
                         qty: function(e, t, a) {
                             return Number(this.qtyRefs[e.key]) <
                                 Number(this.qtyRefs[t.key])
@@ -12275,37 +6009,35 @@
                             if (a && n) {
                                 var r = a.getValue(),
                                     o = n.getValue(),
-                                    s =
+                                    i =
                                         "NaN" != parseFloat(r)
                                             ? parseFloat(r)
                                             : r,
-                                    i =
+                                    s =
                                         "NaN" != parseFloat(o)
                                             ? parseFloat(o)
                                             : o;
                                 return void 0 === this.state.sortDirection ||
                                     this.state.sortDirection
-                                    ? s - i
-                                    : i - s;
+                                    ? i - s
+                                    : s - i;
                             }
                         }
                     }),
-                    (a._renderBuy = function(e, t, n, o, s) {
-                        return "LLC" === e && s <= 1e5
+                    (a._renderBuy = function(e, t, n, o, i) {
+                        return "LLC" === e
                             ? r.a.createElement(
                                   "span",
                                   null,
+                                  a.state.isBridgeModalVisible
+                                      ? r.a.createElement(Qt.a, {
+                                            account: a.props.account
+                                        })
+                                      : null,
                                   r.a.createElement(
                                       "a",
-                                      {
-                                          onClick: a._showDepositWithdraw.bind(
-                                              a,
-                                              "bridge_modal",
-                                              n,
-                                              !1
-                                          )
-                                      },
-                                      r.a.createElement(It, {
+                                      {onClick: a.onShowModal},
+                                      r.a.createElement(Lt, {
                                           onIcon: "dollar",
                                           offIcon: "dollar-green",
                                           title: "icons.dollar.buy",
@@ -12314,28 +6046,7 @@
                                       })
                                   )
                               )
-                            : t && a.props.isMyAccount
-                                ? r.a.createElement(
-                                      "span",
-                                      null,
-                                      r.a.createElement(
-                                          "a",
-                                          {
-                                              onClick: a._showDepositWithdraw.bind(
-                                                  a,
-                                                  "bridge_modal",
-                                                  n,
-                                                  !1
-                                              )
-                                          },
-                                          r.a.createElement(K.a, {
-                                              name: "dollar",
-                                              title: "icons.dollar.buy",
-                                              className: "icon-14px"
-                                          })
-                                      )
-                                  )
-                                : o;
+                            : o;
                     }),
                     (a.state = {
                         sortKey: e.viewSettings.get(
@@ -12354,8 +6065,9 @@
                         depositAsset: null,
                         withdrawAsset: null,
                         bridgeAsset: null,
-                        alwaysShowAssets: ["LLC", "USD", "CNY"],
-                        hide0balances: !1
+                        alwaysShowAssets: ["LLC"],
+                        hide0balances: !1,
+                        isBridgeModalVisible: !1
                     }),
                     (a.qtyRefs = {}),
                     (a.priceRefs = {}),
@@ -12364,12 +6076,26 @@
                     a.sortFunctions))
                         a.sortFunctions[n] = a.sortFunctions[n].bind(a);
                     return (
-                        (a._handleFilterInput = a._handleFilterInput.bind(a)), a
+                        (a._handleFilterInput = a._handleFilterInput.bind(a)),
+                        (a.onShowModal = a.onShowModal.bind(a)),
+                        a
                     );
                 }
                 return (
-                    ta(t, r.a.Component),
-                    Zt(t, [
+                    ra(t, r.a.Component),
+                    ea(t, [
+                        {
+                            key: "onShowModal",
+                            value: function() {
+                                var e = this;
+                                this.setState(
+                                    {isBridgeModalVisible: !1},
+                                    function() {
+                                        e.setState({isBridgeModalVisible: !0});
+                                    }
+                                );
+                            }
+                        },
                         {
                             key: "_reserveButtonClick",
                             value: function(e, t) {
@@ -12419,17 +6145,17 @@
                                     var t =
                                         e.get("name") +
                                         JSON.stringify(e.get("call_orders"));
-                                    return At[t]
-                                        ? At[t].result
-                                            ? Promise.resolve(At[t].result)
+                                    return Ct[t]
+                                        ? Ct[t].result
+                                            ? Promise.resolve(Ct[t].result)
                                             : new Promise(function(e, a) {
-                                                  At[t].queue.push({
+                                                  Ct[t].queue.push({
                                                       res: e,
                                                       rej: a
                                                   });
                                               })
                                         : new Promise(function(a, n) {
-                                              (At[t] = {
+                                              (Ct[t] = {
                                                   queue: [{res: a, rej: n}],
                                                   result: null
                                               }),
@@ -12528,7 +6254,7 @@
                                                                                   ratio: null
                                                                               };
                                                                           else {
-                                                                              var s = new yt.a(
+                                                                              var i = new wt.a(
                                                                                       {
                                                                                           amount: e.get(
                                                                                               "collateral"
@@ -12539,7 +6265,7 @@
                                                                                               a.precision
                                                                                       }
                                                                                   ),
-                                                                                  i = new yt.a(
+                                                                                  s = new wt.a(
                                                                                       {
                                                                                           amount: e.get(
                                                                                               "debt"
@@ -12556,7 +6282,7 @@
                                                                                           .current_feed
                                                                                           .maintenance_collateral_ratio /
                                                                                       1e3,
-                                                                                  c = new yt.c(
+                                                                                  c = new wt.c(
                                                                                       {
                                                                                           priceObject:
                                                                                               t
@@ -12580,12 +6306,12 @@
                                                                                   ),
                                                                                   u = {
                                                                                       ratio:
-                                                                                          s.getAmount(
+                                                                                          i.getAmount(
                                                                                               {
                                                                                                   real: !0
                                                                                               }
                                                                                           ) /
-                                                                                          (i.getAmount(
+                                                                                          (s.getAmount(
                                                                                               {
                                                                                                   real: !0
                                                                                               }
@@ -12614,7 +6340,7 @@
                                                                           }
                                                                       }
                                                                   ),
-                                                                      At[
+                                                                      Ct[
                                                                           t
                                                                       ].queue.forEach(
                                                                           function(
@@ -12625,21 +6351,21 @@
                                                                               );
                                                                           }
                                                                       ),
-                                                                      (At[t] = {
+                                                                      (Ct[t] = {
                                                                           result: r
                                                                       }),
                                                                       setTimeout(
                                                                           function() {
-                                                                              delete At[
+                                                                              delete Ct[
                                                                                   t
                                                                               ];
                                                                           },
-                                                                          Ct
+                                                                          Nt
                                                                       );
                                                               });
                                                       })
                                                       .catch(function() {
-                                                          At[t].queue.forEach(
+                                                          Ct[t].queue.forEach(
                                                               function(e) {
                                                                   e.rej();
                                                               }
@@ -12699,13 +6425,20 @@
                             value: function(e, t) {
                                 t.preventDefault(),
                                     this.setState({settleAsset: e}),
-                                    this.refs.settlement_modal.show();
+                                    this.refs.settlement_modal.show(),
+                                    console.log(
+                                        "===================================="
+                                    ),
+                                    console.log(this.refs.settlement_modal),
+                                    console.log(
+                                        "===================================="
+                                    );
                             }
                         },
                         {
                             key: "_hideAsset",
                             value: function(e, t) {
-                                at.a.hideAsset(e, t);
+                                rt.a.hideAsset(e, t);
                             }
                         },
                         {
@@ -12728,7 +6461,7 @@
                                     o = this;
                                 n.preventDefault(),
                                     this.setState(
-                                        (Qt(
+                                        (ta(
                                             (r = {}),
                                             "bridge_modal" === e
                                                 ? "bridgeAsset"
@@ -12737,7 +6470,7 @@
                                                     : "withdrawAsset",
                                             t
                                         ),
-                                        Qt(r, "fiatModal", a),
+                                        ta(r, "fiatModal", a),
                                         r),
                                         function() {
                                             o.refs[e].show();
@@ -12773,19 +6506,19 @@
                             value: function(e, t, a) {
                                 var n = this,
                                     o = this.props.core_asset,
-                                    s = this.props,
-                                    i = s.settings,
-                                    l = s.hiddenAssets,
-                                    u = s.orders,
-                                    p = i.get("unit") || o.get("symbol"),
-                                    d = i.get("showAssetPercent", !1),
+                                    i = this.props,
+                                    s = i.settings,
+                                    l = i.hiddenAssets,
+                                    u = i.orders,
+                                    p = s.get("unit") || o.get("symbol"),
+                                    d = s.get("showAssetPercent", !1),
                                     h = function(e, t) {
                                         var a = e && e.has("bitasset_data_id"),
                                             o = "cp_modal_" + e.get("id");
                                         return {
                                             isBitAsset: a,
                                             borrowModal: a
-                                                ? r.a.createElement(J.a, {
+                                                ? r.a.createElement(G.a, {
                                                       ref: o,
                                                       modalId:
                                                           "borrow_modal_" +
@@ -12804,13 +6537,13 @@
                                                       "a",
                                                       {
                                                           onClick: function() {
-                                                              q.a.hide(),
+                                                              L.a.hide(),
                                                                   n.refs[
                                                                       o
                                                                   ].show();
                                                           }
                                                       },
-                                                      r.a.createElement(K.a, {
+                                                      r.a.createElement(J.a, {
                                                           name: "dollar",
                                                           title:
                                                               "icons.dollar.borrow",
@@ -12826,45 +6559,45 @@
                                         var t = E.b.getObject(e);
                                         if (t) {
                                             var a = t.get("asset_type"),
-                                                s = E.b.getObject(a);
-                                            if (s) {
-                                                var i,
+                                                i = E.b.getObject(a);
+                                            if (i) {
+                                                var s,
                                                     f,
                                                     g,
                                                     v = "",
-                                                    _ = s.get("symbol"),
-                                                    w = "1.3.0" !== s.get("id"),
+                                                    y = i.get("symbol"),
+                                                    w = "1.3.0" !== i.get("id"),
                                                     k = p !== o.get("symbol"),
-                                                    O = nt.a.parseDescription(
-                                                        s.getIn([
+                                                    x = ot.a.parseDescription(
+                                                        i.getIn([
                                                             "options",
                                                             "description"
                                                         ])
                                                     ).market;
                                                 -1 ===
-                                                    (v = s.get(
+                                                    (v = i.get(
                                                         "symbol"
                                                     )).indexOf("OPEN.") ||
-                                                    O ||
-                                                    (O = "USD");
-                                                var A = O || p;
+                                                    x ||
+                                                    (x = "USD");
+                                                var O = x || p;
                                                 w &&
-                                                    A === v &&
-                                                    (A = o.get("symbol")),
-                                                    (i = w
+                                                    O === v &&
+                                                    (O = o.get("symbol")),
+                                                    (s = w
                                                         ? r.a.createElement(
-                                                              G.b,
+                                                              X.b,
                                                               {
                                                                   to:
                                                                       "/market/" +
-                                                                      s.get(
+                                                                      i.get(
                                                                           "symbol"
                                                                       ) +
                                                                       "_" +
-                                                                      A
+                                                                      O
                                                               },
                                                               r.a.createElement(
-                                                                  K.a,
+                                                                  J.a,
                                                                   {
                                                                       name:
                                                                           "trade",
@@ -12877,18 +6610,18 @@
                                                           )
                                                         : k
                                                             ? r.a.createElement(
-                                                                  G.b,
+                                                                  X.b,
                                                                   {
                                                                       to:
                                                                           "/market/" +
-                                                                          s.get(
+                                                                          i.get(
                                                                               "symbol"
                                                                           ) +
                                                                           "_" +
                                                                           p
                                                                   },
                                                                   r.a.createElement(
-                                                                      K.a,
+                                                                      J.a,
                                                                       {
                                                                           name:
                                                                               "trade",
@@ -12905,10 +6638,10 @@
                                                         {
                                                             onClick: n.triggerSend.bind(
                                                                 n,
-                                                                s.get("id")
+                                                                i.get("id")
                                                             )
                                                         },
-                                                        r.a.createElement(K.a, {
+                                                        r.a.createElement(J.a, {
                                                             name: "transfer",
                                                             title:
                                                                 "icons.transfer",
@@ -12916,53 +6649,53 @@
                                                                 "icon-14px"
                                                         })
                                                     ));
-                                                var C = h(s, n.props.account),
-                                                    x = C.isBitAsset,
-                                                    S = C.borrowModal,
-                                                    P = C.borrowLink;
+                                                var A = h(i, n.props.account),
+                                                    C = A.isBitAsset,
+                                                    N = A.borrowModal,
+                                                    j = A.borrowLink;
                                                 f = r.a.createElement(
                                                     "a",
                                                     {
                                                         onClick: n._onSettleAsset.bind(
                                                             n,
-                                                            s.get("id")
+                                                            i.get("id")
                                                         )
                                                     },
-                                                    r.a.createElement(K.a, {
+                                                    r.a.createElement(J.a, {
                                                         name: "settle",
                                                         title: "icons.settle",
                                                         className: "icon-14px"
                                                     })
                                                 );
-                                                var j = !l.includes(a),
-                                                    T = !!t.get("balance"),
-                                                    I = !!u[a],
-                                                    q = Object(Gt.b)(
-                                                        s.get("symbol"),
+                                                var P = !l.includes(a),
+                                                    I = !!t.get("balance"),
+                                                    T = !!u[a],
+                                                    M = Object(Yt.b)(
+                                                        i.get("symbol"),
                                                         n.props.backedCoins
                                                     ),
-                                                    D =
-                                                        (q &&
-                                                            q.depositAllowed) ||
-                                                        "LLC" ==
-                                                            s.get("symbol"),
                                                     L =
-                                                        q &&
-                                                        q.withdrawalAllowed &&
-                                                        T &&
+                                                        (M &&
+                                                            M.depositAllowed) ||
+                                                        "LLC" ==
+                                                            i.get("symbol"),
+                                                    D =
+                                                        M &&
+                                                        M.withdrawalAllowed &&
+                                                        I &&
                                                         0 != t.get("balance"),
                                                     R = !!n.props.bridgeCoins.get(
                                                         v
                                                     ),
-                                                    M = t.get("balance");
+                                                    q = t.get("balance");
                                                 (n.qtyRefs[
-                                                    s.get("symbol")
-                                                ] = b.a.get_asset_amount(M, s)),
+                                                    i.get("symbol")
+                                                ] = b.a.get_asset_amount(q, i)),
                                                     m.push(
                                                         r.a.createElement(
                                                             "tr",
                                                             {
-                                                                key: s.get(
+                                                                key: i.get(
                                                                     "symbol"
                                                                 ),
                                                                 style: {
@@ -12979,10 +6712,10 @@
                                                                     }
                                                                 },
                                                                 r.a.createElement(
-                                                                    bt.a,
+                                                                    vt.a,
                                                                     {
                                                                         showIcon: !0,
-                                                                        asset: s.get(
+                                                                        asset: i.get(
                                                                             "id"
                                                                         )
                                                                     }
@@ -12996,7 +6729,7 @@
                                                                             "right"
                                                                     }
                                                                 },
-                                                                T || I
+                                                                I || T
                                                                     ? r.a.createElement(
                                                                           c.a,
                                                                           {
@@ -13017,7 +6750,7 @@
                                                                         "column-hide-small"
                                                                 },
                                                                 r.a.createElement(
-                                                                    ft,
+                                                                    gt,
                                                                     {
                                                                         refCallback: function(
                                                                             e
@@ -13027,13 +6760,13 @@
                                                                                     .refs
                                                                                     .bound_component &&
                                                                                 (n.priceRefs[
-                                                                                    s.get(
+                                                                                    i.get(
                                                                                         "symbol"
                                                                                     )
                                                                                 ] =
                                                                                     e.refs.bound_component);
                                                                         },
-                                                                        fromAsset: s.get(
+                                                                        fromAsset: i.get(
                                                                             "id"
                                                                         ),
                                                                         pulsate: {
@@ -13066,18 +6799,18 @@
                                                                                     .refs
                                                                                     .bound_component &&
                                                                                 (n.changeRefs[
-                                                                                    s.get(
+                                                                                    i.get(
                                                                                         "symbol"
                                                                                     )
                                                                                 ] =
                                                                                     e.refs.bound_component);
                                                                         },
-                                                                        base: s.get(
+                                                                        base: i.get(
                                                                             "id"
                                                                         ),
                                                                         quote: p,
                                                                         marketId:
-                                                                            s.get(
+                                                                            i.get(
                                                                                 "symbol"
                                                                             ) +
                                                                             "_" +
@@ -13096,9 +6829,9 @@
                                                                     className:
                                                                         "column-hide-small"
                                                                 },
-                                                                T || I
+                                                                I || T
                                                                     ? r.a.createElement(
-                                                                          N.a,
+                                                                          S.a,
                                                                           {
                                                                               balance: e,
                                                                               toAsset: p,
@@ -13111,7 +6844,7 @@
                                                                                           .refs
                                                                                           .bound_component &&
                                                                                       (n.valueRefs[
-                                                                                          s.get(
+                                                                                          i.get(
                                                                                               "symbol"
                                                                                           )
                                                                                       ] =
@@ -13130,7 +6863,7 @@
                                                                                   "right"
                                                                           }
                                                                       },
-                                                                      T
+                                                                      I
                                                                           ? r.a.createElement(
                                                                                 c.a,
                                                                                 {
@@ -13150,11 +6883,11 @@
                                                                 "td",
                                                                 null,
                                                                 n._renderBuy(
-                                                                    s.get(
+                                                                    i.get(
                                                                         "symbol"
                                                                     ),
                                                                     R,
-                                                                    _,
+                                                                    y,
                                                                     "-",
                                                                     t.get(
                                                                         "balance"
@@ -13164,14 +6897,12 @@
                                                             r.a.createElement(
                                                                 "td",
                                                                 null,
-                                                                D &&
-                                                                n.props
-                                                                    .isMyAccount
+                                                                L
                                                                     ? r.a.createElement(
                                                                           "span",
                                                                           null,
                                                                           r.a.createElement(
-                                                                              K.a,
+                                                                              J.a,
                                                                               {
                                                                                   style: {
                                                                                       cursor:
@@ -13183,9 +6914,9 @@
                                                                                       "icons.deposit.deposit",
                                                                                   className:
                                                                                       "icon-14x",
-                                                                                  onClick: n._showDepositModal.bind(
+                                                                                  onClick: n._onNavigate.bind(
                                                                                       n,
-                                                                                      _
+                                                                                      "/deposit-withdraw"
                                                                                   )
                                                                               }
                                                                           )
@@ -13195,7 +6926,7 @@
                                                             r.a.createElement(
                                                                 "td",
                                                                 null,
-                                                                L &&
+                                                                D &&
                                                                 n.props
                                                                     .isMyAccount
                                                                     ? r.a.createElement(
@@ -13204,20 +6935,20 @@
                                                                           r.a.createElement(
                                                                               "a",
                                                                               {
-                                                                                  className: L
+                                                                                  className: D
                                                                                       ? ""
                                                                                       : "disabled",
-                                                                                  onClick: L
+                                                                                  onClick: D
                                                                                       ? n._showDepositWithdraw.bind(
                                                                                             n,
                                                                                             "withdraw_modal_new",
-                                                                                            _,
+                                                                                            y,
                                                                                             !1
                                                                                         )
                                                                                       : function() {}
                                                                               },
                                                                               r.a.createElement(
-                                                                                  K.a,
+                                                                                  J.a,
                                                                                   {
                                                                                       name:
                                                                                           "withdraw",
@@ -13234,12 +6965,12 @@
                                                             r.a.createElement(
                                                                 "td",
                                                                 null,
-                                                                i
+                                                                s
                                                             ),
                                                             r.a.createElement(
                                                                 "td",
                                                                 null,
-                                                                x
+                                                                C
                                                                     ? r.a.createElement(
                                                                           "div",
                                                                           {
@@ -13247,22 +6978,22 @@
                                                                                   "inline-block",
                                                                               "data-place":
                                                                                   "bottom",
-                                                                              "data-tip": y.a.translate(
+                                                                              "data-tip": _.a.translate(
                                                                                   "tooltip.borrow",
                                                                                   {
                                                                                       asset: v
                                                                                   }
                                                                               )
                                                                           },
-                                                                          P,
-                                                                          S
+                                                                          j,
+                                                                          N
                                                                       )
                                                                     : "-"
                                                             ),
                                                             r.a.createElement(
                                                                 "td",
                                                                 null,
-                                                                x
+                                                                C
                                                                     ? r.a.createElement(
                                                                           "div",
                                                                           {
@@ -13270,7 +7001,7 @@
                                                                                   "inline-block",
                                                                               "data-place":
                                                                                   "bottom",
-                                                                              "data-tip": y.a.translate(
+                                                                              "data-tip": _.a.translate(
                                                                                   "tooltip.settle",
                                                                                   {
                                                                                       asset: v
@@ -13292,12 +7023,12 @@
                                                                         "column-hide-small",
                                                                     "data-place":
                                                                         "bottom",
-                                                                    "data-tip": y.a.translate(
+                                                                    "data-tip": _.a.translate(
                                                                         "tooltip.burn"
                                                                     ),
                                                                     onClick: n._reserveButtonClick.bind(
                                                                         n,
-                                                                        s.get(
+                                                                        i.get(
                                                                             "id"
                                                                         )
                                                                     )
@@ -13308,7 +7039,7 @@
                                                                         style: {
                                                                             marginRight: 0
                                                                         },
-                                                                        className: j
+                                                                        className: P
                                                                             ? "order-cancel"
                                                                             : "action-plus"
                                                                     },
@@ -13354,16 +7085,16 @@
                                                                         "column-hide-small",
                                                                     "data-place":
                                                                         "bottom",
-                                                                    "data-tip": y.a.translate(
+                                                                    "data-tip": _.a.translate(
                                                                         "tooltip." +
-                                                                            (j
+                                                                            (P
                                                                                 ? "hide_asset"
                                                                                 : "show_asset")
                                                                     ),
                                                                     onClick: n._hideAsset.bind(
                                                                         n,
                                                                         a,
-                                                                        j
+                                                                        P
                                                                     )
                                                                 },
                                                                 r.a.createElement(
@@ -13372,17 +7103,17 @@
                                                                         style: {
                                                                             marginRight: 0
                                                                         },
-                                                                        className: j
+                                                                        className: P
                                                                             ? "order-cancel"
                                                                             : "action-plus"
                                                                     },
                                                                     r.a.createElement(
-                                                                        K.a,
+                                                                        J.a,
                                                                         {
-                                                                            name: j
+                                                                            name: P
                                                                                 ? "cross-circle"
                                                                                 : "plus-circle",
-                                                                            title: j
+                                                                            title: P
                                                                                 ? "icons.cross_circle.hide_asset"
                                                                                 : "icons.plus_circle.show_asset",
                                                                             className:
@@ -13421,10 +7152,10 @@
                                             .forEach(function(e) {
                                                 var t = E.b.getAsset(e);
                                                 if (t && n.props.isMyAccount) {
-                                                    var s = !l.includes(
+                                                    var i = !l.includes(
                                                             t.get("id")
                                                         ),
-                                                        i = t
+                                                        s = t
                                                             .get("symbol")
                                                             .split("."),
                                                         c =
@@ -13435,7 +7166,7 @@
                                                                 ) {
                                                                     return (
                                                                         e.backingCoinType ===
-                                                                        i[1]
+                                                                        s[1]
                                                                     );
                                                                 }) ||
                                                             !!n.props.backedCoins
@@ -13448,7 +7179,7 @@
                                                                 ) {
                                                                     return (
                                                                         e.backingCoin ===
-                                                                        i[1]
+                                                                        s[1]
                                                                     );
                                                                 }) ||
                                                             "LLC" ==
@@ -13459,7 +7190,7 @@
                                                         p =
                                                             "1.3.0" !==
                                                             t.get("id"),
-                                                        d = nt.a.parseDescription(
+                                                        d = ot.a.parseDescription(
                                                             t.getIn([
                                                                 "options",
                                                                 "description"
@@ -13480,7 +7211,7 @@
                                                                 : "LLC"),
                                                         b = p
                                                             ? r.a.createElement(
-                                                                  G.b,
+                                                                  X.b,
                                                                   {
                                                                       to:
                                                                           "/market/" +
@@ -13491,7 +7222,7 @@
                                                                           f
                                                                   },
                                                                   r.a.createElement(
-                                                                      K.a,
+                                                                      J.a,
                                                                       {
                                                                           name:
                                                                               "trade",
@@ -13508,9 +7239,9 @@
                                                             n.props.account
                                                         ),
                                                         v = g.isBitAsset,
-                                                        _ = g.borrowModal,
+                                                        y = g.borrowModal,
                                                         w = g.borrowLink;
-                                                    ((s && a) || (!s && !a)) &&
+                                                    ((i && a) || (!i && !a)) &&
                                                         m.push(
                                                             r.a.createElement(
                                                                 "tr",
@@ -13532,7 +7263,7 @@
                                                                         }
                                                                     },
                                                                     r.a.createElement(
-                                                                        bt.a,
+                                                                        vt.a,
                                                                         {
                                                                             asset: t.get(
                                                                                 "id"
@@ -13599,7 +7330,7 @@
                                                                                       )
                                                                                   },
                                                                                   r.a.createElement(
-                                                                                      K.a,
+                                                                                      J.a,
                                                                                       {
                                                                                           name:
                                                                                               "dollar",
@@ -13623,7 +7354,7 @@
                                                                               "span",
                                                                               null,
                                                                               r.a.createElement(
-                                                                                  K.a,
+                                                                                  J.a,
                                                                                   {
                                                                                       style: {
                                                                                           cursor:
@@ -13672,7 +7403,7 @@
                                                                                       "inline-block",
                                                                                   "data-place":
                                                                                       "bottom",
-                                                                                  "data-tip": y.a.translate(
+                                                                                  "data-tip": _.a.translate(
                                                                                       "tooltip.borrow",
                                                                                       {
                                                                                           asset: t.get(
@@ -13682,7 +7413,7 @@
                                                                                   )
                                                                               },
                                                                               w,
-                                                                              _
+                                                                              y
                                                                           )
                                                                         : "-"
                                                                 ),
@@ -13702,9 +7433,9 @@
                                                                             "column-hide-small",
                                                                         "data-place":
                                                                             "bottom",
-                                                                        "data-tip": y.a.translate(
+                                                                        "data-tip": _.a.translate(
                                                                             "tooltip." +
-                                                                                (s
+                                                                                (i
                                                                                     ? "hide_asset"
                                                                                     : "show_asset")
                                                                         )
@@ -13715,7 +7446,7 @@
                                                                             style: {
                                                                                 marginRight: 0
                                                                             },
-                                                                            className: s
+                                                                            className: i
                                                                                 ? "order-cancel"
                                                                                 : "action-plus",
                                                                             onClick: n._hideAsset.bind(
@@ -13723,16 +7454,16 @@
                                                                                 t.get(
                                                                                     "id"
                                                                                 ),
-                                                                                s
+                                                                                i
                                                                             )
                                                                         },
                                                                         r.a.createElement(
-                                                                            K.a,
+                                                                            J.a,
                                                                             {
-                                                                                name: s
+                                                                                name: i
                                                                                     ? "cross-circle"
                                                                                     : "plus-circle",
-                                                                                title: s
+                                                                                title: i
                                                                                     ? "icons.cross_circle.hide_asset"
                                                                                     : "icons.plus_circle.show_asset",
                                                                                 className:
@@ -13761,14 +7492,14 @@
                                         ? arguments[0]
                                         : "active";
                                 this.setState({shownAssets: e}),
-                                    at.a.changeViewSetting({shownAssets: e});
+                                    rt.a.changeViewSetting({shownAssets: e});
                             }
                         },
                         {
                             key: "_toggleSortOrder",
                             value: function(e) {
                                 this.state.sortKey === e
-                                    ? (at.a.changeViewSetting({
+                                    ? (rt.a.changeViewSetting({
                                           portfolioSortDirection: !this.state
                                               .sortDirection
                                       }),
@@ -13776,7 +7507,7 @@
                                           sortDirection: !this.state
                                               .sortDirection
                                       }))
-                                    : (at.a.changeViewSetting({
+                                    : (rt.a.changeViewSetting({
                                           portfolioSort: e
                                       }),
                                       this.setState({
@@ -13821,7 +7552,7 @@
                                     a = t.account,
                                     n = t.hiddenAssets,
                                     o = t.settings,
-                                    i = t.orders,
+                                    s = t.orders,
                                     c = this.state.shownAssets;
                                 if (!a) return null;
                                 var p = [],
@@ -13832,9 +7563,9 @@
                                     (p = a.get("call_orders").toJS());
                                 var g = void 0,
                                     v = void 0,
-                                    _ = a.get("balances"),
-                                    w = s.a.List(),
-                                    k = s.a.List();
+                                    y = a.get("balances"),
+                                    w = i.a.List(),
+                                    k = i.a.List();
                                 (p.forEach(function(e) {
                                     var t = E.b.getObject(e);
                                     if (t) {
@@ -13868,14 +7599,14 @@
                                               ));
                                     }
                                 }),
-                                _) &&
-                                    ((_ = _.filter(function(t, a) {
+                                y) &&
+                                    ((y = y.filter(function(t, a) {
                                         var n = E.b.getObject(t);
                                         return (
                                             !(
                                                 n &&
                                                 !n.get("balance") &&
-                                                !i[a]
+                                                !s[a]
                                             ) &&
                                             !(
                                                 e.state.hide0balances &&
@@ -13885,9 +7616,9 @@
                                     })).forEach(function(t, a) {
                                         var r = E.b.getAsset(a),
                                             o = "",
-                                            s = "";
+                                            i = "";
                                         e.state.filterValue &&
-                                            ((s = e.state.filterValue
+                                            ((i = e.state.filterValue
                                                 ? String(
                                                       e.state.filterValue
                                                   ).toLowerCase()
@@ -13895,9 +7626,9 @@
                                             (o = r.get("symbol").toLowerCase()),
                                             b.a.replaceName(r).isBitAsset &&
                                                 (o = "bit" + o));
-                                        n.includes(a) && o.includes(s)
+                                        n.includes(a) && o.includes(i)
                                             ? (k = k.push(t))
-                                            : o.includes(s) && (w = w.push(t));
+                                            : o.includes(i) && (w = w.push(t));
                                     }),
                                     (g = this._renderBalances(
                                         w,
@@ -13910,47 +7641,47 @@
                                         k,
                                         this.state.filterValue
                                             ? null
-                                            : this.state.alwaysShowAsset
+                                            : this.state.alwaysShowAssets
                                     )));
-                                var O = r.a.createElement(u.a, {
+                                var x = r.a.createElement(u.a, {
                                         noTip: !0,
                                         balances: k,
                                         hide_asset: !0
                                     }),
-                                    A = r.a.createElement(u.a, {
+                                    O = r.a.createElement(u.a, {
                                         noTip: !0,
                                         balances: w,
                                         hide_asset: !0
                                     }),
-                                    C = r.a.createElement(u.a, {
+                                    A = r.a.createElement(u.a, {
                                         noTip: !0,
-                                        balances: s.a.List(),
-                                        openOrders: i,
+                                        balances: i.a.List(),
+                                        openOrders: s,
                                         hide_asset: !0
                                     }),
-                                    x = r.a.createElement(u.a, {
+                                    C = r.a.createElement(u.a, {
                                         noTip: !0,
-                                        balances: s.a.List(),
+                                        balances: i.a.List(),
                                         debt: f,
                                         collateral: m,
                                         hide_asset: !0
                                     }),
-                                    N = r.a.createElement(u.a, {
+                                    S = r.a.createElement(u.a, {
                                         noTip: !0,
-                                        balances: s.a.List(),
+                                        balances: i.a.List(),
                                         debt: f,
                                         hide_asset: !0
                                     }),
-                                    S = r.a.createElement(u.a, {
+                                    j = r.a.createElement(u.a, {
                                         noTip: !0,
-                                        balances: s.a.List(),
+                                        balances: i.a.List(),
                                         collateral: m,
                                         hide_asset: !0
                                     }),
                                     P =
                                         o.get("unit") ||
                                         this.props.core_asset.get("symbol"),
-                                    j = r.a.createElement(X.a, {
+                                    I = r.a.createElement(Y.a, {
                                         noLink: !0,
                                         string: "account.total",
                                         keys: [
@@ -13974,7 +7705,7 @@
                                                 colSpan: "2",
                                                 style: {textAlign: "left"}
                                             },
-                                            j
+                                            I
                                         ),
                                         r.a.createElement("td", {
                                             className: "column-hide-small"
@@ -13985,7 +7716,7 @@
                                         r.a.createElement(
                                             "td",
                                             {style: {textAlign: "right"}},
-                                            A
+                                            O
                                         ),
                                         r.a.createElement("td", {colSpan: "9"})
                                     )
@@ -14003,7 +7734,7 @@
                                                     colSpan: "2",
                                                     style: {textAlign: "left"}
                                                 },
-                                                j
+                                                I
                                             ),
                                             r.a.createElement("td", {
                                                 className: "column-hide-small"
@@ -14014,7 +7745,7 @@
                                             r.a.createElement(
                                                 "td",
                                                 {style: {textAlign: "right"}},
-                                                O
+                                                x
                                             ),
                                             r.a.createElement("td", {
                                                 colSpan: "9"
@@ -14022,7 +7753,7 @@
                                         )
                                     );
                                 var T = o.get("showAssetPercent", !1),
-                                    I = (this.props.backedCoins
+                                    M = (this.props.backedCoins
                                         .get("OPEN", [])
                                         .find(function(t) {
                                             return (
@@ -14036,7 +7767,7 @@
                                     [
                                         {
                                             title: "account.portfolio",
-                                            subTitle: A,
+                                            subTitle: O,
                                             content: r.a.createElement(
                                                 "div",
                                                 null,
@@ -14086,7 +7817,7 @@
                                                                             "dashboard__actions__filters"
                                                                     },
                                                                     this._renderRadioButton(
-                                                                        y.a.translate(
+                                                                        _.a.translate(
                                                                             "account.hide_hidden"
                                                                         ),
                                                                         "active" !=
@@ -14103,7 +7834,7 @@
                                                                     ),
                                                                     v.length
                                                                         ? this._renderRadioButton(
-                                                                              y.a.translate(
+                                                                              _.a.translate(
                                                                                   "account.show_hidden"
                                                                               ),
                                                                               "hidden" !=
@@ -14120,7 +7851,7 @@
                                                                           )
                                                                         : null,
                                                                     this._renderRadioButton(
-                                                                        y.a.translate(
+                                                                        _.a.translate(
                                                                             "account.show_visual"
                                                                         ),
                                                                         "visual" !=
@@ -14174,11 +7905,11 @@
                                                                             r.a.createElement(
                                                                                 "span",
                                                                                 null,
-                                                                                y.a.translate(
+                                                                                _.a.translate(
                                                                                     "exchange.hide"
                                                                                 ),
                                                                                 " 0 ",
-                                                                                y.a.translate(
+                                                                                _.a.translate(
                                                                                     "transfer.balances"
                                                                                 )
                                                                             )
@@ -14189,7 +7920,7 @@
                                                         )
                                                     )
                                                 ),
-                                                r.a.createElement(Nt.a, {
+                                                r.a.createElement(jt.a, {
                                                     id: "send_modal_portfolio",
                                                     refCallback: function(t) {
                                                         t && (e.send_modal = t);
@@ -14334,7 +8065,7 @@
                                                                                   "column-hide-small clickable"
                                                                           },
                                                                           r.a.createElement(
-                                                                              X.a,
+                                                                              Y.a,
                                                                               {
                                                                                   noLink: !0,
                                                                                   string:
@@ -14490,16 +8221,16 @@
                                                               )
                                                           )
                                                       )
-                                                    : r.a.createElement(Kt, {
+                                                    : r.a.createElement(Xt, {
                                                           balanceObjects: w
                                                       })
                                             )
                                         },
                                         {
                                             title: "account.open_orders",
-                                            subTitle: C,
+                                            subTitle: A,
                                             content: r.a.createElement(
-                                                Ot,
+                                                At,
                                                 this.props,
                                                 r.a.createElement(
                                                     "tbody",
@@ -14519,7 +8250,7 @@
                                                                         "right"
                                                                 }
                                                             },
-                                                            j
+                                                            I
                                                         ),
                                                         r.a.createElement(
                                                             "td",
@@ -14530,7 +8261,7 @@
                                                                         "left"
                                                                 }
                                                             },
-                                                            C
+                                                            A
                                                         ),
                                                         this.props.isMyAccount
                                                             ? r.a.createElement(
@@ -14544,9 +8275,9 @@
                                         },
                                         {
                                             title: "account.collaterals",
-                                            subTitle: x,
+                                            subTitle: C,
                                             content: r.a.createElement(
-                                                ue,
+                                                pe,
                                                 {
                                                     preferredUnit: P,
                                                     className:
@@ -14560,6 +8291,23 @@
                                                     r.a.createElement(
                                                         "td",
                                                         null,
+                                                        I
+                                                    ),
+                                                    r.a.createElement(
+                                                        "td",
+                                                        null
+                                                    ),
+                                                    r.a.createElement(
+                                                        "td",
+                                                        null,
+                                                        S
+                                                    ),
+                                                    r.a.createElement(
+                                                        "td",
+                                                        {
+                                                            className:
+                                                                "column-hide-medium"
+                                                        },
                                                         j
                                                     ),
                                                     r.a.createElement(
@@ -14569,24 +8317,7 @@
                                                     r.a.createElement(
                                                         "td",
                                                         null,
-                                                        N
-                                                    ),
-                                                    r.a.createElement(
-                                                        "td",
-                                                        {
-                                                            className:
-                                                                "column-hide-medium"
-                                                        },
-                                                        S
-                                                    ),
-                                                    r.a.createElement(
-                                                        "td",
-                                                        null
-                                                    ),
-                                                    r.a.createElement(
-                                                        "td",
-                                                        null,
-                                                        x
+                                                        C
                                                     ),
                                                     r.a.createElement("td", {
                                                         className:
@@ -14605,8 +8336,8 @@
                                         {
                                             title: "account.activity",
                                             subTitle: "",
-                                            content: r.a.createElement(pe.a, {
-                                                accountsList: s.a.fromJS([
+                                            content: r.a.createElement(de.a, {
+                                                accountsList: i.a.fromJS([
                                                     a.get("id")
                                                 ]),
                                                 compactView: !1,
@@ -14616,14 +8347,24 @@
                                                 showFilters: !0,
                                                 dashboard: !0
                                             })
+                                        },
+                                        {
+                                            title:
+                                                "account.proposed_transactions",
+                                            subTitle: "",
+                                            content: r.a.createElement(nt, {
+                                                className: "dashboard-table",
+                                                account: a.get("id")
+                                            })
                                         }
                                     ]);
                                 return r.a.createElement(
                                     "div",
                                     null,
-                                    r.a.createElement(gt.a, {
-                                        items: I,
-                                        inner: !0
+                                    r.a.createElement(yt.a, {
+                                        items: M,
+                                        inner: !0,
+                                        updateModal: this.updateModal
                                     }),
                                     r.a.createElement(
                                         h.a,
@@ -14632,7 +8373,7 @@
                                         r.a.createElement(
                                             "div",
                                             {className: "grid-block vertical"},
-                                            r.a.createElement(Xt.a, {
+                                            r.a.createElement(Zt.a, {
                                                 assetId: this.state.reserve,
                                                 account: a,
                                                 onClose: function() {
@@ -14643,7 +8384,14 @@
                                                 }
                                             })
                                         )
-                                    )
+                                    ),
+                                    r.a.createElement("div", null),
+                                    r.a.createElement(N, {
+                                        ref: "settlement_modal",
+                                        modalId: "settlement_modal",
+                                        asset: this.state.settleAsset,
+                                        account: a.get("name")
+                                    })
                                 );
                             }
                         }
@@ -14651,12 +8399,12 @@
                     t
                 );
             })();
-            aa = Object(P.a)(aa, {propNames: ["core_asset"]});
-            var na = (function(e) {
+            oa = Object(P.a)(oa, {propNames: ["core_asset"]});
+            var ia = (function(e) {
                 function t() {
                     return (
-                        $t(this, t),
-                        ea(
+                        aa(this, t),
+                        na(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -14666,14 +8414,14 @@
                     );
                 }
                 return (
-                    ta(t, r.a.Component),
-                    Zt(t, [
+                    ra(t, r.a.Component),
+                    ea(t, [
                         {
                             key: "render",
                             value: function() {
                                 return r.a.createElement(
-                                    xt.a,
-                                    Yt({}, this.props, {wrap: aa})
+                                    St.a,
+                                    $t({}, this.props, {wrap: oa})
                                 );
                             }
                         }
@@ -14681,50 +8429,45 @@
                     t
                 );
             })();
-            t.default = na;
+            t.default = ia;
         },
-        519: function(e, t, a) {
+        565: function(e, t, a) {
             "use strict";
-            var n = a(65).a.isFinite;
+            var n = a(63).a.isFinite;
             t.a = function(e) {
                 return "number" == typeof e && n(e);
             };
         },
-        574: function(e, t, a) {
-            var n;
-            !(function(r) {
+        576: function(e, t) {
+            !(function(t) {
                 "object" == typeof e && e.exports
-                    ? (e.exports = r)
-                    : void 0 ===
-                          (n = function() {
-                              return r;
-                          }.call(t, a, t, e)) || (e.exports = n);
+                    ? (e.exports = t)
+                    : t(Highcharts);
             })(function(e) {
                 !(function(e, t) {
                     var a = e.seriesType,
                         n = e.seriesTypes,
                         r = e.map,
                         o = e.merge,
-                        s = e.extend,
-                        i = e.noop,
+                        i = e.extend,
+                        s = e.noop,
                         l = e.each,
                         c = t.getColor,
                         u = t.getLevelOptions,
                         p = e.grep,
-                        d = e.isArray,
-                        h = e.isNumber,
-                        m = e.isObject,
-                        f = e.isString,
-                        b = e.pick,
-                        g = e.Series,
-                        v = e.stableSort,
-                        _ = e.Color,
+                        d = e.isNumber,
+                        h = e.isObject,
+                        m = e.isString,
+                        f = e.pick,
+                        b = e.Series,
+                        g = e.stableSort,
+                        v = e.Color,
                         y = e.reduce,
-                        E = function(e, t, a) {
+                        _ = function(e, t, a) {
                             (a = a || this),
-                                !1 !== (e = t.call(a, e)) && E(e, t, a);
+                                !1 !== (e = t.call(a, e)) && _(e, t, a);
                         },
-                        w = t.updateRootId;
+                        E = t.updateRootId;
                     a(
                         "treemap",
                         "scatter",
@@ -14769,15 +8512,21 @@
                         },
                         {
                             pointArrayMap: ["value"],
+                            axisTypes: n.heatmap
+                                ? ["xAxis", "yAxis", "colorAxis"]
+                                : ["xAxis", "yAxis"],
                             directTouch: !0,
                             optionalAxis: "colorAxis",
-                            getSymbol: i,
+                            getSymbol: s,
                             parallelArrays: ["x", "y", "value", "colorValue"],
                             colorKey: "colorValue",
+                            translateColors:
+                                n.heatmap &&
+                                n.heatmap.prototype.translateColors,
+                            colorAttribs:
+                                n.heatmap && n.heatmap.prototype.colorAttribs,
                             trackerGroups: ["group", "dataLabelsGroup"],
                             getListOfParents: function(t, a) {
-                                t = d(t) ? t : [];
-                                var n = d(a) ? a : [];
                                 return (
                                     (function(t, a, n) {
                                         (n = n || this),
@@ -14785,13 +8534,13 @@
                                                 a.call(n, e, r, t);
                                             });
                                     })(
-                                        (a = y(
-                                            t,
+                                        (t = y(
+                                            t || [],
                                             function(e, t, a) {
                                                 return (
                                                     void 0 ===
                                                         e[
-                                                            (t = b(
+                                                            (t = f(
                                                                 t.parent,
                                                                 ""
                                                             ))
@@ -14800,18 +8549,18 @@
                                                     e
                                                 );
                                             },
-                                            {"": []}
+                                            {}
                                         )),
-                                        function(t, a, r) {
-                                            "" !== a &&
-                                                -1 === e.inArray(a, n) &&
+                                        function(t, n, r) {
+                                            "" !== n &&
+                                                -1 === e.inArray(n, a) &&
                                                 (l(t, function(e) {
                                                     r[""].push(e);
                                                 }),
-                                                delete r[a]);
+                                                delete r[n]);
                                         }
                                     ),
-                                    a
+                                    t
                                 );
                             },
                             getTree: function() {
@@ -14825,12 +8574,7 @@
                                 );
                             },
                             init: function(t, a) {
-                                var n = e.colorSeriesMixin;
-                                e.colorSeriesMixin &&
-                                    ((this.translateColors = n.translateColors),
-                                    (this.colorAttribs = n.colorAttribs),
-                                    (this.axisTypes = n.axisTypes)),
-                                    g.prototype.init.call(this, t, a),
+                                b.prototype.init.call(this, t, a),
                                     this.options.allowDrillToNode &&
                                         e.addEvent(
                                             this,
@@ -14840,32 +8584,32 @@
                             },
                             buildNode: function(e, t, a, n, r) {
                                 var o,
-                                    s = this,
-                                    i = [],
-                                    c = s.points[t],
+                                    i = this,
+                                    s = [],
+                                    c = i.points[t],
                                     u = 0;
                                 return (
                                     l(n[e] || [], function(t) {
-                                        (o = s.buildNode(
-                                            s.points[t].id,
+                                        (o = i.buildNode(
+                                            i.points[t].id,
                                             t,
                                             a + 1,
                                             n,
                                             e
                                         )),
                                             (u = Math.max(o.height + 1, u)),
-                                            i.push(o);
+                                            s.push(o);
                                     }),
                                     (t = {
                                         id: e,
                                         i: t,
-                                        children: i,
+                                        children: s,
                                         height: u,
                                         level: a,
                                         parent: r,
                                         visible: !1
                                     }),
-                                    (s.nodeMap[t.id] = t),
+                                    (i.nodeMap[t.id] = t),
                                     c && (c.node = t),
                                     t
                                 );
@@ -14879,30 +8623,30 @@
                                         "boolean" != typeof n.levelIsConstant ||
                                         n.levelIsConstant),
                                     0),
-                                    i = [],
+                                    s = [],
                                     c = a.points[e.i];
                                 return (
                                     l(e.children, function(e) {
                                         (e = a.setTreeValues(e)),
-                                            i.push(e),
+                                            s.push(e),
                                             e.ignore || (o += e.val);
                                     }),
-                                    v(i, function(e, t) {
+                                    g(s, function(e, t) {
                                         return e.sortIndex - t.sortIndex;
                                     }),
-                                    (t = b(c && c.options.value, o)),
+                                    (t = f(c && c.options.value, o)),
                                     c && (c.value = t),
-                                    s(e, {
-                                        children: i,
+                                    i(e, {
+                                        children: s,
                                         childrenTotal: o,
                                         ignore: !(
-                                            b(c && c.visible, !0) && 0 < t
+                                            f(c && c.visible, !0) && 0 < t
                                         ),
                                         isLeaf: e.visible && !o,
                                         levelDynamic:
                                             e.level - (n ? 0 : r.level),
-                                        name: b(c && c.name, ""),
-                                        sortIndex: b(c && c.sortIndex, -t),
+                                        name: f(c && c.name, ""),
+                                        sortIndex: f(c && c.sortIndex, -t),
                                         val: t
                                     }),
                                     e
@@ -14912,24 +8656,24 @@
                                 var a,
                                     n = this,
                                     r = n.options,
-                                    s = n.mapOptionsToLevel[e.level + 1],
-                                    i = b(
-                                        n[s && s.layoutAlgorithm] &&
-                                            s.layoutAlgorithm,
+                                    i = n.mapOptionsToLevel[e.level + 1],
+                                    s = f(
+                                        n[i && i.layoutAlgorithm] &&
+                                            i.layoutAlgorithm,
                                         r.layoutAlgorithm
                                     ),
                                     c = r.alternateStartingDirection;
                                 (e = p(e.children, function(e) {
                                     return !e.ignore;
                                 })),
-                                    s &&
-                                        s.layoutStartingDirection &&
+                                    i &&
+                                        i.layoutStartingDirection &&
                                         (t.direction =
                                             "vertical" ===
-                                            s.layoutStartingDirection
+                                            i.layoutStartingDirection
                                                 ? 0
                                                 : 1),
-                                    (a = n[i](t, e)),
+                                    (a = n[s](t, e)),
                                     l(e, function(e, r) {
                                         (r = a[r]),
                                             (e.values = o(r, {
@@ -14956,16 +8700,16 @@
                                 l(e.points, function(n) {
                                     var r,
                                         o,
-                                        s,
-                                        i = n.node,
-                                        l = i.pointValues;
-                                    (s =
+                                        i,
+                                        s = n.node,
+                                        l = s.pointValues;
+                                    (i =
                                         ((e.pointAttribs(n)["stroke-width"] ||
                                             0) %
                                             2) /
                                         2),
-                                        l && i.visible
-                                            ? ((i =
+                                        l && s.visible
+                                            ? ((s =
                                                   Math.round(
                                                       t.translate(
                                                           l.x,
@@ -14974,7 +8718,7 @@
                                                           0,
                                                           1
                                                       )
-                                                  ) - s),
+                                                  ) - i),
                                               (r =
                                                   Math.round(
                                                       t.translate(
@@ -14984,7 +8728,7 @@
                                                           0,
                                                           1
                                                       )
-                                                  ) - s),
+                                                  ) - i),
                                               (o =
                                                   Math.round(
                                                       a.translate(
@@ -14994,7 +8738,7 @@
                                                           0,
                                                           1
                                                       )
-                                                  ) - s),
+                                                  ) - i),
                                               (l =
                                                   Math.round(
                                                       a.translate(
@@ -15004,12 +8748,12 @@
                                                           0,
                                                           1
                                                       )
-                                                  ) - s),
+                                                  ) - i),
                                               (n.shapeType = "rect"),
                                               (n.shapeArgs = {
-                                                  x: Math.min(i, r),
+                                                  x: Math.min(s, r),
                                                   y: Math.min(o, l),
-                                                  width: Math.abs(r - i),
+                                                  width: Math.abs(r - s),
                                                   height: Math.abs(l - o)
                                               }),
                                               (n.plotX =
@@ -15023,26 +8767,26 @@
                             },
                             setColorRecursive: function(e, t, a, n, r) {
                                 var o,
-                                    s = this,
-                                    i =
-                                        (i = s && s.chart) &&
-                                        i.options &&
-                                        i.options.colors;
+                                    i = this,
+                                    s =
+                                        (s = i && i.chart) &&
+                                        s.options &&
+                                        s.options.colors;
                                 e &&
                                     ((o = c(e, {
-                                        colors: i,
+                                        colors: s,
                                         index: n,
-                                        mapOptionsToLevel: s.mapOptionsToLevel,
+                                        mapOptionsToLevel: i.mapOptionsToLevel,
                                         parentColor: t,
                                         parentColorIndex: a,
-                                        series: s,
+                                        series: i,
                                         siblings: r
                                     })),
-                                    (t = s.points[e.i]) &&
+                                    (t = i.points[e.i]) &&
                                         ((t.color = o.color),
                                         (t.colorIndex = o.colorIndex)),
                                     l(e.children || [], function(t, a) {
-                                        s.setColorRecursive(
+                                        i.setColorRecursive(
                                             t,
                                             o.color,
                                             o.colorIndex,
@@ -15117,8 +8861,8 @@
                             algorithmCalcPoints: function(e, t, a, n) {
                                 var r,
                                     o,
-                                    s,
                                     i,
+                                    s,
                                     c,
                                     u = a.lW,
                                     p = a.lH,
@@ -15133,19 +8877,19 @@
                                             (0 === a.direction
                                                 ? ((r = d.x),
                                                   (o = d.y),
-                                                  (i = e / (s = u)))
+                                                  (s = e / (i = u)))
                                                 : ((r = d.x),
                                                   (o = d.y),
-                                                  (s = e / (i = p))),
+                                                  (i = e / (s = p))),
                                             n.push({
                                                 x: r,
                                                 y: o,
-                                                width: s,
-                                                height: i
+                                                width: i,
+                                                height: s
                                             }),
                                             0 === a.direction
-                                                ? (d.y += i)
-                                                : (d.x += s)),
+                                                ? (d.y += s)
+                                                : (d.x += i)),
                                             (h += 1);
                                     }),
                                     a.reset(),
@@ -15165,14 +8909,14 @@
                                 var n,
                                     r = [],
                                     o = this,
-                                    s = {x: t.x, y: t.y, parent: t},
-                                    i = 0,
+                                    i = {x: t.x, y: t.y, parent: t},
+                                    s = 0,
                                     c = a.length - 1,
                                     u = new this.algorithmGroup(
                                         t.height,
                                         t.width,
                                         t.direction,
-                                        s
+                                        i
                                     );
                                 return (
                                     l(a, function(a) {
@@ -15187,17 +8931,17 @@
                                                     !1,
                                                     u,
                                                     r,
-                                                    s
+                                                    i
                                                 ),
-                                            i === c &&
+                                            s === c &&
                                                 o.algorithmCalcPoints(
                                                     e,
                                                     !0,
                                                     u,
                                                     r,
-                                                    s
+                                                    i
                                                 ),
-                                            (i += 1);
+                                            (s += 1);
                                     }),
                                     r
                                 );
@@ -15206,8 +8950,8 @@
                                 var n,
                                     r,
                                     o,
-                                    s,
                                     i,
+                                    s,
                                     c = [],
                                     u = t.direction,
                                     p = t.x,
@@ -15223,15 +8967,15 @@
                                             (r = p),
                                             (o = d),
                                             0 === u
-                                                ? ((h -= s = n / (i = m)),
-                                                  (p += s))
-                                                : ((m -= i = n / (s = h)),
-                                                  (d += i)),
+                                                ? ((h -= i = n / (s = m)),
+                                                  (p += i))
+                                                : ((m -= s = n / (i = h)),
+                                                  (d += s)),
                                             c.push({
                                                 x: r,
                                                 y: o,
-                                                width: s,
-                                                height: i
+                                                width: i,
+                                                height: s
                                             }),
                                             e && (u = 1 - u);
                                     }),
@@ -15255,8 +8999,8 @@
                                     t,
                                     a = this,
                                     n = a.options,
-                                    r = w(a);
-                                g.prototype.translate.call(a),
+                                    r = E(a);
+                                b.prototype.translate.call(a),
                                     (t = a.tree = a.getTree()),
                                     (e = a.nodeMap[r]),
                                     (a.mapOptionsToLevel = u({
@@ -15274,7 +9018,7 @@
                                         (a.drillToNode("", !1),
                                         (r = a.rootNode),
                                         (e = a.nodeMap[r])),
-                                    E(a.nodeMap[a.rootNode], function(e) {
+                                    _(a.nodeMap[a.rootNode], function(e) {
                                         var t = !1,
                                             n = e.parent;
                                         return (
@@ -15284,7 +9028,7 @@
                                             t
                                         );
                                     }),
-                                    E(a.nodeMap[a.rootNode].children, function(
+                                    _(a.nodeMap[a.rootNode].children, function(
                                         e
                                     ) {
                                         var t = !1;
@@ -15366,7 +9110,7 @@
                                             r.options.dataLabels
                                         ));
                                 }),
-                                    g.prototype.drawDataLabels.call(this);
+                                    b.prototype.drawDataLabels.call(this);
                             },
                             alignDataLabel: function(e) {
                                 n.column.prototype.alignDataLabel.apply(
@@ -15379,7 +9123,7 @@
                                         });
                             },
                             pointAttribs: function(e, t) {
-                                var a = m(this.mapOptionsToLevel)
+                                var a = h(this.mapOptionsToLevel)
                                         ? this.mapOptionsToLevel
                                         : {},
                                     n = (e && a[e.node.level]) || {},
@@ -15393,7 +9137,7 @@
                                             n.borderColor ||
                                             r.borderColor ||
                                             a.borderColor,
-                                        "stroke-width": b(
+                                        "stroke-width": f(
                                             e && e.borderWidth,
                                             n.borderWidth,
                                             r.borderWidth,
@@ -15413,8 +9157,8 @@
                                           o.indexOf(
                                               "highcharts-internal-node-interactive"
                                           )
-                                            ? ((t = b(r.opacity, a.opacity)),
-                                              (e.fill = _(e.fill)
+                                            ? ((t = f(r.opacity, a.opacity)),
+                                              (e.fill = v(e.fill)
                                                   .setOpacity(t)
                                                   .get()),
                                               (e.cursor = "pointer"))
@@ -15424,7 +9168,7 @@
                                               )
                                                 ? (e.fill = "none")
                                                 : t &&
-                                                  (e.fill = _(e.fill)
+                                                  (e.fill = v(e.fill)
                                                       .brighten(r.brightness)
                                                       .get()),
                                     e
@@ -15460,7 +9204,7 @@
                             },
                             onClickDrillToNode: function(e) {
                                 var t = (e = e.point) && e.drillId;
-                                f(t) && (e.setState(""), this.drillToNode(t));
+                                m(t) && (e.setState(""), this.drillToNode(t));
                             },
                             drillToByGroup: function(e) {
                                 var t = !1;
@@ -15486,7 +9230,7 @@
                             },
                             drillUp: function() {
                                 var e = this.nodeMap[this.rootNode];
-                                e && f(e.parent) && this.drillToNode(e.parent);
+                                e && m(e.parent) && this.drillToNode(e.parent);
                             },
                             drillToNode: function(e, t) {
                                 var a = this.nodeMap[e];
@@ -15498,7 +9242,7 @@
                                               (a && a.name) || e
                                           ),
                                     (this.isDirty = !0),
-                                    b(t, !0) && this.chart.redraw();
+                                    f(t, !0) && this.chart.redraw();
                             },
                             showDrillUpButton: function(e) {
                                 var t = this;
@@ -15539,16 +9283,16 @@
                                                   r.relativeTo || "plotBox"
                                               )));
                             },
-                            buildKDTree: i,
+                            buildKDTree: s,
                             drawLegendSymbol: e.LegendSymbolMixin.drawRectangle,
                             getExtremes: function() {
-                                g.prototype.getExtremes.call(
+                                b.prototype.getExtremes.call(
                                     this,
                                     this.colorValueData
                                 ),
                                     (this.valueMin = this.dataMin),
                                     (this.valueMax = this.dataMax),
-                                    g.prototype.getExtremes.call(this);
+                                    b.prototype.getExtremes.call(this);
                             },
                             getExtremesFromAll: !0,
                             bindAxes: function() {
@@ -15566,11 +9310,11 @@
                                     title: null,
                                     tickPositions: []
                                 };
-                                g.prototype.bindAxes.call(this),
+                                b.prototype.bindAxes.call(this),
                                     e.extend(this.yAxis.options, t),
                                     e.extend(this.xAxis.options, t);
                             },
-                            utils: {recursive: E, reduce: y}
+                            utils: {recursive: _, reduce: y}
                         },
                         {
                             getClassName: function() {
@@ -15584,7 +9328,7 @@
                                     a.nodeMap[a.rootNode].level
                                         ? (t += " highcharts-above-level")
                                         : this.node.isLeaf ||
-                                          b(
+                                          f(
                                               n.interactByLeaf,
                                               !n.allowDrillToNode
                                           )
@@ -15596,7 +9340,7 @@
                                 );
                             },
                             isValid: function() {
-                                return this.id || h(this.value);
+                                return this.id || d(this.value);
                             },
                             setState: function(t) {
                                 e.Point.prototype.setState.call(this, t),
@@ -15617,15 +9361,15 @@
                             n = e.isArray,
                             r = e.isObject,
                             o = e.isNumber,
-                            s = e.merge,
-                            i = e.pick,
+                            i = e.merge,
+                            s = e.pick,
                             l = e.reduce;
                         return {
                             getColor: function(t, a) {
                                 var n,
                                     r,
                                     o,
-                                    s,
+                                    i,
                                     l = a.index,
                                     c = a.mapOptionsToLevel,
                                     u = a.parentColor,
@@ -15659,20 +9403,20 @@
                                                           )
                                                           .get()
                                                     : u),
-                                        (n = i(h, n, r, c, d.color)),
-                                        (s = i(
+                                        (n = s(h, n, r, c, d.color)),
+                                        (i = s(
                                             f && f.options.colorIndex,
                                             t && t.colorIndex,
                                             o,
                                             p,
                                             a.colorIndex
                                         ))),
-                                    {color: n, colorIndex: s}
+                                    {color: n, colorIndex: i}
                                 );
                             },
                             getLevelOptions: function(e) {
                                 var t,
-                                    i,
+                                    s,
                                     c,
                                     u,
                                     p = null;
@@ -15681,19 +9425,19 @@
                                         p = {},
                                             c = o(e.from) ? e.from : 1,
                                             u = e.levels,
-                                            i = {},
+                                            s = {},
                                             t = r(e.defaults) ? e.defaults : {},
                                             n(u) &&
-                                                (i = l(
+                                                (s = l(
                                                     u,
                                                     function(e, n) {
-                                                        var i, l;
+                                                        var s, l;
                                                         return (
                                                             r(n) &&
                                                                 o(n.level) &&
-                                                                ((i =
+                                                                ((s =
                                                                     "boolean" ==
-                                                                    typeof (l = s(
+                                                                    typeof (l = i(
                                                                         {},
                                                                         n
                                                                     ))
@@ -15704,7 +9448,7 @@
                                                                 delete l.level,
                                                                 (n =
                                                                     n.level +
-                                                                    (i
+                                                                    (s
                                                                         ? 0
                                                                         : c -
                                                                           1)),
@@ -15723,13 +9467,13 @@
                                         e <= u;
                                         e++
                                     )
-                                        p[e] = s({}, t, r(i[e]) ? i[e] : {});
+                                        p[e] = i({}, t, r(s[e]) ? s[e] : {});
                                 return p;
                             },
                             setTreeValues: function e(n, r) {
                                 var o = r.before,
-                                    s = r.idRoot,
-                                    l = r.mapIdToNode[s],
+                                    i = r.idRoot,
+                                    l = r.mapIdToNode[i],
                                     c = r.points[n.i],
                                     u = (c && c.options) || {},
                                     p = 0,
@@ -15743,26 +9487,26 @@
                                             r.levelIsConstant
                                                 ? 0
                                                 : l.level),
-                                        name: i(c && c.name, ""),
+                                        name: s(c && c.name, ""),
                                         visible:
-                                            s === n.id ||
+                                            i === n.id ||
                                             ("boolean" == typeof r.visible &&
                                                 r.visible)
                                     }),
                                     "function" == typeof o && (n = o(n, r)),
                                     t(n.children, function(t, o) {
-                                        var s = a({}, r);
-                                        a(s, {
+                                        var i = a({}, r);
+                                        a(i, {
                                             index: o,
                                             siblings: n.children.length,
                                             visible: n.visible
                                         }),
-                                            (t = e(t, s)),
+                                            (t = e(t, i)),
                                             d.push(t),
                                             t.visible && (p += t.val);
                                     }),
                                     (n.visible = 0 < p || n.visible),
-                                    (o = i(u.value, p)),
+                                    (o = s(u.value, p)),
                                     a(n, {
                                         children: d,
                                         childrenTotal: p,
@@ -15777,7 +9521,7 @@
                                 return (
                                     r(e) &&
                                         ((t = r(e.options) ? e.options : {}),
-                                        (t = i(e.rootNode, t.rootId, "")),
+                                        (t = s(e.rootNode, t.rootId, "")),
                                         r(e.userOptions) &&
                                             (e.userOptions.rootId = t),
                                         (e.rootNode = t)),
@@ -15789,15 +9533,11 @@
                 );
             });
         },
-        575: function(e, t, a) {
-            var n;
-            !(function(r) {
+        577: function(e, t) {
+            !(function(t) {
                 "object" == typeof e && e.exports
-                    ? (e.exports = r)
-                    : void 0 ===
-                          (n = function() {
-                              return r;
-                          }.call(t, a, t, e)) || (e.exports = n);
+                    ? (e.exports = t)
+                    : t(Highcharts);
             })(function(e) {
                 !(function(e) {
                     var t,
@@ -15805,8 +9545,8 @@
                         n = e.Axis,
                         r = e.Chart,
                         o = e.color,
-                        s = e.each,
-                        i = e.extend,
+                        i = e.each,
+                        s = e.extend,
                         l = e.isNumber,
                         c = e.Legend,
                         u = e.LegendSymbolMixin,
@@ -15817,8 +9557,8 @@
                         ((t = e.ColorAxis = function() {
                             this.init.apply(this, arguments);
                         }),
-                        i(t.prototype, n.prototype),
-                        i(t.prototype, {
+                        s(t.prototype, n.prototype),
+                        s(t.prototype, {
                             defaultColorAxisOptions: {
                                 lineWidth: 0,
                                 minPadding: 0,
@@ -15873,27 +9613,27 @@
                                     a = this.chart,
                                     n = 0,
                                     r = a.options.chart.colorCount,
-                                    i = this.options,
+                                    s = this.options,
                                     l = e.dataClasses.length;
                                 (this.dataClasses = t = []),
                                     (this.legendItems = []),
-                                    s(e.dataClasses, function(e, s) {
+                                    i(e.dataClasses, function(e, i) {
                                         (e = d(e)),
                                             t.push(e),
                                             e.color ||
-                                                ("category" === i.dataClassColor
-                                                    ? ((s = a.options.colors),
-                                                      (r = s.length),
-                                                      (e.color = s[n]),
+                                                ("category" === s.dataClassColor
+                                                    ? ((i = a.options.colors),
+                                                      (r = i.length),
+                                                      (e.color = i[n]),
                                                       (e.colorIndex = n),
                                                       ++n === r && (n = 0))
                                                     : (e.color = o(
-                                                          i.minColor
+                                                          s.minColor
                                                       ).tweenTo(
-                                                          o(i.maxColor),
+                                                          o(s.maxColor),
                                                           2 > l
                                                               ? 0.5
-                                                              : s / (l - 1)
+                                                              : i / (l - 1)
                                                       )));
                                     });
                             },
@@ -15908,7 +9648,7 @@
                                     [0, this.options.minColor],
                                     [1, this.options.maxColor]
                                 ]),
-                                    s(this.stops, function(e) {
+                                    i(this.stops, function(e) {
                                         e.color = o(e[1]);
                                     });
                             },
@@ -15950,15 +9690,15 @@
                                     n,
                                     r,
                                     o,
-                                    s = this.stops,
-                                    i = this.dataClasses;
-                                if (i) {
-                                    for (o = i.length; o--; )
+                                    i = this.stops,
+                                    s = this.dataClasses;
+                                if (s) {
+                                    for (o = s.length; o--; )
                                         if (
-                                            ((a = (r = i[o]).from),
-                                            (s = r.to),
+                                            ((a = (r = s[o]).from),
+                                            (i = r.to),
                                             (void 0 === a || e >= a) &&
-                                                (void 0 === s || e <= s))
+                                                (void 0 === i || e <= i))
                                         ) {
                                             (n = r.color),
                                                 t &&
@@ -15970,16 +9710,16 @@
                                 } else {
                                     for (
                                         e = this.normalizedValue(e),
-                                            o = s.length;
-                                        o-- && !(e > s[o][0]);
+                                            o = i.length;
+                                        o-- && !(e > i[o][0]);
 
                                     );
-                                    (a = s[o] || s[o + 1]),
+                                    (a = i[o] || i[o + 1]),
                                         (e =
                                             1 -
-                                            ((s = s[o + 1] || a)[0] - e) /
-                                                (s[0] - a[0] || 1)),
-                                        (n = a.color.tweenTo(s.color, e));
+                                            ((i = i[o + 1] || a)[0] - e) /
+                                                (i[0] - a[0] || 1)),
+                                        (n = a.color.tweenTo(i.color, e));
                                 }
                                 return n;
                             },
@@ -16021,24 +9761,24 @@
                                         n.symbolWidth,
                                         r ? this.defaultLegendLength : 12
                                     ),
-                                    s = h(
+                                    i = h(
                                         n.symbolHeight,
                                         r ? 12 : this.defaultLegendLength
                                     ),
-                                    i = h(n.labelPadding, r ? 16 : 30);
+                                    s = h(n.labelPadding, r ? 16 : 30);
                                 n = h(n.itemDistance, 10);
                                 this.setLegendColor(),
                                     (t.legendSymbol = this.chart.renderer
-                                        .rect(0, e.baseline - 11, o, s)
+                                        .rect(0, e.baseline - 11, o, i)
                                         .attr({zIndex: 1})
                                         .add(t.legendGroup)),
                                     (this.legendItemWidth =
-                                        o + a + (r ? n : i)),
+                                        o + a + (r ? n : s)),
                                     (this.legendItemHeight =
-                                        s + a + (r ? i : 0));
+                                        i + a + (r ? s : 0));
                             },
                             setState: function(e) {
-                                s(this.series, function(t) {
+                                i(this.series, function(t) {
                                     t.setState(e);
                                 });
                             },
@@ -16067,13 +9807,13 @@
                                 var a,
                                     r = t && t.plotX,
                                     o = t && t.plotY,
-                                    s = this.pos,
-                                    i = this.len;
+                                    i = this.pos,
+                                    s = this.len;
                                 t &&
                                     ((a = this.toPixels(t[t.series.colorKey])) <
-                                    s
-                                        ? (a = s - 2)
-                                        : a > s + i && (a = s + i + 2),
+                                    i
+                                        ? (a = i - 2)
+                                        : a > i + s && (a = i + s + 2),
                                     (t.plotX = a),
                                     (t.plotY = this.len - a),
                                     n.prototype.drawCrosshair.call(this, e, t),
@@ -16128,12 +9868,12 @@
                             update: function(e, t) {
                                 var a = this.chart,
                                     r = a.legend;
-                                s(this.series, function(e) {
+                                i(this.series, function(e) {
                                     e.isDirtyData = !0;
                                 }),
                                     e.dataClasses &&
                                         r.allItems &&
-                                        (s(r.allItems, function(e) {
+                                        (i(r.allItems, function(e) {
                                             e.isDataClass &&
                                                 e.legendGroup &&
                                                 e.legendGroup.destroy();
@@ -16163,7 +9903,7 @@
                                     c = o.valueSuffix || "";
                                 return (
                                     r.length ||
-                                        s(this.dataClasses, function(o, d) {
+                                        i(this.dataClasses, function(o, d) {
                                             var h = !0,
                                                 m = o.from,
                                                 f = o.to;
@@ -16184,7 +9924,7 @@
                                                         e.numberFormat(f, l) +
                                                         c),
                                                 r.push(
-                                                    i(
+                                                    s(
                                                         {
                                                             chart: n,
                                                             name: t,
@@ -16196,12 +9936,12 @@
                                                             isDataClass: !0,
                                                             setVisible: function() {
                                                                 (h = this.visible = !h),
-                                                                    s(
+                                                                    i(
                                                                         a.series,
                                                                         function(
                                                                             e
                                                                         ) {
-                                                                            s(
+                                                                            i(
                                                                                 e.points,
                                                                                 function(
                                                                                     e
@@ -16230,7 +9970,7 @@
                             },
                             name: ""
                         }),
-                        s(["fill", "stroke"], function(t) {
+                        i(["fill", "stroke"], function(t) {
                             e.Fx.prototype[t + "Setter"] = function() {
                                 this.elem.attr(
                                     t,
@@ -16257,7 +9997,7 @@
                                     (n.options.dataClasses
                                         ? (a = n.getDataClassLegendSymbols())
                                         : a.push(n),
-                                    s(n.series, function(a) {
+                                    i(n.series, function(a) {
                                         e.erase(t.allItems, a);
                                     })),
                                     n = a.length;
@@ -16353,10 +10093,10 @@
                             n = e.merge,
                             r = e.noop,
                             o = e.pick,
-                            s = e.Series,
-                            i = e.seriesType,
+                            i = e.Series,
+                            s = e.seriesType,
                             l = e.seriesTypes;
-                        i(
+                        s(
                             "heatmap",
                             "scatter",
                             {
@@ -16404,18 +10144,18 @@
                                         t = this.xAxis,
                                         n = this.yAxis,
                                         r = e.pointPadding || 0,
-                                        s = function(e, t, a) {
+                                        i = function(e, t, a) {
                                             return Math.min(Math.max(t, e), a);
                                         };
                                     this.generatePoints(),
                                         a(this.points, function(a) {
-                                            var i = (e.colsize || 1) / 2,
+                                            var s = (e.colsize || 1) / 2,
                                                 l = (e.rowsize || 1) / 2,
-                                                c = s(
+                                                c = i(
                                                     Math.round(
                                                         t.len -
                                                             t.translate(
-                                                                a.x - i,
+                                                                a.x - s,
                                                                 0,
                                                                 1,
                                                                 0,
@@ -16425,11 +10165,11 @@
                                                     -t.len,
                                                     2 * t.len
                                                 ),
-                                                u = ((i = s(
+                                                u = ((s = i(
                                                     Math.round(
                                                         t.len -
                                                             t.translate(
-                                                                a.x + i,
+                                                                a.x + s,
                                                                 0,
                                                                 1,
                                                                 0,
@@ -16439,7 +10179,7 @@
                                                     -t.len,
                                                     2 * t.len
                                                 )),
-                                                s(
+                                                i(
                                                     Math.round(
                                                         n.translate(
                                                             a.y - l,
@@ -16452,7 +10192,7 @@
                                                     -n.len,
                                                     2 * n.len
                                                 )),
-                                                p = ((l = s(
+                                                p = ((l = i(
                                                     Math.round(
                                                         n.translate(
                                                             a.y + l,
@@ -16466,14 +10206,14 @@
                                                     2 * n.len
                                                 )),
                                                 o(a.pointPadding, r));
-                                            (a.plotX = a.clientX = (c + i) / 2),
+                                            (a.plotX = a.clientX = (c + s) / 2),
                                                 (a.plotY = (u + l) / 2),
                                                 (a.shapeType = "rect"),
                                                 (a.shapeArgs = {
-                                                    x: Math.min(c, i) + p,
+                                                    x: Math.min(c, s) + p,
                                                     y: Math.min(u, l) + p,
                                                     width:
-                                                        Math.abs(i - c) - 2 * p,
+                                                        Math.abs(s - c) - 2 * p,
                                                     height:
                                                         Math.abs(l - u) - 2 * p
                                                 });
@@ -16499,13 +10239,13 @@
                                 alignDataLabel:
                                     l.column.prototype.alignDataLabel,
                                 getExtremes: function() {
-                                    s.prototype.getExtremes.call(
+                                    i.prototype.getExtremes.call(
                                         this,
                                         this.valueData
                                     ),
                                         (this.valueMin = this.dataMin),
                                         (this.valueMax = this.dataMax),
-                                        s.prototype.getExtremes.call(this);
+                                        i.prototype.getExtremes.call(this);
                                 }
                             }),
                             e.extend(

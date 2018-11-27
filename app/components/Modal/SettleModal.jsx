@@ -53,7 +53,7 @@ class ModalContent extends React.Component {
         });
         return WalletDb.process_transaction(tr, null, true)
             .then(result => {
-                // console.log("asset settle result:", result);
+                console.log("asset settle result:", result);
                 // this.dispatch(account_id);
                 return true;
             })
@@ -100,7 +100,8 @@ class ModalContent extends React.Component {
 
         let balanceText = (
             <span>
-                <Translate content="exchange.balance" />:&nbsp;
+                <Translate content="exchange.balance" />
+                :&nbsp;
                 {currentBalance ? (
                     <BalanceComponent balance={currentBalance} />
                 ) : (
@@ -147,7 +148,6 @@ ModalContent = BindToChainState(ModalContent);
 class SettleModal extends React.Component {
     constructor() {
         super();
-
         this.state = {open: false};
     }
 
@@ -162,7 +162,7 @@ class SettleModal extends React.Component {
     }
 
     render() {
-        return !this.state.open ? null : (
+        return (
             <BaseModal
                 id={this.props.modalId}
                 onClose={this.onClose.bind(this)}

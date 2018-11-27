@@ -12,13 +12,13 @@
                 c = n(13),
                 u = n(3),
                 p = n.n(u),
-                h = n(172),
+                h = n(150),
                 m = n(17),
                 f = n(7),
                 d = n.n(f),
                 y = n(9),
-                b = n.n(y),
-                g = n(50),
+                g = n.n(y),
+                b = n(50),
                 v = n(2),
                 k = n.n(v),
                 _ = (function() {
@@ -129,8 +129,8 @@
                 );
             })();
             (x.propTypes = {value: k.a.string, onChange: k.a.func}),
-                (x = Object(g.a)(x, {asList: !0}));
-            var M = (function(e) {
+                (x = Object(b.a)(x, {asList: !0}));
+            var C = (function(e) {
                 function t() {
                     return (
                         E(this, t),
@@ -269,7 +269,7 @@
                                               "explorer.asset.not_found",
                                               {name: this.props.assetInput}
                                           )));
-                                var i = b()("button", {
+                                var i = g()("button", {
                                     disabled:
                                         !this.props.asset ||
                                         a ||
@@ -410,7 +410,7 @@
                     t
                 );
             })();
-            (M.propTypes = {
+            (C.propTypes = {
                 label: k.a.string,
                 error: k.a.string,
                 placeholder: k.a.string,
@@ -421,27 +421,27 @@
                 tabIndex: k.a.number,
                 disableActionButton: k.a.string
             }),
-                (M.defaultProps = {disabled: !1}),
-                (t.a = Object(c.a)(M));
+                (C.defaultProps = {disabled: !1}),
+                (t.a = Object(c.a)(C));
         },
-        352: function(e, t, n) {
+        359: function(e, t, n) {
             "use strict";
             var a = n(76),
                 r = n(0),
                 s = n.n(r),
                 o = n(7),
                 i = n.n(o),
-                l = n(58),
+                l = n(54),
                 c = n.n(l),
                 u = n(5),
                 p = n(1),
                 h = n.n(p),
-                m = n(32),
+                m = n(33),
                 f = n(15),
                 d = n(17),
                 y = n(50),
-                b = n(6),
-                g = n(13),
+                g = n(6),
+                b = n(13),
                 v = (function() {
                     function e(e, t) {
                         for (var n = 0; n < t.length; n++) {
@@ -520,15 +520,15 @@
                     t
                 );
             })();
-            (k.propTypes = {account: b.a.ChainObject.isRequired}),
+            (k.propTypes = {account: g.a.ChainObject.isRequired}),
                 (k.defaultProps = {autosubscribe: !1});
-            var _ = Object(g.a)(k),
+            var _ = Object(b.a)(k),
                 E = n(12),
                 w = n(35),
                 S = n(10),
                 x = n(2),
-                M = n.n(x),
-                C = (function() {
+                C = n.n(x),
+                M = (function() {
                     function e(e, t) {
                         for (var n = 0; n < t.length; n++) {
                             var a = t[n];
@@ -585,7 +585,7 @@
                                     ? Object.setPrototypeOf(e, t)
                                     : (e.__proto__ = t));
                     })(t, s.a.Component),
-                    C(t, [
+                    M(t, [
                         {
                             key: "_onClick",
                             value: function(e) {
@@ -666,7 +666,7 @@
                                         borderRadius: "0px",
                                         letterSpacing: "0.05rem"
                                     }));
-                                var b = this.props.columns
+                                var g = this.props.columns
                                         .map(function(t) {
                                             switch (t.name) {
                                                 case "star":
@@ -691,7 +691,7 @@
                                                         })
                                                     );
                                                 case "vol":
-                                                    var b = r
+                                                    var g = r
                                                         ? r.volumeBase
                                                         : 0;
                                                     return s.a.createElement(
@@ -705,19 +705,19 @@
                                                                 "text-right",
                                                             key: t.index
                                                         },
-                                                        u.a.format_volume(b)
+                                                        u.a.format_volume(g)
                                                     );
                                                 case "change":
-                                                    var g = u.a.format_number(
+                                                    var b = u.a.format_number(
                                                             r && r.change
                                                                 ? r.change
                                                                 : 0,
                                                             2
                                                         ),
                                                         v =
-                                                            "0.00" === g
+                                                            "0.00" === b
                                                                 ? ""
-                                                                : g > 0
+                                                                : b > 0
                                                                     ? "change-up"
                                                                     : "change-down";
                                                     return s.a.createElement(
@@ -732,7 +732,7 @@
                                                                 v,
                                                             key: t.index
                                                         },
-                                                        g + "%"
+                                                        b + "%"
                                                     );
                                                 case "marketName":
                                                     return s.a.createElement(
@@ -990,14 +990,14 @@
                                         .sort(function(e, t) {
                                             return e.key > t.key;
                                         }),
-                                    g = "clickable";
+                                    b = "clickable";
                                 return (
                                     this.props.current &&
-                                        (g += " activeMarket"),
+                                        (b += " activeMarket"),
                                     s.a.createElement(
                                         "tr",
-                                        {className: g, style: m},
-                                        b
+                                        {className: b, style: m},
+                                        g
                                     )
                                 );
                             }
@@ -1007,13 +1007,13 @@
                 );
             })();
             (O.defaultProps = {noSymbols: !1}),
-                (O.contextTypes = {router: M.a.object.isRequired});
-            var A = Object(y.a)(O, {
+                (O.contextTypes = {router: C.a.object.isRequired});
+            var T = Object(y.a)(O, {
                     propNames: ["quote", "base"],
                     defaultProps: {tempComponent: "tr"},
                     withDynamic: !0
                 }),
-                T = n(8),
+                A = n(8),
                 B = n(31),
                 N = n(106),
                 j = n(22),
@@ -1022,13 +1022,13 @@
                 P = n.n(I),
                 L = n(112),
                 D = n(3),
-                W = n.n(D),
-                R = n(37),
-                F = n(4),
+                R = n.n(D),
+                F = n(37),
+                W = n(4),
                 U = n(20),
                 z = n.n(U),
                 V = n(34),
-                H = (function() {
+                G = (function() {
                     function e(e, t) {
                         for (var n = 0; n < t.length; n++) {
                             var a = t[n];
@@ -1042,7 +1042,7 @@
                         return n && e(t.prototype, n), a && e(t, a), t;
                     };
                 })();
-            var Q = (function(e) {
+            var H = (function(e) {
                     function t() {
                         !(function(e, t) {
                             if (!(e instanceof t))
@@ -1092,7 +1092,7 @@
                                         ? Object.setPrototypeOf(e, t)
                                         : (e.__proto__ = t));
                         })(t, s.a.Component),
-                        H(t, [
+                        G(t, [
                             {
                                 key: "_onMoveUp",
                                 value: function(e) {
@@ -1399,7 +1399,7 @@
                         t
                     );
                 })(),
-                J = (function() {
+                Q = (function() {
                     return function(e, t) {
                         if (Array.isArray(e)) return e;
                         if (Symbol.iterator in Object(e))
@@ -1431,7 +1431,7 @@
                         );
                     };
                 })(),
-                K = (function() {
+                Y = (function() {
                     function e(e, t) {
                         for (var n = 0; n < t.length; n++) {
                             var a = t[n];
@@ -1445,11 +1445,11 @@
                         return n && e(t.prototype, n), a && e(t, a), t;
                     };
                 })();
-            function G(e, t) {
+            function J(e, t) {
                 if (!(e instanceof t))
                     throw new TypeError("Cannot call a class as a function");
             }
-            function X(e, t) {
+            function K(e, t) {
                 if (!e)
                     throw new ReferenceError(
                         "this hasn't been initialised - super() hasn't been called"
@@ -1458,7 +1458,7 @@
                     ? e
                     : t;
             }
-            function Y(e, t) {
+            function X(e, t) {
                 if ("function" != typeof t && null !== t)
                     throw new TypeError(
                         "Super expression must either be null or a function, not " +
@@ -1480,16 +1480,16 @@
             var Z = new Date(),
                 $ = (function(e) {
                     function t(e) {
-                        G(this, t);
-                        var n = X(
+                        J(this, t);
+                        var n = K(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                         );
                         return (n.state = n._getInitialState(e)), n;
                     }
                     return (
-                        Y(t, s.a.Component),
-                        K(t, [
+                        X(t, s.a.Component),
+                        Y(t, [
                             {
                                 key: "_getInitialState",
                                 value: function(e) {
@@ -1558,12 +1558,50 @@
                             {
                                 key: "_changeSort",
                                 value: function(e) {
-                                    e !== this.state.sortBy
-                                        ? (S.a.changeViewSetting({
-                                              myMarketsSort: e
-                                          }),
-                                          this.setState({sortBy: e}))
-                                        : this._inverseSort();
+                                    var t = this.getCookie("gt_get_sort"),
+                                        n = new Date();
+                                    n.setFullYear(n.getFullYear() + 1),
+                                        ("vol-true" != t &&
+                                            "name-true" != t &&
+                                            "name-false" != t) ||
+                                        "volume" != e
+                                            ? ("vol-false" != t && null != t) ||
+                                              "volume" != e ||
+                                              (this.setCookie(
+                                                  "gt_get_sort",
+                                                  "vol-true",
+                                                  {expires: n.toGMTString()}
+                                              ),
+                                              this._inverseSort())
+                                            : this.setCookie(
+                                                  "gt_get_sort",
+                                                  "vol-false",
+                                                  {expires: n.toGMTString()}
+                                              ),
+                                        ("name-true" != t &&
+                                            "vol-true" != t &&
+                                            "vol-false" != t) ||
+                                        "name" != e
+                                            ? ("name-false" != t &&
+                                                  null != t) ||
+                                              "name" != e ||
+                                              (this.setCookie(
+                                                  "gt_get_sort",
+                                                  "name-true",
+                                                  {expires: n.toGMTString()}
+                                              ),
+                                              this._inverseSort())
+                                            : this.setCookie(
+                                                  "gt_get_sort",
+                                                  "name-false",
+                                                  {expires: n.toGMTString()}
+                                              ),
+                                        e !== this.state.sortBy
+                                            ? (S.a.changeViewSetting({
+                                                  myMarketsSort: e
+                                              }),
+                                              this.setState({sortBy: e}))
+                                            : this._inverseSort();
                                 }
                             },
                             {
@@ -1584,11 +1622,56 @@
                                 key: "_onToggleUserMarket",
                                 value: function(e) {
                                     var t = e.split("_"),
-                                        n = J(t, 2),
+                                        n = Q(t, 2),
                                         a = n[0],
                                         r = n[1],
                                         s = !this.props.userMarkets.get(e);
                                     S.a.setUserMarket(a, r, s);
+                                }
+                            },
+                            {
+                                key: "setCookie",
+                                value: function(e, t, n) {
+                                    var a = (n = n || {}).expires;
+                                    if ("number" == typeof a && a) {
+                                        var r = new Date();
+                                        r.setTime(r.getTime() + 1e3 * a),
+                                            (a = n.expires = r);
+                                    }
+                                    a &&
+                                        a.toUTCString &&
+                                        (n.expires = a.toUTCString());
+                                    var s =
+                                        e + "=" + (t = encodeURIComponent(t));
+                                    for (var o in n) {
+                                        s += "; " + o;
+                                        var i = n[o];
+                                        !0 !== i && (s += "=" + i);
+                                    }
+                                    document.cookie = s;
+                                }
+                            },
+                            {
+                                key: "getCookie",
+                                value: function(e) {
+                                    var t = document.cookie,
+                                        n = e + "=",
+                                        a = t.indexOf("; " + n),
+                                        r = null;
+                                    if (-1 == a) {
+                                        if (0 != (a = t.indexOf(n)))
+                                            return null;
+                                        r = document.cookie.indexOf(";", a);
+                                    } else
+                                        (a += 2),
+                                            -1 ==
+                                                (r = document.cookie.indexOf(
+                                                    ";",
+                                                    a
+                                                )) && (r = t.length);
+                                    return decodeURI(
+                                        t.substring(a + n.length, r)
+                                    ).replace(/"/g, "");
                                 }
                             },
                             {
@@ -1610,23 +1693,29 @@
                                     var f = n.map(function(t) {
                                             switch (t.name) {
                                                 case "market":
-                                                    var n = "";
+                                                    var n = "",
+                                                        a = e.getCookie(
+                                                            "gt_get_sort"
+                                                        );
                                                     return (
-                                                        "name" ==
-                                                            e.state.sortBy &&
-                                                        e.state.inverseSort
-                                                            ? (n = s.a.createElement(
-                                                                  "span",
-                                                                  null,
-                                                                  "▲"
-                                                              ))
-                                                            : "name" ==
+                                                        "name" !=
+                                                            e.state.sortBy ||
+                                                        ("name-false" != a &&
+                                                            null != a)
+                                                            ? "name" ==
                                                                   e.state
                                                                       .sortBy &&
+                                                              "name-true" ==
+                                                                  a &&
                                                               (n = s.a.createElement(
                                                                   "span",
                                                                   null,
                                                                   "▼"
+                                                              ))
+                                                            : (n = s.a.createElement(
+                                                                  "span",
+                                                                  null,
+                                                                  "▲"
                                                               )),
                                                         s.a.createElement(
                                                             "th",
@@ -1650,23 +1739,28 @@
                                                         )
                                                     );
                                                 case "vol":
-                                                    var a = "";
+                                                    var r = "",
+                                                        o = e.getCookie(
+                                                            "gt_get_sort"
+                                                        );
                                                     return (
-                                                        "volume" ==
-                                                            e.state.sortBy &&
-                                                        e.state.inverseSort
-                                                            ? (a = s.a.createElement(
-                                                                  "span",
-                                                                  null,
-                                                                  "▼"
-                                                              ))
-                                                            : "volume" ==
+                                                        "volume" !=
+                                                            e.state.sortBy ||
+                                                        ("vol-false" != o &&
+                                                            null != o)
+                                                            ? "volume" ==
                                                                   e.state
                                                                       .sortBy &&
-                                                              (a = s.a.createElement(
+                                                              "vol-true" == o &&
+                                                              (r = s.a.createElement(
                                                                   "span",
                                                                   null,
                                                                   "▲"
+                                                              ))
+                                                            : (r = s.a.createElement(
+                                                                  "span",
+                                                                  null,
+                                                                  "▼"
                                                               )),
                                                         s.a.createElement(
                                                             "th",
@@ -1690,7 +1784,7 @@
                                                                         "exchange.vol_short"
                                                                 }
                                                             ),
-                                                            a
+                                                            r
                                                         )
                                                     );
                                                 case "price":
@@ -1727,12 +1821,12 @@
                                                         })
                                                     );
                                                 case "change":
-                                                    var r = "";
+                                                    var i = "";
                                                     return (
                                                         "change" ==
                                                             e.state.sortBy &&
                                                         e.state.inverseSort
-                                                            ? (r = s.a.createElement(
+                                                            ? (i = s.a.createElement(
                                                                   "span",
                                                                   null,
                                                                   "▲"
@@ -1740,7 +1834,7 @@
                                                             : "change" ==
                                                                   e.state
                                                                       .sortBy &&
-                                                              (r = s.a.createElement(
+                                                              (i = s.a.createElement(
                                                                   "span",
                                                                   null,
                                                                   "▼"
@@ -1767,7 +1861,7 @@
                                                                         "exchange.change"
                                                                 }
                                                             ),
-                                                            r
+                                                            i
                                                         )
                                                     );
                                                 case "issuer":
@@ -1807,7 +1901,7 @@
                                                     o.get(t.id) &&
                                                     0 == o.get(t.id).volumeBase
                                                     ? null
-                                                    : s.a.createElement(A, {
+                                                    : s.a.createElement(T, {
                                                           key: t.id,
                                                           name:
                                                               "others" === r
@@ -1869,50 +1963,62 @@
                                             .filter(function(e) {
                                                 return null !== e;
                                             })
-                                            .sort(function(e, t) {
-                                                var n = e.key.split("_"),
-                                                    a = t.key.split("_"),
-                                                    r = o.get(
-                                                        n[0] + "_" + n[1]
-                                                    ),
+                                            .sort(function(t, n) {
+                                                var a = t.key.split("_"),
+                                                    r = n.key.split("_"),
                                                     s = o.get(
                                                         a[0] + "_" + a[1]
+                                                    ),
+                                                    i = o.get(
+                                                        r[0] + "_" + r[1]
+                                                    ),
+                                                    l = e.getCookie(
+                                                        "gt_get_sort"
                                                     );
                                                 switch (u) {
                                                     case "name":
-                                                        return n[0] > a[0]
-                                                            ? p
-                                                                ? -1
-                                                                : 1
-                                                            : n[0] < a[0]
+                                                        return (
+                                                            "name-false" == l
+                                                                ? (p = !1)
+                                                                : "name-true" ==
+                                                                      l &&
+                                                                  (p = !0),
+                                                            a[0] > r[0]
                                                                 ? p
-                                                                    ? 1
-                                                                    : -1
-                                                                : n[1] > a[1]
+                                                                    ? -1
+                                                                    : 1
+                                                                : a[0] < r[0]
                                                                     ? p
-                                                                        ? -1
-                                                                        : 1
-                                                                    : n[1] <
-                                                                      a[1]
+                                                                        ? 1
+                                                                        : -1
+                                                                    : a[1] >
+                                                                      r[1]
                                                                         ? p
-                                                                            ? 1
-                                                                            : -1
-                                                                        : 0;
+                                                                            ? -1
+                                                                            : 1
+                                                                        : a[1] <
+                                                                          r[1]
+                                                                            ? p
+                                                                                ? 1
+                                                                                : -1
+                                                                            : 0
+                                                        );
                                                     case "volume":
-                                                        return r && s
-                                                            ? p
-                                                                ? s.volumeBase -
-                                                                  r.volumeBase
-                                                                : r.volumeBase -
+                                                        return s && i
+                                                            ? "vol-false" ==
+                                                                  l || null == l
+                                                                ? i.volumeBase -
                                                                   s.volumeBase
+                                                                : s.volumeBase -
+                                                                  i.volumeBase
                                                             : 0;
                                                     case "change":
-                                                        return r && s
+                                                        return s && i
                                                             ? p
-                                                                ? s.change -
-                                                                  r.change
-                                                                : r.change -
+                                                                ? i.change -
                                                                   s.change
+                                                                : s.change -
+                                                                  i.change
                                                             : 0;
                                                 }
                                             });
@@ -1954,8 +2060,8 @@
             $.defaultProps = {maxRows: 20, onlyLiquid: !1};
             var ee = (function(e) {
                 function t(e) {
-                    G(this, t);
-                    var n = X(
+                    J(this, t);
+                    var n = K(
                         this,
                         (t.__proto__ || Object.getPrototypeOf(t)).call(this)
                     );
@@ -2004,8 +2110,8 @@
                     );
                 }
                 return (
-                    Y(t, s.a.Component),
-                    K(t, [
+                    X(t, s.a.Component),
+                    Y(t, [
                         {
                             key: "shouldComponentUpdate",
                             value: function(e, t) {
@@ -2130,12 +2236,29 @@
                         {
                             key: "_changeSort",
                             value: function(e) {
-                                e !== this.state.sortBy
-                                    ? (S.a.changeViewSetting({
-                                          myMarketsSort: e
-                                      }),
-                                      this.setState({sortBy: e}))
-                                    : this._inverseSort();
+                                var t = this.getCookie("gt_get_sort"),
+                                    n = new Date();
+                                n.setFullYear(n.getFullYear() + 1),
+                                    "vol-true" == t && "volume" == e
+                                        ? this.setCookie(
+                                              "gt_get_sort",
+                                              "vol-false",
+                                              {expires: n.toGMTString()}
+                                          )
+                                        : ("vol-false" != t && null != t) ||
+                                          "volume" != e ||
+                                          (this.setCookie(
+                                              "gt_get_sort",
+                                              "vol-true",
+                                              {expires: n.toGMTString()}
+                                          ),
+                                          this._inverseSort()),
+                                    e !== this.state.sortBy
+                                        ? (S.a.changeViewSetting({
+                                              myMarketsSort: e
+                                          }),
+                                          this.setState({sortBy: e}))
+                                        : this._inverseSort();
                             }
                         },
                         {
@@ -2156,7 +2279,7 @@
                             key: "_onInputName",
                             value: function(e) {
                                 var t = e.target.value.trim().toUpperCase(),
-                                    n = !F.d.is_valid_symbol_error(t, !0);
+                                    n = !W.d.is_valid_symbol_error(t, !0);
                                 if (
                                     (this.setState({inputValue: t}),
                                     t && t.length >= 3 && !n)
@@ -2242,26 +2365,26 @@
                                     f = (t.core, t.current),
                                     d = t.viewSettings,
                                     y = t.listHeight,
-                                    b = t.onlyStars,
-                                    g = t.userMarkets,
+                                    g = t.onlyStars,
+                                    b = t.userMarkets,
                                     v = this.state,
                                     k = v.activeMarketTab,
                                     _ = v.activeTab,
                                     E = v.lookupQuote,
                                     x = v.lookupBase,
-                                    M = s.a.createElement("tr", null),
-                                    C = "my-market" === _,
+                                    C = s.a.createElement("tr", null),
+                                    M = "my-market" === _,
                                     O = p.map(function(e) {
                                         return e;
                                     });
-                                C ||
+                                M ||
                                     (p = (p = p.clear()).push(
                                         this.state.activeFindBase
                                     ));
-                                var A = {},
-                                    T = [];
+                                var T = {},
+                                    A = [];
                                 E || (E = "OPEN."),
-                                    C || (k = 0),
+                                    M || (k = 0),
                                     c
                                         .filter(function(e) {
                                             return x && x.length
@@ -2271,14 +2394,14 @@
                                         .forEach(function(e) {
                                             x && x.length
                                                 ? 0 === e.symbol.indexOf(x) &&
-                                                  T.push(e.symbol)
+                                                  A.push(e.symbol)
                                                 : p.includes(e.symbol) &&
                                                   e.symbol.length >= E.length &&
                                                   e.symbol.length <
                                                       E.length + 3 &&
-                                                  T.push(e.symbol);
+                                                  A.push(e.symbol);
                                         }),
-                                    (T = (T = T.concat(
+                                    (A = (A = A.concat(
                                         p
                                             .filter(function(e) {
                                                 return (
@@ -2316,7 +2439,7 @@
                                             );
                                         })
                                         .forEach(function(e) {
-                                            T.forEach(function(t) {
+                                            A.forEach(function(t) {
                                                 var n = e.symbol + "_" + t;
                                                 t !== e.symbol &&
                                                     B.push([
@@ -2332,15 +2455,15 @@
                                         return !x || e[1].quote === E;
                                     })),
                                     (B = i.a.Map(B));
-                                var N = C ? r : B;
-                                C &&
-                                    g.size &&
-                                    g.forEach(function(e, t) {
+                                var N = M ? r : B;
+                                M &&
+                                    b.size &&
+                                    b.forEach(function(e, t) {
                                         N = N.set(t, e);
                                     }),
                                     N.size > 0 &&
-                                        (M = N.filter(function(t) {
-                                            if (C) {
+                                        (C = N.filter(function(t) {
+                                            if (M) {
                                                 var n = t.quote + "_" + t.base;
                                                 return e.state.myMarketFilter
                                                     ? -1 !==
@@ -2348,7 +2471,7 @@
                                                               e.state
                                                                   .myMarketFilter
                                                           )
-                                                    : !(b && !a.has(n));
+                                                    : !(g && !a.has(n));
                                             }
                                             return (
                                                 !(E.length < 1) &&
@@ -2358,9 +2481,9 @@
                                             .map(function(e) {
                                                 var t = e.quote + "_" + e.base;
                                                 return p.includes(e.base)
-                                                    ? (A[e.base] ||
-                                                          (A[e.base] = []),
-                                                      A[e.base].push({
+                                                    ? (T[e.base] ||
+                                                          (T[e.base] = []),
+                                                      T[e.base].push({
                                                           id: t,
                                                           quote: e.quote,
                                                           base: e.base
@@ -2375,17 +2498,17 @@
                                             .filter(function(e) {
                                                 return null !== e;
                                             })
-                                            .take(C ? 100 : 20)
+                                            .take(M ? 100 : 20)
                                             .toArray());
-                                var j = M && M.length,
+                                var j = C && C.length,
                                     q = "mymarkets-header clickable",
-                                    I = P()(q, {inactive: !C}),
-                                    D = P()(q, {inactive: C}),
-                                    F = {
+                                    I = P()(q, {inactive: !M}),
+                                    D = P()(q, {inactive: M}),
+                                    W = {
                                         minWidth: this.state.minWidth,
                                         minHeight: "6rem"
                                     };
-                                y && (F.height = y);
+                                y && (W.height = y);
                                 var U = n(3);
                                 return s.a.createElement(
                                     "div",
@@ -2458,7 +2581,7 @@
                                                   : null
                                           )
                                         : null,
-                                    C
+                                    M
                                         ? s.a.createElement(
                                               "div",
                                               {
@@ -2602,7 +2725,7 @@
                                                               type: "text",
                                                               className:
                                                                   "no-margin market-filter-input",
-                                                              placeholder: W.a.translate(
+                                                              placeholder: R.a.translate(
                                                                   "exchange.filter"
                                                               ),
                                                               maxLength: "16",
@@ -2729,7 +2852,7 @@
                                                                           .inputValue,
                                                                       onChange: this
                                                                           ._onInputName,
-                                                                      placeholder: W.a.translate(
+                                                                      placeholder: R.a.translate(
                                                                           "exchange.search"
                                                                       ),
                                                                       maxLength:
@@ -2802,7 +2925,7 @@
                                                   )
                                                 : null;
                                         }),
-                                        C && j
+                                        M && j
                                             ? s.a.createElement(
                                                   "li",
                                                   {
@@ -2829,7 +2952,7 @@
                                                   })
                                               )
                                             : null,
-                                        C &&
+                                        M &&
                                             s.a.createElement(
                                                 "li",
                                                 {
@@ -2852,7 +2975,7 @@
                                     s.a.createElement(
                                         "div",
                                         {
-                                            style: F,
+                                            style: W,
                                             className:
                                                 "table-container grid-block vertical mymarkets-list",
                                             ref: "favorites"
@@ -2868,7 +2991,7 @@
                                                           width: "100%"
                                                       }
                                                   },
-                                                  s.a.createElement(R.a, {
+                                                  s.a.createElement(F.a, {
                                                       type: "three-bounce"
                                                   })
                                               )
@@ -2890,21 +3013,21 @@
                                                     starredMarkets: a,
                                                     marketStats: o,
                                                     viewSettings: d,
-                                                    columns: C
+                                                    columns: M
                                                         ? l
                                                         : e.props.findColumns ||
                                                           l,
-                                                    markets: A[t],
+                                                    markets: T[t],
                                                     base: t,
-                                                    maxRows: C ? 20 : 10,
-                                                    findMarketTab: !C,
+                                                    maxRows: M ? 20 : 10,
+                                                    findMarketTab: !M,
                                                     location: e.props.location,
                                                     history: e.props.history,
                                                     onlyLiquid:
-                                                        e.props.onlyLiquid && C
+                                                        e.props.onlyLiquid && M
                                                 });
                                             }),
-                                        k === p.size + 1 && C && j
+                                        k === p.size + 1 && M && j
                                             ? s.a.createElement($, {
                                                   userMarkets: this.props
                                                       .userMarkets,
@@ -2914,16 +3037,16 @@
                                                   marketStats: o,
                                                   viewSettings: d,
                                                   columns: l,
-                                                  markets: M,
+                                                  markets: C,
                                                   base: "others",
-                                                  maxRows: C ? 20 : 10,
-                                                  findMarketTab: !C,
+                                                  maxRows: M ? 20 : 10,
+                                                  findMarketTab: !M,
                                                   location: this.props.location,
                                                   history: this.props.history
                                               })
                                             : null
                                     ),
-                                    s.a.createElement(Q, {
+                                    s.a.createElement(H, {
                                         quotes: this.props.preferredBases
                                     })
                                 );
@@ -2933,19 +3056,19 @@
                     t
                 );
             })();
-            (ee.propTypes = {core: b.a.ChainAsset.isRequired}),
+            (ee.propTypes = {core: g.a.ChainAsset.isRequired}),
                 (ee.defaultProps = {
                     activeTab: "my-market",
                     core: "1.3.0",
                     setMinWidth: !1
                 }),
-                (ee.contextTypes = {router: M.a.object.isRequired}),
-                (ee = Object(g.a)(ee));
+                (ee.contextTypes = {router: C.a.object.isRequired}),
+                (ee = Object(b.a)(ee));
             var te = (function(e) {
                 function t() {
                     return (
-                        G(this, t),
-                        X(
+                        J(this, t),
+                        K(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -2955,8 +3078,8 @@
                     );
                 }
                 return (
-                    Y(t, s.a.Component),
-                    K(t, [
+                    X(t, s.a.Component),
+                    Y(t, [
                         {
                             key: "render",
                             value: function() {
@@ -2969,19 +3092,19 @@
             })();
             t.a = Object(f.connect)(te, {
                 listenTo: function() {
-                    return [T.a, B.a, N.a];
+                    return [A.a, B.a, N.a];
                 },
                 getProps: function() {
                     return {
-                        starredMarkets: T.a.getState().starredMarkets,
-                        onlyLiquid: T.a
+                        starredMarkets: A.a.getState().starredMarkets,
+                        onlyLiquid: A.a
                             .getState()
                             .viewSettings.get("onlyLiquid", !0),
-                        defaultMarkets: T.a.getState().defaultMarkets,
-                        viewSettings: T.a.getState().viewSettings,
-                        preferredBases: T.a.getState().preferredBases,
+                        defaultMarkets: A.a.getState().defaultMarkets,
+                        viewSettings: A.a.getState().viewSettings,
+                        preferredBases: A.a.getState().preferredBases,
                         marketStats: B.a.getState().allMarketStats,
-                        userMarkets: T.a.getState().userMarkets,
+                        userMarkets: A.a.getState().userMarkets,
                         searchAssets: N.a.getState().assets,
                         onlyStars: B.a.getState().onlyStars,
                         assetsLoading: N.a.getState().assetsLoading
@@ -2989,18 +3112,18 @@
                 }
             });
         },
-        4992: function(e, t, n) {
+        4995: function(e, t, n) {
             "use strict";
             n.r(t);
             var a = n(0),
                 r = n.n(a),
-                s = n(122),
+                s = n(124),
                 o = n(31),
                 i = n(106),
                 l = n(8),
                 c = n(51),
                 u = n.n(c),
-                p = n(352),
+                p = n(359),
                 h = (function() {
                     function e(e, t) {
                         for (var n = 0; n < t.length; n++) {
@@ -3244,7 +3367,7 @@
                         return n && e(t.prototype, n), a && e(t, a), t;
                     };
                 })();
-            var b = (function(e) {
+            var g = (function(e) {
                 function t() {
                     return (
                         (function(e, t) {
@@ -3310,7 +3433,7 @@
                     t
                 );
             })();
-            t.default = b;
+            t.default = g;
         }
     }
 ]);

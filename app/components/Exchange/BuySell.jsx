@@ -18,8 +18,13 @@ import assetUtils from "common/asset_utils";
 import DatePicker from "react-datepicker2/src/";
 import moment from "moment";
 import Icon from "../Icon/Icon";
+import LLCGatewayData from "../DepositWithdraw/llcgateway/LLCGatewayData";
 
 class BuySell extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     static propTypes = {
         balance: ChainTypes.ChainObject,
         type: PropTypes.string,
@@ -137,15 +142,15 @@ class BuySell extends React.Component {
             ? 0
             : Math.min(
                   maxQuoteMarketFee.getAmount({real: true}),
-                  amount *
-                      quote.getIn(["options", "market_fee_percent"]) /
+                  (amount * quote.getIn(["options", "market_fee_percent"])) /
                       10000
               ).toFixed(maxQuoteMarketFee.precision);
         const baseFee = !amount
             ? 0
             : Math.min(
                   maxBaseMarketFee.getAmount({real: true}),
-                  total * base.getIn(["options", "market_fee_percent"]) / 10000
+                  (total * base.getIn(["options", "market_fee_percent"])) /
+                      10000
               ).toFixed(maxBaseMarketFee.precision);
         const baseFlagBooleans = assetUtils.getFlagBooleans(
             base.getIn(["options", "flags"]),
@@ -165,9 +170,9 @@ class BuySell extends React.Component {
         var baseMarketFee = baseFlagBooleans["charge_market_fee"] ? (
             <div className="grid-block no-padding buy-sell-row">
                 <div className="grid-block small-4 no-margin no-overflow buy-sell-label">
-                    <Translate content="explorer.asset.summary.market_fee" />:&nbsp;{
-                        baseMarketFeePercent
-                    }
+                    <Translate content="explorer.asset.summary.market_fee" />
+                    :&nbsp;
+                    {baseMarketFeePercent}
                 </div>
                 <div className="grid-block small-4 no-margin no-overflow buy-sell-input">
                     <input
@@ -189,7 +194,8 @@ class BuySell extends React.Component {
                         })}
                         className="inline-block tooltip"
                     >
-                        &nbsp;<Icon
+                        &nbsp;
+                        <Icon
                             style={{position: "relative", top: 3}}
                             name="question-circle"
                             title="icons.question_circle"
@@ -214,9 +220,9 @@ class BuySell extends React.Component {
         var quoteMarketFee = quoteFlagBooleans["charge_market_fee"] ? (
             <div className="grid-block no-padding buy-sell-row">
                 <div className="grid-block small-4 no-margin no-overflow buy-sell-label">
-                    <Translate content="explorer.asset.summary.market_fee" />:&nbsp;{
-                        quoteMarketFeePercent
-                    }
+                    <Translate content="explorer.asset.summary.market_fee" />
+                    :&nbsp;
+                    {quoteMarketFeePercent}
                 </div>
                 <div className="grid-block small-4 no-margin no-overflow buy-sell-input">
                     <input
@@ -238,7 +244,8 @@ class BuySell extends React.Component {
                         })}
                         className="inline-block tooltip"
                     >
-                        &nbsp;<Icon
+                        &nbsp;
+                        <Icon
                             style={{position: "relative", top: 3}}
                             name="question-circle"
                             title="icons.question-circle"
@@ -264,7 +271,9 @@ class BuySell extends React.Component {
         let marketFee =
             isBid && quoteMarketFee
                 ? quoteMarketFee
-                : !isBid && baseMarketFee ? baseMarketFee : null;
+                : !isBid && baseMarketFee
+                    ? baseMarketFee
+                    : null;
         let hasBalance = isBid
             ? balanceAmount.getAmount({real: true}) >= parseFloat(total)
             : balanceAmount.getAmount({real: true}) >= parseFloat(amount);
@@ -371,6 +380,9 @@ class BuySell extends React.Component {
 
         const minExpirationDate = moment();
 
+        let currencyHasInbridge =
+            base.get("symbol") === "LLC" || quote.get("symbol") === "LLC";
+
         return (
             <div className={this.props.className}>
                 <div className="exchange-bordered buy-sell-container">
@@ -435,17 +447,21 @@ class BuySell extends React.Component {
                                 {caret}
                             </div>
                         }
-                        {this.props.currentBridges ? (
+
+                        {currencyHasInbridge &&
+                        this.props[isBid ? "base" : "quote"].get("symbol") !==
+                            "LLC" ? (
                             <div className="float-right buy-sell-deposit">
-                                <a onClick={this._onBuy.bind(this)}>
+                                <a onClick={this.props.onShowModal}>
                                     <TranslateWithLinks
                                         string="exchange.buysell_formatter"
                                         noLink
+                                        noTip={true}
                                         keys={[
                                             {
                                                 type: "asset",
                                                 value: this.props[
-                                                    isBid ? "base" : "quote"
+                                                    isBid ? "quote" : "base"
                                                 ].get("symbol"),
                                                 arg: "asset"
                                             },
@@ -459,9 +475,9 @@ class BuySell extends React.Component {
                                 </a>
                             </div>
                         ) : null}
-                        {this.props.backedCoin ? (
+                        {/* this.props.backedCoin */ false ? (
                             <div className="float-right buy-sell-deposit">
-                                <a onClick={this._onDeposit.bind(this)}>
+                                <a onClick={this.props.onShowModal}>
                                     <TranslateWithLinks
                                         string="exchange.buysell_formatter"
                                         noLink
@@ -646,7 +662,8 @@ class BuySell extends React.Component {
                                     <tbody>
                                         <tr className="buy-sell-info">
                                             <td>
-                                                <Translate content="exchange.balance" />:
+                                                <Translate content="exchange.balance" />
+                                                :
                                             </td>
                                             <td
                                                 style={{
@@ -684,7 +701,8 @@ class BuySell extends React.Component {
                                                     <Translate content="exchange.lowest_ask" />
                                                 ) : (
                                                     <Translate content="exchange.highest_bid" />
-                                                )}:&nbsp;
+                                                )}
+                                                :&nbsp;
                                             </td>
                                             {currentPrice ? (
                                                 <td
@@ -716,7 +734,9 @@ class BuySell extends React.Component {
                                                             name={base.get(
                                                                 "symbol"
                                                             )}
-                                                        />/<AssetName
+                                                        />
+                                                        /
+                                                        <AssetName
                                                             name={quote.get(
                                                                 "symbol"
                                                             )}
@@ -728,7 +748,8 @@ class BuySell extends React.Component {
 
                                         <tr className="buy-sell-info">
                                             <td style={{paddingTop: 5}}>
-                                                <Translate content="transaction.expiration" />:
+                                                <Translate content="transaction.expiration" />
+                                                :
                                             </td>
                                             <td className="expiration-datetime-picker">
                                                 <select

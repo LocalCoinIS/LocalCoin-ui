@@ -452,8 +452,10 @@ class AccountVoting extends React.Component {
                 if (lbo === null) {
                     // The object does not exist, the id was too high
                     this.setState(
-                        {lastBudgetObject: `2.13.${newIDInt - 1}`},
-                        this.getBudgetObject
+                        {
+                            lastBudgetObject: `2.13.${newIDInt - 1}`
+                        } /*,
+                        this.getBudgetObject*/
                     );
                 } else {
                     SettingsStore.setLastBudgetObject(newID);
@@ -695,10 +697,7 @@ class AccountVoting extends React.Component {
         );
 
         let proxyInput = (
-            <div
-                style={{width: "50%", maxWidth: 350}}
-                data-tip="Search for an account to be used as your proxy for voting"
-            >
+            <div style={{width: "50%", maxWidth: 350}}>
                 <AccountSelector
                     hideImage
                     account={this.state.current_proxy_input}

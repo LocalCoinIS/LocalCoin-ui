@@ -79,6 +79,45 @@ class MarketGroup extends React.Component {
     }
 
     _changeSort(type) {
+        let volumeCookie = this.getCookie("gt_get_sort");
+        let CookieDate = new Date();
+        CookieDate.setFullYear(CookieDate.getFullYear() + 1);
+        if (
+            (volumeCookie == "vol-true" ||
+                volumeCookie == "name-true" ||
+                volumeCookie == "name-false") &&
+            type == "volume"
+        ) {
+            this.setCookie("gt_get_sort", "vol-false", {
+                expires: CookieDate.toGMTString()
+            });
+        } else if (
+            (volumeCookie == "vol-false" || volumeCookie == null) &&
+            type == "volume"
+        ) {
+            this.setCookie("gt_get_sort", "vol-true", {
+                expires: CookieDate.toGMTString()
+            });
+            this._inverseSort();
+        }
+        if (
+            (volumeCookie == "name-true" ||
+                volumeCookie == "vol-true" ||
+                volumeCookie == "vol-false") &&
+            type == "name"
+        ) {
+            this.setCookie("gt_get_sort", "name-false", {
+                expires: CookieDate.toGMTString()
+            });
+        } else if (
+            (volumeCookie == "name-false" || volumeCookie == null) &&
+            type == "name"
+        ) {
+            this.setCookie("gt_get_sort", "name-true", {
+                expires: CookieDate.toGMTString()
+            });
+            this._inverseSort();
+        }
         if (type !== this.state.sortBy) {
             SettingsActions.changeViewSetting({
                 myMarketsSort: type
@@ -117,6 +156,58 @@ class MarketGroup extends React.Component {
         SettingsActions.setUserMarket(base, quote, newValue);
     }
 
+    setCookie(name, value, options) {
+        options = options || {};
+
+        let expires = options.expires;
+
+        if (typeof expires == "number" && expires) {
+            var d = new Date();
+            d.setTime(d.getTime() + expires * 1000);
+            expires = options.expires = d;
+        }
+        if (expires && expires.toUTCString) {
+            options.expires = expires.toUTCString();
+        }
+
+        value = encodeURIComponent(value);
+
+        let updatedCookie = name + "=" + value;
+
+        for (let propName in options) {
+            updatedCookie += "; " + propName;
+            let propValue = options[propName];
+            if (propValue !== true) {
+                updatedCookie += "=" + propValue;
+            }
+        }
+
+        document.cookie = updatedCookie;
+    }
+
+    getCookie(name) {
+        let dc = document.cookie;
+        let prefix = name + "=";
+        let begin = dc.indexOf("; " + prefix);
+        let end = null;
+        if (begin == -1) {
+            begin = dc.indexOf(prefix);
+            if (begin != 0) return null;
+            end = document.cookie.indexOf(";", begin);
+        } else {
+            begin += 2;
+            end = document.cookie.indexOf(";", begin);
+            if (end == -1) {
+                end = dc.length;
+            }
+        }
+
+        return decodeURI(dc.substring(begin + prefix.length, end)).replace(
+            /"/g,
+            ""
+        );
+    }
+
     render() {
         let {
             columns,
@@ -136,10 +227,16 @@ class MarketGroup extends React.Component {
             switch (header.name) {
                 case "market":
                     let orderDirectionmarket = "";
-
-                    if (this.state.sortBy == "name" && this.state.inverseSort) {
+                    let nameCookie = this.getCookie("gt_get_sort");
+                    if (
+                        this.state.sortBy == "name" &&
+                        (nameCookie == "name-false" || nameCookie == null)
+                    ) {
                         orderDirectionmarket = <span>▲</span>;
-                    } else if (this.state.sortBy == "name") {
+                    } else if (
+                        this.state.sortBy == "name" &&
+                        nameCookie == "name-true"
+                    ) {
                         orderDirectionmarket = <span>▼</span>;
                     }
 
@@ -156,13 +253,16 @@ class MarketGroup extends React.Component {
 
                 case "vol":
                     let orderDirectionvol = "";
-
+                    let volumeCookie = this.getCookie("gt_get_sort");
                     if (
                         this.state.sortBy == "volume" &&
-                        this.state.inverseSort
+                        (volumeCookie == "vol-false" || volumeCookie == null)
                     ) {
                         orderDirectionvol = <span>▼</span>;
-                    } else if (this.state.sortBy == "volume") {
+                    } else if (
+                        this.state.sortBy == "volume" &&
+                        volumeCookie == "vol-true"
+                    ) {
                         orderDirectionvol = <span>▲</span>;
                     }
 
@@ -295,9 +395,14 @@ class MarketGroup extends React.Component {
                 let b_symbols = b.key.split("_");
                 let aStats = marketStats.get(a_symbols[0] + "_" + a_symbols[1]);
                 let bStats = marketStats.get(b_symbols[0] + "_" + b_symbols[1]);
-
+                let volumeCookie = this.getCookie("gt_get_sort");
                 switch (sortBy) {
                     case "name":
+                        if (volumeCookie == "name-false") {
+                            inverseSort = false;
+                        } else if (volumeCookie == "name-true") {
+                            inverseSort = true;
+                        }
                         if (a_symbols[0] > b_symbols[0]) {
                             return inverseSort ? -1 : 1;
                         } else if (a_symbols[0] < b_symbols[0]) {
@@ -314,7 +419,10 @@ class MarketGroup extends React.Component {
 
                     case "volume":
                         if (aStats && bStats) {
-                            if (inverseSort) {
+                            if (
+                                volumeCookie == "vol-false" ||
+                                volumeCookie == null
+                            ) {
                                 return bStats.volumeBase - aStats.volumeBase;
                             } else {
                                 return aStats.volumeBase - bStats.volumeBase;
@@ -488,6 +596,28 @@ class MyMarkets extends React.Component {
         }
     }
 
+    // _inverseSort() {
+    //     SettingsActions.changeViewSetting({
+    //         myMarketsInvert: !this.state.myMarketsInvert
+    //     });
+    //     this.setState({
+    //         inverseSort: !this.state.inverseSort
+    //     });
+    // }
+
+    // _changeSort(type) {
+    //     if (type !== this.state.sortBy) {
+    //         SettingsActions.changeViewSetting({
+    //             myMarketsSort: type
+    //         });
+    //         this.setState({
+    //             sortBy: type
+    //         });
+    //     } else {
+    //         this._inverseSort();
+    //     }
+    // }
+
     _inverseSort() {
         SettingsActions.changeViewSetting({
             myMarketsInvert: !this.state.myMarketsInvert
@@ -498,6 +628,22 @@ class MyMarkets extends React.Component {
     }
 
     _changeSort(type) {
+        let volumeCookie = this.getCookie("gt_get_sort");
+        let CookieDate = new Date();
+        CookieDate.setFullYear(CookieDate.getFullYear() + 1);
+        if (volumeCookie == "vol-true" && type == "volume") {
+            this.setCookie("gt_get_sort", "vol-false", {
+                expires: CookieDate.toGMTString()
+            });
+        } else if (
+            (volumeCookie == "vol-false" || volumeCookie == null) &&
+            type == "volume"
+        ) {
+            this.setCookie("gt_get_sort", "vol-true", {
+                expires: CookieDate.toGMTString()
+            });
+            this._inverseSort();
+        }
         if (type !== this.state.sortBy) {
             SettingsActions.changeViewSetting({
                 myMarketsSort: type
@@ -638,7 +784,6 @@ class MyMarkets extends React.Component {
         const myMarketTab = activeTab === "my-market";
 
         let defaultBases = preferredBases.map(a => a);
-
         if (!myMarketTab) {
             preferredBases = preferredBases.clear();
             preferredBases = preferredBases.push(this.state.activeFindBase);

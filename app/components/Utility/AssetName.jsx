@@ -4,8 +4,13 @@ import asset_utils from "common/asset_utils";
 import AssetWrapper from "./AssetWrapper";
 import counterpart from "counterpart";
 import PropTypes from "prop-types";
+import ReactTooltip from "react-tooltip";
 
 class AssetName extends React.Component {
+    componentDidMount() {
+        ReactTooltip.rebuild();
+    }
+
     static propTypes = {
         replace: PropTypes.bool.isRequired,
         dataPlace: PropTypes.string.isRequired
@@ -78,7 +83,9 @@ class AssetName extends React.Component {
             const upperCasePrefix =
                 prefix && prefix === "bit"
                     ? prefix
-                    : !!prefix ? prefix.toUpperCase() : prefix;
+                    : !!prefix
+                        ? prefix.toUpperCase()
+                        : prefix;
             let tooltip = noTip
                 ? null
                 : `<div><strong>${upperCasePrefix ||

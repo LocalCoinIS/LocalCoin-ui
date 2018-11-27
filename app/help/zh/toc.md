@@ -2,7 +2,7 @@
 
  * [介绍](index.md)
  * [词汇表](glossary.md)
- * [BitShares比特股](introduction/bitshares.md)
+ * [LocalCoin当地硬币](introduction/localcoin.md)
  * [钱包](introduction/wallets.md)
  * [备份](introduction/backups.md)
  * [区块链](introduction/blockchain.md)
@@ -12,7 +12,7 @@
  * [账户](accounts/general.md)
  * [权限](accounts/permissions.md)
  * [会员等级](accounts/membership.md)
- * [市场锚定资产](assets/mpa.md) (BitUSD, BitEUR, BitGOLD, Bit\*,...)
+ * [市场锚定资产](assets/mpa.md) (USD, EUR, GOLD, Bit\*,...)
  * [用户发行资产](assets/uia.md)
  * [私有比特资产](assets/privbitassets.md)
  * [去中心化交易所](dex/introduction.md)

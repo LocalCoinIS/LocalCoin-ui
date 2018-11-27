@@ -1,7 +1,7 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
     [37],
     {
-        139: function(e, t, n) {
+        143: function(e, t, n) {
             "use strict";
             n.d(t, "b", function() {
                 return j;
@@ -21,11 +21,11 @@
                 m = n(1),
                 d = n.n(m),
                 h = n(3),
-                f = n.n(h),
-                _ = n(47),
-                v = n.n(_),
-                g = n(271),
-                b = n(42),
+                _ = n.n(h),
+                f = n(42),
+                v = n.n(f),
+                g = n(279),
+                b = n(44),
                 y =
                     Object.assign ||
                     function(e) {
@@ -212,7 +212,7 @@
                                           {
                                               className: "tooltip inline-block",
                                               "data-place": "bottom",
-                                              "data-tip": f.a.translate(
+                                              "data-tip": _.a.translate(
                                                   "tooltip.no_price"
                                               ),
                                               style: {fontSize: "0.9rem"}
@@ -327,7 +327,7 @@
             (I.propTypes = {balance: s.a.ChainObject.isRequired}),
                 (I = Object(i.a)(I, {keep_updating: !0}));
         },
-        4989: function(e, t, n) {
+        4990: function(e, t, n) {
             "use strict";
             n.r(t);
             var a = n(0),
@@ -336,16 +336,16 @@
                 s = n.n(r),
                 i = n(1),
                 c = n.n(i),
-                l = n(62),
+                l = n(66),
                 u = n(4),
                 p = n(3),
                 m = n.n(p),
                 d = n(5),
                 h = n(6),
-                f = n(17),
-                _ = n(40),
+                _ = n(17),
+                f = n(40),
                 v = n(13),
-                g = n(139),
+                g = n(143),
                 b = n(12),
                 y = n(2),
                 E = n.n(y),
@@ -557,7 +557,7 @@
                                             },
                                             t.name,
                                             o.a.createElement("br", null),
-                                            o.a.createElement(_.a, {
+                                            o.a.createElement(f.a, {
                                                 account: t.worker_account
                                             })
                                         )
@@ -568,7 +568,7 @@
                                             style: {textAlign: "right"},
                                             className: "hide-column-small"
                                         },
-                                        o.a.createElement(f.a, {
+                                        o.a.createElement(_.a, {
                                             amount: n,
                                             asset: "1.3.0",
                                             decimalOffset: 5,
@@ -579,7 +579,7 @@
                                         ? o.a.createElement(
                                               "td",
                                               {style: {textAlign: "right"}},
-                                              o.a.createElement(f.a, {
+                                              o.a.createElement(_.a, {
                                                   amount: Math.max(
                                                       0,
                                                       this.props.voteThreshold -
@@ -672,7 +672,7 @@
             }),
                 (x.defaultProps = {tempComponent: "tr"});
             var k = Object(v.a)(x),
-                O = n(162),
+                O = n(120),
                 A = (function() {
                     function e(e, t) {
                         for (var n = 0; n < t.length; n++) {
@@ -799,7 +799,7 @@
                                     o.a.createElement(
                                         "td",
                                         {style: {textAlign: "left"}},
-                                        o.a.createElement(_.a, {
+                                        o.a.createElement(f.a, {
                                             account: t.get("id")
                                         })
                                     ),
@@ -824,7 +824,7 @@
                                     o.a.createElement(
                                         "td",
                                         null,
-                                        o.a.createElement(f.a, {
+                                        o.a.createElement(_.a, {
                                             amount: u,
                                             asset: "1.3.0",
                                             decimalOffset: 5,
@@ -1207,7 +1207,7 @@
                 B = n.n(R),
                 V = n(104),
                 D = n(11),
-                W = n(118),
+                W = n(119),
                 q = n(22),
                 L = n(8),
                 M =
@@ -1442,17 +1442,17 @@
                                         u = l.witnesses,
                                         m = l.committee,
                                         h = l.workers,
-                                        f = i(r || []),
-                                        _ = f.witnesses,
-                                        v = f.committee,
-                                        g = f.workers,
+                                        _ = i(r || []),
+                                        f = _.witnesses,
+                                        v = _.committee,
+                                        g = _.workers,
                                         b = {
                                             proxy_account_id: a,
                                             current_proxy_input: c,
                                             witnesses: u,
                                             committee: m,
                                             workers: h,
-                                            proxy_witnesses: _,
+                                            proxy_witnesses: f,
                                             proxy_committee: v,
                                             proxy_workers: g,
                                             vote_ids: p,
@@ -1812,13 +1812,10 @@
                                         {}
                                     ).then(function(t) {
                                         null === z(t, 1)[0]
-                                            ? e.setState(
-                                                  {
-                                                      lastBudgetObject:
-                                                          "2.13." + (c - 1)
-                                                  },
-                                                  e.getBudgetObject
-                                              )
+                                            ? e.setState({
+                                                  lastBudgetObject:
+                                                      "2.13." + (c - 1)
+                                              })
                                             : (L.a.setLastBudgetObject(i),
                                               e.setState({
                                                   lastBudgetObject: i
@@ -1942,7 +1939,7 @@
                                     )));
                                 var d = new Date(),
                                     h = this._getWorkerArray(),
-                                    _ = 0,
+                                    f = 0,
                                     v = h
                                         .filter(function(e) {
                                             return (
@@ -1973,8 +1970,8 @@
                                                 t.get("total_votes_for") -
                                                 t.get("total_votes_against");
                                             return (
-                                                p <= 0 && !_ && (_ = i),
-                                                _ && i < _
+                                                p <= 0 && !f && (f = i),
+                                                f && i < f
                                                     ? null
                                                     : o.a.createElement(k, {
                                                           preferredUnit: n,
@@ -1992,7 +1989,7 @@
                                                               e
                                                           ),
                                                           proxy: a,
-                                                          voteThreshold: _
+                                                          voteThreshold: f
                                                       })
                                             );
                                         })
@@ -2009,7 +2006,7 @@
                                                 (new Date(
                                                     e.get("work_end_date") + "Z"
                                                 ) > d &&
-                                                    t < _) ||
+                                                    t < f) ||
                                                 new Date(
                                                     e.get("work_begin_date") +
                                                         "Z"
@@ -2039,7 +2036,7 @@
                                                     e
                                                 ),
                                                 proxy: a,
-                                                voteThreshold: _
+                                                voteThreshold: f
                                             });
                                         }),
                                     E = h
@@ -2074,7 +2071,7 @@
                                                     e
                                                 ),
                                                 proxy: a,
-                                                voteThreshold: _
+                                                voteThreshold: f
                                             });
                                         }),
                                     w = o.a.createElement(
@@ -2109,14 +2106,7 @@
                                     ),
                                     x = o.a.createElement(
                                         "div",
-                                        {
-                                            style: {
-                                                width: "50%",
-                                                maxWidth: 350
-                                            },
-                                            "data-tip":
-                                                "Search for an account to be used as your proxy for voting"
-                                        },
+                                        {style: {width: "50%", maxWidth: 350}},
                                         o.a.createElement(
                                             O.a,
                                             {
@@ -2507,11 +2497,11 @@
                                                                                   }
                                                                               },
                                                                               o.a.createElement(
-                                                                                  f.a,
+                                                                                  _.a,
                                                                                   {
                                                                                       decimalOffset: 5,
                                                                                       hide_asset: !0,
-                                                                                      amount: _,
+                                                                                      amount: f,
                                                                                       asset:
                                                                                           "1.3.0"
                                                                                   }

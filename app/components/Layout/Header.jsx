@@ -395,7 +395,7 @@ class Header extends React.Component {
 
         let tradeUrl = this.props.lastMarket
             ? `/market/${this.props.lastMarket}`
-            : "/market/USD_LLC";
+            : "/market/LLC_USD";
 
         // Account selector: Only active inside the exchange
         let account_display_name, accountsList;
@@ -1560,14 +1560,14 @@ class Header extends React.Component {
                                         {
                                             active:
                                                 active.indexOf(
-                                                    "/help/introduction/bitshares"
+                                                    "/help/introduction/localcoin"
                                                 ) !== -1
                                         },
                                         "divider"
                                     )}
                                     onClick={this._onNavigate.bind(
                                         this,
-                                        "/help/introduction/bitshares"
+                                        "/help/introduction/localcoin"
                                     )}
                                 >
                                     <div className="table-cell">
