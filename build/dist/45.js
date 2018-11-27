@@ -7297,7 +7297,7 @@
                 readme: "ERROR: No README data found!",
                 repository: {
                     type: "git",
-                    url: "git+ssh://git@github.com/indutny/elliptic.git"
+                    url: "git+https://git@github.com/indutny/elliptic.git"
                 },
                 scripts: {
                     jscs:
