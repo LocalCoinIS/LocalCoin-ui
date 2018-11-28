@@ -7,7 +7,7 @@ install
 for developers
 ==============
 - staging-new-layout - dev branch
-= live               - release branch
+- live               - release branch
 
 Правила деплоя
 ============
