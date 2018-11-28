@@ -1,5 +1,13 @@
-staging-new-layout рабочая ветка
-live боевая ветка
+install
+==========
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash
+nvm install v9
+nvm use v9
+
+for developers
+==============
+staging-new-layout - dev branch
+live               - release branch
 
 Правила деплоя
 ============
