@@ -6,7 +6,7 @@
 
 ### Чат Localcoin
 
-Вы можете общаться с другими членами сообщества Localcoin в реальном времени здесь:
+Вы можете общаться с другими участниками сообщества Localcoin в реальном времени здесь:
 
 - [Telegram](https://t.me/LocalCoinIS)
 - [Telegram (ru)](https://t.me/LocalCoinRU)
@@ -17,7 +17,7 @@
 Если вы являетесь разработчиком программного обеспечения, то можете поучаствовать в баунти-программе здесь:
 
 - [Github UI](https://github.com/localcoinis/localcoin-ui)
-- [Github Core](https://github.com/localcoinis/localcoin-core) 
+- [Github Core](https://github.com/localcoinis/localcoin-core)
 
 ## Введение
 

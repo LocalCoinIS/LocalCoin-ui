@@ -12,7 +12,7 @@ LocalCoin 2.0 - это платформа Финансовых Смарт-Кон
 - [Блокчейн](introduction/blockchain.md)
 - [Делегаты](introduction/witness.md)
 - [Работники](introduction/workers.md)
-- [Члены Комитета](introduction/committee.md)
+- [Комитет](introduction/committee.md)
 
 ## Аккаунты
 
