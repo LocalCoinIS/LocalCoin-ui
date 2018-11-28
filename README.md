@@ -1,13 +1,13 @@
 install
 ==========
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash
-nvm install v9
-nvm use v9
+1. curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash
+2. nvm install v9
+3. nvm use v9
 
 for developers
 ==============
-staging-new-layout - dev branch
-live               - release branch
+- staging-new-layout - dev branch
+= live               - release branch
 
 Правила деплоя
 ============
