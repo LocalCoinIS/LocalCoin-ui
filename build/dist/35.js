@@ -1,555 +1,46 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
     [35],
     {
-        4974: function(e, t, n) {
+        352: function(e, t, n) {
             "use strict";
-            n.r(t);
-            var a = n(0),
-                i = n.n(a),
-                r = n(1),
-                o = n.n(r),
-                s = n(17),
-                c = n(4),
-                l = n(5),
-                u = n(46),
-                p = n(21),
-                m = (n(72), n(3)),
-                b = n.n(m),
-                d = (function() {
+            var o = n(0),
+                r = n.n(o),
+                a = n(6),
+                i = n(13),
+                l = n(40),
+                c = (function() {
                     function e(e, t) {
                         for (var n = 0; n < t.length; n++) {
-                            var a = t[n];
-                            (a.enumerable = a.enumerable || !1),
-                                (a.configurable = !0),
-                                "value" in a && (a.writable = !0),
-                                Object.defineProperty(e, a.key, a);
+                            var o = t[n];
+                            (o.enumerable = o.enumerable || !1),
+                                (o.configurable = !0),
+                                "value" in o && (o.writable = !0),
+                                Object.defineProperty(e, o.key, o);
                         }
                     }
-                    return function(t, n, a) {
-                        return n && e(t.prototype, n), a && e(t, a), t;
+                    return function(t, n, o) {
+                        return n && e(t.prototype, n), o && e(t, o), t;
                     };
                 })();
-            function f(e, t) {
-                if (!(e instanceof t))
-                    throw new TypeError("Cannot call a class as a function");
-            }
-            function h(e, t) {
-                if (!e)
-                    throw new ReferenceError(
-                        "this hasn't been initialised - super() hasn't been called"
-                    );
-                return !t || ("object" != typeof t && "function" != typeof t)
-                    ? e
-                    : t;
-            }
-            function v(e, t) {
-                if ("function" != typeof t && null !== t)
-                    throw new TypeError(
-                        "Super expression must either be null or a function, not " +
-                            typeof t
-                    );
-                (e.prototype = Object.create(t && t.prototype, {
-                    constructor: {
-                        value: e,
-                        enumerable: !1,
-                        writable: !0,
-                        configurable: !0
-                    }
-                })),
-                    t &&
-                        (Object.setPrototypeOf
-                            ? Object.setPrototypeOf(e, t)
-                            : (e.__proto__ = t));
-            }
-            var g = (function(e) {
-                    function t() {
-                        return (
-                            f(this, t),
-                            h(
-                                this,
-                                (t.__proto__ || Object.getPrototypeOf(t)).apply(
-                                    this,
-                                    arguments
-                                )
-                            )
-                        );
-                    }
-                    return (
-                        v(t, i.a.Component),
-                        d(t, [
-                            {
-                                key: "_onClaim",
-                                value: function(e, t) {
-                                    var n = this;
-                                    t.preventDefault(),
-                                        u.a
-                                            .claimVestingBalance(
-                                                this.props.account.id,
-                                                this.props.vb,
-                                                e
-                                            )
-                                            .then(function() {
-                                                "function" ==
-                                                    typeof n.props
-                                                        .handleChanged &&
-                                                    n.props.handleChanged();
-                                            });
-                                }
-                            },
-                            {
-                                key: "render",
-                                value: function() {
-                                    var e = this.props.vb;
-                                    if (!this.props.vb) return null;
-                                    var t = void 0,
-                                        n = void 0,
-                                        a = void 0,
-                                        r = void 0,
-                                        u = void 0;
-                                    return (
-                                        e &&
-                                            ((u = e.balance.amount),
-                                            (t = c.b.getAsset(
-                                                e.balance.asset_id
-                                            )),
-                                            (a =
-                                                e.policy[1]
-                                                    .coin_seconds_earned),
-                                            (r =
-                                                0 ===
-                                                (n =
-                                                    e.policy[1].vesting_seconds)
-                                                    ? 1
-                                                    : a / (n * u))),
-                                        t && u
-                                            ? i.a.createElement(
-                                                  "div",
-                                                  {
-                                                      className:
-                                                          "table-blocks__item"
-                                                  },
-                                                  i.a.createElement(o.a, {
-                                                      component: "h5",
-                                                      className:
-                                                          "table-blocks__item__heading",
-                                                      content:
-                                                          "account.vesting.balance_number",
-                                                      id: e.id
-                                                  }),
-                                                  i.a.createElement(
-                                                      "table",
-                                                      {
-                                                          className:
-                                                              "table-blocks__item__table"
-                                                      },
-                                                      i.a.createElement(
-                                                          "tbody",
-                                                          null,
-                                                          i.a.createElement(
-                                                              "tr",
-                                                              null,
-                                                              i.a.createElement(
-                                                                  "td",
-                                                                  null,
-                                                                  i.a.createElement(
-                                                                      o.a,
-                                                                      {
-                                                                          content:
-                                                                              "account.member.cashback"
-                                                                      }
-                                                                  )
-                                                              ),
-                                                              i.a.createElement(
-                                                                  "td",
-                                                                  null,
-                                                                  i.a.createElement(
-                                                                      s.a,
-                                                                      {
-                                                                          amount:
-                                                                              e
-                                                                                  .balance
-                                                                                  .amount,
-                                                                          asset:
-                                                                              e
-                                                                                  .balance
-                                                                                  .asset_id
-                                                                      }
-                                                                  )
-                                                              )
-                                                          ),
-                                                          i.a.createElement(
-                                                              "tr",
-                                                              null,
-                                                              i.a.createElement(
-                                                                  "td",
-                                                                  null,
-                                                                  i.a.createElement(
-                                                                      o.a,
-                                                                      {
-                                                                          content:
-                                                                              "account.member.earned"
-                                                                      }
-                                                                  )
-                                                              ),
-                                                              i.a.createElement(
-                                                                  "td",
-                                                                  null,
-                                                                  l.a.format_number(
-                                                                      l.a.get_asset_amount(
-                                                                          a /
-                                                                              86400,
-                                                                          t
-                                                                      ),
-                                                                      0
-                                                                  ),
-                                                                  " ",
-                                                                  i.a.createElement(
-                                                                      o.a,
-                                                                      {
-                                                                          content:
-                                                                              "account.member.coindays"
-                                                                      }
-                                                                  )
-                                                              )
-                                                          ),
-                                                          i.a.createElement(
-                                                              "tr",
-                                                              null,
-                                                              i.a.createElement(
-                                                                  "td",
-                                                                  null,
-                                                                  i.a.createElement(
-                                                                      o.a,
-                                                                      {
-                                                                          content:
-                                                                              "account.member.required"
-                                                                      }
-                                                                  )
-                                                              ),
-                                                              i.a.createElement(
-                                                                  "td",
-                                                                  null,
-                                                                  l.a.format_number(
-                                                                      l.a.get_asset_amount(
-                                                                          (e
-                                                                              .balance
-                                                                              .amount *
-                                                                              n) /
-                                                                              86400,
-                                                                          t
-                                                                      ),
-                                                                      0
-                                                                  ),
-                                                                  " ",
-                                                                  i.a.createElement(
-                                                                      o.a,
-                                                                      {
-                                                                          content:
-                                                                              "account.member.coindays"
-                                                                      }
-                                                                  )
-                                                              )
-                                                          ),
-                                                          i.a.createElement(
-                                                              "tr",
-                                                              null,
-                                                              i.a.createElement(
-                                                                  "td",
-                                                                  null,
-                                                                  i.a.createElement(
-                                                                      o.a,
-                                                                      {
-                                                                          content:
-                                                                              "account.member.remaining"
-                                                                      }
-                                                                  )
-                                                              ),
-                                                              i.a.createElement(
-                                                                  "td",
-                                                                  null,
-                                                                  l.a.format_number(
-                                                                      (n *
-                                                                          (1 -
-                                                                              r)) /
-                                                                          86400 ||
-                                                                          0,
-                                                                      2
-                                                                  ),
-                                                                  " days"
-                                                              )
-                                                          ),
-                                                          i.a.createElement(
-                                                              "tr",
-                                                              null,
-                                                              i.a.createElement(
-                                                                  "td",
-                                                                  null,
-                                                                  i.a.createElement(
-                                                                      o.a,
-                                                                      {
-                                                                          content:
-                                                                              "account.member.available"
-                                                                      }
-                                                                  )
-                                                              ),
-                                                              i.a.createElement(
-                                                                  "td",
-                                                                  null,
-                                                                  l.a.format_number(
-                                                                      100 * r,
-                                                                      2
-                                                                  ),
-                                                                  "% /",
-                                                                  " ",
-                                                                  i.a.createElement(
-                                                                      s.a,
-                                                                      {
-                                                                          amount:
-                                                                              r *
-                                                                              e
-                                                                                  .balance
-                                                                                  .amount,
-                                                                          asset: t.get(
-                                                                              "id"
-                                                                          )
-                                                                      }
-                                                                  )
-                                                              )
-                                                          ),
-                                                          i.a.createElement(
-                                                              "tr",
-                                                              null,
-                                                              i.a.createElement(
-                                                                  "td",
-                                                                  {
-                                                                      colSpan:
-                                                                          "2",
-                                                                      style: {
-                                                                          textAlign:
-                                                                              "right"
-                                                                      }
-                                                                  },
-                                                                  i.a.createElement(
-                                                                      "button",
-                                                                      {
-                                                                          onClick: this._onClaim.bind(
-                                                                              this,
-                                                                              !1
-                                                                          ),
-                                                                          className:
-                                                                              "btn large inverted"
-                                                                      },
-                                                                      i.a.createElement(
-                                                                          o.a,
-                                                                          {
-                                                                              content:
-                                                                                  "account.member.claim"
-                                                                          }
-                                                                      )
-                                                                  )
-                                                              )
-                                                          )
-                                                      )
-                                                  )
-                                              )
-                                            : null
-                                    );
-                                }
-                            }
-                        ]),
-                        t
-                    );
-                })(),
-                _ = (function(e) {
-                    function t() {
-                        f(this, t);
-                        var e = h(
-                            this,
-                            (t.__proto__ || Object.getPrototypeOf(t)).call(this)
-                        );
-                        return (e.state = {vbs: null}), e;
-                    }
-                    return (
-                        v(t, i.a.Component),
-                        d(t, [
-                            {
-                                key: "componentWillMount",
-                                value: function() {
-                                    this.retrieveVestingBalances.call(
-                                        this,
-                                        this.props.account.get("id")
-                                    );
-                                }
-                            },
-                            {
-                                key: "componentWillUpdate",
-                                value: function(e) {
-                                    var t = e.account.get("id");
-                                    t !== this.props.account.get("id") &&
-                                        this.retrieveVestingBalances.call(
-                                            this,
-                                            t
-                                        );
-                                }
-                            },
-                            {
-                                key: "retrieveVestingBalances",
-                                value: function(e) {
-                                    var t = this;
-                                    (e = e || this.props.account.get("id")),
-                                        p.Apis.instance()
-                                            .db_api()
-                                            .exec("get_vesting_balances", [e])
-                                            .then(function(e) {
-                                                t.setState({vbs: e});
-                                            })
-                                            .catch(function(e) {
-                                                console.log("error:", e);
-                                            });
-                                }
-                            },
-                            {
-                                key: "render",
-                                value: function() {
-                                    var e = this,
-                                        t = this.state.vbs;
-                                    if (
-                                        !t ||
-                                        !this.props.account ||
-                                        !this.props.account.get(
-                                            "vesting_balances"
-                                        )
-                                    )
-                                        return null;
-                                    var n = this.props.account.toJS(),
-                                        a = t
-                                            .map(function(t) {
-                                                if (t.balance.amount)
-                                                    return i.a.createElement(
-                                                        g,
-                                                        {
-                                                            key: t.id,
-                                                            vb: t,
-                                                            account: n,
-                                                            handleChanged: e.retrieveVestingBalances.bind(
-                                                                e
-                                                            )
-                                                        }
-                                                    );
-                                            })
-                                            .filter(function(e) {
-                                                return !!e;
-                                            });
-                                    return i.a.createElement(
-                                        "div",
-                                        null,
-                                        i.a.createElement(
-                                            "h2",
-                                            {className: "content__heading"},
-                                            b.a.translate(
-                                                "account.vesting.title"
-                                            )
-                                        ),
-                                        i.a.createElement(
-                                            "p",
-                                            {className: "content__description"},
-                                            b.a.translate(
-                                                "account.vesting.explain"
-                                            )
-                                        ),
-                                        a.length
-                                            ? i.a.createElement(
-                                                  "div",
-                                                  {className: "table-blocks"},
-                                                  a
-                                              )
-                                            : i.a.createElement(
-                                                  "h4",
-                                                  {style: {paddingTop: "1rem"}},
-                                                  i.a.createElement(o.a, {
-                                                      content:
-                                                          "account.vesting.no_balances"
-                                                  })
-                                              )
-                                    );
-                                }
-                            }
-                        ]),
-                        t
-                    );
-                })();
-            (_.VestingBalance = g), (t.default = _);
-        },
-        72: function(e, t, n) {
-            "use strict";
-            n.d(t, "b", function() {
-                return _;
-            }),
-                n.d(t, "a", function() {
-                    return g;
-                });
-            var a = n(0),
-                i = n.n(a),
-                r = n(2),
-                o = n.n(r),
-                s = (n(1), n(9)),
-                c = n.n(s),
-                l = n(15),
-                u = n(10),
-                p = n(8),
-                m = n(3),
-                b = n.n(m),
-                d = (function() {
-                    function e(e, t) {
-                        for (var n = 0; n < t.length; n++) {
-                            var a = t[n];
-                            (a.enumerable = a.enumerable || !1),
-                                (a.configurable = !0),
-                                "value" in a && (a.writable = !0),
-                                Object.defineProperty(e, a.key, a);
-                        }
-                    }
-                    return function(t, n, a) {
-                        return n && e(t.prototype, n), a && e(t, a), t;
-                    };
-                })();
-            function f(e, t) {
-                if (!(e instanceof t))
-                    throw new TypeError("Cannot call a class as a function");
-            }
-            function h(e, t) {
-                if (!e)
-                    throw new ReferenceError(
-                        "this hasn't been initialised - super() hasn't been called"
-                    );
-                return !t || ("object" != typeof t && "function" != typeof t)
-                    ? e
-                    : t;
-            }
-            function v(e, t) {
-                if ("function" != typeof t && null !== t)
-                    throw new TypeError(
-                        "Super expression must either be null or a function, not " +
-                            typeof t
-                    );
-                (e.prototype = Object.create(t && t.prototype, {
-                    constructor: {
-                        value: e,
-                        enumerable: !1,
-                        writable: !0,
-                        configurable: !0
-                    }
-                })),
-                    t &&
-                        (Object.setPrototypeOf
-                            ? Object.setPrototypeOf(e, t)
-                            : (e.__proto__ = t));
-            }
-            var g = (function(e) {
+            var s = (function(e) {
                 function t() {
                     return (
-                        f(this, t),
-                        h(
+                        (function(e, t) {
+                            if (!(e instanceof t))
+                                throw new TypeError(
+                                    "Cannot call a class as a function"
+                                );
+                        })(this, t),
+                        (function(e, t) {
+                            if (!e)
+                                throw new ReferenceError(
+                                    "this hasn't been initialised - super() hasn't been called"
+                                );
+                            return !t ||
+                                ("object" != typeof t && "function" != typeof t)
+                                ? e
+                                : t;
+                        })(
                             this,
                             (t.__proto__ || Object.getPrototypeOf(t)).apply(
                                 this,
@@ -559,314 +50,579 @@
                     );
                 }
                 return (
-                    v(t, i.a.Component),
-                    d(t, [
+                    (function(e, t) {
+                        if ("function" != typeof t && null !== t)
+                            throw new TypeError(
+                                "Super expression must either be null or a function, not " +
+                                    typeof t
+                            );
+                        (e.prototype = Object.create(t && t.prototype, {
+                            constructor: {
+                                value: e,
+                                enumerable: !1,
+                                writable: !0,
+                                configurable: !0
+                            }
+                        })),
+                            t &&
+                                (Object.setPrototypeOf
+                                    ? Object.setPrototypeOf(e, t)
+                                    : (e.__proto__ = t));
+                    })(t, r.a.Component),
+                    c(t, [
                         {
                             key: "render",
                             value: function() {
-                                var e = this.props,
-                                    t = e.isActive,
-                                    n = e.index,
-                                    a = e.changeTab,
-                                    r = e.title,
-                                    o = e.className,
-                                    s = e.updatedTab,
-                                    l = e.disabled,
-                                    u = e.subText,
-                                    p = c()({"is-active": t}, o);
-                                return (
-                                    "string" == typeof r &&
-                                        r.indexOf(".") > 0 &&
-                                        (r = b.a.translate(r)),
-                                    this.props.collapsed
-                                        ? ("string" == typeof u &&
-                                              (u = u.trim()),
-                                          i.a.createElement(
-                                              "option",
-                                              {
-                                                  value: n,
-                                                  "data-is-link-to": this.props
-                                                      .isLinkTo
-                                              },
-                                              i.a.createElement(
-                                                  "span",
-                                                  {className: "tab-title"},
-                                                  r,
-                                                  s ? "*" : "",
-                                                  u && " (",
-                                                  u && u,
-                                                  u && ")"
-                                              )
-                                          ))
-                                        : i.a.createElement(
-                                              "li",
-                                              {
-                                                  className: p,
-                                                  onClick: l
-                                                      ? null
-                                                      : a.bind(
-                                                            this,
-                                                            n,
-                                                            this.props.isLinkTo
-                                                        )
-                                              },
-                                              i.a.createElement(
-                                                  "a",
-                                                  null,
-                                                  i.a.createElement(
-                                                      "span",
-                                                      {className: "tab-title"},
-                                                      r,
-                                                      s ? "*" : ""
-                                                  ),
-                                                  u &&
-                                                      i.a.createElement(
-                                                          "div",
-                                                          {
-                                                              className:
-                                                                  "tab-subtext"
-                                                          },
-                                                          u
-                                                      )
-                                              )
-                                          )
+                                var e = this.props.witness.get(
+                                    "witness_account"
                                 );
+                                return r.a.createElement(l.a, {account: e});
                             }
                         }
                     ]),
                     t
                 );
             })();
-            (g.propTypes = {
-                changeTab: o.a.func,
-                isActive: o.a.bool.isRequired,
-                index: o.a.number.isRequired,
-                className: o.a.string,
-                isLinkTo: o.a.string,
-                subText: o.a.oneOfType([o.a.object, o.a.string])
-            }),
-                (g.defaultProps = {
-                    isActive: !1,
-                    index: 0,
-                    className: "",
-                    isLinkTo: "",
-                    subText: null
-                });
-            var _ = (function(e) {
-                function t(e) {
-                    f(this, t);
-                    var n = h(
-                        this,
-                        (t.__proto__ || Object.getPrototypeOf(t)).call(this)
+            (s.propTypes = {witness: a.a.ChainObject.isRequired}),
+                (s = Object(i.a)(s)),
+                (t.a = s);
+        },
+        4998: function(e, t, n) {
+            "use strict";
+            n.r(t);
+            var o = n(0),
+                r = n.n(o),
+                a = n(93),
+                i = n(51),
+                l = n.n(i),
+                c = n(2),
+                s = n.n(c),
+                u = n(79),
+                p = n(7),
+                f = n.n(p),
+                h = n(181),
+                b = n(391),
+                m = n(1),
+                y = n.n(m),
+                v = n(6),
+                k = n(13),
+                d = n(352),
+                g = (function() {
+                    function e(e, t) {
+                        for (var n = 0; n < t.length; n++) {
+                            var o = t[n];
+                            (o.enumerable = o.enumerable || !1),
+                                (o.configurable = !0),
+                                "value" in o && (o.writable = !0),
+                                Object.defineProperty(e, o.key, o);
+                        }
+                    }
+                    return function(t, n, o) {
+                        return n && e(t.prototype, n), o && e(t, o), t;
+                    };
+                })();
+            function w(e, t) {
+                if (!(e instanceof t))
+                    throw new TypeError("Cannot call a class as a function");
+            }
+            function _(e, t) {
+                if (!e)
+                    throw new ReferenceError(
+                        "this hasn't been initialised - super() hasn't been called"
                     );
+                return !t || ("object" != typeof t && "function" != typeof t)
+                    ? e
+                    : t;
+            }
+            function E(e, t) {
+                if ("function" != typeof t && null !== t)
+                    throw new TypeError(
+                        "Super expression must either be null or a function, not " +
+                            typeof t
+                    );
+                (e.prototype = Object.create(t && t.prototype, {
+                    constructor: {
+                        value: e,
+                        enumerable: !1,
+                        writable: !0,
+                        configurable: !0
+                    }
+                })),
+                    t &&
+                        (Object.setPrototypeOf
+                            ? Object.setPrototypeOf(e, t)
+                            : (e.__proto__ = t));
+            }
+            var O = (function(e) {
+                    function t() {
+                        return (
+                            w(this, t),
+                            _(
+                                this,
+                                (t.__proto__ || Object.getPrototypeOf(t)).apply(
+                                    this,
+                                    arguments
+                                )
+                            )
+                        );
+                    }
                     return (
-                        (n.state = {
-                            activeTab: e.setting
-                                ? e.viewSettings.get(
-                                      e.setting,
-                                      e.defaultActiveTab
-                                  )
-                                : e.defaultActiveTab,
-                            width: window.innerWidth
-                        }),
-                        (n._setDimensions = n._setDimensions.bind(n)),
-                        n
+                        E(t, r.a.Component),
+                        g(t, [
+                            {
+                                key: "shouldComponentUpdate",
+                                value: function(e) {
+                                    return e.block.id !== this.props.block.id;
+                                }
+                            },
+                            {
+                                key: "render",
+                                value: function() {
+                                    var e = this.props.block,
+                                        t = null;
+                                    return (
+                                        (t = []),
+                                        e.transactions.length > 0 &&
+                                            ((t = []),
+                                            e.transactions.forEach(function(
+                                                e,
+                                                n
+                                            ) {
+                                                t.push(
+                                                    r.a.createElement(b.a, {
+                                                        key: n,
+                                                        trx: e,
+                                                        index: n
+                                                    })
+                                                );
+                                            })),
+                                        r.a.createElement("div", null, t)
+                                    );
+                                }
+                            }
+                        ]),
+                        t
+                    );
+                })(),
+                j = (function(e) {
+                    function t(e) {
+                        w(this, t);
+                        var n = _(
+                            this,
+                            (t.__proto__ || Object.getPrototypeOf(t)).call(
+                                this,
+                                e
+                            )
+                        );
+                        return (n.state = {showInput: !1}), n;
+                    }
+                    return (
+                        E(t, r.a.Component),
+                        g(t, [
+                            {
+                                key: "componentDidMount",
+                                value: function() {
+                                    this._getBlock(this.props.height);
+                                }
+                            },
+                            {
+                                key: "componentWillReceiveProps",
+                                value: function(e) {
+                                    e.height !== this.props.height &&
+                                        this._getBlock(e.height);
+                                }
+                            },
+                            {
+                                key: "shouldComponentUpdate",
+                                value: function(e, t) {
+                                    return (
+                                        !f.a.is(e.blocks, this.props.blocks) ||
+                                        e.height !== this.props.height ||
+                                        e.dynGlobalObject !==
+                                            this.props.dynGlobalObject ||
+                                        t.showInput !== this.state.showInput
+                                    );
+                                }
+                            },
+                            {
+                                key: "_getBlock",
+                                value: function(e) {
+                                    e &&
+                                        ((e = parseInt(e, 10)),
+                                        this.props.blocks.get(e) ||
+                                            h.a.getBlock(e));
+                                }
+                            },
+                            {
+                                key: "_nextBlock",
+                                value: function() {
+                                    var e = this.props.params.height,
+                                        t = Math.min(
+                                            this.props.dynGlobalObject.get(
+                                                "head_block_number"
+                                            ),
+                                            parseInt(e, 10) + 1
+                                        );
+                                    this.props.router.push("/block/" + t);
+                                }
+                            },
+                            {
+                                key: "_previousBlock",
+                                value: function() {
+                                    var e = this.props.params.height,
+                                        t = Math.max(1, parseInt(e, 10) - 1);
+                                    this.props.router.push("/block/" + t);
+                                }
+                            },
+                            {
+                                key: "toggleInput",
+                                value: function(e) {
+                                    e.preventDefault(),
+                                        this.setState({showInput: !0});
+                                }
+                            },
+                            {
+                                key: "_onKeyDown",
+                                value: function(e) {
+                                    e &&
+                                        13 === e.keyCode &&
+                                        (this.props.router.push(
+                                            "/block/" + e.target.value
+                                        ),
+                                        this.setState({showInput: !1}));
+                                }
+                            },
+                            {
+                                key: "_onSubmit",
+                                value: function() {
+                                    var e = this.refs.blockInput.value;
+                                    e &&
+                                        this._onKeyDown({
+                                            keyCode: 13,
+                                            target: {value: e}
+                                        });
+                                }
+                            },
+                            {
+                                key: "render",
+                                value: function() {
+                                    var e = this.state.showInput,
+                                        t = this.props.blocks,
+                                        n = parseInt(this.props.height, 10),
+                                        o = t.get(n),
+                                        a = e
+                                            ? r.a.createElement(
+                                                  "span",
+                                                  {className: "inline-label"},
+                                                  r.a.createElement("input", {
+                                                      ref: "blockInput",
+                                                      type: "number",
+                                                      onKeyDown: this._onKeyDown.bind(
+                                                          this
+                                                      )
+                                                  }),
+                                                  r.a.createElement(
+                                                      "button",
+                                                      {
+                                                          onClick: this._onSubmit.bind(
+                                                              this
+                                                          ),
+                                                          className: "button"
+                                                      },
+                                                      r.a.createElement(y.a, {
+                                                          content:
+                                                              "explorer.block.go_to"
+                                                      })
+                                                  )
+                                              )
+                                            : r.a.createElement(
+                                                  "span",
+                                                  null,
+                                                  r.a.createElement(y.a, {
+                                                      style: {
+                                                          textTransform:
+                                                              "uppercase"
+                                                      },
+                                                      component: "span",
+                                                      content:
+                                                          "explorer.block.title"
+                                                  }),
+                                                  r.a.createElement(
+                                                      "a",
+                                                      {
+                                                          onClick: this.toggleInput.bind(
+                                                              this
+                                                          )
+                                                      },
+                                                      " #",
+                                                      n
+                                                  )
+                                              );
+                                    return r.a.createElement(
+                                        "div",
+                                        {className: "grid-block page-layout"},
+                                        r.a.createElement(
+                                            "div",
+                                            {
+                                                className:
+                                                    "grid-block main-content"
+                                            },
+                                            r.a.createElement(
+                                                "div",
+                                                {className: "grid-content"},
+                                                r.a.createElement(
+                                                    "div",
+                                                    {
+                                                        className:
+                                                            "grid-content no-overflow medium-offset-2 medium-8 large-offset-3 large-6 small-12"
+                                                    },
+                                                    r.a.createElement(
+                                                        "h4",
+                                                        {
+                                                            className:
+                                                                "text-center"
+                                                        },
+                                                        a
+                                                    ),
+                                                    r.a.createElement(
+                                                        "ul",
+                                                        null,
+                                                        r.a.createElement(
+                                                            "li",
+                                                            null,
+                                                            r.a.createElement(
+                                                                y.a,
+                                                                {
+                                                                    component:
+                                                                        "span",
+                                                                    content:
+                                                                        "explorer.block.date"
+                                                                }
+                                                            ),
+                                                            ":",
+                                                            " ",
+                                                            o
+                                                                ? r.a.createElement(
+                                                                      u.a,
+                                                                      {
+                                                                          value:
+                                                                              o.timestamp,
+                                                                          format:
+                                                                              "full"
+                                                                      }
+                                                                  )
+                                                                : null
+                                                        ),
+                                                        r.a.createElement(
+                                                            "li",
+                                                            null,
+                                                            r.a.createElement(
+                                                                y.a,
+                                                                {
+                                                                    component:
+                                                                        "span",
+                                                                    content:
+                                                                        "explorer.block.witness"
+                                                                }
+                                                            ),
+                                                            ":",
+                                                            " ",
+                                                            o
+                                                                ? r.a.createElement(
+                                                                      d.a,
+                                                                      {
+                                                                          witness:
+                                                                              o.witness
+                                                                      }
+                                                                  )
+                                                                : null
+                                                        ),
+                                                        r.a.createElement(
+                                                            "li",
+                                                            null,
+                                                            r.a.createElement(
+                                                                y.a,
+                                                                {
+                                                                    component:
+                                                                        "span",
+                                                                    content:
+                                                                        "explorer.block.previous"
+                                                                }
+                                                            ),
+                                                            ": ",
+                                                            o
+                                                                ? o.previous
+                                                                : null
+                                                        ),
+                                                        r.a.createElement(
+                                                            "li",
+                                                            null,
+                                                            r.a.createElement(
+                                                                y.a,
+                                                                {
+                                                                    component:
+                                                                        "span",
+                                                                    content:
+                                                                        "explorer.block.transactions"
+                                                                }
+                                                            ),
+                                                            ":",
+                                                            " ",
+                                                            o
+                                                                ? o.transactions
+                                                                      .length
+                                                                : null
+                                                        )
+                                                    ),
+                                                    r.a.createElement(
+                                                        "div",
+                                                        {
+                                                            className:
+                                                                "clearfix",
+                                                            style: {
+                                                                marginBottom:
+                                                                    "1rem"
+                                                            }
+                                                        },
+                                                        r.a.createElement(
+                                                            "div",
+                                                            {
+                                                                className:
+                                                                    "button float-left outline",
+                                                                onClick: this._previousBlock.bind(
+                                                                    this
+                                                                )
+                                                            },
+                                                            "←"
+                                                        ),
+                                                        r.a.createElement(
+                                                            "div",
+                                                            {
+                                                                className:
+                                                                    "button float-right outline",
+                                                                onClick: this._nextBlock.bind(
+                                                                    this
+                                                                )
+                                                            },
+                                                            "→"
+                                                        )
+                                                    ),
+                                                    o
+                                                        ? r.a.createElement(O, {
+                                                              block: o
+                                                          })
+                                                        : null
+                                                )
+                                            )
+                                        )
+                                    );
+                                }
+                            }
+                        ]),
+                        t
+                    );
+                })();
+            (j.propTypes = {
+                dynGlobalObject: v.a.ChainObject.isRequired,
+                blocks: s.a.object.isRequired,
+                height: s.a.number.isRequired
+            }),
+                (j.defaultProps = {
+                    dynGlobalObject: "2.1.0",
+                    blocks: {},
+                    height: 1
+                });
+            var x = Object(k.a)(j),
+                C =
+                    Object.assign ||
+                    function(e) {
+                        for (var t = 1; t < arguments.length; t++) {
+                            var n = arguments[t];
+                            for (var o in n)
+                                Object.prototype.hasOwnProperty.call(n, o) &&
+                                    (e[o] = n[o]);
+                        }
+                        return e;
+                    },
+                P = (function() {
+                    function e(e, t) {
+                        for (var n = 0; n < t.length; n++) {
+                            var o = t[n];
+                            (o.enumerable = o.enumerable || !1),
+                                (o.configurable = !0),
+                                "value" in o && (o.writable = !0),
+                                Object.defineProperty(e, o.key, o);
+                        }
+                    }
+                    return function(t, n, o) {
+                        return n && e(t.prototype, n), o && e(t, o), t;
+                    };
+                })();
+            var I = (function(e) {
+                function t() {
+                    return (
+                        (function(e, t) {
+                            if (!(e instanceof t))
+                                throw new TypeError(
+                                    "Cannot call a class as a function"
+                                );
+                        })(this, t),
+                        (function(e, t) {
+                            if (!e)
+                                throw new ReferenceError(
+                                    "this hasn't been initialised - super() hasn't been called"
+                                );
+                            return !t ||
+                                ("object" != typeof t && "function" != typeof t)
+                                ? e
+                                : t;
+                        })(
+                            this,
+                            (t.__proto__ || Object.getPrototypeOf(t)).apply(
+                                this,
+                                arguments
+                            )
+                        )
                     );
                 }
                 return (
-                    v(t, i.a.Component),
-                    d(t, [
-                        {
-                            key: "componentDidMount",
-                            value: function() {
-                                this._setDimensions(),
-                                    window.addEventListener(
-                                        "resize",
-                                        this._setDimensions,
-                                        {capture: !1, passive: !0}
-                                    );
+                    (function(e, t) {
+                        if ("function" != typeof t && null !== t)
+                            throw new TypeError(
+                                "Super expression must either be null or a function, not " +
+                                    typeof t
+                            );
+                        (e.prototype = Object.create(t && t.prototype, {
+                            constructor: {
+                                value: e,
+                                enumerable: !1,
+                                writable: !0,
+                                configurable: !0
                             }
-                        },
-                        {
-                            key: "componentWillReceiveProps",
-                            value: function(e) {
-                                var t = e.viewSettings.get(e.setting);
-                                t !==
-                                    this.props.viewSettings.get(
-                                        this.props.setting
-                                    ) && this.setState({activeTab: t});
-                            }
-                        },
-                        {
-                            key: "componentWillUnmount",
-                            value: function() {
-                                window.removeEventListener(
-                                    "resize",
-                                    this._setDimensions
-                                );
-                            }
-                        },
-                        {
-                            key: "_setDimensions",
-                            value: function() {
-                                var e = window.innerWidth;
-                                e !== this.state.width &&
-                                    this.setState({width: e});
-                            }
-                        },
-                        {
-                            key: "_changeTab",
-                            value: function(e, t) {
-                                e !== this.state.activeTab &&
-                                    ("" === t
-                                        ? (this.props.setting &&
-                                              u.a.changeViewSetting(
-                                                  (function(e, t, n) {
-                                                      return (
-                                                          t in e
-                                                              ? Object.defineProperty(
-                                                                    e,
-                                                                    t,
-                                                                    {
-                                                                        value: n,
-                                                                        enumerable: !0,
-                                                                        configurable: !0,
-                                                                        writable: !0
-                                                                    }
-                                                                )
-                                                              : (e[t] = n),
-                                                          e
-                                                      );
-                                                  })({}, this.props.setting, e)
-                                              ),
-                                          this.setState({activeTab: e}),
-                                          this.props.onChangeTab &&
-                                              this.props.onChangeTab(e))
-                                        : this.context.router.push(t));
-                            }
-                        },
+                        })),
+                            t &&
+                                (Object.setPrototypeOf
+                                    ? Object.setPrototypeOf(e, t)
+                                    : (e.__proto__ = t));
+                    })(t, r.a.Component),
+                    P(t, [
                         {
                             key: "render",
                             value: function() {
-                                var e = this,
-                                    t = this.props,
-                                    n = t.children,
-                                    a = t.contentClass,
-                                    r = t.tabsClass,
-                                    o = t.style,
-                                    s = t.segmented,
-                                    l =
-                                        this.state.width < 900 &&
-                                        i.a.Children.count(n) > 2,
-                                    u = null,
-                                    p = i.a.Children.map(n, function(t, n) {
-                                        if (!t) return null;
-                                        if (l && t.props.disabled) return null;
-                                        var a = n === e.state.activeTab;
-                                        return (
-                                            a && (u = t.props.children),
-                                            i.a.cloneElement(t, {
-                                                collapsed: l,
-                                                isActive: a,
-                                                changeTab: e._changeTab.bind(e),
-                                                index: n
-                                            })
-                                        );
-                                    }).filter(function(e) {
-                                        return null !== e;
-                                    });
-                                return (
-                                    u || (u = p[0].props.children),
-                                    i.a.createElement(
-                                        "div",
-                                        {
-                                            className: c()(
-                                                this.props.actionButtons
-                                                    ? "with-buttons"
-                                                    : "",
-                                                this.props.className
-                                            )
-                                        },
-                                        i.a.createElement(
-                                            "div",
-                                            {className: "service-selector"},
-                                            i.a.createElement(
-                                                "ul",
-                                                {
-                                                    style: o,
-                                                    className: c()(
-                                                        "button-group no-margin",
-                                                        r,
-                                                        {segmented: s}
-                                                    )
-                                                },
-                                                l
-                                                    ? i.a.createElement(
-                                                          "li",
-                                                          {
-                                                              style: {
-                                                                  paddingLeft: 10,
-                                                                  paddingRight: 10,
-                                                                  minWidth:
-                                                                      "15rem"
-                                                              }
-                                                          },
-                                                          i.a.createElement(
-                                                              "select",
-                                                              {
-                                                                  value: this
-                                                                      .state
-                                                                      .activeTab,
-                                                                  style: {
-                                                                      marginTop: 10,
-                                                                      marginBottom: 10
-                                                                  },
-                                                                  className:
-                                                                      "bts-select",
-                                                                  onChange: function(
-                                                                      t
-                                                                  ) {
-                                                                      var n = parseInt(
-                                                                          t
-                                                                              .target
-                                                                              .value,
-                                                                          10
-                                                                      );
-                                                                      e._changeTab(
-                                                                          n,
-                                                                          t
-                                                                              .target[
-                                                                              n
-                                                                          ]
-                                                                              .attributes[
-                                                                              "data-is-link-to"
-                                                                          ]
-                                                                              .value
-                                                                      );
-                                                                  }
-                                                              },
-                                                              p
-                                                          )
-                                                      )
-                                                    : p,
-                                                this.props.actionButtons
-                                                    ? i.a.createElement(
-                                                          "li",
-                                                          {
-                                                              className:
-                                                                  "tabs-action-buttons"
-                                                          },
-                                                          this.props
-                                                              .actionButtons
-                                                      )
-                                                    : null
-                                            )
-                                        ),
-                                        i.a.createElement(
-                                            "div",
-                                            {className: c()("tab-content", a)},
-                                            u
-                                        )
+                                var e = parseInt(this.props.params.height, 10);
+                                return r.a.createElement(
+                                    l.a,
+                                    {
+                                        stores: [a.a],
+                                        inject: {
+                                            blocks: function() {
+                                                return a.a.getState().blocks;
+                                            }
+                                        }
+                                    },
+                                    r.a.createElement(
+                                        x,
+                                        C({}, this.props, {height: e})
                                     )
                                 );
                             }
@@ -875,27 +631,7 @@
                     t
                 );
             })();
-            (_.propTypes = {
-                setting: o.a.string,
-                defaultActiveTab: o.a.number,
-                segmented: o.a.bool
-            }),
-                (_.defaultProps = {
-                    active: 0,
-                    defaultActiveTab: 0,
-                    segmented: !0,
-                    contentClass: "",
-                    style: {}
-                }),
-                (_.contextTypes = {router: o.a.object.isRequired}),
-                (_ = Object(l.connect)(_, {
-                    listenTo: function() {
-                        return [p.a];
-                    },
-                    getProps: function() {
-                        return {viewSettings: p.a.getState().viewSettings};
-                    }
-                }));
+            t.default = I;
         }
     }
 ]);

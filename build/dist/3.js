@@ -1,13 +1,12 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
     [3],
     {
-        4980: function(e, t, n) {
+        4982: function(e, t, n) {
             "use strict";
             n.r(t);
-            var r = n(292),
-                o = n(0),
-                a = n.n(o),
-                c = n(69),
+            var r = n(0),
+                o = n.n(r),
+                a = n(69),
                 i = (function() {
                     function e(e, t) {
                         for (var n = 0; n < t.length; n++) {
@@ -22,7 +21,7 @@
                         return n && e(t.prototype, n), r && e(t, r), t;
                     };
                 })();
-            var u = (function(e) {
+            var c = (function(e) {
                 function t() {
                     return (
                         (function(e, t) {
@@ -68,38 +67,15 @@
                                 (Object.setPrototypeOf
                                     ? Object.setPrototypeOf(e, t)
                                     : (e.__proto__ = t));
-                    })(t, a.a.Component),
+                    })(t, o.a.Component),
                     i(t, [
                         {
                             key: "render",
                             value: function() {
-                                var e = Object(r.a)(this.props.params)
-                                    .map(function(e) {
-                                        return e[1];
-                                    })
-                                    .join("/");
-                                return a.a.createElement(
+                                return o.a.createElement(
                                     "div",
-                                    {className: "content"},
-                                    a.a.createElement(
-                                        "div",
-                                        {className: "faq"},
-                                        a.a.createElement(
-                                            "div",
-                                            {className: "container-fluid"},
-                                            a.a.createElement(
-                                                "div",
-                                                {className: "row"},
-                                                a.a.createElement(
-                                                    "div",
-                                                    {className: "col-md-8"},
-                                                    a.a.createElement(c.a, {
-                                                        path: e || "index"
-                                                    })
-                                                )
-                                            )
-                                        )
-                                    )
+                                    {className: "sidebar"},
+                                    o.a.createElement(a.a, {path: "toc"})
                                 );
                             }
                         }
@@ -107,7 +83,7 @@
                     t
                 );
             })();
-            t.default = u;
+            t.default = c;
         }
     }
 ]);

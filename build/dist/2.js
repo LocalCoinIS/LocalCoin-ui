@@ -1,12 +1,13 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
     [2],
     {
-        4979: function(e, t, n) {
+        4983: function(e, t, n) {
             "use strict";
             n.r(t);
-            var r = n(0),
-                o = n.n(r),
-                a = n(69),
+            var r = n(288),
+                o = n(0),
+                a = n.n(o),
+                c = n(69),
                 i = (function() {
                     function e(e, t) {
                         for (var n = 0; n < t.length; n++) {
@@ -21,7 +22,7 @@
                         return n && e(t.prototype, n), r && e(t, r), t;
                     };
                 })();
-            var c = (function(e) {
+            var u = (function(e) {
                 function t() {
                     return (
                         (function(e, t) {
@@ -67,15 +68,38 @@
                                 (Object.setPrototypeOf
                                     ? Object.setPrototypeOf(e, t)
                                     : (e.__proto__ = t));
-                    })(t, o.a.Component),
+                    })(t, a.a.Component),
                     i(t, [
                         {
                             key: "render",
                             value: function() {
-                                return o.a.createElement(
+                                var e = Object(r.a)(this.props.params)
+                                    .map(function(e) {
+                                        return e[1];
+                                    })
+                                    .join("/");
+                                return a.a.createElement(
                                     "div",
-                                    {className: "sidebar"},
-                                    o.a.createElement(a.a, {path: "toc"})
+                                    {className: "content"},
+                                    a.a.createElement(
+                                        "div",
+                                        {className: "faq"},
+                                        a.a.createElement(
+                                            "div",
+                                            {className: "container-fluid"},
+                                            a.a.createElement(
+                                                "div",
+                                                {className: "row"},
+                                                a.a.createElement(
+                                                    "div",
+                                                    {className: "col-md-8"},
+                                                    a.a.createElement(c.a, {
+                                                        path: e || "index"
+                                                    })
+                                                )
+                                            )
+                                        )
+                                    )
                                 );
                             }
                         }
@@ -83,7 +107,7 @@
                     t
                 );
             })();
-            t.default = c;
+            t.default = u;
         }
     }
 ]);
