@@ -967,11 +967,10 @@ class Header extends React.Component {
                                 this,
                                 "/settings/general"
                             )}
-                        >
-                            <img
-                                className="settings__icon"
-                                src="asset-symbols/settings.svg"
-                                alt="settings"
+                        >    <img
+                                className="lock__icon"
+                                src={settingsIcon}
+                                alt="lock"
                             />
                         </a>
                         {/* {currentAccount ? (
