@@ -12,7 +12,7 @@ import {connect, supplyFluxContext} from "alt-react";
 import {IntlProvider} from "react-intl";
 import SyncError from "./components/SyncError";
 import DynamicDataTip from "./components/DynamicDataTip";
-import RoutingEvents from "./components/RoutingEvents";
+//import RoutingEvents from "./components/RoutingEvents";
 import FastLoader from "./components/FastLoader";
 import DelayedExecution from "./components/DelayedExecution";
 import LoadingIndicator from "./components/LoadingIndicator";
@@ -405,12 +405,12 @@ class Root extends React.Component {
 
         //new DynamicDataTip().register();
 
-        var self = this;
+/*         var self = this;
         let re = new RoutingEvents(this.props.router);
         re.register();
         setInterval(function() {
             re.updateRouter(self.props.router);
-        }, 500);
+        }, 500); */
 
         document.fastLoader = new FastLoader();
         document.delayedExecution = new DelayedExecution();
