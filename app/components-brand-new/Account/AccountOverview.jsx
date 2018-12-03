@@ -297,7 +297,7 @@ class AccountOverview extends React.Component {
                     <a onClick={this.onShowModal}>
                         <PulseIcon
                             onIcon="dollar"
-                            offIcon="dollar-green"
+                        //    offIcon="dollar-green"
                             title="icons.dollar.buy"
                             duration={1000}
                             className="icon-14px"
