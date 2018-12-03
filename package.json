@@ -41,7 +41,7 @@
     "prepare-electron": "copyfiles -f resources/*.js build/electron/",
     "postbuild-electron": "npm run prepare-electron",
     "postbuild-electron-nougly": "npm run prepare-electron",
-    "build-win32": "cross-env NODE_ENV=production && webpack --env.prod --progress --colors &&  echo 'copying to electron/build..' &&  xcopy dist ..\\electron\\build /s /e /y && echo 'done.'",    
+    "build-win32": "cross-env NODE_ENV=production && webpack --env.prod --progress --colors &&  echo 'copying to electron/build..' &&  xcopy dist ..\\electron\\build /s /e /y && echo 'done.'",
     "prepackage": "npm run build-electron",
     "prepackage-no-ugly": "npm run build-electron-nougly",
     "package": "build -p never",

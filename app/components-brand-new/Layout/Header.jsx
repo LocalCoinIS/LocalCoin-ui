@@ -970,7 +970,7 @@ class Header extends React.Component {
                         >
                             <img
                                 className="settings__icon"
-                                src="/asset-symbols/settings.svg"
+                                src="asset-symbols/settings.svg"
                                 alt="settings"
                             />
                         </a>
