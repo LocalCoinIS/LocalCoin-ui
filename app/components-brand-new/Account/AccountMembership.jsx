@@ -120,7 +120,7 @@ class AccountMembership extends React.Component {
             expiration_date = "N/A";
 
         return (
-            <div className="grid-content" style={{overflowX: "hidden"}}>
+            <div className="grid-content account-membership" style={{overflowX: "hidden"}}>
                 <div className="content-block no-margin">
                     <h3>
                         <Translate content={membership} /> {expiration}
