@@ -24,7 +24,7 @@ import ReactTooltip from "react-tooltip";
 import {Apis} from "bitsharesjs-ws";
 import notify from "actions/NotificationActions";
 import AccountImage from "../../components/Account/AccountImage";
-import Identicon from "../../components/Account/Identicon";
+import Identicon from "../Account/Identicon";
 import {ChainStore} from "bitsharesjs/es";
 import WithdrawModal from "../../components/Modal/WithdrawModalNew";
 import {List} from "immutable";
