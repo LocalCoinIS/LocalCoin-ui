@@ -697,7 +697,7 @@ class AccountVoting extends React.Component {
         );
 
         let proxyInput = (
-            <div style={{width: "50%", maxWidth: 350}}>
+            <div style={{width: "100%", maxWidth: 350}}>
                 <AccountSelector
                     hideImage
                     account={this.state.current_proxy_input}
@@ -764,10 +764,10 @@ class AccountVoting extends React.Component {
                 <div className="dashboard__actions">
                     <div className="container-fluid">
                         <div className="row">
-                            <div className="col-xl-9 col-lg-12">
+                            <div className="col-xl-10 col-lg-12">
                                 {proxyInput}
                             </div>
-                            <div className="col-xl-3 col-lg-6">
+                            <div className="col-xl-2 col-lg-6">
                                 {actionButtons}
                             </div>
                         </div>
@@ -800,10 +800,10 @@ class AccountVoting extends React.Component {
                 <div className="dashboard__actions">
                     <div className="container-fluid">
                         <div className="row">
-                            <div className="col-xl-9 col-lg-12">
+                            <div className="col-xl-10 col-lg-12">
                                 {proxyInput}
                             </div>
-                            <div className="col-xl-3 col-lg-6">
+                            <div className="col-xl-2 col-lg-6">
                                 {actionButtons}
                             </div>
                         </div>
