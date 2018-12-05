@@ -9,7 +9,7 @@ class Tabs extends React.Component {
         defaultActiveTab: null,
         defaultContent: null,
         inner: false,
-        dashboardTabsClass: "",
+        dashboardTabsClass: "testtest",
         buttons: null
     };
 
