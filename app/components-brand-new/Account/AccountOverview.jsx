@@ -1454,7 +1454,7 @@ class AccountOverview extends React.Component {
         ];
         let settleRef = "settlement_modal";
         return (
-            <div>
+            <div className="dashboard-layout">
                 <Tabs
                     items={items}
                     inner={true}
