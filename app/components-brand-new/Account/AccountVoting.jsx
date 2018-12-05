@@ -760,7 +760,7 @@ class AccountVoting extends React.Component {
         );
 
         let tabWitnesses = (
-            <div>
+            <div className="witnesses">
                 <div className="dashboard__actions">
                     <div className="container-fluid">
                         <div className="row">
@@ -796,7 +796,7 @@ class AccountVoting extends React.Component {
         );
 
         let tabCommitteeMembers = (
-            <div>
+            <div className="committee">
                 <div className="dashboard__actions">
                     <div className="container-fluid">
                         <div className="row">
@@ -831,7 +831,7 @@ class AccountVoting extends React.Component {
         );
 
         let tabWorkers = (
-            <div>
+            <div className="workers">
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-xs-12">{actionButtons}</div>
@@ -1042,7 +1042,7 @@ class AccountVoting extends React.Component {
                     items={items}
                     inner={true}
                     hashByConten={true}
-                    dashboardTabsClass="dashboard__tabs permissions small"
+                    dashboardTabsClass="dashboard__tabs permissions small voting-tabs"
                 />
             </div>
         );
