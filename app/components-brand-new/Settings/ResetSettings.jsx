@@ -56,7 +56,6 @@ export default class ResetSettings extends React.Component {
                     style={{
                         height: 60,
                         width: "100%",
-                        paddingTop: 20,
                         marginTop: 20,
                         textAlign: "center",
                         cursor: "pointer"
