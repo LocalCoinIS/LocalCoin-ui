@@ -98,6 +98,25 @@
 			+placeholder
 				opacity: 1
 				font-size: 0
+	textarea
+		width: 100%
+		border-radius: 4px
+		padding: 0 17px
+		background-color: #dce6f2
+		color: #00195b
+		font-size: 15px
+		border: 1px solid #7fafe8
+		+placeholder
+			color: #000
+			opacity: 0.5
+			font-size: 15px
+		&:hover
+			+placeholder
+				color: #00195b
+		&:focus
+			+placeholder
+				opacity: 1
+				font-size: 0
 	.checkbox
 		display: flex
 		align-items: center
@@ -291,7 +310,7 @@
 			font-size: 14px
 			background-color: #dce6f2
 			z-index: 1
-			height: 30px
+			height: 40px
 			border-radius: 4px
 			border: 1px solid #7fafe8
 			cursor: pointer
@@ -356,6 +375,9 @@
 				&:hover
 					background: #dce6f2
 					color: #00195b
+	.dashboard .select .placeholder
+		height: 30px
+
 	ul
 		margin: 10px 0 10px 18px
 		li
