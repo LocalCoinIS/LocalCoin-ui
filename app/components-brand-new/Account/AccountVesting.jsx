@@ -217,7 +217,7 @@ class AccountVesting extends React.Component {
             });
 
         return (
-            <div>
+            <div className="vesting-layout">
                 <h2 className="content__heading">
                     {counterpart.translate("account.vesting.title")}
                 </h2>
