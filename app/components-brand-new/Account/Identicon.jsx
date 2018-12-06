@@ -29,7 +29,6 @@ class Identicon extends Component {
 			<canvas
 				id={this.canvas_id}
 				ref="canvas"
-				style={{ height: '100%', width: '100%' }}
 				width={width * 2}
 				height={height * 2}
 				data-jdenticon-hash={hash}
