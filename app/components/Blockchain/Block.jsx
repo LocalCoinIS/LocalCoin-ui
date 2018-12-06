@@ -194,13 +194,13 @@ class Block extends React.Component {
                                 style={{marginBottom: "1rem"}}
                             >
                                 <div
-                                    className="button float-left outline"
+                                    className="button float-left outline block-navigate"
                                     onClick={this._previousBlock.bind(this)}
                                 >
                                     &#8592;
                                 </div>
                                 <div
-                                    className="button float-right outline"
+                                    className="button float-right outline block-navigate"
                                     onClick={this._nextBlock.bind(this)}
                                 >
                                     &#8594;
