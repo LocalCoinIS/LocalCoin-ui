@@ -122,7 +122,7 @@ class AccountMembership extends React.Component {
         return (
             <div className="grid-content account-membership" style={{overflowX: "hidden"}}>
                 <div className="content-block no-margin">
-                    <h2>
+                    <h2 className="content__heading">
                         <Translate content={membership} /> {expiration}
                     </h2>
                     {member_status === "lifetime" ? null : (

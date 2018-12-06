@@ -232,9 +232,9 @@ class AccountSignedMessages extends React.Component {
         const signmessageContent = (
             <div className="grid-content" style={{overflowX: "hidden"}}>
                 <div className="content-block no-margin">
-                    <h3>
+                    <h2 className="content__heading">
                         <Translate content="account.signedmessages.signmessage" />
-                    </h3>
+                    </h2>
                 </div>
                 <PubKeyInput
                     ref="memo_key"
@@ -282,9 +282,9 @@ class AccountSignedMessages extends React.Component {
         const verifymessageContent = (
             <div className="grid-content" style={{overflowX: "hidden"}}>
                 <div className="content-block no-margin">
-                    <h3>
+                    <h2 className="content__heading">
                         <Translate content="account.signedmessages.verifymessage" />
-                    </h3>
+                    </h2>
                     <div
                         style={{
                             float: "right",
