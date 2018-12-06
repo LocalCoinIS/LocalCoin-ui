@@ -77,7 +77,7 @@ export const settingsAPIs = {
         {url: "wss://localcoin.airdroptelegramknights.io", location: "North America - Canada - Quebec"},
         {url: "wss://helsinki.localcoin.is", location: "Finland - Helsinki"},
         {url: "wss://moscow.localcoin.is", location: "Russia - Moscow"},
-        {url: "wss://ua-dnepro.localcoin.is", location: "Ukraine - Dnp"},
+        {url: "wss://ua-dnepro.localcoin.is", location: "Ukraine - Dnepr"},
         {url: "wss://bts.proxyhosts.info/wss", location: "TEST"}
     ],
     DEFAULT_FAUCET: "https://faucet.localcoin.is", // 2017-12-infrastructure worker proposal
