@@ -634,8 +634,8 @@ class OrderBook extends React.Component {
                 }
             } catch (e) {}
 
-            let totalBidsLength = bidRows.length;
-            let totalAsksLength = askRows.length;
+            let totalBidsLength = 50;//bidRows.length;
+            let totalAsksLength = 50;//askRows.length;
 
             if (!showAllBids) {
                 bidRows.splice(rowCount, bidRows.length);
@@ -961,23 +961,7 @@ class OrderBook extends React.Component {
                             className="order-table table"
                             ref="vertical_sticky_table_up"
                         >
-                            <div className="custom-sticky-header-wrap">
-                                <div className="header-cell left vertical-table-cell-one custom-sticky-header">
-                                    <span className="header-sub-title">
-                                        <AssetName name={baseSymbol} />
-                                    </span>
-                                </div>
-                                <div className="header-cell vertical-table-cell-two custom-sticky-header">
-                                    <span className="header-sub-title">
-                                        <AssetName name={quoteSymbol} />
-                                    </span>
-                                </div>
-                                <div className=" header-cell right vertical-table-cell-three custom-sticky-header">
-                                    <Translate
-                                        className="header-sub-title"
-                                        content="exchange.price"
-                                    />
-                                </div>
+                            <div>
                             </div>
                             <TransitionWrapper
                                 ref="askTransition"
