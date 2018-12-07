@@ -1068,7 +1068,7 @@ class MyMarkets extends React.Component {
                                         fontSize: "0.9rem",
                                         height: "inherit",
                                         position: "relative",
-                                        top: 1,
+                                        top: 7,
                                         padding: 2
                                     }}
                                     type="text"

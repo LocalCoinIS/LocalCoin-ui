@@ -85,8 +85,7 @@ div.bordered-header {
 }
 
 .block-content-header {
-    font-size: 1.4375rem;
-    padding: 1.5rem 0;
+    padding: 1rem 0;
 
     @include breakpoint(small only) {
         font-size: 1.125rem;
