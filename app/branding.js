@@ -27,7 +27,7 @@ export function getWalletURL() {
  */
 export function getFaucet() {
     return {
-        url: "https://faucet.localcoin.is/onboarding", // 2017-12-infrastructure worker proposal
+        url: "https://faucet.localcoin.is/", // 2017-12-infrastructure worker proposal
         show: true,
         editable: false
     };
@@ -38,7 +38,7 @@ export function getFaucet() {
  * @returns {*}
  */
 export function getLogo() {
-    return require("assets/logo-ico-blue.png");
+    return require("assets/brand-new-layout/img/logo.svg");
 }
 
 /**

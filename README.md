@@ -1,37 +1,21 @@
-install
-==========
-1. curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash
-2. nvm install v9
-3. nvm use v9
-
-for developers
-==============
-- staging-new-layout - dev branch
-- live               - release branch
-
-Правила деплоя
+Deployment rules
 ============
-1. sass файлы https://github.com/livehtml/894_gate_is/tree/master/html/sources/sass переносим в проект (app/assets/brand-new-layout/sass)
-2. код нужно скомпилить перед пушем "npm run build"
-3. льем код в тестовую ветку
-4. если верстка на тестовом http://localcoin.n3.by (localcoin/4H0x5H8m) адекватная, мерждим на live, пушим.
+1. Compile "npm run build"
+2. Push your build to dev branch
+3. Check test server http://localcoin.n3.by, if it's ok merge to live branch, push
 
-код подтянется через автодеплой. если нужно будет сделать что-то по ssh, не затри права записи веб-сервера на файлы.
+Build will be autodeployed to the server. Working by ssh, keep in mind proper chown&chmod.
 
-
-BitShares-UI
-=======
 LocalCoin-UI
-[中文版](README_zh.md)
+=======
 
 This is a light wallet that connects to a LocalCoin API provided by the *witness_node* executable.
-
 
 It *stores all keys locally* in the browser, *never exposing your keys to anyone* as it signs transactions locally before transmitting them to the API server which then broadcasts them to the blockchain network. The wallet is encrypted with a password of your choosing and encrypted in a browser database.
 
 ## Getting started
 
-LocalCoin-UI depends node Node.js, and version 6+ is required.
+LocalCoin-UI depends node Node.js, and version 9+ is required.
 
 On Ubuntu and OSX, the easiest way to install Node is to use the [Node Version Manager](https://github.com/creationix/nvm).
 
@@ -39,8 +23,8 @@ To install NVM for Linux/OSX, simply copy paste the following in a terminal:
 
 ```
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash
-nvm install v6
-nvm use v6
+nvm install v9
+nvm use v9
 ```
 
 Once you have Node installed, you can clone the repo:
@@ -66,15 +50,13 @@ Once all the packages have been installed you can start the development server b
 npm start
 ```
 
-Once the compilation is done the GUI will be available in your browser at: `localhost:8080` or `127.0.0.1:8080`. Hot Reloading is enabled so the browser will live update as you edit the source files.
+Once the compilation is done the GUI will be available in your browser at: `localhost:9000` or `127.0.0.1:9000`. Hot Reloading is enabled so the browser will live update as you edit the source files.
 
 
 ## Testnet
-By default localcoin-ui connects to the live LocalCoin network, but it's very easy to switch it to the testnet run by Xeroc. To do so, open the UI in a browser, go to Settings, then under Access, select the *Public Testnet Server* in the dropdown menu. You should also change the faucet if you need to create an account, the testnet faucet address is https://testnet.localcoin.is.
+By default localcoin-ui connects to the live LocalCoin network, but it's very easy to switch it to the testnet. To do so, open the UI in a browser, go to Settings, then under Access, select the *Public Testnet Server* in the dropdown menu. You should also change the faucet if you need to create an account, the testnet faucet address is https://testnet.localcoin.is.
 
 The UI will reload and connect to the testnet, where you can use the faucet to create an account and receive an initial sum of test LLC.
-
-![image](https://cloud.githubusercontent.com/assets/6890015/22055747/f8e15e68-dd5c-11e6-84cd-692749b578d8.png)
 
 ## Production
 If you'd like to host your own wallet somewhere, you should create a production build and host it using NGINX or Apache. In order to create a prod bundle, simply run the following command:
