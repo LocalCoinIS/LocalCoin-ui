@@ -4,6 +4,7 @@ import AssetWrapper from "./AssetWrapper";
 import AssetName from "./AssetName";
 import {coinIcon} from "../../assets/brand-new-layout/img/images";
 
+//require("file-loader?name=asset-symbols/[name].png!./bts.png");
 class LinkToAssetById extends React.Component {
     static defaultProps = {
         showIcon: false

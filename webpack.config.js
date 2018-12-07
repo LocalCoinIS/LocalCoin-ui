@@ -286,7 +286,7 @@ module.exports = function(env) {
                             loader: "url-loader"
                         }
                     ]
-                },
+                },            
                 {
                     test: /.*\.svg$/,
                     use: [
