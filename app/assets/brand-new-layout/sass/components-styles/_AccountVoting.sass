@@ -16,25 +16,42 @@
 		background: transparent!important
 		padding: 4px 5px 0 5px!important
 	.dashboard__actions__filters
-		margin: 0 0 0 480px
+		margin: 0 0 0 430px
 	.dashboard__actions__filters + button
 		margin-left: 0
 	.col-xs-12
 		position: absolute
 		top: 4px
 		right: 15px
+.committee,
+.witnesses
+	.col-xl-2.col-lg-6
+		span[style="float: right;"]
+			display: flex
+			justify-content: flex-end
+			float: none!important
+			white-space: nowrap
+	.col-xl-10.col-lg-12 > div
+		min-width: 350px
+
+.workers
+	.col-xl-3.col-lg-6
+		flex: 0 0 380px
+		max-width: 380px
+		min-width: 380px
+		>div
+			max-width: 380px
 
 
 
 
-
-@media only screen and (max-width : 1680px)
+@media only screen and (max-width : 1750px)
 	.dashboard__tabs.voting-tabs
 		padding-left: 0
 	.workers,
 	.committee,
 	.witnesses
-		.col-xl-3.col-lg-6
+		.col-xl-2.col-lg-6
 			max-width: 350px!important
 			min-width: 350px!important
 			>div
@@ -59,6 +76,13 @@
 			flex: unset
 		.row
 			flex-wrap: nowrap
+	.committee,
+	.witnesses
+		.col-xl-10.col-lg-12
+			flex: auto
+			max-width: none
+	.committee .col-xl-2.col-lg-6 span[style="float: right;"], .witnesses .col-xl-2.col-lg-6 span[style="float: right;"]
+		justify-content: flex-end
 
 @media only screen and (max-width : 1200px)
 	.workers,
@@ -66,13 +90,16 @@
 	.witnesses
 		.row
 			flex-wrap: wrap
-		.col-xl-9.col-lg-12
+		.col-xl-10.col-lg-12
 			padding-top: 10px
 	.committee,
 	.witnesses
-		.col-xl-3.col-lg-6
+		.col-xl-2.col-lg-6
 			max-width: unset!important
 			min-width: unset!important
 			span[style="float: right;"]
 				float: left!important
 				margin-top: 10px
+	.workers
+		.col-xl-3.col-lg-6
+			margin-bottom: 15px
