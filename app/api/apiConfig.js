@@ -74,8 +74,10 @@ export const settingsAPIs = {
             location: {translate: "settings.api_closest"}
         },
         {url: "ws://127.0.0.1:8090", location: "Locally hosted"},
-        {url: "wss://moscow.localcoin.is", location: "Russia - Moscow"},
         {url: "wss://localcoin.airdroptelegramknights.io", location: "North America - Canada - Quebec"},
+        {url: "wss://helsinki.localcoin.is", location: "Finland - Helsinki"},
+        {url: "wss://moscow.localcoin.is", location: "Russia - Moscow"},
+        {url: "wss://ua-dnepro.localcoin.is", location: "Ukraine - Dnepr"},
         {url: "wss://bts.proxyhosts.info/wss", location: "TEST"}
     ],
     DEFAULT_FAUCET: "https://faucet.localcoin.is", // 2017-12-infrastructure worker proposal
