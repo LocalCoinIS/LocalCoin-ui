@@ -297,9 +297,9 @@ module.exports = function(env) {
                             loader: "svgo-loader",
                             options: {
                                 plugins: [
-                                    {cleanupAttrs: true},
-                                    {removeMetadata: true},
-                                    {removeXMLNS: true},
+                                    {cleanupAttrs: false},
+                                    {removeMetadata: false},
+                                    {removeXMLNS: false},
                                     {removeViewBox: false}
                                 ]
                             }
