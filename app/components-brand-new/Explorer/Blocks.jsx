@@ -534,7 +534,7 @@ class Blocks extends React.Component {
                                 }}
                                 ref="operations"
                             >
-                                <table>
+                                <table className="block-info-table">
                                     <tbody>{transactions}</tbody>
                                 </table>
                             </div>
@@ -561,7 +561,7 @@ class Blocks extends React.Component {
                                 }}
                                 ref="blocks"
                             >
-                                <table>
+                                <table className="block-info-recentblocks">
                                     <thead>
                                         <tr>
                                             <th>
@@ -582,7 +582,7 @@ class Blocks extends React.Component {
                                                     content="explorer.block.witness"
                                                 />
                                             </th>
-                                            <th>
+                                            <th className="text-right">
                                                 <Translate
                                                     component="span"
                                                     content="explorer.block.count"

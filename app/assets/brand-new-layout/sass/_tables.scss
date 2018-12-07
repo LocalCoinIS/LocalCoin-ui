@@ -49,3 +49,12 @@
   max-width: 100%;
   width: 100vw;
 }
+
+.block-info-table td, .block-info-recentblocks td {
+  padding: 0 !important;
+  font-size: 12px !important;
+}
+
+.block-info-table td span,  .block-info-recentblocks td span {
+  font-size: 12px !important;
+}
