@@ -1442,7 +1442,7 @@
             "asset_settle_cancel": "Отменить погашение актива",
             "asset_update": "Обновление актива",
             "asset_update_bitasset": "Обновление SmartCoin",
-            "asset_update_feed_producers": "Обновление производителей котировок актива",
+            "asset_update_feed_producers": "Обновление произв. котировок актива",
             "asset_update_issuer": "Обновить эмитента актива",
             "balance_claim": "Взыскание баланса",
             "bid_collateral": "Collateral bid",
