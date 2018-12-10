@@ -74,13 +74,13 @@ export const settingsAPIs = {
             location: {translate: "settings.api_closest"}
         },
         {url: "ws://127.0.0.1:8090", location: "Locally hosted"},
-        {url: "wss://localcoin.airdroptelegramknights.io", location: "North America - Canada - Quebec"},
         {url: "wss://helsinki.localcoin.is", location: "Finland - Helsinki"},
         {url: "wss://moscow.localcoin.is", location: "Russia - Moscow"},
         {url: "wss://ua-dnepro.localcoin.is", location: "Ukraine - Dnepr"},
+        {url: "wss://localcoin.airdroptelegramknights.io", location: "North America - Canada - Quebec"},
         {url: "wss://bts.proxyhosts.info/wss", location: "TEST"}
     ],
-    DEFAULT_FAUCET: "https://faucet.localcoin.is", // 2017-12-infrastructure worker proposal
+    DEFAULT_FAUCET: "https://faucet.localcoin.is", // 2018-12-infrastructure worker proposal
     TESTNET_FAUCET: "https://faucet.testnet.localcoin.is",
     RPC_URL: "https://openledger.info/api/"
 };
