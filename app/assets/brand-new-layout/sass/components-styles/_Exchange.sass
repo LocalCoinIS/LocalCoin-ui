@@ -1,0 +1,89 @@
+
+// Здесь будут все стили касающиеся страницы Exchange.
+//TODO: Как только приведу в порядок ее, разобью на компоненты в соответствии с наименованием.
+
+body.localcoin .order-form .float-right input
+	background-color: #00195b
+
+body.localcoin .exchange-layout .medium-6
+	order: 3
+
+body.localcoin
+	.change-pair
+		position: relative
+		padding: 0!important
+		display: flex
+		align-items: center
+		>div:not(.label-actions)
+			display: flex
+			align-items: center
+			padding-left: 0px!important
+			span,a
+				order: 2
+				.icon.shuffle.shuffle
+					margin: 0 5px
+			a:not([href])
+				order: 1
+				margin-right: 5px
+			>span:nth-child(2)
+				display: none
+			>span:nth-child(3)
+				margin-left: 0px
+				order: 3
+		.label-actions
+			position: absolute
+			top: 12px
+			left: 20px
+			display: flex
+			justify-content: space-between
+			flex-direction: row-reverse
+			width: 102px
+			.stat-text
+					display: none
+	.mymarkets-list.explorer-markets
+		.table.table-hover.text-right
+			td:first-child,
+			th:first-child
+				text-align: left!important
+			td:nth-child(2),
+			th:nth-child(2)
+				width: 22px
+			td
+				font-size: 11px
+				padding: 0 3px!important
+				line-height: 1
+			th
+				padding: 5px 3px 5px 3px!important
+				font-size: 13px!important
+				line-height: 1!important
+				span
+					font-size: 13px!important
+					line-height: 1!important
+	.exchange-layout
+		#sticky-table-column
+			display: none
+		.vertical-table-cell-three
+			width: 75px!important
+		.vertical-table-cell-two
+			width: 105px!important
+		.grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+			.table.table-hover.text-right
+				td
+					font-size: 11px
+					padding: 0 3px!important
+					line-height: 1
+				th
+					padding: 5px 3px 5px 3px!important
+					font-size: 13px!important
+					line-height: 1!important
+					span
+						font-size: 13px!important
+						line-height: 1!important
+
+
+body.localcoin .left-order-book .cell
+	padding: 0 10px 0 0
+
+
+body.localcoin .exchange-layout .medium-6
+	order: 3

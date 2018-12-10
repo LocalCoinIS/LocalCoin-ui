@@ -283,7 +283,7 @@ class OrderBook extends React.Component {
         let margin = 0;
         //set margin header by with left cell bar
         try {
-            margin = maxWidth.one + maxWidth.two + maxWidth.three;
+            margin = maxWidth.one + maxWidth.two + maxWidth.three - 4;
             let header = document.getElementsByClassName(
                 "container-menu-header"
             )[0];
