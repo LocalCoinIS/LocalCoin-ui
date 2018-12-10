@@ -1,3 +1,5 @@
+import { S_IFDIR } from "constants";
+
 export const eBlockchain = require("!file-loader?name=asset-symbols/[name].svg!./e_blockchain.svg");
 export const eAssets = require("!file-loader?name=asset-symbols/[name].svg!./e_assets.svg");
 export const eAccounts = require("!file-loader?name=asset-symbols/[name].svg!./e_accounts.svg");
