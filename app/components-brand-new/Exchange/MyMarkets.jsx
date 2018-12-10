@@ -1229,7 +1229,7 @@ class MyMarkets extends React.Component {
 
                 <div
                     style={listStyle}
-                    className="table-container grid-block vertical mymarkets-list"
+                    className="table-container grid-block vertical mymarkets-list explorer-markets"
                     ref="favorites"
                 >
                     {assetsLoading ? (
