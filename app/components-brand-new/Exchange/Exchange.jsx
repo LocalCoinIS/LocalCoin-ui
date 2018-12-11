@@ -1412,7 +1412,7 @@ class Exchange extends React.Component {
                 isOpen={this.state.buySellOpen}
                 onToggleOpen={this._toggleOpenBuySell.bind(this)}
                 className={cnames(
-                    "small-12 no-padding middle-content",
+                    "small-12 no-padding",
                     leftOrderBook || smallScreen
                         ? "medium-6"
                         : "medium-6 xlarge-4",
@@ -1499,7 +1499,7 @@ class Exchange extends React.Component {
                 isOpen={this.state.buySellOpen}
                 onToggleOpen={this._toggleOpenBuySell.bind(this)}
                 className={cnames(
-                    "small-12 no-padding middle-content",
+                    "small-12 no-padding",
                     leftOrderBook || smallScreen
                         ? "medium-6"
                         : "medium-6 xlarge-4",
@@ -1790,7 +1790,7 @@ class Exchange extends React.Component {
                                         !smallScreen && !leftOrderBook
                                             ? "medium-6 xlarge-4"
                                             : "",
-                                        "no-padding no-overflow middle-content small-12 medium-6 order-5 xlarge-order-3"
+                                        "no-padding no-overflow small-12 medium-6 order-3 xlarge-order-3"
                                     )}
                                     headerStyle={{paddingTop: 0}}
                                     history={activeMarketHistory}
@@ -1839,7 +1839,7 @@ class Exchange extends React.Component {
                                             !smallScreen && !leftOrderBook
                                                 ? "medium-6 xlarge-4"
                                                 : "",
-                                            `small-12 medium-6 no-padding align-spaced ps-container middle-content order-${
+                                            `small-12 medium-6 no-padding align-spaced ps-container order-${
                                                 buySellTop ? 6 : 6
                                             }`
                                         )}

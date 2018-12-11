@@ -579,7 +579,7 @@ class MyOpenOrders extends React.Component {
             >
                 <div
                     className="exchange-bordered small-12"
-                    style={{height: 266}}
+                    style={{height: 336}}
                 >
                     <div className="grid-block shrink left-orderbook-header">
                         <div
