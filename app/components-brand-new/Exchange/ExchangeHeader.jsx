@@ -344,14 +344,6 @@ export default class ExchangeHeader extends React.Component {
                                     >{`${quoteSymbol} : ${baseSymbol}`}</span>
                                 </a>
                             )}
-                            <div className="label-actions">
-                                <Translate
-                                    component="span"
-                                    style={{padding: "5px 0 0 5px"}}
-                                    className="stat-text"
-                                    content="exchange.trading_pair"
-                                />
-                            </div>
                         </div>
                     </div>
 
