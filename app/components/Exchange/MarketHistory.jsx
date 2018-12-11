@@ -261,7 +261,7 @@ class MarketHistory extends React.Component {
                     <div
                         className="table-container grid-block market-right-padding-only no-overflow"
                         ref="history"
-                        style={{maxHeight: 210, overflow: "hidden"}}
+                        style={{maxHeight: 336, overflow: "hidden"}}
                     >
                         <table className="table order-table text-right fixed-table market-right-padding">
                             <TransitionWrapper

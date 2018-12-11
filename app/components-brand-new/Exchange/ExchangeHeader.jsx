@@ -254,7 +254,7 @@ export default class ExchangeHeader extends React.Component {
             <div className="grid-block shrink no-padding overflow-visible top-bar container-menu-header">
                 <div className="grid-block overflow-visible">
                     <div className="grid-block shrink">
-                        <div className="change-pair" style={{padding: "10px"}}>
+                        <div className="change-pair" style={{padding: "5px"}}>
                             {!hasPrediction ? (
                                 <div
                                     style={{
