@@ -1073,7 +1073,7 @@ class OrderBook extends React.Component {
                             </TransitionWrapper>
                         </StickyTable>
                     </div>
-                    <div className="v-align no-padding align-center grid-block footer shrink bottom-header">
+                    <div className="v-align no-padding align-center grid-block footer shrink bottom-header pin">
                         <div onClick={this.props.moveOrderBook}>
                             <Icon
                                 name="thumb-untack"
