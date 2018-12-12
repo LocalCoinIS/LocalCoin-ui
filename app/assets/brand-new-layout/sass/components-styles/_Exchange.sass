@@ -10,37 +10,37 @@ body.localcoin
 		height: auto
 	.sticky-table-header
 		border-bottom: 1px solid #aabfd9
-	.change-pair
-		position: relative
-		padding: 0!important
-		display: flex
-		align-items: center
-		>div:not(.label-actions)
-			display: flex
-			align-items: center
-			padding-left: 0px!important
-			span,a
-				order: 2
-				.icon.shuffle.shuffle
-					margin: 0 5px
-			a:not([href])
-				order: 1
-				margin-right: 5px
-			>span:nth-child(2)
-				display: none
-			>span:nth-child(3)
-				margin-left: 0px
-				order: 3
-		.label-actions
-			position: absolute
-			top: 12px
-			left: 20px
-			display: flex
-			justify-content: space-between
-			flex-direction: row-reverse
-			width: 102px
-			.stat-text
-					display: none
+	// .change-pair
+	// 	position: relative
+	// 	padding: 0!important
+	// 	display: flex
+	// 	align-items: center
+	// 	>div:not(.label-actions)
+	// 		display: flex
+	// 		align-items: center
+	// 		padding-left: 0px!important
+	// 		span,a
+	// 			order: 2
+	// 			.icon.shuffle.shuffle
+	// 				margin: 0 5px
+	// 		a:not([href])
+	// 			order: 1
+	// 			margin-right: 5px
+	// 		>span:nth-child(2)
+	// 			display: none
+	// 		>span:nth-child(3)
+	// 			margin-left: 0px
+	// 			order: 3
+	// 	.label-actions
+	// 		position: absolute
+	// 		top: 12px
+	// 		left: 20px
+	// 		display: flex
+	// 		justify-content: space-between
+	// 		flex-direction: row-reverse
+	// 		width: 102px
+	// 		.stat-text
+	// 				display: none
 	.mymarkets-list.explorer-markets
 		.table.table-hover.text-right
 			td:first-child,
@@ -82,5 +82,13 @@ body.localcoin
 						line-height: 1!important
 
 
+body.localcoin .fixed-table.market-right-padding .orderHistoryAsk .price-integer
+	color: #ea340b
+body.localcoin .fixed-table.market-right-padding .orderHistoryBid .price-integer
+	color: #258a14
+body.localcoin .exchange-bordered.small-12
+	height: 100%
 body.localcoin .left-order-book .cell
 	padding: 0 10px 0 0
+
+
