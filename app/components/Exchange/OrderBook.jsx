@@ -1017,7 +1017,7 @@ class OrderBook extends React.Component {
                                                 className="clickable left"
                                                 onClick={this.toggleSpreadValue}
                                             >
-                                                <Translate content="exchange.spread" />{" "}
+                                                <Translate className="spread-label" content="exchange.spread" />{" "}
                                                 <span className="spread-value">
                                                     {spread}
                                                 </span>
@@ -1026,7 +1026,7 @@ class OrderBook extends React.Component {
                                         &nbsp;&nbsp;
                                         {!!this.props.latest && (
                                             <span className="right">
-                                                <Translate content="exchange.latest" />{" "}
+                                                <Translate className="latest-label" content="exchange.latest" />{" "}
                                                 <span
                                                     className={
                                                         this.props.changeClass

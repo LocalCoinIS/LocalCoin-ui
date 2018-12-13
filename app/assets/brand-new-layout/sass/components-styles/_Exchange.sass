@@ -6,6 +6,18 @@ body.localcoin .order-form .float-right input
 	background-color: #00195b
 
 body.localcoin
+	.exchange-layout 
+		.exchange-bordered.buy-sell-container
+			height: 100%
+		.my-trades
+			height: auto
+			.table
+				th:last-child
+					width: 80px
+			>.exchange-bordered.small-12
+				height: 100%!important
+				>.table-container
+					max-height: 208px!important
 	.left-order-book .top-header
 		height: auto
 	.sticky-table-header
@@ -92,3 +104,29 @@ body.localcoin .left-order-book .cell
 	padding: 0 10px 0 0
 
 
+body.localcoin .left-cell-active  .sticky-table .sticky-table-header,
+body.localcoin .left-cell-active  .sticky-table .sticky-table-corner
+	display: none
+
+body.localcoin .left-cell-active
+	.orderbook-latest-price
+		span.latest-label,
+		span.spread-label,
+		span.spread-value
+			color: #00195b
+body.localcoin .left-cell-active .vertical-orderbook-down  .sticky-table-row.top-header
+	display: none!important
+body.localcoin .left-cell-active .sticky-table .sticky-table-y-wrapper
+	.sticky-table-row
+		display: flex
+	.header-cell
+		display: inline-flex
+		align-items: center
+		justify-content: flex-end
+		padding: 8px 10px 5px 0
+	.custom-sticky-header-wrap
+		display: flex
+		justify-content: flex-end
+		border-bottom: 1px solid #aabfd9
+		span
+			color: #00195b!important

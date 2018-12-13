@@ -1790,7 +1790,7 @@ class Exchange extends React.Component {
                                         !smallScreen && !leftOrderBook
                                             ? "medium-6 xlarge-4"
                                             : "",
-                                        "no-padding no-overflow small-12 medium-6 order-3 xlarge-order-3"
+                                        "no-padding no-overflow small-12 medium-6 order-3 xlarge-order-3 my-trades"
                                     )}
                                     headerStyle={{paddingTop: 0}}
                                     history={activeMarketHistory}
