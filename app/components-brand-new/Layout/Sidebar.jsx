@@ -295,7 +295,7 @@ class Sidebar extends React.Component {
                     type="button"
                     onClick={this._onNavigate.bind(
                         this,
-                        "/create-account/password"
+                        "/create-account/wallet"
                     )}
                 >
                     {counterpart.translate("header.create_account")}

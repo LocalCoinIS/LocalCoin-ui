@@ -268,7 +268,7 @@ class Header extends React.Component {
             return false;
 
         if (!this._currentAccount || !!this._createAccountLink) {
-            this.context.router.push("/create-account/password");
+            this.context.router.push("/create-account/wallet");
             return true;
         }
 
