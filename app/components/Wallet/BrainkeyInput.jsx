@@ -160,12 +160,12 @@ class MisspelledWord extends Component {
         return (
             <span
                 style={{
-                    borderBottom: "1px dotted #ff0000",
+                    borderBottom: "1px dotted #f60404",
                     padding: "1px",
                     margin: "1px"
                 }}
             >
-                <span style={{borderBottom: "1px dotted #ff0000"}}>
+                <span style={{borderBottom: "1px dotted #f60404"}}>
                     {this.props.children}
                 </span>
             </span>

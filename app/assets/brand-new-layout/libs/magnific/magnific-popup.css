@@ -257,8 +257,8 @@ button::-moz-focus-inner {
 }
 
 .mfp-iframe-holder {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 .mfp-iframe-holder .mfp-content {
     line-height: 0;
