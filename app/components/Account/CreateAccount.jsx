@@ -218,7 +218,7 @@ class CreateAccount extends React.Component {
             }
         }
 
-        let buttonClass = classNames("submit-button button no-margin", {
+        let buttonClass = classNames("submit-button button no-margin btn inverted large", {
             disabled: !valid || (registrar_account && !isLTM)
         });
 
@@ -267,7 +267,7 @@ class CreateAccount extends React.Component {
 
                 {/* If this is not the first account, show dropdown for fee payment account */}
                 {firstAccount ? null : (
-                    <div className="full-width-content form-group no-overflow">
+                    <div className="full-width-content form-group">
                         <label>
                             <Translate content="account.pay_from" />
                         </label>
