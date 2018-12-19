@@ -357,7 +357,7 @@ class Create extends Component {
                 )}
                 <div
                     onClick={this.onCreateBackup.bind(this)}
-                    className={cname("button", {disabled: !ready})}
+                    className={cname("button btn large outline", {disabled: !ready})}
                     style={{marginBottom: 10}}
                 >
                     <Translate
