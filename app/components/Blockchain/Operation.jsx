@@ -345,6 +345,9 @@ class Operation extends React.Component {
                                                 arg: "price"
                                             }
                                         ]}
+                                        params={{
+                                            order: orderId
+                                        }}                                        
                                     />
                                 );
                             }}
@@ -1045,6 +1048,9 @@ class Operation extends React.Component {
                                                 arg: "price"
                                             }
                                         ]}
+                                        params={{
+                                            order: o.order_id.substring(4)
+                                        }}                                        
                                     />
                                 );
                             }}

@@ -9,6 +9,7 @@ import SettingsActions from "actions/SettingsActions";
 import WalletUnlockActions from "actions/WalletUnlockActions";
 import ActionSheet from "react-foundation-apps/src/action-sheet";
 import SettingsStore from "stores/SettingsStore";
+import {getWalletName} from "branding";
 import IntlActions from "actions/IntlActions";
 import {
     logo,
@@ -148,6 +149,7 @@ class LoginSelector extends React.Component {
                                 <Translate
                                     content="account.intro_text_title"
                                     component="h4"
+                                    wallet_name={getWalletName()}                                    
                                 />
                                 <Translate
                                     unsafe
