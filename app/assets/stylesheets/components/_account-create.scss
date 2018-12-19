@@ -23,7 +23,7 @@ div.divider {
 div.account-creation {
     width: 300px;
     margin-top: 0.1rem;
-    padding: 1rem 1rem 1rem 1rem;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
 
     p {
         max-width: 95vw;
@@ -46,7 +46,7 @@ div.account-creation {
     }
 
     div.sub-content {
-        padding-top: 2rem;
+        padding-top: 0rem;
         table {
             text-align: left;
         }
@@ -95,7 +95,7 @@ div.account-creation {
         border-right: 6px solid transparent;
         border-top: 4px solid $bs-blue;
         position: absolute;
-        top: 40px;
+        top: 20px;
         right: -2px;
     }
 
