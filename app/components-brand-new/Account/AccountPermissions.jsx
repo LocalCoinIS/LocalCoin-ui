@@ -367,7 +367,7 @@ class AccountPermissions extends React.Component {
         );
 
         let permActive = (
-            <div>
+            <div className="permissions">
                 <div className="row">
                     <div className="col-xl-7">
                         <HelpContent path="components/AccountPermActive" />

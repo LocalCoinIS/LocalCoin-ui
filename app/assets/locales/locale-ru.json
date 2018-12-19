@@ -381,7 +381,7 @@
         }
     },
     "alert": {
-        "warning": "Warning"
+        "warning": "Внимание!!!"
     },
     "app_init": {
         "browser": "Неподдерживаемый браузер",

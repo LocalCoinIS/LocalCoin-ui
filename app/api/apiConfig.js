@@ -76,7 +76,6 @@ export const settingsAPIs = {
         {url: "ws://127.0.0.1:8090", location: "Locally hosted"},
         {url: "wss://helsinki.localcoin.is", location: "Finland - Helsinki"},
         {url: "wss://moscow.localcoin.is", location: "Russia - Moscow"},
-        {url: "wss://ua-dnepro.localcoin.is", location: "Ukraine - Dnepr"},
         {url: "wss://localcoin.airdroptelegramknights.io", location: "North America - Canada - Quebec"},
         {url: "wss://bts.proxyhosts.info/wss", location: "TEST"}
     ],
