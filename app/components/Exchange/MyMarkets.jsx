@@ -828,7 +828,7 @@ class MyMarkets extends React.Component {
                             padding: "0.75rem 0.5rem"
                         }}
                     >
-                        <label style={{margin: "3px 0 0"}}>
+                        <label style={{margin: "0px 0 0"}}>
                             <input
                                 style={{position: "relative", top: 3}}
                                 className="no-margin"
