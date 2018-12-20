@@ -133,7 +133,7 @@ class OrderBookRowHorizontal extends React.Component {
     }
 
     componentDidUpdate() {
-        this.rmLeftCellActive();
+       /* this.rmLeftCellActive();*/
     }
 
     render() {
@@ -366,6 +366,10 @@ class OrderBook extends React.Component {
                 this.psUpdate();
             });
         }
+
+        if (!this.props.horizontal) {
+            this.addLeftCellActive();
+        }
     }
 
     queryStickyTable = query =>
@@ -381,7 +385,7 @@ class OrderBook extends React.Component {
                 "orderBook_componentDidUpdate",
                 function() {
                     self.updateCeilWith();
-                    self.addLeftCellActive();
+                    /*self.addLeftCellActive();*/
                 },
                 100
             );
