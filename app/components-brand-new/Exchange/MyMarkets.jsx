@@ -1019,7 +1019,7 @@ class MyMarkets extends React.Component {
                         }}
                     >
                         <div>
-                            <label style={{margin: "3px 0 0"}}>
+                            <label style={{margin: "0px 0 0"}}>
                                 <input
                                     style={{position: "relative", top: 3}}
                                     className="no-margin"
@@ -1035,7 +1035,7 @@ class MyMarkets extends React.Component {
                                     <Translate content="exchange.show_only_liquid" />
                                 </span>
                             </label>
-                            <label style={{margin: "3px 0 0"}}>
+                            <label style={{margin: "0px 0 0"}}>
                                 <input
                                     style={{position: "relative", top: 3}}
                                     className="no-margin"
