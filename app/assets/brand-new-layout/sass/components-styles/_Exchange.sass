@@ -8,6 +8,15 @@ body.localcoin .order-form .float-right input
 
 body.localcoin
 	.exchange-layout
+		.main.left-cell-active
+			@media only screen and (min-width: 1280px)
+				.medium-6
+					flex: 0 0 50%!important
+					max-width: 50%!important
+				.my-trades
+					>.exchange-bordered.small-12
+						>.table-container
+							max-height: 336px!important
 		.order-table-container.exchange-sell-orders
 			#x-scrollbar
 				display: none
