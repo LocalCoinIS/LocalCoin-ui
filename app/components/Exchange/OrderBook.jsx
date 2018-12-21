@@ -1020,12 +1020,15 @@ class OrderBook extends React.Component {
                                     <div className="text-center spread">
                                         {!!spread && (
                                             <span
-                                                className="clickable left"
-                                                onClick={this.toggleSpreadValue}
+                                                className="left"
+
                                             >
                                                 <Translate className="spread-label" content="exchange.spread" />{" "}
                                                 <span className="spread-value">
-                                                    {spread}
+                                                    {spread}({(
+                                                    100 *
+                                                    (lowestAsk._real_price / highestBid._real_price - 1)
+                                                ).toFixed(2)}%)
                                                 </span>
                                             </span>
                                         )}
