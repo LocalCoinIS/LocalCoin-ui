@@ -982,7 +982,7 @@ class OrderBook extends React.Component {
                                         content="exchange.price"
                                     />
                                 </div>
-                            </div>                        
+                            </div>
                             <TransitionWrapper
                                 ref="askTransition"
                                 className="transition-container clickable"

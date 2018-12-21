@@ -166,11 +166,12 @@ class Restore extends Component {
                 <h3>
                     <Translate content="wallet.ready_to_restore" />
                 </h3>
+                123
                 <button
                     className="btn large outline"
                     onClick={this.onRestore.bind(this)}
                 >
-                    {couterpart.translate("wallet.restore_wallet_of", {
+                    {counterpart.translate("wallet.restore_wallet_of", {
                         name: new_wallet
                     })}
                 </button>
