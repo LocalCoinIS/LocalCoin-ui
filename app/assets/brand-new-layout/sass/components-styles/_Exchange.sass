@@ -160,7 +160,23 @@ body.localcoin .left-order-book .cell
 
 body.localcoin .left-cell-active  .sticky-table .sticky-table-header,
 body.localcoin .left-cell-active  .sticky-table .sticky-table-corner
-	display: none
+	//display: none
+
+body.localcoin .left-cell-active  .sticky-table .sticky-table-header .custom-sticky-header-wrap
+	display: -ms-flexbox
+	display: flex
+	-ms-flex-pack: end
+	justify-content: flex-end
+
+
+body.localcoin .left-cell-active  .sticky-table .sticky-table-header .header-cell
+	display: -ms-inline-flexbox
+	display: inline-flex
+	-ms-flex-align: center
+	align-items: center
+	-ms-flex-pack: end
+	justify-content: flex-end
+	padding: 8px 10px 5px 0
 
 body.localcoin .left-cell-active
 	.orderbook-latest-price
