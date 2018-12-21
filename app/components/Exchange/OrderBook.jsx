@@ -983,6 +983,7 @@ class OrderBook extends React.Component {
                                     />
                                 </div>
                             </div>
+                            <div class="custom-sticky-table-wrap">
                             <TransitionWrapper
                                 ref="askTransition"
                                 className="transition-container clickable"
@@ -1002,6 +1003,7 @@ class OrderBook extends React.Component {
                                           </div>
                                       )}
                             </TransitionWrapper>
+                            </div>
                         </StickyTable>
                     </div>
                     <div
