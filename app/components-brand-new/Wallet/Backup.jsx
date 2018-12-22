@@ -166,7 +166,6 @@ class Restore extends Component {
                 <h3>
                     <Translate content="wallet.ready_to_restore" />
                 </h3>
-                123
                 <button
                     className="btn large outline"
                     onClick={this.onRestore.bind(this)}
