@@ -893,9 +893,10 @@
         "title": "LocalCoin UI",
         "unlock": "Entsperren",
         "unlock_password": "Log in using a password",
-        "unlock_short": "Login",
+        "unlock_short": "Anmelden",
         "unlocked_tip": "Geldbörse ist entsperrt. Klicken zum Sperren.",
-        "update_asset": "Asset ändern"
+        "update_asset": "Asset ändern",
+        "unlock_account": "Anmelden"
     },
     "icons": {
         "adjust": "Adjust margin position",
@@ -973,7 +974,7 @@
             "show_asset": "Show asset",
             "show_market": "Show market"
         },
-        "power": "Login",
+        "power": "Anmelden",
         "question_circle": "Help",
         "server": "Explore",
         "settle": "Settle",

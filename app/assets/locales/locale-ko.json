@@ -893,9 +893,10 @@
         "title": "로컬코인 2.0",
         "unlock": "잠금해제",
         "unlock_password": "Log in using a password",
-        "unlock_short": "Login",
+        "unlock_short": "로그인",
         "unlocked_tip": "지갑이 잠금해제 되어있습니다. 잠금을 눌러주세요.",
-        "update_asset": "Update Asset"
+        "update_asset": "자산 업데이트",
+        "unlock_account": "로그인"
     },
     "icons": {
         "adjust": "Adjust margin position",
@@ -973,7 +974,7 @@
             "show_asset": "Show asset",
             "show_market": "Show market"
         },
-        "power": "Login",
+        "power": "로그인",
         "question_circle": "Help",
         "server": "Explore",
         "settle": "Settle",

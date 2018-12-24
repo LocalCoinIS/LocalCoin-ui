@@ -893,9 +893,10 @@
         "title": "LocalCoin UI",
         "unlock": "Log in (sblocca il portafoglio)",
         "unlock_password": "Log in usando una password",
-        "unlock_short": "Login",
+        "unlock_short": "Accedi",
         "unlocked_tip": "<br/>Clicca per fare il logout e bloccare il tuo portafoglio.<br/><br/>Chiudere la finestra del browser effettuerà automaticamente il log out.",
-        "update_asset": "Aggiorna Asset"
+        "update_asset": "Aggiorna Asset",
+        "unlock_account": "Accedi"
     },
     "icons": {
         "adjust": "Adjust margin position",
@@ -973,7 +974,7 @@
             "show_asset": "Show asset",
             "show_market": "Show market"
         },
-        "power": "Login",
+        "power": "Accedi",
         "question_circle": "Help",
         "server": "Explore",
         "settle": "Settle",
