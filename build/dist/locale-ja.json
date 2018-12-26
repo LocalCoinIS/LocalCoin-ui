@@ -895,7 +895,8 @@
         "unlock_password": "パスワードでログイン",
         "unlock_short": "ログイン",
         "unlocked_tip": "<br/>クリックすると、ウォレットをロックしログアウトします。<br/><br/>ブラウザを閉じることでもログアウトできます。",
-        "update_asset": "アセット更新"
+        "update_asset": "アセット更新",
+        "unlock_account": "ログイン"
     },
     "icons": {
         "adjust": "Adjust margin position",
@@ -973,7 +974,7 @@
             "show_asset": "Show asset",
             "show_market": "Show market"
         },
-        "power": "Login",
+        "power": ""ログイン"",
         "question_circle": "Help",
         "server": "Explore",
         "settle": "Settle",

@@ -897,7 +897,7 @@
         "unlock_short": "Login",
         "unlocked_tip": "<br/>Click to log out.<br/><br/>Closing the browser window will also log you out.",
         "update_asset": "Update Asset",
-        "unlock_account": "Unlock"
+        "unlock_account": "Login"
     },
     "icons": {
         "adjust": "Adjust margin position",

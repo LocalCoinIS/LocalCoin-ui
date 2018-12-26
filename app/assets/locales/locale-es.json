@@ -895,7 +895,8 @@
         "unlock_password": "Inicio de sesión en el Cloud Wallet",
         "unlock_short": "Inicio de sesión",
         "unlocked_tip": "Billetera desbloqueada. Click para bloquear",
-        "update_asset": "Actualizar activo"
+        "update_asset": "Actualizar activo",
+        "unlock_account": "Inicio de sesión"
     },
     "icons": {
         "adjust": "Adjust margin position",
@@ -973,7 +974,7 @@
             "show_asset": "Show asset",
             "show_market": "Show market"
         },
-        "power": "Login",
+        "power": "Inicio de sesión",
         "question_circle": "Help",
         "server": "Explore",
         "settle": "Settle",

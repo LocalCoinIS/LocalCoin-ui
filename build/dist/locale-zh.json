@@ -895,7 +895,8 @@
         "unlock_password": "使用密码登录",
         "unlock_short": "登录",
         "unlocked_tip": "钱包已解锁，点击锁定。",
-        "update_asset": "更新资产"
+        "update_asset": "更新资产",
+        "unlock_account": "登录"
     },
     "icons": {
         "adjust": "Adjust margin position",
@@ -973,7 +974,7 @@
             "show_asset": "Show asset",
             "show_market": "Show market"
         },
-        "power": "Login",
+        "power": "登录",
         "question_circle": "Help",
         "server": "Explore",
         "settle": "Settle",

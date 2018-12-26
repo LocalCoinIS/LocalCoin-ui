@@ -895,7 +895,8 @@
         "unlock_password": "Giriş yap",
         "unlock_short": "Giriş",
         "unlocked_tip": "Cüzdan kilidi açık .<br/>Kilitlemek için tıkla.",
-        "update_asset": "Dijital Varlık Güncelle"
+        "update_asset": "Dijital Varlık Güncelle",
+        "unlock_account": "Giriş"
     },
     "icons": {
         "adjust": "Adjust margin position",
@@ -973,7 +974,7 @@
             "show_asset": "Show asset",
             "show_market": "Show market"
         },
-        "power": "Login",
+        "power": "Giriş",
         "question_circle": "Help",
         "server": "Explore",
         "settle": "Settle",

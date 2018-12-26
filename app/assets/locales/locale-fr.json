@@ -476,7 +476,7 @@
         "my_asks": "My asks",
         "my_bids": "My bids",
         "my_history": "My trades",
-        "my_orders": "My open orders",
+        "my_orders": "Ordres Ouverts",
         "native": "Native",
         "new": "New",
         "no_asks": "No asks",
@@ -892,9 +892,10 @@
         "title": "LocalCoin",
         "unlock": "Dévérouiller",
         "unlock_password": "Log in using a password",
-        "unlock_short": "Login",
+        "unlock_short": "Connexion",
         "unlocked_tip": "<br/>Click to log out.<br/><br/>Closing the browser window will also log you out.",
-        "update_asset": "Update Asset"
+        "update_asset": "Update Asset",
+        "unlock_account": "Connexion"
     },
     "icons": {
         "adjust": "Adjust margin position",
@@ -972,7 +973,7 @@
             "show_asset": "Show asset",
             "show_market": "Show market"
         },
-        "power": "Login",
+        "power": "Connexion",
         "question_circle": "Help",
         "server": "Explore",
         "settle": "Settle",
