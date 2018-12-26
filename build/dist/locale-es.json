@@ -1385,7 +1385,7 @@
         "follow_user": "Usted está siguiendo a este usuario",
         "follow_user_add": "Haga clic para seguir a este usuario",
         "gateway": "Gateways back desposits by 100% real assets",
-        "generate": "La contraseña generada fue creada por su navegador, localmente. <br /><br /><strong>Nadie más que tú tiene acceso a ella</strong>.<br /><br /> Pégalo a continuación y guarda una copia en un lugar seguro ",
+        "generate": "La contraseña generada fue creada por su navegador, localmente. <br /><strong>Nadie más que tú tiene acceso a ella</strong>.<br /> Pégalo a continuación y guarda una copia en un lugar seguro ",
         "hide_asset": "Haga clic aquí para ocultar este activo de esta lista.",
         "latest_price": "Este es el utlimo precio en el mercado.",
         "login": "Esta billetera de LocalCoin no ofrece un inicio de sesión tradicional sino que simplemente bloquea o desbloquea una billetera que es <b>solo</b> almacenada localmente en su navegador.<br/><br/> Cada vez que cierre la billetera, esta se bloqueará y se cerrerá efectivamente la sesión.",

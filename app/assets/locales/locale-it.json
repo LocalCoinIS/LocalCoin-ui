@@ -1385,7 +1385,7 @@
         "follow_user": "You are following this user",
         "follow_user_add": "Click to Follow this user",
         "gateway": "Gateways back desposits by 100% real assets",
-        "generate": "La password generata è stata creata localmente nel tuo browser. <br /><br /><strong>Nessuno oltre a te ha accesso ad essa</strong>.<br /><br /> Incollala sotto e salvane una copia in un posto sicuro",
+        "generate": "La password generata è stata creata localmente nel tuo browser. <br /><strong>Nessuno oltre a te ha accesso ad essa</strong>.<br /> Incollala sotto e salvane una copia in un posto sicuro",
         "hide_asset": "Clicca qui per nascondere quest'asset da questa lista.",
         "latest_price": "Questo è l'ultimo prezzo visto in questo mercato.",
         "login": "Questo portafoglio LocalCoin non offre un login tradizionale, invece semplicemente blocca o sblocca un portafoglio che è <b>solo</b> memorizzato localmente nel tuo browser.<br/><br/>Ogni volta che chiudi il portafoglio, esso sarà bloccato e avrai di fatto effettuato il logout.",

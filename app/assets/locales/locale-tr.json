@@ -1385,7 +1385,7 @@
         "follow_user": "You are following this user",
         "follow_user_add": "Click to Follow this user",
         "gateway": "Gateways back desposits by 100% real assets",
-        "generate": "The generated password was created by your browser, locally. <br /><br /><strong>No one but you has access to it</strong>.<br /><br /> Paste it below and save a copy in a safe place",
+        "generate": "The generated password was created by your browser, locally. <br /><strong>No one but you has access to it</strong>.<br /> Paste it below and save a copy in a safe place",
         "hide_asset": "Bu dijital varlığı gizlemek için tıklayın.",
         "latest_price": "Piyasadaki gerçekleşen son işlemin fiyat değeri",
         "login": "LocalCoin cüzdanında geleneksel oturum açma-kapatma yoktur, bunun yerine cüzdanınız <b>kilitli</b> ve <b>açık</b> konumlarından birinde tutulur. Cüzdanınız kilitli olduğunda herhangi bir işlem yapılamaz, yalnızca gözlemci olunabilir.",

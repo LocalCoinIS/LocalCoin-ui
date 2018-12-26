@@ -1384,7 +1384,7 @@
         "follow_user": "You are following this user",
         "follow_user_add": "Click to Follow this user",
         "gateway": "Gateways back desposits by 100% real assets",
-        "generate": "The generated password was created by your browser, locally. <br /><br /><strong>No one but you has access to it</strong>.<br /><br /> Paste it below and save a copy in a safe place",
+        "generate": "The generated password was created by your browser, locally. <br /><strong>No one but you has access to it</strong>.<br /> Paste it below and save a copy in a safe place",
         "hide_asset": "Click here to hide this asset from this list.",
         "latest_price": "This is the latest price seen in this market.",
         "login": "This LocalCoin wallet does not offer a traditional login but instead simply locks or unlocks a wallet that is <b>only</b> stored locally in your browser.<br/><br/>Whenever you close the wallet it will be locked and you will effectively be logged out.",
