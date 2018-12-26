@@ -49,7 +49,8 @@ body.localcoin
 					>.exchange-bordered.small-12
 						>.table-container
 							max-height: 336px!important
-		.order-table-container.exchange-sell-orders
+		.order-table-container.exchange-sell-orders,
+		.order-table-container.exchange-buy-orders,
 			#x-scrollbar
 				display: none
 		.explorer_markets
@@ -162,14 +163,15 @@ body.localcoin .left-cell-active  .sticky-table .sticky-table-header,
 body.localcoin .left-cell-active  .sticky-table .sticky-table-corner
 	//display: none
 
-body.localcoin .left-cell-active  .sticky-table .sticky-table-header .custom-sticky-header-wrap
+body.localcoin .sticky-table .sticky-table-header .custom-sticky-header-wrap
 	display: -ms-flexbox
 	display: flex
 	-ms-flex-pack: end
 	justify-content: flex-end
 
 
-body.localcoin .left-cell-active  .sticky-table .sticky-table-header .header-cell
+body.localcoin .sticky-table .sticky-table-header .header-cell,
+body.localcoin .sticky-table .sticky-table-corner .header-cell
 	display: -ms-inline-flexbox
 	display: inline-flex
 	-ms-flex-align: center
@@ -178,15 +180,15 @@ body.localcoin .left-cell-active  .sticky-table .sticky-table-header .header-cel
 	justify-content: flex-end
 	padding: 8px 10px 5px 0
 
-body.localcoin .left-cell-active
+body.localcoin
 	.orderbook-latest-price
 		span.latest-label,
 		span.spread-label,
 		span.spread-value
 			color: #00195b
-body.localcoin .left-cell-active .vertical-orderbook-down  .sticky-table-row.top-header
+body.localcoin .vertical-orderbook-down  .sticky-table-row.top-header
 	display: none!important
-body.localcoin .left-cell-active .sticky-table .sticky-table-y-wrapper
+body.localcoin .sticky-table .sticky-table-y-wrapper
 	.sticky-table-row
 		display: flex
 	.header-cell
@@ -201,17 +203,17 @@ body.localcoin .left-cell-active .sticky-table .sticky-table-y-wrapper
 		justify-content: flex-end
 		border-bottom: 1px solid #aabfd9
 		span
-			color: #00195b!important
+			color: #fff!important
 .highcharts-label table td
 	color: #fff
 	font-family: "osnovapro", sans-serif
 	font-size: 11px
 
 
-body.localcoin .left-cell-active .order-table .custom-sticky-table-wrap
+body.localcoin .order-table .custom-sticky-table-wrap
 	display: table
-	height: calc(50vh - 63px)
+	height: calc(50vh - 92px)
 
-body.localcoin .left-cell-active .order-table .custom-sticky-table-wrap .transition-container
+body.localcoin .order-table .custom-sticky-table-wrap .transition-container
 	display: table-cell
 	vertical-align: bottom

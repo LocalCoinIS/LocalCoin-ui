@@ -74,6 +74,18 @@ export default class ExchangeHeader extends React.Component {
         );
     }
 
+    componentWillReceiveProps(nextProps) {
+        let self = this;
+        document.delayedExecution.add(
+            "ExchangeHeader_updateMargin",
+            function() {
+                self.updateMargin();
+            },
+            100
+        );
+    }
+
+
     updateMargin() {
         function getMaxWidth(queryClass) {
             let max = 0;
