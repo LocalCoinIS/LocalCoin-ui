@@ -361,7 +361,7 @@ class SimpleDepositBlocktradesBridge extends React.Component {
                             type="text"
                             defaultValue={"BLOCKTRADES"}
                         />{" "}
-                        {/* Change this when we gain more brdiges */}
+                        {/* Change this when we gain more Bridges */}
                     </div>
                 </div>
                 <span style={!apiError ? {display: ""} : {display: "none"}}>
