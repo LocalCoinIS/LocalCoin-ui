@@ -469,7 +469,7 @@
         "buy_sell": "Форма заявки",
         "buysell_formatter": "{direction} {asset}",
         "call": "Цена досрочного погашения",
-        "change": "Изменение",
+        "change": "Изм.",
         "chart_height": "Высота графика (в пикселях)",
         "chart_hide": "Скрыть графики",
         "chart_modal": "Настройки",
