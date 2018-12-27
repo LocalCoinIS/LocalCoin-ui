@@ -425,7 +425,7 @@
         "buy_min": "至少买",
         "buysell_formatter": "{direction} {asset}",
         "call": "平仓触发价",
-        "change": "涨跌幅",
+        "change": "变化",
         "chart_height": "Chart height (pixels)",
         "chart_modal": "Chart options",
         "chart_type": "Chart type",
@@ -455,7 +455,7 @@
         "latest": "最新成交价",
         "lowest_ask": "最低卖价",
         "maintenance": "维持保证金价",
-        "market": "交易对",
+        "market": "币对",
         "market_frozen": "%(asset)s 资产发行人已禁用该资产的市场交易",
         "market_name": "市场列表",
         "market_picker": {
@@ -509,7 +509,7 @@
         "show_asks": "显示所有卖单",
         "show_bids": "显示所有买单",
         "show_only_liquid": "Liquid markets only",
-        "show_only_star_formatter": "{star_icon} only",
+        "show_only_star_formatter": "{star_icon} 自选",
         "sma": "算数移动平均线(SMA)",
         "spread": "买卖价差",
         "squeeze": "强制平仓价",
@@ -989,7 +989,7 @@
         "thumbs_up": "Voting",
         "times": "Remove API Node",
         "trade": {
-            "exchange": "Exchange",
+            "exchange": "交易",
             "trade": "Trade"
         },
         "transfer": "Send",

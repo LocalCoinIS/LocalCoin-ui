@@ -35,7 +35,7 @@
         "estimate_value": "Estimated Account value",
         "existing_accounts": "기존 계정",
         "existing_user": "Existing user",
-        "filter_orders": "Filter",
+        "filter_orders": "검색",
         "follow": "팔로우",
         "hidden_accounts_row": "Hidden Accounts",
         "hide_hidden": "Active",
@@ -49,7 +49,7 @@
         "ignore": "Hide",
         "in_open": "This is the amount of %(asset)s you have in open orders.",
         "in_open_value": "This is the estimated value of the %(asset)s you have in open orders.",
-        "intro_text_1": "Your Decentralized Exchange",
+        "intro_text_1": "분산 된 거래 플랫폼",
         "intro_text_2": "<b>The DEX</b> is inherently decentralized, enabling you to trade the LocalCoin core token (LLC) and a range of trustless price-stable, market-pegged assets such as USD, CNY, EUR, Gold and more. These assets can all be traded with <b>zero</b> counter-party risk, putting you in total control of your funds.",
         "intro_text_3": "<b>The DEX</b> also enables creation of user-issued assets (UIAs), which can be traded against any other UIAs or trustless assets on the platform.  One well-known issuer on The DEX is <b>OpenLedger</b>, offering a host of assets including BTC, ETH, STEEM, DASH, LTC, DOGE, and many more",
         "intro_text_4": "This gives cryptocurrency traders a unique blend of traditional and decentralized trading, all in a familiar exchange interface. Happy trading!",
@@ -420,7 +420,7 @@
         "bids": "Buy orders",
         "borrow": "Borrow",
         "borrow_short": "Borrow",
-        "buy": "Buy",
+        "buy": "매수",
         "buy_description": "Buy %(baseAsset)s %(baseName)s for %(quoteAsset)s %(quoteName)s",
         "buy_min": "Buy at least",
         "buysell_formatter": "{direction} {asset}",
@@ -441,12 +441,12 @@
         "ema": "Exponential Moving Average",
         "featured": "Top Markets",
         "feed_price": "Feed Price",
-        "filter": "Filter...",
+        "filter": "검색...",
         "flip": "Flip",
         "group_order_limit": "그룹",
         "hide": "Hide",
         "highest_bid": "매수 호가",
-        "history": "Market trades",
+        "history": "실시간 주문",
         "horizontal": "수평시세",
         "index": "Index",
         "invalid_amount": "Invalid amount",
@@ -455,7 +455,7 @@
         "latest": "최종 가격",
         "lowest_ask": "매도 호가",
         "maintenance": "Maintenance Call Price",
-        "market": "Market",
+        "market": "스마트코인",
         "market_frozen": "The owner of %(asset)s has disabled trading in this market.",
         "market_name": "종목명",
         "market_picker": {
@@ -470,7 +470,7 @@
             "title": "Market Picker",
             "use": "Use"
         },
-        "more": "Find markets",
+        "more": "검색",
         "move_down": "Move down",
         "move_up": "Move up",
         "my_asks": "My asks",
@@ -509,7 +509,7 @@
         "show_asks": "Show all asks",
         "show_bids": "Show all bids",
         "show_only_liquid": "Liquid only",
-        "show_only_star_formatter": "{star_icon} only",
+        "show_only_star_formatter": "{star_icon} 즐겨찾기",
         "sma": "Simple Moving Average",
         "spread": "스프레드",
         "squeeze": "마진콜 가격",
@@ -521,7 +521,7 @@
         "vertical": "수직시세",
         "vol_short": "Vol",
         "volume": "거래량",
-        "volume_24": "24hr Volume",
+        "volume_24": "24h 거래액",
         "worth_less_settlement_warning": "Warning! You can get a better price by selling to {market_link}.",
         "your_price": "내 콜 가격",
         "zoom": "Zoom",
@@ -936,7 +936,7 @@
         "disconnected": "API Node is disconnected",
         "dollar": {
             "borrow": "Borrow",
-            "buy": "Buy"
+            "buy": "매수"
         },
         "download": "Download new version of LocalCoin UI",
         "excel": "Download .csv file",
@@ -949,7 +949,7 @@
             "sort_accounts": "Sort by favorites",
             "symbol": "Add/remove symbol from favorites"
         },
-        "filter": "Filter",
+        "filter": "검색",
         "folder": "Accounts",
         "hamburger": "Open menu",
         "hamburger_x": "Close menu",
@@ -989,7 +989,7 @@
         "thumbs_up": "Voting",
         "times": "Remove API Node",
         "trade": {
-            "exchange": "Exchange",
+            "exchange": "거래소",
             "trade": "Trade"
         },
         "transfer": "Send",
@@ -1053,7 +1053,7 @@
         "buy": {
             "asset": "Asset",
             "bridge": "Bridge",
-            "title": "Buy"
+            "title": "매수"
         },
         "confirmation": {
             "accept": "Yes",
@@ -1330,7 +1330,7 @@
         "node_down": "Unreachable",
         "node_up": "Available",
         "olDarkTheme": "Openledger dark",
-        "password": "Password",
+        "password": "비밀번호",
         "passwordLogin": "Login using the account model",
         "password_text": "Change your password.",
         "ping": "Ping Nodes",
@@ -1656,7 +1656,7 @@
         "claim_later": "Once you've imported the keys, you can claim these balances to an account of your choosing.",
         "confirm": "비밀번호 확인",
         "confirm_error": "The confirmation does not match the password",
-        "confirm_password": "Confirm Password",
+        "confirm_password": "비밀번호를 확인해 주십시오",
         "congrat": "Congratulations, you're ready!",
         "console": "지갑 관리 콘솔",
         "create": "생성",

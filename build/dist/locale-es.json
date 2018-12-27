@@ -879,8 +879,8 @@
         "current": "Cuenta Actual",
         "dashboard": "Tablero",
         "deposit-withdraw": "Depositar/Retirar",
-        "exchange": "Exchange",
-        "explorer": "Explorer",
+        "exchange": "Mercado",
+        "explorer": "Explorador",
         "help": "Ayuda",
         "lock": "Bloquear",
         "lock_short": "cerrar sesión",
@@ -989,7 +989,7 @@
         "thumbs_up": "Voting",
         "times": "Remove API Node",
         "trade": {
-            "exchange": "Exchange",
+            "exchange": "Mercado",
             "trade": "Trade"
         },
         "transfer": "Send",

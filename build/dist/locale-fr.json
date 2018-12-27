@@ -413,11 +413,11 @@
     },
     "exchange": {
       "add_quote": "Add",
-      "asks": "Sell orders",
+      "asks": "Ordres à vendre",
       "atr": "Average True Range",
       "balance": "Solde",
       "base_supply": "Base supply",
-      "bids": "Buy orders",
+      "bids": "Ordres à acheter",
       "borrow": "Borrow",
       "borrow_short": "Borrow",
       "buy": "Acheter",
@@ -500,7 +500,7 @@
         "remove": "Remove",
         "rsi": "Relative Strength Index",
         "search": "Search for more markets here",
-        "sell": "Sell",
+        "sell": "Vendre",
         "sell_description": "Sell %(baseAsset)s %(baseName)s for %(quoteAsset)s %(quoteName)s",
         "settings": "Chart options",
         "settle": "Settlement",
@@ -878,8 +878,8 @@
         "current": "Mon Compte",
         "dashboard": "Accueil",
         "deposit-withdraw": "Déposer/Retirer",
-        "exchange": "Échange",
-        "explorer": "Explorer",
+        "exchange": "Marché",
+        "explorer": "Explorateur",
         "help": "Help",
         "lock": "Vérouiller",
         "lock_short": "Log out",
@@ -935,7 +935,7 @@
         "disconnected": "API Node is disconnected",
         "dollar": {
             "borrow": "Borrow",
-            "buy": "Buy"
+            "buy": "Acheter"
         },
         "download": "Download new version of LocalCoin UI",
         "excel": "Download .csv file",
@@ -1052,7 +1052,7 @@
         "buy": {
             "asset": "Asset",
             "bridge": "Bridge",
-            "title": "Buy"
+            "title": "Acheter"
         },
         "confirmation": {
             "accept": "Yes",
