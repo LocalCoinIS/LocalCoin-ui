@@ -1015,7 +1015,7 @@ class MyMarkets extends React.Component {
                         style={{
                             width: "100%",
                             textAlign: "left",
-                            padding: "0.75rem 0.5rem"
+                            padding: "0.5rem 0.5rem"
                         }}
                     >
                         <div>
@@ -1068,7 +1068,7 @@ class MyMarkets extends React.Component {
                                         fontSize: "0.9rem",
                                         height: "inherit",
                                         position: "relative",
-                                        top: 7,
+                                        top: 5px,
                                         padding: 2
                                     }}
                                     type="text"
@@ -1095,7 +1095,7 @@ class MyMarkets extends React.Component {
                         style={{
                             width: "100%",
                             textAlign: "left",
-                            padding: "0.75rem 0.5rem"
+                            padding: "0.5rem 0.5rem"
                         }}
                     >
                         <table>
