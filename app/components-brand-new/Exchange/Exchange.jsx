@@ -81,6 +81,8 @@ class Exchange extends React.Component {
         this.onShowModal = this.onShowModal.bind(this);
 
         this.psInit = true;
+
+        this._toggleSwitch = this._toggleSwitch.bind(this);
     }
 
     onShowModal() {
@@ -254,6 +256,7 @@ class Exchange extends React.Component {
             capture: false,
             passive: true
         });
+        this._toggleSwitch();
     }
 
     shouldComponentUpdate(nextProps) {
@@ -353,6 +356,7 @@ class Exchange extends React.Component {
                 SettingsActions.setExchangeTutorialShown.defer(true);
             }
         }
+        this._toggleSwitch();
     }
 
     _initPsContainer() {
@@ -400,6 +404,7 @@ class Exchange extends React.Component {
         // if (this.props.sub && nextProps.bucketSize !== this.props.bucketSize) {
         //     return this._changeBucketSize(nextProps.bucketSize);
         // }
+        this._toggleSwitch();
     }
 
     componentWillUnmount() {
@@ -1199,6 +1204,17 @@ class Exchange extends React.Component {
         SettingsActions.changeViewSetting({
             miniDepthChart: !this.props.miniDepthChart
         });
+    }
+
+    _toggleSwitch() {
+        let el = document.querySelector(".grid-block.no-overflow.wrap.shrink");
+        if(!el) return;
+        if(!this.state.buySellTop && !this.state.leftOrderBook) {
+            el.classList.add("switch");
+        } else {
+            el.classList.remove("switch");
+        }
+
     }
 
     render() {

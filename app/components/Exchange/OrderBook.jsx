@@ -128,15 +128,8 @@ class OrderBookRowHorizontal extends React.Component {
         }
     }
 
-
-    addSwitch() {
-        let el = document.querySelector(".grid-block.no-overflow.wrap.shrink")
-        el.classList.add("switch");
-    }
-
     componentDidMount() {
         this.rmLeftCellActive();
-        this.addSwitch();
     }
 
     componentDidUpdate() {
@@ -258,15 +251,7 @@ class OrderBook extends React.Component {
         }
     }
 
-    addSwitch() {
-        let el = document.querySelector(".grid-block.no-overflow.wrap.shrink")
-        el.classList.add("switch");
-    }
 
-    removeSwitch() {
-        let el = document.querySelector(".grid-block.no-overflow.wrap.shrink")
-        el.classList.remove("switch");
-    }
 
     updateCeilWith() {
         function updateWidth(queryClass, width) {
@@ -394,9 +379,6 @@ class OrderBook extends React.Component {
 
         if (!this.props.horizontal) {
             this.addLeftCellActive();
-            this.removeSwitch();
-        } else {
-            this.addSwitch();
         }
     }
 
