@@ -108,6 +108,7 @@ class AccountSelector extends React.Component {
     }
 
     onInputChanged(e) {
+        console.log(123321);
         let {onChange, onAccountChanged, accountName, typeahead} = this.props;
         this.setState({inputChanged: true});
 
@@ -115,8 +116,9 @@ class AccountSelector extends React.Component {
         let _account = ChainStore.getAccount(_accountName);
 
         if (onChange && _accountName !== accountName)
-            console.log("====================================");
+        console.log("====================================");
         console.log(accountName);
+        console.log(_accountName);
         console.log("====================================");
         onChange(_accountName);
         // None-Typeahead Component compatibility
