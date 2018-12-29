@@ -80,6 +80,9 @@ class Transfer extends React.Component {
     }
 
     shouldComponentUpdate(np, ns) {
+        console.log(9999999999999);
+        console.log(np);
+        console.log(9999999999999);
         let {asset_types: current_types} = this._getAvailableAssets();
         let {asset_types: next_asset_types} = this._getAvailableAssets(ns);
 
@@ -102,6 +105,7 @@ class Transfer extends React.Component {
     }
 
     componentWillReceiveProps(np) {
+
         if (
             np.currentAccount !== this.state.from_name &&
             np.currentAccount !== this.props.currentAccount
@@ -228,6 +232,11 @@ class Transfer extends React.Component {
     }
 
     fromChanged(from_name) {
+        console.log("----------------");
+        console.log(this.state);
+        console.log(from_name);
+        console.log("----------------");
+        console.log("----------------");
         if (!from_name) this.setState({from_account: null});
         this.setState({
             from_name,
