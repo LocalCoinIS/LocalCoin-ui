@@ -379,7 +379,7 @@ class AccountOverview extends React.Component {
 
             /* Table content */
             directMarketLink = notCore ? (
-                <Link to={`/market/${asset.get("symbol")}_${preferredMarket}`}>
+                <Link to={`/market/${preferredMarket}_${asset.get("symbol")}`}>
                     <Icon
                         name="trade"
                         title="icons.trade.trade"
@@ -387,7 +387,7 @@ class AccountOverview extends React.Component {
                     />
                 </Link>
             ) : notCorePrefUnit ? (
-                <Link to={`/market/${asset.get("symbol")}_${preferredUnit}`}>
+                <Link to={`/market/${preferredUnit}_${asset.get("symbol")}`}>
                     <Icon
                         name="trade"
                         title="icons.trade.trade"
