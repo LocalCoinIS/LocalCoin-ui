@@ -413,11 +413,11 @@
     },
     "exchange": {
       "add_quote": "Add",
-      "asks": "Asks",
+      "asks": "Verkaufen/Ask",
       "atr": "Average True Range",
       "balance": "Guthaben",
       "base_supply": "Base Verfügbarkeit",
-      "bids": "Bids",
+      "bids": "Kaufen/Bids",
       "borrow": "Leihen",
       "borrow_short": "Borrow",
       "buy": "Kaufen",
