@@ -1111,6 +1111,14 @@
             "header": "<span class=\"send-name\">%(fromName)s</span>から送信",
             "header_propose": "<span class=\"send-name\">%(fromName)s</span>から送信を提案"
         },
+        "send_tab": {
+            "header": "送信",
+            "header_propose": "Propose Send"
+        },
+        "transfer_tab": {
+            "header": ">提案",
+            "header_propose": "Propose Transfer"
+        },
         "settle": {
             "amount": "決済数量",
             "submit": "決済アセット",

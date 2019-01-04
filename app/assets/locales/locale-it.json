@@ -1111,6 +1111,14 @@
             "header": "Send from <span class=\"send-name\">%(fromName)s</span>",
             "header_propose": "Propose Send from <span class=\"send-name\">%(fromName)s</span>"
         },
+        "send_tab": {
+            "header": "Invia",
+            "header_propose": "Propose Send"
+        },
+        "transfer_tab": {
+            "header": "Proponi",
+            "header_propose": "Propose Transfer"
+        },
         "settle": {
             "amount": "Quantità di cui fare settlement",
             "submit": "Fai il settlement",
