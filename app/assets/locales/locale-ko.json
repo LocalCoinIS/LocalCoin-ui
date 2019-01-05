@@ -1113,11 +1113,11 @@
         },
         "send_tab": {
             "header": "전송",
-            "header_propose": "Propose Send"
+            "header_propose": "전송"
         },
         "transfer_tab": {
             "header": "제안서",
-            "header_propose": "Propose Transfer"
+            "header_propose": "제안서"
         },
         "settle": {
             "amount": "Amount to settle",

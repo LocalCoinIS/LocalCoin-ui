@@ -1113,11 +1113,11 @@
         },
         "send_tab": {
             "header": "转账",
-            "header_propose": "Propose Send"
+            "header_propose": "转账"
         },
         "transfer_tab": {
             "header": "提议",
-            "header_propose": "Propose Transfer"
+            "header_propose": "提议"
         },
         "settle": {
             "amount": "数量",

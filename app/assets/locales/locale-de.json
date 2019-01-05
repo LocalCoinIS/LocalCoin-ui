@@ -1113,11 +1113,11 @@
         },
         "send_tab": {
             "header": "Senden",
-            "header_propose": "Propose Send"
+            "header_propose": "Senden"
         },
         "transfer_tab": {
             "header": "Vorschlagen",
-            "header_propose": "Propose Transfer"
+            "header_propose": "Vorschlagen"
         },
         "settle": {
             "amount": "Menge für das Settlement",

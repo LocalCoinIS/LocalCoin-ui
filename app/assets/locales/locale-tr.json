@@ -1113,11 +1113,11 @@
         },
         "send_tab": {
             "header": "Gönder",
-            "header_propose": "Propose Send"
+            "header_propose": "Gönder"
         },
         "transfer_tab": {
             "header": "Teklif Et",
-            "header_propose": "Propose Transfer"
+            "header_propose": "Teklif Et"
         },
         "settle": {
             "amount": "Ödenecek miktar",

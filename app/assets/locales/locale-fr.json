@@ -1112,11 +1112,11 @@
         },
         "send_tab": {
             "header": "Envoyer",
-            "header_propose": "Propose Send"
+            "header_propose": "Envoyer"
         },
         "transfer_tab": {
             "header": "Propose",
-            "header_propose": "Propose Transfer"
+            "header_propose": "Propose"
         },
         "settle": {
             "amount": "Amount to settle",

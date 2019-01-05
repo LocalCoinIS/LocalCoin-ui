@@ -1112,8 +1112,8 @@
             "header_propose": "Proponer envío desde <span class=\"send-name\">%(fromName)s</span>"
         },
         "send_tab": {
-            "header": "Send",
-            "header_propose": "Propose Send"
+            "header": "Enviar",
+            "header_propose": "Enviar"
         },
         "transfer_tab": {
             "header": "Propose",

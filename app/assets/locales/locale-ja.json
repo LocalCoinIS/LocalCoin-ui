@@ -1113,11 +1113,11 @@
         },
         "send_tab": {
             "header": "送信",
-            "header_propose": "Propose Send"
+            "header_propose": "送信"
         },
         "transfer_tab": {
-            "header": ">提案",
-            "header_propose": "Propose Transfer"
+            "header": "提案",
+            "header_propose": "提案"
         },
         "settle": {
             "amount": "決済数量",
