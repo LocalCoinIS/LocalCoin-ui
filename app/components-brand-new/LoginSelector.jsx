@@ -149,7 +149,7 @@ class LoginSelector extends React.Component {
                                 <Translate
                                     content="account.intro_text_title"
                                     component="h4"
-                                    wallet_name={getWalletName()}                                    
+                                    wallet_name={getWalletName()}
                                 />
                                 <Translate
                                     unsafe
@@ -225,7 +225,7 @@ class LoginSelector extends React.Component {
                                             },
                                             {
                                                 type: "link",
-                                                value: "/create-account/wallet",
+                                                value: "/create-account/password",
                                                 translation:
                                                     "account.optional.restore_form",
                                                 dataIntro: translator.translate(

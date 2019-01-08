@@ -203,7 +203,7 @@ class LoginSelector extends React.Component {
                                             },
                                             {
                                                 type: "link",
-                                                value: "/create-account/wallet",
+                                                value: "/create-account/password",
                                                 translation:
                                                     "account.optional.restore_form",
                                                 dataIntro: translator.translate(
