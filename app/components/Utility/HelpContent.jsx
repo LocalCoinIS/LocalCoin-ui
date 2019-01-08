@@ -98,6 +98,7 @@ class HelpContent extends React.Component {
     }
 
     setVars(str, hideIssuer) {
+
         if (hideIssuer == "true") {
             str = str.replace(/<p>[^<]*{issuer}[^<]*<\/p>/gm, "");
         }

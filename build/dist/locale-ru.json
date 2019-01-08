@@ -105,9 +105,9 @@
         "no_price": "--",
         "open_orders": "Ордера",
         "optional": {
-            "formatter": "При необходимости {restore_link} или создайте аккаунт с помощью {restore_form}.",
-            "restore_form": "расширенная форма",
-            "restore_link": "восстановить ваш аккаунт"
+            "formatter": "При необходимости {restore_link} или создайте новый с помощью {restore_form}.",
+            "restore_form": "упрощенной формы",
+            "restore_link": "восстановите ваш аккаунт"
         },
         "options": {
             "memo_key": "Ключ примечания",
@@ -1033,6 +1033,14 @@
             "header": "Отправить с <span class=\"send-name\">%(fromName)s</span>",
             "header_propose": "Предложить отправить с <span class=\"send-name\">%(fromName)s</span>"
         },
+        "send_tab": {
+            "header": "Отправить",
+            "header_propose": "Отправить"
+        },
+        "transfer_tab": {
+            "header": "Предложить",
+            "header_propose": "Предложить Транзакцию"
+        },
         "settle": {
             "amount": "Сумма для погашения",
             "submit": "Провести расчет по активу",
@@ -1719,7 +1727,7 @@
         "understand_1": "Я понимаю, что никто не сможет восстановить мой пароль, если я потеряю или забуду его",
         "understand_2": "Я записал или еще как-либо сохранил свой пароль",
         "understand_3": " Я понимаю, что утрачу доступ к своим средствам, если потеряю свой пароль",
-        "use_different": "Использовать другой файл",
+        "use_different": "Выбрать другой",
         "use_password": "Использовать модель аккаунта",
         "use_wallet": "Использовать модель кошелька",
         "using": "Используемый:",

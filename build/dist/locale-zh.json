@@ -1111,6 +1111,14 @@
             "header": "使用帐号 <span class=\"send-name\">%(fromName)s</span> 转账",
             "header_propose": "提议帐号 <span class=\"send-name\">%(fromName)s</span> 转账"
         },
+        "send_tab": {
+            "header": "转账",
+            "header_propose": "转账"
+        },
+        "transfer_tab": {
+            "header": "提议",
+            "header_propose": "提议"
+        },
         "settle": {
             "amount": "数量",
             "submit": "清算资产",

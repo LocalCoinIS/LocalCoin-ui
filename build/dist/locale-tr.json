@@ -1111,6 +1111,14 @@
             "header": "Send from <span class=\"send-name\">%(fromName)s</span>",
             "header_propose": "Propose Send from <span class=\"send-name\">%(fromName)s</span>"
         },
+        "send_tab": {
+            "header": "Gönder",
+            "header_propose": "Gönder"
+        },
+        "transfer_tab": {
+            "header": "Teklif Et",
+            "header_propose": "Teklif Et"
+        },
         "settle": {
             "amount": "Ödenecek miktar",
             "submit": "Öde",
