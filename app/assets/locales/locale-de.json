@@ -1735,7 +1735,7 @@
         "noneed_backup": "Kein Sicherung erforderlich",
         "not_first_account": "Since you already have an account, you will need to pay for this new account yourself. In order to do so, your account needs to have lifetime membership, which can be bought in the account page.",
         "ok_done": "OK, take me to the dashboard",
-        "pass_incorrect": "Incorrect password",
+        "pass_incorrect": "Falsches Passwort",
         "pass_length": "The password must contain at least %(minLength)s characters. Ideally you should use 20 or more, and a combination of numbers, special characters and letters.",
         "password": "Passwort",
         "password_crucial": "It is crucial that you take the time to write down your password now, whether it be on paper, a password manager, or somewhere else. If you lose or forget this password your account will be lost, <strong>we cannot help you get it back</strong>.",
