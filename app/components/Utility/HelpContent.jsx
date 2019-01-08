@@ -157,6 +157,7 @@ class HelpContent extends React.Component {
                 }' for locale '${locale}' help files, rolling back to 'en'`
             );
             value = HelpData["en"][this.props.alt_path];
+
         }
 
         if (!value) {
