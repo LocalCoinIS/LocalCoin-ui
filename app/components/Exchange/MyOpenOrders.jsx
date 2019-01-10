@@ -61,7 +61,7 @@ class TableHeader extends React.Component {
                             content="transaction.expiration"
                         />
                     </th>
-                    <th style={{width: "6%"}} />
+                    <th/>
                 </tr>
             </thead>
         ) : (
@@ -642,7 +642,7 @@ class MyOpenOrders extends React.Component {
                     <div
                         className="table-container grid-block no-overflow"
                         ref="container"
-                        style={{overflow: "hidden", maxHeight: 200}}
+                        style={{overflow: "hidden", maxHeight: 200, paddingRight: '0.6rem'}}
                     >
                         <table className="open-orders__table table order-table text-right fixed-table market-right-padding">
                             {contentContainer}
