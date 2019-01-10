@@ -8,6 +8,29 @@ body.localcoin .order-form .float-right input
 
 body.localcoin
 	.exchange-layout
+		.open-orders
+			.grid-block.shrink.left-orderbook-header.market-right-padding-only
+				padding-right: 0px!important
+			&__headings
+				th:not(:last-child)
+					width: 25%!important
+				th:last-child
+					position: relative
+					width: 35px
+					&:before
+						content: ''
+						position: absolute
+						top: 0
+						right: -1px
+						bottom: 0
+						width: 2px
+						background-color: #c1d0e3
+			&__table
+				td
+					width: 25%
+					padding: 0 5px!important
+					&:last-child
+						width: 25px!important
 		.buy-form,
 		.sell-form
 			.bottom-row,
