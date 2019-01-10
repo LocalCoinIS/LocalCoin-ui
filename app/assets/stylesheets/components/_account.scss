@@ -66,7 +66,7 @@
     }
     hr {
         margin-top: 0.3rem;
-        margin-bottom: 0rem;
+        margin-bottom: .5rem;
         margin-right: 24px;
     }
     .list-item {
@@ -98,7 +98,7 @@
     }
     .root-status {
         padding-top: 5px;
-        margin-bottom: 0rem;
+        margin-bottom: .5rem;
     }
     .expand-button {
         display: inline-block;
@@ -248,7 +248,7 @@ div.header-selector {
     }
     > .selector div {
         font-size: 1rem;
-        margin-bottom: 0rem;
+        margin-bottom: .5rem;
         cursor: pointer;
         &:nth-of-type(n + 1) {
             padding-left: 10px;
