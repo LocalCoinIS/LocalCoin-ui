@@ -1735,7 +1735,7 @@
         "noneed_backup": "Cüzdanınız daha önceden yedeklenmiş görünüyor.",
         "not_first_account": "Zaten bir LocalCoin hesabı ile giriş yapılmış, bu yüzden yeni oluşturacağınız her hesap için ağ ücreti ödemeniz gerekmektedir.",
         "ok_done": "OK, take me to the dashboard",
-        "pass_incorrect": "Incorrect password",
+        "pass_incorrect": "yanlış parola",
         "pass_length": "Şifreniz en az %(minLength)s karakter uzunluğunda olmalıdır. İdeal olarak minimum 20 karakterlik bir şifre kullanmalı, ve harf-rakam-sembol kombinasyonlarını içeren bir şifre seçmelisiniz.",
         "password": "Şifre",
         "password_crucial": "Lütfen şifrenizi kaybetmeyeceğiniz şekilde bir yere yazın ve güvende tutun. Şifrenizi kaybederseniz hesabınıza erişmenin HİÇBİR YOLU YOKTUR. <strong>Şifrenizi hatırlamak yalnızca ve tamamen sizin sorumluluğunuzdur.</strong>.",
