@@ -67,7 +67,7 @@ class AccountPage extends React.Component {
         let isMyAccount = AccountStore.isMyAccount(account);
 
         return (
-            <div className="content">
+            <div className="content account-page">
                 {React.cloneElement(React.Children.only(this.props.children), {
                     account_name,
                     myActiveAccounts,
