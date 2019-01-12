@@ -63,7 +63,7 @@ class PubKeyInput extends React.Component {
             this.isValidPubKey(this.props.value) && keys.has(this.props.value);
 
         return (
-            <div className="pubkey-input no-overflow">
+            <div className="pubkey-input">
                 <div className="content-area">
                     <div className="header-area">
                         {!error &&
