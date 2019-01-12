@@ -512,7 +512,7 @@ class BorrowModalContent extends React.Component {
             {"has-warning": errors.close_maintenance}
         );
         let buttonClass = classNames(
-            "button",
+            "button btn large outline",
             {disabled: errors.collateral_balance || !isValid},
             {success: isValid}
         );
@@ -780,7 +780,7 @@ class BorrowModalContent extends React.Component {
                             <div>
                                 <div
                                     className={collateralRatioClass}
-                                    style={{marginBottom: "3.5rem"}}
+                                    style={{marginBottom: "1.5rem"}}
                                 >
                                     <Translate
                                         component="label"
@@ -845,7 +845,7 @@ class BorrowModalContent extends React.Component {
                                         this._initialState(this.props)
                                     );
                                 }}
-                                className="button hollow primary"
+                                className="outline btn large"
                             >
                                 <Translate content="wallet.reset" />
                             </div>
