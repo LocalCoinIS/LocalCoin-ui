@@ -162,7 +162,7 @@ class AssetSelector extends React.Component {
             }
         }
 
-        let action_class = classnames("button", {
+        let action_class = classnames("button btn large outline", {
             disabled:
                 !this.props.asset || error || this.props.disableActionButton
         });
@@ -215,6 +215,7 @@ class AssetSelector extends React.Component {
                             {this.props.onAction ? (
                                 <button
                                     className={action_class}
+                                    style={{marginLeft: 10}}
                                     onClick={this.onAction.bind(this)}
                                 >
                                     <Translate
