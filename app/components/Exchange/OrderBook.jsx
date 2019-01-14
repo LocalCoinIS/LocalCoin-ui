@@ -434,6 +434,7 @@ class OrderBook extends React.Component {
         }
 
         this.upVerticalBlockToEndScroll();
+        this.blockHeightCalc();
     }
 
     componentWillUpdate() {}
@@ -520,6 +521,13 @@ class OrderBook extends React.Component {
         if (newState.autoScroll) {
             //this.setState(newState, this.centerVerticalScrollBar);
         } else this.setState(newState);
+    };
+
+    blockHeightCalc = () => {
+        let elem = document.querySelector(".orderbook").querySelector(".order-2").querySelector(".grid-block.ps-container.ps-theme-default");
+        if(elem) {
+            elem.setAttribute('style', 'padding-right: 0.6rem; overflow: hidden; max-height: ' + elem.clientHeight + 'px !important');
+        }
     };
 
     render() {
@@ -909,8 +917,7 @@ class OrderBook extends React.Component {
                                 ref="hor_bids"
                                 style={{
                                     paddingRight: "0.6rem",
-                                    overflow: "hidden",
-                                    maxHeight: 210
+                                    overflow: "hidden"
                                 }}
                             >
                                 <table
