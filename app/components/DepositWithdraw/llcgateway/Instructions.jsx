@@ -119,7 +119,7 @@ class Instructions extends React.Component {
                             >
                                 <button
                                     onClick={this.activateModal}
-                                    className="button success"
+                                    className="button btn large inverted"
                                     style={{fontSize: "1.3rem"}}
                                 >
                                     <span>
@@ -190,7 +190,7 @@ class Instructions extends React.Component {
                                 style={{paddingTop: 10}}
                             >
                                 <div
-                                    className="button"
+                                    className="button btn large outline"
                                     onClick={this.toClipboard.bind(
                                         this,
                                         this.state.addressText

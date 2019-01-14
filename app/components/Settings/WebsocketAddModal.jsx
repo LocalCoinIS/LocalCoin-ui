@@ -154,7 +154,7 @@ class WebsocketAddModal extends React.Component {
                             <button
                                 type="submit"
                                 className={
-                                    "button " +
+                                    "button btn large outline" +
                                     (this.state.addError ||
                                     this.state.existsError
                                         ? "disabled"
@@ -166,7 +166,7 @@ class WebsocketAddModal extends React.Component {
                                 <Translate content="transfer.confirm" />
                             </button>
                             <Trigger close={"ws_modal_add"}>
-                                <div className=" button">
+                                <div className=" button btn large outline">
                                     <Translate content="account.perm.cancel" />
                                 </div>
                             </Trigger>
