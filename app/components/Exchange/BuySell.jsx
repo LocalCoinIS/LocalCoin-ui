@@ -448,81 +448,83 @@ class BuySell extends React.Component {
                             </div>
                         }
 
-                        {currencyHasInbridge &&
-                        this.props[isBid ? "base" : "quote"].get("symbol") !==
-                            "LLC" ? (
-                            <div className="float-right buy-sell-deposit">
-                                <a onClick={this.props.onShowModal}>
-                                    <TranslateWithLinks
-                                        string="exchange.buysell_formatter"
-                                        noLink
-                                        noTip={true}
-                                        keys={[
-                                            {
-                                                type: "asset",
-                                                value: this.props[
-                                                    isBid ? "quote" : "base"
-                                                ].get("symbol"),
-                                                arg: "asset"
-                                            },
-                                            {
-                                                type: "translate",
-                                                value: "exchange.buy",
-                                                arg: "direction"
-                                            }
-                                        ]}
-                                    />
-                                </a>
-                            </div>
-                        ) : null}
-                        {/* this.props.backedCoin */ false ? (
-                            <div className="float-right buy-sell-deposit">
-                                <a onClick={this.props.onShowModal}>
-                                    <TranslateWithLinks
-                                        string="exchange.buysell_formatter"
-                                        noLink
-                                        keys={[
-                                            {
-                                                type: "asset",
-                                                value: this.props[
-                                                    isBid ? "base" : "quote"
-                                                ].get("symbol"),
-                                                arg: "asset"
-                                            },
-                                            {
-                                                type: "translate",
-                                                value: "exchange.deposit",
-                                                arg: "direction"
-                                            }
-                                        ]}
-                                    />
-                                </a>
-                            </div>
-                        ) : null}
-                        {this.props.onBorrow ? (
-                            <div className="float-right buy-sell-deposit">
-                                <a onClick={this.props.onBorrow}>
-                                    <TranslateWithLinks
-                                        string="exchange.buysell_formatter"
-                                        noLink
-                                        keys={[
-                                            {
-                                                type: "asset",
-                                                value: this.props[
-                                                    isBid ? "base" : "quote"
-                                                ].get("symbol"),
-                                                arg: "asset"
-                                            },
-                                            {
-                                                type: "translate",
-                                                value: "exchange.borrow",
-                                                arg: "direction"
-                                            }
-                                        ]}
-                                    />
-                                </a>
-                            </div>
-                        ) : null}
+                        <div className="ml-auto">
+                            {currencyHasInbridge &&
+                                this.props[isBid ? "base" : "quote"].get("symbol") !==
+                                "LLC" ? (
+                                    <div className="float-right buy-sell-deposit">
+                                        <a onClick={this.props.onShowModal}>
+                                            <TranslateWithLinks
+                                                string="exchange.buysell_formatter"
+                                                noLink
+                                                noTip={true}
+                                                keys={[
+                                                    {
+                                                        type: "asset",
+                                                        value: this.props[
+                                                            isBid ? "quote" : "base"
+                                                        ].get("symbol"),
+                                                        arg: "asset"
+                                                    },
+                                                    {
+                                                        type: "translate",
+                                                        value: "exchange.buy",
+                                                        arg: "direction"
+                                                    }
+                                                ]}
+                                            />
+                                        </a>
+                                    </div>
+                                ) : null}
+                            {/* this.props.backedCoin */ false ? (
+                                <div className="float-right buy-sell-deposit">
+                                    <a onClick={this.props.onShowModal}>
+                                        <TranslateWithLinks
+                                            string="exchange.buysell_formatter"
+                                            noLink
+                                            keys={[
+                                                {
+                                                    type: "asset",
+                                                    value: this.props[
+                                                        isBid ? "base" : "quote"
+                                                    ].get("symbol"),
+                                                    arg: "asset"
+                                                },
+                                                {
+                                                    type: "translate",
+                                                    value: "exchange.deposit",
+                                                    arg: "direction"
+                                                }
+                                            ]}
+                                        />
+                                    </a>
+                                </div>
+                            ) : null}
+                            {this.props.onBorrow ? (
+                                <div className="float-right buy-sell-deposit">
+                                    <a onClick={this.props.onBorrow}>
+                                        <TranslateWithLinks
+                                            string="exchange.buysell_formatter"
+                                            noLink
+                                            keys={[
+                                                {
+                                                    type: "asset",
+                                                    value: this.props[
+                                                        isBid ? "base" : "quote"
+                                                    ].get("symbol"),
+                                                    arg: "asset"
+                                                },
+                                                {
+                                                    type: "translate",
+                                                    value: "exchange.borrow",
+                                                    arg: "direction"
+                                                }
+                                            ]}
+                                        />
+                                    </a>
+                                </div>
+                            ) : null}
+                        </div>
                     </div>
 
                     <form
