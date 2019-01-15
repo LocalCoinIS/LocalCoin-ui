@@ -8,6 +8,9 @@ body.localcoin .order-form .float-right input
 
 body.localcoin
 	.exchange-layout
+		@supports (-ms-ime-align:auto)
+			.right-column
+				height: calc(100% - 30px)
 		.small-12.medium-6.middle-content.order-1,
 		.small-12.medium-6.middle-content.order-2
 			height: 100%
