@@ -8,6 +8,16 @@ body.localcoin .order-form .float-right input
 
 body.localcoin
 	.exchange-layout
+		.main.left-cell-active
+			.grid-block.no-overflow.shrink.wrap
+				>.my-trades,
+				>.open-orders
+					height: calc(43vh - 1px)
+	.exchange-layout
+		.grid-block.no-overflow.shrink.wrap
+			>.buy-form,
+			>.sell-form
+				max-height: 258px
 		@supports (-ms-ime-align:auto)
 			.right-column
 				height: calc(100% - 30px)
@@ -86,7 +96,7 @@ body.localcoin
 				.my-trades
 					>.exchange-bordered.small-12
 						>.table-container
-							max-height: 336px!important
+							max-height: calc(100% - 56px)!important
 		.order-table-container.exchange-sell-orders,
 		.order-table-container.exchange-buy-orders,
 			#x-scrollbar
