@@ -1084,8 +1084,11 @@ body.localcoin
 		.grid-block.no-overflow.wrap.shrink
 			display: flex
 			align-items: stretch
-		.grid-block, .grid-content
-			overflow: hidden
+		.right-column
+			>.grid-block
+				overflow: hidden
+		.grid-block,.grid-content
+			overflow: visible
 		.grid-block.no-overflow.wrap.shrink,
 		.grid-block.shrink.no-overflow
 			background-color: #fff
