@@ -165,7 +165,7 @@ class WithdrawModal extends React.Component {
 
     lockWithdrawBtn() {
         this.setState({
-            wdBtn: "button disabled"
+            wdBtn: "button disabled btn large outline"
         });
     }
 
@@ -497,7 +497,7 @@ class WithdrawModal extends React.Component {
                                         </span>
                                     </div>
                                     <div
-                                        className="button"
+                                        className="button btn large outline"
                                         onClick={this.deactivateModal}
                                     >
                                         <span>

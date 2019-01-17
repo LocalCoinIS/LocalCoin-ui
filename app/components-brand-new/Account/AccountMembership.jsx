@@ -138,8 +138,7 @@ class AccountMembership extends React.Component {
                                     }}
                                 />
                                 <div
-                                    className="button no-margin btn large outline"
-                                    style={{marginTop: '10px!important'}}
+                                    className="button no-margin btn large outline lifetime-btn"
                                     onClick={this.upgradeAccount.bind(
                                         this,
                                         account.id,
