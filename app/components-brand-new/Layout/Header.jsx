@@ -697,7 +697,6 @@ class Header extends React.Component {
                                         <a
                                             className="mobile__list__link"
                                             href="/OTC"
-                                            target="_blank"
                                         >
                                             {/* OTC */}
                                             {counterpart.translate(
@@ -835,7 +834,6 @@ class Header extends React.Component {
                                         <a
                                             className="navigation__link"
                                             href="/OTC"
-                                            target="_blank"
                                         >
                                             {/* OTC */}
                                             {counterpart.translate(
