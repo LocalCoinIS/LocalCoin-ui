@@ -696,8 +696,11 @@ class Header extends React.Component {
                                     <li className="mobile__list__item">
                                         <a
                                             className="mobile__list__link"
-                                            href="/OTC"
-                                            target="_blank"
+                                            href="#"
+                                            onClick={this._onNavigate.bind(
+                                                this,
+                                                "/OTC"
+                                            )}
                                         >
                                             {/* OTC */}
                                             {counterpart.translate(
@@ -834,8 +837,11 @@ class Header extends React.Component {
                                     <li className="navigation__item">
                                         <a
                                             className="navigation__link"
-                                            href="/OTC"
-                                            target="_blank"
+                                            href="#"
+                                            onClick={this._onNavigate.bind(
+                                                this,
+                                                "/OTC"
+                                            )}
                                         >
                                             {/* OTC */}
                                             {counterpart.translate(
