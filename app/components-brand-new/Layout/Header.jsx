@@ -697,6 +697,23 @@ class Header extends React.Component {
                                         <a
                                             className="mobile__list__link"
                                             href="#"
+                                            onClick={this._onNavigate.bind(
+                                                this,
+                                                "/OTC"
+                                            )}
+                                        >
+                                            {/* OTC */}
+                                            {counterpart.translate(
+                                                "header.otc"
+                                            )}
+                                        </a>
+                                    </li>
+                                }
+                                {
+                                    <li className="mobile__list__item">
+                                        <a
+                                            className="mobile__list__link"
+                                            href="#"
                                             onClick={this._showSend.bind(this)}
                                         >
                                             {/* модалка */}
@@ -816,6 +833,23 @@ class Header extends React.Component {
                                         )}
                                     </a>
                                 </li>
+                                {
+                                    <li className="navigation__item">
+                                        <a
+                                            className="navigation__link"
+                                            href="#"
+                                            onClick={this._onNavigate.bind(
+                                                this,
+                                                "/OTC"
+                                            )}
+                                        >
+                                            {/* OTC */}
+                                            {counterpart.translate(
+                                                "header.otc"
+                                            )}
+                                        </a>
+                                    </li>
+                                }
                                 {
                                     <li className="navigation__item">
                                         <a

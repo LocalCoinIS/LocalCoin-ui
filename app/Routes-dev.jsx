@@ -32,6 +32,7 @@ import AccountDepositWithdraw from "./components-brand-new/Account/AccountDeposi
 import AccountPermissions from "./components-brand-new/Account/AccountPermissions";
 import AccountWhitelist from "./components-brand-new/Account/AccountWhitelist";
 import AccountVoting from "./components-brand-new/Account/AccountVoting";
+import OTC from "./components-brand-new/OTC/OTC";
 import Page404 from "./components-brand-new/Page404/Page404";
 // import AccountOrders from "./components/Account/AccountOrders";
 import AccountSignedMessages from "./components-brand-new/Account/AccountSignedMessages";
@@ -201,7 +202,15 @@ const routes = (
                 footerBlock: Footer
             }}
         />
-
+        <Route
+            path="/OTC"
+            component={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: OTC,
+                footerBlock: Footer
+            }}
+        />
         <Route
             path="transfer"
             components={{

@@ -300,7 +300,6 @@ const routes = (
                 footerBlock: Footer
             }}
         />
-
         <Route
             path="transfer"
             getComponents={(location, cb) => {

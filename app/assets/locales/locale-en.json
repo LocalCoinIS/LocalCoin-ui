@@ -887,6 +887,7 @@
         "lock_short": "Log out",
         "locked_tip": "<br/>Click to login.<br/><br/>Closing the browser window will also log you out.",
         "logout": "Logout",
+        "otc": "OTC",
         "payments": "Send",
         "payments_beta": "Send (Beta)",
         "payments_legacy": "Send (legacy)",
@@ -1209,6 +1210,9 @@
         "witness_receive": "Received witness from witness",
         "witness_update": "{account} update its witness info",
         "worker_create": "{account} created a worker proposal with daily pay of {pay}"
+    },
+    "otc": {
+      "info": "Decentralised blockchain based Over the counter trading is coming soon. Please, check our ICO page."
     },
     "page404": {
         "asset_not_found_subtitle": "That asset does not exist",
