@@ -696,6 +696,20 @@ class Header extends React.Component {
                                     <li className="mobile__list__item">
                                         <a
                                             className="mobile__list__link"
+                                            href="/OTC"
+                                            target="_blank"
+                                        >
+                                            {/* OTC */}
+                                            {counterpart.translate(
+                                                "header.otc"
+                                            )}
+                                        </a>
+                                    </li>
+                                }
+                                {
+                                    <li className="mobile__list__item">
+                                        <a
+                                            className="mobile__list__link"
                                             href="#"
                                             onClick={this._showSend.bind(this)}
                                         >
@@ -816,6 +830,20 @@ class Header extends React.Component {
                                         )}
                                     </a>
                                 </li>
+                                {
+                                    <li className="navigation__item">
+                                        <a
+                                            className="navigation__link"
+                                            href="/OTC"
+                                            target="_blank"
+                                        >
+                                            {/* OTC */}
+                                            {counterpart.translate(
+                                                "header.otc"
+                                            )}
+                                        </a>
+                                    </li>
+                                }
                                 {
                                     <li className="navigation__item">
                                         <a

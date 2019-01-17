@@ -434,7 +434,6 @@ class OrderBook extends React.Component {
         }
 
         this.upVerticalBlockToEndScroll();
-
     }
 
     componentWillUpdate() {}
@@ -522,8 +521,6 @@ class OrderBook extends React.Component {
             //this.setState(newState, this.centerVerticalScrollBar);
         } else this.setState(newState);
     };
-
-
 
     render() {
         let {
