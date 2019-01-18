@@ -283,7 +283,7 @@ class WithdrawModal extends React.Component {
                 <div
                     id="withdraw_asset_rudex-scorum_RUDEX.SCR"
                     data-closable="true"
-                    className="modal fadeIn ng-enter is-active ng-enter-active"
+                    className="withdraw-modal modal fadeIn ng-enter is-active ng-enter-active"
                 >
                     <a
                         href="javascript:void(0)"
