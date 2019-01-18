@@ -305,7 +305,6 @@ const routes = (
             getComponents={(location, cb) => {
                 Promise.all([
                     import("components-brand-new/Layout/Header"),
-                    Promise.resolve(null),
                     import("components-brand-new/OTC/OTC"),
                     import("components-brand-new/Layout/Footer")
                 ])
