@@ -300,18 +300,18 @@ const routes = (
                 footerBlock: Footer
             }}
         />
-        <Route
-            path="/OTC"
-            getComponents={(location, cb) => {
-                Promise.all([
-                    import("components-brand-new/Layout/Header"),
-                    import("components-brand-new/OTC/OTC"),
-                    import("components-brand-new/Layout/Footer")
-                ])
-                    .then(loadMultiComponentsRoute(cb))
-                    .catch(errorLoading);
-            }}
-        />
+        {/*<Route*/}
+            {/*path="/OTC"*/}
+            {/*getComponents={(location, cb) => {*/}
+                {/*Promise.all([*/}
+                    {/*import("components-brand-new/Layout/Header"),*/}
+                    {/*import("components-brand-new/OTC/OTC"),*/}
+                    {/*import("components-brand-new/Layout/Footer")*/}
+                {/*])*/}
+                    {/*.then(loadMultiComponentsRoute(cb))*/}
+                    {/*.catch(errorLoading);*/}
+            {/*}}*/}
+        {/*/>*/}
         <Route
             path="transfer"
             getComponents={(location, cb) => {

@@ -202,15 +202,15 @@ const routes = (
                 footerBlock: Footer
             }}
         />
-        <Route
-            path="/OTC"
-            component={{
-                headerBlock: Header,
-                sidebarBlock: null,
-                contentBlock: OTC,
-                footerBlock: Footer
-            }}
-        />
+        {/*<Route*/}
+            {/*path="/OTC"*/}
+            {/*component={{*/}
+                {/*headerBlock: Header,*/}
+                {/*sidebarBlock: null,*/}
+                {/*contentBlock: OTC,*/}
+                {/*footerBlock: Footer*/}
+            {/*}}*/}
+        {/*/>*/}
         <Route
             path="transfer"
             components={{
