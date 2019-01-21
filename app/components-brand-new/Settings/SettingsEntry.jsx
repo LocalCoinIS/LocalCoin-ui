@@ -32,6 +32,7 @@ class SelectUnWrapped extends React.Component {
     }
     render() {
         const {setting, options, selected, onChange} = this.props;
+        console.log(12312312312312312312);
         return (
             <div
                 className={cnames(
