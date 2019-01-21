@@ -1434,11 +1434,11 @@ class Exchange extends React.Component {
                         : "medium-6 xlarge-4",
                     this.state.flipBuySell
                         ? `order-${
-                              buySellTop ? 2 : 5 * orderMultiplier
-                          } sell-form`
+                            buySellTop ? 2 : 5 * orderMultiplier
+                        } sell-form`
                         : `order-${
-                              buySellTop ? 1 : 4 * orderMultiplier
-                          } buy-form`
+                            buySellTop ? 1 : 4 * orderMultiplier
+                        } buy-form`
                 )}
                 type="bid"
                 expirationType={expirationType["bid"]}
@@ -1521,11 +1521,11 @@ class Exchange extends React.Component {
                         : "medium-6 xlarge-4",
                     this.state.flipBuySell
                         ? `order-${
-                              buySellTop ? 1 : 4 * orderMultiplier
-                          } buy-form`
+                            buySellTop ? 1 : 4 * orderMultiplier
+                        } buy-form`
                         : `order-${
-                              buySellTop ? 2 : 5 * orderMultiplier
-                          } sell-form`
+                            buySellTop ? 2 : 5 * orderMultiplier
+                        } sell-form`
                 )}
                 type="ask"
                 amount={ask.forSaleText}
@@ -1912,11 +1912,6 @@ class Exchange extends React.Component {
                             />
                         </div>
                         <div
-                            style={{
-                                padding: !this.props.miniDepthChart
-                                    ? 0
-                                    : "0 0 40px 0"
-                            }}
                             className="grid-block no-margin vertical shrink"
                         >
                             <div
