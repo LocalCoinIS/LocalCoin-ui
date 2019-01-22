@@ -731,9 +731,9 @@ class AccountOverview extends React.Component {
                                 : "LLC";
                         let directMarketLink = notCore ? (
                             <Link
-                                to={`/market/${asset.get(
+                                to={`/market/${preferredMarket}_${asset.get(
                                     "symbol"
-                                )}_${preferredMarket}`}
+                                )}`}
                             >
                                 <Icon
                                     name="trade"
