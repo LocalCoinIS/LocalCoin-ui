@@ -28,7 +28,7 @@ class WithdrawModal extends React.Component {
             active: props.active,
             balance: this.getBalance(),
             insufficient: this.checkInsufficient(),
-            wdBtn: "button disabled",
+            wdBtn: "button btn large outline disabled",
             feeAmount: new Asset({amount: 0}),
             validAddress: true
         };
