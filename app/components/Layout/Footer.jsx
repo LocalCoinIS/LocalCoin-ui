@@ -93,7 +93,7 @@ class Footer extends React.Component {
 
         if (hintData.length == 0) {
             window.open(
-                "http://docs.localcoin.is/localcoin/user/index.html",
+                "https://docs.localcoin.is/localcoin/user/index.html",
                 "_blank"
             );
         } else {
