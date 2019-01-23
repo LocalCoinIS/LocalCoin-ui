@@ -1419,10 +1419,12 @@ class AccountOverview extends React.Component {
         );
 
         const accountProposals = (
-            <Proposals
-                className="dashboard-table"
-                account={account.get("id")}
-            />
+            <div className="propsal-table-wrap">
+                <Proposals
+                    className="dashboard-table"
+                    account={account.get("id")}
+                />
+            </div>
         );
 
         const items = [
