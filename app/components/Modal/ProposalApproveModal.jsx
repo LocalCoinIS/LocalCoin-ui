@@ -258,7 +258,7 @@ class ProposalApproveModal extends React.Component {
                     <div className="content-block">
                         <input
                             type="submit"
-                            className="button"
+                            className="button btn large outline"
                             onClick={this._onProposalAction.bind(
                                 this,
                                 proposal
@@ -267,7 +267,7 @@ class ProposalApproveModal extends React.Component {
                         />
                         <div
                             onClick={this.onCancel.bind(this)}
-                            className=" button"
+                            className=" button btn large outline"
                         >
                             <Translate content="account.perm.cancel" />
                         </div>
