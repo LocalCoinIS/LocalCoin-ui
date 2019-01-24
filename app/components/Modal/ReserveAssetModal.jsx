@@ -115,7 +115,7 @@ export default class ReserveAssetModal extends React.Component {
                     <div className="content-block button-group">
                         <input
                             type="submit"
-                            className="button success"
+                            className="button success btn large inverted"
                             onClick={this.onSubmit.bind(this)}
                             value={counterpart.translate(
                                 "modal.reserve.submit"
@@ -124,7 +124,7 @@ export default class ReserveAssetModal extends React.Component {
                         />
 
                         <div
-                            className="button"
+                            className="button btn large outline"
                             onClick={this.props.onClose}
                             tabIndex={3}
                         >
