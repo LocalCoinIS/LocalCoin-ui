@@ -618,7 +618,7 @@ class BorrowModalContent extends React.Component {
                     </form>
                     <div className="grid-content button-group text-center no-overflow">
                         <Trigger close={this.props.modalId}>
-                            <div className=" button warning">
+                            <div className=" button btn large outline">
                                 <Translate content="account.perm.cancel" />
                             </div>
                         </Trigger>
