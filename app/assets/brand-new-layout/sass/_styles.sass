@@ -1372,8 +1372,13 @@ body.localcoin
 	.accounts-table
 		border-bottom: 1px solid #7fafe8
 		min-width: 1090px
-		tr:first-child
-			border-bottom: 1px solid #7fafe8
+		tbody
+			tr
+				border-bottom: 1px solid #7fafe8
+				&:first-child
+					border-top: 1px solid #7fafe8
+				&:last-child
+					border-bottom: 0
 		th,
 		td
 			background-color: transparent
