@@ -4,7 +4,7 @@ import SettingsStore from "stores/SettingsStore";
 import counterpart from "counterpart";
 import LLCGateway from "./LLCGateway";
 import LLCGatewayData from "./LLCGatewayData";
-import WithdrawModal from "./WithdrawModal";
+// import WithdrawModal from "./WithdrawModal";
 
 class Instructions extends React.Component {
     address = null;
@@ -205,12 +205,12 @@ class Instructions extends React.Component {
                     )}
                 </div>
 
-                <WithdrawModal
-                    bullet={this}
-                    active={this.state.modalActive}
-                    account={this.props.account}
-                    currency={this.props.currency}
-                />
+                {/*<WithdrawModal*/}
+                    {/*bullet={this}*/}
+                    {/*active={this.state.modalActive}*/}
+                    {/*account={this.props.account}*/}
+                    {/*currency={this.props.currency}*/}
+                {/*/>*/}
             </div>
         );
     }
