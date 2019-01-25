@@ -14,9 +14,9 @@ export function getGatewayName(asset) {
         asset.get("symbol") === "PPY"
             ? "RUDEX"
             : asset.get("symbol").split(".")[0];
-    if (gatewayPrefixes.indexOf(prefix) !== -1) {
-        return availableGateways[prefix].name;
-    }
+    // if (gatewayPrefixes.indexOf(prefix) !== -1) {
+    //     return availableGateways[prefix].name;
+    // }
     return null;
 }
 

@@ -16,7 +16,7 @@ import SettingsStore from "stores/SettingsStore";
 import SettingsActions from "actions/SettingsActions";
 import {settingsAPIs} from "api/apiConfig";
 import BitKapital from "../../components/DepositWithdraw/BitKapital";
-import RuDexGateway from "../../components/DepositWithdraw/rudex/RuDexGateway";
+// import RuDexGateway from "../../components/DepositWithdraw/rudex/RuDexGateway";
 import GatewayStore from "stores/GatewayStore";
 import AccountImage from "../../components/Account/AccountImage";
 import GdexGateway from "../../components/DepositWithdraw/gdex/GdexGateway";
