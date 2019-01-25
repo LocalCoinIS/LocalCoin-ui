@@ -39,6 +39,8 @@ body.localcoin
 			white-space: nowrap
 body.localcoin
 	.exchange-layout
+		.sticky-table-container 
+			min-height: inherit
 		.open-orders
 			.grid-block.shrink.left-orderbook-header.market-right-padding-only
 				padding-right: 0px!important
@@ -274,7 +276,7 @@ body.localcoin .sticky-table .sticky-table-y-wrapper
 
 body.localcoin .order-table .custom-sticky-table-wrap
 	display: table
-	height: calc(50vh - 92px)
+	height: calc(50vh - 82px)
 
 body.localcoin .order-table .custom-sticky-table-wrap .transition-container
 	display: table-cell
@@ -312,3 +314,6 @@ body.localcoin
 			height: calc(53vh + 11px)
 			.table-container.grid-block
 				max-height: calc(100% - 58px)!important
+	.grid-block.no-overflow.wrap.shrink:not(.switch)
+		.medium-6.xlarge-4.no-padding.no-overflow.small-12.medium-6.order-3.xlarge-order-3.my-trades
+			max-height: 258px
