@@ -1853,7 +1853,7 @@ class Exchange extends React.Component {
                                 {buyForm}
                                 {sellForm}
 
-                                {buySellTop ? marketHistory : myOpenOrders}
+                                {leftOrderBook ? null : (buySellTop ? marketHistory : myOpenOrders)}
 
                                 </div>
                                 <div className="market-row">
@@ -1886,7 +1886,9 @@ class Exchange extends React.Component {
                                     hasOrders={combinedBids.length > 0}
                                 />
 
-                                {!buySellTop ? marketHistory : myOpenOrders}
+                                {leftOrderBook ? (marketHistory) :  null}
+                                {leftOrderBook ? (myOpenOrders) : null}
+                                {!leftOrderBook && !buySellTop ? marketHistory : myOpenOrders}
                                 </div>
                             </div>
                         </div>
