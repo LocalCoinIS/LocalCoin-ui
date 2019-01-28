@@ -20,7 +20,7 @@ import BitKapital from "../../components/DepositWithdraw/BitKapital";
 import GatewayStore from "stores/GatewayStore";
 import AccountImage from "../../components/Account/AccountImage";
 import GdexGateway from "../../components/DepositWithdraw/gdex/GdexGateway";
-import WinexGateway from "../../components/DepositWithdraw/winex/WinexGateway";
+// import WinexGateway from "../../components/DepositWithdraw/winex/WinexGateway";
 import PropTypes from "prop-types";
 import LLCGateway from "../../components/DepositWithdraw/llcgateway/LLCGateway";
 import counterpart from "counterpart";

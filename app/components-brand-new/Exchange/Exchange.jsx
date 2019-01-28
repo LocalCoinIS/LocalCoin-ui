@@ -1620,6 +1620,57 @@ class Exchange extends React.Component {
             />
         );
 
+        let marketHistory = (
+            <MarketHistory
+                className={cnames(
+                    !smallScreen && !leftOrderBook
+                        ? "medium-6 xlarge-4"
+                        : "",
+                    "no-padding no-overflow small-12 medium-6 order-3 xlarge-order-3 my-trades"
+                )}
+                headerStyle={{paddingTop: 0}}
+                history={activeMarketHistory}
+                currentAccount={currentAccount}
+                myHistory={currentAccount.get("history")}
+                base={base}
+                quote={quote}
+                baseSymbol={baseSymbol}
+                quoteSymbol={quoteSymbol}
+            />
+        );
+
+        let myOpenOrders = marketLimitOrders.size > 0 && base && quote ? (
+            <MyOpenOrders
+                smallScreen={this.props.smallScreen}
+                className={cnames(
+                    !smallScreen && !leftOrderBook
+                        ? "medium-6 xlarge-4"
+                        : "",
+                    `open-orders small-12 medium-6 no-padding align-spaced ps-container order-${
+                        buySellTop ? 6 : 6
+                        }`
+                )}
+                key="open_orders"
+                orders={marketLimitOrders}
+                settleOrders={marketSettleOrders}
+                currentAccount={currentAccount}
+                base={base}
+                quote={quote}
+                baseSymbol={baseSymbol}
+                quoteSymbol={quoteSymbol}
+                activeTab={this.props.viewSettings.get(
+                    "ordersTab"
+                )}
+                onCancel={this._cancelLimitOrder.bind(
+                    this
+                )}
+                flipMyOrders={this.props.viewSettings.get(
+                    "flipMyOrders"
+                )}
+                feedPrice={this.props.feedPrice}
+            />
+        ) : null;
+
         return (
             <div className="grid-block vertical">
                 {this.state.isBridgeModalVisible ? (
@@ -1771,6 +1822,7 @@ class Exchange extends React.Component {
                             )}
 
                             <div className="grid-block no-overflow wrap shrink">
+                                <div className="market-row">
                                 {hasPrediction ? (
                                     <div
                                         className="small-12 no-overflow"
@@ -1801,25 +1853,11 @@ class Exchange extends React.Component {
                                 {buyForm}
                                 {sellForm}
 
-                                <MarketHistory
-                                    className={cnames(
-                                        !smallScreen && !leftOrderBook
-                                            ? "medium-6 xlarge-4"
-                                            : "",
-                                        "no-padding no-overflow small-12 medium-6 order-3 xlarge-order-3 my-trades"
-                                    )}
-                                    headerStyle={{paddingTop: 0}}
-                                    history={activeMarketHistory}
-                                    currentAccount={currentAccount}
-                                    myHistory={currentAccount.get("history")}
-                                    base={base}
-                                    quote={quote}
-                                    baseSymbol={baseSymbol}
-                                    quoteSymbol={quoteSymbol}
-                                />
+                                {buySellTop ? marketHistory : myOpenOrders}
 
+                                </div>
+                                <div className="market-row">
                                 {!leftOrderBook ? orderBook : null}
-
                                 <ConfirmOrderModal
                                     type="buy"
                                     ref="buy"
@@ -1848,37 +1886,8 @@ class Exchange extends React.Component {
                                     hasOrders={combinedBids.length > 0}
                                 />
 
-                                {marketLimitOrders.size > 0 && base && quote ? (
-                                    <MyOpenOrders
-                                        smallScreen={this.props.smallScreen}
-                                        className={cnames(
-                                            !smallScreen && !leftOrderBook
-                                                ? "medium-6 xlarge-4"
-                                                : "",
-                                            `open-orders small-12 medium-6 no-padding align-spaced ps-container order-${
-                                                buySellTop ? 6 : 6
-                                            }`
-                                        )}
-                                        key="open_orders"
-                                        orders={marketLimitOrders}
-                                        settleOrders={marketSettleOrders}
-                                        currentAccount={currentAccount}
-                                        base={base}
-                                        quote={quote}
-                                        baseSymbol={baseSymbol}
-                                        quoteSymbol={quoteSymbol}
-                                        activeTab={this.props.viewSettings.get(
-                                            "ordersTab"
-                                        )}
-                                        onCancel={this._cancelLimitOrder.bind(
-                                            this
-                                        )}
-                                        flipMyOrders={this.props.viewSettings.get(
-                                            "flipMyOrders"
-                                        )}
-                                        feedPrice={this.props.feedPrice}
-                                    />
-                                ) : null}
+                                {!buySellTop ? marketHistory : myOpenOrders}
+                                </div>
                             </div>
                         </div>
                         {/* end CenterContent */}
