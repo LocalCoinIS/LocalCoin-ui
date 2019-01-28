@@ -695,7 +695,10 @@ body.localcoin
 		text-align: left
 	.exchange-layout
 		#market-charts + .grid-block.no-overflow.wrap.shrink
+			overflow: hidden
 			flex-grow: 1
+			display: flex
+			flex-direction: column
 	.main.account-localcoin-member-stats,
 	.main.account-localcoin-ico-member-stats
 		.table.key-value-table
@@ -1415,7 +1418,8 @@ body.localcoin .exchange-layout
 			span
 				text-transform: none!important
 
-body.localcoin .exchange-layout .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8 .table.order-table.table-hover.fixed-table.text-right th
+body.localcoin .exchange-layout .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8 .table.order-table.table-hover.fixed-table.text-right th,
+body.localcoin .exchange-layout .order-1.xlarge-order-1.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8 .table.order-table.table-hover.fixed-table.text-right th,
 	padding: 5px!important
 
 
@@ -1636,7 +1640,8 @@ body.localcoin .exchange-layout .grid-block.wrap.market-stats-container ul.marke
 			margin-top: -42px
 		// .grid-block.left-column.shrink.no-overflow
 		// 	margin-top: -42px
-		.order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+		.order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8,
+		.order-1.xlarge-order-1.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8,
 			.table.order-table.table-hover.fixed-table.text-right.no-overflow,
 			.table.order-table.table-hover.fixed-table.text-right.no-overflow,
 			.table.order-table.table-hover.fixed-table.text-right
@@ -1653,8 +1658,6 @@ body.localcoin .exchange-layout .grid-block.wrap.market-stats-container ul.marke
 		.medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3
 			max-height: 250px!important
 		.order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
-			height: calc(100vh - 756px)
-			min-height: 358px
 			.small-12.medium-6.middle-content.order-1,
 			.small-12.medium-6.middle-content.order-2
 				margin-bottom: 0!important
@@ -1690,8 +1693,6 @@ body.localcoin .exchange-layout .grid-block.wrap.market-stats-container ul.marke
 	body.localcoin .exchange-layout
 		.grid-block.ps-container.ps-theme-default.ps-active-y
 			flex-direction: column
-		.order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
-			margin: auto
 		.order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
 			.table.order-table.table-hover.fixed-table.text-right.no-overflow,
 			.table.order-table.table-hover.fixed-table.text-right.no-overflow,

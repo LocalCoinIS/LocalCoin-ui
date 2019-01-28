@@ -1822,7 +1822,7 @@ class Exchange extends React.Component {
                             )}
 
                             <div className="grid-block no-overflow wrap shrink">
-                                <div className="market-row">
+                                <div className="market-row stable-height">
                                 {hasPrediction ? (
                                     <div
                                         className="small-12 no-overflow"

@@ -8,6 +8,14 @@ body.localcoin .order-form .float-right input
 
 body.localcoin
 	.exchange-layout
+		.market-row
+			display: flex
+		.market-row:not(.stable-height)
+			flex-grow: 1
+			min-height: 227px
+			margin-top: -1px
+		.market-row.stable-height
+			max-height: 227px
 		.mymarkets-header.clickable
 			display: flex
 			align-items: center
@@ -294,6 +302,8 @@ body.localcoin
 		width: 100%
 		border-radius: unset!important
 		height: unset!important
+		.market-row.stable-height
+			order: 2
 		.small-12.no-padding.medium-6.xlarge-4.order-4.buy-form,
 		.small-12.no-padding.medium-6.xlarge-4.order-5.sell-form,
 		.medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.order-6
@@ -302,7 +312,7 @@ body.localcoin
 		.small-12.no-padding.medium-6.xlarge-4.order-5.sell-form
 			margin-top: auto!important
 		.order-1.xlarge-order-1.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
-			height: calc(53vh + 11px)
+			height: auto
 			.exchange-bordered
 				height: 100%
 				.grid-block.ps-container
@@ -311,9 +321,21 @@ body.localcoin
 			.small-12.medium-6.middle-content.order-2
 				margin-bottom: 0px!important
 		.medium-6.xlarge-4.no-padding.no-overflow.small-12.medium-6.order-3.xlarge-order-3.my-trades
-			height: calc(53vh + 11px)
+			height: auto
 			.table-container.grid-block
 				max-height: calc(100% - 58px)!important
 	.grid-block.no-overflow.wrap.shrink:not(.switch)
 		.medium-6.xlarge-4.no-padding.no-overflow.small-12.medium-6.order-3.xlarge-order-3.my-trades
 			max-height: 258px
+
+
+
+@media only screen and (max-width: 1280px)
+	body.localcoin
+		.exchange-layout
+			.market-row.stable-height
+				max-height: none
+			.market-row
+				flex-direction: column
+	body.localcoin .exchange-layout #market-charts + .grid-block.no-overflow.wrap.shrink
+		overflow: visible
