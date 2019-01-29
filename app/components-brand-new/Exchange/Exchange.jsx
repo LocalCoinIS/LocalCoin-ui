@@ -1864,7 +1864,7 @@ class Exchange extends React.Component {
                                 {leftOrderBook ? null : (buySellTop ? marketHistory : myOpenOrders)}
 
                                 </div>
-                                <div className="market-row">
+                                <div className={`market-row ${isMarketFee ? "is-fee-neighbor" : ""}`}>
                                 {!leftOrderBook ? orderBook : null}
                                 <ConfirmOrderModal
                                     type="buy"
