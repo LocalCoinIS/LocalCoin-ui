@@ -692,19 +692,19 @@ class Header extends React.Component {
                                         )}
                                     </a>
                                 </li>
-                                {/*{*/}
-                                    {/*<li className="mobile__list__item">*/}
-                                        {/*<a*/}
-                                            {/*className="mobile__list__link"*/}
-                                            {/*href="/OTC"*/}
-                                        {/*>*/}
-                                            {/*/!* OTC *!/*/}
-                                            {/*{counterpart.translate(*/}
-                                                {/*"header.otc"*/}
-                                            {/*)}*/}
-                                        {/*</a>*/}
-                                    {/*</li>*/}
-                                {/*}*/}
+                                {
+                                    <li className="mobile__list__item">
+                                        <a
+                                            className="mobile__list__link"
+                                            href="/OTC"
+                                        >
+                                            {/* OTC */}
+                                            {counterpart.translate(
+                                                "header.otc"
+                                            )}
+                                        </a>
+                                    </li>
+                                }
                                 {
                                     <li className="mobile__list__item">
                                         <a
@@ -829,19 +829,19 @@ class Header extends React.Component {
                                         )}
                                     </a>
                                 </li>
-                                {/*{*/}
-                                    {/*<li className="navigation__item">*/}
-                                        {/*<a*/}
-                                            {/*className="navigation__link"*/}
-                                            {/*href="/OTC"*/}
-                                        {/*>*/}
-                                            {/*/!* OTC *!/*/}
-                                            {/*{counterpart.translate(*/}
-                                                {/*"header.otc"*/}
-                                            {/*)}*/}
-                                        {/*</a>*/}
-                                    {/*</li>*/}
-                                {/*}*/}
+                                {
+                                    <li className="navigation__item">
+                                        <a
+                                            className="navigation__link"
+                                            href="/OTC"
+                                        >
+                                            {/* OTC */}
+                                            {counterpart.translate(
+                                                "header.otc"
+                                            )}
+                                        </a>
+                                    </li>
+                                }
                                 {
                                     <li className="navigation__item">
                                         <a
