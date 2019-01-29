@@ -1209,7 +1209,7 @@ class Exchange extends React.Component {
     _toggleSwitch() {
         let el = document.querySelector(".grid-block.no-overflow.wrap.shrink");
         if(!el) return;
-        if(!this.state.buySellTop && !this.state.leftOrderBook) {
+        if(!this.state.buySellTop) {
             el.classList.add("switch");
         } else {
             el.classList.remove("switch");
@@ -1646,7 +1646,7 @@ class Exchange extends React.Component {
                     !smallScreen && !leftOrderBook
                         ? "medium-6 xlarge-4"
                         : "",
-                    `open-orders small-12 medium-6 no-padding align-spaced ps-container order-${
+                    `open-orders small-12 medium-6 no-padding align-spaced ps-container test order-${
                         buySellTop ? 6 : 6
                         }`
                 )}
@@ -1888,7 +1888,7 @@ class Exchange extends React.Component {
 
                                 {leftOrderBook ? (marketHistory) :  null}
                                 {leftOrderBook ? (myOpenOrders) : null}
-                                {!leftOrderBook && !buySellTop ? marketHistory : myOpenOrders}
+                                {leftOrderBook ? null : (!buySellTop ? marketHistory : myOpenOrders)}
                                 </div>
                             </div>
                         </div>
