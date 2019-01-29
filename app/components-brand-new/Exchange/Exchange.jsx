@@ -67,7 +67,8 @@ class Exchange extends React.Component {
                 bid: moment().add(1, "day"),
                 ask: moment().add(1, "day")
             },
-            isBridgeModalVisible: false
+            isBridgeModalVisible: false,
+            isMarketFee: false
         };
 
         this._getWindowSize = debounce(this._getWindowSize.bind(this), 150);
@@ -1217,6 +1218,10 @@ class Exchange extends React.Component {
 
     }
 
+    _checkMarketFee = (value) => {
+        this.setState({ isMarketFee: value })
+    }
+
     render() {
         let {
             currentAccount,
@@ -1259,7 +1264,8 @@ class Exchange extends React.Component {
             buyDiff,
             sellDiff,
             width,
-            buySellTop
+            buySellTop,
+            isMarketFee
         } = this.state;
         const {isFrozen, frozenAsset} = this.isMarketFrozen();
 
@@ -1497,6 +1503,7 @@ class Exchange extends React.Component {
                         ? this._toggleBuySellPosition.bind(this)
                         : null
                 }
+                checkMarketFee={this._checkMarketFee.bind(this)}
             />
         );
 
@@ -1586,6 +1593,7 @@ class Exchange extends React.Component {
                         ? this._toggleBuySellPosition.bind(this)
                         : null
                 }
+                checkMarketFee={this._checkMarketFee.bind(this)}
             />
         );
 
@@ -1822,7 +1830,7 @@ class Exchange extends React.Component {
                             )}
 
                             <div className="grid-block no-overflow wrap shrink">
-                                <div className="market-row stable-height">
+                                <div className={`market-row stable-height ${isMarketFee ? "is-fee" : ""}`}>
                                 {hasPrediction ? (
                                     <div
                                         className="small-12 no-overflow"

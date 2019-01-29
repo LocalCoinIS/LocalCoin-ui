@@ -39,6 +39,10 @@ class BuySell extends React.Component {
         type: "bid"
     };
 
+    componentDidMount() {
+        if (this.props.checkMarketFee) this.props.checkMarketFee(!!document.querySelector(".market-fee"));
+    }
+
     shouldComponentUpdate(nextProps) {
         return (
             nextProps.amount !== this.props.amount ||
@@ -117,7 +121,6 @@ class BuySell extends React.Component {
         if (this.props.amount) amount = this.props.amount;
         if (this.props.price) price = this.props.price;
         if (this.props.total) total = this.props.total;
-
         let balanceAmount = new Asset({
             amount: balance ? balance.get("balance") : 0,
             precision: balancePrecision,
@@ -168,7 +171,7 @@ class BuySell extends React.Component {
             baseFlagBooleans["charge_market_fee"] ||
             quoteFlagBooleans["charge_market_fee"];
         var baseMarketFee = baseFlagBooleans["charge_market_fee"] ? (
-            <div className="grid-block no-padding buy-sell-row">
+            <div className="grid-block no-padding buy-sell-row market-fee">
                 <div className="grid-block small-4 no-margin no-overflow buy-sell-label">
                     <Translate content="explorer.asset.summary.market_fee" />
                     :&nbsp;
@@ -204,7 +207,7 @@ class BuySell extends React.Component {
                 </div>
             </div>
         ) : hasMarketFee ? (
-            <div className="grid-block no-padding buy-sell-row">
+            <div className="grid-block no-padding buy-sell-row ">
                 <div
                     style={{visibility: "hidden"}}
                     className="grid-block small-3 no-margin no-overflow buy-sell-label"
@@ -218,7 +221,7 @@ class BuySell extends React.Component {
             this.props.quote
         );
         var quoteMarketFee = quoteFlagBooleans["charge_market_fee"] ? (
-            <div className="grid-block no-padding buy-sell-row">
+            <div className="grid-block no-padding buy-sell-row market-fee">
                 <div className="grid-block small-4 no-margin no-overflow buy-sell-label">
                     <Translate content="explorer.asset.summary.market_fee" />
                     :&nbsp;
