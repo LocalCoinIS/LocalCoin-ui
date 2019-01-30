@@ -253,7 +253,7 @@ class LLCBridgeModal extends React.Component {
         );
 
         var copy = (
-            <div className="d-flex align-center">
+            <div className="d-flex">
                 <CopyButton text={this.state.address} className={"btn icon"} />
                 <div>
                     <Translate

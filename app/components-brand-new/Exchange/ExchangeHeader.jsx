@@ -269,12 +269,34 @@ export default class ExchangeHeader extends React.Component {
                         <div className="change-pair" style={{padding: "5px"}}>
                             {!hasPrediction ? (
                                 <div
+                                    className="pair-switcher-block"
                                     style={{
                                         padding: "0 5px",
                                         fontSize: "18px",
                                         marginTop: "1px"
                                     }}
                                 >
+                                    <Link
+                                      onClick={() => {
+                                        this._addMarket(
+                                          this.props.quoteAsset.get(
+                                            "symbol"
+                                          ),
+                                          this.props.baseAsset.get(
+                                            "symbol"
+                                          )
+                                        );
+                                      }}
+                                      data-intro={translator.translate(
+                                        "walkthrough.favourite_button"
+                                      )}
+                                    >
+                                      <Icon
+                                        className={starClass}
+                                        name="fi-star"
+                                        title="icons.fi_star.market"
+                                      />
+                                    </Link>
                                     <span
                                         onClick={this.marketPicker.bind(
                                             this,
@@ -293,7 +315,21 @@ export default class ExchangeHeader extends React.Component {
                                             noTip
                                         />
                                     </span>
-                                    <span style={{padding: "0 5px"}}>/</span>
+                                    <Link
+                                      onClick={() => {
+                                        MarketsActions.switchMarket();
+                                      }}
+                                      to={`/market/${baseSymbol}_${quoteSymbol}`}
+                                      data-intro={translator.translate(
+                                        "walkthrough.switch_button"
+                                      )}
+                                    >
+                                      <Icon
+                                        className="shuffle"
+                                        name="shuffle"
+                                        title="icons.shuffle"
+                                      />
+                                    </Link>
                                     <span
                                         onClick={this.marketPicker.bind(
                                             this,
@@ -312,43 +348,6 @@ export default class ExchangeHeader extends React.Component {
                                             noTip
                                         />
                                     </span>
-                                    <Link
-                                        onClick={() => {
-                                            MarketsActions.switchMarket();
-                                        }}
-                                        to={`/market/${baseSymbol}_${quoteSymbol}`}
-                                        data-intro={translator.translate(
-                                            "walkthrough.switch_button"
-                                        )}
-                                    >
-                                        <Icon
-                                            className="shuffle"
-                                            name="shuffle"
-                                            title="icons.shuffle"
-                                        />
-                                    </Link>
-
-                                    <Link
-                                        onClick={() => {
-                                            this._addMarket(
-                                                this.props.quoteAsset.get(
-                                                    "symbol"
-                                                ),
-                                                this.props.baseAsset.get(
-                                                    "symbol"
-                                                )
-                                            );
-                                        }}
-                                        data-intro={translator.translate(
-                                            "walkthrough.favourite_button"
-                                        )}
-                                    >
-                                        <Icon
-                                            className={starClass}
-                                            name="fi-star"
-                                            title="icons.fi_star.market"
-                                        />
-                                    </Link>
                                 </div>
                             ) : (
                                 <a className="market-symbol">
