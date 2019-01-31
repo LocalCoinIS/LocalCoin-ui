@@ -224,15 +224,11 @@ class LLCBridgeModal extends React.Component {
         var info = (
             <div>
                 <br />
-                <br />
-                <br />
-                <br />
                 <Translate
                     content="gateway.rudex.min_amount"
                     minAmount={this.state.minimal}
                     symbol={this.state.asset}
                 />
-                <br />
                 <br />
                 <Translate
                     className="deposit-withdraw-info"
@@ -240,7 +236,6 @@ class LLCBridgeModal extends React.Component {
                     content="gateway.min_count_confirmations"
                     cnt={this.state.confirmations}
                 />
-                <br />
                 <br />
                 <Translate
                     component="span"
