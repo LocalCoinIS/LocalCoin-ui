@@ -103,7 +103,6 @@ class AmountSelector extends React.Component {
         let value = this.props.error
             ? counterpart.translate(this.props.error)
             : this.formatAmount(this.props.amount);
-
         return (
             <div className="amount-selector" style={this.props.style}>
                 <label className="right-label">
