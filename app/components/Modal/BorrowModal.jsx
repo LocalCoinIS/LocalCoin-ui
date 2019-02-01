@@ -512,9 +512,10 @@ class BorrowModalContent extends React.Component {
             {"has-warning": errors.close_maintenance}
         );
         let buttonClass = classNames(
-            "button btn large outline",
+            "button btn large",
             {disabled: errors.collateral_balance || !isValid},
-            {success: isValid}
+            {outline: errors.collateral_balance || !isValid},
+            {inverted: isValid}
         );
 
         // Dynamically update user's remaining collateral
