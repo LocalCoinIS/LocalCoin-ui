@@ -506,7 +506,6 @@ class SendModal extends React.Component {
     }
 
     onPropose(e) {
-        console.log(11112222333);
         e.preventDefault();
         let {
             propose,
@@ -596,11 +595,6 @@ class SendModal extends React.Component {
     }
 
     render() {
-        console.log(1111111);
-        console.log(this.state);
-        console.log(this.state.from_name);
-        console.log(this.props.from_name);
-        console.log(1111111);
         let from_error = null;
         let {
             propose,
