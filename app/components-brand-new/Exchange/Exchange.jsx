@@ -1654,7 +1654,7 @@ class Exchange extends React.Component {
                     !smallScreen && !leftOrderBook
                         ? "medium-6 xlarge-4"
                         : "",
-                    `open-orders small-12 medium-6 no-padding align-spaced ps-container test order-${
+                    `open-orders small-12 medium-6 no-padding align-spaced ps-container order-${
                         buySellTop ? 6 : 6
                         }`
                 )}

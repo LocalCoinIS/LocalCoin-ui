@@ -570,11 +570,11 @@ class MyOpenOrders extends React.Component {
         let myOrdersWidth = baseIsBitAsset || quoteIsBitAsset ? "50%" : "100%";
         let openSettlementWidth =
             baseIsBitAsset || quoteIsBitAsset ? "inherit" : "none";
-
+        let ordersClassName = activeTab === "open_settlement" ? `${this.props.className} settle` : this.props.className;
         return (
             <div
                 key="open_orders"
-                className={this.props.className}
+                className={ordersClassName}
             >
                 <div
                     className="exchange-bordered small-12"
