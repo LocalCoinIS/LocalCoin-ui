@@ -300,13 +300,13 @@ class CreateAccount extends React.Component {
                 {/* Backup restore option */}
                 <div style={{paddingTop: 40}}>
                     <label>
-                        <Link to="/existing-account">
+                        <Link to="/settings/restore">
                             <Translate content="wallet.restore" />
                         </Link>
                     </label>
 
                     <label>
-                        <Link to="/create-wallet-brainkey">
+                        <Link to="/settings/restore">
                             <Translate content="settings.backup_brainkey" />
                         </Link>
                     </label>
