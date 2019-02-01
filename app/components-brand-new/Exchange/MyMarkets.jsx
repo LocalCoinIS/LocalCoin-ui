@@ -764,9 +764,6 @@ class MyMarkets extends React.Component {
     };
 
     render() {
-        console.log("+++++++++++");
-        console.log(this.props.preferredBases);
-        console.log("+++++++++++");
         let {
             starredMarkets,
             defaultMarkets,

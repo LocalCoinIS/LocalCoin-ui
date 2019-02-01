@@ -221,9 +221,6 @@ class SettingsStore {
             this.preferredBases = Immutable.List(
                 storedBases.length ? storedBases : defaultBases
             );
-            console.log("===================");
-            console.log(this.preferredBases);
-            console.log("===================");
             let chainBases = bases[this.starredKey] || [];
             //this.preferredBases = Immutable.List(chainBases);
 
