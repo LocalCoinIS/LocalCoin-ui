@@ -38,13 +38,13 @@ export default class ConfirmModal extends React.Component {
                     <div className="button-group" style={{paddingTop: "2rem"}}>
                         <input
                             onClick={this._onForce.bind(this, true)}
-                            className="button success"
+                            className="button btn large inverted"
                             type="submit"
                             value="Yes"
                         />
                         <input
                             onClick={this._onForce.bind(this, false)}
-                            className="button info"
+                            className="button btn large outline"
                             type="submit"
                             value="No"
                         />
