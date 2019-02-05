@@ -151,6 +151,9 @@ class TransactionChart extends React.Component {
                     colors: colors,
                     borderWidth: 0
                 }
+            },
+            colorAxis: {
+                alignTicks: true
             }
         };
 

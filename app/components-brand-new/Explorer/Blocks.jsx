@@ -458,12 +458,12 @@ class Blocks extends React.Component {
                                     content="explorer.blocks.block_times"
                                 />
                             </div>
-                            {/*<BlocktimeChart*/}
-                                {/*blockTimes={blockTimes}*/}
-                                {/*head_block_number={dynGlobalObject.get(*/}
-                                    {/*"head_block_number"*/}
-                                {/*)}*/}
-                            {/*/>*/}
+                            <BlocktimeChart
+                                blockTimes={blockTimes}
+                                head_block_number={dynGlobalObject.get(
+                                    "head_block_number"
+                                )}
+                            />
                         </div>
                     </div>
                     <div className="grid-block text-center small-12 medium-3">
@@ -474,12 +474,12 @@ class Blocks extends React.Component {
                                     content="explorer.blocks.trx_per_block"
                                 />
                             </div>
-                            {/*<TransactionChart*/}
-                                {/*blocks={latestBlocks}*/}
-                                {/*head_block={dynGlobalObject.get(*/}
-                                    {/*"head_block_number"*/}
-                                {/*)}*/}
-                            {/*/>*/}
+                            <TransactionChart
+                                blocks={latestBlocks}
+                                head_block={dynGlobalObject.get(
+                                    "head_block_number"
+                                )}
+                            />
                         </div>
                     </div>
                     <div className="grid-block text-center small-12 medium-3">
