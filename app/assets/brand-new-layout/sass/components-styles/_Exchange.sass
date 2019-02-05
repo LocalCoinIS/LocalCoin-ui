@@ -411,6 +411,8 @@ body.localcoin
 		max-height: 200px!important
 	body.localcoin .exchange-layout #market-charts + .grid-block.no-overflow.wrap.shrink
 		overflow: visible
+	body.localcoin .exchange-layout .market-row .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+		flex-wrap: wrap
 
 @media only screen and (min-width: 1281px) and (min-height: 1100px)
 	body.localcoin .exchange-layout .market-row:not(.stable-height)
@@ -437,7 +439,19 @@ body.localcoin
 			margin-top: -42px
 
 
-
+@media only screen and (max-width: 480px)
+	body.localcoin
+		.grid-block.shrink.no-padding.overflow-visible.top-bar.container-menu-header
+			border-bottom: 1px solid #abbfd9
+			>.grid-block.overflow-visible
+				display: flex
+				flex-direction: column
+				.grid-block.shrink
+					>div
+						display: flex
+						justify-content: center
+						width: 100%
+						border-bottom: 1px solid #abbfd9
 
 
 
