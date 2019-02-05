@@ -159,7 +159,7 @@ class WithdrawModal extends React.Component {
 
     unlockWithdrawBtn() {
         this.setState({
-            wdBtn: "button"
+            wdBtn: "button btn large outline"
         });
     }
 
