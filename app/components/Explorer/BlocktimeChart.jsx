@@ -79,6 +79,7 @@ class BlocktimeChart extends React.Component {
 
         let config = {
             chart: {
+                colorAxis: [],
                 type: "column",
                 backgroundColor: "rgba(255, 0, 0, 0)",
                 spacing: [0, 0, 5, 0],
@@ -144,9 +145,6 @@ class BlocktimeChart extends React.Component {
                     colors: colors,
                     borderWidth: 0
                 }
-            },
-            colorAxis: {
-                alignTicks: true
             }
         };
 
