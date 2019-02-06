@@ -870,7 +870,7 @@ class AccountAssetUpdate extends React.Component {
         let confirmButtons = (
             <div>
                 <button
-                    className={classnames("button", {
+                    className={classnames("button btn large outline", {
                         disabled: !isValid || !this.pageChanged()
                     })}
                     style={{width: "9rem"}}
@@ -887,7 +887,7 @@ class AccountAssetUpdate extends React.Component {
                     )}
                 </button>
                 <button
-                    className={classnames("button primary hollow", {
+                    className={classnames("button btn large inverted", {
                         disabled: !this.pageChanged()
                     })}
                     onClick={this._reset.bind(this)}
