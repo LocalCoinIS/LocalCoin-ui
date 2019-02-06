@@ -732,6 +732,7 @@ class AccountAssetUpdate extends React.Component {
     }
 
     render() {
+      console.log(111111111);
         let {account, asset, core} = this.props;
         let {
             errors,

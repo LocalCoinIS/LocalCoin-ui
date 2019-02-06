@@ -250,13 +250,13 @@ class Tabs extends React.Component {
                         ) : (
                             tabs
                         )}
-                        {this.props.actionButtons ? (
-                            <li className="tabs-action-buttons">
-                                {this.props.actionButtons}
-                            </li>
-                        ) : null}
                     </ul>
                 </div>
+              {this.props.actionButtons ? (
+                <div className="tabs-action-buttons">
+                  {this.props.actionButtons}
+                </div>
+              ) : null}
                 <div className={cnames("tab-content", contentClass)}>
                     {activeContent}
                 </div>
