@@ -531,7 +531,6 @@ const routes = (
             getComponents={(location, cb) => {
                 Promise.all([
                     import("components-brand-new/Layout/Header"),
-                    Promise.resolve(null),
                     import("components-brand-new/Layout/Sidebar"),
                     import("components-brand-new/Account/AccountPage"),
                     import("components-brand-new/Layout/Footer")
@@ -540,13 +539,13 @@ const routes = (
                     .catch(errorLoading);
             }}
         >
-            {/*<IndexRoute*/}
-                {/*getComponent={(location, cb) => {*/}
-                    {/*import("components-brand-new/Account/AccountOverview")*/}
-                        {/*.then(loadRoute(cb))*/}
-                        {/*.catch(errorLoading);*/}
-                {/*}}*/}
-            {/*/>*/}
+            <IndexRoute
+                getComponent={(location, cb) => {
+                    import("components-brand-new/Account/AccountOverview")
+                        .then(loadRoute(cb))
+                        .catch(errorLoading);
+                }}
+            />
             {/* <Route path="dashboard" getComponent={(location, cb) => {
                 import("components/Account/AccountOverview").then(loadRoute(cb)).catch(errorLoading);
             }}/> */}
