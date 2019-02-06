@@ -540,13 +540,13 @@ const routes = (
                     .catch(errorLoading);
             }}
         >
-            <IndexRoute
-                getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountOverview")
-                        .then(loadRoute(cb))
-                        .catch(errorLoading);
-                }}
-            />
+            {/*<IndexRoute*/}
+                {/*getComponent={(location, cb) => {*/}
+                    {/*import("components-brand-new/Account/AccountOverview")*/}
+                        {/*.then(loadRoute(cb))*/}
+                        {/*.catch(errorLoading);*/}
+                {/*}}*/}
+            {/*/>*/}
             {/* <Route path="dashboard" getComponent={(location, cb) => {
                 import("components/Account/AccountOverview").then(loadRoute(cb)).catch(errorLoading);
             }}/> */}
