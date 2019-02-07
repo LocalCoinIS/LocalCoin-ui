@@ -434,7 +434,7 @@ class WalletDelete extends Component {
     }
 
     onChange(event) {
-        let selected_wallet = event.target.value;
+        let selected_wallet = event;
         this.setState({selected_wallet});
     }
 }

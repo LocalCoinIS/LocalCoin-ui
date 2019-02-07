@@ -105,7 +105,7 @@
         "open_orders": "Open Orders",
         "optional": {
             "formatter": "Optionally, {restore_link} or create an account using the {restore_form}.",
-            "restore_form": "advanced form",
+            "restore_form": "simple form",
             "restore_link": "restore your account"
         },
         "options": {
@@ -413,11 +413,11 @@
     },
     "exchange": {
       "add_quote": "Add",
-      "asks": "Sell orders",
+      "asks": "Ordres à vendre",
       "atr": "Average True Range",
       "balance": "Solde",
       "base_supply": "Base supply",
-      "bids": "Buy orders",
+      "bids": "Ordres à acheter",
       "borrow": "Borrow",
       "borrow_short": "Borrow",
       "buy": "Acheter",
@@ -476,7 +476,7 @@
         "my_asks": "My asks",
         "my_bids": "My bids",
         "my_history": "My trades",
-        "my_orders": "My open orders",
+        "my_orders": "Ordres Ouverts",
         "native": "Native",
         "new": "New",
         "no_asks": "No asks",
@@ -500,7 +500,7 @@
         "remove": "Remove",
         "rsi": "Relative Strength Index",
         "search": "Search for more markets here",
-        "sell": "Sell",
+        "sell": "Vendre",
         "sell_description": "Sell %(baseAsset)s %(baseName)s for %(quoteAsset)s %(quoteName)s",
         "settings": "Chart options",
         "settle": "Settlement",
@@ -747,7 +747,7 @@
         "asset_to_withdraw": "Asset to withdraw:",
         "asset_unavailable": "The gateway for %(asset)s is not in service",
         "assets": {
-            "bit": "<br/>bit%(asset)s is a derivative that tracks the real value of %(backed)s. It is 100%% decentralized, trustless and backed by collateral held by the blockchain in a smart contract.",
+            "bit": "bit%(asset)s is a derivative that tracks the real value of %(backed)s. It is 100%% decentralized, trustless and backed by collateral held by the blockchain in a smart contract.",
             "bitcny": "<br/><br/>bitCNY can be deposited or withdrawn 1:1 to real Yuan using a gateway service such as Magic Wallet. For more info, see https://www.magicw.net/",
             "open": "<br/><br/>The %(asset)s asset is backed 1:1 by real %(backed)s and can be deposited or withdrawn using the gateway service provided by Openledger.",
             "trade": "<br/><br/>The %(asset)s asset is backed 1:1 by real %(backed)s and can be deposited or withdrawn using the gateway service provided by Blocktrades."
@@ -878,8 +878,8 @@
         "current": "Mon Compte",
         "dashboard": "Accueil",
         "deposit-withdraw": "Déposer/Retirer",
-        "exchange": "Échange",
-        "explorer": "Explorer",
+        "exchange": "Marché",
+        "explorer": "Explorateur",
         "help": "Help",
         "lock": "Vérouiller",
         "lock_short": "Log out",
@@ -892,9 +892,10 @@
         "title": "LocalCoin",
         "unlock": "Dévérouiller",
         "unlock_password": "Log in using a password",
-        "unlock_short": "Login",
+        "unlock_short": "Connexion",
         "unlocked_tip": "<br/>Click to log out.<br/><br/>Closing the browser window will also log you out.",
-        "update_asset": "Update Asset"
+        "update_asset": "Update Asset",
+        "unlock_account": "Connexion"
     },
     "icons": {
         "adjust": "Adjust margin position",
@@ -934,7 +935,7 @@
         "disconnected": "API Node is disconnected",
         "dollar": {
             "borrow": "Borrow",
-            "buy": "Buy"
+            "buy": "Acheter"
         },
         "download": "Download new version of LocalCoin UI",
         "excel": "Download .csv file",
@@ -972,7 +973,7 @@
             "show_asset": "Show asset",
             "show_market": "Show market"
         },
-        "power": "Login",
+        "power": "Connexion",
         "question_circle": "Help",
         "server": "Explore",
         "settle": "Settle",
@@ -1050,8 +1051,8 @@
     "modal": {
         "buy": {
             "asset": "Asset",
-            "bridge": "Brdige",
-            "title": "Buy"
+            "bridge": "Bridge",
+            "title": "Acheter"
         },
         "confirmation": {
             "accept": "Yes",
@@ -1108,6 +1109,14 @@
         "send": {
             "header": "Send from <span class=\"send-name\">%(fromName)s</span>",
             "header_propose": "Propose Send from <span class=\"send-name\">%(fromName)s</span>"
+        },
+        "send_tab": {
+            "header": "Envoyer",
+            "header_propose": "Envoyer"
+        },
+        "transfer_tab": {
+            "header": "Proposer",
+            "header_propose": "Proposer"
         },
         "settle": {
             "amount": "Amount to settle",
@@ -1383,7 +1392,7 @@
         "follow_user": "You are following this user",
         "follow_user_add": "Click to Follow this user",
         "gateway": "Gateways back desposits by 100% real assets",
-        "generate": "The generated password was created by your browser, locally. <br /><br /><strong>No one but you has access to it</strong>.<br /><br /> Paste it below and save a copy in a safe place",
+        "generate": "The generated password was created by your browser, locally. <br /><strong>No one but you has access to it</strong>.<br /> Paste it below and save a copy in a safe place",
         "hide_asset": "Click here to hide this asset from this list.",
         "latest_price": "This is the latest price seen in this market.",
         "login": "This LocalCoin wallet does not offer a traditional login but instead simply locks or unlocks a wallet that is <b>only</b> stored locally in your browser.<br/><br/>Whenever you close the wallet it will be locked and you will effectively be logged out.",
@@ -1725,7 +1734,7 @@
         "noneed_backup": "No backup is needed",
         "not_first_account": "Since you already have an account, you will need to pay for this new account yourself. In order to do so, your account needs to have lifetime membership, which can be bought in the account page.",
         "ok_done": "OK, take me to the dashboard",
-        "pass_incorrect": "Incorrect password",
+        "pass_incorrect": "Mot de passe incorrect",
         "pass_length": "The password must contain at least %(minLength)s characters. Ideally you should use 20 or more, and a combination of numbers, special characters and letters.",
         "password": "Mot de passe",
         "password_crucial": "It is crucial that you take the time to write down your password now, whether it be on paper, a password manager, or somewhere else. If you lose or forget this password your account will be lost, <strong>we cannot help you get it back</strong>.",

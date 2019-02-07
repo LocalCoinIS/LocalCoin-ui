@@ -105,7 +105,7 @@
         "open_orders": "Open Orders",
         "optional": {
             "formatter": "Optionally, {restore_link} or create an account using the {restore_form}.",
-            "restore_form": "advanced form",
+            "restore_form": "simple form",
             "restore_link": "restore your account"
         },
         "options": {
@@ -508,7 +508,7 @@
         "short": "Corto",
         "show_asks": "Mostrar todas las domandas",
         "show_bids": "Mostrar todas las ofertas",
-        "show_only_liquid": "Liquid markets only",
+        "show_only_liquid": "Liquid only",
         "show_only_star_formatter": "{star_icon} only",
         "sma": "Simple Moving Average",
         "spread": "Margen (spread)",
@@ -748,7 +748,7 @@
         "asset_to_withdraw": "activos para retirar:",
         "asset_unavailable": "The gateway for %(asset)s is not in service",
         "assets": {
-            "bit": "<br/>bit%(asset)s es un derivado que rastrea el valor real de %(backed)s. esto es 100%% descentralizado, sin confianza y respaldado por garantías en poder de blockchain en un contrato inteligente.",
+            "bit": "bit%(asset)s es un derivado que rastrea el valor real de %(backed)s. esto es 100%% descentralizado, sin confianza y respaldado por garantías en poder de blockchain en un contrato inteligente.",
             "bitcny": "<br/><br/>bitCNY can be deposited or withdrawn 1:1 to real Yuan using a gateway service such as Magic Wallet. For more info, see https://www.magicw.net/",
             "open": "<br/><br/>The %(asset)s el activo está respaldado 1:1 da real %(backed)s y puede ser depositado o retirado utilizando el servicio de puerta de enlace proporcionado por Openledger.",
             "trade": "<br/><br/>The %(asset)s el activo està respaldado 1:1 da real %(backed)s y puede ser depositado o retirado utilizando el servicio de puerta de enlace proporcionado por Blocktrades."
@@ -879,8 +879,8 @@
         "current": "Cuenta Actual",
         "dashboard": "Tablero",
         "deposit-withdraw": "Depositar/Retirar",
-        "exchange": "Exchange",
-        "explorer": "Explorer",
+        "exchange": "Mercado",
+        "explorer": "Explorador",
         "help": "Ayuda",
         "lock": "Bloquear",
         "lock_short": "cerrar sesión",
@@ -895,7 +895,8 @@
         "unlock_password": "Inicio de sesión en el Cloud Wallet",
         "unlock_short": "Inicio de sesión",
         "unlocked_tip": "Billetera desbloqueada. Click para bloquear",
-        "update_asset": "Actualizar activo"
+        "update_asset": "Actualizar activo",
+        "unlock_account": "Inicio de sesión"
     },
     "icons": {
         "adjust": "Adjust margin position",
@@ -973,7 +974,7 @@
             "show_asset": "Show asset",
             "show_market": "Show market"
         },
-        "power": "Login",
+        "power": "Inicio de sesión",
         "question_circle": "Help",
         "server": "Explore",
         "settle": "Settle",
@@ -988,7 +989,7 @@
         "thumbs_up": "Voting",
         "times": "Remove API Node",
         "trade": {
-            "exchange": "Exchange",
+            "exchange": "Mercado",
             "trade": "Trade"
         },
         "transfer": "Send",
@@ -1051,7 +1052,7 @@
     "modal": {
         "buy": {
             "asset": "Asset",
-            "bridge": "Brdige",
+            "bridge": "Bridge",
             "title": "Buy"
         },
         "confirmation": {
@@ -1109,6 +1110,14 @@
         "send": {
             "header": "Envia desde <span class=\"send-name\">%(fromName)s</span>",
             "header_propose": "Proponer envío desde <span class=\"send-name\">%(fromName)s</span>"
+        },
+        "send_tab": {
+            "header": "Enviar",
+            "header_propose": "Enviar"
+        },
+        "transfer_tab": {
+            "header": "Proponer",
+            "header_propose": "Proponer"
         },
         "settle": {
             "amount": "Monto a liquidar",
@@ -1250,7 +1259,7 @@
         "proposed_operations": "Operaciones propuestas",
         "review_period": "Comienza el período de revisión"
     },
-    "propose": "Propose",
+    "propose": "Proponer",
     "qr_address_scanner": {
         "address_found": "Dirección encontrada",
         "amount": "Importe",
@@ -1384,7 +1393,7 @@
         "follow_user": "Usted está siguiendo a este usuario",
         "follow_user_add": "Haga clic para seguir a este usuario",
         "gateway": "Gateways back desposits by 100% real assets",
-        "generate": "La contraseña generada fue creada por su navegador, localmente. <br /><br /><strong>Nadie más que tú tiene acceso a ella</strong>.<br /><br /> Pégalo a continuación y guarda una copia en un lugar seguro ",
+        "generate": "La contraseña generada fue creada por su navegador, localmente. <br /><strong>Nadie más que tú tiene acceso a ella</strong>.<br /> Pégalo a continuación y guarda una copia en un lugar seguro ",
         "hide_asset": "Haga clic aquí para ocultar este activo de esta lista.",
         "latest_price": "Este es el utlimo precio en el mercado.",
         "login": "Esta billetera de LocalCoin no ofrece un inicio de sesión tradicional sino que simplemente bloquea o desbloquea una billetera que es <b>solo</b> almacenada localmente en su navegador.<br/><br/> Cada vez que cierre la billetera, esta se bloqueará y se cerrerá efectivamente la sesión.",

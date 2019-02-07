@@ -20,10 +20,10 @@ import EquivalentPrice from "../../components/Utility/EquivalentPrice";
 import LinkToAssetById from "../../components/Utility/LinkToAssetById";
 import utils from "common/utils";
 import BorrowModal from "../../components/Modal/BorrowModal";
-import DepositModal from "../../components/Modal/DepositModal";
+// import DepositModal from "../../components/Modal/DepositModal";
 import ReactTooltip from "react-tooltip";
 import SimpleDepositWithdraw from "../../components/Dashboard/SimpleDepositWithdraw";
-import SimpleDepositBlocktradesBridge from "../../components/Dashboard/SimpleDepositBlocktradesBridge";
+// import SimpleDepositBlocktradesBridge from "../../components/Dashboard/SimpleDepositBlocktradesBridge";
 import Tabs from "../Utility/Tabs";
 import AccountOrders from "./AccountOrders";
 import cnames from "classnames";
@@ -32,7 +32,7 @@ import {checkMarginStatus} from "common/accountHelper";
 import BalanceWrapper from "../../components/Account/BalanceWrapper";
 import SendModal from "../../components/Modal/SendModal";
 import PulseIcon from "../../components/Icon/PulseIcon";
-import WithdrawModal from "../../components/Modal/WithdrawModalNew";
+// import WithdrawModal from "../../components/Modal/WithdrawModalNew";
 import AccountTreemap from "../../components/Account/AccountTreemap";
 import {getBackedCoin} from "common/gatewayUtils";
 import AssetWrapper from "../../components/Utility/AssetWrapper";
@@ -379,7 +379,7 @@ class AccountOverview extends React.Component {
 
             /* Table content */
             directMarketLink = notCore ? (
-                <Link to={`/market/${asset.get("symbol")}_${preferredMarket}`}>
+                <Link to={`/market/${preferredMarket}_${asset.get("symbol")}`}>
                     <Icon
                         name="trade"
                         title="icons.trade.trade"
@@ -387,7 +387,7 @@ class AccountOverview extends React.Component {
                     />
                 </Link>
             ) : notCorePrefUnit ? (
-                <Link to={`/market/${asset.get("symbol")}_${preferredUnit}`}>
+                <Link to={`/market/${preferredUnit}_${asset.get("symbol")}`}>
                     <Icon
                         name="trade"
                         title="icons.trade.trade"
@@ -731,9 +731,9 @@ class AccountOverview extends React.Component {
                                 : "LLC";
                         let directMarketLink = notCore ? (
                             <Link
-                                to={`/market/${asset.get(
+                                to={`/market/${preferredMarket}_${asset.get(
                                     "symbol"
-                                )}_${preferredMarket}`}
+                                )}`}
                             >
                                 <Icon
                                     name="trade"
@@ -1419,10 +1419,12 @@ class AccountOverview extends React.Component {
         );
 
         const accountProposals = (
-            <Proposals
-                className="dashboard-table"
-                account={account.get("id")}
-            />
+            <div className="propsal-table-wrap">
+                <Proposals
+                    className="dashboard-table"
+                    account={account.get("id")}
+                />
+            </div>
         );
 
         const items = [

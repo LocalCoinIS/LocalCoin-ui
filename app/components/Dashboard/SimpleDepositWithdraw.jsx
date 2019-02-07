@@ -376,7 +376,8 @@ class DepositWithdrawContent extends DecimalChecker {
 
     _validateAddress(address, props = this.props) {
         validateAddress({
-            url: openledgerAPIs.BASE,
+            // url: openledgerAPIs.BASE,
+            url: "",
             walletType: props.walletType,
             newAddress: address
         })

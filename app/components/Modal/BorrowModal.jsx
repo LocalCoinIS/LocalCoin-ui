@@ -512,9 +512,10 @@ class BorrowModalContent extends React.Component {
             {"has-warning": errors.close_maintenance}
         );
         let buttonClass = classNames(
-            "button",
+            "button btn large",
             {disabled: errors.collateral_balance || !isValid},
-            {success: isValid}
+            {outline: errors.collateral_balance || !isValid},
+            {inverted: isValid}
         );
 
         // Dynamically update user's remaining collateral
@@ -618,7 +619,7 @@ class BorrowModalContent extends React.Component {
                     </form>
                     <div className="grid-content button-group text-center no-overflow">
                         <Trigger close={this.props.modalId}>
-                            <div className=" button warning">
+                            <div className=" button btn large outline">
                                 <Translate content="account.perm.cancel" />
                             </div>
                         </Trigger>
@@ -780,7 +781,7 @@ class BorrowModalContent extends React.Component {
                             <div>
                                 <div
                                     className={collateralRatioClass}
-                                    style={{marginBottom: "3.5rem"}}
+                                    style={{marginBottom: "1.5rem"}}
                                 >
                                     <Translate
                                         component="label"
@@ -845,7 +846,7 @@ class BorrowModalContent extends React.Component {
                                         this._initialState(this.props)
                                     );
                                 }}
-                                className="button hollow primary"
+                                className="outline btn large"
                             >
                                 <Translate content="wallet.reset" />
                             </div>
@@ -910,6 +911,7 @@ export default class ModalWrapper extends React.Component {
                 overlay={true}
                 onClose={this.onClose.bind(this)}
                 ref={this.props.modalId}
+                overlayClose={true}
             >
                 <div className="grid-block vertical">
                     <BorrowModalContent

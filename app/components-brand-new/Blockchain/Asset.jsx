@@ -31,7 +31,7 @@ class AssetFlag extends React.Component {
 
         return (
             <label className="btn orange">
-                {counterpart.translate("account.user_issued_assets." + name)}
+                <Translate content={"account.user_issued_assets." + name} />
             </label>
         );
     }
@@ -48,7 +48,7 @@ class AssetPermission extends React.Component {
 
         return (
             <label className="btn orange">
-                {counterpart.translate("account.user_issued_assets." + name)}
+                <Translate content={"account.user_issued_assets." + name} />
             </label>
         );
     }

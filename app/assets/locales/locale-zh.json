@@ -105,7 +105,7 @@
         "open_orders": "委单",
         "optional": {
             "formatter": "Optionally, {restore_link} or create an account using the {restore_form}.",
-            "restore_form": "advanced form",
+            "restore_form": "simple form",
             "restore_link": "restore your account"
         },
         "options": {
@@ -425,7 +425,7 @@
         "buy_min": "至少买",
         "buysell_formatter": "{direction} {asset}",
         "call": "平仓触发价",
-        "change": "涨跌幅",
+        "change": "变化",
         "chart_height": "Chart height (pixels)",
         "chart_modal": "Chart options",
         "chart_type": "Chart type",
@@ -455,7 +455,7 @@
         "latest": "最新成交价",
         "lowest_ask": "最低卖价",
         "maintenance": "维持保证金价",
-        "market": "交易对",
+        "market": "币对",
         "market_frozen": "%(asset)s 资产发行人已禁用该资产的市场交易",
         "market_name": "市场列表",
         "market_picker": {
@@ -508,8 +508,8 @@
         "short": "做空",
         "show_asks": "显示所有卖单",
         "show_bids": "显示所有买单",
-        "show_only_liquid": "Liquid markets only",
-        "show_only_star_formatter": "{star_icon} only",
+        "show_only_liquid": "Liquid only",
+        "show_only_star_formatter": "{star_icon} 自选",
         "sma": "算数移动平均线(SMA)",
         "spread": "买卖价差",
         "squeeze": "强制平仓价",
@@ -748,7 +748,7 @@
         "asset_to_withdraw": "提现资产：",
         "asset_unavailable": "%(asset)s 资产网关暂停服务",
         "assets": {
-            "bit": "<br/>bit%(asset)s 是锚定 %(backed)s 价值的金融衍生品。它 100% 去中心化，无需信任第三方中心机构，并由锁定在区块链上智能合约中的抵押品进行价值背书。",
+            "bit": "bit%(asset)s 是锚定 %(backed)s 价值的金融衍生品。它 100% 去中心化，无需信任第三方中心机构，并由锁定在区块链上智能合约中的抵押品进行价值背书。",
             "bitcny": "<br/><br/>bitCNY 可以通过 Magic Wallet 提供的网关服务进行充值提现。更多信息请访问 https://www.magicw.net/",
             "open": "<br/><br/>资产 %(asset)s 由真实资产 %(backed)s 1:1 储备背书。可以通过 Openledger 提供的网关服务进行充值提现。",
             "trade": "<br/><br/>资产 %(asset)s 由真实资产 %(backed)s 1:1 储备背书。可以通过 Blocktrades 提供的网关服务进行充值提现。"
@@ -895,7 +895,8 @@
         "unlock_password": "使用密码登录",
         "unlock_short": "登录",
         "unlocked_tip": "钱包已解锁，点击锁定。",
-        "update_asset": "更新资产"
+        "update_asset": "更新资产",
+        "unlock_account": "登录"
     },
     "icons": {
         "adjust": "Adjust margin position",
@@ -973,7 +974,7 @@
             "show_asset": "Show asset",
             "show_market": "Show market"
         },
-        "power": "Login",
+        "power": "登录",
         "question_circle": "Help",
         "server": "Explore",
         "settle": "Settle",
@@ -988,7 +989,7 @@
         "thumbs_up": "Voting",
         "times": "Remove API Node",
         "trade": {
-            "exchange": "Exchange",
+            "exchange": "交易",
             "trade": "Trade"
         },
         "transfer": "Send",
@@ -1051,7 +1052,7 @@
     "modal": {
         "buy": {
             "asset": "Asset",
-            "bridge": "Brdige",
+            "bridge": "Bridge",
             "title": "Buy"
         },
         "confirmation": {
@@ -1109,6 +1110,14 @@
         "send": {
             "header": "使用帐号 <span class=\"send-name\">%(fromName)s</span> 转账",
             "header_propose": "提议帐号 <span class=\"send-name\">%(fromName)s</span> 转账"
+        },
+        "send_tab": {
+            "header": "转账",
+            "header_propose": "转账"
+        },
+        "transfer_tab": {
+            "header": "提议",
+            "header_propose": "提议"
         },
         "settle": {
             "amount": "数量",
@@ -1384,7 +1393,7 @@
         "follow_user": "您正在关注该账户",
         "follow_user_add": "点击关注该账户",
         "gateway": "Gateways back desposits by 100% real assets",
-        "generate": "密码由您的浏览器在本地生成。<br /><br /><strong>只有您能看到此密码。</strong><br /><br />请将它粘贴到下方并保存在一个您认为安全的地方。",
+        "generate": "密码由您的浏览器在本地生成。<br /><strong>只有您能看到此密码。</strong><br />请将它粘贴到下方并保存在一个您认为安全的地方。",
         "hide_asset": "从列表中隐藏资产",
         "latest_price": "市场最新成交价",
         "login": "当地硬币钱包并不提供传统的登录方式，而是通过锁定和解锁<b>只存储于用户浏览器中</b>的钱包。<br/><br/>当你关闭钱包时，钱包即被锁定，也就相当于登出了系统。",

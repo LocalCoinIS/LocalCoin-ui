@@ -105,7 +105,7 @@
         "open_orders": "Açık Emirler",
         "optional": {
             "formatter": "Optionally, {restore_link} or create an account using the {restore_form}.",
-            "restore_form": "advanced form",
+            "restore_form": "simple form",
             "restore_link": "restore your account"
         },
         "options": {
@@ -508,7 +508,7 @@
         "short": "Kısa pozisyon",
         "show_asks": "Tümünü göster",
         "show_bids": "Tüm alışları göster",
-        "show_only_liquid": "Liquid markets only",
+        "show_only_liquid": "Liquid only",
         "show_only_star_formatter": "{star_icon} only",
         "sma": "Basit Hareketli Ortalama",
         "spread": "Makas",
@@ -748,7 +748,7 @@
         "asset_to_withdraw": "Çekilecek dijital varlık:",
         "asset_unavailable": "The gateway for %(asset)s is not in service",
         "assets": {
-            "bit": "<br/>bit%(asset)s, fiyat olarak %(backed)s marketini takip eden bir türev araçtır. Bu hizmet hiçbir merkezi otorite tarafından değil, merkezsiz LocalCoin blokzinciri tarafından sağlanır.",
+            "bit": "bit%(asset)s, fiyat olarak %(backed)s marketini takip eden bir türev araçtır. Bu hizmet hiçbir merkezi otorite tarafından değil, merkezsiz LocalCoin blokzinciri tarafından sağlanır.",
             "bitcny": "<br/><br/>bitCNY, Çin Yuanı'nın LocalCoin borsasındaki temsilidir. 1:1 Çin Yuanı ile değiştirilebilen bu dijital varlık Magic Wallet tarafından yürütülmektedir. Daha fazla bilgi için: https://www.magicw.net/",
             "open": "<br/><br/>Bu dijital varlık LocalCoin üzerinde %(backed)s işlemleri yapmanız için OpenLedger tarafından %%100 %(backed)s rezervi ile desteklenmektedir. İstediğiniz zaman 1:1 oranında %(asset)s-%(backed)s dönüşümü yapabilirsiniz.",
             "trade": "<br/><br/>Bu dijital varlık LocalCoin üzerinde %(backed)s işlemleri yapmanız için BlockTrades tarafından %%100 %(backed)s rezervi ile desteklenmektedir. İstediğiniz zaman 1:1 oranında %(asset)s-%(backed)s dönüşümü yapabilirsiniz."
@@ -895,7 +895,8 @@
         "unlock_password": "Giriş yap",
         "unlock_short": "Giriş",
         "unlocked_tip": "Cüzdan kilidi açık .<br/>Kilitlemek için tıkla.",
-        "update_asset": "Dijital Varlık Güncelle"
+        "update_asset": "Dijital Varlık Güncelle",
+        "unlock_account": "Giriş"
     },
     "icons": {
         "adjust": "Adjust margin position",
@@ -973,7 +974,7 @@
             "show_asset": "Show asset",
             "show_market": "Show market"
         },
-        "power": "Login",
+        "power": "Giriş",
         "question_circle": "Help",
         "server": "Explore",
         "settle": "Settle",
@@ -1051,7 +1052,7 @@
     "modal": {
         "buy": {
             "asset": "Asset",
-            "bridge": "Brdige",
+            "bridge": "Bridge",
             "title": "Buy"
         },
         "confirmation": {
@@ -1109,6 +1110,14 @@
         "send": {
             "header": "Send from <span class=\"send-name\">%(fromName)s</span>",
             "header_propose": "Propose Send from <span class=\"send-name\">%(fromName)s</span>"
+        },
+        "send_tab": {
+            "header": "Gönder",
+            "header_propose": "Gönder"
+        },
+        "transfer_tab": {
+            "header": "Teklif Et",
+            "header_propose": "Teklif Et"
         },
         "settle": {
             "amount": "Ödenecek miktar",
@@ -1384,7 +1393,7 @@
         "follow_user": "You are following this user",
         "follow_user_add": "Click to Follow this user",
         "gateway": "Gateways back desposits by 100% real assets",
-        "generate": "The generated password was created by your browser, locally. <br /><br /><strong>No one but you has access to it</strong>.<br /><br /> Paste it below and save a copy in a safe place",
+        "generate": "The generated password was created by your browser, locally. <br /><strong>No one but you has access to it</strong>.<br /> Paste it below and save a copy in a safe place",
         "hide_asset": "Bu dijital varlığı gizlemek için tıklayın.",
         "latest_price": "Piyasadaki gerçekleşen son işlemin fiyat değeri",
         "login": "LocalCoin cüzdanında geleneksel oturum açma-kapatma yoktur, bunun yerine cüzdanınız <b>kilitli</b> ve <b>açık</b> konumlarından birinde tutulur. Cüzdanınız kilitli olduğunda herhangi bir işlem yapılamaz, yalnızca gözlemci olunabilir.",
@@ -1726,7 +1735,7 @@
         "noneed_backup": "Cüzdanınız daha önceden yedeklenmiş görünüyor.",
         "not_first_account": "Zaten bir LocalCoin hesabı ile giriş yapılmış, bu yüzden yeni oluşturacağınız her hesap için ağ ücreti ödemeniz gerekmektedir.",
         "ok_done": "OK, take me to the dashboard",
-        "pass_incorrect": "Incorrect password",
+        "pass_incorrect": "yanlış parola",
         "pass_length": "Şifreniz en az %(minLength)s karakter uzunluğunda olmalıdır. İdeal olarak minimum 20 karakterlik bir şifre kullanmalı, ve harf-rakam-sembol kombinasyonlarını içeren bir şifre seçmelisiniz.",
         "password": "Şifre",
         "password_crucial": "Lütfen şifrenizi kaybetmeyeceğiniz şekilde bir yere yazın ve güvende tutun. Şifrenizi kaybederseniz hesabınıza erişmenin HİÇBİR YOLU YOKTUR. <strong>Şifrenizi hatırlamak yalnızca ve tamamen sizin sorumluluğunuzdur.</strong>.",

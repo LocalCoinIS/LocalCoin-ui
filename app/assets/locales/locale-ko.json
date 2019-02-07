@@ -35,7 +35,7 @@
         "estimate_value": "Estimated Account value",
         "existing_accounts": "기존 계정",
         "existing_user": "Existing user",
-        "filter_orders": "Filter",
+        "filter_orders": "검색",
         "follow": "팔로우",
         "hidden_accounts_row": "Hidden Accounts",
         "hide_hidden": "Active",
@@ -49,7 +49,7 @@
         "ignore": "Hide",
         "in_open": "This is the amount of %(asset)s you have in open orders.",
         "in_open_value": "This is the estimated value of the %(asset)s you have in open orders.",
-        "intro_text_1": "Your Decentralized Exchange",
+        "intro_text_1": "분산 된 거래 플랫폼",
         "intro_text_2": "<b>The DEX</b> is inherently decentralized, enabling you to trade the LocalCoin core token (LLC) and a range of trustless price-stable, market-pegged assets such as USD, CNY, EUR, Gold and more. These assets can all be traded with <b>zero</b> counter-party risk, putting you in total control of your funds.",
         "intro_text_3": "<b>The DEX</b> also enables creation of user-issued assets (UIAs), which can be traded against any other UIAs or trustless assets on the platform.  One well-known issuer on The DEX is <b>OpenLedger</b>, offering a host of assets including BTC, ETH, STEEM, DASH, LTC, DOGE, and many more",
         "intro_text_4": "This gives cryptocurrency traders a unique blend of traditional and decentralized trading, all in a familiar exchange interface. Happy trading!",
@@ -105,7 +105,7 @@
         "open_orders": "Open Orders",
         "optional": {
             "formatter": "Optionally, {restore_link} or create an account using the {restore_form}.",
-            "restore_form": "advanced form",
+            "restore_form": "simple form",
             "restore_link": "restore your account"
         },
         "options": {
@@ -413,21 +413,21 @@
     },
     "exchange": {
         "add_quote": "Add",
-        "asks": "Sell orders",
+        "asks": "판매잔량",
         "atr": "Average True Range",
         "balance": "잔고",
         "base_supply": "유통량",
-        "bids": "Buy orders",
+        "bids": "구매잔량",
         "borrow": "Borrow",
         "borrow_short": "Borrow",
-        "buy": "Buy",
+        "buy": "매수",
         "buy_description": "Buy %(baseAsset)s %(baseName)s for %(quoteAsset)s %(quoteName)s",
         "buy_min": "Buy at least",
         "buysell_formatter": "{direction} {asset}",
         "call": "콜 가격",
-        "change": "Change",
+        "change": "전일대비",
         "chart_height": "Chart height (pixels)",
-        "chart_modal": "Chart options",
+        "chart_modal": "도구",
         "chart_type": "Chart type",
         "checking_for_worth_less_settlement": "Checking if you can get a better price by selling to market, please wait..",
         "confirm_buy": "Your order is %(diff)s times higher than the lowest ask, are you sure?",
@@ -441,12 +441,12 @@
         "ema": "Exponential Moving Average",
         "featured": "Top Markets",
         "feed_price": "Feed Price",
-        "filter": "Filter...",
+        "filter": "코인명/심볼검색...",
         "flip": "Flip",
         "group_order_limit": "그룹",
         "hide": "Hide",
         "highest_bid": "매수 호가",
-        "history": "Market trades",
+        "history": "실시간 주문",
         "horizontal": "수평시세",
         "index": "Index",
         "invalid_amount": "Invalid amount",
@@ -455,7 +455,7 @@
         "latest": "최종 가격",
         "lowest_ask": "매도 호가",
         "maintenance": "Maintenance Call Price",
-        "market": "Market",
+        "market": "스마트코인",
         "market_frozen": "The owner of %(asset)s has disabled trading in this market.",
         "market_name": "종목명",
         "market_picker": {
@@ -470,13 +470,13 @@
             "title": "Market Picker",
             "use": "Use"
         },
-        "more": "Find markets",
+        "more": "검색",
         "move_down": "Move down",
         "move_up": "Move up",
         "my_asks": "My asks",
         "my_bids": "My bids",
-        "my_history": "My trades",
-        "my_orders": "My open orders",
+        "my_history": "내 거래",
+        "my_orders": "활성 주문",
         "native": "Native",
         "new": "New",
         "no_asks": "No asks",
@@ -499,7 +499,7 @@
         "receive": "Receive",
         "remove": "Remove",
         "rsi": "Relative Strength Index",
-        "search": "Search for more markets here",
+        "search": "코인명/심볼검색",
         "sell": "매도",
         "sell_description": "Sell %(baseAsset)s %(baseName)s for %(quoteAsset)s %(quoteName)s",
         "settings": "Chart options",
@@ -508,8 +508,8 @@
         "short": "Short",
         "show_asks": "Show all asks",
         "show_bids": "Show all bids",
-        "show_only_liquid": "Liquid only",
-        "show_only_star_formatter": "{star_icon} only",
+        "show_only_liquid": "관심코인",
+        "show_only_star_formatter": "{star_icon} 즐겨찾기",
         "sma": "Simple Moving Average",
         "spread": "스프레드",
         "squeeze": "마진콜 가격",
@@ -519,9 +519,9 @@
         "trading_pair": "Trading pair",
         "value": "총액",
         "vertical": "수직시세",
-        "vol_short": "Vol",
+        "vol_short": "거래량",
         "volume": "거래량",
-        "volume_24": "24hr Volume",
+        "volume_24": "24h 거래액",
         "worth_less_settlement_warning": "Warning! You can get a better price by selling to {market_link}.",
         "your_price": "내 콜 가격",
         "zoom": "Zoom",
@@ -748,7 +748,7 @@
         "asset_to_withdraw": "Asset to withdraw:",
         "asset_unavailable": "The gateway for %(asset)s is not in service",
         "assets": {
-            "bit": "<br/>bit%(asset)s is a derivative that tracks the real value of %(backed)s. It is 100%% decentralized, trustless and backed by collateral held by the blockchain in a smart contract.",
+            "bit": "bit%(asset)s is a derivative that tracks the real value of %(backed)s. It is 100%% decentralized, trustless and backed by collateral held by the blockchain in a smart contract.",
             "bitcny": "<br/><br/>bitCNY can be deposited or withdrawn 1:1 to real Yuan using a gateway service such as Magic Wallet. For more info, see https://www.magicw.net/",
             "open": "<br/><br/>The %(asset)s asset is backed 1:1 by real %(backed)s and can be deposited or withdrawn using the gateway service provided by Openledger.",
             "trade": "<br/><br/>The %(asset)s asset is backed 1:1 by real %(backed)s and can be deposited or withdrawn using the gateway service provided by Blocktrades."
@@ -893,9 +893,10 @@
         "title": "로컬코인 2.0",
         "unlock": "잠금해제",
         "unlock_password": "Log in using a password",
-        "unlock_short": "Login",
+        "unlock_short": "로그인",
         "unlocked_tip": "지갑이 잠금해제 되어있습니다. 잠금을 눌러주세요.",
-        "update_asset": "Update Asset"
+        "update_asset": "자산 업데이트",
+        "unlock_account": "로그인"
     },
     "icons": {
         "adjust": "Adjust margin position",
@@ -935,7 +936,7 @@
         "disconnected": "API Node is disconnected",
         "dollar": {
             "borrow": "Borrow",
-            "buy": "Buy"
+            "buy": "매수"
         },
         "download": "Download new version of LocalCoin UI",
         "excel": "Download .csv file",
@@ -948,7 +949,7 @@
             "sort_accounts": "Sort by favorites",
             "symbol": "Add/remove symbol from favorites"
         },
-        "filter": "Filter",
+        "filter": "검색",
         "folder": "Accounts",
         "hamburger": "Open menu",
         "hamburger_x": "Close menu",
@@ -973,7 +974,7 @@
             "show_asset": "Show asset",
             "show_market": "Show market"
         },
-        "power": "Login",
+        "power": "로그인",
         "question_circle": "Help",
         "server": "Explore",
         "settle": "Settle",
@@ -988,7 +989,7 @@
         "thumbs_up": "Voting",
         "times": "Remove API Node",
         "trade": {
-            "exchange": "Exchange",
+            "exchange": "거래소",
             "trade": "Trade"
         },
         "transfer": "Send",
@@ -1051,8 +1052,8 @@
     "modal": {
         "buy": {
             "asset": "Asset",
-            "bridge": "Brdige",
-            "title": "Buy"
+            "bridge": "Bridge",
+            "title": "매수"
         },
         "confirmation": {
             "accept": "Yes",
@@ -1109,6 +1110,14 @@
         "send": {
             "header": "Send from <span class=\"send-name\">%(fromName)s</span>",
             "header_propose": "Propose Send from <span class=\"send-name\">%(fromName)s</span>"
+        },
+        "send_tab": {
+            "header": "전송",
+            "header_propose": "전송"
+        },
+        "transfer_tab": {
+            "header": "제안서",
+            "header_propose": "제안서"
         },
         "settle": {
             "amount": "Amount to settle",
@@ -1329,7 +1338,7 @@
         "node_down": "Unreachable",
         "node_up": "Available",
         "olDarkTheme": "Openledger dark",
-        "password": "Password",
+        "password": "비밀번호",
         "passwordLogin": "Login using the account model",
         "password_text": "Change your password.",
         "ping": "Ping Nodes",
@@ -1384,7 +1393,7 @@
         "follow_user": "You are following this user",
         "follow_user_add": "Click to Follow this user",
         "gateway": "Gateways back desposits by 100% real assets",
-        "generate": "The generated password was created by your browser, locally. <br /><br /><strong>No one but you has access to it</strong>.<br /><br /> Paste it below and save a copy in a safe place",
+        "generate": "The generated password was created by your browser, locally. <br /><strong>No one but you has access to it</strong>.<br /> Paste it below and save a copy in a safe place",
         "hide_asset": "Click here to hide this asset from this list.",
         "latest_price": "This is the latest price seen in this market.",
         "login": "This LocalCoin wallet does not offer a traditional login but instead simply locks or unlocks a wallet that is <b>only</b> stored locally in your browser.<br/><br/>Whenever you close the wallet it will be locked and you will effectively be logged out.",
@@ -1655,7 +1664,7 @@
         "claim_later": "Once you've imported the keys, you can claim these balances to an account of your choosing.",
         "confirm": "비밀번호 확인",
         "confirm_error": "The confirmation does not match the password",
-        "confirm_password": "Confirm Password",
+        "confirm_password": "비밀번호를 확인해 주십시오",
         "congrat": "Congratulations, you're ready!",
         "console": "지갑 관리 콘솔",
         "create": "생성",
@@ -1726,7 +1735,7 @@
         "noneed_backup": "No backup is needed",
         "not_first_account": "Since you already have an account, you will need to pay for this new account yourself. In order to do so, your account needs to have lifetime membership, which can be bought in the account page.",
         "ok_done": "OK, take me to the dashboard",
-        "pass_incorrect": "Incorrect password",
+        "pass_incorrect": "패스워드가 일치하지 않습니다",
         "pass_length": "The password must contain at least %(minLength)s characters. Ideally you should use 20 or more, and a combination of numbers, special characters and letters.",
         "password": "비밀번호",
         "password_crucial": "It is crucial that you take the time to write down your password now, whether it be on paper, a password manager, or somewhere else. If you lose or forget this password your account will be lost, <strong>we cannot help you get it back</strong>.",

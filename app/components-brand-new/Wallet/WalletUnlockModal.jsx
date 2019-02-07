@@ -380,7 +380,7 @@ class WalletUnlockModal extends React.Component {
                 ref="modal"
                 overlay={true}
                 noLogo={true}
-                overlayClose={false}
+                overlayClose={true}
                 modal
                 // modalHeader="header.unlock_short"
                 // leftHeader

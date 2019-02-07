@@ -59,7 +59,7 @@ class SelectUnWrapped extends React.Component {
                     ) : null}
                     {selected["label"]}
                 </span>
-                <ul>
+                <ul className={setting.toLowerCase()}>
                     {options
                         .filter(entry => entry["key"] !== selected["key"])
                         .map(entry => {

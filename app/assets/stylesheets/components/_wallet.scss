@@ -28,7 +28,7 @@
 
     hr {
         margin-top: 0;
-        margin-bottom: 0.5rem;
+        margin-bottom: .5rem;
     }
     .login-type-selector {
         margin-bottom: 4rem;
@@ -79,7 +79,7 @@
     }
 
     .key-file-selector {
-        margin-bottom: calc(2rem + 20px);
+        margin-bottom: 5px;
 
         .content-box {
             padding-top: 0.5rem;
@@ -154,7 +154,7 @@
         display: inline-block;
         font-variant: normal;
         text-transform: none;
-        font-size: 15px;
+        font-size: 14px;
 
         span {
             text-transform: none;
@@ -162,7 +162,7 @@
     }
     .backup-warning {
         p {
-            border: 1px solid yellow;
+            border: 1px solid red;
             padding: 1rem;
         }
 

@@ -98,6 +98,7 @@ class HelpContent extends React.Component {
     }
 
     setVars(str, hideIssuer) {
+
         if (hideIssuer == "true") {
             str = str.replace(/<p>[^<]*{issuer}[^<]*<\/p>/gm, "");
         }
@@ -156,6 +157,7 @@ class HelpContent extends React.Component {
                 }' for locale '${locale}' help files, rolling back to 'en'`
             );
             value = HelpData["en"][this.props.alt_path];
+
         }
 
         if (!value) {

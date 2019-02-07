@@ -18,7 +18,7 @@
             "known": "Bekannt von"
         },
         "contacts": "Kontakte",
-        "create_account": "Konto erstellen",
+        "create_account": "Registrieren",
         "create_new": "Create A New Account",
         "deposit": "Deposit LLC",
         "deposit_address": "Your deposit address is your account name",
@@ -49,7 +49,7 @@
         "ignore": "Hide",
         "in_open": "This is the amount of %(asset)s you have in open orders.",
         "in_open_value": "This is the estimated value of the %(asset)s you have in open orders.",
-        "intro_text_1": "Your Decentralized Exchange",
+        "intro_text_1": "Ihr dezentraler Austausch",
         "intro_text_2": "<b>The DEX</b> is inherently decentralized, enabling you to trade the LocalCoin core token (LLC) and a range of trustless price-stable, market-pegged assets such as USD, CNY, EUR, Gold and more. These assets can all be traded with <b>zero</b> counter-party risk, putting you in total control of your funds.",
         "intro_text_3": "<b>The DEX</b> also enables creation of user-issued assets (UIAs), which can be traded against any other UIAs or trustless assets on the platform.  One well-known issuer on The DEX is <b>OpenLedger</b>, offering a host of assets including BTC, ETH, STEEM, DASH, LTC, DOGE, and many more",
         "intro_text_4": "This gives cryptocurrency traders a unique blend of traditional and decentralized trading, all in a familiar exchange interface. Happy trading!",
@@ -105,7 +105,7 @@
         "open_orders": "Offene Order",
         "optional": {
             "formatter": "Optionally, {restore_link} or create an account using the {restore_form}.",
-            "restore_form": "advanced form",
+            "restore_form": "simple form",
             "restore_link": "restore your account"
         },
         "options": {
@@ -413,11 +413,11 @@
     },
     "exchange": {
       "add_quote": "Add",
-      "asks": "Asks",
+      "asks": "Verkaufen/Ask",
       "atr": "Average True Range",
       "balance": "Guthaben",
       "base_supply": "Base Verfügbarkeit",
-      "bids": "Bids",
+      "bids": "Kaufen/Bids",
       "borrow": "Leihen",
       "borrow_short": "Borrow",
       "buy": "Kaufen",
@@ -476,7 +476,7 @@
         "my_asks": "Meine Asks",
         "my_bids": "Meine Bids",
         "my_history": "Meine Historie",
-        "my_orders": "My open orders",
+        "my_orders": "Offene Aufträge",
         "native": "Native",
         "new": "New",
         "no_asks": "No asks",
@@ -508,7 +508,7 @@
         "short": "Short",
         "show_asks": "Show all asks",
         "show_bids": "Show all bids",
-        "show_only_liquid": "Liquid markets only",
+        "show_only_liquid": "Liquid only",
         "show_only_star_formatter": "{star_icon} only",
         "sma": "Simple Moving Average",
         "spread": "Spread",
@@ -748,8 +748,8 @@
         "asset_to_withdraw": "Asset to withdraw:",
         "asset_unavailable": "The gateway for %(asset)s is not in service",
         "assets": {
-            "bit": "<br/>bit%(asset)s is a derivative that tracks the real value of %(backed)s. It is 100%% decentralized, trustless and backed by collateral held by the blockchain in a smart contract.",
-            "bitcny": "<br/><br/>bitCNY can be deposited or withdrawn 1:1 to real Yuan using a gateway service such as Magic Wallet. For more info, see https://www.magicw.net/",
+            "bit": "bit%(asset)s is a derivative that tracks the real value of %(backed)s. It is 100%% decentralized, trustless and backed by collateral held by the blockchain in a smart contract.",
+            "bitcny": "<br/>bitCNY can be deposited or withdrawn 1:1 to real Yuan using a gateway service such as Magic Wallet. For more info, see https://www.magicw.net/",
             "open": "<br/><br/>The %(asset)s asset is backed 1:1 by real %(backed)s and can be deposited or withdrawn using the gateway service provided by Openledger.",
             "trade": "<br/><br/>The %(asset)s asset is backed 1:1 by real %(backed)s and can be deposited or withdrawn using the gateway service provided by Blocktrades."
         },
@@ -874,12 +874,12 @@
         "account_notify": "The active account is now %(account)s",
         "account_value": "Kontowert",
         "collateral_ratio": "Collateral ratio",
-        "create_account": "Konto erstellen",
+        "create_account": "Registrieren",
         "create_asset": "Asset erstellen",
         "current": "Aktives Konto",
         "dashboard": "Übersicht",
         "deposit-withdraw": "Aufladen/Abheben",
-        "exchange": "Börse",
+        "exchange": "Marktplatz",
         "explorer": "Explorer",
         "help": "Hilfe",
         "lock": "Sperren",
@@ -893,9 +893,10 @@
         "title": "LocalCoin UI",
         "unlock": "Entsperren",
         "unlock_password": "Log in using a password",
-        "unlock_short": "Login",
+        "unlock_short": "Einloggen",
         "unlocked_tip": "Geldbörse ist entsperrt. Klicken zum Sperren.",
-        "update_asset": "Asset ändern"
+        "update_asset": "Asset ändern",
+        "unlock_account": "Einloggen"
     },
     "icons": {
         "adjust": "Adjust margin position",
@@ -973,7 +974,7 @@
             "show_asset": "Show asset",
             "show_market": "Show market"
         },
-        "power": "Login",
+        "power": "Einloggen",
         "question_circle": "Help",
         "server": "Explore",
         "settle": "Settle",
@@ -1051,7 +1052,7 @@
     "modal": {
         "buy": {
             "asset": "Asset",
-            "bridge": "Brdige",
+            "bridge": "Bridge",
             "title": "Buy"
         },
         "confirmation": {
@@ -1109,6 +1110,14 @@
         "send": {
             "header": "Send from <span class=\"send-name\">%(fromName)s</span>",
             "header_propose": "Propose Send from <span class=\"send-name\">%(fromName)s</span>"
+        },
+        "send_tab": {
+            "header": "Senden",
+            "header_propose": "Senden"
+        },
+        "transfer_tab": {
+            "header": "Vorschlagen",
+            "header_propose": "Vorschlagen"
         },
         "settle": {
             "amount": "Menge für das Settlement",
@@ -1329,7 +1338,7 @@
         "node_down": "Unreachable",
         "node_up": "Available",
         "olDarkTheme": "Openledger dark",
-        "password": "Password",
+        "password": "Passwort",
         "passwordLogin": "Login using the account model",
         "password_text": "Change your password.",
         "ping": "Ping Nodes",
@@ -1384,7 +1393,7 @@
         "follow_user": "You are following this user",
         "follow_user_add": "Click to Follow this user",
         "gateway": "Gateways back desposits by 100% real assets",
-        "generate": "The generated password was created by your browser, locally. <br /><br /><strong>No one but you has access to it</strong>.<br /><br /> Paste it below and save a copy in a safe place",
+        "generate": "The generated password was created by your browser, locally. <br /><strong>No one but you has access to it</strong>.<br /> Paste it below and save a copy in a safe place",
         "hide_asset": "Click here to hide this asset from this list.",
         "latest_price": "This is the latest price seen in this market.",
         "login": "This LocalCoin wallet does not offer a traditional login but instead simply locks or unlocks a wallet that is <b>only</b> stored locally in your browser.<br/><br/>Whenever you close the wallet it will be locked and you will effectively be logged out.",
@@ -1488,7 +1497,7 @@
         "to": "an",
         "transaction_confirmed": "Transaktion bestätigt",
         "trxTypes": {
-            "account_create": "Konto erstellen",
+            "account_create": "Registrieren",
             "account_transfer": "Konto-Überweisung",
             "account_update": "Kontoaktualisierung",
             "account_upgrade": "Konto-Upgrade",
@@ -1683,7 +1692,7 @@
         "done": "Erledigt",
         "dont_ask_for_backup": "Don't ask me to back up again",
         "download": "Download",
-        "enter_password": "Passwordeingabe",
+        "enter_password": "Passworteingabe",
         "existing_password": "Existierendes Passwort",
         "first_account_paid": "Since this is your first account, a faucet will pay the registration fee for you.",
         "generated": "Generated password",
@@ -1726,7 +1735,7 @@
         "noneed_backup": "Kein Sicherung erforderlich",
         "not_first_account": "Since you already have an account, you will need to pay for this new account yourself. In order to do so, your account needs to have lifetime membership, which can be bought in the account page.",
         "ok_done": "OK, take me to the dashboard",
-        "pass_incorrect": "Incorrect password",
+        "pass_incorrect": "Falsches Passwort",
         "pass_length": "The password must contain at least %(minLength)s characters. Ideally you should use 20 or more, and a combination of numbers, special characters and letters.",
         "password": "Passwort",
         "password_crucial": "It is crucial that you take the time to write down your password now, whether it be on paper, a password manager, or somewhere else. If you lose or forget this password your account will be lost, <strong>we cannot help you get it back</strong>.",

@@ -1,5 +1,5 @@
 // Hacks that should get cleaned up and put in appropriate files within the stylesheet layout
-// http://sass-guidelin.es/#shame-file
+// https://sass-guidelin.es/#shame-file
 
 #content.win32 {
     font-size: 90%;
@@ -143,7 +143,7 @@ section > .button:last-child {
         font-size: 2rem;
         margin-top: 0;
         padding-bottom: 0.5rem;
-        margin-bottom: 0.5rem;
+        margin-bottom: .5rem;
     }
     .actions {
         padding: 1rem 0 1rem 0;
@@ -196,9 +196,9 @@ table > tbody > tr.control-row > td {
     overflow: visible;
 }
 
-.full-width-content > * {
-    width: 100%;
-}
+// .full-width-content > * {
+//     width: 100%;
+// }
 
 .op-table > tbody > tr > td:first-child {
     min-width: 12rem;

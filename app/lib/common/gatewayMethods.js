@@ -326,7 +326,8 @@ export function requestDepositAddress({
 }
 
 export function getBackedCoins({allCoins, tradingPairs, backer}) {
-    let gatewayStatus = availableGateways[backer];
+    // let gatewayStatus = availableGateways[backer];
+    let gatewayStatus = false;
     let coins_by_type = {};
 
     // Backer has no coinType == backingCoinType but uses single wallet style

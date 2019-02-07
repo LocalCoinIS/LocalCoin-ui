@@ -114,16 +114,17 @@ class AccountSelector extends React.Component {
         let _accountName = this.getVerifiedAccountName(e);
         let _account = ChainStore.getAccount(_accountName);
 
-        if (onChange && _accountName !== accountName)
-            console.log("====================================");
-        console.log(accountName);
-        console.log("====================================");
-        onChange(_accountName);
+        if (onChange && _accountName !== accountName) {
+            onChange(_accountName);
+
+        }
+
+
         // None-Typeahead Component compatibility
         // - Always returns account object
         if (!typeahead) {
             if (onChange) onChange(_accountName);
-            if (onAccountChanged) onAccountChanged(_account);
+           if (onAccountChanged) onAccountChanged(_account);
         }
     }
 

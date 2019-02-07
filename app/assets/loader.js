@@ -1,5 +1,5 @@
-require("./stylesheets/app.scss");
 require("./brand-new-layout/sass/main.sass");
+require("./stylesheets/app.scss");
 //require("./brand-new-layout/css/fonts.css");
 //require("./brand-new-layout/css/custom.css");
 require("./brand-new-layout/img/images");

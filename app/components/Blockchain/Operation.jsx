@@ -318,6 +318,14 @@ class Operation extends React.Component {
                                     ? op[1].min_to_receive
                                     : op[1].amount_to_sell;
 
+
+                                let orderId = this.props.result
+                                    ? typeof this.props.result[1] == "string"
+                                        ? "#" +
+                                        this.props.result[1].substring(4)
+                                        : ""
+                                    : "";
+
                                 return (
                                     <TranslateWithLinks
                                         string={
@@ -345,6 +353,9 @@ class Operation extends React.Component {
                                                 arg: "price"
                                             }
                                         ]}
+                                        params={{
+                                            order: orderId
+                                        }}
                                     />
                                 );
                             }}
@@ -1045,6 +1056,9 @@ class Operation extends React.Component {
                                                 arg: "price"
                                             }
                                         ]}
+                                        params={{
+                                            order: o.order_id.substring(4)
+                                        }}                                        
                                     />
                                 );
                             }}

@@ -138,7 +138,7 @@ class AccountMembership extends React.Component {
                                     }}
                                 />
                                 <div
-                                    className="button no-margin"
+                                    className="button no-margin btn large outline lifetime-btn"
                                     onClick={this.upgradeAccount.bind(
                                         this,
                                         account.id,
@@ -181,9 +181,8 @@ class AccountMembership extends React.Component {
                                         </h4>
                                         <Translate content="account.member.referral_text" />
                                         :
-                                        <h5>https://{`${document.domain}/?r=${
-                                            account.name
-                                        }`}</h5>
+                                        <h5>https://wallet.localcoin.is/?r=${account.name}
+                                       </h5>
                                     </div>
                                 ) : null}
                                 <h4>

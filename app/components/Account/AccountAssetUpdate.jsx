@@ -1577,7 +1577,7 @@ class AccountAssetUpdate extends React.Component {
 
                                     <div style={{paddingTop: "1rem"}}>
                                         <button
-                                            className={classnames("button", {
+                                            className={classnames("btn large inverted", {
                                                 disabled: !validClaim
                                             })}
                                             onClick={this._onClaimFees.bind(
@@ -1587,7 +1587,7 @@ class AccountAssetUpdate extends React.Component {
                                             <Translate content="explorer.asset.fee_pool.claim_fees" />
                                         </button>
                                         <button
-                                            className="button outline"
+                                            className="btn large outline"
                                             onClick={this._reset.bind(this)}
                                         >
                                             <Translate content="account.perm.reset" />

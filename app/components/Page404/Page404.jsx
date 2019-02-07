@@ -4,34 +4,23 @@ import {connect} from "alt-react";
 import SettingsStore from "stores/SettingsStore";
 import Translate from "react-translate-component";
 
-const light = require("assets/logo-404-light.png");
-const dark = require("assets/logo-404-dark.png");
-const midnight = require("assets/logo-404-midnight.png");
+import {logoLight} from "../../assets/brand-new-layout/img/images";
 
 class Page404 extends React.Component {
     static defaultProps = {
         subtitle: "page_not_found_subtitle"
     };
     render() {
-        let logo;
-
-        if (this.props.theme === "lightTheme") {
-            logo = light;
-        }
-
-        if (this.props.theme === "darkTheme") {
-            logo = dark;
-        }
-
-        if (this.props.theme === "midnightTheme") {
-            logo = midnight;
-        }
-
         return (
             <div className="page-404">
                 <div className="page-404-container">
                     <div className="page-404-logo">
-                        <img src={logo} alt="Logo" />
+                        <img
+                            src={logoLight}
+                            height="50px"
+                            width="50px"
+                            alt="Logo"
+                        />
                     </div>
                     <div className="page-404-title">
                         <Translate content="page404.page_not_found_title" />
@@ -43,7 +32,7 @@ class Page404 extends React.Component {
                         <Link to={"/"}>
                             <Translate
                                 component="button"
-                                className="button"
+                                className="btn large inverted flat"
                                 content="page404.home"
                             />
                         </Link>
@@ -54,13 +43,16 @@ class Page404 extends React.Component {
     }
 }
 
-export default (Page404 = connect(Page404, {
-    listenTo() {
-        return [SettingsStore];
-    },
-    getProps() {
-        return {
-            theme: SettingsStore.getState().settings.get("themes")
-        };
+export default (Page404 = connect(
+    Page404,
+    {
+        listenTo() {
+            return [SettingsStore];
+        },
+        getProps() {
+            return {
+                theme: SettingsStore.getState().settings.get("themes")
+            };
+        }
     }
-}));
+));

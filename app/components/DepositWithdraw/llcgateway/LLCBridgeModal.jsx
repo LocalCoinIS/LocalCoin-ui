@@ -62,8 +62,10 @@ class LLCBridgeModal extends React.Component {
         });
     }
 
-    closeModal() {
-        this.setState({isActiveThisModal: ""});
+    closeModal(e) {
+        if(e.target.classList.contains("close-modal")) {
+            this.setState({isActiveThisModal: ""});
+        }
     }
 
     showModal() {
@@ -159,8 +161,10 @@ class LLCBridgeModal extends React.Component {
     render() {
         var buttons = (
             <div className="button-group" style={{marginTop: 10}}>
-                <div onClick={this.closeModal} className="button">
-                    <span>
+                <div onClick={this.closeModal} className="button btn large outline close-modal">
+                    <span
+                        className="close-modal"
+                    >
                         {counterpart.translate("modal.withdraw.cancel")}
                     </span>
                 </div>
@@ -224,15 +228,11 @@ class LLCBridgeModal extends React.Component {
         var info = (
             <div>
                 <br />
-                <br />
-                <br />
-                <br />
                 <Translate
                     content="gateway.rudex.min_amount"
                     minAmount={this.state.minimal}
                     symbol={this.state.asset}
                 />
-                <br />
                 <br />
                 <Translate
                     className="deposit-withdraw-info"
@@ -240,7 +240,6 @@ class LLCBridgeModal extends React.Component {
                     content="gateway.min_count_confirmations"
                     cnt={this.state.confirmations}
                 />
-                <br />
                 <br />
                 <Translate
                     component="span"
@@ -253,8 +252,8 @@ class LLCBridgeModal extends React.Component {
         );
 
         var copy = (
-            <div className="grid-block">
-                <CopyButton text={this.state.address} className={"copyIcon"} />
+            <div className="d-flex">
+                <CopyButton text={this.state.address} className={"btn icon"} />
                 <div>
                     <Translate
                         component="div"
@@ -275,16 +274,18 @@ class LLCBridgeModal extends React.Component {
         );
 
         return (
-            <div className={"modal-overlay " + this.state.isActiveThisModal}>
+            <div
+                onClick={this.closeModal}
+                className={"modal-overlay close-modal " + this.state.isActiveThisModal}>
                 <div
                     id="withdraw_asset_rudex-scorum_RUDEX.SCR"
                     data-closable="true"
-                    className="modal fadeIn ng-enter is-active ng-enter-active"
+                    className="modal fadeIn ng-enter is-active ng-enter-active buy-table-modal"
                 >
                     <a
                         onClick={this.closeModal}
                         href="javascript:void(0)"
-                        className="close-button"
+                        className="close-button close-modal"
                     >
                         ×
                     </a>
@@ -304,6 +305,8 @@ class LLCBridgeModal extends React.Component {
                                 </div>
                                 {send}
                                 {receive}
+                                <br/>
+                                <br/>
                                 {info}
                                 <br />
                                 {copy}

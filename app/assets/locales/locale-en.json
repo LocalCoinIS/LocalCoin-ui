@@ -105,7 +105,7 @@
         "open_orders": "Open Orders",
         "optional": {
             "formatter": "Optionally, {restore_link} or create an account using the {restore_form}.",
-            "restore_form": "advanced form",
+            "restore_form": "simple form",
             "restore_link": "restore your account"
         },
         "options": {
@@ -509,7 +509,7 @@
         "short": "Short",
         "show_asks": "Show all asks",
         "show_bids": "Show all bids",
-        "show_only_liquid": "Liquid markets only",
+        "show_only_liquid": "Liquid only",
         "show_only_star_formatter": "{star_icon} only",
         "sma": "Simple Moving Average",
         "spread": "Spread",
@@ -749,7 +749,7 @@
         "asset_to_withdraw": "Asset to withdraw:",
         "asset_unavailable": "The gateway for %(asset)s is not in service",
         "assets": {
-            "bit": "<br/>bit%(asset)s is a derivative that tracks the real value of %(backed)s. It is 100%% decentralized, trustless and backed by collateral held by the blockchain in a smart contract.",
+            "bit": "bit%(asset)s is a derivative that tracks the real value of %(backed)s. It is 100%% decentralized, trustless and backed by collateral held by the blockchain in a smart contract.",
             "bitcny": "<br/><br/>bitCNY can be deposited or withdrawn 1:1 to real Yuan using a gateway service such as Magic Wallet. For more info, see https://www.magicw.net/",
             "open": "<br/><br/>The %(asset)s asset is backed 1:1 by real %(backed)s and can be deposited or withdrawn using the gateway service provided by Openledger.",
             "trade": "<br/><br/>The %(asset)s asset is backed 1:1 by real %(backed)s and can be deposited or withdrawn using the gateway service provided by Blocktrades."
@@ -880,13 +880,14 @@
         "current": "Current Account",
         "dashboard": "Dashboard",
         "deposit-withdraw": "Finance",
-        "exchange": "Exchange",
-        "explorer": "Explore",
+        "exchange": "Marketplace",
+        "explorer": "Explorer",
         "help": "Help",
         "lock": "Log out (lock the local wallet)",
         "lock_short": "Log out",
         "locked_tip": "<br/>Click to login.<br/><br/>Closing the browser window will also log you out.",
         "logout": "Logout",
+        "otc": "OTC",
         "payments": "Send",
         "payments_beta": "Send (Beta)",
         "payments_legacy": "Send (legacy)",
@@ -897,7 +898,7 @@
         "unlock_short": "Login",
         "unlocked_tip": "<br/>Click to log out.<br/><br/>Closing the browser window will also log you out.",
         "update_asset": "Update Asset",
-        "unlock_account": "Unlock"
+        "unlock_account": "Login"
     },
     "icons": {
         "adjust": "Adjust margin position",
@@ -1053,7 +1054,7 @@
     "modal": {
         "buy": {
             "asset": "Asset",
-            "bridge": "Brdige",
+            "bridge": "Bridge",
             "title": "Buy"
         },
         "confirmation": {
@@ -1114,11 +1115,11 @@
         },
         "send_tab": {
             "header": "Send",
-            "header_propose": "Propose Send"
+            "header_propose": "Send"
         },
         "transfer_tab": {
-            "header": "Transfer",
-            "header_propose": "Propose Transfer"
+            "header": "Propose",
+            "header_propose": "Propose"
         },
         "settle": {
             "amount": "Amount to settle",
@@ -1209,6 +1210,9 @@
         "witness_receive": "Received witness from witness",
         "witness_update": "{account} update its witness info",
         "worker_create": "{account} created a worker proposal with daily pay of {pay}"
+    },
+    "otc": {
+      "info": "Decentralised blockchain based Over the counter trading is coming soon. Please, check our ICO page."
     },
     "page404": {
         "asset_not_found_subtitle": "That asset does not exist",
@@ -1394,7 +1398,7 @@
         "follow_user": "You are following this user",
         "follow_user_add": "Click to Follow this user",
         "gateway": "Gateways back desposits by 100% real assets",
-        "generate": "The generated password was created by your browser, locally. <br /><br /><strong>No one but you has access to it</strong>.<br /><br /> Paste it below and save a copy in a safe place",
+        "generate": "The generated password was created by your browser, locally. <br /><strong>No one but you has access to it</strong>.<br /> Paste it below and save a copy in a safe place",
         "hide_asset": "Click here to hide this asset from this list.",
         "latest_price": "This is the latest price seen in this market.",
         "login": "This LocalCoin wallet does not offer a traditional login but instead simply locks or unlocks a wallet that is <b>only</b> stored locally in your browser.<br/><br/>Whenever you close the wallet it will be locked and you will effectively be logged out.",
@@ -1415,7 +1419,7 @@
         "sign_owner": "If you are the owner of this account, please check this to make sure the transaction gets signed properly. This is only necessary if you are using the owner account and that account is not included in the active permissions.",
         "sync_no": "The current node is out of sync with the blockchain, try switching to another one",
         "sync_yes": "The current node is in sync with the blockchain",
-        "target_collateral_ratio": "Setting a Target Collateral Ratio (TCR) will allow the blockchain to automatically sell the required amount of your collateral in order to keep your collateral ratio at or above your defined TCR when the value of your collateral decreases.<br /><br />To frequently sell small amounts, set a low target (eg. < 2)<br /><br />To sell larger amounts infrequently, set a high target (eg. > 3)",
+        "target_collateral_ratio": "Setting a Target Collateral Ratio (TCR) will allow the blockchain to automatically sell the required amount of your collateral in order to keep your collateral ratio at or above your defined TCR when the value of your collateral decreases.<br />To frequently sell small amounts, set a low target (eg. < 2)<br />To sell larger amounts infrequently, set a high target (eg. > 3)",
         "transfer_actions": "Click here to make a transfer, or to deposit/withdraw those assets that support it.",
         "update_position": "Click here to update your position. You may at any time change the debt and/or collateral levels of your position.",
         "withdraw_address": "If you don't already have a %(asset)s address, please find a wallet provider and create one in order to complete the withdrawal.",

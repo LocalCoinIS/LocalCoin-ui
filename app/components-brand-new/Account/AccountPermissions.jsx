@@ -367,7 +367,7 @@ class AccountPermissions extends React.Component {
         );
 
         let permActive = (
-            <div>
+            <div className="permissions-tab">
                 <div className="row">
                     <div className="col-xl-7">
                         <HelpContent path="components/AccountPermActive" />
@@ -411,7 +411,7 @@ class AccountPermissions extends React.Component {
         );
 
         let permOwner = (
-            <div>
+            <div className="owner-tab">
                 <div className="row">
                     <div className="col-xl-7">
                         <HelpContent path="components/AccountPermOwner" />
@@ -455,7 +455,7 @@ class AccountPermissions extends React.Component {
         );
 
         let permMemoKey = (
-            <div>
+            <div className="memo-tab">
                 <div className="row">
                     <div className="col-xl-7">
                         <HelpContent
@@ -478,7 +478,7 @@ class AccountPermissions extends React.Component {
         );
 
         let permPasswordModel = (
-            <div>
+            <div className="cloud-tab">
                 <AccountPermissionsMigrate
                     active={this.state.password_active}
                     owner={this.state.password_owner}

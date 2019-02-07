@@ -133,7 +133,7 @@ class OrderBookRowHorizontal extends React.Component {
     }
 
     componentDidUpdate() {
-        this.rmLeftCellActive();
+       /* this.rmLeftCellActive();*/
     }
 
     render() {
@@ -243,6 +243,16 @@ class OrderBook extends React.Component {
         }
     }
 
+    addLeftCellActive() {
+        let forAdd = "left-cell-active";
+        let main = document.getElementsByTagName("main")[0];
+        if (main.className.indexOf(forAdd) === -1) {
+            main.className += " " + forAdd;
+        }
+    }
+
+
+
     updateCeilWith() {
         function updateWidth(queryClass, width) {
             let list = document.getElementsByClassName(queryClass);
@@ -283,7 +293,7 @@ class OrderBook extends React.Component {
         let margin = 0;
         //set margin header by with left cell bar
         try {
-            margin = maxWidth.one + maxWidth.two + maxWidth.three;
+            margin = maxWidth.one + maxWidth.two + maxWidth.three - 4;
             let header = document.getElementsByClassName(
                 "container-menu-header"
             )[0];
@@ -366,6 +376,10 @@ class OrderBook extends React.Component {
                 this.psUpdate();
             });
         }
+
+        if (!this.props.horizontal) {
+            this.addLeftCellActive();
+        }
     }
 
     queryStickyTable = query =>
@@ -381,7 +395,7 @@ class OrderBook extends React.Component {
                 "orderBook_componentDidUpdate",
                 function() {
                     self.updateCeilWith();
-                    self.addLeftCellActive();
+                    /*self.addLeftCellActive();*/
                 },
                 100
             );
@@ -895,8 +909,7 @@ class OrderBook extends React.Component {
                                 ref="hor_bids"
                                 style={{
                                     paddingRight: "0.6rem",
-                                    overflow: "hidden",
-                                    maxHeight: 210
+                                    overflow: "hidden"
                                 }}
                             >
                                 <table
@@ -961,8 +974,25 @@ class OrderBook extends React.Component {
                             className="order-table table"
                             ref="vertical_sticky_table_up"
                         >
-                            <div>
+                            <div className="custom-sticky-header-wrap">
+                                <div className="header-cell left vertical-table-cell-one custom-sticky-header">
+                                    <span className="header-sub-title">
+                                        <AssetName name={baseSymbol} />
+                                    </span>
+                                </div>
+                                <div className="header-cell vertical-table-cell-two custom-sticky-header">
+                                    <span className="header-sub-title">
+                                        <AssetName name={quoteSymbol} />
+                                    </span>
+                                </div>
+                                <div className=" header-cell right vertical-table-cell-three custom-sticky-header">
+                                    <Translate
+                                        className="header-sub-title"
+                                        content="exchange.price"
+                                    />
+                                </div>
                             </div>
+                            <div class="custom-sticky-table-wrap">
                             <TransitionWrapper
                                 ref="askTransition"
                                 className="transition-container clickable"
@@ -982,6 +1012,7 @@ class OrderBook extends React.Component {
                                           </div>
                                       )}
                             </TransitionWrapper>
+                            </div>
                         </StickyTable>
                     </div>
                     <div
@@ -998,19 +1029,22 @@ class OrderBook extends React.Component {
                                     <div className="text-center spread">
                                         {!!spread && (
                                             <span
-                                                className="clickable left"
-                                                onClick={this.toggleSpreadValue}
+                                                className="left"
+
                                             >
-                                                <Translate content="exchange.spread" />{" "}
+                                                <Translate className="spread-label" content="exchange.spread" />{" "}
                                                 <span className="spread-value">
-                                                    {spread}
+                                                    {spread}({(
+                                                    100 *
+                                                    (lowestAsk._real_price / highestBid._real_price - 1)
+                                                ).toFixed(2)}%)
                                                 </span>
                                             </span>
                                         )}
                                         &nbsp;&nbsp;
                                         {!!this.props.latest && (
                                             <span className="right">
-                                                <Translate content="exchange.latest" />{" "}
+                                                <Translate className="latest-label" content="exchange.latest" />{" "}
                                                 <span
                                                     className={
                                                         this.props.changeClass
@@ -1073,7 +1107,7 @@ class OrderBook extends React.Component {
                             </TransitionWrapper>
                         </StickyTable>
                     </div>
-                    <div className="v-align no-padding align-center grid-block footer shrink bottom-header">
+                    <div className="v-align no-padding align-center grid-block footer shrink bottom-header pin">
                         <div onClick={this.props.moveOrderBook}>
                             <Icon
                                 name="thumb-untack"

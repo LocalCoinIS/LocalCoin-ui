@@ -9,7 +9,7 @@ import SettingsActions from "actions/SettingsActions";
 import ZfApi from "react-foundation-apps/src/utils/foundation-api";
 import SendModal from "../../components/Modal/SendModal";
 import FormattedAsset from "../../components/Utility/FormattedAsset";
-import DepositModal from "../../components/Modal/DepositModal";
+// import DepositModal from "../../components/Modal/DepositModal";
 import GatewayStore from "stores/GatewayStore";
 import Icon from "../../components/Icon/Icon";
 import Translate from "react-translate-component";
@@ -26,7 +26,7 @@ import notify from "actions/NotificationActions";
 import AccountImage from "../../components/Account/AccountImage";
 import Identicon from "../Account/Identicon";
 import {ChainStore} from "bitsharesjs/es";
-import WithdrawModal from "../../components/Modal/WithdrawModalNew";
+// import WithdrawModal from "../../components/Modal/WithdrawModalNew";
 import {List} from "immutable";
 import PropTypes from "prop-types";
 import {
@@ -268,7 +268,7 @@ class Header extends React.Component {
             return false;
 
         if (!this._currentAccount || !!this._createAccountLink) {
-            this.context.router.push("/create-account/password");
+            this.context.router.push("/create-account/wallet");
             return true;
         }
 
@@ -696,6 +696,19 @@ class Header extends React.Component {
                                     <li className="mobile__list__item">
                                         <a
                                             className="mobile__list__link"
+                                            href="/OTC"
+                                        >
+                                            {/* OTC */}
+                                            {counterpart.translate(
+                                                "header.otc"
+                                            )}
+                                        </a>
+                                    </li>
+                                }
+                                {
+                                    <li className="mobile__list__item">
+                                        <a
+                                            className="mobile__list__link"
                                             href="#"
                                             onClick={this._showSend.bind(this)}
                                         >
@@ -816,6 +829,19 @@ class Header extends React.Component {
                                         )}
                                     </a>
                                 </li>
+                                {
+                                    <li className="navigation__item">
+                                        <a
+                                            className="navigation__link"
+                                            href="/OTC"
+                                        >
+                                            {/* OTC */}
+                                            {counterpart.translate(
+                                                "header.otc"
+                                            )}
+                                        </a>
+                                    </li>
+                                }
                                 {
                                     <li className="navigation__item">
                                         <a
@@ -1009,17 +1035,17 @@ class Header extends React.Component {
                     from_name={currentAccount}
                 />
 
-                <DepositModal
-                    ref="deposit_modal_new"
-                    modalId="deposit_modal_new"
-                    account={currentAccount}
-                    backedCoins={this.props.backedCoins}
-                />
-                <WithdrawModal
-                    ref="withdraw_modal_new"
-                    modalId="withdraw_modal_new"
-                    backedCoins={this.props.backedCoins}
-                />
+                {/*<DepositModal*/}
+                    {/*ref="deposit_modal_new"*/}
+                    {/*modalId="deposit_modal_new"*/}
+                    {/*account={currentAccount}*/}
+                    {/*backedCoins={this.props.backedCoins}*/}
+                {/*/>*/}
+                {/*<WithdrawModal*/}
+                    {/*ref="withdraw_modal_new"*/}
+                    {/*modalId="withdraw_modal_new"*/}
+                    {/*backedCoins={this.props.backedCoins}*/}
+                {/*/>*/}
             </header>
         );
     }

@@ -9,6 +9,7 @@ import SettingsActions from "actions/SettingsActions";
 import WalletUnlockActions from "actions/WalletUnlockActions";
 import ActionSheet from "react-foundation-apps/src/action-sheet";
 import SettingsStore from "stores/SettingsStore";
+import {getWalletName} from "branding";
 import IntlActions from "actions/IntlActions";
 import {
     logo,
@@ -148,6 +149,7 @@ class LoginSelector extends React.Component {
                                 <Translate
                                     content="account.intro_text_title"
                                     component="h4"
+                                    wallet_name={getWalletName()}
                                 />
                                 <Translate
                                     unsafe
@@ -175,7 +177,7 @@ class LoginSelector extends React.Component {
                             <div className="grid-block account-login-options">
                                 <Link
                                     id="account_login_button"
-                                    to="/create-account/password"
+                                    to="/create-account/wallet"
                                     className="button primary"
                                     data-intro={translator.translate(
                                         "walkthrough.create_cloud_wallet"
@@ -213,7 +215,7 @@ class LoginSelector extends React.Component {
                                         keys={[
                                             {
                                                 type: "link",
-                                                value: "/wallet/backup/restore",
+                                                value: "/settings/restore",
                                                 translation:
                                                     "account.optional.restore_link",
                                                 dataIntro: translator.translate(
@@ -223,7 +225,7 @@ class LoginSelector extends React.Component {
                                             },
                                             {
                                                 type: "link",
-                                                value: "/create-account/wallet",
+                                                value: "/create-account/password",
                                                 translation:
                                                     "account.optional.restore_form",
                                                 dataIntro: translator.translate(

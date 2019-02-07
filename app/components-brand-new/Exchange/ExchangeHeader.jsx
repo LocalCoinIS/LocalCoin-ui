@@ -74,6 +74,18 @@ export default class ExchangeHeader extends React.Component {
         );
     }
 
+    componentWillReceiveProps(nextProps) {
+        let self = this;
+        document.delayedExecution.add(
+            "ExchangeHeader_updateMargin",
+            function() {
+                self.updateMargin();
+            },
+            100
+        );
+    }
+
+
     updateMargin() {
         function getMaxWidth(queryClass) {
             let max = 0;
@@ -254,15 +266,37 @@ export default class ExchangeHeader extends React.Component {
             <div className="grid-block shrink no-padding overflow-visible top-bar container-menu-header">
                 <div className="grid-block overflow-visible">
                     <div className="grid-block shrink">
-                        <div style={{padding: "10px"}}>
+                        <div className="change-pair" style={{padding: "5px"}}>
                             {!hasPrediction ? (
                                 <div
+                                    className="pair-switcher-block"
                                     style={{
                                         padding: "0 5px",
                                         fontSize: "18px",
                                         marginTop: "1px"
                                     }}
                                 >
+                                    <Link
+                                      onClick={() => {
+                                        this._addMarket(
+                                          this.props.quoteAsset.get(
+                                            "symbol"
+                                          ),
+                                          this.props.baseAsset.get(
+                                            "symbol"
+                                          )
+                                        );
+                                      }}
+                                      data-intro={translator.translate(
+                                        "walkthrough.favourite_button"
+                                      )}
+                                    >
+                                      <Icon
+                                        className={starClass}
+                                        name="fi-star"
+                                        title="icons.fi_star.market"
+                                      />
+                                    </Link>
                                     <span
                                         onClick={this.marketPicker.bind(
                                             this,
@@ -281,7 +315,21 @@ export default class ExchangeHeader extends React.Component {
                                             noTip
                                         />
                                     </span>
-                                    <span style={{padding: "0 5px"}}>/</span>
+                                    <Link
+                                      onClick={() => {
+                                        MarketsActions.switchMarket();
+                                      }}
+                                      to={`/market/${baseSymbol}_${quoteSymbol}`}
+                                      data-intro={translator.translate(
+                                        "walkthrough.switch_button"
+                                      )}
+                                    >
+                                      <Icon
+                                        className="shuffle"
+                                        name="shuffle"
+                                        title="icons.shuffle"
+                                      />
+                                    </Link>
                                     <span
                                         onClick={this.marketPicker.bind(
                                             this,
@@ -300,43 +348,6 @@ export default class ExchangeHeader extends React.Component {
                                             noTip
                                         />
                                     </span>
-                                    <Link
-                                        onClick={() => {
-                                            MarketsActions.switchMarket();
-                                        }}
-                                        to={`/market/${baseSymbol}_${quoteSymbol}`}
-                                        data-intro={translator.translate(
-                                            "walkthrough.switch_button"
-                                        )}
-                                    >
-                                        <Icon
-                                            className="shuffle"
-                                            name="shuffle"
-                                            title="icons.shuffle"
-                                        />
-                                    </Link>
-
-                                    <Link
-                                        onClick={() => {
-                                            this._addMarket(
-                                                this.props.quoteAsset.get(
-                                                    "symbol"
-                                                ),
-                                                this.props.baseAsset.get(
-                                                    "symbol"
-                                                )
-                                            );
-                                        }}
-                                        data-intro={translator.translate(
-                                            "walkthrough.favourite_button"
-                                        )}
-                                    >
-                                        <Icon
-                                            className={starClass}
-                                            name="fi-star"
-                                            title="icons.fi_star.market"
-                                        />
-                                    </Link>
                                 </div>
                             ) : (
                                 <a className="market-symbol">
@@ -344,14 +355,6 @@ export default class ExchangeHeader extends React.Component {
                                     >{`${quoteSymbol} : ${baseSymbol}`}</span>
                                 </a>
                             )}
-                            <div className="label-actions">
-                                <Translate
-                                    component="span"
-                                    style={{padding: "5px 0 0 5px"}}
-                                    className="stat-text"
-                                    content="exchange.trading_pair"
-                                />
-                            </div>
                         </div>
                     </div>
 

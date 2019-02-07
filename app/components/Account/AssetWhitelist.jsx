@@ -202,7 +202,7 @@ class AssetWhitelist extends React.Component {
         const activeIndex = this.state.listTypes.indexOf(this.state.listType);
 
         return (
-            <div className="small-12 large-8 large-offset-2 grid-content">
+            <div className="small-12 large-8 large-offset-2 grid-content whitelist-mini-tabs">
                 <div>
                     <div
                         className="header-selector"
@@ -213,7 +213,7 @@ class AssetWhitelist extends React.Component {
                                 return (
                                     <div
                                         key={type}
-                                        className={cnames("inline-block", {
+                                        className={cnames("inline-block mini-tab", {
                                             inactive: activeIndex !== index
                                         })}
                                         onClick={this._onSwitchType.bind(

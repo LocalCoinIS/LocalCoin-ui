@@ -1015,11 +1015,11 @@ class MyMarkets extends React.Component {
                         style={{
                             width: "100%",
                             textAlign: "left",
-                            padding: "0.75rem 0.5rem"
+                            padding: "0.5rem 0.5rem"
                         }}
                     >
                         <div>
-                            <label style={{margin: "3px 0 0"}}>
+                            <label style={{margin: "0px 0 0"}}>
                                 <input
                                     style={{position: "relative", top: 3}}
                                     className="no-margin"
@@ -1035,7 +1035,7 @@ class MyMarkets extends React.Component {
                                     <Translate content="exchange.show_only_liquid" />
                                 </span>
                             </label>
-                            <label style={{margin: "3px 0 0"}}>
+                            <label style={{margin: "0px 0 0"}}>
                                 <input
                                     style={{position: "relative", top: 3}}
                                     className="no-margin"
@@ -1068,7 +1068,7 @@ class MyMarkets extends React.Component {
                                         fontSize: "0.9rem",
                                         height: "inherit",
                                         position: "relative",
-                                        top: 7,
+                                        top: 5,
                                         padding: 2
                                     }}
                                     type="text"
@@ -1095,7 +1095,7 @@ class MyMarkets extends React.Component {
                         style={{
                             width: "100%",
                             textAlign: "left",
-                            padding: "0.75rem 0.5rem"
+                            padding: "0.5rem 0.5rem"
                         }}
                     >
                         <table>
@@ -1229,7 +1229,7 @@ class MyMarkets extends React.Component {
 
                 <div
                     style={listStyle}
-                    className="table-container grid-block vertical mymarkets-list"
+                    className="table-container grid-block vertical mymarkets-list explorer-markets"
                     ref="favorites"
                 >
                     {assetsLoading ? (

@@ -9,7 +9,7 @@ class Tabs extends React.Component {
         defaultActiveTab: null,
         defaultContent: null,
         inner: false,
-        dashboardTabsClass: "testtest",
+        dashboardTabsClass: "",
         buttons: null
     };
 
@@ -125,7 +125,7 @@ class Tabs extends React.Component {
     }
 
     _changeTab({title, link}) {
-        try {
+/*         try {
             let hashByConten =
                 typeof this.props.hashByConten !== "undefined"
                     ? this.props.hashByConten
@@ -133,7 +133,7 @@ class Tabs extends React.Component {
             if (hashByConten === true) {
                 window.location.hash = title.match(/[a-zA-Z]+/g).join("-");
             }
-        } catch (e) {}
+        } catch (e) {} */
 
         if (title === this.state.activeTab) {
             return;
@@ -145,7 +145,7 @@ class Tabs extends React.Component {
         }
 
         this.setState({activeTab: title});
-        this.props.updateModal();
+        // this.props.updateModal();
         if (typeof this.props.onChange !== "undefined")
             this.props.onChange(title);
     }

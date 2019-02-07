@@ -218,7 +218,7 @@ class CreateAccount extends React.Component {
             }
         }
 
-        let buttonClass = classNames("submit-button button no-margin", {
+        let buttonClass = classNames("submit-button button no-margin btn inverted large", {
             disabled: !valid || (registrar_account && !isLTM)
         });
 
@@ -267,7 +267,7 @@ class CreateAccount extends React.Component {
 
                 {/* If this is not the first account, show dropdown for fee payment account */}
                 {firstAccount ? null : (
-                    <div className="full-width-content form-group no-overflow">
+                    <div className="full-width-content form-group">
                         <label>
                             <Translate content="account.pay_from" />
                         </label>
@@ -300,13 +300,13 @@ class CreateAccount extends React.Component {
                 {/* Backup restore option */}
                 <div style={{paddingTop: 40}}>
                     <label>
-                        <Link to="/existing-account">
+                        <Link to="/settings/restore">
                             <Translate content="wallet.restore" />
                         </Link>
                     </label>
 
                     <label>
-                        <Link to="/create-wallet-brainkey">
+                        <Link to="/settings/restore">
                             <Translate content="settings.backup_brainkey" />
                         </Link>
                     </label>
@@ -555,7 +555,7 @@ class CreateAccount extends React.Component {
                             : this._renderGetStartedText()}
                 </div>
                 <Link to="/">
-                    <button className="button primary hollow">
+                    <button className="button btn large outline">
                         <Translate content="wallet.back" />
                     </button>
                 </Link>

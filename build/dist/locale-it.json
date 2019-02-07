@@ -105,7 +105,7 @@
         "open_orders": "Ordini aperti",
         "optional": {
             "formatter": "Optionally, {restore_link} or create an account using the {restore_form}.",
-            "restore_form": "advanced form",
+            "restore_form": "simple form",
             "restore_link": "restore your account"
         },
         "options": {
@@ -508,7 +508,7 @@
         "short": "Short",
         "show_asks": "Mostra tutte le ask",
         "show_bids": "Mostra tutte le bid",
-        "show_only_liquid": "Liquid markets only",
+        "show_only_liquid": "Liquid only",
         "show_only_star_formatter": "{star_icon} only",
         "sma": "Simple Moving Average",
         "spread": "Spread",
@@ -748,7 +748,7 @@
         "asset_to_withdraw": "Asset da prelevare:",
         "asset_unavailable": "The gateway for %(asset)s is not in service",
         "assets": {
-            "bit": "<br/>bit%(asset)s è un derivato che segue il valore reale di %(backed)s. È decentralizzato al 100%%, trustless e supportato da una garanzia trattenuta dalla blockchain in uno smart contract.",
+            "bit": "bit%(asset)s è un derivato che segue il valore reale di %(backed)s. È decentralizzato al 100%%, trustless e supportato da una garanzia trattenuta dalla blockchain in uno smart contract.",
             "bitcny": "<br/><br/>bitCNY v 1:1 verso veri Yuan usando un servizio di gateway come Magic Wallet. For more info, vedi https://www.magicw.net/",
             "open": "<br/><br/>L'asset %(asset)s è garantito 1:1 da %(backed)s reali e può essere depositato o ritirato usando il servizio di gateway fornito da Openledger.",
             "trade": "<br/><br/>L'asset %(asset)s è garantito 1:1 da %(backed)s reali e può essere depositato o ritirato usando il servizio di gateway fornito da Blocktrades."
@@ -879,7 +879,7 @@
         "current": "Account corrente",
         "dashboard": "Dashboard",
         "deposit-withdraw": "Deposita/Preleva",
-        "exchange": "Exchange",
+        "exchange": "Mercado",
         "explorer": "Esplora",
         "help": "Aiuto",
         "lock": "Log out (blocca il portafoglio)",
@@ -893,9 +893,10 @@
         "title": "LocalCoin UI",
         "unlock": "Log in (sblocca il portafoglio)",
         "unlock_password": "Log in usando una password",
-        "unlock_short": "Login",
+        "unlock_short": "Accedi",
         "unlocked_tip": "<br/>Clicca per fare il logout e bloccare il tuo portafoglio.<br/><br/>Chiudere la finestra del browser effettuerà automaticamente il log out.",
-        "update_asset": "Aggiorna Asset"
+        "update_asset": "Aggiorna Asset",
+        "unlock_account": "Accedi"
     },
     "icons": {
         "adjust": "Adjust margin position",
@@ -973,7 +974,7 @@
             "show_asset": "Show asset",
             "show_market": "Show market"
         },
-        "power": "Login",
+        "power": "Accedi",
         "question_circle": "Help",
         "server": "Explore",
         "settle": "Settle",
@@ -1051,7 +1052,7 @@
     "modal": {
         "buy": {
             "asset": "Asset",
-            "bridge": "Brdige",
+            "bridge": "Bridge",
             "title": "Buy"
         },
         "confirmation": {
@@ -1109,6 +1110,14 @@
         "send": {
             "header": "Send from <span class=\"send-name\">%(fromName)s</span>",
             "header_propose": "Propose Send from <span class=\"send-name\">%(fromName)s</span>"
+        },
+        "send_tab": {
+            "header": "Invia",
+            "header_propose": "Invia"
+        },
+        "transfer_tab": {
+            "header": "Proponi",
+            "header_propose": "Proponi"
         },
         "settle": {
             "amount": "Quantità di cui fare settlement",
@@ -1384,7 +1393,7 @@
         "follow_user": "You are following this user",
         "follow_user_add": "Click to Follow this user",
         "gateway": "Gateways back desposits by 100% real assets",
-        "generate": "La password generata è stata creata localmente nel tuo browser. <br /><br /><strong>Nessuno oltre a te ha accesso ad essa</strong>.<br /><br /> Incollala sotto e salvane una copia in un posto sicuro",
+        "generate": "La password generata è stata creata localmente nel tuo browser. <br /><strong>Nessuno oltre a te ha accesso ad essa</strong>.<br /> Incollala sotto e salvane una copia in un posto sicuro",
         "hide_asset": "Clicca qui per nascondere quest'asset da questa lista.",
         "latest_price": "Questo è l'ultimo prezzo visto in questo mercato.",
         "login": "Questo portafoglio LocalCoin non offre un login tradizionale, invece semplicemente blocca o sblocca un portafoglio che è <b>solo</b> memorizzato localmente nel tuo browser.<br/><br/>Ogni volta che chiudi il portafoglio, esso sarà bloccato e avrai di fatto effettuato il logout.",

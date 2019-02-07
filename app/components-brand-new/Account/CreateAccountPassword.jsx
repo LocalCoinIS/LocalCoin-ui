@@ -279,7 +279,7 @@ class CreateAccountPassword extends React.Component {
                             </span>
                         </label>
                         <div style={{paddingBottom: "0.5rem"}}>
-                            <span className="inline-label">
+                  <span className="inline-label">
                                 <input
                                     style={{
                                         maxWidth: "calc(30rem - 48px)",
@@ -288,7 +288,7 @@ class CreateAccountPassword extends React.Component {
                                     disabled
                                     value={this.state.generatedPassword}
                                     type="text"
-                                    className="input-button"
+                                    className="input-button input-password"
                                 />
                                 <CopyButton
                                     text={this.state.generatedPassword}

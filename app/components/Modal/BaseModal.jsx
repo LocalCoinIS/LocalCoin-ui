@@ -4,7 +4,7 @@ import ZfApi from "react-foundation-apps/src/utils/foundation-api";
 import Modal from "react-foundation-apps/src/modal";
 import Trigger from "react-foundation-apps/src/trigger";
 import Translate from "react-translate-component";
-// var logo = require("assets/logo-ico-blue.png");
+//var logo = require("assets/brand-new-layout/img/logo.svg");
 import {logoLight as logo} from "../../assets/brand-new-layout/img/images";
 
 class BaseModal extends React.Component {
@@ -50,48 +50,50 @@ class BaseModal extends React.Component {
                 className={className}
                 overlayClose={overlayClose}
             >
+              <div className="adjust-modal">
                 <div className="modal-header">
-                    {!noCloseBtn && (
-                        <Trigger close={id}>
-                            <a href="#" className="close-button">
-                                &times;
-                            </a>
-                        </Trigger>
-                    )}
-                    {!noLogo &&
-                        (leftHeader ? (
-                            <img src={logo} width="50px" height="50px" />
-                        ) : (
-                            <div className="modal__logo">
-                                <img src={logo} width="50px" height="50px" />
-                            </div>
-                        ))}
-                    {!noHeader &&
-                        modalHeader &&
-                        (leftHeader ? (
-                            <b
-                                style={{
-                                    paddingLeft: "0.8rem",
-                                    fontSize: "1.3rem",
-                                    position: "relative",
-                                    top: "0.4rem"
-                                }}
-                            >
-                                <Translate content={modalHeader} />
-                            </b>
-                        ) : (
-                            <div className="text-center">
-                                <div className="modal__title">
-                                    <Translate
-                                        component="h4"
-                                        content={modalHeader}
-                                    />
-                                </div>
-                            </div>
-                        ))}
+                  {!noCloseBtn && (
+                    <Trigger close={id}>
+                      <a href="#" className="close-button">
+                        &times;
+                              </a>
+                    </Trigger>
+                  )}
+                  {!noLogo &&
+                    (leftHeader ? (
+                      <img src={logo} width="50px" height="50px" />
+                    ) : (
+                        <div className="modal__logo">
+                          <img src={logo} width="50px" height="50px" />
+                        </div>
+                      ))}
+                  {!noHeader &&
+                    modalHeader &&
+                    (leftHeader ? (
+                      <b
+                        style={{
+                          paddingLeft: "0.8rem",
+                          fontSize: "1.3rem",
+                          position: "relative",
+                          top: "0.4rem"
+                        }}
+                      >
+                        <Translate content={modalHeader} />
+                      </b>
+                    ) : (
+                        <div className="text-center">
+                          <div className="modal__title">
+                            <Translate
+                              component="h4"
+                              content={modalHeader}
+                            />
+                          </div>
+                        </div>
+                      ))}
                 </div>
                 {!noHeader && leftHeader && <hr />}
                 <div className="modal-content">{children}</div>
+              </div>
             </Modal>
         );
     }
@@ -104,7 +106,7 @@ BaseModal.defaultProps = {
 BaseModal.propTypes = {
     id: PropTypes.string.isRequired,
     onClose: PropTypes.func,
-    className: PropTypes.string,
+    className: PropTypes.string ,
     overlay: PropTypes.bool,
     overlayClose: PropTypes.bool,
     noCloseBtn: PropTypes.bool

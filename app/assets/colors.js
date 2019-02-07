@@ -10,7 +10,7 @@ module.exports = {
         positiveColor: "#6BA583",
         negativeColor: "#DB0000",
         strokeColor: "#FFFF00",
-        primaryText: "#e0e0e0",
+        primaryText: "#00195b",
         volumeColor: "#848484",
 
         //tooltip
@@ -22,7 +22,7 @@ module.exports = {
         axisLineColor: "rgba(200, 200, 200, 0.3)",
         indicatorLineColor: "#FFFFFF",
         bgColor: "#191a1f",
-        textColor: "#e0e0e0"
+        textColor: "#00195b"
     },
     darkTheme: {
         bidColor: "#6BA583",
@@ -35,7 +35,7 @@ module.exports = {
         positiveColor: "#258A14",
         negativeColor: "#DB0000",
         strokeColor: "#FFFF00",
-        primaryText: "#e0e0e0",
+        primaryText: "#00195b",
         volumeColor: "#848484",
 
         //tooltip

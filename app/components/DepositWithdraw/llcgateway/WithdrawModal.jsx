@@ -28,7 +28,7 @@ class WithdrawModal extends React.Component {
             active: props.active,
             balance: this.getBalance(),
             insufficient: this.checkInsufficient(),
-            wdBtn: "button disabled",
+            wdBtn: "button btn large outline disabled",
             feeAmount: new Asset({amount: 0}),
             validAddress: true
         };
@@ -70,8 +70,10 @@ class WithdrawModal extends React.Component {
         return counterpart.translate("transfer.errors.noFeeBalance");
     }
 
-    deactivateModal() {
-        this.props.bullet.deactivateModal();
+    deactivateModal(e) {
+        if(e.target.classList.contains("close-modal")) {
+            this.props.bullet.deactivateModal();
+        }
     }
 
     componentWillReceiveProps(props) {
@@ -159,13 +161,13 @@ class WithdrawModal extends React.Component {
 
     unlockWithdrawBtn() {
         this.setState({
-            wdBtn: "button"
+            wdBtn: "button btn large outline"
         });
     }
 
     lockWithdrawBtn() {
         this.setState({
-            wdBtn: "button disabled"
+            wdBtn: "button disabled btn large outline"
         });
     }
 
@@ -268,26 +270,28 @@ class WithdrawModal extends React.Component {
     }
 
     render() {
+        console.log(22222);
         let fee = this.state.feeAmount
             ? this.state.feeAmount.getAmount({real: true})
             : 0;
 
         return (
             <div
+                onClick={this.deactivateModal}
                 className={
                     this.state.active
-                        ? "modal-overlay is-active"
-                        : "modal-overlay"
+                        ? "modal-overlay is-active close-modal"
+                        : "modal-overlay close-modal"
                 }
             >
                 <div
                     id="withdraw_asset_rudex-scorum_RUDEX.SCR"
                     data-closable="true"
-                    className="modal fadeIn ng-enter is-active ng-enter-active"
+                    className="withdraw-modal modal fadeIn ng-enter is-active ng-enter-active"
                 >
                     <a
                         href="javascript:void(0)"
-                        className="close-button"
+                        className="close-button close-modal"
                         onClick={this.deactivateModal}
                     >
                         ×
@@ -497,10 +501,12 @@ class WithdrawModal extends React.Component {
                                         </span>
                                     </div>
                                     <div
-                                        className="button"
+                                        className="button btn large outline close-modal"
                                         onClick={this.deactivateModal}
                                     >
-                                        <span>
+                                        <span
+                                            className="close-modal"
+                                        >
                                             {counterpart.translate(
                                                 "global.cancel"
                                             )}

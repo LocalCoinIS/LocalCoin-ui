@@ -440,6 +440,7 @@ class SendModal extends React.Component {
 
     toChanged(to_name) {
         this.setState({to_name, error: null});
+        // this.state.
     }
 
     onToAccountChanged(to_account) {
@@ -463,6 +464,7 @@ class SendModal extends React.Component {
     }
 
     onFeeChanged({asset}) {
+
         this.setState(
             {feeAsset: asset, fee_asset_id: asset.get("id"), error: null},
             this._updateFee
@@ -470,6 +472,7 @@ class SendModal extends React.Component {
     }
 
     onMemoChanged(e) {
+
         let {asset_types} = this._getAvailableAssets();
         let {from_account, from_error, maxAmount} = this.state;
         if (
@@ -553,7 +556,6 @@ class SendModal extends React.Component {
         this.setState({
             from_name,
             error: null,
-            propose: false,
             propose_account: ""
         });
     }
@@ -566,14 +568,31 @@ class SendModal extends React.Component {
     }
 
     _changeTab(tab) {
+        console.log("==================");
+        console.log(this.state);
+        console.log(this.props);
+        console.log("==================");
         this.setState({
             activeTab: tab
         });
 
         if (tab === "send-tab") {
+            let {currentAccount} = this.props;
+            if (!this.state.from_name) {
+                this.setState({from_name: currentAccount});
+            }
+            this.setState({
+                propose: false
+            });
             document.querySelector(".send-tab").classList.add("active");
             document.querySelector(".transfer-tab").classList.remove("active");
         } else {
+            if (this.state.from_name) {
+                this.setState({from_name: ""});
+            }
+            this.setState({
+                propose: true
+            });
             document.querySelector(".transfer-tab").classList.add("active");
             document.querySelector(".send-tab").classList.remove("active");
         }
@@ -604,18 +623,18 @@ class SendModal extends React.Component {
             AccountStore.isMyAccount(from_account) ||
             from_name === this.props.passwordAccount;
 
-        if (from_account && !from_my_account && !propose) {
-            from_error = (
-                <span>
-                    {counterpart.translate("account.errors.not_yours")}
-                    &nbsp;(
-                    <a onClick={this.onPropose.bind(this)}>
-                        {counterpart.translate("propose")}
-                    </a>
-                    )
-                </span>
-            );
-        }
+        // if (from_account && !from_my_account && !propose) {
+        //     from_error = (
+        //         <span>
+        //             {counterpart.translate("account.errors.not_yours")}
+        //             &nbsp;(
+        //             <a onClick={this.onPropose.bind(this)}>
+        //                 {counterpart.translate("propose")}
+        //             </a>
+        //             )
+        //         </span>
+        //     );
+        // }
 
         let {asset_types, fee_asset_types} = this._getAvailableAssets();
         let balance = null;
@@ -1169,7 +1188,10 @@ class SendModal extends React.Component {
                                                     <div
                                                         className="error-area"
                                                         style={{
-                                                            position: "absolute"
+                                                            minHeight:
+                                                                "auto",
+                                                            color:
+                                                                "#ea340b"
                                                         }}
                                                     >
                                                         <Translate

@@ -95,8 +95,8 @@ class ModalContent extends React.Component {
         let submit_btn_class =
             parseFloat(parsedAmount) > 0 &&
             parseFloat(parsedAmount) * precision <= parseFloat(balanceAmount)
-                ? "button success"
-                : "button disabled";
+                ? "button btn large outline"
+                : "button disabled btn large outline";
 
         let balanceText = (
             <span>

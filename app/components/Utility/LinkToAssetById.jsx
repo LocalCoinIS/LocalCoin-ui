@@ -2,12 +2,29 @@ import React from "react";
 import {Link} from "react-router/es";
 import AssetWrapper from "./AssetWrapper";
 import AssetName from "./AssetName";
-import {coinIcon} from "../../assets/brand-new-layout/img/images";
+import {coins} from "../../assets/asset-symbols/symbols";
 
+//require("file-loader?name=asset-symbols/[name].png!./bts.png");
 class LinkToAssetById extends React.Component {
     static defaultProps = {
         showIcon: false
     };
+
+    findCoin(symbol) {
+        for(let i in coins) {
+            let coin = coins[i];
+            if(coin.name === symbol) return coin.image;
+        }
+        return this.getDefault();
+    }
+
+    getDefault() {
+        for(let i in coins) {
+            let coin = coins[i];
+            if(coin.name === 'coin') return coin.image;
+        }
+        return null;
+    }
 
     render() {
         const symbol = this.props.asset.get("symbol");
@@ -23,20 +40,7 @@ class LinkToAssetById extends React.Component {
             >
                 {this.props.showIcon ? (
                     <img
-                        src={"/asset-symbols/" + symbol.toLowerCase() + ".png"}
-                        onError={e => {
-                            var tmpImg = e.target;
-                            let img = new Image();
-                            img.src =
-                                "/asset-symbols/" +
-                                symbol.toLowerCase() +
-                                ".svg";
-                            tmpImg.src = img.src;
-                            img.onerror = function() {
-                                return (tmpImg.src = "/asset-symbols/coin.png");
-                            };
-                            e.target.src = tmpImg.src;
-                        }}
+                        src={this.findCoin(symbol.toLowerCase())}
                         alt={`ico-${symbol}`}
                     />
                 ) : null}
