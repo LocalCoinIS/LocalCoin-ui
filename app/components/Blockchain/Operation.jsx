@@ -100,17 +100,17 @@ class Row extends React.Component {
         fee.amount = parseInt(fee.amount, 10);
 
         return (
-            <tr>
+            <div>
                 {this.props.includeOperationId ? (
-                    <td
+                    <div
                         style={{textAlign: "left"}}
                         className="left-td column-hide-tiny"
                     >
                         {this.props.operationId}
-                    </td>
+                    </div>
                 ) : null}
                 {hideOpLabel ? null : (
-                    <td
+                    <div
                         style={{textAlign: "left"}}
                         className="left-td column-hide-tiny"
                     >
@@ -130,16 +130,16 @@ class Row extends React.Component {
                         >
                             <TransactionLabel color={color} type={type} />
                         </Link>
-                    </td>
+                    </div>
                 )}
-                <td>
+                <div>
                     <FormattedAsset
                         color="fee"
                         amount={this.props.fee.amount}
                         asset={this.props.fee.asset_id}
                     />
-                </td>
-                <td style={{padding: "8px 5px", textAlign: "left"}}>
+                </div>
+                <div style={{padding: "8px 0px", textAlign: "left"}}>
                     <div>
                         <span>{this.props.info}</span>
                     </div>
@@ -157,16 +157,16 @@ class Row extends React.Component {
                         ) : null}
                         {pending ? <span> - {pending}</span> : null}
                     </div>
-                </td>
-                <td>
+                </div>
+                <div>
                     {!this.props.hideDate ? (
                         <BlockTime
                             block_number={block}
                             fullDate={this.props.fullDate}
                         />
                     ) : null}
-                </td>
-            </tr>
+                </div>
+            </div>
         );
     }
 }
