@@ -911,6 +911,7 @@ export default class ModalWrapper extends React.Component {
                 overlay={true}
                 onClose={this.onClose.bind(this)}
                 ref={this.props.modalId}
+                overlayClose={true}
             >
                 <div className="grid-block vertical">
                     <BorrowModalContent

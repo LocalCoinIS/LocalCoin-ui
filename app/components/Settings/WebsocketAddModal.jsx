@@ -112,7 +112,7 @@ class WebsocketAddModal extends React.Component {
                 id="ws_modal_add"
                 ref="ws_modal_add"
                 overlay={true}
-                overlayClose={false}
+                overlayClose={true}
             >
                 <div className="grid-content">
                     <Translate component="h3" content="settings.add_ws" />

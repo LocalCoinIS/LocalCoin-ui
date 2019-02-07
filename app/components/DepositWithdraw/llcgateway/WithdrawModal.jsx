@@ -70,8 +70,10 @@ class WithdrawModal extends React.Component {
         return counterpart.translate("transfer.errors.noFeeBalance");
     }
 
-    deactivateModal() {
-        this.props.bullet.deactivateModal();
+    deactivateModal(e) {
+        if(e.target.classList.contains("close-modal")) {
+            this.props.bullet.deactivateModal();
+        }
     }
 
     componentWillReceiveProps(props) {
@@ -268,16 +270,18 @@ class WithdrawModal extends React.Component {
     }
 
     render() {
+        console.log(22222);
         let fee = this.state.feeAmount
             ? this.state.feeAmount.getAmount({real: true})
             : 0;
 
         return (
             <div
+                onClick={this.deactivateModal}
                 className={
                     this.state.active
-                        ? "modal-overlay is-active"
-                        : "modal-overlay"
+                        ? "modal-overlay is-active close-modal"
+                        : "modal-overlay close-modal"
                 }
             >
                 <div
@@ -287,7 +291,7 @@ class WithdrawModal extends React.Component {
                 >
                     <a
                         href="javascript:void(0)"
-                        className="close-button"
+                        className="close-button close-modal"
                         onClick={this.deactivateModal}
                     >
                         ×
@@ -497,10 +501,12 @@ class WithdrawModal extends React.Component {
                                         </span>
                                     </div>
                                     <div
-                                        className="button btn large outline"
+                                        className="button btn large outline close-modal"
                                         onClick={this.deactivateModal}
                                     >
-                                        <span>
+                                        <span
+                                            className="close-modal"
+                                        >
                                             {counterpart.translate(
                                                 "global.cancel"
                                             )}

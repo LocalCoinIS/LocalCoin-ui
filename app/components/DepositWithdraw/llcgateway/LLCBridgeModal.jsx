@@ -62,8 +62,10 @@ class LLCBridgeModal extends React.Component {
         });
     }
 
-    closeModal() {
-        this.setState({isActiveThisModal: ""});
+    closeModal(e) {
+        if(e.target.classList.contains("close-modal")) {
+            this.setState({isActiveThisModal: ""});
+        }
     }
 
     showModal() {
@@ -159,8 +161,10 @@ class LLCBridgeModal extends React.Component {
     render() {
         var buttons = (
             <div className="button-group" style={{marginTop: 10}}>
-                <div onClick={this.closeModal} className="button btn large outline">
-                    <span>
+                <div onClick={this.closeModal} className="button btn large outline close-modal">
+                    <span
+                        className="close-modal"
+                    >
                         {counterpart.translate("modal.withdraw.cancel")}
                     </span>
                 </div>
@@ -270,7 +274,9 @@ class LLCBridgeModal extends React.Component {
         );
 
         return (
-            <div className={"modal-overlay " + this.state.isActiveThisModal}>
+            <div
+                onClick={this.closeModal}
+                className={"modal-overlay close-modal " + this.state.isActiveThisModal}>
                 <div
                     id="withdraw_asset_rudex-scorum_RUDEX.SCR"
                     data-closable="true"
@@ -279,7 +285,7 @@ class LLCBridgeModal extends React.Component {
                     <a
                         onClick={this.closeModal}
                         href="javascript:void(0)"
-                        className="close-button"
+                        className="close-button close-modal"
                     >
                         ×
                     </a>
