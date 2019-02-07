@@ -568,21 +568,18 @@ class SendModal extends React.Component {
     }
 
     _changeTab(tab) {
-        console.log("==================");
-        console.log(this.state);
-        console.log(this.props);
-        console.log("==================");
         this.setState({
             activeTab: tab
         });
 
         if (tab === "send-tab") {
-            let {currentAccount} = this.props;
+            let {currentAccount, from_name} = this.props;
             if (!this.state.from_name) {
                 this.setState({from_name: currentAccount});
             }
             this.setState({
-                propose: false
+                propose: false,
+                from_account: ChainStore.getAccount(this.props.from_name)
             });
             document.querySelector(".send-tab").classList.add("active");
             document.querySelector(".transfer-tab").classList.remove("active");

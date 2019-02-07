@@ -270,7 +270,6 @@ class WithdrawModal extends React.Component {
     }
 
     render() {
-        console.log(22222);
         let fee = this.state.feeAmount
             ? this.state.feeAmount.getAmount({real: true})
             : 0;
