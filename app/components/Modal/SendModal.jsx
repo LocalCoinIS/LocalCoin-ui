@@ -568,7 +568,6 @@ class SendModal extends React.Component {
     }
 
     _changeTab(tab) {
-        console.log(11111);
         this.setState({
             activeTab: tab
         });
