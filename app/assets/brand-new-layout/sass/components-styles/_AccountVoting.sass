@@ -1,0 +1,78 @@
+.dashboard__tabs.voting-tabs
+	padding-left: 400px
+	.dashboard__tabs__item
+		padding: 11.5px 24px!important
+.workers,
+.committee,
+.witnesses
+	.col-xl-2.col-lg-6
+		padding-right: 10px
+		>div
+			width: 100%!important
+	.dashboard__actions
+		position: absolute
+		top: 0
+		left: 0
+		background: transparent!important
+		padding: 4px 5px 0 5px!important
+	.dashboard__actions__filters
+		margin: 0 0 0 480px
+	.dashboard__actions__filters + button
+		margin-left: 0
+	.col-xs-12
+		position: absolute
+		top: 4px
+		right: 15px
+
+
+
+
+
+@media only screen and (max-width : 1680px)
+	.dashboard__tabs.voting-tabs
+		padding-left: 0
+	.workers,
+	.committee,
+	.witnesses
+		.col-xl-3.col-lg-6
+			max-width: 350px!important
+			min-width: 350px!important
+			>div
+				width: 100%!important
+		.dashboard__actions
+			position: relative
+			top: 0
+			left: 0
+			background: #c1d0e3!important
+			padding: 4px 5px 0 5px!important
+		.dashboard__actions__filters
+			margin: 0 0 0 0px!important
+		.col-xs-12
+			position: relative
+			top: 0
+			right: 0
+		>.container-fluid
+			.row
+				padding: 10px 0 0 20px
+				background-color: #c1d0e3
+		.col-xl-9
+			flex: unset
+		.row
+			flex-wrap: nowrap
+
+@media only screen and (max-width : 1200px)
+	.workers,
+	.committee,
+	.witnesses
+		.row
+			flex-wrap: wrap
+		.col-xl-9.col-lg-12
+			padding-top: 10px
+	.committee,
+	.witnesses
+		.col-xl-3.col-lg-6
+			max-width: unset!important
+			min-width: unset!important
+			span[style="float: right;"]
+				float: left!important
+				margin-top: 10px

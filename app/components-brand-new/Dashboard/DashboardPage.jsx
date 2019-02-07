@@ -44,7 +44,7 @@ class DashboardPage extends React.Component {
         ];
 
         return (
-            <div className="content">
+            <div className="content dashboard-page">
                 <Tabs items={items} inner={true} dashboardTabsClass="voting" />
             </div>
         );

@@ -2,7 +2,7 @@ var Benchmark = require("benchmark");
 var marketClasses = require("./MarketClasses");
 
 const asset1 = {asset_id: "1.3.0", precision: 5};
-const asset2 = {asset_id: "1.3.121", precision: 4}; // bitUSD
+const asset2 = {asset_id: "1.3.121", precision: 4}; // USD
 const asset3 = {asset_id: "1.3.113", precision: 4}; // bitCNY
 const assets = {"1.3.0": asset1, "1.3.121": asset2, "1.3.113": asset3};
 

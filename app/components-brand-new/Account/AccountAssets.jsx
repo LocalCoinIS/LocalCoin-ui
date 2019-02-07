@@ -314,7 +314,7 @@ class AccountAssets extends React.Component {
             .toArray();
 
         return (
-            <div>
+            <div className="assets-layout">
                 <h2 className="content__heading">
                     {counterpart.translate(
                         "account.user_issued_assets.issued_assets"

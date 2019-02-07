@@ -51,7 +51,7 @@ class GdexAgreementModal extends React.Component {
                         <h2 style={{textAlign: "center"}}>用户服务协议</h2>
                         <p>
                             OBSIDIAN TECHNOLOGY CO. PTE. LTD.
-                            是一家根据新加坡共和国法律成立的公司，GDEX是由该公司运营的比特股网关(以下称“GDEX”或“本网关”)，主访问入口为https://www.gdex.io，GDEX是一个在比特股平台为用户提供数字资产充提服务（以下称“该服务”或“服务”）的平台。为了本协议表述之方便，公司和该网关在本协议中合称使用“我们”或其他第一人称称呼。使用该服务的自然人或其他主体均为本网关的用户，本协议为表述之便利，以下使用“您”或其他第二人称。我们和您在本协议中合称为“双方”，我们或您单称为“一方”。
+                            是一家根据新加坡共和国法律成立的公司，GDEX是由该公司运营的本地硬币网关(以下称“GDEX”或“本网关”)，主访问入口为https://www.gdex.io，GDEX是一个在本地硬币平台为用户提供数字资产充提服务（以下称“该服务”或“服务”）的平台。为了本协议表述之方便，公司和该网关在本协议中合称使用“我们”或其他第一人称称呼。使用该服务的自然人或其他主体均为本网关的用户，本协议为表述之便利，以下使用“您”或其他第二人称。我们和您在本协议中合称为“双方”，我们或您单称为“一方”。
                         </p>
                         <p>重要提示：</p>
                         <p>我们在此特别提醒您：</p>
@@ -79,12 +79,12 @@ class GdexAgreementModal extends React.Component {
                         </p>
                         <p>敬告您：</p>
                         <p>
-                            1.您了解比特股是基于区块链的去中心化交易平台，其基础账号服务和交易撮合服务都由比特股平台提供。亦有其它机构或个人在比特股平台上发行资产及／或提供服务。您了解本网关仅作为您向比特股平台充提数字资产的工具。本网关只对自身发行的交易代币资产（名称以GDEX.为前缀）负责，不对比特股上其它机构或个人发行的资产负责，本网关不参与您的任何交易，您应自行谨慎判断确定相关数字资产及/或信息的真实性、合法性和有效性，并自行承担因此产生的责任与损失。
+                            1.您了解本地硬币是基于区块链的去中心化交易平台，其基础账号服务和交易撮合服务都由本地硬币平台提供。亦有其它机构或个人在本地硬币平台上发行资产及／或提供服务。您了解本网关仅作为您向本地硬币平台充提数字资产的工具。本网关只对自身发行的交易代币资产（名称以GDEX.为前缀）负责，不对本地硬币上其它机构或个人发行的资产负责，本网关不参与您的任何交易，您应自行谨慎判断确定相关数字资产及/或信息的真实性、合法性和有效性，并自行承担因此产生的责任与损失。
                         </p>
                         <p>
                             {" "}
                             2.
-                            比特股去中心化交易系统存有风险，包括但不限于软件，硬件和互联网链结的失败，用户账户系统的安全风险等。由于我们不能控制互联网以及比特股平台的可靠性和可用性，我们不会对上述风险造成的用户损失承担任何责任。
+                            本地硬币去中心化交易系统存有风险，包括但不限于软件，硬件和互联网链结的失败，用户账户系统的安全风险等。由于我们不能控制互联网以及本地硬币平台的可靠性和可用性，我们不会对上述风险造成的用户损失承担任何责任。
                         </p>
                         <p>
                             {" "}
@@ -134,13 +134,13 @@ class GdexAgreementModal extends React.Component {
                         </p>
                         <p>三、服务</p>
                         <p>
-                            本网关只为您提供向比特股平台冲入和提取数字资产的服务，本网关并不作为买家或卖家参与买卖数字资产行为本身；本网关不提供任何国家法定货币充入和提取的相关服务。
+                            本网关只为您提供向本地硬币平台冲入和提取数字资产的服务，本网关并不作为买家或卖家参与买卖数字资产行为本身；本网关不提供任何国家法定货币充入和提取的相关服务。
                         </p>
                         <p> 3.1 服务内容</p>
                         <p>
                             {" "}
                             3.1.1
-                            您有权通过本网关向比特股平台冲入或提取数字资产。
+                            您有权通过本网关向本地硬币平台冲入或提取数字资产。
                         </p>
                         <p> 3.1.2 本网关承诺为您提供的其他服务。</p>
                         <p> 3.2.服务规则</p>
@@ -153,7 +153,7 @@ class GdexAgreementModal extends React.Component {
                         <p>
                             {" "}
                             3.2.2
-                            您在使用本网关服务之前应充分了解比特股账号的使用常识，做好相应账号的备份及密码保存工作，对于比特股账户安全问题造成的损失，本网关不承担任何责任。
+                            您在使用本网关服务之前应充分了解本地硬币账号的使用常识，做好相应账号的备份及密码保存工作，对于本地硬币账户安全问题造成的损失，本网关不承担任何责任。
                         </p>
                         <p>
                             {" "}
@@ -355,7 +355,7 @@ class GdexAgreementModal extends React.Component {
                             point for GDEX is https://gdex.io, GDEX is a gateway
                             that provide cryptocurrency deposit and withdraw
                             service (hereinafter referred to as 'the Service')
-                            to/from Bitshares. For the convenience of wording in
+                            to/from Localcoin. For the convenience of wording in
                             this Agreement, the Company and the Gateway are
                             referred to as 'We' or other applicable forms of
                             first person pronouns in this Agreement. All natural
@@ -414,29 +414,29 @@ class GdexAgreementModal extends React.Component {
                             shall not be held liable in any manner whatsoever.
                         </p>
                         <p>
-                            5. You understand that Bitshares is a decentralized
+                            5. You understand that Localcoin is a decentralized
                             exchange based on blockchain, the basic account
                             service and the trade processing service are
-                            provided by Bitshares, there are also other
+                            provided by Localcoin, there are also other
                             institutions or single persons that issue assets
-                            and/or provide service on Bitshares. You understand
+                            and/or provide service on Localcoin. You understand
                             that the Gateway is only used for you to
-                            deposit/withdraw cryptocurrency to/from Bitshares.
+                            deposit/withdraw cryptocurrency to/from Localcoin.
                             The Gateway only undertake the due obligations for
                             the availability of own issued assets (with 'GDEX.'
                             as prefix of the name), do not undertake the due
                             obligations for the account service and the trade
-                            processing service provided by Bitshares, do not
+                            processing service provided by Localcoin, do not
                             undertake the due obligations for availability of
                             the assets issued by other institutions or single
                             persons.{" "}
                         </p>
                         <p>
-                            6. There are risk in both Internet and Bitshares,
+                            6. There are risk in both Internet and Localcoin,
                             include but not limit to failure for software,
                             hardware to connect to Internet, security risk for
-                            Bitshares accounting system. As the availability and
-                            reliability of Internet and Bitshares are not under
+                            Localcoin accounting system. As the availability and
+                            reliability of Internet and Localcoin are not under
                             our control, we do not undertake obligations for the
                             loss caused by the risks mentioned above.
                         </p>
@@ -459,13 +459,16 @@ class GdexAgreementModal extends React.Component {
     }
 }
 
-export default connect(GdexAgreementModal, {
-    listenTo() {
-        return [SettingsStore];
-    },
-    getProps() {
-        return {
-            settings: SettingsStore.getState().settings
-        };
+export default connect(
+    GdexAgreementModal,
+    {
+        listenTo() {
+            return [SettingsStore];
+        },
+        getProps() {
+            return {
+                settings: SettingsStore.getState().settings
+            };
+        }
     }
-});
+);

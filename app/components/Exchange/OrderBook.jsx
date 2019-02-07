@@ -253,7 +253,7 @@ class OrderBook extends React.Component {
             }
         }
 
-        function getMaxWidth(queryClass) {            
+        function getMaxWidth(queryClass) {
             let max = 0;
             let list = document.getElementsByClassName(queryClass);
             for (let i in list) {
@@ -373,13 +373,18 @@ class OrderBook extends React.Component {
 
     verticalScrollBar = () => this.queryStickyTable("#y-scrollbar");
 
-    componentDidUpdate() {//delayed execution
+    componentDidUpdate() {
+        //delayed execution
         if (!this.props.horizontal) {
             let self = this;
-            document.delayedExecution.add("orderBook_componentDidUpdate", function() {
-                self.updateCeilWith();
-                self.addLeftCellActive();
-            }, 100);
+            document.delayedExecution.add(
+                "orderBook_componentDidUpdate",
+                function() {
+                    self.updateCeilWith();
+                    self.addLeftCellActive();
+                },
+                100
+            );
         }
     }
 
@@ -389,12 +394,15 @@ class OrderBook extends React.Component {
 
         if (!this.props.horizontal) {
             let self = this;
-            document.delayedExecution.add("orderBook_componentDidUpdate", function() {
-                self.updateCeilWith();
-                self.addLeftCellActive();
-            }, 100);
+            document.delayedExecution.add(
+                "orderBook_componentDidUpdate",
+                function() {
+                    self.updateCeilWith();
+                    self.addLeftCellActive();
+                },
+                100
+            );
 
-            
             let up = this.refs.vertical_sticky_table_up.table.querySelector(
                 "#y-scrollbar"
             );
@@ -537,10 +545,12 @@ class OrderBook extends React.Component {
                     quote={quote}
                 />
             ));
+        let limitOfRows = 100;
         let bidRows = null,
             askRows = null;
         if (base && quote) {
             bidRows = combinedBids.map((order, index) => {
+                if (index > limitOfRows) return;
                 return horizontal ? (
                     <OrderBookRowHorizontal
                         index={index}
@@ -575,6 +585,7 @@ class OrderBook extends React.Component {
                 }
             });
             askRows = tempAsks.map((order, index) => {
+                if (index > limitOfRows) return;
                 return horizontal ? (
                     <OrderBookRowHorizontal
                         index={index}
@@ -623,8 +634,8 @@ class OrderBook extends React.Component {
                 }
             } catch (e) {}
 
-            let totalBidsLength = bidRows.length;
-            let totalAsksLength = askRows.length;
+            let totalBidsLength = 50;//bidRows.length;
+            let totalAsksLength = 50;//askRows.length;
 
             if (!showAllBids) {
                 bidRows.splice(rowCount, bidRows.length);
@@ -944,29 +955,13 @@ class OrderBook extends React.Component {
             }
             // Vertical orderbook
             return (
-                <div className="left-order-book no-padding no-overflow">
+                <div className="left-order-book no-padding">
                     <div className="order-table-container exchange-sell-orders vertical-orderbook-up">
                         <StickyTable
                             className="order-table table"
                             ref="vertical_sticky_table_up"
                         >
-                            <div className="sticky-table-row top-header">
-                                <div className="cell header-cell left">
-                                    <span className="header-sub-title">
-                                        <AssetName name={baseSymbol} />
-                                    </span>
-                                </div>
-                                <div className="cell header-cell">
-                                    <span className="header-sub-title">
-                                        <AssetName name={quoteSymbol} />
-                                    </span>
-                                </div>
-                                <div className="cell header-cell right">
-                                    <Translate
-                                        className="header-sub-title"
-                                        content="exchange.price"
-                                    />
-                                </div>
+                            <div>
                             </div>
                             <TransitionWrapper
                                 ref="askTransition"

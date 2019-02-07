@@ -1,5 +1,6 @@
 .DS_Store
 .idea
+.vscode
 */node_modules
 */npm-debug.log
 *.map
@@ -23,3 +24,5 @@ v8-compile-cache*/
 /.env
 index.php
 .gitignore
+build/binaries
+build/electron

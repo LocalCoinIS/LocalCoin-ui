@@ -199,7 +199,7 @@ Bug fixes
 - Some external lib updates
 - Hide empty parentheses in RecentTransactions header
 - Increase depth chart range
-- Update the Blocktrades bridge code to use the correct wallet symbols for MKR on the BitShares blockchain
+- Update the Blocktrades bridge code to use the correct wallet symbols for MKR on the LocalCoin blockchain
 - Fix ProposedOperation text for asset_create operation
 - Chinese, Turkish and English translation updates
 - Market trade date format fix + light theme hovering fixes and cosmetics

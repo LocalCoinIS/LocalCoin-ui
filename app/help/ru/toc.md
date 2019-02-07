@@ -1,23 +1,16 @@
 #### Содержание
 
-- [BitShares](introduction/bitshares.md)
+- [LocalCoin](introduction/localcoin.md)
 - [Кошелек](introduction/wallets.md)
 - [Резервные копии](introduction/backups.md)
 - [Блокчейн](introduction/blockchain.md)
 - [Голосование](voting.md)
 - [Аккаунты](accounts/general.md)
 - [Разрешения](accounts/permissions.md)
-- [Подписки](accounts/membership.md)
-- [Привязанные к рынку активы](assets/mpa.md) 
-    - bitUSD
-    - bitEUR
-    - bitGOLD
-- [Эмитированные пользователем активы](assets/uia.md)
-- [Приватизированные BitAssets](assets/privbitassets.md)
-- [Децентрализованная биржа](dex/introduction.md)
-- [Торговля](dex/trading.md)
-- [Короткая продажа BitAssets](dex/shorting.md)
-- Шлюзы 
-    - [OpenLedger](gateways/openledger.md)
-    - [Rudex](gateways/rudex.md)
-    - [CryptoBridge](gateways/cryptobridge.md)
+- [Премиум аккаунт](accounts/membership.md)
+- [Системные активы](assets/mpa.md)
+- [Частные активы](assets/uia.md)
+- [Бит-Активы](assets/privbitassets.md)
+- [Децентрализованная биржа(DEX)](dex/introduction.md)
+- [Торги](dex/trading.md)
+- [Короткая продажа](dex/shorting.md)

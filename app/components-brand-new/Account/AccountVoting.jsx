@@ -452,8 +452,10 @@ class AccountVoting extends React.Component {
                 if (lbo === null) {
                     // The object does not exist, the id was too high
                     this.setState(
-                        {lastBudgetObject: `2.13.${newIDInt - 1}`},
-                        this.getBudgetObject
+                        {
+                            lastBudgetObject: `2.13.${newIDInt - 1}`
+                        } /*,
+                        this.getBudgetObject*/
                     );
                 } else {
                     SettingsStore.setLastBudgetObject(newID);
@@ -695,10 +697,7 @@ class AccountVoting extends React.Component {
         );
 
         let proxyInput = (
-            <div
-                style={{width: "50%", maxWidth: 350}}
-                data-tip="Search for an account to be used as your proxy for voting"
-            >
+            <div style={{width: "100%", maxWidth: 350}}>
                 <AccountSelector
                     hideImage
                     account={this.state.current_proxy_input}
@@ -761,14 +760,14 @@ class AccountVoting extends React.Component {
         );
 
         let tabWitnesses = (
-            <div>
+            <div className="witnesses">
                 <div className="dashboard__actions">
                     <div className="container-fluid">
                         <div className="row">
-                            <div className="col-xl-9 col-lg-12">
+                            <div className="col-xl-10 col-lg-12">
                                 {proxyInput}
                             </div>
-                            <div className="col-xl-3 col-lg-6">
+                            <div className="col-xl-2 col-lg-6">
                                 {actionButtons}
                             </div>
                         </div>
@@ -797,14 +796,14 @@ class AccountVoting extends React.Component {
         );
 
         let tabCommitteeMembers = (
-            <div>
+            <div className="committee">
                 <div className="dashboard__actions">
                     <div className="container-fluid">
                         <div className="row">
-                            <div className="col-xl-9 col-lg-12">
+                            <div className="col-xl-10 col-lg-12">
                                 {proxyInput}
                             </div>
-                            <div className="col-xl-3 col-lg-6">
+                            <div className="col-xl-2 col-lg-6">
                                 {actionButtons}
                             </div>
                         </div>
@@ -832,7 +831,7 @@ class AccountVoting extends React.Component {
         );
 
         let tabWorkers = (
-            <div>
+            <div className="workers">
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-xs-12">{actionButtons}</div>
@@ -1043,7 +1042,7 @@ class AccountVoting extends React.Component {
                     items={items}
                     inner={true}
                     hashByConten={true}
-                    dashboardTabsClass="dashboard__tabs permissions small"
+                    dashboardTabsClass="dashboard__tabs permissions small voting-tabs"
                 />
             </div>
         );

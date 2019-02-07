@@ -11,5 +11,5 @@ services:
   env_file:
     - .env
   volumes:
-   - wallet_build:/bitshares-ui/build/dist
-   - .:/bitshares-ui
+   - wallet_build:/localcoin-ui/build/dist
+   - .:/localcoin-ui

@@ -120,11 +120,11 @@ class AccountMembership extends React.Component {
             expiration_date = "N/A";
 
         return (
-            <div className="grid-content" style={{overflowX: "hidden"}}>
+            <div className="grid-content account-membership" style={{overflowX: "hidden"}}>
                 <div className="content-block no-margin">
-                    <h3>
+                    <h2 className="content__heading">
                         <Translate content={membership} /> {expiration}
-                    </h3>
+                    </h2>
                     {member_status === "lifetime" ? null : (
                         <div>
                             <div className="large-6 medium-8">
@@ -181,7 +181,7 @@ class AccountMembership extends React.Component {
                                         </h4>
                                         <Translate content="account.member.referral_text" />
                                         :
-                                        <h5>{`${document.domain}?r=${
+                                        <h5>https://{`${document.domain}/?r=${
                                             account.name
                                         }`}</h5>
                                     </div>

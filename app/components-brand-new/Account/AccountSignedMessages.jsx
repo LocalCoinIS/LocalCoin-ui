@@ -9,7 +9,7 @@ import SignedMessage from "../../components/Account/SignedMessage";
 import cnames from "classnames";
 import Tabs from "../Utility/Tabs";
 
-/** This component gives a user interface for signing and verifying messages with the bitShares memo key.
+/** This component gives a user interface for signing and verifying messages with the LocalCoin memo key.
  *  It consists of two tabs:
  *    - Sign message tab (code prefix: tabSM)
  *    - Verify message tab (code prefix: tabVM)
@@ -231,10 +231,7 @@ class AccountSignedMessages extends React.Component {
     render() {
         const signmessageContent = (
             <div className="grid-content" style={{overflowX: "hidden"}}>
-                <div className="content-block no-margin">
-                    <h3>
-                        <Translate content="account.signedmessages.signmessage" />
-                    </h3>
+                <div className="content-block">
                 </div>
                 <PubKeyInput
                     ref="memo_key"
@@ -282,9 +279,6 @@ class AccountSignedMessages extends React.Component {
         const verifymessageContent = (
             <div className="grid-content" style={{overflowX: "hidden"}}>
                 <div className="content-block no-margin">
-                    <h3>
-                        <Translate content="account.signedmessages.verifymessage" />
-                    </h3>
                     <div
                         style={{
                             float: "right",

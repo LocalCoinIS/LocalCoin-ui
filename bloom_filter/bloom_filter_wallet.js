@@ -3,7 +3,7 @@
 // Filter LLC 0.9.2+ import keys export file so that it will include only private keys
 // that may be found in the LLC 2.0 genesis block.
 // Dependencies:
-// ./bloom_bitshares.dat (1,048,576 bytes) sha1 4d80faa41a5e868899febdc9dab48d1f2d567487992810cf0532f3c0ee2b266c
+// ./bloom_localcoin.dat (1,048,576 bytes) sha1 4d80faa41a5e868899febdc9dab48d1f2d567487992810cf0532f3c0ee2b266c
 // nodejs, npm, and: npm install
 
 /*
@@ -26,10 +26,10 @@ var h = graphenejs.hash;
 var key_utils = graphenejs.key;
 const chainPrefix = "LLC";
 
-fs.readFile("bloom_bitshares.dat", function(err, data) {
+fs.readFile("bloom_localcoin.dat", function(err, data) {
     if (err) throw err;
     console.error(
-        "bloom_bitshares.dat (" + data.length + " bytes)",
+        "bloom_localcoin.dat (" + data.length + " bytes)",
         "sha1",
         h.sha1(data).toString("hex"),
         "\n"

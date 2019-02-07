@@ -7,7 +7,11 @@
 		color: #00195b
 	span
 		font-weight: normal
-		color: #00195b
+		font-size: 15px
+		line-height: 1.3
+	.spread span
+		font-size: 11px
+		font-family: "Roboto Mono", monospace !important
 	h1
 		font-size: 32px
 		font-weight: normal
@@ -20,6 +24,11 @@
 		color: #001b60
 		line-height: 1.3
 		margin: 10px 0
+		span
+			font-size: inherit
+			font-weight: inherit
+			color: inherit
+			line-height: inherit
 	h3
 		font-size: 21px
 		font-weight: normal
@@ -92,6 +101,25 @@
 			+placeholder
 				opacity: 1
 				font-size: 0
+	textarea
+		width: 100%
+		border-radius: 4px
+		padding: 0 17px
+		background-color: #dce6f2
+		color: #00195b
+		font-size: 15px
+		border: 1px solid #7fafe8
+		+placeholder
+			color: #000
+			opacity: 0.5
+			font-size: 15px
+		&:hover
+			+placeholder
+				color: #00195b
+		&:focus
+			+placeholder
+				opacity: 1
+				font-size: 0
 	.checkbox
 		display: flex
 		align-items: center
@@ -126,7 +154,7 @@
 			left: 2px
 			right: 0
 			bottom: 0
-			background-image: url('../img/checked.svg')
+			background-image: url("data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMzU0YzliIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDI2IDI2IiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjYgMjYiPgogIDxwYXRoIGQ9Im0uMywxNGMtMC4yLTAuMi0wLjMtMC41LTAuMy0wLjdzMC4xLTAuNSAwLjMtMC43bDEuNC0xLjRjMC40LTAuNCAxLTAuNCAxLjQsMGwuMSwuMSA1LjUsNS45YzAuMiwwLjIgMC41LDAuMiAwLjcsMGwxMy40LTEzLjloMC4xdi04Ljg4MTc4ZS0xNmMwLjQtMC40IDEtMC40IDEuNCwwbDEuNCwxLjRjMC40LDAuNCAwLjQsMSAwLDEuNGwwLDAtMTYsMTYuNmMtMC4yLDAuMi0wLjQsMC4zLTAuNywwLjMtMC4zLDAtMC41LTAuMS0wLjctMC4zbC03LjgtOC40LS4yLS4zeiI+PC9wYXRoPgo8L3N2Zz4=")
 			background-repeat: no-repeat
 			background-position: center
 			background-size: contain
@@ -220,7 +248,7 @@
 		td
 			background-color: transparent
 	table.blue-bg.with-borders
-		td:not(:last-child)
+		td
 			border-bottom: 1px solid #fff
 	table.blue-bg.borders
 		td
@@ -253,7 +281,7 @@
 		td.right,
 			text-align: right
 		td
-			padding: 6px 16px
+			padding: 0px 16px
 			background-color: transparent
 			vertical-align: middle
 			color: #00195b
@@ -281,8 +309,8 @@
 			position: relative
 			display: flex
 			align-items: center
-			padding: 0 20px
-			font-size: 15px
+			padding: 0 15px
+			font-size: 14px
 			background-color: #dce6f2
 			z-index: 1
 			height: 40px
@@ -350,6 +378,9 @@
 				&:hover
 					background: #dce6f2
 					color: #00195b
+	.dashboard .select .placeholder
+		height: 30px
+
 	ul
 		margin: 10px 0 10px 18px
 		li
@@ -390,7 +421,7 @@ body.localcoin
 		border-left: 1px solid hsla(0,0%,50%,.45)
 		padding-left: 10px
 		cursor: pointer
-		padding: 0 10px 0 0
+		padding: 0 10px 0 10px
 		&:hover
 			background-color: rgba(220, 230, 242, 0.5)
 		span
@@ -462,7 +493,7 @@ body.localcoin
 			position: relative
 			display: inline-flex
 			align-items: center
-			font-size: 15px
+			font-size: 14px
 			line-height: 40px
 			color: #fff
 			> span
@@ -500,6 +531,7 @@ body.localcoin
 			background-color: #001b60
 			border-radius: 6px
 			padding: 10px 0 14px 0
+			overflow: visible!important
 			z-index: 2
 			&:before
 				content: ''
@@ -1459,14 +1491,6 @@ body.localcoin
 		color: #bb2820
 	.success
 		color: #208c0f
-	.dashboard__tabs.voting
-		.dashboard__tabs__item
-			padding: 25px 24px
-			line-height: 1
-	.dashboard__tabs.permissions
-		.dashboard__tabs__item
-			padding: 25px 24px
-			line-height: 1
 	.threshold-block
 		display: flex
 		align-items: center
@@ -1477,33 +1501,36 @@ body.localcoin
 	.label
 		display: block
 		margin-bottom: 15px
+	.label,
+	.label.warning,
 	.label.info,
-	.label.warning
+	.label.success,
+	.label.cancel,
+	.label.alert
 		display: inline-block
 		color: #ce7925
 		background-color: #dce6f2
 		outline: none
-		font-size: 13px
+		font-size: 10px !important
 		border: 1px solid #ce7925
 		line-height: 1
-		padding: 3px 7px
+		padding: 1px 3px
 		margin: 0 4px 4px 0
 		border-radius: 2px
 		> span
 			color: inherit
 	.label.success
-		display: inline-block
 		color: #608c1c
-		background-color: #dce6f2
-		outline: none
-		font-size: 13px
 		border: 1px solid #608c1c
-		line-height: 1
-		padding: 3px 7px
-		margin: 0 4px 4px 0
-		border-radius: 2px
-		> span
-			color: inherit
+	.label.cancel
+		color: #cc2828
+		border: 1px solid #cc2828
+	.label.info
+		color: #2080d8
+		border: 1px solid #2080d8	
+	.label.alert
+		color: #d80ad0
+		border: 1px solid #d80ad0				
 	.dashboard__table
 		.label
 			margin: 0
@@ -1513,7 +1540,7 @@ body.localcoin
 		max-width: 36px
 		width: 36px
 		height: 36px
-		background-image: url('../img/key.svg')
+		background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9IiMwMDFiNjAiIHZpZXdCb3g9IjAgMCAzNS44NDQgMzUuODc1Ij48cGF0aCBkPSJNMjUuNDg4IDcuNTc1YTIuMjQzIDIuMjQzIDAgMSAxLTIuMjQyIDIuMjQyIDIuMjQxIDIuMjQxIDAgMCAxIDIuMjQyLTIuMjQyem05Ljk4IDQuMDU2YTIwLjQ0NCAyMC40NDQgMCAwIDAtNC40MDctNi45MzMgMTkuOTU5IDE5Ljk1OSAwIDAgMC02Ljg4LTQuMzIzIDUuNjMxIDUuNjMxIDAgMCAwLTUuOTc1IDEuMjY3bC01LjUgNS40NzhhNS42MTEgNS42MTEgMCAwIDAtMS4xNjkgNi4yMThjLjI4OC42NS42IDEuMjg1LjkzOCAxLjlMLjM5OCAyNy4zMTVhMS40IDEuNCAwIDAgMC0uNDEuOTkxdjYuMTY5YTEuNCAxLjQgMCAwIDAgMS40IDEuNGg2LjE2NGExLjQgMS40IDAgMCAwIDEuNC0xLjR2LTIuNTIzaDIuNTIyYTEuNCAxLjQgMCAwIDAgMS40LTEuNHYtMi41MjNoMi41MjJhMS40IDEuNCAwIDAgMCAwLTIuOGgtMy45MjNhMS40IDEuNCAwIDAgMC0xLjQgMS40djIuNTIzSDcuNTUxYTEuNCAxLjQgMCAwIDAtMS40IDEuNHYyLjUyM0gyLjc4OFYyOC44OWwxMi40MjMtMTIuNDNhMS40IDEuNCAwIDAgMCAuMjA4LTEuNzE4IDIyLjYxNyAyMi42MTcgMCAwIDEtMS4zMjYtMi41NDMgMi43OTEgMi43OTEgMCAwIDEgLjU4Ni0zLjA5Mmw1LjUtNS40NzhhMi44MjQgMi44MjQgMCAwIDEgMy0uNjM2IDE3LjE0OSAxNy4xNDkgMCAwIDEgNS45IDMuNjkgMTcuNjUgMTcuNjUgMCAwIDEgMy43NzUgNS45NzEgMi43ODQgMi43ODQgMCAwIDEtLjYyOCAyLjk5MmwtNS41NjggNS41NDRhMi44MTkgMi44MTkgMCAwIDEtMy4wODMuNiAxOC4xODEgMTguMTgxIDAgMCAxLTIuNTIyLTEuMjg4IDEuNDAyIDEuNDAyIDAgMCAwLTEuNDY1IDIuMzkgMjEuMDc5IDIxLjA3OSAwIDAgMCAyLjkxNSAxLjQ4MyA1LjYxMyA1LjYxMyAwIDAgMCA2LjEzNi0xLjJsNS41NjgtNS41NDRhNS41ODggNS41ODggMCAwIDAgMS4yNTktNi4wMDR6Ij48L3BhdGg+PC9zdmc+")
 		background-repeat: no-repeat
 		background-position: 0 0
 		background-size: contain
@@ -1696,7 +1723,7 @@ body.localcoin
 		border-bottom: 1px solid #7fafe8
 		td,th
 			background-color: transparent
-			padding: 10px 10px
+			padding: 0px 16px
 			width: 18%
 		td:first-child,
 		th:first-child
@@ -1741,12 +1768,6 @@ body.localcoin
 				line-height: 31px
 		&__row.light
 			background-color: #e0e8f1
-
-
-
-body.localcoin .dashboard__tabs.small .dashboard__tabs__item
-	padding: 15px 24px
-
 
 .card-divider
 	background-color: #e0e8f1
@@ -1827,3 +1848,12 @@ body.localcoin .asset-card .card-divider
 
 .page-layout .main-content
 	background-color: #fff
+
+
+
+body.localcoin .order-form .float-right input
+	background-color: #00195b
+	
+
+body.localcoin .exchange-layout .medium-6
+	order: 3

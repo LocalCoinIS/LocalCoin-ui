@@ -148,80 +148,7 @@ div.input-wrapper div.floating-dropdown
 	opacity: 0.5
 
 
-// styled btns
 
-.button.market-button
-	border: 1px solid #00195b
-	line-height: 40px
-	margin: 0 4px 4px 0
-	border-radius: 2px
-	font-size: 15px
-	border-radius: 4px
-	background-color: #00195b
-	line-height: 40px
-	color: #fff
-	font-family: $osnovapro
-	padding: 0px 30px
-	height: 40px
-	&:hover
-		background-color: #132d71
-		color: #fff
-	&:active
-		background-color: #050f2a
-		color: #fff
-	> span
-		color: inherit
-.button.disabled
-	border: 1px solid #00195b
-	line-height: 40px
-	line-height: 1
-	margin: 0 4px 4px 0
-	border-radius: 2px
-	font-size: 15px
-	border-radius: 4px
-	font-family: $osnovapro
-	padding: 0px 30px
-	height: 40px
-	background-color: #7f8cad!important
-	border-color: #7f8cad!important
-	color: #fff!important
-	pointer-events: none
-	&:hover
-		background-color: #7f8cad!important
-		border-color: #7f8cad!important
-		color: #fff!important
-	&:active
-		background-color: #7f8cad!important
-		border-color: #7f8cad!important
-		color: #fff!important
-
-
-.button.hollow.primary,
-.button.outline,
-.button
-	outline: none
-	background-color: transparent
-	font-size: 13px
-	line-height: 40px
-	color: #00195b
-	border: 1px solid #00195b
-	line-height: 1
-	padding: 3px 7px
-	margin: 0 4px 4px 0
-	border-radius: 2px
-	font-size: 15px
-	border-radius: 4px
-	font-family: $osnovapro
-	font-weight: normal
-	padding: 0 24px
-	height: 40px
-	line-height: 40px
-	&:hover
-		background-color: #eef3f9
-	&:active
-		background-color: #c1d0e3
-	&:focus
-		background-color: #c1d0e3
 
 body.localcoin .account-inputs .typeahead__innerList
 	input
@@ -281,6 +208,125 @@ body.localcoin .account-inputs .typeahead__innerList
 .lightTheme .stats .stressed-stat.daily_change.negativ
 	color: #e1424a!important
 body.localcoin
+	.main
+		div[id^="borrow_modal"]
+			padding-top: 0
+			p
+				white-space: normal!important
+			.modal-header
+				padding-bottom: 0
+			.modal-content
+				padding-top: 0
+			.grid-container.small-10.small-offset-1.no-overflow
+				padding-top: 0
+				input[style="width: 12%; float: right; margin-top: -10px;"]
+					padding: 0 8px!important
+				.float-left
+					float: none!important
+					white-space: normal
+					line-height: 1.2
+					padding-top: 5px!important
+					height: auto!important
+				.no-padding.grid-content.button-group.no-overflow
+					padding-top: 10px!important
+					display: flex
+					align-items: flex-start
+					.button.success
+						background-color: #00195b
+						color: #fff
+						padding: 0 30px!important
+						span
+							color: #fff!important
+						&:hover
+							background-color: #132d71
+				div:not(.inline-block.tooltip)
+					padding-bottom: .5rem!important
+					margin-bottom: 0!important
+				label
+					margin-bottom: 0!important
+			h3
+				margin: 0
+	.main.account
+		.table.proposals.compact.dashboard-table
+			td
+				border-bottom: 0!important
+			tr:nth-child(3n)
+				td
+					border-bottom: 1px solid #fff!important
+	.main.account .table.proposals.compact.dashboard-table td div[id$="_reject"],
+	.main.account .table.proposals.compact.dashboard-table td div[id$="_approve"]
+		padding: 16px 20px!important
+		.modal-content
+			padding: 16px!important
+		.full-width-content > *
+			margin-top: 10px
+		.content-block:last-child
+			display: flex
+			align-items: center
+			padding: 15px 0 0 0!important
+			input
+				background-color: #00195b
+				margin-top: 4px
+				color: #fff
+				&:hover
+					background-color: #132d71
+			input + .button
+				padding: 0 24px!important
+	.main.account
+		.table.proposals.compact.dashboard-table
+			th
+				padding: 15px 16px 5px
+				background-color: #c1d0e3
+			td
+				background-color: #e0e8f1
+				border-bottom: 1px solid #fff
+				padding: 2px 16px
+				div
+					padding: 0!important
+					margin: 0!important
+			.button.primary.hollow
+				margin: 0
+				border-radius: 2px
+				padding: 3px 7px
+				font-size: 12px
+				line-height: 1
+				height: auto
+		.col-lg-9
+			min-width: 400px
+			max-width: 100%
+			flex: 0 0 100%
+			display: flex
+			align-items: center
+			input[placeholder="Filter"]
+				width: 100%
+				max-width: 100%
+				min-width: 50%
+				height: 38px
+				margin-left: auto
+			.btn.large.inverted,
+			.btn.large.outline
+				height: 38px!important
+				line-height: 38px!important
+	.exchange-layout
+		.medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
+			.table.order-table.text-right.fixed-table.market-right-padding
+				tr
+					td,
+					td.orderHistoryBid
+						font-weight: bold
+						span
+							font-weight: bold!important
+						.price-integer
+							color: #258a14
+		form.order-form
+			.grid-content.clear-fix.no-padding
+				table.float-left
+					width: calc(100% - 94px)
+	.main
+		label.btn.orange
+			display: inline-block
+	.options__nav .options__nav__link
+		padding: 8px 0 8px 28px
 	.main.account-create-asset
 		.amount-selector
 			.left-label
@@ -322,7 +368,11 @@ body.localcoin
 	.node-access-popup
 		width: calc(100% + 1px)
 		right: 0px
-		bottom: 28px
+		bottom: 32px
+		background: white
+		border-left: 1px solid #c6c6c6
+		border-right: 1px solid #c6c6c6
+		border-top: 1px solid #c6c6c6
 		.nodes-list .api-status
 			display: flex
 			width: 100%
@@ -437,7 +487,6 @@ body.localcoin
 		height: calc(50vh - 35px)!important
 	.left-order-book .order-table-container
 		height: calc(50vh - 50px)
-		padding-top: 16px
 	.__react_component_tooltip.type-light.place-right:after
 		border-right-color: grey
 	.__react_component_tooltip.type-light.place-top:after
@@ -479,11 +528,6 @@ body.localcoin
 	#send_modal_wrapper
 		.modal-header
 			padding: 0
-		.left-label,
-		.right-label
-			margin-bottom: 0
-			font-size: 14px!important
-			line-height: 1
 		.modal__logo
 			display: none
 		.content-block
@@ -512,11 +556,6 @@ body.localcoin
 				font-size: 12px!important
 				span
 					font-size: 12px!important
-				.label.cancel,
-				.label.warning
-					font-size: 11px!important
-					padding: 2px 4px!important
-					border-radius: 2px!important
 				a:not(.inline-block)
 					color: #2964fa!important
 					span
@@ -525,120 +564,18 @@ body.localcoin
 		.content
 			padding-top: 0
 			.dashboard__tabs__item
-				padding: 5px 24px
+				padding: 5px 24px 0 24px
 				h4
 					margin: 0
-	// .main.account-voting-account-votes-workers-short
-	// 	.voting-container .col-xl-3.col-lg-6 .account-inputs.account-selector
-	// 		max-width: 350px!important
-	// 	.dashboard__actions__filters
-	// 		position: absolute
-	// 		top: -27px
-	// 		left: 800px
-	// 	.dashboard__actions__filters + .btn.large.inverted
-	// 		position: absolute
-	// 		top: -46px
-	// 		left: 1038px
-	// 	.voting-container .dashboard__tabs.dashboard__tabs.permissions.small+div .col-xs-12 span[style="float: right;"]
-	// 		right: auto!important
-	// 		left: 1255px!important
-	// 		top: -45px!important
-	// .main[class*="acc-voting"],
-	// .main.account-voting,
-	// .main.account-voting-explorer-witnesses-title,
-	// .main.account-voting-explorer-committee-members-title,
-	// .main.account-voting-account-votes-workers-short
-	// 	.content
-	// 		padding-top: 0
-	// 	.dashboard__actions
-	// 		padding: 0
-	// 		.account-inputs.account-selector
-	// 			position: absolute
-	// 			top: -45px
-	// 			right: -60px
-	// 	.dashboard__tabs__item
-	// 		padding: 15px 24px 15px 24px
-	// 		h4,
-	// 		span
-	// 			margin: 0
-	// 			line-height: 1
-	// .main.account-voting,
-	// .main.account-voting-explorer-witnesses-title,
-	// .main.account-voting-explorer-committee-members-title,
-	// .main.account-voting-account-votes-workers-short
-	// 	.col-xl-3.col-lg-6,
-	// 	.col-xl-9.col-lg-12,
-	// 	.col-xs-12
-	// 		flex: 0 0 100%
-	// 		max-width: 100%
-	// 	.col-xs-12
-	// 		span[style="float: right;"]
-	// 			position: absolute
-	// 			width: auto
-	// 			top: -45px
-	// 			left: 1255px
-	// 	.dashboard__actions
-	// 		.col-xl-3.col-lg-6
-	// 			position: unset
-	// 			span[style="float: right;"]
-	// 				right: auto!important
-	// 				left: 800px!important
-	// 		.account-inputs.account-selector
-	// 			left: 20px
-	// 			right: auto
-	// 			min-width: 350px
-	// 	.dashboard__tabs
-	// 		padding-left: 385px
-	.main.account-localcoin-ico,
-	.main.account
-		.content
-			padding-top: 0
 			.dashboard__table.blue-bg.with-borders
 				td
 					padding: 0 16px
 				.dashboard__table__link img
 					max-width: 20px
 					margin: 4px 7px 0 0
-			.dashboard__tabs__item
-				padding: 5px 24px 0 24px
-				h4,
-				span
-					margin: 0
-					line-height: 1
-			.dashboard__actions
-				min-width: 250px
-				position: absolute
-				top: 0
-				right: 40px
-				width: auto
-				background: transparent
-				padding: 0
-				.select
-					min-width: 250px
-				.col-xl-3.col-lg-6,
-				.col-xl-9.col-lg-12
-					width: 50%
-					max-width: 50%
-					flex: 0 0 50%
-				.col-xl-3.col-lg-6
-					input[type="text"]
-						margin: 0
-						height: 30px
-						position: relative
-						top: 4px
-				.dashboard__actions__filters
-					position: relative
-					top: 16px
-
 	.main.homepage
 		.content
 			padding-top: 0
-		.dashboard__tabs.voting
-			.dashboard__tabs__item
-				padding: 0 24px!important
-				h4
-					margin: 0
-					line-height: 36px
 		.dashboard__actions
 			padding: 0
 			width: auto
@@ -662,6 +599,8 @@ body.localcoin
 				top: 16px
 	#content>div
 		min-height: calc(100vh - 35px)
+		display: flex
+		flex-direction: column
 		overflow: hidden
 	.modal-content
 		.inline-label
@@ -676,10 +615,6 @@ body.localcoin
 			td
 				padding: 2px 0!important
 				line-height: 1
-				.label
-					margin: 0 10px 0 0!important
-				.label.cancel
-					background-color: #dce6f2
 				div
 					padding: 0!important
 	.main.explorer-markets
@@ -740,13 +675,10 @@ body.localcoin
 		.dashboard__table
 			td
 				padding: 2px 16px!important
-				font-size: 13px!important
+				font-size: 13px
 				span,
 				div
-					font-size: 13px!important
-				.label
-					font-size: 10px!important
-					padding: 1px 5px
+					font-size: 13px
 			div
 				padding: 0!important
 	.inline-block
@@ -758,7 +690,7 @@ body.localcoin
 		border: 1px solid grey
 		background-color: #7e7e7e
 		border-radius: 3px
-		font-size: 13px!important
+		font-size: 13px
 		line-height: 1!important
 		padding: 8px 21px
 		width: 320px!important
@@ -781,7 +713,7 @@ body.localcoin
 			border: 1px solid grey
 			background-color: #7e7e7e
 			border-radius: 3px
-			font-size: 13px!important
+			font-size: 13px
 			line-height: 1!important
 			padding: 8px 21px
 			width: 320px!important
@@ -855,7 +787,7 @@ body.localcoin
 		td
 			> div
 				line-height: 1
-	.order-table .cell, .order-table td
+	.order-table .cell, .order-table td, .orderHistoryBid span, .orderHistoryAsk span
 		font-size: 11px!important
 	.asset-card
 		table
@@ -972,8 +904,6 @@ body.localcoin
 	.grid-block.shrink.left-orderbook-header.bottom-header + div
 		padding-right: 0!important
 		width: calc(100% + 1px)
-	.button
-		line-height: 40px
 	.marketPicker
 		background-color: #fff
 	.block-list header
@@ -1181,7 +1111,7 @@ body.localcoin
 				border: 1px solid grey
 				background-color: #7e7e7e
 				border-radius: 3px
-				font-size: 13px!important
+				font-size: 13px
 				line-height: 1!important
 				padding: 8px 21px
 				width: 320px!important
@@ -1272,18 +1202,6 @@ body.localcoin
 	.table-witnesses
 		.txtlabel
 			margin: 0
-	.create-asset-container
-		position: relative
-		margin-bottom: 12px
-		.dashboard__tabs.dashboard__tabs.permissions.small + div
-			position: absolute
-			top: 0
-			right: 12px
-			bottom: 0
-			display: flex
-			align-items: center
-			.button
-				background-color: #fff
 	.voting-container
 		table
 			thead
@@ -1295,35 +1213,22 @@ body.localcoin
 				width: 100%!important
 				max-width: none!important
 				min-width: 220px!important
-		.dashboard__tabs.dashboard__tabs.permissions.small + div
-			.col-xs-12
-				span[style="float: right;"]
-					position: absolute
-					top: -32px
-					right: 20px
-			.col-xl-3.col-lg-6
-				span[style="float: right;"]
-					position: absolute
-					top: -45px
-					right: 15px
 		.dashboard__actions
 			.row
 				.col-xl-9.col-lg-12
 					display: flex
 					align-items: center
-				.dashboard__actions__filters + button
-					margin-left: auto
 				.dashboard__actions__filters
 					margin-top: 6px
-		.dashboard__tabs.dashboard__tabs.permissions.small + div
-			position: relative!important
-			top: 0!important
-			right: 0!important
-			bottom: 0
-			display: block!important
-			align-items: center
-			.button
-				background-color: #fff
+		// .dashboard__tabs.dashboard__tabs.permissions.small + div
+		// 	position: relative!important
+		// 	top: 0!important
+		// 	right: 0!important
+		// 	bottom: 0
+		// 	display: block!important
+		// 	align-items: center
+		// 	.button
+		// 		background-color: #fff
 #unlock_wallet_modal2
 	border-radius: 4px
 	max-width: 500px
@@ -1596,12 +1501,6 @@ body.localcoin .exchange-layout .grid-block.wrap.market-stats-container ul.marke
 					position: absolute
 					top: -45px
 					right: -60px
-			.dashboard__tabs__item
-				padding: 15px 24px 15px 24px
-				h4,
-				span
-					margin: 0
-					line-height: 1
 		.main[class*="acc-voting"],
 		.main.account-voting,
 		.main.account-voting-explorer-witnesses-title,
@@ -1615,12 +1514,6 @@ body.localcoin .exchange-layout .grid-block.wrap.market-stats-container ul.marke
 					position: absolute
 					top: -45px
 					right: -60px
-			.dashboard__tabs__item
-				padding: 15px 24px 15px 24px
-				h4,
-				span
-					margin: 0
-					line-height: 1
 		.main.account-voting,
 		.main.account-voting-explorer-witnesses-title,
 		.main.account-voting-explorer-committee-members-title,
@@ -1650,12 +1543,38 @@ body.localcoin .exchange-layout .grid-block.wrap.market-stats-container ul.marke
 				padding-left: 385px
 
 @media only screen and (max-width: 1680px)
-	body.localcoin .voting-container .dashboard__tabs.dashboard__tabs.permissions.small+div .col-xs-12 span[style="float: right;"]
-		position: relative
-		top: 0
-		right: 0
-		background-color: #c1d0e3
-
+	// body.localcoin .voting-container .dashboard__tabs.dashboard__tabs.permissions.small+div .col-xs-12 span[style="float: right;"]
+	// 	position: relative
+	// 	top: 0
+	// 	right: 0
+	// 	background-color: #c1d0e3
+	// 	float: left!important
+	// body.localcoin .voting-container .dashboard__tabs.dashboard__tabs.permissions.small+div .col-xs-12
+	// 	width: 100%
+	// 	background-color: #c1d0e3
+	// 	padding: 10px 0 0 20px
+	// body.localcoin .voting-container .dashboard__actions .row .dashboard__actions__filters+button
+	// 	position: absolute
+	// 	top: -64px
+	// 	left: 0
+	// body.localcoin .voting-container .dashboard__actions
+	// 	.col-xl-3.col-lg-6,
+	// 	.col-xl-9.col-lg-12
+	// 		max-width: 50%
+	// 		width: 100%
+	// 		flex: 0 0 50%
+	// 		>div
+	// 			width: 100%!important
+	// 			max-width: none!important
+	body.localcoin
+		.main.account-voting-explorer-committee-members-title,
+		.main.account-voting-explorer-witnesses-title,
+		.main.account-voting
+			.voting-container .dashboard__tabs.dashboard__tabs.permissions.small+div .col-xl-3.col-lg-6 span[style="float: right;"]
+				position: relative!important
+				top: 0!important
+				left: 0!important
+				right: 0!important
 @media only screen and (max-width: 1640px)
 	body.localcoin .main.account-localcoin-ico .content .dashboard__actions, body.localcoin .main.account .content .dashboard__actions
 		position: relative
@@ -1681,6 +1600,10 @@ body.localcoin .exchange-layout .grid-block.wrap.market-stats-container ul.marke
 					width: 90px!important
 
 @media only screen and (max-width: 1200px)
+	body.localcoin
+		.main.homepage
+			.dashboard__actions__filters
+				top: -6px!important
 	body.localcoin
 		.exchange-layout
 			.order-book-button-v
@@ -1717,6 +1640,7 @@ body.localcoin .exchange-layout .grid-block.wrap.market-stats-container ul.marke
 							overflow: hidden
 							.table-container.grid-block.market-right-padding-only.no-overflow.ps-container.ps-theme-default
 								max-height: none!important
+								height: calc(100% - 70px)!important
 			.medium-6
 				flex: 0 0 50%!important
 				max-width: 50%!important
@@ -1831,8 +1755,6 @@ body.localcoin .exchange-layout .grid-block.wrap.market-stats-container ul.marke
 				line-height: 1
 		.medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.ps-container.middle-content.order-6
 			order: 5!important
-		.medium-6.xlarge-4.no-padding.no-overflow.middle-content.small-12.medium-6.order-5.xlarge-order-3
-			order: 2!important
 	body.localcoin .exchange-layout
 		.exchange-content-header.bid
 			min-height: 32px
@@ -1866,16 +1788,19 @@ body.localcoin .exchange-layout .grid-block.wrap.market-stats-container ul.marke
 	body.localcoin .exchange-layout .float-right.header-sub-title .inline-block>span
 		font-size: 10px!important
 
+@media only screen and (max-width: 1020px)
+	body.localcoin
+		.main.homepage
+			.dashboard__actions__filters
+				top: -6px!important
+	body.localcoin .main.homepage .dashboard__actions
+		position: relative
+		background: #c1d0e3
+
 
 @media only screen and (max-width: 1000px)
 	.node-access-popup
 		display: none
-	body.localcoin
-		.main.account-create-asset
-			.create-asset-container .dashboard__tabs.dashboard__tabs.permissions.small+div
-				position: relative
-				right: 0
-				margin: 15px 0 8px 15px
 
 @media only screen and (max-width: 850px)
 	body.localcoin .dashboard__actions__filters label.radio
@@ -1893,9 +1818,68 @@ body.localcoin .exchange-layout .grid-block.wrap.market-stats-container ul.marke
 			.amount-selector
 				padding: 0!important
 				margin: 5px 0
+		.main.account
+			.col-lg-9
+				min-width: 200px
+				max-width: 100%
+				flex: 0 0 100%
+				display: flex
+				align-items: flex-start
+				flex-direction: column
+				input[placeholder="Filter"]
+					width: 100%
+					max-width: 100%
+					min-width: 100%
+					height: 38px
+					margin-bottom: 5px!important
+				.btn.large.inverted,
+				.btn.large.outline
+					height: 38px!important
+					line-height: 38px!important
+
+@media only screen and (max-width: 480px)
+	body.localcoin .main.homepage .dashboard__actions
+		.row
+			.col-xl-3.col-lg-6
+				width: 100%
+				flex: 0 0 100%
+				max-width: 100%
+	body.localcoin .voting-container .dashboard__actions
+		.col-xl-3.col-lg-6,
+		.col-xl-9.col-lg-12
+			width: 100%
+			max-width: 100%
+			flex: 0 0 100%
+			flex-direction: column
+			align-items: flex-start!important
+	body.localcoin .voting-container .dashboard__actions .row .dashboard__actions__filters+button
+		position: relative
+		top: 0
+		left: 0
+		margin: 15px 0
+		min-height: 48px
+	body.localcoin
+		.main.account-voting-explorer-committee-members-title,
+		.main.account-voting-explorer-witnesses-title,
+		.main.account-voting
+			.voting-container .dashboard__tabs.dashboard__tabs.permissions.small+div .col-xl-3.col-lg-6 span[style="float: right;"]
+				float: none!important
+				margin: 15px 0 0 0
+				display: block
 
 @media only screen and (max-width: 340px)
 	body.localcoin
+		.grid-block.shrink.no-padding.overflow-visible.top-bar.container-menu-header
+			border-bottom: 1px solid #abbfd9
+			>.grid-block.overflow-visible
+				display: flex
+				flex-direction: column
+				.grid-block.shrink
+					>div
+						display: flex
+						justify-content: center
+						width: 100%
+						border-bottom: 1px solid #abbfd9
 		.grid-block.account-login-options
 			display: flex
 			flex-direction: column

@@ -1,5 +1,13 @@
-staging-new-layout рабочая ветка
-live боевая ветка
+install
+==========
+1. curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash
+2. nvm install v9
+3. nvm use v9
+
+for developers
+==============
+- staging-new-layout - dev branch
+- live               - release branch
 
 Правила деплоя
 ============
@@ -12,17 +20,18 @@ live боевая ветка
 
 
 BitShares-UI
-============
+=======
+LocalCoin-UI
 [中文版](README_zh.md)
 
-This is a light wallet that connects to a BitShares API provided by the *witness_node* executable.
+This is a light wallet that connects to a LocalCoin API provided by the *witness_node* executable.
 
 
 It *stores all keys locally* in the browser, *never exposing your keys to anyone* as it signs transactions locally before transmitting them to the API server which then broadcasts them to the blockchain network. The wallet is encrypted with a password of your choosing and encrypted in a browser database.
 
 ## Getting started
 
-BitShares-UI depends node Node.js, and version 6+ is required.
+LocalCoin-UI depends node Node.js, and version 6+ is required.
 
 On Ubuntu and OSX, the easiest way to install Node is to use the [Node Version Manager](https://github.com/creationix/nvm).
 
@@ -37,8 +46,8 @@ nvm use v6
 Once you have Node installed, you can clone the repo:
 
 ```
-git clone https://github.com/bitshares/bitshares-ui.git
-cd bitshares-ui
+git clone https://github.com/localcoinis/localcoin-ui.git
+cd localcoin-ui
 ```
 
 Before launching the GUI you will need to install the npm packages:
@@ -61,7 +70,7 @@ Once the compilation is done the GUI will be available in your browser at: `loca
 
 
 ## Testnet
-By default bitshares-ui connects to the live BitShares network, but it's very easy to switch it to the testnet run by Xeroc. To do so, open the UI in a browser, go to Settings, then under Access, select the *Public Testnet Server* in the dropdown menu. You should also change the faucet if you need to create an account, the testnet faucet address is https://testnet.bitshares.eu.
+By default localcoin-ui connects to the live LocalCoin network, but it's very easy to switch it to the testnet run by Xeroc. To do so, open the UI in a browser, go to Settings, then under Access, select the *Public Testnet Server* in the dropdown menu. You should also change the faucet if you need to create an account, the testnet faucet address is https://testnet.localcoin.is.
 
 The UI will reload and connect to the testnet, where you can use the faucet to create an account and receive an initial sum of test LLC.
 
@@ -97,15 +106,15 @@ This will compile the UI with some special modifications for use with Electron, 
 
 ### Docker
 
-Clone this repository, run `docker-compose up` and visit localhost:8080 
+Clone this repository, run `docker-compose up` and visit localhost:8080
 
 
 ## Contributing
 Please work off the staging branch and make pull requests to that branch. The master branch will only be updated for new releases.
 
-The Bitshares UI team is supported by this [worker proposal](http://www.bitshares.foundation/workers/2017-08-bill-butler). It provides the funds needed to pay the coordinator and the bounties and the Bitshares Foundation.
+The Localcoin UI team is supported by this [worker proposal](http://www.bitshares.foundation/workers/2017-08-bill-butler). It provides the funds needed to pay the coordinator and the bounties and the Localcoin Foundation.
 
-If you would like to get involved, we have a [Telegram chatroom](https://t.me/BitSharesDEX) where you can ask questions and get help. You may also join [BitShares on Discord](https://discord.gg/GsjQfAJ)
+If you would like to get involved, we have a [Telegram chatroom](https://t.me/LocalCoinIS) where you can ask questions and get help. You may also join [LocalCoin on Discord](https://discord.gg/vkVzbfj)
 
 - Coordinator: Bill Butler, @billbutler
 - Lead Developer: Sigve Kvalsvik, @sigvek
@@ -117,7 +126,7 @@ If you would like to get involved, we have a [Telegram chatroom](https://t.me/Bi
 - Milestones are numbered YYMMDD and refer to the **anticipated release date**.
 - Bugs are always worked before enhancements
 - Developers should work each issue according to a numbered branch corresponding to the issue `git checkout -b 123`
-- We pay **bounties** for issues that have been estimated. An estimated issue is prefixed with a number in brackets like this: `[2] An nasty bug`. In this example, the bug is valued at two hours ($125 per hour). If you fix this issue according to these guidelines and your PR is accepted, this will earn you $250 bitUSD. You must have a Bitshares wallet and a Bitshares account to receive payment.
+- We pay **bounties** for issues that have been estimated. An estimated issue is prefixed with a number in brackets like this: `[2] An nasty bug`. In this example, the bug is valued at two hours ($125 per hour). If you fix this issue according to these guidelines and your PR is accepted, this will earn you $250 USD. You must have a Localcoin wallet and a Localcoin account to receive payment.
 - If an issue is already claimed (assigned), do not attempt to claim it. Issues claimed by outside developers will indicate an assignment to wmbutler, but will mention the developer's github account in this the comments.
 - To claim an issue, simply leave a comment with your request to claim.
 - Do not claim an issue if you will be unable to complete it by the date indicated on the Milestone name. Milestone 170901 will be pushed on September 1, 2017.

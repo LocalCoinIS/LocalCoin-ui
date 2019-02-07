@@ -9,7 +9,7 @@
  * @returns {string}
  */
 export function getWalletName() {
-    return "BitShares";
+    return "LocalCoin";
 }
 
 /**
@@ -17,7 +17,7 @@ export function getWalletName() {
  * @returns {string}
  */
 export function getWalletURL() {
-    return "https://wallet.bitshares.org";
+    return "https://wallet.localcoin.is";
 }
 
 /**
@@ -27,7 +27,7 @@ export function getWalletURL() {
  */
 export function getFaucet() {
     return {
-        url: "https://faucet.bitshares.eu/onboarding", // 2017-12-infrastructure worker proposal
+        url: "https://faucet.localcoin.is/onboarding", // 2017-12-infrastructure worker proposal
         show: true,
         editable: false
     };

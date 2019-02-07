@@ -3,9 +3,8 @@ Help
 
 If you have any questions, please contact one of the following people:
 
-- fabian@bitshares.org
-- cass@bitshares.org
-- bitsharesblocks@gmail.com
-- valentine@cryptonomex.com
+- dimn@localcoin.is
+- alex@localcoin.is
+- nik@localcoin.is
 
-There's also a very active `Telegram chatroom <https://web.telegram.org/#/im?p=g33416306>`_
+There's also a very active `Telegram chatroom <https://t.me/LocalCoinIS>`_

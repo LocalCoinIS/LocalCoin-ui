@@ -7,12 +7,16 @@
 .modal#withdraw_modal_new {
     max-width: 500px;
 }
-
+.modal-overlay.fadeIn,
+.modal-overlay.fadeOut {
+    transition-duration: 0.01s !important;
+}
 .modal {
     max-width: 700px;
     border-radius: 8px;
     overflow: auto !important;
     padding: 1rem 2rem 1rem 2rem;
+    transition-duration: 0.01s !important;
 
     .modal__header {
         text-align: center;

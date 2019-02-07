@@ -11,7 +11,7 @@
     require("./electron_context_menu")({
         prepend: (params, browserWindow) => [
             {
-                label: "Bitshares"
+                label: "LocalCoins"
             }
         ]
     });
@@ -20,7 +20,7 @@
 
     // Preserver of the window size and position between app launches.
     var mainWindowState = windowStateKeeper("main", {
-        width: 1000,
+        width: 1300,
         height: 800
     });
     global.guid = mainWindowState.guid;

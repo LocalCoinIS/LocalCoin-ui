@@ -42,7 +42,7 @@ class Settings extends React.Component {
                     "browser_notifications",
                     "showSettles",
                     "walletLockTimeout",
-                    // "themes",
+                    //"themes",
                     "showAssetPercent",
                     "passwordLogin",
                     "reset"

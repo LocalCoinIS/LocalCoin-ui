@@ -40,6 +40,7 @@ import AssetWrapper from "../../components/Utility/AssetWrapper";
 import ReserveAssetModal from "../../components/Modal/ReserveAssetModal";
 import BaseModal from "../../components/Modal/BaseModal";
 import ZfApi from "react-foundation-apps/src/utils/foundation-api";
+import LLCBridgeModal from "../../components/DepositWithdraw/llcgateway/LLCBridgeModal";
 
 class AccountOverview extends React.Component {
     constructor(props) {
@@ -56,9 +57,9 @@ class AccountOverview extends React.Component {
             withdrawAsset: null,
             bridgeAsset: null,
             alwaysShowAssets: [
-                "LLC",
-                "USD",
-                "CNY"
+                "LLC" //,
+                //"USD",
+                //"CNY"
                 // "OPEN.BTC",
                 // "OPEN.USDT",
                 // "OPEN.ETH",
@@ -66,7 +67,8 @@ class AccountOverview extends React.Component {
                 // "OPEN.STEEM",
                 // "OPEN.DASH"
             ],
-            hide0balances: false
+            hide0balances: false,
+            isBridgeModalVisible: false
         };
 
         this.qtyRefs = {};
@@ -76,10 +78,28 @@ class AccountOverview extends React.Component {
         for (let key in this.sortFunctions) {
             this.sortFunctions[key] = this.sortFunctions[key].bind(this);
         }
-
         this._handleFilterInput = this._handleFilterInput.bind(this);
+        this.onShowModal = this.onShowModal.bind(this);
     }
 
+    onShowModal() {
+        let self = this;
+
+        this.setState(
+            {
+                isBridgeModalVisible: false
+            },
+            function() {
+                self.setState({
+                    isBridgeModalVisible: true
+                });
+            }
+        );
+    }
+
+    updateModal = () => {
+        this.setState({isBridgeModalVisible: false});
+    };
     _reserveButtonClick(assetId, e) {
         e.preventDefault();
         this.setState({reserve: assetId});
@@ -213,8 +233,14 @@ class AccountOverview extends React.Component {
         this.setState({
             settleAsset: id
         });
-
         this.refs.settlement_modal.show();
+        console.log("====================================");
+        console.log(this.refs.settlement_modal);
+        console.log("====================================");
+        // let settleRef = "settlement_modal";
+        // this.refs[settleRef].show();
+
+        // ZfApi.publish("settle_asset", "open");
     }
 
     _hideAsset(asset, status) {
@@ -261,21 +287,17 @@ class AccountOverview extends React.Component {
     }
 
     _renderBuy = (symbol, canBuy, assetName, emptyCell, balance) => {
-        if (symbol === "LLC" && balance <= 100000) {
+        if (symbol === "LLC") {
             // Precision of 5, 1 = 10^5
             return (
                 <span>
-                    <a
-                        onClick={this._showDepositWithdraw.bind(
-                            this,
-                            "bridge_modal",
-                            assetName,
-                            false
-                        )}
-                    >
+                    {this.state.isBridgeModalVisible ? (
+                        <LLCBridgeModal account={this.props.account} />
+                    ) : null}
+                    <a onClick={this.onShowModal}>
                         <PulseIcon
                             onIcon="dollar"
-                            offIcon="dollar-green"
+                        //    offIcon="dollar-green"
                             title="icons.dollar.buy"
                             duration={1000}
                             className="icon-14px"
@@ -284,26 +306,7 @@ class AccountOverview extends React.Component {
                 </span>
             );
         } else {
-            return canBuy && this.props.isMyAccount ? (
-                <span>
-                    <a
-                        onClick={this._showDepositWithdraw.bind(
-                            this,
-                            "bridge_modal",
-                            assetName,
-                            false
-                        )}
-                    >
-                        <Icon
-                            name="dollar"
-                            title="icons.dollar.buy"
-                            className="icon-14px"
-                        />
-                    </a>
-                </span>
-            ) : (
-                emptyCell
-            );
+            return emptyCell;
         }
     };
 
@@ -444,7 +447,6 @@ class AccountOverview extends React.Component {
                 assetAmount,
                 asset
             );
-
             balances.push(
                 <tr key={asset.get("symbol")} style={{maxWidth: "100rem"}}>
                     <td style={{textAlign: "left"}}>
@@ -524,16 +526,16 @@ class AccountOverview extends React.Component {
                         )}
                     </td>
                     <td>
-                        {canDeposit && this.props.isMyAccount ? (
+                        {canDeposit ? (
                             <span>
                                 <Icon
                                     style={{cursor: "pointer"}}
                                     name="deposit"
                                     title="icons.deposit.deposit"
                                     className="icon-14x"
-                                    onClick={this._showDepositModal.bind(
+                                    onClick={this._onNavigate.bind(
                                         this,
-                                        assetName
+                                        "/deposit-withdraw"
                                     )}
                                 />
                             </span>
@@ -1035,7 +1037,7 @@ class AccountOverview extends React.Component {
             includedBalances = included;
             let hidden = this._renderBalances(
                 hiddenBalancesList,
-                !this.state.filterValue ? this.state.alwaysShowAsset : null
+                !this.state.filterValue ? this.state.alwaysShowAssets : null
             );
             hiddenBalances = hidden;
         }
@@ -1234,6 +1236,7 @@ class AccountOverview extends React.Component {
                     from_name={this.props.account.get("name")}
                     asset_id={this.state.send_asset || "1.3.0"}
                 />
+
                 {shownAssets != "visual" ? (
                     <div className="dashboard__adaptive">
                         <table className="dashboard__table blue-bg with-borders">
@@ -1415,6 +1418,13 @@ class AccountOverview extends React.Component {
             />
         );
 
+        const accountProposals = (
+            <Proposals
+                className="dashboard-table"
+                account={account.get("id")}
+            />
+        );
+
         const items = [
             {
                 title: "account.portfolio",
@@ -1435,12 +1445,21 @@ class AccountOverview extends React.Component {
                 title: "account.activity",
                 subTitle: "",
                 content: accountActivity
+            },
+            {
+                title: "account.proposed_transactions",
+                subTitle: "",
+                content: accountProposals
             }
         ];
-
+        let settleRef = "settlement_modal";
         return (
-            <div>
-                <Tabs items={items} inner={true} />
+            <div className="dashboard-layout">
+                <Tabs
+                    items={items}
+                    inner={true}
+                    updateModal={this.updateModal}
+                />
                 <BaseModal id="reserve_asset" overlay={true}>
                     <br />
                     <div className="grid-block vertical">
@@ -1453,6 +1472,13 @@ class AccountOverview extends React.Component {
                         />
                     </div>
                 </BaseModal>
+                <div />
+                <SettleModal
+                    ref="settlement_modal"
+                    modalId="settlement_modal"
+                    asset={this.state.settleAsset}
+                    account={account.get("name")}
+                />
             </div>
         );
     }

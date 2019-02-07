@@ -31,6 +31,7 @@ import LoadingIndicator from "../../components/LoadingIndicator";
 import moment from "moment";
 import guide from "intro.js";
 import translator from "counterpart";
+import LLCBridgeModal from "../../components/DepositWithdraw/llcgateway/LLCBridgeModal";
 
 class Exchange extends React.Component {
     static propTypes = {
@@ -65,7 +66,8 @@ class Exchange extends React.Component {
             expirationCustomTime: {
                 bid: moment().add(1, "day"),
                 ask: moment().add(1, "day")
-            }
+            },
+            isBridgeModalVisible: false
         };
 
         this._getWindowSize = debounce(this._getWindowSize.bind(this), 150);
@@ -76,7 +78,24 @@ class Exchange extends React.Component {
             this
         );
 
+        this.onShowModal = this.onShowModal.bind(this);
+
         this.psInit = true;
+    }
+
+    onShowModal() {
+        let self = this;
+
+        this.setState(
+            {
+                isBridgeModalVisible: false
+            },
+            function() {
+                self.setState({
+                    isBridgeModalVisible: true
+                });
+            }
+        );
     }
 
     _handleExpirationChange(type, e) {
@@ -888,17 +907,21 @@ class Exchange extends React.Component {
 
         let self = this;
 
-        document.delayedExecution.add("_moveOrderBook", function() {
-            if(self.state.leftOrderBook) {
-                self.resetHeaderMargin();
-            }
-    
-            SettingsActions.changeViewSetting({
-                leftOrderBook: !self.state.leftOrderBook
-            });
-    
-            self.setState({leftOrderBook: !self.state.leftOrderBook});
-        }, 100);
+        document.delayedExecution.add(
+            "_moveOrderBook",
+            function() {
+                if (self.state.leftOrderBook) {
+                    self.resetHeaderMargin();
+                }
+
+                SettingsActions.changeViewSetting({
+                    leftOrderBook: !self.state.leftOrderBook
+                });
+
+                self.setState({leftOrderBook: !self.state.leftOrderBook});
+            },
+            100
+        );
     }
 
     _currentPriceClick(type, price) {
@@ -1376,6 +1399,7 @@ class Exchange extends React.Component {
 
         let buyForm = isFrozen ? null : (
             <BuySell
+                onShowModal={this.onShowModal}
                 onBorrow={baseIsBitAsset ? this._borrowBase.bind(this) : null}
                 currentAccount={currentAccount}
                 backedCoin={this.props.backedCoins.find(
@@ -1462,6 +1486,7 @@ class Exchange extends React.Component {
 
         let sellForm = isFrozen ? null : (
             <BuySell
+                onShowModal={this.onShowModal}
                 onBorrow={quoteIsBitAsset ? this._borrowQuote.bind(this) : null}
                 currentAccount={currentAccount}
                 backedCoin={this.props.backedCoins.find(
@@ -1581,6 +1606,16 @@ class Exchange extends React.Component {
 
         return (
             <div className="grid-block vertical">
+                {this.state.isBridgeModalVisible ? (
+                    <LLCBridgeModal
+                        account={this.props.currentAccount}
+                        asset={
+                            quoteAsset.get("symbol") === "LLC"
+                                ? baseAsset.get("symbol")
+                                : quoteAsset.get("symbol")
+                        }
+                    />
+                ) : null}
                 {!this.props.marketReady ? <LoadingIndicator /> : null}
                 <ExchangeHeader
                     account={this.props.currentAccount}

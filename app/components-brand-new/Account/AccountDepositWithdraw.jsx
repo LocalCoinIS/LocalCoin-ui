@@ -185,7 +185,7 @@ class AccountDepositWithdraw extends React.Component {
         const currentServiceDown = servicesDown.get(currentServiceName);
 
         return (
-            <div className="content">
+            <div className="content deposit-withdraw-layout">
                 <h2 className="content__heading">
                     {counterpart.translate("gateway.title")}
                 </h2>

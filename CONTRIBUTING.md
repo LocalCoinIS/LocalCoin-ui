@@ -1,8 +1,8 @@
 Please work off the staging branch and make pull requests to that branch. The master branch will only be updated for new releases.
 
-The Bitshares UI team is supported by this [worker proposal](http://www.bitshares.foundation/workers/2017-08-bill-butler). It provides the funds needed to pay the coordinator and the bounties and the Bitshares Foundation.
+The Localcoin UI team is supported by this [worker proposal](http://www.bitshares.foundation/workers/2017-08-bill-butler). It provides the funds needed to pay the coordinator and the bounties and the Localcoin Foundation.
 
-If you would like to get involved, we have a [Telegram chatroom](https://t.me/BitSharesDEX) where you can ask questions and get help. You may also join [BitShares on Discord](https://discord.gg/GsjQfAJ)
+If you would like to get involved, we have a [Telegram chatroom](https://t.me/LocalCoinIS) where you can ask questions and get help. You may also join [LocalCoin on Discord](https://discord.gg/vkVzbfj)
 
 - Coordinator: Bill Butler, @billbutler
 - Lead Developer: Sigve Kvalsvik, @sigvek
@@ -11,9 +11,9 @@ If you would like to get involved, we have a [Telegram chatroom](https://t.me/Bi
 
 ## 贡献
 
-Bitshares UI团队被这一[工作提案](https://steemit.com/bitshares/@billbutler/translated-by-zhaomu-l)支持。它提供用来支付协调者，悬赏金和比特股基金的资金。
+Localcoin UI团队被这一[工作提案](https://steemit.com/bitshares/@billbutler/translated-by-zhaomu-l)支持。它提供用来支付协调者，悬赏金和本地硬币基金的资金。
 
-如果你想参与贡献，我们有一个[Telegram 聊天室](https://t.me/BitSharesDEX)，在这里你可以问问题并得到帮助。
+如果你想参与贡献，我们有一个[Telegram 聊天室](https://t.me/LocalCoinIS)，在这里你可以问问题并得到帮助。
 
 - 协调者: Bill Butler, @billbutler
 - 主程序员: Sigve Kvalsvik, @sigvek
@@ -25,7 +25,7 @@ Bitshares UI团队被这一[工作提案](https://steemit.com/bitshares/@billbut
 - Milestones are numbered YYMMDD and refer to the **anticipated release date**.
 - Bugs are always worked before enhancements
 - Developers should work each issue according to a numbered branch corresponding to the issue `git checkout -b 123`
-- We pay **bounties** for issues that have been estimated. An estimated issue is prefixed with a number in brackets like this: `[2] An nasty bug`. In this example, the bug is valued at two hours ($125 per hour). If you fix this issue according to these guidelines and your PR is accepted, this will earn you $250 bitUSD. You must have a Bitshares wallet and a Bitshares account to receive payment.
+- We pay **bounties** for issues that have been estimated. An estimated issue is prefixed with a number in brackets like this: `[2] An nasty bug`. In this example, the bug is valued at two hours ($125 per hour). If you fix this issue according to these guidelines and your PR is accepted, this will earn you $250 USD. You must have a Localcoin wallet and a Localcoin account to receive payment.
 - If an issue is already claimed (assigned), do not attempt to claim it. Issues claimed by outside developers will indicate an assignment to wmbutler, but will mention the developer's github account in this the comments.
 - To claim an issue, simply leave a comment with your request to claim.
 - Do not claim an issue if you will be unable to complete it by the date indicated on the Milestone name. Milestone 170901 will be pushed on September 1, 2017.
@@ -35,7 +35,7 @@ Bitshares UI团队被这一[工作提案](https://steemit.com/bitshares/@billbut
 - 开发目标上标记的日期，是预计发表时间
 - 修补漏洞优先于项目改进
 - 开发者需要根据一个被标好数字（这个数字对应一个问题`git checkout -b 123`）的分叉（branch），对每个问题进行开发。
-- 我们对已经被预算好的问题进行**悬赏**。一个被预算好的问题会被标记上前缀，像这样`[2] An nasty bug`。在这一例子中，这个问题被视作价值两个小时的工作时间（125美刀一小时）。如果你能通过这些指南修改这一问题，并且你的修改要求（Pull Request）被接受，你便会得到250 bitUSD。你必须拥有一个比特股钱包和比特股账号用来接收这一支付。
+- 我们对已经被预算好的问题进行**悬赏**。一个被预算好的问题会被标记上前缀，像这样`[2] An nasty bug`。在这一例子中，这个问题被视作价值两个小时的工作时间（125美刀一小时）。如果你能通过这些指南修改这一问题，并且你的修改要求（Pull Request）被接受，你便会得到250 USD。你必须拥有一个本地硬币钱包和本地硬币账号用来接收这一支付。
 - 如果问题已经被认领（指派），不要尝试认领它。外部开发者认领问题意味着 wmbutler的指派，但是我会在评论里提及这一开发者的github账户。
 - 简单地留下一条你要求认领的评论（comment），便能认领问题。
 - 不要认领一个在开发目标上所写规定时间内完成不了的问题。列如 开发目标170901 需要在2017年9月1日前被推进完成.

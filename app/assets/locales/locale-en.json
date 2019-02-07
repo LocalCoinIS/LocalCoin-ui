@@ -50,7 +50,7 @@
         "in_open": "This is the amount of %(asset)s you have in open orders.",
         "in_open_value": "This is the estimated value of the %(asset)s you have in open orders.",
         "intro_text_1": "Your Decentralized Exchange",
-        "intro_text_2": "<b>The DEX</b> is inherently decentralized, enabling you to trade the LocalCoin core token (LLC) and a range of trustless price-stable, market-pegged assets such as bitUSD, bitCNY, bitBTC, bitGold and more. These assets can all be traded with <b>zero</b> counter-party risk, putting you in total control of your funds.",
+        "intro_text_2": "<b>The DEX</b> is inherently decentralized, enabling you to trade the LocalCoin core token (LLC) and a range of trustless price-stable, market-pegged assets such as USD, CNY, EUR, Gold and more. These assets can all be traded with <b>zero</b> counter-party risk, putting you in total control of your funds.",
         "intro_text_3": "<b>The DEX</b> also enables creation of user-issued assets (UIAs), which can be traded against any other UIAs or trustless assets on the platform.  One well-known issuer on The DEX is <b>OpenLedger</b>, offering a host of assets including BTC, ETH, STEEM, DASH, LTC, DOGE, and many more",
         "intro_text_4": "This gives cryptocurrency traders a unique blend of traditional and decentralized trading, all in a familiar exchange interface. Happy trading!",
         "intro_text_title": "Welcome to LocalCoin",
@@ -168,6 +168,7 @@
         "polo_scam": "This account is not the real Poloniex account, please send to this account: poloniexwallet.",
         "portfolio": "Portfolio",
         "propose_from": "Propose From",
+        "proposed_transactions": "Proposed",
         "qty": "Qty",
         "quote": "Quote",
         "recent": "Recent activity",
@@ -207,6 +208,7 @@
         "total_value": "Total value",
         "trade": "Trade",
         "transactions": {
+            "fee": "Fee",
             "id": "ID",
             "info": "Info",
             "time": "Time",
@@ -678,7 +680,7 @@
             "pending_approval": "Pending approval.",
             "pending_review": "Approved, review time.",
             "review": "Review",
-            "title": "Proposed transactions"
+            "title": "Proposed "
         },
         "witnesses": {
             "budget": "Remaining budget",
@@ -691,7 +693,8 @@
             "pay": "Pay-per-block",
             "rank": "Rank",
             "table": "Table view",
-            "title": "Witnesses"
+            "title": "Witnesses",
+            "filter_by_name": "Filter By Name"
         },
         "workers": {
             "create": "Create a new worker proposal",
@@ -893,7 +896,8 @@
         "unlock_password": "Cloud Wallet Login",
         "unlock_short": "Login",
         "unlocked_tip": "<br/>Click to log out.<br/><br/>Closing the browser window will also log you out.",
-        "update_asset": "Update Asset"
+        "update_asset": "Update Asset",
+        "unlock_account": "Unlock"
     },
     "icons": {
         "adjust": "Adjust margin position",
@@ -1042,8 +1046,8 @@
     "migration": {
         "announcement_1": "In an effort to provide enhanced security for the web-based wallet, we are migrating it, effective immediately to the address below. Please be sure to update any bookmarks you may have.",
         "text_1": "Local wallet detected",
-        "text_2": "Please backup your wallet now and restore the backup file to <a href='https://wallet.LocalCoin.org' target='blank' rel='noopener noreferrer'>https://wallet.LocalCoin.org</a>, which will be your new address for the web wallet. Thanks for your continued support.",
-        "text_3": "Please use <a href='https://wallet.LocalCoin.org' target='blank' rel='noopener noreferrer'>https://wallet.LocalCoin.org</a> from now on, your existing credentials will let you login there as well.",
+        "text_2": "Please backup your wallet now and restore the backup file to <a href='https://wallet.LocalCoin.is' target='blank' rel='noopener noreferrer'>https://wallet.LocalCoin.is</a>, which will be your new address for the web wallet. Thanks for your continued support.",
+        "text_3": "Please use <a href='https://wallet.LocalCoin.is' target='blank' rel='noopener noreferrer'>https://wallet.LocalCoin.is</a> from now on, your existing credentials will let you login there as well.",
         "title": "Notice"
     },
     "modal": {
@@ -1107,6 +1111,14 @@
         "send": {
             "header": "Send from <span class=\"send-name\">%(fromName)s</span>",
             "header_propose": "Propose Send from <span class=\"send-name\">%(fromName)s</span>"
+        },
+        "send_tab": {
+            "header": "Send",
+            "header_propose": "Propose Send"
+        },
+        "transfer_tab": {
+            "header": "Transfer",
+            "header_propose": "Propose Transfer"
         },
         "settle": {
             "amount": "Amount to settle",
@@ -1389,10 +1401,13 @@
         "margin_price": "This is the maximum price that a margin called position can be made to pay. It is also called the Squeeze Price.",
         "market_fee": "The owner of %(asset)s charges a market fee of %(percent)s%% for buy orders. This fee will be subtracted from the amount you receive when your order fills, it is not paid when placing an order.",
         "memo_tip": "You may include any message in the memo field. Memos are optional but generally required for transfers to exchanges.",
+        "no_groups_available": "No groupings available using this API server",
         "no_price": "There's no recent price available for this asset that can be used to estimate its value.",
         "over_limit": "The bridge does not have enough of the desired asset for this buy order",
         "propose_scam": "This proposal was created by a known scammer, do not approve it!",
         "propose_tip": "Propose another user to initiate a transaction",
+        "proxy_remove": "You have a proxy set, to remove it simply clear this input field",
+        "proxy_search": "Search for an account to be used as your proxy for voting",
         "settle": "Settling will let you convert your holdings of %(asset)s to LLC after a delay of 24 hours, at a price equal to the feed price at that time.",
         "settle_price": "This is the price at which settle orders will execute.",
         "show_asset": "Click here to show this asset in the main list.",
@@ -1400,6 +1415,7 @@
         "sign_owner": "If you are the owner of this account, please check this to make sure the transaction gets signed properly. This is only necessary if you are using the owner account and that account is not included in the active permissions.",
         "sync_no": "The current node is out of sync with the blockchain, try switching to another one",
         "sync_yes": "The current node is in sync with the blockchain",
+        "target_collateral_ratio": "Setting a Target Collateral Ratio (TCR) will allow the blockchain to automatically sell the required amount of your collateral in order to keep your collateral ratio at or above your defined TCR when the value of your collateral decreases.<br /><br />To frequently sell small amounts, set a low target (eg. < 2)<br /><br />To sell larger amounts infrequently, set a high target (eg. > 3)",
         "transfer_actions": "Click here to make a transfer, or to deposit/withdraw those assets that support it.",
         "update_position": "Click here to update your position. You may at any time change the debt and/or collateral levels of your position.",
         "withdraw_address": "If you don't already have a %(asset)s address, please find a wallet provider and create one in order to complete the withdrawal.",
@@ -1689,7 +1705,7 @@
         "has_wallet": "When you create your first LocalCoin account, a LocalCoin local wallet will be automatically created as well and stored in your browser. This local wallet is encrypted with your password, and will contain any private keys belonging to your accounts. It is important that you take the time to backup this wallet once created!",
         "import_20_notice1": "Import your LLC 2.0+ BACKUP first",
         "import_20_notice2": "(if you have one)",
-        "import_backup": "Import LocalCoin 2.0 backup (.bin file)",
+        "import_backup": "Import LocalCoin backup (.bin file)",
         "import_backup_choose": "Please select your backup file in the dialog below. This is completely safe as the file is not uploaded anywhere and never leaves your browser.",
         "import_balance": "Import balance(s)",
         "import_bts": "Import a LLC 0.9.3c key export",

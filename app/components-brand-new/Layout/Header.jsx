@@ -24,7 +24,7 @@ import ReactTooltip from "react-tooltip";
 import {Apis} from "bitsharesjs-ws";
 import notify from "actions/NotificationActions";
 import AccountImage from "../../components/Account/AccountImage";
-import Identicon from "../../components/Account/Identicon";
+import Identicon from "../Account/Identicon";
 import {ChainStore} from "bitsharesjs/es";
 import WithdrawModal from "../../components/Modal/WithdrawModalNew";
 import {List} from "immutable";
@@ -37,6 +37,7 @@ import {
     unlockIcon
 } from "../../assets/brand-new-layout/img/images";
 import onClickOutside from "react-onclickoutside";
+import Ps from "perfect-scrollbar";
 
 class SettingsMenuUnWrapped extends React.Component {
     constructor(props) {
@@ -139,6 +140,8 @@ class Header extends React.Component {
             this
         );
         this.onBodyClick = this.onBodyClick.bind(this);
+        this.onBurgerClick = this.onBurgerClick.bind(this);
+        this.closeMobileMenu = this.closeMobileMenu.bind(this);
     }
 
     componentWillMount() {
@@ -162,6 +165,10 @@ class Header extends React.Component {
             capture: false,
             passive: true
         });
+        let topContainer = document.querySelector(".balance__list_scroll");
+        if (topContainer) {
+            Ps.initialize(topContainer);
+        }
     }
 
     componentWillUnmount() {
@@ -196,10 +203,19 @@ class Header extends React.Component {
 
     _showSend(e) {
         e.preventDefault();
-
-        console.log("_showSend");
-
+        this.closeMobileMenu();
         if (this.isUnauthorizedUser()) return;
+        else if (this.props.locked)
+            if (WalletDb.isLocked()) {
+                WalletUnlockActions.unlock()
+                    .then(() => {
+                        AccountActions.tryToSetCurrentAccount();
+                        this.send_modal.show();
+                    })
+                    .catch(() => {});
+            } else {
+                WalletUnlockActions.lock();
+            }
         else if (this.send_modal) this.send_modal.show();
 
         this._closeDropdown();
@@ -230,6 +246,7 @@ class Header extends React.Component {
 
     _toggleLock(e) {
         e.preventDefault();
+        this.closeMobileMenu();
         if (WalletDb.isLocked()) {
             WalletUnlockActions.unlock()
                 .then(() => {
@@ -260,7 +277,7 @@ class Header extends React.Component {
 
     _onNavigate(route, e) {
         e.preventDefault();
-
+        this.closeMobileMenu();
         if (
             route !== "/" &&
             route !== "/settings/general" &&
@@ -457,7 +474,6 @@ class Header extends React.Component {
         let currentAccount = ChainStore.getAccount(
             AccountStore.getState().currentAccount
         );
-
         if (!currentAccount) return "";
 
         currentAccount.get("balances").forEach((balanceId, asset_type) => {
@@ -480,8 +496,33 @@ class Header extends React.Component {
                 />
             );
         });
-
+        if (balance == "0" && document.querySelector(".balance__list-wrap")) {
+            document
+                .querySelector(".balance__list-wrap")
+                .classList.add("disabled");
+        } else if (
+            balance != "0" &&
+            document.querySelector(".balance__list-wrap")
+        ) {
+            document
+                .querySelector(".balance__list-wrap")
+                .classList.remove("disabled");
+        }
         return balance;
+    }
+
+    onBurgerClick(e) {
+        var el = e.target;
+        if (!el.classList.contains("mobile__burger")) {
+            el = el.parentNode;
+        }
+        if (!el.nextSibling.classList.contains("show")) {
+            el.nextSibling.classList.add("show");
+        }
+    }
+
+    closeMobileMenu() {
+        document.querySelector(".mobile__menu").classList.remove("show");
     }
 
     render() {
@@ -493,7 +534,6 @@ class Header extends React.Component {
             passwordAccount,
             height
         } = this.props;
-
         let tradingAccounts = AccountStore.getMyAccounts();
         let maxHeight = Math.max(40, height - 67 - 36) + "px";
 
@@ -552,7 +592,7 @@ class Header extends React.Component {
 
         let tradeUrl = this.props.lastMarket
             ? `/market/${this.props.lastMarket}`
-            : "/market/USD_LLC";
+            : "/market/LLC_USD";
 
         // Account selector: Only active inside the exchange
         let account_display_name, accountsList;
@@ -625,11 +665,17 @@ class Header extends React.Component {
             <header className="header">
                 <div className="container-fluid">
                     <div className="mobile">
-                        <span className="mobile__burger">
+                        <span
+                            className="mobile__burger"
+                            onClick={this.onBurgerClick}
+                        >
                             <span />
                         </span>
                         <div className="mobile__menu">
-                            <span className="mobile__menu__close" />
+                            <span
+                                className="mobile__menu__close"
+                                onClick={this.closeMobileMenu}
+                            />
                             <ul className="mobile__list">
                                 <li className="mobile__list__item">
                                     <a
@@ -676,6 +722,69 @@ class Header extends React.Component {
                                         </a>
                                     </li>
                                 }
+                                {
+                                    <li className="mobile__list__item">
+                                        <a
+                                            className="mobile__list__link"
+                                            href="#"
+                                            onClick={this._onNavigate.bind(
+                                                this,
+                                                "/explorer/blocks"
+                                            )}
+                                        >
+                                            {counterpart.translate(
+                                                "header.explorer"
+                                            )}
+                                        </a>
+                                    </li>
+                                }
+                                {
+                                    <li className="mobile__list__item">
+                                        <a
+                                            className="mobile__list__link"
+                                            href="#"
+                                            onClick={this._onNavigate.bind(
+                                                this,
+                                                `/account/${currentAccount}/voting`
+                                            )}
+                                        >
+                                            {counterpart.translate(
+                                                "account.voting"
+                                            )}
+                                        </a>
+                                    </li>
+                                }
+                                {
+                                    <li className="mobile__list__item">
+                                        <a
+                                            href="#"
+                                            className="mobile__list__link"
+                                            onClick={this._onNavigate.bind(
+                                                this,
+                                                "/settings/general"
+                                            )}
+                                        >
+                                            {counterpart.translate(
+                                                "header.settings"
+                                            )}
+                                        </a>
+                                    </li>
+                                }
+                                {
+                                    <li className="mobile__list__item">
+                                        <a
+                                            href="#"
+                                            className="mobile__list__link"
+                                            onClick={this._toggleLock.bind(
+                                                this
+                                            )}
+                                        >
+                                            {counterpart.translate(
+                                                "header.unlock_account"
+                                            )}
+                                        </a>
+                                    </li>
+                                }
                             </ul>
                         </div>
                     </div>
@@ -710,7 +819,7 @@ class Header extends React.Component {
                                 {
                                     <li className="navigation__item">
                                         <a
-                                            className="navigation__link"
+                                            className="navigation__link "
                                             href="#"
                                             onClick={this._showSend.bind(this)}
                                         >
@@ -820,7 +929,11 @@ class Header extends React.Component {
                                         </g>
                                     </svg>
                                 </span>
-                                <ul className="balance__list">{usedAssets}</ul>
+                                <div className="balance__list-wrap">
+                                    <ul className="balance__list balance__list_scroll">
+                                        {usedAssets}
+                                    </ul>
+                                </div>
                             </div>
                         ) : null}
                         {currentAccount ? (
@@ -854,11 +967,10 @@ class Header extends React.Component {
                                 this,
                                 "/settings/general"
                             )}
-                        >
-                            <img
-                                className="settings__icon"
-                                src="/asset-symbols/settings.svg"
-                                alt="settings"
+                        >    <img
+                                className="lock__icon"
+                                src={settingsIcon}
+                                alt="lock"
                             />
                         </a>
                         {/* {currentAccount ? (

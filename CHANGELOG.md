@@ -3,7 +3,7 @@ Release 2.0.180525
 ---------------------------------------------------------------------
 New features
 --------
-- Push new staging builds to https://staging.bitshares.org using Travis
+- Push new staging builds to https://staging.localcoin.is using Travis
 - #905: Replace react-stockcharts with TradingView charts
 - #1512: Add QR scanner on withdraw (beta)
 - #1448: Display walkthrough when user opens exchange for the first time
@@ -396,7 +396,7 @@ Release 2.0.171101
 ---------------------------------------------------------------------
 New features
 --------
-- #634 The hosted wallet is now available at wallet.bitshares.org
+- #634 The hosted wallet is now available at wallet.localcoin.is
 - #530 Withdraw amounts now factor in the gate fee
 - #538 The voting page has been completely revamped
 - #579 The margin position tab now includes a set of default assets
@@ -708,7 +708,7 @@ New features
 - New modal for quick deposit/withdraw of OPEN.X assets on account overview page
 - A set of default assets are available for deposits on the account overview page
 - New summary of open orders on account overview page
-- Set precision for bitCNY and bitUSD to 5 in orderbook display
+- Set precision for bitCNY and USD to 5 in orderbook display
 - Flip CNY:OPEN.BTC market in dashboard
 - Add bitSilver asset icon
 - Add Chinese intro text by bitcrab
@@ -784,7 +784,7 @@ Bug fixes
 - Fix some links in the light wallets
 - Fix market flipping for UIAs
 - Fix several bugs related to hash-history react router config
-- Change Graphene to BitShares
+- Change Graphene to LocalCoin
 - Replace graphenejs-lib with bitsharesjs
 - Fix npm errors
 - Fix line breaks for memos with very long words
@@ -860,7 +860,7 @@ New features
 
 Bug fixes
 --------
-- Add BitShares bloom filter for BTS 1 account imports
+- Add LocalCoin bloom filter for BTS 1 account imports
 - Fix a GenesisFilter bug and update ImportKeys flow slightly
 - Fix input of uppercase characters in AccountPermissions
 - Fix Highcharts build issues
@@ -1104,7 +1104,7 @@ Bug fixes
 - Some external lib updates
 - Hide empty parentheses in RecentTransactions header
 - Increase depth chart range
-- Update the Blocktrades bridge code to use the correct wallet symbols for MKR on the BitShares blockchain
+- Update the Blocktrades bridge code to use the correct wallet symbols for MKR on the LocalCoin blockchain
 - Fix ProposedOperation text for asset_create operation
 - Chinese, Turkish and English translation updates
 - Market trade date format fix + light theme hovering fixes and cosmetics

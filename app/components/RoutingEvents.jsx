@@ -1,4 +1,4 @@
-class RoutingEvents {
+/*class RoutingEvents {
     router = null;
     currentClass = null;
 
@@ -86,3 +86,4 @@ class RoutingEvents {
 }
 
 export default RoutingEvents;
+*/

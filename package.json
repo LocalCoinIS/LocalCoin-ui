@@ -1,8 +1,8 @@
 {
-  "name": "BitShares2-light",
+  "name": "LocalCoin2-light",
   "version": "2.0.180526",
-  "description": "Advanced wallet interface for the BitShares financial blockchain.",
-  "homepage": "https://github.com/bitshares/bitshares-ui",
+  "description": "Advanced wallet interface for the LocalCoin financial blockchain.",
+  "homepage": "https://github.com/localcoinis/localcoin-ui",
   "author": "Sigve Kvalsvik <kvalsvik.crypto@gmail.com>",
   "contributors": [
     "James Calfee",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/bitshares/bitshares-ui"
+    "url": "git://github.com/localcoinis/localcoin-ui"
   },
   "main": "build/electron/index.js",
   "scripts": {
@@ -42,7 +42,6 @@
     "postbuild-electron": "npm run prepare-electron",
     "postbuild-electron-nougly": "npm run prepare-electron",
     "build-win32": "cross-env NODE_ENV=production && webpack --env.prod --progress --colors &&  echo 'copying to electron/build..' &&  xcopy dist ..\\electron\\build /s /e /y && echo 'done.'",
-    "precommit": "pretty-quick --staged",
     "prepackage": "npm run build-electron",
     "prepackage-no-ugly": "npm run build-electron-nougly",
     "package": "build -p never",
@@ -80,7 +79,7 @@
   },
   "browsersList": "electron 1.7",
   "build": {
-    "productName": "BitShares",
+    "productName": "LocalCoin",
     "appId": "org.bitshares.graphene",
     "files": [
       "build/electron",
@@ -120,7 +119,7 @@
         "deb",
         "AppImage"
       ],
-      "synopsis": "BitShares: Cryptocurrency and Decentralized Exchange"
+      "synopsis": "LocalCoin: Cryptocurrency and Decentralized Exchange"
     },
     "directories": {
       "buildResources": "resources",
@@ -132,8 +131,8 @@
     "alt-container": "^1.0.0",
     "alt-react": "git+https://github.com/bitshares/react.git",
     "bignumber.js": "^4.0.0",
-    "bitsharesjs": "git+ssh://git@github.com/ninetor/gateis_js#995d5294b478ca",
-    "bitsharesjs-ws": "git+ssh://git@github.com/ninetor/gateis_js-ws.git#aca62a5044df",
+    "bitsharesjs": "git+https://github.com/LocalCoinIS/localcoinjs.git#09a146b",
+    "bitsharesjs-ws": "git+https://github.com/LocalCoinIS/localcoinjs-ws#806b62e",
     "browser-locale": "^1.0.3",
     "classnames": "^2.2.1",
     "cookies-js": "^1.2.1",
@@ -200,6 +199,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.16.0",
     "benchmark": "^2.1.3",
+    "browserify": "^13.1.0",
     "clean-webpack-plugin": "^0.1.3",
     "coffee-loader": "^0.7.2",
     "coffee-script": "^1.12.2",
@@ -207,7 +207,7 @@
     "copyfiles": "^1.2.0",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.11",
-    "electron": "^2.0.0",
+    "electron": "^3.0.10",
     "electron-builder": "^20.13.2",
     "es6-promise": "^3.0.2",
     "eslint": "^4.19.0",
@@ -239,8 +239,8 @@
     "svgo": "^1.0.5",
     "svgo-loader": "^2.1.0",
     "url-loader": "^1.0.1",
-    "webpack": "^4.8.1",
-    "webpack-cli": "^2.1.3",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.1",
     "webpack-dev-middleware": "^3.1.3",
     "webpack-hot-middleware": "^2.22.1",
     "worker-loader": "^1.1.1"

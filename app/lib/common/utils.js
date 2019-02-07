@@ -116,7 +116,7 @@ var Utils = {
         let basePrecision = base.toJS ? base.get("precision") : base.precision;
         let fixedPrecisionAssets = {
             "1.3.113": 5, // bitCNY
-            "1.3.121": 5 // bitUSD
+            "1.3.121": 5 // USD
         };
         if (quoteID === "1.3.0") {
             priceText = this.format_number(price, quotePrecision);

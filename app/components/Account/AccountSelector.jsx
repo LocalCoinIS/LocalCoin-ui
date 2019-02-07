@@ -87,6 +87,7 @@ class AccountSelector extends React.Component {
 
     getInputType(value) {
         // OK
+
         if (!value) return null;
         if (value[0] === "#" && utils.is_object_id("1.2." + value.substring(1)))
             return "id";
@@ -113,8 +114,11 @@ class AccountSelector extends React.Component {
         let _accountName = this.getVerifiedAccountName(e);
         let _account = ChainStore.getAccount(_accountName);
 
-        if (onChange && _accountName !== accountName) onChange(_accountName);
-
+        if (onChange && _accountName !== accountName)
+            console.log("====================================");
+        console.log(accountName);
+        console.log("====================================");
+        onChange(_accountName);
         // None-Typeahead Component compatibility
         // - Always returns account object
         if (!typeahead) {
@@ -162,8 +166,9 @@ class AccountSelector extends React.Component {
         let {onAction, disableActionButton, account, accountName} = this.props;
         e.preventDefault();
         if (!this.getError() && onAction && !disableActionButton) {
-            if (account) onAction(account);
-            else if (this.getInputType(accountName) === "pubkey")
+            if (account) {
+                onAction(account);
+            } else if (this.getInputType(accountName) === "pubkey")
                 onAction(accountName);
         }
     }
@@ -206,7 +211,9 @@ class AccountSelector extends React.Component {
             displayText =
                 account.accountType === "name"
                     ? "#" + account.get("id").substring(4)
-                    : account.accountType === "id" ? account.get("name") : null;
+                    : account.accountType === "id"
+                        ? account.get("name")
+                        : null;
         }
 
         // Without Typeahead Error Handling
@@ -352,8 +359,9 @@ class AccountSelector extends React.Component {
                                 )}
                             >
                                 <span style={{paddingRight: "1.5rem"}}>
-                                    {account && account.statusText}&nbsp;{!!displayText &&
-                                        displayText}
+                                    {account && account.statusText}
+                                    &nbsp;
+                                    {!!displayText && displayText}
                                 </span>
                                 {linked_status}
                             </label>
@@ -493,16 +501,19 @@ class AccountSelector extends React.Component {
 
 AccountSelector = BindToChainState(AccountSelector);
 
-AccountSelector = connect(AccountSelector, {
-    listenTo() {
-        return [AccountStore];
-    },
-    getProps() {
-        return {
-            myActiveAccounts: AccountStore.getState().myActiveAccounts,
-            contacts: AccountStore.getState().accountContacts
-        };
+AccountSelector = connect(
+    AccountSelector,
+    {
+        listenTo() {
+            return [AccountStore];
+        },
+        getProps() {
+            return {
+                myActiveAccounts: AccountStore.getState().myActiveAccounts,
+                contacts: AccountStore.getState().accountContacts
+            };
+        }
     }
-});
+);
 
 export default AccountSelector;

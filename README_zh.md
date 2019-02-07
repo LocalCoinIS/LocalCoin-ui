@@ -1,13 +1,13 @@
-BitShares-UI
+LocalCoin-UI
 ============
 
-这是一个连接 BitShares API 的轻钱包。BitShares API 由 *witness_node* 程序提供。
+这是一个连接 LocalCoin API 的轻钱包。LocalCoin API 由 *witness_node* 程序提供。
 
 这个钱包*将所有的密钥存储在本地浏览器上*，*不会把你的密钥暴露给任何人*，因为它会先在本地对交易签名，再传输到 API 服务器上，由服务器广播至区块链网络。钱包由用户选择的密码加密并储存在浏览器数据库中。
 
 ## 项目依赖
 
-BitShares-UI 依赖于 Node.js v6 以上版本。
+LocalCoin-UI 依赖于 Node.js v6 以上版本。
 
 在 Linux 和 macOS 上，安装 Node 最简单的方式是用 [NVM](https://github.com/creationix/nvm)。
 
@@ -22,8 +22,8 @@ nvm use v6
 Node 安装完成后，获取项目的源代码：
 
 ```
-git clone https://github.com/bitshares/bitshares-ui.git
-cd bitshares-ui
+git clone https://github.com/localcoinis/localcoin-ui.git
+cd localcoin-ui
 ```
 
 在启动之前，需要先安装 npm 软件包：
@@ -46,7 +46,7 @@ npm start
 
 ## 测试网络
 
-默认情况下，bitshares-ui 会连接到正常比特股网络。切换到 Xeroc 运行的测试网络也很容易，在设置页面的接入点设置中选择 *Public Testnet Server* 即可。如果你需要创建帐号，你同时需要修改水龙头设置。测试网络的水龙头地址是 https://testnet.bitshares.eu 。
+默认情况下，localcoin-ui 会连接到正常本地硬币网络。切换到 Xeroc 运行的测试网络也很容易，在设置页面的接入点设置中选择 *Public Testnet Server* 即可。如果你需要创建帐号，你同时需要修改水龙头设置。测试网络的水龙头地址是 https://testnet.localcoin.is 。
 
 UI 会刷新并连接到测试网络，你可以通过水龙头创建账户并收到一些用于测试的 LLC。
 
@@ -84,9 +84,9 @@ __Mac__
 
 请在 staging 分支上进行工作，并将 PR 提交到该分支中。master 分支只在发布新版本时进行更新。
 
-Bitshares UI 团队由[这个工作提案](http://www.bitshares.foundation/workers/2017-08-bill-butler)支持。此提案提供用来支付协调者、赏金和比特股基金的资金。
+Localcoin UI 团队由[这个工作提案](http://www.bitshares.foundation/workers/2017-08-bill-butler)支持。此提案提供用来支付协调者、赏金和本地硬币基金的资金。
 
-如果你想参与贡献，可以加入 [Telegram 群组](https://t.me/BitSharesDEX)进行提问并获取帮助。你也可以加入 [Discord 服务器](https://discord.gg/GsjQfAJ)。
+如果你想参与贡献，可以加入 [Telegram 群组](https://t.me/LocalCoinIS)进行提问并获取帮助。你也可以加入 [Discord 服务器](https://discord.gg/vkVzbfj)。
 
 - 协调者: Bill Butler, @billbutler
 - 主开发者: Sigve Kvalsvik, @sigvek
@@ -98,7 +98,7 @@ Bitshares UI 团队由[这个工作提案](http://www.bitshares.foundation/worke
 - 开发目标使用 YYMMDD 格式进行标记，为**预计发布日期**。
 - Bug 修复优先于项目改进
 - 开发者应在对应 issue 编号的分支中分别进行工作，如 `git checkout -b 123`
-- 我们对估算好的 issue 进行**悬赏**。估算好的 issue 拥有数字前缀，如 `[2] An nasty bug`。在这个例子中，bug 价值两个工时（每个工时价值 125 美元）。如果你按照指南修复了这个问题，PR 被接受后，就可以得到 250 bitUSD。你需要拥有比特股钱包和账户进行收款。
+- 我们对估算好的 issue 进行**悬赏**。估算好的 issue 拥有数字前缀，如 `[2] An nasty bug`。在这个例子中，bug 价值两个工时（每个工时价值 125 美元）。如果你按照指南修复了这个问题，PR 被接受后，就可以得到 250 USD。你需要拥有本地硬币钱包和账户进行收款。
 - 如果一个 issue 已经被认领（指派）了，不要去再次认领。外部开发者认领的 issue 将指派给 wmbutler，但是会在评论中写出开发者的 github 帐号。
 - 在评论中留下认领请求即可认领 issue。
 - 不要认领你无法在开发目标指明的日期之前完成的 issue。如，开发目标 170901 应在 2017 年 9 月 1 日前完成。

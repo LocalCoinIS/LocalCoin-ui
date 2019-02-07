@@ -1,36 +1,36 @@
 # Помощь Graphene
 
-BitShares 2.0 - это платформа Финансовых Смарт-Контрактов, постороенная на технологии [Graphene](https://github.com/cryptonomex/graphene), созданной [Cryptonomex](http://cryptonomex.com). Graphene можно рассматривать как набор инструментов или технологию для создания блокчейнов работающих в режиме реального времени.
+LocalCoin - это платформа Финансовых Смарт-Контрактов, постороенная на технологии [Graphene](https://github.com/cryptonomex/graphene), созданной [Cryptonomex](http://cryptonomex.com). Graphene можно рассматривать как набор инструментов или технологию для создания блокчейнов работающих в режиме реального времени.
 
 Этот раздел помощи дает краткий обзор и описывает основные понятия этого приложения.
 
 ## Введение
 
-- [BitShares](introduction/bitshares.md)
+- [LocalCoin](introduction/localcoin.md)
 - [Кошелек](introduction/wallets.md)
 - [Резервные копии](introduction/backups.md)
 - [Блокчейн](introduction/blockchain.md)
 - [Делегаты](introduction/witness.md)
 - [Работники](introduction/workers.md)
-- [Члены Комитета](introduction/committee.md)
+- [Комитет](introduction/committee.md)
 
 ## Аккаунты
 
 - [Введение](accounts/general.md)
 - [Разрешения](accounts/permissions.md)
-- [Членство](accounts/membership.md)
+- [Премиум аккаунт](accounts/membership.md)
 
 ## Активы
 
-- [Привязанные к рынку активы](assets/mpa.md) (BitUSD, BitEUR, BitGOLD, Bit\*,...)
-- [Эмитированные пользователем активы](assets/uia.md)
-- [Приватизированные BitAssets](assets/privbitassets.md)
+- [Привязанные к рынку активы](assets/mpa.md) (USD, EUR, GOLD, Bit\*,...)
+- [Частные активы](assets/uia.md)
+- [Бит-Активы](assets/privbitassets.md)
 
 ## Децентрализованная биржа
 
 - [Введение](dex/introduction.md)
 - [Торговля](dex/trading.md)
-- [Короткая продажа BitAssets](dex/shorting.md)
+- [Короткая продажа](dex/shorting.md)
 
 * * *
 
