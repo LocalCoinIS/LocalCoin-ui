@@ -109,7 +109,8 @@ class BuySell extends React.Component {
             feeAsset,
             feeAssets,
             hasFeeBalance,
-            backedCoin
+            backedCoin,
+            account
         } = this.props;
         let amount, price, total;
         let caret = this.props.isOpen ? (
@@ -385,7 +386,6 @@ class BuySell extends React.Component {
 
         let currencyHasInbridge =
             base.get("symbol") === "LLC" || quote.get("symbol") === "LLC";
-
         return (
             <div className={this.props.className}>
                 <div className="exchange-bordered buy-sell-container">
@@ -452,7 +452,7 @@ class BuySell extends React.Component {
                         }
 
                         <div className="ml-auto">
-                            {currencyHasInbridge &&
+                            {account !== "null-account" && currencyHasInbridge &&
                                 this.props[isBid ? "base" : "quote"].get("symbol") !==
                                 "LLC" ? (
                                     <div className="float-right buy-sell-deposit">
