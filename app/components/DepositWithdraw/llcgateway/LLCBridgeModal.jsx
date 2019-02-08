@@ -33,6 +33,8 @@ class LLCBridgeModal extends React.Component {
         this.onChooseAsset = this.onChooseAsset.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.handleSendInput = this.handleSendInput.bind(this);
+        this.handleReceiveInput = this.handleReceiveInput.bind(this);
+
 
         new LLCGatewayData().getAllowCurrency(function(response) {
             self.currencies = response.deposit;
@@ -141,6 +143,24 @@ class LLCBridgeModal extends React.Component {
         this.setState({
             receiveAmount: val.toFixed(LLCBridgeModal.PRESICTION)
         });
+
+        if(document.querySelector(".receive-input")) {
+            document.querySelector(".receive-input").value = val.toFixed(LLCBridgeModal.PRESICTION);
+        }
+    }
+
+    updateSend(asset) {
+        let course = this.getCourseByAsset(asset);
+        let val = parseFloat(this.inputValue) / parseFloat(course.coef);
+        if (isNaN(val)) val = 0;
+
+        this.setState({
+            receiveAmount: this.inputValue.toFixed(LLCBridgeModal.PRESICTION)
+        });
+
+        if(document.querySelector(".send-input")) {
+            document.querySelector(".send-input").value = val.toFixed(LLCBridgeModal.PRESICTION);
+        }
     }
 
     getCourseByAsset(asset) {
@@ -156,6 +176,12 @@ class LLCBridgeModal extends React.Component {
         e.preventDefault();
         this.inputValue = parseFloat(e.target.value.replace(",", "."));
         this.updateReceive(this.state.asset);
+    }
+
+    handleReceiveInput(e) {
+        e.preventDefault();
+        this.inputValue = parseFloat(e.target.value.replace(",", "."));
+        this.updateSend(this.state.asset);
     }
 
     render() {
@@ -188,6 +214,7 @@ class LLCBridgeModal extends React.Component {
                 </div>
                 <div className="inline-label input-wrapper">
                     <input
+                        className="send-input"
                         type="number"
                         defaultValue={0}
                         onChange={this.handleSendInput}
@@ -219,7 +246,11 @@ class LLCBridgeModal extends React.Component {
                     <Translate content="exchange.receive" />
                 </label>
                 <div className="inline-label input-wrapper">
-                    <input type="text" value={this.state.receiveAmount} />
+                    <input
+                        className="receive-input"
+                        type="number"
+                        onChange={this.handleReceiveInput}
+                    />
                     <div className="input-right-symbol">LLC</div>
                 </div>
             </div>
