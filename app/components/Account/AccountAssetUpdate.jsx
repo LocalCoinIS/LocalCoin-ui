@@ -868,12 +868,12 @@ class AccountAssetUpdate extends React.Component {
         });
 
         let confirmButtons = (
-            <div>
+            <div className="small-12 large-8 large-offset-2 grid-content">
                 <button
-                    className={classnames("button", {
+                    className={classnames("button btn large inverted", {
                         disabled: !isValid || !this.pageChanged()
                     })}
-                    style={{width: "9rem"}}
+                    style={{marginBottom: 12}}
                     onClick={
                         tabsChangedCount > 1
                             ? this._openConfirm.bind(this)
@@ -887,7 +887,7 @@ class AccountAssetUpdate extends React.Component {
                     )}
                 </button>
                 <button
-                    className={classnames("button primary hollow", {
+                    className={classnames("button btn large outline", {
                         disabled: !this.pageChanged()
                     })}
                     onClick={this._reset.bind(this)}
@@ -953,7 +953,7 @@ class AccountAssetUpdate extends React.Component {
                             setting="updateAssetTab"
                             className="account-tabs"
                             tabsClass="account-overview bordered-header content-block"
-                            contentClass="grid-block padding-top shrink small-vertical medium-horizontal"
+                            contentClass="grid-block no-margin padding-top shrink small-vertical medium-horizontal"
                             segmented={false}
                             actionButtons={confirmButtons}
                             onChangeTab={i => {
