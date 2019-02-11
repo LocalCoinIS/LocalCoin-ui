@@ -868,7 +868,7 @@ class AccountAssetUpdate extends React.Component {
         });
 
         let confirmButtons = (
-            <div className="small-12 large-8 large-offset-2 grid-content">
+            <div className="small-12 large-8 large-offset-2 grid-content d-flex">
                 <button
                     className={classnames("button btn large inverted", {
                         disabled: !isValid || !this.pageChanged()
