@@ -24,6 +24,7 @@ import {ChainValidation} from "bitsharesjs/es";
 import PropTypes from "prop-types";
 import ZfApi from "react-foundation-apps/src/utils/foundation-api";
 import QuoteSelectionModal from "./QuoteSelectionModal";
+import Icon from "../../components/Icon/Icon";
 
 let lastLookup = new Date();
 
@@ -1178,6 +1179,15 @@ class MyMarkets extends React.Component {
                 )}
 
                 <ul className="mymarkets-tabs">
+                    <li class="test">
+                        <span>
+                            <Icon
+                                style={{cursor: "pointer"}}
+                                name="fi-star"
+                                className="gold-star"
+                            />
+                        </span>
+                    </li>
                     {preferredBases.map((base, index) => {
                         if (!base) return null;
                         return (

@@ -12,7 +12,6 @@ class LLCBridgeModal extends React.Component {
 
     currencies = [];
     courses = [];
-    inputValue = 0;
 
     constructor(props) {
         super(props);
@@ -21,7 +20,6 @@ class LLCBridgeModal extends React.Component {
         this.state = {
             isActiveThisModal: "is-active",
             account: null,
-            receiveAmount: 0,
             assets: [],
             asset: LLCBridgeModal.DEFAULT_CURRENCY,
             address: "",
@@ -32,8 +30,8 @@ class LLCBridgeModal extends React.Component {
 
         this.onChooseAsset = this.onChooseAsset.bind(this);
         this.closeModal = this.closeModal.bind(this);
-        this.handleSendInput = this.handleSendInput.bind(this);
         this.handleReceiveInput = this.handleReceiveInput.bind(this);
+        this.handleSendInput = this.handleSendInput.bind(this);
 
 
         new LLCGatewayData().getAllowCurrency(function(response) {
@@ -92,7 +90,7 @@ class LLCBridgeModal extends React.Component {
             confirmations: this.getCountConfirmations(asset),
             minimal: currentCurrency ? currentCurrency.minimal : 0
         });
-        this.loadAssetCourse(asset, this.updateReceive.bind(this));
+        this.loadAssetCourse(asset, this.updateSend.bind(this));
 
         //update address
         new LLCGatewayData().сreatePaymentAddress(
@@ -136,29 +134,19 @@ class LLCBridgeModal extends React.Component {
     }
 
     updateReceive(asset) {
-        let course = this.getCourseByAsset(asset);
-        let val = parseFloat(this.inputValue) * parseFloat(course.coef);
-        if (isNaN(val)) val = 0;
-
-        this.setState({
-            receiveAmount: val.toFixed(LLCBridgeModal.PRESICTION)
-        });
-
         if(document.querySelector(".receive-input")) {
+            let course = this.getCourseByAsset(asset);
+            let val = parseFloat(document.querySelector(".send-input").value.replace(",", ".")) * parseFloat(course.coef);
+            if (isNaN(val)) val = 0;
             document.querySelector(".receive-input").value = val.toFixed(LLCBridgeModal.PRESICTION);
         }
     }
 
     updateSend(asset) {
-        let course = this.getCourseByAsset(asset);
-        let val = parseFloat(this.inputValue) / parseFloat(course.coef);
-        if (isNaN(val)) val = 0;
-
-        this.setState({
-            receiveAmount: this.inputValue.toFixed(LLCBridgeModal.PRESICTION)
-        });
-
         if(document.querySelector(".send-input")) {
+            let course = this.getCourseByAsset(asset);
+            let val = parseFloat(document.querySelector(".receive-input").value.replace(",", ".")) / parseFloat(course.coef);
+            if (isNaN(val)) val = 0;
             document.querySelector(".send-input").value = val.toFixed(LLCBridgeModal.PRESICTION);
         }
     }
@@ -174,13 +162,11 @@ class LLCBridgeModal extends React.Component {
 
     handleSendInput(e) {
         e.preventDefault();
-        this.inputValue = parseFloat(e.target.value.replace(",", "."));
         this.updateReceive(this.state.asset);
     }
 
     handleReceiveInput(e) {
         e.preventDefault();
-        this.inputValue = parseFloat(e.target.value.replace(",", "."));
         this.updateSend(this.state.asset);
     }
 
@@ -216,7 +202,6 @@ class LLCBridgeModal extends React.Component {
                     <input
                         className="send-input"
                         type="number"
-                        defaultValue={0}
                         onChange={this.handleSendInput}
                     />
                     <div className="form-label select floating-dropdown">
@@ -250,6 +235,7 @@ class LLCBridgeModal extends React.Component {
                         className="receive-input"
                         type="number"
                         onChange={this.handleReceiveInput}
+                        defaultValue={1000}
                     />
                     <div className="input-right-symbol">LLC</div>
                 </div>

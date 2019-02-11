@@ -1684,11 +1684,6 @@ class Exchange extends React.Component {
                 {this.state.isBridgeModalVisible ? (
                     <LLCBridgeModal
                         account={this.props.currentAccount}
-                        asset={
-                            quoteAsset.get("symbol") === "LLC"
-                                ? baseAsset.get("symbol")
-                                : quoteAsset.get("symbol")
-                        }
                     />
                 ) : null}
                 {!this.props.marketReady ? <LoadingIndicator /> : null}
