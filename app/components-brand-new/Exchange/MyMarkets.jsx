@@ -1179,23 +1179,23 @@ class MyMarkets extends React.Component {
                 )}
 
                 <ul className="mymarkets-tabs">
-                    <li
-                        className={cnames("mymarkets-tab test", {
-                            active: activeMarketTab === preferredBases.size + 1
-                        })}
-                        onClick={this.toggleActiveMarketTab.bind(
-                            this,
-                            preferredBases.size + 1
-                        )}
-                    >
-                        <span>
-                            <Icon
-                                style={{cursor: "pointer"}}
-                                name="fi-star"
-                                className="gold-star"
-                            />
-                        </span>
-                    </li>
+                    {/*<li*/}
+                        {/*className={cnames("mymarkets-tab test", {*/}
+                            {/*active: activeMarketTab === preferredBases.size + 1*/}
+                        {/*})}*/}
+                        {/*onClick={this.toggleActiveMarketTab.bind(*/}
+                            {/*this,*/}
+                            {/*preferredBases.size + 1*/}
+                        {/*)}*/}
+                    {/*>*/}
+                        {/*<span>*/}
+                            {/*<Icon*/}
+                                {/*style={{cursor: "pointer"}}*/}
+                                {/*name="fi-star"*/}
+                                {/*className="gold-star"*/}
+                            {/*/>*/}
+                        {/*</span>*/}
+                    {/*</li>*/}
                     {preferredBases.map((base, index) => {
                         if (!base) return null;
                         return (
