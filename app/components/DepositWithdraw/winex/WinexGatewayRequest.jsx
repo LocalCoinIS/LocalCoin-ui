@@ -11,7 +11,7 @@ import BlockTradesDepositAddressCache from "common/BlockTradesDepositAddressCach
 import AssetName from "components/Utility/AssetName";
 import LinkToAccountById from "components/Utility/LinkToAccountById";
 import {requestDepositAddress} from "common/gatewayMethods";
-// import {widechainAPIs} from "api/apiConfig";
+import {widechainAPIs} from "api/apiConfig";
 import LoadingIndicator from "components/LoadingIndicator";
 import QRCode from "qrcode.react";
 import PropTypes from "prop-types";
@@ -46,14 +46,13 @@ class WinexGatewayRequest extends React.Component {
         super(props);
         this.deposit_address_cache = new BlockTradesDepositAddressCache();
 
-        // let urls = {
-        //     Winex: widechainAPIs.BASE
-        // };
+        let urls = {
+            Winex: widechainAPIs.BASE
+        };
 
         this.state = {
             receive_address: {},
-            // url: props.url || urls[props.gateway]
-            url: props.url || ""
+            url: props.url || urls[props.gateway]
         };
 
         this.addDepositAddress = this.addDepositAddress.bind(this);

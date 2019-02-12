@@ -46,7 +46,7 @@ class WinexGateway extends React.Component {
     }
 
     componentWillMount() {
-        // this._getCoins();
+        this._getCoins();
     }
 
     componentWillReceiveProps(nextProps) {
@@ -94,23 +94,23 @@ class WinexGateway extends React.Component {
         });
     }
 
-    // _getCoins() {
-    //     Promise.all([
-    //         fetchCoins(widechainAPIs.BASE + widechainAPIs.COINS_LIST),
-    //         fetchTradingPairs(widechainAPIs.BASE + widechainAPIs.TRADING_PAIRS),
-    //         getActiveWallets(widechainAPIs.BASE + widechainAPIs.ACTIVE_WALLETS)
-    //     ]).then(result => {
-    //         let [coins, tradingPairs, wallets] = result;
-    //         let backedCoins = this._getBackedCoins({
-    //             allCoins: coins,
-    //             tradingPairs: tradingPairs
-    //         }).filter(a => !!a.walletType);
-    //         backedCoins.forEach(a => {
-    //             a.isAvailable = wallets.indexOf(a.walletType) !== -1;
-    //         });
-    //         this.setState({coins: backedCoins});
-    //     });
-    // }
+    _getCoins() {
+        Promise.all([
+            fetchCoins(widechainAPIs.BASE + widechainAPIs.COINS_LIST),
+            fetchTradingPairs(widechainAPIs.BASE + widechainAPIs.TRADING_PAIRS),
+            getActiveWallets(widechainAPIs.BASE + widechainAPIs.ACTIVE_WALLETS)
+        ]).then(result => {
+            let [coins, tradingPairs, wallets] = result;
+            let backedCoins = this._getBackedCoins({
+                allCoins: coins,
+                tradingPairs: tradingPairs
+            }).filter(a => !!a.walletType);
+            backedCoins.forEach(a => {
+                a.isAvailable = wallets.indexOf(a.walletType) !== -1;
+            });
+            this.setState({coins: backedCoins});
+        });
+    }
 
     _getBackedCoins({allCoins, tradingPairs}) {
         let coins_by_type = {};

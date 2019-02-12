@@ -19,19 +19,19 @@ class WinexRecentTransactions extends React.Component {
 
     _history(account, action) {
         let url = "";
-        // if (action === "deposit") {
-        //     url =
-        //         widechainAPIs.BASE +
-        //         widechainAPIs.DEPOSIT_HISTORY +
-        //         "?account=" +
-        //         account;
-        // } else {
-        //     url =
-        //         widechainAPIs.BASE +
-        //         widechainAPIs.WITHDRAW_HISTORY +
-        //         "?account=" +
-        //         account;
-        // }
+        if (action === "deposit") {
+            url =
+                widechainAPIs.BASE +
+                widechainAPIs.DEPOSIT_HISTORY +
+                "?account=" +
+                account;
+        } else {
+            url =
+                widechainAPIs.BASE +
+                widechainAPIs.WITHDRAW_HISTORY +
+                "?account=" +
+                account;
+        }
 
         var head = {
             method: "GET",
