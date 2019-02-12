@@ -1223,6 +1223,10 @@ class Exchange extends React.Component {
     }
 
     render() {
+        console.log("----------");
+        console.log(this.props);
+        console.log(this.state);
+        console.log("----------");
         let {
             currentAccount,
             marketLimitOrders,
