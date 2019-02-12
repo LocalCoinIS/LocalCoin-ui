@@ -1,5 +1,4 @@
 import ls from "./localStorage";
-import {blockTradesAPIs, openledgerAPIs} from "api/apiConfig";
 import {availableGateways} from "common/gateways";
 const blockTradesStorage = new ls("");
 
@@ -15,7 +14,7 @@ function setCacheClearTimer(key) {
 }
 
 export function fetchCoins(
-    url = openledgerAPIs.BASE + openledgerAPIs.COINS_LIST
+    url = ""
 ) {
     const key = "fetchCoins_" + url;
     let currentPromise = fetchInProgess[key];
@@ -47,7 +46,7 @@ export function fetchCoins(
 }
 
 export function fetchCoinsSimple(
-    url = openledgerAPIs.BASE + openledgerAPIs.COINS_LIST
+    url = ""
 ) {
     return fetch(url)
         .then(reply =>
@@ -62,7 +61,7 @@ export function fetchCoinsSimple(
 }
 
 export function fetchTradingPairs(
-    url = blockTradesAPIs.BASE + blockTradesAPIs.TRADING_PAIRS
+    url = ""
 ) {
     const key = "fetchTradingPairs_" + url;
     let currentPromise = fetchInProgess[key];
@@ -98,7 +97,7 @@ export function fetchTradingPairs(
 export function getDepositLimit(
     inputCoin,
     outputCoin,
-    url = blockTradesAPIs.BASE + blockTradesAPIs.DEPOSIT_LIMIT
+    url = ""
 ) {
     return fetch(
         url +
@@ -127,7 +126,7 @@ export function estimateOutput(
     inputAmount,
     inputCoin,
     outputCoin,
-    url = blockTradesAPIs.BASE + blockTradesAPIs.ESTIMATE_OUTPUT
+    url = ""
 ) {
     return fetch(
         url +
@@ -158,7 +157,7 @@ export function estimateInput(
     outputAmount,
     inputCoin,
     outputCoin,
-    url = blockTradesAPIs.BASE + blockTradesAPIs.ESTIMATE_INPUT
+    url = ""
 ) {
     return fetch(
         url +
@@ -189,7 +188,7 @@ export function estimateInput(
 }
 
 export function getActiveWallets(
-    url = openledgerAPIs.BASE + openledgerAPIs.ACTIVE_WALLETS
+    url = ""
 ) {
     const key = "getActiveWallets_" + url;
     let currentPromise = fetchInProgess[key];
@@ -229,8 +228,7 @@ export function getDepositAddress({coin, account, stateCallback}) {
     };
 
     let body_string = JSON.stringify(body);
-
-    fetch(openledgerAPIs.BASE + "/simple-api/get-last-address", {
+    fetch("" + "/simple-api/get-last-address", {
         method: "POST",
         headers: new Headers({
             Accept: "application/json",
@@ -273,7 +271,7 @@ export function requestDepositAddress({
     inputCoinType,
     outputCoinType,
     outputAddress,
-    url = openledgerAPIs.BASE,
+    url = "",
     stateCallback
 }) {
     let body = {
@@ -326,7 +324,6 @@ export function requestDepositAddress({
 }
 
 export function getBackedCoins({allCoins, tradingPairs, backer}) {
-    // let gatewayStatus = availableGateways[backer];
     let gatewayStatus = false;
     let coins_by_type = {};
 
@@ -392,7 +389,7 @@ export function getBackedCoins({allCoins, tradingPairs, backer}) {
 }
 
 export function validateAddress({
-    url = blockTradesAPIs.BASE,
+    url = "",
     walletType,
     newAddress,
     output_coin_type = null,
