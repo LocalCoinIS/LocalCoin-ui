@@ -20,10 +20,10 @@ import EquivalentPrice from "../Utility/EquivalentPrice";
 import LinkToAssetById from "../Utility/LinkToAssetById";
 import utils from "common/utils";
 import BorrowModal from "../Modal/BorrowModal";
-import DepositModal from "../Modal/DepositModal";
+// import DepositModal from "../Modal/DepositModal";
 import ReactTooltip from "react-tooltip";
 import SimpleDepositWithdraw from "../Dashboard/SimpleDepositWithdraw";
-import SimpleDepositBlocktradesBridge from "../Dashboard/SimpleDepositBlocktradesBridge";
+// import SimpleDepositBlocktradesBridge from "../Dashboard/SimpleDepositBlocktradesBridge";
 import {Tabs, Tab} from "../Utility/Tabs";
 import AccountOrders from "./AccountOrders";
 import cnames from "classnames";
@@ -32,7 +32,7 @@ import {checkMarginStatus} from "common/accountHelper";
 import BalanceWrapper from "./BalanceWrapper";
 import SendModal from "../Modal/SendModal";
 import PulseIcon from "../Icon/PulseIcon";
-import WithdrawModal from "../Modal/WithdrawModalNew";
+// import WithdrawModal from "../Modal/WithdrawModalNew";
 import AccountTreemap from "./AccountTreemap";
 import {getBackedCoin} from "common/gatewayUtils";
 import AssetWrapper from "../Utility/AssetWrapper";
@@ -1412,34 +1412,34 @@ class AccountOverview extends React.Component {
                     isDown={this.props.gatewayDown.get("OPEN")}
                 />
 
-                <WithdrawModal
-                    ref="withdraw_modal_new"
-                    modalId="withdraw_modal_new"
-                    backedCoins={this.props.backedCoins}
-                    initialSymbol={this.state.withdrawAsset}
-                />
+                {/*<WithdrawModal*/}
+                    {/*ref="withdraw_modal_new"*/}
+                    {/*modalId="withdraw_modal_new"*/}
+                    {/*backedCoins={this.props.backedCoins}*/}
+                    {/*initialSymbol={this.state.withdrawAsset}*/}
+                {/*/>*/}
 
-                 {/*Deposit Modal */}
-                <DepositModal
-                    ref="deposit_modal_new"
-                    modalId="deposit_modal_new"
-                    asset={this.state.depositAsset}
-                    account={this.props.account.get("name")}
-                    backedCoins={this.props.backedCoins}
-                />
+                {/* Deposit Modal */}
+                {/*<DepositModal*/}
+                    {/*ref="deposit_modal_new"*/}
+                    {/*modalId="deposit_modal_new"*/}
+                    {/*asset={this.state.depositAsset}*/}
+                    {/*account={this.props.account.get("name")}*/}
+                    {/*backedCoins={this.props.backedCoins}*/}
+                {/*/>*/}
 
                 {/* Bridge modal */}
-                <SimpleDepositBlocktradesBridge
-                    ref="bridge_modal"
-                    action="deposit"
-                    account={this.props.account.get("name")}
-                    sender={this.props.account.get("id")}
-                    asset={this.state.bridgeAsset}
-                    modalId="simple_bridge_modal"
-                    balances={this.props.balances}
-                    bridges={currentBridges}
-                    isDown={this.props.gatewayDown.get("TRADE")}
-                />
+                {/*<SimpleDepositBlocktradesBridge*/}
+                    {/*ref="bridge_modal"*/}
+                    {/*action="deposit"*/}
+                    {/*account={this.props.account.get("name")}*/}
+                    {/*sender={this.props.account.get("id")}*/}
+                    {/*asset={this.state.bridgeAsset}*/}
+                    {/*modalId="simple_bridge_modal"*/}
+                    {/*balances={this.props.balances}*/}
+                    {/*bridges={currentBridges}*/}
+                    {/*isDown={this.props.gatewayDown.get("TRADE")}*/}
+                {/*/>*/}
             </div>
         );
     }
