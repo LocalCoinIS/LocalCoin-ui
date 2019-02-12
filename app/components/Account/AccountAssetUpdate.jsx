@@ -942,7 +942,7 @@ class AccountAssetUpdate extends React.Component {
         return (
             <div className="grid-content app-tables no-padding" ref="appTables">
                 <div className="content-block small-12">
-                    <div className="tabs-container generic-bordered-box">
+                    <div className="tabs-container generic-bordered-box update-asseet-box">
                         <div className="tabs-header">
                             <h3>
                                 <Translate content="header.update_asset" />:{" "}
@@ -986,7 +986,9 @@ class AccountAssetUpdate extends React.Component {
                                         />
                                     </label>
                                     {errors.max_supply ? (
-                                        <p className="grid-content has-error">
+                                        <p className=" has-error"
+                                            style={{width: '100%'}}
+                                        >
                                             {errors.max_supply}
                                         </p>
                                     ) : null}
@@ -1054,12 +1056,14 @@ class AccountAssetUpdate extends React.Component {
                                                 </div>
                                             )}
                                             {errors.quote_asset ? (
-                                                <p className="grid-content has-error">
+                                                <p className="has-error"
+                                                style={{width: '100%'}}>
                                                     {errors.quote_asset}
                                                 </p>
                                             ) : null}
                                             {errors.base_asset ? (
-                                                <p className="grid-content has-error">
+                                                <p className="has-error"
+                                                style={{width: '100%'}}>
                                                     {errors.base_asset}
                                                 </p>
                                             ) : null}
@@ -1261,7 +1265,8 @@ class AccountAssetUpdate extends React.Component {
                                         )}
                                     />
                                     {errors.invalid_market_pair ? (
-                                        <p className="grid-content has-error">
+                                        <p className="has-error"
+                                            style={{ width: '100%' }}>
                                             {errors.invalid_market_pair}
                                         </p>
                                     ) : null}
@@ -1396,7 +1401,8 @@ class AccountAssetUpdate extends React.Component {
                                         path={"components/AccountAssetCreate"}
                                         section="permissions"
                                     />
-                                    <p className="grid-content has-error">
+                                    <p className="has-error"
+                                        style={{ width: '100%' }}>
                                         <Translate content="account.user_issued_assets.perm_warning" />
                                     </p>
                                     {permissions}
@@ -1505,7 +1511,8 @@ class AccountAssetUpdate extends React.Component {
                                                     />
                                                 </label>
                                                 {errors.max_market_fee ? (
-                                                    <p className="grid-content has-error">
+                                                    <p className="has-error"
+                                                        style={{ width: '100%' }}>
                                                         {errors.max_market_fee}
                                                     </p>
                                                 ) : null}
@@ -1524,7 +1531,9 @@ class AccountAssetUpdate extends React.Component {
                                         </p>
                                     }
                                     {errors.conflict_producer ? (
-                                        <p className="grid-content has-error">
+                                        <p className="has-error"
+                                            style={{ width: '100%' }}
+                                        >
                                             {errors.conflict_producer}
                                         </p>
                                     ) : null}
