@@ -11,7 +11,7 @@ import BindToChainState from "../Utility/BindToChainState";
 import PriceText from "../Utility/PriceText";
 import AssetName from "../Utility/AssetName";
 import SimpleDepositWithdraw from "../Dashboard/SimpleDepositWithdraw";
-// import SimpleDepositBlocktradesBridge from "../Dashboard/SimpleDepositBlocktradesBridge";
+import SimpleDepositBlocktradesBridge from "../Dashboard/SimpleDepositBlocktradesBridge";
 import {Asset} from "common/MarketClasses";
 import ExchangeInput from "./ExchangeInput";
 import assetUtils from "common/asset_utils";
@@ -873,18 +873,18 @@ class BuySell extends React.Component {
                 />
 
                 {/* Bridge modal */}
-                {/*<SimpleDepositBlocktradesBridge*/}
-                    {/*ref="bridge_modal"*/}
-                    {/*action="deposit"*/}
-                    {/*account={this.props.currentAccount.get("name")}*/}
-                    {/*sender={this.props.currentAccount.get("id")}*/}
-                    {/*asset={this.props.balanceId}*/}
-                    {/*modalId={*/}
-                        {/*"simple_bridge_modal" + (type === "bid" ? "" : "_ask")*/}
-                    {/*}*/}
-                    {/*balances={[this.props.balance]}*/}
-                    {/*bridges={this.props.currentBridges}*/}
-                {/*/>*/}
+                <SimpleDepositBlocktradesBridge
+                    ref="bridge_modal"
+                    action="deposit"
+                    account={this.props.currentAccount.get("name")}
+                    sender={this.props.currentAccount.get("id")}
+                    asset={this.props.balanceId}
+                    modalId={
+                        "simple_bridge_modal" + (type === "bid" ? "" : "_ask")
+                    }
+                    balances={[this.props.balance]}
+                    bridges={this.props.currentBridges}
+                />
             </div>
         );
     }

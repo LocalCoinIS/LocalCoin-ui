@@ -523,6 +523,7 @@ class CreateAccount extends React.Component {
     }
 
     render() {
+        console.log(11111);
         let {step} = this.state;
 
         return (

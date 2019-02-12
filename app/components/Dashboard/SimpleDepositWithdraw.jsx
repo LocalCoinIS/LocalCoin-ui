@@ -25,8 +25,8 @@ import {debounce} from "lodash-es";
 import {DecimalChecker} from "../Exchange/ExchangeInput";
 import {openledgerAPIs} from "api/apiConfig";
 
-// import DepositFiatOpenLedger from "components/DepositWithdraw/openledger/DepositFiatOpenLedger";
-// import WithdrawFiatOpenLedger from "components/DepositWithdraw/openledger/WithdrawFiatOpenLedger";
+import DepositFiatOpenLedger from "components/DepositWithdraw/openledger/DepositFiatOpenLedger";
+import WithdrawFiatOpenLedger from "components/DepositWithdraw/openledger/WithdrawFiatOpenLedger";
 
 class DepositWithdrawContent extends DecimalChecker {
     static propTypes = {
@@ -376,8 +376,7 @@ class DepositWithdrawContent extends DecimalChecker {
 
     _validateAddress(address, props = this.props) {
         validateAddress({
-            // url: openledgerAPIs.BASE,
-            url: "",
+            url: openledgerAPIs.BASE,
             walletType: props.walletType,
             newAddress: address
         })

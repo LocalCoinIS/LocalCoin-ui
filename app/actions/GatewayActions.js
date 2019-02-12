@@ -102,46 +102,46 @@ class GatewayActions {
     }
 
     fetchPairs() {
-        // if (!inProgress["fetchTradingPairs"]) {
-        //     inProgress["fetchTradingPairs"] = true;
-        //     return dispatch => {
-        //         let fetchCoinsTimeout = setTimeout(
-        //             onGatewayTimeout.bind(null, dispatch, "TRADE"),
-        //             GATEWAY_TIMEOUT
-        //         );
-        //         Promise.all([
-        //             fetchCoins(
-        //                 blockTradesAPIs.BASE + blockTradesAPIs.COINS_LIST
-        //             ),
-        //             fetchTradingPairs(
-        //                 blockTradesAPIs.BASE + blockTradesAPIs.TRADING_PAIRS
-        //             ),
-        //             getActiveWallets(
-        //                 blockTradesAPIs.BASE + blockTradesAPIs.ACTIVE_WALLETS
-        //             )
-        //         ])
-        //             .then(result => {
-        //                 clearTimeout(fetchCoinsTimeout);
-        //                 delete inProgress["fetchTradingPairs"];
-        //                 let [coins, bridgeCoins, wallets] = result;
-        //                 dispatch({
-        //                     coins,
-        //                     bridgeCoins,
-        //                     wallets
-        //                 });
-        //             })
-        //             .catch(() => {
-        //                 delete inProgress["fetchTradingPairs"];
-        //                 dispatch({
-        //                     coins: [],
-        //                     bridgeCoins: [],
-        //                     wallets: []
-        //                 });
-        //             });
-        //     };
-        // } else {
+        if (!inProgress["fetchTradingPairs"]) {
+            inProgress["fetchTradingPairs"] = true;
+            return dispatch => {
+                let fetchCoinsTimeout = setTimeout(
+                    onGatewayTimeout.bind(null, dispatch, "TRADE"),
+                    GATEWAY_TIMEOUT
+                );
+                Promise.all([
+                    fetchCoins(
+                        blockTradesAPIs.BASE + blockTradesAPIs.COINS_LIST
+                    ),
+                    fetchTradingPairs(
+                        blockTradesAPIs.BASE + blockTradesAPIs.TRADING_PAIRS
+                    ),
+                    getActiveWallets(
+                        blockTradesAPIs.BASE + blockTradesAPIs.ACTIVE_WALLETS
+                    )
+                ])
+                    .then(result => {
+                        clearTimeout(fetchCoinsTimeout);
+                        delete inProgress["fetchTradingPairs"];
+                        let [coins, bridgeCoins, wallets] = result;
+                        dispatch({
+                            coins,
+                            bridgeCoins,
+                            wallets
+                        });
+                    })
+                    .catch(() => {
+                        delete inProgress["fetchTradingPairs"];
+                        dispatch({
+                            coins: [],
+                            bridgeCoins: [],
+                            wallets: []
+                        });
+                    });
+            };
+        } else {
             return {};
-        // }
+        }
     }
 }
 

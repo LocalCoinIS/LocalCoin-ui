@@ -8,7 +8,7 @@ import SettingsStore from "stores/SettingsStore";
 import SettingsActions from "actions/SettingsActions";
 import ZfApi from "react-foundation-apps/src/utils/foundation-api";
 import SendModal from "../Modal/SendModal";
-// import DepositModal from "../Modal/DepositModal";
+import DepositModal from "../Modal/DepositModal";
 import GatewayStore from "stores/GatewayStore";
 import Icon from "../Icon/Icon";
 import Translate from "react-translate-component";
@@ -22,10 +22,10 @@ import TotalBalanceValue from "../Utility/TotalBalanceValue";
 import ReactTooltip from "react-tooltip";
 import {Apis} from "bitsharesjs-ws";
 import notify from "actions/NotificationActions";
-// import IntlActions from "actions/IntlActions";
+import IntlActions from "actions/IntlActions";
 import AccountImage from "../Account/AccountImage";
 import {ChainStore} from "bitsharesjs/es";
-// import WithdrawModal from "../Modal/WithdrawModalNew";
+import WithdrawModal from "../Modal/WithdrawModalNew";
 import {List} from "immutable";
 import PropTypes from "prop-types";
 
@@ -1782,17 +1782,17 @@ class Header extends React.Component {
                     from_name={currentAccount}
                 />
 
-                {/*<DepositModal*/}
-                    {/*ref="deposit_modal_new"*/}
-                    {/*modalId="deposit_modal_new"*/}
-                    {/*account={currentAccount}*/}
-                    {/*backedCoins={this.props.backedCoins}*/}
-                {/*/>*/}
-                {/*<WithdrawModal*/}
-                    {/*ref="withdraw_modal_new"*/}
-                    {/*modalId="withdraw_modal_new"*/}
-                    {/*backedCoins={this.props.backedCoins}*/}
-                {/*/>*/}
+                <DepositModal
+                    ref="deposit_modal_new"
+                    modalId="deposit_modal_new"
+                    account={currentAccount}
+                    backedCoins={this.props.backedCoins}
+                />
+                <WithdrawModal
+                    ref="withdraw_modal_new"
+                    modalId="withdraw_modal_new"
+                    backedCoins={this.props.backedCoins}
+                />
             </div>
         );
     }
