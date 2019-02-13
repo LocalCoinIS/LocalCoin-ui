@@ -32,6 +32,12 @@ import moment from "moment";
 import guide from "intro.js";
 import translator from "counterpart";
 import LLCBridgeModal from "../../components/DepositWithdraw/llcgateway/LLCBridgeModal";
+import ActionSheet from "react-foundation-apps/src/action-sheet";
+import AccountStore from "stores/AccountStore";
+import Icon from "../../components/Icon/Icon";
+import WalletDb from "stores/WalletDb";
+import WalletUnlockActions from "actions/WalletUnlockActions";
+import AccountActions from "actions/AccountActions";
 
 class Exchange extends React.Component {
     static propTypes = {
@@ -88,17 +94,69 @@ class Exchange extends React.Component {
 
     onShowModal() {
         let self = this;
-
-        this.setState(
-            {
-                isBridgeModalVisible: false
-            },
-            function() {
-                self.setState({
-                    isBridgeModalVisible: true
-                });
+        if (self.isUnauthorizedUser()) {
+            return;
+        }
+        else if (self.props.lockedWalletState)
+            if (WalletDb.isLocked()) {
+                WalletUnlockActions.unlock()
+                    .then(() => {
+                        AccountActions.tryToSetCurrentAccount();
+                        self.setState({
+                            isBridgeModalVisible: true
+                        });
+                    })
+                    .catch(() => {});
+            } else {
+                WalletUnlockActions.lock();
             }
-        );
+        else {
+            this.setState(
+                {
+                    isBridgeModalVisible: false
+                },
+                function() {
+                    self.setState({
+                        isBridgeModalVisible: true
+                    });
+                }
+            );
+        };
+
+    }
+
+    _createAccountLink = null;
+    isUnauthorizedUser(route) {
+        //for exchange allow access forever
+
+        if (typeof route !== "undefined" && route.indexOf("/market/") === 0)
+            return false;
+
+        if (!this.props.currentAccount || !!this._createAccountLink) {
+            this.props.router.push("/create-account/wallet");
+            return true;
+        }
+
+        return false;
+    }
+
+    _onNavigate(route, e) {
+        e.preventDefault();
+        if (
+            route !== "/" &&
+            route !== "/settings/general" &&
+            this.isUnauthorizedUser(route)
+        )
+            return;
+
+        // Set Accounts Tab as active tab
+        if (route == "/accounts") {
+            SettingsActions.changeViewSetting({
+                dashboardEntry: "accounts"
+            });
+        }
+
+        this.context.router.push(route);
     }
 
     _handleExpirationChange(type, e) {
@@ -1223,10 +1281,6 @@ class Exchange extends React.Component {
     }
 
     render() {
-        console.log("----------");
-        console.log(this.props);
-        console.log(this.state);
-        console.log("----------");
         let {
             currentAccount,
             marketLimitOrders,
@@ -1422,6 +1476,28 @@ class Exchange extends React.Component {
 
         let expirationType = this.state.expirationType;
         let expirationCustomTime = this.state.expirationCustomTime;
+
+        let myAccounts = AccountStore.getMyAccounts();
+        let myAccountCount = myAccounts.length;
+        let createAccountLink =
+            myAccountCount === 0 ? (
+                <ActionSheet.Button title="" setActiveState={() => {}}>
+                    <a
+                        className="button create-account"
+                        onClick={this._onNavigate.bind(this, "/create-account")}
+                        style={{padding: "1rem", border: "none"}}
+                    >
+                        <Icon
+                            className="icon-14px"
+                            name="user"
+                            title="icons.user.create_account"
+                        />{" "}
+                        <Translate content="header.create_account" />
+                    </a>
+                </ActionSheet.Button>
+            ) : null;
+
+        this._createAccountLink = createAccountLink;
 
         let buyForm = isFrozen ? null : (
             <BuySell
