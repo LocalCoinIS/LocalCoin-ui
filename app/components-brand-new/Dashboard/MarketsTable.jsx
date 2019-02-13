@@ -143,6 +143,9 @@ class MarketRow extends React.Component {
             ? "gold-star"
             : "grey-star";
 
+
+        let imgFormat = imgName.toLowerCase() === "usd" || imgName.toLowerCase() === "cny" ? ".svg" : ".png";
+
         return (
             <tr style={{display: visible ? "" : "none"}}>
                 <td>
@@ -172,7 +175,7 @@ class MarketRow extends React.Component {
                             className="column-hide-small"
                             onError={this._onError.bind(this, imgName)}
                             style={{maxWidth: 20, marginRight: 10}}
-                            src={`${__BASE_URL__}asset-symbols/${imgName.toLowerCase()}.png`}
+                            src={`${__BASE_URL__}asset-symbols/${imgName.toLowerCase()}${imgFormat}`}
                         />
                         <AssetName dataPlace="top" name={quote.get("symbol")} />{" "}
                         :{" "}
