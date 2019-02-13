@@ -44,6 +44,7 @@ class MarketsActions {
             base,
             quote
         );
+        if(!first || !second) return;
         return dispatch => {
             if (base === quote) return;
             let now = new Date();
