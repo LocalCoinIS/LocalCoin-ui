@@ -79,9 +79,7 @@ class BlocktimeChart extends React.Component {
 
         let config = {
             chart: {
-                colorAxis: {"0": () => {
-                    console.log("chart init");
-                    }},
+                colorAxis: {},
                 type: "column",
                 backgroundColor: "rgba(255, 0, 0, 0)",
                 spacing: [0, 0, 5, 0],
@@ -148,9 +146,7 @@ class BlocktimeChart extends React.Component {
                     borderWidth: 0
                 }
             },
-            colorAxis: {"0": () => {
-                    console.log("chart init");
-                }}
+            colorAxis: {}
         };
 
         return blockTimes.length ? (
