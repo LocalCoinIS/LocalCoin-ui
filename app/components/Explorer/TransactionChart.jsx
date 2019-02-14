@@ -85,7 +85,7 @@ class TransactionChart extends React.Component {
 
         let config = {
             chart: {
-                colorAxis: {},
+                colorAxis: {"0":null},
                 type: "column",
                 backgroundColor: "rgba(255, 0, 0, 0)",
                 spacing: [0, 0, 5, 0],
@@ -153,7 +153,7 @@ class TransactionChart extends React.Component {
                     borderWidth: 0
                 }
             },
-            colorAxis: {}
+            colorAxis: {"0":null}
         };
 
         return trxData.length ? (
