@@ -528,7 +528,6 @@ class MyMarkets extends React.Component {
             !utils.are_equal_shallow(nextState, this.state) ||
             nextProps.current !== this.props.current ||
             nextProps.minWidth !== this.props.minWidth ||
-            nextProps.listHeight !== this.props.listHeight ||
             nextProps.preferredBases !== this.props.preferredBases ||
             nextProps.onlyStars !== this.props.onlyStars ||
             nextProps.onlyLiquid !== this.props.onlyLiquid ||
@@ -776,7 +775,6 @@ class MyMarkets extends React.Component {
             core,
             current,
             viewSettings,
-            listHeight,
             onlyStars,
             userMarkets
         } = this.props;
@@ -960,9 +958,6 @@ class MyMarkets extends React.Component {
             minWidth: this.state.minWidth,
             minHeight: "6rem"
         };
-        if (listHeight) {
-            listStyle.height = listHeight;
-        }
 
         const translator = require("counterpart");
 
