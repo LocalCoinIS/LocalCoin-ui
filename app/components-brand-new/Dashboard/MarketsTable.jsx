@@ -146,9 +146,6 @@ class MarketRow extends React.Component {
 
         let imgFormat = imgName.toLowerCase() === "usd" || imgName.toLowerCase() === "cny" ? ".svg" : ".png";
 
-        console.log("-----------");
-        console.log(imgName);
-        console.log("-----------");
         return (
             <tr style={{display: visible ? "" : "none"}}>
                 <td>
