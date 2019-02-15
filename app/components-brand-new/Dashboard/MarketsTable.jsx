@@ -212,7 +212,7 @@ class MarketRow extends React.Component {
                     <td className="column-hide-small">
                         <a onClick={handleFlip}>
                             <Icon name="shuffle" title="icons.shuffle" />
-                        </a>123
+                        </a>
                     </td>
                 )}
                 <td>
