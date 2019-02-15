@@ -146,6 +146,9 @@ class MarketRow extends React.Component {
 
         let imgFormat = imgName.toLowerCase() === "usd" || imgName.toLowerCase() === "cny" ? ".svg" : ".png";
 
+        console.log("-----------");
+        console.log(imgName);
+        console.log("-----------");
         return (
             <tr style={{display: visible ? "" : "none"}}>
                 <td>
@@ -209,7 +212,7 @@ class MarketRow extends React.Component {
                     <td className="column-hide-small">
                         <a onClick={handleFlip}>
                             <Icon name="shuffle" title="icons.shuffle" />
-                        </a>
+                        </a>123
                     </td>
                 )}
                 <td>
