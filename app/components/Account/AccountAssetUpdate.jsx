@@ -1057,7 +1057,7 @@ class AccountAssetUpdate extends React.Component {
                                             )}
                                             {errors.quote_asset ? (
                                                 <p className="has-error"
-                                                style={{width: '100%'}}>
+                                                style={{width: '100%', maxWidth: '100%'}}>
                                                     {errors.quote_asset}
                                                 </p>
                                             ) : null}
