@@ -243,7 +243,7 @@ class LLCBridgeModal extends React.Component {
         );
 
         var info = (
-            <div>
+            <div style={{width: '100%', display: 'flex', flexDirection: 'column'}}>
                 <br />
                 <Translate
                     content="gateway.rudex.min_amount"
@@ -260,7 +260,7 @@ class LLCBridgeModal extends React.Component {
                 <br />
                 <Translate
                     component="span"
-                    style={{fontSize: "0.8rem"}}
+                    style={{fontSize: "0.8rem", whiteSpace: 'normal'}}
                     content="gateway.min_deposit_warning_asset"
                     minDeposit={this.state.minimal || 0}
                     coin={this.state.asset}
