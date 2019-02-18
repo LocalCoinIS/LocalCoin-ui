@@ -90,6 +90,7 @@ class Notifier extends React.Component {
                         current={account.get("id")}
                         hideDate={true}
                         hideFee={true}
+                        isMarketPage={this.props.isMarketPage}
                     />
                 );
             }

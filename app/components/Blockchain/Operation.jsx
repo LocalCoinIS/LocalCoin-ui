@@ -78,7 +78,7 @@ class Row extends React.Component {
     }
 
     render() {
-        let {block, fee, color, type, hideOpLabel, hidePending} = this.props;
+        let {block, fee, color, type, hideOpLabel, hidePending, isMarketPage} = this.props;
 
         let last_irreversible_block_num = this.props.dynGlobalObject.get(
             "last_irreversible_block_num"
@@ -100,6 +100,14 @@ class Row extends React.Component {
         fee.amount = parseInt(fee.amount, 10);
 
         return (
+            isMarketPage ? (
+            <tr>
+                <td>
+123
+                </td>
+            </tr>
+
+            ) : (
             <tr>
                 {this.props.includeOperationId ? (
                     <td
@@ -166,7 +174,7 @@ class Row extends React.Component {
                         />
                     ) : null}
                 </td>
-            </tr>
+            </tr>)
         );
     }
 }
@@ -1393,6 +1401,7 @@ class Operation extends React.Component {
                 hideFee={this.props.hideFee}
                 hidePending={this.props.hidePending}
                 fullDate={this.props.fullDate}
+                isMarketPage={this.props.isMarketPage}
             />
         ) : null;
 
