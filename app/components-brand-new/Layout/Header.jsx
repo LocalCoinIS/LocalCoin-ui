@@ -979,11 +979,11 @@ class Header extends React.Component {
                                 &nbsp;
                                 <a
                                     className="navigation_account__link"
-                                    href="#"
-                                    onClick={this._onNavigate.bind(
-                                        this,
-                                        "/account/" + currentAccount
-                                    )}
+                                    href={`/account/${currentAccount}/`}
+                                    // onClick={this._onNavigate.bind(
+                                    //     this,
+                                    //     "/account/" + currentAccount
+                                    // )}
                                 >
                                     <span className="user__name">
                                         {currentAccount}
