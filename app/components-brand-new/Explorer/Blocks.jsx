@@ -534,8 +534,8 @@ class Blocks extends React.Component {
                                 }}
                                 ref="operations"
                             >
-                                <table className="block-info-table">
-                                    <tbody>{transactions}</tbody>
+                                <table className="block-info-table info-table-selector">
+                                    <tbody className="info-table-selector__tbody">{transactions}</tbody>
                                 </table>
                             </div>
                         </div>

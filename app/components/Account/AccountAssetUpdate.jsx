@@ -868,12 +868,12 @@ class AccountAssetUpdate extends React.Component {
         });
 
         let confirmButtons = (
-            <div>
+            <div className="small-12 large-8 large-offset-2 grid-content d-flex">
                 <button
-                    className={classnames("button", {
+                    className={classnames("button btn large inverted", {
                         disabled: !isValid || !this.pageChanged()
                     })}
-                    style={{width: "9rem"}}
+                    style={{marginBottom: 12}}
                     onClick={
                         tabsChangedCount > 1
                             ? this._openConfirm.bind(this)
@@ -887,7 +887,7 @@ class AccountAssetUpdate extends React.Component {
                     )}
                 </button>
                 <button
-                    className={classnames("button primary hollow", {
+                    className={classnames("button btn large outline", {
                         disabled: !this.pageChanged()
                     })}
                     onClick={this._reset.bind(this)}
@@ -942,7 +942,7 @@ class AccountAssetUpdate extends React.Component {
         return (
             <div className="grid-content app-tables no-padding" ref="appTables">
                 <div className="content-block small-12">
-                    <div className="tabs-container generic-bordered-box">
+                    <div className="tabs-container generic-bordered-box update-asseet-box">
                         <div className="tabs-header">
                             <h3>
                                 <Translate content="header.update_asset" />:{" "}
@@ -953,7 +953,7 @@ class AccountAssetUpdate extends React.Component {
                             setting="updateAssetTab"
                             className="account-tabs"
                             tabsClass="account-overview bordered-header content-block"
-                            contentClass="grid-block padding-top shrink small-vertical medium-horizontal"
+                            contentClass="grid-block no-margin padding-top shrink small-vertical medium-horizontal"
                             segmented={false}
                             actionButtons={confirmButtons}
                             onChangeTab={i => {
@@ -986,7 +986,9 @@ class AccountAssetUpdate extends React.Component {
                                         />
                                     </label>
                                     {errors.max_supply ? (
-                                        <p className="grid-content has-error">
+                                        <p className=" has-error"
+                                            style={{width: '100%'}}
+                                        >
                                             {errors.max_supply}
                                         </p>
                                     ) : null}
@@ -1054,12 +1056,14 @@ class AccountAssetUpdate extends React.Component {
                                                 </div>
                                             )}
                                             {errors.quote_asset ? (
-                                                <p className="grid-content has-error">
+                                                <p className="has-error"
+                                                style={{width: '100%', maxWidth: '100%'}}>
                                                     {errors.quote_asset}
                                                 </p>
                                             ) : null}
                                             {errors.base_asset ? (
-                                                <p className="grid-content has-error">
+                                                <p className="has-error"
+                                                style={{width: '100%'}}>
                                                     {errors.base_asset}
                                                 </p>
                                             ) : null}
@@ -1261,7 +1265,8 @@ class AccountAssetUpdate extends React.Component {
                                         )}
                                     />
                                     {errors.invalid_market_pair ? (
-                                        <p className="grid-content has-error">
+                                        <p className="has-error"
+                                            style={{ width: '100%' }}>
                                             {errors.invalid_market_pair}
                                         </p>
                                     ) : null}
@@ -1396,7 +1401,8 @@ class AccountAssetUpdate extends React.Component {
                                         path={"components/AccountAssetCreate"}
                                         section="permissions"
                                     />
-                                    <p className="grid-content has-error">
+                                    <p className="has-error"
+                                        style={{ width: '100%' }}>
                                         <Translate content="account.user_issued_assets.perm_warning" />
                                     </p>
                                     {permissions}
@@ -1505,7 +1511,8 @@ class AccountAssetUpdate extends React.Component {
                                                     />
                                                 </label>
                                                 {errors.max_market_fee ? (
-                                                    <p className="grid-content has-error">
+                                                    <p className="has-error"
+                                                        style={{ width: '100%' }}>
                                                         {errors.max_market_fee}
                                                     </p>
                                                 ) : null}
@@ -1524,7 +1531,9 @@ class AccountAssetUpdate extends React.Component {
                                         </p>
                                     }
                                     {errors.conflict_producer ? (
-                                        <p className="grid-content has-error">
+                                        <p className="has-error"
+                                            style={{ width: '100%' }}
+                                        >
                                             {errors.conflict_producer}
                                         </p>
                                     ) : null}

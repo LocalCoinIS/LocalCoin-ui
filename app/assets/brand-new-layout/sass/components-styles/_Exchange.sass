@@ -6,8 +6,30 @@ body.localcoin .order-form .float-right input
 	background-color: #00195b
 	color: #fff
 
+body.localcoin .introjs-overlay
+	position: fixed!important
+	top: 0!important
+	left: 0!important
+	right: 0!important
+	bottom: 0!important
+	opacity: .8!important
+	background-color: #000!important
+
 body.localcoin
 	.exchange-layout
+		.place-bottom.show.test
+			left: 15px!important
+			&:after
+				left: 40px
+		.notification-content
+			span:not(.label)
+				color: #fff
+			a:not(.inline-block)
+				color: #fff
+				text-decoration: underline
+				span
+					color: #fff
+					text-decoration: underline
 		.mymarkets-header.clickable.introjs-showElement.introjs-relativePosition
 			background: #fff
 		.top-bar .shuffle
@@ -89,6 +111,9 @@ body.localcoin
 				td
 					width: 33%
 					padding: 0 5px!important
+					line-height: 1
+					svg
+						height: 14px
 					&:last-child
 						width: 25px!important
 					&:nth-child(4)
@@ -128,7 +153,7 @@ body.localcoin
 						span
 							font-size: 14px!important
 		.main.left-cell-active
-			@media only screen and (min-width: 1280px)
+			@media only screen and (min-width: 1101px)
 				.medium-6
 					flex: 0 0 50%!important
 					max-width: 50%!important
@@ -160,7 +185,7 @@ body.localcoin
 			>.exchange-bordered.small-12
 				height: 100%!important
 				>.table-container
-					max-height: 224px!important
+					max-height: 170px!important
 	.left-order-book .top-header
 		height: auto
 	.sticky-table-header
@@ -350,7 +375,7 @@ body.localcoin
 			max-height: 258px
 
 
-@media only screen and (min-width: 1280px)
+@media only screen and (min-width: 1101px)
 	body.localcoin
 		.exchange-layout
 			.market-row
@@ -358,7 +383,7 @@ body.localcoin
 					>.exchange-bordered.small-12
 						>.table-container.grid-block
 							max-height: calc(100% - 55px)!important
-@media only screen and (max-width: 1280px)
+@media only screen and (max-width: 1100px)
 	body.localcoin
 		.exchange-layout
 			.my-trades,
@@ -417,19 +442,19 @@ body.localcoin
 	body.localcoin .exchange-layout .market-row .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
 		flex-wrap: wrap
 
-@media only screen and (min-width: 1281px) and (min-height: 1100px)
+@media only screen and (min-width: 1001px) and (min-height: 1100px)
 	body.localcoin .exchange-layout .market-row:not(.stable-height)
 		max-height: calc(100vh - 754px)
 	body.localcoin .exchange-layout .market-row.is-fee-neighbor:not(.stable-height)
 		max-height: calc(100vh - 784px)
-@media only screen and (min-width: 1281px) and (max-height: 1100px)
+@media only screen and (min-width: 1001px) and (max-height: 1100px)
 	body.localcoin .exchange-layout .market-row:not(.stable-height)
 		max-height: calc(100vh - 604px)
 	body.localcoin .exchange-layout .market-row.is-fee-neighbor:not(.stable-height)
 		max-height: calc(100vh - 634px)
 
 
-@media only screen and (min-width: 1281px) and (max-width: 1500px)
+@media only screen and (min-width: 1001px) and (max-width: 1500px)
 	body.localcoin .exchange-layout .main .grid-block.shrink.no-padding.overflow-visible.top-bar.left-cell-active
 		width: auto!important
 		max-width: 100%!important

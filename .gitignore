@@ -22,5 +22,7 @@ app/test/MarketClasses.js
 yarn.lock
 v8-compile-cache*/
 /.env
+index.php
+.gitignore
 build/binaries
 build/electron

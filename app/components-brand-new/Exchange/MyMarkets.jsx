@@ -24,6 +24,7 @@ import {ChainValidation} from "bitsharesjs/es";
 import PropTypes from "prop-types";
 import ZfApi from "react-foundation-apps/src/utils/foundation-api";
 import QuoteSelectionModal from "./QuoteSelectionModal";
+import Icon from "../../components/Icon/Icon";
 
 let lastLookup = new Date();
 
@@ -527,7 +528,6 @@ class MyMarkets extends React.Component {
             !utils.are_equal_shallow(nextState, this.state) ||
             nextProps.current !== this.props.current ||
             nextProps.minWidth !== this.props.minWidth ||
-            nextProps.listHeight !== this.props.listHeight ||
             nextProps.preferredBases !== this.props.preferredBases ||
             nextProps.onlyStars !== this.props.onlyStars ||
             nextProps.onlyLiquid !== this.props.onlyLiquid ||
@@ -775,7 +775,6 @@ class MyMarkets extends React.Component {
             core,
             current,
             viewSettings,
-            listHeight,
             onlyStars,
             userMarkets
         } = this.props;
@@ -959,9 +958,6 @@ class MyMarkets extends React.Component {
             minWidth: this.state.minWidth,
             minHeight: "6rem"
         };
-        if (listHeight) {
-            listStyle.height = listHeight;
-        }
 
         const translator = require("counterpart");
 
@@ -1178,6 +1174,23 @@ class MyMarkets extends React.Component {
                 )}
 
                 <ul className="mymarkets-tabs">
+                    {/*<li*/}
+                        {/*className={cnames("mymarkets-tab test", {*/}
+                            {/*active: activeMarketTab === preferredBases.size + 1*/}
+                        {/*})}*/}
+                        {/*onClick={this.toggleActiveMarketTab.bind(*/}
+                            {/*this,*/}
+                            {/*preferredBases.size + 1*/}
+                        {/*)}*/}
+                    {/*>*/}
+                        {/*<span>*/}
+                            {/*<Icon*/}
+                                {/*style={{cursor: "pointer"}}*/}
+                                {/*name="fi-star"*/}
+                                {/*className="gold-star"*/}
+                            {/*/>*/}
+                        {/*</span>*/}
+                    {/*</li>*/}
                     {preferredBases.map((base, index) => {
                         if (!base) return null;
                         return (
@@ -1296,6 +1309,41 @@ class MyMarkets extends React.Component {
                             history={this.props.history}
                         />
                     ) : null}
+                    {/*{activeMarketTab === preferredBases.size + 1 ? (*/}
+                        {/*preferredBases*/}
+                            {/*.filter(a => {*/}
+                            {/*return a === preferredBases.get(1);*/}
+                        {/*})*/}
+                            {/*.map((base, index) => {*/}
+                                {/*return (*/}
+                                    {/*<MarketGroup*/}
+                                        {/*userMarkets={this.props.userMarkets}*/}
+                                        {/*defaultMarkets={this.props.defaultMarkets}*/}
+                                        {/*index={index}*/}
+                                        {/*allowChange={false}*/}
+                                        {/*key={base}*/}
+                                        {/*current={current}*/}
+                                        {/*starredMarkets={starredMarkets}*/}
+                                        {/*marketStats={marketStats}*/}
+                                        {/*viewSettings={viewSettings}*/}
+                                        {/*columns={*/}
+                                            {/*myMarketTab*/}
+                                                {/*? columns*/}
+                                                {/*: this.props.findColumns || columns*/}
+                                        {/*}*/}
+                                        {/*markets={baseGroups[base]}*/}
+                                        {/*base={base}*/}
+                                        {/*maxRows={myMarketTab ? 20 : 10}*/}
+                                        {/*findMarketTab={!myMarketTab}*/}
+                                        {/*location={this.props.location}*/}
+                                        {/*history={this.props.history}*/}
+                                        {/*onlyLiquid={*/}
+                                            {/*this.props.onlyLiquid && myMarketTab*/}
+                                        {/*}*/}
+                                    {/*/>*/}
+                                {/*);*/}
+                            {/*})*/}
+                    {/*) : null}*/}
                 </div>
 
                 <QuoteSelectionModal quotes={this.props.preferredBases} />

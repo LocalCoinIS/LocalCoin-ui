@@ -696,7 +696,11 @@ class Header extends React.Component {
                                     <li className="mobile__list__item">
                                         <a
                                             className="mobile__list__link"
-                                            href="/OTC"
+                                            href="#"
+                                            onClick={this._onNavigate.bind(
+                                                this,
+                                                "/OTC"
+                                            )}
                                         >
                                             {/* OTC */}
                                             {counterpart.translate(
@@ -833,7 +837,11 @@ class Header extends React.Component {
                                     <li className="navigation__item">
                                         <a
                                             className="navigation__link"
-                                            href="/OTC"
+                                            href="#"
+                                            onClick={this._onNavigate.bind(
+                                                this,
+                                                "/OTC"
+                                            )}
                                         >
                                             {/* OTC */}
                                             {counterpart.translate(
@@ -971,11 +979,11 @@ class Header extends React.Component {
                                 &nbsp;
                                 <a
                                     className="navigation_account__link"
-                                    href="#"
-                                    onClick={this._onNavigate.bind(
-                                        this,
-                                        "/account/" + currentAccount
-                                    )}
+                                    href={`/account/${currentAccount}/`}
+                                    // onClick={this._onNavigate.bind(
+                                    //     this,
+                                    //     "/account/" + currentAccount
+                                    // )}
                                 >
                                     <span className="user__name">
                                         {currentAccount}

@@ -385,7 +385,6 @@ class BuySell extends React.Component {
 
         let currencyHasInbridge =
             base.get("symbol") === "LLC" || quote.get("symbol") === "LLC";
-
         return (
             <div className={this.props.className}>
                 <div className="exchange-bordered buy-sell-container">

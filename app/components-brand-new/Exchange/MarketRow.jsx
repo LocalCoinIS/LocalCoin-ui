@@ -187,6 +187,7 @@ class MarketRow extends React.Component {
                                 key={column.index}
                             >
                                 {customMarketName}
+                                {/*{"/123" + base.get("symbol")}*/}
                             </td>
                         );
 
