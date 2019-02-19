@@ -15,6 +15,7 @@ import BindToChainState from "../../components/Utility/BindToChainState";
 import MarketsActions from "actions/MarketsActions";
 import utils from "common/utils";
 import market_utils from "common/market_utils";
+import {coins} from "../../assets/asset-symbols/symbols";
 
 class MarketRow extends React.Component {
     static propTypes = {
@@ -110,6 +111,22 @@ class MarketRow extends React.Component {
         }
     }
 
+    findCoin(symbol) {
+        for(let i in coins) {
+            let coin = coins[i];
+            if(coin.name === symbol) return coin.image;
+        }
+        return this.getDefault();
+    }
+
+    getDefault() {
+        for(let i in coins) {
+            let coin = coins[i];
+            if(coin.name === 'bts') return coin.image;
+        }
+        return null;
+    }
+
     render() {
         let {
             base,
@@ -175,7 +192,7 @@ class MarketRow extends React.Component {
                             className="column-hide-small"
                             onError={this._onError.bind(this, imgName)}
                             style={{maxWidth: 20, marginRight: 10}}
-                            src={`${__BASE_URL__}asset-symbols/${imgName.toLowerCase()}${imgFormat}`}
+                            src={this.findCoin(imgName.toLowerCase())}
                         />
                         <AssetName dataPlace="top" name={quote.get("symbol")} />{" "}
                         :{" "}

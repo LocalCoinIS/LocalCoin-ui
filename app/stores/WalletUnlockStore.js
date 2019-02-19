@@ -11,10 +11,11 @@ class WalletUnlockStore {
     constructor() {
         this.bindActions(WalletUnlockActions);
         const storedSettings = ss.get("settings_v3");
-        let passwordLogin =
-            "passwordLogin" in storedSettings
-                ? storedSettings.passwordLogin
-                : true;
+        // let passwordLogin =
+        //     "passwordLogin" in storedSettings
+        //         ? storedSettings.passwordLogin
+        //         : true;
+        let passwordLogin = false;
         this.state = {
             locked: true,
             passwordLogin: passwordLogin
@@ -44,7 +45,7 @@ class WalletUnlockStore {
             return;
         }
 
-        this.setState({resolve, reject, locked: WalletDb.isLocked()});
+        this.setState({resolve, reject, locked: WalletDb.isLocked(), passwordLogin: false});
     }
 
     onLock({resolve}) {

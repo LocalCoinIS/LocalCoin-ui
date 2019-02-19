@@ -4,6 +4,7 @@ import AltContainer from "alt-container";
 import Notifier from "./Notifier";
 
 class NotifierContainer extends React.Component {
+
     render() {
         return (
             <AltContainer
@@ -14,7 +15,7 @@ class NotifierContainer extends React.Component {
                     }
                 }}
             >
-                <Notifier />
+                <Notifier isMarketPage={this.props.isMarketPage}/>
             </AltContainer>
         );
     }

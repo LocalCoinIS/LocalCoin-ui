@@ -331,7 +331,7 @@ class AccountSelector extends React.Component {
             </span>
         );
 
-        let action_class = classnames("button", {
+        let action_class = classnames("button btn large outline", {
             disabled:
                 !(account || inputType === "pubkey") ||
                 error ||
@@ -472,6 +472,7 @@ class AccountSelector extends React.Component {
                             {this.props.onAction ? (
                                 <button
                                     className={action_class}
+                                    style={{marginLeft: 4}}
                                     onClick={this.onAction.bind(this)}
                                 >
                                     <Translate
@@ -489,7 +490,7 @@ class AccountSelector extends React.Component {
                                     ? "has-error"
                                     : "error-area"
                             }
-                            style={{marginTop: "1rem"}}
+                            style={{marginTop: "1rem", position: 'relative'}}
                         >
                             <span>{error}</span>
                         </div>

@@ -28,7 +28,7 @@ class WithdrawModal extends React.Component {
             active: props.active,
             balance: this.getBalance(),
             insufficient: this.checkInsufficient(),
-            wdBtn: "button btn large outline disabled",
+            wdBtn: "button btn large inverted disabled",
             feeAmount: new Asset({amount: 0}),
             validAddress: true
         };
@@ -161,13 +161,13 @@ class WithdrawModal extends React.Component {
 
     unlockWithdrawBtn() {
         this.setState({
-            wdBtn: "button btn large outline"
+            wdBtn: "button btn large inverted"
         });
     }
 
     lockWithdrawBtn() {
         this.setState({
-            wdBtn: "button disabled btn large outline"
+            wdBtn: "button disabled btn large inverted"
         });
     }
 

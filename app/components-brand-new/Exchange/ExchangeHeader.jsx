@@ -123,7 +123,7 @@ export default class ExchangeHeader extends React.Component {
             let id = "exchange_header_style";
             let minus = margin + getMaxWidth("right-column");
             let style =
-                "@media only screen and (min-width: 1280px) { " +
+                "@media only screen and (min-width: 1000px) { " +
                 "body.localcoin .exchange-layout .grid-block.shrink.no-padding.overflow-visible.top-bar.left-cell-active { " +
                 "width: calc(100% - " +
                 minus +

@@ -74,7 +74,8 @@ class Exchange extends React.Component {
                 ask: moment().add(1, "day")
             },
             isBridgeModalVisible: false,
-            isMarketFee: false
+            isMarketFee: false,
+            isMarketPage: true
         };
 
         this._getWindowSize = debounce(this._getWindowSize.bind(this), 150);
@@ -1799,7 +1800,7 @@ class Exchange extends React.Component {
                             {...this.props}
                         />
                     ) : null}
-                    <AccountNotifications />
+                    <AccountNotifications isMarketPage={this.state.isMarketPage}/>
                     {/* Main vertical block with content */}
 
                     {/* Left Column - Open Orders */}

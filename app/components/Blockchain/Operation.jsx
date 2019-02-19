@@ -78,7 +78,7 @@ class Row extends React.Component {
     }
 
     render() {
-        let {block, fee, color, type, hideOpLabel, hidePending} = this.props;
+        let {block, fee, color, type, hideOpLabel, hidePending, isMarketPage} = this.props;
 
         let last_irreversible_block_num = this.props.dynGlobalObject.get(
             "last_irreversible_block_num"
@@ -100,6 +100,7 @@ class Row extends React.Component {
         fee.amount = parseInt(fee.amount, 10);
 
         return (
+            isMarketPage ? (
             <div>
                 {this.props.includeOperationId ? (
                     <div
@@ -167,6 +168,75 @@ class Row extends React.Component {
                     ) : null}
                 </div>
             </div>
+
+            ) : (
+            <tr>
+                {this.props.includeOperationId ? (
+                    <td
+                        style={{textAlign: "left"}}
+                        className="left-td column-hide-tiny"
+                    >
+                        {this.props.operationId}
+                    </td>
+                ) : null}
+                {hideOpLabel ? null : (
+                    <td
+                        style={{textAlign: "left"}}
+                        className="left-td column-hide-tiny"
+                    >
+                        <Link
+                            className="inline-block"
+                            data-place="bottom"
+                            data-tip={counterpart.translate(
+                                "tooltip.show_block",
+                                {
+                                    block: utils.format_number(
+                                        this.props.block,
+                                        0
+                                    )
+                                }
+                            )}
+                            to={`/block/${this.props.block}`}
+                        >
+                            <TransactionLabel color={color} type={type} />
+                        </Link>
+                    </td>
+                )}
+                <td>
+                    <FormattedAsset
+                        color="fee"
+                        amount={this.props.fee.amount}
+                        asset={this.props.fee.asset_id}
+                    />
+                </td>
+                <td style={{padding: "8px 0px", textAlign: "left"}}>
+                    <div>
+                        <span>{this.props.info}</span>
+                    </div>
+                    <div style={{fontSize: 14, paddingTop: 5}}>
+                        {/*<span>{counterpart.translate("explorer.block.title").toLowerCase()} <Link to={`/block/${block}`}>{utils.format_number(block, 0)}</Link></span>*/}
+                        {!this.props.hideFee ? (
+                            <span className="facolor-fee">
+                                {" "}
+                                -{" "}
+                                <FormattedAsset
+                                    amount={fee.amount}
+                                    asset={fee.asset_id}
+                                />
+                            </span>
+                        ) : null}
+                        {pending ? <span> - {pending}</span> : null}
+                    </div>
+                </td>
+                <td>
+                    {!this.props.hideDate ? (
+                        <BlockTime
+                            block_number={block}
+                            fullDate={this.props.fullDate}
+                        />
+                    ) : null}
+                </td>
+            </tr>)
         );
     }
 }
@@ -1393,6 +1463,7 @@ class Operation extends React.Component {
                 hideFee={this.props.hideFee}
                 hidePending={this.props.hidePending}
                 fullDate={this.props.fullDate}
+                isMarketPage={this.props.isMarketPage}
             />
         ) : null;
 

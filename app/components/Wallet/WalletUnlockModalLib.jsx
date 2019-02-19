@@ -146,7 +146,7 @@ export const WalletDisplay = ({name, onUseOtherWallet}) => (
 export const CreateLocalWalletLink = ({onCreate}) => (
     <div className="login-hint">
         <Translate content="wallet.no_wallet" component="span" />{" "}
-        <span className="button" onClick={onCreate}>
+        <span className="button btn outline large" onClick={onCreate}>
             <Translate content="wallet.create_wallet" />
         </span>
     </div>

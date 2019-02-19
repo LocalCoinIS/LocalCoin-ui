@@ -30,3 +30,5 @@ export const italyFlag = require("!file-loader?name=asset-symbols/[name].svg!./i
 export const turkeyFlag = require("!file-loader?name=asset-symbols/[name].svg!./tr.svg");
 export const russiaFlag = require("!file-loader?name=asset-symbols/[name].svg!./ru.svg");
 export const japanFlag = require("!file-loader?name=asset-symbols/[name].svg!./jp.svg");
+
+export const otcBackground = require("!file-loader?name=asset-symbols/[name].jpg!./otc_background.jpg");

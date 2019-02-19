@@ -304,7 +304,7 @@ class OrderBook extends React.Component {
             let id = "exchange_header_style";
             let minus = margin + getMaxWidth("right-column");
             let style =
-                "@media only screen and (min-width: 1280px) { " +
+                "@media only screen and (min-width: 1000px) { " +
                 "body.localcoin .exchange-layout .grid-block.shrink.no-padding.overflow-visible.top-bar, body.localcoin .exchange-layout .main .grid-block.shrink.no-padding.overflow-visible.top-bar.left-cell-active { " +
                 "width: calc(100% - " +
                 minus +
@@ -977,7 +977,7 @@ class OrderBook extends React.Component {
                             <div className="custom-sticky-header-wrap">
                                 <div className="header-cell left vertical-table-cell-one custom-sticky-header">
                                     <span className="header-sub-title">
-                                        <AssetName name={baseSymbol} />
+                                        <AssetName name={baseSymbol} dataPlace={"bottom"} dataClass={"test"}/>
                                     </span>
                                 </div>
                                 <div className="header-cell vertical-table-cell-two custom-sticky-header">

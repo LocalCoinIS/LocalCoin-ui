@@ -1604,7 +1604,7 @@ body.localcoin .exchange-layout .grid-block.wrap.market-stats-container ul.marke
 		max-width: 100%
 		flex: 0 0 100%
 
-@media only screen and (min-width: 1280px)
+@media only screen and (min-width: 1101px)
 	body.localcoin .exchange-layout
 		.main.market.left-cell-active
 			#CenterContent
@@ -1690,7 +1690,7 @@ body.localcoin .exchange-layout .grid-block.wrap.market-stats-container ul.marke
 			.medium-6
 				flex: 0 0 50%!important
 				max-width: 50%!important
-@media only screen and (max-width: 1280px)
+@media only screen and (max-width: 1100px)
 	body.localcoin .exchange-layout
 		.grid-block.ps-container.ps-theme-default.ps-active-y
 			flex-direction: column
@@ -1716,7 +1716,7 @@ body.localcoin .exchange-layout .grid-block.wrap.market-stats-container ul.marke
 				flex: 0 0 100%!important
 				min-height: 260px
 				max-width: 100%!important
-@media only screen and (max-width: 1440px) and (min-width: 1280px)
+@media only screen and (max-width: 1440px) and (min-width: 1000px)
 	body.localcoin .exchange-layout
 		.small-12.no-padding.middle-content.medium-6.xlarge-4.order-1.buy-form,
 		.small-12.no-padding.middle-content.medium-6.xlarge-4.order-2.sell-form
@@ -1873,3 +1873,10 @@ body.localcoin .exchange-layout .grid-block.wrap.market-stats-container ul.marke
 
 body.localcoin .exchange-layout .grid-block.left-column.shrink.no-overflow
 	margin-top: -42px
+
+body.localcoin .table-container.grid-block.vertical.mymarkets-list.explorer-markets
+	height: calc(100vh - 354px)
+
+@media only screen and (max-width: 950px)
+	body.localcoin .table-container.grid-block.vertical.mymarkets-list.explorer-markets
+		max-height: calc(100vh - 394px)
