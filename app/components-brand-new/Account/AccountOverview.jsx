@@ -1144,7 +1144,228 @@ class AccountOverview extends React.Component {
 
         const accountPortfolio = (
             <div>
-123
+                <div className="dashboard__actions">
+                    <div className="container-fluid">
+                        <div className="row">
+                            <div className="col-xl-3 col-lg-6">
+                                <input
+                                    type="text"
+                                    placeholder="Filter"
+                                    onChange={this._handleFilterInput}
+                                />
+                            </div>
+                            <div className="col-xl-9 col-lg-12">
+                                <div className="dashboard__actions__filters">
+                                    {this._renderRadioButton(
+                                        counterpart.translate(
+                                            "account.hide_hidden"
+                                        ),
+                                        shownAssets != "active"
+                                            ? this._changeShownAssets.bind(
+                                                  this,
+                                                  "active"
+                                              )
+                                            : () => {},
+                                        !(shownAssets != "active")
+                                    )}
+                                    {hiddenBalances.length
+                                        ? this._renderRadioButton(
+                                              counterpart.translate(
+                                                  "account.show_hidden"
+                                              ),
+                                              shownAssets != "hidden"
+                                                  ? this._changeShownAssets.bind(
+                                                        this,
+                                                        "hidden"
+                                                    )
+                                                  : () => {},
+                                              !(shownAssets != "hidden")
+                                          )
+                                        : null}
+                                    {this._renderRadioButton(
+                                        counterpart.translate(
+                                            "account.show_visual"
+                                        ),
+                                        shownAssets != "visual"
+                                            ? this._changeShownAssets.bind(
+                                                  this,
+                                                  "visual"
+                                              )
+                                            : () => {},
+                                        !(shownAssets != "visual")
+                                    )}
+                                    <div>
+                                        <label className="hide0balances">
+                                            <input
+                                                name="isGoing"
+                                                type="checkbox"
+                                                checked={
+                                                    this.state.hide0balances
+                                                }
+                                                onChange={e =>
+                                                    this.setState({
+                                                        hide0balances: !this
+                                                            .state.hide0balances
+                                                    })
+                                                }
+                                            />
+                                            <span />
+                                            <span>
+                                                {counterpart.translate(
+                                                    "exchange.hide"
+                                                )}
+                                                &nbsp;0&nbsp;
+                                                {counterpart.translate(
+                                                    "transfer.balances"
+                                                )}
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Send Modal */}
+                <SendModal
+                    id="send_modal_portfolio"
+                    refCallback={e => {
+                        if (e) this.send_modal = e;
+                    }}
+                    from_name={this.props.account.get("name")}
+                    asset_id={this.state.send_asset || "1.3.0"}
+                />
+
+                {shownAssets != "visual" ? (
+                    <div className="dashboard__adaptive">
+                        <table className="dashboard__table blue-bg with-borders">
+                            <thead>
+                                <tr>
+                                    <th
+                                        style={{textAlign: "left"}}
+                                        className="clickable"
+                                        onClick={this._toggleSortOrder.bind(
+                                            this,
+                                            "alphabetic"
+                                        )}
+                                    >
+                                        <Translate
+                                            component="span"
+                                            content="account.asset"
+                                        />
+                                    </th>
+                                    <th
+                                        onClick={this._toggleSortOrder.bind(
+                                            this,
+                                            "qty"
+                                        )}
+                                        className="clickable"
+                                        style={{textAlign: "right"}}
+                                    >
+                                        <Translate content="account.qty" />
+                                    </th>
+                                    <th
+                                        onClick={this._toggleSortOrder.bind(
+                                            this,
+                                            "priceValue"
+                                        )}
+                                        className="column-hide-small clickable"
+                                        style={{textAlign: "right"}}
+                                    >
+                                        <Translate content="exchange.price" /> (
+                                        <AssetName name={preferredUnit} noTip />
+                                        )
+                                    </th>
+                                    <th
+                                        onClick={this._toggleSortOrder.bind(
+                                            this,
+                                            "changeValue"
+                                        )}
+                                        className="column-hide-small clickable"
+                                        style={{textAlign: "right"}}
+                                    >
+                                        <Translate content="account.hour_24_short" />
+                                    </th>
+                                    <th
+                                        onClick={this._toggleSortOrder.bind(
+                                            this,
+                                            "totalValue"
+                                        )}
+                                        style={{textAlign: "right"}}
+                                        className="column-hide-small clickable"
+                                    >
+                                        <TranslateWithLinks
+                                            noLink
+                                            string="account.eq_value_header"
+                                            keys={[
+                                                {
+                                                    type: "asset",
+                                                    value: preferredUnit,
+                                                    arg: "asset"
+                                                }
+                                            ]}
+                                            noTip
+                                        />
+                                    </th>
+                                    {showAssetPercent ? (
+                                        <th
+                                            style={{
+                                                textAlign: "right"
+                                            }}
+                                        >
+                                            <Translate
+                                                component="span"
+                                                content="account.percent"
+                                            />
+                                        </th>
+                                    ) : null}
+                                    <th>
+                                        <Translate content="header.payments" />
+                                    </th>
+                                    <th>
+                                        <Translate content="exchange.buy" />
+                                    </th>
+                                    <th>
+                                        <Translate content="modal.deposit.submit" />
+                                    </th>
+                                    <th>
+                                        <Translate content="modal.withdraw.submit" />
+                                    </th>
+                                    <th>
+                                        <Translate content="account.trade" />
+                                    </th>
+                                    <th>
+                                        <Translate content="exchange.borrow_short" />
+                                    </th>
+                                    <th>
+                                        <Translate content="account.settle" />
+                                    </th>
+                                    <th>
+                                        <Translate content="modal.reserve.submit" />
+                                    </th>
+                                    <th className="column-hide-small">
+                                        <Translate
+                                            content={
+                                                shownAssets == "active"
+                                                    ? "exchange.hide"
+                                                    : "account.perm.show"
+                                            }
+                                        />
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {shownAssets == "hidden" &&
+                                hiddenBalances.length
+                                    ? hiddenBalances
+                                    : includedBalances}
+                            </tbody>
+                        </table>
+                    </div>
+                ) : (
+                    <AccountTreemap balanceObjects={includedBalancesList} />
+                )}
             </div>
         );
 
