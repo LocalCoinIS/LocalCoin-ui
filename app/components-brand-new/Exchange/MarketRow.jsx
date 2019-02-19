@@ -109,7 +109,7 @@ class MarketRow extends React.Component {
                                     base.get("symbol")
                                 )}
                                 key={column.index}
-                            >123
+                            >
                                 <Icon
                                     className={starClass}
                                     name="fi-star"
