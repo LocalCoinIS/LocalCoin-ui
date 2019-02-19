@@ -977,7 +977,7 @@ class OrderBook extends React.Component {
                             <div className="custom-sticky-header-wrap">
                                 <div className="header-cell left vertical-table-cell-one custom-sticky-header">
                                     <span className="header-sub-title">
-                                        <AssetName name={baseSymbol} />
+                                        <AssetName name={baseSymbol} dataPlace={"right"} dataClass={"test"}/>
                                     </span>
                                 </div>
                                 <div className="header-cell vertical-table-cell-two custom-sticky-header">

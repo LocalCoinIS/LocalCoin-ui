@@ -108,6 +108,7 @@ class AssetName extends React.Component {
                     data-tip={tooltip}
                     data-place={this.props.dataPlace}
                     data-html={true}
+                    data-class={this.props.dataClass}
                 >
                     <span className="asset-prefix-replaced">{prefix}</span>
                     <span>{replacedName}</span>
