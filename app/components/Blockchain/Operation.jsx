@@ -101,11 +101,73 @@ class Row extends React.Component {
 
         return (
             isMarketPage ? (
-            <tr>
-                <td>
-123
-                </td>
-            </tr>
+            <div>
+                {this.props.includeOperationId ? (
+                    <div
+                        style={{textAlign: "left"}}
+                        className="left-td column-hide-tiny"
+                    >
+                        {this.props.operationId}
+                    </div>
+                ) : null}
+                {hideOpLabel ? null : (
+                    <div
+                        style={{textAlign: "left"}}
+                        className="left-td column-hide-tiny"
+                    >
+                        <Link
+                            className="inline-block"
+                            data-place="bottom"
+                            data-tip={counterpart.translate(
+                                "tooltip.show_block",
+                                {
+                                    block: utils.format_number(
+                                        this.props.block,
+                                        0
+                                    )
+                                }
+                            )}
+                            to={`/block/${this.props.block}`}
+                        >
+                            <TransactionLabel color={color} type={type} />
+                        </Link>
+                    </div>
+                )}
+                <div>
+                    <FormattedAsset
+                        color="fee"
+                        amount={this.props.fee.amount}
+                        asset={this.props.fee.asset_id}
+                    />
+                </div>
+                <div style={{padding: "8px 0px", textAlign: "left"}}>
+                    <div>
+                        <span>{this.props.info}</span>
+                    </div>
+                    <div style={{fontSize: 14, paddingTop: 5}}>
+                        {/*<span>{counterpart.translate("explorer.block.title").toLowerCase()} <Link to={`/block/${block}`}>{utils.format_number(block, 0)}</Link></span>*/}
+                        {!this.props.hideFee ? (
+                            <span className="facolor-fee">
+                                {" "}
+                                -{" "}
+                                <FormattedAsset
+                                    amount={fee.amount}
+                                    asset={fee.asset_id}
+                                />
+                            </span>
+                        ) : null}
+                        {pending ? <span> - {pending}</span> : null}
+                    </div>
+                </div>
+                <div>
+                    {!this.props.hideDate ? (
+                        <BlockTime
+                            block_number={block}
+                            fullDate={this.props.fullDate}
+                        />
+                    ) : null}
+                </div>
+            </div>
 
             ) : (
             <tr>
