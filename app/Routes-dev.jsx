@@ -341,7 +341,7 @@ const routes = (
             components={{
                 headerBlock: Header,
                 sidebarBlock: Sidebar,
-                contentBlock: AccountPage,
+                contentBlock: DashboardPage,
                 footerBlock: Footer
             }}
         >
