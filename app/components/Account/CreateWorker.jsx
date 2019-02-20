@@ -172,7 +172,7 @@ class CreateWorker extends React.Component {
                             className="button-group"
                             onClick={this.onSubmit.bind(this)}
                         >
-                            <div className="button" type="submit">
+                            <div className="button btn large inverted" type="submit">
                                 Publish
                             </div>
                         </div>
