@@ -54,6 +54,9 @@ class Tabs extends React.Component {
                     onClick={e => {
                         e.preventDefault();
                         this._changeTab({title, link});
+                        if(this.props.updateModal) {
+                            this.props.updateModal()
+                        };
                     }}
                 >
                     <h4>{counterpart.translate(title)}</h4>

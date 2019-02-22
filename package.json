@@ -1,6 +1,6 @@
 {
   "name": "LocalCoin2-light",
-  "version": "2.0.180526",
+  "version": "1.0.0",
   "description": "Advanced wallet interface for the LocalCoin financial blockchain.",
   "homepage": "https://github.com/localcoinis/localcoin-ui",
   "author": "Sigve Kvalsvik <kvalsvik.crypto@gmail.com>",
@@ -132,7 +132,7 @@
     "alt-react": "git+https://github.com/bitshares/react.git",
     "bignumber.js": "^4.0.0",
     "bitsharesjs": "git+https://github.com/LocalCoinIS/localcoinjs.git#09a146b",
-    "bitsharesjs-ws": "git+https://github.com/LocalCoinIS/localcoinjs-ws#806b62e",
+    "bitsharesjs-ws": "git+https://github.com/LocalCoinIS/localcoinjs-ws#f8eed1293f65cdf3e4953c335e8ba337b29a2384",
     "browser-locale": "^1.0.3",
     "classnames": "^2.2.1",
     "cookies-js": "^1.2.1",

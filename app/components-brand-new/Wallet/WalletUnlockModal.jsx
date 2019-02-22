@@ -129,30 +129,41 @@ class WalletUnlockModal extends React.Component {
         const {modalId, passwordLogin} = this.props;
 
         ZfApi.subscribe(modalId, (name, msg) => {
-            const {isOpen} = this.state;
+          const {isOpen} = this.state;
 
-            if (name !== modalId) return;
-            if (msg === "close" && isOpen) {
-                this.handleModalClose();
-            } else if (msg === "open" && !isOpen) {
-                this.handleModalOpen();
-            }
+          if (name !== modalId) return;
+          if (msg === "close" && isOpen) {
+            this.handleModalClose();
+          } else if (msg === "open" && !isOpen) {
+            this.handleModalOpen();
+          }
         });
 
         if (passwordLogin) {
-            const {password_input, account_input} = this.refs;
-            const {accountName} = this.state;
+          const {password_input, account_input} = this.refs;
+          const {accountName} = this.state;
 
-            if (accountName && password_input) {
-                password_input.focus();
-            } else if (
-                account_input &&
-                typeof account_input.focus === "function"
-            ) {
-                account_input.focus();
-            }
+          if (accountName && password_input) {
+            password_input.focus();
+          } else if (
+            account_input &&
+            typeof account_input.focus === "function"
+          ) {
+            account_input.focus();
+          }
         }
-    }
+        document.addEventListener("click", this.overlayClosePopup);
+      }
+
+    componentDidUnmount() {
+        document.removeEventListener("click", this.overlayClosePopup);
+     }
+
+    overlayClosePopup = e => {
+        if (e.target.classList.contains("modal-overlay")) {
+          this.handleModalClose();
+        };
+    };
 
     componentDidUpdate() {
         const {resolve, modalId, isLocked} = this.props;
