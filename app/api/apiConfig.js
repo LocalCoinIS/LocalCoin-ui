@@ -77,8 +77,10 @@ export const settingsAPIs = {
         {url: "wss://helsinki.localcoin.is", location: "Finland - Helsinki"},
         {url: "wss://moscow.localcoin.is", location: "Russia - Moscow"},
         {url: "wss://ru.localcoin.is", location: "Russia"},
-        {url: "wss://localcoin.airdroptelegramknights.io", location: "North America - Canada - Quebec"},
-        {url: "wss://bitshares.openledger.info/ws", location: "TEST"}
+        {url: "wss://quebec.airdroptelegramknights.io", location: "Canada - Quebec"},
+        {url: "wss://tokio.airdroptelegramknights.io", location: "Japan - Tokio"},
+        {url: "wss://charlotte.airdroptelegramknights.io", location: "USA - Charlotte NC"},
+        {url: "wss://test.localcoin.is", location: "TestNet"}
     ],
     DEFAULT_FAUCET: "https://faucet.localcoin.is", // 2018-12-infrastructure worker proposal
     TESTNET_FAUCET: "https://faucet.testnet.localcoin.is",
