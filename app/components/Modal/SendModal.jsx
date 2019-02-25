@@ -440,7 +440,6 @@ class SendModal extends React.Component {
 
     toChanged(to_name) {
         this.setState({to_name, error: null});
-        // this.state.
     }
 
     onToAccountChanged(to_account) {
