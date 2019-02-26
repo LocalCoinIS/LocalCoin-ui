@@ -75,7 +75,7 @@ export default class PrivateKeyView extends Component {
                                             </p>
                                             <div className="button-group">
                                                 <div
-                                                    className="button"
+                                                    className="button btn large outline"
                                                     onClick={this.onHide.bind(
                                                         this
                                                     )}
@@ -98,7 +98,7 @@ export default class PrivateKeyView extends Component {
                                     ) : (
                                         <span>
                                             <div
-                                                className="button"
+                                                className="button btn large outline"
                                                 onClick={this.onShow.bind(this)}
                                             >
                                                 <Translate content="account.perm.show" />
@@ -134,7 +134,7 @@ export default class PrivateKeyView extends Component {
                     <div className="button-group">
                         <div
                             onClick={this.onClose.bind(this)}
-                            className=" button"
+                            className=" button btn large outline"
                         >
                             <Translate content="transfer.close" />
                         </div>

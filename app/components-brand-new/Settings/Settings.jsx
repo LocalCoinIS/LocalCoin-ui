@@ -376,19 +376,19 @@ class Settings extends React.Component {
                                     }
                                 />
                                 {activeEntry != "access" && (
-                                    <div className="options__form__row">
-                                        <Translate
-                                            unsafe
-                                            style={{
-                                                paddingTop: 5,
-                                                marginBottom: 30
-                                            }}
-                                            content={`settings.${
-                                                menuEntries[activeSetting]
-                                            }_text`}
-                                            className="panel-bg-color"
-                                        />
-                                    </div>
+                                
+                                    <Translate
+                                        unsafe
+                                        style={{
+                                            paddingTop: 5,
+                                            marginBottom: 30
+                                        }}
+                                        content={`settings.${
+                                            menuEntries[activeSetting]
+                                        }_text`}
+                                        className="panel-bg-color"
+                                    />
+                                
                                 )}
                                 {entries}
                             </div>

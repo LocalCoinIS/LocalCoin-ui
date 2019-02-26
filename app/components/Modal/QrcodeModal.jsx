@@ -125,7 +125,7 @@ class QrcodeModal extends React.Component {
                             <div className="button-group">
                                 {this.state.isShowQrcode == false ? (
                                     <button
-                                        className="button"
+                                        className="button btn large inverted"
                                         data-place="bottom"
                                         data-html
                                         onClick={this.onPasswordEnter}
@@ -134,7 +134,7 @@ class QrcodeModal extends React.Component {
                                     </button>
                                 ) : null}
                                 <button
-                                    className="button primary hollow"
+                                    className="button btn large outline"
                                     data-place="bottom"
                                     data-html
                                     onClick={this.onCancel}

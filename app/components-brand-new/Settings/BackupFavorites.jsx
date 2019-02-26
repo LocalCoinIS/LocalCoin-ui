@@ -23,7 +23,7 @@ class BackupFavorites extends React.Component {
                 </p>
                 <button
                     onClick={this.makeBackup.bind(this)}
-                    className="btn button success large flat"
+                    className="btn large outline"
                 >
                     <Translate content="settings.backup_favoritesbtn" />
                 </button>
