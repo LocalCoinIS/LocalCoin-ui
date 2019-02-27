@@ -12,7 +12,7 @@ import counterpart from "counterpart";
 import Icon from "../Icon/Icon";
 import cnames from "classnames";
 import PropTypes from "prop-types";
-
+import {csvIcon} from "../../assets/brand-new-layout/img/images";
 const {operations} = grapheneChainTypes;
 const alignLeft = {textAlign: "left"};
 const alignRight = {textAlign: "right"};
@@ -313,11 +313,7 @@ class RecentTransactions extends React.Component {
                                 )}
                                 data-place="bottom"
                             >
-                                <Icon
-                                    name="excel"
-                                    title="icons.excel"
-                                    className="icon-14px"
-                                />
+                                <img src={csvIcon} alt="" />
                             </a>
                         </span>
                     ) : null}
