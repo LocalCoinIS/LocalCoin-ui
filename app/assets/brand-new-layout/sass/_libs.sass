@@ -1880,3 +1880,28 @@ body.localcoin .table-container.grid-block.vertical.mymarkets-list.explorer-mark
 @media only screen and (max-width: 950px)
 	body.localcoin .table-container.grid-block.vertical.mymarkets-list.explorer-markets
 		max-height: calc(100vh - 394px)
+
+
+@media only screen and (max-width: 500px)
+	body.localcoin #transaction_confirm_modal
+		.grid-block.vertical.no-padding.no-margin
+			>.grid-block.shrink
+				flex-direction: column
+			.button-group
+				order: 2
+	.modal.buy-table-modal .small-6
+		float: none!important
+		width: 100%!important
+		flex: 0 0 100%
+		max-width: 100%
+@media only screen and (max-width: 640px)
+	body.localcoin .exchange-layout .grid-block.main-content.vertical.no-overflow
+		height: auto
+@media only screen and (max-width: 480px)
+		body.localcoin .change-pair
+			padding: 0!important
+@media only screen and (max-width: 576px)
+	body.localcoin .close-button
+		font-size: 50px!important
+	.top-stats li
+		min-height: 36px

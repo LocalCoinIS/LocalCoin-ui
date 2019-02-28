@@ -164,11 +164,13 @@ class Header extends React.Component {
         document.body.addEventListener("click", this.onBodyClick, {
             capture: false,
             passive: true
+            
         });
         let topContainer = document.querySelector(".balance__list_scroll");
         if (topContainer) {
             Ps.initialize(topContainer);
         }
+        document.addEventListener('click', this.closeMenuOnBodyClick);
     }
 
     componentWillUnmount() {
@@ -178,6 +180,7 @@ class Header extends React.Component {
         }
 
         document.body.removeEventListener("click", this.onBodyClick);
+        document.removeEventListener('click', this.closeMenuOnBodyClick);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -386,6 +389,12 @@ class Header extends React.Component {
         this.setState({
             dropdownActive: !this.state.dropdownActive
         });
+    }
+
+    closeMenuOnBodyClick(e) {
+        let target = e.target;
+        let container = document.querySelector('.mobile');
+        if (!container.contains(target)) document.querySelector('.mobile__menu').classList.remove("show");
     }
 
     onBodyClick(e) {
