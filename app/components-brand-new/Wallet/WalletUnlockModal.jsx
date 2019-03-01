@@ -54,7 +54,8 @@ class WalletUnlockModal extends React.Component {
             customError: null,
             isOpen: false,
             restoringBackup: false,
-            stopAskingForBackup: false
+            stopAskingForBackup: false,
+            isPassword: false
         };
     };
 
@@ -270,6 +271,18 @@ class WalletUnlockModal extends React.Component {
         }
     };
 
+    onInputPassword = e => {
+        if(e.value.length > 0) {
+            this.setState({
+                isPassword: true
+            });
+        } else {
+            this.setState({
+                isPassword: false
+            });
+        }
+    }
+
     closeRedirect = path => {
         WalletUnlockActions.cancel();
         this.context.router.push(path);
@@ -376,7 +389,8 @@ class WalletUnlockModal extends React.Component {
             passwordError,
             customError,
             accountName,
-            stopAskingForBackup
+            stopAskingForBackup,
+            isPassword
         } = this.state;
 
         const noWalletNames = !(walletNames.size > 0);
@@ -489,6 +503,7 @@ class WalletUnlockModal extends React.Component {
                             <PasswordInput
                                 ref="password_input"
                                 onEnter={this.handleLogin}
+                                onChange={this.onInputPassword}
                                 noValidation
                                 labelClass="login-label"
                             />
@@ -504,6 +519,7 @@ class WalletUnlockModal extends React.Component {
                     <LoginButtons
                         onLogin={this.handleLogin}
                         backupLogin={this.shouldUseBackupLogin()}
+                        isPassword={isPassword}
                     />
                 </form>
             </BaseModal>
