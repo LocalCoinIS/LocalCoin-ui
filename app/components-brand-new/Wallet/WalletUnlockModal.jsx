@@ -96,7 +96,9 @@ class WalletUnlockModal extends React.Component {
         const hiddenPassError = document.getElementById(
             "custom-error-password"
         );
-        hiddenPassError.classList.add("hidden");
+        if(hiddenPassError) {
+            hiddenPassError.classList.add("hidden");
+        }
         this.setState({isOpen: true}, () => {
             const {passwordLogin} = this.props;
             if (!passwordLogin) {
@@ -191,7 +193,9 @@ class WalletUnlockModal extends React.Component {
             const hiddenPassError = document.getElementById(
                 "custom-error-password"
             );
-            hiddenPassError.classList.remove("hidden");
+            if(hiddenPassError) {
+                hiddenPassError.classList.remove("hidden");
+            }
             this.setState({passwordError: true});
         } else {
             const password_input = this.passwordInput();
