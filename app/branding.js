@@ -88,15 +88,11 @@ export function getMyMarketsBases() {
 export function getMyMarketsQuotes() {
     let tokens = {
         nativeTokens: [
-            "BTC",
-            "BTS",
-            "CNY",
-            "EUR",
+            "LLC", "USD", "EUR", "CNY", "RUB","BRL", "USDT", "BTC", "XMR", "EOS","XRP", "BCH", "ZEC", "TUSD", "ETH",
             "GOLD",
             "KRW",
             "RUBLE",
-            "SILVER",
-            "USD"
+            "SILVER"
         ],
         bridgeTokens: ["BRIDGE.BCO", "BRIDGE.BTC", "BRIDGE.MONA", "BRIDGE.ZNY"],
         gdexTokens: ["GDEX.BTC", "GDEX.BTO", "GDEX.EOS", "GDEX.ETH"],

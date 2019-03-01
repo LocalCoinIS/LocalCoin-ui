@@ -291,17 +291,6 @@ class FirstLevel extends React.Component {
             />
         ));
 
-        console.log("-------------");
-        console.log(failed);
-        console.log(isOK);
-        console.log(!reviewPeriodTime);
-        console.log("+++++++++++++++");
-        console.log(this.state);
-        console.log(requiredPermissions);
-        console.log("+++++++++++++++");
-        console.log(!noFail);
-        console.log(this.props.proposal);
-        console.log("-------------");
         return (
             <div className="nested-approval-state">
                 <div className="root-status">
