@@ -345,9 +345,6 @@ class MarketGroup extends React.Component {
 
         let marketRows = markets
             .map(market => {
-                console.log("-----");
-                console.log(this.props.defaultMarkets.has(market.id), market.id);
-                console.log("-----");
                 if (
                     this.props.onlyLiquid &&
                     marketStats.get(market.id) &&
