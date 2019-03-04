@@ -89,7 +89,7 @@ export const BackupWarning = ({onChange, checked}) => (
 
 export const LoginButtons = ({onLogin, backupLogin, isPassword}) => (
     <button
-        className={`btn large inverted ${!isPassword ? "disabled" : ""}`}
+        className={`btn large inverted ${!isPassword ? "inactive" : ""}`}
         data-place="bottom"
         data-html
         data-tip={counterpart.translate("tooltip.login")}
