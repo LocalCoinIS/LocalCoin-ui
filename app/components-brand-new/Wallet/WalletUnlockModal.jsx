@@ -179,6 +179,7 @@ class WalletUnlockModal extends React.Component {
     }
 
     validate = (password, account) => {
+        console.log(1111111);
         const {passwordLogin, resolve} = this.props;
         const {stopAskingForBackup} = this.state;
 
@@ -242,16 +243,20 @@ class WalletUnlockModal extends React.Component {
     };
 
     handleLogin = e => {
+
         if (e) e.preventDefault();
         const {passwordLogin, backup} = this.props;
         const {walletSelected, accountName} = this.state;
         if (!passwordLogin && !walletSelected) {
-
             this.setState({
                 customError: counterpart.translate(
                     "wallet.ask_to_select_wallet"
                 )
             });
+            const hiddenPassError = this.refs.custom_error_password;
+            if(hiddenPassError) {
+                hiddenPassError.classList.remove("hidden");
+            }
         } else {
             this.setState({passwordError: null}, () => {
                 const password_input = this.passwordInput();
