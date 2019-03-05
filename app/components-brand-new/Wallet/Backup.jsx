@@ -301,7 +301,7 @@ class Download extends Component {
 
     render() {
         return (
-            <div className="button" onClick={this.onDownload.bind(this)}>
+            <div className="button btn large outline" onClick={this.onDownload.bind(this)}>
                 <Translate content="wallet.download" />
             </div>
         );
