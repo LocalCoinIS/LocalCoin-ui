@@ -62,7 +62,7 @@ class SettingsStore {
             showAssetPercent: false,
             walletLockTimeout: 60 * 10,
             themes: "darkTheme",
-            passwordLogin: true,
+            passwordLogin: false,
             browser_notifications: {
                 allow: true,
                 additional: {

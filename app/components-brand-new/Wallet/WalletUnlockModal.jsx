@@ -179,7 +179,6 @@ class WalletUnlockModal extends React.Component {
     }
 
     validate = (password, account) => {
-        console.log(1111111);
         const {passwordLogin, resolve} = this.props;
         const {stopAskingForBackup} = this.state;
 
