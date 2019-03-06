@@ -193,6 +193,7 @@ class SettingsStore {
             // Default markets setup
             let topMarkets = {
                 markets_4018d784: getMyMarketsQuotes(),
+                markets_e2f01404: getMyMarketsQuotes(),
                 markets_39f5e2ed: [
                     // TESTNET
                     "PEG.FAKEUSD",
@@ -202,6 +203,7 @@ class SettingsStore {
 
             let bases = {
                 markets_4018d784: getMyMarketsBases(),
+                markets_e2f01404: getMyMarketsBases(),
                 markets_39f5e2ed: [
                     // TESTNET
                     "TEST"
@@ -210,12 +212,13 @@ class SettingsStore {
 
             let coreAssets = {
                 markets_4018d784: "BTS",
+                markets_e2f01404: "LLC",
                 markets_39f5e2ed: "TEST"
             };
             let coreAsset = coreAssets[this.starredKey] || "LLC";
             this.defaults.unit[0] = coreAsset;
 
-            let defaultBases = bases[this.starredKey] || bases.markets_4018d784;
+            let defaultBases = bases[this.starredKey] || bases.markets_4018d784 || bases.markets_e2f01404;
             let storedBases = ss.get(this.basesKey, []);
 
             this.preferredBases = Immutable.List(
