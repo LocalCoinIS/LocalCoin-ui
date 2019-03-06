@@ -193,10 +193,6 @@ class LoginSelector extends React.Component {
                                     className="button primary outline"
                                     style={{color: "#00195b"}}
                                     onClick={() => {
-                                        SettingsActions.changeSetting({
-                                            setting: "passwordLogin",
-                                            value: true
-                                        });
                                         WalletUnlockActions.unlock.defer();
                                     }}
                                 >
