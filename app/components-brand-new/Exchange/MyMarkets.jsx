@@ -1370,7 +1370,7 @@ export default connect(
                 starredMarkets: SettingsStore.getState().starredMarkets,
                 onlyLiquid: SettingsStore.getState().viewSettings.get(
                     "onlyLiquid",
-                    true
+                    false
                 ),
                 defaultMarkets: SettingsStore.getState().defaultMarkets,
                 viewSettings: SettingsStore.getState().viewSettings,
