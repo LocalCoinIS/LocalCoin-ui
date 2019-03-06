@@ -140,7 +140,7 @@ class Row extends React.Component {
                         asset={this.props.fee.asset_id}
                     />
                 </div>
-                <div style={{padding: "8px 0px", textAlign: "left"}}>
+                    <div style={{ padding: "8px 0px", textAlign: "left"}}>
                     <div>
                         <span>{this.props.info}</span>
                     </div>
@@ -210,7 +210,7 @@ class Row extends React.Component {
                     />
                 </td>
                 <td style={{padding: "8px 0px", textAlign: "left"}}>
-                    <div>
+                    <div style={{paddingLeft: 30}}>
                         <span>{this.props.info}</span>
                     </div>
                     <div style={{fontSize: 14, paddingTop: 5}}>
