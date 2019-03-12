@@ -33,7 +33,7 @@ class CreateAccount extends React.Component {
             loading: false,
             hide_refcode: true,
             show_identicon: false,
-            step: 2,
+            step: 1,
             brainkey: "test"
         };
         this.onFinishConfirm = this.onFinishConfirm.bind(this);
@@ -114,7 +114,6 @@ class CreateAccount extends React.Component {
                     .then(() => {
                         // User registering his own account
                         if (this.state.registrar_account) {
-                            console.log(11111);
                             FetchChain("getAccount", name, undefined, {
                                 [name]: true
                             }).then(() => {
@@ -127,7 +126,6 @@ class CreateAccount extends React.Component {
                                 this.onFinishConfirm
                             );
                         } else {
-                            console.log(2222);
                             // Account registered by the faucet
                             FetchChain("getAccount", name, undefined, {
                                 [name]: true
@@ -319,10 +317,10 @@ class CreateAccount extends React.Component {
                 {/* Skip to step 3 */}
                 {!hasWallet || firstAccount ? null : (
                     <div style={{paddingTop: 20}}>
-                        <label>12345678
+                        <label>
                             <a
                                 onClick={() => {
-                                    this.setState({step: 4});
+                                    this.setState({step: 3});
                                 }}
                             >
                                 <Translate content="wallet.go_get_started" />
@@ -598,8 +596,6 @@ class CreateAccount extends React.Component {
                     {step === 1
                         ? this._renderAccountCreateForm()
                         : step === 2
-                            ? this._renderBackupBrainKey()
-                            : step === 3
                                 ? this._renderBackup()
                                 : this._renderGetStarted()}
                 </div>
@@ -608,8 +604,6 @@ class CreateAccount extends React.Component {
                     {step === 1
                         ? this._renderAccountCreateText()
                         : step === 2
-                            ? this._renderBackupBrainKeyText()
-                                : step === 3
                                     ? this._renderBackupText()
                                     : this._renderGetStartedText()}
 
