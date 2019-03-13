@@ -74,7 +74,6 @@
 		font-size: 14px
 		line-height: 1.0
 		color: #00195b
-		margin-bottom: 0
 	input[type='number']
 		-moz-appearance:textfield
 	input::-webkit-outer-spin-button,
@@ -414,14 +413,13 @@ body.localcoin
 	.footer-line
 		display: flex
 		align-items: center
+		justify-content: flex-end
 	.footer-info
 		display: flex
 		flex-direction: column
 		align-items: flex-end
-		margin-left: auto
 		font-size: 12px
 		border-left: 1px solid hsla(0,0%,50%,.45)
-		padding-left: 10px
 		cursor: pointer
 		padding: 0 10px 0 10px
 		&:hover
@@ -446,6 +444,12 @@ body.localcoin
 			font-style: normal
 			text-transform: lowercase
 			font-variant: small-caps
+	.chatbro_minimized_chat
+			pointer-events: none
+	.chatbro_movable_chat .chatbro_minimized_header
+			opacity: 0!important
+			pointer-events: none!important
+			transition: none!important
 	.header
 		background-color: #001b60
 		position: fixed
@@ -522,7 +526,8 @@ body.localcoin
 		&__list
 			position: absolute
 			top: 52px
-			left: -13px
+			left: auto
+			right: -36px
 			display: flex
 			flex-direction: column
 			opacity: 0
@@ -798,7 +803,7 @@ body.localcoin
 			background-color: #050f2a
 		span
 			color: #fff!important
-	.btn.large.inverted.disabled
+	.btn.large.inverted.inactive
 		opacity: 0.5
 	.btn.orange
 		border-color: #ce7925
@@ -1647,6 +1652,8 @@ body.localcoin
 			&__item
 				margin-bottom: 0
 				border-bottom: 1px solid #bfd7f4
+				span
+					font-size: 16px
 				&:last-child
 					border-bottom: 0
 			&__link
@@ -1657,6 +1664,8 @@ body.localcoin
 			&__row
 				margin-bottom: 15px
 				line-height: 1
+				label
+					margin-bottom: 0
 			&__row:last-child
 				margin-top: 30px
 			&__status
@@ -1892,7 +1901,7 @@ body.localcoin
 					border-top: 1px solid #f0f4f8
 					line-height: 36px
 					&:hover
-						background-color: #e0e8f1
+						background-color: #dce6f2
 					&:before
 						display: none
 				a
@@ -1932,11 +1941,13 @@ body.localcoin .chatbro_container .chatbro_movable_chat
 	min-width: 330px
 body.localcoin #incognito
 	background-color: #e5ecf5
-	color: red
+	color: #0000ff
 	font-size: 1.5rem
 	line-height: 1.3
+	padding: 10px 0
+	height: auto
 	*
-		color: red
+		color: #0000ff
 		font-size: 24px
 		line-height: 1.3
 		font-weight: bold
@@ -1948,6 +1959,13 @@ body.localcoin .button-group.no-margin.account-overview.bordered-header.content-
 
 
 
+body.localcoin .icon:hover svg
+	opacity: .5
+body.localcoin .options__setup
+	label
+		margin-bottom: 0
+	.select
+		margin-bottom: 10px
 body.localcoin .page-otc
 	padding: 16px 24px
 	width: 100%
@@ -1957,3 +1975,7 @@ body.localcoin div.api-node>div:nth-child(3)
 	a
 		display: inline-block
 		margin: 0 5px
+
+
+.options__nav__item.is-active
+	background-color: #dce6f2

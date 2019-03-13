@@ -20,6 +20,7 @@ import ReactTooltip from "react-tooltip";
 import utils from "common/utils";
 import SettingsActions from "actions/SettingsActions";
 import counterpart from "counterpart";
+import {hash} from "bitsharesjs/es";
 
 class CreateAccount extends React.Component {
     constructor() {
@@ -32,7 +33,8 @@ class CreateAccount extends React.Component {
             loading: false,
             hide_refcode: true,
             show_identicon: false,
-            step: 1
+            step: 1,
+            brainkey: "test"
         };
         this.onFinishConfirm = this.onFinishConfirm.bind(this);
 
@@ -385,6 +387,50 @@ class CreateAccount extends React.Component {
         );
     }
 
+    _renderBackupBrainKey() {
+        var sha1 = hash
+            .sha1(this.state.brainkey)
+            .toString("hex")
+            .substring(0, 4);
+        return (
+            <div>
+                <h3>
+                    <Translate content="wallet.brainkey" />
+                </h3>
+                <div className="card">
+                    <div className="card-content">
+                        <h5>{this.state.brainkey}</h5>666
+                    </div>
+                </div>
+                <div style={{padding: "10px 0"}}>
+                        <pre className="no-overflow">
+                            sha1 hash of your brainkey: {sha1}
+                        </pre>
+                </div>
+                <hr />
+                <div style={{padding: "10px 0 20px 0"}}>
+                    <Translate content="wallet.brainkey_w1" />
+                    <br />
+                    <Translate content="wallet.brainkey_w2" />
+                    <br />
+                    <Translate content="wallet.brainkey_w3" />
+                </div>
+
+                <button
+                    className="btn large outline button success"
+                    onClick={this.onComplete.bind(this)}
+                >
+                    <Translate content="wallet.verify" />
+                </button>
+            </div>
+        );
+    }
+
+    onComplete(brnkey) {
+        this.setState({verified: true});
+        WalletActions.setBrainkeyBackupDate();
+    }
+
     _renderBackup() {
         return (
             <div className="backup-submit">
@@ -402,6 +448,13 @@ class CreateAccount extends React.Component {
             step: 3
         });
     };
+
+    _renderBackupBrainKeyText() {
+        return (
+            <div>qwe
+            </div>
+        );
+    }
 
     _renderBackupText() {
         return (
@@ -543,16 +596,17 @@ class CreateAccount extends React.Component {
                     {step === 1
                         ? this._renderAccountCreateForm()
                         : step === 2
-                            ? this._renderBackup()
-                            : this._renderGetStarted()}
+                                ? this._renderBackup()
+                                : this._renderGetStarted()}
                 </div>
 
                 <div style={{maxWidth: "95vw", paddingTop: "2rem"}}>
                     {step === 1
                         ? this._renderAccountCreateText()
                         : step === 2
-                            ? this._renderBackupText()
-                            : this._renderGetStartedText()}
+                                    ? this._renderBackupText()
+                                    : this._renderGetStartedText()}
+
                 </div>
                 <Link to="/">
                     <button className="button btn large outline">

@@ -62,7 +62,7 @@ class SettingsStore {
             showAssetPercent: false,
             walletLockTimeout: 60 * 10,
             themes: "darkTheme",
-            passwordLogin: true,
+            passwordLogin: false,
             browser_notifications: {
                 allow: true,
                 additional: {
@@ -193,6 +193,7 @@ class SettingsStore {
             // Default markets setup
             let topMarkets = {
                 markets_4018d784: getMyMarketsQuotes(),
+                markets_806101b8: getMyMarketsQuotes(),
                 markets_39f5e2ed: [
                     // TESTNET
                     "PEG.FAKEUSD",
@@ -202,6 +203,7 @@ class SettingsStore {
 
             let bases = {
                 markets_4018d784: getMyMarketsBases(),
+                markets_806101b8: getMyMarketsBases(),
                 markets_39f5e2ed: [
                     // TESTNET
                     "TEST"
@@ -210,6 +212,7 @@ class SettingsStore {
 
             let coreAssets = {
                 markets_4018d784: "BTS",
+                markets_806101b8: "LLC",
                 markets_39f5e2ed: "TEST"
             };
             let coreAsset = coreAssets[this.starredKey] || "LLC";

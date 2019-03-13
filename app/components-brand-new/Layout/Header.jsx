@@ -38,6 +38,7 @@ import {
 } from "../../assets/brand-new-layout/img/images";
 import onClickOutside from "react-onclickoutside";
 import Ps from "perfect-scrollbar";
+import LLCBridgeModal from "../../components/DepositWithdraw/llcgateway/LLCBridgeModal";
 
 class SettingsMenuUnWrapped extends React.Component {
     constructor(props) {
@@ -124,7 +125,8 @@ class Header extends React.Component {
         this.state = {
             active: context.location.pathname,
             accountsListDropdownActive: false,
-            selectedAsset: "LLC"
+            selectedAsset: "LLC",
+            isBridgeModalVisible: false,
         };
 
         this.unlisten = null;
@@ -142,6 +144,7 @@ class Header extends React.Component {
         this.onBodyClick = this.onBodyClick.bind(this);
         this.onBurgerClick = this.onBurgerClick.bind(this);
         this.closeMobileMenu = this.closeMobileMenu.bind(this);
+        this.onShowModal = this.onShowModal.bind(this);
     }
 
     componentWillMount() {
@@ -241,6 +244,56 @@ class Header extends React.Component {
         this._closeDropdown();
         this.refs.withdraw_modal_new.show();
     }
+
+    onShowModal() {
+        let self = this;
+        if (self.isUnauthorizedUser()) {
+            return;
+        }
+        else if (self.props.locked) {
+            if (WalletDb.isLocked()) {
+                WalletUnlockActions.unlock()
+                    .then(() => {
+                        AccountActions.tryToSetCurrentAccount();
+                        self.setState({
+                            isBridgeModalVisible: true
+                        });
+                    })
+                    .catch(() => {
+                    });
+            } else {
+                WalletUnlockActions.lock();
+            }
+        }
+        else {
+            this.setState(
+                {
+                    isBridgeModalVisible: false
+                },
+                function() {
+                    self.setState({
+                        isBridgeModalVisible: true
+                    });
+                }
+            );
+        };
+
+    }
+
+    _createAccountLink = null;
+    isUnauthorizedUser(route) {
+        //for exchange allow access forever
+        if (typeof route !== "undefined" && route.indexOf("/market/") === 0)
+            return false;
+
+        if (!this.props.currentAccount || !!this._createAccountLink) {
+            this.props.router.push("/create-account/wallet");
+            return true;
+        }
+
+        return false;
+    }
+
 
     _triggerMenu(e) {
         e.preventDefault();
@@ -505,18 +558,6 @@ class Header extends React.Component {
                 />
             );
         });
-        if (balance == "0" && document.querySelector(".balance__list-wrap")) {
-            document
-                .querySelector(".balance__list-wrap")
-                .classList.add("disabled");
-        } else if (
-            balance != "0" &&
-            document.querySelector(".balance__list-wrap")
-        ) {
-            document
-                .querySelector(".balance__list-wrap")
-                .classList.remove("disabled");
-        }
         return balance;
     }
 
@@ -669,6 +710,19 @@ class Header extends React.Component {
 
         this._currentAccount = currentAccount;
         this._createAccountLink = createAccountLink;
+
+        let balanceCount = typeof this.getBalanceBySelectedCurrency() !== "object" ? +this.getBalanceBySelectedCurrency() : this.getBalanceBySelectedCurrency().props.amount;
+
+        let depositLink = balanceCount === 0 ?
+            (<li className="balance__item">
+                <a
+                    className="balance__link"
+                    href="javascript:void(0)"
+                    onClick={this.onShowModal}
+                >
+                    <Translate content="gateway.deposit" />
+                </a>
+            </li>) : null;
 
         return (
             <header className="header">
@@ -973,8 +1027,9 @@ class Header extends React.Component {
                                     </svg>
                                 </span>
                                 <div className="balance__list-wrap">
-                                    <ul className="balance__list balance__list_scroll">
+                                    <ul className={`balance__list ${balanceCount !== 0 ? "balance__list_scroll" : ""}`}>
                                         {usedAssets}
+                                        {depositLink}
                                     </ul>
                                 </div>
                             </div>
@@ -1052,7 +1107,11 @@ class Header extends React.Component {
                     }}
                     from_name={currentAccount}
                 />
-
+                {this.state.isBridgeModalVisible ? (
+                    <LLCBridgeModal
+                        account={this.props.currentAccount}
+                    />
+                ) : null}
                 {/*<DepositModal*/}
                     {/*ref="deposit_modal_new"*/}
                     {/*modalId="deposit_modal_new"*/}

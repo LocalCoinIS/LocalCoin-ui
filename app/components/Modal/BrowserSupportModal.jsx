@@ -37,7 +37,7 @@ export default class BrowserSupportModal extends React.Component {
                         style={{paddingTop: 0}}
                     >
                         <Trigger close="browser_modal">
-                            <div className="button">
+                            <div className="button btn large outline">
                                 <Translate content="init_error.understand" />
                             </div>
                         </Trigger>

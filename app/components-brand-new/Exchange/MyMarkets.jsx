@@ -396,6 +396,7 @@ class MarketGroup extends React.Component {
                 let b_symbols = b.key.split("_");
                 let aStats = marketStats.get(a_symbols[0] + "_" + a_symbols[1]);
                 let bStats = marketStats.get(b_symbols[0] + "_" + b_symbols[1]);
+
                 let volumeCookie = this.getCookie("gt_get_sort");
                 switch (sortBy) {
                     case "name":
@@ -419,17 +420,31 @@ class MarketGroup extends React.Component {
                         }
 
                     case "volume":
+                        let x = aStats;
+                        let y = bStats;
                         if (aStats && bStats) {
+                            let a = aStats.volumeBase ? aStats.volumeBase : 0;
+                            let b = bStats.volumeBase ? bStats.volumeBase : 0;
                             if (
                                 volumeCookie == "vol-false" ||
                                 volumeCookie == null
                             ) {
-                                return bStats.volumeBase - aStats.volumeBase;
+                                return b - a;
                             } else {
-                                return aStats.volumeBase - bStats.volumeBase;
+                                return a - b;
                             }
                         } else {
-                            return 0;
+                            x = x ? x.volumeBase : 0;
+                            y = y ? y.volumeBase : 0;
+                            if (
+                                volumeCookie == "vol-false" ||
+                                volumeCookie == null
+                            ){
+                                return y - x;
+                            }
+                            else{
+                                return x - y;
+                            }
                         }
 
                     case "change":
@@ -1370,7 +1385,7 @@ export default connect(
                 starredMarkets: SettingsStore.getState().starredMarkets,
                 onlyLiquid: SettingsStore.getState().viewSettings.get(
                     "onlyLiquid",
-                    true
+                    false
                 ),
                 defaultMarkets: SettingsStore.getState().defaultMarkets,
                 viewSettings: SettingsStore.getState().viewSettings,

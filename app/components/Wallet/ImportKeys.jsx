@@ -717,7 +717,7 @@ class ImportKeys extends Component {
         }
 
         let cancelButton = (
-            <div className="button success" onClick={this.onCancel.bind(this)}>
+            <div className="button btn large outline" onClick={this.onCancel.bind(this)}>
                 <Translate content="wallet.cancel" />
             </div>
         );
@@ -795,7 +795,7 @@ class ImportKeys extends Component {
                                         />
 
                                         <button
-                                            className="button"
+                                            className="button btn large inverted"
                                             type="submit"
                                         >
                                             <Translate content="wallet.submit" />

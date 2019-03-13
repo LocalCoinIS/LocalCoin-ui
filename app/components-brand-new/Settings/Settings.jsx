@@ -346,7 +346,7 @@ class Settings extends React.Component {
                                         "settings." + entry
                                     );
                                     return (
-                                        <li className="options__nav__item">
+                                        <li className={`options__nav__item ${index === activeSetting ? "is-active" : ""}`}>
                                             {index === activeSetting ? (
                                                 <span className="options__nav__link">
                                                     {title}
@@ -381,7 +381,8 @@ class Settings extends React.Component {
                                         unsafe
                                         style={{
                                             paddingTop: 5,
-                                            marginBottom: 30
+                                            display: 'block',
+                                            marginBottom: 10
                                         }}
                                         content={`settings.${
                                             menuEntries[activeSetting]

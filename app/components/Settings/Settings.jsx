@@ -384,7 +384,7 @@ class Settings extends React.Component {
                             {activeEntry != "access" && (
                                 <Translate
                                     unsafe
-                                    style={{paddingTop: 5, marginBottom: 30}}
+                                    style={{paddingTop: 5, marginBottom: 10}}
                                     content={`settings.${
                                         menuEntries[activeSetting]
                                     }_text`}

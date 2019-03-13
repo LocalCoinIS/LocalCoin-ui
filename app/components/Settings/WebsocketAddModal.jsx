@@ -204,13 +204,13 @@ class WebsocketAddModal extends React.Component {
                         <div className="button-group">
                             <button
                                 type="submit"
-                                className={"button"}
+                                className={"button btn large inverted"}
                                 onClick={this.onRemoveSubmit.bind(this)}
                             >
                                 <Translate content="transfer.confirm" />
                             </button>
                             <Trigger close={"ws_modal_remove"}>
-                                <div className="button">
+                                <div className="button btn large outline">
                                     <Translate content="account.perm.cancel" />
                                 </div>
                             </Trigger>

@@ -93,7 +93,7 @@ export default class BackupBrainkey extends Component {
                     </div>
 
                     <button
-                        className="btn large outline button success"
+                        className="btn large inverted button"
                         onClick={this.onComplete.bind(this)}
                     >
                         <Translate content="wallet.verify" />
