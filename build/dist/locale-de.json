@@ -1626,7 +1626,7 @@
     },
     "wallet": {
         "accept": "Zustimmen",
-        "account_create_wallet_text": "This password will be used to create a new LocalCoin local wallet for you, which will only be stored locally in your browser. A LocalCoin wallet can contain multiple accounts and can be easily transferred between browsers and computers using a backup file.",
+        "account_create_wallet_text": "This password will be used to create a new LocalCoin bin-file, which only can be stored locally in your browser. A LocalCoin wallet can contain multiple accounts and can be easily transferred between browsers and computers using a backup file.",
         "account_exp": "This account will be created on the blockchain and will be your address for any transfers you want to make! <strong>There are no long Bitcoin-style addresses in LocalCoin!</strong>",
         "account_public": "Account Name (Public)",
         "active_wallet": "Active Geldbörse",
@@ -1697,7 +1697,7 @@
         "first_account_paid": "Since this is your first account, a faucet will pay the registration fee for you.",
         "generated": "Generated password",
         "go_get_started": "Getting Started",
-        "has_wallet": "When you create your first LocalCoin account, a LocalCoin local wallet will be automatically created as well and stored in your browser. This local wallet is encrypted with your password, and will contain any private keys belonging to your accounts. It is important that you take the time to backup this wallet once created!",
+        "has_wallet": "When you create your first LocalCoin account, a LocalCoin bin-file will be automatically created and stored locally in your browser. This local wallet is encrypted with your password, and will contain any private keys belonging to your accounts. It is important to backup this wallet once created!",
         "import_20_notice1": "Importieren Sie Ihr LLC 2.0+ BACKUP zuerst",
         "import_20_notice2": "(falls vorhanden)",
         "import_backup": "Sicherung importieren",
