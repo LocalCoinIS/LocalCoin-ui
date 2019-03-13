@@ -88,7 +88,7 @@ export function getMyMarketsBases() {
 export function getMyMarketsQuotes() {
     let tokens = {
         nativeTokens: [
-            "LLC", "USD", "EUR", "CNY", "RUB","BRL", "USDT", "BTC", "XMR", "EOS","XRP", "BCH", "ZEC", "TUSD", "ETH"]
+            "LLC", "USD", "EUR", "CNY", "RUB","BRL", "USDT", "BTC", "XMR", "XRP", "BCH", "TUSD", "ETH", "LTC", "DASH", "USDS", "USDC", "LCC", "GBP", "UAH", "PLN", "NGN"]
         //     "GOLD",
         //     "KRW",
         //     "RUBLE",
