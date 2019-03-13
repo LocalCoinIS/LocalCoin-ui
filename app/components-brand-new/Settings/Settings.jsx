@@ -381,7 +381,8 @@ class Settings extends React.Component {
                                         unsafe
                                         style={{
                                             paddingTop: 5,
-                                            marginBottom: 30
+                                            display: 'block',
+                                            marginBottom: 10
                                         }}
                                         content={`settings.${
                                             menuEntries[activeSetting]

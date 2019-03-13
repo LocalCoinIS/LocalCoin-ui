@@ -85,7 +85,7 @@ export default class WalletChangePassword extends Component {
                             <Translate content="wallet.accept" />
                         </button>
                         <div
-                            className="button"
+                            className="button btn large outline"
                             onClick={this._onCancel.bind(this)}
                         >
                             <Translate content="wallet.cancel" />
