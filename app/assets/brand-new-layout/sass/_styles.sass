@@ -413,14 +413,13 @@ body.localcoin
 	.footer-line
 		display: flex
 		align-items: center
+		justify-content: flex-end
 	.footer-info
 		display: flex
 		flex-direction: column
 		align-items: flex-end
-		margin-left: auto
 		font-size: 12px
 		border-left: 1px solid hsla(0,0%,50%,.45)
-		padding-left: 10px
 		cursor: pointer
 		padding: 0 10px 0 10px
 		&:hover
@@ -445,6 +444,12 @@ body.localcoin
 			font-style: normal
 			text-transform: lowercase
 			font-variant: small-caps
+	.chatbro_minimized_chat
+			pointer-events: none
+	.chatbro_movable_chat .chatbro_minimized_header
+			opacity: 0!important
+			pointer-events: none!important
+			transition: none!important
 	.header
 		background-color: #001b60
 		position: fixed

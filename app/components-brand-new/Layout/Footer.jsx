@@ -37,7 +37,8 @@ class Footer extends React.Component {
         };
     }
 
-    componentDidMount() {}
+    componentDidMount() {
+    }
 
     shouldComponentUpdate(nextProps, nextState) {
         return (
@@ -116,6 +117,18 @@ class Footer extends React.Component {
         };
     }
 
+    chatToggle(e) {
+        e.preventDefault();
+        let chatBro = document.querySelector(".chatbro_chat");
+        if(chatBro && chatBro.classList.contains("chatbro_opacity")) {
+            document.querySelector(".chatbro_minimize_button").click();
+        } else {
+            if(chatBro) {
+                document.querySelector(".chatbro_minimized_header .chatbro_header_caption_td").click();
+            }
+        }
+    }
+
     render() {
         const autoSelectAPI = "wss://fake.automatic-selection.com";
         const {state, props} = this;
@@ -146,6 +159,13 @@ class Footer extends React.Component {
         return (
             <footer className="footer">
                 <div className="footer-line">
+                    <button
+                        className="btn large inverted flat support-btn"
+                        type="button"
+                        onClick={this.chatToggle.bind(this)}
+                    >
+                        Chat
+                    </button>
                     <div
                         className="footer-info"
                         onClick={() => {
