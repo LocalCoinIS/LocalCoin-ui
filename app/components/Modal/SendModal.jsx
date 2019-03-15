@@ -555,6 +555,7 @@ class SendModal extends React.Component {
         this.setState({
             from_name,
             error: null,
+            propose: false,
             propose_account: ""
         });
     }
@@ -572,23 +573,9 @@ class SendModal extends React.Component {
         });
 
         if (tab === "send-tab") {
-            let {currentAccount, from_name} = this.props;
-            if (!this.state.from_name) {
-                this.setState({from_name: currentAccount});
-            }
-            this.setState({
-                propose: false,
-                from_account: ChainStore.getAccount(this.props.from_name)
-            });
             document.querySelector(".send-tab").classList.add("active");
             document.querySelector(".transfer-tab").classList.remove("active");
         } else {
-            if (this.state.from_name) {
-                this.setState({from_name: ""});
-            }
-            this.setState({
-                propose: true
-            });
             document.querySelector(".transfer-tab").classList.add("active");
             document.querySelector(".send-tab").classList.remove("active");
         }
@@ -619,18 +606,18 @@ class SendModal extends React.Component {
             AccountStore.isMyAccount(from_account) ||
             from_name === this.props.passwordAccount;
 
-        // if (from_account && !from_my_account && !propose) {
-        //     from_error = (
-        //         <span>
-        //             {counterpart.translate("account.errors.not_yours")}
-        //             &nbsp;(
-        //             <a onClick={this.onPropose.bind(this)}>
-        //                 {counterpart.translate("propose")}
-        //             </a>
-        //             )
-        //         </span>
-        //     );
-        // }
+        if (from_account && !from_my_account && !propose) {
+            from_error = (
+                <span>
+                    {counterpart.translate("account.errors.not_yours")}
+                    &nbsp;(
+                    <a onClick={this.onPropose.bind(this)}>
+                        {counterpart.translate("propose")}
+                    </a>
+                    )
+                </span>
+            );
+        }
 
         let {asset_types, fee_asset_types} = this._getAvailableAssets();
         let balance = null;
