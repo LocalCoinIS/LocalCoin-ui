@@ -75,10 +75,22 @@ class LoginSelector extends React.Component {
         this.props.router.push("/create-account/" + route);
     }
 
+    updateStep = (value) => {
+        this.setState({ step: value })
+    }
+
     render() {
         const translator = require("counterpart");
 
         const childCount = React.Children.count(this.props.children);
+
+        const self = this;
+
+        const children = React.Children.map(this.props.children, function (child) {
+            return React.cloneElement(child, {
+                updateStep: self.updateStep
+            })
+        });
 
         const flagDropdown = (
             <ActionSheet>
@@ -138,7 +150,7 @@ class LoginSelector extends React.Component {
                         {childCount == 0 ? null : (
                             <div>
                                 <Translate
-                                    content="header.create_account"
+                                    content={this.state.step == 2 ? "header.backup_your_brainKey" : "header.create_account"}
                                     component="h4"
                                 />
                             </div>
@@ -235,7 +247,7 @@ class LoginSelector extends React.Component {
                             </div>
                         )}
 
-                        {this.props.children}
+                        {children}
                     </div>
                 </div>
             </div>
