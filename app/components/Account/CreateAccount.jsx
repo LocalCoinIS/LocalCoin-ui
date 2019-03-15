@@ -34,7 +34,8 @@ class CreateAccount extends React.Component {
             hide_refcode: true,
             show_identicon: false,
             step: 1,
-            brainkey: "test"
+            brainkey: null,
+            isCreateAcc: true,
         };
         this.onFinishConfirm = this.onFinishConfirm.bind(this);
 
@@ -49,11 +50,16 @@ class CreateAccount extends React.Component {
     }
 
     componentDidMount() {
+        this.props.updateStep(this.state.step);
         ReactTooltip.rebuild();
     }
 
     shouldComponentUpdate(nextProps, nextState) {
         return !utils.are_equal_shallow(nextState, this.state);
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        this.props.updateStep(this.state.step);
     }
 
     isValid() {
@@ -117,9 +123,11 @@ class CreateAccount extends React.Component {
                             FetchChain("getAccount", name, undefined, {
                                 [name]: true
                             }).then(() => {
+                                var brainkey = WalletDb.getBrainKey();
                                 this.setState({
                                     step: 2,
-                                    loading: false
+                                    loading: false,
+                                    brainkey
                                 });
                             });
                             TransactionConfirmStore.listen(
@@ -130,9 +138,11 @@ class CreateAccount extends React.Component {
                             FetchChain("getAccount", name, undefined, {
                                 [name]: true
                             }).then(() => {
+                                var brainkey = WalletDb.getBrainKey();
                                 this.setState({
                                     step: 2,
-                                    loading: false
+                                    loading: false,
+                                    brainkey
                                 });
                             });
                         }
@@ -320,7 +330,7 @@ class CreateAccount extends React.Component {
                         <label>
                             <a
                                 onClick={() => {
-                                    this.setState({step: 3});
+                                    this.setState({step: 4});
                                 }}
                             >
                                 <Translate content="wallet.go_get_started" />
@@ -399,7 +409,7 @@ class CreateAccount extends React.Component {
                 </h3>
                 <div className="card">
                     <div className="card-content">
-                        <h5>{this.state.brainkey}</h5>666
+                        <h5>{this.state.brainkey}</h5>
                     </div>
                 </div>
                 <div style={{padding: "10px 0"}}>
@@ -427,8 +437,10 @@ class CreateAccount extends React.Component {
     }
 
     onComplete(brnkey) {
-        this.setState({verified: true});
         WalletActions.setBrainkeyBackupDate();
+        this.setState({
+            step: 3
+        });
     }
 
     _renderBackup() {
@@ -438,23 +450,16 @@ class CreateAccount extends React.Component {
                     <Translate unsafe content="wallet.wallet_crucial" />
                 </p>
                 <div className="divider" />
-                <BackupCreate noText downloadCb={this._onBackupDownload} />
+                <BackupCreate noText downloadCb={this._onBackupDownload} isCreateAcc={this.state.isCreateAcc} />
             </div>
         );
     }
 
     _onBackupDownload = () => {
         this.setState({
-            step: 3
+            step: 4
         });
     };
-
-    _renderBackupBrainKeyText() {
-        return (
-            <div>qwe
-            </div>
-        );
-    }
 
     _renderBackupText() {
         return (
@@ -483,64 +488,64 @@ class CreateAccount extends React.Component {
             <div>
                 <table className="table">
                     <tbody>
-                        <tr>
-                            <td>
-                                <Translate content="wallet.tips_dashboard" />:
-                            </td>
-                            <td>
-                                <Link to="/">
-                                    <Translate content="header.dashboard" />
-                                </Link>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>
+                            <Translate content="wallet.tips_dashboard" />:
+                        </td>
+                        <td>
+                            <Link to="/">
+                                <Translate content="header.dashboard" />
+                            </Link>
+                        </td>
+                    </tr>
 
-                        <tr>
-                            <td>
-                                <Translate content="wallet.tips_account" />:
-                            </td>
-                            <td>
-                                <Link
-                                    to={`/account/${
-                                        this.state.accountName
+                    <tr>
+                        <td>
+                            <Translate content="wallet.tips_account" />:
+                        </td>
+                        <td>
+                            <Link
+                                to={`/account/${
+                                    this.state.accountName
                                     }/overview`}
-                                >
-                                    <Translate content="wallet.link_account" />
-                                </Link>
-                            </td>
-                        </tr>
+                            >
+                                <Translate content="wallet.link_account" />
+                            </Link>
+                        </td>
+                    </tr>
 
-                        <tr>
-                            <td>
-                                <Translate content="wallet.tips_deposit" />:
-                            </td>
-                            <td>
-                                <Link to="/deposit-withdraw">
-                                    <Translate content="wallet.link_deposit" />
-                                </Link>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>
+                            <Translate content="wallet.tips_deposit" />:
+                        </td>
+                        <td>
+                            <Link to="/deposit-withdraw">
+                                <Translate content="wallet.link_deposit" />
+                            </Link>
+                        </td>
+                    </tr>
 
-                        <tr>
-                            <td>
-                                <Translate content="wallet.tips_transfer" />:
-                            </td>
-                            <td>
-                                <Link to="/transfer">
-                                    <Translate content="wallet.link_transfer" />
-                                </Link>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>
+                            <Translate content="wallet.tips_transfer" />:
+                        </td>
+                        <td>
+                            <Link to="/transfer">
+                                <Translate content="wallet.link_transfer" />
+                            </Link>
+                        </td>
+                    </tr>
 
-                        <tr>
-                            <td>
-                                <Translate content="wallet.tips_settings" />:
-                            </td>
-                            <td>
-                                <Link to="/settings">
-                                    <Translate content="header.settings" />
-                                </Link>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>
+                            <Translate content="wallet.tips_settings" />:
+                        </td>
+                        <td>
+                            <Link to="/settings">
+                                <Translate content="header.settings" />
+                            </Link>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -581,7 +586,7 @@ class CreateAccount extends React.Component {
         return (
             <div className="sub-content">
                 <div style={{maxWidth: "95vw"}}>
-                    {step !== 1 ? (
+                    {step !== 1 && step !== 2 ? (
                         <p
                             style={{
                                 fontWeight: "normal",
@@ -596,6 +601,8 @@ class CreateAccount extends React.Component {
                     {step === 1
                         ? this._renderAccountCreateForm()
                         : step === 2
+                            ? this._renderBackupBrainKey()
+                            : step === 3
                                 ? this._renderBackup()
                                 : this._renderGetStarted()}
                 </div>
@@ -604,8 +611,10 @@ class CreateAccount extends React.Component {
                     {step === 1
                         ? this._renderAccountCreateText()
                         : step === 2
-                                    ? this._renderBackupText()
-                                    : this._renderGetStartedText()}
+                            ? null
+                            : step === 3
+                                ? this._renderBackupText()
+                                : this._renderGetStartedText()}
 
                 </div>
                 <Link to="/">
