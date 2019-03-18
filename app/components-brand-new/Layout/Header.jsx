@@ -582,7 +582,8 @@ class Header extends React.Component {
             starredAccounts,
             passwordLogin,
             passwordAccount,
-            height
+            height,
+            location
         } = this.props;
         let tradingAccounts = AccountStore.getMyAccounts();
         let maxHeight = Math.max(40, height - 67 - 36) + "px";
@@ -1047,7 +1048,7 @@ class Header extends React.Component {
                                     href="#"
                                     onClick={this._onNavigate.bind(
                                         this,
-                                        "/account/" + currentAccount
+                                        `/account/${currentAccount}${location.pathname !== `/account/${currentAccount}` ? "#activity" : ""}`
                                     )}
                                 >
                                     <span className="user__name">
