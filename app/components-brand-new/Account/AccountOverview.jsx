@@ -190,6 +190,9 @@ class AccountOverview extends React.Component {
 
     componentWillMount() {
         this._checkMarginStatus();
+        if(this.props.location.hash === "#activity") {
+           this.props.router.push("/account/" + this.props.account_name);
+        }
     }
 
     _checkMarginStatus(props = this.props) {
@@ -931,7 +934,7 @@ class AccountOverview extends React.Component {
     }
 
     render() {
-        let {account, hiddenAssets, settings, orders} = this.props;
+        let {account, hiddenAssets, settings, orders, location} = this.props;
         let {shownAssets} = this.state;
 
         if (!account) {
@@ -1461,6 +1464,7 @@ class AccountOverview extends React.Component {
                     items={items}
                     inner={true}
                     updateModal={this.updateModal}
+                    defaultActiveTab={location.hash === "#activity" ? "account.activity" : null}
                 />
                 <BaseModal id="reserve_asset" overlay={true}>
                     <br />
