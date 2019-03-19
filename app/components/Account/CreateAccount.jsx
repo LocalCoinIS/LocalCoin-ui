@@ -21,6 +21,8 @@ import utils from "common/utils";
 import SettingsActions from "actions/SettingsActions";
 import counterpart from "counterpart";
 import {hash} from "bitsharesjs/es";
+import SendModal from "../Modal/SendModal";
+import WalletUnlockStore from "stores/WalletUnlockStore";
 
 class CreateAccount extends React.Component {
     constructor() {
@@ -506,7 +508,7 @@ class CreateAccount extends React.Component {
                         <td>
                             <Link
                                 to={`/account/${
-                                    this.state.accountName
+                                    this.props.currentAccount
                                     }/overview`}
                             >
                                 <Translate content="wallet.link_account" />
@@ -530,7 +532,7 @@ class CreateAccount extends React.Component {
                             <Translate content="wallet.tips_transfer" />:
                         </td>
                         <td>
-                            <Link to="/transfer">
+                            <Link onClick={this._showSend.bind(this)} >
                                 <Translate content="wallet.link_transfer" />
                             </Link>
                         </td>
@@ -580,9 +582,42 @@ class CreateAccount extends React.Component {
         );
     }
 
+    _showSend(e) {
+        e.preventDefault();
+        if (this.isUnauthorizedUser()) return;
+        else if (this.props.locked)
+            if (WalletDb.isLocked()) {
+                WalletUnlockActions.unlock()
+                    .then(() => {
+                        AccountActions.tryToSetCurrentAccount();
+                        this.send_modal.show();
+                    })
+                    .catch(() => {});
+            } else {
+                WalletUnlockActions.lock();
+            }
+        else if (this.send_modal) this.send_modal.show();
+
+    }
+
+    _currentAccount = null;
+    _createAccountLink = null;
+    isUnauthorizedUser(route) {
+        //for exchange allow access forever
+        if (typeof route !== "undefined" && route.indexOf("/market/") === 0)
+            return false;
+
+        if (!this.props.currentAccount || !!this._createAccountLink) {
+            this.props.router.push("/create-account/wallet");
+            return true;
+        }
+
+        return false;
+    }
+
     render() {
         let {step} = this.state;
-
+        let {currentAccount} = this.props;
         return (
             <div className="sub-content">
                 <div style={{maxWidth: "95vw"}}>
@@ -622,6 +657,13 @@ class CreateAccount extends React.Component {
                         <Translate content="wallet.back" />
                     </button>
                 </Link>
+                <SendModal
+                    id="send_modal_main"
+                    refCallback={e => {
+                        if (e) this.send_modal = e;
+                    }}
+                    from_name={currentAccount}
+                />
             </div>
         );
     }
@@ -632,6 +674,6 @@ export default connect(CreateAccount, {
         return [AccountStore];
     },
     getProps() {
-        return {};
+        return {locked: WalletUnlockStore.getState().locked};
     }
 });

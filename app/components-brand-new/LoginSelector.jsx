@@ -88,7 +88,8 @@ class LoginSelector extends React.Component {
 
         const children = React.Children.map(this.props.children, function (child) {
             return React.cloneElement(child, {
-                updateStep: self.updateStep
+                updateStep: self.updateStep,
+                currentAccount: self.props.currentAccount
             })
         });
 
