@@ -1,84 +1,27 @@
 import React from "react";
 
-import {
-    Router,
-    Route,
-    IndexRoute,
-    browserHistory,
-    hashHistory,
-    Redirect
-} from "react-router/es";
+import {Route, IndexRoute, Redirect} from "react-router/es";
 import willTransitionTo from "./routerTransition";
 import App from "./App";
 
-// Components imported here for react hot loader (does not work with async route loading)
-import DashboardPage from "./components-brand-new/Dashboard/DashboardPage";
-import DashboardAccountsOnly from "./components/Dashboard/DashboardAccountsOnly";
+import Header from "./components-brand-new/Layout/Header";
+import Footer from "./components-brand-new/Layout/Footer";
 import Witnesses from "./components-brand-new/Explorer/Witnesses";
 import CommitteeMembers from "./components-brand-new/Explorer/CommitteeMembers";
-import FeesContainer from "./components-brand-new/Explorer/FeesContainer";
-import BlocksContainer from "./components-brand-new/Explorer/BlocksContainer";
-import AssetsContainer from "./components-brand-new/Explorer/AssetsContainer";
-import AccountsContainer from "./components-brand-new/Explorer/AccountsContainer";
-import Explorer from "./components-brand-new/Explorer/Explorer";
-import AccountPage from "./components-brand-new/Account/AccountPage";
-import AccountOverview from "./components-brand-new/Account/AccountOverview";
-import AccountAssets from "./components-brand-new/Account/AccountAssets";
-import {AccountAssetCreate} from "./components-brand-new/Account/AccountAssetCreate";
-import AccountAssetUpdate from "./components/Account/AccountAssetUpdate";
-import AccountMembership from "./components-brand-new/Account/AccountMembership";
-import AccountVesting from "./components-brand-new/Account/AccountVesting";
-import AccountDepositWithdraw from "./components-brand-new/Account/AccountDepositWithdraw";
-import AccountPermissions from "./components-brand-new/Account/AccountPermissions";
-import AccountWhitelist from "./components-brand-new/Account/AccountWhitelist";
-import AccountVoting from "./components-brand-new/Account/AccountVoting";
-import OTC from "./components-brand-new/OTC/OTC";
-import Page404 from "./components-brand-new/Page404/Page404";
-// import AccountOrders from "./components/Account/AccountOrders";
-import AccountSignedMessages from "./components-brand-new/Account/AccountSignedMessages";
-import ExchangeContainer from "./components-brand-new/Exchange/ExchangeContainer";
-import MarketsContainer from "./components-brand-new/Explorer/MarketsContainer";
-import Transfer from "./components/Transfer/Transfer";
-import SettingsContainer from "./components-brand-new/Settings/SettingsContainer";
-import BlockContainer from "./components/Blockchain/BlockContainer";
-import Asset from "./components-brand-new/Blockchain/Asset";
-import CreateAccount from "./components/Account/CreateAccount";
-import CreateAccountPassword from "./components-brand-new/Account/CreateAccountPassword";
-import {
-    ExistingAccount,
-    ExistingAccountOptions
-} from "./components/Wallet/ExistingAccount";
+import {WalletManager} from "./components-brand-new/Wallet/WalletManager";
 import {
     WalletCreate,
     CreateWalletFromBrainkey
 } from "./components/Wallet/WalletCreate";
-import ImportKeys from "./components/Wallet/ImportKeys";
-import Invoice from "./components/Transfer/Invoice";
-import {
-    BackupCreate,
-    BackupRestore
-} from "./components-brand-new/Wallet/Backup";
-import WalletChangePassword from "./components/Wallet/WalletChangePassword";
-import {
-    WalletManager,
-    WalletOptions,
-    ChangeActiveWallet,
-    WalletDelete
-} from "./components-brand-new/Wallet/WalletManager";
-import BalanceClaimActive from "./components/Wallet/BalanceClaimActive";
-import BackupBrainkey from "./components/Wallet/BackupBrainkey";
-import Brainkey from "./components/Wallet/Brainkey";
-import News from "./components/News";
-import HelpContent from "./components-brand-new/Help/Content";
-import HelpSidebar from "./components-brand-new/Help/Sidebar";
-import InitError from "./components/InitError";
-import LoginSelector from "./components-brand-new/LoginSelector";
-import CreateWorker from "./components/Account/CreateWorker";
-import Header from "./components-brand-new/Layout/Header";
-import Footer from "./components-brand-new/Layout/Footer";
-import Sidebar from "./components-brand-new/Layout/Sidebar";
+import {ExistingAccount} from "./components/Wallet/ExistingAccount";
 
-const history = __HASH_HISTORY__ ? hashHistory : browserHistory;
+/*
+* Electron does not support async loading of components via System.import,
+* so we make sure they're bundled already by including them here
+*/
+if (__ELECTRON__ || __HASH_HISTORY__) {
+    require("./electron_imports");
+}
 
 class Auth extends React.Component {
     render() {
@@ -86,65 +29,115 @@ class Auth extends React.Component {
     }
 }
 
+function loadRoute(cb, moduleName = "default") {
+    return module => cb(null, module[moduleName]);
+}
+
+function loadMultiComponentsRoute(cb, moduleName = "default") {
+    return modules => {
+        const [
+            headerBlock,
+            sidebarBlock,
+            contentBlock,
+            footerBlock
+        ] = modules.map(module => (!!module ? module["default"] : module));
+        cb(null, {
+            headerBlock,
+            sidebarBlock,
+            contentBlock,
+            footerBlock
+        });
+    };
+}
+
+function errorLoading(err) {
+    console.error("Dynamic page loading failed", err);
+}
+
 const routes = (
     <Route path="/" component={App} onEnter={willTransitionTo}>
         <IndexRoute
-            components={{
-                headerBlock: Header,
-                sidebarBlock: Sidebar,
-                contentBlock: DashboardPage,
-                footerBlock: Footer
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    import("components-brand-new/Layout/Sidebar"),
+                    import("components-brand-new/Dashboard/DashboardPage"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
             }}
         />
         <Route path="/auth/:data" component={Auth} />
+
         <Route
             path="explorer"
-            components={{
-                headerBlock: Header,
-                sidebarBlock: null, // Sidebar
-                contentBlock: Explorer,
-                footerBlock: Footer
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components-brand-new/Explorer/Explorer"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
             }}
         />
         <Route
             path="/explorer/fees"
-            components={{
-                headerBlock: Header,
-                sidebarBlock: null,
-                contentBlock: FeesContainer,
-                footerBlock: Footer
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components-brand-new/Explorer/FeesContainer"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
             }}
         />
         <Route
             path="/explorer/blocks"
-            component={{
-                headerBlock: Header,
-                sidebarBlock: null,
-                contentBlock: BlocksContainer,
-                footerBlock: Footer
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components-brand-new/Explorer/BlocksContainer"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
             }}
         />
         <Route
             path="/explorer/assets"
-            component={{
-                headerBlock: Header,
-                sidebarBlock: null,
-                contentBlock: AssetsContainer,
-                footerBlock: Footer
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components-brand-new/Explorer/AssetsContainer"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
             }}
         />
         <Route
             path="/explorer/accounts"
-            component={{
-                headerBlock: Header,
-                sidebarBlock: null,
-                contentBlock: AccountsContainer,
-                footerBlock: Footer
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components-brand-new/Explorer/AccountsContainer"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
             }}
         />
         <Route
             path="/explorer/witnesses"
-            component={{
+            components={{
                 headerBlock: Header,
                 sidebarBlock: null,
                 contentBlock: Witnesses,
@@ -153,13 +146,41 @@ const routes = (
         />
         <Route
             path="/explorer/committee-members"
-            component={{
+            components={{
                 headerBlock: Header,
                 sidebarBlock: null,
                 contentBlock: CommitteeMembers,
                 footerBlock: Footer
             }}
         />
+        {/*
+        <Route
+            path="/explorer/witnesses"
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components-brand-new/Explorer/Witnesses"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
+            }}
+        />
+        <Route
+            path="/explorer/committee-members"
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components-brand-new/Explorer/CommitteeMembers"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
+            }}
+        />
+        */}
 
         <Route
             path="wallet"
@@ -171,17 +192,93 @@ const routes = (
             }}
         >
             {/* wallet management console */}
-            <IndexRoute component={WalletOptions} />
-            <Route path="change" component={ChangeActiveWallet} />
-            <Route path="change-password" component={WalletChangePassword} />
-            <Route path="import-keys" component={ImportKeys} />
-            <Route path="brainkey" component={ExistingAccountOptions} />
-            <Route path="create" component={WalletCreate} />
-            <Route path="delete" component={WalletDelete} />
-            <Route path="backup/restore" component={BackupRestore} />
-            <Route path="backup/create" component={BackupCreate} />
-            <Route path="backup/brainkey" component={BackupBrainkey} />
-            <Route path="balance-claims" component={BalanceClaimActive} />
+            <IndexRoute
+                getComponent={(location, cb) => {
+                    import("components-brand-new/Wallet/WalletManager")
+                        .then(loadRoute(cb, "WalletOptions"))
+                        .catch(errorLoading);
+                }}
+            />
+            <Route
+                path="change"
+                getComponent={(location, cb) => {
+                    import("components-brand-new/Wallet/WalletManager")
+                        .then(loadRoute(cb, "ChangeActiveWallet"))
+                        .catch(errorLoading);
+                }}
+            />
+            <Route
+                path="change-password"
+                getComponent={(location, cb) => {
+                    import("components/Wallet/WalletChangePassword")
+                        .then(loadRoute(cb))
+                        .catch(errorLoading);
+                }}
+            />
+            <Route
+                path="import-keys"
+                getComponent={(location, cb) => {
+                    import("components/Wallet/ImportKeys")
+                        .then(loadRoute(cb, "ExistingAccountOptions"))
+                        .catch(errorLoading);
+                }}
+            />
+            <Route
+                path="brainkey"
+                getComponent={(location, cb) => {
+                    import("components/Wallet/Brainkey")
+                        .then(loadRoute(cb, "ExistingAccountOptions"))
+                        .catch(errorLoading);
+                }}
+            />
+            <Route
+                path="create"
+                getComponent={(location, cb) => {
+                    import("components/Wallet/WalletCreate")
+                        .then(loadRoute(cb, "WalletCreate"))
+                        .catch(errorLoading);
+                }}
+            />
+            <Route
+                path="delete"
+                getComponent={(location, cb) => {
+                    import("components-brand-new/Wallet/WalletManager")
+                        .then(loadRoute(cb, "WalletDelete"))
+                        .catch(errorLoading);
+                }}
+            />
+            <Route
+                path="backup/restore"
+                getComponent={(location, cb) => {
+                    import("components-brand-new/Wallet/Backup")
+                        .then(loadRoute(cb, "BackupRestore"))
+                        .catch(errorLoading);
+                }}
+            />
+            <Route
+                path="backup/create"
+                getComponent={(location, cb) => {
+                    import("components-brand-new/Wallet/Backup")
+                        .then(loadRoute(cb, "BackupCreate"))
+                        .catch(errorLoading);
+                }}
+            />
+            <Route
+                path="backup/brainkey"
+                getComponent={(location, cb) => {
+                    import("components/Wallet/BackupBrainkey")
+                        .then(loadRoute(cb))
+                        .catch(errorLoading);
+                }}
+            />
+            <Route
+                path="balance-claims"
+                getComponent={(location, cb) => {
+                    import("components/Wallet/BalanceClaimActive")
+                        .then(loadRoute(cb))
+                        .catch(errorLoading);
+                }}
+            />
         </Route>
 
         <Route
@@ -193,6 +290,7 @@ const routes = (
                 footerBlock: Footer
             }}
         />
+
         <Route
             path="create-wallet-brainkey"
             components={{
@@ -204,111 +302,179 @@ const routes = (
         />
         <Route
             path="OTC"
-            component={{
-                headerBlock: Header,
-                sidebarBlock: null,
-                contentBlock: OTC,
-                footerBlock: Footer
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components-brand-new/OTC/OTC"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
             }}
         />
         <Route
             path="transfer"
-            components={{
-                headerBlock: Header,
-                sidebarBlock: null,
-                contentBlock: Transfer,
-                footerBlock: Footer
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components/Transfer/Transfer"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
             }}
         />
 
         <Route
             path="invoice/:data"
-            components={{
-                headerBlock: Header,
-                sidebarBlock: null,
-                contentBlock: Invoice,
-                footerBlock: Footer
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components/Transfer/Invoice"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
             }}
         />
         <Route
             path="explorer/markets"
-            component={{
-                headerBlock: Header,
-                sidebarBlock: null,
-                contentBlock: MarketsContainer,
-                footerBlock: Footer
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components-brand-new/Explorer/MarketsContainer"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
             }}
         />
         <Route
             path="market/:marketID"
-            components={{
-                headerBlock: Header,
-                sidebarBlock: null,
-                contentBlock: ExchangeContainer,
-                footerBlock: Footer
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components-brand-new/Exchange/ExchangeContainer"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
             }}
             onEnter={(nextState, replace, callback) => {
                 document.querySelector("#content > div") &&
-                document
-                    .querySelector("#content > div")
-                    .classList.add("exchange-layout");
+                    document
+                        .querySelector("#content > div")
+                        .classList.add("exchange-layout");
                 callback();
             }}
             onLeave={() => {
                 document.querySelector("#content > div") &&
-                document
-                    .querySelector("#content > div")
-                    .classList.remove("exchange-layout");
+                    document
+                        .querySelector("#content > div")
+                        .classList.remove("exchange-layout");
             }}
         />
         <Route
             path="settings"
-            components={{
-                headerBlock: Header,
-                sidebarBlock: null,
-                contentBlock: SettingsContainer,
-                footerBlock: Footer
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components-brand-new/Settings/SettingsContainer"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
             }}
         />
         <Route
             path="settings/:tab"
-            components={{
-                headerBlock: Header,
-                sidebarBlock: null,
-                contentBlock: SettingsContainer,
-                footerBlock: Footer
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components-brand-new/Settings/SettingsContainer"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
             }}
         />
         <Route
             path="block/:height"
-            components={{
-                headerBlock: Header,
-                sidebarBlock: null,
-                contentBlock: BlockContainer,
-                footerBlock: Footer
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components/Blockchain/BlockContainer"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
             }}
         />
         <Route
             path="asset/:symbol"
-            components={{
-                headerBlock: Header,
-                sidebarBlock: Sidebar,
-                contentBlock: Asset,
-                footerBlock: Footer
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    import("components-brand-new/Layout/Sidebar"),
+                    import("components-brand-new/Blockchain/Asset"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
             }}
         />
         <Route
             path="create-account"
-            components={{
-                headerBlock: Header,
-                sidebarBlock: null,
-                contentBlock: LoginSelector,
-                footerBlock: Footer
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components-brand-new/LoginSelector"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
             }}
         >
-            <Route path="wallet" component={CreateAccount} />
-            <Route path="password" component={CreateAccountPassword} />
+            <Route
+                path="wallet"
+                getComponent={(location, cb) => {
+                    import("components/Account/CreateAccount")
+                        .then(loadRoute(cb))
+                        .catch(errorLoading);
+                }}
+            />
+            <Route
+                path="password"
+                getComponent={(location, cb) => {
+                    import("components-brand-new/Account/CreateAccountPassword")
+                        .then(loadRoute(cb))
+                        .catch(errorLoading);
+                }}
+            />
         </Route>
+
+        <Route
+            path="accounts"
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components/Dashboard/DashboardAccountsOnly"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
+            }}
+        />
 
         <Route
             path="existing-account"
@@ -319,121 +485,260 @@ const routes = (
                 footerBlock: Footer
             }}
         >
-            <IndexRoute component={BackupRestore} />
-            <Route path="import-backup" component={ExistingAccountOptions} />
-            <Route path="import-keys" component={ImportKeys} />
-            <Route path="brainkey" component={Brainkey} />
-            <Route path="balance-claim" component={BalanceClaimActive} />
+            <IndexRoute
+                getComponent={(location, cb) => {
+                    import("components/Wallet/Backup")
+                        .then(loadRoute(cb, "BackupRestore"))
+                        .catch(errorLoading);
+                }}
+            />
+            <Route
+                path="import-backup"
+                getComponent={(location, cb) => {
+                    import("components/Wallet/ExistingAccount")
+                        .then(loadRoute(cb, "ExistingAccountOptions"))
+                        .catch(errorLoading);
+                }}
+            />
+            <Route
+                path="import-keys"
+                getComponent={(location, cb) => {
+                    import("components/Wallet/ImportKeys")
+                        .then(loadRoute(cb))
+                        .catch(errorLoading);
+                }}
+            />
+            <Route
+                path="brainkey"
+                getComponent={(location, cb) => {
+                    import("components/Wallet/Brainkey")
+                        .then(loadRoute(cb))
+                        .catch(errorLoading);
+                }}
+            />
+            <Route
+                path="balance-claim"
+                getComponent={(location, cb) => {
+                    import("components/Wallet/BalanceClaimActive")
+                        .then(loadRoute(cb))
+                        .catch(errorLoading);
+                }}
+            />
         </Route>
 
         <Route
-            path="/accounts"
-            components={{
-                headerBlock: Header,
-                sidebarBlock: null,
-                contentBlock: DashboardAccountsOnly,
-                footerBlock: Footer
-            }}
-        />
-
-        <Route
             path="/account/:account_name"
-            components={{
-                headerBlock: Header,
-                sidebarBlock: Sidebar,
-                contentBlock: AccountPage,
-                footerBlock: Footer
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    import("components-brand-new/Layout/Sidebar"),
+                    import("components-brand-new/Account/AccountPage"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
             }}
         >
-            <IndexRoute component={AccountOverview} />
-            {/* <Route path="dashboard" component={AccountOverview} /> */}
-            {/* <Route path="deposit-withdraw" component={AccountDepositWithdraw} /> */}
-            {/* <Route path="orders" component={AccountOrders} /> */}
+            <IndexRoute
+                getComponent={(location, cb) => {
+                    import("components-brand-new/Account/AccountOverview")
+                        .then(loadRoute(cb))
+                        .catch(errorLoading);
+                }}
+            />
+            {/* <Route path="dashboard" getComponent={(location, cb) => {
+                import("components/Account/AccountOverview").then(loadRoute(cb)).catch(errorLoading);
+            }}/> */}
+            {/* <Route path="deposit-withdraw" getComponent={(location, cb) => {
+                import("components/Account/AccountDepositWithdraw").then(loadRoute(cb)).catch(errorLoading);
+            }}/> */}
+            {/* <Route path="orders" getComponent={(location, cb) => {
+                import("components/Account/AccountOrders").then(loadRoute(cb)).catch(errorLoading);
+            }}/> */}
 
-            <Route path="assets" component={AccountAssets} />
-            <Route path="create-asset" component={AccountAssetCreate} />
-            <Route path="update-asset/:asset" component={AccountAssetUpdate} />
-            <Route path="member-stats" component={AccountMembership} />
-            <Route path="vesting" component={AccountVesting} />
-            <Route path="permissions" component={AccountPermissions} />
-            <Route path="voting" component={AccountVoting} />
-            <Route path="whitelist" component={AccountWhitelist} />
-            <Route path="signedmessages" component={AccountSignedMessages} />
+            <Route
+                path="assets"
+                getComponent={(location, cb) => {
+                    import("components-brand-new/Account/AccountAssets")
+                        .then(loadRoute(cb))
+                        .catch(errorLoading);
+                }}
+            />
+            <Route
+                path="create-asset"
+                getComponent={(location, cb) => {
+                    import("components-brand-new/Account/AccountAssetCreate")
+                        .then(loadRoute(cb, "AccountAssetCreate"))
+                        .catch(errorLoading);
+                }}
+            />
+            <Route
+                path="update-asset/:asset"
+                getComponent={(location, cb) => {
+                    import("components/Account/AccountAssetUpdate")
+                        .then(loadRoute(cb))
+                        .catch(errorLoading);
+                }}
+            />
+            <Route
+                path="member-stats"
+                getComponent={(location, cb) => {
+                    import("components-brand-new/Account/AccountMembership")
+                        .then(loadRoute(cb))
+                        .catch(errorLoading);
+                }}
+            />
+            <Route
+                path="vesting"
+                getComponent={(location, cb) => {
+                    import("components-brand-new/Account/AccountVesting")
+                        .then(loadRoute(cb))
+                        .catch(errorLoading);
+                }}
+            />
+            <Route
+                path="permissions"
+                getComponent={(location, cb) => {
+                    import("components-brand-new/Account/AccountPermissions")
+                        .then(loadRoute(cb))
+                        .catch(errorLoading);
+                }}
+            />
+            <Route
+                path="voting"
+                getComponent={(location, cb) => {
+                    import("components-brand-new/Account/AccountVoting")
+                        .then(loadRoute(cb))
+                        .catch(errorLoading);
+                }}
+            />
+            <Route
+                path="whitelist"
+                getComponent={(location, cb) => {
+                    import("components-brand-new/Account/AccountWhitelist")
+                        .then(loadRoute(cb))
+                        .catch(errorLoading);
+                }}
+            />
+            <Route
+                path="signedmessages"
+                getComponent={(location, cb) => {
+                    import("components-brand-new/Account/AccountSignedMessages")
+                        .then(loadRoute(cb))
+                        .catch(errorLoading);
+                }}
+            />
             <Redirect from="overview" to="/account/:account_name" />
             <Redirect from="dashboard" to="/account/:account_name" />
             <Redirect from="orders" to="/account/:account_name" />
         </Route>
-
         <Route
             path="deposit-withdraw"
-            components={{
-                headerBlock: Header,
-                sidebarBlock: Sidebar,
-                contentBlock: AccountDepositWithdraw,
-                footerBlock: Footer
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    import("components-brand-new/Layout/Sidebar"),
+                    import("components-brand-new/Account/AccountDepositWithdraw"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
             }}
         />
         <Route
             path="create-worker"
-            components={{
-                headerBlock: Header,
-                sidebarBlock: Sidebar,
-                contentBlock: CreateWorker,
-                footerBlock: Footer
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    import("components-brand-new/Layout/Sidebar"),
+                    import("components/Account/CreateWorker"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
             }}
         />
         <Route
             path="/init-error"
-            components={{
-                headerBlock: Header,
-                sidebarBlock: null,
-                contentBlock: InitError,
-                footerBlock: Footer
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components/InitError"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
             }}
         />
         <Route
             path="/news"
-            components={{
-                headerBlock: Header,
-                sidebarBlock: null,
-                contentBlock: News,
-                footerBlock: Footer
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components/News"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
+            }}
+            getComponent={(location, cb) => {
+                import("components/News")
+                    .then(loadRoute(cb))
+                    .catch(errorLoading);
             }}
         />
         <Route
             path="/help"
-            components={{
-                headerBlock: Header,
-                sidebarBlock: HelpSidebar,
-                contentBlock: HelpContent,
-                footerBlock: Footer
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    import("components-brand-new/Help/Sidebar"),
+                    import("components-brand-new/Help/Content"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
             }}
         >
             <Route
                 path=":path1"
-                components={{
-                    headerBlock: Header,
-                    sidebarBlock: HelpSidebar,
-                    contentBlock: HelpContent,
-                    footerBlock: Footer
+                getComponents={(location, cb) => {
+                    Promise.all([
+                        import("components-brand-new/Layout/Header"),
+                        import("components-brand-new/Help/Sidebar"),
+                        import("components-brand-new/Help/Content"),
+                        import("components-brand-new/Layout/Footer")
+                    ])
+                        .then(loadMultiComponentsRoute(cb))
+                        .catch(errorLoading);
                 }}
             >
                 <Route
                     path=":path2"
-                    components={{
-                        headerBlock: Header,
-                        sidebarBlock: HelpSidebar,
-                        contentBlock: HelpContent,
-                        footerBlock: Footer
+                    getComponents={(location, cb) => {
+                        Promise.all([
+                            import("components-brand-new/Layout/Header"),
+                            import("components-brand-new/Help/Sidebar"),
+                            import("components-brand-new/Help/Content"),
+                            import("components-brand-new/Layout/Footer")
+                        ])
+                            .then(loadMultiComponentsRoute(cb))
+                            .catch(errorLoading);
                     }}
                 >
                     <Route
                         path=":path3"
-                        components={{
-                            headerBlock: Header,
-                            sidebarBlock: HelpSidebar,
-                            contentBlock: HelpContent,
-                            footerBlock: Footer
+                        getComponents={(location, cb) => {
+                            Promise.all([
+                                import("components-brand-new/Layout/Header"),
+                                import("components-brand-new/Help/Sidebar"),
+                                import("components-brand-new/Help/Content"),
+                                import("components-brand-new/Layout/Footer")
+                            ])
+                                .then(loadMultiComponentsRoute(cb))
+                                .catch(errorLoading);
                         }}
                     />
                 </Route>
@@ -441,18 +746,18 @@ const routes = (
         </Route>
         <Route
             path="*"
-            components={{
-                headerBlock: Header,
-                sidebarBlock: null,
-                contentBlock: Page404,
-                footerBlock: Footer
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components-brand-new/Page404/Page404"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
             }}
         />
     </Route>
 );
 
-export default class Routes extends React.Component {
-    render() {
-        return <Router history={history} routes={routes} />;
-    }
-}
+export default routes;
