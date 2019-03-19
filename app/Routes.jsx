@@ -629,9 +629,8 @@ const routes = (
                 }}
             />
             <Redirect from="overview" to="/account/:account_name" />
-            {/*<Redirect from="dashboard" to="/account/:account_name" />*/}
+            <Redirect from="dashboard" to="/account/:account_name" />
             <Redirect from="orders" to="/account/:account_name" />
-            <Redirect from="/account/:account_name" to="dashboard" />
         </Route>
         <Route
             path="deposit-withdraw"
