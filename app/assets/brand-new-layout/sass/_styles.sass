@@ -480,6 +480,8 @@ body.localcoin
 			padding: 0 10px
 			margin: 0
 			&:hover
+				.navigation__link
+					opacity: .5
 				background-color: #000f42
 		&__item.active
 			background-color: #000324
@@ -503,8 +505,12 @@ body.localcoin
 			font-size: 12px
 			line-height: 40px
 			color: #fff
+			transition: color .25s ease
 			> span
 				color: inherit
+			&:hover
+				color: rgba(255,255,255, .5)
+				text-decoration: underline
 			&:after
 				content: ''
 				display: inline-block
@@ -592,6 +598,9 @@ body.localcoin
 			line-height: 40px
 			font-size: 14px
 			color: #fff
+			transition: opacity .25s ease
+			&:hover
+				opacity: .5
 	.settings
 		display: inline-flex
 		position: relative
@@ -920,6 +929,8 @@ body.localcoin
 				flex-wrap: wrap
 	.support-btn
 		margin: 0 15px 0 0px
+		&:hover
+			color: rgba(255,255,255, .5)!important
 	.mobile
 		display: none
 		&__menu.show
