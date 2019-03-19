@@ -68,24 +68,7 @@ class AccountPage extends React.Component {
 
         return (
             <div className="content account-page">
-                {React.cloneElement(React.Children.only(this.props.children), {
-                    account_name,
-                    myActiveAccounts,
-                    searchAccounts,
-                    settings,
-                    wallet_locked,
-                    account,
-                    isMyAccount,
-                    hiddenAssets,
-                    contained: true,
-                    balances: account.get("balances", List()).toList(),
-                    orders: account.get("orders", List()).toList(),
-                    backedCoins: this.props.backedCoins,
-                    bridgeCoins: this.props.bridgeCoins,
-                    gatewayDown: this.props.gatewayDown,
-                    viewSettings: this.props.viewSettings,
-                    proxy: account.getIn(["options", "voting_account"])
-                })}
+test
             </div>
         );
     }
