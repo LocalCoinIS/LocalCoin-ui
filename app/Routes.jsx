@@ -530,10 +530,10 @@ const routes = (
             path="/account/:account_name"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Footer"),
-                    import("components-brand-new/Layout/Footer"),
-                    import("components-brand-new/Layout/Footer"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components-brand-new/Layout/Header"),
+                    import("components-brand-new/Layout/Header"),
+                    import("components-brand-new/Layout/Header"),
+                    import("components-brand-new/Layout/Header")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
