@@ -339,9 +339,9 @@ const routes = (
         <Route
             path="/account/:account_name"
             components={{
-                headerBlock: Header,
-                sidebarBlock: Sidebar,
-                contentBlock: AccountPage,
+                headerBlock: Footer,
+                sidebarBlock: Footer,
+                contentBlock: Footer,
                 footerBlock: Footer
             }}
         >
