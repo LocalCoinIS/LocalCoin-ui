@@ -341,10 +341,27 @@ const routes = (
             components={{
                 headerBlock: Header,
                 sidebarBlock: Sidebar,
-                contentBlock: DashboardAccountsOnly,
+                contentBlock: AccountPage,
                 footerBlock: Footer
             }}
         >
+            <IndexRoute component={AccountOverview} />
+            {/* <Route path="dashboard" component={AccountOverview} /> */}
+            {/* <Route path="deposit-withdraw" component={AccountDepositWithdraw} /> */}
+            {/* <Route path="orders" component={AccountOrders} /> */}
+
+            <Route path="assets" component={AccountAssets} />
+            <Route path="create-asset" component={AccountAssetCreate} />
+            <Route path="update-asset/:asset" component={AccountAssetUpdate} />
+            <Route path="member-stats" component={AccountMembership} />
+            <Route path="vesting" component={AccountVesting} />
+            <Route path="permissions" component={AccountPermissions} />
+            <Route path="voting" component={AccountVoting} />
+            <Route path="whitelist" component={AccountWhitelist} />
+            <Route path="signedmessages" component={AccountSignedMessages} />
+            <Redirect from="overview" to="/account/:account_name" />
+            <Redirect from="dashboard" to="/account/:account_name" />
+            <Redirect from="orders" to="/account/:account_name" />
         </Route>
 
         <Route
