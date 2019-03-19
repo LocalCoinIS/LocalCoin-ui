@@ -531,106 +531,14 @@ const routes = (
             getComponents={(location, cb) => {
                 Promise.all([
                     import("components-brand-new/Layout/Header"),
-                    import("components-brand-new/Layout/Sidebar"),
-                    import("components-brand-new/Account/AccountPage"),
+                    import("components-brand-new/Account/AccountDepositWithdraw"),
                     import("components-brand-new/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
             }}
         >
-            <IndexRoute
-                getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountOverview")
-                        .then(loadRoute(cb))
-                        .catch(errorLoading);
-                }}
-            />
-            {/* <Route path="dashboard" getComponent={(location, cb) => {
-                import("components/Account/AccountOverview").then(loadRoute(cb)).catch(errorLoading);
-            }}/> */}
-            {/* <Route path="deposit-withdraw" getComponent={(location, cb) => {
-                import("components/Account/AccountDepositWithdraw").then(loadRoute(cb)).catch(errorLoading);
-            }}/> */}
-            {/* <Route path="orders" getComponent={(location, cb) => {
-                import("components/Account/AccountOrders").then(loadRoute(cb)).catch(errorLoading);
-            }}/> */}
 
-            <Route
-                path="assets"
-                getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountAssets")
-                        .then(loadRoute(cb))
-                        .catch(errorLoading);
-                }}
-            />
-            <Route
-                path="create-asset"
-                getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountAssetCreate")
-                        .then(loadRoute(cb, "AccountAssetCreate"))
-                        .catch(errorLoading);
-                }}
-            />
-            <Route
-                path="update-asset/:asset"
-                getComponent={(location, cb) => {
-                    import("components/Account/AccountAssetUpdate")
-                        .then(loadRoute(cb))
-                        .catch(errorLoading);
-                }}
-            />
-            <Route
-                path="member-stats"
-                getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountMembership")
-                        .then(loadRoute(cb))
-                        .catch(errorLoading);
-                }}
-            />
-            <Route
-                path="vesting"
-                getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountVesting")
-                        .then(loadRoute(cb))
-                        .catch(errorLoading);
-                }}
-            />
-            <Route
-                path="permissions"
-                getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountPermissions")
-                        .then(loadRoute(cb))
-                        .catch(errorLoading);
-                }}
-            />
-            <Route
-                path="voting"
-                getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountVoting")
-                        .then(loadRoute(cb))
-                        .catch(errorLoading);
-                }}
-            />
-            <Route
-                path="whitelist"
-                getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountWhitelist")
-                        .then(loadRoute(cb))
-                        .catch(errorLoading);
-                }}
-            />
-            <Route
-                path="signedmessages"
-                getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountSignedMessages")
-                        .then(loadRoute(cb))
-                        .catch(errorLoading);
-                }}
-            />
-            <Redirect from="overview" to="/account/:account_name" />
-            <Redirect from="dashboard" to="/account/:account_name" />
-            <Redirect from="orders" to="/account/:account_name" />
         </Route>
         <Route
             path="deposit-withdraw"
