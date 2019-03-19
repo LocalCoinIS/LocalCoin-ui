@@ -89,7 +89,7 @@ class AssetName extends React.Component {
             let tooltip = noTip
                 ? null
                 : `<div><strong>${upperCasePrefix ||
-                      ""}${replacedName.toUpperCase()}</strong><br />${
+                      ""}${replacedName.toUpperCase()}</strong>${
                       includeBitAssetDescription
                           ? ""
                           : "<br />" +

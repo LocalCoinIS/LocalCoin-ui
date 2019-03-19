@@ -725,11 +725,13 @@ body.localcoin
 		input[type="text"]
 			height: 28px!important
 		table.table.table-hover.text-right
-			td
-				padding: 5px 0!important
-				.asset-prefix-replaced,
-				.asset-prefix-replaced + span
-					font-size: 9px!important
+			tr
+				td
+					padding: 5px 0!important
+				td:not(:nth-child(2))
+					.asset-prefix-replaced,
+					.asset-prefix-replaced + span
+						font-size: 9px!important
 			th:last-child, td:last-child
 				padding: 0
 				width: 20px
@@ -1045,7 +1047,7 @@ body.localcoin
 				td
 					font-size: 12px
 					span
-						font-size: 12px
+						font-size: 11px!important
 				td.text-right
 					font-family: 'Roboto Mono', monospace!important
 	.float-right.buy-sell-deposit

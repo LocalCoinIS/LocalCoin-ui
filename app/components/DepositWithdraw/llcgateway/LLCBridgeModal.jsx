@@ -52,13 +52,12 @@ class LLCBridgeModal extends React.Component {
                 if (self.currencies[i].asset === props.asset)
                     thisAsset = props.asset;
             }
-
-            self.onChooseAsset(thisAsset);
             self.setState({
                 asset: thisAsset,
                 assets: assets,
                 assetValues: assetValues
             });
+            self.onChooseAsset(thisAsset);
         });
     }
 
@@ -92,9 +91,12 @@ class LLCBridgeModal extends React.Component {
         });
         this.loadAssetCourse(asset, this.updateSend.bind(this));
 
+        let account = this.props.account
+        let accountName = typeof account === "object" ? account.get("name") :
+            typeof account === "string" ? account : "";
         //update address
         new LLCGatewayData().сreatePaymentAddress(
-            this.props.account.get("name"),
+            accountName,
             asset,
             LLCBridgeModal.MODE_BRIDGE,
             function(address) {
@@ -134,20 +136,20 @@ class LLCBridgeModal extends React.Component {
     }
 
     updateReceive(asset) {
-        if(document.querySelector(".receive-input")) {
+        if(this.refs.receive_input) {
             let course = this.getCourseByAsset(asset);
-            let val = parseFloat(document.querySelector(".send-input").value.replace(",", ".")) * parseFloat(course.coef);
+            let val = parseFloat(this.refs.send_input.value.replace(",", ".")) * parseFloat(course.coef);
             if (isNaN(val)) val = 0;
-            document.querySelector(".receive-input").value = val.toFixed(LLCBridgeModal.PRESICTION);
+            this.refs.receive_input.value = val.toFixed(LLCBridgeModal.PRESICTION);
         }
     }
 
     updateSend(asset) {
-        if(document.querySelector(".send-input")) {
+        if(this.refs.send_input) {
             let course = this.getCourseByAsset(asset);
-            let val = parseFloat(document.querySelector(".receive-input").value.replace(",", ".")) / parseFloat(course.coef);
+            let val = parseFloat( this.refs.receive_input.value.replace(",", ".")) / parseFloat(course.coef);
             if (isNaN(val)) val = 0;
-            document.querySelector(".send-input").value = val.toFixed(LLCBridgeModal.PRESICTION);
+            this.refs.send_input.value = val.toFixed(LLCBridgeModal.PRESICTION);
         }
     }
 
@@ -200,6 +202,7 @@ class LLCBridgeModal extends React.Component {
                 </div>
                 <div className="inline-label input-wrapper">
                     <input
+                        ref="send_input"
                         className="send-input"
                         type="number"
                         onChange={this.handleSendInput}
@@ -232,6 +235,7 @@ class LLCBridgeModal extends React.Component {
                 </label>
                 <div className="inline-label input-wrapper">
                     <input
+                        ref="receive_input"
                         className="receive-input"
                         type="number"
                         onChange={this.handleReceiveInput}

@@ -42,10 +42,11 @@ class BackupCreate extends Component {
                             ? this.props.location.query.newAccount
                             : null
                     }
+                    isCreateAcc={this.props.isCreateAcc}
                 >
                     <NameSizeModified />
                     {this.props.noText ? null : <Sha1 />}
-                    <Download downloadCb={this.props.downloadCb} />
+                    <Download downloadCb={this.props.downloadCb} isCreateAcc={this.props.isCreateAcc} />
                 </Create>
             </div>
         );
@@ -298,6 +299,9 @@ class Download extends Component {
     componentDidMount() {
         if (!this.isFileSaverSupported)
             notify.error("File saving is not supported");
+        if(this.props.isCreateAcc) {
+            this.onDownload();
+        }
     }
 
     render() {
@@ -307,7 +311,6 @@ class Download extends Component {
             </div>
         );
     }
-
     onDownload() {
         let blob = new Blob([this.props.backup.contents], {
             type: "application/octet-stream; charset=us-ascii"
@@ -316,7 +319,10 @@ class Download extends Component {
         if (blob.size !== this.props.backup.size)
             throw new Error("Invalid backup to download conversion");
         saveAs(blob, this.props.backup.name);
-        WalletActions.setBackupDate();
+        if(!this.props.isCreateAcc) {
+            WalletActions.setBackupDate();
+        }
+
 
         if (this.props.downloadCb) {
             this.props.downloadCb();
@@ -333,11 +339,19 @@ class Create extends Component {
         return backupName(this.props.wallet.current_wallet);
     }
 
+    componentDidMount() {
+        if(this.props.isCreateAcc) {
+            this.onCreateBackup();
+            WalletActions.setBackupDate();
+        }
+    }
+
     render() {
         let has_backup = !!this.props.backup.contents;
         if (has_backup) return <div>{this.props.children}</div>;
 
         let ready = WalletDb.getWallet() != null;
+
 
         return (
             <div>
