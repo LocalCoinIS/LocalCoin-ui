@@ -181,7 +181,144 @@ class Sidebar extends React.Component {
 
         return !currentAccount ? null : (
             <div className="sidebar">
-test
+                <div className="sidebar__qr">
+                    <AccountImage
+                        size={{height: 150, width: 150}}
+                        account={currentAccount}
+                    />
+                    {/*
+                    <img src={qr} alt="code" />
+                    */}
+                </div>
+                <p className="sidebar__descr">
+                    {counterpart.translate("account.deposit_address")}
+                </p>
+                <span className="sidebar__user">
+                    <b>{currentAccount}</b>
+                </span>
+                <ul className="sidebar__menu">
+                    {makeSidebarMenuItem({
+                        title: "header.dashboard",
+                        link: `/account/${currentAccount}`,
+                        isActive: active === `/account/${currentAccount}`
+                    })}
+                    {makeSidebarMenuItem({
+                        title: "account.member.stats",
+                        link: `/account/${currentAccount}/member-stats`,
+                        isActive:
+                            active.indexOf(
+                                `/account/${currentAccount}/member-stats`
+                            ) !== -1
+                    })}
+                    {makeSidebarMenuItem({
+                        title: "account.voting",
+                        link: `/account/${currentAccount}/voting`,
+                        isActive:
+                            active.indexOf(
+                                `/account/${currentAccount}/voting`
+                            ) !== -1
+                    })}
+                    {false
+                        ? makeSidebarMenuItem({
+                              title: "account.voting",
+                              link: `/account/${currentAccount}/voting`,
+                              isActive:
+                                  active.indexOf(
+                                      `/account/${currentAccount}/voting`
+                                  ) !== -1
+                          })
+                        : null}
+                    <li
+                        className={cnames("sidebar__menu__item expand", {
+                            showsub: this.state.showSubMenu
+                        })}
+                    >
+                        <a
+                            className="sidebar__menu__link"
+                            href="#"
+                            onClick={this._toggleSubMenu}
+                        >
+                            {counterpart.translate("account.advanced")}
+                        </a>
+                        <ul className="sidebar__menu__sub">
+                            {makeSidebarMenuItem({
+                                title: "explorer.assets.title",
+                                link: `/account/${currentAccount}/assets`,
+                                isActive:
+                                    active.indexOf(
+                                        `/account/${currentAccount}/assets`
+                                    ) !== -1,
+                                subLink: true,
+                                noBorder: true
+                            })}
+                            {makeSidebarMenuItem({
+                                title: "account.permissions",
+                                link: `/account/${currentAccount}/permissions`,
+                                isActive:
+                                    active.indexOf(
+                                        `/account/${currentAccount}/permissions`
+                                    ) !== -1,
+                                subLink: true
+                            })}
+                            {makeSidebarMenuItem({
+                                title: "account.whitelist.title",
+                                link: `/account/${currentAccount}/whitelist`,
+                                isActive:
+                                    active.indexOf(
+                                        `/account/${currentAccount}/whitelist`
+                                    ) !== -1,
+                                subLink: true
+                            })}
+                            {makeSidebarMenuItem({
+                                title: "account.vesting.title",
+                                link: `/account/${currentAccount}/vesting`,
+                                isActive:
+                                    active.indexOf(
+                                        `/account/${currentAccount}/vesting`
+                                    ) !== -1,
+                                subLink: true
+                            })}
+                            {makeSidebarMenuItem({
+                                title: "account.signedmessages.menuitem",
+                                link: `/account/${currentAccount}/signedmessages`,
+                                isActive:
+                                    active.indexOf(
+                                        `/account/${currentAccount}/signedmessages`
+                                    ) !== -1,
+                                subLink: true
+                            })}
+                        </ul>
+                    </li>
+                </ul>
+                <button
+                    className="btn large outline create-account"
+                    type="button"
+                    onClick={this._onNavigate.bind(
+                        this,
+                        "/create-account/wallet"
+                    )}
+                >
+                    {counterpart.translate("header.create_account")}
+                </button>
+                <SendModal
+                    id="send_modal_header"
+                    refCallback={e => {
+                        if (e) this.send_modal = e;
+                    }}
+                    from_name={currentAccount}
+                />
+
+                {/*<DepositModal*/}
+                    {/*ref="deposit_modal_new"*/}
+                    {/*modalId="deposit_modal_new"*/}
+                    {/*account={currentAccount}*/}
+                    {/*backedCoins={this.props.backedCoins}*/}
+                {/*/>*/}
+                {/*<WithdrawModal*/}
+                    {/*ref="withdraw_modal_new"*/}
+                    {/*modalId="withdraw_modal_new"*/}
+                    {/*backedCoins={this.props.backedCoins}*/}
+                {/*/>*/}
             </div>
         );
     }
