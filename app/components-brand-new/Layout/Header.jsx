@@ -1048,7 +1048,7 @@ class Header extends React.Component {
                                     href="#"
                                     onClick={this._onNavigate.bind(
                                         this,
-                                        `/account/${currentAccount}${location.pathname !== `/account/${currentAccount}` ? "#activity" : ""}`
+                                        `/account/${currentAccount}/dashboard`
                                     )}
                                 >
                                     <span className="user__name">
