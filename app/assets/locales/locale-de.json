@@ -378,9 +378,12 @@
     "borrow": {
         "adjust": "Position anpassen",
         "adjust_short": "Anpassen",
-        "call_limit": "Markt Call Limit",
+        "call_limit": "Markt Kauflimit",
         "close": "Position schlißen",
         "coll_ratio": "Kollateral-Ratio",
+        "coll_ratio_target": "Ziel-Ratio",
+        "considered_on_revival": "Included",
+        "enable_target_collateral_ratio": "Zielsicherheiten-Ratio benutzen",
         "errors": {
             "below": "Kollateral-Ratio unter Aufrechterhaltungslevel",
             "close": "Your collateral ratio is close to %(mr)s which means this position is in danger of being margin called if the price drops.",

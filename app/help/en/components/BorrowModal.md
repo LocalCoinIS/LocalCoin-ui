@@ -1,3 +1,3 @@
-Update your {debt} margin position by adjusting the debt and collateral levels.
+Aktualisieren Sie Ihre {debt}-Margenposition, indem Sie die Höhe der Schulden und Sicherheiten anpassen.
 
-Collateral and debt levels can be adjusted in any way you desire, as long as your collateral ratio stays above the maintenance collateral ratio of {mr}. [Read more.](dex/shorting)
+Die Höhe der Sicherheiten und Schulden kann beliebig angepasst werden, solange Ihre Sicherheitenquote über der Wartungssicherheitsquote von {mr} liegt. [Weiterlesen.](dex/shorting)
