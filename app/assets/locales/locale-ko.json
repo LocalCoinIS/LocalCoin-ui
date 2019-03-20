@@ -715,6 +715,7 @@
         "title": "Fee Schedule"
     },
     "footer": {
+        "add_coin": "통화 추가",
         "advanced_settings": "Advanced settings",
         "backup": "A Backup is Required",
         "block": "최근 블록",

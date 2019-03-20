@@ -715,6 +715,7 @@
         "title": "手数料表"
     },
     "footer": {
+        "add_coin": "通貨を追加",
         "advanced_settings": "Advanced settings",
         "backup": "バックアップが必要です",
         "block": "ブロック",

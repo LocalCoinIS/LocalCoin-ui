@@ -715,6 +715,7 @@
         "title": "Elenco commissioni"
     },
     "footer": {
+        "add_coin": "Aggiungi valuta",
         "advanced_settings": "Advanced settings",
         "backup": "È necessario un backup",
         "block": "Head block",

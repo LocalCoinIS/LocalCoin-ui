@@ -715,6 +715,7 @@
         "title": "费率表"
     },
     "footer": {
+        "add_coin": "添加货币",
         "advanced_settings": "Advanced settings",
         "backup": "需要备份",
         "block": "最新区块",

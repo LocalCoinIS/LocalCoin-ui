@@ -722,6 +722,7 @@
         "title": "Gebühren"
     },
     "footer": {
+        "add_coin" : "Münze hinzufügen",
         "advanced_settings": "Fortgeschrittene Einstellungen",
         "backup": "Eine Sicherung ist erforderlich!",
         "block": "Spitzenblock",
