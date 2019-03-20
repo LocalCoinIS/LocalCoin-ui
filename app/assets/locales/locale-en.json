@@ -716,6 +716,7 @@
         "title": "Fee Schedule"
     },
     "footer": {
+        "add_coin" : "Add coin",
         "advanced_settings": "Advanced settings",
         "backup": "A Backup is Required",
         "block": "Block",
