@@ -1130,6 +1130,7 @@
             "amount": "出金数量",
             "available": "利用可能: ",
             "LocalCoin_account": "Send to LocalCoin Account",
+            "bitshares_account": "Send to LocalCoin Account",
             "cancel": "キャンセル",
             "cannot_cover": "この出金をするのに十分な資金がありません",
             "estimated_value": "推定価格",

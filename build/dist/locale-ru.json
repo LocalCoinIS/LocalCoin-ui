@@ -1052,6 +1052,7 @@
             "amount": "Сумма на вывод",
             "available": "Доступно: ",
             "LocalCoin_account": "Отправить на аккаунт в LocalCoin",
+            "bitshares_account": "Отправить на аккаунт в LocalCoin",
             "cancel": "Отмена",
             "cannot_cover": "Недостаточно средств",
             "estimated_value": "Ориентировочная стоимость",
