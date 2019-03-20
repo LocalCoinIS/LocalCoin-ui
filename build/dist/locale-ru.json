@@ -767,6 +767,7 @@
         "title": "Комиссии сети"
     },
     "footer": {
+        "add_coin" : "Добавить монету",
         "advanced_settings": "Расширенные настройки",
         "backup": "Необходима резервная копия",
         "block": "Блок",
@@ -1052,6 +1053,7 @@
             "amount": "Сумма на вывод",
             "available": "Доступно: ",
             "LocalCoin_account": "Отправить на аккаунт в LocalCoin",
+            "bitshares_account": "Отправить на аккаунт в LocalCoin",
             "cancel": "Отмена",
             "cannot_cover": "Недостаточно средств",
             "estimated_value": "Ориентировочная стоимость",

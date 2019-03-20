@@ -67,7 +67,11 @@ class MarketRow extends React.Component {
             return null;
         }
 
-        let marketID = quote.get("symbol") + "_" + base.get("symbol");
+        let exeptionArr = ["USDT", "EURT", "TUSD", "USDC", "USDS"];
+        let marketID = base.get("symbol") + "_" + quote.get("symbol");
+        if(exeptionArr.includes(base.get("symbol"))) {
+            marketID = quote.get("symbol") + "_" + base.get("symbol");
+        }
         let marketName = quote.get("symbol") + "/" + base.get("symbol");
         let dynamic_data = this.props.getDynamicObject(
             quote.get("dynamic_asset_data_id")

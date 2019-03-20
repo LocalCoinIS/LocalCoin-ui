@@ -14,6 +14,7 @@ import counterpart from "counterpart";
 import "intro.js/introjs.css";
 import guide from "intro.js";
 import PropTypes from "prop-types";
+import AccountStore from "stores/AccountStore";
 
 class Footer extends React.Component {
     static propTypes = {
@@ -129,6 +130,42 @@ class Footer extends React.Component {
         }
     }
 
+    _onNavigate(route, e) {
+        e.preventDefault();
+        if (
+            route !== "/" &&
+            route !== "/settings/general" &&
+            this.isUnauthorizedUser(route)
+        )
+            return;
+
+        // Set Accounts Tab as active tab
+        if (route == "/accounts") {
+            SettingsActions.changeViewSetting({
+                dashboardEntry: "accounts"
+            });
+        }
+
+        this.context.router.push(route);
+    }
+
+
+
+    _createAccountLink = null;
+    isUnauthorizedUser(route) {
+        //for exchange allow access forever
+        let currentAccount = AccountStore.getState().currentAccount;
+        if (typeof route !== "undefined" && route.indexOf("/market/") === 0)
+            return false;
+
+        if (!currentAccount || !!this._createAccountLink) {
+            this.props.router.push("/create-account/wallet");
+            return true;
+        }
+
+        return false;
+    }
+
     render() {
         const autoSelectAPI = "wss://fake.automatic-selection.com";
         const {state, props} = this;
@@ -156,79 +193,93 @@ class Footer extends React.Component {
         let updateStyles = {display: "inline-block", verticalAlign: "top"};
         let logoProps = {};
 
+        let currentAccount = AccountStore.getState().currentAccount;
+
         return (
             <footer className="footer">
                 <div className="footer-line">
                     <button
                         className="btn large inverted flat support-btn"
                         type="button"
-                        onClick={this.chatToggle.bind(this)}
+                        onClick={this._onNavigate.bind(
+                            this,
+                            `/account/${currentAccount}/create-asset/`
+                        )}
                     >
-                        Chat
+                        <Translate content="footer.add_coin" />
                     </button>
-                    <div
-                        className="footer-info"
-                        onClick={() => {
-                            this.setState({showNodesPopup: true});
-                        }}
-                    >
+                    <div className="footer-right">
+                        <button
+                            className="btn large inverted flat support-btn"
+                            type="button"
+                            onClick={this.chatToggle.bind(this)}
+                        >
+                            Chat
+                        </button>
                         <div
-                            onMouseEnter={() => {
+                            className="footer-info"
+                            onClick={() => {
                                 this.setState({showNodesPopup: true});
                             }}
-                            onMouseLeave={() => {
-                                this.setState({showNodesPopup: false});
-                            }}
-                            className="node-access-popup"
-                            style={{
-                                display: this.state.showNodesPopup ? "" : "none"
-                            }}
                         >
-                            <AccessSettings
-                                nodes={this.props.defaults.apiServer}
-                                popup={true}
-                            />
-                            <div style={{paddingTop: 15}}>
-                                <a onClick={this.onAccess.bind(this)}>
-                                    <Translate content="footer.advanced_settings" />
-                                </a>
+                            <div
+                                onMouseEnter={() => {
+                                    this.setState({showNodesPopup: true});
+                                }}
+                                onMouseLeave={() => {
+                                    this.setState({showNodesPopup: false});
+                                }}
+                                className="node-access-popup"
+                                style={{
+                                    display: this.state.showNodesPopup ? "" : "none"
+                                }}
+                            >
+                                <AccessSettings
+                                    nodes={this.props.defaults.apiServer}
+                                    popup={true}
+                                />
+                                <div style={{paddingTop: 15}}>
+                                    <a onClick={this.onAccess.bind(this)}>
+                                        <Translate content="footer.advanced_settings" />
+                                    </a>
+                                </div>
                             </div>
+                            <span
+                                className="footer-info__status"
+                                onClick={e => {
+                                    e.preventDefault();
+                                    this.context.router.push("/settings/access");
+                                }}
+                            >
+                                {!connected
+                                    ? counterpart.translate("footer.disconnected")
+                                    : activeNode.name}
+                            </span>
+                            <span className="footer-info__data">
+                                {counterpart.translate("footer.latency")}
+                                &nbsp;
+                                {!connected
+                                    ? "-"
+                                    : !activeNode.ping
+                                        ? "-"
+                                        : activeNode.ping + "ms"}
+                                &nbsp;/&nbsp;
+                                {counterpart.translate("footer.block")}
+                                &nbsp;#
+                                {block_height}
+                            </span>
                         </div>
-                        <span
-                            className="footer-info__status"
+                        <button
+                            className="btn large inverted flat support-btn"
+                            type="button"
                             onClick={e => {
                                 e.preventDefault();
-                                this.context.router.push("/settings/access");
+                                this.context.router.push("/help");
                             }}
                         >
-                            {!connected
-                                ? counterpart.translate("footer.disconnected")
-                                : activeNode.name}
-                        </span>
-                        <span className="footer-info__data">
-                            {counterpart.translate("footer.latency")}
-                            &nbsp;
-                            {!connected
-                                ? "-"
-                                : !activeNode.ping
-                                    ? "-"
-                                    : activeNode.ping + "ms"}
-                            &nbsp;/&nbsp;
-                            {counterpart.translate("footer.block")}
-                            &nbsp;#
-                            {block_height}
-                        </span>
+                            {counterpart.translate("global.help")}
+                        </button>
                     </div>
-                    <button
-                        className="btn large inverted flat support-btn"
-                        type="button"
-                        onClick={e => {
-                            e.preventDefault();
-                            this.context.router.push("/help");
-                        }}
-                    >
-                        {counterpart.translate("global.help")}
-                    </button>
                 </div>
             </footer>
         );
