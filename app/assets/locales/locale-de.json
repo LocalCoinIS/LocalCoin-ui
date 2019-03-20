@@ -1360,7 +1360,7 @@
         "reset": "Einstellungen zurücksetzen",
         "reset_text": "Werkseinstellungen wiederherstellen",
         "reset_text_description": "Dies wird alle Ihre %(generalName)s, %(accessName)s und %(faucetName)s Einstellungen zurücksetzen",
-        "restore": "Wiederherstellen/Importieren",
+        "restore": "Wiederherstellen oder Importieren",
         "restore_brainkey_text": "Für eine Wiederherstellung durch den Gedächtnisschlüssel, muss eine neue Wallet anlegt werden. Bitte stellen Sie unterhalbe ein Passwort und Name für die neue Wallet zur Verfügung und geben danach den Gedächtnisschlüssel ein.",
         "restore_default_success": "Einstellungen wurden erfolgreich zurückgesetzt",
         "restore_key_count": "# an Schlüssel",
