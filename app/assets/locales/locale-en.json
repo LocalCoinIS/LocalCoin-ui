@@ -1133,6 +1133,7 @@
             "amount": "Amount to Withdraw",
             "available": "Available: ",
             "LocalCoin_account": "Send to LocalCoin Account",
+            "bitshares_account": "Send to LocalCoin Account",
             "cancel": "Cancel",
             "cannot_cover": "Insufficient funds!",
             "estimated_value": "Estimated Value",
