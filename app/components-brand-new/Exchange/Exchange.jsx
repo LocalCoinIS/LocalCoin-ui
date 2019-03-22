@@ -1829,7 +1829,7 @@ class Exchange extends React.Component {
                             id="CenterContent"
                             ref="center"
                         >
-                            {false ? (!showDepthChart ? (
+                            {isChart ? (!showDepthChart ? (
                                 <div
                                     className="grid-block shrink no-overflow"
                                     id="market-charts"
@@ -2027,7 +2027,7 @@ class Exchange extends React.Component {
                                     <span>&#9650;</span>
                                 )}
                             </div>
-                            {isChart ?                             (this.props.miniDepthChart ? (
+                            {false ?                             (this.props.miniDepthChart ? (
                                 <DepthHighChart
                                     marketReady={marketReady}
                                     orders={marketLimitOrders}
