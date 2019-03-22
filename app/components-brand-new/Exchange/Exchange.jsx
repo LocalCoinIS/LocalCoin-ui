@@ -1829,7 +1829,7 @@ class Exchange extends React.Component {
                             id="CenterContent"
                             ref="center"
                         >
-                            {isChart ? (!showDepthChart ? (
+                            {false ? (!showDepthChart ? (
                                 <div
                                     className="grid-block shrink no-overflow"
                                     id="market-charts"
