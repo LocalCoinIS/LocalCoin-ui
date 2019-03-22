@@ -75,7 +75,8 @@ class Exchange extends React.Component {
             },
             isBridgeModalVisible: false,
             isMarketFee: false,
-            isMarketPage: true
+            isMarketPage: true,
+            test: true,
         };
 
         this._getWindowSize = debounce(this._getWindowSize.bind(this), 150);
@@ -473,6 +474,9 @@ class Exchange extends React.Component {
         console.log(11111111111);
         console.log(11111111111);
         console.log(11111111111);
+        this.setState({
+            test: false
+        });
     }
 
     _getFeeAssets(quote, base, coreAsset) {
@@ -1826,7 +1830,7 @@ class Exchange extends React.Component {
                             id="CenterContent"
                             ref="center"
                         >
-                            {!showDepthChart ? (
+                            {this.state.test ? (!showDepthChart ? (
                                 <div
                                     className="grid-block shrink no-overflow"
                                     id="market-charts"
@@ -1907,7 +1911,7 @@ class Exchange extends React.Component {
                                         centerRef={this.refs.center}
                                     />
                                 </div>
-                            )}
+                            )) : null}
 
                             <div className="grid-block no-overflow wrap shrink">
                                 <div className={`market-row stable-height ${isMarketFee ? "is-fee" : ""}`}>
