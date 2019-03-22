@@ -54,6 +54,11 @@ class DepthHighChart extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        this.refs.depthChart.remove();
+        this.refs.test.remove();
+    }
+
     reflowChart(timeout) {
         setTimeout(() => {
             if (this.refs.depthChart) {
@@ -411,7 +416,7 @@ class DepthHighChart extends React.Component {
                         </p>
                     )}
                     {flatBids || flatAsks || flatCalls ? (
-                        <ReactHighchart config={config} />
+                        <ReactHighchart config={config} ref="test" />
                     ) : null}
                 </div>
             );
