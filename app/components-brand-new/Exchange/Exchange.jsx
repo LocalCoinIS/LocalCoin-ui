@@ -76,8 +76,7 @@ class Exchange extends React.Component {
             isBridgeModalVisible: false,
             isMarketFee: false,
             isMarketPage: true,
-            isChart: true,
-            isChart2: true,
+            isChart: true
         };
 
         this._getWindowSize = debounce(this._getWindowSize.bind(this), 150);
@@ -473,8 +472,7 @@ class Exchange extends React.Component {
         window.removeEventListener("resize", this._getWindowSize);
         console.log(11111);
         this.setState({
-            isChart: false,
-            isChart2: false,
+            isChart: false
         });
         console.log(22222);
     }
@@ -1333,9 +1331,7 @@ class Exchange extends React.Component {
             width,
             buySellTop,
             isMarketFee,
-            isChart,
-            isChart2,
-
+            isChart
         } = this.state;
         const {isFrozen, frozenAsset} = this.isMarketFrozen();
 
@@ -1833,7 +1829,7 @@ class Exchange extends React.Component {
                             id="CenterContent"
                             ref="center"
                         >
-                            {isChart ? (!showDepthChart ? (
+                            {true ? (!showDepthChart ? (
                                 <div
                                     className="grid-block shrink no-overflow"
                                     id="market-charts"
@@ -2031,7 +2027,7 @@ class Exchange extends React.Component {
                                     <span>&#9650;</span>
                                 )}
                             </div>
-                            {isChart2 ?                             (this.props.miniDepthChart ? (
+                            {false ?                             (this.props.miniDepthChart ? (
                                 <DepthHighChart
                                     marketReady={marketReady}
                                     orders={marketLimitOrders}
