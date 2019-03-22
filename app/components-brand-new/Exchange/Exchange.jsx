@@ -76,7 +76,7 @@ class Exchange extends React.Component {
             isBridgeModalVisible: false,
             isMarketFee: false,
             isMarketPage: true,
-            test: true,
+            test: false,
         };
 
         this._getWindowSize = debounce(this._getWindowSize.bind(this), 150);
@@ -473,7 +473,7 @@ class Exchange extends React.Component {
         console.log(11111111111);
         console.log(11111111111);
         console.log(11111111111);
-        console.log(11111111111);
+        console.log(this.state);
         this.setState({
             test: false
         });
@@ -2028,7 +2028,7 @@ class Exchange extends React.Component {
                                     <span>&#9650;</span>
                                 )}
                             </div>
-                            {this.props.miniDepthChart ? (
+                            {false ? (
                                 <DepthHighChart
                                     marketReady={marketReady}
                                     orders={marketLimitOrders}
