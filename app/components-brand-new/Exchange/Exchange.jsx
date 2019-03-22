@@ -469,6 +469,10 @@ class Exchange extends React.Component {
 
     componentWillUnmount() {
         window.removeEventListener("resize", this._getWindowSize);
+        console.log(11111111111);
+        console.log(11111111111);
+        console.log(11111111111);
+        console.log(11111111111);
     }
 
     _getFeeAssets(quote, base, coreAsset) {
