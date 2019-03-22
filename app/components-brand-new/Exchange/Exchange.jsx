@@ -381,6 +381,7 @@ class Exchange extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
+
         this._initPsContainer();
         if (
             !this.props.exchange.get("tutorialShown") &&
@@ -474,7 +475,7 @@ class Exchange extends React.Component {
         this.setState({
             isChart: false
         });
-        console.log(22222);
+        console.log(222222);
     }
 
     _getFeeAssets(quote, base, coreAsset) {
@@ -1288,6 +1289,7 @@ class Exchange extends React.Component {
     }
 
     render() {
+        console.log(3333);
         let {
             currentAccount,
             marketLimitOrders,
@@ -2027,7 +2029,7 @@ class Exchange extends React.Component {
                                     <span>&#9650;</span>
                                 )}
                             </div>
-                            {false ?                             (this.props.miniDepthChart ? (
+                            {isChart ?                             (this.props.miniDepthChart ? (
                                 <DepthHighChart
                                     marketReady={marketReady}
                                     orders={marketLimitOrders}

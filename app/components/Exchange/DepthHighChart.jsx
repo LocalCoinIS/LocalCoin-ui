@@ -10,16 +10,6 @@ import AssetName from "../Utility/AssetName";
 import {didOrdersChange} from "common/MarketClasses";
 
 class DepthHighChart extends React.Component {
-
-    constructor(props) {
-        super();
-        this.state = {
-            isChart: true
-        };
-
-    }
-
-
     shouldComponentUpdate(nextProps) {
         let settleCheck = isNaN(nextProps.feedPrice)
             ? false
@@ -64,13 +54,6 @@ class DepthHighChart extends React.Component {
         }
     }
 
-    componentWillUnmount() {
-        console.log(11111);
-        this.setState({
-            isChart: false
-        });
-    }
-
     reflowChart(timeout) {
         setTimeout(() => {
             if (this.refs.depthChart) {
@@ -84,10 +67,6 @@ class DepthHighChart extends React.Component {
     }
 
     render() {
-        console.log("====");
-        console.log(this.state);
-        console.log(this.props);
-        console.log("====");
         let {
             flat_bids,
             flat_asks,
@@ -179,8 +158,50 @@ class DepthHighChart extends React.Component {
             },
             series: [],
             yAxis: {
+                labels: {
+                    enabled: true,
+                    style: {
+                        color: primaryText
+                    },
+                    /*formatter: function() {
+                        return utils.format_number(
+                            this.value,
+                            quote.get("precision")
+                        );
+                    }*/ /*Commend function*/
+                },
+                opposite: false,
+                title: {
+                    text: null,
+                    style: {
+                        color: "#FFFFFF"
+                    }
+                },
+                gridLineWidth: 1,
+                gridLineColor: "rgba(196, 196, 196, 0.30)",
+                gridZIndex: 1,
+                crosshair: {
+                    snap: false
+                },
+                currentPriceIndicator: {
+                    enabled: false
+                }
             },
             xAxis: {
+                labels: {
+                    style: {
+                        color: primaryText
+                    }
+                    // formatter: function() {
+                    //     return this.value / power;
+                    // }
+                },
+                ordinal: false,
+                lineColor: "#000000",
+                title: {
+                    text: null
+                },
+                plotLines: []
             },
             plotOptions: {
                 area: {
@@ -195,6 +216,171 @@ class DepthHighChart extends React.Component {
             }
         };
 
+        // Center the charts between bids and asks
+        if (flatBids.length > 0 && flatAsks.length > 0) {
+            let middleValue =
+                (flatAsks[0][0] + flatBids[flatBids.length - 1][0]) / 2;
+
+            config.xAxis.min = middleValue * 0.4;
+            config.xAxis.max = middleValue * 1.6;
+            if (config.xAxis.max < flatAsks[0][0]) {
+                config.xAxis.max = flatAsks[0][0] * 1.5;
+            }
+            if (config.xAxis.min > flatBids[flatBids.length - 1][0]) {
+                config.xAxis.min = flatBids[flatBids.length - 1][0] * 0.5;
+            }
+            let yMax = 0;
+            flatBids.forEach(b => {
+                if (b[0] >= config.xAxis.min) {
+                    yMax = Math.max(b[1], yMax);
+                }
+            });
+            flatAsks.forEach(a => {
+                if (a[0] <= config.xAxis.max) {
+                    yMax = Math.max(a[1], yMax);
+                }
+            });
+            config.yAxis.max = yMax * 1.15;
+
+            // Adjust y axis label decimals
+            /*let yLabelDecimals = yMax > 10 ? 0 : yMax > 1 ? 2 : 5;
+            config.yAxis.labels.formatter = function() {
+                return utils.format_number(this.value, yLabelDecimals);
+            };*/ /*Commend function*/
+        } else if (flatBids.length && !flatAsks.length) {
+            config.xAxis.min = flatBids[flatBids.length - 1][0] * 0.4;
+            config.xAxis.max = flatBids[flatBids.length - 1][0] * 1.6;
+        } else if (flatAsks.length && !flatBids.length) {
+            config.xAxis.min = 0;
+            config.xAxis.max = flatAsks[0][0] * 2;
+        }
+
+        if (this.props.hasPrediction) {
+            config.xAxis.min = -0.05;
+            config.xAxis.max = 1.05;
+        }
+
+        // Add plotlines if defined
+        // if (falsethis.props.plotLine) {
+        //	 config.xAxis.plotLines.push({
+        //		 color: "red",
+        //		 id: "plot_line",
+        //		 dashStyle: "longdashdot",
+        //		 value: this.props.plotLine * power,
+        //		 width: 1,
+        //		 zIndex: 5
+        //	 });
+        // }
+
+        // Market asset
+        if (this.props.LCP) {
+            config.xAxis.plotLines.push({
+                color: axisLineColor,
+                id: "plot_line",
+                dashStyle: "longdash",
+                value: this.props.LCP,
+                label: {
+                    text: counterpart.translate("explorer.block.call_limit"),
+                    style: {
+                        color: primaryText,
+                        fontWeight: "bold"
+                    }
+                },
+                width: 2,
+                zIndex: 5
+            });
+        }
+
+        // if (this.props.SQP) {
+        //	 config.xAxis.plotLines.push({
+        //		 color: "#B6B6B6",
+        //		 id: "plot_line",
+        //		 dashStyle: "longdash",
+        //		 value: this.props.SQP * power,
+        //		 label: {
+        //			 text: counterpart.translate("exchange.squeeze"),
+        //			 style: {
+        //				 color: "#DADADA",
+        //				 fontWeight: "bold"
+        //			 }
+        //		 },
+        //		 width: 2,
+        //		 zIndex: 5
+        //	 });
+        // }
+
+        if (feedPrice) {
+            const settlementColor = base.has("bitasset") ? askColor : bidColor;
+            config.xAxis.plotLines.push({
+                color: settlementColor,
+                id: "plot_line",
+                dashStyle: "solid",
+                value: feedPrice,
+                label: {
+                    text: counterpart.translate("explorer.block.feed_price"),
+                    style: {
+                        color: primaryText,
+                        fontWeight: "bold"
+                    }
+                },
+                width: 2,
+                zIndex: 5
+            });
+
+            // Add calls if present
+            if (flatCalls && flatCalls.length) {
+                config.series.push({
+                    name: `Call ${quoteSymbol}`,
+                    data: flatCalls,
+                    color: callColor
+                });
+            }
+        }
+
+        // Add settle orders
+        if (feedPrice && (flatSettles && flatSettles.length)) {
+            config.series.push({
+                name: `Settle ${quoteSymbol}`,
+                data: flatSettles,
+                color: settleColor,
+                fillColor: settleFillColor
+            });
+        }
+
+        // Push asks and bids
+        if (flatBids.length) {
+            config.series.push({
+                step: "right",
+                name: `Bid ${quoteSymbol}`,
+                data: flatBids,
+                color: bidColor,
+                fillColor: bidFillColor
+            });
+        }
+
+        if (flatAsks.length) {
+            config.series.push({
+                step: "left",
+                name: `Ask ${quoteSymbol}`,
+                data: flatAsks,
+                color: askColor,
+                fillColor: askFillColor
+            });
+        }
+
+        // Fix the height if defined, else use 400px;
+        if (this.props.height) {
+            config.chart.height = this.props.height;
+        } else {
+            config.chart.height = "400px";
+        }
+
+        // Add onClick event listener if defined
+        if (this.props.onClick) {
+            config.chart.events = {
+                click: this.props.onClick.bind(this)
+            };
+        }
 
         if (this.props.noFrame) {
             return (
@@ -224,10 +410,9 @@ class DepthHighChart extends React.Component {
                             {quoteSymbol}
                         </p>
                     )}
-                    {this.state.isChart ? (flatBids || flatAsks || flatCalls ? (
+                    {flatBids || flatAsks || flatCalls ? (
                         <ReactHighchart config={config} />
-                    ) : null) : null}
-
+                    ) : null}
                 </div>
             );
         } else {
@@ -261,10 +446,9 @@ class DepthHighChart extends React.Component {
                                 <Translate content="exchange.no_data" />
                             </span>
                         ) : null}
-                        {this.state.isChart ? (                        flatBids || flatAsks || flatCalls ? (
+                        {flatBids || flatAsks || flatCalls ? (
                             <ReactHighchart ref="depthChart" config={config} />
-                        ) : null) : null}
-
+                        ) : null}
                     </div>
                 </div>
             );
