@@ -474,6 +474,7 @@ class Exchange extends React.Component {
         this.setState({
             isChart: false
         });
+        console.log(22222);
     }
 
     _getFeeAssets(quote, base, coreAsset) {
