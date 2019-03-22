@@ -76,7 +76,7 @@ class Exchange extends React.Component {
             isBridgeModalVisible: false,
             isMarketFee: false,
             isMarketPage: true,
-            test: false,
+            test: true,
         };
 
         this._getWindowSize = debounce(this._getWindowSize.bind(this), 150);
