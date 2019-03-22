@@ -55,8 +55,14 @@ class DepthHighChart extends React.Component {
     }
 
     componentWillUnmount() {
-        this.refs.depthChart.remove();
-        this.refs.test.remove();
+        if(this.refs.depthChart) {
+
+            this.refs.depthChart.remove();
+        }
+        if(this.refs.test) {
+
+            this.refs.test.remove();
+        }
     }
 
     reflowChart(timeout) {
