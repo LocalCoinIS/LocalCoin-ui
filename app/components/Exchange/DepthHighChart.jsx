@@ -10,6 +10,16 @@ import AssetName from "../Utility/AssetName";
 import {didOrdersChange} from "common/MarketClasses";
 
 class DepthHighChart extends React.Component {
+
+    constructor(props) {
+        super();
+        this.state = {
+            isChart: true
+        };
+
+    }
+
+
     shouldComponentUpdate(nextProps) {
         let settleCheck = isNaN(nextProps.feedPrice)
             ? false
@@ -54,6 +64,13 @@ class DepthHighChart extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        console.log(11111);
+        this.setState({
+            isChart: false
+        });
+    }
+
     reflowChart(timeout) {
         setTimeout(() => {
             if (this.refs.depthChart) {
@@ -67,6 +84,10 @@ class DepthHighChart extends React.Component {
     }
 
     render() {
+        console.log("====");
+        console.log(this.state);
+        console.log(this.props);
+        console.log("====");
         let {
             flat_bids,
             flat_asks,
@@ -410,9 +431,10 @@ class DepthHighChart extends React.Component {
                             {quoteSymbol}
                         </p>
                     )}
-                    {flatBids || flatAsks || flatCalls ? (
+                    {this.state.isChart ? (flatBids || flatAsks || flatCalls ? (
                         <ReactHighchart config={config} />
-                    ) : null}
+                    ) : null) : null}
+
                 </div>
             );
         } else {
@@ -446,9 +468,10 @@ class DepthHighChart extends React.Component {
                                 <Translate content="exchange.no_data" />
                             </span>
                         ) : null}
-                        {flatBids || flatAsks || flatCalls ? (
+                        {this.state.isChart ? (                        flatBids || flatAsks || flatCalls ? (
                             <ReactHighchart ref="depthChart" config={config} />
-                        ) : null}
+                        ) : null) : null}
+
                     </div>
                 </div>
             );

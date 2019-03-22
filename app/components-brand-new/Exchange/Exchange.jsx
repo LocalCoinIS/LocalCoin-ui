@@ -76,7 +76,7 @@ class Exchange extends React.Component {
             isBridgeModalVisible: false,
             isMarketFee: false,
             isMarketPage: true,
-            isChart: true,
+            isChart: true
         };
 
         this._getWindowSize = debounce(this._getWindowSize.bind(this), 150);
@@ -470,6 +470,7 @@ class Exchange extends React.Component {
 
     componentWillUnmount() {
         window.removeEventListener("resize", this._getWindowSize);
+        console.log(11111);
         this.setState({
             isChart: false
         });
