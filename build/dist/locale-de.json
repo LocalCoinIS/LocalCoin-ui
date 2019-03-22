@@ -378,9 +378,12 @@
     "borrow": {
         "adjust": "Position anpassen",
         "adjust_short": "Anpassen",
-        "call_limit": "Markt Call Limit",
+        "call_limit": "Markt Kauflimit",
         "close": "Position schlißen",
         "coll_ratio": "Kollateral-Ratio",
+        "coll_ratio_target": "Ziel-Ratio",
+        "considered_on_revival": "Included",
+        "enable_target_collateral_ratio": "Zielsicherheiten-Ratio benutzen",
         "errors": {
             "below": "Kollateral-Ratio unter Aufrechterhaltungslevel",
             "close": "Your collateral ratio is close to %(mr)s which means this position is in danger of being margin called if the price drops.",
@@ -722,7 +725,7 @@
         "title": "Gebühren"
     },
     "footer": {
-        "add_coin": "Add coin",
+        "add_coin" : "Münze hinzufügen",
         "advanced_settings": "Fortgeschrittene Einstellungen",
         "backup": "Eine Sicherung ist erforderlich!",
         "block": "Spitzenblock",
@@ -1361,7 +1364,7 @@
         "reset": "Einstellungen zurücksetzen",
         "reset_text": "Werkseinstellungen wiederherstellen",
         "reset_text_description": "Dies wird alle Ihre %(generalName)s, %(accessName)s und %(faucetName)s Einstellungen zurücksetzen",
-        "restore": "Wiederherstellen/Importieren",
+        "restore": "Wiederherstellen oder Importieren",
         "restore_brainkey_text": "Für eine Wiederherstellung durch den Gedächtnisschlüssel, muss eine neue Wallet anlegt werden. Bitte stellen Sie unterhalbe ein Passwort und Name für die neue Wallet zur Verfügung und geben danach den Gedächtnisschlüssel ein.",
         "restore_default_success": "Einstellungen wurden erfolgreich zurückgesetzt",
         "restore_key_count": "# an Schlüssel",
