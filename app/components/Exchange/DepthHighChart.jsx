@@ -34,6 +34,11 @@ class DepthHighChart extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        console.log(222222);
+        console.log(document.querySelector(".grid-block.no-margin.vertical.shrink"));
+
+
+        console.log(222222);
         if (
             this.refs.depthChart &&
             nextProps.verticalOrderbook !== this.props.verticalOrderbook
@@ -55,14 +60,10 @@ class DepthHighChart extends React.Component {
     }
 
     componentWillUnmount() {
-        if(this.refs.depthChart) {
-
-            this.refs.depthChart.remove();
+        if(document.querySelector(".grid-block.no-margin.vertical.shrink")) {
+            document.querySelector(".grid-block.no-margin.vertical.shrink").remove();
         }
-        if(this.refs.test) {
-
-            this.refs.test.remove();
-        }
+        console.log(222222);
     }
 
     reflowChart(timeout) {
