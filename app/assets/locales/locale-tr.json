@@ -715,6 +715,7 @@
         "title": "Ücret Tarifesi"
     },
     "footer": {
+        "add_coin": "Para birimi ekle",
         "advanced_settings": "Advanced settings",
         "backup": "Cüzdanınızı yedekleyin",
         "block": "İşlenen son blok",
@@ -1130,6 +1131,7 @@
             "amount": "Çekilecek Miktar",
             "available": "Available: ",
             "LocalCoin_account": "Send to LocalCoin Account",
+            "bitshares_account": "Send to LocalCoin Account",
             "cancel": "Cancel",
             "cannot_cover": "Insufficient funds!",
             "estimated_value": "Estimated Value",

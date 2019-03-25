@@ -715,6 +715,7 @@
         "title": "Elenco commissioni"
     },
     "footer": {
+        "add_coin": "Aggiungi valuta",
         "advanced_settings": "Advanced settings",
         "backup": "È necessario un backup",
         "block": "Head block",
@@ -1130,6 +1131,7 @@
             "amount": "Quantità da prelevare",
             "available": "Available: ",
             "LocalCoin_account": "Send to LocalCoin Account",
+            "bitshares_account": "Send to LocalCoin Account",
             "cancel": "Cancel",
             "cannot_cover": "Insufficient funds!",
             "estimated_value": "Estimated Value",

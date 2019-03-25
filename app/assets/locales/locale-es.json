@@ -35,7 +35,7 @@
         "estimate_value": "Valor estimado de la cuenta",
         "existing_accounts": "Cuentas Existentes",
         "existing_user": "Usuario existente",
-        "filter_orders": "Filter",
+        "filter_orders": "Filtrar",
         "follow": "Agregar contacto",
         "hidden_accounts_row": "Hidden Accounts",
         "hide_hidden": "Active",
@@ -441,7 +441,7 @@
         "ema": "Exponential Moving Average",
         "featured": "Mercados principales",
         "feed_price": "Feed Price",
-        "filter": "Filter...",
+        "filter": "Filtrar...",
         "flip": "Flip",
         "group_order_limit": "Grupo",
         "hide": "Ocultar",
@@ -508,8 +508,8 @@
         "short": "Corto",
         "show_asks": "Mostrar todas las domandas",
         "show_bids": "Mostrar todas las ofertas",
-        "show_only_liquid": "Liquid only",
-        "show_only_star_formatter": "{star_icon} only",
+        "show_only_liquid": "Líquidos Solamente",
+        "show_only_star_formatter": "{star_icon} Solamente",
         "sma": "Simple Moving Average",
         "spread": "Margen (spread)",
         "squeeze": "Precio Margin Call",
@@ -715,6 +715,7 @@
         "title": "Programa de comisiònes"
     },
     "footer": {
+        "add_coin" : "Añadir moneda",
         "advanced_settings": "Advanced settings",
         "backup": "Se requiere una copia de seguridad",
         "block": "Bloque de cabecera",
@@ -866,7 +867,7 @@
     "global": {
         "cancel": "Cancel",
         "confirm": "Confirm",
-        "help": "Help",
+        "help": "Ayuda",
         "scan_qr_code": "Scan QR code"
     },
     "header": {
@@ -949,7 +950,7 @@
             "sort_accounts": "Sort by favorites",
             "symbol": "Add/remove symbol from favorites"
         },
-        "filter": "Filter",
+        "filter": "Filtrar",
         "folder": "Accounts",
         "hamburger": "Open menu",
         "hamburger_x": "Close menu",
@@ -975,7 +976,7 @@
             "show_market": "Show market"
         },
         "power": "Inicio de sesión",
-        "question_circle": "Help",
+        "question_circle": "Ayuda",
         "server": "Explore",
         "settle": "Settle",
         "share": "About",
@@ -1130,6 +1131,7 @@
             "amount": "Cantidad a retirar",
             "available": "Available: ",
             "LocalCoin_account": "Send to LocalCoin Account",
+            "bitshares_account": "Send to LocalCoin Account",
             "cancel": "Cancel",
             "cannot_cover": "Insufficient funds!",
             "estimated_value": "Estimated Value",

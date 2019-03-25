@@ -413,7 +413,9 @@ body.localcoin
 	.footer-line
 		display: flex
 		align-items: center
-		justify-content: flex-end
+		justify-content: space-between
+		.footer-right
+			display: flex
 	.footer-info
 		display: flex
 		flex-direction: column
@@ -480,6 +482,8 @@ body.localcoin
 			padding: 0 10px
 			margin: 0
 			&:hover
+				.navigation__link
+					opacity: .5
 				background-color: #000f42
 		&__item.active
 			background-color: #000324
@@ -503,8 +507,12 @@ body.localcoin
 			font-size: 12px
 			line-height: 40px
 			color: #fff
+			transition: color .25s ease
 			> span
 				color: inherit
+			&:hover
+				color: rgba(255,255,255, .5)
+				text-decoration: underline
 			&:after
 				content: ''
 				display: inline-block
@@ -592,6 +600,9 @@ body.localcoin
 			line-height: 40px
 			font-size: 14px
 			color: #fff
+			transition: opacity .25s ease
+			&:hover
+				opacity: .5
 	.settings
 		display: inline-flex
 		position: relative
@@ -920,6 +931,8 @@ body.localcoin
 				flex-wrap: wrap
 	.support-btn
 		margin: 0 15px 0 0px
+		&:hover
+			color: rgba(255,255,255, .5)!important
 	.mobile
 		display: none
 		&__menu.show
@@ -1998,7 +2011,7 @@ body.localcoin .tabs-container.generic-bordered-box .service-selector
 body.localcoin .service-selector ul.button-group.no-margin.account-overview.bordered-header.content-block li
 	padding: 6px 24px
 body.localcoin .service-selector ul.button-group.no-margin.account-overview.bordered-header.content-block
-	padding-left: 330px!important
+	padding-left: 352px!important
 
 section[style="padding-top: 1rem; padding-left: 2rem;"]
 	position: absolute

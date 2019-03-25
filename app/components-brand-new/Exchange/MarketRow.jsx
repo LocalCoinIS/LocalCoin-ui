@@ -7,6 +7,7 @@ import Icon from "../../components/Icon/Icon";
 import MarketsActions from "actions/MarketsActions";
 import SettingsActions from "actions/SettingsActions";
 import PropTypes from "prop-types";
+import {getSmartCoinMarkets} from "branding";
 
 class MarketRow extends React.Component {
     static defaultProps = {
@@ -67,7 +68,15 @@ class MarketRow extends React.Component {
             return null;
         }
 
-        let marketID = quote.get("symbol") + "_" + base.get("symbol");
+        let smartCoinArr = getSmartCoinMarkets();
+        let exeptionArr = ["USDT", "EURT", "TUSD", "USDC", "USDS"];
+        let marketID = base.get("symbol") + "_" + quote.get("symbol");
+        // 1. базовая валюта всегда слева;
+        // 2. помещаем в правую сторону смарткоины, если нет исключений, т.е. валют из exeptionArr;
+        // 3. помещаем в правую сторону исключения, т.е. валюты из exeptionArr.
+        if((exeptionArr.includes(base.get("symbol")) && !exeptionArr.includes(quote.get("symbol"))) || (smartCoinArr.includes(base.get("symbol")) && !exeptionArr.includes(quote.get("symbol")) && !smartCoinArr.includes(quote.get("symbol")))) {
+            marketID = quote.get("symbol") + "_" + base.get("symbol");
+        }
         let marketName = quote.get("symbol") + "/" + base.get("symbol");
         let dynamic_data = this.props.getDynamicObject(
             quote.get("dynamic_asset_data_id")

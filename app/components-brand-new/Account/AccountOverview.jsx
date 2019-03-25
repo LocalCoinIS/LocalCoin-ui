@@ -674,7 +674,9 @@ class AccountOverview extends React.Component {
                 </tr>
             );
         });
-
+        console.log("-----");
+        console.log(optionalAssets);
+        console.log("-----");
         if (optionalAssets) {
             optionalAssets
                 .filter(asset => {

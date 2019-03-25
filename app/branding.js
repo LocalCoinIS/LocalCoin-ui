@@ -315,3 +315,8 @@ export function getAllowedLogins() {
     // possible: list containing any combination of ["password", "wallet"]
     return ["password", "wallet"];
 }
+
+export function getSmartCoinMarkets() {
+    return ['MYR','PGK','SCR','ANG','THB','BIF','USD','CNY','XDR','EGP','IQD','KRW','MDL','MZN','PHP','SDG','AngolanKwanza','TJS','BMD','UYU','COP','IRR','KWD','MGA','NAD','PKR','SEK','ARS','TurkmenManat','BOB','ISK','KYD','MKD','NGN','PLN','SGD','AUD','JMD','KZT','MMK','NIO','PYG','JOD','LAK','MNT','NOK','JPY','LBP','MOP','KES','LKR','MRU','KGS','LRD','KHR','GNF','XOF','ERN','GTQ','UZS','CRC','XPD','ETB','GYD','TND','BRL','VEF','CUC','XPF','EUR','HKD','SLL','AWG','TOP','BWP','VND','CUP','XPT','FJD','HNL','QAR','SOS','AZN','TRY','BYN','VUV','CVE','XUA','FKP','HRK','NPR','RON','SRD','BAM','TTD','BZD','WST','CZK','YER','GBP','HTG','NZD','RSD','AED','SSP','BBD','TWD','CAD','XAF','DJF','ZAR','GEL','HUF','MUR','OMR','RUB','AFN','SVC','BDT','TZS','CDF','XAG','DKK','ZMW','GHS','IDR','LSL','MVR','PAB','RWF','ALL','SYP','BGN','UAH','CHF','XAU','DOP','ZWL','GIP','ILS','KMF','LYD','MWK','PEN','SAR','AMD','SZL','BHD','UGX','CLP','XCD','DZD','ZMK','GMD','INR','KPW','MAD','MXN'
+    ];
+}
