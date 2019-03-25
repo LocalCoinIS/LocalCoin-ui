@@ -377,12 +377,8 @@ class App extends React.Component {
                     <br />
                     <h3>{counterpart.translate("icons.download")}</h3>
                     
-                    <div onClick={this.downloadVersion.bind(this)}>
-                        <Icon
-                            name="download"
-                            title="icons.download"
-                            className="icon-32px"
-                        />
+                    <div style={{ marginTop: "19px" }} className="button success btn large inverted" onClick={this.downloadVersion.bind(this)}>
+                        {counterpart.translate("wallet.download")}
                     </div>
                 </div>
             </BaseModal>
