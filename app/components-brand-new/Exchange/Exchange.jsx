@@ -75,8 +75,7 @@ class Exchange extends React.Component {
             },
             isBridgeModalVisible: false,
             isMarketFee: false,
-            isMarketPage: true,
-            isChart: true
+            isMarketPage: true
         };
 
         this._getWindowSize = debounce(this._getWindowSize.bind(this), 150);
@@ -381,7 +380,6 @@ class Exchange extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-
         this._initPsContainer();
         if (
             !this.props.exchange.get("tutorialShown") &&
@@ -471,11 +469,7 @@ class Exchange extends React.Component {
 
     componentWillUnmount() {
         window.removeEventListener("resize", this._getWindowSize);
-        console.log(11111);
-        this.setState({
-            isChart: false
-        });
-        console.log(222222);
+
     }
 
     _getFeeAssets(quote, base, coreAsset) {
@@ -1289,7 +1283,6 @@ class Exchange extends React.Component {
     }
 
     render() {
-        console.log(3333);
         let {
             currentAccount,
             marketLimitOrders,
@@ -1332,8 +1325,7 @@ class Exchange extends React.Component {
             sellDiff,
             width,
             buySellTop,
-            isMarketFee,
-            isChart
+            isMarketFee
         } = this.state;
         const {isFrozen, frozenAsset} = this.isMarketFrozen();
 
@@ -1831,7 +1823,7 @@ class Exchange extends React.Component {
                             id="CenterContent"
                             ref="center"
                         >
-                            {true ? (!showDepthChart ? (
+                            {!showDepthChart ? (
                                 <div
                                     className="grid-block shrink no-overflow"
                                     id="market-charts"
@@ -1912,7 +1904,7 @@ class Exchange extends React.Component {
                                         centerRef={this.refs.center}
                                     />
                                 </div>
-                            )) : null}
+                            )}
 
                             <div className="grid-block no-overflow wrap shrink">
                                 <div className={`market-row stable-height ${isMarketFee ? "is-fee" : ""}`}>
@@ -2029,7 +2021,7 @@ class Exchange extends React.Component {
                                     <span>&#9650;</span>
                                 )}
                             </div>
-                            {isChart ?                             (this.props.miniDepthChart ? (
+                            {this.props.miniDepthChart ? (
                                 <DepthHighChart
                                     marketReady={marketReady}
                                     orders={marketLimitOrders}
@@ -2067,10 +2059,7 @@ class Exchange extends React.Component {
                                     noText={true}
                                     theme={this.props.settings.get("themes")}
                                 />
-                            ) : null) : null
-
-                            }
-
+                            ) : null}
                         </div>
                     </div>
 

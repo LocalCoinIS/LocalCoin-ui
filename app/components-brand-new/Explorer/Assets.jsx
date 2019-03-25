@@ -181,21 +181,6 @@ class Assets extends React.Component {
                 .toArray();
         }
 
-        let test1 = [];
-        let test2 = assets
-            .filter(a => {
-                return (
-                    a.bitasset_data &&
-                    !a.bitasset_data.is_prediction_market &&
-                    a.symbol.indexOf(this.state.filterMPA) !== -1
-                );
-            }).forEach(market => {
-                test1.push("'" + market.symbol + "'");
-            });
-        console.log("---");
-        console.log(test1.toString());
-        console.log("---");
-
         if (activeFilter == "market") {
             mia = assets
                 .filter(a => {
