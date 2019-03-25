@@ -1,4 +1,5 @@
 import {hot} from "react-hot-loader";
+import Trigger from "react-foundation-apps/src/trigger";
 import React from "react";
 import {ChainStore} from "bitsharesjs/es";
 import IntlStore from "stores/IntlStore";
@@ -31,16 +32,16 @@ import {isIncognito} from "feature_detect";
 import {updateGatewayBackers} from "common/gatewayUtils";
 import titleUtils from "common/titleUtils";
 import PropTypes from "prop-types";
+import Modal from "react-foundation-apps/src/modal";
+import Translate from "react-translate-component";
+import BaseModal from "./components/Modal/BaseModal";
+import Icon from "./components/Icon/Icon";
+import ZfApi from "react-foundation-apps/src/utils/foundation-api";
+import counterpart from "counterpart";
 
 class App extends React.Component {
     constructor(props) {
         super();
-
-        // Check for mobile device to disable chat
-        const user_agent = navigator.userAgent.toLowerCase();
-        let isSafari = /^((?!chrome|android).)*safari/i.test(
-            navigator.userAgent
-        );
 
         let syncFail =
             ChainStore.subError &&
@@ -48,6 +49,7 @@ class App extends React.Component {
                 "ChainStore sync error, please check your system clock"
                 ? true
                 : false;
+
         this.state = {
             loading: false,
             synced: this._syncStatus(),
@@ -135,6 +137,15 @@ class App extends React.Component {
             }.bind(this)
         );
         updateGatewayBackers();
+
+        //if(window.electron)
+            this.checkUpdate();
+    }
+
+    checkUpdate = () => {
+        const localVersion = require('../version.json');
+        
+        //ZfApi.publish("update_modal_notify", "open");
     }
 
     componentDidUpdate(prevProps) {
@@ -215,7 +226,18 @@ class App extends React.Component {
     //     this.refs.notificationSystem.addNotification(params);
     // }
 
-    render() {
+    downloadVersion() {
+        var a = document.createElement("a");
+        a.href = "https://localcoin.is/#download";
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.style = "display: none;";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
+
+    render() {        
         const {
             headerBlock,
             sidebarBlock,
@@ -259,6 +281,28 @@ class App extends React.Component {
             );
         }
 
+        const modalUpdate = (
+            <BaseModal
+                id="update_modal_notify"
+                overlay={true}
+                overlayClose={true}
+                ref="modal"
+            >
+                <div style={{ textAlign: "center" }}>
+                    <br />
+                    <h3>{counterpart.translate("icons.download")}</h3>
+                    
+                    <div onClick={this.downloadVersion.bind(this)}>
+                        <Icon
+                            name="download"
+                            title="icons.download"
+                            className="icon-32px"
+                        />
+                    </div>
+                </div>
+            </BaseModal>
+        );
+
         // !!! если есть эти блоки, значит новый лейаут
         if (
             !!headerBlock &&
@@ -268,6 +312,7 @@ class App extends React.Component {
         ) {
             return (
                 <div>
+                    { modalUpdate }
                     {walletMode && incognito && !incognitoWarningDismissed ? (
                         <Incognito
                             onClickIgnore={this._onIgnoreIncognitoWarning.bind(
@@ -313,6 +358,7 @@ class App extends React.Component {
                 style={{backgroundColor: !this.state.theme ? "#2a2a2a" : null}}
                 className={this.state.theme}
             >
+                { modalUpdate }
                 {walletMode && incognito && !incognitoWarningDismissed ? (
                     <Incognito
                         onClickIgnore={this._onIgnoreIncognitoWarning.bind(
