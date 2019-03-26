@@ -32,6 +32,7 @@ import AccountDepositWithdraw from "./components-brand-new/Account/AccountDeposi
 import AccountPermissions from "./components-brand-new/Account/AccountPermissions";
 import AccountWhitelist from "./components-brand-new/Account/AccountWhitelist";
 import AccountVoting from "./components-brand-new/Account/AccountVoting";
+import AccountActivenodes from "./components-brand-new/Account/AccountActivenodes";
 import OTC from "./components-brand-new/OTC/OTC";
 import Page404 from "./components-brand-new/Page404/Page404";
 // import AccountOrders from "./components/Account/AccountOrders";
@@ -357,6 +358,7 @@ const routes = (
             <Route path="vesting" component={AccountVesting} />
             <Route path="permissions" component={AccountPermissions} />
             <Route path="voting" component={AccountVoting} />
+            <Route path="activenodes" component={AccountActivenodes} />
             <Route path="whitelist" component={AccountWhitelist} />
             <Route path="signedmessages" component={AccountSignedMessages} />
             <Redirect from="overview" to="/account/:account_name" />

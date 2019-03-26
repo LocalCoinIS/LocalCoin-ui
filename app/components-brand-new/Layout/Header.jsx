@@ -838,6 +838,22 @@ class Header extends React.Component {
                                 {
                                     <li className="mobile__list__item">
                                         <a
+                                            className="mobile__list__link"
+                                            href="#"
+                                            onClick={this._onNavigate.bind(
+                                                this,
+                                                `/account/${currentAccount}/activenodes`
+                                            )}
+                                        >
+                                            {counterpart.translate(
+                                                "account.activenodes"
+                                            )}
+                                        </a>
+                                    </li>
+                                }
+                                {
+                                    <li className="mobile__list__item">
+                                        <a
                                             href="#"
                                             className="mobile__list__link"
                                             onClick={this._onNavigate.bind(
@@ -993,6 +1009,28 @@ class Header extends React.Component {
                                     >
                                         {counterpart.translate(
                                             "account.voting"
+                                        )}
+                                    </a>
+                                </li>
+
+                                <li
+                                    className={cnames("navigation__item", {
+                                        active:
+                                            active.indexOf(
+                                                `/account/${currentAccount}/activenodes`
+                                            ) !== -1
+                                    })}
+                                >
+                                    <a
+                                        className="navigation__link"
+                                        href="#"
+                                        onClick={this._onNavigate.bind(
+                                            this,
+                                            `/account/${currentAccount}/activenodes`
+                                        )}
+                                    >
+                                        {counterpart.translate(
+                                            "account.activenodes"
                                         )}
                                     </a>
                                 </li>

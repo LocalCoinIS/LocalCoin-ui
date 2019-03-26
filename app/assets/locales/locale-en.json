@@ -357,6 +357,7 @@
             "workers_short": "Workers"
         },
         "voting": "Voting",
+        "activenodes": "Activenodes",
         "welcome": "Welcome to LocalCoin",
         "whitelist": {
             "add": "Add to whitelist",

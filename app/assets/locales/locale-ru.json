@@ -364,6 +364,7 @@
             "workers_short": "Работники"
         },
         "voting": "Голосование",
+        "activenodes": "Activenodes",
         "welcome": "Добро пожаловать в LocalCoin",
         "whitelist": {
             "add": "Добавить в белый список",
