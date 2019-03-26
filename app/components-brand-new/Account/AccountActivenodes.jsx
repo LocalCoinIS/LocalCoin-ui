@@ -24,8 +24,23 @@ import {EquivalentValueComponent} from "../../components/Utility/EquivalentValue
 import FormattedAsset from "../../components/Utility/FormattedAsset";
 import SettingsStore from "stores/SettingsStore";
 import AccountStore from "stores/AccountStore";
+import {connect} from "alt-react";
+import utils from "common/utils";
+import assetUtils from "common/asset_utils";
 
+const MIN_BALANCE_FOR_ACTIVENODE = 511;
+const ADD_ACTIVENODE_STEPS = [""];
 class AccountActivenodes extends React.Component {
+    static propTypes = {
+        globalObject: ChainTypes.ChainObject.isRequired,
+        dynGlobalObject: ChainTypes.ChainObject.isRequired
+    };
+
+    static defaultProps = {
+        globalObject: "2.0.0",
+        dynGlobalObject: "2.1.0"
+    };
+
     constructor(props) {
         super(props);
     }
@@ -34,25 +49,7 @@ class AccountActivenodes extends React.Component {
         alert("add node");
     }
 
-    addTheNodeView = () => {
-        return (
-            <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
-                <h2 style={{ textAlign: 'center' }}>Nodes</h2>
-                <span>Earn coins by running Activenode</span><br />
-                <span>Currently there are ***X*** activenodes in the network.</span><br />
-                <span>Approximate daily profit is *** LLC.</span><br />
-                <span>Add the activenode</span><br />
-                <span>X = метод list_activenodes, выводим количество записей в массиве</span><br />
-                <span>Y =0.065 / X * 43200</span><br />
-                <br />
-                <button className="btn large outline" onClick={this._handleAddNode}>
-                    Add the node
-                </button>
-            </div>
-        );
-    }
-
-    _toggleLock = (e) => {
+    _unlockHandle = (e) => {
         e.preventDefault();
         if (WalletDb.isLocked()) {
             WalletUnlockActions.unlock()
@@ -65,35 +62,172 @@ class AccountActivenodes extends React.Component {
         }        
     }
 
+    _createTheActivenodeHandle = () => {
+
+    }
+
     unauthorizedView = () => {
-        return <div className="activenodes-container">
-                    <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
-                        <h2 style={{ textAlign: 'center' }}>Nodes</h2>
-                        <span style={{ textAlign: 'center' }}>Authorize ti view and manage nodes</span><br />
-                        <br />
-                        <button className="btn large outline" onClick={this._toggleLock}>
-                            Login
-                        </button>
-                    </div>
+        return  <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
+                    <h2 style={{ textAlign: 'center' }}>Nodes</h2>
+                    <span style={{ textAlign: 'center' }}>Authorize ti view and manage nodes</span><br />
+                    <br />
+                    <button className="button btn large inverted" onClick={this._unlockHandle}>
+                        Login
+                    </button>
                 </div>;
     }
 
-    render() {
-        if(WalletUnlockStore.getState().locked)
-            return this.unauthorizedView();
-
+    addTheNodeView = () => {
         return (
-            <div className="activenodes-container">
-                { this.addTheNodeView() }
+            <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
+                <h2 style={{ textAlign: 'center' }}>Earn coins by running Activenode</h2>
+                <span>Currently there are { this.getCountActivenodes() } activenodes in the network.</span><br />
+                <span>Approximate daily profit is { this.calculateDailyApproximate() } LLC.</span><br />
+                <br />
+                <button className="button btn large inverted" onClick={this._handleAddNode}>
+                    Add the activenode
+                </button>
             </div>
         );
+    }
+
+    isLifetimeMember = () => {
+        let currentAccount = ChainStore.getAccount(
+            AccountStore.getState().currentAccount
+        );
+        let account = currentAccount.toJS();
+
+        let expiration_date = account.membership_expiration_date;
+        
+        if (expiration_date === "1969-12-31T23:59:59")
+            return false;
+        else if (expiration_date === "1970-01-01T00:00:00")
+            return false;
+
+        return true;
+    }
+
+    getWalletBalance = () => {
+        var balance = 0;
+
+        let currentAccount = ChainStore.getAccount(
+            AccountStore.getState().currentAccount
+        );
+        
+        if (!currentAccount) return 0;
+
+        currentAccount.get("balances").forEach((balanceId, asset_type) => {
+            let balanceObject = ChainStore.getObject(balanceId);
+            if (!balanceObject) return "";
+
+            let assetObject = ChainStore.getAsset(asset_type);
+            if (!assetObject) return;
+
+            let symbol = assetObject.get("symbol");
+            if (!symbol) return;
+
+            
+            if(symbol.toUpperCase() === "LLC") {
+                let precision = utils.get_asset_precision(assetObject.get("precision"));
+                balance = balanceObject.get("balance") / precision;
+            }
+        });
+
+        return balance;
+        
+    }
+
+    isLocalNodeRunning = () => {
+        let currentNode = SettingsStore.getState().settings.get( "apiServer" ) + "";
+        
+        if(currentNode.indexOf("://127.0.0.1:") !== -1) return true;
+        if(currentNode.indexOf("://localhost:") !== -1) return true;
+
+        return false;
+    }
+
+    activenodeRequirementsView = () => {
+        return  <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
+                    <h2 style={{ textAlign: 'center' }}>Activenode requirements</h2>
+                    
+                    <input type="checkbox" checked={this.getWalletBalance() >= MIN_BALANCE_FOR_ACTIVENODE} />
+                        <span style={{ textAlign: 'center' }}>Minimum balance is 511 LLC/Минимальный баланс 511 LLC</span><br />
+
+                    <input type="checkbox" checked={this.isLifetimeMember()} />
+                        <span style={{ textAlign: 'center' }}>Lifetime Member (LTM) status/Наличие премиум статуса</span><br />
+
+                    <input type="checkbox" checked={this.isLocalNodeRunning()} />
+                        <span style={{ textAlign: 'center' }}>Localhost connection/Запущена локальная нода</span><br />
+                    <br />
+                    <button className="button btn large inverted" onClick={this._createTheActivenodeHandle}>
+                        Create the activenode
+                    </button>
+                </div>;
+    }
+
+    calculateDailyApproximate = () => 0.065 / this.getCountActivenodes() * 43200;
+
+    getCountActivenodes = () => {
+        let { globalObject} = this.props;
+        globalObject = globalObject.toJS();
+
+        let len = Object.keys( globalObject.current_activenodes ).length;
+        return len < 1 ? 1 : len;
+    }
+
+    getListActivenodes = () => {
+        let { globalObject} = this.props;
+        globalObject = globalObject.toJS();
+
+        return globalObject.current_activenodes;
+    }
+
+// <TranslateWithLinks
+// string={
+// op[1].upgrade_to_lifetime_member
+// ? "operation.lifetime_upgrade_account"
+// : "operation.annual_upgrade_account"
+// }
+// keys={[
+// {
+// type: "account",
+// value: op[1].account_to_upgrade,
+// arg: "account"
+// }
+// ]}
+// />
+    render() {
+        // if(WalletUnlockStore.getState().locked)
+        //     return this.unauthorizedView();
+
+        //return this.addTheNodeView();
+        return this.activenodeRequirementsView();
     }
 }
 
 AccountActivenodes = BindToChainState(AccountActivenodes);
 
-const ActivenodesObjectWrapper = props => {
-    return ( <AccountActivenodes {...props} /> );
-};
+class ActivenodesObjectWrapper extends React.Component {
+    render() {
+        return <AccountActivenodes {...this.props} />;
+    }
+}
+
+ActivenodesObjectWrapper = connect(
+    ActivenodesObjectWrapper,
+    {
+        listenTo() {
+            return [SettingsStore];
+        },
+        getProps() {
+            return {
+                cardView: SettingsStore.getState().viewSettings.get("cardView"),
+                filterWitness: SettingsStore.getState().viewSettings.get(
+                    "filterWitness"
+                )
+            };
+        }
+    }
+);
 
 export default ActivenodesObjectWrapper;
