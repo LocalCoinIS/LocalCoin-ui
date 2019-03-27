@@ -92,19 +92,25 @@ class AccountActivenodes extends React.Component {
     }
 
     isLifetimeMember = () => {
-        let currentAccount = ChainStore.getAccount(
-            AccountStore.getState().currentAccount
-        );
-        let account = currentAccount.toJS();
+        try {
+            let currentAccount = ChainStore.getAccount(
+                AccountStore.getState().currentAccount
+            );
 
-        let expiration_date = account.membership_expiration_date;
-        
-        if (expiration_date === "1969-12-31T23:59:59")
-            return false;
-        else if (expiration_date === "1970-01-01T00:00:00")
-            return false;
+            if(currentAccount === null) return false;            
+            let account = currentAccount.toJS();
 
-        return true;
+            let expiration_date = account.membership_expiration_date;
+            
+            if (expiration_date === "1969-12-31T23:59:59")
+                return false;
+            else if (expiration_date === "1970-01-01T00:00:00")
+                return false;
+
+            return true;
+        } catch(ex) {}
+
+        return false;
     }
 
     getWalletBalance = () => {
@@ -168,18 +174,30 @@ class AccountActivenodes extends React.Component {
     calculateDailyApproximate = () => 0.065 / this.getCountActivenodes() * 43200;
 
     getCountActivenodes = () => {
-        let { globalObject} = this.props;
-        globalObject = globalObject.toJS();
+        try {
+            let { globalObject} = this.props;
 
-        let len = Object.keys( globalObject.current_activenodes ).length;
-        return len < 1 ? 1 : len;
+            if(globalObject === null) return 1;
+            globalObject = globalObject.toJS();
+
+            let len = Object.keys( globalObject.current_activenodes ).length;
+            return len < 1 ? 1 : len;
+        } catch(ex) {}
+
+        return null;
     }
 
     getListActivenodes = () => {
-        let { globalObject} = this.props;
-        globalObject = globalObject.toJS();
+        try {
+            let { globalObject} = this.props;
 
-        return globalObject.current_activenodes;
+            if(globalObject === null) return null;
+            globalObject = globalObject.toJS();
+
+            return globalObject.current_activenodes;
+        } catch(ex) {}
+
+        return null;
     }
 
 // <TranslateWithLinks
