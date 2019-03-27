@@ -27,6 +27,7 @@ import AccountStore from "stores/AccountStore";
 import {connect} from "alt-react";
 import utils from "common/utils";
 import assetUtils from "common/asset_utils";
+import CliWalletAPI from "../../components/CliWalletAPI"; 
 
 const MIN_BALANCE_FOR_ACTIVENODE = 511;
 const ADD_ACTIVENODE_STEPS = [""];
@@ -62,8 +63,35 @@ class AccountActivenodes extends React.Component {
         }        
     }
 
-    _createTheActivenodeHandle = () => {
+    canCreateTheActivenode = () => {
+        if(this.getWalletBalance() < MIN_BALANCE_FOR_ACTIVENODE) return false;
+        if(!this.isLifetimeMember())                             return false;
+        if(!this.isLocalNodeRunning())                           return false;
 
+        return true;
+    }
+
+    _createTheActivenodeHandle = () => {
+        if(!this.canCreateTheActivenode()) return;
+
+        let currentAccount = AccountStore.getState().currentAccount;
+        let wallet         = new CliWalletAPI();
+        wallet.isWalletExists(
+            () => {
+                wallet.createActivenodeByAccount(currentAccount, (data) => {
+                    console.log(data);
+                    
+                    // if( typeof data.error !== "undefined" && typeof data.error.message !== "undefined")
+                    //     return alert(data.error.message);
+                });
+
+                // wallet.getActivenodeByAccount(currentAccount, (data) => {
+                //     if( typeof data.error !== "undefined" && typeof data.error.message !== "undefined")
+                //         return alert(data.error.message);
+                // });
+            },
+            () => { alert("Error!\nWallet cli not found!"); },
+        );
     }
 
     unauthorizedView = () => {
@@ -102,9 +130,9 @@ class AccountActivenodes extends React.Component {
 
             let expiration_date = account.membership_expiration_date;
             
-            if (expiration_date === "1969-12-31T23:59:59")
-                return false;
-            else if (expiration_date === "1970-01-01T00:00:00")
+            // if (expiration_date === "1969-12-31T23:59:59")
+            //     return false;
+            if (expiration_date === "1970-01-01T00:00:00")
                 return false;
 
             return true;
@@ -165,7 +193,9 @@ class AccountActivenodes extends React.Component {
                     <input type="checkbox" checked={this.isLocalNodeRunning()} />
                         <span style={{ textAlign: 'center' }}>Localhost connection/Запущена локальная нода</span><br />
                     <br />
-                    <button className="button btn large inverted" onClick={this._createTheActivenodeHandle}>
+                    <button style={{
+                        opacity : this.canCreateTheActivenode() ? 1 : 0.3
+                    }} className="button btn large inverted" onClick={this._createTheActivenodeHandle}>
                         Create the activenode
                     </button>
                 </div>;
