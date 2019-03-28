@@ -2,7 +2,6 @@ import React from "react";
 import Immutable from "immutable";
 import Translate from "react-translate-component";
 import accountUtils from "common/account_utils";
-import {ChainStore, FetchChainObjects} from "bitsharesjs/es";
 import WorkerApproval from "../../components/Account/WorkerApproval";
 import VotingAccountsList from "./VotingAccountsList";
 import cnames from "classnames";
@@ -28,7 +27,7 @@ import {connect} from "alt-react";
 import utils from "common/utils";
 import assetUtils from "common/asset_utils";
 import CliWalletAPI from "../../components/CliWalletAPI"; 
-import {ChainTypes as grapheneChainTypes, TransactionBuilder} from "bitsharesjs/es";
+import {ChainTypes as grapheneChainTypes, TransactionBuilder, PrivateKey, ChainStore, FetchChainObjects} from "bitsharesjs/es";
 const {operations} = grapheneChainTypes;
 let ops = Object.keys(operations);
 
@@ -74,33 +73,51 @@ class AccountActivenodes extends React.Component {
         return true;
     }
 
-    _createTheActivenodeHandle = () => {
-        //if(!this.canCreateTheActivenode()) return;
+    activenodeCreate = () => {
+        // console.log(WalletDb.state.wallet.password_pubkey);
+        // console.log(WalletDb);
+        
+        // var private_key = WalletDb.getPrivateKey();
+        // console.log(private_key);
+        // console.log({wif: private_key.toWif()});
+        // // console.log("getPrivateKey: " +WalletDb.getPrivateKey());
+        //  return;
+        //const privateKey = PrivateKey.fromSeed(password || "");
+        let pKey = PrivateKey.fromSeed("????????????");
+        console.log(pKey);
+        
 
         let accountName = AccountStore.getState().currentAccount;        
         let account = ChainStore.getAccount(accountName);
-
+        
         let fee_asset_id = "1.3.0";
         let tr = new TransactionBuilder();
-        let activenode_create_op = tr.get_type_operation("activenode_create", {
+        tr.add_type_operation("activenode_create", {
             fee: {
                 amount: 0,
                 asset_id: fee_asset_id
             },
             activenode_account: account.get("id")
         });
+       
+        tr.set_required_fees().then(() => {
+            tr.add_signer(pKey, pKey.toPublicKey().toPublicKeyString());
+            console.log("serialized transaction:", tr.serialize());
+            let rez = tr.broadcast();
 
-        let addTransactionRezult = tr.update_head_block().then(() => {
-            tr.add_operation(activenode_create_op);
-
-            return WalletDb.process_transaction(
-                tr,
-                null, //signer_private_keys,
-                true
-            );
+            console.log(rez);
         });
+    }
 
-        console.log(addTransactionRezult);
+    _createTheActivenodeHandle = () => {
+        //if(!this.canCreateTheActivenode()) return;
+
+        if (WalletDb.isLocked()) {
+            WalletUnlockActions.unlock()
+                .then(() => {
+                    this.activenodeCreate();
+                });
+        } else this.activenodeCreate();
     }
 
     unauthorizedView = () => {
@@ -218,7 +235,7 @@ class AccountActivenodes extends React.Component {
 
             if(globalObject === null) return 1;
             globalObject = globalObject.toJS();
-
+            
             let len = Object.keys( globalObject.current_activenodes ).length;
             return len < 1 ? 1 : len;
         } catch(ex) {}
@@ -239,20 +256,6 @@ class AccountActivenodes extends React.Component {
         return null;
     }
 
-// <TranslateWithLinks
-// string={
-// op[1].upgrade_to_lifetime_member
-// ? "operation.lifetime_upgrade_account"
-// : "operation.annual_upgrade_account"
-// }
-// keys={[
-// {
-// type: "account",
-// value: op[1].account_to_upgrade,
-// arg: "account"
-// }
-// ]}
-// />
     render() {
         // if(WalletUnlockStore.getState().locked)
         //     return this.unauthorizedView();
