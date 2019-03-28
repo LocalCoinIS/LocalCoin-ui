@@ -28,6 +28,9 @@ import {connect} from "alt-react";
 import utils from "common/utils";
 import assetUtils from "common/asset_utils";
 import CliWalletAPI from "../../components/CliWalletAPI"; 
+import {ChainTypes as grapheneChainTypes, TransactionBuilder} from "bitsharesjs/es";
+const {operations} = grapheneChainTypes;
+let ops = Object.keys(operations);
 
 const MIN_BALANCE_FOR_ACTIVENODE = 511;
 const ADD_ACTIVENODE_STEPS = [""];
@@ -72,26 +75,32 @@ class AccountActivenodes extends React.Component {
     }
 
     _createTheActivenodeHandle = () => {
-        if(!this.canCreateTheActivenode()) return;
+        //if(!this.canCreateTheActivenode()) return;
 
-        let currentAccount = AccountStore.getState().currentAccount;
-        let wallet         = new CliWalletAPI();
-        wallet.isWalletExists(
-            () => {
-                wallet.createActivenodeByAccount(currentAccount, (data) => {
-                    console.log(data);
-                    
-                    // if( typeof data.error !== "undefined" && typeof data.error.message !== "undefined")
-                    //     return alert(data.error.message);
-                });
+        let accountName = AccountStore.getState().currentAccount;        
+        let account = ChainStore.getAccount(accountName);
 
-                // wallet.getActivenodeByAccount(currentAccount, (data) => {
-                //     if( typeof data.error !== "undefined" && typeof data.error.message !== "undefined")
-                //         return alert(data.error.message);
-                // });
+        let fee_asset_id = "1.3.0";
+        let tr = new TransactionBuilder();
+        let activenode_create_op = tr.get_type_operation("activenode_create", {
+            fee: {
+                amount: 0,
+                asset_id: fee_asset_id
             },
-            () => { alert("Error!\nWallet cli not found!"); },
-        );
+            activenode_account: account.get("id")
+        });
+
+        let addTransactionRezult = tr.update_head_block().then(() => {
+            tr.add_operation(activenode_create_op);
+
+            return WalletDb.process_transaction(
+                tr,
+                null, //signer_private_keys,
+                true
+            );
+        });
+
+        console.log(addTransactionRezult);
     }
 
     unauthorizedView = () => {
