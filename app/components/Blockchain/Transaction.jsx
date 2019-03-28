@@ -1315,6 +1315,21 @@ class Transaction extends React.Component {
 
                     break;
 
+                case "activenode_create":
+                    rows.push(
+                        <tr key={key++}>
+                            <td>
+                                <Translate
+                                    component="span"
+                                    content="explorer.block.activenodes"
+                                />
+                            </td>
+                            <td>{this.linkToAccount(op[1].activenode_account)}</td>
+                        </tr>
+                    );
+
+                    break;
+
                 case "witness_update":
                     rows.push(
                         <tr key={key++}>

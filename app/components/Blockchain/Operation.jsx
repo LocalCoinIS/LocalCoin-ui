@@ -824,6 +824,24 @@ class Operation extends React.Component {
                 );
                 break;
 
+            case "activenode_create":
+                column = (
+                    <span>
+                        <TranslateWithLinks
+                            string="operation.activenode_create"
+                            keys={[
+                                {
+                                    type: "account",
+                                    value: op[1].activenode_account,
+                                    arg: "account"
+                                }
+                            ]}
+                        />
+                    </span>
+                );
+
+                break;
+
             case "witness_create":
                 column = (
                     <span>
