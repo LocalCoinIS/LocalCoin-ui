@@ -679,12 +679,12 @@ class ProposedOperation extends React.Component {
 
                 break;
 
-            case "activenode_create":
+            case "activenode_create_operation":
                 column = (
                     <span>
                         <Translate
                             component="span"
-                            content="proposal.activenode_create"
+                            content="proposal.activenode_create_operation"
                         />
                         &nbsp;{this.linkToAccount(op[1].activenode_account)}
                     </span>

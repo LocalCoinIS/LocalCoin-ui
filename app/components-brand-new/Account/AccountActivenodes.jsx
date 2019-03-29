@@ -27,7 +27,8 @@ import {connect} from "alt-react";
 import utils from "common/utils";
 import assetUtils from "common/asset_utils";
 import CliWalletAPI from "../../components/CliWalletAPI"; 
-import {ChainTypes as grapheneChainTypes, TransactionBuilder, PrivateKey, ChainStore, FetchChainObjects} from "bitsharesjs/es";
+import TransactionConfirmActions from "../../actions/TransactionConfirmActions";
+import {ChainTypes as grapheneChainTypes, TransactionBuilder, PrivateKey, ChainStore, FetchChainObjects, key} from "bitsharesjs/es";
 const {operations} = grapheneChainTypes;
 let ops = Object.keys(operations);
 
@@ -74,50 +75,32 @@ class AccountActivenodes extends React.Component {
     }
 
     activenodeCreate = () => {
-        // console.log(WalletDb.state.wallet.password_pubkey);
-        // console.log(WalletDb);
-        
-        // var private_key = WalletDb.getPrivateKey();
-        // console.log(private_key);
-        // console.log({wif: private_key.toWif()});
-        // // console.log("getPrivateKey: " +WalletDb.getPrivateKey());
-        //  return;
-        //const privateKey = PrivateKey.fromSeed(password || "");
-        let pKey = PrivateKey.fromSeed("????????????");
-        console.log(pKey);
-        
-
         let accountName = AccountStore.getState().currentAccount;        
         let account = ChainStore.getAccount(accountName);
         
-        let fee_asset_id = "1.3.0";
         let tr = new TransactionBuilder();
-        tr.add_type_operation("activenode_create", {
+        tr.add_type_operation("activenode_create_operation", {
             fee: {
                 amount: 0,
-                asset_id: fee_asset_id
+                asset_id: "1.3.0"
             },
             activenode_account: account.get("id")
         });
-       
-        tr.set_required_fees().then(() => {
-            tr.add_signer(pKey, pKey.toPublicKey().toPublicKeyString());
-            console.log("serialized transaction:", tr.serialize());
-            let rez = tr.broadcast();
 
-            console.log(rez);
-        });
+        WalletDb.process_transaction(tr, null, true);
     }
 
     _createTheActivenodeHandle = () => {
         //if(!this.canCreateTheActivenode()) return;
 
-        if (WalletDb.isLocked()) {
-            WalletUnlockActions.unlock()
-                .then(() => {
-                    this.activenodeCreate();
-                });
-        } else this.activenodeCreate();
+        this.activenodeCreate();
+
+        // if (WalletDb.isLocked()) {
+        //     WalletUnlockActions.unlock()
+        //         .then((data) => {
+        //             this.activenodeCreate();
+        //         });
+        // } else this.activenodeCreate();
     }
 
     unauthorizedView = () => {

@@ -104,6 +104,30 @@ class AccountActions {
         }
     }
 
+    activenode_create_operation(
+        activenode_account
+    ) {
+        try {
+            return dispatch => {
+                return ApplicationApi.activenode_create_operation({
+                    activenode_account
+                }).then(result => {
+                     console.log( "activenode_create_operation result: ", result )
+
+                    dispatch(result);
+                });
+            };
+        } catch (error) {
+            console.log(
+                "[AccountActions.js:107] ----- activenode_create_operation error ----->",
+                error
+            );
+            return new Promise((resolve, reject) => {
+                reject(error);
+            });
+        }
+    }
+
     /**
      *  This method exists ont he AccountActions because after creating the account via the wallet, the account needs
      *  to be linked and added to the local database.

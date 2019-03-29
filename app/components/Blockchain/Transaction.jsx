@@ -1315,7 +1315,7 @@ class Transaction extends React.Component {
 
                     break;
 
-                case "activenode_create":
+                case "activenode_create_operation":
                     rows.push(
                         <tr key={key++}>
                             <td>

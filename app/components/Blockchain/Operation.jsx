@@ -824,11 +824,11 @@ class Operation extends React.Component {
                 );
                 break;
 
-            case "activenode_create":
+            case "activenode_create_operation":
                 column = (
                     <span>
                         <TranslateWithLinks
-                            string="operation.activenode_create"
+                            string="operation.activenode_create_operation"
                             keys={[
                                 {
                                     type: "account",
