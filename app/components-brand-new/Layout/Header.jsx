@@ -846,7 +846,7 @@ class Header extends React.Component {
                                             )}
                                         >
                                             {counterpart.translate(
-                                                "account.activenodes"
+                                                "account.activenodes.activenodes"
                                             )}
                                         </a>
                                     </li>
@@ -1030,7 +1030,7 @@ class Header extends React.Component {
                                         )}
                                     >
                                         {counterpart.translate(
-                                            "account.activenodes"
+                                            "account.activenodes.activenodes"
                                         )}
                                     </a>
                                 </li>

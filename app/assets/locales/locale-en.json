@@ -285,6 +285,29 @@
             "white_list": "Require holders to be white-listed",
             "witness_fed_asset": "Allow witnesses to provide feeds"
         },
+        "activenodes": {
+            "activenodes": "Activenodes",
+            "activenode_requirements": "Activenode requirements",
+            "min_balance": "Minimum balance is 511 LLC",
+            "lifetime_member": "Lifetime Member (LTM) status",
+            "localhost_connection": "Localhost connection",
+            "create_the_activenode": "Create the activenode",
+            "your_node_up_and_running": "Your node up and running!",
+            "activenode_has_been_successfully": "Activenode has been successfully created and will start getting reward within 24 hours.",
+            "you_have_to_keep_it_up": "You have to keep it up(online) and running constantly!",
+            "if_you_do_not_keep_your_node": "If you do not keep your node running, it will be removed from the blockchain automatically within 24 hours after node goes offline.",
+            "you_can_check": "You can check your profit in the ",
+            "vesting_section": "vesting section",
+            "nodes": "Nodes",
+            "login": "Login",
+            "authorize_ti_view_and_manage_nodes": "Authorize to view and manage nodes",
+            "earn_coins_by_running_activenode": "Earn coins by running Activenode",
+            "currently_there_are": "Currently there are",
+            "activenodes_in_the_network": "activenodes in the network.",
+            "approximate_daily_profit_is": "Approximate daily profit is",
+            "llc": "LLC",
+            "add_the_activenode": "Add the activenode"
+        },
         "vesting": {
             "balance_number": "Balance #%(id)s",
             "explain": "Vesting balances contain any fees earned through the referral program or from worker pay, for example. They have a certain vesting period and are continually unlocked during that vesting period until all of the balances are available",
@@ -356,8 +379,7 @@
             "workers": "Budget Items",
             "workers_short": "Workers"
         },
-        "voting": "Voting",
-        "activenodes": "Activenodes",
+        "voting": "Voting",        
         "welcome": "Welcome to LocalCoin",
         "whitelist": {
             "add": "Add to whitelist",
