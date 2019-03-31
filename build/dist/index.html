@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133419070-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-133419070-1');
+    </script>
+  <script id="chatBroEmbedCode">
+  /* Chatbro Widget Embed Code Start */
+  function ChatbroLoader(chats,async){async=!1!==async;var params={embedChatsParameters:chats instanceof Array?chats:[chats],lang:navigator.language||navigator.userLanguage,needLoadCode:'undefined'==typeof Chatbro,embedParamsVersion:localStorage.embedParamsVersion,chatbroScriptVersion:localStorage.chatbroScriptVersion},xhr=new XMLHttpRequest;xhr.withCredentials=!0,xhr.onload=function(){eval(xhr.responseText)},xhr.onerror=function(){console.error('Chatbro loading error')},xhr.open('GET','//www.chatbro.com/embed.js?'+btoa(unescape(encodeURIComponent(JSON.stringify(params)))),async),xhr.send()}
+  /* Chatbro Widget Embed Code End */
+  ChatbroLoader({encodedChatId: '02cNM'});
+  document.addEventListener('chatLoaded', function() {
+      document.addEventListener('beforeSendMessage', function(event) {
+          // message object
+          var message = event.message;
+          var validHosts = ['localcoin.is', 'llc.is'];
+
+          // find bad links
+          var invalidUrls = message.links.filter(function(url) {
+              for (var i in validHosts) {
+                  if (url.host.indexOf(validHosts[i]) !== -1) return false;
+              }
+              return true;
+          });
+
+          // remove from message
+          for (var i in invalidUrls) {
+              message.text = message.text.replace(invalidUrls[i].url, '');
+          }
+
+          // warning
+          if (!message.text.trim().length) {
+              return event.onFail('one me try to post url and you will be banned.');
+          }
+
+          // send message
+          event.onSuccess(message);
+      });
+      document.addEventListener('chatLoaded', function() {
+          let chatBro = document.querySelector(".chatbro_minimized_header");
+          if(chatBro) {
+              chatBro.style.cssText = "opacity: 0!important; pointer-events: none!important; transition: none!important";
+          }
+      });
+  });
+  </script>
+
+    <base href="/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' blob:; worker-src 'self' blob:; script-src https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/ https://www.google-analytics.com/ https://www.googletagmanager.com/ 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self' *; font-src 'self' data: https://www.chatbro.com; img-src 'self' data: https://www.chatbro.com https://www.google-analytics.com;">
+    <title>LocalCoin</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="app.css">
+    <style>
+        body {
+            background-color: #001b60;
+        }
+        .centerDiv {
+            width:140px; border-radius: 5px; color:white;
+            padding:10px; height:50px; position:absolute;
+            margin-top:-25px; margin-left:-70px; top:50%; left:50%;
+            font-family: 'osnovapro', sans-serif;
+            font-weight: 100;
+            font-size: 44px;
+        }
+    </style>
+</head>
+<body class="localcoin">
+    <div id="content">
+        <h1 class="centerDiv" style="">Loading...</h1>
+        <img src="/asset-symbols/logo_light.svg" style="max-width: 70px; position: absolute; top: 30%; left: 49%;">
+    </div>
+
+<script src="app.js" charset="utf-8"></script>
+</body>
+</html>
