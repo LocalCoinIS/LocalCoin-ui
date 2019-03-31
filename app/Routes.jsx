@@ -613,6 +613,14 @@ const routes = (
                 }}
             />
             <Route
+                path="activenodes"
+                getComponent={(location, cb) => {
+                    import("components-brand-new/Account/AccountActivenodes")
+                        .then(loadRoute(cb))
+                        .catch(errorLoading);
+                }}
+            />
+            <Route
                 path="whitelist"
                 getComponent={(location, cb) => {
                     import("components-brand-new/Account/AccountWhitelist")

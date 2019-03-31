@@ -7,6 +7,7 @@ import {
     TransactionBuilder,
     TransactionHelper,
     FetchChain,
+    PrivateKey,
     ChainStore
 } from "bitsharesjs/es";
 import counterpart from "counterpart";
@@ -224,6 +225,29 @@ const ApplicationApi = {
                         broadcast
                     );
                 });
+            })
+            .catch(() => {});
+    },
+
+    activenode_create_operation(
+        account
+    ) {
+        let unlock_promise = WalletUnlockActions.unlock();
+
+        return Promise.all([
+            unlock_promise
+        ])
+            .then(res => {
+                let tr = new TransactionBuilder();
+                tr.add_type_operation("activenode_create_operation", {
+                    fee: {
+                        amount: 0,
+                        asset_id: "1.3.0"
+                    },
+                    activenode_account: account.activenode_account
+                });
+
+                return WalletDb.process_transaction(tr, null, true);
             })
             .catch(() => {});
     },

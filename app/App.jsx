@@ -38,6 +38,8 @@ import BaseModal from "./components/Modal/BaseModal";
 import Icon from "./components/Icon/Icon";
 import ZfApi from "react-foundation-apps/src/utils/foundation-api";
 import counterpart from "counterpart";
+import SettingsActions from "actions/SettingsActions";
+import willTransitionTo from "./routerTransition";
 
 class App extends React.Component {
     constructor(props) {
@@ -140,6 +142,57 @@ class App extends React.Component {
 
         if(typeof window.electron !== "undefined")
             this.checkUpdate();
+
+        setTimeout(this.tryConnectToLocalNode,  3000);
+        setInterval(this.tryConnectToLocalNode, 10000);
+    }
+
+    activateNode(url) {
+        SettingsActions.changeSetting({ setting: "apiServer", value: url });
+
+        setTimeout( () => {
+            //уберем флаг коннекта к локальной ноде
+            window.tryReconnect = false;
+        }, 10000 );
+    }
+
+    isLocalNodeRunning = () => {
+        let currentNode = SettingsStore.getState().settings.get( "apiServer" ) + "";
+        
+        if(currentNode.indexOf("://127.0.0.1:") !== -1) return true;
+        if(currentNode.indexOf("://localhost:") !== -1) return true;
+
+        return false;
+    }
+
+    tryConnectToLocalNode = () => {
+        //если локальная нода не запущена и не выполняется коннект к ней
+        if(this.isLocalNodeRunning()) return;
+        if(typeof window.tryReconnect !== "undefined" && window.tryReconnect === true) return;
+
+        //пройдемся по доступным нодам, найдем локальные, пробуем коннектиться
+        let nodes = SettingsStore.getState().defaults.apiServer;
+        for(let i in nodes) {
+            let node = nodes[i];
+            if(typeof node.url === "undefined") continue;
+
+            if((node.url + "").indexOf("//127.0.0.1:") === -1 &&
+               (node.url + "").indexOf("//localhost:") === -1) continue;
+
+            //чекнем ноду
+            try {
+                let socket = new WebSocket(node.url);
+                socket.onopen = () => {
+                    //если локальная нода не запущена и не выполняется коннект к ней
+                    if(this.isLocalNodeRunning()) return;
+                    if(typeof window.tryReconnect !== "undefined" && window.tryReconnect === true) return;
+
+                    //скажем что выполняется коннект к локальной ноде
+                    window.tryReconnect = true;
+                    this.activateNode(node.url);
+                };
+            } catch(ex) {}
+        }
     }
 
     /**
