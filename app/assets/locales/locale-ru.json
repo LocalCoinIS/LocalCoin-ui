@@ -318,7 +318,12 @@
             "activenodes_in_the_network": "активнода в сети.",
             "approximate_daily_profit_is": "Приблизительная дневная прибыль",
             "llc": "LLC",
-            "add_the_activenode": "Добавить активноду"
+            "add_the_activenode": "Добавить активноду",
+            "you_must_take_a_few_steps": "Вы должны выполнить  несколько шагов",
+            "open_in_witness_node_data_dir_file": "Открыть в witness_node_data_dir файл config.ini",
+            "update_add_in_file": "Изменить/добавить в файле",
+            "enter_your_private_key": "введите ваш приватный ключ",
+            "restart_the_node": "Перезапустить ноду"
         },
         "votes": {
             "about": "Подробнее",

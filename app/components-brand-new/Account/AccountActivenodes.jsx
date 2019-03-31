@@ -28,7 +28,7 @@ import utils from "common/utils";
 import assetUtils from "common/asset_utils";
 import CliWalletAPI from "../../components/CliWalletAPI"; 
 import TransactionConfirmActions from "../../actions/TransactionConfirmActions";
-import NodeControll from "../../NodeControll";
+import AddressIndex from "stores/AddressIndex";
 import {ChainTypes as grapheneChainTypes, TransactionBuilder, PrivateKey, ChainStore, FetchChainObjects, key} from "bitsharesjs/es";
 const {operations} = grapheneChainTypes;
 let ops = Object.keys(operations);
@@ -49,6 +49,7 @@ class AccountActivenodes extends React.Component {
         super(props);
 
         this.state = {
+            toUpdateConfig : false,
             imIsActiveNode: false,
             calculatePanel: true
         };
@@ -72,9 +73,6 @@ class AccountActivenodes extends React.Component {
     }
 
     canCreateTheActivenode = () => {
-        (new NodeControll()).rewriteConfig("1", "2", "3");
-        return;
-
         if(this.getWalletBalance() < MIN_BALANCE_FOR_ACTIVENODE) return false;
         if(!this.isLifetimeMember())                             return false;
         if(!this.isLocalNodeRunning())                           return false;
@@ -98,7 +96,7 @@ class AccountActivenodes extends React.Component {
         WalletDb.process_transaction(tr, null, true)
             .then(() => {
                 if(this.canCreateTheActivenode())
-                    this.setState({ imIsActiveNode: true });
+                    this.setState({ toUpdateConfig: true });
 
                 return true;
             });
@@ -130,46 +128,9 @@ class AccountActivenodes extends React.Component {
                         <Link to={`/account/${accountName}/vesting/`} activeClassName="active" >
                             {counterpart.translate("account.activenodes.vesting_section")}
                         </Link>
-                    </span><br />
+                    </span>
                 </div>;
         }
-
-    // imIsActiveNodeUpdateState = () => {
-    //     // let currentActivenodes = [];
-    //     // let accountName = AccountStore.getState().currentAccount;
-
-    //     // let { globalObject} = this.props;
-    //     // if(globalObject !== null) {
-    //     //     globalObject = globalObject.toJS();
-    //     //     if(typeof globalObject.current_activenodes !== "undefined")
-    //     //         currentActivenodes = globalObject.current_activenodes;
-    //     // }
-
-    //     Apis.instance()
-    //             .db_api()
-    //             .exec("get_witness_by_account", [account_id])
-    //             .then(optional_witness_object => {
-    //                 if (optional_witness_object) {
-    //                     this._subTo("witnesses", optional_witness_object.id);
-    //                     this.witness_by_account_id = this.witness_by_account_id.set(
-    //                         optional_witness_object.witness_account,
-    //                         optional_witness_object.id
-    //                     );
-    //                     let witness_object = this._updateObject(
-    //                         optional_witness_object,
-    //                         true
-    //                     );
-    //                     resolve(witness_object);
-    //                 } else {
-    //                     this.witness_by_account_id = this.witness_by_account_id.set(
-    //                         account_id,
-    //                         null
-    //                     );
-    //                     this.notifySubscribers();
-    //                     resolve(null);
-    //                 }
-    //             }, reject);
-    // }
 
     unauthorizedView = () => {
         return  <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
@@ -325,15 +286,60 @@ class AccountActivenodes extends React.Component {
         return null;
     }
 
+    getP(address) {
+        var addresses = AddressIndex.getState().addresses;
+        var pubkey = addresses.get(address);
+
+        return pubkey;
+    }
+
+    updateConfigView = () => {
+        let accountName = AccountStore.getState().currentAccount;
+        let account = ChainStore.getAccount(accountName);
+        let publicKey = account.get("options").get("memo_key");
+        
+        return  <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
+                    <h2 style={{ textAlign: 'center' }}>
+                        {counterpart.translate("account.activenodes.nodes")}
+                    </h2>
+
+                    <span style={{ textAlign: 'center' }}>
+                    {counterpart.translate("account.activenodes.open_in_witness_node_data_dir_file")}:
+                    </span><br />
+
+                    <span style={{ textAlign: 'center' }}>
+                        1. {counterpart.translate("account.activenodes.you_must_take_a_few_steps")}
+                    </span><br />
+                    <span style={{ textAlign: 'center' }}>
+                        2. {counterpart.translate("account.activenodes.update_add_in_file")} activenode-account = {accountName}
+                    </span><br />
+                    <span style={{ textAlign: 'center' }}>
+                        3. {counterpart.translate("account.activenodes.update_add_in_file")} activenode-private-key = ["{publicKey}","{counterpart.translate("account.activenodes.enter_your_private_key")}"]
+                    </span><br />
+                    <span style={{ textAlign: 'center' }}>
+                        4. {counterpart.translate("account.activenodes.restart_the_node")}
+                    </span><br />
+
+                    <br />
+                    <button className="button btn large inverted"
+                            onClick={() => {
+                                this.setState({ imIsActiveNode: true });
+                            }}>OK</button>
+                </div>;
+        }
+
     render() {
-        // if(this.state.imIsActiveNode)
-        //     return this.imIsActiveNodeView();
+         if(this.state.imIsActiveNode)
+            return this.imIsActiveNodeView();
 
-        // if(WalletUnlockStore.getState().locked)
-        //     return this.unauthorizedView();
+        if(this.state.toUpdateConfig)
+            this.updateConfigView();
 
-        // if(this.state.calculatePanel)
-        //     return this.addTheNodeView();
+        if(WalletUnlockStore.getState().locked)
+            return this.unauthorizedView();
+
+        if(this.state.calculatePanel)
+            return this.addTheNodeView();
 
         return this.activenodeRequirementsView();
     }

@@ -835,7 +835,7 @@ class Header extends React.Component {
                                         </a>
                                     </li>
                                 }
-                                {
+                                { !window.electron ? null :
                                     <li className="mobile__list__item">
                                         <a
                                             className="mobile__list__link"
@@ -1013,27 +1013,28 @@ class Header extends React.Component {
                                     </a>
                                 </li>
 
-                                <li
-                                    className={cnames("navigation__item", {
-                                        active:
-                                            active.indexOf(
-                                                `/account/${currentAccount}/activenodes`
-                                            ) !== -1
-                                    })}
-                                >
-                                    <a
-                                        className="navigation__link"
-                                        href="#"
-                                        onClick={this._onNavigate.bind(
-                                            this,
-                                            `/account/${currentAccount}/activenodes`
-                                        )}
+                                { !window.electron ? null :
+                                    <li
+                                        className={cnames("navigation__item", {
+                                            active:
+                                                active.indexOf(
+                                                    `/account/${currentAccount}/activenodes`
+                                                ) !== -1
+                                        })}
                                     >
-                                        {counterpart.translate(
-                                            "account.activenodes.activenodes"
-                                        )}
-                                    </a>
-                                </li>
+                                        <a
+                                            className="navigation__link"
+                                            href="#"
+                                            onClick={this._onNavigate.bind(
+                                                this,
+                                                `/account/${currentAccount}/activenodes`
+                                            )}
+                                        >
+                                            {counterpart.translate(
+                                                "account.activenodes.activenodes"
+                                            )}
+                                        </a>
+                                    </li>}
                             </ul>
                         </nav>
                         {currentAccount ? (
