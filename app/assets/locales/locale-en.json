@@ -19,6 +19,21 @@
         },
         "contacts": "Contacts",
         "create_account": "Create account",
+        "create_account_type": {
+            "cloud_wallet": {
+                "head": "Cloud Wallet",
+                "feature_1": "Security: Medium",
+                "feature_2": "Only login and password are used.",
+                "feature_3": "The lowest level of protection, the most vulnerable to hacking attacks.",
+                "feature_4": "You will not be able to Back up or restore your Account"
+            },
+            "local_wallet": {
+                "head": "Local Wallet",
+                "feature_1": "Security: High",
+                "feature_2": "Login, password and a key bin-file are used. The file is saved only in your browser. To access your account from another device you’ll need a backup file.",
+                "feature_3": "You can restore the account using a backup file."
+            }
+        },
         "create_new": "Create A New Account",
         "deposit": "Deposit LLC",
         "deposit_address": "Your deposit address is your account name",

@@ -26,6 +26,7 @@ import {
     japanFlag
 } from "../assets/brand-new-layout/img/images";
 import counterpart from "counterpart";
+import RegistrationModal from "./Modal/RegistrationModal";
 
 const FlagImage = ({flag, width = 50, height = 50}) => {
     return (
@@ -195,6 +196,10 @@ class LoginSelector extends React.Component {
                                     data-intro={translator.translate(
                                         "walkthrough.create_cloud_wallet"
                                     )}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        this.refs.registration_modal.show();
+                                    }}
                                 >
                                     {counterpart.translate(
                                         "header.create_account"
@@ -251,6 +256,10 @@ class LoginSelector extends React.Component {
                         {children}
                     </div>
                 </div>
+                <RegistrationModal
+                    id="registration-modal"
+                    ref="registration_modal"
+                />
             </div>
         );
     }
