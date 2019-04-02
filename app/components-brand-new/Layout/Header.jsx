@@ -1005,8 +1005,15 @@ class Header extends React.Component {
                                     style={{
                                         display: walletBalance ? "" : "none"
                                     }}
+
                                 >
-                                    {counterpart.translate("exchange.balance")}:
+                                    <span
+                                        onClick={this._onNavigate.bind(
+                                        this,
+                                        "/account/" + currentAccount
+                                    )}>
+                                        {counterpart.translate("exchange.balance")}
+                                    </span>:
                                     &nbsp;
                                     {walletBalance}
                                     &nbsp;
