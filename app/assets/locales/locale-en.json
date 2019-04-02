@@ -309,9 +309,7 @@
             "add_the_activenode": "Add the activenode",
 
             "you_must_take_a_few_steps": "You must take a few steps",
-            "open_in_witness_node_data_dir_file": "Open in witness_node_data_dir file config.ini",
-            "update_add_in_file": "Update/add in file",
-            "enter_your_private_key": "enter your private key",
+            "open_in_witness_node_data_dir_file": "Change in witness_node_data_dir file config.ini",
             "restart_the_node": "Restart the node"
         },
         "vesting": {

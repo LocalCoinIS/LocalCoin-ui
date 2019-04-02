@@ -26,6 +26,7 @@ import AccountStore from "stores/AccountStore";
 import {connect} from "alt-react";
 import utils from "common/utils";
 import assetUtils from "common/asset_utils";
+import ConfigINI from "./ConfigINI";
 import CliWalletAPI from "../../components/CliWalletAPI"; 
 import TransactionConfirmActions from "../../actions/TransactionConfirmActions";
 import AddressIndex from "stores/AddressIndex";
@@ -94,9 +95,11 @@ class AccountActivenodes extends React.Component {
         });
 
         WalletDb.process_transaction(tr, null, true)
-            .then(() => {
-                if(this.canCreateTheActivenode())
+            .then((result) => {
+                if(this.canCreateTheActivenode()) {
                     this.setState({ toUpdateConfig: true });
+                    this.outpudConfigFile();
+                }
 
                 return true;
             });
@@ -293,31 +296,41 @@ class AccountActivenodes extends React.Component {
         return pubkey;
     }
 
-    updateConfigView = () => {
-        let accountName = AccountStore.getState().currentAccount;
-        let account = ChainStore.getAccount(accountName);
-        let publicKey = account.get("options").get("memo_key");
-        
+    outpudConfigFile() {
+        WalletUnlockActions.unlock()
+            .then(() => {
+                let accountName = AccountStore.getState().currentAccount;
+                let account     = ChainStore.getAccount(accountName);
+                let publicKey   = account.get("options").get("memo_key");
+                var private_key = WalletDb.getPrivateKey(publicKey);
+                let privateKey  = private_key.toWif();
+
+                let text = (new ConfigINI(accountName, publicKey, privateKey)).get();
+
+                //download
+                let element = document.createElement('a');
+                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+                element.setAttribute('download', "config.ini");        
+                element.style.display = 'none';
+                document.body.appendChild(element);        
+                element.click();        
+                document.body.removeChild(element);
+            })
+            .catch(() => {});
+    }
+
+    updateConfigView = () => {        
         return  <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
                     <h2 style={{ textAlign: 'center' }}>
                         {counterpart.translate("account.activenodes.nodes")}
                     </h2>
 
                     <span style={{ textAlign: 'center' }}>
-                    {counterpart.translate("account.activenodes.open_in_witness_node_data_dir_file")}:
+                        1. {counterpart.translate("account.activenodes.open_in_witness_node_data_dir_file")}:
                     </span><br />
 
                     <span style={{ textAlign: 'center' }}>
-                        1. {counterpart.translate("account.activenodes.you_must_take_a_few_steps")}
-                    </span><br />
-                    <span style={{ textAlign: 'center' }}>
-                        2. {counterpart.translate("account.activenodes.update_add_in_file")} activenode-account = {accountName}
-                    </span><br />
-                    <span style={{ textAlign: 'center' }}>
-                        3. {counterpart.translate("account.activenodes.update_add_in_file")} activenode-private-key = ["{publicKey}","{counterpart.translate("account.activenodes.enter_your_private_key")}"]
-                    </span><br />
-                    <span style={{ textAlign: 'center' }}>
-                        4. {counterpart.translate("account.activenodes.restart_the_node")}
+                        2. {counterpart.translate("account.activenodes.restart_the_node")}:
                     </span><br />
 
                     <br />
@@ -333,7 +346,7 @@ class AccountActivenodes extends React.Component {
             return this.imIsActiveNodeView();
 
         if(this.state.toUpdateConfig)
-            this.updateConfigView();
+            return this.updateConfigView();
 
         if(WalletUnlockStore.getState().locked)
             return this.unauthorizedView();
