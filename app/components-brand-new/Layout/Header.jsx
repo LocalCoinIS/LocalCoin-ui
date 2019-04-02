@@ -794,7 +794,7 @@ class Header extends React.Component {
                                             href="#"
                                             onClick={this._onNavigate.bind(
                                                 this,
-                                                "/deposit-withdraw"
+                                                "/account/" + currentAccount
                                             )}
                                         >
                                             {counterpart.translate(
@@ -933,7 +933,7 @@ class Header extends React.Component {
                                         className={cnames("navigation__item", {
                                             active:
                                                 active.indexOf(
-                                                    "/deposit-withdraw"
+                                                    "/account/" + currentAccount
                                                 ) !== -1
                                         })}
                                     >
@@ -942,7 +942,7 @@ class Header extends React.Component {
                                             href="#"
                                             onClick={this._onNavigate.bind(
                                                 this,
-                                                "/deposit-withdraw"
+                                                "/account/" + currentAccount
                                             )}
                                         >
                                             {counterpart.translate(

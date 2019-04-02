@@ -32,3 +32,17 @@ export const russiaFlag = require("!file-loader?name=asset-symbols/[name].svg!./
 export const japanFlag = require("!file-loader?name=asset-symbols/[name].svg!./jp.svg");
 
 export const otcBackground = require("!file-loader?name=asset-symbols/[name].jpg!./otc_background.jpg");
+
+// social network icons
+// export const vk = require("!file-loader?name=asset-symbols/social/[name].svg!./vk.svg");
+// export const fb = require("!file-loader?name=asset-symbols/[name].svg!./fb.svg");
+// export const tm = require("!file-loader?name=asset-symbols/[name].svg!./tm.svg");
+// export const discord = require("!file-loader?name=asset-symbols/[name].svg!./s-584.svg");
+// export const medium = require("!file-loader?name=asset-symbols/[name].svg!./m-1.svg");
+// export const golos = require("!file-loader?name=asset-symbols/[name].svg!./s-574.svg");
+// export const reddit = require("!file-loader?name=asset-symbols/[name].svg!./redd.svg");
+// export const steemit = require("!file-loader?name=asset-symbols/[name].svg!./s-576.svg");
+// export const bt = require("!file-loader?name=asset-symbols/[name].svg!./btc.svg");
+// export const twitter = require("!file-loader?name=asset-symbols/[name].svg!./tw.svg");
+// export const yt = require("!file-loader?name=asset-symbols/[name].svg!./yt.svg");
+// export const inst = require("!file-loader?name=asset-symbols/[name].svg!./in.svg");
