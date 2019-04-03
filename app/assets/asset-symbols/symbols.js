@@ -26,6 +26,8 @@ require("file-loader?name=asset-symbols/[name].png!./dash.png");
 require("file-loader?name=asset-symbols/[name].png!./eurt.png");
 require("file-loader?name=asset-symbols/[name].png!./game.png");
 require("file-loader?name=asset-symbols/[name].png!./grc.png");
+require("file-loader?name=asset-symbols/[name].png!./usdc.png");
+require("file-loader?name=asset-symbols/[name].png!./usds.png");
 require("file-loader?name=asset-symbols/[name].png!./usdt.png");
 require("file-loader?name=asset-symbols/[name].png!./bkt.png");
 require("file-loader?name=asset-symbols/kapital.png!./bkt.png");
@@ -23529,8 +23531,16 @@ export const coins = [
 		image: require("!file-loader?name=asset-symbols/[name].png!./usde.png"), 
 	},
 	{
+		name: "usdc",
+		image: require("!file-loader?name=asset-symbols/[name].png!./usdc.png"),
+	},
+	{
+		name: "usds",
+		image: require("!file-loader?name=asset-symbols/[name].png!./usds.png"),
+	},
+	{
 		name: "usdt",
-		image: require("!file-loader?name=asset-symbols/[name].png!./usdt.png"), 
+		image: require("!file-loader?name=asset-symbols/[name].png!./usdt.png"),
 	},
 	{
 		name: "usnbt",

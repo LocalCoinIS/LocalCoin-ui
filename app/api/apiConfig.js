@@ -66,8 +66,8 @@ export const gdexAPIs = {
 };
 
 export const settingsAPIs = {
-    // DEFAULT_WS_NODE: "wss://fake.automatic-selection.com",
-    DEFAULT_WS_NODE: "ws://127.0.0.1:8090",
+    DEFAULT_WS_NODE: "wss://fake.automatic-selection.com",
+    // DEFAULT_WS_NODE: "ws://127.0.0.1:8090",
     WS_NODE_LIST: [
         {
             url: "wss://fake.automatic-selection.com",
