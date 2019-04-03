@@ -82,6 +82,7 @@ class WithdrawModal extends React.Component {
             balance: this.getBalance(),
             insufficient: this.checkInsufficient()
         });
+        this.validateUnlockWithdrawBtn();
     }
 
     getBalance() {
@@ -145,6 +146,11 @@ class WithdrawModal extends React.Component {
         let fee = this.state.feeAmount
             ? this.state.feeAmount.getAmount({real: true})
             : 0;
+
+        if (!this.wdAmount) {
+            this.lockWithdrawBtn();
+            return;
+        }
 
         if (this.wdAmount < this.props.currency.minimal) {
             this.lockWithdrawBtn();
