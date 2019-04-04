@@ -51,14 +51,15 @@ class RegistrationModal extends React.Component {
                     className="grid-block vertical no-overflow"
                 >
                     <div
-                        className="content-block"
+                        className="content-block registration-types"
                         style={{textAlign: "center", textTransform: "none"}}
                     >
                         <Link
+                            className="registration-type"
                             to="/create-account/password"
                         >
-                            <div>{counterpart.translate("account.create_account_type.cloud_wallet.head")}</div>
-                            <ul>
+                            <div className="registration-type__heading">{counterpart.translate("account.create_account_type.cloud_wallet.head")}</div>
+                            <ul className="registration-type__list">
                                 <li>{counterpart.translate("account.create_account_type.cloud_wallet.feature_1")}</li>
                                 <li>{counterpart.translate("account.create_account_type.cloud_wallet.feature_2")}</li>
                                 <li>{counterpart.translate("account.create_account_type.cloud_wallet.feature_3")}</li>
@@ -66,10 +67,11 @@ class RegistrationModal extends React.Component {
                             </ul>
                         </Link>
                         <Link
+                            className="registration-type"
                             to="/create-account/wallet"
                         >
-                            <div>{counterpart.translate("account.create_account_type.local_wallet.head")}</div>
-                            <ul>
+                            <div className="registration-type__heading">{counterpart.translate("account.create_account_type.local_wallet.head")}</div>
+                            <ul className="registration-type__list">
                                 <li>{counterpart.translate("account.create_account_type.local_wallet.feature_1")}</li>
                                 <li>{counterpart.translate("account.create_account_type.local_wallet.feature_2")}</li>
                                 <li>{counterpart.translate("account.create_account_type.local_wallet.feature_3")}</li>
