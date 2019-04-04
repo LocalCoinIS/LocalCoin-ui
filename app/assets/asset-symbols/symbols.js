@@ -13251,6 +13251,10 @@ export const coins = [
 		image: require("!file-loader?name=asset-symbols/[name].svg!./aoa.svg"), 
 	},
 	{
+		name: "aoak",
+		image: require("!file-loader?name=asset-symbols/[name].svg!./aoak.svg"),
+	},
+	{
 		name: "apc",
 		image: require("!file-loader?name=asset-symbols/[name].png!./apc.png"), 
 	},
@@ -23049,6 +23053,10 @@ export const coins = [
 	{
 		name: "tmt",
 		image: require("!file-loader?name=asset-symbols/[name].svg!./tmt.svg"), 
+	},
+	{
+		name: "tmtu",
+		image: require("!file-loader?name=asset-symbols/[name].svg!./tmtu.svg"),
 	},
 	{
 		name: "tnb",
