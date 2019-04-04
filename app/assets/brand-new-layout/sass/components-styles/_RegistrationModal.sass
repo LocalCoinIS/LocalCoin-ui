@@ -19,9 +19,16 @@
     color: #00195b
   &__list
     padding: 0
-    margin: 0
     li
       line-height: 1.3
       margin: 0 0 5px 0
       color: #000
       font-size: 14px
+
+@media only screen and (max-width: 550px)
+  .registration-types
+    flex-direction: column
+    margin-top: 30px!important
+  .registration-type
+    max-width: 280px
+    margin: 10px auto
