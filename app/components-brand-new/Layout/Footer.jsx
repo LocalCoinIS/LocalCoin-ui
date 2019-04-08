@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import AltContainer from "alt-container";
 import Translate from "react-translate-component";
 import BindToChainState from "../../components/Utility/BindToChainState";
@@ -46,7 +46,7 @@ class Footer extends React.Component {
             nextProps.dynGlobalObject !== this.props.dynGlobalObject ||
             nextProps.backup_recommended !== this.props.backup_recommended ||
             nextProps.rpc_connection_status !==
-                this.props.rpc_connection_status ||
+            this.props.rpc_connection_status ||
             nextProps.synced !== this.props.synced ||
             nextState.showNodesPopup !== this.state.showNodesPopup
         );
@@ -100,14 +100,14 @@ class Footer extends React.Component {
     }
 
     getCurrentNodeIndex() {
-        const {props} = this;
+        const { props } = this;
         let currentNode = this.getNodeIndexByURL.call(this, props.currentNode);
 
         return currentNode;
     }
 
     getNode(node) {
-        const {props} = this;
+        const { props } = this;
 
         return {
             name: node.location || "Unknown location",
@@ -121,10 +121,10 @@ class Footer extends React.Component {
     chatToggle(e) {
         e.preventDefault();
         let chatBro = document.querySelector(".chatbro_chat");
-        if(chatBro && chatBro.classList.contains("chatbro_opacity")) {
+        if (chatBro && chatBro.classList.contains("chatbro_opacity")) {
             document.querySelector(".chatbro_minimize_button").click();
         } else {
-            if(chatBro) {
+            if (chatBro) {
                 document.querySelector(".chatbro_minimized_header .chatbro_header_caption_td").click();
             }
         }
@@ -168,8 +168,8 @@ class Footer extends React.Component {
 
     render() {
         const autoSelectAPI = "wss://fake.automatic-selection.com";
-        const {state, props} = this;
-        const {synced} = props;
+        const { state, props } = this;
+        const { synced } = props;
         const connected = !(this.props.rpc_connection_status === "closed");
 
         // Current Node Details
@@ -190,7 +190,7 @@ class Footer extends React.Component {
         let version = version_match
             ? `.${version_match[1]}`
             : ` ${APP_VERSION}`;
-        let updateStyles = {display: "inline-block", verticalAlign: "top"};
+        let updateStyles = { display: "inline-block", verticalAlign: "top" };
         let logoProps = {};
 
         let currentAccount = AccountStore.getState().currentAccount;
@@ -209,6 +209,7 @@ class Footer extends React.Component {
                         <Translate content="footer.add_coin" />
                     </button>
                     <div className="footer-right">
+                        <Social />
                         <button
                             className="btn large inverted flat support-btn"
                             type="button"
@@ -219,15 +220,15 @@ class Footer extends React.Component {
                         <div
                             className="footer-info"
                             onClick={() => {
-                                this.setState({showNodesPopup: true});
+                                this.setState({ showNodesPopup: true });
                             }}
                         >
                             <div
                                 onMouseEnter={() => {
-                                    this.setState({showNodesPopup: true});
+                                    this.setState({ showNodesPopup: true });
                                 }}
                                 onMouseLeave={() => {
-                                    this.setState({showNodesPopup: false});
+                                    this.setState({ showNodesPopup: false });
                                 }}
                                 className="node-access-popup"
                                 style={{
@@ -238,7 +239,7 @@ class Footer extends React.Component {
                                     nodes={this.props.defaults.apiServer}
                                     popup={true}
                                 />
-                                <div style={{paddingTop: 15}}>
+                                <div style={{ paddingTop: 15 }}>
                                     <a onClick={this.onAccess.bind(this)}>
                                         <Translate content="footer.advanced_settings" />
                                     </a>
@@ -300,11 +301,44 @@ class Footer extends React.Component {
     }
 
     onAccess() {
-        SettingsActions.changeViewSetting({activeSetting: 6});
+        SettingsActions.changeViewSetting({ activeSetting: 6 });
         this.context.router.push("/settings/access");
     }
 }
 Footer = BindToChainState(Footer);
+
+class Social extends Component {
+    render() {
+        let socialArr = [
+            { item: "vk", href: "https://vk.com/localcoin", img: "vk" },
+            { item: "tm", href: "https://t.me/LocalCoinIS", img: 'tm' },
+            { item: "discord", href: "https://discord.gg/vzxSzYN", img: 's-584' },
+            { item: "medium", href: "https://medium.com/@localcoinis", img: 'm-1' },
+            { item: "golos", href: "https://golos.io/@localcoin", img: 's-574' },
+            { item: "reddit", href: "https://reddit.com/user/LocalCoinIS", img: 'redd' },
+            { item: "steemit", href: "https://steemit.com/@localcoin", img: 's-576' },
+            { item: "twitter", href: "https://twitter.com/LocalCoinIS", img: 'tw' },
+        ]
+
+        let list = socialArr.map((item, i) => {
+            return (
+                <li className="social__item">
+                    <a key={item.item} href={item.href} className={`social__link ${item.item}`} target="_blank">
+                        <Icon name={item.img}/>
+                    </a>
+                </li>
+            )
+        });
+
+        return (
+            <div className="social">
+                <ul className="social__list">
+                    {list}
+                </ul>
+            </div >
+        )
+    }
+}
 
 class AltFooter extends Component {
     render() {

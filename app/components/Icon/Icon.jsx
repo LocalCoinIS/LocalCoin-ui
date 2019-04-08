@@ -57,7 +57,20 @@ let icons = [
     "withdraw",
     "filter",
     "info-circle-o",
-    "zoom"
+    "zoom",
+    "vk",
+    "btc",
+    "fb",
+    "insta",
+    "m-1",
+    "redd",
+    "s-574",
+    "s-576",
+    "s-584",
+    "tm",
+    "tw",
+    "vk",
+    "yt"
 ];
 
 let icons_map = {};

@@ -66,8 +66,8 @@ export const gdexAPIs = {
 };
 
 export const settingsAPIs = {
-    // DEFAULT_WS_NODE: "wss://fake.automatic-selection.com",
-    DEFAULT_WS_NODE: "ws://127.0.0.1:8090",
+    DEFAULT_WS_NODE: "wss://fake.automatic-selection.com",
+    // DEFAULT_WS_NODE: "ws://127.0.0.1:8090",
     WS_NODE_LIST: [
         {
             url: "wss://fake.automatic-selection.com",
@@ -80,7 +80,6 @@ export const settingsAPIs = {
         {url: "wss://quebec.airdroptelegramknights.io", location: "Canada - Quebec"},
         {url: "wss://tokio.airdroptelegramknights.io", location: "Japan - Tokio"},
         {url: "wss://charlotte.airdroptelegramknights.io", location: "USA - Charlotte NC"},
-        {url: "wss://bitshares.openledger.info/ws", location: "TestBTS"},
         {url: "wss://test.localcoin.is", location: "TestNet"}
     ],
     DEFAULT_FAUCET: "https://faucet.localcoin.is", // 2018-12-infrastructure worker proposal

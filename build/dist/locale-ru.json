@@ -320,7 +320,7 @@
             "llc": "LLC",
             "add_the_activenode": "Добавить активноду",
             "you_must_take_a_few_steps": "Вы должны выполнить  несколько шагов",
-            "open_in_witness_node_data_dir_file": "Открыть в witness_node_data_dir файл config.ini",
+            "open_in_witness_node_data_dir_file": "Замените в witness_node_data_dir файл config.ini",
             "update_add_in_file": "Изменить/добавить в файле",
             "enter_your_private_key": "введите ваш приватный ключ",
             "restart_the_node": "Перезапустить ноду"

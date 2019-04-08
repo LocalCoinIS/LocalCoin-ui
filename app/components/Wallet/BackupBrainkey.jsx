@@ -76,7 +76,7 @@ export default class BackupBrainkey extends Component {
                             <h5>{this.state.brainkey}</h5>
                         </div>
                     </div>
-                    <div style={{padding: "10px 0"}}>
+                    <div>
                         <pre className="no-overflow">
                             sha1 hash of your brainkey: {sha1}
                         </pre>

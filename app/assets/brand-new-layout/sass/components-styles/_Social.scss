@@ -1,0 +1,36 @@
+.social {
+    &__list {
+        padding: 0 7px;
+        footer & {
+            margin: 0;
+        }
+    }
+
+    &__item {
+        display: inline-block;
+        vertical-align: middle;
+        padding: 5px;
+
+        footer ul & {
+            margin: 0;
+        }
+    }
+
+    &__link {
+        display: block;
+        width: 1rem;
+        height: 1rem;
+
+        .icon,
+        .icon svg {
+            width: 1rem;
+            height: 1rem;
+            vertical-align: top;
+
+            path {
+                fill: #001b60;
+            }
+        }
+    }
+
+}

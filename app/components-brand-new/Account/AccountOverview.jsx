@@ -41,8 +41,13 @@ import ReserveAssetModal from "../../components/Modal/ReserveAssetModal";
 import BaseModal from "../../components/Modal/BaseModal";
 import ZfApi from "react-foundation-apps/src/utils/foundation-api";
 import LLCBridgeModal from "../../components/DepositWithdraw/llcgateway/LLCBridgeModal";
+import LLCGatewayData from "../../components/DepositWithdraw/llcgateway/LLCGatewayData";
+import {getDashboardAssets} from "branding";
 
 class AccountOverview extends React.Component {
+
+    static MODE_BRIDGE = "1";
+
     constructor(props) {
         super();
         this.state = {
@@ -57,7 +62,10 @@ class AccountOverview extends React.Component {
             withdrawAsset: null,
             bridgeAsset: null,
             alwaysShowAssets: [
-                "LLC" //,
+                "LLC",
+                "BTC", "ETH", "XMR", "DASH", "LTC", "USDT",
+                "EUR", "USD", "GBP", "CNY", "RUB", "UAH"
+                //,
                 //"USD",
                 //"CNY"
                 // "OPEN.BTC",
@@ -68,8 +76,18 @@ class AccountOverview extends React.Component {
                 // "OPEN.DASH"
             ],
             hide0balances: false,
-            isBridgeModalVisible: false
-        };
+            isBridgeModalVisible: false,
+            currentAsset: null,
+            type: "deposit",
+            currency: {
+                asset: null,
+                currency: null
+            },
+            currencies: null,
+            depositAddress: null,
+            activeTab: "deposit_tab",
+            isAssetsLoad: true
+            };
 
         this.qtyRefs = {};
         this.priceRefs = {};
@@ -82,7 +100,7 @@ class AccountOverview extends React.Component {
         this.onShowModal = this.onShowModal.bind(this);
     }
 
-    onShowModal() {
+    onShowModal(asset, tab) {
         let self = this;
 
         this.setState(
@@ -91,8 +109,52 @@ class AccountOverview extends React.Component {
             },
             function() {
                 self.setState({
-                    isBridgeModalVisible: true
+                    isBridgeModalVisible: true,
+                    currentAsset: asset ? asset : null,
+                    activeTab: tab
                 });
+            }
+        );
+        this.getAllowCurrencies(asset);
+        let account = this.props.account
+        let accountName = typeof account === "object" ? account.get("name") :
+            typeof account === "string" ? account : "";
+        new LLCGatewayData().сreatePaymentAddress(
+            accountName,
+            asset,
+            AccountOverview.MODE_BRIDGE,
+            function(address) {
+                self.setState({depositAddress: address});
+            }
+        );
+    }
+
+    getAllowCurrencies(asset) {
+        let provider = new LLCGatewayData();
+        let self = this;
+        provider.getAllowCurrency(data => {
+            data[this.state.type].forEach(a => {
+                if(a.asset == asset) {
+                    self.setState(
+                        {
+                            currency: a
+                        }
+                    );
+                }
+            })
+
+        });
+    }
+
+    onCloseModal = () => {
+        this.setState(
+            {
+                currentAsset: null,
+                currency: {
+                    asset: null,
+                    currency: null
+                },
+                depositAddress: null
             }
         );
     }
@@ -231,6 +293,15 @@ class AccountOverview extends React.Component {
         );
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if(!this.state.isAssetsLoad) {
+            let self = this;
+            setTimeout(function () {
+                self.forceUpdate();
+            }, 1000)
+        }
+    }
+
     _onSettleAsset(id, e) {
         e.preventDefault();
         this.setState({
@@ -289,18 +360,15 @@ class AccountOverview extends React.Component {
         });
     }
 
-    _renderBuy = (symbol, canBuy, assetName, emptyCell, balance) => {
-        if (symbol === "LLC") {
+    _renderBuy = (symbol, canBuy, emptyCell) => {
+        if (canBuy) {
             // Precision of 5, 1 = 10^5
             return (
                 <span>
-                    {this.state.isBridgeModalVisible ? (
-                        <LLCBridgeModal account={this.props.account} />
-                    ) : null}
-                    <a onClick={this.onShowModal}>
+                    <a onClick={this.onShowModal.bind(this, symbol, "buy_tab")}>
                         <PulseIcon
                             onIcon="dollar"
-                        //    offIcon="dollar-green"
+                            offIcon="dollar"
                             title="icons.dollar.buy"
                             duration={1000}
                             className="icon-14px"
@@ -356,10 +424,12 @@ class AccountOverview extends React.Component {
 
         let balances = [];
         const emptyCell = "-";
+        const deafaultAssetsArr = getDashboardAssets();
         balanceList.forEach(balance => {
             let balanceObject = ChainStore.getObject(balance);
             if (!balanceObject) return;
             let asset_type = balanceObject.get("asset_type");
+
             let asset = ChainStore.getObject(asset_type);
             if (!asset) return;
 
@@ -434,15 +504,19 @@ class AccountOverview extends React.Component {
                 asset.get("symbol"),
                 this.props.backedCoins
             );
+
+            const canTrade = deafaultAssetsArr.includes(asset.get("symbol"));
+
             const canDeposit =
                 (backedCoin && backedCoin.depositAllowed) ||
-                asset.get("symbol") == "LLC";
+                asset.get("symbol") == "LLC" || canTrade;
 
             const canWithdraw =
-                backedCoin &&
+                (backedCoin &&
                 backedCoin.withdrawalAllowed &&
-                (hasBalance && balanceObject.get("balance") != 0);
-            const canBuy = !!this.props.bridgeCoins.get(symbol);
+                (hasBalance && balanceObject.get("balance") != 0)) || canTrade;
+
+            const canBuy = !!this.props.bridgeCoins.get(symbol) || asset.get("symbol") === "LLC" ;
 
             const assetAmount = balanceObject.get("balance");
 
@@ -523,9 +597,7 @@ class AccountOverview extends React.Component {
                         {this._renderBuy(
                             asset.get("symbol"),
                             canBuy,
-                            assetName,
-                            emptyCell,
-                            balanceObject.get("balance")
+                            emptyCell
                         )}
                     </td>
                     <td>
@@ -536,10 +608,7 @@ class AccountOverview extends React.Component {
                                     name="deposit"
                                     title="icons.deposit.deposit"
                                     className="icon-14x"
-                                    onClick={this._onNavigate.bind(
-                                        this,
-                                        "/deposit-withdraw"
-                                    )}
+                                    onClick={this.onShowModal.bind(this,  asset.get("symbol"), "deposit_tab")}
                                 />
                             </span>
                         ) : (
@@ -547,27 +616,15 @@ class AccountOverview extends React.Component {
                         )}
                     </td>
                     <td>
-                        {canWithdraw && this.props.isMyAccount ? (
+                        {canWithdraw ? (
                             <span>
-                                <a
-                                    className={!canWithdraw ? "disabled" : ""}
-                                    onClick={
-                                        canWithdraw
-                                            ? this._showDepositWithdraw.bind(
-                                                  this,
-                                                  "withdraw_modal_new",
-                                                  assetName,
-                                                  false
-                                              )
-                                            : () => {}
-                                    }
-                                >
-                                    <Icon
-                                        name="withdraw"
-                                        title="icons.withdraw"
-                                        className="icon-14px"
-                                    />
-                                </a>
+                                <Icon
+                                style={{cursor: "pointer"}}
+                                name="withdraw"
+                                title="icons.withdraw"
+                                className="icon-14px"
+                                onClick={this.onShowModal.bind(this,  asset.get("symbol"), "withdraw_tab")}
+                                />
                             </span>
                         ) : (
                             emptyCell
@@ -674,51 +731,50 @@ class AccountOverview extends React.Component {
                 </tr>
             );
         });
-        console.log("-----");
-        console.log(optionalAssets);
-        console.log("-----");
-        if (optionalAssets) {
+        if (optionalAssets && !this.state.hide0balances) {
+            let isAssetsLoad = true;
+            this.setState({
+                isAssetsLoad: true
+            });
             optionalAssets
                 .filter(asset => {
-                    let isAvailable = false;
-                    this.props.backedCoins.get("OPEN", []).forEach(coin => {
-                        if (coin && coin.symbol === asset) {
-                            isAvailable = true;
-                        }
-                    });
-                    if (!!this.props.bridgeCoins.get(asset)) {
-                        isAvailable = true;
-                    }
                     let keep = true;
                     balances.forEach(a => {
                         if (a.key === asset) keep = false;
                     });
-                    return keep && isAvailable;
+                    return keep;
                 })
                 .forEach(a => {
                     let asset = ChainStore.getAsset(a);
-                    if (asset && this.props.isMyAccount) {
+                    if(!asset) {
+                        isAssetsLoad = false;
+                    }
+
+                    if (asset) {
+
                         const includeAsset = !hiddenAssets.includes(
                             asset.get("id")
                         );
 
                         const thisAssetName = asset.get("symbol").split(".");
+                        const backedCoin = getBackedCoin(
+                            asset.get("symbol"),
+                            this.props.backedCoins
+                        );
+
+                        const canTrade = deafaultAssetsArr.includes(asset.get("symbol"));
+
                         const canDeposit =
-                            !!this.props.backedCoins
-                                .get("OPEN", [])
-                                .find(
-                                    a => a.backingCoinType === thisAssetName[1]
-                                ) ||
-                            !!this.props.backedCoins
-                                .get("RUDEX", [])
-                                .find(
-                                    a => a.backingCoin === thisAssetName[1]
-                                ) ||
-                            asset.get("symbol") == "LLC";
+                            (backedCoin && backedCoin.depositAllowed) ||
+                            asset.get("symbol") == "LLC" || canTrade;
+
+                        const canWithdraw =
+                            (backedCoin &&
+                                backedCoin.withdrawalAllowed) || canTrade;
 
                         const canBuy = !!this.props.bridgeCoins.get(
                             asset.get("symbol")
-                        );
+                        )  || asset.get("symbol") === "LLC" ;
 
                         const notCore = asset.get("id") !== "1.3.0";
                         let {market} = assetUtils.parseDescription(
@@ -764,64 +820,66 @@ class AccountOverview extends React.Component {
                                     style={{maxWidth: "100rem"}}
                                 >
                                     <td style={{textAlign: "left"}}>
-                                        <LinkToAssetById
-                                            asset={asset.get("id")}
-                                        />
+                                        <LinkToAssetById showIcon asset={asset.get("id")} />
+                                    </td>
+                                    <td style={{textAlign: "right"}}>{emptyCell}</td>
+                                    <td
+                                        style={{textAlign: "right"}}
+                                        className="column-hide-small"
+                                    >
+                                        {emptyCell}
+                                    </td>
+                                    <td
+                                        style={{textAlign: "right"}}
+                                        className="column-hide-small"
+                                    >
+                                        {emptyCell}
+                                    </td>
+                                    <td
+                                        style={{textAlign: "right"}}
+                                        className="column-hide-small"
+                                    >
+                                        {emptyCell}
                                     </td>
                                     <td>{emptyCell}</td>
-                                    <td className="column-hide-small">
-                                        {emptyCell}
-                                    </td>
-                                    <td className="column-hide-small">
-                                        {emptyCell}
-                                    </td>
-                                    <td className="column-hide-small">
-                                        {emptyCell}
-                                    </td>
-                                    <td>{emptyCell}</td>
-                                    <td style={{textAlign: "center"}}>
-                                        {canBuy && this.props.isMyAccount ? (
-                                            <span>
-                                                <a
-                                                    onClick={this._showDepositWithdraw.bind(
-                                                        this,
-                                                        "bridge_modal",
-                                                        a,
-                                                        false
-                                                    )}
-                                                >
-                                                    <Icon
-                                                        name="dollar"
-                                                        title="icons.dollar.buy"
-                                                        className="icon-14px"
-                                                    />
-                                                </a>
-                                            </span>
-                                        ) : (
+                                    <td>
+                                        {this._renderBuy(
+                                            asset.get("symbol"),
+                                            canBuy,
                                             emptyCell
                                         )}
                                     </td>
                                     <td>
-                                        {canDeposit &&
-                                        this.props.isMyAccount ? (
+                                        {canDeposit ? (
                                             <span>
                                                 <Icon
                                                     style={{cursor: "pointer"}}
                                                     name="deposit"
                                                     title="icons.deposit.deposit"
                                                     className="icon-14x"
-                                                    onClick={this._showDepositModal.bind(
-                                                        this,
-                                                        asset.get("symbol")
-                                                    )}
+                                                    onClick={this.onShowModal.bind(this,  asset.get("symbol"), "deposit_tab")}
                                                 />
                                             </span>
                                         ) : (
                                             emptyCell
                                         )}
                                     </td>
-                                    <td>{emptyCell}</td>
-                                    <td style={{textAlign: "center"}}>
+                                    <td>
+                                        {canWithdraw ? (
+                                            <span>
+                                                <Icon
+                                                    style={{cursor: "pointer"}}
+                                                    name="withdraw"
+                                                    title="icons.withdraw"
+                                                    className="icon-14px"
+                                                    onClick={this.onShowModal.bind(this,  asset.get("symbol"), "withdraw_tab")}
+                                                />
+                                            </span>
+                                        ) : (
+                                            emptyCell
+                                        )}
+                                    </td>
+                                    <td>
                                         {directMarketLink}
                                     </td>
                                     <td>
@@ -842,6 +900,7 @@ class AccountOverview extends React.Component {
                                         )}
                                     </td>
                                     <td>{emptyCell}</td>
+                                    <td style={{textAlign: "center"}}>{emptyCell}</td>
                                     <td
                                         style={{textAlign: "center"}}
                                         className="column-hide-small"
@@ -885,6 +944,9 @@ class AccountOverview extends React.Component {
                             );
                     }
                 });
+            this.setState({
+                isAssetsLoad: isAssetsLoad
+            });
         }
 
         balances.sort(this.sortFunctions[this.state.sortKey]);
@@ -1230,6 +1292,16 @@ class AccountOverview extends React.Component {
                             </div>
                         </div>
                     </div>
+                    {this.state.isBridgeModalVisible ? (
+                        <LLCBridgeModal
+                            account={this.props.account}
+                            currency={this.state.currency}
+                            type={this.state.type}
+                            depositAddress={this.state.depositAddress}
+                            activeTab={this.state.activeTab}
+                            onCloseModal={this.onCloseModal}
+                        />
+                    ) : null}
                 </div>
 
                 {/* Send Modal */}

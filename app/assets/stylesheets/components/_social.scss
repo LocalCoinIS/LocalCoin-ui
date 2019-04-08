@@ -1,0 +1,83 @@
+/*SocialNetwork*/
+.social {
+    &__list {
+        
+    }
+
+    &__item {
+        display: inline-block;
+        width: 48px;
+        height: 48px;
+        border-radius: 100%;
+        border: 2px solid #1c296c;
+
+        &:hover {
+            background-color: #5447eb;
+        }
+
+        &:active {
+            background-color: #0c0930;
+        }
+
+        &.vk {
+            background: url(../img/svg/vk.svg) center no-repeat;
+            background-size: 26px 15px;
+        }
+
+        &.fb {
+            background: url(../img/svg/fb.svg) center no-repeat;
+            background-size: 9px 20px;
+        }
+
+        &.tm {
+            background: url(../img/svg/tm.svg) center no-repeat;
+            background-size: 23px 20px;
+        }
+
+        &.discord {
+            background: url(../img/svg/s-584.svg) center no-repeat;
+            background-size: 20px 23px;
+        }
+
+        &.medium {
+            background: url(../img/svg/m-1.svg) center no-repeat;
+            background-size: 22px 22px;
+        }
+
+        &.golos {
+            background: url(../img/svg/s-574.svg) center no-repeat;
+            background-size: 22px 23px;
+        }
+
+        &.reddit {
+            background: url(../img/svg/redd.svg) center no-repeat;
+            background-size: 27px 25px;
+        }
+
+        &.steemit {
+            background: url(../img/svg/s-576.svg) center no-repeat;
+            background-size: 25px 25px;
+        }
+
+        &.bt {
+            background: url(../img/svg/btc.svg) center no-repeat;
+            background-size: 19px 26px;
+        }
+
+        &.twitter {
+            background: url(../img/svg/tw.svg) center no-repeat;
+            background-size: 19px 16px;
+        }
+
+        &.yt {
+            background: url(../img/svg/yt.svg) center no-repeat;
+            background-size: 24px 16px;
+        }
+
+        &.in {
+            background: url(../img/svg/insta.svg) center no-repeat;
+            background-size: 25px 25px;
+        }
+    }
+
+}
