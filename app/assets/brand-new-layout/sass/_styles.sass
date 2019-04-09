@@ -2044,3 +2044,25 @@ section[style="padding-top: 1rem; padding-left: 2rem;"]
 
 .account-creation .sub-content hr
 	display: none
+
+
+@media only screen and (max-width: 768px)
+	body.localcoin .footer-line
+		flex-wrap: wrap
+		height: auto!important
+	body.localcoin .footer-line .footer-right
+		width: 100%
+		flex-wrap: wrap
+		>*
+			width: 50%
+			margin-bottom: 5px
+	body.localcoin .exchange-layout .grid-block.main-content.vertical.no-overflow
+		height: calc(100vh - 178px)!important
+@media only screen and (max-width: 480px)
+	body.localcoin .footer-line .footer-right
+		>*
+			width: 100%
+			&:last-child
+				margin-bottom: 0
+	body.localcoin .exchange-layout .grid-block.main-content.vertical.no-overflow
+		height: calc(100vh - 270px)!important
