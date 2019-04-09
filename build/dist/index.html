@@ -1,6 +1,12 @@
 <!doctype html>
 <html>
 <head>
+    <script async type="text/javascript">
+        if(typeof window.electron !== "undefined") {
+            if(document.getElementsByClassName('loading-first-creen-anim').length > 0)
+                document.getElementsByClassName('loading-first-creen-anim')[0].remove();
+        }
+    </script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133419070-1"></script>
     <script>
@@ -77,6 +83,7 @@
             z-index: 999;
             height: 2em;
             width: 600px;
+            max-width: 100%;
             text-align: center;
             overflow: visible;
             margin: auto;
@@ -106,7 +113,7 @@
             font-size: 10px;
             width: 1em;
             height: 1em;
-            margin-top: -85px;
+            margin-top: -100px;
             -webkit-animation: spinner 1500ms infinite linear;
             -moz-animation: spinner 1500ms infinite linear;
             -ms-animation: spinner 1500ms infinite linear;
