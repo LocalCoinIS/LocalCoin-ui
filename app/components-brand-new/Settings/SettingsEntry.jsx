@@ -147,9 +147,6 @@ export default class SettingsEntry extends React.Component {
     }
 
     render() {
-        console.log("---");
-        console.log(this.props);
-        console.log("---");
         let {defaults, setting, settings} = this.props;
         let options,
             optional,

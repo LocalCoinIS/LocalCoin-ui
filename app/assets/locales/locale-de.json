@@ -1420,7 +1420,7 @@
         "over_limit": "Die Brücke (Gateway) hat nicht die gewünschte Menge der Anlage, für Ihren Kaufauftrag zur Verfügung.",
         "propose_scam": "Dieser Vorschlag wurde von einen Betrüger eingereicht, nehmen Sie ihn nicht an!",
         "propose_tip": "Schlagen Sie einen anderen Benutzer für die Ausführung der Transaktion vor!",
-        "settle": "Settling will let you convert your holdings of %(asset)s to %(backingAsset)s after a delay of %(settleDelay)s hours, at a price equal to the feed price at that time.",
+        "settle": "Settling will let you convert your holdings of %(asset)s to LLC after a delay of 24 hours, at a price equal to the feed price at that time.",
         "settle_price": "Dies ist der Preis bei dem die Verrechnungsaufträge ausgeführt werden.",
         "show_asset": "Hier klicken, um die Anlage in der Hauptliste zu zeigen.",
         "show_block": "Hier klicken, um den Block #%(block)s der Transaktion anzuzeigen.",
