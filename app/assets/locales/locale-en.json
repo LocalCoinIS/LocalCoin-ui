@@ -22,13 +22,8 @@
         "create_account_type": {
             "cloud_wallet": {
                 "head": "Cloud Wallet",
-                "feature_1": "Security: Medium",
-        "create_account_type": {
-            "cloud_wallet": {
-                "head": "Cloud Wallet",
                 "feature_1_1": "Security: ",
                 "feature_1_2": "Medium",
-
                 "feature_2": "Only login and password are used.",
                 "feature_3": "The lowest level of protection, the most vulnerable to hacking attacks.",
                 "feature_4": "You will not be able to Back up or restore your Account"
@@ -37,7 +32,6 @@
                 "head": "Local Wallet",
                 "feature_1_1": "Security: ",
                 "feature_1_2": "High",
-
                 "feature_2": "Login, password and a key bin-file are used. The file is saved only in your browser. To access your account from another device you’ll need a backup file.",
                 "feature_3": "You can restore the account using a backup file."
             }
@@ -739,7 +733,6 @@
         "title": "Fee Schedule"
     },
     "footer": {
-        "add_coin" : "Add coin",
         "advanced_settings": "Advanced settings",
         "backup": "A Backup is Required",
         "block": "Block",
@@ -898,7 +891,6 @@
         "account": "Account",
         "account_notify": "The active account is now %(account)s",
         "account_value": "Account value",
-        "backup_your_brainKey": "Backup your BrainKey",
         "collateral_ratio": "Collateral ratio",
         "create_account": "Create Account",
         "create_asset": "Create Asset",
@@ -1157,7 +1149,6 @@
             "amount": "Amount to Withdraw",
             "available": "Available: ",
             "LocalCoin_account": "Send to LocalCoin Account",
-            "bitshares_account": "Send to LocalCoin Account",
             "cancel": "Cancel",
             "cannot_cover": "Insufficient funds!",
             "estimated_value": "Estimated Value",
@@ -1238,7 +1229,7 @@
         "worker_create": "{account} created a worker proposal with daily pay of {pay}"
     },
     "otc": {
-        "info": "Decentralised blockchain based Over the counter trading is coming soon. Please, check our ICO page."
+      "info": "Decentralised blockchain based Over the counter trading is coming soon. Please, check our ICO page."
     },
     "page404": {
         "asset_not_found_subtitle": "That asset does not exist",
@@ -1662,7 +1653,7 @@
     },
     "wallet": {
         "accept": "Accept",
-        "account_create_wallet_text": "This password will be used to create a new LocalCoin bin-file, which only can be stored locally in your browser. A LocalCoin wallet can contain multiple accounts and can be easily transferred between browsers and computers using a backup file.",
+        "account_create_wallet_text": "This password will be used to create a new LocalCoin local wallet for you, which will only be stored locally in your browser. A LocalCoin wallet can contain multiple accounts and can be easily transferred between browsers and computers using a backup file.",
         "account_exp": "This account will be created on the blockchain and will be your address for any transfers you want to make! <strong>There are no long Bitcoin-style addresses in LocalCoin!</strong>",
         "account_public": "Account Name (Public)",
         "active_wallet": "Active Local Wallet",
@@ -1733,7 +1724,7 @@
         "first_account_paid": "Since this is your first account, a faucet will pay the registration fee for you.",
         "generated": "Generated password",
         "go_get_started": "Getting Started",
-        "has_wallet": "When you create your first LocalCoin account, a LocalCoin bin-file will be automatically created and stored locally in your browser. This local wallet is encrypted with your password, and will contain any private keys belonging to your accounts. It is important to backup this wallet once created!",
+        "has_wallet": "When you create your first LocalCoin account, a LocalCoin local wallet will be automatically created as well and stored in your browser. This local wallet is encrypted with your password, and will contain any private keys belonging to your accounts. It is important that you take the time to backup this wallet once created!",
         "import_20_notice1": "Import your LLC 2.0+ BACKUP first",
         "import_20_notice2": "(if you have one)",
         "import_backup": "Import LocalCoin backup (.bin file)",
@@ -1796,8 +1787,8 @@
         "setup_wallet": "Setup your local wallet",
         "show_brainkey": "Show Brainkey",
         "step_1": "Create a wallet",
-        "step_3": "Create a backup",
-        "step_4": "Getting Started",
+        "step_2": "Create a backup",
+        "step_3": "Getting Started",
         "submit": "Submit",
         "switch_model_password": "Switch to cloud wallet",
         "switch_model_wallet": "Switch to local wallet",
