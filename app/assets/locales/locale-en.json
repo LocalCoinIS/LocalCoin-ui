@@ -302,6 +302,33 @@
             "white_list": "Require holders to be white-listed",
             "witness_fed_asset": "Allow witnesses to provide feeds"
         },
+        "activenodes": {
+            "activenodes": "Activenodes",
+            "activenode_requirements": "Activenode requirements",
+            "min_balance": "Minimum balance is 511 LLC",
+            "lifetime_member": "Lifetime Member (LTM) status",
+            "localhost_connection": "Localhost connection",
+            "create_the_activenode": "Create the activenode",
+            "your_node_up_and_running": "Your node up and running!",
+            "activenode_has_been_successfully": "Activenode has been successfully created and will start getting reward within 24 hours.",
+            "you_have_to_keep_it_up": "You have to keep it up(online) and running constantly!",
+            "if_you_do_not_keep_your_node": "If you do not keep your node running, it will be removed from the blockchain automatically within 24 hours after node goes offline.",
+            "you_can_check": "You can check your profit in the ",
+            "vesting_section": "vesting section",
+            "nodes": "Nodes",
+            "login": "Login",
+            "authorize_ti_view_and_manage_nodes": "Authorize to view and manage nodes",
+            "earn_coins_by_running_activenode": "Earn coins by running Activenode",
+            "currently_there_are": "Currently there are",
+            "activenodes_in_the_network": "activenodes in the network.",
+            "approximate_daily_profit_is": "Approximate daily profit is",
+            "llc": "LLC",
+            "add_the_activenode": "Add the activenode",
+
+            "you_must_take_a_few_steps": "You must take a few steps",
+            "open_in_witness_node_data_dir_file": "Change in witness_node_data_dir file config.ini",
+            "restart_the_node": "Restart the node"
+        },
         "vesting": {
             "balance_number": "Balance #%(id)s",
             "explain": "Vesting balances contain any fees earned through the referral program or from worker pay, for example. They have a certain vesting period and are continually unlocked during that vesting period until all of the balances are available",
@@ -733,6 +760,7 @@
         "title": "Fee Schedule"
     },
     "footer": {
+        "add_coin": "Add coin",
         "advanced_settings": "Advanced settings",
         "backup": "A Backup is Required",
         "block": "Block",
@@ -891,6 +919,7 @@
         "account": "Account",
         "account_notify": "The active account is now %(account)s",
         "account_value": "Account value",
+        "backup_your_brainKey": "Backup your BrainKey",
         "collateral_ratio": "Collateral ratio",
         "create_account": "Create Account",
         "create_asset": "Create Asset",
@@ -1149,6 +1178,7 @@
             "amount": "Amount to Withdraw",
             "available": "Available: ",
             "LocalCoin_account": "Send to LocalCoin Account",
+            "bitshares_account": "Send to LocalCoin Account",
             "cancel": "Cancel",
             "cannot_cover": "Insufficient funds!",
             "estimated_value": "Estimated Value",
@@ -1229,7 +1259,7 @@
         "worker_create": "{account} created a worker proposal with daily pay of {pay}"
     },
     "otc": {
-      "info": "Decentralised blockchain based Over the counter trading is coming soon. Please, check our ICO page."
+        "info": "Decentralised blockchain based Over the counter trading is coming soon. Please, check our ICO page."
     },
     "page404": {
         "asset_not_found_subtitle": "That asset does not exist",
@@ -1653,7 +1683,7 @@
     },
     "wallet": {
         "accept": "Accept",
-        "account_create_wallet_text": "This password will be used to create a new LocalCoin local wallet for you, which will only be stored locally in your browser. A LocalCoin wallet can contain multiple accounts and can be easily transferred between browsers and computers using a backup file.",
+        "account_create_wallet_text": "This password will be used to create a new LocalCoin bin-file, which only can be stored locally in your browser. A LocalCoin wallet can contain multiple accounts and can be easily transferred between browsers and computers using a backup file.",
         "account_exp": "This account will be created on the blockchain and will be your address for any transfers you want to make! <strong>There are no long Bitcoin-style addresses in LocalCoin!</strong>",
         "account_public": "Account Name (Public)",
         "active_wallet": "Active Local Wallet",
@@ -1724,7 +1754,7 @@
         "first_account_paid": "Since this is your first account, a faucet will pay the registration fee for you.",
         "generated": "Generated password",
         "go_get_started": "Getting Started",
-        "has_wallet": "When you create your first LocalCoin account, a LocalCoin local wallet will be automatically created as well and stored in your browser. This local wallet is encrypted with your password, and will contain any private keys belonging to your accounts. It is important that you take the time to backup this wallet once created!",
+        "has_wallet": "When you create your first LocalCoin account, a LocalCoin bin-file will be automatically created and stored locally in your browser. This local wallet is encrypted with your password, and will contain any private keys belonging to your accounts. It is important to backup this wallet once created!",
         "import_20_notice1": "Import your LLC 2.0+ BACKUP first",
         "import_20_notice2": "(if you have one)",
         "import_backup": "Import LocalCoin backup (.bin file)",
@@ -1787,8 +1817,8 @@
         "setup_wallet": "Setup your local wallet",
         "show_brainkey": "Show Brainkey",
         "step_1": "Create a wallet",
-        "step_2": "Create a backup",
-        "step_3": "Getting Started",
+        "step_3": "Create a backup",
+        "step_4": "Getting Started",
         "submit": "Submit",
         "switch_model_password": "Switch to cloud wallet",
         "switch_model_wallet": "Switch to local wallet",
