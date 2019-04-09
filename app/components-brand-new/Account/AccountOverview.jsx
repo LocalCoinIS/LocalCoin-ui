@@ -1300,6 +1300,7 @@ class AccountOverview extends React.Component {
                             depositAddress={this.state.depositAddress}
                             activeTab={this.state.activeTab}
                             onCloseModal={this.onCloseModal}
+                            isDashboard={true}
                         />
                     ) : null}
                 </div>

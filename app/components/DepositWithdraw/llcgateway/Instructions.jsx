@@ -162,7 +162,7 @@ class Instructions extends React.Component {
                                                 .toUpperCase()}
                                             :&nbsp;
                                             <b>
-                                                <span>
+                                                <span style={{wordBreak: "break-all", whiteSpace: "normal"}}>
                                                     {this.state.addressText}
                                                 </span>
                                             </b>
