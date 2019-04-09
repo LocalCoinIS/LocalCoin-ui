@@ -145,6 +145,9 @@ class App extends React.Component {
 
         setTimeout(this.tryConnectToLocalNode,  3000);
         setInterval(this.tryConnectToLocalNode, 10000);
+
+        if(document.getElementsByClassName('loading-first-creen-anim').length > 0)
+            document.getElementsByClassName('loading-first-creen-anim')[0].remove();
     }
 
     activateNode(url) {
