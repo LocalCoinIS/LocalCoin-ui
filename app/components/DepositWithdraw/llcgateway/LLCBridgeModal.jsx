@@ -45,12 +45,12 @@ class LLCBridgeModal extends React.Component {
             confirmations: 0,
             assetValues: [],
             active: props.active,
-            balance: this.getBalance(),
-            insufficient: this.checkInsufficient(),
+            balance: props.isDashboard ? this.getBalance() : null,
+            insufficient: props.isDashboard ? this.checkInsufficient() : null,
             wdBtn: "button btn large inverted disabled",
             feeAmount: new Asset({amount: 0}),
             validAddress: true,
-            activeTab: props.activeTab
+            activeTab: props.activeTab ? props.activeTab : "buy_tab"
         };
 
         this.onChooseAsset = this.onChooseAsset.bind(this);
@@ -59,7 +59,7 @@ class LLCBridgeModal extends React.Component {
         this.handleSendInput = this.handleSendInput.bind(this);
         this.onWdClick = this.onWdClick.bind(this);
 
-        setInterval(() => {
+        props.isDashboard ? (setInterval(() => {
             if (!this.localcoinAccount || !this.asset) {
                 this.asset = ChainStore.getAsset(this.props.currency.asset);
                 this.localcoinAccount = ChainStore.getAccount(
@@ -71,7 +71,7 @@ class LLCBridgeModal extends React.Component {
                     insufficient: this.checkInsufficient()
                 });
             }
-        }, 1000);
+        }, 1000)) : null
 
         new LLCGatewayData().getAllowCurrency(function(response) {
             self.currencies = response.deposit;
@@ -103,7 +103,7 @@ class LLCBridgeModal extends React.Component {
     closeModal(e) {
         if(e.target.classList.contains("close-modal")) {
             this.setState({isActiveThisModal: ""});
-            this.props.onCloseModal();
+            this.props.isDashboard ? this.props.onCloseModal() : null;
         }
     }
 
@@ -238,10 +238,10 @@ class LLCBridgeModal extends React.Component {
     componentWillReceiveProps(props) {
         this.setState({
             active: props.active,
-            balance: this.getBalance(),
-            insufficient: this.checkInsufficient()
+            balance:  props.isDashboard ? this.getBalance() : null,
+            insufficient: props.isDashboard ? this.checkInsufficient() : null
         });
-        this.validateUnlockWithdrawBtn();
+        props.isDashboard ? this.validateUnlockWithdrawBtn() : null;
     }
 
     getBalance() {
@@ -414,7 +414,7 @@ class LLCBridgeModal extends React.Component {
     }
 
     componentWillMount() {
-        this._updateFee();
+        this.props.isDashboard ? this._updateFee() : null;
     }
 
     _updateFee() {
@@ -567,6 +567,273 @@ class LLCBridgeModal extends React.Component {
             </div>
         );
 
+        var buyTab = (
+            this.state.activeTab === "buy_tab" ? (
+                <div className="grid-block vertical">
+                    <form className="grid-block vertical full-width-content">
+                        <div className="grid-container">
+                            <div className="content-block">
+                                <h3>
+                                        <span>
+                                            {counterpart.translate(
+                                                "exchange.buy"
+                                            )}{" "}
+                                            LLC
+                                        </span>
+                                </h3>
+                            </div>
+                            {send}
+                            {receive}
+                            <br/>
+                            <br/>
+                            {info}
+                            <br />
+                            {copy}
+                            <br />
+                            {buttons}
+                        </div>
+                    </form>
+                </div>
+            ) : null
+        );
+
+        var depositTab = (
+            this.state.activeTab === "deposit_tab" ? (
+                <div className="grid-block vertical">
+                    <Instructions
+                        depositAddress={this.props.depositAddress}
+                        account={this.props.account}
+                        type={this.props.type}
+                        currency={this.props.currency}
+                    />
+                </div>
+            ) : null
+        );
+
+        var withdrawTab = (
+            this.state.activeTab === "withdraw_tab" ? (
+                <div className="grid-block vertical">
+                    <form className="grid-block vertical full-width-content">
+                        <div className="grid-container">
+                            <div className="content-block">
+                                <h3>
+                                        <span>
+                                            {counterpart.translate(
+                                                "modal.withdraw.withdraw"
+                                            )}{" "}
+                                            {this.props.currency.asset}
+                                        </span>
+                                </h3>
+                            </div>
+                            <div className="content-block">
+                                <div className="amount-selector">
+                                    <label className="right-label">
+                                        {counterpart.translate(
+                                            "transfer.available"
+                                        ) +
+                                        ": " +
+                                        this.state.balance +
+                                        " " +
+                                        this.props.currency.asset}
+                                    </label>
+                                    <label className="left-label">
+                                        {counterpart.translate(
+                                            "modal.withdraw.amount"
+                                        )}
+                                    </label>
+                                    <div className="inline-label input-wrapper">
+                                        <input
+                                            type="text"
+                                            placeholder={0.0}
+                                            tabIndex={0}
+                                            defaultValue={0}
+                                            onChange={this.onChangeAmount.bind(
+                                                this
+                                            )}
+                                        />
+                                        <div className="form-label select floating-dropdown">
+                                            <div className="dropdown-wrapper inactive">
+                                                <div>
+                                                        <span className="no-amount">
+                                                            <span className="currency">
+                                                                <div className="inline-block tooltip">
+                                                                    <span>
+                                                                        {
+                                                                            this
+                                                                                .props
+                                                                                .currency
+                                                                                .asset
+                                                                        }
+                                                                    </span>
+                                                                </div>
+                                                            </span>
+                                                        </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p
+                                    className="no-margin"
+                                    style={{paddingTop: 10}}
+                                >
+                                    <b>
+                                            <span>
+                                                <Translate
+                                                    content="gateway.rudex.min_amount"
+                                                    minAmount={
+                                                        this.props.currency
+                                                            .minimal
+                                                    }
+                                                    symbol={
+                                                        this.props.currency
+                                                            .asset
+                                                    }
+                                                />
+                                            </span>
+                                    </b>
+                                </p>
+                            </div>
+                            <div className="content-block gate_fee">
+                                <div className="amount-selector">
+                                    <label className="right-label" />
+                                    <label className="left-label">
+                                        {counterpart.translate(
+                                            "modal.withdraw.fee"
+                                        )}
+                                    </label>
+                                    <div className="inline-label input-wrapper">
+                                        <input
+                                            disabled
+                                            type="text"
+                                            tabIndex={2}
+                                            defaultValue={fee + " LLC"}
+                                            value={fee + " LLC"}
+                                        />
+                                        <div className="form-label select floating-dropdown" />
+                                    </div>
+                                </div>
+                                <p
+                                    className="has-error no-margin"
+                                    style={{paddingTop: 10}}
+                                >
+                                    <span>{this.state.insufficient}</span>
+                                </p>
+                            </div>
+                            <div className="content-block gate_fee">
+                                <div className="amount-selector">
+                                    <label className="right-label" />
+                                    <label className="left-label">
+                                        GATEWAY{" "}
+                                        {counterpart.translate(
+                                            "modal.withdraw.fee"
+                                        )}
+                                    </label>
+                                    <div className="inline-label input-wrapper">
+                                        <input
+                                            disabled
+                                            type="text"
+                                            tabIndex={2}
+                                            defaultValue={
+                                                this.props.currency
+                                                    .gatewayFee +
+                                                " " +
+                                                this.props.currency.asset
+                                            }
+                                            value={
+                                                this.props.currency
+                                                    .gatewayFee +
+                                                " " +
+                                                this.props.currency.asset
+                                            }
+                                        />
+                                        <div className="form-label select floating-dropdown" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="content-block">
+                                <label className="left-label">
+                                        <span>
+                                            {counterpart.translate(
+                                                "modal.withdraw.address"
+                                            )}
+                                        </span>
+                                </label>
+                                <div className="rudex-select-dropdown">
+                                    <div className="inline-label">
+                                        <input
+                                            type="text"
+                                            tabIndex={4}
+                                            autoComplete="off"
+                                            defaultValue={""}
+                                            onChange={this.onChangeWithdrAddr.bind(
+                                                this
+                                            )}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="rudex-position-options" />
+                                {!this.state.validAddress ? (
+                                    <div
+                                        className="has-error"
+                                        style={{paddingTop: 10}}
+                                    >
+                                        <Translate
+                                            content="gateway.valid_address"
+                                            coin_type={
+                                                this.props.currency.asset
+                                            }
+                                        />
+                                    </div>
+                                ) : (
+                                    ""
+                                )}
+                            </div>
+                            <div className="content-block">
+                                <label>
+                                        <span>
+                                            {counterpart.translate(
+                                                "transfer.memo"
+                                            )}
+                                        </span>
+                                </label>
+                                <textarea
+                                    rows={3}
+                                    tabIndex={1}
+                                    defaultValue={""}
+                                    onChange={this.onChMemo.bind(this)}
+                                />
+                            </div>
+                            <div className="button-group">
+                                <div
+                                    className={this.state.wdBtn}
+                                    onClick={this.onWdClick}
+                                >
+                                        <span>
+                                            {counterpart.translate(
+                                                "modal.withdraw.withdraw"
+                                            )}
+                                        </span>
+                                </div>
+                                <div
+                                    className="button btn large outline close-modal"
+                                    onClick={this.closeModal}
+                                >
+                                        <span
+                                            className="close-modal"
+                                        >
+                                            {counterpart.translate(
+                                                "global.cancel"
+                                            )}
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            ) : null
+        );
+
         return (
             <div
                 onClick={this.closeModal}
@@ -584,308 +851,57 @@ class LLCBridgeModal extends React.Component {
                         ×
                     </a>
                     <br />
-                    <div
-                        style={{
-                            fontSize: "1.8rem",
-                            fontFamily:
-                                "Roboto-Medium, arial, sans-serif"
-                        }}
-                    >
-                        <span
-                            className={this.state.activeTab === "buy_tab" ? "buy-tab active" : "buy-tab"}
-                            onClick={this._changeTab.bind(
-                                this,
-                                "buy_tab"
-                            )}
+                    {this.props.isDashboard ? (<div>
+                        <div
+                            style={{
+                                fontSize: "1.8rem",
+                                fontFamily:
+                                    "Roboto-Medium, arial, sans-serif"
+                            }}
                         >
-                            <Translate
-                                unsafe
-                                content="modal.buy.title"
-                            />
-                        </span>
-                        <span
-                            className={this.state.activeTab === "deposit_tab" ? "deposit-tab active" : "deposit-tab"}
-                            onClick={this._changeTab.bind(
-                                this,
-                                "deposit_tab"
-                            )}
-                        >
-                            <Translate
-                                unsafe
-                                content="modal.deposit.header_short"
-                            />
-                        </span>
-                        <span
-                            className={this.state.activeTab === "withdraw_tab" ? "withdraw-tab active" : "withdraw-tab"}
-                            onClick={this._changeTab.bind(
-                                this,
-                                "withdraw_tab"
-                            )}
-                        >
-                            <Translate
-                                unsafe
-                                content="modal.withdraw.withdraw"
-                            />
-                        </span>
-                    </div>
-                    {this.state.activeTab === "buy_tab" ? (
-                        <div className="grid-block vertical">
-                            <form className="grid-block vertical full-width-content">
-                                <div className="grid-container">
-                                    <div className="content-block">
-                                        <h3>
-                                        <span>
-                                            {counterpart.translate(
-                                                "exchange.buy"
-                                            )}{" "}
-                                            LLC
-                                        </span>
-                                        </h3>
-                                    </div>
-                                    {send}
-                                    {receive}
-                                    <br/>
-                                    <br/>
-                                    {info}
-                                    <br />
-                                    {copy}
-                                    <br />
-                                    {buttons}
-                                </div>
-                            </form>
+                            <span
+                                className={this.state.activeTab === "buy_tab" ? "buy-tab active" : "buy-tab"}
+                                onClick={this._changeTab.bind(
+                                    this,
+                                    "buy_tab"
+                                )}
+                            >
+                                <Translate
+                                    unsafe
+                                    content="modal.buy.title"
+                                />
+                            </span>
+                            <span
+                                className={this.state.activeTab === "deposit_tab" ? "deposit-tab active" : "deposit-tab"}
+                                onClick={this._changeTab.bind(
+                                    this,
+                                    "deposit_tab"
+                                )}
+                            >
+                                <Translate
+                                    unsafe
+                                    content="modal.deposit.header_short"
+                                />
+                            </span>
+                            <span
+                                className={this.state.activeTab === "withdraw_tab" ? "withdraw-tab active" : "withdraw-tab"}
+                                onClick={this._changeTab.bind(
+                                    this,
+                                    "withdraw_tab"
+                                )}
+                            >
+                                <Translate
+                                    unsafe
+                                    content="modal.withdraw.withdraw"
+                                />
+                            </span>
                         </div>
-                    ) : null}
-                    {this.state.activeTab === "deposit_tab" ? (
-                        <div className="grid-block vertical">
-                            <Instructions
-                                depositAddress={this.props.depositAddress}
-                                account={this.props.account}
-                                type={this.props.type}
-                                currency={this.props.currency}
-                            />
-                        </div>
-                    ) : null}
-                    {this.state.activeTab === "withdraw_tab" ? (
-                        <div className="grid-block vertical">
-                            <form className="grid-block vertical full-width-content">
-                                <div className="grid-container">
-                                    <div className="content-block">
-                                        <h3>
-                                        <span>
-                                            {counterpart.translate(
-                                                "modal.withdraw.withdraw"
-                                            )}{" "}
-                                            {this.props.currency.asset}
-                                        </span>
-                                        </h3>
-                                    </div>
-                                    <div className="content-block">
-                                        <div className="amount-selector">
-                                            <label className="right-label">
-                                                {counterpart.translate(
-                                                    "transfer.available"
-                                                ) +
-                                                ": " +
-                                                this.state.balance +
-                                                " " +
-                                                this.props.currency.asset}
-                                            </label>
-                                            <label className="left-label">
-                                                {counterpart.translate(
-                                                    "modal.withdraw.amount"
-                                                )}
-                                            </label>
-                                            <div className="inline-label input-wrapper">
-                                                <input
-                                                    type="text"
-                                                    placeholder={0.0}
-                                                    tabIndex={0}
-                                                    defaultValue={0}
-                                                    onChange={this.onChangeAmount.bind(
-                                                        this
-                                                    )}
-                                                />
-                                                <div className="form-label select floating-dropdown">
-                                                    <div className="dropdown-wrapper inactive">
-                                                        <div>
-                                                        <span className="no-amount">
-                                                            <span className="currency">
-                                                                <div className="inline-block tooltip">
-                                                                    <span>
-                                                                        {
-                                                                            this
-                                                                                .props
-                                                                                .currency
-                                                                                .asset
-                                                                        }
-                                                                    </span>
-                                                                </div>
-                                                            </span>
-                                                        </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <p
-                                            className="no-margin"
-                                            style={{paddingTop: 10}}
-                                        >
-                                            <b>
-                                            <span>
-                                                <Translate
-                                                    content="gateway.rudex.min_amount"
-                                                    minAmount={
-                                                        this.props.currency
-                                                            .minimal
-                                                    }
-                                                    symbol={
-                                                        this.props.currency
-                                                            .asset
-                                                    }
-                                                />
-                                            </span>
-                                            </b>
-                                        </p>
-                                    </div>
-                                    <div className="content-block gate_fee">
-                                        <div className="amount-selector">
-                                            <label className="right-label" />
-                                            <label className="left-label">
-                                                {counterpart.translate(
-                                                    "modal.withdraw.fee"
-                                                )}
-                                            </label>
-                                            <div className="inline-label input-wrapper">
-                                                <input
-                                                    disabled
-                                                    type="text"
-                                                    tabIndex={2}
-                                                    defaultValue={fee + " LLC"}
-                                                    value={fee + " LLC"}
-                                                />
-                                                <div className="form-label select floating-dropdown" />
-                                            </div>
-                                        </div>
-                                        <p
-                                            className="has-error no-margin"
-                                            style={{paddingTop: 10}}
-                                        >
-                                            <span>{this.state.insufficient}</span>
-                                        </p>
-                                    </div>
-                                    <div className="content-block gate_fee">
-                                        <div className="amount-selector">
-                                            <label className="right-label" />
-                                            <label className="left-label">
-                                                GATEWAY{" "}
-                                                {counterpart.translate(
-                                                    "modal.withdraw.fee"
-                                                )}
-                                            </label>
-                                            <div className="inline-label input-wrapper">
-                                                <input
-                                                    disabled
-                                                    type="text"
-                                                    tabIndex={2}
-                                                    defaultValue={
-                                                        this.props.currency
-                                                            .gatewayFee +
-                                                        " " +
-                                                        this.props.currency.asset
-                                                    }
-                                                    value={
-                                                        this.props.currency
-                                                            .gatewayFee +
-                                                        " " +
-                                                        this.props.currency.asset
-                                                    }
-                                                />
-                                                <div className="form-label select floating-dropdown" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="content-block">
-                                        <label className="left-label">
-                                        <span>
-                                            {counterpart.translate(
-                                                "modal.withdraw.address"
-                                            )}
-                                        </span>
-                                        </label>
-                                        <div className="rudex-select-dropdown">
-                                            <div className="inline-label">
-                                                <input
-                                                    type="text"
-                                                    tabIndex={4}
-                                                    autoComplete="off"
-                                                    defaultValue={""}
-                                                    onChange={this.onChangeWithdrAddr.bind(
-                                                        this
-                                                    )}
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="rudex-position-options" />
-                                        {!this.state.validAddress ? (
-                                            <div
-                                                className="has-error"
-                                                style={{paddingTop: 10}}
-                                            >
-                                                <Translate
-                                                    content="gateway.valid_address"
-                                                    coin_type={
-                                                        this.props.currency.asset
-                                                    }
-                                                />
-                                            </div>
-                                        ) : (
-                                            ""
-                                        )}
-                                    </div>
-                                    <div className="content-block">
-                                        <label>
-                                        <span>
-                                            {counterpart.translate(
-                                                "transfer.memo"
-                                            )}
-                                        </span>
-                                        </label>
-                                        <textarea
-                                            rows={3}
-                                            tabIndex={1}
-                                            defaultValue={""}
-                                            onChange={this.onChMemo.bind(this)}
-                                        />
-                                    </div>
-                                    <div className="button-group">
-                                        <div
-                                            className={this.state.wdBtn}
-                                            onClick={this.onWdClick}
-                                        >
-                                        <span>
-                                            {counterpart.translate(
-                                                "modal.withdraw.withdraw"
-                                            )}
-                                        </span>
-                                        </div>
-                                        <div
-                                            className="button btn large outline close-modal"
-                                            onClick={this.closeModal}
-                                        >
-                                        <span
-                                            className="close-modal"
-                                        >
-                                            {counterpart.translate(
-                                                "global.cancel"
-                                            )}
-                                        </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    ) : null}
+                        {buyTab}
+                        {depositTab}
+                        {withdrawTab}
+                    </div>) : (
+                        <div>{buyTab}</div>
+                    )}
                 </div>
             </div>
         );
