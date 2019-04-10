@@ -363,9 +363,7 @@ class MarketRow extends React.Component {
         if (this.props.currentMarket === marketID) {
             className += " activeMarket";
         }
-        console.log(111);
-        console.log(this.props.currentMarket);
-        console.log(111);
+
         return (
             <tr className={className} style={rowStyles}>
                 {columns}
