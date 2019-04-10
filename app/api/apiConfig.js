@@ -83,5 +83,5 @@ export const settingsAPIs = {
     ],
     DEFAULT_FAUCET: "https://faucet.localcoin.is", // 2018-12-infrastructure worker proposal
     TESTNET_FAUCET: "https://faucet.testnet.localcoin.is",
-    RPC_URL: "https://openledger.info/api/"
+    RPC_URL: "https://api.llc.is/apidocs/"
 };
