@@ -477,7 +477,6 @@ class BorrowModalContent extends React.Component {
 
     _onFoundBaseAsset(asset) {
         if (asset && asset.has("bitasset_data_id")) {
-            // this.setState({activeFindBase: asset.get("symbol")});
             this.props.onChangeBorrowAsset(asset.get("symbol"));
         }
     }
@@ -796,6 +795,7 @@ class BorrowModalContent extends React.Component {
                                         )}
                                         noLabel
                                         inputStyle={{fontSize: "0.9rem"}}
+                                        error={true}
                                     />
                                 </div>
                                 ) : (

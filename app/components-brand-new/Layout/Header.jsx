@@ -129,7 +129,7 @@ class Header extends React.Component {
             selectedAsset: "LLC",
             isBridgeModalVisible: false,
             defaultAccount: "1.2.3",
-            defaultAsset: "EUR"
+            defaultAsset: "USD"
         };
 
         this.unlisten = null;
@@ -850,20 +850,20 @@ class Header extends React.Component {
                                         </a>
                                     </li>
                                 }
-                                {/*{*/}
-                                    {/*<li className="mobile__list__item">*/}
-                                        {/*<a*/}
-                                            {/*className="mobile__list__link"*/}
-                                            {/*href="#"*/}
-                                            {/*onClick={this._showBorrow.bind(this)}*/}
-                                        {/*>*/}
-                                            {/*/!* модалка *!/*/}
-                                            {/*{counterpart.translate(*/}
-                                                {/*"exchange.borrow"*/}
-                                            {/*)}*/}
-                                        {/*</a>*/}
-                                    {/*</li>*/}
-                                {/*}*/}
+                                {
+                                    <li className="mobile__list__item">
+                                        <a
+                                            className="mobile__list__link"
+                                            href="#"
+                                            onClick={this._showBorrow.bind(this)}
+                                        >
+                                            {/* модалка */}
+                                            {counterpart.translate(
+                                                "exchange.borrow"
+                                            )}
+                                        </a>
+                                    </li>
+                                }
                                 {
                                     <li className="mobile__list__item">
                                         <a
@@ -1025,20 +1025,20 @@ class Header extends React.Component {
                                         )}
                                     </a>
                                 </li>
-                                {/*{*/}
-                                    {/*<li className="navigation__item">*/}
-                                        {/*<a*/}
-                                            {/*className="navigation__link "*/}
-                                            {/*href="#"*/}
-                                            {/*onClick={this._showBorrow.bind(this)}*/}
-                                        {/*>*/}
-                                            {/*/!* модалка *!/*/}
-                                            {/*{counterpart.translate(*/}
-                                                {/*"exchange.borrow"*/}
-                                            {/*)}*/}
-                                        {/*</a>*/}
-                                    {/*</li>*/}
-                                {/*}*/}
+                                {
+                                    <li className="navigation__item">
+                                        <a
+                                            className="navigation__link "
+                                            href="#"
+                                            onClick={this._showBorrow.bind(this)}
+                                        >
+                                            {/* модалка */}
+                                            {counterpart.translate(
+                                                "exchange.borrow"
+                                            )}
+                                        </a>
+                                    </li>
+                                }
                             </ul>
                         </nav>
                         {currentAccount ? (
