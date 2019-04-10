@@ -1,4 +1,5 @@
 import {hot} from "react-hot-loader";
+import Trigger from "react-foundation-apps/src/trigger";
 import React from "react";
 import {ChainStore} from "bitsharesjs/es";
 import IntlStore from "stores/IntlStore";
@@ -31,16 +32,18 @@ import {isIncognito} from "feature_detect";
 import {updateGatewayBackers} from "common/gatewayUtils";
 import titleUtils from "common/titleUtils";
 import PropTypes from "prop-types";
+import Modal from "react-foundation-apps/src/modal";
+import Translate from "react-translate-component";
+import BaseModal from "./components/Modal/BaseModal";
+import Icon from "./components/Icon/Icon";
+import ZfApi from "react-foundation-apps/src/utils/foundation-api";
+import counterpart from "counterpart";
+import SettingsActions from "actions/SettingsActions";
+import willTransitionTo from "./routerTransition";
 
 class App extends React.Component {
     constructor(props) {
         super();
-
-        // Check for mobile device to disable chat
-        const user_agent = navigator.userAgent.toLowerCase();
-        let isSafari = /^((?!chrome|android).)*safari/i.test(
-            navigator.userAgent
-        );
 
         let syncFail =
             ChainStore.subError &&
@@ -48,6 +51,7 @@ class App extends React.Component {
                 "ChainStore sync error, please check your system clock"
                 ? true
                 : false;
+
         this.state = {
             loading: false,
             synced: this._syncStatus(),
@@ -111,6 +115,9 @@ class App extends React.Component {
     }
 
     componentDidMount() {
+        if(document.getElementsByClassName('loading-first-creen-anim').length > 0)
+            document.getElementsByClassName('loading-first-creen-anim')[0].remove();
+            
         this._setListeners();
         this.syncCheckInterval = setInterval(this._syncStatus, 5000);
         const user_agent = navigator.userAgent.toLowerCase();
@@ -135,6 +142,151 @@ class App extends React.Component {
             }.bind(this)
         );
         updateGatewayBackers();
+
+        if(typeof window.electron !== "undefined")
+            this.checkUpdate();
+
+        setTimeout(this.tryConnectToLocalNode,  3000);
+        setInterval(this.tryConnectToLocalNode, 10000);
+    }
+
+    activateNode(url) {
+        SettingsActions.changeSetting({ setting: "apiServer", value: url });
+
+        setTimeout( () => {
+            //уберем флаг коннекта к локальной ноде
+            window.tryReconnect = false;
+        }, 10000 );
+    }
+
+    isLocalNodeRunning = () => {
+        let currentNode = SettingsStore.getState().settings.get( "apiServer" ) + "";
+        
+        if(currentNode.indexOf("://127.0.0.1:") !== -1) return true;
+        if(currentNode.indexOf("://localhost:") !== -1) return true;
+
+        return false;
+    }
+
+    tryConnectToLocalNode = () => {
+        //если локальная нода не запущена и не выполняется коннект к ней
+        if(this.isLocalNodeRunning()) return;
+        if(typeof window.tryReconnect !== "undefined" && window.tryReconnect === true) return;
+
+        //пройдемся по доступным нодам, найдем локальные, пробуем коннектиться
+        let nodes = SettingsStore.getState().defaults.apiServer;
+        for(let i in nodes) {
+            let node = nodes[i];
+            if(typeof node.url === "undefined") continue;
+
+            if((node.url + "").indexOf("//127.0.0.1:") === -1 &&
+               (node.url + "").indexOf("//localhost:") === -1) continue;
+
+            //чекнем ноду
+            try {
+                let socket = new WebSocket(node.url);
+                socket.onopen = () => {
+                    //если локальная нода не запущена и не выполняется коннект к ней
+                    if(this.isLocalNodeRunning()) return;
+                    if(typeof window.tryReconnect !== "undefined" && window.tryReconnect === true) return;
+
+                    //скажем что выполняется коннект к локальной ноде
+                    window.tryReconnect = true;
+                    this.activateNode(node.url);
+                };
+            } catch(ex) {}
+        }
+    }
+
+    /**
+     * Compares two software version numbers (e.g. "1.7.1" or "1.2b").
+     *
+     * This function was born in http://stackoverflow.com/a/6832721.
+     *
+     * @param {string} v1 The first version to be compared.
+     * @param {string} v2 The second version to be compared.
+     * @param {object} [options] Optional flags that affect comparison behavior:
+     * lexicographical: (true/[false]) compares each part of the version strings lexicographically instead of naturally; 
+     *                  this allows suffixes such as "b" or "dev" but will cause "1.10" to be considered smaller than "1.2".
+     * zeroExtend: ([true]/false) changes the result if one version string has less parts than the other. In
+     *             this case the shorter string will be padded with "zero" parts instead of being considered smaller.
+     *
+     * @returns {number|NaN}
+     * - 0 if the versions are equal
+     * - a negative integer iff v1 < v2
+     * - a positive integer iff v1 > v2
+     * - NaN if either version string is in the wrong format
+     */ 
+    versionCompare(v1, v2, options) {
+        var lexicographical = (options && options.lexicographical) || false,
+            zeroExtend = (options && options.zeroExtend) || true,
+            v1parts = (v1 || "0").split('.'),
+            v2parts = (v2 || "0").split('.');
+    
+        function isValidPart(x) {
+            return (lexicographical ? /^\d+[A-Za-zαß]*$/ : /^\d+[A-Za-zαß]?$/).test(x);
+        }
+    
+        if (!v1parts.every(isValidPart) || !v2parts.every(isValidPart)) {
+            return NaN;
+        }
+    
+        if (zeroExtend) {
+            while (v1parts.length < v2parts.length) v1parts.push("0");
+            while (v2parts.length < v1parts.length) v2parts.push("0");
+        }
+    
+        if (!lexicographical) {
+            v1parts = v1parts.map(function(x){
+                var match = (/[A-Za-zαß]/).exec(x);  
+                return Number(match ? x.replace(match[0], "." + x.charCodeAt(match.index)):x);
+            });
+            v2parts = v2parts.map(function(x){
+                var match = (/[A-Za-zαß]/).exec(x);  
+                return Number(match ? x.replace(match[0], "." + x.charCodeAt(match.index)):x);
+            });
+        }
+    
+        for (var i = 0; i < v1parts.length; ++i) {
+            if (v2parts.length == i) {
+                return 1;
+            }
+        
+            if (v1parts[i] == v2parts[i]) {
+                continue;
+            }
+            else if (v1parts[i] > v2parts[i]) {
+                return 1;
+            }
+            else {
+                return -1;
+            }
+        }
+    
+        if (v1parts.length != v2parts.length) {
+            return -1;
+        }
+    
+        return 0;
+    }
+
+    checkUpdate = () => {
+        const remoteVersionUrl = "https://raw.githubusercontent.com/LocalCoinIS/LocalCoin-ui/live/version.json?t="+Date.now();
+        
+        const localVersion = require('../version.json');
+        if(typeof localVersion.current_version === "undefined") return;
+
+        fetch(remoteVersionUrl)
+            .then(res => {
+                return res.json();
+            })
+            .then((remoteVersion) => {
+                if(typeof remoteVersion.last_build_version === "undefined") return;
+
+                if(this.versionCompare(remoteVersion.last_build_version, localVersion.current_version) === 1) {
+                    ZfApi.publish("update_modal_notify", "open");
+                }
+            });
     }
 
     componentDidUpdate(prevProps) {
@@ -215,7 +367,18 @@ class App extends React.Component {
     //     this.refs.notificationSystem.addNotification(params);
     // }
 
-    render() {
+    downloadVersion() {
+        var a = document.createElement("a");
+        a.href = "https://localcoin.is/#download";
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.style = "display: none;";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
+
+    render() {        
         const {
             headerBlock,
             sidebarBlock,
@@ -259,6 +422,24 @@ class App extends React.Component {
             );
         }
 
+        const modalUpdate = (
+            <BaseModal
+                id="update_modal_notify"
+                overlay={true}
+                overlayClose={true}
+                ref="modal"
+            >
+                <div style={{ textAlign: "center" }}>
+                    <br />
+                    <h3>{counterpart.translate("icons.download")}</h3>
+                    
+                    <div style={{ marginTop: "19px" }} className="button success btn large inverted" onClick={this.downloadVersion.bind(this)}>
+                        {counterpart.translate("wallet.download")}
+                    </div>
+                </div>
+            </BaseModal>
+        );
+
         // !!! если есть эти блоки, значит новый лейаут
         if (
             !!headerBlock &&
@@ -268,6 +449,7 @@ class App extends React.Component {
         ) {
             return (
                 <div>
+                    { modalUpdate }
                     {walletMode && incognito && !incognitoWarningDismissed ? (
                         <Incognito
                             onClickIgnore={this._onIgnoreIncognitoWarning.bind(
@@ -313,6 +495,7 @@ class App extends React.Component {
                 style={{backgroundColor: !this.state.theme ? "#2a2a2a" : null}}
                 className={this.state.theme}
             >
+                { modalUpdate }
                 {walletMode && incognito && !incognitoWarningDismissed ? (
                     <Incognito
                         onClickIgnore={this._onIgnoreIncognitoWarning.bind(
