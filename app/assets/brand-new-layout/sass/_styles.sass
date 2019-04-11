@@ -2049,20 +2049,31 @@ section[style="padding-top: 1rem; padding-left: 2rem;"]
 @media only screen and (max-width: 768px)
 	body.localcoin .footer-line
 		flex-wrap: wrap
+		position: relative
 		height: auto!important
+		>.support-btn
+			position: absolute
+			top: 0
+			left: 0
+			width: 33.33333%
 	body.localcoin .footer-line .footer-right
 		width: 100%
 		flex-wrap: wrap
-		>*
+		justify-content: flex-end
+		.social,
+		.footer-info
+			order: 2
 			width: 50%
 			margin-bottom: 5px
+		>button
+			width: 33.3333%
 	body.localcoin .exchange-layout .grid-block.main-content.vertical.no-overflow
 		height: calc(100vh - 178px)!important
-@media only screen and (max-width: 480px)
-	body.localcoin .footer-line .footer-right
-		>*
-			width: 100%
-			&:last-child
-				margin-bottom: 0
-	body.localcoin .exchange-layout .grid-block.main-content.vertical.no-overflow
-		height: calc(100vh - 270px)!important
+// @media only screen and (max-width: 480px)
+// 	body.localcoin .footer-line .footer-right
+// 		>*
+// 			width: 100%
+// 			&:last-child
+// 				margin-bottom: 0
+// 	body.localcoin .exchange-layout .grid-block.main-content.vertical.no-overflow
+// 		height: calc(100vh - 270px)!important
