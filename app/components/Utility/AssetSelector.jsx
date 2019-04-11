@@ -39,6 +39,7 @@ class AssetDropdown extends React.Component {
                 }
                 value={""}
                 onChange={this.props.onChange}
+                focusInput={this.props.focusInput}
             />
         );
     }
@@ -148,6 +149,10 @@ class AssetSelector extends React.Component {
         }
     }
 
+    _focusInput() {
+        this.refs.user_input.focus();
+    }
+
     render() {
         let {disabled, noLabel} = this.props;
         let error = this.getError();
@@ -208,6 +213,7 @@ class AssetSelector extends React.Component {
                                             this.props.assets
                                         )}
                                         onChange={this.onAssetSelect.bind(this)}
+                                        focusInput={this._focusInput.bind(this)}
                                     />
                                 ) : null}
                             </div>
