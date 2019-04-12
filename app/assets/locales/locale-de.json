@@ -1086,6 +1086,7 @@
             "bts_transfer_description": "Es ist einfach LLC zu empfangen. So lange diese LLC auf Ihren Kontonamen überwiesen werden, erscheinen diese in Ihrer Wallet. Der QR-Code enthält auch Ihren Kontonamen.",
             "cancel": "Abbrechen",
             "close": "SCHLIEßEN",
+            "copy_message": "Adresse wurde kopiert",
             "header": "Einzahlen auf %(account_name)s",
             "header_short": "Einzahlen",
             "submit": "Einzahlen",
