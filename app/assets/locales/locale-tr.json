@@ -22,7 +22,7 @@
         "create_new": "Yeni Hesap Oluştur",
         "deposit": "Deposit LLC",
         "deposit_address": "Your deposit address is your account name",
-        "deposit_withdraw": "Yatır/Çek",
+        "deposit_withdraw": "Cüzdan",
         "eq_value": "Eş Değeri",
         "eq_value_header": "Value ({asset})",
         "errors": {
@@ -879,7 +879,7 @@
         "create_asset": "Dijital Varlık Oluştur",
         "current": "Kullanılan Hesap",
         "dashboard": "Ana Sayfa",
-        "deposit-withdraw": "Yatır/Çek",
+        "deposit-withdraw": "Cüzdan",
         "exchange": "Takas",
         "explorer": "İncele",
         "help": "Yardım",
@@ -932,7 +932,7 @@
         "dashboard": "Dashboard",
         "deposit": {
             "deposit": "Yatır",
-            "deposit_withdraw": "Yatır/Çek"
+            "deposit_withdraw": "Cüzdan"
         },
         "disconnected": "API Node is disconnected",
         "dollar": {
@@ -1719,7 +1719,7 @@
         "key_file_bin": "Key file (.bin)",
         "last_backup": "Son yedekleme",
         "link_account": "Hesabım",
-        "link_deposit": "Yatır/Çek",
+        "link_deposit": "Cüzdan",
         "link_transfer": "Gönder",
         "loading_balances": "Bakiye istemleri yükleniyor",
         "local_switch": "Local wallet detected matching the given password, switching to local wallet mode",

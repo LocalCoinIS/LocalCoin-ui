@@ -22,7 +22,7 @@
         "create_new": "Создать новый аккаунт",
         "deposit": "Внести депозит в LLC",
         "deposit_address": "Ваш адрес депозита – это имя Вашего аккаунта",
-        "deposit_withdraw": "Ввод/Вывод",
+        "deposit_withdraw": "Кошелек",
         "eq_value": "Ориентировочная стоимость",
         "eq_value_header": "Стоимость ({asset})",
         "errors": {
@@ -828,7 +828,7 @@
         "create_asset": "Создать актив",
         "current": "Текущий аккаунт",
         "dashboard": "Инфопанель",
-        "deposit-withdraw": "Ввод/Вывод",
+        "deposit-withdraw": "Кошелек",
         "exchange": "Биржа",
         "explorer": "Блокчейн",
         "help": "Помощь",
@@ -881,7 +881,7 @@
         "dashboard": "Панель управления",
         "deposit": {
             "deposit": "Пополнить",
-            "deposit_withdraw": "Ввод/Вывод"
+            "deposit_withdraw": "Кошелек"
         },
         "disconnected": "API узел отключен",
         "dollar": {

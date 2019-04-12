@@ -22,7 +22,7 @@
         "create_new": "Crear una nueva cuenta",
         "deposit": "Depositar LLC",
         "deposit_address": "Su dirección de depósito es su nombre de cuenta",
-        "deposit_withdraw": "Depositar/Retirar",
+        "deposit_withdraw": "Cartera",
         "eq_value": "Estimated",
         "eq_value_header": "Valor ({asset})",
         "errors": {
@@ -879,7 +879,7 @@
         "create_asset": "Crear Activo",
         "current": "Cuenta Actual",
         "dashboard": "Tablero",
-        "deposit-withdraw": "Depositar/Retirar",
+        "deposit-withdraw": "Cartera",
         "exchange": "Mercado",
         "explorer": "Explorador",
         "help": "Ayuda",
@@ -932,7 +932,7 @@
         "dashboard": "Dashboard",
         "deposit": {
             "deposit": "Depositar",
-            "deposit_withdraw": "Depositar/Retirar"
+            "deposit_withdraw": "Cartera"
         },
         "disconnected": "API Node is disconnected",
         "dollar": {
