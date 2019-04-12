@@ -1072,6 +1072,7 @@
             "bts_transfer_description": "It's easy to receive LLC from anywhere. As long as LLC is sent to your account name it will show up in your wallet. This QR code also contains your account name.",
             "cancel": "Cancel",
             "close": "Close",
+            "copy_message": "地址已被复制",
             "header": "Deposit to %(account_name)s",
             "header_short": "Deposit",
             "submit": "充值",

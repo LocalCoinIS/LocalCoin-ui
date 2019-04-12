@@ -1072,6 +1072,7 @@
             "bts_transfer_description": "LLCを受け取るのは簡単です。LLCをあなたのアカウント名に対して送れば、あなたのウォレットに届きます。このQRコードにも、あなたのアカウント名が含まれています。",
             "cancel": "キャンセル",
             "close": "閉じる",
+            "copy_message": "住所がコピーされました",
             "header": "%(account_name)sに入金",
             "header_short": "入金",
             "submit": "入金",

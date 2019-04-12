@@ -72,7 +72,7 @@ class Instructions extends React.Component {
                 document.execCommand("copy");
                 notify.addNotification({
                     message:
-                    "Address was copied",
+                        counterpart.translate("modal.deposit.copy_message"),
                     level: "success",
                     autoDismiss: 2
                 });
