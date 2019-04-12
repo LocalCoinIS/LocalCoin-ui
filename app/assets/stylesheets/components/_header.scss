@@ -45,6 +45,22 @@
     }
 }
 
+body.localcoin {
+    .header {
+        .balance__label {
+            .label__head:hover {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
+
+        .balance__label:hover {
+            text-decoration: none;
+            color: #fff;
+        }
+    }
+}
+
 div.header-balance {
     a {
         font-size: 90%;

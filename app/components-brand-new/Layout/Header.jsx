@@ -1093,6 +1093,7 @@ class Header extends React.Component {
 
                                 >
                                     <span
+                                        className="label__head"
                                         onClick={this._onNavigate.bind(
                                         this,
                                         "/account/" + currentAccount
