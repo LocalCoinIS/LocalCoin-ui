@@ -19,6 +19,7 @@ import {
 } from "bitsharesjs/es";
 import {Asset} from "common/MarketClasses";
 import {checkFeeStatusAsync, checkBalance} from "common/trxHelper";
+import notify from "actions/NotificationActions";
 
 class LLCBridgeModal extends React.Component {
     static DEFAULT_CURRENCY = "BTC";
@@ -442,6 +443,19 @@ class LLCBridgeModal extends React.Component {
         });
     }
 
+    toClipboard() {
+        try {
+            notify.addNotification({
+                message:
+                    counterpart.translate("modal.deposit.copy_message"),
+                level: "success",
+                autoDismiss: 2
+            });
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
     render() {
         let fee = this.state.feeAmount
             ? this.state.feeAmount.getAmount({real: true})
@@ -547,7 +561,12 @@ class LLCBridgeModal extends React.Component {
 
         var copy = (
             <div className="d-flex">
-                <CopyButton text={this.state.address} className={"btn icon"} />
+                <div onClick={this.toClipboard.bind(this)}>
+                    <CopyButton
+                        text={this.state.address}
+                        className={"btn icon"}
+                    />
+                </div>
                 <div>
                     <Translate
                         component="div"
