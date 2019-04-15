@@ -71,7 +71,7 @@ class LLCBridgeModal extends React.Component {
                     insufficient: this.checkInsufficient()
                 });
             }
-        }, 1000)) : null
+        }, 1000)) : null;
 
         new LLCGatewayData().getAllowCurrency(function(response) {
             self.currencies = response.deposit;
@@ -131,7 +131,7 @@ class LLCBridgeModal extends React.Component {
         });
         this.loadAssetCourse(asset, this.updateSend.bind(this));
 
-        let account = this.props.account
+        let account = this.props.account;
         let accountName = typeof account === "object" ? account.get("name") :
             typeof account === "string" ? account : "";
         //update address
@@ -520,7 +520,7 @@ class LLCBridgeModal extends React.Component {
         );
 
         var info = (
-            <div style={{width: '100%', display: 'flex', flexDirection: 'column'}}>
+            <div style={{width: "100%", display: "flex", flexDirection: "column"}}>
                 <br />
                 <Translate
                     content="gateway.rudex.min_amount"
@@ -537,7 +537,7 @@ class LLCBridgeModal extends React.Component {
                 <br />
                 <Translate
                     component="span"
-                    style={{fontSize: "0.8rem", whiteSpace: 'normal'}}
+                    style={{fontSize: "0.8rem", whiteSpace: "normal"}}
                     content="gateway.min_deposit_warning_asset"
                     minDeposit={this.state.minimal || 0}
                     coin={this.state.asset}
@@ -574,12 +574,12 @@ class LLCBridgeModal extends React.Component {
                         <div className="grid-container">
                             <div className="content-block">
                                 <h3>
-                                        <span>
-                                            {counterpart.translate(
-                                                "exchange.buy"
-                                            )}{" "}
+                                    <span>
+                                        {counterpart.translate(
+                                            "exchange.buy"
+                                        )}{" "}
                                             LLC
-                                        </span>
+                                    </span>
                                 </h3>
                             </div>
                             {send}
@@ -617,12 +617,12 @@ class LLCBridgeModal extends React.Component {
                         <div className="grid-container">
                             <div className="content-block">
                                 <h3>
-                                        <span>
-                                            {counterpart.translate(
-                                                "modal.withdraw.withdraw"
-                                            )}{" "}
-                                            {this.props.currency.asset}
-                                        </span>
+                                    <span>
+                                        {counterpart.translate(
+                                            "modal.withdraw.withdraw"
+                                        )}{" "}
+                                        {this.props.currency.asset}
+                                    </span>
                                 </h3>
                             </div>
                             <div className="content-block">
@@ -654,20 +654,20 @@ class LLCBridgeModal extends React.Component {
                                         <div className="form-label select floating-dropdown">
                                             <div className="dropdown-wrapper inactive">
                                                 <div>
-                                                        <span className="no-amount">
-                                                            <span className="currency">
-                                                                <div className="inline-block tooltip">
-                                                                    <span>
-                                                                        {
-                                                                            this
-                                                                                .props
-                                                                                .currency
-                                                                                .asset
-                                                                        }
-                                                                    </span>
-                                                                </div>
-                                                            </span>
+                                                    <span className="no-amount">
+                                                        <span className="currency">
+                                                            <div className="inline-block tooltip">
+                                                                <span>
+                                                                    {
+                                                                        this
+                                                                            .props
+                                                                            .currency
+                                                                            .asset
+                                                                    }
+                                                                </span>
+                                                            </div>
                                                         </span>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
@@ -678,19 +678,19 @@ class LLCBridgeModal extends React.Component {
                                     style={{paddingTop: 10}}
                                 >
                                     <b>
-                                            <span>
-                                                <Translate
-                                                    content="gateway.rudex.min_amount"
-                                                    minAmount={
-                                                        this.props.currency
-                                                            .minimal
-                                                    }
-                                                    symbol={
-                                                        this.props.currency
-                                                            .asset
-                                                    }
-                                                />
-                                            </span>
+                                        <span>
+                                            <Translate
+                                                content="gateway.rudex.min_amount"
+                                                minAmount={
+                                                    this.props.currency
+                                                        .minimal
+                                                }
+                                                symbol={
+                                                    this.props.currency
+                                                        .asset
+                                                }
+                                            />
+                                        </span>
                                     </b>
                                 </p>
                             </div>
@@ -753,11 +753,11 @@ class LLCBridgeModal extends React.Component {
                             </div>
                             <div className="content-block">
                                 <label className="left-label">
-                                        <span>
-                                            {counterpart.translate(
-                                                "modal.withdraw.address"
-                                            )}
-                                        </span>
+                                    <span>
+                                        {counterpart.translate(
+                                            "modal.withdraw.address"
+                                        )}
+                                    </span>
                                 </label>
                                 <div className="rudex-select-dropdown">
                                     <div className="inline-label">
@@ -791,11 +791,11 @@ class LLCBridgeModal extends React.Component {
                             </div>
                             <div className="content-block">
                                 <label>
-                                        <span>
-                                            {counterpart.translate(
-                                                "transfer.memo"
-                                            )}
-                                        </span>
+                                    <span>
+                                        {counterpart.translate(
+                                            "transfer.memo"
+                                        )}
+                                    </span>
                                 </label>
                                 <textarea
                                     rows={3}
@@ -809,23 +809,23 @@ class LLCBridgeModal extends React.Component {
                                     className={this.state.wdBtn}
                                     onClick={this.onWdClick}
                                 >
-                                        <span>
-                                            {counterpart.translate(
-                                                "modal.withdraw.withdraw"
-                                            )}
-                                        </span>
+                                    <span>
+                                        {counterpart.translate(
+                                            "modal.withdraw.withdraw"
+                                        )}
+                                    </span>
                                 </div>
                                 <div
                                     className="button btn large outline close-modal"
                                     onClick={this.closeModal}
                                 >
-                                        <span
-                                            className="close-modal"
-                                        >
-                                            {counterpart.translate(
-                                                "global.cancel"
-                                            )}
-                                        </span>
+                                    <span
+                                        className="close-modal"
+                                    >
+                                        {counterpart.translate(
+                                            "global.cancel"
+                                        )}
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -853,6 +853,7 @@ class LLCBridgeModal extends React.Component {
                     <br />
                     {this.props.isDashboard ? (<div>
                         <div
+                            className="buy-table-modal__tabs"
                             style={{
                                 fontSize: "1.8rem",
                                 fontFamily:
