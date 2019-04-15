@@ -138,3 +138,37 @@
 #simple_bridge_modal_ask label {
     text-transform: none !important;
 }
+
+#header_borrow_modal {
+    .form-group {
+        position: relative;
+    }
+
+    .asset-selector {
+        position: absolute;
+        width: 75px;
+        bottom: 0;
+        right: 0;
+        input[type="text"] {
+            border-left: none;
+            border-radius: 0 5px 5px 0!important;
+        }
+        div.input-wrapper div.floating-dropdown {
+            width: 30px;
+        }
+        .dropdown-wrapper {
+            width: 100%;
+            padding: 12px 0;
+        }
+        .dropdown-wrapper.active {
+            .dropdown {
+                max-height: 184px;
+                min-width: 75px;
+                li {
+                    padding-left: 0;
+                }
+            }
+        }
+    }
+
+}

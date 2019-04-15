@@ -96,6 +96,9 @@ class Dropdown extends React.Component {
         this.setState({
             active: !this.state.active
         });
+        if(!this.state.active && this.props.focusInput) {
+            this.props.focusInput();
+        }
     }
 
     render() {

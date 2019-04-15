@@ -22,7 +22,7 @@
         "create_new": "Create A New Account",
         "deposit": "Deposit LLC",
         "deposit_address": "Your deposit address is your account name",
-        "deposit_withdraw": "Déposer/Retirer",
+        "deposit_withdraw": "Portefeuille",
         "eq_value": "Estimated",
         "eq_value_header": "Value ({asset})",
         "errors": {
@@ -355,7 +355,7 @@
             "workers": "Ouvriers",
             "workers_short": "Workers"
         },
-        "voting": "Votes",
+        "voting": "Voter",
         "welcome": "Bienvenue sur LocalCoin",
         "whitelist": {
             "add": "Add to whitelist",
@@ -418,8 +418,8 @@
       "balance": "Solde",
       "base_supply": "Base supply",
       "bids": "Ordres à acheter",
-      "borrow": "Borrow",
-      "borrow_short": "Borrow",
+      "borrow": "Emprunter",
+      "borrow_short": "Emprunter",
       "buy": "Acheter",
       "buy_description": "Buy %(baseAsset)s %(baseName)s for %(quoteAsset)s %(quoteName)s",
       "buy_min": "Acheter au moins",
@@ -878,7 +878,7 @@
         "create_asset": "Créér un actif",
         "current": "Mon Compte",
         "dashboard": "Accueil",
-        "deposit-withdraw": "Déposer/Retirer",
+        "deposit-withdraw": "Portefeuille",
         "exchange": "Marché",
         "explorer": "Explorateur",
         "help": "Help",
@@ -931,11 +931,11 @@
         "dashboard": "Dashboard",
         "deposit": {
             "deposit": "Deposit",
-            "deposit_withdraw": "Déposer/Retirer"
+            "deposit_withdraw": "Portefeuille"
         },
         "disconnected": "API Node is disconnected",
         "dollar": {
-            "borrow": "Borrow",
+            "borrow": "Emprunter",
             "buy": "Acheter"
         },
         "download": "Download new version of LocalCoin UI",
@@ -1071,6 +1071,7 @@
             "bts_transfer_description": "It's easy to receive LLC from anywhere. As long as LLC is sent to your account name it will show up in your wallet. This QR code also contains your account name.",
             "cancel": "Cancel",
             "close": "Close",
+            "copy_message": "l'adresse a été copiée",
             "header": "Deposit to %(account_name)s",
             "header_short": "Deposit",
             "submit": "Deposit",

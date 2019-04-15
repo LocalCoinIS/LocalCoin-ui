@@ -377,6 +377,7 @@ class MarketGroup extends React.Component {
                         stats={marketStats.get(market.id)}
                         starred={starredMarkets.has(market.id)}
                         current={current === market.id}
+                        currentMarket={current}
                         isChecked={this.props.userMarkets.has(market.id)}
                         isDefault={
                             this.props.defaultMarkets &&

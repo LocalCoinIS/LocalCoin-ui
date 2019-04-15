@@ -324,3 +324,7 @@ export function getSmartCoinMarkets() {
 export function getDashboardAssets() {
     return ["BTC", "ETH", "XMR", "DASH", "LTC", "USDT"];
 }
+
+export function getDefaultBorrowAssets() {
+    return ["USD", "EUR", "CNY", "GBP", "RUB", "BRL", "UAH"];
+}

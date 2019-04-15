@@ -20,6 +20,8 @@ import HelpContent from "../Utility/HelpContent";
 import Immutable from "immutable";
 import {ChainStore} from "bitsharesjs/es";
 import {List} from "immutable";
+import AssetSelector from "../Utility/AssetSelector";
+import {getDefaultBorrowAssets} from "branding";
 
 /**
  *  Given an account and an asset id, render a modal allowing modification of a margin position for that asset
@@ -66,7 +68,9 @@ class BorrowModalContent extends React.Component {
                 original_position: {
                     debt: debt,
                     collateral: collateral
-                }
+                },
+                findBaseInput: props.currentAsset ? props.currentAsset : "USD",
+                activeFindBase: props.currentAsset ? props.currentAsset : "USD"
             };
         } else {
             return {
@@ -78,7 +82,9 @@ class BorrowModalContent extends React.Component {
                 original_position: {
                     debt: 0,
                     collateral: 0
-                }
+                },
+                findBaseInput: props.currentAsset ? props.currentAsset : "USD",
+                activeFindBase: props.currentAsset ? props.currentAsset : "USD"
             };
         }
     }
@@ -469,6 +475,19 @@ class BorrowModalContent extends React.Component {
         return props.quote_asset.getIn(["bitasset", "is_prediction_market"]);
     }
 
+    _onFoundBaseAsset(asset) {
+        if (asset && asset.has("bitasset_data_id")) {
+            this.props.onChangeBorrowAsset(asset.get("symbol"));
+        }
+    }
+
+    _onInputBaseAsset(asset) {
+        this.setState({
+            findBaseInput: asset.toUpperCase(),
+            error: null
+        });
+    }
+
     render() {
         let {
             quote_asset,
@@ -628,6 +647,8 @@ class BorrowModalContent extends React.Component {
             );
         }
 
+        let defaultBases = getDefaultBorrowAssets();
+
         return (
             <div>
                 <form
@@ -744,16 +765,51 @@ class BorrowModalContent extends React.Component {
                         ) : null}
 
                         <div className="form-group">
-                            <AmountSelector
-                                label="transaction.borrow_amount"
-                                amount={short_amount.toString()}
-                                onChange={this._onBorrowChange.bind(this)}
-                                asset={quote_asset.get("id")}
-                                assets={[quote_asset.get("id")]}
-                                display_balance={bitAssetBalanceText}
-                                placeholder="0.0"
-                                tabIndex={1}
-                            />
+                            {this.props.isHeaderModal ? (
+                                <div>
+                                    <AmountSelector
+                                        label="transaction.borrow_amount"
+                                        amount={short_amount.toString()}
+                                        onChange={this._onBorrowChange.bind(this)}
+                                        asset={this.state.activeFindBase}
+                                        assets={[this.state.activeFindBase]}
+                                        display_balance={bitAssetBalanceText}
+                                        placeholder="0.0"
+                                        tabIndex={1}
+                                    />
+                                    <AssetSelector
+                                        onAssetSelect={this._onFoundBaseAsset.bind(
+                                            this
+                                        )}
+                                        assets={defaultBases}
+                                        onChange={this._onInputBaseAsset.bind(
+                                            this
+                                        )}
+                                        asset={this.state.findBaseInput}
+                                        assetInput={
+                                            this.state.findBaseInput
+                                        }
+                                        tabIndex={1}
+                                        onFound={this._onFoundBaseAsset.bind(
+                                            this
+                                        )}
+                                        noLabel
+                                        inputStyle={{fontSize: "0.9rem"}}
+                                        error={true}
+                                    />
+                                </div>
+                                ) : (
+                                <AmountSelector
+                                    label="transaction.borrow_amount"
+                                    amount={short_amount.toString()}
+                                    onChange={this._onBorrowChange.bind(this)}
+                                    asset={quote_asset.get("id")}
+                                    assets={[quote_asset.get("id")]}
+                                    display_balance={bitAssetBalanceText}
+                                    placeholder="0.0"
+                                    tabIndex={1}
+                                />
+                            )}
                         </div>
                         <div className={collateralClass}>
                             <AmountSelector
@@ -929,6 +985,9 @@ export default class ModalWrapper extends React.Component {
                         backing_asset={backing_asset}
                         hide_help={this.state.smallScreen}
                         account={account}
+                        isHeaderModal={this.props.isHeaderModal}
+                        onChangeBorrowAsset={this.props.onChangeBorrowAsset}
+                        currentAsset={this.props.currentAsset}
                     />
                 </div>
             </BaseModal>

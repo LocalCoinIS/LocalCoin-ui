@@ -42,13 +42,9 @@ class Sidebar extends React.Component {
         const active = context.location.pathname;
         const currentAccount = this.props.currentAccount;
         const showSubMenu = currentAccount;
-        const passwordLogin = SettingsStore.getState().settings.get(
-            "passwordLogin"
-        );
         this.state = {
             active,
             showSubMenu,
-            loginMode: passwordLogin
         };
         this._toggleSubMenu = this._toggleSubMenu.bind(this);
 
@@ -299,7 +295,7 @@ class Sidebar extends React.Component {
                     type="button"
                     onClick={this._onNavigate.bind(
                         this,
-                        `/create-account/${(this.state.loginMode) ? 'password': 'wallet'}`
+                        `/create-account/${(this.props.passwordLogin) ? 'password': 'wallet'}`
                     )}
                 >
                     {counterpart.translate("header.create_account")}

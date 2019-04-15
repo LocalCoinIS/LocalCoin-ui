@@ -39,6 +39,7 @@ import {
 import onClickOutside from "react-onclickoutside";
 import Ps from "perfect-scrollbar";
 import LLCBridgeModal from "../../components/DepositWithdraw/llcgateway/LLCBridgeModal";
+import BorrowModal from "../../components/Modal/BorrowModal";
 
 class SettingsMenuUnWrapped extends React.Component {
     constructor(props) {
@@ -127,6 +128,8 @@ class Header extends React.Component {
             accountsListDropdownActive: false,
             selectedAsset: "LLC",
             isBridgeModalVisible: false,
+            defaultAccount: "1.2.3",
+            defaultAsset: "USD"
         };
 
         this.unlisten = null;
@@ -225,6 +228,11 @@ class Header extends React.Component {
         else if (this.send_modal) this.send_modal.show();
 
         this._closeDropdown();
+    }
+
+    _showBorrow(e) {
+        e.preventDefault();
+        this.refs.borrow_modal.show();
     }
 
     _showDeposit(e) {
@@ -575,6 +583,10 @@ class Header extends React.Component {
         document.querySelector(".mobile__menu").classList.remove("show");
     }
 
+    onChangeBorrowAsset = (asset) => {
+        this.setState({ defaultAsset: asset })
+    }
+
     render() {
         let {active} = this.state;
         let {
@@ -597,6 +609,9 @@ class Header extends React.Component {
         const enableDepositWithdraw =
             Apis.instance() && Apis.instance().chain_id;
 
+
+        const defaultAccount = ChainStore.getAccount(this.state.defaultAccount);
+        const defaultAsset = ChainStore.getAsset(this.state.defaultAsset);
         if (starredAccounts.size) {
             for (let i = tradingAccounts.length - 1; i >= 0; i--) {
                 if (!starredAccounts.has(tradingAccounts[i])) {
@@ -854,6 +869,20 @@ class Header extends React.Component {
                                 {
                                     <li className="mobile__list__item">
                                         <a
+                                            className="mobile__list__link"
+                                            href="#"
+                                            onClick={this._showBorrow.bind(this)}
+                                        >
+                                            {/* модалка */}
+                                            {counterpart.translate(
+                                                "exchange.borrow"
+                                            )}
+                                        </a>
+                                    </li>
+                                }
+                                {
+                                    <li className="mobile__list__item">
+                                        <a
                                             href="#"
                                             className="mobile__list__link"
                                             onClick={this._onNavigate.bind(
@@ -1013,6 +1042,22 @@ class Header extends React.Component {
                                     </a>
                                 </li>
 
+                                {
+                                    <li className="navigation__item">
+                                        <a
+                                            className="navigation__link "
+                                            href="#"
+                                            onClick={this._showBorrow.bind(this)}
+                                        >
+                                            {/* модалка */}
+                                            {counterpart.translate(
+                                                "exchange.borrow"
+                                            )}
+                                        </a>
+                                    </li>
+                                }
+
+
                                 { !window.electron ? null :
                                     <li
                                         className={cnames("navigation__item", {
@@ -1035,6 +1080,7 @@ class Header extends React.Component {
                                             )}
                                         </a>
                                     </li>}
+
                             </ul>
                         </nav>
                         {currentAccount ? (
@@ -1047,6 +1093,7 @@ class Header extends React.Component {
 
                                 >
                                     <span
+                                        className="label__head"
                                         onClick={this._onNavigate.bind(
                                         this,
                                         "/account/" + currentAccount
@@ -1157,6 +1204,22 @@ class Header extends React.Component {
                 {this.state.isBridgeModalVisible ? (
                     <LLCBridgeModal
                         account={this.props.currentAccount}
+                    />
+                ) : null}
+                {defaultAccount ? (
+                    <BorrowModal
+                        ref="borrow_modal"
+                        modalId="header_borrow_modal"
+                        account={a ? a : defaultAccount}
+                        quote_asset={!!defaultAsset ? defaultAsset.get("id") : null}
+                        backing_asset={!!defaultAsset ? defaultAsset.getIn([
+                            "bitasset",
+                            "options",
+                            "short_backing_asset"
+                        ]) : null}
+                        isHeaderModal={true}
+                        onChangeBorrowAsset={this.onChangeBorrowAsset}
+                        currentAsset={this.state.defaultAsset}
                     />
                 ) : null}
                 {/*<DepositModal*/}

@@ -320,13 +320,14 @@
             "authorize_ti_view_and_manage_nodes": "Authorize to view and manage nodes",
             "earn_coins_by_running_activenode": "Earn coins by running Activenode",
             "currently_there_are": "Currently there are",
-            "activenodes_in_the_network": "activenodes in the network.",
+            "activenodes_in_the_network": " activenodes in the network.",
             "approximate_daily_profit_is": "Approximate daily profit is",
-            "llc": "LLC",
+            "llc": " LLC",
             "add_the_activenode": "Add the activenode",
-
             "you_must_take_a_few_steps": "You must take a few steps",
             "open_in_witness_node_data_dir_file": "Change in witness_node_data_dir file config.ini",
+            "update_add_in_file": "Edit config.ini",
+            "enter_your_private_key": "Enter You Owner's Private key",
             "restart_the_node": "Restart the node"
         },
         "vesting": {
@@ -400,7 +401,7 @@
             "workers": "Budget Items",
             "workers_short": "Workers"
         },
-        "voting": "Voting",        
+        "voting": "Voting",
         "welcome": "Welcome to LocalCoin",
         "whitelist": {
             "add": "Add to whitelist",
@@ -926,7 +927,7 @@
         "current": "Current Account",
         "dashboard": "Dashboard",
         "deposit-withdraw": "Finance",
-        "exchange": "Marketplace",
+        "exchange": "Trade",
         "explorer": "Explorer",
         "help": "Help",
         "lock": "Log out (lock the local wallet)",
@@ -1119,6 +1120,7 @@
             "bts_transfer_description": "It's easy to receive LLC from anywhere. As long as LLC is sent to your account name it will show up in your wallet. This QR code also contains your account name.",
             "cancel": "Cancel",
             "close": "Close",
+            "copy_message": "Address was copied",
             "header": "Deposit to %(account_name)s",
             "header_short": "Deposit",
             "submit": "Deposit",

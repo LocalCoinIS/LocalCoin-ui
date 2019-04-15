@@ -419,7 +419,7 @@
         "base_supply": "基准资产供应量",
         "bids": "买单",
         "borrow": "借入",
-        "borrow_short": "Borrow",
+        "borrow_short": "借入",
         "buy": "买入",
         "buy_description": "Buy %(baseAsset)s %(baseName)s for %(quoteAsset)s %(quoteName)s",
         "buy_min": "至少买",
@@ -936,7 +936,7 @@
         },
         "disconnected": "API Node is disconnected",
         "dollar": {
-            "borrow": "Borrow",
+            "borrow": "借入",
             "buy": "Buy"
         },
         "download": "Download new version of LocalCoin UI",
@@ -1072,6 +1072,7 @@
             "bts_transfer_description": "It's easy to receive LLC from anywhere. As long as LLC is sent to your account name it will show up in your wallet. This QR code also contains your account name.",
             "cancel": "Cancel",
             "close": "Close",
+            "copy_message": "地址已被复制",
             "header": "Deposit to %(account_name)s",
             "header_short": "Deposit",
             "submit": "充值",

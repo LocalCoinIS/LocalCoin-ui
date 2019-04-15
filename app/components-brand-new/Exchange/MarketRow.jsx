@@ -360,7 +360,7 @@ class MarketRow extends React.Component {
             });
 
         let className = "clickable";
-        if (this.props.current) {
+        if (this.props.currentMarket === marketID) {
             className += " activeMarket";
         }
 

@@ -5,6 +5,8 @@ import counterpart from "counterpart";
 import LLCGateway from "./LLCGateway";
 import LLCGatewayData from "./LLCGatewayData";
 import WithdrawModal from "./WithdrawModal";
+import notify from "actions/NotificationActions";
+import QRCode from "qrcode.react";
 
 class Instructions extends React.Component {
     address = null;
@@ -19,9 +21,13 @@ class Instructions extends React.Component {
         };
 
         this.activateModal = this.activateModal.bind(this);
-
+        let self = this;
         this._copy = this._copy.bind(this);
-        document.addEventListener("copy", this._copy);
+        document.addEventListener("copy", function(e) {
+            if(e.target.classList.contains("copy-btn")) {
+                self._copy(e);
+            }
+        });
     }
 
     _copy(e) {
@@ -64,6 +70,12 @@ class Instructions extends React.Component {
         try {
             this.setState({clipboardText}, () => {
                 document.execCommand("copy");
+                notify.addNotification({
+                    message:
+                        counterpart.translate("modal.deposit.copy_message"),
+                    level: "success",
+                    autoDismiss: 2
+                });
             });
         } catch (err) {
             console.error(err);
@@ -152,7 +164,11 @@ class Instructions extends React.Component {
                                     </span>
                                 </b>
                             </label>
-
+                            <div>
+                               <QRCode
+                                   value={this.state.addressText ? this.state.addressText : ""}
+                               />
+                            </div>
                             <table className="table">
                                 <tbody>
                                     <tr>
@@ -190,7 +206,7 @@ class Instructions extends React.Component {
                                 style={{paddingTop: 10}}
                             >
                                 <div
-                                    className="button btn large outline"
+                                    className="button btn large outline copy-btn"
                                     onClick={this.toClipboard.bind(
                                         this,
                                         this.state.addressText

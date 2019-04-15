@@ -22,7 +22,7 @@
         "create_new": "Crea un nuovo account",
         "deposit": "Deposita LLC",
         "deposit_address": "Il tuo indirizzo di deposito è il nome del tuo account",
-        "deposit_withdraw": "Deposita/Preleva",
+        "deposit_withdraw": "Wallet",
         "eq_value": "Valore stimato",
         "eq_value_header": "Valore ({asset})",
         "errors": {
@@ -879,7 +879,7 @@
         "create_asset": "Crea Asset",
         "current": "Account corrente",
         "dashboard": "Dashboard",
-        "deposit-withdraw": "Deposita/Preleva",
+        "deposit-withdraw": "Wallet",
         "exchange": "Mercado",
         "explorer": "Esplora",
         "help": "Aiuto",
@@ -932,7 +932,7 @@
         "dashboard": "Dashboard",
         "deposit": {
             "deposit": "Deposita",
-            "deposit_withdraw": "Deposita/Preleva"
+            "deposit_withdraw": "Wallet"
         },
         "disconnected": "API Node is disconnected",
         "dollar": {
@@ -1072,6 +1072,7 @@
             "bts_transfer_description": "It's easy to receive LLC from anywhere. As long as LLC is sent to your account name it will show up in your wallet. This QR code also contains your account name.",
             "cancel": "Cancel",
             "close": "Close",
+            "copy_message": "l'indirizzo è stato copiato",
             "header": "Deposit to %(account_name)s",
             "header_short": "Deposit",
             "submit": "Deposita",

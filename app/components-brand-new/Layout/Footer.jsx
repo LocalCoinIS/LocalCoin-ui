@@ -310,6 +310,7 @@ Footer = BindToChainState(Footer);
 class Social extends Component {
     render() {
         let socialArr = [
+            { item: "btc", href: "https://bitcointalk.org/index.php?topic=5125670", img: "btc" },
             { item: "vk", href: "https://vk.com/localcoin", img: "vk" },
             { item: "tm", href: "https://t.me/LocalCoinIS", img: 'tm' },
             { item: "discord", href: "https://discord.gg/vzxSzYN", img: 's-584' },
