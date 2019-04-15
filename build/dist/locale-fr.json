@@ -355,7 +355,7 @@
             "workers": "Ouvriers",
             "workers_short": "Workers"
         },
-        "voting": "Votes",
+        "voting": "Voter",
         "welcome": "Bienvenue sur LocalCoin",
         "whitelist": {
             "add": "Add to whitelist",
@@ -418,8 +418,8 @@
       "balance": "Solde",
       "base_supply": "Base supply",
       "bids": "Ordres à acheter",
-      "borrow": "Borrow",
-      "borrow_short": "Borrow",
+      "borrow": "Emprunter",
+      "borrow_short": "Emprunter",
       "buy": "Acheter",
       "buy_description": "Buy %(baseAsset)s %(baseName)s for %(quoteAsset)s %(quoteName)s",
       "buy_min": "Acheter au moins",
@@ -935,7 +935,7 @@
         },
         "disconnected": "API Node is disconnected",
         "dollar": {
-            "borrow": "Borrow",
+            "borrow": "Emprunter",
             "buy": "Acheter"
         },
         "download": "Download new version of LocalCoin UI",

@@ -936,8 +936,8 @@
         },
         "disconnected": "API Node is disconnected",
         "dollar": {
-            "borrow": "Borrow",
-            "buy": "Buy"
+            "borrow": "借り入れ",
+            "buy": "買う"
         },
         "download": "Download new version of LocalCoin UI",
         "excel": "Download .csv file",
@@ -1054,7 +1054,7 @@
         "buy": {
             "asset": "Asset",
             "bridge": "Bridge",
-            "title": "Buy"
+            "title": "買う"
         },
         "confirmation": {
             "accept": "はい",

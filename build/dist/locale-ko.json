@@ -418,8 +418,8 @@
         "balance": "잔고",
         "base_supply": "유통량",
         "bids": "구매잔량",
-        "borrow": "Borrow",
-        "borrow_short": "Borrow",
+        "borrow": "차입",
+        "borrow_short": "차입",
         "buy": "매수",
         "buy_description": "Buy %(baseAsset)s %(baseName)s for %(quoteAsset)s %(quoteName)s",
         "buy_min": "Buy at least",
@@ -936,7 +936,7 @@
         },
         "disconnected": "API Node is disconnected",
         "dollar": {
-            "borrow": "Borrow",
+            "borrow": "차입",
             "buy": "매수"
         },
         "download": "Download new version of LocalCoin UI",
