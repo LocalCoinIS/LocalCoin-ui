@@ -257,14 +257,17 @@ class Footer extends React.Component {
                                     : activeNode.name}
                             </span>
                             <span className="footer-info__data">
-                                {counterpart.translate("footer.latency")}
-                                &nbsp;
-                                {!connected
-                                    ? "-"
-                                    : !activeNode.ping
+                                <span>
+                                    {counterpart.translate("footer.latency")}
+                                    &nbsp;
+                                    {!connected
                                         ? "-"
-                                        : activeNode.ping + "ms"}
-                                &nbsp;/&nbsp;
+                                        : !activeNode.ping
+                                            ? "-"
+                                            : activeNode.ping + "ms"}
+                                &nbsp;
+                                </span>
+                                /&nbsp;
                                 {counterpart.translate("footer.block")}
                                 &nbsp;#
                                 {block_height}
@@ -312,14 +315,14 @@ class Social extends Component {
         let socialArr = [
             { item: "btc", href: "https://bitcointalk.org/index.php?topic=5125670", img: "btc" },
             { item: "vk", href: "https://vk.com/localcoin", img: "vk" },
-            { item: "tm", href: "https://t.me/LocalCoinIS", img: 'tm' },
-            { item: "discord", href: "https://discord.gg/vzxSzYN", img: 's-584' },
-            { item: "medium", href: "https://medium.com/@localcoinis", img: 'm-1' },
-            { item: "golos", href: "https://golos.io/@localcoin", img: 's-574' },
-            { item: "reddit", href: "https://reddit.com/user/LocalCoinIS", img: 'redd' },
-            { item: "steemit", href: "https://steemit.com/@localcoin", img: 's-576' },
-            { item: "twitter", href: "https://twitter.com/LocalCoinIS", img: 'tw' },
-        ]
+            { item: "tm", href: "https://t.me/LocalCoinIS", img: "tm" },
+            { item: "discord", href: "https://discord.gg/vzxSzYN", img: "s-584" },
+            { item: "medium", href: "https://medium.com/@localcoinis", img: "m-1" },
+            { item: "golos", href: "https://golos.io/@localcoin", img: "s-574" },
+            { item: "reddit", href: "https://reddit.com/user/LocalCoinIS", img: "redd" },
+            { item: "steemit", href: "https://steemit.com/@localcoin", img: "s-576" },
+            { item: "twitter", href: "https://twitter.com/LocalCoinIS", img: "tw" },
+        ];
 
         let list = socialArr.map((item, i) => {
             return (
@@ -328,7 +331,7 @@ class Social extends Component {
                         <Icon name={item.img}/>
                     </a>
                 </li>
-            )
+            );
         });
 
         return (
@@ -337,7 +340,7 @@ class Social extends Component {
                     {list}
                 </ul>
             </div >
-        )
+        );
     }
 }
 
