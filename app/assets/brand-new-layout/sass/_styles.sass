@@ -446,7 +446,6 @@ body.localcoin
 			font-style: normal
 			text-transform: lowercase
 			font-variant: small-caps
-			word-break: break-all
 	.chatbro_minimized_chat
 			pointer-events: none
 	.chatbro_movable_chat .chatbro_minimized_header
@@ -2081,9 +2080,13 @@ section[style="padding-top: 1rem; padding-left: 2rem;"]
 
 
 
+@media only screen and (max-width: 1200px)
+	body.localcoin .balance
+		display: none
+	body.localcoin .user
+		margin-left: auto
 
-
-@media only screen and (max-width: 440px)
+@media only screen and (max-width: 480px)
 	body.localcoin .footer-info__data
 		display: flex
 		flex-direction: column
