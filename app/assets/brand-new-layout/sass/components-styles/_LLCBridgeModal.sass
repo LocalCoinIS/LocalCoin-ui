@@ -1,15 +1,23 @@
+.dashboard-layout
+	.modal.buy-table-modal
+		div.input-wrapper div.floating-dropdown
+			height: 30px
+		div.input-wrapper > div.input-right-symbol
+			top: 5px
+		.dropdown-wrapper.active .dropdown
+			top: 36px
+		.form-label.select.floating-dropdown
+			.dropdown-wrapper > div
+				line-height: 1.4
 .modal.buy-table-modal
-	div.input-wrapper div.floating-dropdown
-		height: 30px
 	div.input-wrapper > div.input-right-symbol
-		top: 5px
-	.dropdown-wrapper.active .dropdown
-		top: 36px
-	.form-label.select.floating-dropdown
-		.dropdown-wrapper > div
-			line-height: 1.4
+		top: 9px
 	.table
 		margin-bottom: 10px
+		b
+			span
+				display: inline-flex
+				max-width: 70%
 	canvas
 		position: absolute
 		top: 72px
@@ -100,6 +108,10 @@
 		position: relative
 		top: 0
 		right: 0
+		.table
+			b
+				span
+					max-width: 100%
 
 @media only screen and (max-width: 380px)
 	.buy-tab,
