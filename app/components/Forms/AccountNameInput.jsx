@@ -168,12 +168,16 @@ class AccountNameInput extends React.Component {
                         }
                     />
                 </section>
-                <div style={{textAlign: "left"}} className="facolor-error">
-                    {error}
-                </div>
-                <div style={{textAlign: "left"}} className="facolor-warning">
-                    {error ? null : warning}
-                </div>
+                { !!error &&
+                    <div style={{textAlign: "left"}} className="facolor-error">
+                        {error}
+                    </div>
+                }
+                {!!warning && 
+                    <div style={{ textAlign: "left" }} className="facolor-warning">
+                        {error ? null : warning}
+                    </div>
+                }
             </div>
         );
     }
