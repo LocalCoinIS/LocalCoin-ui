@@ -51,7 +51,7 @@ class CreateWorker extends React.Component {
     render() {
         console.log("state:", this.state);
         return (
-            <div className="grid-block" style={{paddingTop: 20}}>
+            <div className="grid-block create-worker" style={{paddingTop: 20}}>
                 <div className="grid-content large-9 large-offset-3 small-12">
                     <Translate
                         content="explorer.workers.create"
