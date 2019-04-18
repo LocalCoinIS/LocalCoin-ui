@@ -513,17 +513,6 @@ body.localcoin
 			&:hover
 				color: rgba(255,255,255, .5)
 				text-decoration: underline
-			&:after
-				content: ''
-				display: inline-block
-				min-width: 9px
-				max-width: 9px
-				height: 5px
-				background-image: url('../img/down-chevron.svg')
-				background-position: center
-				background-size: 100%
-				background-repeat: no-repeat
-				margin: 0 0 2px 16px
 		&:hover
 			.balance__list
 				opacity: 1
@@ -607,7 +596,7 @@ body.localcoin
 		display: inline-flex
 		position: relative
 		align-items: center
-		margin-left: 35px
+		margin-left: 18px
 		&:hover
 			opacity: .5
 		&__icon
@@ -2083,8 +2072,11 @@ section[style="padding-top: 1rem; padding-left: 2rem;"]
 @media only screen and (max-width: 1200px)
 	body.localcoin .balance
 		display: none
-	body.localcoin .user
+	body.localcoin .user,
+	body.localcoin .settings
 		margin-left: auto
+	body.localcoin .user + .settings
+		margin-left: 18px
 
 @media only screen and (max-width: 480px)
 	body.localcoin .footer-info__data
