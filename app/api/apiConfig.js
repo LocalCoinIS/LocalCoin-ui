@@ -76,6 +76,8 @@ export const settingsAPIs = {
         {url: "ws://127.0.0.1:8090", location: "Locally hosted"},
         {url: "wss://helsinki.localcoin.is", location: "Finland - Helsinki"},
         {url: "wss://moscow.localcoin.is", location: "Russia - Moscow"},
+        {url: "wss://de.localcoin.is", location: "Germany - Falkenstein"},
+        {url: "wss://fi.localcoin.is", location: "Finland - Tuusula"},
         {url: "wss://ru.localcoin.is", location: "Russia"},
         {url: "wss://quebec.airdroptelegramknights.io", location: "Canada - Quebec"},
         {url: "wss://tokio.airdroptelegramknights.io", location: "Japan - Tokio"},

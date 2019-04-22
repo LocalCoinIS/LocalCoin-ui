@@ -385,7 +385,11 @@ body.localcoin
 					>.exchange-bordered.small-12
 						>.table-container.grid-block
 							max-height: calc(100% - 55px)!important
+	body.localcoin .exchange-layout .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+		max-height: calc(100% + 42px)
 @media only screen and (max-width: 1100px)
+	body.localcoin .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+		max-height: 100%
 	body.localcoin
 		.exchange-layout
 			.my-trades,
@@ -474,6 +478,11 @@ body.localcoin
 
 
 @media only screen and (max-width: 480px)
+	body.localcoin .exchange-layout .grid-block.wrap.market-stats-container ul.market-stats.stats.top-stats li
+		padding: 2px 4px
+		min-height: 32px
+	body.localcoin .exchange-layout .pair-switcher-block
+		line-height: 1
 	body.localcoin
 		.grid-block.shrink.no-padding.overflow-visible.top-bar.container-menu-header
 			border-bottom: 1px solid #abbfd9
