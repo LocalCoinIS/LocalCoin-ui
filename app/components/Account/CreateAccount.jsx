@@ -415,9 +415,9 @@ class CreateAccount extends React.Component {
                     </div>
                 </div>
                 <div style={{padding: "10px 0"}}>
-                        <pre className="no-overflow">
+                    <pre className="no-overflow">
                             sha1 hash of your brainkey: {sha1}
-                        </pre>
+                    </pre>
                 </div>
                 <hr />
                 <div style={{padding: "10px 0 20px 0"}}>
@@ -429,7 +429,7 @@ class CreateAccount extends React.Component {
                 </div>
 
                 <button
-                    className="btn large outline button success"
+                    className="btn large outline button"
                     onClick={this.onComplete.bind(this)}
                 >
                     <Translate content="wallet.verify" />
@@ -490,64 +490,64 @@ class CreateAccount extends React.Component {
             <div>
                 <table className="table">
                     <tbody>
-                    <tr>
-                        <td>
-                            <Translate content="wallet.tips_dashboard" />:
-                        </td>
-                        <td>
-                            <Link to="/">
-                                <Translate content="header.dashboard" />
-                            </Link>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                <Translate content="wallet.tips_dashboard" />:
+                            </td>
+                            <td>
+                                <Link to="/">
+                                    <Translate content="header.dashboard" />
+                                </Link>
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <td>
-                            <Translate content="wallet.tips_account" />:
-                        </td>
-                        <td>
-                            <Link
-                                to={`/account/${
-                                    this.props.currentAccount
+                        <tr>
+                            <td>
+                                <Translate content="wallet.tips_account" />:
+                            </td>
+                            <td>
+                                <Link
+                                    to={`/account/${
+                                        this.props.currentAccount
                                     }/overview`}
-                            >
-                                <Translate content="wallet.link_account" />
-                            </Link>
-                        </td>
-                    </tr>
+                                >
+                                    <Translate content="wallet.link_account" />
+                                </Link>
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <td>
-                            <Translate content="wallet.tips_deposit" />:
-                        </td>
-                        <td>
-                            <Link to="/deposit-withdraw">
-                                <Translate content="wallet.link_deposit" />
-                            </Link>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                <Translate content="wallet.tips_deposit" />:
+                            </td>
+                            <td>
+                                <Link to="/deposit-withdraw">
+                                    <Translate content="wallet.link_deposit" />
+                                </Link>
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <td>
-                            <Translate content="wallet.tips_transfer" />:
-                        </td>
-                        <td>
-                            <Link onClick={this._showSend.bind(this)} >
-                                <Translate content="wallet.link_transfer" />
-                            </Link>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                <Translate content="wallet.tips_transfer" />:
+                            </td>
+                            <td>
+                                <Link onClick={this._showSend.bind(this)} >
+                                    <Translate content="wallet.link_transfer" />
+                                </Link>
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <td>
-                            <Translate content="wallet.tips_settings" />:
-                        </td>
-                        <td>
-                            <Link to="/settings">
-                                <Translate content="header.settings" />
-                            </Link>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                <Translate content="wallet.tips_settings" />:
+                            </td>
+                            <td>
+                                <Link to="/settings">
+                                    <Translate content="header.settings" />
+                                </Link>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
