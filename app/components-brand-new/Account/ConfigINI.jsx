@@ -1,4 +1,4 @@
-const FILE_CONTENT = 
+const FILE_CONTENT =
             '# Endpoint for P2P node to listen on\n'+
             'p2p-endpoint = 0.0.0.0:11020\n'+
             '\n'+
@@ -6,9 +6,15 @@ const FILE_CONTENT =
             'seed-node = moscow.localcoin.is:11020\n'+
             'seed-node = helsinki.localcoin.is:11020\n'+
             'seed-node = ru.localcoin.is:11020\n'+
+            'seed-node = de.localcoin.is:11020\n'+
+            'seed-node = id.localcoin.is:11020\n'+
+            'seed-node = vn.localcoin.is:11020\n'+
+            'seed-node = in.localcoin.is:11020\n'+
+            'seed-node = za.localcoin.is:11020\n'+
+            'seed-node = br.localcoin.is:11020\n'+
             'seed-node = quebec.airdroptelegramknights.io:11020\n'+
             'seed-node = tokio.airdroptelegramknights.io:11020\n'+
-            'seed-node = charlotte.airdroptelegramknights.io:11020\n'+
+            'seed-node = fi.localcoin.is:11020:11020\n'+
             '\n'+
             '# JSON array of P2P nodes to connect to on startup\n'+
             '# seed-nodes = \n'+
