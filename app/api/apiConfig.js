@@ -112,7 +112,7 @@ export const settingsAPIs = {
         {url: "wss://pl.localcoin.is", location: "Poland"},
         {url: "wss://pk.localcoin.is", location: "Pakistan"},
         {url: "wss://tr.localcoin.is", location: "Turkey"},
-        {url: "wss://ua.loca нlcoin.is", location: "Ukraine"},
+        {url: "wss://ua.localcoin.is", location: "Ukraine"},
         {url: "wss://th.localcoin.is", location: "Thailand"},
         {url: "wss://sg.localcoin.is", location: "Singapore"},
         {url: "wss://my.localcoin.is", location: "Malaysia"},
