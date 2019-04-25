@@ -30,6 +30,7 @@ import ConfigINI from "./ConfigINI";
 import CliWalletAPI from "../../components/CliWalletAPI"; 
 import TransactionConfirmActions from "../../actions/TransactionConfirmActions";
 import AddressIndex from "stores/AddressIndex";
+import LocalcoinHost from "../../components/LocalcoinHost";
 import {ChainTypes as grapheneChainTypes, TransactionBuilder, PrivateKey, ChainStore, FetchChainObjects, key} from "bitsharesjs/es";
 const {operations} = grapheneChainTypes;
 let ops = Object.keys(operations);
@@ -54,6 +55,14 @@ class AccountActivenodes extends React.Component {
             imIsActiveNode: false,
             calculatePanel: true
         };
+
+        // this.processReloadHost("aaa");
+
+        // this.checkHostIsRunnging(
+        //     (success) => {
+        //         alert(success);
+        //     }
+        // );
     }
 
     _handleAddNode = () => {
@@ -232,25 +241,38 @@ class AccountActivenodes extends React.Component {
     }
 
     activenodeRequirementsView = () => {
+        let percetnSync = null;
+        if(typeof window.lastLocalBlock !== "undefined" && typeof window.lastActualBlock !== "undefined" &&
+                  window.lastLocalBlock !=  0           &&        window.lastActualBlock !=  0) {
+
+            percetnSync = parseInt((window.lastLocalBlock / window.lastActualBlock ) * 100);
+            if(percetnSync >= 100) percetnSync = null;
+        }
+
         return  <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
                     <h2 style={{ textAlign: 'center' }}>
                         {counterpart.translate("account.activenodes.activenode_requirements")}
                     </h2>
-                    
-                    <input type="checkbox" checked={this.getWalletBalance() >= MIN_BALANCE_FOR_ACTIVENODE} />
-                    <span style={{ textAlign: 'center' }}>
-                    {counterpart.translate("account.activenodes.min_balance")}
-                    </span><br />
-
-                    <input type="checkbox" checked={this.isLifetimeMember()} />
-                    <span style={{ textAlign: 'center' }}>
-                    {counterpart.translate("account.activenodes.lifetime_member")}
-                    </span><br />
-
-                    <input type="checkbox" checked={this.isLocalNodeRunning()} />
-                    <span style={{ textAlign: 'center' }}>
-                    {counterpart.translate("account.activenodes.localhost_connection")}
-                    </span><br />
+                    <br />
+                    <table>
+                        <tr>
+                            <td style={{ width: '30%', textAlign: 'right' }}><input type="checkbox" checked={this.getWalletBalance() >= MIN_BALANCE_FOR_ACTIVENODE} /></td>
+                            <td style={{ textAlign: 'left' }}><span style={{ textAlign: 'center' }}>{counterpart.translate("account.activenodes.min_balance")}</span></td>
+                        </tr>
+                        <tr>
+                            <td style={{ width: '30%', textAlign: 'right' }}><input type="checkbox" checked={this.isLifetimeMember()} /></td>
+                            <td style={{ textAlign: 'left' }}><span style={{ textAlign: 'center' }}>{counterpart.translate("account.activenodes.lifetime_member")}</span></td>
+                        </tr>
+                        <tr>
+                            <td style={{ width: '30%', textAlign: 'right' }}><input type="checkbox" checked={this.isLocalNodeRunning()} /></td>
+                            <td style={{ textAlign: 'left' }}><span style={{ textAlign: 'center' }}>{counterpart.translate("account.activenodes.localhost_connection")}</span></td>
+                        </tr>
+                    </table>
+                    <br />
+                    { percetnSync === null || this.isLocalNodeRunning() ? null :
+                        <b style={{ textAlign: 'center' }}>{counterpart.translate("account.activenodes.sync_process_local_node")}: { percetnSync }%</b>
+                    }
+                    <br />
                     <br />
                     <button style={{
                         opacity : this.canCreateTheActivenode() ? 1 : 0.3
@@ -296,6 +318,20 @@ class AccountActivenodes extends React.Component {
         return pubkey;
     }
 
+    processReloadHost = (fileContent) =>
+        (new LocalcoinHost())
+            .send("/ReloadToActivenodeAction", fileContent, (request) => {
+                console.log("LocalcoinHost");
+                console.log("LocalcoinHost");
+                console.log("LocalcoinHost");
+                console.log(request);
+                console.log("LocalcoinHost");
+                console.log("LocalcoinHost");
+                console.log("LocalcoinHost");
+            });
+
+    checkHostIsRunnging = (cb) => (new LocalcoinHost()).isRunnging(cb);
+
     outpudConfigFile() {
         WalletUnlockActions.unlock()
             .then(() => {
@@ -306,15 +342,21 @@ class AccountActivenodes extends React.Component {
                 let privateKey  = private_key.toWif();
 
                 let text = (new ConfigINI(accountName, publicKey, privateKey)).get();
-
-                //download
-                let element = document.createElement('a');
-                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-                element.setAttribute('download', "config.ini");        
-                element.style.display = 'none';
-                document.body.appendChild(element);        
-                element.click();        
-                document.body.removeChild(element);
+                
+                this.checkHostIsRunnging((hostIsRunnging) => {
+                    if(hostIsRunnging) {
+                        this.processReloadHost(text);
+                    } else {
+                        //download if host not found
+                        let element = document.createElement('a');
+                        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+                        element.setAttribute('download', "config.ini");        
+                        element.style.display = 'none';
+                        document.body.appendChild(element);        
+                        element.click();        
+                        document.body.removeChild(element);
+                    }
+                });
             })
             .catch(() => {});
     }

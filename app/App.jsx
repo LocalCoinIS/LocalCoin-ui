@@ -32,6 +32,7 @@ import {isIncognito} from "feature_detect";
 import {updateGatewayBackers} from "common/gatewayUtils";
 import titleUtils from "common/titleUtils";
 import PropTypes from "prop-types";
+import LocalcoinHost from "./components/LocalcoinHost";
 import Modal from "react-foundation-apps/src/modal";
 import Translate from "react-translate-component";
 import BaseModal from "./components/Modal/BaseModal";
@@ -40,6 +41,8 @@ import ZfApi from "react-foundation-apps/src/utils/foundation-api";
 import counterpart from "counterpart";
 import SettingsActions from "actions/SettingsActions";
 import willTransitionTo from "./routerTransition";
+import BlockchainStore from "stores/BlockchainStore";
+import {Apis} from "bitsharesjs-ws";
 
 class App extends React.Component {
     constructor(props) {
@@ -150,13 +153,39 @@ class App extends React.Component {
         setInterval(this.tryConnectToLocalNode, 10000);
     }
 
+    //проверим или нода синхронизирована и переключаем
     activateNode(url) {
-        SettingsActions.changeSetting({ setting: "apiServer", value: url });
+        //уберем флаг коннекта к локальной ноде
+        let removeConnectFlat = setTimeout( () => { window.tryReconnect = false; }, 10000 );
 
-        setTimeout( () => {
-            //уберем флаг коннекта к локальной ноде
-            window.tryReconnect = false;
-        }, 10000 );
+        //переключаемся на ноду
+        let checkoutToLocalNode = () => SettingsActions.changeSetting({ setting: "apiServer", value: url });
+
+        //узнаем актуальный блок сид нод
+        Apis
+        .instance()
+        .db_api()
+        .exec("get_objects", [["2.1.0"]])
+        .then(result => {                    
+            try {
+                let lastActualBlock = result[0].head_block_number;
+
+                //узнаем актуальный блок локальной ноды
+                (new LocalcoinHost()).getLastBlock(url, (lastLocalBlock) => {
+                    if(lastLocalBlock === -1) return removeConnectFlat();
+                    let localNodeIsSync = lastLocalBlock >= lastActualBlock;
+
+                    window.lastLocalBlock  = lastLocalBlock;
+                    window.lastActualBlock = lastActualBlock;
+
+                    if(localNodeIsSync) checkoutToLocalNode();
+                    removeConnectFlat();
+                });
+            } catch(ex) { removeConnectFlat(); }
+        })
+        .catch(error => { removeConnectFlat(); });
+
+        //afterNodeSync();
     }
 
     isLocalNodeRunning = () => {
@@ -179,6 +208,7 @@ class App extends React.Component {
             let node = nodes[i];
             if(typeof node.url === "undefined") continue;
 
+            //или уже не подключена
             if((node.url + "").indexOf("//127.0.0.1:") === -1 &&
                (node.url + "").indexOf("//localhost:") === -1) continue;
 
