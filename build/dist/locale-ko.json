@@ -1763,6 +1763,7 @@
         "setup_wallet": "지갑을 설정하세요",
         "show_brainkey": "브레인키 확인",
         "step_1": "Create a wallet",
+        "step_2": "Create a backup",
         "step_3": "Create a backup",
         "step_4": "Getting Started",
         "submit": "Submit",
