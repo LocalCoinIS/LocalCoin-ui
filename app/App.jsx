@@ -156,7 +156,12 @@ class App extends React.Component {
     //проверим или нода синхронизирована и переключаем
     activateNode(url) {
         //уберем флаг коннекта к локальной ноде
-        let removeConnectFlat = setTimeout( () => { window.tryReconnect = false; }, 10000 );
+        let removeConnectFlat = () => {
+            if(typeof window.tryReconnect === "undefined" ) return;
+            if(window.tryReconnect === false ) return;
+
+            setTimeout( () => { window.tryReconnect = false; }, 10000 )
+        };
 
         //переключаемся на ноду
         let checkoutToLocalNode = () => SettingsActions.changeSetting({ setting: "apiServer", value: url });
@@ -184,8 +189,6 @@ class App extends React.Component {
             } catch(ex) { removeConnectFlat(); }
         })
         .catch(error => { removeConnectFlat(); });
-
-        //afterNodeSync();
     }
 
     isLocalNodeRunning = () => {

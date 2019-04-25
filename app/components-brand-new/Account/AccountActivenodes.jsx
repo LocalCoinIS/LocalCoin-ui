@@ -274,6 +274,7 @@ class AccountActivenodes extends React.Component {
                     }
                     <br />
                     <br />
+                    <br />
                     <button style={{
                         opacity : this.canCreateTheActivenode() ? 1 : 0.3
                     }} className="button btn large inverted" onClick={this._createTheActivenodeHandle}>
