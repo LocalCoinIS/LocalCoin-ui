@@ -203,23 +203,29 @@ class MarketRow extends React.Component {
                     case "price":
                         let finalPrice =
                             stats && stats.price
-                                ? stats.price.toReal()
+                                ? utils.get_asset_price(
+                                    stats.price.base.amount,
+                                    base,
+                                    stats.price.quote.amount,
+                                    quote,
+                                    true
+                                )
                                 : stats &&
                                   stats.close &&
                                   (stats.close.quote.amount &&
                                       stats.close.base.amount)
                                     ? utils.get_asset_price(
-                                          stats.close.quote.amount,
-                                          quote,
-                                          stats.close.base.amount,
-                                          base,
+                                        stats.close.base.amount,
+                                        base,
+                                        stats.close.quote.amount,
+                                        quote,
                                           true
                                       )
                                     : utils.get_asset_price(
-                                          price.quote.amount,
-                                          quote,
-                                          price.base.amount,
-                                          base,
+                                        price.base.amount,
+                                        base,
+                                        price.quote.amount,
+                                        quote,
                                           true
                                       );
 
