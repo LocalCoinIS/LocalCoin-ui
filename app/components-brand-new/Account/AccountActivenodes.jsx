@@ -55,14 +55,6 @@ class AccountActivenodes extends React.Component {
             imIsActiveNode: false,
             calculatePanel: true
         };
-
-        // this.processReloadHost("aaa");
-
-        // this.checkHostIsRunnging(
-        //     (success) => {
-        //         alert(success);
-        //     }
-        // );
     }
 
     _handleAddNode = () => {
