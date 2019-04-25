@@ -25,7 +25,7 @@
       document.addEventListener('beforeSendMessage', function(event) {
           // message object
           var message = event.message;
-          var validHosts = ['localcoin.is', 'llc.is'];
+          var validHosts = ['localcoin.is', 'wallet.localcoin.is', 'llc.is', 'api.llc.is', 'localtalk.is'];
 
           // find bad links
           var invalidUrls = message.links.filter(function(url) {
