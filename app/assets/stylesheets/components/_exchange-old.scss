@@ -685,7 +685,8 @@ tbody.orderbook > tr.my-order > td {
     border: 1px solid black;
     position: absolute;
     z-index: 100;
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     min-height: 300px;
     padding: 10px;
 

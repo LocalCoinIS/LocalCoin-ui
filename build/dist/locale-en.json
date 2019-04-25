@@ -1819,6 +1819,7 @@
         "setup_wallet": "Setup your local wallet",
         "show_brainkey": "Show Brainkey",
         "step_1": "Create a wallet",
+        "step_2": "Create a backup",
         "step_3": "Create a backup",
         "step_4": "Getting Started",
         "submit": "Submit",

@@ -12,8 +12,6 @@ const FILE_CONTENT =
             'seed-node = in.localcoin.is:11020\n'+
             'seed-node = za.localcoin.is:11020\n'+
             'seed-node = br.localcoin.is:11020\n'+
-            'seed-node = quebec.airdroptelegramknights.io:11020\n'+
-            'seed-node = tokio.airdroptelegramknights.io:11020\n'+
             'seed-node = fi.localcoin.is:11020:11020\n'+
             '\n'+
             '# JSON array of P2P nodes to connect to on startup\n'+
