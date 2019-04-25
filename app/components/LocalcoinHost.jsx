@@ -5,8 +5,8 @@ export default class LocalcoinHost {
 			method: "POST",
 			body: body
 		})
-		.then(reply.json().then(result => cb(result)))
-		.catch(err => cb(null));
+		.then(result => cb(result))
+		.catch(err   => cb(null));
 
 	isRunnging = (cb) =>
 		fetch(LOCALCOIN_HOST_URL, {

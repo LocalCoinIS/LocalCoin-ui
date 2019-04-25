@@ -57,9 +57,7 @@ class AccountActivenodes extends React.Component {
         };
     }
 
-    _handleAddNode = () => {
-        this.setState({ calculatePanel: false });
-    }
+    _handleAddNode = () => this.setState({ calculatePanel: false });
 
     _unlockHandle = (e) => {
         e.preventDefault();
@@ -98,7 +96,6 @@ class AccountActivenodes extends React.Component {
         WalletDb.process_transaction(tr, null, true)
             .then((result) => {
                 if(this.canCreateTheActivenode()) {
-                    this.setState({ toUpdateConfig: true });
                     this.outpudConfigFile();
                 }
 
@@ -264,7 +261,7 @@ class AccountActivenodes extends React.Component {
                     { percetnSync === null || this.isLocalNodeRunning() ? null :
                         <b style={{ textAlign: 'center' }}>{counterpart.translate("account.activenodes.sync_process_local_node")}: { percetnSync }%</b>
                     }
-                    <br />
+                    { percetnSync === null || this.isLocalNodeRunning() ? null : <br /> }
                     <br />
                     <br />
                     <button style={{
@@ -338,8 +335,11 @@ class AccountActivenodes extends React.Component {
                 
                 this.checkHostIsRunnging((hostIsRunnging) => {
                     if(hostIsRunnging) {
+                        this.setState({ imIsActiveNode: true });
                         this.processReloadHost(text);
                     } else {
+                        this.setState({ toUpdateConfig: true });
+
                         //download if host not found
                         let element = document.createElement('a');
                         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
