@@ -12,7 +12,16 @@ const FILE_CONTENT =
             'seed-node = in.localcoin.is:11020\n'+
             'seed-node = za.localcoin.is:11020\n'+
             'seed-node = br.localcoin.is:11020\n'+
-            'seed-node = fi.localcoin.is:11020:11020\n'+
+            'seed-node = tr.localcoin.is:11020\n'+
+            'seed-node = ch.localcoin.is:11020\n'+
+            'seed-node = cn.localcoin.is:11020\n'+
+            'seed-node = jp.localcoin.is:11020\n'+
+            'seed-node = us.localcoin.is:11020\n'+
+            'seed-node = ca.localcoin.is:11020\n'+
+            'seed-node = mx.localcoin.is:11020\n'+
+            'seed-node = au.localcoin.is:11020\n'+
+            'seed-node = nz.localcoin.is:11020\n'+
+            'seed-node = fi.localcoin.is:11020\n'+
             '\n'+
             '# JSON array of P2P nodes to connect to on startup\n'+
             '# seed-nodes = \n'+
