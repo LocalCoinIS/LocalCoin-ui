@@ -6,7 +6,7 @@ import OrderBook from "../../components/Exchange/OrderBook";
 import MarketHistory from "../../components/Exchange/MarketHistory";
 import MyMarkets from "./MyMarkets";
 import BuySell from "../../components/Exchange/BuySell";
-import MarketPicker from "../../components/Exchange/MarketPicker";
+
 import utils from "common/utils";
 // import PriceChartD3 from "./PriceChartD3";
 import TradingViewPriceChart from "../../components/Exchange/TradingViewPriceChart";
@@ -951,14 +951,6 @@ class Exchange extends React.Component {
         this.setState({showDepthChart: !this.state.showDepthChart});
     }
 
-    _toggleMarketPicker(asset) {
-        let showMarketPicker = !!asset ? true : false;
-        this.setState({
-            showMarketPicker,
-            marketPickerAsset: asset
-        });
-    }
-
     resetHeaderMargin() {
         try {
             let header = document.getElementsByClassName(
@@ -1785,22 +1777,13 @@ class Exchange extends React.Component {
                     showDepthChart={showDepthChart}
                     marketStats={marketStats}
                     onToggleCharts={this._toggleCharts.bind(this)}
-                    onToggleMarketPicker={this._toggleMarketPicker.bind(this)}
                     showVolumeChart={showVolumeChart}
                     chartHeight={chartHeight}
                     onChangeChartHeight={this.onChangeChartHeight.bind(this)}
+                    {...this.props}
                 />
 
                 <div className="grid-block page-layout market-layout">
-                    {!!this.state.showMarketPicker ? (
-                        <MarketPicker
-                            marketPickerAsset={this.state.marketPickerAsset}
-                            onToggleMarketPicker={this._toggleMarketPicker.bind(
-                                this
-                            )}
-                            {...this.props}
-                        />
-                    ) : null}
                     <AccountNotifications isMarketPage={this.state.isMarketPage}/>
                     {/* Main vertical block with content */}
 

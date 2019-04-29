@@ -10,10 +10,11 @@ import LoadingIndicator from "../LoadingIndicator";
 import AssetActions from "actions/AssetActions";
 import {ChainValidation} from "bitsharesjs/es";
 import counterpart from "counterpart";
+import onClickOutside from "react-onclickoutside";
 
 let lastLookup = new Date();
 
-export default class MarketPicker extends React.Component {
+class MarketPicker extends React.Component {
     constructor() {
         super();
 
@@ -25,6 +26,12 @@ export default class MarketPicker extends React.Component {
         };
 
         this.getAssetList = debounce(AssetActions.getAssetList.defer, 150);
+        this.handleClickOutside = this.handleClickOutside.bind(this);
+    }
+
+    handleClickOutside(e) {
+        if(e.target.classList.contains("is-active") || e.target.closest(".is-active")) return;
+        this.props.closeMarketPicker();
     }
 
     _onSelectIssuer(e) {
@@ -385,3 +392,7 @@ export default class MarketPicker extends React.Component {
         );
     }
 }
+
+const MarketPickerWrap = onClickOutside(MarketPicker);
+
+export default MarketPickerWrap;
