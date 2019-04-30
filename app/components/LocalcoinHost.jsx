@@ -1,12 +1,19 @@
-var LOCALCOIN_HOST_URL = null;
-if(LOCALCOIN_HOST_URL === null) {
-	try {
-		LOCALCOIN_HOST_URL = require('electron').remote.process.argv[1];
-	} catch(ex) {}
-}
 export default class LocalcoinHost {
+	_LOCALCOIN_HOST_URL = null;
+	LOCALCOIN_HOST_URL = () => {
+		if(this._LOCALCOIN_HOST_URL !== null) return this._LOCALCOIN_HOST_URL;
+
+		try {
+			this._LOCALCOIN_HOST_URL = require('electron').remote.process.argv[1];
+		} catch(ex) {
+			this._LOCALCOIN_HOST_URL = "";
+		}
+
+		return this._LOCALCOIN_HOST_URL;
+	}
+
 	send = (url, body, cb) =>
-		fetch(LOCALCOIN_HOST_URL + url, {
+		fetch(this.LOCALCOIN_HOST_URL() + url, {
 			method: "POST",
 			body: body
 		})
@@ -14,7 +21,7 @@ export default class LocalcoinHost {
 		.catch(err   => cb(null));
 
 	isRunnging = (cb) =>
-		fetch(LOCALCOIN_HOST_URL, {
+		fetch(this.LOCALCOIN_HOST_URL(), {
 			method: "get",
 			headers: new Headers({Accept: "application/json"})
 		})
