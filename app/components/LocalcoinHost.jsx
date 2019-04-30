@@ -1,4 +1,9 @@
-const LOCALCOIN_HOST_URL = "https://localhost:5001";
+var LOCALCOIN_HOST_URL = null;
+if(LOCALCOIN_HOST_URL === null) {
+	try {
+		LOCALCOIN_HOST_URL = require('electron').remote.process.argv[1];
+	} catch(ex) {}
+}
 export default class LocalcoinHost {
 	send = (url, body, cb) =>
 		fetch(LOCALCOIN_HOST_URL + url, {
