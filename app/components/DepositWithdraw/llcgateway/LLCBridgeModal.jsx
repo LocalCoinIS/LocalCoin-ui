@@ -480,7 +480,7 @@ class LLCBridgeModal extends React.Component {
                     paddingTop: 10,
                     paddingRight: 10,
                     float: "left",
-                    width: "49%"
+                    width: "50%"
                 }}
             >
                 <div className="grid-block">
@@ -513,9 +513,8 @@ class LLCBridgeModal extends React.Component {
                 className="small-6"
                 style={{
                     paddingTop: 10,
-                    paddingRight: 10,
                     float: "left",
-                    width: "49%"
+                    width: "50%"
                 }}
             >
                 <label className="left-label">
@@ -561,7 +560,7 @@ class LLCBridgeModal extends React.Component {
         );
 
         var copy = (
-            <div className="d-flex">
+            <div className="d-flex" style={{paddingRight: "95px"}}>
                 <div onClick={this.toClipboard.bind(this)}>
                     <CopyButton
                         text={this.state.address}

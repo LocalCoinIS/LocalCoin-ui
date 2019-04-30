@@ -20,7 +20,6 @@
 				max-width: 70%
 	canvas
 		position: absolute
-		top: 72px
 		right: 0
 		width: 80px!important
 		height: 80px!important
@@ -38,7 +37,7 @@
 	h4
 		margin-bottom: 16px
 	label
-		margin-bottom: 0
+		margin-bottom: 2px
 	.small-12.medium-7
 		flex: 0 0 100%
 		max-width: 100%
@@ -104,14 +103,16 @@
 
 
 @media only screen and (max-width: 600px)
-	.modal.buy-table-modal canvas
-		position: relative
-		top: 0
-		right: 0
+	.modal.buy-table-modal
 		.table
 			b
 				span
 					max-width: 100%
+
+@media only screen and (max-width: 500px)
+	.modal.buy-table-modal
+		.small-6
+			padding-right: 0!important
 
 @media only screen and (max-width: 380px)
 	.buy-tab,
