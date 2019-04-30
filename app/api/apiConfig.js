@@ -80,7 +80,7 @@ export const settingsAPIs = {
         {url: "wss://id.localcoin.is", location: "Indonesia - billpresta3101"},
         {url: "wss://vn.localcoin.is", location: "Vietnam - moneyleon1"},
         {url: "wss://vn1.localcoin.is", location: "Vietnam - amiequach0601"},
-        {url: "wss://ca.localcoin.is", location: "Canada - zakzador542"},
+        {url: "wss://ca.localcoin.is", location: "Canada - zakzador642"},
         {url: "wss://de.localcoin.is", location: "Germany"},
         {url: "wss://fi.localcoin.is", location: "Finland"},
         {url: "wss://ru.localcoin.is", location: "Russia"},
