@@ -86,7 +86,7 @@
       "!node_modules"
     ],
     "portable": {
-      "artifactName": "wallet"
+      "artifactName": "wallet.exe"
     },
     "mac": {
       "category": "public.app-category.finance"

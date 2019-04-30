@@ -1,10 +1,13 @@
 export default class LocalcoinHost {
-	_LOCALCOIN_HOST_URL = null;
 	LOCALCOIN_HOST_URL = () => {
 		if(this._LOCALCOIN_HOST_URL !== null) return this._LOCALCOIN_HOST_URL;
 
 		try {
-			this._LOCALCOIN_HOST_URL = require('electron').remote.process.argv[1];
+			if(typeof window.remote 				=== "undefined") this._LOCALCOIN_HOST_URL = "";
+			if(typeof window.remote.process 		=== "undefined") this._LOCALCOIN_HOST_URL = "";
+			if(typeof window.remote.process.argv 	=== "undefined") this._LOCALCOIN_HOST_URL = "";
+			if(typeof window.remote.process.argv[1] === "undefined") this._LOCALCOIN_HOST_URL = "";
+			else 								   					 this._LOCALCOIN_HOST_URL = window.argv[1];
 		} catch(ex) {
 			this._LOCALCOIN_HOST_URL = "";
 		}

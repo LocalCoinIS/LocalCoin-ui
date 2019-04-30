@@ -8,7 +8,7 @@ namespace LocalcoinHost.Actions {
         public ReloadToActivenodeAction(Node node) { this.node = node; }
 
         public void Reload(string newBodyConfig) {
-            this.node.Stop();
+            this.node.TryKillByName();
             this.node.RewriteConfig(newBodyConfig);
             this.node.Start();
         }

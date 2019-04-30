@@ -15,10 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace LocalcoinHost {
     public class Startup : IDisposable {
         Node   node   = new Node();
-        Wallet wallet = new Wallet() {
-            UsedUrl     = Program.UsedUrl,
-            killByOlPid = true
-        };
+        Wallet wallet = new Wallet() { UsedUrl = Program.UsedUrl };
 
         public void ConfigureServices(IServiceCollection services) => services.AddCors();
 
@@ -87,8 +84,8 @@ namespace LocalcoinHost {
         }
 
         private void OnExit(object sender, EventArgs e) {
-            try { this.node.Stop();   } catch (Exception ex) { }
-            try { this.wallet.Stop(); } catch (Exception ex) { }
+            try { this.node.TryKillByName();   } catch (Exception) { }
+            try { this.wallet.TryKillByName(); } catch (Exception) { }
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
