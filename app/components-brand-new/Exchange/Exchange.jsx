@@ -38,8 +38,12 @@ import Icon from "../../components/Icon/Icon";
 import WalletDb from "stores/WalletDb";
 import WalletUnlockActions from "actions/WalletUnlockActions";
 import AccountActions from "actions/AccountActions";
+import LLCGatewayData from "../../components/DepositWithdraw/llcgateway/LLCGatewayData";
 
 class Exchange extends React.Component {
+
+    static MODE_BRIDGE = "1";
+
     static propTypes = {
         marketCallOrders: PropTypes.object.isRequired,
         activeMarketHistory: PropTypes.object.isRequired,
@@ -75,7 +79,16 @@ class Exchange extends React.Component {
             },
             isBridgeModalVisible: false,
             isMarketFee: false,
-            isMarketPage: true
+            isMarketPage: true,
+            currentAsset: null,
+            type: "deposit",
+            currency: {
+                asset: null,
+                currency: null
+            },
+            currencies: null,
+            depositAddress: null,
+            activeTab: "deposit_tab"
         };
 
         this._getWindowSize = debounce(this._getWindowSize.bind(this), 150);
@@ -86,14 +99,13 @@ class Exchange extends React.Component {
             this
         );
 
-        this.onShowModal = this.onShowModal.bind(this);
 
         this.psInit = true;
 
         this._toggleSwitch = this._toggleSwitch.bind(this);
     }
 
-    onShowModal() {
+    onShowModal = (asset, tab) => {
         let self = this;
         if (self.isUnauthorizedUser()) {
             return;
@@ -104,8 +116,22 @@ class Exchange extends React.Component {
                     .then(() => {
                         AccountActions.tryToSetCurrentAccount();
                         self.setState({
-                            isBridgeModalVisible: true
+                            isBridgeModalVisible: true,
+                            currentAsset: asset ? asset : null,
+                            activeTab: tab
                         });
+                        this.getAllowCurrencies(asset);
+                        let account = this.props.currentAccount
+                        let accountName = typeof account === "object" ? account.get("name") :
+                            typeof account === "string" ? account : "";
+                        new LLCGatewayData().сreatePaymentAddress(
+                            accountName,
+                            asset,
+                            Exchange.MODE_BRIDGE,
+                            function(address) {
+                                self.setState({depositAddress: address});
+                            }
+                        );
                     })
                     .catch(() => {});
             } else {
@@ -118,12 +144,56 @@ class Exchange extends React.Component {
                 },
                 function() {
                     self.setState({
-                        isBridgeModalVisible: true
+                        isBridgeModalVisible: true,
+                        currentAsset: asset ? asset : null,
+                        activeTab: tab
                     });
+                }
+            );
+            this.getAllowCurrencies(asset);
+            let account = this.props.currentAccount
+            let accountName = typeof account === "object" ? account.get("name") :
+                typeof account === "string" ? account : "";
+            new LLCGatewayData().сreatePaymentAddress(
+                accountName,
+                asset,
+                Exchange.MODE_BRIDGE,
+                function(address) {
+                    self.setState({depositAddress: address});
                 }
             );
         };
 
+    }
+
+    getAllowCurrencies(asset) {
+        let provider = new LLCGatewayData();
+        let self = this;
+        provider.getAllowCurrency(data => {
+            data[this.state.type].forEach(a => {
+                if(a.asset == asset) {
+                    self.setState(
+                        {
+                            currency: a
+                        }
+                    );
+                }
+            })
+
+        });
+    }
+
+    onCloseModal = () => {
+        this.setState(
+            {
+                currentAsset: null,
+                currency: {
+                    asset: null,
+                    currency: null
+                },
+                depositAddress: null
+            }
+        );
     }
 
     _createAccountLink = null;
@@ -1758,6 +1828,11 @@ class Exchange extends React.Component {
                 {this.state.isBridgeModalVisible ? (
                     <LLCBridgeModal
                         account={this.props.currentAccount}
+                        currency={this.state.currency}
+                        type={this.state.type}
+                        depositAddress={this.state.depositAddress}
+                        onCloseModal={this.onCloseModal}
+                        activeTab={this.state.activeTab}
                     />
                 ) : null}
                 {!this.props.marketReady ? <LoadingIndicator /> : null}

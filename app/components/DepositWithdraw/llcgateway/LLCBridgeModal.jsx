@@ -480,7 +480,7 @@ class LLCBridgeModal extends React.Component {
                     paddingTop: 10,
                     paddingRight: 10,
                     float: "left",
-                    width: "50%"
+                    width: "49%"
                 }}
             >
                 <div className="grid-block">
@@ -513,8 +513,9 @@ class LLCBridgeModal extends React.Component {
                 className="small-6"
                 style={{
                     paddingTop: 10,
+                    paddingRight: 10,
                     float: "left",
-                    width: "50%"
+                    width: "49%"
                 }}
             >
                 <label className="left-label">
@@ -560,7 +561,7 @@ class LLCBridgeModal extends React.Component {
         );
 
         var copy = (
-            <div className="d-flex" style={{paddingRight: "95px"}}>
+            <div className="d-flex">
                 <div onClick={this.toClipboard.bind(this)}>
                     <CopyButton
                         text={this.state.address}
@@ -924,9 +925,9 @@ class LLCBridgeModal extends React.Component {
                         {buyTab}
                         {depositTab}
                         {withdrawTab}
-                    </div>) : (
-                        <div>{buyTab}</div>
-                    )}
+                    </div>) : null}
+                    {!this.props.isDashboard && this.props.activeTab === "deposit_tab" ? depositTab : null}
+                    {!this.props.isDashboard && !this.props.activeTab ? buyTab : null}
                 </div>
             </div>
         );
