@@ -428,12 +428,16 @@ class BuySell extends React.Component {
                         data-intro={dataIntro}
                     >
                         <span>
-
                             <TranslateWithLinks
                                 string="exchange.buysell_formatter"
                                 noLink
                                 noTip={false}
                                 keys={[
+                                    {
+                                        type: "asset",
+                                        value: quote.get("symbol"),
+                                        arg: "asset"
+                                    },
                                     {
                                         type: "translate",
                                         value: isPredictionMarket
@@ -445,7 +449,6 @@ class BuySell extends React.Component {
                                     }
                                 ]}
                             />
-                            {quote.get("symbol")}
                         </span>
                         {/* <span>{buttonText} <AssetName dataPlace="top" name={quote.get("symbol")} /></span> */}
                         {this.props.onFlip ? (
