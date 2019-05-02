@@ -41,12 +41,10 @@ class BuySell extends React.Component {
     };
 
     componentDidMount() {
-        console.log(22222);
-        // if (this.props.checkMarketFee) this.props.checkMarketFee(!!document.querySelector(".market-fee"));
+        if (this.props.checkMarketFee) this.props.checkMarketFee(!!document.querySelector(".market-fee"));
     }
 
     shouldComponentUpdate(nextProps) {
-        console.log(33333);
         return (
             nextProps.amount !== this.props.amount ||
             nextProps.onBorrow !== this.props.onBorrow ||
@@ -127,7 +125,6 @@ class BuySell extends React.Component {
     }
 
     render() {
-        console.log(11111);
         let {
             type,
             quote,
@@ -431,16 +428,12 @@ class BuySell extends React.Component {
                         data-intro={dataIntro}
                     >
                         <span>
+
                             <TranslateWithLinks
                                 string="exchange.buysell_formatter"
                                 noLink
                                 noTip={false}
                                 keys={[
-                                    {
-                                        type: "asset",
-                                        value: quote.get("symbol"),
-                                        arg: "asset"
-                                    },
                                     {
                                         type: "translate",
                                         value: isPredictionMarket
@@ -452,6 +445,7 @@ class BuySell extends React.Component {
                                     }
                                 ]}
                             />
+                            {quote.get("symbol")}
                         </span>
                         {/* <span>{buttonText} <AssetName dataPlace="top" name={quote.get("symbol")} /></span> */}
                         {this.props.onFlip ? (
