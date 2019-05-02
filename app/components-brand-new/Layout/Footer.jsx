@@ -198,16 +198,28 @@ class Footer extends React.Component {
         return (
             <footer className="footer">
                 <div className="footer-line">
-                    <button
-                        className="btn large inverted flat support-btn"
-                        type="button"
-                        onClick={this._onNavigate.bind(
-                            this,
-                            `/account/${currentAccount}/create-asset/`
-                        )}
-                    >
-                        <Translate content="footer.add_coin" />
-                    </button>
+                    <div>
+                        <button
+                            className="btn large inverted flat support-btn"
+                            type="button"
+                            onClick={this._onNavigate.bind(
+                                this,
+                                `/account/${currentAccount}/create-asset/`
+                            )}
+                        >
+                            <Translate content="footer.add_coin" />
+                        </button>
+                        <button
+                            className="btn large inverted flat support-btn"
+                            type="button"
+                            onClick={this._onNavigate.bind(
+                                this,
+                                `/account/${currentAccount}/create-asset/`
+                            )}
+                        >
+                            <Translate content="footer.ieo" />
+                        </button>
+                    </div>
                     <div className="footer-right">
                         <Social />
                         <button

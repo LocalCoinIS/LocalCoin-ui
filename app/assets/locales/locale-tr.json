@@ -723,6 +723,7 @@
         "connected": "Connected",
         "connection": "Blokzinciri bağlantısı yok.",
         "disconnected": "Disconnected",
+        "ieo": "IEO",
         "latency": "Latency",
         "loading": "Yükleniyor...",
         "nosync": "Blokzinciri ile eşzamanlı değil, lütfen senkronize olana kadar bekleyin...",

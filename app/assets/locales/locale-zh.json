@@ -723,6 +723,7 @@
         "connected": "已连接",
         "connection": "无连接",
         "disconnected": "未连接",
+        "ieo": "IEO",
         "latency": "网络延迟",
         "loading": "载入中…",
         "nosync": "区块链数据陈旧，请等待数据完成同步",

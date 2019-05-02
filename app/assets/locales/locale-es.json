@@ -723,6 +723,7 @@
         "connected": "Conectado",
         "connection": "Sin conexión Blockchain",
         "disconnected": "Desconectado",
+        "ieo": "IEO",
         "latency": "Estado latente",
         "loading": "Cargando...",
         "nosync": "Su nodo activo no está sincronizado",

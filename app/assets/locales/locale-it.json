@@ -723,6 +723,7 @@
         "connected": "Connected",
         "connection": "Nessuna connessione alla Blockchain",
         "disconnected": "Disconnesso",
+        "ieo": "IEO",
         "latency": "Latency",
         "loading": "Caricamento...",
         "nosync": "La blockchain non è sincronizzata, per favore attendi..",
