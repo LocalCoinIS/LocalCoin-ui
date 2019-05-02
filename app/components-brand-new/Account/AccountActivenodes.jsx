@@ -33,6 +33,7 @@ import AddressIndex from "stores/AddressIndex";
 import LocalcoinHost from "../../components/LocalcoinHost";
 import {ChainTypes as grapheneChainTypes, TransactionBuilder, PrivateKey, ChainStore, FetchChainObjects, key} from "bitsharesjs/es";
 const {operations} = grapheneChainTypes;
+import {Apis} from "bitsharesjs-ws";
 let ops = Object.keys(operations);
 
 const MIN_BALANCE_FOR_ACTIVENODE = 511;
@@ -50,11 +51,14 @@ class AccountActivenodes extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            toUpdateConfig : false,
-            imIsActiveNode: false,
-            calculatePanel: true
-        };
+        this.state = {  toUpdateConfig       : false,
+                        yourNodeUpAndRunning : false,
+                        calculatePanel       : true,
+                        imIsActivenode       : true };
+
+        this.isActivenode((isActivenode) => this.setState({
+            imIsActivenode: isActivenode
+        }));
     }
 
     _handleAddNode = () => this.setState({ calculatePanel: false });
@@ -108,7 +112,7 @@ class AccountActivenodes extends React.Component {
         this.activenodeCreate();
     }
 
-    imIsActiveNodeView = () => {
+    yourNodeUpAndRunningView = () => {
         let accountName = AccountStore.getState().currentAccount;
         
         return  <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
@@ -218,6 +222,22 @@ class AccountActivenodes extends React.Component {
 
         return balance;
         
+    }
+
+    isKeyExistsInConfig = (cb) => {
+        
+    }
+
+    isActivenode = (cb) => {
+        let accountName = AccountStore.getState().currentAccount;
+        let account     = ChainStore.getAccount(accountName);
+        
+        Apis
+            .instance()
+            .db_api()
+            .exec("get_activenode_by_account", [account.get("id")])
+            .then(result => cb(result !== null))
+            .catch(error => cb(false));
     }
 
     isLocalNodeRunning = () => {
@@ -335,7 +355,7 @@ class AccountActivenodes extends React.Component {
                 
                 this.checkHostIsRunnging((hostIsRunnging) => {
                     if(hostIsRunnging) {
-                        this.setState({ imIsActiveNode: true });
+                        this.setState({ yourNodeUpAndRunning: true });
                         this.processReloadHost(text);
                     } else {
                         this.setState({ toUpdateConfig: true });
@@ -371,23 +391,26 @@ class AccountActivenodes extends React.Component {
                     <br />
                     <button className="button btn large inverted"
                             onClick={() => {
-                                this.setState({ imIsActiveNode: true });
+                                this.setState({ yourNodeUpAndRunning: true });
                             }}>OK</button>
                 </div>;
         }
 
     render() {
-         if(this.state.imIsActiveNode)
-            return this.imIsActiveNodeView();
+        /**
+         * добавить проверку кативноды:
+         * 
+         * 1. если прописаны ключи активноды и локальная нода запущена
+         * return this.yourNodeUpAndRunningView();
+         * 
+         * 2. если юзер авктивнода, нода запущена но ключи не прописаны
+         * //вывести кнопку чтобы прописать ключи
+         */
 
-        if(this.state.toUpdateConfig)
-            return this.updateConfigView();
-
-        if(WalletUnlockStore.getState().locked)
-            return this.unauthorizedView();
-
-        if(this.state.calculatePanel)
-            return this.addTheNodeView();
+        if(this.state.yourNodeUpAndRunning)     return this.yourNodeUpAndRunningView();
+        if(this.state.toUpdateConfig)           return this.updateConfigView();
+        if(WalletUnlockStore.getState().locked) return this.unauthorizedView();
+        if(this.state.calculatePanel)           return this.addTheNodeView();
 
         return this.activenodeRequirementsView();
     }
@@ -396,9 +419,7 @@ class AccountActivenodes extends React.Component {
 AccountActivenodes = BindToChainState(AccountActivenodes);
 
 class ActivenodesObjectWrapper extends React.Component {
-    render() {
-        return <AccountActivenodes {...this.props} />;
-    }
+    render() { return <AccountActivenodes {...this.props} />; }
 }
 
 ActivenodesObjectWrapper = connect(
