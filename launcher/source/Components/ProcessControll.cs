@@ -25,7 +25,7 @@ namespace LocalcoinHost.Components
                 writer.Write(name);
         }
 
-        private void ClearNameFile() {
+        public void ClearNameFile() {
             if(File.Exists(RunningAppFileName)) File.Delete(RunningAppFileName);
         }
 

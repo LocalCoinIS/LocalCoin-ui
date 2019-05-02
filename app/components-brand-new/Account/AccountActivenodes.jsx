@@ -56,12 +56,15 @@ class AccountActivenodes extends React.Component {
                         calculatePanel             : true,
                         keyExistsInConfig          : false,
                         isCheckedKeyExistsInConfig : false,
+                        cntPenalty                 : 0,
                         imIsActivenode             : true };
 
         this.isActivenode((isActivenode) => this.setState({
             imIsActivenode: isActivenode,
             calculatePanel: false
         }));
+
+        this.cntPenalty(cnt => this.setState({ cntPenalty: cnt }));
     }
 
     _handleAddNode = () => this.setState({ calculatePanel: false });
@@ -243,11 +246,36 @@ class AccountActivenodes extends React.Component {
                         "/ExistsRowsInConfigAction",
                         JSON.stringify(mainRows),
                         (request) => {
-                            if(typeof cb !== "undefined") 
+                            if(typeof cb !== "undefined")  {
                                 cb(("" + request).trim().toLocaleLowerCase() === "true");
+                            }
+                                
                         }
                     );
         } catch(ex) { cb(false); }
+    }
+
+    cntPenalty = (cb) => {
+        let accountName = AccountStore.getState().currentAccount;
+        let account     = ChainStore.getAccount(accountName);
+        
+        Apis
+            .instance()
+            .db_api()
+            .exec("get_activenode_by_account", [account.get("id")])
+            .then(result => {
+                if(result !== null) {
+                    try {
+                        let max_penalty  = parseInt(result.max_penalty);
+                        let penalty_left = parseInt(result.penalty_left);
+
+                        if(penalty_left > 0 && penalty_left <= max_penalty) cb(max_penalty-penalty_left);
+                        else                                                cb(0);
+
+                    } catch(ex) { cb(0); }
+                } else cb(0);
+            })
+            .catch(error => cb(0));
     }
 
     isActivenode = (cb) => {
@@ -258,7 +286,10 @@ class AccountActivenodes extends React.Component {
             .instance()
             .db_api()
             .exec("get_activenode_by_account", [account.get("id")])
-            .then(result => cb(result !== null))
+            .then(result => {
+                console.log(result);
+                cb(result !== null);
+            })
             .catch(error => cb(false));
     }
 
@@ -272,6 +303,14 @@ class AccountActivenodes extends React.Component {
     }
 
     _reloadActivenodeHandle = () => {
+        let accountName = AccountStore.getState().currentAccount;
+        let account     = ChainStore.getAccount(accountName);
+        let publicKey   = account.get("options").get("memo_key");
+        var private_key = WalletDb.getPrivateKey(publicKey);
+        let privateKey  = private_key.toWif();
+
+        let text = (new ConfigINI(accountName, publicKey, privateKey)).get();
+        
         this.processReloadHost(text, () =>
             this.isKeyExistsInConfig((iExists) => this.setState({
                 keyExistsInConfig: iExists
@@ -434,6 +473,20 @@ class AccountActivenodes extends React.Component {
                 </div>;
     }
 
+    yourNodeSkippedView() {
+        return (
+            <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
+                <h2 style={{ textAlign: 'center' }}>
+                    {counterpart.translate("account.activenodes.your_node_skipped")}.</h2>
+
+                <span>
+                    {counterpart.translate("account.activenodes.you_can_start_getting_reward_after_penalty_period", {
+                        n: this.state.cntPenalty
+                    })}.</span><br />
+            </div>
+        )
+    }
+
     render() {
         if(!WalletUnlockStore.getState().locked && !this.state.keyExistsInConfig && !this.state.isCheckedKeyExistsInConfig) {
             this.setState({ isCheckedKeyExistsInConfig : true });
@@ -445,9 +498,12 @@ class AccountActivenodes extends React.Component {
         if(WalletUnlockStore.getState().locked)                        return this.unauthorizedView();
         if(this.state.imIsActivenode && !this.isLocalNodeRunning())    return this.activenodeRequirementsView();
         if(this.state.imIsActivenode && !this.state.keyExistsInConfig) return this.rewriteConfigView();
+        if(this.state.cntPenalty > 0)                                  return this.yourNodeSkippedView();
         if(this.state.yourNodeUpAndRunning)                            return this.yourNodeUpAndRunningView();
         if(this.state.toUpdateConfig)                                  return this.updateConfigView();
         if(this.state.calculatePanel)                                  return this.addTheNodeView();
+
+        if(this.state.imIsActivenode && this.state.keyExistsInConfig && this.isLocalNodeRunning()) return this.yourNodeUpAndRunningView();
 
         return this.activenodeRequirementsView();
     }

@@ -20,7 +20,11 @@ export default class LocalcoinHost {
 			method: "POST",
 			body: body
 		})
-		.then(result => cb(result))
+		.then(r =>
+			r.text().then(res => {
+				if (typeof cb !== "undefined") cb(res);
+			})
+		)
 		.catch(err   => cb(null));
 
 	isRunnging = (cb) =>

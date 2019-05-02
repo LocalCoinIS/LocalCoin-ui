@@ -298,9 +298,11 @@
             "title": "Вестинговые счета"
         },
         "activenodes": {
+            "your_node_skipped": "Ваша нода пропустила более 50% блоков и получила штраф",
+            "you_can_start_getting_reward_after_penalty_period": "Вы можете начать получать вознаграждение после штрафного периода: {n} дней",
             "activenode_reload": "Перезагрузка для активноды",
             "need_rewrite_config_and_reload_node": "Необходиме перезаписать конфиг и перезапустить антивноду",
-            "reload": "Сделать",
+            "reload": "Перезапустить",
             "activenodes": "Активноды",
             "activenode_requirements": "Обязательные условия активноды",
             "min_balance": "Минимальный баланс 511 LLC",

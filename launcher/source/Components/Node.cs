@@ -18,5 +18,20 @@ namespace LocalcoinHost.Components {
         }
 
         public string ReadConfig() => System.IO.File.ReadAllText(this.ConfigIni);
+
+        public void TryKillByName()
+        {
+            if (!File.Exists(RunningAppFileName)) return;
+
+            string name = System.IO.File.ReadAllText(RunningAppFileName);
+            if (name == "") return;
+
+            foreach (var process in Process.GetProcessesByName(name))
+            {
+                process.Kill();
+                this.ClearNameFile();
+                Console.WriteLine("Kill old " + process.ProcessName);
+            }
+        }
     }
 }

@@ -303,9 +303,11 @@
             "witness_fed_asset": "Allow witnesses to provide feeds"
         },
         "activenodes": {
+            "your_node_skipped": "Your node skipped more than 50% of blocks and got penalty",
+            "you_can_start_getting_reward_after_penalty_period": "You can start getting reward after penalty period: {n} days",
             "activenode_reload": "Reload for activenode",
             "need_rewrite_config_and_reload_node": "Need rewrite config and reload node",
-            "reload": "Do",
+            "reload": "Reload",
             "activenodes": "Activenodes",
             "activenode_requirements": "Activenode requirements",
             "min_balance": "Minimum balance is 511 LLC",
