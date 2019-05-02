@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-
+using Newtonsoft.Json;
 
 namespace LocalcoinHost {
     public class Startup : IDisposable {
@@ -90,13 +90,21 @@ namespace LocalcoinHost {
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
-
+            
             app.UseCors(builder => builder.AllowAnyOrigin());
             app.Run(async (context) => {
                 switch (context.Request.Path) {
                     case ReloadToActivenodeAction.ACTION_NAME:
                         using (StreamReader stream = new StreamReader(context.Request.Body))
                             new ReloadToActivenodeAction(this.node).Reload(stream.ReadToEnd());
+                        break;
+                    case ExistsRowsInConfigAction.ACTION_NAME:
+                        using (StreamReader stream = new StreamReader(context.Request.Body)) {
+                            bool response = (new ExistsRowsInConfigAction(this.node))
+                                                .IsExists(JsonConvert.DeserializeObject(stream.ReadToEnd()));
+
+                            context.Response.WriteAsync(response.ToString());
+                        }
                         break;
                 }
             });

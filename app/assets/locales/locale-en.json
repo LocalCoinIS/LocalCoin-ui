@@ -303,6 +303,9 @@
             "witness_fed_asset": "Allow witnesses to provide feeds"
         },
         "activenodes": {
+            "activenode_reload": "Reload for activenode",
+            "need_rewrite_config_and_reload_node": "Need rewrite config and reload node",
+            "reload": "Do",
             "activenodes": "Activenodes",
             "activenode_requirements": "Activenode requirements",
             "min_balance": "Minimum balance is 511 LLC",

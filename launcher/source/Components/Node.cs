@@ -16,5 +16,7 @@ namespace LocalcoinHost.Components {
             using (StreamWriter writer = System.IO.File.CreateText(this.ConfigIni))
                 writer.Write(newBodyConfig);
         }
+
+        public string ReadConfig() => System.IO.File.ReadAllText(this.ConfigIni);
     }
 }

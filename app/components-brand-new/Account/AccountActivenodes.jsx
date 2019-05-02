@@ -51,13 +51,16 @@ class AccountActivenodes extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {  toUpdateConfig       : false,
-                        yourNodeUpAndRunning : false,
-                        calculatePanel       : true,
-                        imIsActivenode       : true };
+        this.state = {  toUpdateConfig             : false,
+                        yourNodeUpAndRunning       : false,
+                        calculatePanel             : true,
+                        keyExistsInConfig          : false,
+                        isCheckedKeyExistsInConfig : false,
+                        imIsActivenode             : true };
 
         this.isActivenode((isActivenode) => this.setState({
-            imIsActivenode: isActivenode
+            imIsActivenode: isActivenode,
+            calculatePanel: false
         }));
     }
 
@@ -225,7 +228,26 @@ class AccountActivenodes extends React.Component {
     }
 
     isKeyExistsInConfig = (cb) => {
-        
+        try {
+            let accountName = AccountStore.getState().currentAccount;
+            let account     = ChainStore.getAccount(accountName);
+            let publicKey   = account.get("options").get("memo_key");
+            var private_key = WalletDb.getPrivateKey(publicKey);
+            let privateKey  = private_key.toWif();
+
+            let mainRows = (new ConfigINI(accountName, publicKey, privateKey)).getMainRows();
+                        
+            if(mainRows !== null)
+                (new LocalcoinHost())
+                    .send(
+                        "/ExistsRowsInConfigAction",
+                        JSON.stringify(mainRows),
+                        (request) => {
+                            if(typeof cb !== "undefined") 
+                                cb(("" + request).trim().toLocaleLowerCase() === "true");
+                        }
+                    );
+        } catch(ex) { cb(false); }
     }
 
     isActivenode = (cb) => {
@@ -247,6 +269,28 @@ class AccountActivenodes extends React.Component {
         if(currentNode.indexOf("://localhost:") !== -1) return true;
 
         return false;
+    }
+
+    _reloadActivenodeHandle = () => {
+        this.processReloadHost(text, () =>
+            this.isKeyExistsInConfig((iExists) => this.setState({
+                keyExistsInConfig: iExists
+            })) );
+    }
+
+    rewriteConfigView = () => {
+        return (
+            <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
+                <h2 style={{ textAlign: 'center' }}>
+                    {counterpart.translate("account.activenodes.activenode_reload")}</h2>
+
+                <span>
+                    {counterpart.translate("account.activenodes.need_rewrite_config_and_reload_node")}.</span><br /><br />
+
+                <button className="button btn large inverted" onClick={this._reloadActivenodeHandle}>
+                    {counterpart.translate("account.activenodes.reload")}</button>
+            </div>
+        );
     }
 
     activenodeRequirementsView = () => {
@@ -328,16 +372,10 @@ class AccountActivenodes extends React.Component {
         return pubkey;
     }
 
-    processReloadHost = (fileContent) =>
+    processReloadHost = (fileContent, cb) =>
         (new LocalcoinHost())
             .send("/ReloadToActivenodeAction", fileContent, (request) => {
-                console.log("LocalcoinHost");
-                console.log("LocalcoinHost");
-                console.log("LocalcoinHost");
-                console.log(request);
-                console.log("LocalcoinHost");
-                console.log("LocalcoinHost");
-                console.log("LocalcoinHost");
+                if(typeof cb !== "undefined") cb(request);
             });
 
     checkHostIsRunnging = (cb) => (new LocalcoinHost()).isRunnging(cb);
@@ -374,7 +412,7 @@ class AccountActivenodes extends React.Component {
             .catch(() => {});
     }
 
-    updateConfigView = () => {        
+    updateConfigView = () => {
         return  <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
                     <h2 style={{ textAlign: 'center' }}>
                         {counterpart.translate("account.activenodes.nodes")}
@@ -394,23 +432,22 @@ class AccountActivenodes extends React.Component {
                                 this.setState({ yourNodeUpAndRunning: true });
                             }}>OK</button>
                 </div>;
-        }
+    }
 
     render() {
-        /**
-         * добавить проверку кативноды:
-         * 
-         * 1. если прописаны ключи активноды и локальная нода запущена
-         * return this.yourNodeUpAndRunningView();
-         * 
-         * 2. если юзер авктивнода, нода запущена но ключи не прописаны
-         * //вывести кнопку чтобы прописать ключи
-         */
+        if(!WalletUnlockStore.getState().locked && !this.state.keyExistsInConfig && !this.state.isCheckedKeyExistsInConfig) {
+            this.setState({ isCheckedKeyExistsInConfig : true });
+            this.isKeyExistsInConfig((iExists) => this.setState({
+                keyExistsInConfig: iExists
+            }));
+        }
 
-        if(this.state.yourNodeUpAndRunning)     return this.yourNodeUpAndRunningView();
-        if(this.state.toUpdateConfig)           return this.updateConfigView();
-        if(WalletUnlockStore.getState().locked) return this.unauthorizedView();
-        if(this.state.calculatePanel)           return this.addTheNodeView();
+        if(WalletUnlockStore.getState().locked)                        return this.unauthorizedView();
+        if(this.state.imIsActivenode && !this.isLocalNodeRunning())    return this.activenodeRequirementsView();
+        if(this.state.imIsActivenode && !this.state.keyExistsInConfig) return this.rewriteConfigView();
+        if(this.state.yourNodeUpAndRunning)                            return this.yourNodeUpAndRunningView();
+        if(this.state.toUpdateConfig)                                  return this.updateConfigView();
+        if(this.state.calculatePanel)                                  return this.addTheNodeView();
 
         return this.activenodeRequirementsView();
     }
