@@ -71,11 +71,13 @@ class MarketRow extends React.Component {
         let smartCoinArr = getSmartCoinMarkets();
         let exeptionArr = ["USDT", "EURT", "TUSD", "USDC", "USDS"];
         let marketID = base.get("symbol") + "_" + quote.get("symbol");
+        let reversePairs = false;
         // 1. базовая валюта всегда слева;
         // 2. помещаем в правую сторону смарткоины, если нет исключений, т.е. валют из exeptionArr;
         // 3. помещаем в правую сторону исключения, т.е. валюты из exeptionArr.
         if((exeptionArr.includes(base.get("symbol")) && !exeptionArr.includes(quote.get("symbol"))) || (smartCoinArr.includes(base.get("symbol")) && !exeptionArr.includes(quote.get("symbol")) && !smartCoinArr.includes(quote.get("symbol")))) {
             marketID = quote.get("symbol") + "_" + base.get("symbol");
+            reversePairs = true;
         }
         let marketName = quote.get("symbol") + "/" + base.get("symbol");
         let dynamic_data = this.props.getDynamicObject(
@@ -201,33 +203,35 @@ class MarketRow extends React.Component {
                         );
 
                     case "price":
-                        let finalPrice =
-                            stats && stats.price
-                                ? utils.get_asset_price(
-                                    stats.price.base.amount,
-                                    base,
-                                    stats.price.quote.amount,
-                                    quote,
-                                    true
-                                )
-                                : stats &&
-                                  stats.close &&
-                                  (stats.close.quote.amount &&
-                                      stats.close.base.amount)
-                                    ? utils.get_asset_price(
-                                        stats.close.base.amount,
-                                        base,
-                                        stats.close.quote.amount,
-                                        quote,
-                                          true
-                                      )
-                                    : utils.get_asset_price(
-                                        price.base.amount,
-                                        base,
-                                        price.quote.amount,
-                                        quote,
-                                          true
-                                      );
+                        let baseAmount, quoteAmount, baseAsset, quoteAsset = false;
+
+                        let finalPrice
+
+                        if(stats && stats.price) {
+                            baseAmount = reversePairs ? stats.price.quote.amount : stats.price.base.amount;
+                            quoteAmount = reversePairs ? stats.price.base.amount : stats.price.quote.amount;
+                            baseAsset = reversePairs ? quote : base;
+                            quoteAsset = reversePairs ? base : quote;
+
+                        } else if(stats && stats.close && (stats.close.quote.amount && stats.close.base.amount)) {
+                            baseAmount = reversePairs ? stats.close.quote.amount : stats.close.base.amount;
+                            quoteAmount = reversePairs ? stats.close.base.amount : stats.close.quote.amount;
+                            baseAsset = reversePairs ? quote : base;
+                            quoteAsset = reversePairs ? base : quote;
+                        } else {
+                            baseAmount = reversePairs ? price.quote.amount : price.base.amount;
+                            quoteAmount = reversePairs ? price.base.amount : price.quote.amount;
+                            baseAsset = reversePairs ? quote : base;
+                            quoteAsset = reversePairs ? base : quote;
+                        }
+
+                        finalPrice = utils.get_asset_price(
+                            baseAmount,
+                            baseAsset,
+                            quoteAmount,
+                            quoteAsset,
+                            true
+                        );
 
                         let highPrecisionAssets = [
                             "BTC",
