@@ -15,6 +15,7 @@ import ExplorerTabs from "./ExplorerTabs";
 import PropTypes from "prop-types";
 import DropdownList from "../Utility/DropdownList";
 import counterpart from "counterpart";
+import {Apis} from "bitsharesjs-ws";
 
 class ActivenodeInfo extends React.Component {
     data = () => {
@@ -48,9 +49,22 @@ class Activenodes extends React.Component {
         super(props);
 
         this.state = {
+            accounts          : null,
+            activenodes       : null,
             filterActivenodes : "",
             activeAccountName : "",
         };
+
+        window.getActivenodesInterval = setInterval(() => {
+            if(this.state.accounts === null && this.state.activenodes === null) {
+                try {
+                    this.getActivenodes((accounts, activenodes) => this.setState({
+                        accounts    : accounts,
+                        activenodes : activenodes,
+                    }));
+                } catch(ex) {}
+            } else clearInterval(window.getActivenodesInterval);
+        }, 1000);
     }
 
     _onFilter(e) {
@@ -58,23 +72,40 @@ class Activenodes extends React.Component {
         this.setState({filterActivenodes: e.target.value.toLowerCase().trim()});
     }
 
+    getActivenodeData(accountId) {
+        if(this.state.activenodes === null) return null;
+    }
+
+    /**
+     * let source = [
+     *      [
+     *          'winstonsmith',
+     *          '2 hours ago',
+     *          '3086234',
+     *          '9689',
+     *          '542,081 LLC',
+     *      ],
+     *      [
+     *          'winstonsmith2',
+     *          '2 hours ago',
+     *          '3086234',
+     *          '9689',
+     *          '542,081 LLC',
+     *      ]
+     *  ];
+     * 
+     */
     data = () => {
-        let source = [
-            [
-                'winstonsmith',
-                '2 hours ago',
-                '3086234',
-                '9689',
-                '542,081 LLC',
-            ],
-            [
-                'winstonsmith2',
-                '2 hours ago',
-                '3086234',
-                '9689',
-                '542,081 LLC',
-            ]
-        ];
+        let source = [];
+        if(this.state.accounts === null) return source;
+
+        for(let account of this.state.accounts) {
+            let activenode = this.getActivenodeData(account.id);
+            source.push([
+                account.name,
+                activenode.last_activity
+            ]);
+        }
 
         if(this.state.filterActivenodes == "") return source;
 
@@ -90,8 +121,28 @@ class Activenodes extends React.Component {
             });
     }
 
+    getIdsActivenodes = () => Object.values(ChainStore.getObject("2.0.0").toJS().current_activenodes);
+
     getActivenodes = (cb) => {
-        
+        Apis
+            .instance()
+            .db_api()
+            .exec("get_activenodes", [this.getIdsActivenodes()])
+            .then(activenodes => {
+                let accountsIds = [];
+
+                for(let data of Object.values(activenodes))
+                    accountsIds.push(data.activenode_account);
+
+                Apis
+                    .instance()
+                    .db_api()
+                    .exec("get_accounts", [accountsIds])
+                    .then(accounts => cb(accounts, activenodes))
+                    .catch(error => cb(null));
+                cb(list);
+            })
+            .catch(error => cb(null));
     }
 
     render() {
