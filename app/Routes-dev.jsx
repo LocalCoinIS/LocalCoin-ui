@@ -15,6 +15,7 @@ import App from "./App";
 import DashboardPage from "./components-brand-new/Dashboard/DashboardPage";
 import DashboardAccountsOnly from "./components/Dashboard/DashboardAccountsOnly";
 import Witnesses from "./components-brand-new/Explorer/Witnesses";
+import Activenodes from "./components-brand-new/Explorer/Activenodes";
 import CommitteeMembers from "./components-brand-new/Explorer/CommitteeMembers";
 import FeesContainer from "./components-brand-new/Explorer/FeesContainer";
 import BlocksContainer from "./components-brand-new/Explorer/BlocksContainer";
@@ -149,6 +150,15 @@ const routes = (
                 headerBlock: Header,
                 sidebarBlock: null,
                 contentBlock: Witnesses,
+                footerBlock: Footer
+            }}
+        />
+        <Route
+            path="/explorer/activenodes"
+            component={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: Activenodes,
                 footerBlock: Footer
             }}
         />

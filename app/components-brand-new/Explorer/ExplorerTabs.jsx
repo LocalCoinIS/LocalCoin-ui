@@ -37,6 +37,11 @@ class ExplorerTabs extends React.Component {
                     title: "explorer.witnesses.title"
                 },
                 {
+                    // name: "activenodes",
+                    link: "/explorer/activenodes",
+                    title: "account.activenodes.activenodes"
+                },
+                {
                     // name: "committee_members",
                     link: "/explorer/committee-members",
                     title: "explorer.committee_members.title"
