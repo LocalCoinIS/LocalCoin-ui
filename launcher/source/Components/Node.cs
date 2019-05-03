@@ -11,27 +11,13 @@ namespace LocalcoinHost.Components {
         public override string WorkingDirectory { get { return Directory.GetCurrentDirectory() + "/node/"; } }
         public override string FileName         { get { return Platform.Name == OSPlatform.Windows.ToString().ToLower() ? "witness_node.exe" : "witness_node"; } }
         public string          ConfigIni        { get { return this.WorkingDirectory + "witness_node_data_dir/config.ini"; } }
-        
-        public void RewriteConfig(string newBodyConfig) {
-            using (StreamWriter writer = System.IO.File.CreateText(this.ConfigIni))
-                writer.Write(newBodyConfig);
-        }
+        public override string Arguments        { get { return "--replay-blockchain"; } }
 
         public string ReadConfig() => System.IO.File.ReadAllText(this.ConfigIni);
 
-        public void TryKillByName()
-        {
-            if (!File.Exists(RunningAppFileName)) return;
-
-            string name = System.IO.File.ReadAllText(RunningAppFileName);
-            if (name == "") return;
-
-            foreach (var process in Process.GetProcessesByName(name))
-            {
-                process.Kill();
-                this.ClearNameFile();
-                Console.WriteLine("Kill old " + process.ProcessName);
-            }
+        public void RewriteConfig(string newBodyConfig) {
+            using (StreamWriter writer = System.IO.File.CreateText(this.ConfigIni))
+                writer.Write(newBodyConfig);
         }
     }
 }
