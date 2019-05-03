@@ -95,10 +95,9 @@ class BackupRestore extends Component {
                 />
                 {new FileReader().readAsBinaryString ? null : (
                     <p className="error">
-                        Warning! You browser doesn't support some some file
-                        operations required to restore backup, we recommend you
-                        to use Chrome or Firefox browsers to restore your
-                        backup.
+                        Warning! Your browser doesn't support some file
+                        operations required to restore backup, we recommend
+                        using Chrome or Firefox to restore your backup.
                     </p>
                 )}
                 <Upload>
