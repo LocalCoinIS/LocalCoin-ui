@@ -20,6 +20,7 @@ import {
 import {Asset} from "common/MarketClasses";
 import {checkFeeStatusAsync, checkBalance} from "common/trxHelper";
 import notify from "actions/NotificationActions";
+import QRCode from "qrcode.react";
 
 class LLCBridgeModal extends React.Component {
     static DEFAULT_CURRENCY = "BTC";
@@ -583,6 +584,11 @@ class LLCBridgeModal extends React.Component {
                         {this.state.address}
                     </div>
                 </div>
+                <div>
+                    <QRCode
+                        value={this.state.address ? this.state.address : ""}
+                    />
+                </div>
             </div>
         );
 
@@ -919,9 +925,9 @@ class LLCBridgeModal extends React.Component {
                         {buyTab}
                         {depositTab}
                         {withdrawTab}
-                    </div>) : (
-                        <div>{buyTab}</div>
-                    )}
+                    </div>) : null}
+                    {!this.props.isDashboard && this.props.activeTab === "deposit_tab" ? depositTab : null}
+                    {!this.props.isDashboard && this.state.activeTab === "buy_tab" ? buyTab : null}
                 </div>
             </div>
         );

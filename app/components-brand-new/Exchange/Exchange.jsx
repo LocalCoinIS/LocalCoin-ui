@@ -6,7 +6,7 @@ import OrderBook from "../../components/Exchange/OrderBook";
 import MarketHistory from "../../components/Exchange/MarketHistory";
 import MyMarkets from "./MyMarkets";
 import BuySell from "../../components/Exchange/BuySell";
-import MarketPicker from "../../components/Exchange/MarketPicker";
+
 import utils from "common/utils";
 // import PriceChartD3 from "./PriceChartD3";
 import TradingViewPriceChart from "../../components/Exchange/TradingViewPriceChart";
@@ -38,8 +38,12 @@ import Icon from "../../components/Icon/Icon";
 import WalletDb from "stores/WalletDb";
 import WalletUnlockActions from "actions/WalletUnlockActions";
 import AccountActions from "actions/AccountActions";
+import LLCGatewayData from "../../components/DepositWithdraw/llcgateway/LLCGatewayData";
 
 class Exchange extends React.Component {
+
+    static MODE_BRIDGE = "1";
+
     static propTypes = {
         marketCallOrders: PropTypes.object.isRequired,
         activeMarketHistory: PropTypes.object.isRequired,
@@ -75,7 +79,16 @@ class Exchange extends React.Component {
             },
             isBridgeModalVisible: false,
             isMarketFee: false,
-            isMarketPage: true
+            isMarketPage: true,
+            currentAsset: null,
+            type: "deposit",
+            currency: {
+                asset: null,
+                currency: null
+            },
+            currencies: null,
+            depositAddress: null,
+            activeTab: "deposit_tab"
         };
 
         this._getWindowSize = debounce(this._getWindowSize.bind(this), 150);
@@ -86,14 +99,13 @@ class Exchange extends React.Component {
             this
         );
 
-        this.onShowModal = this.onShowModal.bind(this);
 
         this.psInit = true;
 
         this._toggleSwitch = this._toggleSwitch.bind(this);
     }
 
-    onShowModal() {
+    onShowModal = (asset, tab) => {
         let self = this;
         if (self.isUnauthorizedUser()) {
             return;
@@ -104,8 +116,22 @@ class Exchange extends React.Component {
                     .then(() => {
                         AccountActions.tryToSetCurrentAccount();
                         self.setState({
-                            isBridgeModalVisible: true
+                            isBridgeModalVisible: true,
+                            currentAsset: asset ? asset : null,
+                            activeTab: tab
                         });
+                        this.getAllowCurrencies(asset);
+                        let account = this.props.currentAccount
+                        let accountName = typeof account === "object" ? account.get("name") :
+                            typeof account === "string" ? account : "";
+                        new LLCGatewayData().сreatePaymentAddress(
+                            accountName,
+                            asset,
+                            Exchange.MODE_BRIDGE,
+                            function(address) {
+                                self.setState({depositAddress: address});
+                            }
+                        );
                     })
                     .catch(() => {});
             } else {
@@ -118,12 +144,56 @@ class Exchange extends React.Component {
                 },
                 function() {
                     self.setState({
-                        isBridgeModalVisible: true
+                        isBridgeModalVisible: true,
+                        currentAsset: asset ? asset : null,
+                        activeTab: tab
                     });
+                }
+            );
+            this.getAllowCurrencies(asset);
+            let account = this.props.currentAccount
+            let accountName = typeof account === "object" ? account.get("name") :
+                typeof account === "string" ? account : "";
+            new LLCGatewayData().сreatePaymentAddress(
+                accountName,
+                asset,
+                Exchange.MODE_BRIDGE,
+                function(address) {
+                    self.setState({depositAddress: address});
                 }
             );
         };
 
+    }
+
+    getAllowCurrencies(asset) {
+        let provider = new LLCGatewayData();
+        let self = this;
+        provider.getAllowCurrency(data => {
+            data[this.state.type].forEach(a => {
+                if(a.asset == asset) {
+                    self.setState(
+                        {
+                            currency: a
+                        }
+                    );
+                }
+            })
+
+        });
+    }
+
+    onCloseModal = () => {
+        this.setState(
+            {
+                currentAsset: null,
+                currency: {
+                    asset: null,
+                    currency: null
+                },
+                depositAddress: null
+            }
+        );
     }
 
     _createAccountLink = null;
@@ -951,14 +1021,6 @@ class Exchange extends React.Component {
         this.setState({showDepthChart: !this.state.showDepthChart});
     }
 
-    _toggleMarketPicker(asset) {
-        let showMarketPicker = !!asset ? true : false;
-        this.setState({
-            showMarketPicker,
-            marketPickerAsset: asset
-        });
-    }
-
     resetHeaderMargin() {
         try {
             let header = document.getElementsByClassName(
@@ -1766,6 +1828,11 @@ class Exchange extends React.Component {
                 {this.state.isBridgeModalVisible ? (
                     <LLCBridgeModal
                         account={this.props.currentAccount}
+                        currency={this.state.currency}
+                        type={this.state.type}
+                        depositAddress={this.state.depositAddress}
+                        onCloseModal={this.onCloseModal}
+                        activeTab={this.state.activeTab}
                     />
                 ) : null}
                 {!this.props.marketReady ? <LoadingIndicator /> : null}
@@ -1785,22 +1852,13 @@ class Exchange extends React.Component {
                     showDepthChart={showDepthChart}
                     marketStats={marketStats}
                     onToggleCharts={this._toggleCharts.bind(this)}
-                    onToggleMarketPicker={this._toggleMarketPicker.bind(this)}
                     showVolumeChart={showVolumeChart}
                     chartHeight={chartHeight}
                     onChangeChartHeight={this.onChangeChartHeight.bind(this)}
+                    {...this.props}
                 />
 
                 <div className="grid-block page-layout market-layout">
-                    {!!this.state.showMarketPicker ? (
-                        <MarketPicker
-                            marketPickerAsset={this.state.marketPickerAsset}
-                            onToggleMarketPicker={this._toggleMarketPicker.bind(
-                                this
-                            )}
-                            {...this.props}
-                        />
-                    ) : null}
                     <AccountNotifications isMarketPage={this.state.isMarketPage}/>
                     {/* Main vertical block with content */}
 
