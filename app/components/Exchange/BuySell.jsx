@@ -41,6 +41,7 @@ class BuySell extends React.Component {
     };
 
     componentDidMount() {
+        console.log(111111111);
         if (this.props.checkMarketFee) this.props.checkMarketFee(!!document.querySelector(".market-fee"));
     }
 

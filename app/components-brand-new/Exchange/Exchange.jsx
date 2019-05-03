@@ -375,6 +375,7 @@ class Exchange extends React.Component {
     }
 
     componentDidMount() {
+        console.log(2222222);
         SettingsActions.changeViewSetting.defer({
             [this._getLastMarketKey()]:
                 this.props.quoteAsset.get("symbol") +
