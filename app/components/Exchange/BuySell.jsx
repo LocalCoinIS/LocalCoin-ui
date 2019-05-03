@@ -420,6 +420,9 @@ class BuySell extends React.Component {
             base.get("symbol") === "LLC" || quote.get("symbol") === "LLC";
 
         let depositBtns = this._renderDepositBtns();
+        console.log("+++");
+        console.log(quote.get("symbol"));
+        console.log("+++");
         return (
             <div className={this.props.className}>
                 <div className="exchange-bordered buy-sell-container">
