@@ -684,6 +684,7 @@ tbody.orderbook > tr.my-order > td {
 .marketPicker {
     border: 1px solid black;
     position: absolute;
+    top: 100%;
     z-index: 100;
     width: 400px;
     min-height: 300px;

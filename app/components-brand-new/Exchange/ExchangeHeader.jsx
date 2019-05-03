@@ -12,6 +12,7 @@ import ExchangeHeaderCollateral from "../../components/Exchange/ExchangeHeaderCo
 import BaseModal from "../../components/Modal/BaseModal";
 import ZfApi from "react-foundation-apps/src/utils/foundation-api";
 import DropdownList from "../Utility/DropdownList";
+import MarketPickerWrap from "../../components/Exchange/MarketPicker";
 
 export default class ExchangeHeader extends React.Component {
     constructor(props) {
@@ -56,7 +57,7 @@ export default class ExchangeHeader extends React.Component {
         this.setState({
             selectedMarketPickerAsset
         });
-        this.props.onToggleMarketPicker(selectedMarketPickerAsset);
+        this._toggleMarketPicker(selectedMarketPickerAsset);
     }
 
     setChartHeight() {
@@ -140,6 +141,21 @@ export default class ExchangeHeader extends React.Component {
                 document.getElementsByTagName("head")[0].appendChild(styleDom);
             }
         } catch (e) {}
+    }
+
+    _toggleMarketPicker(asset) {
+        let showMarketPicker = !!asset ? true : false;
+        this.setState({
+            showMarketPicker,
+            marketPickerAsset: asset
+        });
+    }
+
+    _closeMarketPicker() {
+        this.setState({
+            selectedMarketPickerAsset: null
+        });
+        this._toggleMarketPicker(null);
     }
 
     render() {
@@ -298,6 +314,7 @@ export default class ExchangeHeader extends React.Component {
                                       />
                                     </Link>
                                     <span
+                                        className={isQuoteSelected ? "is-active" : ""}
                                         onClick={this.marketPicker.bind(
                                             this,
                                             quoteSymbol
@@ -331,6 +348,7 @@ export default class ExchangeHeader extends React.Component {
                                       />
                                     </Link>
                                     <span
+                                        className={isBaseSelected ? "is-active" : ""}
                                         onClick={this.marketPicker.bind(
                                             this,
                                             baseSymbol
@@ -553,6 +571,19 @@ export default class ExchangeHeader extends React.Component {
                         </label>
                     </section>
                 </BaseModal>
+
+                {!!this.state.showMarketPicker ? (
+                    <MarketPickerWrap
+                        marketPickerAsset={this.state.marketPickerAsset}
+                        onToggleMarketPicker={this._toggleMarketPicker.bind(
+                            this
+                        )}
+                        closeMarketPicker={this._closeMarketPicker.bind(
+                            this
+                        )}
+                        {...this.props}
+                    />
+                ) : null}
             </div>
         );
     }
