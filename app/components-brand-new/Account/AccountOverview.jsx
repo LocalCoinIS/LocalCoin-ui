@@ -517,7 +517,7 @@ class AccountOverview extends React.Component {
                 (hasBalance && balanceObject.get("balance") != 0)) || canTrade;
 
             const canBuy = !!this.props.bridgeCoins.get(symbol) || asset.get("symbol") === "LLC" ;
-            console
+
             const assetAmount = balanceObject.get("balance");
 
             this.qtyRefs[asset.get("symbol")] = utils.get_asset_amount(

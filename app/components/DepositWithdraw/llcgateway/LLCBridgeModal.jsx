@@ -858,9 +858,7 @@ class LLCBridgeModal extends React.Component {
                 </div>
             ) : null
         );
-        console.log("---");
-        console.log(this.props);
-        console.log("---");
+
         return (
             <div
                 onClick={this.closeModal}
