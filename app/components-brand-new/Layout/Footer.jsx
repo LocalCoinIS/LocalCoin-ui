@@ -198,7 +198,7 @@ class Footer extends React.Component {
         return (
             <footer className="footer">
                 <div className="footer-line">
-                    <div>
+                    <div className="footer-left">
                         <button
                             className="btn large inverted flat support-btn"
                             type="button"
