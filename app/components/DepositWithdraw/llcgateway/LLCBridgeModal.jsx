@@ -927,7 +927,7 @@ class LLCBridgeModal extends React.Component {
                         {withdrawTab}
                     </div>) : null}
                     {!this.props.isDashboard && this.props.activeTab === "deposit_tab" ? depositTab : null}
-                    {!this.props.isDashboard && !this.props.activeTab ? buyTab : null}
+                    {!this.props.isDashboard && this.state.activeTab === "buy_tab" ? buyTab : null}
                 </div>
             </div>
         );

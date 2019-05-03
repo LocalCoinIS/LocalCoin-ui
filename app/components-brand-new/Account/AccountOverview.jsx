@@ -764,9 +764,7 @@ class AccountOverview extends React.Component {
 
                         const canTrade = deafaultAssetsArr.includes(asset.get("symbol"));
 
-                        const canDeposit =
-                            (backedCoin && backedCoin.depositAllowed) ||
-                            asset.get("symbol") == "LLC" || canTrade;
+                        const canDeposit = (backedCoin && backedCoin.depositAllowed) || canTrade;
 
                         const canWithdraw =
                             (backedCoin &&
