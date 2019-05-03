@@ -41,7 +41,6 @@ class BuySell extends React.Component {
     };
 
     componentDidMount() {
-        console.log(111111111);
         if (this.props.checkMarketFee) this.props.checkMarketFee(!!document.querySelector(".market-fee"));
     }
 
@@ -421,9 +420,6 @@ class BuySell extends React.Component {
             base.get("symbol") === "LLC" || quote.get("symbol") === "LLC";
 
         let depositBtns = this._renderDepositBtns();
-        console.log("+++");
-        console.log(quote.get("symbol"));
-        console.log("+++");
         return (
             <div className={this.props.className}>
                 <div className="exchange-bordered buy-sell-container">
