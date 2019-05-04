@@ -27,7 +27,7 @@ export function getWalletURL() {
  */
 export function getFaucet() {
     return {
-        url: "https://faucet.localcoin.is/", // 2017-12-infrastructure worker proposal
+        url: "https://tapin.localcoin.is/", // 2017-12-infrastructure worker proposal
         show: true,
         editable: false
     };
@@ -77,7 +77,7 @@ export function getUnits(chainId = "806101b8") {
  */
 
 export function getMyMarketsBases() {
-    return ["LLC", "USD", "EUR", "CNY", "RUB","BRL", "USDT", "BTC", "XMR", "EOS","XRP", "BCH", "ZEC", "TUSD", "ETH", "APL"];
+    return ["LLC", "USD", "EUR", "CNY", "RUB", "BRL", "USDT", "BTC", "XMR", "EOS", "XRP", "BCH", "ZEC", "TUSD", "ETH", "APL"];
 }
 
 /**
@@ -88,90 +88,91 @@ export function getMyMarketsBases() {
 export function getMyMarketsQuotes() {
     let tokens = {
         nativeTokens: [
-            "LLC", "USD", "EUR", "CNY", "RUB","BRL", "USDT", "BTC", "XMR", "XRP", "BCH", "TUSD", "ETH", "LTC", "DASH", "USDS", "USDC", "APL", "GBP", "UAH", "PLN", "NGN", "APL"]
-        //     "GOLD",
-        //     "KRW",
-        //     "RUBLE",
-        //     "SILVER"
-        // ],
-        // bridgeTokens: ["BRIDGE.BCO", "BRIDGE.BTC", "BRIDGE.MONA", "BRIDGE.ZNY"],
-        // gdexTokens: ["GDEX.BTC", "GDEX.BTO", "GDEX.EOS", "GDEX.ETH"],
-        // openledgerTokens: [
-        //     "OBITS",
-        //     "OPEN.BTC",
-        //     "OPEN.DASH",
-        //     "OPEN.DGD",
-        //     "OPEN.DOGE",
-        //     "OPEN.EOS",
-        //     "OPEN.EOSDAC",
-        //     "OPEN.ETH",
-        //     "OPEN.EURT",
-        //     "OPEN.GAME",
-        //     "OPEN.GRC",
-        //     "OPEN.INCNT",
-        //     "OPEN.KRM",
-        //     "OPEN.LISK",
-        //     "OPEN.LTC",
-        //     "OPEN.MAID",
-        //     "OPEN.MKR",
-        //     "OPEN.NEO",
-        //     "OPEN.OMG",
-        //     "OPEN.SBD",
-        //     "OPEN.STEEM",
-        //     "OPEN.TUSD",
-        //     "OPEN.USDT",
-        //     "OPEN.WAVES",
-        //     "OPEN.XMR",
-        //     "OPEN.ZEC",
-        //     "OPEN.ZRX"
-        // ],
-        // rudexTokens: [
-        //     "PPY",
-        //     "RUDEX.DCT",
-        //     "RUDEX.DGB",
-        //     "RUDEX.GBG",
-        //     "RUDEX.GOLOS",
-        //     "RUDEX.KRM",
-        //     "RUDEX.MUSE",
-        //     "RUDEX.SBD",
-        //     "RUDEX.STEEM",
-        //     "RUDEX.TT"
-        // ],
-        // winTokens: ["WIN.ETC", "WIN.ETH", "WIN.HSR"],
-        // xbtsxTokens: [
-        //     "XBTSX.STH",
-        //     "XBTSX.POST",
-        //     "XBTSX.DOGE",
-        //     "XBTSX.BTC",
-        //     "XBTSX.LTC",
-        //     "XBTSX.DASH",
-        //     "XBTSX.KEC",
-        //     "XBTSX.BCH",
-        //     "XBTSX.BTG",
-        //     "XBTSX.XSPEC",
-        //     "XBTSX.NVC"
-        // ],
-        // otherTokens: [
-        //     "BKT",
-        //     "BLOCKPAY",
-        //     "BTWTY",
-        //     "TWENTIX",
-        //     "BTSR",
-        //     "CADASTRAL",
-        //     "CVCOIN",
-        //     "HEMPSWEET",
-        //     "HERO",
-        //     "HERTZ",
-        //     "ICOO",
-        //     "IOU.CNY",
-        //     "KAPITAL",
-        //     "KEXCOIN",
-        //     "OCT",
-        //     "SMOKE",
-        //     "STEALTH",
-        //     "YOYOW",
-        //     "ZEPH"
-        // ]
+                "LLC", "USD", "EUR", "CNY", "RUB", "BRL", "USDT", "BTC", "XMR", "XRP", "BCH", "TUSD", "ETH", "LTC", "DASH", "USDS", "USDC", "APL", "GBP", "UAH", "PLN", "NGN", "APL"
+            ]
+            //     "GOLD",
+            //     "KRW",
+            //     "RUBLE",
+            //     "SILVER"
+            // ],
+            // bridgeTokens: ["BRIDGE.BCO", "BRIDGE.BTC", "BRIDGE.MONA", "BRIDGE.ZNY"],
+            // gdexTokens: ["GDEX.BTC", "GDEX.BTO", "GDEX.EOS", "GDEX.ETH"],
+            // openledgerTokens: [
+            //     "OBITS",
+            //     "OPEN.BTC",
+            //     "OPEN.DASH",
+            //     "OPEN.DGD",
+            //     "OPEN.DOGE",
+            //     "OPEN.EOS",
+            //     "OPEN.EOSDAC",
+            //     "OPEN.ETH",
+            //     "OPEN.EURT",
+            //     "OPEN.GAME",
+            //     "OPEN.GRC",
+            //     "OPEN.INCNT",
+            //     "OPEN.KRM",
+            //     "OPEN.LISK",
+            //     "OPEN.LTC",
+            //     "OPEN.MAID",
+            //     "OPEN.MKR",
+            //     "OPEN.NEO",
+            //     "OPEN.OMG",
+            //     "OPEN.SBD",
+            //     "OPEN.STEEM",
+            //     "OPEN.TUSD",
+            //     "OPEN.USDT",
+            //     "OPEN.WAVES",
+            //     "OPEN.XMR",
+            //     "OPEN.ZEC",
+            //     "OPEN.ZRX"
+            // ],
+            // rudexTokens: [
+            //     "PPY",
+            //     "RUDEX.DCT",
+            //     "RUDEX.DGB",
+            //     "RUDEX.GBG",
+            //     "RUDEX.GOLOS",
+            //     "RUDEX.KRM",
+            //     "RUDEX.MUSE",
+            //     "RUDEX.SBD",
+            //     "RUDEX.STEEM",
+            //     "RUDEX.TT"
+            // ],
+            // winTokens: ["WIN.ETC", "WIN.ETH", "WIN.HSR"],
+            // xbtsxTokens: [
+            //     "XBTSX.STH",
+            //     "XBTSX.POST",
+            //     "XBTSX.DOGE",
+            //     "XBTSX.BTC",
+            //     "XBTSX.LTC",
+            //     "XBTSX.DASH",
+            //     "XBTSX.KEC",
+            //     "XBTSX.BCH",
+            //     "XBTSX.BTG",
+            //     "XBTSX.XSPEC",
+            //     "XBTSX.NVC"
+            // ],
+            // otherTokens: [
+            //     "BKT",
+            //     "BLOCKPAY",
+            //     "BTWTY",
+            //     "TWENTIX",
+            //     "BTSR",
+            //     "CADASTRAL",
+            //     "CVCOIN",
+            //     "HEMPSWEET",
+            //     "HERO",
+            //     "HERTZ",
+            //     "ICOO",
+            //     "IOU.CNY",
+            //     "KAPITAL",
+            //     "KEXCOIN",
+            //     "OCT",
+            //     "SMOKE",
+            //     "STEALTH",
+            //     "YOYOW",
+            //     "ZEPH"
+            // ]
     };
 
     let allTokens = [];
@@ -317,8 +318,7 @@ export function getAllowedLogins() {
 }
 
 export function getSmartCoinMarkets() {
-    return ['MYR','PGK','SCR','ANG','THB','BIF','USD','CNY','XDR','EGP','IQD','KRW','MDL','MZN','PHP','SDG','AngolanKwanza','TJS','BMD','UYU','COP','IRR','KWD','MGA','NAD','PKR','SEK','ARS','TurkmenManat','BOB','ISK','KYD','MKD','NGN','PLN','SGD','AUD','JMD','KZT','MMK','NIO','PYG','JOD','LAK','MNT','NOK','JPY','LBP','MOP','KES','LKR','MRU','KGS','LRD','KHR','GNF','XOF','ERN','GTQ','UZS','CRC','XPD','ETB','GYD','TND','BRL','VEF','CUC','XPF','EUR','HKD','SLL','AWG','TOP','BWP','VND','CUP','XPT','FJD','HNL','QAR','SOS','AZN','TRY','BYN','VUV','CVE','XUA','FKP','HRK','NPR','RON','SRD','BAM','TTD','BZD','WST','CZK','YER','GBP','HTG','NZD','RSD','AED','SSP','BBD','TWD','CAD','XAF','DJF','ZAR','GEL','HUF','MUR','OMR','RUB','AFN','SVC','BDT','TZS','CDF','XAG','DKK','ZMW','GHS','IDR','LSL','MVR','PAB','RWF','ALL','SYP','BGN','UAH','CHF','XAU','DOP','ZWL','GIP','ILS','KMF','LYD','MWK','PEN','SAR','AMD','SZL','BHD','UGX','CLP','XCD','DZD','ZMK','GMD','INR','KPW','MAD','MXN'
-    ];
+    return ['MYR', 'PGK', 'SCR', 'ANG', 'THB', 'BIF', 'USD', 'CNY', 'XDR', 'EGP', 'IQD', 'KRW', 'MDL', 'MZN', 'PHP', 'SDG', 'AngolanKwanza', 'TJS', 'BMD', 'UYU', 'COP', 'IRR', 'KWD', 'MGA', 'NAD', 'PKR', 'SEK', 'ARS', 'TurkmenManat', 'BOB', 'ISK', 'KYD', 'MKD', 'NGN', 'PLN', 'SGD', 'AUD', 'JMD', 'KZT', 'MMK', 'NIO', 'PYG', 'JOD', 'LAK', 'MNT', 'NOK', 'JPY', 'LBP', 'MOP', 'KES', 'LKR', 'MRU', 'KGS', 'LRD', 'KHR', 'GNF', 'XOF', 'ERN', 'GTQ', 'UZS', 'CRC', 'XPD', 'ETB', 'GYD', 'TND', 'BRL', 'VEF', 'CUC', 'XPF', 'EUR', 'HKD', 'SLL', 'AWG', 'TOP', 'BWP', 'VND', 'CUP', 'XPT', 'FJD', 'HNL', 'QAR', 'SOS', 'AZN', 'TRY', 'BYN', 'VUV', 'CVE', 'XUA', 'FKP', 'HRK', 'NPR', 'RON', 'SRD', 'BAM', 'TTD', 'BZD', 'WST', 'CZK', 'YER', 'GBP', 'HTG', 'NZD', 'RSD', 'AED', 'SSP', 'BBD', 'TWD', 'CAD', 'XAF', 'DJF', 'ZAR', 'GEL', 'HUF', 'MUR', 'OMR', 'RUB', 'AFN', 'SVC', 'BDT', 'TZS', 'CDF', 'XAG', 'DKK', 'ZMW', 'GHS', 'IDR', 'LSL', 'MVR', 'PAB', 'RWF', 'ALL', 'SYP', 'BGN', 'UAH', 'CHF', 'XAU', 'DOP', 'ZWL', 'GIP', 'ILS', 'KMF', 'LYD', 'MWK', 'PEN', 'SAR', 'AMD', 'SZL', 'BHD', 'UGX', 'CLP', 'XCD', 'DZD', 'ZMK', 'GMD', 'INR', 'KPW', 'MAD', 'MXN'];
 }
 
 export function getDashboardAssets() {

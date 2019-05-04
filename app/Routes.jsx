@@ -7,6 +7,7 @@ import App from "./App";
 import Header from "./components-brand-new/Layout/Header";
 import Footer from "./components-brand-new/Layout/Footer";
 import Witnesses from "./components-brand-new/Explorer/Witnesses";
+import Activenodes from "./components-brand-new/Explorer/Activenodes";
 import CommitteeMembers from "./components-brand-new/Explorer/CommitteeMembers";
 import {WalletManager} from "./components-brand-new/Wallet/WalletManager";
 import {
@@ -141,6 +142,15 @@ const routes = (
                 headerBlock: Header,
                 sidebarBlock: null,
                 contentBlock: Witnesses,
+                footerBlock: Footer
+            }}
+        />
+        <Route
+            path="/explorer/activenodes"
+            components={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: Activenodes,
                 footerBlock: Footer
             }}
         />
