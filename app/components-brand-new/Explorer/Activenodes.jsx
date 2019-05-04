@@ -20,12 +20,11 @@ import {Apis} from "bitsharesjs-ws";
 class ActivenodeInfo extends React.Component {
     data = () => {
         return [
-            [ "Current witness",    "winstonsmith"     ],
-            [ "Active Witnesses",   "9"                ],
+            [ "Current activenode", "winstonsmith"     ],
+            [ "Active activenodes",  "9"               ],
             [ "Participation rate", "100%"             ],
             [ "Pay-per-block",      "0.65000 LLC"      ],
             [ "Remaining budget",   "13,993.85000 LLC" ],
-            [ "Next vote update",   "in 13 hours"      ],
         ];
     }
 
@@ -43,7 +42,7 @@ class ActivenodeInfo extends React.Component {
     }
 }
 
-const TABS_TITLE = ["Rank", "Name", "Last block", "Last confirmed", "Blocks missed", "Votes" ];
+const TABS_TITLE = ["Rank", "Name", "Last block", "Max penalty" ];
 class Activenodes extends React.Component {
     constructor(props) {
         super(props);
@@ -55,16 +54,14 @@ class Activenodes extends React.Component {
             activeAccountName : "",
         };
 
-        window.getActivenodesInterval = setInterval(() => {
-            if(this.state.accounts === null && this.state.activenodes === null) {
-                try {
-                    this.getActivenodes((accounts, activenodes) => this.setState({
-                        accounts    : accounts,
-                        activenodes : activenodes,
-                    }));
-                } catch(ex) {}
-            } else clearInterval(window.getActivenodesInterval);
-        }, 1000);
+        window.getActivenodesTimeout = setTimeout(() => {
+            try {
+                this.getActivenodes((accounts, activenodes) => this.setState({
+                    accounts    : accounts,
+                    activenodes : activenodes,
+                }));
+            } catch(ex) {}
+        }, 2000);
     }
 
     _onFilter(e) {
@@ -74,6 +71,14 @@ class Activenodes extends React.Component {
 
     getActivenodeData(accountId) {
         if(this.state.activenodes === null) return null;
+
+        let ectivenode = this.state.activenodes.filter(
+            el => el.activenode_account === accountId
+        );
+
+        if(ectivenode.length > 0) return ectivenode[0];
+
+        return null;
     }
 
     /**
@@ -99,11 +104,27 @@ class Activenodes extends React.Component {
         let source = [];
         if(this.state.accounts === null) return source;
 
+        console.log('---------------------------');
+        console.log(this.state.accounts);
+        console.log(this.state.activenodes);
+        console.log('---------------------------');
+
+
+        
+
         for(let account of this.state.accounts) {
             let activenode = this.getActivenodeData(account.id);
+            let last_activity = null;
+
+            if(activenode !== null) {
+                last_activity = new Date(activenode.last_activity);
+                last_activity.setMinutes(last_activity.getMinutes() - new Date().getTimezoneOffset());
+            }
+
             source.push([
                 account.name,
-                activenode.last_activity
+                activenode !== null ? <TimeAgo time={last_activity} /> : null,
+                activenode !== null ? activenode.max_penalty : null
             ]);
         }
 
