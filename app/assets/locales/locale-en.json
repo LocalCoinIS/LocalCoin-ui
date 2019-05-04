@@ -310,7 +310,7 @@
             "reload": "Reload",
             "activenodes": "Activenodes",
             "activenode_requirements": "Activenode requirements",
-            "min_balance": "Minimum balance is 511 LLC",
+            "min_balance": "Recommended Minimum balance is 1200 LLC",
             "lifetime_member": "Lifetime Member (LTM) status",
             "localhost_connection": "Localhost connection",
             "create_the_activenode": "Create the activenode",
