@@ -1,4 +1,5 @@
 export default class LocalcoinHost {
+	_LOCALCOIN_HOST_URL = null;
 	LOCALCOIN_HOST_URL = () => {
 		if(this._LOCALCOIN_HOST_URL !== null) return this._LOCALCOIN_HOST_URL;
 
