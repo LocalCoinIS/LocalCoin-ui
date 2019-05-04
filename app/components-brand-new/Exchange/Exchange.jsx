@@ -535,9 +535,6 @@ class Exchange extends React.Component {
         //     return this._changeBucketSize(nextProps.bucketSize);
         // }
         this._toggleSwitch();
-        console.log(2222);
-        setTimeout(this.forceUpdate.bind(this), 5000);
-        console.log(333333);
     }
 
     componentWillUnmount() {
