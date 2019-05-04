@@ -1563,18 +1563,16 @@ class Exchange extends React.Component {
 
         this._createAccountLink = createAccountLink;
 
-        let buyForm = isFrozen ? null : null;
-
-        let sellForm = isFrozen ? null : (
+        let buyForm = isFrozen ? null : (
             <BuySell
                 onShowModal={this.onShowModal}
-                onBorrow={quoteIsBitAsset ? this._borrowQuote.bind(this) : null}
+                onBorrow={baseIsBitAsset ? this._borrowBase.bind(this) : null}
                 currentAccount={currentAccount}
                 backedCoin={this.props.backedCoins.find(
-                    a => a.symbol === quote.get("symbol")
+                    a => a.symbol === base.get("symbol")
                 )}
                 currentBridges={
-                    this.props.bridgeCoins.get(quote.get("symbol")) || null
+                    this.props.bridgeCoins.get(base.get("symbol")) || null
                 }
                 smallScreen={smallScreen}
                 isOpen={this.state.buySellOpen}
@@ -1586,65 +1584,63 @@ class Exchange extends React.Component {
                         : "medium-6 xlarge-4",
                     this.state.flipBuySell
                         ? `order-${
-                            buySellTop ? 1 : 4 * orderMultiplier
-                        } buy-form`
-                        : `order-${
                             buySellTop ? 2 : 5 * orderMultiplier
                         } sell-form`
+                        : `order-${
+                            buySellTop ? 1 : 4 * orderMultiplier
+                        } buy-form`
                 )}
-                type="ask"
-                amount={ask.forSaleText}
-                price={ask.priceText}
-                total={ask.toReceiveText}
-                quote={quote}
-                base={base}
-                expirationType={expirationType["ask"]}
+                type="bid"
+                expirationType={expirationType["bid"]}
                 expirations={this.EXPIRATIONS}
-                expirationCustomTime={expirationCustomTime["ask"]}
+                expirationCustomTime={expirationCustomTime["bid"]}
                 onExpirationTypeChange={this._handleExpirationChange.bind(
                     this,
-                    "ask"
+                    "bid"
                 )}
                 onExpirationCustomChange={this._handleCustomExpirationChange.bind(
                     this,
-                    "ask"
+                    "bid"
                 )}
-                amountChange={this._onInputSell.bind(this, "ask", false)}
-                priceChange={this._onInputPrice.bind(this, "ask")}
+                amount={bid.toReceiveText}
+                price={bid.priceText}
+                total={bid.forSaleText}
+                quote={quote}
+                base={base}
+                amountChange={this._onInputReceive.bind(this, "bid", true)}
+                priceChange={this._onInputPrice.bind(this, "bid")}
                 setPrice={this._currentPriceClick.bind(this)}
-                totalChange={this._onInputReceive.bind(this, "ask", true)}
-                balance={quoteBalance}
-                balanceId={quote.get("id")}
+                totalChange={this._onInputSell.bind(this, "bid", false)}
+                balance={baseBalance}
+                balanceId={base.get("id")}
                 onSubmit={this._createLimitOrderConfirm.bind(
                     this,
-                    base,
                     quote,
-                    quoteBalance,
+                    base,
+                    baseBalance,
                     coreBalance,
-                    sellFeeAsset,
-                    "sell"
+                    buyFeeAsset,
+                    "buy"
                 )}
-                balancePrecision={quote.get("precision")}
+                balancePrecision={base.get("precision")}
                 quotePrecision={quote.get("precision")}
                 totalPrecision={base.get("precision")}
-                currentPrice={highestBid.getPrice()}
-                currentPriceObject={highestBid}
+                currentPrice={lowestAsk.getPrice()}
+                currentPriceObject={lowestAsk}
                 account={currentAccount.get("name")}
-                fee={sellFee}
-                hasFeeBalance={
-                    this.state.feeStatus[sellFee.asset_id].hasBalance
-                }
-                feeAssets={sellFeeAssets}
-                feeAsset={sellFeeAsset}
-                onChangeFeeAsset={this.onChangeFeeAsset.bind(this, "sell")}
-                isPredictionMarket={quote.getIn([
+                fee={buyFee}
+                hasFeeBalance={this.state.feeStatus[buyFee.asset_id].hasBalance}
+                feeAssets={buyFeeAssets}
+                feeAsset={buyFeeAsset}
+                onChangeFeeAsset={this.onChangeFeeAsset.bind(this, "buy")}
+                isPredictionMarket={base.getIn([
                     "bitasset",
                     "is_prediction_market"
                 ])}
                 onFlip={
-                    !this.state._flipBuySell
-                        ? this._flipBuySell.bind(this)
-                        : null
+                    this.state._flipBuySell
+                        ? null
+                        : this._flipBuySell.bind(this)
                 }
                 onTogglePosition={
                     !this.state._toggleBuySellPosition
@@ -1654,6 +1650,8 @@ class Exchange extends React.Component {
                 checkMarketFee={this._checkMarketFee.bind(this)}
             />
         );
+
+        let sellForm = isFrozen ? null : null;
 
         let orderBook = (
             <OrderBook
