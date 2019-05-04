@@ -22,7 +22,7 @@ class ActivenodeInfo extends React.Component {
         return [
             [ counterpart.translate("explorer.activenodes.current_activenode"), this.props.activeAccountName ],
             [ counterpart.translate("explorer.activenodes.active_activenodes"), this.props.countActivenodes  ],
-            [ counterpart.translate("explorer.activenodes.pay_per_block"     ), "0.65000 LLC"                ],
+            [ counterpart.translate("explorer.activenodes.pay_per_block"     ), "0.065000 LLC"                ],
             [ counterpart.translate("explorer.activenodes.daily_approximate" ),  this.props.dailyApproximate  ],
         ];
     }
@@ -132,7 +132,7 @@ class Activenodes extends React.Component {
 
             source.push([
                 account.name,
-                activenode !== null ? <TimeAgo time={last_activity} /> : null,
+                activenode !== null && last_activity !== null && last_activity.getTime() > 1000000000 ? <TimeAgo time={last_activity} /> : "-",
                 activenode !== null ? activenode.max_penalty : null
             ]);
         }
