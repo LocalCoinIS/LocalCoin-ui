@@ -18,21 +18,17 @@ import counterpart from "counterpart";
 import {Apis} from "bitsharesjs-ws";
 
 class ActivenodeInfo extends React.Component {
-
-
-
     data = () => {
         return [
-            [ "Current activenode", this.props.activeAccountName ],
-            [ "Active activenodes", this.props.countActivenodes  ],
-            [ "Participation rate", "100%"                       ],
-            [ "Pay-per-block",      "0.65000 LLC"                ],
-            [ "Remaining budget",   this.props.dailyApproximate  ],
+            [ counterpart.translate("explorer.activenodes.current_activenode"), this.props.activeAccountName ],
+            [ counterpart.translate("explorer.activenodes.active_activenodes"), this.props.countActivenodes  ],
+            [ counterpart.translate("explorer.activenodes.pay_per_block"     ), "0.65000 LLC"                ],
+            [ counterpart.translate("explorer.activenodes.daily_approximate" ),  this.props.dailyApproximate  ],
         ];
     }
 
     render() {
-        return (
+        return ( 
             <div className="witnesses-board__sidetable">
                 { this.data().map(item => 
                     <div className="witnesses-board__sidetable__row">
@@ -45,7 +41,12 @@ class ActivenodeInfo extends React.Component {
     }
 }
 
-const TABS_TITLE = ["Rank", "Name", "Last block", "Max penalty" ];
+const TABS_TITLE = [
+    counterpart.translate("explorer.activenodes.rank"),
+    counterpart.translate("explorer.activenodes.name"),
+    counterpart.translate("explorer.activenodes.last_block"),
+    counterpart.translate("explorer.activenodes.max_penalty"),
+];
 class Activenodes extends React.Component {
     constructor(props) {
         super(props);
@@ -57,14 +58,31 @@ class Activenodes extends React.Component {
             activeAccountName : "",
         };
 
-        window.getActivenodesTimeout = setTimeout(() => {
+        setInterval(() => {
             try {
                 this.getActivenodes((accounts, activenodes) => this.setState({
                     accounts    : accounts,
                     activenodes : activenodes,
-                }));
+                }, this.updateActiveAccountName));
             } catch(ex) {}
-        }, 2000);
+        }, 1000);
+    }
+
+    updateActiveAccountName = () => {
+        if(this.state.activenodes === null) return;
+
+        let sorted = this.state.activenodes.sort(function(b, a){
+            let a_last_activity = new Date(a.last_activity);
+            let b_last_activity = new Date(b.last_activity);
+
+            return a_last_activity.getTime() - b_last_activity.getTime();
+        });
+
+        if(typeof sorted[0] === "undefined") return;
+
+        let last = sorted[0];
+        let account = this.getAccount(last.activenode_account);
+        this.setState({ activeAccountName: account.name });
     }
 
     _onFilter(e) {
@@ -72,8 +90,20 @@ class Activenodes extends React.Component {
         this.setState({filterActivenodes: e.target.value.toLowerCase().trim()});
     }
 
-    getCountActivenodes = () => this.state.activenodes !== null ? Object.keys(this.state.activenodes).length : 0;
-    getDailyApproximate = () => 0.065 / this.getCountActivenodes() * 43200;
+    getCountActivenodes = () => this.state.activenodes !== null ? this.state.activenodes.length : 0;
+    getDailyApproximate = () => this.getCountActivenodes() == 0 ? 0 : 0.065 / this.getCountActivenodes() * 43200;
+
+    getAccount(accountId) {
+        if(this.state.accounts === null) return null;
+
+        let account = this.state.accounts.filter(
+            el => el.id === accountId
+        );
+
+        if(account.length > 0) return account[0];
+
+        return null;
+    }
 
     getActivenodeData(accountId) {
         if(this.state.activenodes === null) return null;
@@ -87,36 +117,9 @@ class Activenodes extends React.Component {
         return null;
     }
 
-    /**
-     * let source = [
-     *      [
-     *          'winstonsmith',
-     *          '2 hours ago',
-     *          '3086234',
-     *          '9689',
-     *          '542,081 LLC',
-     *      ],
-     *      [
-     *          'winstonsmith2',
-     *          '2 hours ago',
-     *          '3086234',
-     *          '9689',
-     *          '542,081 LLC',
-     *      ]
-     *  ];
-     * 
-     */
     data = () => {
         let source = [];
         if(this.state.accounts === null) return source;
-
-        console.log('---------------------------');
-        console.log(this.state.accounts);
-        console.log(this.state.activenodes);
-        console.log('---------------------------');
-
-
-        
 
         for(let account of this.state.accounts) {
             let activenode = this.getActivenodeData(account.id);
@@ -167,7 +170,6 @@ class Activenodes extends React.Component {
                     .exec("get_accounts", [accountsIds])
                     .then(accounts => cb(accounts, activenodes))
                     .catch(error => cb(null));
-                cb(list);
             })
             .catch(error => cb(null));
     }
@@ -189,7 +191,7 @@ class Activenodes extends React.Component {
                                         <input  type        = "text"
                                                 value       = {this.state.filterActivenodes}
                                                 onChange    = {this._onFilter.bind(this)}
-                                                placeholder = "Filter accounts..." />
+                                                placeholder = {counterpart.translate("explorer.activenodes.filter_acc")} />
                                     </div>
                                 </div>
                                     <div className="table-witnesses-wrap">

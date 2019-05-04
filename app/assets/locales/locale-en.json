@@ -574,6 +574,18 @@
         "zoom_all": "All"
     },
     "explorer": {
+        "activenodes": {
+            "current_activenode": "Current activenode",
+            "active_activenodes": "Active activenodes",
+            "participation_rate": "Participation rate",
+            "pay_per_block": "Pay-per-block",
+            "daily_approximate": "Daily approximate",
+            "rank": "Rank",
+            "name": "Name",
+            "last_block": "Last block",
+            "max_penalty": "Max penalty",
+            "filter_acc": "Filter accounts..."
+        },
         "account": {
             "title": "Account"
         },
@@ -734,7 +746,6 @@
             "last_confirmed": "Last confirmed",
             "missed": "Blocks missed",
             "next_vote": "Next vote update",
-            "participation": "Participation rate",
             "pay": "Pay-per-block",
             "rank": "Rank",
             "table": "Table view",
