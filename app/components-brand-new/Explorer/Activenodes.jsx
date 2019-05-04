@@ -18,13 +18,16 @@ import counterpart from "counterpart";
 import {Apis} from "bitsharesjs-ws";
 
 class ActivenodeInfo extends React.Component {
+
+
+
     data = () => {
         return [
-            [ "Current activenode", "winstonsmith"     ],
-            [ "Active activenodes",  "9"               ],
-            [ "Participation rate", "100%"             ],
-            [ "Pay-per-block",      "0.65000 LLC"      ],
-            [ "Remaining budget",   "13,993.85000 LLC" ],
+            [ "Current activenode", this.props.activeAccountName ],
+            [ "Active activenodes", this.props.countActivenodes  ],
+            [ "Participation rate", "100%"                       ],
+            [ "Pay-per-block",      "0.65000 LLC"                ],
+            [ "Remaining budget",   this.props.dailyApproximate  ],
         ];
     }
 
@@ -68,6 +71,9 @@ class Activenodes extends React.Component {
         e.preventDefault();
         this.setState({filterActivenodes: e.target.value.toLowerCase().trim()});
     }
+
+    getCountActivenodes = () => this.state.activenodes !== null ? Object.keys(this.state.activenodes).length : 0;
+    getDailyApproximate = () => 0.065 / this.getCountActivenodes() * 43200;
 
     getActivenodeData(accountId) {
         if(this.state.activenodes === null) return null;
@@ -171,7 +177,11 @@ class Activenodes extends React.Component {
             <div className="container-fluid">
                 <div className="container-fluid" style={{ marginTop: 20 }}>
                     <div className="witnesses-board">
-                        <ActivenodeInfo />
+                        <ActivenodeInfo
+                            activeAccountName = { this.state.activeAccountName }
+                            countActivenodes  = { this.getCountActivenodes()   }
+                            dailyApproximate  = { this.getDailyApproximate()   }
+                         />
                         <div className="witnesses-board__accounts">
                             <div className="container-fluid">
                                 <div className="row">
