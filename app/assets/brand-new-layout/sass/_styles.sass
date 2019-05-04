@@ -1918,6 +1918,11 @@ body.localcoin
 					line-height: 1.0
 	.faq
 		padding: 0 0 0 20px
+	.deposit-btns
+		float: right
+		font-size: 85%
+		a
+			padding-left: 10px
 
 body.localcoin .button.disabled.large.outline
 	color: #00195b
@@ -2028,14 +2033,6 @@ section[style="padding-top: 1rem; padding-left: 2rem;"]
 		input
 			margin-bottom: 0!important
 
-
-
-
-.account-creation .sub-content hr
-	display: none
-
-
-@media only screen and (max-width: 768px)
 	body.localcoin .footer-line
 		flex-wrap: wrap
 		position: relative
@@ -2044,7 +2041,15 @@ section[style="padding-top: 1rem; padding-left: 2rem;"]
 			position: absolute
 			top: 0
 			left: 0
-			width: 33.33333%
+			width: calc(25% + 1px)
+	body.localcoin .footer-line .footer-left
+		position: absolute
+		top: 0
+		left: 0
+		width: calc(50% - 2px)
+		button.btn.large.inverted
+			width: 50%
+			padding: 0 10px
 	body.localcoin .footer-line .footer-right
 		width: 100%
 		flex-wrap: wrap
@@ -2055,7 +2060,16 @@ section[style="padding-top: 1rem; padding-left: 2rem;"]
 			width: 50%
 			margin-bottom: 5px
 		>button
-			width: 33.3333%
+			width: calc(25% + 1px)
+
+
+
+.account-creation .sub-content hr
+	display: none
+
+
+@media only screen and (max-width: 768px)
+
 	body.localcoin .exchange-layout .grid-block.main-content.vertical.no-overflow
 		height: calc(100vh - 178px)!important
 // @media only screen and (max-width: 480px)

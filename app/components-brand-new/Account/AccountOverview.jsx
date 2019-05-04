@@ -86,7 +86,8 @@ class AccountOverview extends React.Component {
             currencies: null,
             depositAddress: null,
             activeTab: "deposit_tab",
-            isAssetsLoad: true
+            isAssetsLoad: true,
+            isDashboard: true
             };
 
         this.qtyRefs = {};
@@ -102,16 +103,17 @@ class AccountOverview extends React.Component {
 
     onShowModal(asset, tab) {
         let self = this;
-
         this.setState(
             {
-                isBridgeModalVisible: false
+                isBridgeModalVisible: false,
+                isDashboard: true
             },
             function() {
                 self.setState({
                     isBridgeModalVisible: true,
                     currentAsset: asset ? asset : null,
-                    activeTab: tab
+                    activeTab: tab,
+                    isDashboard: asset === "LLC" ? false : true
                 });
             }
         );
@@ -762,9 +764,7 @@ class AccountOverview extends React.Component {
 
                         const canTrade = deafaultAssetsArr.includes(asset.get("symbol"));
 
-                        const canDeposit =
-                            (backedCoin && backedCoin.depositAllowed) ||
-                            asset.get("symbol") == "LLC" || canTrade;
+                        const canDeposit = (backedCoin && backedCoin.depositAllowed) || canTrade;
 
                         const canWithdraw =
                             (backedCoin &&
@@ -1298,7 +1298,7 @@ class AccountOverview extends React.Component {
                             depositAddress={this.state.depositAddress}
                             activeTab={this.state.activeTab}
                             onCloseModal={this.onCloseModal}
-                            isDashboard={true}
+                            isDashboard={this.state.isDashboard}
                         />
                     ) : null}
                 </div>

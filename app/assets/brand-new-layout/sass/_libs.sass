@@ -828,10 +828,16 @@ body.localcoin
 		line-height: 40px!important
 	.footer-line
 		height: 30px!important
-		>.btn.large.inverted, .footer-right .btn.large.inverted
+		>.btn.large.inverted, .footer-right .btn.large.inverted, .footer-left .btn.large.inverted
 			height: 30px!important
 			line-height: 30px!important
 			margin-right: 0
+		.footer-left .btn.large.inverted
+			span
+				transition: all 0.3s ease 0s !important
+		.footer-left .btn.large.inverted:hover
+			span
+				color: rgba(255, 255, 255, 0.5) !important
 
 	.stressed-stat.hide-order-3,
 	.stressed-stat.hide-order-4
@@ -1104,6 +1110,7 @@ body.localcoin
 				overflow: hidden
 		.grid-block,.grid-content
 			overflow: visible
+			position: relative
 		.grid-block.no-overflow.wrap.shrink,
 		.grid-block.shrink.no-overflow,
 		.grid-block.no-overflow.wrap.shrink.switch

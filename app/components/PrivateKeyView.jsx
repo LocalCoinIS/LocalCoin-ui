@@ -35,7 +35,8 @@ export default class PrivateKeyView extends Component {
     }
 
     render() {
-        var modalId = "key_view_modal" + this.props.pubkey;
+        var modalId = `key_view_modal${this.props.pubkey}${this.props.modalKey ? this.props.modalKey : ""}`;
+
         var keys = PrivateKeyStore.getState().keys;
 
         var has_private = keys.has(this.props.pubkey);
@@ -48,7 +49,7 @@ export default class PrivateKeyView extends Component {
                     ref={modalId}
                     id={modalId}
                     overlay={true}
-                    overlayClose={false}
+                    overlayClose={true}
                 >
                     <h3>
                         <Translate content="account.perm.key_viewer" />
@@ -146,13 +147,13 @@ export default class PrivateKeyView extends Component {
     }
 
     onOpen() {
-        var modalId = "key_view_modal" + this.props.pubkey;
+        var modalId = `key_view_modal${this.props.pubkey}${this.props.modalKey ? this.props.modalKey : ""}`;
         ZfApi.publish(modalId, "open");
     }
 
     onClose() {
         this.reset();
-        var modalId = "key_view_modal" + this.props.pubkey;
+        var modalId = `key_view_modal${this.props.pubkey}${this.props.modalKey ? this.props.modalKey : ""}`;
         ZfApi.publish(modalId, "close");
     }
 

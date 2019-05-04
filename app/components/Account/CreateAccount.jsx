@@ -161,8 +161,9 @@ class CreateAccount extends React.Component {
                                 ? error.base[0]
                                 : "unknown error";
                         if (error.remote_ip) error_msg = error.remote_ip[0];
+                        if (error_msg === "Only one account per IP") error_msg = "Try again in 24 hours";
                         notify.addNotification({
-                            message: `Failed to create account: ${name}`,
+                            message: `Failed to create account: ${name} - ${error_msg}`,
                             level: "error",
                             autoDismiss: 10
                         });

@@ -19,6 +19,7 @@ import DatePicker from "react-datepicker2/src/";
 import moment from "moment";
 import Icon from "../Icon/Icon";
 import LLCGatewayData from "../DepositWithdraw/llcgateway/LLCGatewayData";
+import {getDashboardAssets} from "branding";
 
 class BuySell extends React.Component {
     constructor(props) {
@@ -89,6 +90,38 @@ class BuySell extends React.Component {
     _onBuy(e) {
         e.preventDefault();
         this.refs.bridge_modal.show();
+    }
+
+    _renderDepositBtns() {
+        let {base, quote} = this.props;
+        const deafaultAssetsArr = getDashboardAssets();
+        const canDepositBase = deafaultAssetsArr.includes(base.get("symbol"));
+        const canDepositQuote = deafaultAssetsArr.includes(quote.get("symbol"));
+        return (
+            canDepositBase ?
+                canDepositQuote ? (
+                    <div className="deposit-btns">
+                        <a onClick={() => {this.props.onShowModal(quote.get("symbol"), "deposit_tab")}}>
+                            <Translate content="exchange.deposit" /> {quote.get("symbol")}
+                        </a>
+                        <a onClick={() => {this.props.onShowModal(base.get("symbol"), "deposit_tab")}}>
+                            <Translate content="exchange.deposit" /> {base.get("symbol")}
+                        </a>
+                    </div>
+                ) : (
+                    <div className="deposit-btns">
+                        <a onClick={() => {this.props.onShowModal(base.get("symbol"), "deposit_tab")}}>
+                            <Translate content="exchange.deposit" /> {base.get("symbol")}
+                        </a>
+                    </div>
+                ) : canDepositQuote ? (
+                    <div className="deposit-btns">
+                        <a onClick={() => {this.props.onShowModal(quote.get("symbol"), "deposit_tab")}}>
+                            <Translate content="exchange.deposit" /> {quote.get("symbol")}
+                        </a>
+                    </div>
+                ) : null
+        );
     }
 
     render() {
@@ -385,6 +418,8 @@ class BuySell extends React.Component {
 
         let currencyHasInbridge =
             base.get("symbol") === "LLC" || quote.get("symbol") === "LLC";
+
+        let depositBtns = this._renderDepositBtns();
         return (
             <div className={this.props.className}>
                 <div className="exchange-bordered buy-sell-container">
@@ -449,7 +484,6 @@ class BuySell extends React.Component {
                                 {caret}
                             </div>
                         }
-
                         <div className="ml-auto">
                             {currencyHasInbridge &&
                                 this.props[isBid ? "base" : "quote"].get("symbol") !==
@@ -526,6 +560,7 @@ class BuySell extends React.Component {
                                     </a>
                                 </div>
                             ) : null}
+                            {type === "ask" ? depositBtns : null}
                         </div>
                     </div>
 
