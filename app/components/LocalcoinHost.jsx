@@ -8,7 +8,7 @@ export default class LocalcoinHost {
 			if(typeof window.remote.process 		=== "undefined") this._LOCALCOIN_HOST_URL = "";
 			if(typeof window.remote.process.argv 	=== "undefined") this._LOCALCOIN_HOST_URL = "";
 			if(typeof window.remote.process.argv[1] === "undefined") this._LOCALCOIN_HOST_URL = "";
-			else 								   					 this._LOCALCOIN_HOST_URL = window.argv[1];
+			else 								   					 this._LOCALCOIN_HOST_URL = window.remote.process.argv[1];
 		} catch(ex) {
 			this._LOCALCOIN_HOST_URL = "";
 		}
