@@ -83,6 +83,7 @@ export const settingsAPIs = {
         {url: "wss://au.localcoin.is", location: "Australia - ip23"},
         {url: "wss://jp.localcoin.is", location: "Japan - zakzador555"},
         {url: "wss://in.localcoin.is", location: "India - zakzador999"},
+        {url: "wss://za.localcoin.is", location: "South Africa - vasikokk1212178"},
         {url: "wss://de.localcoin.is", location: "Germany - Witness"},
         {url: "wss://fi.localcoin.is", location: "Finland - Witness"},
         {url: "wss://ru.localcoin.is", location: "Russia - Witness"},
@@ -139,7 +140,7 @@ export const settingsAPIs = {
         {url: "wss://my.localcoin.is", location: "Malaysia"},
         {url: "wss://ir.localcoin.is", location: "Iran"},
         {url: "wss://ir1.localcoin.is", location: "Iran"},
-        {url: "wss://za.localcoin.is", location: "South Africa"},
+        {url: "wss://za1.localcoin.is", location: "South Africa"},
         {url: "wss://br.localcoin.is", location: "Brazil"},
         {url: "wss://br1.localcoin.is", location: "Brazil"},
         {url: "wss://br2.localcoin.is", location: "Brazil"}
