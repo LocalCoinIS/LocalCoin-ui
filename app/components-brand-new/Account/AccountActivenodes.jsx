@@ -30,14 +30,14 @@ import CliWalletAPI from "../../components/CliWalletAPI";
 import TransactionConfirmActions from "../../actions/TransactionConfirmActions";
 import AddressIndex from "stores/AddressIndex";
 import {ChainTypes as grapheneChainTypes, TransactionBuilder, PrivateKey, ChainStore, FetchChainObjects, key} from "bitsharesjs/es";
+import PropTypes from "prop-types";
 const {operations} = grapheneChainTypes;
 let ops = Object.keys(operations);
 
-const MIN_BALANCE_FOR_ACTIVENODE = 511;
+const MIN_BALANCE_FOR_ACTIVENODE = 1010;
 class AccountActivenodes extends React.Component {
-    static propTypes = {
-        globalObject: ChainTypes.ChainObject.isRequired,
-        dynGlobalObject: ChainTypes.ChainObject.isRequired
+    static contextTypes = {
+        router: PropTypes.object.isRequired
     };
 
     static defaultProps = {
@@ -47,16 +47,11 @@ class AccountActivenodes extends React.Component {
 
     constructor(props) {
         super(props);
-
-        this.state = {
-            toUpdateConfig : false,
-            imIsActiveNode: false,
-            calculatePanel: true
-        };
+        this.state = { screen: null };
     }
 
     _handleAddNode = () => {
-        this.setState({ calculatePanel: false });
+        this.setState({ screen: "calculatePanel" });
     }
 
     _unlockHandle = (e) => {
@@ -96,10 +91,10 @@ class AccountActivenodes extends React.Component {
         WalletDb.process_transaction(tr, null, true)
             .then(() => {
                 if(this.canCreateTheActivenode())
-                    this.setState({ toUpdateConfig: true });
-
-                return true;
-            });
+                    this.setState({ screen: "toUpdateConfig" });
+                else alert("error");
+            })
+            .catch(e => { alert("error"); });
     }
 
     _createTheActivenodeHandle = () => {
@@ -228,26 +223,41 @@ class AccountActivenodes extends React.Component {
         return false;
     }
 
+    _onNavigate(route, e) {
+        e.preventDefault();
+        
+        console.log(this);
+        console.log(this.context);
+        
+        this.context.router.push(route);
+    }
+
     activenodeRequirementsView = () => {
-        return  <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
+        let accountName = AccountStore.getState().currentAccount;
+
+        return  <div style={{ margin: "0 auto", width: 500, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
                     <h2 style={{ textAlign: 'center' }}>
                         {counterpart.translate("account.activenodes.activenode_requirements")}
                     </h2>
-                    
-                    <input type="checkbox" checked={this.getWalletBalance() >= MIN_BALANCE_FOR_ACTIVENODE} />
-                    <span style={{ textAlign: 'center' }}>
-                    {counterpart.translate("account.activenodes.min_balance")}
-                    </span><br />
-
-                    <input type="checkbox" checked={this.isLifetimeMember()} />
-                    <span style={{ textAlign: 'center' }}>
-                    {counterpart.translate("account.activenodes.lifetime_member")}
-                    </span><br />
-
-                    <input type="checkbox" checked={this.isLocalNodeRunning()} />
-                    <span style={{ textAlign: 'center' }}>
-                    {counterpart.translate("account.activenodes.localhost_connection")}
-                    </span><br />
+                    <br />
+                    <table>
+                        <tr>
+                            <td style={{ textAlign: "right" }}><input type="checkbox" checked={this.getWalletBalance() >= MIN_BALANCE_FOR_ACTIVENODE} /></td>
+                            <td style={{ textAlign: "left" }}>{counterpart.translate("account.activenodes.min_balance")}</td>
+                        </tr>
+                        <tr>
+                            <td style={{ textAlign: "right" }}><input type="checkbox" checked={this.isLifetimeMember()} /></td>
+                            <td style={{ textAlign: "left" }}>
+                                <a  style={{ textAlign: 'center' }}
+                                    onClick={this._onNavigate.bind(this, "/account/" + accountName + "/member-stats")}
+                                    >{counterpart.translate("account.activenodes.lifetime_member")}</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style={{ textAlign: "right" }}><input type="checkbox" checked={this.isLocalNodeRunning()} /></td>
+                            <td style={{ textAlign: "left" }}>{counterpart.translate("account.activenodes.localhost_connection")}</td>
+                        </tr>
+                    </table><br />
                     <br />
                     <button style={{
                         opacity : this.canCreateTheActivenode() ? 1 : 0.3
@@ -323,25 +333,21 @@ class AccountActivenodes extends React.Component {
                     <br />
                     <button className="button btn large inverted"
                             onClick={() => {
-                                this.setState({ imIsActiveNode: true });
+                                this.setState({ screen: "imIsActiveNode" });
                             }}>OK</button>
                 </div>;
         }
 
     render() {
-         if(this.state.imIsActiveNode)
-            return this.imIsActiveNodeView();
-
-        if(this.state.toUpdateConfig)
-            this.updateConfigView();
-
         if(WalletUnlockStore.getState().locked)
             return this.unauthorizedView();
 
-        if(this.state.calculatePanel)
-            return this.addTheNodeView();
-
-        return this.activenodeRequirementsView();
+        switch(this.state.screen) {
+            case "imIsActiveNode" : return this.imIsActiveNodeView();
+            case "toUpdateConfig" : return this.updateConfigView();
+            case "calculatePanel" : return this.addTheNodeView();
+            default               : return this.activenodeRequirementsView();
+        }
     }
 }
 

@@ -288,9 +288,9 @@
         "activenodes": {
             "activenodes": "Activenodes",
             "activenode_requirements": "Activenode requirements",
-            "min_balance": "Minimum balance is 511 LLC",
+            "min_balance": "Minimum balance is 1010 LLC",
             "lifetime_member": "Lifetime Member (LTM) status",
-            "localhost_connection": "Localhost connection",
+            "localhost_connection": "Local node running and has been synchronized",
             "create_the_activenode": "Create the activenode",
             "your_node_up_and_running": "Your node up and running!",
             "activenode_has_been_successfully": "Activenode has been successfully created and will start getting reward within 24 hours.",
