@@ -24,9 +24,6 @@ import {getDashboardAssets} from "branding";
 class BuySell extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            test: props.test
-        };
     }
 
     static propTypes = {
@@ -47,32 +44,27 @@ class BuySell extends React.Component {
         if (this.props.checkMarketFee) this.props.checkMarketFee(!!document.querySelector(".market-fee"));
     }
 
-    // shouldComponentUpdate(nextProps) {
-    //     return (
-    //         nextProps.amount !== this.props.amount ||
-    //         nextProps.onBorrow !== this.props.onBorrow ||
-    //         nextProps.total !== this.props.total ||
-    //         nextProps.currentPrice !== this.props.currentPrice ||
-    //         nextProps.price !== this.props.price ||
-    //         nextProps.balance !== this.props.balance ||
-    //         nextProps.account !== this.props.account ||
-    //         nextProps.className !== this.props.className ||
-    //         (nextProps.fee && this.props.fee
-    //             ? nextProps.fee.ne(this.props.fee)
-    //             : false) ||
-    //         nextProps.isPredictionMarket !== this.props.isPredictionMarket ||
-    //         nextProps.feeAsset !== this.props.feeAsset ||
-    //         nextProps.isOpen !== this.props.isOpen ||
-    //         nextProps.hasFeeBalance !== this.props.hasFeeBalance ||
-    //         nextProps.expirationType !== this.props.expirationType ||
-    //         nextProps.expirationCustomTime !== this.props.expirationCustomTime
-    //     );
-    // }
-
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            test: nextProps.test
-        })
+    shouldComponentUpdate(nextProps) {
+        return (
+            nextProps.amount !== this.props.amount ||
+            nextProps.onBorrow !== this.props.onBorrow ||
+            nextProps.total !== this.props.total ||
+            nextProps.currentPrice !== this.props.currentPrice ||
+            nextProps.price !== this.props.price ||
+            nextProps.balance !== this.props.balance ||
+            nextProps.account !== this.props.account ||
+            nextProps.className !== this.props.className ||
+            (nextProps.fee && this.props.fee
+                ? nextProps.fee.ne(this.props.fee)
+                : false) ||
+            nextProps.isPredictionMarket !== this.props.isPredictionMarket ||
+            nextProps.feeAsset !== this.props.feeAsset ||
+            nextProps.isOpen !== this.props.isOpen ||
+            nextProps.hasFeeBalance !== this.props.hasFeeBalance ||
+            nextProps.expirationType !== this.props.expirationType ||
+            nextProps.expirationCustomTime !== this.props.expirationCustomTime ||
+            nextProps.location !== this.props.location
+        );
     }
 
     _addBalance(balance) {
@@ -153,10 +145,6 @@ class BuySell extends React.Component {
             hasFeeBalance,
             backedCoin
         } = this.props;
-        console.log("-----");
-        console.log(quote.get("symbol"));
-        console.log(this.state);
-        console.log("-----");
         let amount, price, total;
         let caret = this.props.isOpen ? (
             <span>&#9660;</span>
@@ -433,7 +421,6 @@ class BuySell extends React.Component {
             base.get("symbol") === "LLC" || quote.get("symbol") === "LLC";
 
         let depositBtns = this._renderDepositBtns();
-
         return (
             <div className={this.props.className}>
                 <div className="exchange-bordered buy-sell-container">

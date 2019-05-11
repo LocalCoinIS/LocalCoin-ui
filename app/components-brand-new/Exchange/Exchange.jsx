@@ -1562,9 +1562,7 @@ class Exchange extends React.Component {
             ) : null;
 
         this._createAccountLink = createAccountLink;
-        console.log(1111111);
-        console.log(this.props);
-        console.log(1111111);
+
         let buyForm = isFrozen ? null : (
             <BuySell
                 onShowModal={this.onShowModal}
@@ -1650,10 +1648,10 @@ class Exchange extends React.Component {
                         : null
                 }
                 checkMarketFee={this._checkMarketFee.bind(this)}
-                test={this.props.router.location.pathname}
+                location={this.props.router.location.pathname}
             />
         );
-        console.log(2222222);
+
         let sellForm = isFrozen ? null : (
             <BuySell
                 onShowModal={this.onShowModal}
@@ -1741,10 +1739,10 @@ class Exchange extends React.Component {
                         : null
                 }
                 checkMarketFee={this._checkMarketFee.bind(this)}
-                test={this.props.router.location.pathname}
+                location={this.props.router.location.pathname}
             />
         );
-        console.log(333333333);
+
         let orderBook = (
             <OrderBook
                 latest={latestPrice}
