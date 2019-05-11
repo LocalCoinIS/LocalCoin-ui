@@ -1563,7 +1563,7 @@ class Exchange extends React.Component {
 
         this._createAccountLink = createAccountLink;
         console.log(1111111);
-        console.log(isFrozen);
+        console.log(this.props);
         console.log(1111111);
         let buyForm = isFrozen ? null : (
             <BuySell
@@ -1650,6 +1650,7 @@ class Exchange extends React.Component {
                         : null
                 }
                 checkMarketFee={this._checkMarketFee.bind(this)}
+                test={this.props.router.location.pathname}
             />
         );
         console.log(2222222);
@@ -1740,6 +1741,7 @@ class Exchange extends React.Component {
                         : null
                 }
                 checkMarketFee={this._checkMarketFee.bind(this)}
+                test={this.props.router.location.pathname}
             />
         );
         console.log(333333333);

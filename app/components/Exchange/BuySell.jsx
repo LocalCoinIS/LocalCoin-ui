@@ -24,6 +24,9 @@ import {getDashboardAssets} from "branding";
 class BuySell extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            test: props.test
+        };
     }
 
     static propTypes = {
