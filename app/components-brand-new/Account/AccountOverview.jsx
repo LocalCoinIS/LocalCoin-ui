@@ -997,7 +997,7 @@ class AccountOverview extends React.Component {
 
     render() {
         let {account, hiddenAssets, settings, orders, location} = this.props;
-        let {shownAssets} = this.state;
+        let {shownAssets, alwaysShowAssets} = this.state;
 
         if (!account) {
             return null;
@@ -1013,7 +1013,9 @@ class AccountOverview extends React.Component {
         let account_balances = account.get("balances");
 
         let includedBalancesList = Immutable.List(),
-            hiddenBalancesList = Immutable.List();
+            hiddenBalancesList = Immutable.List(),
+            includedOptionalList = Immutable.List(),
+            hiddenOptionalList = Immutable.List();
         call_orders.forEach(callID => {
             let position = ChainStore.getObject(callID);
             if (position) {
@@ -1046,65 +1048,99 @@ class AccountOverview extends React.Component {
             }
         });
 
-        if (account_balances) {
-            // Filter out balance objects that have 0 balance or are not included in open orders
-            account_balances = account_balances.filter((a, index) => {
-                let balanceObject = ChainStore.getObject(a);
-                if (
-                    balanceObject &&
-                    (!balanceObject.get("balance") && !orders[index])
-                ) {
-                    return false;
-                } else {
+
+
+        if (alwaysShowAssets) {
+            if (account_balances) {
+                // Filter out balance objects that have 0 balance or are not included in open orders
+                account_balances = account_balances.filter((a, index) => {
+                    let balanceObject = ChainStore.getObject(a);
                     if (
-                        this.state.hide0balances &&
-                        balanceObject.get("balance") <= 0
-                    )
+                        balanceObject &&
+                        (!balanceObject.get("balance") && !orders[index])
+                    ) {
                         return false;
+                    } else {
+                        if (
+                            this.state.hide0balances &&
+                            balanceObject.get("balance") <= 0
+                        )
+                            return false;
 
-                    return true;
-                }
-            });
-
-            // Separate balances into hidden and included
-            account_balances.forEach((a, asset_type) => {
-                const asset = ChainStore.getAsset(asset_type);
-
-                let assetName = "";
-                let filter = "";
-
-                if (this.state.filterValue) {
-                    filter = this.state.filterValue
-                        ? String(this.state.filterValue).toLowerCase()
-                        : "";
-                    assetName = asset.get("symbol").toLowerCase();
-                    let {isBitAsset} = utils.replaceName(asset);
-                    if (isBitAsset) {
-                        assetName = "bit" + assetName;
+                        return true;
                     }
-                }
+                });
 
-                if (
-                    hiddenAssets.includes(asset_type) &&
-                    assetName.includes(filter)
-                ) {
-                    hiddenBalancesList = hiddenBalancesList.push(a);
-                } else if (assetName.includes(filter)) {
-                    includedBalancesList = includedBalancesList.push(a);
-                }
-            });
+                // Separate balances into hidden and included
+                account_balances.forEach((a, asset_type) => {
 
-            let included = this._renderBalances(
-                includedBalancesList,
-                !this.state.filterValue ? this.state.alwaysShowAssets : null,
-                true
-            );
-            includedBalances = included;
-            let hidden = this._renderBalances(
-                hiddenBalancesList,
-                !this.state.filterValue ? this.state.alwaysShowAssets : null
-            );
-            hiddenBalances = hidden;
+                    const asset = ChainStore.getAsset(asset_type);
+                    let assetName = "";
+                    let filter = "";
+
+                    if (this.state.filterValue) {
+                        filter = this.state.filterValue
+                            ? String(this.state.filterValue).toLowerCase()
+                            : "";
+                        assetName = asset.get("symbol").toLowerCase();
+                        let {isBitAsset} = utils.replaceName(asset);
+                        if (isBitAsset) {
+                            assetName = "bit" + assetName;
+                        }
+                    }
+
+                    if (
+                        hiddenAssets.includes(asset_type) &&
+                        assetName.includes(filter)
+                    ) {
+                        hiddenBalancesList = hiddenBalancesList.push(a);
+                    } else if (assetName.includes(filter)) {
+                        includedBalancesList = includedBalancesList.push(a);
+                    }
+                });
+
+
+                alwaysShowAssets.forEach((a) => {
+                    const assetOptional = ChainStore.getAsset(a);
+                    if(assetOptional) {
+                        let assetName = "";
+                        let filter = "";
+
+                        if (this.state.filterValue) {
+                            filter = this.state.filterValue
+                                ? String(this.state.filterValue).toLowerCase()
+                                : "";
+                            assetName = assetOptional.get("symbol").toLowerCase();
+                            let {isBitAsset} = utils.replaceName(assetOptional);
+                            if (isBitAsset) {
+                                assetName = "bit" + assetName;
+                            }
+                        }
+
+                        if (
+                            hiddenAssets.includes(a) &&
+                            assetName.includes(filter)
+                        ) {
+                            hiddenOptionalList = hiddenOptionalList.push(a);
+                        } else if (assetName.includes(filter)) {
+                            includedOptionalList = includedOptionalList.push(a);
+                        }
+                    }
+                });
+
+
+                let included = this._renderBalances(
+                    includedBalancesList,
+                    !this.state.filterValue ? this.state.alwaysShowAssets : includedOptionalList,
+                    true
+                );
+                includedBalances = included;
+                let hidden = this._renderBalances(
+                    hiddenBalancesList,
+                    !this.state.filterValue ? this.state.alwaysShowAssets : hiddenOptionalList
+                );
+                hiddenBalances = hidden;
+            }
         }
 
         let portfolioHiddenAssetsBalance = (
