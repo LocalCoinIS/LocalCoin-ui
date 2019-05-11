@@ -69,6 +69,12 @@ class BuySell extends React.Component {
         );
     }
 
+    componentWillReceiveProps(nextProps) {
+        this.setState(
+            test: props.test
+        )
+    }
+
     _addBalance(balance) {
         if (this.props.type === "bid") {
             this.props.totalChange({
