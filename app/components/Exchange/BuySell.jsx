@@ -70,9 +70,9 @@ class BuySell extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState(
-            test: props.test
-        )
+        this.setState({
+            test: nextProps.test
+        })
     }
 
     _addBalance(balance) {
