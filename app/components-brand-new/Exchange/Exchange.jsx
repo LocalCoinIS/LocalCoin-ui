@@ -1650,7 +1650,9 @@ class Exchange extends React.Component {
                 checkMarketFee={this._checkMarketFee.bind(this)}
             />
         );
-        console.log(2222222);
+        console.log(1111111);
+        console.log(this.props.router.location.pathname);
+        console.log(1111111);
         let sellForm = isFrozen ? null : (
             <BuySell
                 onShowModal={this.onShowModal}
@@ -1738,6 +1740,7 @@ class Exchange extends React.Component {
                         : null
                 }
                 checkMarketFee={this._checkMarketFee.bind(this)}
+                test={this.props.router.location.pathname}
             />
         );
         console.log(333333333);
@@ -1769,6 +1772,7 @@ class Exchange extends React.Component {
                     buySellTop ? 4 : 1
                 }`}
                 currentAccount={this.props.currentAccount.get("id")}
+                test={this.props.router.location.pathname}
             />
         );
 
