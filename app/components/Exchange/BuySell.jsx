@@ -149,6 +149,7 @@ class BuySell extends React.Component {
         } = this.props;
         console.log("-----");
         console.log(quote.get("symbol"));
+        console.log(this.state);
         console.log("-----");
         let amount, price, total;
         let caret = this.props.isOpen ? (
