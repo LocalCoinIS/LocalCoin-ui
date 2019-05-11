@@ -144,6 +144,9 @@ class BuySell extends React.Component {
             hasFeeBalance,
             backedCoin
         } = this.props;
+        console.log("-----");
+        console.log(quote.get("symbol"));
+        console.log("-----");
         let amount, price, total;
         let caret = this.props.isOpen ? (
             <span>&#9660;</span>
@@ -420,9 +423,7 @@ class BuySell extends React.Component {
             base.get("symbol") === "LLC" || quote.get("symbol") === "LLC";
 
         let depositBtns = this._renderDepositBtns();
-        console.log("-----");
-        console.log(quote.get("symbol"));
-        console.log("-----");
+
         return (
             <div className={this.props.className}>
                 <div className="exchange-bordered buy-sell-container">
