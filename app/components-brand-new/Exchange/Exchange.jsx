@@ -42,7 +42,7 @@ import LLCGatewayData from "../../components/DepositWithdraw/llcgateway/LLCGatew
 
 class Exchange extends React.Component {
 
-    static MODE_BRIDGE = "1";
+    static MODE_BRIDGE = "0";
 
     static propTypes = {
         marketCallOrders: PropTypes.object.isRequired,

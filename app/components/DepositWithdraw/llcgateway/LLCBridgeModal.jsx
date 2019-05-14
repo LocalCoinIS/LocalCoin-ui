@@ -626,7 +626,7 @@ class LLCBridgeModal extends React.Component {
             this.state.activeTab === "deposit_tab" ? (
                 <div className="grid-block vertical">
                     <Instructions
-                        depositAddress={this.props.depositAddress}
+                        depositAddress={ this.state.activeTab === "deposit_tab" ? this.props.depositAddress : this.props.buyLLCAddress}
                         account={this.props.account}
                         type={this.props.type}
                         currency={this.props.currency}
