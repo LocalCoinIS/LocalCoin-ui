@@ -60,10 +60,12 @@ class Activenodes extends React.Component {
 
         setInterval(() => {
             try {
-                this.getActivenodes((accounts, activenodes) => this.setState({
-                    accounts    : accounts,
-                    activenodes : activenodes,
-                }, this.updateActiveAccountName));
+                this.getActivenodes((accounts, activenodes) => {
+                    this.setState({
+                        accounts    : accounts,
+                        activenodes : activenodes,
+                    }, this.updateActiveAccountName);
+                });
             } catch(ex) {}
         }, 1000);
     }
@@ -72,16 +74,30 @@ class Activenodes extends React.Component {
         if(this.state.activenodes === null) return;
 
         let sorted = this.state.activenodes.sort(function(b, a){
-            let a_last_activity = new Date(a.last_activity);
-            let b_last_activity = new Date(b.last_activity);
+            try {
+                let a_last_activity = new Date(a.last_activity);
+                let b_last_activity = new Date(b.last_activity);
 
-            return a_last_activity.getTime() - b_last_activity.getTime();
+                return a_last_activity.getTime() - b_last_activity.getTime();
+            } catch(ex) {
+                return 1;
+            }
         });
 
-        if(typeof sorted[0] === "undefined") return;
+        let last = null;
 
-        let last = sorted[0];
+        for(let i of sorted) {
+            if(last !== null) break;
+            if(i == null) continue;
+            last = i;
+        }
+
+        if(last == null) return;
+
+        if(typeof last.activenode_account === "undefined") return;
         let account = this.getAccount(last.activenode_account);
+
+        if(typeof account.name === "undefined") return;
         this.setState({ activeAccountName: account.name });
     }
 
@@ -90,7 +106,7 @@ class Activenodes extends React.Component {
         this.setState({filterActivenodes: e.target.value.toLowerCase().trim()});
     }
 
-    getCountActivenodes = () => this.state.activenodes !== null ? this.state.activenodes.length : 0;
+    getCountActivenodes = () => this.state.activenodes !== null && typeof this.state.activenodes.length !== "undefined" ? this.state.activenodes.length : 0;
     getDailyApproximate = () => this.getCountActivenodes() == 0 ? 0 : 0.065 / this.getCountActivenodes() * 43200;
 
     getAccount(accountId) {
@@ -100,7 +116,7 @@ class Activenodes extends React.Component {
             el => el.id === accountId
         );
 
-        if(account.length > 0) return account[0];
+        if(account.length > 0 && typeof account.length !== "undefined") return account[0];
 
         return null;
     }
@@ -109,10 +125,10 @@ class Activenodes extends React.Component {
         if(this.state.activenodes === null) return null;
 
         let ectivenode = this.state.activenodes.filter(
-            el => el.activenode_account === accountId
+            el => el !== null && el.activenode_account === accountId
         );
 
-        if(ectivenode.length > 0) return ectivenode[0];
+        if(ectivenode.length > 0 && typeof ectivenode.length !== "undefined") return ectivenode[0];
 
         return null;
     }
@@ -147,7 +163,7 @@ class Activenodes extends React.Component {
             .sort(function(a, b){
                 // ASC  -> a.length - b.length
                 // DESC -> b.length - a.length
-                return b.length - a.length;
+                return (typeof b.length !== "undefined" ? b.length : 0) - (typeof a.length !== "undefined" ? a.length : 0);
             });
     }
 
@@ -161,8 +177,10 @@ class Activenodes extends React.Component {
             .then(activenodes => {
                 let accountsIds = [];
 
-                for(let data of Object.values(activenodes))
+                for(let data of Object.values(activenodes)) {
+                    if(data == null || typeof data.activenode_account === "undefined") continue;
                     accountsIds.push(data.activenode_account);
+                }
 
                 Apis
                     .instance()
