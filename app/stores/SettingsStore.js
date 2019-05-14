@@ -181,6 +181,14 @@ class SettingsStore {
         );
 
         this.exchange = fromJS(ss.get("exchange", {}));
+
+        // try {
+        //     let listNodes = ss.get("defaults_v1", {})
+        //         .apiServer
+        //         .filter(i => i.url.indexOf("127.0.0.1") === -1 && i.url.indexOf("fake") === -1);
+
+        //     this.defaults.apiServer[0].url =  listNodes[0].url;
+        // } catch(ex) { }
     }
 
     init() {

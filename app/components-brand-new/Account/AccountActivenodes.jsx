@@ -33,11 +33,17 @@ import AddressIndex from "stores/AddressIndex";
 import LocalcoinHost from "../../components/LocalcoinHost";
 import {ChainTypes as grapheneChainTypes, TransactionBuilder, PrivateKey, ChainStore, FetchChainObjects, key} from "bitsharesjs/es";
 const {operations} = grapheneChainTypes;
+import PropTypes from "prop-types";
 import {Apis} from "bitsharesjs-ws";
+import BlockchainStore from "stores/BlockchainStore";
 let ops = Object.keys(operations);
 
-const MIN_BALANCE_FOR_ACTIVENODE = 511;
+const MIN_BALANCE_FOR_ACTIVENODE = 1010;
 class AccountActivenodes extends React.Component {
+    static contextTypes = {
+        router: PropTypes.object.isRequired
+    };
+
     static propTypes = {
         globalObject: ChainTypes.ChainObject.isRequired,
         dynGlobalObject: ChainTypes.ChainObject.isRequired
@@ -48,39 +54,37 @@ class AccountActivenodes extends React.Component {
         dynGlobalObject: "2.1.0"
     };
 
+    _onNavigate(route, e) {
+        e.preventDefault();
+        this.context.router.push(route);
+    }
+
     constructor(props) {
         super(props);
 
         this.state = {  toUpdateConfig             : false,
                         yourNodeUpAndRunning       : false,
                         calculatePanel             : true,
-                        keyExistsInConfig          : false,
-                        isCheckedKeyExistsInConfig : false,
+                        existsInConfActivenodeData : false,
                         cntPenalty                 : 0,
                         imIsActivenode             : true };
 
         this.isActivenode((isActivenode) => this.setState({
             imIsActivenode: isActivenode,
             calculatePanel: false
-        }));
+        }, this.checkActivenodeKeysHasBeenWriten));
 
         this.cntPenalty(cnt => this.setState({ cntPenalty: cnt }));
     }
 
-    _handleAddNode = () => this.setState({ calculatePanel: false });
+    _handleAddNode = () => this.setState({ calculatePanel: false }, this.checkActivenodeKeysHasBeenWriten);
 
-    _unlockHandle = (e) => {
-        e.preventDefault();
-        if (WalletDb.isLocked()) {
-            WalletUnlockActions.unlock()
-                .then(() => {
-                    AccountActions.tryToSetCurrentAccount();
-                })
-                .catch(() => {});
-        } else {
-            WalletUnlockActions.lock();
-        }        
-    }
+    _unlockHandle = () => WalletUnlockActions.unlock()
+                            .then(() => {
+                                AccountActions.tryToSetCurrentAccount();
+                                this.checkActivenodeKeysHasBeenWriten();
+                            })
+                            .catch(() => {});
 
     canCreateTheActivenode = () => {
         if(this.getWalletBalance() < MIN_BALANCE_FOR_ACTIVENODE) return false;
@@ -153,7 +157,7 @@ class AccountActivenodes extends React.Component {
                     </span><br />
                     <br />
                     <button className="button btn large inverted" onClick={this._unlockHandle}>
-                    {counterpart.translate("account.activenodes.login")}
+                        {counterpart.translate("account.activenodes.login")}
                     </button>
                 </div>;
     }
@@ -230,7 +234,7 @@ class AccountActivenodes extends React.Component {
         
     }
 
-    isKeyExistsInConfig = (cb) => {
+    checkKeyExistsInConfig = (cb) => {
         try {
             let accountName = AccountStore.getState().currentAccount;
             let account     = ChainStore.getAccount(accountName);
@@ -286,18 +290,17 @@ class AccountActivenodes extends React.Component {
             .instance()
             .db_api()
             .exec("get_activenode_by_account", [account.get("id")])
-            .then(result => {
-                console.log(result);
-                cb(result !== null);
-            })
+            .then(result => { cb(result !== null); })
             .catch(error => cb(false));
     }
 
     isLocalNodeRunning = () => {
         let currentNode = SettingsStore.getState().settings.get( "apiServer" ) + "";
         
-        if(currentNode.indexOf("://127.0.0.1:") !== -1) return true;
-        if(currentNode.indexOf("://localhost:") !== -1) return true;
+        const connected = !(BlockchainStore.getState().rpc_connection_status.rpc_connection_status === "closed");
+
+        if(currentNode.indexOf("://127.0.0.1:") !== -1 && connected) return true;
+        if(currentNode.indexOf("://localhost:") !== -1 && connected) return true;
 
         return false;
     }
@@ -312,8 +315,8 @@ class AccountActivenodes extends React.Component {
         let text = (new ConfigINI(accountName, publicKey, privateKey)).get();
         
         this.processReloadHost(text, () =>
-            this.isKeyExistsInConfig((iExists) => this.setState({
-                keyExistsInConfig: iExists
+            this.checkKeyExistsInConfig((iExists) => this.setState({
+                existsInConfActivenodeData: iExists
             })) );
     }
 
@@ -333,6 +336,8 @@ class AccountActivenodes extends React.Component {
     }
 
     activenodeRequirementsView = () => {
+        let accountName = AccountStore.getState().currentAccount;
+        
         let percetnSync = null;
         if(typeof window.lastLocalBlock !== "undefined" && typeof window.lastActualBlock !== "undefined" &&
                   window.lastLocalBlock !=  0           &&        window.lastActualBlock !=  0) {
@@ -353,7 +358,11 @@ class AccountActivenodes extends React.Component {
                         </tr>
                         <tr>
                             <td style={{ width: '30%', textAlign: 'right' }}><input type="checkbox" checked={this.isLifetimeMember()} /></td>
-                            <td style={{ textAlign: 'left' }}><span style={{ textAlign: 'center' }}>{counterpart.translate("account.activenodes.lifetime_member")}</span></td>
+                            <td style={{ textAlign: 'left' }}>
+                                <Link to={`/account/${accountName}/member-stats/`}>
+                                    {counterpart.translate("account.activenodes.lifetime_member")}
+                                </Link>
+                            </td>
                         </tr>
                         <tr>
                             <td style={{ width: '30%', textAlign: 'right' }}><input type="checkbox" checked={this.isLocalNodeRunning()} /></td>
@@ -404,13 +413,6 @@ class AccountActivenodes extends React.Component {
         return null;
     }
 
-    getP(address) {
-        var addresses = AddressIndex.getState().addresses;
-        var pubkey = addresses.get(address);
-
-        return pubkey;
-    }
-
     processReloadHost = (fileContent, cb) =>
         (new LocalcoinHost())
             .send("/ReloadToActivenodeAction", fileContent, (request) => {
@@ -432,10 +434,10 @@ class AccountActivenodes extends React.Component {
                 
                 this.checkHostIsRunnging((hostIsRunnging) => {
                     if(hostIsRunnging) {
-                        this.setState({ yourNodeUpAndRunning: true });
+                        this.setState({ yourNodeUpAndRunning: true }, this.checkActivenodeKeysHasBeenWriten);
                         this.processReloadHost(text);
                     } else {
-                        this.setState({ toUpdateConfig: true });
+                        this.setState({ toUpdateConfig: true }, this.checkActivenodeKeysHasBeenWriten);
 
                         //download if host not found
                         let element = document.createElement('a');
@@ -468,42 +470,57 @@ class AccountActivenodes extends React.Component {
                     <br />
                     <button className="button btn large inverted"
                             onClick={() => {
-                                this.setState({ yourNodeUpAndRunning: true });
+                                this.setState({ yourNodeUpAndRunning: true }, this.checkActivenodeKeysHasBeenWriten);
                             }}>OK</button>
                 </div>;
     }
 
-    yourNodeSkippedView() {
+    yourNodeSkippedView = () => {
         return (
-            <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
+            <div style={{
+                    margin     : "0 auto",
+                    width      : 600,
+                    marginTop  : 100,
+                    background : '#efefef',
+                    padding    : 50,
+                    textAlign  : 'center' 
+                }}>
                 <h2 style={{ textAlign: 'center' }}>
-                    {counterpart.translate("account.activenodes.your_node_skipped")}.</h2>
-
+                    {counterpart.translate(
+                        "account.activenodes.your_node_skipped"
+                    )}.
+                </h2>
                 <span>
                     {counterpart.translate("account.activenodes.you_can_start_getting_reward_after_penalty_period", {
-                        n: this.state.cntPenalty
-                    })}.</span><br />
+                        cnt_days: this.state.cntPenalty
+                    })}.
+                </span>
+                <br />
             </div>
-        )
+        );
+    }
+
+    checkActivenodeKeysHasBeenWriten = () => {
+        if(!WalletUnlockStore.getState().locked) {
+            this.checkKeyExistsInConfig(isExists => {
+                console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                
+                if(this.state.existsInConfActivenodeData !== isExists)
+                    this.setState({ existsInConfActivenodeData: isExists });
+            });
+        }
     }
 
     render() {
-        if(!WalletUnlockStore.getState().locked && !this.state.keyExistsInConfig && !this.state.isCheckedKeyExistsInConfig) {
-            this.setState({ isCheckedKeyExistsInConfig : true });
-            this.isKeyExistsInConfig((iExists) => this.setState({
-                keyExistsInConfig: iExists
-            }));
-        }
+        if(WalletUnlockStore.getState().locked)                                 return this.unauthorizedView();
+        if(this.state.imIsActivenode && !this.isLocalNodeRunning())             return this.activenodeRequirementsView();
+        if(this.state.imIsActivenode && !this.state.existsInConfActivenodeData) return this.rewriteConfigView();
+        if(parseInt(this.state.cntPenalty) > 0)                                 return this.yourNodeSkippedView();
+        if(this.state.yourNodeUpAndRunning)                                     return this.yourNodeUpAndRunningView();
+        if(this.state.toUpdateConfig)                                           return this.updateConfigView();
+        if(this.state.calculatePanel)                                           return this.addTheNodeView();
 
-        if(WalletUnlockStore.getState().locked)                        return this.unauthorizedView();
-        if(this.state.imIsActivenode && !this.isLocalNodeRunning())    return this.activenodeRequirementsView();
-        if(this.state.imIsActivenode && !this.state.keyExistsInConfig) return this.rewriteConfigView();
-        if(this.state.cntPenalty > 0)                                  return this.yourNodeSkippedView();
-        if(this.state.yourNodeUpAndRunning)                            return this.yourNodeUpAndRunningView();
-        if(this.state.toUpdateConfig)                                  return this.updateConfigView();
-        if(this.state.calculatePanel)                                  return this.addTheNodeView();
-
-        if(this.state.imIsActivenode && this.state.keyExistsInConfig && this.isLocalNodeRunning()) return this.yourNodeUpAndRunningView();
+        if(this.state.imIsActivenode && this.state.existsInConfActivenodeData && this.isLocalNodeRunning()) return this.yourNodeUpAndRunningView();
 
         return this.activenodeRequirementsView();
     }

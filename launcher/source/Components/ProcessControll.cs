@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace LocalcoinHost.Components
 {
     public abstract class ProcessControll {
-        private Process process = null;
+        public Process process = null;
         
         public virtual string Arguments        { get { return null; } }
         public virtual string WorkingDirectory { get { return null; } }
@@ -19,7 +19,7 @@ namespace LocalcoinHost.Components
             get => Directory.GetCurrentDirectory() + "/" + this.GetType().Name + ".running";
         }
         
-        private void WriteNameFile(string name) {
+        protected void WriteNameFile(string name) {
             this.ClearNameFile();
             using (StreamWriter writer = System.IO.File.CreateText(RunningAppFileName))
                 writer.Write(name);

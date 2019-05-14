@@ -20,14 +20,14 @@ namespace LocalcoinHost {
         public void ConfigureServices(IServiceCollection services) => services.AddCors();
 
         public Startup() {
-            if (!this.CheckFiles()) {
+            /*if (!this.CheckFiles()) {
                 Console.ForegroundColor = ConsoleColor.Red;                
                 Console.Error.WriteLine("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 Console.Error.WriteLine("           Fix errors and try again".ToUpper());
                 Console.Error.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n");
                 Console.ResetColor();
                 return;
-            }
+            }*/
 
             this.OnStart();
             AppDomain.CurrentDomain.ProcessExit += OnExit;
@@ -94,6 +94,21 @@ namespace LocalcoinHost {
             app.UseCors(builder => builder.AllowAnyOrigin());
             app.Run(async (context) => {
                 switch (context.Request.Path) {
+                    case "/test":
+                        this.node.process.BeginOutputReadLine();
+                        this.node.process.BeginErrorReadLine();
+
+
+                        char[] buffer;
+                        this.node.process.StandardOutput.Read(buffer, 0, 10);
+                        context.Response.WriteAsync(buffer);
+                        Console.WriteLine(buffer);
+
+                        //context.Response.WriteAsync(node.output.ToString());
+                        //context.Response.WriteAsync(node.lineCount.ToString());
+                        this.node.process.CancelOutputRead();
+                        this.node.process.CancelErrorRead();
+                        break;
                     case ReloadToActivenodeAction.ACTION_NAME:
                         using (StreamReader stream = new StreamReader(context.Request.Body))
                             new ReloadToActivenodeAction(this.node).Reload(stream.ReadToEnd());

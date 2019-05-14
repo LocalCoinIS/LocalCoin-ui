@@ -9,6 +9,26 @@ import {Apis} from "bitsharesjs-ws";
 import counterpart from "counterpart";
 
 class InitError extends React.Component {
+    constructor(props) {
+        super(props);
+
+        //скорее всего ошибка из-за локальной ноды, переключимся на внешнюю и пробуем заново
+        if(this.props.apiServer.indexOf("127.0.0.1") !== -1) {
+            let listNodes = SettingsStore.getState().defaults.apiServer
+                            .filter(
+                                i => i.url.indexOf("127.0.0.1") === -1
+                                        &&
+                                        i.url.indexOf("fake") === -1
+                            );
+
+            SettingsActions.changeSetting({
+                setting: "apiServer",
+                value: listNodes[0].url
+            });
+            Apis.reset(listNodes[0].url, true);
+        }
+    }
+
     componentWillReceiveProps(nextProps) {
         if (
             nextProps.rpc_connection_status === "open" &&

@@ -48,6 +48,9 @@ class App extends React.Component {
     constructor(props) {
         super();
 
+        // if(this.isLocalNodeRunning())
+        //     this.connectToAnyNotLocalNode();
+
         let syncFail =
             ChainStore.subError &&
             ChainStore.subError.message ===
@@ -70,6 +73,24 @@ class App extends React.Component {
         this._chainStoreSub = this._chainStoreSub.bind(this);
         this._syncStatus = this._syncStatus.bind(this);
         this._getWindowHeight = this._getWindowHeight.bind(this);
+    }
+
+    connectToAnyNotLocalNode() {
+        let nodes = SettingsStore.getState().defaults.apiServer;
+        for(let node of nodes) {
+            if(typeof node.url === "undefined") continue;
+
+             if((node.url + "").indexOf("//127.0.0.1:") !== -1 ||
+               (node.url + "").indexOf("//localhost:") !== -1) continue;
+
+             try {
+                let socket = new WebSocket(node.url);
+                socket.onopen = () => {
+                    if(this.isLocalNodeRunning())
+                        SettingsActions.changeSetting({ setting: "apiServer", value: node.url });
+                };
+            } catch(ex) {}
+        }
     }
 
     componentWillUnmount() {
