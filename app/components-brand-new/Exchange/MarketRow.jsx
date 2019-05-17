@@ -8,6 +8,7 @@ import MarketsActions from "actions/MarketsActions";
 import SettingsActions from "actions/SettingsActions";
 import PropTypes from "prop-types";
 import {getSmartCoinMarkets} from "branding";
+import MarketsStore from "stores/MarketsStore";
 
 class MarketRow extends React.Component {
     static defaultProps = {
@@ -142,10 +143,38 @@ class MarketRow extends React.Component {
                         );
 
                     case "change":
-                        let change = utils.format_number(
-                            stats && stats.change ? stats.change : 0,
-                            2
-                        );
+                        let quoteSymbol = this.props.quote.get("symbol");
+                        let baseSymbol = this.props.base.get("symbol");
+                        let pairsVariants = [
+                            (quoteSymbol + "_" + baseSymbol ).toUpperCase().trim(),
+                            (baseSymbol  + "_" + quoteSymbol).toUpperCase().trim(),
+                        ];
+
+                        let marketID = "";
+                        let change = 0;
+
+                        if(typeof this.context.router.params["marketID"] !== "undefined") {
+                            if(pairsVariants.indexOf(
+                                this.context.router.params.marketID.toUpperCase().trim()
+                            ) !== -1)
+                                marketID = this.context.router.params.marketID;
+                        }
+
+                        if(marketID !== "") {
+                            let currentMarketByLeftOrder = MarketsStore
+                                .getState()
+                                .allMarketStats
+                                .get( marketID );
+
+                            const dayChange = currentMarketByLeftOrder ? currentMarketByLeftOrder.change : 0;
+                            const dayChangeWithSign = dayChange > 0 ? "+" + dayChange : dayChange;
+                            change = utils.format_number( dayChangeWithSign, 2 );
+                        } else {
+                            change = utils.format_number(
+                                stats && stats.change ? stats.change : 0, 2
+                            );
+                        }
+
                         let changeClass =
                             change === "0.00"
                                 ? ""
