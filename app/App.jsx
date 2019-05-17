@@ -48,6 +48,9 @@ class App extends React.Component {
     constructor(props) {
         super();
 
+        if(this.isLocalNodeRunning())
+            this.connectToAnyNotLocalNode(true);
+
         let syncFail =
             ChainStore.subError &&
             ChainStore.subError.message ===
@@ -70,6 +73,64 @@ class App extends React.Component {
         this._chainStoreSub = this._chainStoreSub.bind(this);
         this._syncStatus = this._syncStatus.bind(this);
         this._getWindowHeight = this._getWindowHeight.bind(this);
+    }
+
+    isDisconnect = () => BlockchainStore
+                            .getState()
+                            .rpc_connection_status === "closed";
+
+    connectToAnyNotLocalNode(onlyIfIsLocalNodeRunning, onlyIfIsDisconnect) {
+        if(typeof window.tryReconnectToExtNode !== "undefined" && window.tryReconnectToExtNode === true) return;
+
+        onlyIfIsLocalNodeRunning = typeof onlyIfIsLocalNodeRunning === "undefined" ? false : onlyIfIsLocalNodeRunning;
+        onlyIfIsDisconnect       = typeof onlyIfIsDisconnect       === "undefined" ? false : onlyIfIsDisconnect;
+
+        if     (onlyIfIsLocalNodeRunning && this.isLocalNodeRunning()) { /* OK */ }
+        else if(onlyIfIsDisconnect       && this.isDisconnect())       { /* OK */ }
+        else                                                           {  return; }
+
+        //стандартные ноды
+        let nodes = SettingsStore.getState().defaults.apiServer;        
+        for(let node of nodes) {
+            if(node == null || typeof node.url === "undefined" || node.url == "") continue;
+            //на этом этапе нельзя коннектиться к локальной ноде
+            if((node.url + "").indexOf("//127.0.0.1:") !== -1) continue;
+            if((node.url + "").indexOf("//localhost:") !== -1) continue;
+
+            //проверяем ноду, если резолвится, коннектимся к ней
+            try {
+                let socket = new WebSocket(node.url);
+                socket.onopen = () => {
+                    window.tryReconnectToExtNode = true;
+                    
+                    socket.close();
+                    if( (onlyIfIsLocalNodeRunning && this.isLocalNodeRunning()) ||
+                        (onlyIfIsDisconnect       && this.isDisconnect()      ) ) {
+
+                            SettingsActions.changeSetting({
+                                setting : "apiServer",
+                                value   : node.url
+                            });
+
+                            setTimeout(
+                                function() {
+                                    willTransitionTo(
+                                        this.props.router,
+                                        this.props.router.replace,
+                                        () => {},
+                                        false
+                                    );
+
+                                    setTimeout(() => {
+                                        window.tryReconnectToExtNode = false;
+                                    }, 5000);
+                                }.bind(this),
+                                50
+                            );
+                    }
+                };
+            } catch(ex) {}
+        }
     }
 
     componentWillUnmount() {
@@ -149,18 +210,19 @@ class App extends React.Component {
         if(typeof window.electron !== "undefined")
             this.checkUpdate();
 
-        setTimeout(this.tryConnectToLocalNode,  3000);
+        setTimeout (this.tryConnectToLocalNode,  3000);
         setInterval(this.tryConnectToLocalNode, 10000);
+        setInterval(() => this.connectToAnyNotLocalNode(false, true), 5000);
     }
 
     //проверим или нода синхронизирована и переключаем
     activateNode(url) {
         //уберем флаг коннекта к локальной ноде
         let removeConnectFlat = () => {
-            if(typeof window.tryReconnect === "undefined" ) return;
-            if(window.tryReconnect === false ) return;
+            if(typeof window.tryReconnectToLocalNode === "undefined" ) return;
+            if(window.tryReconnectToLocalNode === false ) return;
 
-            setTimeout( () => { window.tryReconnect = false; }, 10000 )
+            setTimeout( () => { window.tryReconnectToLocalNode = false; }, 10000 )
         };
 
         //переключаемся на ноду
@@ -203,7 +265,7 @@ class App extends React.Component {
     tryConnectToLocalNode = () => {
         //если локальная нода не запущена и не выполняется коннект к ней
         if(this.isLocalNodeRunning()) return;
-        if(typeof window.tryReconnect !== "undefined" && window.tryReconnect === true) return;
+        if(typeof window.tryReconnectToLocalNode !== "undefined" && window.tryReconnectToLocalNode === true) return;
 
         //пройдемся по доступным нодам, найдем локальные, пробуем коннектиться
         let nodes = SettingsStore.getState().defaults.apiServer;
@@ -221,11 +283,12 @@ class App extends React.Component {
                 socket.onopen = () => {
                     //если локальная нода не запущена и не выполняется коннект к ней
                     if(this.isLocalNodeRunning()) return;
-                    if(typeof window.tryReconnect !== "undefined" && window.tryReconnect === true) return;
+                    if(typeof window.tryReconnectToLocalNode !== "undefined" && window.tryReconnectToLocalNode === true) return;
 
                     //скажем что выполняется коннект к локальной ноде
-                    window.tryReconnect = true;
-                    this.activateNode(node.url);
+                    window.tryReconnectToLocalNode = true;
+                    socket.close();
+                    this.activateNode(node.url);                    
                 };
             } catch(ex) {}
         }
