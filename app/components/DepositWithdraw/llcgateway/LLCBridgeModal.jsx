@@ -367,7 +367,7 @@ class LLCBridgeModal extends React.Component {
     onWdClick() {
         let self = this;
         let next = function() {
-            self.props.bullet.setState({modalActive: false});
+            self.setState({modalActive: false});
             self.asset = ChainStore.getAsset(self.props.currency.asset);
             const sendAmount = new Asset({
                 real: self.wdAmount,
