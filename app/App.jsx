@@ -90,7 +90,7 @@ class App extends React.Component {
         else                                                           {  return; }
 
         //стандартные ноды
-        let nodes = SettingsStore.getState().defaults.apiServer;        
+        let nodes = SettingsStore.getState().defaults.apiServer;
         for(let node of nodes) {
             if(node == null || typeof node.url === "undefined" || node.url == "") continue;
             //на этом этапе нельзя коннектиться к локальной ноде
@@ -101,35 +101,70 @@ class App extends React.Component {
             try {
                 let socket = new WebSocket(node.url);
                 socket.onopen = () => {
-                    window.tryReconnectToExtNode = true;
-                    
-                    socket.close();
-                    if( (onlyIfIsLocalNodeRunning && this.isLocalNodeRunning()) ||
-                        (onlyIfIsDisconnect       && this.isDisconnect()      ) ) {
+                    try {
+                        window.tryReconnectToExtNode = true;
 
-                            SettingsActions.changeSetting({
-                                setting : "apiServer",
-                                value   : node.url
-                            });
+                        if(typeof window.tryReconnectToExtNodeTimeout === "undefined" && window.tryReconnectToExtNodeTimeout !== null)
+                            clearTimeout(window.tryReconnectToExtNodeTimeout);
 
-                            setTimeout(
-                                function() {
-                                    willTransitionTo(
-                                        this.props.router,
-                                        this.props.router.replace,
-                                        () => {},
-                                        false
-                                    );
+                        window.tryReconnectToExtNodeTimeout = setTimeout(() => {
+                            window.tryReconnectToExtNode = false;
+                            clearTimeout(window.tryReconnectToExtNodeTimeout);
+                            window.tryReconnectToExtNodeTimeout = null;
 
-                                    setTimeout(() => {
-                                        window.tryReconnectToExtNode = false;
-                                    }, 5000);
-                                }.bind(this),
-                                50
-                            );
+                            // setTimeout(() => {
+                            //     this.checkPageAfterReconnect();
+                            // }, 3000);
+                        }, 30000);
+                        
+                        socket.close();
+                        if( (onlyIfIsLocalNodeRunning && this.isLocalNodeRunning()) ||
+                            (onlyIfIsDisconnect       && this.isDisconnect()      ) ) {
+
+                                SettingsActions.changeSetting({
+                                    setting : "apiServer",
+                                    value   : node.url
+                                });
+
+                                setTimeout(
+                                    function() {
+                                        willTransitionTo(
+                                            this.props.router,
+                                            this.props.router.replace,
+                                            () => {},
+                                            false
+                                        );
+
+                                        setTimeout(() => {
+                                            window.tryReconnectToExtNode = false;
+                                            clearTimeout(window.tryReconnectToExtNodeTimeout);
+                                            window.tryReconnectToExtNodeTimeout = null;
+                                        }, 5000);
+
+                                        this.checkPageAfterReconnect();
+                                    }.bind(this),
+                                    50
+                                );
+                        }
+                    } catch(ex) {
+                        window.tryReconnectToExtNode = false;
+                        clearTimeout(window.tryReconnectToExtNodeTimeout);
+                        window.tryReconnectToExtNodeTimeout = null;
+
+                        // setTimeout(() => {
+                        //     this.checkPageAfterReconnect();
+                        // }, 3000);
                     }
                 };
-            } catch(ex) {}
+            } catch(ex) {
+                window.tryReconnectToExtNode = false;
+                clearTimeout(window.tryReconnectToExtNodeTimeout);
+                window.tryReconnectToExtNodeTimeout = null;
+
+                // setTimeout(() => {
+                //     this.checkPageAfterReconnect();
+                // }, 3000);
+            }
         }
     }
 
@@ -215,6 +250,40 @@ class App extends React.Component {
         setInterval(() => this.connectToAnyNotLocalNode(false, true), 5000);
     }
 
+    /**
+     * если страница умирает и не возвращается в нормальное состояние 5 сек, перезагружаем ее
+     */
+    checkPageAfterReconnect() {
+        let checker = () => {
+            if(typeof window.pageIsDeadCNT === "undefined")
+                window.pageIsDeadCNT = 0;
+
+            if(document.getElementById("content") === null || document.getElementById("content").innerHTML == "") {
+                window.pageIsDeadCNT++;
+                console.log("window.pageIsDeadCNT++");
+                
+            } else {
+                window.pageIsDeadCNT = 0;
+                console.log("window.pageIsDeadCNT = 0");
+            }
+
+            if(window.pageIsDeadCNT > 5) {
+                console.log("window.pageIsDeadCNT > 5 && location.reload();");
+                location.reload();
+                clearInterval(window.pageIsDeadChecker);
+                window.pageIsDeadChecker = null;
+            }
+        };
+
+        if(typeof window.pageIsDeadChecker !== "undefined" && window.pageIsDeadChecker !== null) {
+            clearInterval(window.pageIsDeadChecker);
+            window.pageIsDeadChecker = null;
+        }
+
+        window.pageIsDeadChecker = setInterval(checker, 1000);
+        checker();
+    }
+
     //проверим или нода синхронизирована и переключаем
     activateNode(url) {
         //уберем флаг коннекта к локальной ноде
@@ -281,14 +350,16 @@ class App extends React.Component {
             try {
                 let socket = new WebSocket(node.url);
                 socket.onopen = () => {
-                    //если локальная нода не запущена и не выполняется коннект к ней
-                    if(this.isLocalNodeRunning()) return;
-                    if(typeof window.tryReconnectToLocalNode !== "undefined" && window.tryReconnectToLocalNode === true) return;
+                    try {
+                        //если локальная нода не запущена и не выполняется коннект к ней
+                        if(this.isLocalNodeRunning()) return;
+                        if(typeof window.tryReconnectToLocalNode !== "undefined" && window.tryReconnectToLocalNode === true) return;
 
-                    //скажем что выполняется коннект к локальной ноде
-                    window.tryReconnectToLocalNode = true;
-                    socket.close();
-                    this.activateNode(node.url);                    
+                        //скажем что выполняется коннект к локальной ноде
+                        window.tryReconnectToLocalNode = true;
+                        socket.close();
+                        this.activateNode(node.url);
+                    } catch(ex) {}
                 };
             } catch(ex) {}
         }
