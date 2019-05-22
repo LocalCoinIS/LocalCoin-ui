@@ -11,22 +11,38 @@ import AssetActions from "actions/AssetActions";
 import {ChainValidation} from "bitsharesjs/es";
 import counterpart from "counterpart";
 import onClickOutside from "react-onclickoutside";
+import AssetStore from "stores/AssetStore";
 
 let lastLookup = new Date();
 
 class MarketPicker extends React.Component {
+    _searchAssetsUpdate = null;
     constructor() {
         super();
 
         this.state = {
-            marketsList: "",
-            issuersList: "",
-            lookupQuote: null,
-            filterByIssuerName: null
+            marketsList        : "",
+            issuersList        : "",
+            lookupQuote        : null,
+            filterByIssuerName : null,
+            searchAssets       : null
         };
 
         this.getAssetList = debounce(AssetActions.getAssetList.defer, 150);
         this.handleClickOutside = this.handleClickOutside.bind(this);
+
+        this._searchAssetsUpdate = setInterval(() => {
+            if(this._searchAssetsUpdate === null) return;
+
+            let searchAssets = AssetStore.getState().assets;
+            if(searchAssets.size) {
+                // clearInterval(this._searchAssetsUpdate);
+                // this._searchAssetsUpdate = null;
+                this.setState({
+                    searchAssets: searchAssets
+                });
+            }
+        }, 1000);
     }
 
     handleClickOutside(e) {
@@ -96,7 +112,8 @@ class MarketPicker extends React.Component {
     }
 
     render() {
-        let {searchAssets, assetsLoading, marketPickerAsset} = this.props;
+        let {marketPickerAsset} = this.props;
+        let searchAssets = this.state.searchAssets;
 
         let {
             lookupQuote,
@@ -114,7 +131,7 @@ class MarketPicker extends React.Component {
         let issuersList = this.state.issuersList;
         let assetCount = 0;
 
-        if (searchAssets.size && !!inputValue && inputValue.length > 2) {
+        if (searchAssets !== null && searchAssets.size && !!inputValue && inputValue.length > 2) {
             searchAssets
                 .filter(a => {
                     try {
@@ -379,11 +396,7 @@ class MarketPicker extends React.Component {
                         total_assets={allMarkets.length}
                     />
                 </section>
-                {assetsLoading && allMarkets.length ? (
-                    <div style={{textAlign: "center"}}>
-                        <LoadingIndicator type="three-bounce" />
-                    </div>
-                ) : (
+                {!allMarkets.length ? null : (
                     <div className="results">
                         <ul style={{marginLeft: 0}}>{marketsList}</ul>
                     </div>
