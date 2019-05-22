@@ -423,13 +423,15 @@ class MarketsActions {
                             dispatch({unSub: true, resolve});
                         })
                         .catch(error => {
-                            subs[subID] = true;
-                            console.log(
-                                "Error in MarketsActions.unSubscribeMarket: ",
-                                error
-                            );
-                            dispatch({unSub: false, market: subID});
-                            reject();
+                            try {
+                                subs[subID] = true;
+                                console.log(
+                                    "Error in MarketsActions.unSubscribeMarket: ",
+                                    error
+                                );
+                                dispatch({unSub: false, market: subID});
+                                reject();
+                            } catch(ex) {}
                         });
                 });
             }
