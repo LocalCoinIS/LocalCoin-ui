@@ -139,7 +139,8 @@ class App extends React.Component {
                                             window.tryReconnectToExtNode = false;
                                             clearTimeout(window.tryReconnectToExtNodeTimeout);
                                             window.tryReconnectToExtNodeTimeout = null;
-                                        }, 5000);
+                                            // window.disconnectCnt = 0;
+                                        }, 3000);
 
                                         this.checkPageAfterReconnect();
                                     }.bind(this),
@@ -260,11 +261,8 @@ class App extends React.Component {
 
             if(document.getElementById("content") === null || document.getElementById("content").innerHTML == "") {
                 window.pageIsDeadCNT++;
-                console.log("window.pageIsDeadCNT++");
-                
             } else {
                 window.pageIsDeadCNT = 0;
-                console.log("window.pageIsDeadCNT = 0");
             }
 
             if(window.pageIsDeadCNT > 5) {
