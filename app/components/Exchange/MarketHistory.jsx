@@ -171,10 +171,11 @@ class MarketHistory extends React.Component {
                         isAsk,
                         flipped
                     );
+
                     return (
                         <tr key={"history_" + keyIndex}>
                             <td className={parsed_order.className}>
-                                <PriceText preFormattedPrice={parsed_order} />
+                                <PriceText price={parsed_order.full} quote={quote} base={base} />
                             </td>
                             <td>{parsed_order.receives}</td>
                             <td>{parsed_order.pays}</td>
