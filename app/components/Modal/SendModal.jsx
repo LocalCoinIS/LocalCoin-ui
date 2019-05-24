@@ -717,7 +717,8 @@ class SendModal extends React.Component {
                     onClose={this.onClose.bind(this, false)}
                 >
                     <div
-                        className="grid-block vertical no-overflow"
+                        className="grid-block vertical"
+                        style={{overflow: "visible"}}
                         onMouseDown={() => {
                             this.setState({errorAmount: null});
                         }}
