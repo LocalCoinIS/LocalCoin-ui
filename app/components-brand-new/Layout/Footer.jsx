@@ -49,7 +49,7 @@ class Footer extends React.Component {
 
         window.intervalFooter = setInterval(() => {
             let connected = this.isConnected();
-            
+
             if(connected !== this.state.connected)
                 this.setState({ connected: connected });
 
@@ -350,7 +350,7 @@ class Social extends Component {
             { item: "discord", href: "https://discord.gg/vzxSzYN", img: "s-584" },
             { item: "medium", href: "https://medium.com/@localcoinis", img: "m-1" },
             { item: "golos", href: "https://golos.io/@localcoin", img: "s-574" },
-            { item: "reddit", href: "https://reddit.com/user/LocalCoinIS", img: "redd" },
+            { item: "reddit", href: "https://www.reddit.com/r/LocalCoinIs", img: "redd" },
             { item: "steemit", href: "https://steemit.com/@localcoin", img: "s-576" },
             { item: "twitter", href: "https://twitter.com/LocalCoinIS", img: "tw" },
         ];
