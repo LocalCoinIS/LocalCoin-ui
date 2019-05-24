@@ -33,7 +33,9 @@ export default class FastDisconnectPing {
         websocket.onmessage = () => { window.disconnectCnt = 0;   websocket.close(); };
         websocket.onerror   = () => { window.disconnectCnt++;     this.check();      };
 
-        websocket.send("");
+        try {
+            websocket.send("");
+        } catch(ex) {}
     }
 
     getCurrentNode    = () => SettingsStore.getState().settings.get( "apiServer" ) + "";
