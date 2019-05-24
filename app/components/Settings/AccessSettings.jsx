@@ -10,7 +10,7 @@ import {connect} from "alt-react";
 import cnames from "classnames";
 import Icon from "../Icon/Icon";
 
-const autoSelectAPI = "wss://fake.automatic-selection.com";
+const autoSelectAPI = "no-auto";
 const testnetAPI = settingsAPIs.WS_NODE_LIST.find(
     a => a.url.indexOf("node.testnet.localcoin.is") !== -1
 );
@@ -117,26 +117,7 @@ class ApiNode extends React.Component {
         if (popup) {
             return url === autoSelectAPI ? (
                 <div>
-                    <span
-                        className="switch"
-                        style={{
-                            float: "right",
-                            position: "relative",
-                            top: "-15px"
-                        }}
-                        onClick={this.activate.bind(
-                            this,
-                            autoActive ? activeNode.url : autoSelectAPI
-                        )}
-                    >
-                        <input
-                            id="automatic_node_switcher"
-                            type="checkbox"
-                            checked={autoActive}
-                            onChange={() => {}}
-                        />
-                        <label />
-                    </span>
+                    
                     <p style={{fontSize: "80%"}}>
                         <Translate content="settings.automatic_short" />:
                     </p>
@@ -170,21 +151,7 @@ class ApiNode extends React.Component {
             return url === autoSelectAPI ? (
                 <div className="auto-node">
                     <div>
-                        <span
-                            className="switch"
-                            onClick={this.activate.bind(
-                                this,
-                                autoActive ? activeNode.url : autoSelectAPI
-                            )}
-                        >
-                            <input
-                                id="automatic_node_switcher"
-                                type="checkbox"
-                                checked={autoActive}
-                                onChange={() => {}}
-                            />
-                            <label />
-                        </span>
+                        
                         <Translate
                             component="div"
                             style={{paddingLeft: "1rem", paddingTop: "0.5rem"}}
@@ -491,9 +458,8 @@ class AccessSettings extends React.Component {
         }, []);
         return this.props.popup ? (
             <div>
-                <div style={{fontWeight: "bold", height: 40}}>
+                <div style={{fontWeight: "bold", height: 20}}>
                     <Translate content="settings.switch" />
-                    {renderNode(autoNode, activeNode, false)}
                 </div>
                 <div
                     className="nodes-list"

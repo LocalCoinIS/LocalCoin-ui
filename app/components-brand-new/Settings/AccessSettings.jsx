@@ -168,46 +168,7 @@ class ApiNode extends React.Component {
                 </div>
             );
         } else {
-            return url === autoSelectAPI ? (
-                <div className="auto-node">
-                    <div>
-                        <span
-                            className="switch"
-                            onClick={this.activate.bind(
-                                this,
-                                autoActive ? activeNode.url : autoSelectAPI
-                            )}
-                        >
-                            <input
-                                id="automatic_node_switcher"
-                                type="checkbox"
-                                checked={autoActive}
-                                onChange={() => {}}
-                            />
-                            <label />
-                        </span>
-                        <Translate
-                            component="div"
-                            style={{paddingLeft: "1rem", paddingTop: "0.5rem"}}
-                            content="settings.automatic"
-                            totalNodes={totalNodes}
-                        />
-                        {/*
-                        // FOR FUTURE PING NODES FEATURE
-                        <div
-                            className="button"
-                            style={{position: "absolute", right: 0}}
-                            onClick={}
-                        >
-                            <Translate
-                                id="ping"
-                                component="span"
-                                content="settings.ping"
-                            />
-                        </div> */}
-                    </div>
-                </div>
-            ) : (
+            return url === autoSelectAPI ? (<div></div>) : (
                 <div className="api-node">
                     <div>
                         <p>{name}</p>
