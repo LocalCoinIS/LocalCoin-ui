@@ -42,7 +42,7 @@ import LLCGatewayData from "../../components/DepositWithdraw/llcgateway/LLCGatew
 
 class Exchange extends React.Component {
 
-    static MODE_BRIDGE = "1";
+    static MODE_BRIDGE = "0";
 
     static propTypes = {
         marketCallOrders: PropTypes.object.isRequired,
@@ -572,22 +572,24 @@ class Exchange extends React.Component {
 
         let balances = {};
 
-        currentAccount
-            .get("balances", [])
-            .filter((balance, id) => {
-                return (
-                    ["1.3.0", quote.get("id"), base.get("id")].indexOf(id) >= 0
-                );
-            })
-            .forEach((balance, id) => {
-                let balanceObject = ChainStore.getObject(balance);
-                balances[id] = {
-                    balance: balanceObject
-                        ? parseInt(balanceObject.get("balance"), 10)
-                        : 0,
-                    fee: this._getFee(ChainStore.getAsset(id))
-                };
-            });
+        try {
+            currentAccount
+                .get("balances", [])
+                .filter((balance, id) => {
+                    return (
+                        ["1.3.0", quote.get("id"), base.get("id")].indexOf(id) >= 0
+                    );
+                })
+                .forEach((balance, id) => {
+                    let balanceObject = ChainStore.getObject(balance);
+                    balances[id] = {
+                        balance: balanceObject
+                            ? parseInt(balanceObject.get("balance"), 10)
+                            : 0,
+                        fee: this._getFee(ChainStore.getAsset(id))
+                    };
+                });
+        } catch(ex) {}
 
         function filterAndDefault(assets, balances, idx) {
             let asset;
@@ -1418,7 +1420,11 @@ class Exchange extends React.Component {
             baseSymbol = base.get("symbol");
             quoteSymbol = quote.get("symbol");
 
-            accountBalance = currentAccount.get("balances").toJS();
+            try {
+                accountBalance = currentAccount.get("balances").toJS();
+            } catch(ex) {
+                accountBalance = null;
+            }
 
             if (accountBalance) {
                 for (let id in accountBalance) {

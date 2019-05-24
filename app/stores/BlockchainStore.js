@@ -2,6 +2,7 @@ import Immutable from "immutable";
 import alt from "alt-instance";
 import BlockchainActions from "actions/BlockchainActions";
 import {ChainStore} from "bitsharesjs/es";
+import FastDisconnectPing from "./FastDisconnectPing";
 // import {Block} from "./tcomb_structs";
 
 class BlockchainStore {
@@ -21,6 +22,12 @@ class BlockchainStore {
         });
 
         this.maxBlocks = 30;
+
+        //быстрое определение дисконнекта через пинг
+        setTimeout(() => {
+            (new FastDisconnectPing(this))
+                .process();
+        }, 3000);
     }
 
     onGetBlock(block) {

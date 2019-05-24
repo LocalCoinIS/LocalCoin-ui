@@ -8,6 +8,7 @@ import MarketsActions from "actions/MarketsActions";
 import SettingsActions from "actions/SettingsActions";
 import PropTypes from "prop-types";
 import {getSmartCoinMarkets} from "branding";
+import MarketsStore from "stores/MarketsStore";
 
 class MarketRow extends React.Component {
     static defaultProps = {
@@ -107,6 +108,15 @@ class MarketRow extends React.Component {
             };
         }
 
+        const quoteSymbol   = this.props.quote.get("symbol");
+        const baseSymbol    = this.props.base.get("symbol");
+        const marketIDByURL = this.context.router.params.marketID.toUpperCase().trim();
+        const needPairDirection = (
+                marketIDByURL.indexOf("_" + quoteSymbol) !== -1 ||
+                marketIDByURL.indexOf(baseSymbol + "_") !== -1
+            ) ? baseSymbol  + "_" + quoteSymbol
+              : quoteSymbol + "_" + baseSymbol;
+        
         let columns = this.props.columns
             .map(column => {
                 switch (column.name) {
@@ -133,7 +143,7 @@ class MarketRow extends React.Component {
                         let amount = stats ? stats.volumeBase : 0;
                         return (
                             <td
-                                onClick={this._onClick.bind(this, marketID)}
+                                onClick={this._onClick.bind(this, needPairDirection)}
                                 className="text-right"
                                 key={column.index}
                             >
@@ -142,10 +152,15 @@ class MarketRow extends React.Component {
                         );
 
                     case "change":
-                        let change = utils.format_number(
-                            stats && stats.change ? stats.change : 0,
-                            2
-                        );
+                        let currentMarketByLeftOrder = MarketsStore
+                            .getState()
+                            .allMarketStats
+                            .get(needPairDirection);
+
+                        const dayChange = currentMarketByLeftOrder ? currentMarketByLeftOrder.change : 0;
+                        const dayChangeWithSign = dayChange > 0 ? "+" + dayChange : dayChange;
+                        const change = utils.format_number( dayChangeWithSign, 2 );
+                    
                         let changeClass =
                             change === "0.00"
                                 ? ""
@@ -155,7 +170,7 @@ class MarketRow extends React.Component {
 
                         return (
                             <td
-                                onClick={this._onClick.bind(this, marketID)}
+                                onClick={this._onClick.bind(this, needPairDirection)}
                                 className={"text-right " + changeClass}
                                 key={column.index}
                             >
@@ -166,7 +181,7 @@ class MarketRow extends React.Component {
                     case "marketName":
                         return (
                             <td
-                                onClick={this._onClick.bind(this, marketID)}
+                                onClick={this._onClick.bind(this, needPairDirection)}
                                 key={column.index}
                             >
                                 <div
@@ -194,7 +209,7 @@ class MarketRow extends React.Component {
 
                         return (
                             <td
-                                onClick={this._onClick.bind(this, marketID)}
+                                onClick={this._onClick.bind(this, needPairDirection)}
                                 key={column.index}
                             >
                                 {customMarketName}
@@ -205,7 +220,7 @@ class MarketRow extends React.Component {
                     case "price":
                         let baseAmount, quoteAmount, baseAsset, quoteAsset = false;
 
-                        let finalPrice
+                        let finalPrice = 0;
 
                         if(stats && stats.price) {
                             baseAmount = reversePairs ? stats.price.quote.amount : stats.price.base.amount;
@@ -250,7 +265,7 @@ class MarketRow extends React.Component {
 
                         return (
                             <td
-                                onClick={this._onClick.bind(this, marketID)}
+                                onClick={this._onClick.bind(this, needPairDirection)}
                                 className="text-right"
                                 key={column.index}
                             >
@@ -268,7 +283,7 @@ class MarketRow extends React.Component {
                     case "quoteSupply":
                         return (
                             <td
-                                onClick={this._onClick.bind(this, marketID)}
+                                onClick={this._onClick.bind(this, needPairDirection)}
                                 key={column.index}
                             >
                                 {dynamic_data ? (
@@ -287,7 +302,7 @@ class MarketRow extends React.Component {
                     case "baseSupply":
                         return (
                             <td
-                                onClick={this._onClick.bind(this, marketID)}
+                                onClick={this._onClick.bind(this, needPairDirection)}
                                 key={column.index}
                             >
                                 {base_dynamic_data ? (
@@ -308,7 +323,7 @@ class MarketRow extends React.Component {
                     case "issuer":
                         return (
                             <td
-                                onClick={this._onClick.bind(this, marketID)}
+                                onClick={this._onClick.bind(this, needPairDirection)}
                                 key={column.index}
                             >
                                 <AccountName account={quote.get("issuer")} />
@@ -370,7 +385,7 @@ class MarketRow extends React.Component {
             });
 
         let className = "clickable";
-        if (this.props.currentMarket === marketID) {
+        if (this.props.currentMarket === marketID || this.props.currentMarket === needPairDirection) {
             className += " activeMarket";
         }
 

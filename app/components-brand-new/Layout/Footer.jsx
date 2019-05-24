@@ -34,11 +34,31 @@ class Footer extends React.Component {
         super(props);
 
         this.state = {
-            showNodesPopup: false
+            showNodesPopup : false,
+            connected      : this.isConnected()
         };
     }
 
+    isConnected = () => !(BlockchainStore.getState().rpc_connection_status === "closed");
+
     componentDidMount() {
+        if(typeof window.intervalFooter !== "undefined" && window.intervalFooter !== null) {
+            clearInterval(window.intervalFooter);
+            window.intervalFooter = null;
+        }
+
+        window.intervalFooter = setInterval(() => {
+            let connected = this.isConnected();
+
+            if(connected !== this.state.connected)
+                this.setState({ connected: connected });
+
+                if(!connected) {
+                    if(typeof document.getElementsByClassName("footer-info__status")[0] !== "undefined") {
+                        document.getElementsByClassName("footer-info__status")[0].innerHTML = counterpart.translate("footer.disconnected");
+                    }
+                }
+        }, 500);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -170,7 +190,6 @@ class Footer extends React.Component {
         const autoSelectAPI = "wss://fake.automatic-selection.com";
         const { state, props } = this;
         const { synced } = props;
-        const connected = !(this.props.rpc_connection_status === "closed");
 
         // Current Node Details
         let nodes = this.props.defaults.apiServer;
@@ -264,7 +283,7 @@ class Footer extends React.Component {
                                     this.context.router.push("/settings/access");
                                 }}
                             >
-                                {!connected
+                                {!this.state.connected
                                     ? counterpart.translate("footer.disconnected")
                                     : activeNode.name}
                             </span>
@@ -272,7 +291,7 @@ class Footer extends React.Component {
                                 <span>
                                     {counterpart.translate("footer.latency")}
                                     &nbsp;
-                                    {!connected
+                                    {!this.state.connected
                                         ? "-"
                                         : !activeNode.ping
                                             ? "-"
@@ -331,7 +350,7 @@ class Social extends Component {
             { item: "discord", href: "https://discord.gg/vzxSzYN", img: "s-584" },
             { item: "medium", href: "https://medium.com/@localcoinis", img: "m-1" },
             { item: "golos", href: "https://golos.io/@localcoin", img: "s-574" },
-            { item: "reddit", href: "https://reddit.com/user/LocalCoinIS", img: "redd" },
+            { item: "reddit", href: "https://www.reddit.com/r/LocalCoinIs", img: "redd" },
             { item: "steemit", href: "https://steemit.com/@localcoin", img: "s-576" },
             { item: "twitter", href: "https://twitter.com/LocalCoinIS", img: "tw" },
         ];

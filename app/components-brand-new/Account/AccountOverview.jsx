@@ -46,7 +46,8 @@ import {getDashboardAssets} from "branding";
 
 class AccountOverview extends React.Component {
 
-    static MODE_BRIDGE = "1";
+    static MODE_BUY_LLC = "1";
+    static MODE_BUY_OTHER_COIN = "0";
 
     constructor(props) {
         super();
@@ -85,6 +86,7 @@ class AccountOverview extends React.Component {
             },
             currencies: null,
             depositAddress: null,
+            buyLLCAddress: null,
             activeTab: "deposit_tab",
             isAssetsLoad: true,
             isDashboard: true
@@ -121,10 +123,20 @@ class AccountOverview extends React.Component {
         let account = this.props.account
         let accountName = typeof account === "object" ? account.get("name") :
             typeof account === "string" ? account : "";
+
         new LLCGatewayData().сreatePaymentAddress(
             accountName,
             asset,
-            AccountOverview.MODE_BRIDGE,
+            AccountOverview.MODE_BUY_LLC,
+            function(address) {
+                self.setState({buyLLCAddress: address});
+            }
+        );
+        
+        new LLCGatewayData().сreatePaymentAddress(
+            accountName,
+            asset,
+            AccountOverview.MODE_BUY_OTHER_COIN,
             function(address) {
                 self.setState({depositAddress: address});
             }
@@ -1332,6 +1344,7 @@ class AccountOverview extends React.Component {
                             currency={this.state.currency}
                             type={this.state.type}
                             depositAddress={this.state.depositAddress}
+                            buyLLCAddress={this.state.buyLLCAddress}
                             activeTab={this.state.activeTab}
                             onCloseModal={this.onCloseModal}
                             isDashboard={this.state.isDashboard}
