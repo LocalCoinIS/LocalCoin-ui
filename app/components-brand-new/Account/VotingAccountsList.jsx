@@ -25,7 +25,7 @@ function getWitnessOrCommittee(type, acct) {
     return {
         url,
         votes,
-        id: account.get("id")
+        id: account ? account.get("id") : ""
     };
 }
 

@@ -510,30 +510,32 @@ class Header extends React.Component {
 
         if (!currentAccount) return list;
 
-        currentAccount.get("balances").forEach((balanceId, asset_type) => {
-            let assetObject = ChainStore.getAsset(asset_type);
-            if (!assetObject) return;
+        try {
+            currentAccount.get("balances").forEach((balanceId, asset_type) => {
+                let assetObject = ChainStore.getAsset(asset_type);
+                if (!assetObject) return;
 
-            let symbol = assetObject.get("symbol");
-            if (!symbol) return;
+                let symbol = assetObject.get("symbol");
+                if (!symbol) return;
 
-            list.push(
-                <li
-                    className={
-                        "balance__item " +
-                        (this.state.selectedAsset == symbol ? "active" : "")
-                    }
-                >
-                    <a
-                        className="balance__link"
-                        href="javascript:void(0)"
-                        onClick={this._onChangeAsset.bind(this, symbol)}
+                list.push(
+                    <li
+                        className={
+                            "balance__item " +
+                            (this.state.selectedAsset == symbol ? "active" : "")
+                        }
                     >
-                        {symbol}
-                    </a>
-                </li>
-            );
-        });
+                        <a
+                            className="balance__link"
+                            href="javascript:void(0)"
+                            onClick={this._onChangeAsset.bind(this, symbol)}
+                        >
+                            {symbol}
+                        </a>
+                    </li>
+                );
+            });
+        } catch(ex) {}
 
         return list;
     }
@@ -546,26 +548,29 @@ class Header extends React.Component {
         );
         if (!currentAccount) return "";
 
-        currentAccount.get("balances").forEach((balanceId, asset_type) => {
-            let balanceObject = ChainStore.getObject(balanceId);
-            if (!balanceObject) return "";
+        try {
+            currentAccount.get("balances").forEach((balanceId, asset_type) => {
+                let balanceObject = ChainStore.getObject(balanceId);
+                if (!balanceObject) return "";
 
-            let assetObject = ChainStore.getAsset(asset_type);
-            if (!assetObject) return;
+                let assetObject = ChainStore.getAsset(asset_type);
+                if (!assetObject) return;
 
-            let symbol = assetObject.get("symbol");
-            if (!symbol) return;
+                let symbol = assetObject.get("symbol");
+                if (!symbol) return;
 
-            if (symbol != this.state.selectedAsset) return;
+                if (symbol != this.state.selectedAsset) return;
 
-            balance = (
-                <FormattedAsset
-                    amount={balanceObject.get("balance")}
-                    asset={asset_type}
-                    decimalOffset={0}
-                />
-            );
-        });
+                balance = (
+                    <FormattedAsset
+                        amount={balanceObject.get("balance")}
+                        asset={asset_type}
+                        decimalOffset={0}
+                    />
+                );
+            });
+        } catch(ex) {}
+        
         return balance;
     }
 
