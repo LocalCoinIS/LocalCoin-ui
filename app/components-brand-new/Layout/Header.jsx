@@ -91,7 +91,7 @@ class SettingsMenuUnWrapped extends React.Component {
                     {items.map(({label, path}) => {
                         return (
                             <li className="balance__item" key={label}>
-                                <a
+                                <a  
                                     className="balance__link"
                                     href="javascript:void(0)"
                                     onClick={e => {

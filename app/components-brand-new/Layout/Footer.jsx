@@ -357,8 +357,8 @@ class Social extends Component {
 
         let list = socialArr.map((item, i) => {
             return (
-                <li className="social__item">
-                    <a key={item.item} href={item.href} className={`social__link ${item.item}`} target="_blank">
+                <li className="social__item" key={item.item}>
+                    <a key={item.item} href={item.href} className={'{social__link} ${item.item}'} target="_blank">
                         <Icon name={item.img}/>
                     </a>
                 </li>

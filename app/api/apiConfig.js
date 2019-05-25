@@ -1,3 +1,4 @@
+/*
 export const blockTradesAPIs = {
     BASE: "https://api.blocktrades.us/v2",
     COINS_LIST: "/coins",
@@ -64,7 +65,7 @@ export const gdexAPIs = {
     USER_AGREEMENT: "/gateway/user/isAgree",
     WITHDRAW_RULE: "/gateway/withdraw/rule"
 };
-
+*/
 export const settingsAPIs = {
     DEFAULT_WS_NODE: "wss://fake.automatic-selection.com",
     // DEFAULT_WS_NODE: "ws://127.0.0.1:8090",

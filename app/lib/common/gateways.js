@@ -4,15 +4,15 @@
  */
 
 import {
-    rudexAPIs,
-    widechainAPIs,
-    openledgerAPIs,
-    cryptoBridgeAPIs,
-    gdex2APIs
+//    rudexAPIs,
+//    widechainAPIs,
+//    openledgerAPIs,
+//    cryptoBridgeAPIs,
+//    gdex2APIs
 } from "api/apiConfig";
 
 export const availableGateways = {
-    OPEN: {
+/*    OPEN: {
         id: "OPEN",
         name: "OPENLEDGER",
         baseAPI: openledgerAPIs,
@@ -74,6 +74,7 @@ export const availableGateways = {
             selected: false
         }
     }
+*/    
 };
 
 export const gatewayPrefixes = Object.keys(availableGateways);

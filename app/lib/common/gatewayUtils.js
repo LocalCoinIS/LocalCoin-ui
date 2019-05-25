@@ -46,7 +46,6 @@ export function getIntermediateAccount(symbol, backedCoins) {
     let {selectedGateway} = getAssetAndGateway(symbol);
     let coin = getBackedCoin(symbol, backedCoins);
     if (!coin) return undefined;
-    else if (selectedGateway === "RUDEX") return coin.issuerId || coin.issuer;
     else return coin.intermediateAccount || coin.issuer;
 }
 
@@ -61,10 +60,6 @@ export function getBackedCoin(symbol, backedCoins) {
 
 export function getAssetAndGateway(symbol) {
     let [selectedGateway, selectedAsset] = symbol.split(".");
-    if (symbol === "PPY") {
-        selectedGateway = "RUDEX";
-        selectedAsset = "PPY";
-    }
     return {selectedGateway, selectedAsset};
 }
 
