@@ -1,6 +1,6 @@
 import React from "react";
 import ExplorerTabs from "./ExplorerTabs";
-import RealMarketsContainer from "../Exchange/MarketsContainer";
+import RealMarketsContainer from "../../components/Exchange/MarketsContainer";
 
 class MarketsContainer extends React.Component {
     render() {

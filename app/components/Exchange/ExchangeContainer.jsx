@@ -12,7 +12,7 @@ import ChainTypes from "../Utility/ChainTypes";
 import {EmitterInstance} from "bitsharesjs/es";
 import BindToChainState from "../Utility/BindToChainState";
 import MarketsActions from "actions/MarketsActions";
-import {DataFeed} from "components/Exchange/tradingViewClasses";
+import {DataFeed} from "./tradingViewClasses";
 import Page404 from "../Page404/Page404";
 
 class ExchangeContainer extends React.Component {

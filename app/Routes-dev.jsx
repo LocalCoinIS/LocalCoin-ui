@@ -38,7 +38,7 @@ import OTC from "./components/OTC/OTC";
 import Page404 from "./components/Page404/Page404";
 // import AccountOrders from "./components/Account/AccountOrders";
 import AccountSignedMessages from "./components-brand-new/Account/AccountSignedMessages";
-import ExchangeContainer from "./components-brand-new/Exchange/ExchangeContainer";
+import ExchangeContainer from "./components/Exchange/ExchangeContainer";
 import MarketsContainer from "./components-brand-new/Explorer/MarketsContainer";
 import Transfer from "./components/Transfer/Transfer";
 import SettingsContainer from "./components-brand-new/Settings/SettingsContainer";

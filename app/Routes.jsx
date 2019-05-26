@@ -369,7 +369,7 @@ const routes = (
                 Promise.all([
                     import("components-brand-new/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/Exchange/ExchangeContainer"),
+                    import("components/Exchange/ExchangeContainer"),
                     import("components-brand-new/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))

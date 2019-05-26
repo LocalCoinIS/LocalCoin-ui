@@ -11,6 +11,8 @@ import {ChainStore} from "bitsharesjs/es";
 import ExchangeHeaderCollateral from "./ExchangeHeaderCollateral";
 import BaseModal from "../Modal/BaseModal";
 import ZfApi from "react-foundation-apps/src/utils/foundation-api";
+import DropdownList from "../Utility/DropdownList";
+import MarketPickerWrap from "./MarketPicker";
 
 export default class ExchangeHeader extends React.Component {
     constructor(props) {
@@ -55,11 +57,105 @@ export default class ExchangeHeader extends React.Component {
         this.setState({
             selectedMarketPickerAsset
         });
-        this.props.onToggleMarketPicker(selectedMarketPickerAsset);
+        this._toggleMarketPicker(selectedMarketPickerAsset);
     }
 
     setChartHeight() {
         this.props.onChangeChartHeight({value: this.state.chartHeight});
+    }
+
+    componentDidMount() {
+        let self = this;
+        document.delayedExecution.add(
+            "ExchangeHeader_updateMargin",
+            function() {
+                self.updateMargin();
+            },
+            100
+        );
+    }
+
+    componentWillReceiveProps(nextProps) {
+        let self = this;
+        document.delayedExecution.add(
+            "ExchangeHeader_updateMargin",
+            function() {
+                self.updateMargin();
+            },
+            100
+        );
+    }
+
+
+    updateMargin() {
+        function getMaxWidth(queryClass) {
+            let max = 0;
+            let list = document.getElementsByClassName(queryClass);
+            for (let i in list) {
+                let width = list[i].offsetWidth;
+                if (width > max) max = width;
+            }
+
+            return max;
+        }
+
+        let queries = [
+            "vertical-table-cell-one",
+            "vertical-table-cell-two",
+            "vertical-table-cell-three"
+        ];
+
+        let margin = 0;
+        for (var i in queries) {
+            margin += getMaxWidth(queries[i]);
+        }
+
+        if (margin > 0) {
+            //set margin header by with left cell bar
+            try {
+                let header = document.getElementsByClassName(
+                    "container-menu-header"
+                )[0];
+                header.style.marginLeft = margin + "px";
+            } catch (e) {}
+        }
+
+        try {
+            let id = "exchange_header_style";
+            let minus = margin + getMaxWidth("right-column");
+            let style =
+                "@media only screen and (min-width: 1000px) { " +
+                "body.localcoin .exchange-layout .grid-block.shrink.no-padding.overflow-visible.top-bar.left-cell-active { " +
+                "width: calc(100% - " +
+                minus +
+                "px); " +
+                "}}";
+
+            if (document.getElementById(id)) {
+                let styleDom = document.getElementById(id);
+                styleDom.innerHTML = style;
+            } else {
+                let styleDom = document.createElement("style");
+                styleDom.id = id;
+                styleDom.innerHTML = style;
+                document.getElementsByTagName("head")[0].appendChild(styleDom);
+            }
+        } catch (e) {}
+    }
+
+    _toggleMarketPicker(asset) {
+        let showMarketPicker = !!asset ? true : false;
+        this.setState({
+            showMarketPicker,
+            marketPickerAsset: asset
+        });
+    }
+
+    _closeMarketPicker() {
+        this.setState({
+            selectedMarketPickerAsset: null
+        });
+        this._toggleMarketPicker(null);
     }
 
     render() {
@@ -93,7 +189,9 @@ export default class ExchangeHeader extends React.Component {
         const dayChangeClass =
             parseFloat(dayChange) === 0
                 ? ""
-                : parseFloat(dayChange) < 0 ? "negative" : "positive";
+                : parseFloat(dayChange) < 0
+                    ? "negative"
+                    : "positive";
         const volumeBase = marketStats.get("volumeBase");
         const volumeQuote = marketStats.get("volumeQuote");
         const dayChangeWithSign = dayChange > 0 ? "+" + dayChange : dayChange;
@@ -145,7 +243,9 @@ export default class ExchangeHeader extends React.Component {
             let settleAsset =
                 baseAsset.get("id") == "1.3.0"
                     ? quoteAsset
-                    : quoteAsset.get("id") == "1.3.0" ? baseAsset : null;
+                    : quoteAsset.get("id") == "1.3.0"
+                        ? baseAsset
+                        : null;
 
             if (settleAsset && feedPrice) {
                 let offset_percent = settleAsset
@@ -167,20 +267,54 @@ export default class ExchangeHeader extends React.Component {
             !!this.state.selectedMarketPickerAsset &&
             this.state.selectedMarketPickerAsset == baseSymbol;
 
+        const chartOptions = [
+            {
+                key: "depth_chart",
+                label: counterpart.translate("exchange.order_depth")
+            },
+            {
+                key: "price_chart",
+                label: counterpart.translate("exchange.price_history")
+            }
+        ];
+
         return (
-            <div className="grid-block shrink no-padding overflow-visible top-bar">
+            <div className="grid-block shrink no-padding overflow-visible top-bar container-menu-header">
                 <div className="grid-block overflow-visible">
                     <div className="grid-block shrink">
-                        <div style={{padding: "10px"}}>
+                        <div className="change-pair" style={{padding: "5px"}}>
                             {!hasPrediction ? (
                                 <div
+                                    className="pair-switcher-block"
                                     style={{
                                         padding: "0 5px",
                                         fontSize: "18px",
                                         marginTop: "1px"
                                     }}
                                 >
+                                    <Link
+                                      onClick={() => {
+                                        this._addMarket(
+                                          this.props.quoteAsset.get(
+                                            "symbol"
+                                          ),
+                                          this.props.baseAsset.get(
+                                            "symbol"
+                                          )
+                                        );
+                                      }}
+                                      data-intro={translator.translate(
+                                        "walkthrough.favourite_button"
+                                      )}
+                                    >
+                                      <Icon
+                                        className={starClass}
+                                        name="fi-star"
+                                        title="icons.fi_star.market"
+                                      />
+                                    </Link>
                                     <span
+                                        className={isQuoteSelected ? "is-active" : ""}
                                         onClick={this.marketPicker.bind(
                                             this,
                                             quoteSymbol
@@ -198,8 +332,23 @@ export default class ExchangeHeader extends React.Component {
                                             noTip
                                         />
                                     </span>
-                                    <span style={{padding: "0 5px"}}>/</span>
+                                    <Link
+                                      onClick={() => {
+                                        MarketsActions.switchMarket();
+                                      }}
+                                      to={`/market/${baseSymbol}_${quoteSymbol}`}
+                                      data-intro={translator.translate(
+                                        "walkthrough.switch_button"
+                                      )}
+                                    >
+                                      <Icon
+                                        className="shuffle"
+                                        name="shuffle"
+                                        title="icons.shuffle"
+                                      />
+                                    </Link>
                                     <span
+                                        className={isBaseSelected ? "is-active" : ""}
                                         onClick={this.marketPicker.bind(
                                             this,
                                             baseSymbol
@@ -224,47 +373,6 @@ export default class ExchangeHeader extends React.Component {
                                     >{`${quoteSymbol} : ${baseSymbol}`}</span>
                                 </a>
                             )}
-                            <div className="label-actions">
-                                <Translate
-                                    component="span"
-                                    style={{padding: "5px 0 0 5px"}}
-                                    className="stat-text"
-                                    content="exchange.trading_pair"
-                                />
-                                <Link
-                                    onClick={() => {
-                                        MarketsActions.switchMarket();
-                                    }}
-                                    to={`/market/${baseSymbol}_${quoteSymbol}`}
-                                    data-intro={translator.translate(
-                                        "walkthrough.switch_button"
-                                    )}
-                                >
-                                    <Icon
-                                        className="shuffle"
-                                        name="shuffle"
-                                        title="icons.shuffle"
-                                    />
-                                </Link>
-
-                                <Link
-                                    onClick={() => {
-                                        this._addMarket(
-                                            this.props.quoteAsset.get("symbol"),
-                                            this.props.baseAsset.get("symbol")
-                                        );
-                                    }}
-                                    data-intro={translator.translate(
-                                        "walkthrough.favourite_button"
-                                    )}
-                                >
-                                    <Icon
-                                        className={starClass}
-                                        name="fi-star"
-                                        title="icons.fi_star.market"
-                                    />
-                                </Link>
-                            </div>
                         </div>
                     </div>
 
@@ -418,33 +526,19 @@ export default class ExchangeHeader extends React.Component {
                         </header>
                         <ul>
                             <li className="with-dropdown">
-                                <select
-                                    value={
-                                        showDepthChart
-                                            ? "depth_chart"
-                                            : "price_chart"
-                                    }
-                                    className="settings-select"
-                                    onChange={e => {
-                                        if (
-                                            (showDepthChart &&
-                                                e.target.value ===
-                                                    "price_chart") ||
-                                            (!showDepthChart &&
-                                                e.target.value ===
-                                                    "market_depth")
-                                        ) {
-                                            this.props.onToggleCharts();
-                                        }
+                                <DropdownList
+                                    options={chartOptions}
+                                    selected={chartOptions.find(
+                                        ({key}) =>
+                                            key ===
+                                            (showDepthChart
+                                                ? "depth_chart"
+                                                : "price_chart")
+                                    )}
+                                    onChange={key => {
+                                        this.props.onToggleCharts();
                                     }}
-                                >
-                                    <option value="market_depth">
-                                        <Translate content="exchange.order_depth" />
-                                    </option>
-                                    <option value="price_chart">
-                                        <Translate content="exchange.price_history" />
-                                    </option>
-                                </select>
+                                />
                             </li>
                         </ul>
                     </section>
@@ -467,16 +561,29 @@ export default class ExchangeHeader extends React.Component {
                                         })
                                     }
                                 />
-                                <div
-                                    className="button no-margin"
+                                <button
+                                    className="btn large inverted no-margin"
                                     onClick={this.setChartHeight}
                                 >
                                     Set
-                                </div>
+                                </button>
                             </span>
                         </label>
                     </section>
                 </BaseModal>
+
+                {!!this.state.showMarketPicker ? (
+                    <MarketPickerWrap
+                        marketPickerAsset={this.state.marketPickerAsset}
+                        onToggleMarketPicker={this._toggleMarketPicker.bind(
+                            this
+                        )}
+                        closeMarketPicker={this._closeMarketPicker.bind(
+                            this
+                        )}
+                        {...this.props}
+                    />
+                ) : null}
             </div>
         );
     }
