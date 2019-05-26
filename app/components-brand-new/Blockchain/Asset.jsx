@@ -15,7 +15,7 @@ import {ChainStore} from "bitsharesjs/es";
 import {Apis} from "bitsharesjs-ws";
 import {Tabs, Tab} from "../../components/Utility/Tabs";
 import {CallOrder, FeedPrice} from "common/MarketClasses";
-import Page404 from "../Page404/Page404";
+import Page404 from "../../components/Page404/Page404";
 import FundFeePool from "../../components/Account/FundFeePool";
 import AccountStore from "stores/AccountStore";
 import {connect} from "alt-react";

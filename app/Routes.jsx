@@ -316,7 +316,7 @@ const routes = (
                 Promise.all([
                     import("components-brand-new/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/OTC/OTC"),
+                    import("components/OTC/OTC"),
                     import("components-brand-new/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
@@ -768,7 +768,7 @@ const routes = (
                 Promise.all([
                     import("components-brand-new/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/Page404/Page404"),
+                    import("components/Page404/Page404"),
                     import("components-brand-new/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))

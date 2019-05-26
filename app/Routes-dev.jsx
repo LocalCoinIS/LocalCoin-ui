@@ -34,8 +34,8 @@ import AccountPermissions from "./components-brand-new/Account/AccountPermission
 import AccountWhitelist from "./components-brand-new/Account/AccountWhitelist";
 import AccountVoting from "./components-brand-new/Account/AccountVoting";
 import AccountActivenodes from "./components-brand-new/Account/AccountActivenodes";
-import OTC from "./components-brand-new/OTC/OTC";
-import Page404 from "./components-brand-new/Page404/Page404";
+import OTC from "./components/OTC/OTC";
+import Page404 from "./components/Page404/Page404";
 // import AccountOrders from "./components/Account/AccountOrders";
 import AccountSignedMessages from "./components-brand-new/Account/AccountSignedMessages";
 import ExchangeContainer from "./components-brand-new/Exchange/ExchangeContainer";

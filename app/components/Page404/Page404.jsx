@@ -4,7 +4,7 @@ import {connect} from "alt-react";
 import SettingsStore from "stores/SettingsStore";
 import Translate from "react-translate-component";
 
-import {logoLight} from "../../assets/brand-new-layout/img/images";
+import {logoLight} from "../../assets/img/images";
 
 class Page404 extends React.Component {
     static defaultProps = {
