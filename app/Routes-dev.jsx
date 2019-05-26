@@ -12,7 +12,7 @@ import willTransitionTo from "./routerTransition";
 import App from "./App";
 
 // Components imported here for react hot loader (does not work with async route loading)
-import DashboardPage from "./components-brand-new/Dashboard/DashboardPage";
+import DashboardPage from "./components/Dashboard/DashboardPage";
 import DashboardAccountsOnly from "./components/Dashboard/DashboardAccountsOnly";
 import Witnesses from "./components-brand-new/Explorer/Witnesses";
 import Activenodes from "./components-brand-new/Explorer/Activenodes";
