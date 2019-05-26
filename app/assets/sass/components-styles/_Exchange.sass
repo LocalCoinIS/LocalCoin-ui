@@ -1,0 +1,537 @@
+
+// Здесь будут все стили касающиеся страницы Exchange.
+//TODO: Как только приведу в порядок ее, разобью на компоненты в соответствии с наименованием.
+
+body.localcoin .order-form .float-right input
+	background-color: #00195b
+	color: #fff
+
+body.localcoin .introjs-overlay
+	position: fixed!important
+	top: 0!important
+	left: 0!important
+	right: 0!important
+	bottom: 0!important
+	opacity: .8!important
+	background-color: #000!important
+
+body.localcoin
+	.exchange-layout
+		.left-order-book
+			height: 100%
+		.place-bottom.show.test
+			left: 15px!important
+			&:after
+				left: 40px
+		.notification-content
+			span:not(.label)
+				color: #fff
+			a:not(.inline-block)
+				color: #fff
+				text-decoration: underline
+				span
+					color: #fff
+					text-decoration: underline
+		.mymarkets-header.clickable.introjs-showElement.introjs-relativePosition
+			background: #fff
+		.top-bar .shuffle
+			margin: 0 5px
+		.grid-block.left-column.shrink.no-overflow
+			height: calc(100vh - 66px)
+		.sticky-table .sticky-table-x-wrapper
+			overflow-x: hidden
+		.grid-block.main-content.vertical.no-overflow
+			height: calc(100vh - 108px)
+		.pair-switcher-block
+			display: flex
+			align-items: center
+		.market-row
+			display: flex
+		.market-row:not(.stable-height)
+			flex-grow: 1
+			min-height: 227px
+			margin-top: -1px
+		.market-row.is-fee.stable-height
+			max-height: 257px
+			.my-trades > .exchange-bordered.small-12 > .table-container
+				max-height: 200px!important
+		.market-row.stable-height
+			max-height: 227px
+		.mymarkets-header.clickable
+			display: flex
+			align-items: center
+			min-height: 32px
+			>span
+				line-height: 14px
+		.main.left-cell-active
+			.grid-block.no-overflow.shrink.wrap
+				>.my-trades,
+				>.open-orders
+					height: calc(43vh - 1px)
+	.exchange-layout
+		.grid-block.no-overflow.shrink.wrap
+			>.buy-form,
+			>.sell-form
+				max-height: 258px
+		@supports (-ms-ime-align:auto)
+			.right-column
+				height: calc(100% - 30px)
+				.mymarkets-tabs + .explorer-markets
+					max-height: calc(50vh - 4px)!important
+		.small-12.medium-6.middle-content.order-1,
+		.small-12.medium-6.middle-content.order-2
+			height: 100%
+		.order-table .cell,
+		.order-table td,
+		.orderHistoryBid span,
+		.orderHistoryAsk span
+			white-space: nowrap
+body.localcoin
+	.exchange-layout
+		.sticky-table-container 
+			min-height: inherit
+		.open-orders
+			.grid-block.shrink.left-orderbook-header.market-right-padding-only
+				padding-right: 0px!important
+			&__headings
+				th:not(:last-child)
+					width: 33%!important
+				th:nth-child(4)
+					width: 90px!important
+				th:last-child
+					position: relative
+					width: 35px
+					&:before
+						content: ''
+						position: absolute
+						top: 0
+						right: -1px
+						bottom: 0
+						width: 2px
+						background-color: #c1d0e3
+			&__table
+				td
+					width: 33%
+					padding: 0 5px!important
+					line-height: 1
+					svg
+						height: 14px
+					&:last-child
+						width: 25px!important
+					&:nth-child(4)
+						width: 88px!important
+					// &:nth-child(4)
+					// 	width: 15%!important
+		.buy-form,
+		.sell-form
+			.bottom-row,
+			.bottom-row + .buy-sell-row,
+			.grid-block.no-padding.buy-sell-row:last-child
+				.buy-sell-box
+					font-size: 12px!important
+					span
+						font-size: 12px!important
+			.order-form
+				.buy-sell-label
+					font-size: 12px!important
+					span
+						font-size: 12px!important
+				.buy-sell-input
+					input
+						font-size: 12px!important
+						&::-webkit-input-placeholder
+							font-size: 12px!important
+						&:-moz-placeholder
+							font-size: 12px!important
+						&::-moz-placeholder
+							font-size: 12px!important
+						&:-ms-input-placeholder
+							font-size: 12px!important
+				.buy-sell-info
+					span
+						font-size: 12px!important
+				.buy-sell-info:nth-child(2)
+					div:last-child
+						span
+							font-size: 14px!important
+		.main.left-cell-active
+			@media only screen and (min-width: 1101px)
+				.medium-6
+					flex: 0 0 50%!important
+					max-width: 50%!important
+				.my-trades
+					>.exchange-bordered.small-12
+						>.table-container
+							max-height: calc(100% - 56px)!important
+		.order-table-container.exchange-sell-orders,
+		.order-table-container.exchange-buy-orders,
+			#x-scrollbar
+				display: none
+		.explorer_markets
+			overflow: visible
+			.table
+				.activeMarket
+					td
+						background-color: rgba(220, 230, 242, 1)
+		.bottom-header.pin
+			z-index: 20
+		.order-book-button-h
+			z-index: 10
+		.exchange-bordered.buy-sell-container
+			height: 100%
+		.my-trades
+			height: auto
+			.table
+				th:last-child
+					width: 80px
+			>.exchange-bordered.small-12
+				height: 100%!important
+				>.table-container
+					max-height: 170px!important
+	.left-order-book .top-header
+		height: auto
+	.sticky-table-header
+		border-bottom: 1px solid #aabfd9
+	// .change-pair
+	// 	position: relative
+	// 	padding: 0!important
+	// 	display: flex
+	// 	align-items: center
+	// 	>div:not(.label-actions)
+	// 		display: flex
+	// 		align-items: center
+	// 		padding-left: 0px!important
+	// 		span,a
+	// 			order: 2
+	// 			.icon.shuffle.shuffle
+	// 				margin: 0 5px
+	// 		a:not([href])
+	// 			order: 1
+	// 			margin-right: 5px
+	// 		>span:nth-child(2)
+	// 			display: none
+	// 		>span:nth-child(3)
+	// 			margin-left: 0px
+	// 			order: 3
+	// 	.label-actions
+	// 		position: absolute
+	// 		top: 12px
+	// 		left: 20px
+	// 		display: flex
+	// 		justify-content: space-between
+	// 		flex-direction: row-reverse
+	// 		width: 102px
+	// 		.stat-text
+	// 				display: none
+	.mymarkets-list.explorer-markets
+		.table.table-hover.text-right
+			td:first-child,
+			th:first-child
+				text-align: left!important
+			td:nth-child(2),
+			th:nth-child(2)
+				width: 22px
+			td
+				font-size: 11px
+				padding: 0 3px!important
+				line-height: 1
+			th
+				padding: 3px 3px 3px 3px!important
+				font-size: 12px!important
+				line-height: 1!important
+				span
+					font-size: 12px!important
+					line-height: 1!important
+	.exchange-layout
+		#sticky-table-column
+			display: none
+		.vertical-table-cell-three
+			width: 75px!important
+		.vertical-table-cell-two
+			width: 105px!important
+		.grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+			.table.table-hover.text-right
+				td
+					font-size: 11px
+					padding: 0 3px!important
+					line-height: 1
+				th
+					padding: 5px 3px 5px 3px!important
+					font-size: 12px!important
+					line-height: 1!important
+					span
+						font-size: 12px!important
+						line-height: 1!important
+
+
+body.localcoin .fixed-table.market-right-padding .orderHistoryAsk .price-integer
+	color: #ea340b
+body.localcoin .fixed-table.market-right-padding .orderHistoryBid .price-integer
+	color: #258a14
+body.localcoin .exchange-bordered.small-12
+	height: 100%
+body.localcoin .left-order-book .cell
+	padding: 0 10px 0 0
+
+
+body.localcoin .left-cell-active  .sticky-table .sticky-table-header,
+body.localcoin .left-cell-active  .sticky-table .sticky-table-corner
+	//display: none
+
+body.localcoin .sticky-table .sticky-table-header .custom-sticky-header-wrap
+	display: -ms-flexbox
+	display: flex
+	-ms-flex-pack: end
+	justify-content: flex-end
+
+
+body.localcoin .sticky-table .sticky-table-header .header-cell,
+body.localcoin .sticky-table .sticky-table-corner .header-cell
+	display: -ms-inline-flexbox
+	display: inline-flex
+	-ms-flex-align: center
+	align-items: center
+	-ms-flex-pack: end
+	justify-content: flex-end
+	padding: 8px 10px 5px 0
+
+body.localcoin
+	.left-order-book .cell .text-center.spread .left
+		padding-left: 4px
+	.orderbook-latest-price
+		span.latest-label,
+		span.spread-label,
+		span.spread-value
+			color: #00195b
+body.localcoin .vertical-orderbook-down  .sticky-table-row.top-header
+	display: none!important
+body.localcoin .sticky-table .sticky-table-y-wrapper
+	.sticky-table-row
+		display: flex
+	.header-cell
+		display: inline-flex
+		align-items: center
+		justify-content: flex-end
+		padding: 8px 10px 5px 0
+		&:last-child
+			padding: 8px 5px 5px 0
+	.custom-sticky-header-wrap
+		display: flex
+		justify-content: flex-end
+		border-bottom: 1px solid #aabfd9
+		span
+			color: #fff!important
+.highcharts-label table td
+	color: #fff
+	font-family: "osnovapro", sans-serif
+	font-size: 11px
+
+
+body.localcoin .order-table .custom-sticky-table-wrap
+	display: table
+	height: calc(50vh - 82px)
+
+body.localcoin .order-table .custom-sticky-table-wrap .transition-container
+	display: table-cell
+	vertical-align: bottom
+
+
+
+body.localcoin
+	.form-control.buysell-select,
+	.form-control.buysell-select
+		width: auto
+
+
+	.grid-block.no-overflow.wrap.shrink.switch
+		width: 100%
+		border-radius: unset!important
+		height: unset!important
+		.market-row:not(.stable-height)
+			margin-top: 0
+			margin-bottom: -1px
+		.market-row.stable-height
+			order: 2
+		.small-12.no-padding.medium-6.xlarge-4.order-4.buy-form,
+		.small-12.no-padding.medium-6.xlarge-4.order-5.sell-form,
+		.medium-6.xlarge-4.small-12.medium-6.no-padding.align-spaced.order-6
+			max-height: 282px
+		.small-12.no-padding.medium-6.xlarge-4.order-4.buy-form,
+		.small-12.no-padding.medium-6.xlarge-4.order-5.sell-form
+			margin-top: auto!important
+		.order-1.xlarge-order-1.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+			height: auto
+			.exchange-bordered
+				height: 100%
+				.grid-block.ps-container
+					max-height: calc(100% - 58px)!important
+			.small-12.medium-6.middle-content.order-1,
+			.small-12.medium-6.middle-content.order-2
+				margin-bottom: 0px!important
+		.medium-6.xlarge-4.no-padding.no-overflow.small-12.medium-6.order-3.xlarge-order-3.my-trades
+			height: auto
+			.table-container.grid-block
+				max-height: calc(100% - 58px)!important
+	.grid-block.no-overflow.wrap.shrink:not(.switch)
+		.medium-6.xlarge-4.no-padding.no-overflow.small-12.medium-6.order-3.xlarge-order-3.my-trades
+			max-height: 258px
+
+
+@media only screen and (min-width: 1101px)
+	body.localcoin
+		.exchange-layout
+			.market-row
+				.open-orders
+					>.exchange-bordered.small-12
+						>.table-container.grid-block
+							max-height: calc(100% - 55px)!important
+	body.localcoin .exchange-layout .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+		max-height: calc(100% + 42px)
+@media only screen and (max-width: 1100px)
+	body.localcoin .grid-block.shrink.right-column.no-overflow.vertical.show-for-medium
+		max-height: 100%
+	body.localcoin
+		.exchange-layout
+			.my-trades,
+			.open-orders,
+			.market-row
+				>.no-padding.small-vertical.medium-horizontal
+					.small-12.medium-6.middle-content.order-1,
+					.small-12.medium-6.middle-content.order-2
+						.grid-block.ps-container
+								max-height: 170px!important
+			.market-row.stable-height
+				max-height: none
+			.market-row
+				flex-direction: column
+	body.localcoin .exchange-layout .my-trades>.exchange-bordered.small-12>.table-container
+		max-height: 170px!important
+	body.localcoin .exchange-layout #market-charts + .grid-block.no-overflow.wrap.shrink
+		overflow: visible
+	body.localcoin
+		.exchange-layout
+			.my-trades,
+			.open-orders,
+			.market-row.is-fee-neighbor
+				>.no-padding.small-vertical.medium-horizontal
+					.small-12.medium-6.middle-content.order-1,
+					.small-12.medium-6.middle-content.order-2
+						.grid-block.ps-container
+								max-height: 200px!important
+			.market-row.is-fee.stable-height
+				max-height: none
+				.buy-form,
+				.sell-form
+					flex: 0 0 100%!important
+			.market-row
+				flex-direction: row
+				flex-wrap: wrap
+				.middle-content
+					flex: 0 0 100%!important
+				.order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+					display: flex
+					flex-direction: row
+					flex: 0 0 100%!important
+					.open-orders,
+					.small-12.medium-6.middle-content 
+						flex: 0 0 100%!important
+						min-height: 260px!important
+						max-height: 260px!important
+				.medium-6.xlarge-4.open-orders.small-12.medium-6 
+					flex: 0 0 100%!important
+					min-height: 260px!important
+					max-height: 260px!important
+	body.localcoin .exchange-layout .my-trades>.exchange-bordered.small-12>.table-container
+		max-height: 200px!important
+	body.localcoin .exchange-layout #market-charts + .grid-block.no-overflow.wrap.shrink
+		overflow: visible
+	body.localcoin .exchange-layout .market-row .order-3.xlarge-order-4.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8
+		flex-wrap: wrap
+
+@media only screen and (min-width: 1001px) and (min-height: 1100px)
+	body.localcoin .exchange-layout .market-row:not(.stable-height)
+		max-height: calc(100vh - 754px)
+	body.localcoin .exchange-layout .market-row.is-fee-neighbor:not(.stable-height)
+		max-height: calc(100vh - 784px)
+@media only screen and (min-width: 1001px) and (max-height: 1100px)
+	body.localcoin .exchange-layout .market-row:not(.stable-height)
+		max-height: calc(100vh - 604px)
+	body.localcoin .exchange-layout .market-row.is-fee-neighbor:not(.stable-height)
+		max-height: calc(100vh - 634px)
+
+
+@media only screen and (min-width: 1001px) and (max-width: 1500px)
+	body.localcoin .exchange-layout .main .grid-block.shrink.no-padding.overflow-visible.top-bar.left-cell-active
+		width: auto!important
+		max-width: 100%!important
+		margin-bottom: 42px
+	body.localcoin .exchange-layout .grid-block.left-column.shrink.no-overflow
+		margin-top: -84px
+
+	body.localcoin .exchange-layout .main .grid-block.shrink.no-padding.overflow-visible.top-bar.left-cell-active + .grid-block.page-layout.market-layout
+		.main-content
+			margin-top: -42px
+
+@media only screen and (min-width: 1000px) 
+	body.localcoin .exchange-layout .main.left-cell-active .grid-block.shrink.no-padding.overflow-visible.top-bar, body.localcoin .exchange-layout .main.left-cell-active .grid-block.shrink.no-padding.overflow-visible.top-bar.left-cell-active
+		margin-left: 269px!important
+
+
+@media only screen and (max-width: 480px)
+	body.localcoin .exchange-layout .grid-block.wrap.market-stats-container ul.market-stats.stats.top-stats li
+		padding: 2px 4px
+		min-height: 32px
+	body.localcoin .exchange-layout .pair-switcher-block
+		line-height: 1
+	body.localcoin
+		.grid-block.shrink.no-padding.overflow-visible.top-bar.container-menu-header
+			border-bottom: 1px solid #abbfd9
+			>.grid-block.overflow-visible
+				display: flex
+				flex-direction: column
+				.grid-block.shrink
+					>div
+						display: flex
+						justify-content: center
+						width: 100%
+						border-bottom: 1px solid #abbfd9
+
+
+
+
+
+
+
+
+body.localcoin .exchange-layout .order-1.xlarge-order-1.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8 .table.order-table.table-hover.fixed-table.text-right.no-overflow tr:nth-child(odd), body.localcoin .exchange-layout .order-1.xlarge-order-1.grid-block.orderbook.no-padding.small-vertical.medium-horizontal.align-spaced.no-overflow.small-12.xlarge-8 .table.order-table.table-hover.fixed-table.text-right.no-overflow tr:nth-child(odd)
+	background-color: rgba(220, 230, 242, 0.5)
+
+
+body.localcoin .exchange-layout .open-orders.settle .open-orders__headings th:last-child
+	width: 110px!important
+body.localcoin .exchange-layout .open-orders.settle .open-orders__table td:not(:nth-child(4))
+	width: 33%!important
+body.localcoin .exchange-layout .open-orders.settle .open-orders__table td:nth-child(4)
+	width: 100px!important
+
+
+
+body.localcoin .exchange-layout .table.order-table.text-right.fixed-table.market-right-padding:not(.open-orders__table) tr
+	cursor: pointer
+body.localcoin .exchange-layout .table.order-table.text-right.fixed-table.market-right-padding:not(.open-orders__table) tr:hover
+	background-color: #f5f5f5
+
+
+
+
+
+
+.localcoin .buy-table-modal .dropdown-wrapper ul.dropdown
+	min-width: 106px
+	max-height: 200px
+	overflow: auto
+	li
+		min-height: 25px
+		height: auto
+		span
+			padding: 0 10px

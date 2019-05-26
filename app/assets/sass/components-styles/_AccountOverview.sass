@@ -1,0 +1,91 @@
+.dashboard-layout
+	.csv-export
+		margin-left: 20px
+	.dashboard__tabs__item
+		padding: 5px 24px 0
+		h4,
+		span
+			line-height: 1
+			margin: 0
+	.dashboard__actions
+		position: absolute
+		right: 0
+		top: 4px
+		padding: 0!important
+		background-color: transparent!important
+		input
+			height: 30px
+			margin: 0
+		.col-xl-3.col-lg-6
+			width: 320px
+			max-width: 320px
+			flex: 0 0 320px
+		.col-xl-9.col-lg-12
+			width: 480px
+			max-width: 480px
+			flex: 0 0 480px
+		>.container-fluid
+			.row
+				justify-content: flex-end
+				.col-lg-9
+					display: flex
+					justify-content: flex-end
+					.btn.large.inverted,
+					.btn.large.outline
+						height: 30px!important
+						line-height: 30px!important
+
+.propsal-table-wrap
+	overflow-x: auto
+.table.proposals
+	min-width: 650px
+	.modal
+		.modal-header
+			padding: 0
+		.modal-content
+			padding-top: 0
+			padding-bottom: 0
+		.content-block
+			margin-bottom: 8px
+			padding-right: 0!important
+		label
+			margin-bottom: 0
+		h4
+			margin: 0
+		td.heading-perm
+			padding: 5px 0 0 0
+			td
+				padding: 3px 0
+				vertical-align: text-bottom
+				.icon
+					position: relative
+					top: -2px
+					margin-right: 5px!important
+@media only screen and (max-width : 1700px)
+	.dashboard-layout .dashboard__actions
+		position: relative
+		top: 0
+		background-color: #c1d0e3!important
+		padding: 10px 0 0 0!important
+	.dashboard-layout .dashboard__actions > .container-fluid .row,
+	.dashboard-layout .dashboard__actions > .container-fluid .row .col-lg-9
+		justify-content: flex-start
+
+@media only screen and (max-width : 1250px)
+	.dashboard-layout .dashboard__actions > .container-fluid .row
+		flex-direction: column
+	.dashboard-layout .dashboard__actions .col-xl-3.col-lg-6,
+	.dashboard-layout .dashboard__actions .col-xl-9.col-lg-12
+		flex: auto
+		margin-bottom: 10px
+
+@media only screen and (max-width : 480px)
+	.dashboard-layout .dashboard__actions .col-xl-3.col-lg-6
+		max-width: none
+		width: 100%
+	.dashboard__actions__filters
+		flex-wrap: wrap!important
+	.dashboard-layout .dashboard__actions .col-xl-9.col-lg-12
+		width: 100%
+		max-width: none
+		flex: auto

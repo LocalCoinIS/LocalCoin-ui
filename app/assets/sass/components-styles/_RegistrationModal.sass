@@ -1,0 +1,69 @@
+.registration-types
+  display: flex
+  margin: 0!important
+  padding: 0 5px
+
+.registration-type
+  background: #dce6f2
+  max-width: 50%
+  width: 100%
+  margin: 30px 10px
+  border-radius: 6px
+  padding: 5px 10px
+  &:hover
+    box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.4)
+    z-index: 2
+  &__icon
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 50px
+    margin-bottom: 8px
+  &__heading
+    font-size: 20px
+    font-weight: bold
+    color: #00195b
+  &__list
+    padding: 0 5px
+    margin: 0!important
+    list-style: none
+    li
+      display: flex
+      align-items: flex-start
+      line-height: 1.3
+      margin: 0 0 5px 0
+      padding: 0
+      color: #727677
+      font-size: 14px
+      text-align: left
+      span.green
+        color: #258a14!important
+        line-height: inherit!important
+        margin-left: 3px
+        font-size: inherit!important
+      span.red
+        color: #ea340b!important
+        line-height: inherit!important
+        margin-left: 3px
+        font-size: inherit!important
+      &:before
+        content: ''
+        display: inline-block
+        min-width: 6px
+        max-width: 6px
+        min-height: 6px
+        max-height: 6px
+        border-radius: 50%
+        background-color: #00195b
+        margin: 5px 8px 0 0
+  &__choose
+    font-weight: bold
+    font-size: 16px!important
+
+@media only screen and (max-width: 550px)
+  .registration-types
+    flex-direction: column
+    margin-top: 30px!important
+  .registration-type
+    max-width: 280px
+    margin: 10px auto

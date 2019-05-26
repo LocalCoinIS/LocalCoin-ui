@@ -1,0 +1,2100 @@
+@import '_mixins/layout-mixins'
+.localcoin
+	*
+		box-sizing: border-box
+	b
+		font-family: $osnovapro-bold
+		color: #00195b
+	span
+		font-weight: normal
+		font-size: 14px
+		line-height: 1.0
+	.spread span
+		font-size: 11px
+		font-family: "Roboto Mono", monospace !important
+	h1
+		font-size: 32px
+		font-weight: normal
+		color: #001b60
+		line-height: 1.0
+		margin: 10px 0
+	h2
+		font-size: 24px
+		font-weight: normal
+		color: #001b60
+		line-height: 1.0
+		margin: 10px 0
+		span
+			font-size: inherit
+			font-weight: inherit
+			color: inherit
+			line-height: inherit
+	h3
+		font-size: 21px
+		font-weight: normal
+		color: #001b60
+		line-height: 1.0
+		margin: 10px 0
+	h4
+		font-size: 18px
+		font-weight: bold
+		font-family: $osnovapro-bold
+		color: #00195b
+	h5
+		font-size: 14px
+		font-weight: bold
+		font-family: $osnovapro-bold
+		color: #001b60
+		line-height: 1.0
+		margin: 5px 0
+	h6
+		font-size: 13px
+		font-weight: bold
+		font-family: $osnovapro-bold
+		color: #001b60
+		line-height: 1.0
+		margin: 5px 0
+	p
+		font-size: 14px
+		font-weight: normal
+		line-height: 1.0
+		color: #00195b
+		margin: 5px 0
+	a
+		text-decoration: none
+		color: #2964fa
+		&:hover
+			color: #132d71
+	u
+		display: inline-block
+		text-decoration: none
+		border-bottom: 1px dotted #00195b
+	label
+		font-weight: normal
+		font-size: 14px
+		line-height: 1.0
+		color: #00195b
+	input[type='number']
+		-moz-appearance:textfield
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button
+		-webkit-appearance: none;
+	input[type="text"],
+	input[type="number"],
+	input[type="password"]
+		width: 100%
+		border-radius: 4px
+		padding: 0 10px
+		height: 40px
+		background-color: #dce6f2
+		color: #00195b
+		font-size: 14px
+		border: 1px solid #7fafe8
+		+placeholder
+			color: #000
+			opacity: 0.5
+			font-size: 14px
+		&:hover
+			+placeholder
+				color: #00195b
+		&:focus
+			+placeholder
+				opacity: 1
+				font-size: 0
+	textarea
+		width: 100%
+		border-radius: 4px
+		padding: 10px 10px 0 10px
+		background-color: #dce6f2
+		color: #00195b
+		font-size: 14px
+		border: 1px solid #7fafe8
+		+placeholder
+			color: #000
+			opacity: 0.5
+			font-size: 14px
+		&:hover
+			+placeholder
+				color: #00195b
+		&:focus
+			+placeholder
+				opacity: 1
+				font-size: 0
+	.checkbox
+		display: flex
+		align-items: center
+		&__input
+			display: none
+		&__styled
+			display: inline-flex
+			align-items: center
+			position: relative
+			min-width: 19px
+			max-width: 19px
+			width: 19px
+			height: 19px
+			background-color: #dce6f2
+			border: 1px solid #7fafe8
+			margin-right: 10px
+		&__styled.disable
+			opacity: 0.5
+		&__label
+			display: inline-flex
+			position: relative
+			top: 1px
+			line-height: 19px
+			color: #001b60
+		&__input:checked + .checkbox__styled::before
+			content: ''
+			display: block
+			position: absolute
+			width: 14px
+			height: 14px
+			top: 2px
+			left: 2px
+			right: 0
+			bottom: 0
+			background-image: url("data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMzU0YzliIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDI2IDI2IiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjYgMjYiPgogIDxwYXRoIGQ9Im0uMywxNGMtMC4yLTAuMi0wLjMtMC41LTAuMy0wLjdzMC4xLTAuNSAwLjMtMC43bDEuNC0xLjRjMC40LTAuNCAxLTAuNCAxLjQsMGwuMSwuMSA1LjUsNS45YzAuMiwwLjIgMC41LDAuMiAwLjcsMGwxMy40LTEzLjloMC4xdi04Ljg4MTc4ZS0xNmMwLjQtMC40IDEtMC40IDEuNCwwbDEuNCwxLjRjMC40LDAuNCAwLjQsMSAwLDEuNGwwLDAtMTYsMTYuNmMtMC4yLDAuMi0wLjQsMC4zLTAuNywwLjMtMC4zLDAtMC41LTAuMS0wLjctMC4zbC03LjgtOC40LS4yLS4zeiI+PC9wYXRoPgo8L3N2Zz4=")
+			background-repeat: no-repeat
+			background-position: center
+			background-size: contain
+	.switcher
+		display: flex
+		align-items: center
+		&__input
+			display: none
+		&__styled
+			display: inline-flex
+			align-items: center
+			position: relative
+			min-width: 50px
+			max-width: 50px
+			width: 50px
+			height: 32px
+			background-color: #ccc
+			border-radius: 50px
+			margin-right: 10px
+			&::before
+				content: ''
+				display: block
+				position: absolute
+				width: 32px
+				height: 32px
+				top: 0
+				left: 0
+				bottom: 0
+				border-radius: 50%
+				border: 4px solid #ccc
+				background-color: #fff
+				transition: left .15s ease-out
+		&__label
+			display: inline-flex
+			position: relative
+			top: 1px
+			line-height: 19px
+			color: #001b60
+		&__input:checked + .switcher__styled
+			background-color: #195d0e
+		&__input:checked + .switcher__styled::before
+			content: ''
+			display: block
+			position: absolute
+			width: 32px
+			height: 32px
+			top: 0
+			left: 20px
+			bottom: 0
+			background-color: #2ba017
+			border: none
+	.radio
+		display: flex
+		align-items: center
+		&__input
+			display: none
+		&__styled
+			display: inline-flex
+			align-items: center
+			position: relative
+			min-width: 19px
+			max-width: 19px
+			width: 19px
+			height: 19px
+			background-color: #dce6f2
+			border: 1px solid #7fafe8
+			border-radius: 50%
+			margin-right: 6px
+		&__label
+			display: inline-flex
+			position: relative
+			top: 1px
+			line-height: 19px
+			color: #000000
+		&__input:checked + .radio__styled::before
+			content: ''
+			display: block
+			position: absolute
+			width: 9px
+			height: 9px
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			margin: auto
+			background-color: #354c9b
+			border-radius: 50%
+	table.blue-heading
+		th
+			background-color: #c1d0e3
+		td
+			background-color: transparent
+	table.blue-bg.with-borders
+		td
+			border-bottom: 1px solid #fff
+	table.blue-bg.borders
+		td
+			border-bottom: 1px solid #fff
+	table.blue-bg
+		th
+			background-color: #c1d0e3
+		tr:not(:first-child):hover
+			td
+				background-color: rgba(224,232,241, .5)
+		td
+			background-color: #e0e8f1
+	table
+		width: 100%
+		th
+			text-align: left
+			background-color: #c1d0e3
+			font-family: $osnovapro-bold
+			color: #00195b
+			font-size: 14px
+			padding: 5px 16px
+			line-height: 1.0
+		th.center,
+		td.center,
+			text-align: center
+		th.left,
+		td.left,
+			text-align: left
+		th.right,
+		td.right,
+			text-align: right
+		td
+			padding: 3px 16px
+			background-color: transparent
+			vertical-align: middle
+			color: #00195b
+			font-size: 14px
+	.select.select-withicon
+		.icon
+			display: inline-flex
+			margin: -4px 6px 0 0
+			min-width: 20px
+			max-width: 20px
+			background-size: 100% 100%
+			background-repeat: no-repeat
+			background-position: center
+			overflow: hidden
+			height: 16px
+	.select
+		position: relative
+		display: block
+		width: 100%
+		vertical-align: middle
+		text-align: left
+		user-select: none
+		-webkit-touch-callout: none
+		.placeholder
+			position: relative
+			display: flex
+			align-items: center
+			padding: 0 10px
+			font-size: 14px
+			background-color: #dce6f2
+			z-index: 1
+			height: 40px
+			border-radius: 4px
+			border: 1px solid #7fafe8
+			cursor: pointer
+			color: #00195b
+			&:after
+				position: absolute
+				content: ''
+				right: 14px
+				margin-top: -3.5px
+				top: 50%
+				display: inline-block
+				margin-left: 5px
+				width: 0
+				height: 0
+				border-style: solid
+				border-width: 7px 5.5px 0 5.5px
+				border-color: #001b60 transparent transparent transparent
+				z-index: 10
+		&.is-open
+			.placeholder
+				border-bottom: 0
+				border-bottom-left-radius: 0
+				border-bottom-right-radius: 0
+			.placeholder:after
+				width: 0
+				height: 0
+				border-style: solid
+				border-width: 0 5.5px 7px 5.5px
+				border-color: transparent transparent #001b60 transparent
+			ul
+				display: block
+		ul.locale
+			overflow: visible
+		ul
+			display: none
+			position: absolute
+			overflow: hidden
+			overflow-y: auto
+			width: 100%
+			background: #eef3f9
+			border-bottom-left-radius: 4px
+			border-bottom-right-radius: 4px
+			border-left: 1px solid #7fafe8
+			border-bottom: 1px solid #7fafe8
+			border-right: 1px solid #7fafe8
+			top: 100%
+			left: 0
+			list-style: none
+			margin: 0
+			padding: 0
+			z-index: 10
+			li
+				display: flex
+				align-items: center
+				font-weight: normal
+				padding-left: 10px
+				font-family: $osnovapro
+				text-align: left
+				height: 30px
+				margin: 0
+				color: #00195b
+				cursor: pointer
+				&:hover
+					background: #dce6f2
+					color: #00195b
+	.dashboard .select .placeholder
+		height: 30px
+
+	ul
+		margin: 10px 0 10px 18px
+		li
+			margin-bottom: 8px
+html, body.localcoin
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+	flex-direction: column
+	min-height: 100vh
+	width: 100%
+
+body.localcoin
+	font-size: 14px
+	min-width: 320px
+	padding-top: 35px
+	position: relative
+	line-height: 1.625
+	font-family: $osnovapro
+	overflow-x: hidden
+	opacity: 1
+	background: #fff
+
+	// .sticky-footer
+	// 	flex-grow: 1
+
+	.footer-line
+		display: flex
+		align-items: center
+		justify-content: space-between
+		.footer-right
+			display: flex
+	.footer-info
+		display: flex
+		flex-direction: column
+		align-items: flex-end
+		font-size: 12px
+		border-left: 1px solid hsla(0,0%,50%,.45)
+		cursor: pointer
+		padding: 0 10px 0 10px
+		&:hover
+			background-color: rgba(220, 230, 242, 0.5)
+		span
+			line-height: 1
+		&__status
+			color: #168e13
+			margin-bottom: 2px
+			font-family: roboto-regular,arial,sans-serif
+			font-weight: 400
+			font-style: normal
+			text-transform: lowercase
+			font-variant: small-caps
+			&:hover
+				text-decoration: underline
+		&__data
+			color: #00195b
+			text-align: right
+			font-family: roboto-regular,arial,sans-serif
+			font-weight: 400
+			font-style: normal
+			text-transform: lowercase
+			font-variant: small-caps
+	.chatbro_minimized_chat
+			pointer-events: none
+	.chatbro_movable_chat .chatbro_minimized_header
+			opacity: 0!important
+			pointer-events: none!important
+			transition: none!important
+	.header
+		background-color: #001b60
+		position: fixed
+		top: 0
+		right: 0
+		left: 0
+		width: 100%
+		z-index: 20
+	.header-line
+		display: flex
+		align-items: center
+		height: 35px
+	.logo
+		display: flex
+		align-items: center
+		margin: 0 8px 0 8px
+		img
+			max-width: 18px
+			height: 28px
+			cursor: pointer
+	.navigation
+		&__list
+			display: flex
+			list-style: none
+			padding: 0
+			margin: 0
+		&__item
+			padding: 0 10px
+			margin: 0
+			&:hover
+				.navigation__link
+					opacity: .5
+				background-color: #000f42
+		&__item.active
+			background-color: #000324
+			&:hover
+				background-color: #000324
+		&__link
+			display: inline-block
+			font-size: 18px
+			line-height: 35px
+			color: #9db1e6
+			text-decoration: none
+			margin: 0 2px
+			letter-spacing: 1px
+	.balance
+		margin-left: auto
+		position: relative
+		&__label
+			position: relative
+			display: inline-flex
+			align-items: center
+			font-size: 12px
+			line-height: 40px
+			color: #fff
+			transition: color .25s ease
+			> span
+				color: inherit
+			&:hover
+				color: rgba(255,255,255, .5)
+				text-decoration: underline
+		&:hover
+			.balance__list
+				opacity: 1
+				visibility: visible
+				width: auto
+				height: auto
+				background-color: #001b60
+		&__list
+			position: absolute
+			top: 52px
+			left: auto
+			right: -36px
+			display: flex
+			flex-direction: column
+			opacity: 0
+			visibility: hidden
+			margin: 0
+			list-style-type: none
+			height: 0
+			width: 0
+			background-color: #001b60
+			border-radius: 6px
+			padding: 10px 0 14px 0
+			overflow: visible!important
+			z-index: 2
+			&:before
+				content: ''
+				display: block
+				position: absolute
+				top: -12px
+				left: 0
+				right: 0
+				background-color: transparent
+				height: 12px
+			&:after
+				content: ''
+				position: absolute
+				margin: 0 auto
+				top: -9px
+				left: 0
+				right: 0
+				width: 0
+				height: 0
+				border-style: solid
+				border-width: 0 9px 9px 9px
+				border-color: transparent transparent #001b60 transparent
+		&__link
+			display: block
+			font-size: 18px
+			text-transform: uppercase
+			padding: 9px 44px
+			line-height: 1
+			text-decoration: none
+			color: #fff
+		&__item.active
+			background-color: #050f2a
+			&:hover
+				background-color: #050f2a
+		&__item
+			margin: 0
+			&:hover
+				background-color: #132d71
+	.user
+		display: flex
+		align-items: center
+		margin-left: 22px
+		&__icon
+			display: inline-block
+			max-width: 24px
+			margin-top: -4px
+			margin-right: 8px
+			height: auto
+		&__name
+			line-height: 40px
+			font-size: 14px
+			color: #fff
+			transition: opacity .25s ease
+			&:hover
+				opacity: .5
+	.settings
+		display: inline-flex
+		position: relative
+		align-items: center
+		margin-left: 18px
+		&:hover
+			opacity: .5
+		&__icon
+			max-width: 24px
+			display: inline-block
+			height: auto
+			cursor: pointer
+			&:hover
+				opacity: 0.5
+		.balance__list
+			left: auto
+			right: -46px
+			&:after
+				left: 34px
+		.balance__list.is-active
+			opacity: 1
+			visibility: visible
+			width: auto
+			height: auto
+			background-color: #001b60
+		.balance__link
+			text-transform: none
+	.lock
+		display: inline-flex
+		align-items: center
+		margin-left: 18px
+		&:hover
+			opacity: .5
+	.main
+		display: flex
+		height: 100%
+		flex-grow: 1
+		overflow: hidden
+	.sidebar
+		max-width: 212px
+		min-width: 212px
+		flex-grow: 1
+		background: #c1d0e3
+		padding: 28px 0 0 0
+		&__qr
+			padding: 20px
+			border: 1px solid #7fafe8
+			max-width: 158px
+			margin: auto
+			img
+				display: block
+				max-width: 100%
+				height: auto
+		&__descr
+			max-width: 158px
+			margin: 15px auto 15px auto
+			line-height: 1.0
+			text-align: center
+			color: #00195b
+		&__user
+			display: block
+			color: #00195b
+			text-align: center
+		&__menu
+			list-style: none
+			margin: 20px 0 0 0
+			padding: 0
+			&__item.showsub
+				>.sidebar__menu__sub
+					display: block
+			&__item
+				border-top: 1px solid #f0f4f8
+				line-height: 36px
+				margin: 0
+				&:hover
+					background-color: #e0e8f1
+			&__item.active
+				background-color: #ffffff
+				border-top-color: transparent
+				.sidebar__menu__link
+					font-family: $osnovapro-bold
+			&__item.active + .sidebar__menu__item
+				border-top-color: transparent
+			&__item.noborder
+				border-top: 0
+			&__item.expand
+				&:hover
+					background-color: transparent
+				>.sidebar__menu__link
+					margin-top: 10px
+					font-size: 13px
+					&:after
+						content: ''
+						display: inline-block
+						width: 0
+						height: 0
+						border-style: solid
+						border-width: 5px 4px 0 4px
+						border-color: #00195b transparent transparent transparent
+						margin-left: 6px
+			&__item.expand.showsub
+				>.sidebar__menu__link
+					&:after
+						content: ''
+						display: inline-block
+						width: 0
+						height: 0
+						border-style: solid
+						border-width: 0 4px 5px 4px
+						border-color: transparent transparent #00195b transparent
+			&__link
+				display: flex
+				align-items: center
+				position: relative
+				text-decoration: none
+				color: #00195b
+				font-size: 14px
+				padding: 4.5px 30px
+				min-height: 28px
+				line-height: 1.0
+			// submenu
+			&__sub
+				display: none
+				margin: 0
+				padding: 0
+				list-style: none
+				&__item
+					border-top: 1px solid #f0f4f8
+					margin: 0
+					&:hover
+						background-color: #e0e8f1
+				&__item.noborder
+					border-top: 0
+				&__item.showsub
+					>.sidebar__menu__sub
+						display: block
+				&__item.expand
+					>.sidebar__menu__sub__link
+						margin-top: 10px
+						font-size: 13px
+						&:after
+							content: ''
+							display: inline-block
+							width: 0
+							height: 0
+							border-style: solid
+							border-width: 5px 4px 0 4px
+							border-color: #00195b transparent transparent transparent
+							margin-left: 6px
+				&__item.expand.showsub
+					>.sidebar__menu__sub__link
+						&:after
+							content: ''
+							display: inline-block
+							width: 0
+							height: 0
+							border-style: solid
+							border-width: 0 4px 5px 4px
+							border-color: transparent transparent #00195b transparent
+				&__item.active
+					background-color: #ffffff
+					border-top-color: transparent
+					.sidebar__menu__sub__link
+						font-family: $osnovapro-bold
+				&__item.active + .sidebar__menu__sub__item
+					border-top-color: transparent
+				&__link
+					display: flex
+					align-items: center
+					position: relative
+					text-decoration: none
+					color: #00195b
+					font-size: 14px
+					padding: 4.5px 30px
+					min-height: 28px
+					line-height: 1.0
+	.btn,
+	.button
+		outline: none
+		background-color: transparent
+		font-size: 13px
+		color: #00195b
+		border: 1px solid #00195b
+		line-height: 1
+		padding: 3px 7px
+		margin: 0 4px 4px 0
+		border-radius: 2px
+		> span
+			color: inherit
+	.btn.large
+		font-size: 14px
+		font-family: $osnovapro-bold
+		border-radius: 4px
+		padding: 0px 12px
+		height: 40px
+		&:hover
+			background-color: #eef3f9
+		&:active
+			background-color: #ffffff
+	.btn.large.inverted
+		background-color: #00195b
+		color: #fff
+		font-family: $osnovapro
+		padding: 0px 30px
+		height: 40px
+		&:hover
+			background-color: #132d71
+		&:active
+			background-color: #050f2a
+		span
+			color: #fff!important
+	.btn.large.inverted.inactive
+		opacity: 0.5
+	.btn.orange
+		border-color: #ce7925
+		color: #ce7925
+		background-color: #dce6f2
+	.btn.green
+		border-color: #608c1c
+		color: #608c1c
+		background-color: #dce6f2
+	.btn.large.inverted.flat
+		border-radius: 0
+		border: 0
+	.btn[disabled],
+	.btn.large.inverted.disabled
+		background-color: #7f8cad!important
+		border-color: #7f8cad!important
+		color: #fff!important
+		pointer-events: none
+	.button.disabled
+		color: #fff
+	.btn.create-account
+		display: block
+		margin: 20px auto 0 auto
+	.btn.icon
+		padding: 0px 24px
+		height: 40px
+		border-radius: 4px
+		background-color: #00195b
+		background-repeat: no-repeat
+		background-size: contain
+		background-position: 15px 9px
+		margin: 0
+	.btn.large.outline,
+	.button.outline
+		font-family: $osnovapro
+		font-weight: normal
+		line-height: 40px
+		padding: 0px 24px
+		height: 40px
+		&:hover
+			background-color: #eef3f9
+		&:active
+			background-color: #c1d0e3
+	// content
+	.content
+		display: block
+		position: relative
+		width: 100%
+		padding: 30px 20px 0 20px
+		overflow-x: hidden
+		&:before
+			content: ''
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			width: 100%
+			height: 14px
+			background-image: url('../img/background.svg')
+			background-size: 320px
+			background-position: 0 -12px
+			background-repeat: repeat-x
+		&__heading
+			margin: 0 0 15px 0
+		&__description
+			margin: 15px 0 0 0
+			max-width: 510px
+			letter-spacing: 0
+	.marketw3c-btn
+		margin-top: 25px
+	.table-blocks
+		display: flex
+		width: 100%
+		align-items: flex-start
+		flex-wrap: wrap
+		margin-top: 20px
+		&__item
+			width: calc(50% - 10px)
+			margin-bottom: 28px
+			&:nth-child(odd)
+				margin-right: 20px
+			&__table
+				width: 100%
+				&__labels
+					line-height: 1.7
+					display: flex
+					flex-wrap: wrap
+				td
+					padding: 0
+					background-color: transparent
+					line-height: 1
+					width: 50%
+					padding-bottom: 20px
+					text-align: left
+					&:nth-child(1)
+						text-align: left
+					&:nth-child(2)
+						text-align: right
+			&__heading
+				padding: 17px 20px
+				background-color: #c1d0e3
+				border-radius: 2px
+				margin: 0 0 18px 0
+			&__row
+				display: flex
+				align-items: center
+				justify-content: space-between
+				color: #00195b
+				line-height: 1
+				margin-bottom: 20px
+			&__tags
+				display: flex
+				align-items: flex-start
+				flex-wrap: wrap
+	.support-btn
+		margin: 0 15px 0 0px
+		&:hover
+			color: rgba(255,255,255, .5)!important
+	.mobile
+		display: none
+		&__menu.show
+			width: 300px
+			padding: 0 24px
+		&__menu
+			flex-direction: column
+			position: fixed
+			top: 0
+			bottom: 0
+			left: 0
+			background-color: #c1d0e3
+			padding: 0
+			width: 0
+			overflow: hidden
+			z-index: 10
+			box-shadow: 3px 0 10px rgba(0,0,0,.25)
+			transition: width .25s ease, padding .25s ease
+			&__close
+				display: inline-block
+				position: absolute
+				top: 20px
+				right: 10px
+				cursor: pointer
+				width: 23px
+				height: 4px
+				background-color: #b2b2b2
+				border-radius: 1px
+				transform: rotate(45deg)
+				&:before
+					content: ''
+					position: absolute
+					top: 0
+					left: 0
+					right: 0
+					bottom: 0
+					width: 23px
+					height: 4px
+					border-radius: 1px
+					background-color: #b2b2b2
+					transform: rotate(-90deg)
+				&:hover
+					background-color: #7f7f7f
+					&:before
+						background-color: #7f7f7f
+				&:active
+					background-color: #000000
+					&:before
+						background-color: #000000
+		&__list
+			margin: 50px 0 0 0
+			list-style: none
+			&__item
+				border-bottom: 1px solid #f0f4f8
+				margin: 0
+			&__link
+				display: block
+				color: #00195b
+				font-size: 14px
+				line-height: 36px
+				white-space: nowrap
+		&__burger
+			display: block
+			width: 28px
+			height: 28px
+			margin: 8px 0 0 0
+			cursor: pointer
+
+			span:after, span:before
+				content: ""
+				position: absolute
+				left: 0
+				top: 9px
+
+			span:after
+				top: 18px
+
+			span
+				position: relative
+				display: block
+
+			span, span:after, span:before
+				width: 100%
+				height: 2px
+				background-color: #fff
+				transition: all 0.3s
+				backface-visibility: hidden
+				border-radius: 2px
+
+
+			&.on span
+				background-color: transparent
+
+			&.on span:before
+				transform: rotate(45deg) translate(-1px, 0px)
+
+			&.on span:after
+				transform: rotate(-45deg) translate(6px, -7px)
+		&__accounts
+			display: block
+			margin: 20px 0
+			color: gray
+			text-transform: uppercase
+	.dashboard
+		&__mobileselect
+			display: none
+		&__tabs
+			display: flex
+			background-color: #9bb2cf
+			border-top-left-radius: 2px
+			border-top-right-radius: 2px
+			box-shadow: inset 0px -2px 2px -1px rgba(0,25,91,0.35)
+			&__item
+				display: flex
+				position: relative
+				flex-direction: column
+				align-items: flex-end
+				padding: 8px 24px
+				cursor: pointer
+				h4, span
+					position: relative
+					z-index: 3
+				&:after
+					content: ''
+					position: absolute
+					right: -1px
+					top: 0
+					bottom: 0
+					margin: auto
+					width: 1px
+					height: 100%
+					background-color: #cdd9e7
+					z-index: 1
+				&:first-child
+					border-top-left-radius: 2px
+					&:before
+						box-shadow: none!important
+				&:last-child
+					&:after
+						display: none
+			&__item.active
+				box-shadow: 3px 0px 1px -2px rgba(0,25,91,0.35)
+				&:after
+					right: 0
+				&:before
+					content: ''
+					position: absolute
+					top: 0
+					left: 0
+					right: 0
+					bottom: 0
+					background-color: #c1d0e3
+					z-index: 2
+					box-shadow: -3px 0px 1px -2px rgba(0,25,91,0.35)
+		&__actions
+			width: 100%
+			background-color: #c1d0e3
+			padding: 20px 5px 0 5px
+			&__filters
+				display: flex
+				align-items: center
+				height: 100%
+				label.checkbox
+					margin-right: 30px
+				label.radio
+					margin-right: 24px
+		&__adaptive
+			width: 100%
+			overflow-x: auto
+		&__table.composite
+			tr
+				td:first-child,th:first-child
+					width: 60px
+				td:nth-child(4),
+				th:nth-child(4)
+					width: 120px
+					padding: 0 120px 0 80px
+			.dashboard__table__total span
+				margin-left: 10px
+		&__table
+			min-width: 1090px
+			width: 100%
+			th
+				padding: 15px 16px 5px 16px
+				background-color: #c1d0e3
+			th,td
+				white-space: nowrap
+			tr:first-child
+				border-bottom: 1px solid #fff
+			tr:last-child
+				td:first-child
+					border-bottom-left-radius: 2px
+				td:last-child
+					border-bottom-right-radius: 2px
+			&__total
+				span
+					display: inline-block
+					margin-left: 15px
+			&__deposit
+				display: inline-block
+				min-width: 18px
+				max-width: 18px
+				width: 18px
+				height: 18px
+				background-image: url('../img/deposit.svg')
+				background-repeat: no-repeat
+				background-size: contain
+			&__withdraw
+				display: inline-block
+				min-width: 18px
+				max-width: 18px
+				width: 18px
+				height: 18px
+				background-image: url('../img/deposit.svg')
+				background-repeat: no-repeat
+				background-size: contain
+				transform: rotate(180deg)
+			&__trade
+				display: inline-block
+				min-width: 25px
+				max-width: 25px
+				width: 25px
+				height: 19px
+				background-image: url('../img/trade.svg')
+				background-repeat: no-repeat
+				background-size: contain
+			&__borrow
+				display: inline-block
+				min-width: 19px
+				max-width: 19px
+				width: 19px
+				height: 19px
+				background-image: url('../img/borrow.svg')
+				background-repeat: no-repeat
+				background-size: contain
+			&__settle
+				display: inline-block
+				min-width: 15px
+				max-width: 15px
+				width: 15px
+				height: 19px
+				background-image: url('../img/settle.svg')
+				background-repeat: no-repeat
+				background-size: contain
+			&__link
+				display: inline-flex
+				align-items: center
+				line-height: 1
+				img
+					display: inline-block
+					max-width: 27px
+					height: auto
+					margin-right: 7px
+				span
+					position: relative
+					top: 3px
+					align-self: center
+			&__false
+				color: #bb2820
+			&__success
+				color: #208c0f
+			&__attention
+				display: inline-block
+				min-width: 22px
+				max-width: 22px
+				width: 22px
+				height: 19px
+				background-image: url('../img/attention.svg')
+				background-repeat: no-repeat
+				background-size: contain
+	.table-star
+		display: inline-block
+		position: relative
+		top: 3px
+		min-width: 19px
+		max-width: 19px
+		width: 19px
+		height: 19px
+		background-repeat: no-repeat
+		background-size: contain
+		background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMzU0YzliIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNy4zNDQiIGhlaWdodD0iMTYuNjI0IiB2aWV3Qm94PSIwIDAgMTcuMzQ0IDE2LjYyNCI+ICA8bWV0YWRhdGE+PD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz48eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzE0MCA3OS4xNjA0NTEsIDIwMTcvMDUvMDYtMDE6MDg6MjEgICAgICAgICI+ICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIi8+ICAgPC9yZGY6UkRGPjwveDp4bXBtZXRhPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPD94cGFja2V0IGVuZD0idyI/PjwvbWV0YWRhdGE+PGRlZnM+ICAgIDxzdHlsZT4gICAgICAuY2xzLTEgeyAgICAgICAgZmlsbDogIzM1NGM5YjsgICAgICAgIGZpbGwtcnVsZTogZXZlbm9kZDsgICAgICB9ICAgIDwvc3R5bGU+ICA8L2RlZnM+ICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yNjAsMjU2LjQ1M2w1LjkyNS0uNjc0LDIuNzQ2LTUuNTg5LDIuNyw1LjQ0NCw1Ljk3NCwwLjkxNS00LjI4OCw0LjE0NCwwLjk2NCw2LjExOC01LjQtMy4wMzUtNS4yNTEsMi44OSwxLjAxMi01Ljk3M1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yNjAgLTI1MC4xODgpIi8+PC9zdmc+)
+	.table-star-default
+		display: inline-block
+		min-width: 19px
+		max-width: 19px
+		width: 19px
+		height: 19px
+		background-repeat: no-repeat
+		background-size: contain
+		background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjYzFkMGUzIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNy4zNDQiIGhlaWdodD0iMTYuNjI0IiB2aWV3Qm94PSIwIDAgMTcuMzQ0IDE2LjYyNCI+ICA8bWV0YWRhdGE+PD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz48eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzE0MCA3OS4xNjA0NTEsIDIwMTcvMDUvMDYtMDE6MDg6MjEgICAgICAgICI+ICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIi8+ICAgPC9yZGY6UkRGPjwveDp4bXBtZXRhPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPD94cGFja2V0IGVuZD0idyI/PjwvbWV0YWRhdGE+PGRlZnM+ICAgIDxzdHlsZT4gICAgICAuY2xzLTEgeyAgICAgICAgZmlsbDogI2MxZDBlMzsgICAgICAgIGZpbGwtcnVsZTogZXZlbm9kZDsgICAgICB9ICAgIDwvc3R5bGU+ICA8L2RlZnM+ICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yNjAsMjU2LjQ1M2w1LjkyNS0uNjc0LDIuNzQ2LTUuNTg5LDIuNyw1LjQ0NCw1Ljk3NCwwLjkxNS00LjI4OCw0LjE0NCwwLjk2NCw2LjExOC01LjQtMy4wMzUtNS4yNTEsMi44OSwxLjAxMi01Ljk3M1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yNjAgLTI1MC4xODgpIi8+PC9zdmc+)
+		&:hover
+			background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjOWFhNWNkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNy4zNDQiIGhlaWdodD0iMTYuNjI0IiB2aWV3Qm94PSIwIDAgMTcuMzQ0IDE2LjYyNCI+ICA8bWV0YWRhdGE+PD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz48eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzE0MCA3OS4xNjA0NTEsIDIwMTcvMDUvMDYtMDE6MDg6MjEgICAgICAgICI+ICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIi8+ICAgPC9yZGY6UkRGPjwveDp4bXBtZXRhPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPD94cGFja2V0IGVuZD0idyI/PjwvbWV0YWRhdGE+PGRlZnM+ICAgIDxzdHlsZT4gICAgICAuY2xzLTEgeyAgICAgICAgZmlsbDogIzlhYTVjZDsgICAgICAgIGZpbGwtcnVsZTogZXZlbm9kZDsgICAgICB9ICAgIDwvc3R5bGU+ICA8L2RlZnM+ICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yNjAsMjU2LjQ1M2w1LjkyNS0uNjc0LDIuNzQ2LTUuNTg5LDIuNyw1LjQ0NCw1Ljk3NCwwLjkxNS00LjI4OCw0LjE0NCwwLjk2NCw2LjExOC01LjQtMy4wMzUtNS4yNTEsMi44OSwxLjAxMi01Ljk3M1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yNjAgLTI1MC4xODgpIi8+PC9zdmc+)
+		&:active
+			background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMzU0YzliIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNy4zNDQiIGhlaWdodD0iMTYuNjI0IiB2aWV3Qm94PSIwIDAgMTcuMzQ0IDE2LjYyNCI+ICA8bWV0YWRhdGE+PD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz48eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzE0MCA3OS4xNjA0NTEsIDIwMTcvMDUvMDYtMDE6MDg6MjEgICAgICAgICI+ICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIi8+ICAgPC9yZGY6UkRGPjwveDp4bXBtZXRhPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPD94cGFja2V0IGVuZD0idyI/PjwvbWV0YWRhdGE+PGRlZnM+ICAgIDxzdHlsZT4gICAgICAuY2xzLTEgeyAgICAgICAgZmlsbDogIzM1NGM5YjsgICAgICAgIGZpbGwtcnVsZTogZXZlbm9kZDsgICAgICB9ICAgIDwvc3R5bGU+ICA8L2RlZnM+ICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yNjAsMjU2LjQ1M2w1LjkyNS0uNjc0LDIuNzQ2LTUuNTg5LDIuNyw1LjQ0NCw1Ljk3NCwwLjkxNS00LjI4OCw0LjE0NCwwLjk2NCw2LjExOC01LjQtMy4wMzUtNS4yNTEsMi44OSwxLjAxMi01Ljk3M1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yNjAgLTI1MC4xODgpIi8+PC9zdmc+)
+	// modal styles
+	.deposit-dialog
+		background: #fff
+		padding: 20px 30px
+		max-width: 500px
+		margin: 0 auto
+		border-radius: 6px
+		position: relative
+		.mfp-close
+	.mfp-close
+		display: inline-block
+		position: absolute
+		top: 26px
+		right: 40px
+		padding: 0
+		cursor: pointer
+		width: 23px
+		height: 4px
+		background-color: #b2b2b2
+		border-radius: 1px
+		transform: rotate(45deg)
+		&:before
+			content: ''
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			width: 23px
+			height: 4px
+			border-radius: 1px
+			background-color: #b2b2b2
+			transform: rotate(-90deg)
+		&:hover
+			background-color: #7f7f7f
+			&:before
+				background-color: #7f7f7f
+		&:active
+			background-color: #000000
+			&:before
+				background-color: #000000
+	.modal-company
+		display: flex
+		align-items: center
+		justify-content: center
+		margin: 20px 0
+		&__text
+			margin-bottom: 15px
+		&__text.error
+			color: #bb2820
+			font-size: 13px
+		&__title
+			font-family: $osnovapro-bold
+			text-transform: uppercase
+			color: #001b60
+			font-size: 18px
+		&__clip
+			position: relative
+			margin-bottom: 30px
+			.btn
+				position: absolute
+				top: 24px
+				right: 0
+			input
+				padding-right: 64px
+	.explore
+		margin: 0 -15px
+		.row
+			margin-right: -10px
+			margin-left: -10px
+		.col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto
+			padding-right: 10px
+			padding-left: 10px
+		&__item
+			display: flex
+			flex-direction: column
+			align-items: center
+			border-radius: 2px
+			padding: 23px 0 19px 0
+			background-color: #c1d0e3
+			margin-bottom: 20px
+			&:hover
+				background-color: #dce6f2
+			&__img
+				display: inline-block
+				width: 100%
+				height: 94px
+			&__img.blockchain
+				max-width: 94px
+			&__img.assets
+				max-width: 89px
+			&__img.accounts
+				max-width: 89px
+			&__img.witnesses
+				max-width: 85px
+			&__img.members
+				max-width: 78px
+			&__img.markets
+				max-width: 81px
+				margin: 0
+			&__img.fee
+				max-width: 87px
+			&__heading
+				margin: 24px 0 0 0
+				line-height: 1
+	.faq
+		margin: 0 -15px
+		p
+			margin-bottom: 15px
+	.markets
+		margin: 0 -15px 15px -15px
+		&__item
+			display: flex
+			height: 115px
+			background-color: #c1d0e3
+			border-radius: 2px
+			padding: 14px
+			margin-bottom: 20px
+			&:hover
+				background-color: #dce6f2
+			&__img
+				max-width: 70px
+				min-width: 70px
+				margin-right: 10px
+				img
+					max-width: 70px
+					width: auto
+					height: auto
+			&__data
+				display: flex
+				flex-direction: column
+				h4
+					margin-bottom: 5px
+			&__row
+				display: flex
+				align-items: center
+				margin-bottom: 3px
+				span
+					display: inline-block
+					min-width: 72px
+					line-height: 1
+				b
+					line-height: 1
+				b.danger
+					color: #bb2820
+				b.success
+					color: #208c0f
+		.row
+			margin-right: -10px
+			margin-left: -10px
+		.col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto
+			padding-right: 10px
+			padding-left: 10px
+	.negative-margins
+		margin: 0 -15px 0 -15px
+		.row
+			margin-right: -10px
+			margin-left: -10px
+		.col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto
+			padding-right: 10px
+			padding-left: 10px
+	.accounts-table-wrap
+		width: 100%
+		margin: 25px 0 30px 0
+		overflow-x: auto
+	.accounts-table
+		border-bottom: 1px solid #7fafe8
+		min-width: 1090px
+		tbody
+			tr
+				border-bottom: 1px solid #7fafe8
+				&:first-child
+					border-top: 1px solid #7fafe8
+				&:last-child
+					border-bottom: 0
+		th,
+		td
+			background-color: transparent
+			padding: 8px 0
+			vertical-align: middle
+		th:nth-child(2),
+		td:nth-child(2)
+			width: 35%
+		th:first-child,
+		td:first-child
+			padding-left: 15px
+			width: 60px
+	.recently-table-wrap
+		width: 100%
+		overflow-x: auto
+		margin-bottom: 20px
+	.recently-table
+		border-bottom: 1px solid #7fafe8
+		min-width: 1090px
+		tr:last-child
+			td
+				padding-bottom: 28px
+		tr:first-child
+			border-bottom: 1px solid #7fafe8
+		td,th
+			background-color: transparent
+		th:first-child
+			font-family: $osnovapro
+			width: 400px
+			padding: 7px 90px 7px 0
+		td:first-child
+			width: 400px
+			padding: 7px 90px 7px 0
+		th
+			padding: 7px 16px
+		td:nth-child(3),
+		th:nth-child(3)
+			width: 42%
+		td:last-child,
+		th:last-child
+			width: 110px
+			padding-left: 0
+			padding-right: 0
+	.csv-export
+		display: inline-flex
+		align-items: center
+		img
+			position: relative
+			top: -4px
+			margin-right: 10px
+	.my-markets
+		padding: 9px 10px 9px 10px
+		background-color: #c1d0e3
+		border-bottom: 1px solid #7fafe8
+		margin: 0 0 20px 0
+		h4
+			margin: 0
+			line-height: 1
+	.markets-list
+		display: flex
+		flex-wrap: wrap
+		margin: 20px 0 0 0
+		padding: 2px 2px 0 2px
+		list-style-type: none
+		background-color: #9ab1cf
+		border-top-left-radius: 2px
+		border-top-right-radius: 2px
+		box-shadow: inset 0px -2px 2px -1px rgba(0, 25, 91, 0.35)
+		&__item
+			display: inline-flex
+			align-items: center
+			line-height: 1
+			font-size: 14px
+			color: #000000
+			padding: 6px 14px 7px 14px
+			border-top-left-radius: 2px
+			border-top-right-radius: 2px
+			margin: 0
+			cursor: pointer
+		&__item.active
+			background-color: #fff
+	.market-list-wrap
+		width: 100%
+		overflow-x: auto
+	.market-table
+		width: 100%
+		min-width: 1090px
+		td,th
+			background-color: transparent
+		tr:first-child
+			border-bottom: 1px solid #7fafe8
+		th
+			padding: 12px 0
+		td
+			padding: 8px 0
+		td:first-child,
+		th:first-child
+			padding-left: 24px
+			padding-right: 24px
+			width: 75px
+		td:nth-child(2),
+		th:nth-child(2)
+			width: 16%
+		td:nth-child(3),
+		th:nth-child(3)
+			width: 32%
+	.carret.up
+		display: inline-block
+		margin-left: 5px
+		width: 0
+		height: 0
+		border-style: solid
+		border-width: 0 5.5px 7px 5.5px
+		border-color: transparent transparent #001b60 transparent
+	.carret
+		display: inline-block
+		margin-left: 5px
+		width: 0
+		height: 0
+		border-style: solid
+		border-width: 7px 5.5px 0 5.5px
+		border-color: #001b60 transparent transparent transparent
+	.danger
+		color: #bb2820
+	.success
+		color: #208c0f
+	.threshold-block
+		display: flex
+		align-items: center
+		margin: 25px 0 20px 0
+		input
+			max-width: 84px
+			margin-left: 20px
+	.label
+		display: block
+		margin-bottom: 15px
+	.label,
+	.label.warning,
+	.label.info,
+	.label.success,
+	.label.cancel,
+	.label.alert
+		display: inline-block
+		color: #ce7925
+		background-color: #dce6f2
+		outline: none
+		font-size: 10px !important
+		border: 1px solid #ce7925
+		line-height: 1
+		padding: 1px 3px
+		margin: 0 4px 4px 0
+		border-radius: 2px
+		> span
+			color: inherit
+	.label.success
+		color: #608c1c
+		border: 1px solid #608c1c
+	.label.cancel
+		color: #cc2828
+		border: 1px solid #cc2828
+	.label.info
+		color: #2080d8
+		border: 1px solid #2080d8
+	.label.alert
+		color: #d80ad0
+		border: 1px solid #d80ad0
+	.dashboard__table
+		.label
+			margin: 0
+	.key-icon
+		display: inline-block
+		min-width: 36px
+		max-width: 36px
+		width: 36px
+		height: 36px
+		background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9IiMwMDFiNjAiIHZpZXdCb3g9IjAgMCAzNS44NDQgMzUuODc1Ij48cGF0aCBkPSJNMjUuNDg4IDcuNTc1YTIuMjQzIDIuMjQzIDAgMSAxLTIuMjQyIDIuMjQyIDIuMjQxIDIuMjQxIDAgMCAxIDIuMjQyLTIuMjQyem05Ljk4IDQuMDU2YTIwLjQ0NCAyMC40NDQgMCAwIDAtNC40MDctNi45MzMgMTkuOTU5IDE5Ljk1OSAwIDAgMC02Ljg4LTQuMzIzIDUuNjMxIDUuNjMxIDAgMCAwLTUuOTc1IDEuMjY3bC01LjUgNS40NzhhNS42MTEgNS42MTEgMCAwIDAtMS4xNjkgNi4yMThjLjI4OC42NS42IDEuMjg1LjkzOCAxLjlMLjM5OCAyNy4zMTVhMS40IDEuNCAwIDAgMC0uNDEuOTkxdjYuMTY5YTEuNCAxLjQgMCAwIDAgMS40IDEuNGg2LjE2NGExLjQgMS40IDAgMCAwIDEuNC0xLjR2LTIuNTIzaDIuNTIyYTEuNCAxLjQgMCAwIDAgMS40LTEuNHYtMi41MjNoMi41MjJhMS40IDEuNCAwIDAgMCAwLTIuOGgtMy45MjNhMS40IDEuNCAwIDAgMC0xLjQgMS40djIuNTIzSDcuNTUxYTEuNCAxLjQgMCAwIDAtMS40IDEuNHYyLjUyM0gyLjc4OFYyOC44OWwxMi40MjMtMTIuNDNhMS40IDEuNCAwIDAgMCAuMjA4LTEuNzE4IDIyLjYxNyAyMi42MTcgMCAwIDEtMS4zMjYtMi41NDMgMi43OTEgMi43OTEgMCAwIDEgLjU4Ni0zLjA5Mmw1LjUtNS40NzhhMi44MjQgMi44MjQgMCAwIDEgMy0uNjM2IDE3LjE0OSAxNy4xNDkgMCAwIDEgNS45IDMuNjkgMTcuNjUgMTcuNjUgMCAwIDEgMy43NzUgNS45NzEgMi43ODQgMi43ODQgMCAwIDEtLjYyOCAyLjk5MmwtNS41NjggNS41NDRhMi44MTkgMi44MTkgMCAwIDEtMy4wODMuNiAxOC4xODEgMTguMTgxIDAgMCAxLTIuNTIyLTEuMjg4IDEuNDAyIDEuNDAyIDAgMCAwLTEuNDY1IDIuMzkgMjEuMDc5IDIxLjA3OSAwIDAgMCAyLjkxNSAxLjQ4MyA1LjYxMyA1LjYxMyAwIDAgMCA2LjEzNi0xLjJsNS41NjgtNS41NDRhNS41ODggNS41ODggMCAwIDAgMS4yNTktNi4wMDR6Ij48L3BhdGg+PC9zdmc+")
+		background-repeat: no-repeat
+		background-position: 0 0
+		background-size: contain
+	.accounts-table-wrap.accounts-table-wrap__keys
+		margin: 6px 0 30px 0
+		.accounts-table
+			td:last-child
+				.btn
+					margin: 0
+			td:last-child,
+			th:last-child
+				width: 105px
+			th:nth-child(2),
+			td:nth-child(2)
+				width: 100%
+			th:nth-child(3)
+				padding-right: 250px
+			th:first-child,
+			td:first-child
+				padding-left: 10px
+				width: 63px
+				padding-right: 15px
+	.account-actions
+		display: flex
+		margin-bottom: 35px
+		.btn
+			margin: 0 10px 0 0
+	.active-table-wrap
+		overflow-x: auto
+	.active-table
+		min-width: 1090px
+		th,td
+			background-color: transparent
+			padding: 18px 0
+		tr:first-child
+			border-bottom: 1px solid #7fafe8
+		th:first-child,td:first-child
+			width: 30%
+	.account-inputs
+		display: flex
+		input
+			margin-right: 20px
+		input:nth-child(2)
+			width: 30%
+		input:first-child
+			width: 70%
+	.permissions-dialog
+		max-width: 800px
+		width: 100%
+		background-color: #fff
+		margin: 0 auto
+		padding: 20px 34px
+		border-radius: 6px
+		.mfp-close
+			right: 24px
+		h2
+			margin-bottom: 15px
+		&__label
+			line-height: 1
+		&__text
+			font-size: 18px
+			line-height: 1.0
+			margin: 0 0 15px 0
+			word-wrap: break-word
+			a
+				font-size: 14px
+				font-weight: normal
+				font-family: $osnovapro
+	.options
+		width: 100%
+		margin: 0 -15px
+		padding-top: 20px
+		&__row
+			display: flex
+			margin-top: 20px
+		&__setup
+			width: 100%
+		&__nav
+			margin: 0 20px 0 0
+			padding: 0
+			list-style: none
+			min-width: 200px
+			max-width: 200px
+			width: 200px
+			&__item
+				margin-bottom: 0
+				border-bottom: 1px solid #bfd7f4
+				span
+					font-size: 16px
+				&:last-child
+					border-bottom: 0
+			&__link
+				display: block
+				line-height: 36px
+				padding-left: 28px
+		&__form
+			&__row
+				margin-bottom: 15px
+				line-height: 1
+				label
+					margin-bottom: 0
+			&__row:last-child
+				margin-top: 30px
+			&__status
+				margin-left: 25px
+	.daily-budget
+		display: flex
+		align-items: center
+		margin: 10px 0 0 0
+		&__number
+			margin-left: 40px
+	.voting-table-wrap
+		width: 100%
+		overflow-x: auto
+	.voting-table
+		min-width: 1100px
+		&__linkicon
+			position: relative
+			top: 2px
+			display: inline-block
+			min-width: 19px
+			max-width: 19px
+			width: 19px
+			height: 16px
+			background-image: url('../img/link.svg')
+			background-repeat: no-repeat
+			background-size: contain
+			margin-left: 9px
+		&__toggle
+			position: relative
+			display: inline-block
+			min-width: 19px
+			max-width: 19px
+			width: 19px
+			height: 19px
+			background-image: url('../img/toggle.svg')
+			background-repeat: no-repeat
+			background-size: contain
+			cursor: pointer
+		th,td
+			padding: 10px
+		th:first-child,
+		td:first-child
+			padding-left: 20px
+			padding-right: 0
+		th:last-child,
+		td:last-child
+			padding-right: 14px
+		td
+			white-space: nowrap
+		td:nth-child(3)
+			white-space: normal
+		tr:first-child
+			border-bottom: 1px solid #fff
+		th
+			white-space: nowrap
+			background-color: #c1d0e3
+		tr:last-child
+			td:first-child
+				border-bottom-left-radius: 2px
+			td:last-child
+				border-bottom-right-radius: 2px
+	.worker-btn
+		margin-left: auto
+	.witnesses-board
+		display: flex
+		&__sidetable
+			min-width: 330px
+			max-width: 330px
+			width: 330px
+			margin-right: 20px
+			&__row
+				display: flex
+				justify-content: space-between
+				margin-bottom: 0
+		&__accounts
+			width: 100%
+			margin: 0 -15px
+			overflow: hidden
+	.table-witnesses-wrap
+		width: 100%
+		overflow-x: auto
+		margin-top: 20px
+	.table-witnesses
+		min-width: 1090px
+		border-bottom: 1px solid #7fafe8
+		td,th
+			background-color: transparent
+			padding: 0px 16px
+			width: 18%
+		td:first-child,
+		th:first-child
+			width: 10%
+		th
+			border-bottom: 1px solid #7fafe8
+		tr:first-child
+			border-bottom: 0!important
+	.success-light
+		color: #54be20
+	.danger-light
+		color: #e31616
+	.warning-light
+		color: #ba940f
+	.witness-item
+		display: block
+		text-align: center
+		margin-top: 27px
+		&:hover
+			.witness-item__content
+				background-color: #f5f5f5
+		h5
+			margin: 0 0 5px 0
+		&__content
+			border-top: 1px solid #7fafe8
+			background-color: #c1d0e3
+			padding: 28px 0 22px 0
+			border-bottom-left-radius: 2px
+			border-bottom-right-radius: 2px
+		&__pic
+			height: 76px
+			margin-bottom: 15px
+		&__img
+			display: inline-block
+			max-width: 100%
+			height: auto
+		&__row
+			display: flex
+			justify-content: space-between
+			padding: 0 22px
+			span
+				line-height: 31px
+		&__row.light
+			background-color: #e0e8f1
+
+.card-divider
+	background-color: #e0e8f1
+	margin-top: 1rem
+body.localcoin .grid-content
+	padding: 0
+
+
+.account-overview
+	display: flex
+	background-color: #9bb2cf
+	border-top-left-radius: 2px
+	border-top-right-radius: 2px
+	box-shadow: inset 0px -2px 2px -1px rgba(0,25,91,0.35)
+	list-style: none
+	li
+		display: flex
+		position: relative
+		flex-direction: column
+		align-items: flex-end
+		padding: 8px 24px
+		cursor: pointer
+		h4, span
+			position: relative
+			z-index: 3
+		&:after
+			content: ''
+			position: absolute
+			right: -1px
+			top: 0
+			bottom: 0
+			margin: auto
+			width: 1px
+			height: 42px
+			background-color: #cdd9e7
+			z-index: 1
+		&:first-child
+			border-top-left-radius: 2px
+			&:before
+				box-shadow: none!important
+		&:last-child
+			&:after
+				display: none
+	li.is-active
+		box-shadow: 3px 0px 1px -2px rgba(0,25,91,0.35)
+		&:after
+			right: 0
+		&:before
+			content: ''
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			background-color: #c1d0e3
+			z-index: 2
+			box-shadow: -3px 0px 1px -2px rgba(0,25,91,0.35)
+
+
+
+body.localcoin .asset-card .card-divider
+	background-color: #e0e8f1
+	border-radius: 2px
+	span
+		font-size: 14px
+		font-weight: bold
+		font-family: $osnovapro-bold
+		color: #001b60
+		line-height: 1.0
+
+
+.switch input:checked+label
+	background: #3f3f3f
+
+.switch input:checked+label:after
+	background-color: #fff
+
+
+body.localcoin .page-layout .main-content
+	background-color: #fff
+
+
+
+body.localcoin .order-form .float-right input
+	background-color: #00195b
+
+
+body.localcoin
+	.ml-auto
+		margin-left: auto
+	.sidebar
+		.help-content
+			h4
+				text-align: center
+				font-family: "osnovapro-bold", sans-serif
+			ul
+				overflow: hidden
+				margin: 0
+				li
+					margin: 0
+					border-top: 1px solid #f0f4f8
+					line-height: 36px
+					&:hover
+						background-color: #dce6f2
+					&:before
+						display: none
+				a
+					display: flex
+					align-items: center
+					position: relative
+					text-decoration: none
+					color: #00195b
+					font-size: 14px
+					padding: 4.5px 30px
+					min-height: 28px
+					line-height: 1.0
+	.faq
+		padding: 0 0 0 20px
+	.deposit-btns
+		float: right
+		font-size: 85%
+		a
+			padding-left: 10px
+
+body.localcoin .button.disabled.large.outline
+	color: #00195b
+
+
+.rotate180
+	>svg
+		transform: rotate(180deg)
+
+
+
+body.localcoin .button.hollow.primary
+	border-color: #00195b!important
+	color: #00195b!important
+
+body.localcoin .button.hollow.primary:hover
+	background-color: #eef3f9
+
+
+
+
+body.localcoin .chatbro_container .chatbro_movable_chat
+	min-width: 330px
+body.localcoin #incognito
+	background-color: #e5ecf5
+	color: #0000ff
+	font-size: 1.5rem
+	line-height: 1.3
+	padding: 10px 0
+	height: auto
+	*
+		color: #0000ff
+		font-size: 24px
+		line-height: 1.3
+		font-weight: bold
+
+
+body.localcoin .button-group.no-margin.account-overview.bordered-header.content-block
+	flex-wrap: wrap
+
+
+
+
+body.localcoin .icon:hover svg
+	opacity: .5
+body.localcoin .options__setup
+	label
+		margin-bottom: 0
+	.select
+		margin-bottom: 10px
+body.localcoin .page-otc
+	padding: 16px 24px
+	width: 100%
+
+body.localcoin div.api-node>div:nth-child(3)
+	display: inline-flex
+	a
+		display: inline-block
+		margin: 0 5px
+
+
+.options__nav__item.is-active
+	background-color: #dce6f2
+.options__nav__item
+	&:hover
+		background-color: #dce6f2
+
+#help + ul li.active
+	background-color: #dce6f2
+
+
+
+body.localcoin th .user
+	margin-left: 0
+
+
+
+body.localcoin .tabs-container.generic-bordered-box .service-selector
+	margin-bottom: 0!important
+body.localcoin .service-selector ul.button-group.no-margin.account-overview.bordered-header.content-block li
+	padding: 6px 24px
+body.localcoin .service-selector ul.button-group.no-margin.account-overview.bordered-header.content-block
+	padding-left: 352px!important
+
+section[style="padding-top: 1rem; padding-left: 2rem;"]
+	position: absolute
+	top: 0
+	left: 0
+	padding-top: 4px!important
+	max-width: 330px
+	width: 100%
+	padding-left: 22px!important
+	input
+		margin-bottom: 0!important
+
+@media only screen and (max-width: 900px)
+	body.localcoin .service-selector ul.button-group.no-margin.account-overview.bordered-header.content-block
+		padding-left: 0px!important
+		box-shadow: none
+	section[style="padding-top: 1rem; padding-left: 2rem;"]
+		position: relative
+		top: 0
+		left: 0
+		background-color: #9bb2cf
+		padding: 4px 10px!important
+		max-width: 100%
+		width: 100%
+		input
+			margin-bottom: 0!important
+
+	body.localcoin .footer-line
+		flex-wrap: wrap
+		position: relative
+		height: auto!important
+		>.support-btn
+			position: absolute
+			top: 0
+			left: 0
+			width: calc(25% + 1px)
+	body.localcoin .footer-line .footer-left
+		position: absolute
+		top: 0
+		left: 0
+		width: calc(50% - 2px)
+		button.btn.large.inverted
+			width: 50%
+			padding: 0 10px
+	body.localcoin .footer-line .footer-right
+		width: 100%
+		flex-wrap: wrap
+		justify-content: flex-end
+		.social,
+		.footer-info
+			order: 2
+			width: 50%
+			margin-bottom: 5px
+		>button
+			width: calc(25% + 1px)
+
+
+
+.account-creation .sub-content hr
+	display: none
+
+
+@media only screen and (max-width: 768px)
+
+	body.localcoin .exchange-layout .grid-block.main-content.vertical.no-overflow
+		height: calc(100vh - 178px)!important
+// @media only screen and (max-width: 480px)
+// 	body.localcoin .footer-line .footer-right
+// 		>*
+// 			width: 100%
+// 			&:last-child
+// 				margin-bottom: 0
+// 	body.localcoin .exchange-layout .grid-block.main-content.vertical.no-overflow
+// 		height: calc(100vh - 270px)!important
+
+
+
+@media only screen and (max-width: 1200px)
+	body.localcoin .balance
+		display: none
+	body.localcoin .user,
+	body.localcoin .settings
+		margin-left: auto
+	body.localcoin .user + .settings
+		margin-left: 18px
+
+@media only screen and (max-width: 480px)
+	body.localcoin .footer-info__data
+		display: flex
+		flex-direction: column
+		span
+			order: 2

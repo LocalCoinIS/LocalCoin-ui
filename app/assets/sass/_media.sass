@@ -1,0 +1,96 @@
+@import "vars"
+@media only screen and (max-width : 1200px)
+	body.localcoin .dashboard__actions__filters
+		margin-top: 10px
+	body.localcoin .account-inputs
+		flex-wrap: wrap
+		input
+			margin: 0
+		input:first-child
+			margin-right: 20px
+			width: calc(50% - 10px)
+		input#username
+			margin-right: 0
+		input:nth-child(2)
+			width: calc(50% - 10px)
+		.btn
+			margin-top: 20px
+	body.localcoin .options
+		margin: 0
+	body.localcoin .options >.container
+		max-width: none
+		padding: 0 15px
+	
+@media only screen and (max-width : 1050px)
+	body.localcoin .table-blocks__item:nth-child(odd)
+		margin-right: 0
+	body.localcoin .table-blocks__item
+		width: 100%
+@media only screen and (max-width : 950px)
+	body.localcoin .navigation__item
+		padding: 0 5px
+	body.localcoin .navigation__link
+		font-size: 13px
+	body.localcoin .balance__label:after
+		margin: 0 0 2px 6px
+	body.localcoin .balance__label,
+	body.localcoin .user__name
+		font-size: 13px
+	body.localcoin .dashboard__tabs__item
+		display: none
+	body.localcoin .dashboard__mobileselect
+		display: block
+		margin: 20px
+	body.localcoin .dashboard__tabs
+		box-shadow: none
+
+@media only screen and (max-width : 992px)
+	body.localcoin .witnesses-board
+		flex-direction: column
+	body.localcoin .witnesses-board__sidetable
+		margin-right: 0
+		width: auto
+		min-width: 1px
+		max-width: none
+		margin-bottom: 20px
+	body.localcoin .witnesses-board__accounts
+		margin: 0
+		>.container-fluid
+			padding: 0
+		input
+			margin-bottom: 20px
+@media only screen and (max-width : 850px)
+	body.localcoin .worker-btn
+		margin-left: 0
+		margin-top: 10px
+@media only screen and (max-width : 768px)
+	body.localcoin .my-market-filters
+		label.checkbox
+			margin-top: 20px
+	body.localcoin .account-inputs
+		input:first-child
+			width: 100%
+			margin: 0 0 20px 0
+		input:nth-child(2)
+			width: 100%
+@media only screen and (max-width : 720px)
+	body.localcoin .sidebar,
+	body.localcoin .header-line
+		display: none
+	body.localcoin .mobile
+		display: block
+	body.localcoin .options__row
+		flex-direction: column
+	body.localcoin .options__nav
+		max-width: none
+		width: 100%
+		margin-bottom: 30px
+
+@media only screen and (max-width : 400px)
+	body.localcoin .table-blocks__item__row span,
+	body.localcoin .table-blocks__item__row a
+		font-size: 13px
+	body.localcoin .account-actions
+		flex-direction: column
+		.btn
+			margin-top: 20px
