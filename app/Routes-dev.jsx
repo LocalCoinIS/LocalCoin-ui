@@ -59,20 +59,20 @@ import Invoice from "./components/Transfer/Invoice";
 import {
     BackupCreate,
     BackupRestore
-} from "./components-brand-new/Wallet/Backup";
+} from "./components/Wallet/Backup";
 import WalletChangePassword from "./components/Wallet/WalletChangePassword";
 import {
     WalletManager,
     WalletOptions,
     ChangeActiveWallet,
     WalletDelete
-} from "./components-brand-new/Wallet/WalletManager";
+} from "./components/Wallet/WalletManager";
 import BalanceClaimActive from "./components/Wallet/BalanceClaimActive";
 import BackupBrainkey from "./components/Wallet/BackupBrainkey";
 import Brainkey from "./components/Wallet/Brainkey";
 import News from "./components/News";
-import HelpContent from "./components-brand-new/Help/Content";
-import HelpSidebar from "./components-brand-new/Help/Sidebar";
+import HelpContent from "./components/Help/Content";
+import HelpSidebar from "./components/Help/Sidebar";
 import InitError from "./components/InitError";
 import LoginSelector from "./components/LoginSelector";
 import CreateWorker from "./components/Account/CreateWorker";

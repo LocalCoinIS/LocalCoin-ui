@@ -43,10 +43,11 @@ class BackupCreate extends Component {
                             ? this.props.location.query.newAccount
                             : null
                     }
+                    isCreateAcc={this.props.isCreateAcc}
                 >
                     <NameSizeModified />
                     {this.props.noText ? null : <Sha1 />}
-                    <Download downloadCb={this.props.downloadCb} />
+                    <Download downloadCb={this.props.downloadCb} isCreateAcc={this.props.isCreateAcc} />
                 </Create>
             </div>
         );

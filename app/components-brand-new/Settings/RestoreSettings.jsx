@@ -1,5 +1,5 @@
 import React from "react";
-import {BackupRestore} from "../Wallet/Backup";
+import {BackupRestore} from "../../components/Wallet/Backup";
 import ImportKeys from "../../components/Wallet/ImportKeys";
 import {CreateWalletFromBrainkey} from "../../components/Wallet/WalletCreate";
 import Translate from "react-translate-component";

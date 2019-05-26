@@ -185,6 +185,7 @@ class Tabs extends React.Component {
 }
 
 export default onClickOutside(Tabs);
+export {Tabs, Tab};
 
 /*
     render() {

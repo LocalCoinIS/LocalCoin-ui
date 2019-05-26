@@ -1,5 +1,5 @@
 import React from "react";
-import WalletChangePassword from "../Wallet/WalletChangePassword";
+import WalletChangePassword from "../../components/Wallet/WalletChangePassword";
 
 export default class PasswordSettings extends React.Component {
     render() {
