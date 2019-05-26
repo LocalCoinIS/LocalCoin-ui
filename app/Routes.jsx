@@ -6,9 +6,9 @@ import App from "./App";
 
 import Header from "./components-brand-new/Layout/Header";
 import Footer from "./components-brand-new/Layout/Footer";
-import Witnesses from "./components-brand-new/Explorer/Witnesses";
-import Activenodes from "./components-brand-new/Explorer/Activenodes";
-import CommitteeMembers from "./components-brand-new/Explorer/CommitteeMembers";
+import Witnesses from "./components/Explorer/Witnesses";
+import Activenodes from "./components/Explorer/Activenodes";
+import CommitteeMembers from "./components/Explorer/CommitteeMembers";
 import {WalletManager} from "./components/Wallet/WalletManager";
 import {
     WalletCreate,
@@ -77,7 +77,7 @@ const routes = (
                 Promise.all([
                     import("components-brand-new/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/Explorer/Explorer"),
+                    import("components/Explorer/Explorer"),
                     import("components-brand-new/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
@@ -90,7 +90,7 @@ const routes = (
                 Promise.all([
                     import("components-brand-new/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/Explorer/FeesContainer"),
+                    import("components/Explorer/FeesContainer"),
                     import("components-brand-new/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
@@ -103,7 +103,7 @@ const routes = (
                 Promise.all([
                     import("components-brand-new/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/Explorer/BlocksContainer"),
+                    import("components/Explorer/BlocksContainer"),
                     import("components-brand-new/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
@@ -116,7 +116,7 @@ const routes = (
                 Promise.all([
                     import("components-brand-new/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/Explorer/AssetsContainer"),
+                    import("components/Explorer/AssetsContainer"),
                     import("components-brand-new/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
@@ -129,7 +129,7 @@ const routes = (
                 Promise.all([
                     import("components-brand-new/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/Explorer/AccountsContainer"),
+                    import("components/Explorer/AccountsContainer"),
                     import("components-brand-new/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
@@ -356,7 +356,7 @@ const routes = (
                 Promise.all([
                     import("components-brand-new/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/Explorer/MarketsContainer"),
+                    import("components/Explorer/MarketsContainer"),
                     import("components-brand-new/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))

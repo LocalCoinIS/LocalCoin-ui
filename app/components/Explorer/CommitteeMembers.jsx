@@ -9,8 +9,10 @@ import Translate from "react-translate-component";
 import {connect} from "alt-react";
 import SettingsActions from "actions/SettingsActions";
 import SettingsStore from "stores/SettingsStore";
-import Explorer from "./Explorer";
+import ExplorerTabs from "./ExplorerTabs";
 import PropTypes from "prop-types";
+import DropdownList from "../Utility/DropdownList";
+import counterpart from "counterpart";
 
 class CommitteeMemberCard extends React.Component {
     static propTypes = {
@@ -38,16 +40,15 @@ class CommitteeMemberCard extends React.Component {
         }
 
         return (
-            <div
-                className="grid-content account-card"
-                onClick={this._onCardClick.bind(this)}
-            >
-                <div className="card">
-                    <h4 className="text-center">
-                        {this.props.committee_member.get("name")}
-                    </h4>
-                    <div className="card-content clearfix">
-                        <div className="float-left">
+            <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                <a
+                    className="witness-item"
+                    href="#"
+                    onClick={this._onCardClick.bind(this)}
+                >
+                    <h5>{this.props.committee_member.get("name")}</h5>
+                    <div className="witness-item__content">
+                        <div className="witness-item__pic">
                             <AccountImage
                                 account={this.props.committee_member.get(
                                     "name"
@@ -55,20 +56,16 @@ class CommitteeMemberCard extends React.Component {
                                 size={{height: 64, width: 64}}
                             />
                         </div>
-                        <ul className="balances">
-                            <li>
-                                <Translate content="account.votes.votes" />:{" "}
-                                <FormattedAsset
-                                    decimalOffset={5}
-                                    amount={committee_member_data.get(
-                                        "total_votes"
-                                    )}
-                                    asset={"1.3.0"}
-                                />
-                            </li>
-                        </ul>
                     </div>
-                </div>
+                    <div className="witness-item__row">
+                        <Translate content="account.votes.votes" />
+                        <FormattedAsset
+                            decimalOffset={5}
+                            amount={committee_member_data.get("total_votes")}
+                            asset={"1.3.0"}
+                        />
+                    </div>
+                </a>
             </div>
         );
     }
@@ -262,44 +259,42 @@ class CommitteeMemberList extends React.Component {
         // table view
         if (!cardView) {
             return (
-                <table className="table table-hover">
-                    <thead>
-                        <tr>
-                            <th
-                                className="clickable"
-                                onClick={this._setSort.bind(this, "rank")}
-                            >
-                                <Translate content="explorer.witnesses.rank" />
-                            </th>
-                            <th
-                                className="clickable"
-                                onClick={this._setSort.bind(this, "name")}
-                            >
-                                <Translate content="account.votes.name" />
-                            </th>
-                            <th
-                                className="clickable"
-                                onClick={this._setSort.bind(
-                                    this,
-                                    "total_votes"
-                                )}
-                            >
-                                <Translate content="account.votes.votes" />
-                            </th>
-                            <th>
-                                <Translate content="account.votes.url" />
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>{itemRows}</tbody>
-                </table>
-            );
-        } else {
-            return (
-                <div className="grid-block no-margin small-up-1 medium-up-2 large-up-3">
-                    {itemRows}
+                <div className="table-witnesses-wrap">
+                    <table className="table-witnesses">
+                        <thead>
+                            <tr>
+                                <th
+                                    className="clickable"
+                                    onClick={this._setSort.bind(this, "rank")}
+                                >
+                                    <Translate content="explorer.witnesses.rank" />
+                                </th>
+                                <th
+                                    className="clickable"
+                                    onClick={this._setSort.bind(this, "name")}
+                                >
+                                    <Translate content="account.votes.name" />
+                                </th>
+                                <th
+                                    className="clickable"
+                                    onClick={this._setSort.bind(
+                                        this,
+                                        "total_votes"
+                                    )}
+                                >
+                                    <Translate content="account.votes.votes" />
+                                </th>
+                                <th>
+                                    <Translate content="account.votes.url" />
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>{itemRows}</tbody>
+                    </table>
                 </div>
             );
+        } else {
+            return <div className="row">{itemRows}</div>;
         }
     }
 }
@@ -318,19 +313,27 @@ class CommitteeMembers extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.applyFilterAterLoadPage = this.applyFilterAterLoadPage.bind(this);
+
         this.state = {
             filterCommitteeMember: props.filterCommitteeMember || "",
             cardView: props.cardView
         };
+
+        setTimeout(this.applyFilterAterLoadPage, 500);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        return (
-            !Immutable.is(nextProps.globalObject, this.props.globalObject) ||
-            nextState.filterCommitteeMember !==
-                this.state.filterCommitteeMember ||
-            nextState.cardView !== this.state.cardView
-        );
+        return true;
+    }
+
+    applyFilterAterLoadPage(e) {        
+        this.setState({filterCommitteeMember: ""});
+
+        SettingsActions.changeViewSetting({
+            filterCommitteeMember: ""
+        });        
     }
 
     _onFilter(e) {
@@ -366,46 +369,67 @@ class CommitteeMembers extends React.Component {
         }
 
         let content = (
-            <div className="grid-block">
-                <div className="grid-block vertical medium-horizontal">
-                    <div className="grid-block shrink">
-                        <div className="grid-content">
-                            <h5>
-                                <Translate content="explorer.committee_members.active" />:{" "}
+            <div className="container-fluid" style={{marginTop: "20px"}}>
+                <div className="witnesses-board">
+                    <div className="witnesses-board__sidetable">
+                        <div className="witnesses-board__sidetable__row">
+                            <Translate content="explorer.committee_members.active" />
+                            <span>
                                 {
                                     Object.keys(
                                         globalObject.active_committee_members
                                     ).length
                                 }
-                            </h5>
-                            <br />
-                            <div className="view-switcher">
-                                <span
-                                    className="button outline"
-                                    onClick={this._toggleView.bind(this)}
-                                >
-                                    {!this.state.cardView ? (
-                                        <Translate content="explorer.witnesses.card" />
-                                    ) : (
-                                        <Translate content="explorer.witnesses.table" />
-                                    )}
-                                </span>
-                            </div>
+                            </span>
                         </div>
                     </div>
-                    <div className="grid-block vertical">
-                        <div className="grid-block vertical shrink">
-                            <Translate
-                                component="h3"
-                                content="markets.filter"
-                            />
-                            <input
-                                type="text"
-                                value={this.state.filterCommitteeMember}
-                                onChange={this._onFilter.bind(this)}
-                            />
-                        </div>
-                        <div className="grid-content">
+                    <div className="witnesses-board__accounts">
+                        <div className="container-fluid">
+                            {/*filter*/}
+                            <div className="row">
+                                <div className="col-xl-7 col-lg-6">
+                                    <input
+                                        type="text"
+                                        value={this.state.filterCommitteeMember}
+                                        onChange={this._onFilter.bind(this)}
+                                        placeholder="Filter accounts..."
+                                    />
+                                </div>
+                                <div className="col-xl-3 offset-xl-2 offset-lg-0 col-lg-6">
+                                    <DropdownList
+                                        options={[
+                                            {
+                                                key: "card-true",
+                                                label: counterpart.translate(
+                                                    "explorer.witnesses.card"
+                                                )
+                                            },
+                                            {
+                                                key: "card-false",
+                                                label: counterpart.translate(
+                                                    "explorer.witnesses.table"
+                                                )
+                                            }
+                                        ]}
+                                        selected={{
+                                            key: this.state.cardView
+                                                ? "card-true"
+                                                : "card-false",
+                                            label: this.state.cardView
+                                                ? counterpart.translate(
+                                                      "explorer.witnesses.card"
+                                                  )
+                                                : counterpart.translate(
+                                                      "explorer.witnesses.table"
+                                                  )
+                                        }}
+                                        onChange={e =>
+                                            this._toggleView.bind(this)(e)
+                                        }
+                                    />
+                                </div>
+                            </div>
+                            {/*end of filter*/}
                             <CommitteeMemberList
                                 committee_members={Immutable.List(
                                     globalObject.active_committee_members
@@ -422,7 +446,14 @@ class CommitteeMembers extends React.Component {
             </div>
         );
 
-        return <Explorer tab="committee_members" content={content} />;
+        return (
+            <div className="content">
+                <ExplorerTabs
+                    defaultActiveTab="explorer.committee_members.title"
+                    defaultContent={content}
+                />
+            </div>
+        );
     }
 }
 CommitteeMembers = BindToChainState(CommitteeMembers);
@@ -433,20 +464,23 @@ class CommitteeMembersStoreWrapper extends React.Component {
     }
 }
 
-CommitteeMembersStoreWrapper = connect(CommitteeMembersStoreWrapper, {
-    listenTo() {
-        return [SettingsStore];
-    },
-    getProps() {
-        return {
-            cardView: SettingsStore.getState().viewSettings.get(
-                "cardViewCommittee"
-            ),
-            filterCommitteeMember: SettingsStore.getState().viewSettings.get(
-                "filterCommitteeMember"
-            )
-        };
+CommitteeMembersStoreWrapper = connect(
+    CommitteeMembersStoreWrapper,
+    {
+        listenTo() {
+            return [SettingsStore];
+        },
+        getProps() {
+            return {
+                cardView: SettingsStore.getState().viewSettings.get(
+                    "cardViewCommittee"
+                ),
+                filterCommitteeMember: SettingsStore.getState().viewSettings.get(
+                    "filterCommitteeMember"
+                )
+            };
+        }
     }
-});
+);
 
 export default CommitteeMembersStoreWrapper;

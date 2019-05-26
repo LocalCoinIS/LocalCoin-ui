@@ -3,7 +3,7 @@ import AssetStore from "stores/AssetStore";
 import SettingsStore from "stores/SettingsStore";
 import AltContainer from "alt-container";
 import Assets from "./Assets";
-import Explorer from "./Explorer";
+import ExplorerTabs from "./ExplorerTabs";
 
 class AssetsContainer extends React.Component {
     render() {
@@ -30,7 +30,14 @@ class AssetsContainer extends React.Component {
             </AltContainer>
         );
 
-        return <Explorer tab="assets" content={content} />;
+        return (
+            <div className="content">
+                <ExplorerTabs
+                    defaultActiveTab="explorer.assets.title"
+                    defaultContent={content}
+                />
+            </div>
+        );
     }
 }
 

@@ -2,7 +2,7 @@ import React from "react";
 import AccountStore from "stores/AccountStore";
 import AltContainer from "alt-container";
 import Accounts from "./Accounts";
-import Explorer from "./Explorer";
+import ExplorerTabs from "./ExplorerTabs";
 
 class AccountsContainer extends React.Component {
     render() {
@@ -22,7 +22,14 @@ class AccountsContainer extends React.Component {
             </AltContainer>
         );
 
-        return <Explorer tab="accounts" content={content} />;
+        return (
+            <div className="content">
+                <ExplorerTabs
+                    defaultActiveTab="explorer.accounts.title"
+                    defaultContent={content}
+                />
+            </div>
+        );
     }
 }
 

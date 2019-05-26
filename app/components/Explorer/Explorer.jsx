@@ -1,89 +1,102 @@
 import React from "react";
-import {Tabs, Tab} from "../Utility/Tabs";
-import PropTypes from "prop-types";
+import {Link} from "react-router/es";
+import Translate from "react-translate-component";
+import counterpart from "counterpart";
+import {
+    eBlockchain,
+    eAssets,
+    eAccounts,
+    eWitnesses,
+    eMembers,
+    eMarkets,
+    eFee
+} from "../../assets/img/images";
+
+const exploreItems = [
+    {
+        translate: "explorer.blocks.title", // Blockchain
+        link: "/explorer/blocks",
+        imgClassName: "blockchain",
+        imgSrc: eBlockchain
+    },
+    {
+        translate: "explorer.assets.title", // Assets
+        link: "/explorer/assets",
+        imgClassName: "assets",
+        imgSrc: eAssets
+    },
+    {
+        translate: "explorer.accounts.title", // Accounts
+        link: "/explorer/accounts",
+        imgClassName: "accounts",
+        imgSrc: eAccounts
+    },
+    {
+        translate: "explorer.witnesses.title", // Witnesses
+        link: "/explorer/witnesses",
+        imgClassName: "witnesses",
+        imgSrc: eWitnesses
+    },
+    {
+        translate: "explorer.committee_members.title", // Committee members
+        link: "/explorer/committee-members",
+        imgClassName: "members",
+        imgSrc: eMembers
+    },
+    {
+        translate: "markets.title", // Markets
+        link: "/explorer/markets",
+        imgClassName: "markets",
+        imgSrc: eMarkets
+    },
+    {
+        translate: "fees.title", // Fee Schedule
+        link: "/explorer/fees",
+        imgClassName: "fee",
+        imgSrc: eFee
+    }
+];
 
 class Explorer extends React.Component {
-    static propTypes = {
-        tab: PropTypes.string,
-        content: PropTypes.object
-    };
-
-    static defaultProps = {
-        tab: "blocks",
-        content: null
-    };
-
     constructor(props) {
         super(props);
 
-        this.state = {
-            tabs: [
-                {
-                    name: "blocks",
-                    link: "/explorer/blocks",
-                    translate: "explorer.blocks.title"
-                },
-                {
-                    name: "assets",
-                    link: "/explorer/assets",
-                    translate: "explorer.assets.title"
-                },
-                {
-                    name: "accounts",
-                    link: "/explorer/accounts",
-                    translate: "explorer.accounts.title"
-                },
-                {
-                    name: "witnesses",
-                    link: "/explorer/witnesses",
-                    translate: "explorer.witnesses.title"
-                },
-                {
-                    name: "committee_members",
-                    link: "/explorer/committee-members",
-                    translate: "explorer.committee_members.title"
-                },
-                {
-                    name: "markets",
-                    link: "/explorer/markets",
-                    translate: "markets.title"
-                },
-                {name: "fees", link: "/explorer/fees", translate: "fees.title"}
-            ]
-        };
+        location.href = "/explorer/blocks";
     }
 
     render() {
-        let defaultActiveTab = this.state.tabs.findIndex(
-            t => t.name === this.props.tab
-        );
-
-        let tabs = [];
-
-        for (var i = 0; i < this.state.tabs.length; i++) {
-            let currentTab = this.state.tabs[i];
-
-            let tabContent = defaultActiveTab == i ? this.props.content : null;
-            let isLinkTo = defaultActiveTab == i ? "" : currentTab.link;
-
-            tabs.push(
-                <Tab key={i} title={currentTab.translate} isLinkTo={isLinkTo}>
-                    {tabContent}
-                </Tab>
+        const makeExploreItem = ({translate, link, imgClassName, imgSrc}) => {
+            let heading = translate;
+            if (typeof heading === "string" && heading.indexOf(".") > 0) {
+                heading = counterpart.translate(heading);
+            }
+            return (
+                <div
+                    className="col-xl-3 col-lg-4 col-md-6 col-sm-12"
+                    key={imgClassName}
+                >
+                    <Link className="explore__item" to={link}>
+                        <img
+                            className={`explore__item__img ${imgClassName}`}
+                            src={imgSrc}
+                            alt="icon"
+                        />
+                        <h4 className="explore__item__heading">{heading}</h4>
+                    </Link>
+                </div>
             );
-        }
-
+        };
         return (
-            <Tabs
-                defaultActiveTab={defaultActiveTab}
-                segmented={false}
-                setting="explorerTab-{this.props.tab}"
-                className="account-tabs"
-                tabsClass="account-overview bordered-header content-block"
-                contentClass="tab-content padding"
-            >
-                {tabs}
-            </Tabs>
+            <div className="content">
+                <h2 className="content__heading">Explore</h2>
+                <div className="explore">
+                    <div className="container-fluid">
+                        <div className="row">
+                            {exploreItems.map(makeExploreItem)}
+                        </div>
+                    </div>
+                </div>
+            </div>
         );
     }
 }
