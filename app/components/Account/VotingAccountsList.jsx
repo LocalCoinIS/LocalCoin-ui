@@ -1,7 +1,7 @@
 import React from "react";
 import AccountSelector from "./AccountSelector";
 import Translate from "react-translate-component";
-import Icon from "../Icon/Icon";
+import Icon from "../../components/Icon/Icon";
 import {ChainStore} from "bitsharesjs/es";
 import ChainTypes from "../Utility/ChainTypes";
 import FormattedAsset from "../Utility/FormattedAsset";
@@ -25,7 +25,7 @@ function getWitnessOrCommittee(type, acct) {
     return {
         url,
         votes,
-        id: account.get("id")
+        id: account ? account.get("id") : ""
     };
 }
 
@@ -254,52 +254,59 @@ class VotingAccountsList extends React.Component {
         return (
             <div>
                 {this.props.withSelector ? (
-                    <AccountSelector
-                        style={{maxWidth: "600px"}}
-                        label={this.props.label}
-                        error={error}
-                        placeholder={this.props.placeholder}
-                        account={this.state.item_name_input}
-                        accountName={this.state.item_name_input}
-                        onChange={this.onItemChange}
-                        onAccountChanged={this.onItemAccountChange}
-                        onAction={this.onAddItem}
-                        action_label="account.votes.add_witness"
-                        tabIndex={this.props.tabIndex}
-                    />
+                    <div className="header-selector">
+                        <AccountSelector
+                            style={{maxWidth: "600px"}}
+                            label={this.props.label}
+                            error={error}
+                            placeholder={this.props.placeholder}
+                            account={this.state.item_name_input}
+                            accountName={this.state.item_name_input}
+                            onChange={this.onItemChange}
+                            onAccountChanged={this.onItemAccountChange}
+                            onAction={this.onAddItem}
+                            action_label="account.votes.add_witness"
+                            tabIndex={this.props.tabIndex}
+                        />
+                    </div>
                 ) : null}
                 {this.props.title && item_rows.length ? (
                     <h4>{this.props.title}</h4>
                 ) : null}
                 {item_rows.length ? (
-                    <table className="table dashboard-table table-hover">
-                        <thead>
-                            <tr>
-                                <th style={{textAlign: "right"}}>#</th>
-                                <th
-                                    style={{textAlign: "left", maxWidth: cw[1]}}
-                                >
-                                    <Translate content="account.votes.name" />
-                                </th>
-                                <th style={{maxWidth: cw[2]}}>
-                                    <Translate content="account.votes.about" />
-                                </th>
-                                <th style={{maxWidth: cw[3]}}>
-                                    <Translate content="account.votes.votes" />
-                                </th>
-                                <th style={{maxWidth: cw[4]}}>
-                                    <Translate content="account.votes.status.title" />
-                                </th>
-                                <th style={{maxWidth: cw[0]}}>
-                                    <Translate content="account.votes.supported" />
-                                </th>
-                                <th style={{maxWidth: cw[5]}}>
-                                    <Translate content="account.votes.toggle" />
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>{item_rows}</tbody>
-                    </table>
+                    <div className="dashboard__adaptive">
+                        <table className="dashboard__table">
+                            <thead>
+                                <tr>
+                                    <th style={{textAlign: "right"}}>#</th>
+                                    <th
+                                        style={{
+                                            textAlign: "left",
+                                            maxWidth: cw[1]
+                                        }}
+                                    >
+                                        <Translate content="account.votes.name" />
+                                    </th>
+                                    <th style={{maxWidth: cw[2]}}>
+                                        <Translate content="account.votes.about" />
+                                    </th>
+                                    <th style={{maxWidth: cw[3]}}>
+                                        <Translate content="account.votes.votes" />
+                                    </th>
+                                    <th style={{maxWidth: cw[4]}}>
+                                        <Translate content="account.votes.status.title" />
+                                    </th>
+                                    <th style={{maxWidth: cw[0]}}>
+                                        <Translate content="account.votes.supported" />
+                                    </th>
+                                    <th style={{maxWidth: cw[5]}}>
+                                        <Translate content="account.votes.toggle" />
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>{item_rows}</tbody>
+                        </table>
+                    </div>
                 ) : null}
             </div>
         );

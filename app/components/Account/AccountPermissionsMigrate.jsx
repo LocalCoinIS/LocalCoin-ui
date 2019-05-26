@@ -1,5 +1,5 @@
 import React from "react";
-import PasswordInput from "./../Forms/PasswordInput";
+import PasswordInput from "../Forms/PasswordInput";
 import WalletDb from "stores/WalletDb";
 import Translate from "react-translate-component";
 import counterpart from "counterpart";
@@ -75,7 +75,9 @@ export default class AccountPermissionsMigrate extends React.Component {
             this.props[
                 role === "active"
                     ? "onAddActive"
-                    : role === "owner" ? "onAddOwner" : "onSetMemo"
+                    : role === "owner"
+                        ? "onAddOwner"
+                        : "onSetMemo"
             ](this.props[role], weights[role]);
         }
     }
@@ -99,16 +101,23 @@ export default class AccountPermissionsMigrate extends React.Component {
 
         return (
             <div>
-                <p style={{maxWidth: "800px"}}>
-                    <Translate content="account.perm.password_model_1" />
-                </p>
+                <div className="row">
+                    <div className="col-xl-7">
+                        <p style={{maxWidth: "800px"}}>
+                            <Translate content="account.perm.password_model_1" />
+                        </p>
 
-                <p style={{maxWidth: "800px"}}>
-                    <Translate content="wallet.password_model_1" />
-                </p>
-                <p style={{maxWidth: "800px"}}>
-                    <Translate unsafe content="wallet.password_model_2" />
-                </p>
+                        <p style={{maxWidth: "800px"}}>
+                            <Translate content="wallet.password_model_1" />
+                        </p>
+                        <p style={{maxWidth: "800px"}}>
+                            <Translate
+                                unsafe
+                                content="wallet.password_model_2"
+                            />
+                        </p>
+                    </div>
+                </div>
 
                 <div className="divider" />
 
@@ -136,7 +145,7 @@ export default class AccountPermissionsMigrate extends React.Component {
                     />
                 </form>
 
-                <table className="table">
+                <table className="blue-bg borders">
                     <tbody>
                         <tr className={activeInUse ? "in-use" : ""}>
                             <td>
@@ -144,8 +153,8 @@ export default class AccountPermissionsMigrate extends React.Component {
                             </td>
                             <td>{this.props.active}</td>
                             <td className="text-right">
-                                <div
-                                    className="button"
+                                <button
+                                    className="btn large outline"
                                     onClick={this._onUseKey.bind(
                                         this,
                                         "active",
@@ -153,7 +162,7 @@ export default class AccountPermissionsMigrate extends React.Component {
                                     )}
                                 >
                                     {activeInUse ? removeText : useText}
-                                </div>
+                                </button>
                             </td>
                         </tr>
                         <tr className={ownerInUse ? "in-use" : ""}>
@@ -162,8 +171,8 @@ export default class AccountPermissionsMigrate extends React.Component {
                             </td>
                             <td>{this.props.owner}</td>
                             <td className="text-right">
-                                <div
-                                    className="button"
+                                <button
+                                    className="btn large outline"
                                     onClick={this._onUseKey.bind(
                                         this,
                                         "owner",
@@ -171,7 +180,7 @@ export default class AccountPermissionsMigrate extends React.Component {
                                     )}
                                 >
                                     {ownerInUse ? removeText : useText}
-                                </div>
+                                </button>
                             </td>
                         </tr>
                         <tr className={memoInUse ? "in-use" : ""}>
@@ -180,8 +189,8 @@ export default class AccountPermissionsMigrate extends React.Component {
                             </td>
                             <td>{this.props.memo}</td>
                             <td className="text-right">
-                                <div
-                                    className="button"
+                                <button
+                                    className="btn large outline"
                                     style={{
                                         visibility: memoInUse ? "hidden" : ""
                                     }}
@@ -192,7 +201,7 @@ export default class AccountPermissionsMigrate extends React.Component {
                                     )}
                                 >
                                     {useText}
-                                </div>
+                                </button>
                             </td>
                         </tr>
                     </tbody>

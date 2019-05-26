@@ -6,6 +6,7 @@ import utils from "common/utils";
 import WalletActions from "actions/WalletActions";
 import {Apis} from "bitsharesjs-ws";
 import {Tabs, Tab} from "../Utility/Tabs";
+import counterpart from "counterpart";
 
 class VestingBalance extends React.Component {
     _onClaim(claimAll, e) {
@@ -50,14 +51,15 @@ class VestingBalance extends React.Component {
         }
 
         return (
-            <div>
+            <div className="table-blocks__item">
                 <Translate
                     component="h5"
+                    className="table-blocks__item__heading"
                     content="account.vesting.balance_number"
                     id={vb.id}
                 />
 
-                <table className="table key-value-table">
+                <table className="table-blocks__item__table">
                     <tbody>
                         <tr>
                             <td>
@@ -82,7 +84,8 @@ class VestingBalance extends React.Component {
                                     ),
                                     0
                                 )}
-                                &nbsp;<Translate content="account.member.coindays" />
+                                &nbsp;
+                                <Translate content="account.member.coindays" />
                             </td>
                         </tr>
                         <tr>
@@ -92,14 +95,14 @@ class VestingBalance extends React.Component {
                             <td>
                                 {utils.format_number(
                                     utils.get_asset_amount(
-                                        vb.balance.amount *
-                                            vestingPeriod /
+                                        (vb.balance.amount * vestingPeriod) /
                                             secondsPerDay,
                                         cvbAsset
                                     ),
                                     0
                                 )}
-                                &nbsp;<Translate content="account.member.coindays" />
+                                &nbsp;
+                                <Translate content="account.member.coindays" />
                             </td>
                         </tr>
                         <tr>
@@ -108,8 +111,7 @@ class VestingBalance extends React.Component {
                             </td>
                             <td>
                                 {utils.format_number(
-                                    vestingPeriod *
-                                        (1 - availablePercent) /
+                                    (vestingPeriod * (1 - availablePercent)) /
                                         secondsPerDay || 0,
                                     2
                                 )}
@@ -121,8 +123,8 @@ class VestingBalance extends React.Component {
                                 <Translate content="account.member.available" />
                             </td>
                             <td>
-                                {utils.format_number(availablePercent * 100, 2)}%
-                                /{" "}
+                                {utils.format_number(availablePercent * 100, 2)}
+                                % /{" "}
                                 <FormattedAsset
                                     amount={
                                         availablePercent * vb.balance.amount
@@ -135,7 +137,7 @@ class VestingBalance extends React.Component {
                             <td colSpan="2" style={{textAlign: "right"}}>
                                 <button
                                     onClick={this._onClaim.bind(this, false)}
-                                    className="button"
+                                    className="btn large inverted"
                                 >
                                     <Translate content="account.member.claim" />
                                 </button>
@@ -215,37 +217,20 @@ class AccountVesting extends React.Component {
             });
 
         return (
-            <div className="grid-content app-tables no-padding" ref="appTables">
-                <div className="content-block small-12">
-                    <div className="tabs-container generic-bordered-box">
-                        <Tabs
-                            segmented={false}
-                            setting="vestingTab"
-                            className="account-tabs"
-                            tabsClass="account-overview bordered-header content-block"
-                            contentClass="padding"
-                        >
-                            <Tab title="account.vesting.title">
-                                <Translate
-                                    content="account.vesting.explain"
-                                    component="p"
-                                />
-
-                                {!balances.length ? (
-                                    <h4 style={{paddingTop: "1rem"}}>
-                                        <Translate
-                                            content={
-                                                "account.vesting.no_balances"
-                                            }
-                                        />
-                                    </h4>
-                                ) : (
-                                    balances
-                                )}
-                            </Tab>
-                        </Tabs>
-                    </div>
-                </div>
+            <div className="vesting-layout">
+                <h2 className="content__heading">
+                    {counterpart.translate("account.vesting.title")}
+                </h2>
+                <p className="content__description">
+                    {counterpart.translate("account.vesting.explain")}
+                </p>
+                {balances.length ? (
+                    <div className="table-blocks">{balances}</div>
+                ) : (
+                    <h4 style={{paddingTop: "1rem"}}>
+                        <Translate content={"account.vesting.no_balances"} />
+                    </h4>
+                )}
             </div>
         );
     }

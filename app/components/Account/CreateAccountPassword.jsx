@@ -3,7 +3,7 @@ import {connect} from "alt-react";
 import classNames from "classnames";
 import AccountActions from "actions/AccountActions";
 import AccountStore from "stores/AccountStore";
-import AccountNameInput from "./../Forms/AccountNameInput";
+import AccountNameInput from "../Forms/AccountNameInput";
 import WalletDb from "stores/WalletDb";
 import notify from "actions/NotificationActions";
 import {Link} from "react-router/es";
@@ -204,6 +204,22 @@ class CreateAccountPassword extends React.Component {
         });
     }
 
+    _renderCheckbox(label, id, checked, change) {
+        return (
+            <label className="checkbox" htmlFor={id}>
+                <input
+                    type="checkbox"
+                    id={id}
+                    onChange={change}
+                    checked={checked}
+                    className="checkbox__input"
+                />
+                <span className="checkbox__styled" />
+                <span className="checkbox__label">{label}</span>
+            </label>
+        );
+    }
+
     _renderAccountCreateForm() {
         let {registrar_account} = this.state;
 
@@ -220,7 +236,7 @@ class CreateAccountPassword extends React.Component {
             }
         }
 
-        let buttonClass = classNames("submit-button button no-margin", {
+        let buttonClass = classNames("btn inverted large", {
             disabled: !valid || (registrar_account && !isLTM)
         });
 
@@ -248,7 +264,9 @@ class CreateAccountPassword extends React.Component {
 
                     <section className="form-group">
                         <label className="left-label">
-                            <Translate content="wallet.generated" />&nbsp;&nbsp;<span
+                            <Translate content="wallet.generated" />
+                            &nbsp;&nbsp;
+                            <span
                                 className="tooltip"
                                 data-html={true}
                                 data-tip={counterpart.translate(
@@ -262,7 +280,7 @@ class CreateAccountPassword extends React.Component {
                             </span>
                         </label>
                         <div style={{paddingBottom: "0.5rem"}}>
-                            <span className="inline-label">
+                  <span className="inline-label">
                                 <input
                                     style={{
                                         maxWidth: "calc(30rem - 48px)",
@@ -271,7 +289,7 @@ class CreateAccountPassword extends React.Component {
                                     disabled
                                     value={this.state.generatedPassword}
                                     type="text"
-                                    className="input-button"
+                                    className="input-button input-password"
                                 />
                                 <CopyButton
                                     text={this.state.generatedPassword}
@@ -307,86 +325,40 @@ class CreateAccountPassword extends React.Component {
 
                     <br />
 
-                    <div
-                        className="confirm-checks"
-                        onClick={this._onInput.bind(this, "understand_3")}
-                    >
-                        <label
-                            htmlFor="checkbox-1"
-                            style={{position: "relative"}}
-                        >
-                            <input
-                                type="checkbox"
-                                id="checkbox-1"
-                                onChange={() => {}}
-                                checked={this.state.understand_3}
-                                style={{
-                                    position: "absolute",
-                                    top: "-5px",
-                                    left: "0"
-                                }}
-                            />
-                            <div style={{paddingLeft: "30px"}}>
-                                <Translate content="wallet.understand_3" />
-                            </div>
-                        </label>
+                    <div className="confirm-checks">
+                        {this._renderCheckbox(
+                            counterpart.translate("wallet.understand_3"),
+                            "checkbox-1",
+                            this.state.understand_3,
+                            this._onInput.bind(this, "understand_3")
+                        )}
                     </div>
                     <br />
-                    <div
-                        className="confirm-checks"
-                        onClick={this._onInput.bind(this, "understand_1")}
-                    >
-                        <label
-                            htmlFor="checkbox-2"
-                            style={{position: "relative"}}
-                        >
-                            <input
-                                type="checkbox"
-                                id="checkbox-2"
-                                onChange={() => {}}
-                                checked={this.state.understand_1}
-                                style={{
-                                    position: "absolute",
-                                    top: "-5px",
-                                    left: "0"
-                                }}
-                            />
-                            <div style={{paddingLeft: "30px"}}>
-                                <Translate content="wallet.understand_1" />
-                            </div>
-                        </label>
+                    <div className="confirm-checks">
+                        {this._renderCheckbox(
+                            counterpart.translate("wallet.understand_1"),
+                            "checkbox-2",
+                            this.state.understand_1,
+                            this._onInput.bind(this, "understand_1")
+                        )}
                     </div>
                     <br />
 
                     <div
                         className="confirm-checks"
                         style={{paddingBottom: "1.5rem"}}
-                        onClick={this._onInput.bind(this, "understand_2")}
                     >
-                        <label
-                            htmlFor="checkbox-3"
-                            style={{position: "relative"}}
-                        >
-                            <input
-                                type="checkbox"
-                                id="checkbox-3"
-                                onChange={() => {}}
-                                checked={this.state.understand_2}
-                                style={{
-                                    position: "absolute",
-                                    top: "-5px",
-                                    left: "0"
-                                }}
-                            />
-                            <div style={{paddingLeft: "30px"}}>
-                                <Translate content="wallet.understand_2" />
-                            </div>
-                        </label>
+                        {this._renderCheckbox(
+                            counterpart.translate("wallet.understand_2"),
+                            "checkbox-3",
+                            this.state.understand_2,
+                            this._onInput.bind(this, "understand_2")
+                        )}
                     </div>
                     {/* If this is not the first account, show dropdown for fee payment account */}
                     {firstAccount ? null : (
                         <div
-                            className="full-width-content form-group no-overflow"
+                            className="full-width-content form-group"
                             style={{paddingTop: 30}}
                         >
                             <label>
@@ -413,8 +385,15 @@ class CreateAccountPassword extends React.Component {
                     {this.state.loading ? (
                         <LoadingIndicator type="three-bounce" />
                     ) : (
-                        <button style={{width: "100%"}} className={buttonClass}>
-                            <Translate content="account.create_account" />
+                        <button
+                            className={buttonClass}
+                            style={{width: "100%", backgroundColor: "#00195b"}}
+                            disabled={!valid || (registrar_account && !isLTM)}
+                        >
+                            <Translate
+                                style={{color: "#fff"}}
+                                content="account.create_account"
+                            />
                         </button>
                     )}
 
@@ -498,14 +477,14 @@ class CreateAccountPassword extends React.Component {
 
                 <div>
                     {!this.state.showPass ? (
-                        <div
+                        <button
+                            className="btn large outline"
                             onClick={() => {
                                 this.setState({showPass: true});
                             }}
-                            className="button"
                         >
-                            <Translate content="wallet.password_show" />
-                        </div>
+                            {counterpart.translate("wallet.password_show")}
+                        </button>
                     ) : (
                         <div>
                             <h5>
@@ -530,15 +509,15 @@ class CreateAccountPassword extends React.Component {
                     <Translate unsafe content="wallet.password_lose_warning" />
                 </p>
 
-                <div
+                <button
+                    className="btn large inverted"
                     style={{width: "100%"}}
                     onClick={() => {
                         this.context.router.push("/");
                     }}
-                    className="button"
                 >
-                    <Translate content="wallet.ok_done" />
-                </div>
+                    {counterpart.translate("wallet.ok_done")}
+                </button>
             </div>
         );
     }
@@ -674,11 +653,14 @@ class CreateAccountPassword extends React.Component {
     }
 }
 
-export default connect(CreateAccountPassword, {
-    listenTo() {
-        return [AccountStore];
-    },
-    getProps() {
-        return {};
+export default connect(
+    CreateAccountPassword,
+    {
+        listenTo() {
+            return [AccountStore];
+        },
+        getProps() {
+            return {};
+        }
     }
-});
+);

@@ -9,8 +9,9 @@ import {PublicKey} from "bitsharesjs/es";
 import AccountPermissionsList from "./AccountPermissionsList";
 import AccountPermissionsMigrate from "./AccountPermissionsMigrate";
 import PubKeyInput from "../Forms/PubKeyInput";
-import {Tabs, Tab} from "../Utility/Tabs";
+import Tabs from "../Utility/Tabs";
 import HelpContent from "../Utility/HelpContent";
+// import {RecentTransactions} from "../../components/Account/RecentTransactions";
 import {RecentTransactions} from "./RecentTransactions";
 import notify from "actions/NotificationActions";
 
@@ -315,213 +316,213 @@ class AccountPermissions extends React.Component {
             });
 
         let publish_buttons_class =
-            "button" +
+            "btn large inverted" +
             (!(error1 || error2) &&
             this.isChanged() &&
             this.isValidPubKey(this.state.memo_key)
                 ? ""
                 : " disabled");
         let reset_buttons_class =
-            "button" + (this.isChanged() ? "" : " disabled");
+            "btn large outline" + (this.isChanged() ? "" : " disabled");
 
         let accountsList = Immutable.Set();
         accountsList = accountsList.add(this.props.account.get("id"));
 
-        return (
-            <div className="grid-content app-tables no-padding" ref="appTables">
-                <div className="content-block small-12">
-                    <div className="tabs-container generic-bordered-box">
-                        <Tabs
-                            defaultActiveTab={1}
-                            segmented={false}
-                            setting="permissionsTab"
-                            className="account-tabs"
-                            tabsClass="account-overview bordered-header content-block"
-                            contentClass="padding"
-                            actionButtons={
-                                <div className="action-buttons">
-                                    <button
-                                        className={reset_buttons_class}
-                                        onClick={this.onReset}
-                                        tabIndex={8}
-                                    >
-                                        <Translate content="account.perm.reset" />
-                                    </button>
+        // ошибка!!!
+        let recentActivity = true ? null : (
+            <RecentTransactions
+                accountsList={accountsList}
+                limit={25}
+                compactView={false}
+                filter="account_update"
+                style={{paddingBottom: "2rem"}}
+            />
+        );
 
-                                    <button
-                                        className={publish_buttons_class}
-                                        onClick={this.onPublish}
-                                        tabIndex={9}
-                                    >
-                                        <Translate content="account.perm.publish" />
-                                    </button>
-                                </div>
-                            }
-                        >
-                            <Tab title="account.perm.active">
-                                <HelpContent path="components/AccountPermActive" />
-                                <form className="threshold">
-                                    <label className="horizontal">
-                                        <Translate content="account.perm.threshold" />{" "}
-                                        &nbsp; &nbsp;
-                                        <input
-                                            type="number"
-                                            placeholder="0"
-                                            size="5"
-                                            value={this.state.active_threshold}
-                                            onChange={this.onThresholdChanged.bind(
-                                                this,
-                                                "active_threshold"
-                                            )}
-                                            autoComplete="off"
-                                            tabIndex={1}
-                                        />
-                                    </label>
-                                </form>
-                                <AccountPermissionsList
-                                    label="account.perm.add_permission_label"
-                                    accounts={active_accounts}
-                                    keys={active_keys}
-                                    weights={active_weights}
-                                    addresses={active_addresses}
-                                    validateAccount={this.validateAccount.bind(
-                                        this,
-                                        "active"
-                                    )}
-                                    onAddItem={this.onAddItem.bind(
-                                        this,
-                                        "active"
-                                    )}
-                                    onRemoveItem={this.onRemoveItem.bind(
-                                        this,
-                                        "active"
-                                    )}
-                                    placeholder={counterpart.translate(
-                                        "account.perm.account_name_or_key"
-                                    )}
-                                    tabIndex={2}
-                                />
-                                <br />
-                                {error1 ? (
-                                    <div className="content-block has-error">
-                                        {error1}
-                                    </div>
-                                ) : null}
-                            </Tab>
+        let actionButtons = (
+            <div className="account-actions" style={{marginTop: "10px"}}>
+                <button
+                    className={publish_buttons_class}
+                    onClick={this.onPublish}
+                    tabIndex={9}
+                    disabled={
+                        !(
+                            !(error1 || error2) &&
+                            this.isChanged() &&
+                            this.isValidPubKey(this.state.memo_key)
+                        )
+                    }
+                >
+                    <Translate content="account.perm.publish" />
+                </button>
+                <button
+                    className={reset_buttons_class}
+                    onClick={this.onReset}
+                    tabIndex={8}
+                    disabled={!this.isChanged()}
+                >
+                    <Translate content="account.perm.reset" />
+                </button>
+            </div>
+        );
 
-                            <Tab title="account.perm.owner">
-                                <HelpContent path="components/AccountPermOwner" />
-                                <form className="threshold">
-                                    <label className="horizontal">
-                                        <Translate content="account.perm.threshold" />{" "}
-                                        &nbsp; &nbsp;
-                                        <input
-                                            type="number"
-                                            placeholder="0"
-                                            size="5"
-                                            value={this.state.owner_threshold}
-                                            onChange={this.onThresholdChanged.bind(
-                                                this,
-                                                "owner_threshold"
-                                            )}
-                                            autoComplete="off"
-                                            tabIndex={4}
-                                        />
-                                    </label>
-                                </form>
-                                <AccountPermissionsList
-                                    label="account.perm.add_permission_label"
-                                    accounts={owner_accounts}
-                                    keys={owner_keys}
-                                    weights={owner_weights}
-                                    addresses={owner_addresses}
-                                    validateAccount={this.validateAccount.bind(
-                                        this,
-                                        "owner"
-                                    )}
-                                    onAddItem={this.onAddItem.bind(
-                                        this,
-                                        "owner"
-                                    )}
-                                    onRemoveItem={this.onRemoveItem.bind(
-                                        this,
-                                        "owner"
-                                    )}
-                                    placeholder={counterpart.translate(
-                                        "account.perm.account_name_or_key"
-                                    )}
-                                    tabIndex={5}
-                                />
-                                <br />
-                                {error2 ? (
-                                    <div className="content-block has-error">
-                                        {error2}
-                                    </div>
-                                ) : null}
-                            </Tab>
-
-                            <Tab title="account.perm.memo_key">
-                                <HelpContent
-                                    style={{maxWidth: "800px"}}
-                                    path="components/AccountPermMemo"
-                                />
-                                <PubKeyInput
-                                    ref="memo_key"
-                                    value={this.state.memo_key}
-                                    label="account.perm.memo_public_key"
-                                    placeholder="Public Key"
-                                    onChange={this.onMemoKeyChanged.bind(this)}
-                                    tabIndex={7}
-                                />
-                            </Tab>
-
-                            <Tab title="account.perm.password_model">
-                                <AccountPermissionsMigrate
-                                    active={this.state.password_active}
-                                    owner={this.state.password_owner}
-                                    memo={this.state.password_memo}
-                                    onSetPasswordKeys={this.onSetPasswordKeys.bind(
-                                        this
-                                    )}
-                                    account={this.props.account}
-                                    activeKeys={this.state.active_keys}
-                                    ownerKeys={this.state.owner_keys}
-                                    memoKey={this.state.memo_key}
-                                    onAddActive={this.onAddItem.bind(
-                                        this,
-                                        "active"
-                                    )}
-                                    onRemoveActive={this.onRemoveItem.bind(
-                                        this,
-                                        "active"
-                                    )}
-                                    onAddOwner={this.onAddItem.bind(
-                                        this,
-                                        "owner"
-                                    )}
-                                    onRemoveOwner={this.onRemoveItem.bind(
-                                        this,
-                                        "owner"
-                                    )}
-                                    onSetMemo={this.onMemoKeyChanged.bind(this)}
-                                />
-                            </Tab>
-                        </Tabs>
-
-                        <div className="tab-content" style={{padding: 10}}>
-                            <div className="divider" />
-
-                            <RecentTransactions
-                                accountsList={accountsList}
-                                limit={25}
-                                compactView={false}
-                                filter="account_update"
-                                style={{paddingBottom: "2rem"}}
-                            />
-                        </div>
+        let permActive = (
+            <div className="permissions-tab">
+                <div className="row">
+                    <div className="col-xl-7">
+                        <HelpContent path="components/AccountPermActive" />
                     </div>
                 </div>
+                <div className="threshold-block">
+                    <Translate content="account.perm.threshold" />
+                    <input
+                        type="number"
+                        placeholder="0"
+                        size="5"
+                        value={this.state.active_threshold}
+                        onChange={this.onThresholdChanged.bind(
+                            this,
+                            "active_threshold"
+                        )}
+                        autoComplete="off"
+                        tabIndex={1}
+                    />
+                </div>
+                <AccountPermissionsList
+                    label="account.perm.add_permission_label"
+                    accounts={active_accounts}
+                    keys={active_keys}
+                    weights={active_weights}
+                    addresses={active_addresses}
+                    validateAccount={this.validateAccount.bind(this, "active")}
+                    onAddItem={this.onAddItem.bind(this, "active")}
+                    onRemoveItem={this.onRemoveItem.bind(this, "active")}
+                    placeholder={counterpart.translate(
+                        "account.perm.account_name_or_key"
+                    )}
+                    tabIndex={2}
+                />
+                {error1 ? (
+                    <div className="content-block has-error">{error1}</div>
+                ) : null}
+                {actionButtons}
+                {recentActivity}
             </div>
+        );
+
+        let permOwner = (
+            <div className="owner-tab">
+                <div className="row">
+                    <div className="col-xl-7">
+                        <HelpContent path="components/AccountPermOwner" />
+                    </div>
+                </div>
+                <div className="threshold-block">
+                    <Translate content="account.perm.threshold" />
+                    <input
+                        type="number"
+                        placeholder="0"
+                        size="5"
+                        value={this.state.owner_threshold}
+                        onChange={this.onThresholdChanged.bind(
+                            this,
+                            "owner_threshold"
+                        )}
+                        autoComplete="off"
+                        tabIndex={4}
+                    />
+                </div>
+                <AccountPermissionsList
+                    label="account.perm.add_permission_label"
+                    accounts={owner_accounts}
+                    keys={owner_keys}
+                    weights={owner_weights}
+                    addresses={owner_addresses}
+                    validateAccount={this.validateAccount.bind(this, "owner")}
+                    onAddItem={this.onAddItem.bind(this, "owner")}
+                    onRemoveItem={this.onRemoveItem.bind(this, "owner")}
+                    placeholder={counterpart.translate(
+                        "account.perm.account_name_or_key"
+                    )}
+                    tabIndex={5}
+                />
+                {error2 ? (
+                    <div className="content-block has-error">{error2}</div>
+                ) : null}
+                {actionButtons}
+                {recentActivity}
+            </div>
+        );
+
+        let permMemoKey = (
+            <div className="memo-tab">
+                <div className="row">
+                    <div className="col-xl-7">
+                        <HelpContent
+                            style={{maxWidth: "800px"}}
+                            path="components/AccountPermMemo"
+                        />
+                    </div>
+                </div>
+                <PubKeyInput
+                    ref="memo_key"
+                    value={this.state.memo_key}
+                    label="account.perm.memo_public_key"
+                    placeholder="Public Key"
+                    onChange={this.onMemoKeyChanged.bind(this)}
+                    tabIndex={7}
+                />
+                {actionButtons}
+                {recentActivity}
+            </div>
+        );
+
+        let permPasswordModel = (
+            <div className="cloud-tab">
+                <AccountPermissionsMigrate
+                    active={this.state.password_active}
+                    owner={this.state.password_owner}
+                    memo={this.state.password_memo}
+                    onSetPasswordKeys={this.onSetPasswordKeys.bind(this)}
+                    account={this.props.account}
+                    activeKeys={this.state.active_keys}
+                    ownerKeys={this.state.owner_keys}
+                    memoKey={this.state.memo_key}
+                    onAddActive={this.onAddItem.bind(this, "active")}
+                    onRemoveActive={this.onRemoveItem.bind(this, "active")}
+                    onAddOwner={this.onAddItem.bind(this, "owner")}
+                    onRemoveOwner={this.onRemoveItem.bind(this, "owner")}
+                    onSetMemo={this.onMemoKeyChanged.bind(this)}
+                />
+                {actionButtons}
+                {recentActivity}
+            </div>
+        );
+
+        const items = [
+            {
+                title: "account.perm.active",
+                content: permActive
+            },
+            {
+                title: "account.perm.owner",
+                content: permOwner
+            },
+            {
+                title: "account.perm.memo_key",
+                content: permMemoKey
+            },
+            {
+                title: "account.perm.password_model",
+                content: permPasswordModel
+            }
+        ];
+
+        return (
+            <Tabs
+                items={items}
+                dashboardTabsClass="dashboard__tabs permissions small"
+            />
         );
     }
 }

@@ -673,87 +673,89 @@ const CollateralTable = ({
     preferredUnit
 }) => {
     return (
-        <table className={"table table-hover " + className}>
-            <thead>
-                <tr>
-                    <th style={alignLeft}>
-                        <Translate content="explorer.asset.title" />
-                    </th>
-                    <th style={alignRight}>
-                        <Translate content="exchange.balance" />
-                    </th>
-                    <th style={alignRight}>
-                        <Translate content="transaction.borrow_amount" />
-                    </th>
-                    <th style={alignRight} className="column-hide-medium">
-                        <Translate content="transaction.collateral" />
-                    </th>
-                    <th>
-                        <div
-                            className="tooltip inline-block"
-                            data-place="top"
-                            data-tip={counterpart.translate(
-                                "tooltip.coll_ratio"
-                            )}
-                        >
-                            <Translate content="borrow.coll_ratio" />
-                        </div>
-                    </th>
-                    <th>
-                        <TranslateWithLinks
-                            noLink
-                            string="account.total"
-                            keys={[
-                                {
-                                    type: "asset",
-                                    value: preferredUnit,
-                                    arg: "asset"
-                                }
-                            ]}
-                        />
-                    </th>
-                    <th style={alignRight} className="column-hide-small">
-                        <div
-                            className="tooltip inline-block"
-                            data-place="top"
-                            data-tip={counterpart.translate(
-                                "tooltip.call_price"
-                            )}
-                        >
-                            <Translate content="exchange.call" />
-                        </div>
-                    </th>
-                    <th style={alignRight} className="column-hide-small">
-                        <Translate content="exchange.price" />
-                    </th>
-                    <th className="column-hide-small" style={alignLeft}>
-                        <Translate content="explorer.assets.units" />
-                    </th>
-                    <th>
-                        <Translate content="borrow.adjust_short" />
-                    </th>
-                    <th>
-                        <Translate content="transfer.close" />
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                {callOrders
-                    .sort((a, b) => a.split(".")[2] - b.split(".")[2])
-                    .map(id => (
-                        <MarginPositionWrapper
-                            key={id}
-                            object={id}
-                            account={account}
-                        />
-                    ))}
-            </tbody>
-            <PlaceHolderWrapper
-                account={account}
-                callOrders={Immutable.List(callOrders)}
-            />
-            <tbody>{children}</tbody>
-        </table>
+        <div className="dashboard__adaptive">
+            <table className={"dashboard__table " + className}>
+                <thead>
+                    <tr>
+                        <th style={alignLeft}>
+                            <Translate content="explorer.asset.title" />
+                        </th>
+                        <th style={alignRight}>
+                            <Translate content="exchange.balance" />
+                        </th>
+                        <th style={alignRight}>
+                            <Translate content="transaction.borrow_amount" />
+                        </th>
+                        <th style={alignRight} className="column-hide-medium">
+                            <Translate content="transaction.collateral" />
+                        </th>
+                        <th>
+                            <div
+                                className="tooltip inline-block"
+                                data-place="top"
+                                data-tip={counterpart.translate(
+                                    "tooltip.coll_ratio"
+                                )}
+                            >
+                                <Translate content="borrow.coll_ratio" />
+                            </div>
+                        </th>
+                        <th>
+                            <TranslateWithLinks
+                                noLink
+                                string="account.total"
+                                keys={[
+                                    {
+                                        type: "asset",
+                                        value: preferredUnit,
+                                        arg: "asset"
+                                    }
+                                ]}
+                            />
+                        </th>
+                        <th style={alignRight} className="column-hide-small">
+                            <div
+                                className="tooltip inline-block"
+                                data-place="top"
+                                data-tip={counterpart.translate(
+                                    "tooltip.call_price"
+                                )}
+                            >
+                                <Translate content="exchange.call" />
+                            </div>
+                        </th>
+                        <th style={alignRight} className="column-hide-small">
+                            <Translate content="exchange.price" />
+                        </th>
+                        <th className="column-hide-small" style={alignLeft}>
+                            <Translate content="explorer.assets.units" />
+                        </th>
+                        <th>
+                            <Translate content="borrow.adjust_short" />
+                        </th>
+                        <th>
+                            <Translate content="transfer.close" />
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {callOrders
+                        .sort((a, b) => a.split(".")[2] - b.split(".")[2])
+                        .map(id => (
+                            <MarginPositionWrapper
+                                key={id}
+                                object={id}
+                                account={account}
+                            />
+                        ))}
+                </tbody>
+                <PlaceHolderWrapper
+                    account={account}
+                    callOrders={Immutable.List(callOrders)}
+                />
+                <tbody>{children}</tbody>
+            </table>
+        </div>
     );
 };
 

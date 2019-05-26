@@ -465,7 +465,7 @@ const routes = (
             <Route
                 path="password"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Account/CreateAccountPassword")
+                    import("components/Account/CreateAccountPassword")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}
@@ -542,7 +542,7 @@ const routes = (
                 Promise.all([
                     import("components-brand-new/Layout/Header"),
                     import("components-brand-new/Layout/Sidebar"),
-                    import("components-brand-new/Account/AccountPage"),
+                    import("components/Account/AccountPage"),
                     import("components-brand-new/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
@@ -569,7 +569,7 @@ const routes = (
             <Route
                 path="assets"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountAssets")
+                    import("components/Account/AccountAssets")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}
@@ -577,7 +577,7 @@ const routes = (
             <Route
                 path="create-asset"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountAssetCreate")
+                    import("components/Account/AccountAssetCreate")
                         .then(loadRoute(cb, "AccountAssetCreate"))
                         .catch(errorLoading);
                 }}
@@ -601,7 +601,7 @@ const routes = (
             <Route
                 path="vesting"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountVesting")
+                    import("components/Account/AccountVesting")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}
@@ -609,7 +609,7 @@ const routes = (
             <Route
                 path="permissions"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountPermissions")
+                    import("components/Account/AccountPermissions")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}
@@ -617,7 +617,7 @@ const routes = (
             <Route
                 path="voting"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountVoting")
+                    import("components/Account/AccountVoting")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}
@@ -625,7 +625,7 @@ const routes = (
             <Route
                 path="activenodes"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountActivenodes")
+                    import("components/Account/AccountActivenodes")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}
@@ -633,7 +633,7 @@ const routes = (
             <Route
                 path="whitelist"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountWhitelist")
+                    import("components/Account/AccountWhitelist")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}
@@ -641,7 +641,7 @@ const routes = (
             <Route
                 path="signedmessages"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountSignedMessages")
+                    import("components/Account/AccountSignedMessages")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}
