@@ -1,6 +1,6 @@
 import React from "react";
 import ExplorerTabs from "./ExplorerTabs";
-import RealFeesContainer from "../Blockchain/FeesContainer";
+import RealFeesContainer from "../../components/Blockchain/FeesContainer";
 
 class FeesContainer extends React.Component {
     render() {

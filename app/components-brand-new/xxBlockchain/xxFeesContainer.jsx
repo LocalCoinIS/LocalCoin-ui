@@ -1,7 +1,7 @@
 import React from "react";
 import SettingsStore from "stores/SettingsStore";
 import AltContainer from "alt-container";
-import Fees from "./Fees";
+import Fees from "../../components/Blockchain/Fees";
 
 class FeesContainer extends React.Component {
     dikiHack() {

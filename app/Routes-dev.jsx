@@ -43,7 +43,7 @@ import MarketsContainer from "./components-brand-new/Explorer/MarketsContainer";
 import Transfer from "./components/Transfer/Transfer";
 import SettingsContainer from "./components-brand-new/Settings/SettingsContainer";
 import BlockContainer from "./components/Blockchain/BlockContainer";
-import Asset from "./components-brand-new/Blockchain/Asset";
+import Asset from "./components/Blockchain/Asset";
 import CreateAccount from "./components/Account/CreateAccount";
 import CreateAccountPassword from "./components-brand-new/Account/CreateAccountPassword";
 import {
