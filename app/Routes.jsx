@@ -395,7 +395,7 @@ const routes = (
                 Promise.all([
                     import("components-brand-new/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/Settings/SettingsContainer"),
+                    import("components/Settings/SettingsContainer"),
                     import("components-brand-new/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
@@ -408,7 +408,7 @@ const routes = (
                 Promise.all([
                     import("components-brand-new/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/Settings/SettingsContainer"),
+                    import("components/Settings/SettingsContainer"),
                     import("components-brand-new/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))

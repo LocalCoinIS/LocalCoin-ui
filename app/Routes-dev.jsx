@@ -41,7 +41,7 @@ import AccountSignedMessages from "./components-brand-new/Account/AccountSignedM
 import ExchangeContainer from "./components/Exchange/ExchangeContainer";
 import MarketsContainer from "./components-brand-new/Explorer/MarketsContainer";
 import Transfer from "./components/Transfer/Transfer";
-import SettingsContainer from "./components-brand-new/Settings/SettingsContainer";
+import SettingsContainer from "./components/Settings/SettingsContainer";
 import BlockContainer from "./components/Blockchain/BlockContainer";
 import Asset from "./components/Blockchain/Asset";
 import CreateAccount from "./components/Account/CreateAccount";

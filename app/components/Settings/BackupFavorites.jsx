@@ -23,7 +23,7 @@ class BackupFavorites extends React.Component {
                 </p>
                 <button
                     onClick={this.makeBackup.bind(this)}
-                    className="button success"
+                    className="btn large outline"
                 >
                     <Translate content="settings.backup_favoritesbtn" />
                 </button>
@@ -32,13 +32,16 @@ class BackupFavorites extends React.Component {
     }
 }
 
-export default connect(BackupFavorites, {
-    listenTo() {
-        return [SettingsStore];
-    },
-    getProps() {
-        return {
-            starredMarkets: SettingsStore.getState().starredMarkets
-        };
+export default connect(
+    BackupFavorites,
+    {
+        listenTo() {
+            return [SettingsStore];
+        },
+        getProps() {
+            return {
+                starredMarkets: SettingsStore.getState().starredMarkets
+            };
+        }
     }
-});
+);

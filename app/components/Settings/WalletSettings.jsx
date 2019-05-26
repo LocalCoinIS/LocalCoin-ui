@@ -56,7 +56,7 @@ export default class WalletSettings extends React.Component {
                     <Translate content="settings.lookup_text" />:
                 </div>
                 <div
-                    className="button outline"
+                    className="btn large outline button"
                     onClick={this.onLookup.bind(this)}
                 >
                     <Translate content="wallet.balance_claim_lookup" />
@@ -77,7 +77,7 @@ export default class WalletSettings extends React.Component {
                         />
                     </p>
                     <div
-                        className="button outline"
+                        className="btn large outline button"
                         onClick={this.onResetBrainkeySequence.bind(this)}
                     >
                         <Translate content="wallet.brainkey_seq_reset_button" />

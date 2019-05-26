@@ -42,7 +42,7 @@ class Settings extends React.Component {
                     "browser_notifications",
                     "showSettles",
                     "walletLockTimeout",
-                    "themes",
+                    //"themes",
                     "showAssetPercent",
                     "passwordLogin",
                     "reset"
@@ -134,8 +134,9 @@ class Settings extends React.Component {
         });
     }
 
-    _onChangeSetting(setting, e) {
+    _onChangeSetting(setting, eTargetValue, e) {
         e.preventDefault();
+        // eTargetValue e.target.value
 
         let {defaults} = this.props;
         let value = null;
@@ -160,11 +161,11 @@ class Settings extends React.Component {
         switch (setting) {
             case "locale":
                 let myLocale = counterpart.getLocale();
-                if (e.target.value !== myLocale) {
-                    IntlActions.switchLocale(e.target.value);
+                if (eTargetValue !== myLocale) {
+                    IntlActions.switchLocale(eTargetValue);
                     SettingsActions.changeSetting({
                         setting: "locale",
-                        value: e.target.value
+                        value: eTargetValue
                     });
                 }
                 break;
@@ -172,7 +173,7 @@ class Settings extends React.Component {
             case "themes":
                 SettingsActions.changeSetting({
                     setting: "themes",
-                    value: e.target.value
+                    value: eTargetValue
                 });
                 break;
 
@@ -180,7 +181,7 @@ class Settings extends React.Component {
                 break;
 
             case "walletLockTimeout":
-                let newValue = parseInt(e.target.value, 10);
+                let newValue = parseInt(eTargetValue, 10);
                 if (isNaN(newValue)) newValue = 0;
                 if (!isNaN(newValue) && typeof newValue === "number") {
                     SettingsActions.changeSetting({
@@ -192,16 +193,16 @@ class Settings extends React.Component {
 
             case "inverseMarket":
             case "confirmMarketOrder":
-                value = findEntry(e.target.value, defaults[setting]) === 0; // USD/LLC is true, LLC/USD is false
+                value = findEntry(eTargetValue, defaults[setting]) === 0; // USD/LLC is true, LLC/USD is false
                 break;
 
             case "apiServer":
                 SettingsActions.changeSetting({
                     setting: "apiServer",
-                    value: e.target.value
+                    value: eTargetValue
                 });
                 this.setState({
-                    apiServer: e.target.value
+                    apiServer: eTargetValue
                 });
                 break;
 
@@ -212,12 +213,12 @@ class Settings extends React.Component {
                 if (reference.translate) reference = reference.translate;
                 SettingsActions.changeSetting({
                     setting,
-                    value: e.target.value === reference
+                    value: eTargetValue === reference
                 });
                 break;
 
             case "unit":
-                let index = findEntry(e.target.value, defaults[setting]);
+                let index = findEntry(eTargetValue, defaults[setting]);
                 SettingsActions.changeSetting({
                     setting: setting,
                     value: defaults[setting][index]
@@ -225,7 +226,7 @@ class Settings extends React.Component {
                 break;
 
             default:
-                value = findEntry(e.target.value, defaults[setting]);
+                value = findEntry(eTargetValue, defaults[setting]);
                 break;
         }
 
@@ -238,7 +239,8 @@ class Settings extends React.Component {
         SettingsActions.clearSettings();
     }
 
-    _redirectToEntry(entry) {
+    _redirectToEntry(entry, e) {
+        e.preventDefault();
         this.context.router.push("/settings/" + entry);
     }
 
@@ -331,67 +333,66 @@ class Settings extends React.Component {
         }
 
         return (
-            <div className={this.props.deprecated ? "" : "grid-block"}>
-                <div className="grid-block main-content margin-block wrap">
-                    <div
-                        className="grid-content shrink settings-menu"
-                        style={{paddingRight: "2rem"}}
-                    >
-                        <Translate
-                            style={{paddingBottom: 10, paddingLeft: 10}}
-                            component="h3"
-                            content="header.settings"
-                            className={"panel-bg-color"}
-                        />
-
-                        <ul>
-                            {menuEntries.map((entry, index) => {
-                                return (
-                                    <li
-                                        className={
-                                            index === activeSetting
-                                                ? "active"
-                                                : ""
-                                        }
-                                        onClick={this._redirectToEntry.bind(
-                                            this,
-                                            entry
-                                        )}
-                                        key={entry}
-                                    >
-                                        <Translate
-                                            content={"settings." + entry}
-                                        />
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                    </div>
-
-                    <div
-                        className="grid-content"
-                        style={{
-                            maxWidth: 1000
-                        }}
-                    >
-                        <div className="grid-block small-12 no-margin vertical">
-                            <Translate
-                                component="h3"
-                                content={
-                                    "settings." + menuEntries[activeSetting]
-                                }
-                            />
-                            {activeEntry != "access" && (
+            <div className="content">
+                <div className="options">
+                    <div className="container">
+                        <h2 className="content__heading">
+                            {counterpart.translate("header.settings")}
+                        </h2>
+                        <div className="options__row">
+                            <ul className="options__nav">
+                                {menuEntries.map((entry, index) => {
+                                    const title = counterpart.translate(
+                                        "settings." + entry
+                                    );
+                                    return (
+                                        <li className={`options__nav__item ${index === activeSetting ? "is-active" : ""}`}>
+                                            {index === activeSetting ? (
+                                                <span className="options__nav__link">
+                                                    {title}
+                                                </span>
+                                            ) : (
+                                                <a
+                                                    className="options__nav__link"
+                                                    href="#"
+                                                    key={entry}
+                                                    onClick={this._redirectToEntry.bind(
+                                                        this,
+                                                        entry
+                                                    )}
+                                                >
+                                                    {title}
+                                                </a>
+                                            )}
+                                        </li>
+                                    );
+                                })}
+                            </ul>
+                            <div className="options__setup">
                                 <Translate
-                                    unsafe
-                                    style={{paddingTop: 5, marginBottom: 10}}
-                                    content={`settings.${
-                                        menuEntries[activeSetting]
-                                    }_text`}
-                                    className="panel-bg-color"
+                                    component="h3"
+                                    content={
+                                        "settings." + menuEntries[activeSetting]
+                                    }
                                 />
-                            )}
-                            {entries}
+                                {activeEntry != "access" && (
+                                
+                                    <Translate
+                                        unsafe
+                                        style={{
+                                            paddingTop: 5,
+                                            display: 'block',
+                                            marginBottom: 10
+                                        }}
+                                        content={`settings.${
+                                            menuEntries[activeSetting]
+                                        }_text`}
+                                        className="panel-bg-color"
+                                    />
+                                
+                                )}
+                                {entries}
+                            </div>
                         </div>
                     </div>
                 </div>
