@@ -63,7 +63,7 @@ class PubKeyInput extends React.Component {
             this.isValidPubKey(this.props.value) && keys.has(this.props.value);
 
         return (
-            <div className="pubkey-input no-overflow">
+            <div className="pubkey-input">
                 <div className="content-area">
                     <div className="header-area">
                         {!error &&
@@ -83,11 +83,7 @@ class PubKeyInput extends React.Component {
                         <span className="inline-label">
                             <div className="account-image">
                                 <PrivateKeyView pubkey={this.props.value}>
-                                    <Icon
-                                        name="key"
-                                        title="icons.key"
-                                        size="4x"
-                                    />
+                                    <span className="key-icon" />
                                 </PrivateKeyView>
                             </div>
                             <input

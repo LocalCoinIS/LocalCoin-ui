@@ -1,6 +1,6 @@
 import React from "react";
 import Translate from "react-translate-component";
-import PubKeyInput from "../Forms/PubKeyInput";
+import PubKeyInput from "../../components/Forms/PubKeyInput";
 import ChainTypes from "../../components/Utility/ChainTypes";
 import BindToChainState from "../../components/Utility/BindToChainState";
 import counterpart from "counterpart";
