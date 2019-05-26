@@ -13,7 +13,7 @@ import SettingsStore from "stores/SettingsStore";
 import classNames from "classnames";
 import ExplorerTabs from "./ExplorerTabs";
 import PropTypes from "prop-types";
-import DropdownList from "../Utility/DropdownList";
+import DropdownList from "../../components/Utility/DropdownList";
 import counterpart from "counterpart";
 import {Apis} from "bitsharesjs-ws";
 

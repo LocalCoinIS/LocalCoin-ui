@@ -11,7 +11,7 @@ import {ChainStore} from "bitsharesjs/es";
 import ExchangeHeaderCollateral from "../../components/Exchange/ExchangeHeaderCollateral";
 import BaseModal from "../../components/Modal/BaseModal";
 import ZfApi from "react-foundation-apps/src/utils/foundation-api";
-import DropdownList from "../Utility/DropdownList";
+import DropdownList from "../../components/Utility/DropdownList";
 import MarketPickerWrap from "../../components/Exchange/MarketPicker";
 
 export default class ExchangeHeader extends React.Component {

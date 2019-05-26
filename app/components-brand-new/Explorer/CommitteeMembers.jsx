@@ -11,7 +11,7 @@ import SettingsActions from "actions/SettingsActions";
 import SettingsStore from "stores/SettingsStore";
 import ExplorerTabs from "./ExplorerTabs";
 import PropTypes from "prop-types";
-import DropdownList from "../Utility/DropdownList";
+import DropdownList from "../../components/Utility/DropdownList";
 import counterpart from "counterpart";
 
 class CommitteeMemberCard extends React.Component {

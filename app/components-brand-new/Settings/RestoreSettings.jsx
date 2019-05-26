@@ -6,7 +6,7 @@ import Translate from "react-translate-component";
 import counterpart from "counterpart";
 import SettingsActions from "actions/SettingsActions";
 import RestoreFavorites from "./RestoreFavorites";
-import DropdownList from "../Utility/DropdownList";
+import DropdownList from "../../components/Utility/DropdownList";
 
 export default class RestoreSettings extends React.Component {
     constructor() {

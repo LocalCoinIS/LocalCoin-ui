@@ -7,7 +7,7 @@ import WalletManagerStore from "stores/WalletManagerStore";
 import Translate from "react-translate-component";
 import cname from "classnames";
 import counterpart from "counterpart";
-import DropdownList from "../Utility/DropdownList";
+import DropdownList from "../../components/Utility/DropdownList";
 
 const connectObject = {
     listenTo() {

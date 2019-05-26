@@ -3,7 +3,7 @@ import {BackupCreate} from "../Wallet/Backup";
 import BackupBrainkey from "../Wallet/BackupBrainkey";
 import counterpart from "counterpart";
 import BackupFavorites from "./BackupFavorites";
-import DropdownList from "../Utility/DropdownList";
+import DropdownList from "../../components/Utility/DropdownList";
 
 export default class BackupSettings extends React.Component {
     constructor() {

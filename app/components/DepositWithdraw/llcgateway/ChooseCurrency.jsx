@@ -3,7 +3,7 @@ import SettingsStore from "stores/SettingsStore";
 import counterpart from "counterpart";
 import LLCGateway from "./LLCGateway";
 import LLCGatewayData from "./LLCGatewayData";
-import DropdownList from "components-brand-new/Utility/DropdownList";
+import DropdownList from "../../Utility/DropdownList";
 
 class ChooseCurrency extends React.Component {
     constructor(props) {

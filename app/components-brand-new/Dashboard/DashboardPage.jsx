@@ -5,7 +5,7 @@ import LoadingIndicator from "../../components/LoadingIndicator";
 import LoginSelector from "../../components/LoginSelector";
 import AccountStore from "stores/AccountStore";
 
-import Tabs from "../Utility/Tabs";
+import Tabs from "../../components/Utility/Tabs";
 import {StarredMarkets, TopMarkets, FeaturedMarkets} from "./Markets";
 
 class DashboardPage extends React.Component {

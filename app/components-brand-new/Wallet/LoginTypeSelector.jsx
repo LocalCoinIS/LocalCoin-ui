@@ -2,7 +2,7 @@ import React from "react";
 import AltContainer from "alt-container";
 import Translate from "react-translate-component";
 import counterpart from "counterpart";
-import DropdownList from "../Utility/DropdownList";
+import DropdownList from "../../components/Utility/DropdownList";
 
 import WalletUnlockStore from "stores/WalletUnlockStore";
 import SettingsActions from "actions/SettingsActions";

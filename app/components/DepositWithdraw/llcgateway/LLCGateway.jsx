@@ -6,7 +6,7 @@ import Instructions from "./Instructions";
 import LLCGatewayData from "./LLCGatewayData";
 import {RecentTransactions} from "../../Account/RecentTransactions";
 import Immutable from "immutable";
-import Tabs from "components-brand-new/Utility/Tabs";
+import Tabs from "../../Utility/Tabs";
 
 class LLCGateway extends React.Component {
     static label = "LLCGateway";

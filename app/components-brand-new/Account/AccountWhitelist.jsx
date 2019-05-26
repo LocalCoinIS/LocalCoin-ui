@@ -1,5 +1,5 @@
 import React from "react";
-import Tabs from "../Utility/Tabs";
+import Tabs from "../../components/Utility/Tabs";
 import constants from "chain/account_constants.js";
 import AccountSelector from "./AccountSelector";
 import Immutable from "immutable";

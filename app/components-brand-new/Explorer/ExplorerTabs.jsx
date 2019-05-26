@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Tabs from "../Utility/Tabs";
+import Tabs from "../../components/Utility/Tabs";
 
 class ExplorerTabs extends React.Component {
     static propTypes = {
