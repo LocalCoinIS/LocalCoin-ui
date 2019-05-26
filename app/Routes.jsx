@@ -204,7 +204,7 @@ const routes = (
             {/* wallet management console */}
             <IndexRoute
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Wallet/WalletManager")
+                    import("components/Wallet/WalletManager")
                         .then(loadRoute(cb, "WalletOptions"))
                         .catch(errorLoading);
                 }}
@@ -212,7 +212,7 @@ const routes = (
             <Route
                 path="change"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Wallet/WalletManager")
+                    import("components/Wallet/WalletManager")
                         .then(loadRoute(cb, "ChangeActiveWallet"))
                         .catch(errorLoading);
                 }}
@@ -252,7 +252,7 @@ const routes = (
             <Route
                 path="delete"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Wallet/WalletManager")
+                    import("components/Wallet/WalletManager")
                         .then(loadRoute(cb, "WalletDelete"))
                         .catch(errorLoading);
                 }}
@@ -260,7 +260,7 @@ const routes = (
             <Route
                 path="backup/restore"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Wallet/Backup")
+                    import("components/Wallet/Backup")
                         .then(loadRoute(cb, "BackupRestore"))
                         .catch(errorLoading);
                 }}
@@ -268,7 +268,7 @@ const routes = (
             <Route
                 path="backup/create"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Wallet/Backup")
+                    import("components/Wallet/Backup")
                         .then(loadRoute(cb, "BackupCreate"))
                         .catch(errorLoading);
                 }}
