@@ -5,12 +5,28 @@ import {Link} from "react-router/es";
 import Translate from "react-translate-component";
 import TranslateWithLinks from "./Utility/TranslateWithLinks";
 import {isIncognito} from "feature_detect";
-var logo = require("assets/brand-new-layout/img/logo.svg");
 import SettingsActions from "actions/SettingsActions";
 import WalletUnlockActions from "actions/WalletUnlockActions";
 import ActionSheet from "react-foundation-apps/src/action-sheet";
 import SettingsStore from "stores/SettingsStore";
+import {getWalletName} from "branding";
 import IntlActions from "actions/IntlActions";
+import {
+    logo,
+    logoLight,
+    greatBritainFlag,
+    chinaFlag,
+    franceFlag,
+    southKoreaFlag,
+    germanyFlag,
+    spainFlag,
+    italyFlag,
+    turkeyFlag,
+    russiaFlag,
+    japanFlag
+} from "../assets/img/images";
+import counterpart from "counterpart";
+import RegistrationModal from "./Modal/RegistrationModal";
 
 const FlagImage = ({flag, width = 50, height = 50}) => {
     return (
@@ -60,10 +76,23 @@ class LoginSelector extends React.Component {
         this.props.router.push("/create-account/" + route);
     }
 
+    updateStep = (value) => {
+        this.setState({ step: value })
+    }
+
     render() {
         const translator = require("counterpart");
 
         const childCount = React.Children.count(this.props.children);
+
+        const self = this;
+
+        const children = React.Children.map(this.props.children, function (child) {
+            return React.cloneElement(child, {
+                updateStep: self.updateStep,
+                currentAccount: self.props.currentAccount
+            })
+        });
 
         const flagDropdown = (
             <ActionSheet>
@@ -118,12 +147,12 @@ class LoginSelector extends React.Component {
                 <div className="grid-block shrink vertical">
                     <div className="grid-content shrink text-center account-creation">
                         <div>
-                            <img src={logo} />
+                        <img src={logoLight} height="50px" width="50px" />
                         </div>
                         {childCount == 0 ? null : (
                             <div>
                                 <Translate
-                                    content="header.create_account"
+                                    content={this.state.step == 2 ? "header.backup_your_brainKey" : "header.create_account"}
                                     component="h4"
                                 />
                             </div>
@@ -134,6 +163,7 @@ class LoginSelector extends React.Component {
                                 <Translate
                                     content="account.intro_text_title"
                                     component="h4"
+                                    wallet_name={getWalletName()}                                    
                                 />
                                 <Translate
                                     unsafe
@@ -166,21 +196,27 @@ class LoginSelector extends React.Component {
                                     data-intro={translator.translate(
                                         "walkthrough.create_cloud_wallet"
                                     )}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        this.refs.registration_modal.show();
+                                    }}                                    
                                 >
-                                    <Translate content="header.create_account" />
+                                    {counterpart.translate(
+                                        "header.create_account"
+                                    )}
                                 </Link>
 
                                 <span
-                                    className="button hollow primary"
+                                    id="account_login_button2"
+                                    className="button primary outline"
+                                    style={{color: "#00195b"}}
                                     onClick={() => {
-                                        SettingsActions.changeSetting({
-                                            setting: "passwordLogin",
-                                            value: true
-                                        });
                                         WalletUnlockActions.unlock.defer();
                                     }}
                                 >
-                                    <Translate content="header.unlock_short" />
+                                    {counterpart.translate(
+                                        "header.unlock_short"
+                                    )}
                                 </span>
                             </div>
                         )}
@@ -193,7 +229,7 @@ class LoginSelector extends React.Component {
                                         keys={[
                                             {
                                                 type: "link",
-                                                value: "/wallet/backup/restore",
+                                                value: "/settings/restore",
                                                 translation:
                                                     "account.optional.restore_link",
                                                 dataIntro: translator.translate(
@@ -217,15 +253,21 @@ class LoginSelector extends React.Component {
                             </div>
                         )}
 
-                        {this.props.children}
+                        {children}
                     </div>
                 </div>
+                <RegistrationModal
+                    id="registration-modal"
+                    ref="registration_modal"
+                />                
             </div>
         );
     }
 }
 
-export default connect(LoginSelector, {
+export default connect(
+    LoginSelector, 
+    {
     listenTo() {
         return [AccountStore];
     },
@@ -236,4 +278,5 @@ export default connect(LoginSelector, {
                 AccountStore.getState().passwordAccount
         };
     }
-});
+}
+);

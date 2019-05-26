@@ -447,7 +447,7 @@ const routes = (
                 Promise.all([
                     import("components-brand-new/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/LoginSelector"),
+                    import("components/LoginSelector"),
                     import("components-brand-new/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))

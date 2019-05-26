@@ -29,7 +29,7 @@ import {ChainStore} from "bitsharesjs/es";
 // import WithdrawModal from "../../components/Modal/WithdrawModalNew";
 import {List} from "immutable";
 import PropTypes from "prop-types";
-import {qr} from "../../assets/brand-new-layout/img/images";
+import {qr} from "../../assets/img/images";
 
 class Sidebar extends React.Component {
     static contextTypes = {

@@ -5,7 +5,7 @@ import Modal from "react-foundation-apps/src/modal";
 import Trigger from "react-foundation-apps/src/trigger";
 import Translate from "react-translate-component";
 //var logo = require("assets/brand-new-layout/img/logo.svg");
-import {logoLight as logo} from "../../assets/brand-new-layout/img/images";
+import {logoLight as logo} from "../../assets/img/images";
 
 class BaseModal extends React.Component {
     constructor() {

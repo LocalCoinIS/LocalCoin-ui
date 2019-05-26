@@ -38,7 +38,7 @@ export function getFaucet() {
  * @returns {*}
  */
 export function getLogo() {
-    return require("assets/brand-new-layout/img/logo.svg");
+    return require("assets/img/logo.svg");
 }
 
 /**

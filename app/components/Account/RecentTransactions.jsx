@@ -12,7 +12,7 @@ import counterpart from "counterpart";
 import Icon from "../Icon/Icon";
 import cnames from "classnames";
 import PropTypes from "prop-types";
-import {csvIcon} from "../../assets/brand-new-layout/img/images";
+import {csvIcon} from "../../assets/img/images";
 const {operations} = grapheneChainTypes;
 const alignLeft = {textAlign: "left"};
 const alignRight = {textAlign: "right"};

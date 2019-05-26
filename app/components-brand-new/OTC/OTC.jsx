@@ -1,6 +1,6 @@
 import React from "react";
 import Translate from "react-translate-component";
-import { otcBackground} from "../../assets/brand-new-layout/img/images";
+import { otcBackground} from "../../assets/img/images";
 
 
 class OTC extends React.Component {

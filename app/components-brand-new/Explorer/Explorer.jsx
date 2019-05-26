@@ -10,7 +10,7 @@ import {
     eMembers,
     eMarkets,
     eFee
-} from "../../assets/brand-new-layout/img/images";
+} from "../../assets/img/images";
 
 const exploreItems = [
     {

@@ -16,7 +16,7 @@ import {
     turkeyFlag,
     russiaFlag,
     japanFlag
-} from "../../assets/brand-new-layout/img/images";
+} from "../../assets/img/images";
 import onClickOutside from "react-onclickoutside";
 
 class SelectUnWrapped extends React.Component {

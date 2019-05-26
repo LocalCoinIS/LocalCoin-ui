@@ -12,7 +12,7 @@ import counterpart from "counterpart";
 import Icon from "../../components/Icon/Icon";
 import cnames from "classnames";
 import PropTypes from "prop-types";
-import {csvIcon} from "../../assets/brand-new-layout/img/images";
+import {csvIcon} from "../../assets/img/images";
 import ReactTooltip from "react-tooltip";
 
 const {operations} = grapheneChainTypes;

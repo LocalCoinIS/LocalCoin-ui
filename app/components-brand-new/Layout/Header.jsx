@@ -35,7 +35,7 @@ import {
     settingsIcon,
     lockIcon,
     unlockIcon
-} from "../../assets/brand-new-layout/img/images";
+} from "../../assets/img/images";
 import onClickOutside from "react-onclickoutside";
 import Ps from "perfect-scrollbar";
 import LLCBridgeModal from "../../components/DepositWithdraw/llcgateway/LLCBridgeModal";

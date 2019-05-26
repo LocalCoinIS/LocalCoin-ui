@@ -29,7 +29,7 @@ import {ChainStore} from "bitsharesjs/es";
 import {List} from "immutable";
 import PropTypes from "prop-types";
 
-var logo = require("assets/brand-new-layout/img/logo.svg");
+var logo = require("assets/img/logo.svg");
 
 // const FlagImage = ({flag, width = 20, height = 20}) => {
 //     return <img height={height} width={width} src={`${__BASE_URL__}language-dropdown/${flag.toUpperCase()}.png`} />;

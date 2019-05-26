@@ -74,7 +74,7 @@ import News from "./components/News";
 import HelpContent from "./components-brand-new/Help/Content";
 import HelpSidebar from "./components-brand-new/Help/Sidebar";
 import InitError from "./components/InitError";
-import LoginSelector from "./components-brand-new/LoginSelector";
+import LoginSelector from "./components/LoginSelector";
 import CreateWorker from "./components/Account/CreateWorker";
 import Header from "./components-brand-new/Layout/Header";
 import Footer from "./components-brand-new/Layout/Footer";
