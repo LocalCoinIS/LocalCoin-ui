@@ -21,7 +21,7 @@ class AccountPage extends React.Component {
     };
 
     static defaultProps = {
-        account: "props.params.account_name"
+        account: "props.account_name"
     };
 
     componentDidMount() {
@@ -60,7 +60,6 @@ class AccountPage extends React.Component {
             account,
             hiddenAssets
         } = this.props;
-
         if (!account) {
             return <Page404 />;
         }
@@ -96,8 +95,7 @@ AccountPage = BindToChainState(AccountPage, {
 
 class AccountPageStoreWrapper extends React.Component {
     render() {
-        let account_name = this.props.routeParams.account_name;
-
+        let account_name = this.props.currentAccount ? this.props.currentAccount : this.props.routeParams.account_name;
         return <AccountPage {...this.props} account_name={account_name} />;
     }
 }
@@ -123,7 +121,8 @@ export default connect(
                 viewSettings: SettingsStore.getState().viewSettings,
                 backedCoins: GatewayStore.getState().backedCoins,
                 bridgeCoins: GatewayStore.getState().bridgeCoins,
-                gatewayDown: GatewayStore.getState().down
+                gatewayDown: GatewayStore.getState().down,
+                currentAccount: AccountStore.getState().currentAccount
             };
         }
     }

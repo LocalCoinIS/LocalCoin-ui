@@ -561,7 +561,7 @@ class LLCBridgeModal extends React.Component {
         );
 
         var copy = (
-            <div className="d-flex">
+            <div className="d-flex" style={{paddingRight: "95px"}}>
                 <div onClick={this.toClipboard.bind(this)}>
                     <CopyButton
                         text={this.state.address}

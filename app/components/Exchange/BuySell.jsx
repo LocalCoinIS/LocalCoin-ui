@@ -62,7 +62,8 @@ class BuySell extends React.Component {
             nextProps.isOpen !== this.props.isOpen ||
             nextProps.hasFeeBalance !== this.props.hasFeeBalance ||
             nextProps.expirationType !== this.props.expirationType ||
-            nextProps.expirationCustomTime !== this.props.expirationCustomTime
+            nextProps.expirationCustomTime !== this.props.expirationCustomTime ||
+            nextProps.location !== this.props.location
         );
     }
 

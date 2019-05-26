@@ -1654,6 +1654,7 @@ class Exchange extends React.Component {
                         : null
                 }
                 checkMarketFee={this._checkMarketFee.bind(this)}
+                location={this.props.router.location.pathname}
             />
         );
 
@@ -1744,6 +1745,7 @@ class Exchange extends React.Component {
                         : null
                 }
                 checkMarketFee={this._checkMarketFee.bind(this)}
+                location={this.props.router.location.pathname}
             />
         );
 

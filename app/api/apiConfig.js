@@ -69,9 +69,10 @@ export const gdexAPIs = {
 export const settingsAPIs = {
     DEFAULT_WS_NODE: "wss://fake.automatic-selection.com",
     // DEFAULT_WS_NODE: "ws://127.0.0.1:8090",
-    WS_NODE_LIST: [{
+    WS_NODE_LIST: [
+        {
             url: "wss://fake.automatic-selection.com",
-            location: { translate: "settings.api_closest" }
+            location: {translate: "settings.api_closest"}
         },
         {url: "ws://127.0.0.1:8090", location: "Locally hosted"},
         {url: "wss://de1.localcoin.is", location: "Germany - firedswiss1"},
@@ -149,7 +150,7 @@ export const settingsAPIs = {
         {url: "wss://br1.localcoin.is", location: "Brazil"},
         {url: "wss://br2.localcoin.is", location: "Brazil"}
     ],
-    DEFAULT_FAUCET: "https://tapin.localcoin.is", // 2018-12-infrastructure worker proposal
+    DEFAULT_FAUCET: "https://faucet.localcoin.is", // 2018-12-infrastructure worker proposal
     TESTNET_FAUCET: "https://faucet.testnet.localcoin.is",
     RPC_URL: "https://api.llc.is/apidocs/"
 };
