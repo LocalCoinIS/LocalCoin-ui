@@ -4,12 +4,12 @@ import {Route, IndexRoute, Redirect} from "react-router/es";
 import willTransitionTo from "./routerTransition";
 import App from "./App";
 
-import Header from "./components-brand-new/Layout/Header";
-import Footer from "./components-brand-new/Layout/Footer";
-import Witnesses from "./components-brand-new/Explorer/Witnesses";
-import Activenodes from "./components-brand-new/Explorer/Activenodes";
-import CommitteeMembers from "./components-brand-new/Explorer/CommitteeMembers";
-import {WalletManager} from "./components-brand-new/Wallet/WalletManager";
+import Header from "./components/Layout/Header";
+import Footer from "./components/Layout/Footer";
+import Witnesses from "./components/Explorer/Witnesses";
+import Activenodes from "./components/Explorer/Activenodes";
+import CommitteeMembers from "./components/Explorer/CommitteeMembers";
+import {WalletManager} from "./components/Wallet/WalletManager";
 import {
     WalletCreate,
     CreateWalletFromBrainkey
@@ -60,10 +60,10 @@ const routes = (
         <IndexRoute
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
-                    import("components-brand-new/Layout/Sidebar"),
-                    import("components-brand-new/Dashboard/DashboardPage"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/Layout/Header"),
+                    import("components/Layout/Sidebar"),
+                    import("components/Dashboard/DashboardPage"),
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
@@ -75,10 +75,10 @@ const routes = (
             path="explorer"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
+                    import("components/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/Explorer/Explorer"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/Explorer/Explorer"),
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
@@ -88,10 +88,10 @@ const routes = (
             path="/explorer/fees"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
+                    import("components/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/Explorer/FeesContainer"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/Explorer/FeesContainer"),
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
@@ -101,10 +101,10 @@ const routes = (
             path="/explorer/blocks"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
+                    import("components/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/Explorer/BlocksContainer"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/Explorer/BlocksContainer"),
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
@@ -114,10 +114,10 @@ const routes = (
             path="/explorer/assets"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
+                    import("components/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/Explorer/AssetsContainer"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/Explorer/AssetsContainer"),
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
@@ -127,10 +127,10 @@ const routes = (
             path="/explorer/accounts"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
+                    import("components/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/Explorer/AccountsContainer"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/Explorer/AccountsContainer"),
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
@@ -168,10 +168,10 @@ const routes = (
             path="/explorer/witnesses"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
+                    import("components/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/Explorer/Witnesses"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/Explorer/Witnesses"),
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
@@ -181,10 +181,10 @@ const routes = (
             path="/explorer/committee-members"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
+                    import("components/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/Explorer/CommitteeMembers"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/Explorer/CommitteeMembers"),
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
@@ -204,7 +204,7 @@ const routes = (
             {/* wallet management console */}
             <IndexRoute
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Wallet/WalletManager")
+                    import("components/Wallet/WalletManager")
                         .then(loadRoute(cb, "WalletOptions"))
                         .catch(errorLoading);
                 }}
@@ -212,7 +212,7 @@ const routes = (
             <Route
                 path="change"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Wallet/WalletManager")
+                    import("components/Wallet/WalletManager")
                         .then(loadRoute(cb, "ChangeActiveWallet"))
                         .catch(errorLoading);
                 }}
@@ -252,7 +252,7 @@ const routes = (
             <Route
                 path="delete"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Wallet/WalletManager")
+                    import("components/Wallet/WalletManager")
                         .then(loadRoute(cb, "WalletDelete"))
                         .catch(errorLoading);
                 }}
@@ -260,7 +260,7 @@ const routes = (
             <Route
                 path="backup/restore"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Wallet/Backup")
+                    import("components/Wallet/Backup")
                         .then(loadRoute(cb, "BackupRestore"))
                         .catch(errorLoading);
                 }}
@@ -268,7 +268,7 @@ const routes = (
             <Route
                 path="backup/create"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Wallet/Backup")
+                    import("components/Wallet/Backup")
                         .then(loadRoute(cb, "BackupCreate"))
                         .catch(errorLoading);
                 }}
@@ -314,10 +314,10 @@ const routes = (
             path="OTC"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
+                    import("components/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/OTC/OTC"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/OTC/OTC"),
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
@@ -327,10 +327,10 @@ const routes = (
             path="transfer"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
+                    import("components/Layout/Header"),
                     Promise.resolve(null),
                     import("components/Transfer/Transfer"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
@@ -341,10 +341,10 @@ const routes = (
             path="invoice/:data"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
+                    import("components/Layout/Header"),
                     Promise.resolve(null),
                     import("components/Transfer/Invoice"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
@@ -354,10 +354,10 @@ const routes = (
             path="explorer/markets"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
+                    import("components/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/Explorer/MarketsContainer"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/Explorer/MarketsContainer"),
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
@@ -367,10 +367,10 @@ const routes = (
             path="market/:marketID"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
+                    import("components/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/Exchange/ExchangeContainer"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/Exchange/ExchangeContainer"),
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
@@ -393,10 +393,10 @@ const routes = (
             path="settings"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
+                    import("components/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/Settings/SettingsContainer"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/Settings/SettingsContainer"),
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
@@ -406,10 +406,10 @@ const routes = (
             path="settings/:tab"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
+                    import("components/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/Settings/SettingsContainer"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/Settings/SettingsContainer"),
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
@@ -419,10 +419,10 @@ const routes = (
             path="block/:height"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
+                    import("components/Layout/Header"),
                     Promise.resolve(null),
                     import("components/Blockchain/BlockContainer"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
@@ -432,10 +432,10 @@ const routes = (
             path="asset/:symbol"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
-                    import("components-brand-new/Layout/Sidebar"),
-                    import("components-brand-new/Blockchain/Asset"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/Layout/Header"),
+                    import("components/Layout/Sidebar"),
+                    import("components/Blockchain/Asset"),
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
@@ -445,10 +445,10 @@ const routes = (
             path="create-account"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
+                    import("components/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/LoginSelector"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/LoginSelector"),
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
@@ -465,7 +465,7 @@ const routes = (
             <Route
                 path="password"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Account/CreateAccountPassword")
+                    import("components/Account/CreateAccountPassword")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}
@@ -476,10 +476,10 @@ const routes = (
             path="accounts"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
+                    import("components/Layout/Header"),
                     Promise.resolve(null),
                     import("components/Dashboard/DashboardAccountsOnly"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
@@ -540,10 +540,10 @@ const routes = (
             path="/account/:account_name"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
-                    import("components-brand-new/Layout/Sidebar"),
-                    import("components-brand-new/Account/AccountPage"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/Layout/Header"),
+                    import("components/Layout/Sidebar"),
+                    import("components/Account/AccountPage"),
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
@@ -551,7 +551,7 @@ const routes = (
         >
             <IndexRoute
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountOverview")
+                    import("components/Account/AccountOverview")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}
@@ -569,7 +569,7 @@ const routes = (
             <Route
                 path="assets"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountAssets")
+                    import("components/Account/AccountAssets")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}
@@ -577,7 +577,7 @@ const routes = (
             <Route
                 path="create-asset"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountAssetCreate")
+                    import("components/Account/AccountAssetCreate")
                         .then(loadRoute(cb, "AccountAssetCreate"))
                         .catch(errorLoading);
                 }}
@@ -593,7 +593,7 @@ const routes = (
             <Route
                 path="member-stats"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountMembership")
+                    import("components/Account/AccountMembership")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}
@@ -601,7 +601,7 @@ const routes = (
             <Route
                 path="vesting"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountVesting")
+                    import("components/Account/AccountVesting")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}
@@ -609,7 +609,7 @@ const routes = (
             <Route
                 path="permissions"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountPermissions")
+                    import("components/Account/AccountPermissions")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}
@@ -617,7 +617,7 @@ const routes = (
             <Route
                 path="voting"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountVoting")
+                    import("components/Account/AccountVoting")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}
@@ -625,7 +625,7 @@ const routes = (
             <Route
                 path="activenodes"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountActivenodes")
+                    import("components/Account/AccountActivenodes")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}
@@ -633,7 +633,7 @@ const routes = (
             <Route
                 path="whitelist"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountWhitelist")
+                    import("components/Account/AccountWhitelist")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}
@@ -641,7 +641,7 @@ const routes = (
             <Route
                 path="signedmessages"
                 getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountSignedMessages")
+                    import("components/Account/AccountSignedMessages")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}
@@ -654,10 +654,10 @@ const routes = (
             path="deposit-withdraw"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
-                    import("components-brand-new/Layout/Sidebar"),
-                    import("components-brand-new/Account/AccountDepositWithdraw"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/Layout/Header"),
+                    import("components/Layout/Sidebar"),
+                    import("components/Account/AccountDepositWithdraw"),
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
@@ -667,10 +667,10 @@ const routes = (
             path="create-worker"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
-                    import("components-brand-new/Layout/Sidebar"),
+                    import("components/Layout/Header"),
+                    import("components/Layout/Sidebar"),
                     import("components/Account/CreateWorker"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
@@ -680,10 +680,10 @@ const routes = (
             path="/init-error"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
+                    import("components/Layout/Header"),
                     Promise.resolve(null),
                     import("components/InitError"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
@@ -693,10 +693,10 @@ const routes = (
             path="/news"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
+                    import("components/Layout/Header"),
                     Promise.resolve(null),
                     import("components/News"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
@@ -711,10 +711,10 @@ const routes = (
             path="/help"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
-                    import("components-brand-new/Help/Sidebar"),
-                    import("components-brand-new/Help/Content"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/Layout/Header"),
+                    import("components/Help/Sidebar"),
+                    import("components/Help/Content"),
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);
@@ -724,10 +724,10 @@ const routes = (
                 path=":path1"
                 getComponents={(location, cb) => {
                     Promise.all([
-                        import("components-brand-new/Layout/Header"),
-                        import("components-brand-new/Help/Sidebar"),
-                        import("components-brand-new/Help/Content"),
-                        import("components-brand-new/Layout/Footer")
+                        import("components/Layout/Header"),
+                        import("components/Help/Sidebar"),
+                        import("components/Help/Content"),
+                        import("components/Layout/Footer")
                     ])
                         .then(loadMultiComponentsRoute(cb))
                         .catch(errorLoading);
@@ -737,10 +737,10 @@ const routes = (
                     path=":path2"
                     getComponents={(location, cb) => {
                         Promise.all([
-                            import("components-brand-new/Layout/Header"),
-                            import("components-brand-new/Help/Sidebar"),
-                            import("components-brand-new/Help/Content"),
-                            import("components-brand-new/Layout/Footer")
+                            import("components/Layout/Header"),
+                            import("components/Help/Sidebar"),
+                            import("components/Help/Content"),
+                            import("components/Layout/Footer")
                         ])
                             .then(loadMultiComponentsRoute(cb))
                             .catch(errorLoading);
@@ -750,10 +750,10 @@ const routes = (
                         path=":path3"
                         getComponents={(location, cb) => {
                             Promise.all([
-                                import("components-brand-new/Layout/Header"),
-                                import("components-brand-new/Help/Sidebar"),
-                                import("components-brand-new/Help/Content"),
-                                import("components-brand-new/Layout/Footer")
+                                import("components/Layout/Header"),
+                                import("components/Help/Sidebar"),
+                                import("components/Help/Content"),
+                                import("components/Layout/Footer")
                             ])
                                 .then(loadMultiComponentsRoute(cb))
                                 .catch(errorLoading);
@@ -766,10 +766,10 @@ const routes = (
             path="*"
             getComponents={(location, cb) => {
                 Promise.all([
-                    import("components-brand-new/Layout/Header"),
+                    import("components/Layout/Header"),
                     Promise.resolve(null),
-                    import("components-brand-new/Page404/Page404"),
-                    import("components-brand-new/Layout/Footer")
+                    import("components/Page404/Page404"),
+                    import("components/Layout/Footer")
                 ])
                     .then(loadMultiComponentsRoute(cb))
                     .catch(errorLoading);

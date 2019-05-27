@@ -3,6 +3,7 @@ import {BackupCreate} from "../Wallet/Backup";
 import BackupBrainkey from "../Wallet/BackupBrainkey";
 import counterpart from "counterpart";
 import BackupFavorites from "./BackupFavorites";
+import DropdownList from "../Utility/DropdownList";
 
 export default class BackupSettings extends React.Component {
     constructor() {
@@ -13,21 +14,26 @@ export default class BackupSettings extends React.Component {
         };
     }
 
-    _changeType(e) {
+    _changeType(targetValue, e) {
         this.setState({
-            restoreType: this.state.types.indexOf(e.target.value)
+            restoreType: this.state.types.indexOf(targetValue)
         });
     }
 
     render() {
         let {types, restoreType} = this.state;
         let options = types.map(type => {
-            return (
-                <option key={type} value={type}>
-                    {counterpart.translate(`settings.backupcreate_${type}`)}{" "}
-                </option>
-            );
+            return {
+                key: type,
+                label: counterpart.translate(`settings.backupcreate_${type}`)
+            };
         });
+        let placeholder = {
+            key: types[restoreType],
+            label: counterpart.translate(
+                `settings.backupcreate_${types[restoreType]}`
+            )
+        };
 
         let content;
 
@@ -50,13 +56,11 @@ export default class BackupSettings extends React.Component {
 
         return (
             <div>
-                <select
+                <DropdownList
+                    options={options}
+                    selected={placeholder}
                     onChange={this._changeType.bind(this)}
-                    className="bts-select"
-                    value={types[restoreType]}
-                >
-                    {options}
-                </select>
+                />
 
                 {content}
             </div>

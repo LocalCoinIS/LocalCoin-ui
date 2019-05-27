@@ -3,31 +3,35 @@ import Immutable from "immutable";
 import Ps from "perfect-scrollbar";
 import utils from "common/utils";
 import Translate from "react-translate-component";
-import TranslateWithLinks from "../Utility/TranslateWithLinks";
+import TranslateWithLinks from "../../components/Utility/TranslateWithLinks";
 import {connect} from "alt-react";
 import MarketRow from "./MarketRow";
 import SettingsStore from "stores/SettingsStore";
 import MarketsStore from "stores/MarketsStore";
 import AssetStore from "stores/AssetStore";
-import ChainTypes from "../Utility/ChainTypes";
-import BindToChainState from "../Utility/BindToChainState";
-import AssetName from "../Utility/AssetName";
+import ChainTypes from "../../components/Utility/ChainTypes";
+import BindToChainState from "../../components/Utility/BindToChainState";
+import AssetName from "../../components/Utility/AssetName";
 import SettingsActions from "actions/SettingsActions";
 import AssetActions from "actions/AssetActions";
 import MarketsActions from "actions/MarketsActions";
 import cnames from "classnames";
 import {debounce} from "lodash-es";
-import AssetSelector from "../Utility/AssetSelector";
+import AssetSelector from "../../components/Utility/AssetSelector";
 import counterpart from "counterpart";
-import LoadingIndicator from "../LoadingIndicator";
+import LoadingIndicator from "../../components/LoadingIndicator";
 import {ChainValidation} from "bitsharesjs/es";
 import PropTypes from "prop-types";
+import ZfApi from "react-foundation-apps/src/utils/foundation-api";
+import QuoteSelectionModal from "./QuoteSelectionModal";
+import Icon from "../../components/Icon/Icon";
 
 let lastLookup = new Date();
 
 class MarketGroup extends React.Component {
     static defaultProps = {
-        maxRows: 20
+        maxRows: 20,
+        onlyLiquid: false
     };
 
     constructor(props) {
@@ -76,6 +80,45 @@ class MarketGroup extends React.Component {
     }
 
     _changeSort(type) {
+        let volumeCookie = this.getCookie("gt_get_sort");
+        let CookieDate = new Date();
+        CookieDate.setFullYear(CookieDate.getFullYear() + 1);
+        if (
+            (volumeCookie == "vol-true" ||
+                volumeCookie == "name-true" ||
+                volumeCookie == "name-false") &&
+            type == "volume"
+        ) {
+            this.setCookie("gt_get_sort", "vol-false", {
+                expires: CookieDate.toGMTString()
+            });
+        } else if (
+            (volumeCookie == "vol-false" || volumeCookie == null) &&
+            type == "volume"
+        ) {
+            this.setCookie("gt_get_sort", "vol-true", {
+                expires: CookieDate.toGMTString()
+            });
+            this._inverseSort();
+        }
+        if (
+            (volumeCookie == "name-true" ||
+                volumeCookie == "vol-true" ||
+                volumeCookie == "vol-false") &&
+            type == "name"
+        ) {
+            this.setCookie("gt_get_sort", "name-false", {
+                expires: CookieDate.toGMTString()
+            });
+        } else if (
+            (volumeCookie == "name-false" || volumeCookie == null) &&
+            type == "name"
+        ) {
+            this.setCookie("gt_get_sort", "name-true", {
+                expires: CookieDate.toGMTString()
+            });
+            this._inverseSort();
+        }
         if (type !== this.state.sortBy) {
             SettingsActions.changeViewSetting({
                 myMarketsSort: type
@@ -114,6 +157,58 @@ class MarketGroup extends React.Component {
         SettingsActions.setUserMarket(base, quote, newValue);
     }
 
+    setCookie(name, value, options) {
+        options = options || {};
+
+        let expires = options.expires;
+
+        if (typeof expires == "number" && expires) {
+            var d = new Date();
+            d.setTime(d.getTime() + expires * 1000);
+            expires = options.expires = d;
+        }
+        if (expires && expires.toUTCString) {
+            options.expires = expires.toUTCString();
+        }
+
+        value = encodeURIComponent(value);
+
+        let updatedCookie = name + "=" + value;
+
+        for (let propName in options) {
+            updatedCookie += "; " + propName;
+            let propValue = options[propName];
+            if (propValue !== true) {
+                updatedCookie += "=" + propValue;
+            }
+        }
+
+        document.cookie = updatedCookie;
+    }
+
+    getCookie(name) {
+        let dc = document.cookie;
+        let prefix = name + "=";
+        let begin = dc.indexOf("; " + prefix);
+        let end = null;
+        if (begin == -1) {
+            begin = dc.indexOf(prefix);
+            if (begin != 0) return null;
+            end = document.cookie.indexOf(";", begin);
+        } else {
+            begin += 2;
+            end = document.cookie.indexOf(";", begin);
+            if (end == -1) {
+                end = dc.length;
+            }
+        }
+
+        return decodeURI(dc.substring(begin + prefix.length, end)).replace(
+            /"/g,
+            ""
+        );
+    }
+
     render() {
         let {
             columns,
@@ -121,8 +216,7 @@ class MarketGroup extends React.Component {
             base,
             marketStats,
             starredMarkets,
-            current,
-            findMarketTab
+            current
         } = this.props;
         let {sortBy, inverseSort, open} = this.state;
 
@@ -133,6 +227,20 @@ class MarketGroup extends React.Component {
         let headers = columns.map(header => {
             switch (header.name) {
                 case "market":
+                    let orderDirectionmarket = "";
+                    let nameCookie = this.getCookie("gt_get_sort");
+                    if (
+                        this.state.sortBy == "name" &&
+                        (nameCookie == "name-false" || nameCookie == null)
+                    ) {
+                        orderDirectionmarket = <span>▲</span>;
+                    } else if (
+                        this.state.sortBy == "name" &&
+                        nameCookie == "name-true"
+                    ) {
+                        orderDirectionmarket = <span>▼</span>;
+                    }
+
                     return (
                         <th
                             key={header.name}
@@ -140,10 +248,25 @@ class MarketGroup extends React.Component {
                             onClick={this._changeSort.bind(this, "name")}
                         >
                             <Translate content="exchange.market" />
+                            {orderDirectionmarket}
                         </th>
                     );
 
                 case "vol":
+                    let orderDirectionvol = "";
+                    let volumeCookie = this.getCookie("gt_get_sort");
+                    if (
+                        this.state.sortBy == "volume" &&
+                        (volumeCookie == "vol-false" || volumeCookie == null)
+                    ) {
+                        orderDirectionvol = <span>▼</span>;
+                    } else if (
+                        this.state.sortBy == "volume" &&
+                        volumeCookie == "vol-true"
+                    ) {
+                        orderDirectionvol = <span>▲</span>;
+                    }
+
                     return (
                         <th
                             key={header.name}
@@ -152,6 +275,7 @@ class MarketGroup extends React.Component {
                             style={{textAlign: "right"}}
                         >
                             <Translate content="exchange.vol_short" />
+                            {orderDirectionvol}
                         </th>
                     );
 
@@ -165,18 +289,29 @@ class MarketGroup extends React.Component {
                 case "quoteSupply":
                     return (
                         <th key={header.name}>
-                            <Translate content="exchange.quote_supply" />
+                            <Translate content="exchange.base_supply" />
                         </th>
                     );
 
                 case "baseSupply":
                     return (
                         <th key={header.name}>
-                            <Translate content="exchange.base_supply" />
+                            <Translate content="exchange.quote_supply" />
                         </th>
                     );
 
                 case "change":
+                    let orderDirectionchange = "";
+
+                    if (
+                        this.state.sortBy == "change" &&
+                        this.state.inverseSort
+                    ) {
+                        orderDirectionchange = <span>▲</span>;
+                    } else if (this.state.sortBy == "change") {
+                        orderDirectionchange = <span>▼</span>;
+                    }
+
                     return (
                         <th
                             key={header.name}
@@ -185,6 +320,7 @@ class MarketGroup extends React.Component {
                             style={{textAlign: "right"}}
                         >
                             <Translate content="exchange.change" />
+                            {orderDirectionchange}
                         </th>
                     );
 
@@ -207,19 +343,23 @@ class MarketGroup extends React.Component {
             }
         });
 
-        let index = 0;
-
         let marketRows = markets
             .map(market => {
+                if (
+                    this.props.onlyLiquid &&
+                    marketStats.get(market.id) &&
+                    marketStats.get(market.id).volumeBase == 0
+                ) {
+                    return null;
+                }
                 return (
                     <MarketRow
                         key={market.id}
                         name={
                             base === "others" ? (
                                 <span>
-                                    <AssetName name={market.quote} />:<AssetName
-                                        name={market.base}
-                                    />
+                                    <AssetName name={market.quote} />:
+                                    <AssetName name={market.base} />
                                 </span>
                             ) : (
                                 <AssetName
@@ -237,12 +377,15 @@ class MarketGroup extends React.Component {
                         stats={marketStats.get(market.id)}
                         starred={starredMarkets.has(market.id)}
                         current={current === market.id}
+                        currentMarket={current}
                         isChecked={this.props.userMarkets.has(market.id)}
                         isDefault={
                             this.props.defaultMarkets &&
                             this.props.defaultMarkets.has(market.id)
                         }
                         onCheckMarket={this._onToggleUserMarket.bind(this)}
+                        location={this.props.location}
+                        history={this.props.history}
                     />
                 );
             })
@@ -255,8 +398,14 @@ class MarketGroup extends React.Component {
                 let aStats = marketStats.get(a_symbols[0] + "_" + a_symbols[1]);
                 let bStats = marketStats.get(b_symbols[0] + "_" + b_symbols[1]);
 
+                let volumeCookie = this.getCookie("gt_get_sort");
                 switch (sortBy) {
                     case "name":
+                        if (volumeCookie == "name-false") {
+                            inverseSort = false;
+                        } else if (volumeCookie == "name-true") {
+                            inverseSort = true;
+                        }
                         if (a_symbols[0] > b_symbols[0]) {
                             return inverseSort ? -1 : 1;
                         } else if (a_symbols[0] < b_symbols[0]) {
@@ -272,14 +421,31 @@ class MarketGroup extends React.Component {
                         }
 
                     case "volume":
+                        let x = aStats;
+                        let y = bStats;
                         if (aStats && bStats) {
-                            if (inverseSort) {
-                                return bStats.volumeBase - aStats.volumeBase;
+                            let a = aStats.volumeBase ? aStats.volumeBase : 0;
+                            let b = bStats.volumeBase ? bStats.volumeBase : 0;
+                            if (
+                                volumeCookie == "vol-false" ||
+                                volumeCookie == null
+                            ) {
+                                return b - a;
                             } else {
-                                return aStats.volumeBase - bStats.volumeBase;
+                                return a - b;
                             }
                         } else {
-                            return 0;
+                            x = x ? x.volumeBase : 0;
+                            y = y ? y.volumeBase : 0;
+                            if (
+                                volumeCookie == "vol-false" ||
+                                volumeCookie == null
+                            ){
+                                return y - x;
+                            }
+                            else{
+                                return x - y;
+                            }
                         }
 
                     case "change":
@@ -294,8 +460,6 @@ class MarketGroup extends React.Component {
                         }
                 }
             });
-
-        let caret = open ? <span>&#9660;</span> : <span>&#9650;</span>;
 
         return (
             <div style={{paddingRight: 10}}>
@@ -350,6 +514,7 @@ class MyMarkets extends React.Component {
             activeFindBase: "USD"
         };
 
+        this._onInputName = this._onInputName.bind(this);
         this._setMinWidth = this._setMinWidth.bind(this);
         this.getAssetList = debounce(AssetActions.getAssetList.defer, 150);
     }
@@ -379,9 +544,9 @@ class MyMarkets extends React.Component {
             !utils.are_equal_shallow(nextState, this.state) ||
             nextProps.current !== this.props.current ||
             nextProps.minWidth !== this.props.minWidth ||
-            nextProps.listHeight !== this.props.listHeight ||
             nextProps.preferredBases !== this.props.preferredBases ||
             nextProps.onlyStars !== this.props.onlyStars ||
+            nextProps.onlyLiquid !== this.props.onlyLiquid ||
             nextProps.assetsLoading !== this.props.assetsLoading ||
             nextProps.userMarkets !== this.props.userMarkets
         );
@@ -447,6 +612,28 @@ class MyMarkets extends React.Component {
         }
     }
 
+    // _inverseSort() {
+    //     SettingsActions.changeViewSetting({
+    //         myMarketsInvert: !this.state.myMarketsInvert
+    //     });
+    //     this.setState({
+    //         inverseSort: !this.state.inverseSort
+    //     });
+    // }
+
+    // _changeSort(type) {
+    //     if (type !== this.state.sortBy) {
+    //         SettingsActions.changeViewSetting({
+    //             myMarketsSort: type
+    //         });
+    //         this.setState({
+    //             sortBy: type
+    //         });
+    //     } else {
+    //         this._inverseSort();
+    //     }
+    // }
+
     _inverseSort() {
         SettingsActions.changeViewSetting({
             myMarketsInvert: !this.state.myMarketsInvert
@@ -457,6 +644,22 @@ class MyMarkets extends React.Component {
     }
 
     _changeSort(type) {
+        let volumeCookie = this.getCookie("gt_get_sort");
+        let CookieDate = new Date();
+        CookieDate.setFullYear(CookieDate.getFullYear() + 1);
+        if (volumeCookie == "vol-true" && type == "volume") {
+            this.setCookie("gt_get_sort", "vol-false", {
+                expires: CookieDate.toGMTString()
+            });
+        } else if (
+            (volumeCookie == "vol-false" || volumeCookie == null) &&
+            type == "volume"
+        ) {
+            this.setCookie("gt_get_sort", "vol-true", {
+                expires: CookieDate.toGMTString()
+            });
+            this._inverseSort();
+        }
         if (type !== this.state.sortBy) {
             SettingsActions.changeViewSetting({
                 myMarketsSort: type
@@ -588,7 +791,6 @@ class MyMarkets extends React.Component {
             core,
             current,
             viewSettings,
-            listHeight,
             onlyStars,
             userMarkets
         } = this.props;
@@ -597,7 +799,6 @@ class MyMarkets extends React.Component {
         const myMarketTab = activeTab === "my-market";
 
         let defaultBases = preferredBases.map(a => a);
-
         if (!myMarketTab) {
             preferredBases = preferredBases.clear();
             preferredBases = preferredBases.push(this.state.activeFindBase);
@@ -605,6 +806,7 @@ class MyMarkets extends React.Component {
 
         // Add some default base options
         // let preferredBases = [coreSymbol, "BTC", "USD", "CNY"];
+
         let baseGroups = {};
 
         let bases = [
@@ -772,14 +974,14 @@ class MyMarkets extends React.Component {
             minWidth: this.state.minWidth,
             minHeight: "6rem"
         };
-        if (listHeight) {
-            listStyle.height = listHeight;
-        }
 
         const translator = require("counterpart");
 
         return (
-            <div className={this.props.className} style={this.props.style}>
+            <div
+                className={this.props.className + " explorer_markets"}
+                style={this.props.style}
+            >
                 <div
                     style={this.props.headerStyle}
                     className="grid-block shrink left-orderbook-header bottom-header"
@@ -821,41 +1023,56 @@ class MyMarkets extends React.Component {
 
                 {myMarketTab ? (
                     <div
-                        className="grid-block shrink"
+                        className="grid-block vertical shrink"
                         style={{
                             width: "100%",
                             textAlign: "left",
-                            padding: "0.75rem 0.5rem"
+                            padding: "0.5rem 0.5rem"
                         }}
                     >
-                        <label style={{margin: "0px 0 0"}}>
-                            <input
-                                style={{position: "relative", top: 3}}
-                                className="no-margin"
-                                type="checkbox"
-                                checked={this.props.onlyStars}
-                                onChange={() => {
-                                    MarketsActions.toggleStars();
-                                }}
-                            />
-                            <span style={{paddingLeft: "0.4rem"}}>
-                                <TranslateWithLinks
-                                    string="exchange.show_only_star_formatter"
-                                    keys={[
-                                        {
-                                            type: "icon",
-                                            value: "fi-star",
-                                            className: "gold-star",
-                                            arg: "star_icon"
-                                        }
-                                    ]}
+                        <div>
+                            <label style={{margin: "0px 0 0"}}>
+                                <input
+                                    style={{position: "relative", top: 3}}
+                                    className="no-margin"
+                                    type="checkbox"
+                                    checked={this.props.onlyLiquid}
+                                    onChange={() => {
+                                        SettingsActions.changeViewSetting({
+                                            onlyLiquid: !this.props.onlyLiquid
+                                        });
+                                    }}
                                 />
-                            </span>
-                        </label>
-                        <div
-                            className="float-right search-wrapper"
-                            style={{paddingLeft: 20}}
-                        >
+                                <span style={{paddingLeft: "0.4rem"}}>
+                                    <Translate content="exchange.show_only_liquid" />
+                                </span>
+                            </label>
+                            <label style={{margin: "0px 0 0"}}>
+                                <input
+                                    style={{position: "relative", top: 3}}
+                                    className="no-margin"
+                                    type="checkbox"
+                                    checked={this.props.onlyStars}
+                                    onChange={() => {
+                                        MarketsActions.toggleStars();
+                                    }}
+                                />
+                                <span style={{paddingLeft: "0.4rem"}}>
+                                    <TranslateWithLinks
+                                        string="exchange.show_only_star_formatter"
+                                        keys={[
+                                            {
+                                                type: "icon",
+                                                value: "fi-star",
+                                                className: "gold-star",
+                                                arg: "star_icon"
+                                            }
+                                        ]}
+                                    />
+                                </span>
+                            </label>
+                        </div>
+                        <div className="search-wrapper">
                             <form>
                                 <input
                                     autoComplete="off"
@@ -863,7 +1080,7 @@ class MyMarkets extends React.Component {
                                         fontSize: "0.9rem",
                                         height: "inherit",
                                         position: "relative",
-                                        top: 1,
+                                        top: 5,
                                         padding: 2
                                     }}
                                     type="text"
@@ -890,7 +1107,7 @@ class MyMarkets extends React.Component {
                         style={{
                             width: "100%",
                             textAlign: "left",
-                            padding: "0.75rem 0.5rem"
+                            padding: "0.5rem 0.5rem"
                         }}
                     >
                         <table>
@@ -926,7 +1143,8 @@ class MyMarkets extends React.Component {
                                 <tr style={{width: "100%"}}>
                                     <td>
                                         <label>
-                                            <Translate content="account.user_issued_assets.name" />:
+                                            <Translate content="account.user_issued_assets.name" />
+                                            :
                                         </label>
                                         <input
                                             style={{
@@ -936,14 +1154,13 @@ class MyMarkets extends React.Component {
                                             }}
                                             type="text"
                                             value={this.state.inputValue}
-                                            onChange={this._onInputName.bind(
-                                                this
-                                            )}
+                                            onChange={this._onInputName}
                                             placeholder={counterpart.translate(
                                                 "exchange.search"
                                             )}
                                             maxLength="16"
                                             tabIndex={2}
+                                            ref="findSearchInput"
                                         />
                                         {this.state.assetNameError ? (
                                             <div
@@ -973,6 +1190,23 @@ class MyMarkets extends React.Component {
                 )}
 
                 <ul className="mymarkets-tabs">
+                    {/*<li*/}
+                        {/*className={cnames("mymarkets-tab test", {*/}
+                            {/*active: activeMarketTab === preferredBases.size + 1*/}
+                        {/*})}*/}
+                        {/*onClick={this.toggleActiveMarketTab.bind(*/}
+                            {/*this,*/}
+                            {/*preferredBases.size + 1*/}
+                        {/*)}*/}
+                    {/*>*/}
+                        {/*<span>*/}
+                            {/*<Icon*/}
+                                {/*style={{cursor: "pointer"}}*/}
+                                {/*name="fi-star"*/}
+                                {/*className="gold-star"*/}
+                            {/*/>*/}
+                        {/*</span>*/}
+                    {/*</li>*/}
                     {preferredBases.map((base, index) => {
                         if (!base) return null;
                         return (
@@ -986,7 +1220,7 @@ class MyMarkets extends React.Component {
                                     active: activeMarketTab === index
                                 })}
                             >
-                                <AssetName name={base} dataPlace="left" />
+                                <span>{base}</span>
                             </li>
                         );
                     })}
@@ -1006,11 +1240,25 @@ class MyMarkets extends React.Component {
                             <Translate content="exchange.others" />
                         </li>
                     ) : null}
+
+                    {/* Quote edit tab */}
+                    {myMarketTab && (
+                        <li
+                            key="quote_edit"
+                            style={{textTransform: "uppercase"}}
+                            onClick={() => {
+                                ZfApi.publish("quote_selection", "open");
+                            }}
+                            className="mymarkets-tab"
+                        >
+                            &nbsp;+&nbsp;
+                        </li>
+                    )}
                 </ul>
 
                 <div
                     style={listStyle}
-                    className="table-container grid-block vertical mymarkets-list"
+                    className="table-container grid-block vertical mymarkets-list explorer-markets"
                     ref="favorites"
                 >
                     {assetsLoading ? (
@@ -1050,6 +1298,11 @@ class MyMarkets extends React.Component {
                                     base={base}
                                     maxRows={myMarketTab ? 20 : 10}
                                     findMarketTab={!myMarketTab}
+                                    location={this.props.location}
+                                    history={this.props.history}
+                                    onlyLiquid={
+                                        this.props.onlyLiquid && myMarketTab
+                                    }
                                 />
                             );
                         })}
@@ -1068,9 +1321,48 @@ class MyMarkets extends React.Component {
                             base="others"
                             maxRows={myMarketTab ? 20 : 10}
                             findMarketTab={!myMarketTab}
+                            location={this.props.location}
+                            history={this.props.history}
                         />
                     ) : null}
+                    {/*{activeMarketTab === preferredBases.size + 1 ? (*/}
+                        {/*preferredBases*/}
+                            {/*.filter(a => {*/}
+                            {/*return a === preferredBases.get(1);*/}
+                        {/*})*/}
+                            {/*.map((base, index) => {*/}
+                                {/*return (*/}
+                                    {/*<MarketGroup*/}
+                                        {/*userMarkets={this.props.userMarkets}*/}
+                                        {/*defaultMarkets={this.props.defaultMarkets}*/}
+                                        {/*index={index}*/}
+                                        {/*allowChange={false}*/}
+                                        {/*key={base}*/}
+                                        {/*current={current}*/}
+                                        {/*starredMarkets={starredMarkets}*/}
+                                        {/*marketStats={marketStats}*/}
+                                        {/*viewSettings={viewSettings}*/}
+                                        {/*columns={*/}
+                                            {/*myMarketTab*/}
+                                                {/*? columns*/}
+                                                {/*: this.props.findColumns || columns*/}
+                                        {/*}*/}
+                                        {/*markets={baseGroups[base]}*/}
+                                        {/*base={base}*/}
+                                        {/*maxRows={myMarketTab ? 20 : 10}*/}
+                                        {/*findMarketTab={!myMarketTab}*/}
+                                        {/*location={this.props.location}*/}
+                                        {/*history={this.props.history}*/}
+                                        {/*onlyLiquid={*/}
+                                            {/*this.props.onlyLiquid && myMarketTab*/}
+                                        {/*}*/}
+                                    {/*/>*/}
+                                {/*);*/}
+                            {/*})*/}
+                    {/*) : null}*/}
                 </div>
+
+                <QuoteSelectionModal quotes={this.props.preferredBases} />
             </div>
         );
     }
@@ -1083,21 +1375,28 @@ class MyMarketsWrapper extends React.Component {
     }
 }
 
-export default connect(MyMarketsWrapper, {
-    listenTo() {
-        return [SettingsStore, MarketsStore, AssetStore];
-    },
-    getProps() {
-        return {
-            starredMarkets: SettingsStore.getState().starredMarkets,
-            defaultMarkets: SettingsStore.getState().defaultMarkets,
-            viewSettings: SettingsStore.getState().viewSettings,
-            preferredBases: SettingsStore.getState().preferredBases,
-            marketStats: MarketsStore.getState().allMarketStats,
-            userMarkets: SettingsStore.getState().userMarkets,
-            searchAssets: AssetStore.getState().assets,
-            onlyStars: MarketsStore.getState().onlyStars,
-            assetsLoading: AssetStore.getState().assetsLoading
-        };
+export default connect(
+    MyMarketsWrapper,
+    {
+        listenTo() {
+            return [SettingsStore, MarketsStore, AssetStore];
+        },
+        getProps() {
+            return {
+                starredMarkets: SettingsStore.getState().starredMarkets,
+                onlyLiquid: SettingsStore.getState().viewSettings.get(
+                    "onlyLiquid",
+                    false
+                ),
+                defaultMarkets: SettingsStore.getState().defaultMarkets,
+                viewSettings: SettingsStore.getState().viewSettings,
+                preferredBases: SettingsStore.getState().preferredBases,
+                marketStats: MarketsStore.getState().allMarketStats,
+                userMarkets: SettingsStore.getState().userMarkets,
+                searchAssets: AssetStore.getState().assets,
+                onlyStars: MarketsStore.getState().onlyStars,
+                assetsLoading: AssetStore.getState().assetsLoading
+            };
+        }
     }
-});
+);

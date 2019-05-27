@@ -21,7 +21,9 @@ export default class BackupBrainkey extends Component {
 
     render() {
         var content;
-        var brainkey_backup_date = WalletDb.getWallet().brainkey_backup_date;
+        var brainkey_backup_date = WalletDb.getWallet()
+            ? WalletDb.getWallet().brainkey_backup_date
+            : null;
 
         var brainkey_backup_time = brainkey_backup_date ? (
             <div>
@@ -67,7 +69,7 @@ export default class BackupBrainkey extends Component {
                 .toString("hex")
                 .substring(0, 4);
             content = (
-                <span>
+                <div>
                     <h3>
                         <Translate content="wallet.brainkey" />
                     </h3>
@@ -91,63 +93,63 @@ export default class BackupBrainkey extends Component {
                     </div>
 
                     <button
-                        className="button success"
+                        className="btn large inverted button"
                         onClick={this.onComplete.bind(this)}
                     >
                         <Translate content="wallet.verify" />
                     </button>
                     <button
-                        className="button cancel"
+                        className="btn large outline button cancel"
                         onClick={this.reset.bind(this)}
                     >
                         <Translate content="wallet.cancel" />
                     </button>
-                </span>
+                </div>
             );
         }
 
         if (!content) {
             var valid = this.state.password && this.state.password !== "";
             content = (
-                <span>
-                    <label>
-                        <Translate content="wallet.enter_password" />
-                    </label>
+                <div>
                     <form
                         onSubmit={this.onSubmit.bind(this)}
                         className="name-form"
                         noValidate
                     >
-                        <input
-                            type="password"
-                            id="password"
-                            onChange={this.onPassword.bind(this)}
-                        />
-                        <p>
-                            {this.state.invalid_password ? (
-                                <span className="error">Invalid password</span>
-                            ) : (
-                                <span>
-                                    <Translate content="wallet.pwd4brainkey" />
-                                </span>
-                            )}
-                        </p>
+                        <div className="options__form__row">
+                            <label>
+                                <Translate content="wallet.enter_password" />
+                            </label>
+                            <input
+                                type="password"
+                                id="password"
+                                onChange={this.onPassword.bind(this)}
+                            />
+                            <p>
+                                {this.state.invalid_password ? (
+                                    <span className="error">
+                                        Invalid password
+                                    </span>
+                                ) : (
+                                    <span>
+                                        <Translate content="wallet.pwd4brainkey" />
+                                    </span>
+                                )}
+                            </p>
+                        </div>
                         <div>
                             {brainkey_backup_time}
                             <br />
                         </div>
-                        <button className="button success">
+                        <button className="btn large inverted button success">
                             <Translate content="wallet.show_brainkey" />
                         </button>
                     </form>
-                </span>
+                </div>
             );
         }
-        return (
-            <div className="grid-block vertical">
-                <div className="grid-content no-overflow">{content}</div>
-            </div>
-        );
+        return <div>{content}</div>;
     }
 
     onComplete(brnkey) {

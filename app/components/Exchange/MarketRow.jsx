@@ -1,12 +1,14 @@
 import React from "react";
-import FormattedAsset from "../Utility/FormattedAsset";
-import AssetWrapper from "../Utility/AssetWrapper";
-import AccountName from "../Utility/AccountName";
+import FormattedAsset from "../../components/Utility/FormattedAsset";
+import AssetWrapper from "../../components/Utility/AssetWrapper";
+import AccountName from "../../components/Utility/AccountName";
 import utils from "common/utils";
-import Icon from "../Icon/Icon";
+import Icon from "../../components/Icon/Icon";
 import MarketsActions from "actions/MarketsActions";
 import SettingsActions from "actions/SettingsActions";
 import PropTypes from "prop-types";
+import {getSmartCoinMarkets} from "branding";
+import MarketsStore from "stores/MarketsStore";
 
 class MarketRow extends React.Component {
     static defaultProps = {
@@ -67,8 +69,18 @@ class MarketRow extends React.Component {
             return null;
         }
 
-        let marketID = quote.get("symbol") + "_" + base.get("symbol");
-        let marketName = quote.get("symbol") + ":" + base.get("symbol");
+        let smartCoinArr = getSmartCoinMarkets();
+        let exeptionArr = ["USDT", "EURT", "TUSD", "USDC", "USDS"];
+        let marketID = base.get("symbol") + "_" + quote.get("symbol");
+        let reversePairs = false;
+        // 1. базовая валюта всегда слева;
+        // 2. помещаем в правую сторону смарткоины, если нет исключений, т.е. валют из exeptionArr;
+        // 3. помещаем в правую сторону исключения, т.е. валюты из exeptionArr.
+        if((exeptionArr.includes(base.get("symbol")) && !exeptionArr.includes(quote.get("symbol"))) || (smartCoinArr.includes(base.get("symbol")) && !exeptionArr.includes(quote.get("symbol")) && !smartCoinArr.includes(quote.get("symbol")))) {
+            marketID = quote.get("symbol") + "_" + base.get("symbol");
+            reversePairs = true;
+        }
+        let marketName = quote.get("symbol") + "/" + base.get("symbol");
         let dynamic_data = this.props.getDynamicObject(
             quote.get("dynamic_asset_data_id")
         );
@@ -96,6 +108,17 @@ class MarketRow extends React.Component {
             };
         }
 
+        const quoteSymbol   = this.props.quote.get("symbol");
+        const baseSymbol    = this.props.base.get("symbol");
+        const marketIDByURL = typeof this.context.router.params.marketID === "undefined"
+            ? quote.get("symbol") + "_" + base.get("symbol")
+            : this.context.router.params.marketID.toUpperCase().trim();
+        const needPairDirection = (
+                marketIDByURL.indexOf("_" + quoteSymbol) !== -1 ||
+                marketIDByURL.indexOf(baseSymbol + "_") !== -1
+            ) ? baseSymbol  + "_" + quoteSymbol
+              : quoteSymbol + "_" + baseSymbol;
+        
         let columns = this.props.columns
             .map(column => {
                 switch (column.name) {
@@ -122,7 +145,7 @@ class MarketRow extends React.Component {
                         let amount = stats ? stats.volumeBase : 0;
                         return (
                             <td
-                                onClick={this._onClick.bind(this, marketID)}
+                                onClick={this._onClick.bind(this, needPairDirection)}
                                 className="text-right"
                                 key={column.index}
                             >
@@ -131,18 +154,25 @@ class MarketRow extends React.Component {
                         );
 
                     case "change":
-                        let change = utils.format_number(
-                            stats && stats.change ? stats.change : 0,
-                            2
-                        );
+                        let currentMarketByLeftOrder = MarketsStore
+                            .getState()
+                            .allMarketStats
+                            .get(needPairDirection);
+
+                        const dayChange = currentMarketByLeftOrder ? currentMarketByLeftOrder.change : 0;
+                        const dayChangeWithSign = dayChange > 0 ? "+" + dayChange : dayChange;
+                        const change = utils.format_number( dayChangeWithSign, 2 );
+                    
                         let changeClass =
                             change === "0.00"
                                 ? ""
-                                : change > 0 ? "change-up" : "change-down";
+                                : change > 0
+                                    ? "change-up"
+                                    : "change-down";
 
                         return (
                             <td
-                                onClick={this._onClick.bind(this, marketID)}
+                                onClick={this._onClick.bind(this, needPairDirection)}
                                 className={"text-right " + changeClass}
                                 key={column.index}
                             >
@@ -153,7 +183,7 @@ class MarketRow extends React.Component {
                     case "marketName":
                         return (
                             <td
-                                onClick={this._onClick.bind(this, marketID)}
+                                onClick={this._onClick.bind(this, needPairDirection)}
                                 key={column.index}
                             >
                                 <div
@@ -166,37 +196,59 @@ class MarketRow extends React.Component {
                         );
 
                     case "market":
+                        let customMarketName = this.props.name;
+
+                        try {
+                            if (typeof customMarketName.props !== "undefined") {
+                                customMarketName =
+                                    customMarketName.props.children[0].props
+                                        .name +
+                                    "/" +
+                                    customMarketName.props.children[2].props
+                                        .name;
+                            }
+                        } catch (e) {}
+
                         return (
                             <td
-                                onClick={this._onClick.bind(this, marketID)}
+                                onClick={this._onClick.bind(this, needPairDirection)}
                                 key={column.index}
                             >
-                                {this.props.name}
+                                {customMarketName}
+                                {/*{"/123" + base.get("symbol")}*/}
                             </td>
                         );
 
                     case "price":
-                        let finalPrice =
-                            stats && stats.price
-                                ? stats.price.toReal()
-                                : stats &&
-                                  stats.close &&
-                                  (stats.close.quote.amount &&
-                                      stats.close.base.amount)
-                                    ? utils.get_asset_price(
-                                          stats.close.quote.amount,
-                                          quote,
-                                          stats.close.base.amount,
-                                          base,
-                                          true
-                                      )
-                                    : utils.get_asset_price(
-                                          price.quote.amount,
-                                          quote,
-                                          price.base.amount,
-                                          base,
-                                          true
-                                      );
+                        let baseAmount, quoteAmount, baseAsset, quoteAsset = false;
+
+                        let finalPrice = 0;
+
+                        if(stats && stats.price) {
+                            baseAmount = reversePairs ? stats.price.quote.amount : stats.price.base.amount;
+                            quoteAmount = reversePairs ? stats.price.base.amount : stats.price.quote.amount;
+                            baseAsset = reversePairs ? quote : base;
+                            quoteAsset = reversePairs ? base : quote;
+
+                        } else if(stats && stats.close && (stats.close.quote.amount && stats.close.base.amount)) {
+                            baseAmount = reversePairs ? stats.close.quote.amount : stats.close.base.amount;
+                            quoteAmount = reversePairs ? stats.close.base.amount : stats.close.quote.amount;
+                            baseAsset = reversePairs ? quote : base;
+                            quoteAsset = reversePairs ? base : quote;
+                        } else {
+                            baseAmount = reversePairs ? price.quote.amount : price.base.amount;
+                            quoteAmount = reversePairs ? price.base.amount : price.quote.amount;
+                            baseAsset = reversePairs ? quote : base;
+                            quoteAsset = reversePairs ? base : quote;
+                        }
+
+                        finalPrice = utils.get_asset_price(
+                            baseAmount,
+                            baseAsset,
+                            quoteAmount,
+                            quoteAsset,
+                            true
+                        );
 
                         let highPrecisionAssets = [
                             "BTC",
@@ -215,7 +267,7 @@ class MarketRow extends React.Component {
 
                         return (
                             <td
-                                onClick={this._onClick.bind(this, marketID)}
+                                onClick={this._onClick.bind(this, needPairDirection)}
                                 className="text-right"
                                 key={column.index}
                             >
@@ -223,7 +275,9 @@ class MarketRow extends React.Component {
                                     finalPrice,
                                     finalPrice > 1000
                                         ? 0
-                                        : finalPrice > 10 ? 2 : precision
+                                        : finalPrice > 10
+                                            ? 2
+                                            : precision
                                 )}
                             </td>
                         );
@@ -231,7 +285,7 @@ class MarketRow extends React.Component {
                     case "quoteSupply":
                         return (
                             <td
-                                onClick={this._onClick.bind(this, marketID)}
+                                onClick={this._onClick.bind(this, needPairDirection)}
                                 key={column.index}
                             >
                                 {dynamic_data ? (
@@ -250,7 +304,7 @@ class MarketRow extends React.Component {
                     case "baseSupply":
                         return (
                             <td
-                                onClick={this._onClick.bind(this, marketID)}
+                                onClick={this._onClick.bind(this, needPairDirection)}
                                 key={column.index}
                             >
                                 {base_dynamic_data ? (
@@ -271,7 +325,7 @@ class MarketRow extends React.Component {
                     case "issuer":
                         return (
                             <td
-                                onClick={this._onClick.bind(this, marketID)}
+                                onClick={this._onClick.bind(this, needPairDirection)}
                                 key={column.index}
                             >
                                 <AccountName account={quote.get("issuer")} />
@@ -333,7 +387,7 @@ class MarketRow extends React.Component {
             });
 
         let className = "clickable";
-        if (this.props.current) {
+        if (this.props.currentMarket === marketID || this.props.currentMarket === needPairDirection) {
             className += " activeMarket";
         }
 

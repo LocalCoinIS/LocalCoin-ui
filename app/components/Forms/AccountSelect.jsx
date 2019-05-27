@@ -1,7 +1,7 @@
 import React from "react";
 import counterpart from "counterpart";
 import PropTypes from "prop-types";
-import DropdownList from "components-brand-new/Utility/DropdownList";
+import DropdownList from "components/Utility/DropdownList";
 
 export default class AccountSelect extends React.Component {
     static propTypes = {

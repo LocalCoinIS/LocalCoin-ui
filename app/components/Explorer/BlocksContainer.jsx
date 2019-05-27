@@ -2,7 +2,7 @@ import React from "react";
 import BlockchainStore from "stores/BlockchainStore";
 import AltContainer from "alt-container";
 import Blocks from "./Blocks";
-import Explorer from "./Explorer";
+import ExplorerTabs from "./ExplorerTabs";
 
 class BlocksContainer extends React.Component {
     render() {
@@ -22,7 +22,14 @@ class BlocksContainer extends React.Component {
             </AltContainer>
         );
 
-        return <Explorer tab="blocks" content={content} />;
+        return (
+            <div className="content">
+                <ExplorerTabs
+                    defaultActiveTab="explorer.blocks.title"
+                    defaultContent={content}
+                />
+            </div>
+        );
     }
 }
 

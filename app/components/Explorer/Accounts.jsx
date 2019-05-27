@@ -5,13 +5,13 @@ import Immutable from "immutable";
 import Translate from "react-translate-component";
 import AccountActions from "actions/AccountActions";
 import {debounce} from "lodash-es";
-import ChainTypes from "../Utility/ChainTypes";
-import Icon from "../Icon/Icon";
-import BindToChainState from "../Utility/BindToChainState";
-import BalanceComponent from "../Utility/BalanceComponent";
+import ChainTypes from "../../components/Utility/ChainTypes";
+import Icon from "../../components/Icon/Icon";
+import BindToChainState from "../../components/Utility/BindToChainState";
+import BalanceComponent from "../../components/Utility/BalanceComponent";
 import AccountStore from "stores/AccountStore";
 import {connect} from "alt-react";
-import LoadingIndicator from "../LoadingIndicator";
+import LoadingIndicator from "../../components/LoadingIndicator";
 
 class AccountRow extends React.Component {
     static propTypes = {
@@ -93,16 +93,19 @@ let AccountRowWrapper = props => {
     return <AccountRow {...props} />;
 };
 
-AccountRowWrapper = connect(AccountRowWrapper, {
-    listenTo() {
-        return [AccountStore];
-    },
-    getProps() {
-        return {
-            contacts: AccountStore.getState().accountContacts
-        };
+AccountRowWrapper = connect(
+    AccountRowWrapper,
+    {
+        listenTo() {
+            return [AccountStore];
+        },
+        getProps() {
+            return {
+                contacts: AccountStore.getState().accountContacts
+            };
+        }
     }
-});
+);
 
 class Accounts extends React.Component {
     constructor(props) {
@@ -174,21 +177,22 @@ class Accounts extends React.Component {
         }
 
         return (
-            <div className="grid-block">
-                <div className="grid-block vertical medium-6 medium-offset-3">
-                    <div className="grid-content shrink">
-                        <Translate
-                            component="h3"
-                            content="explorer.accounts.title"
-                        />
-                        <input
-                            type="text"
-                            value={this.state.searchTerm}
-                            onChange={this._onSearchChange.bind(this)}
-                        />
-                    </div>
-                    <div className="grid-content">
-                        <table className="table">
+            <div>
+                <div>
+                    <Translate
+                        component="h3"
+                        content="explorer.accounts.title"
+                    />
+                    <input
+                        style={{maxWidth: "500px"}}
+                        type="text"
+                        value={this.state.searchTerm}
+                        onChange={this._onSearchChange.bind(this)}
+                    />
+                </div>
+                <div>
+                    <div className="market-list-wrap">
+                        <table>
                             <thead>
                                 <tr>
                                     <th>
@@ -232,12 +236,12 @@ class Accounts extends React.Component {
                                 )}
                             </tbody>
                         </table>
-                        {this.state.isLoading ? (
-                            <div style={{textAlign: "center", padding: 10}}>
-                                <LoadingIndicator type="three-bounce" />
-                            </div>
-                        ) : null}
                     </div>
+                    {this.state.isLoading ? (
+                        <div style={{textAlign: "center", padding: 10}}>
+                            <LoadingIndicator type="three-bounce" />
+                        </div>
+                    ) : null}
                 </div>
             </div>
         );

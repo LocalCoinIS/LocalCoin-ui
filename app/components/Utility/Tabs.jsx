@@ -1,118 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Translate from "react-translate-component";
 import cnames from "classnames";
-import {connect} from "alt-react";
-import SettingsActions from "actions/SettingsActions";
-import SettingsStore from "stores/SettingsStore";
 import counterpart from "counterpart";
-
-/**
- *  Renders a tab layout, handling switching and optionally persists the currently open tab using the SettingsStore
- *
- *  props:
- *     setting: unique name to be used to remember the active tab of this tabs layout,
- *     tabsClass: optional classes for the tabs container div
- *     contentClass: optional classes for the content container div
- *
- *  Usage:
- *
- *  <Tabs setting="mySetting">
- *      <Tab title="locale.string.title1">Tab 1 content</Tab>
- *      <Tab title="locale.string.title2">Tab 2 content</Tab>
- *  </Tabs>
- *
- */
-
-class Tab extends React.Component {
-    static propTypes = {
-        changeTab: PropTypes.func,
-        isActive: PropTypes.bool.isRequired,
-        index: PropTypes.number.isRequired,
-        className: PropTypes.string,
-        isLinkTo: PropTypes.string,
-        subText: PropTypes.oneOfType([PropTypes.object, PropTypes.string])
-    };
-
-    static defaultProps = {
-        isActive: false,
-        index: 0,
-        className: "",
-        isLinkTo: "",
-        subText: null
-    };
-
-    render() {
-        let {
-            isActive,
-            index,
-            changeTab,
-            title,
-            className,
-            updatedTab,
-            disabled,
-            subText
-        } = this.props;
-        let c = cnames({"is-active": isActive}, className);
-
-        if (typeof title === "string" && title.indexOf(".") > 0) {
-            title = counterpart.translate(title);
-        }
-
-        // dont string concetenate subText directly within the rendering, subText can be an object without toString
-        // implementation, but valid DOM (meaning, don't do subText + "someString"
-
-        if (this.props.collapsed) {
-            // if subText is empty, dont render it, we dont want empty brackets added
-            if (typeof subText === "string") {
-                subText = subText.trim();
-            }
-            return (
-                <option value={index} data-is-link-to={this.props.isLinkTo}>
-                    <span className="tab-title">
-                        {title}
-                        {updatedTab ? "*" : ""}
-                        {subText && " ("}
-                        {subText && subText}
-                        {subText && ")"}
-                    </span>
-                </option>
-            );
-        }
-        return (
-            <li
-                className={c}
-                onClick={
-                    !disabled
-                        ? changeTab.bind(this, index, this.props.isLinkTo)
-                        : null
-                }
-            >
-                <a>
-                    <span className="tab-title">
-                        {title}
-                        {updatedTab ? "*" : ""}
-                    </span>
-                    {subText && <div className="tab-subtext">{subText}</div>}
-                </a>
-            </li>
-        );
-    }
-}
+import onClickOutside from "react-onclickoutside";
 
 class Tabs extends React.Component {
-    static propTypes = {
-        setting: PropTypes.string,
-        defaultActiveTab: PropTypes.number,
-        segmented: PropTypes.bool
-    };
-
     static defaultProps = {
-        active: 0,
-        defaultActiveTab: 0,
-        segmented: true,
-        contentClass: "",
-        style: {}
+        defaultActiveTab: null,
+        defaultContent: null,
+        inner: false,
+        dashboardTabsClass: "",
+        buttons: null
     };
 
     static contextTypes = {
@@ -120,158 +18,170 @@ class Tabs extends React.Component {
     };
 
     constructor(props) {
-        super();
+        super(props);
+        const {items, defaultActiveTab} = props;
+        let activeTab = !!defaultActiveTab
+            ? defaultActiveTab
+            : items.length > 0
+                ? [...items].shift().title
+                : null;
         this.state = {
-            activeTab: props.setting
-                ? props.viewSettings.get(props.setting, props.defaultActiveTab)
-                : props.defaultActiveTab,
-            width: window.innerWidth
+            openMobileSelect: false,
+            activeTab
+        };
+        this.handleClickOutside = this.handleClickOutside.bind(this);
+        this._findActiveTab = this._findActiveTab.bind(this);
+        this._renderDesktopTabs = this._renderDesktopTabs.bind(this);
+        this._renderMobileTabs = this._renderMobileTabs.bind(this);
+    }
+
+    handleClickOutside() {
+        this.setState({openMobileSelect: false});
+    }
+
+    _findActiveTab(items) {
+        return items.find(({title}) => title === this.state.activeTab);
+    }
+
+    _renderDesktopTabs(items) {
+        const renderDesktopTab = ({title, subTitle, link}) => {
+            return (
+                <div
+                    key={`desktop-${title}`}
+                    className={cnames("dashboard__tabs__item", {
+                        active: title === this.state.activeTab
+                    })}
+                    onClick={e => {
+                        e.preventDefault();
+                        this._changeTab({title, link});
+                        if(this.props.updateModal) {
+                            this.props.updateModal()
+                        };
+                    }}
+                >
+                    <h4>{counterpart.translate(title)}</h4>
+                    {!!subTitle ? <span>{subTitle}</span> : null}
+                </div>
+            );
         };
 
-        this._setDimensions = this._setDimensions.bind(this);
+        return items.map(renderDesktopTab);
     }
 
-    componentDidMount() {
-        this._setDimensions();
-        window.addEventListener("resize", this._setDimensions, {
-            capture: false,
-            passive: true
-        });
-    }
-
-    componentWillReceiveProps(nextProps) {
-        let nextSetting = nextProps.viewSettings.get(nextProps.setting);
-        if (nextSetting !== this.props.viewSettings.get(this.props.setting)) {
-            this.setState({
-                activeTab: nextSetting
-            });
-        }
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener("resize", this._setDimensions);
-    }
-
-    _setDimensions() {
-        let width = window.innerWidth;
-
-        if (width !== this.state.width) {
-            this.setState({width});
-        }
-    }
-
-    _changeTab(value, isLinkTo) {
-        if (value === this.state.activeTab) return;
-        // Persist current tab if desired
-
-        if (isLinkTo !== "") {
-            this.context.router.push(isLinkTo);
-            return;
-        }
-
-        if (this.props.setting) {
-            SettingsActions.changeViewSetting({
-                [this.props.setting]: value
-            });
-        }
-        this.setState({activeTab: value});
-
-        if (this.props.onChangeTab) this.props.onChangeTab(value);
-    }
-
-    render() {
-        let {children, contentClass, tabsClass, style, segmented} = this.props;
-        const collapseTabs =
-            this.state.width < 900 && React.Children.count(children) > 2;
-
-        let activeContent = null;
-
-        let tabs = React.Children.map(children, (child, index) => {
-            if (!child) {
-                return null;
-            }
-            if (collapseTabs && child.props.disabled) return null;
-            let isActive = index === this.state.activeTab;
-            if (isActive) {
-                activeContent = child.props.children;
-            }
-
-            return React.cloneElement(child, {
-                collapsed: collapseTabs,
-                isActive,
-                changeTab: this._changeTab.bind(this),
-                index: index
-            });
-        }).filter(a => a !== null);
-
-        if (!activeContent) {
-            activeContent = tabs[0].props.children;
-        }
-
-        return (
+    _renderMobileTabs(items) {
+        const activeTab = this._findActiveTab(items);
+        return activeTab ? (
             <div
-                className={cnames(
-                    !!this.props.actionButtons ? "with-buttons" : "",
-                    this.props.className
-                )}
+                className={cnames("select dashboard__mobileselect", {
+                    "is-open": this.state.openMobileSelect
+                })}
             >
-                <div className="service-selector">
-                    <ul
-                        style={style}
-                        className={cnames("button-group no-margin", tabsClass, {
-                            segmented
-                        })}
-                    >
-                        {collapseTabs ? (
-                            <li
-                                style={{
-                                    paddingLeft: 10,
-                                    paddingRight: 10,
-                                    minWidth: "15rem"
-                                }}
-                            >
-                                <select
-                                    value={this.state.activeTab}
-                                    style={{marginTop: 10, marginBottom: 10}}
-                                    className="bts-select"
-                                    onChange={e => {
-                                        let ind = parseInt(e.target.value, 10);
-                                        this._changeTab(
-                                            ind,
-                                            e.target[ind].attributes[
-                                                "data-is-link-to"
-                                            ].value
-                                        );
+                <span
+                    className="placeholder"
+                    onClick={e => {
+                        e.preventDefault();
+                        this.setState({
+                            openMobileSelect: !this.state.openMobileSelect
+                        });
+                    }}
+                >
+                    {counterpart.translate(activeTab.title)}
+                </span>
+                <ul>
+                    {items
+                        .filter(({title}) => title !== activeTab.title)
+                        .map(({title, link}) => {
+                            return (
+                                <li
+                                    key={`mobile-${title}`}
+                                    onClick={e => {
+                                        e.preventDefault();
+                                        this._changeTab({title, link});
+                                        this.setState({
+                                            openMobileSelect: false
+                                        });
                                     }}
                                 >
-                                    {tabs}
-                                </select>
-                            </li>
-                        ) : (
-                            tabs
-                        )}
-                    </ul>
-                </div>
-              {this.props.actionButtons ? (
-                <div className="tabs-action-buttons">
-                  {this.props.actionButtons}
-                </div>
-              ) : null}
-                <div className={cnames("tab-content", contentClass)}>
-                    {activeContent}
-                </div>
+                                    {counterpart.translate(title)}
+                                </li>
+                            );
+                        })}
+                </ul>
+            </div>
+        ) : null;
+    }
+
+    _renderTabs(items) {
+        const {dashboardTabsClass} = this.props;
+        return (
+            <div
+                className={
+                    !!dashboardTabsClass
+                        ? `dashboard__tabs ${dashboardTabsClass}`
+                        : "dashboard__tabs"
+                }
+            >
+                {this._renderMobileTabs(items)}
+                {this._renderDesktopTabs(items)}
             </div>
         );
     }
+
+    _changeTab({title, link}) {
+/*         try {
+            let hashByConten =
+                typeof this.props.hashByConten !== "undefined"
+                    ? this.props.hashByConten
+                    : false;
+            if (hashByConten === true) {
+                window.location.hash = title.match(/[a-zA-Z]+/g).join("-");
+            }
+        } catch (e) {} */
+
+        if (title === this.state.activeTab) {
+            return;
+        }
+
+        if (link) {
+            this.context.router.push(link);
+            return;
+        }
+
+        this.setState({activeTab: title});
+        // this.props.updateModal();
+        if (typeof this.props.onChange !== "undefined")
+            this.props.onChange(title);
+    }
+
+    render() {
+        const {items, inner, defaultContent, buttons} = this.props;
+        const activeTab = this._findActiveTab(items);
+        const content = !!defaultContent
+            ? defaultContent
+            : activeTab
+                ? activeTab.content
+                : null;
+
+        return items.length > 0 && activeTab ? (
+            inner ? (
+                <div className="dashboard">
+                    {this._renderTabs(items)}
+                    {buttons}
+                    {content}
+                </div>
+            ) : (
+                <div>
+                    <div className="dashboard">
+                        {this._renderTabs(items)}
+                        {buttons}
+                    </div>
+                    <div className="negative-margins">
+                        <div className="container-fluid">{content}</div>
+                    </div>
+                </div>
+            )
+        ) : null;
+    }
 }
 
-Tabs = connect(Tabs, {
-    listenTo() {
-        return [SettingsStore];
-    },
-    getProps() {
-        return {viewSettings: SettingsStore.getState().viewSettings};
-    }
-});
-
-export {Tabs, Tab};
+export default onClickOutside(Tabs);

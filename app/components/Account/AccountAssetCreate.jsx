@@ -2,19 +2,19 @@ import React from "react";
 import Translate from "react-translate-component";
 import classnames from "classnames";
 import AssetActions from "actions/AssetActions";
-import HelpContent from "../Utility/HelpContent";
+import HelpContent from "../../components/Utility/HelpContent";
 import utils from "common/utils";
 import {ChainStore, ChainValidation} from "bitsharesjs/es";
-import FormattedAsset from "../Utility/FormattedAsset";
+import FormattedAsset from "../../components/Utility/FormattedAsset";
 import counterpart from "counterpart";
-import ChainTypes from "../Utility/ChainTypes";
-import BindToChainState from "../Utility/BindToChainState";
-import AssetSelector from "../Utility/AssetSelector";
+import ChainTypes from "../../components/Utility/ChainTypes";
+import BindToChainState from "../../components/Utility/BindToChainState";
+import AssetSelector from "../../components/Utility/AssetSelector";
 import big from "bignumber.js";
 import cnames from "classnames";
 import assetUtils from "common/asset_utils";
-import {Tabs, Tab} from "../Utility/Tabs";
-import AmountSelector from "../Utility/AmountSelector";
+import Tabs from "../Utility/Tabs";
+import AmountSelector from "../../components/Utility/AmountSelector";
 import assetConstants from "chain/asset_constants";
 import {estimateFee} from "common/trxHelper";
 import PropTypes from "prop-types";
@@ -712,7 +712,8 @@ class AccountAssetCreate extends React.Component {
                             <td style={{border: "none", width: "80%"}}>
                                 <Translate
                                     content={`account.user_issued_assets.${key}`}
-                                />:
+                                />
+                                :
                             </td>
                             <td style={{border: "none"}}>
                                 <div
@@ -750,7 +751,9 @@ class AccountAssetCreate extends React.Component {
                 this._onUpdateDescription.bind(this, "visible"),
                 update.description.visible
                     ? false
-                    : update.description.visible === false ? true : false
+                    : update.description.visible === false
+                        ? true
+                        : false
             )
         );
 
@@ -764,7 +767,8 @@ class AccountAssetCreate extends React.Component {
                             <td style={{border: "none", width: "80%"}}>
                                 <Translate
                                     content={`account.user_issued_assets.${key}`}
-                                />:
+                                />
+                                :
                             </td>
                             <td style={{border: "none"}}>
                                 <div
@@ -789,17 +793,20 @@ class AccountAssetCreate extends React.Component {
             );
         }
 
+        // className="button"
+        // className={classnames("button", {disabled: !isValid})}
         const confirmButtons = (
             <div>
                 <button
-                    className="button"
+                    className="btn large outline"
                     onClick={this._reset.bind(this)}
                     value={counterpart.translate("account.perm.reset")}
                 >
                     <Translate content="account.perm.reset" />
                 </button>
                 <button
-                    className={classnames("button", {disabled: !isValid})}
+                    className="btn large inverted"
+                    disabled={!isValid}
                     onClick={this._createAsset.bind(this)}
                 >
                     <Translate content="header.create_asset" />
@@ -807,533 +814,467 @@ class AccountAssetCreate extends React.Component {
             </div>
         );
 
-        return (
-            <div className="grid-content app-tables no-padding" ref="appTables">
-                <div className="content-block small-12">
-                    <div className="tabs-container generic-bordered-box">
-                        <div className="tabs-header">
-                            <h3>
-                                <Translate content="header.create_asset" />
-                            </h3>
-                        </div>
+        const userIssuedAssetsPrimary = (
+            <div className="small-12 grid-content">
+                <label>
+                    <Translate content="account.user_issued_assets.symbol" />
+                    <input
+                        type="text"
+                        value={update.symbol}
+                        onChange={this._onUpdateInput.bind(this, "symbol")}
+                    />
+                </label>
+                {errors.symbol ? (
+                    <p className="grid-content has-error">{errors.symbol}</p>
+                ) : null}
 
-                        <Tabs
-                            setting="createAssetTab"
-                            className="account-tabs"
-                            tabsClass="account-overview no-padding bordered-header content-block"
-                            contentClass="grid-block shrink small-vertical medium-horizontal padding"
-                            segmented={false}
-                            actionButtons={confirmButtons}
-                        >
-                            <Tab title="account.user_issued_assets.primary">
-                                <div className="small-12 grid-content">
-                                    <label>
-                                        <Translate content="account.user_issued_assets.symbol" />
-                                        <input
-                                            type="text"
-                                            value={update.symbol}
-                                            onChange={this._onUpdateInput.bind(
-                                                this,
-                                                "symbol"
-                                            )}
-                                        />
-                                    </label>
-                                    {errors.symbol ? (
-                                        <p className="grid-content has-error">
-                                            {errors.symbol}
-                                        </p>
-                                    ) : null}
+                <label>
+                    <Translate content="account.user_issued_assets.max_supply" />{" "}
+                    {update.symbol ? <span>({update.symbol})</span> : null}
+                    <input
+                        type="text"
+                        value={update.max_supply}
+                        onChange={this._onUpdateInput.bind(this, "max_supply")}
+                    />
+                </label>
+                {errors.max_supply ? (
+                    <p className="grid-content has-error">
+                        {errors.max_supply}
+                    </p>
+                ) : null}
 
-                                    <label>
-                                        <Translate content="account.user_issued_assets.max_supply" />{" "}
-                                        {update.symbol ? (
-                                            <span>({update.symbol})</span>
-                                        ) : null}
-                                        <input
-                                            type="text"
-                                            value={update.max_supply}
-                                            onChange={this._onUpdateInput.bind(
-                                                this,
-                                                "max_supply"
-                                            )}
-                                        />
-                                    </label>
-                                    {errors.max_supply ? (
-                                        <p className="grid-content has-error">
-                                            {errors.max_supply}
-                                        </p>
-                                    ) : null}
+                <label>
+                    <Translate content="account.user_issued_assets.decimals" />
+                    <input
+                        min="0"
+                        max="8"
+                        step="1"
+                        type="range"
+                        value={update.precision}
+                        onChange={this._onUpdateInput.bind(this, "precision")}
+                    />
+                </label>
+                <p>{update.precision}</p>
 
-                                    <label>
-                                        <Translate content="account.user_issued_assets.decimals" />
-                                        <input
-                                            min="0"
-                                            max="8"
-                                            step="1"
-                                            type="range"
-                                            value={update.precision}
-                                            onChange={this._onUpdateInput.bind(
-                                                this,
-                                                "precision"
-                                            )}
-                                        />
-                                    </label>
-                                    <p>{update.precision}</p>
-
-                                    <div
-                                        style={{marginBottom: 10}}
-                                        className="txtlabel cancel"
-                                    >
-                                        <Translate content="account.user_issued_assets.precision_warning" />
-                                    </div>
-
-                                    <table
-                                        className="table"
-                                        style={{width: "inherit"}}
-                                    >
-                                        <tbody>
-                                            <tr>
-                                                <td style={{border: "none"}}>
-                                                    <Translate
-                                                        content={
-                                                            "account.user_issued_assets.mpa"
-                                                        }
-                                                    />:
-                                                </td>
-                                                <td style={{border: "none"}}>
-                                                    <div
-                                                        className="switch"
-                                                        style={{
-                                                            marginBottom: "10px"
-                                                        }}
-                                                        onClick={this._onToggleBitAsset.bind(
-                                                            this
-                                                        )}
-                                                    >
-                                                        <input
-                                                            type="checkbox"
-                                                            checked={isBitAsset}
-                                                        />
-                                                        <label />
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-
-                                    {isBitAsset ? (
-                                        <table
-                                            className="table"
-                                            style={{width: "inherit"}}
-                                        >
-                                            <tbody>
-                                                <tr>
-                                                    <td
-                                                        style={{border: "none"}}
-                                                    >
-                                                        <Translate
-                                                            content={
-                                                                "account.user_issued_assets.pm"
-                                                            }
-                                                        />:
-                                                    </td>
-                                                    <td
-                                                        style={{border: "none"}}
-                                                    >
-                                                        <div
-                                                            className="switch"
-                                                            style={{
-                                                                marginBottom:
-                                                                    "10px"
-                                                            }}
-                                                            onClick={this._onTogglePM.bind(
-                                                                this
-                                                            )}
-                                                        >
-                                                            <input
-                                                                type="checkbox"
-                                                                checked={
-                                                                    is_prediction_market
-                                                                }
-                                                            />
-                                                            <label />
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    ) : null}
-
-                                    {/* CER */}
-                                    <Translate
-                                        component="h3"
-                                        content="account.user_issued_assets.core_exchange_rate"
-                                    />
-
-                                    <label>
-                                        <div className="grid-block no-margin">
-                                            {errors.quote_asset ? (
-                                                <p className="grid-content has-error">
-                                                    {errors.quote_asset}
-                                                </p>
-                                            ) : null}
-                                            {errors.base_asset ? (
-                                                <p className="grid-content has-error">
-                                                    {errors.base_asset}
-                                                </p>
-                                            ) : null}
-                                            <div className="grid-block no-margin small-12 medium-6">
-                                                <div
-                                                    className="amount-selector"
-                                                    style={{
-                                                        width: "100%",
-                                                        paddingRight: "10px"
-                                                    }}
-                                                >
-                                                    <Translate
-                                                        component="label"
-                                                        content="account.user_issued_assets.quote"
-                                                    />
-                                                    <div className="inline-label">
-                                                        <input
-                                                            type="text"
-                                                            placeholder="0.0"
-                                                            onChange={this._onCoreRateChange.bind(
-                                                                this,
-                                                                "quote"
-                                                            )}
-                                                            value={
-                                                                core_exchange_rate
-                                                                    .quote
-                                                                    .amount
-                                                            }
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="grid-block no-margin small-12 medium-6">
-                                                <AmountSelector
-                                                    label="account.user_issued_assets.base"
-                                                    amount={
-                                                        core_exchange_rate.base
-                                                            .amount
-                                                    }
-                                                    onChange={this._onCoreRateChange.bind(
-                                                        this,
-                                                        "base"
-                                                    )}
-                                                    asset={
-                                                        core_exchange_rate.base
-                                                            .asset_id
-                                                    }
-                                                    assets={[
-                                                        core_exchange_rate.base
-                                                            .asset_id
-                                                    ]}
-                                                    placeholder="0.0"
-                                                    tabIndex={1}
-                                                    style={{
-                                                        width: "100%",
-                                                        paddingLeft: "10px"
-                                                    }}
-                                                />
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <h5>
-                                                <Translate content="exchange.price" />
-                                                <span>
-                                                    :{" "}
-                                                    {utils.format_number(
-                                                        utils.get_asset_price(
-                                                            core_exchange_rate
-                                                                .quote.amount *
-                                                                utils.get_asset_precision(
-                                                                    update.precision
-                                                                ),
-                                                            {
-                                                                precision:
-                                                                    update.precision
-                                                            },
-                                                            core_exchange_rate
-                                                                .base.amount *
-                                                                utils.get_asset_precision(
-                                                                    core
-                                                                ),
-                                                            core
-                                                        ),
-                                                        2 +
-                                                            (parseInt(
-                                                                update.precision,
-                                                                10
-                                                            ) || 8)
-                                                    )}
-                                                </span>
-                                                <span>
-                                                    {" "}
-                                                    {update.symbol}/{core.get(
-                                                        "symbol"
-                                                    )}
-                                                </span>
-                                            </h5>
-                                        </div>
-                                    </label>
-                                    <div>
-                                        <Translate
-                                            content="account.user_issued_assets.cer_warning_1"
-                                            component="label"
-                                            className="has-error"
-                                        />
-                                        <Translate
-                                            content="account.user_issued_assets.cer_warning_2"
-                                            component="p"
-                                        />
-                                    </div>
-                                    {
-                                        <p>
-                                            <Translate content="account.user_issued_assets.approx_fee" />:{" "}
-                                            {createFee}
-                                        </p>
-                                    }
-                                </div>
-                            </Tab>
-
-                            <Tab title="account.user_issued_assets.description">
-                                <div className="small-12 grid-content">
-                                    <Translate
-                                        component="label"
-                                        content="account.user_issued_assets.description"
-                                    />
-                                    <label>
-                                        <textarea
-                                            style={{height: "7rem"}}
-                                            rows="1"
-                                            value={update.description.main}
-                                            onChange={this._onUpdateDescription.bind(
-                                                this,
-                                                "main"
-                                            )}
-                                        />
-                                    </label>
-
-                                    <Translate
-                                        component="label"
-                                        content="account.user_issued_assets.short"
-                                    />
-                                    <label>
-                                        <input
-                                            type="text"
-                                            rows="1"
-                                            value={
-                                                update.description.short_name
-                                            }
-                                            onChange={this._onUpdateDescription.bind(
-                                                this,
-                                                "short_name"
-                                            )}
-                                        />
-                                    </label>
-
-                                    <Translate
-                                        component="label"
-                                        content="account.user_issued_assets.market"
-                                    />
-                                    <AssetSelector
-                                        label="account.user_issued_assets.name"
-                                        onChange={this._onInputMarket.bind(
-                                            this
-                                        )}
-                                        asset={this.state.marketInput}
-                                        assetInput={this.state.marketInput}
-                                        style={{
-                                            width: "100%",
-                                            paddingRight: "10px"
-                                        }}
-                                        onFound={this._onFoundMarketAsset.bind(
-                                            this
-                                        )}
-                                    />
-
-                                    {is_prediction_market ? (
-                                        <div>
-                                            <Translate
-                                                component="h3"
-                                                content="account.user_issued_assets.condition"
-                                            />
-                                            <label>
-                                                <input
-                                                    type="text"
-                                                    rows="1"
-                                                    value={
-                                                        update.description
-                                                            .condition
-                                                    }
-                                                    onChange={this._onUpdateDescription.bind(
-                                                        this,
-                                                        "condition"
-                                                    )}
-                                                />
-                                            </label>
-
-                                            <Translate
-                                                component="h3"
-                                                content="account.user_issued_assets.expiry"
-                                            />
-                                            <label>
-                                                <input
-                                                    type="date"
-                                                    value={
-                                                        update.description
-                                                            .expiry
-                                                    }
-                                                    onChange={this._onUpdateDescription.bind(
-                                                        this,
-                                                        "expiry"
-                                                    )}
-                                                />
-                                            </label>
-                                        </div>
-                                    ) : null}
-                                </div>
-                            </Tab>
-
-                            {isBitAsset ? (
-                                <Tab title="account.user_issued_assets.bitasset_opts">
-                                    <BitAssetOptions
-                                        bitasset_opts={bitasset_opts}
-                                        onUpdate={this.onChangeBitAssetOpts.bind(
-                                            this
-                                        )}
-                                        backingAsset={
-                                            bitasset_opts.short_backing_asset
-                                        }
-                                        assetPrecision={update.precision}
-                                        assetSymbol={update.symbol}
-                                    />
-                                </Tab>
-                            ) : null}
-
-                            <Tab title="account.permissions">
-                                <div className="small-12 grid-content">
-                                    <div style={{maxWidth: 800}}>
-                                        <HelpContent
-                                            path={
-                                                "components/AccountAssetCreate"
-                                            }
-                                            section="permissions"
-                                        />
-                                    </div>
-                                    {permissions}
-                                </div>
-                            </Tab>
-
-                            <Tab title="account.user_issued_assets.flags">
-                                <div className="small-12 grid-content">
-                                    <div style={{maxWidth: 800}}>
-                                        <HelpContent
-                                            path={
-                                                "components/AccountAssetCreate"
-                                            }
-                                            section="flags"
-                                        />
-                                    </div>
-                                    {permissionBooleans["charge_market_fee"] ? (
-                                        <div>
-                                            <Translate
-                                                component="h3"
-                                                content="account.user_issued_assets.market_fee"
-                                            />
-                                            <table className="table">
-                                                <tbody>
-                                                    <tr>
-                                                        <td
-                                                            style={{
-                                                                border: "none",
-                                                                width: "80%"
-                                                            }}
-                                                        >
-                                                            <Translate content="account.user_issued_assets.charge_market_fee" />:
-                                                        </td>
-                                                        <td
-                                                            style={{
-                                                                border: "none"
-                                                            }}
-                                                        >
-                                                            <div
-                                                                className="switch"
-                                                                style={{
-                                                                    marginBottom:
-                                                                        "10px"
-                                                                }}
-                                                                onClick={this._onFlagChange.bind(
-                                                                    this,
-                                                                    "charge_market_fee"
-                                                                )}
-                                                            >
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={
-                                                                        flagBooleans.charge_market_fee
-                                                                    }
-                                                                />
-                                                                <label />
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                            <div
-                                                className={cnames({
-                                                    disabled: !flagBooleans.charge_market_fee
-                                                })}
-                                            >
-                                                <label>
-                                                    <Translate content="account.user_issued_assets.market_fee" />{" "}
-                                                    (%)
-                                                    <input
-                                                        type="number"
-                                                        value={
-                                                            update.market_fee_percent
-                                                        }
-                                                        onChange={this._onUpdateInput.bind(
-                                                            this,
-                                                            "market_fee_percent"
-                                                        )}
-                                                    />
-                                                </label>
-
-                                                <label>
-                                                    <Translate content="account.user_issued_assets.max_market_fee" />{" "}
-                                                    ({update.symbol})
-                                                    <input
-                                                        type="number"
-                                                        value={
-                                                            update.max_market_fee
-                                                        }
-                                                        onChange={this._onUpdateInput.bind(
-                                                            this,
-                                                            "max_market_fee"
-                                                        )}
-                                                    />
-                                                </label>
-                                                {errors.max_market_fee ? (
-                                                    <p className="grid-content has-error">
-                                                        {errors.max_market_fee}
-                                                    </p>
-                                                ) : null}
-                                            </div>
-                                        </div>
-                                    ) : null}
-
-                                    <h3>
-                                        <Translate content="account.user_issued_assets.flags" />
-                                    </h3>
-                                    {flags}
-                                </div>
-                            </Tab>
-                        </Tabs>
-                    </div>
+                <div style={{marginBottom: 10}} className="txtlabel cancel">
+                    <Translate content="account.user_issued_assets.precision_warning" />
                 </div>
+
+                <table className="table" style={{width: "inherit"}}>
+                    <tbody>
+                        <tr>
+                            <td style={{border: "none"}}>
+                                <Translate
+                                    content={"account.user_issued_assets.mpa"}
+                                />
+                                :
+                            </td>
+                            <td style={{border: "none"}}>
+                                <div
+                                    className="switch"
+                                    style={{
+                                        marginBottom: "10px"
+                                    }}
+                                    onClick={this._onToggleBitAsset.bind(this)}
+                                >
+                                    <input
+                                        type="checkbox"
+                                        checked={isBitAsset}
+                                    />
+                                    <label />
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                {isBitAsset ? (
+                    <table className="table" style={{width: "inherit"}}>
+                        <tbody>
+                            <tr>
+                                <td style={{border: "none"}}>
+                                    <Translate
+                                        content={
+                                            "account.user_issued_assets.pm"
+                                        }
+                                    />
+                                    :
+                                </td>
+                                <td style={{border: "none"}}>
+                                    <div
+                                        className="switch"
+                                        style={{
+                                            marginBottom: "10px"
+                                        }}
+                                        onClick={this._onTogglePM.bind(this)}
+                                    >
+                                        <input
+                                            type="checkbox"
+                                            checked={is_prediction_market}
+                                        />
+                                        <label />
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                ) : null}
+
+                {/* CER */}
+                <Translate
+                    component="h3"
+                    content="account.user_issued_assets.core_exchange_rate"
+                />
+
+                <label>
+                    <div className="grid-block no-margin">
+                        {errors.quote_asset ? (
+                            <p className="grid-content has-error">
+                                {errors.quote_asset}
+                            </p>
+                        ) : null}
+                        {errors.base_asset ? (
+                            <p className="grid-content has-error">
+                                {errors.base_asset}
+                            </p>
+                        ) : null}
+                        <div className="grid-block no-margin small-12 medium-6">
+                            <div
+                                className="amount-selector"
+                                style={{
+                                    width: "100%",
+                                    paddingRight: "10px"
+                                }}
+                            >
+                                <Translate
+                                    component="label"
+                                    content="account.user_issued_assets.quote"
+                                />
+                                <div className="inline-label">
+                                    <input
+                                        type="text"
+                                        placeholder="0.0"
+                                        onChange={this._onCoreRateChange.bind(
+                                            this,
+                                            "quote"
+                                        )}
+                                        value={core_exchange_rate.quote.amount}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="grid-block no-margin small-12 medium-6">
+                            <AmountSelector
+                                label="account.user_issued_assets.base"
+                                amount={core_exchange_rate.base.amount}
+                                onChange={this._onCoreRateChange.bind(
+                                    this,
+                                    "base"
+                                )}
+                                asset={core_exchange_rate.base.asset_id}
+                                assets={[core_exchange_rate.base.asset_id]}
+                                placeholder="0.0"
+                                tabIndex={1}
+                                style={{
+                                    width: "100%",
+                                    paddingLeft: "10px"
+                                }}
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <h5>
+                            <Translate content="exchange.price" />
+                            <span>
+                                :{" "}
+                                {utils.format_number(
+                                    utils.get_asset_price(
+                                        core_exchange_rate.quote.amount *
+                                            utils.get_asset_precision(
+                                                update.precision
+                                            ),
+                                        {
+                                            precision: update.precision
+                                        },
+                                        core_exchange_rate.base.amount *
+                                            utils.get_asset_precision(core),
+                                        core
+                                    ),
+                                    2 + (parseInt(update.precision, 10) || 8)
+                                )}
+                            </span>
+                            <span>
+                                {" "}
+                                {update.symbol}/{core.get("symbol")}
+                            </span>
+                        </h5>
+                    </div>
+                </label>
+                <div>
+                    <Translate
+                        content="account.user_issued_assets.cer_warning_1"
+                        component="label"
+                        className="has-error"
+                    />
+                    <Translate
+                        content="account.user_issued_assets.cer_warning_2"
+                        component="p"
+                    />
+                </div>
+                {
+                    <p>
+                        <Translate content="account.user_issued_assets.approx_fee" />
+                        : {createFee}
+                    </p>
+                }
+            </div>
+        );
+
+        const userIssuedAssetsDescription = (
+            <div className="small-12 grid-content">
+                <Translate
+                    component="label"
+                    content="account.user_issued_assets.description"
+                />
+                <label>
+                    <textarea
+                        style={{height: "7rem"}}
+                        rows="1"
+                        value={update.description.main}
+                        onChange={this._onUpdateDescription.bind(this, "main")}
+                    />
+                </label>
+
+                <Translate
+                    component="label"
+                    content="account.user_issued_assets.short"
+                />
+                <label>
+                    <input
+                        type="text"
+                        rows="1"
+                        value={update.description.short_name}
+                        onChange={this._onUpdateDescription.bind(
+                            this,
+                            "short_name"
+                        )}
+                    />
+                </label>
+
+                <Translate
+                    component="label"
+                    content="account.user_issued_assets.market"
+                />
+                <AssetSelector
+                    label="account.user_issued_assets.name"
+                    onChange={this._onInputMarket.bind(this)}
+                    asset={this.state.marketInput}
+                    assetInput={this.state.marketInput}
+                    style={{
+                        width: "100%",
+                        paddingRight: "10px"
+                    }}
+                    onFound={this._onFoundMarketAsset.bind(this)}
+                />
+
+                {is_prediction_market ? (
+                    <div>
+                        <Translate
+                            component="h3"
+                            content="account.user_issued_assets.condition"
+                        />
+                        <label>
+                            <input
+                                type="text"
+                                rows="1"
+                                value={update.description.condition}
+                                onChange={this._onUpdateDescription.bind(
+                                    this,
+                                    "condition"
+                                )}
+                            />
+                        </label>
+
+                        <Translate
+                            component="h3"
+                            content="account.user_issued_assets.expiry"
+                        />
+                        <label>
+                            <input
+                                type="date"
+                                value={update.description.expiry}
+                                onChange={this._onUpdateDescription.bind(
+                                    this,
+                                    "expiry"
+                                )}
+                            />
+                        </label>
+                    </div>
+                ) : null}
+            </div>
+        );
+
+        const accountPermissions = (
+            <div className="small-12 grid-content">
+                <div style={{maxWidth: 800}}>
+                    <HelpContent
+                        path={"components/AccountAssetCreate"}
+                        section="permissions"
+                    />
+                </div>
+                {permissions}
+            </div>
+        );
+
+        const userIssuedAssetsFlags = (
+            <div className="small-12 grid-content">
+                <div style={{maxWidth: 800}}>
+                    <HelpContent
+                        path={"components/AccountAssetCreate"}
+                        section="flags"
+                    />
+                </div>
+                {permissionBooleans["charge_market_fee"] ? (
+                    <div>
+                        <Translate
+                            component="h3"
+                            content="account.user_issued_assets.market_fee"
+                        />
+                        <table className="table">
+                            <tbody>
+                                <tr>
+                                    <td
+                                        style={{
+                                            border: "none",
+                                            width: "80%"
+                                        }}
+                                    >
+                                        <Translate content="account.user_issued_assets.charge_market_fee" />
+                                        :
+                                    </td>
+                                    <td
+                                        style={{
+                                            border: "none"
+                                        }}
+                                    >
+                                        <div
+                                            className="switch"
+                                            style={{
+                                                marginBottom: "10px"
+                                            }}
+                                            onClick={this._onFlagChange.bind(
+                                                this,
+                                                "charge_market_fee"
+                                            )}
+                                        >
+                                            <input
+                                                type="checkbox"
+                                                checked={
+                                                    flagBooleans.charge_market_fee
+                                                }
+                                            />
+                                            <label />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div
+                            className={cnames({
+                                disabled: !flagBooleans.charge_market_fee
+                            })}
+                        >
+                            <label>
+                                <Translate content="account.user_issued_assets.market_fee" />{" "}
+                                (%)
+                                <input
+                                    type="number"
+                                    value={update.market_fee_percent}
+                                    onChange={this._onUpdateInput.bind(
+                                        this,
+                                        "market_fee_percent"
+                                    )}
+                                />
+                            </label>
+
+                            <label>
+                                <Translate content="account.user_issued_assets.max_market_fee" />{" "}
+                                ({update.symbol})
+                                <input
+                                    type="number"
+                                    value={update.max_market_fee}
+                                    onChange={this._onUpdateInput.bind(
+                                        this,
+                                        "max_market_fee"
+                                    )}
+                                />
+                            </label>
+                            {errors.max_market_fee ? (
+                                <p className="grid-content has-error">
+                                    {errors.max_market_fee}
+                                </p>
+                            ) : null}
+                        </div>
+                    </div>
+                ) : null}
+
+                <h3>
+                    <Translate content="account.user_issued_assets.flags" />
+                </h3>
+                {flags}
+            </div>
+        );
+
+        const userIssuedAssetsBitassetOpts = (
+            <BitAssetOptions
+                bitasset_opts={bitasset_opts}
+                onUpdate={this.onChangeBitAssetOpts.bind(this)}
+                backingAsset={bitasset_opts.short_backing_asset}
+                assetPrecision={update.precision}
+                assetSymbol={update.symbol}
+            />
+        );
+
+        let items = [
+            {
+                //0
+                title: "account.user_issued_assets.primary",
+                content: userIssuedAssetsPrimary
+            },
+            {
+                //1
+                title: "account.user_issued_assets.description",
+                content: userIssuedAssetsDescription
+            },
+            //2 isBitAsset ? userIssuedAssetsBitassetOpts : null
+            {
+                //3
+                title: "account.permissions",
+                content: accountPermissions
+            },
+            {
+                //4
+                title: "account.user_issued_assets.flags",
+                content: userIssuedAssetsFlags
+            }
+        ];
+        if (isBitAsset) {
+            items.splice(2, 0, {
+                title: "account.user_issued_assets.bitasset_opts",
+                content: userIssuedAssetsBitassetOpts
+            });
+        }
+
+        return (
+            <div className="create-asset-container">
+                <h2 className="content__heading">
+                    {counterpart.translate("header.create_asset")}
+                </h2>
+                <Tabs
+                    items={items}
+                    dashboardTabsClass="dashboard__tabs permissions small"
+                    buttons={confirmButtons}
+                />
             </div>
         );
     }
