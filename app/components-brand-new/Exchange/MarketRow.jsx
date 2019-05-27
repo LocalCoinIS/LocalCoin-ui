@@ -110,7 +110,9 @@ class MarketRow extends React.Component {
 
         const quoteSymbol   = this.props.quote.get("symbol");
         const baseSymbol    = this.props.base.get("symbol");
-        const marketIDByURL = this.context.router.params.marketID.toUpperCase().trim();
+        const marketIDByURL = typeof this.context.router.params.marketID === "undefined"
+            ? quote.get("symbol") + "_" + base.get("symbol")
+            : this.context.router.params.marketID.toUpperCase().trim();
         const needPairDirection = (
                 marketIDByURL.indexOf("_" + quoteSymbol) !== -1 ||
                 marketIDByURL.indexOf(baseSymbol + "_") !== -1
