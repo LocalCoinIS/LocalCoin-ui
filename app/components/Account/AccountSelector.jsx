@@ -1,19 +1,19 @@
 import React from "react";
 import utils from "common/utils";
 import {connect} from "alt-react";
-import AccountImage from "../Account/AccountImage";
+import AccountImage from "../../components/Account/AccountImage";
 import AccountStore from "stores/AccountStore";
 import AccountActions from "actions/AccountActions";
 import Translate from "react-translate-component";
 import {ChainStore, PublicKey, ChainValidation} from "bitsharesjs/es";
-import ChainTypes from "../Utility/ChainTypes";
-import BindToChainState from "../Utility/BindToChainState";
+import ChainTypes from "../../components/Utility/ChainTypes";
+import BindToChainState from "../../components/Utility/BindToChainState";
 import classnames from "classnames";
 import counterpart from "counterpart";
-import Icon from "../Icon/Icon";
+import Icon from "../../components/Icon/Icon";
 import accountUtils from "common/account_utils";
-import FloatingDropdown from "../Utility/FloatingDropdown";
-import TypeAhead from "../Utility/TypeAhead";
+import FloatingDropdown from "../../components/Utility/FloatingDropdown";
+import TypeAhead from "../../components/Utility/TypeAhead";
 import cnames from "classnames";
 import PropTypes from "prop-types";
 
@@ -87,7 +87,6 @@ class AccountSelector extends React.Component {
 
     getInputType(value) {
         // OK
-
         if (!value) return null;
         if (value[0] === "#" && utils.is_object_id("1.2." + value.substring(1)))
             return "id";
@@ -114,17 +113,13 @@ class AccountSelector extends React.Component {
         let _accountName = this.getVerifiedAccountName(e);
         let _account = ChainStore.getAccount(_accountName);
 
-        if (onChange && _accountName !== accountName) {
-            onChange(_accountName);
-
-        }
-
+        if (onChange && _accountName !== accountName) onChange(_accountName);
 
         // None-Typeahead Component compatibility
         // - Always returns account object
         if (!typeahead) {
             if (onChange) onChange(_accountName);
-           if (onAccountChanged) onAccountChanged(_account);
+            if (onAccountChanged) onAccountChanged(_account);
         }
     }
 
@@ -167,9 +162,8 @@ class AccountSelector extends React.Component {
         let {onAction, disableActionButton, account, accountName} = this.props;
         e.preventDefault();
         if (!this.getError() && onAction && !disableActionButton) {
-            if (account) {
-                onAction(account);
-            } else if (this.getInputType(accountName) === "pubkey")
+            if (account) onAction(account);
+            else if (this.getInputType(accountName) === "pubkey")
                 onAction(accountName);
         }
     }
@@ -331,7 +325,7 @@ class AccountSelector extends React.Component {
             </span>
         );
 
-        let action_class = classnames("button btn large outline", {
+        let action_class = classnames("btn large inverted", {
             disabled:
                 !(account || inputType === "pubkey") ||
                 error ||
@@ -339,7 +333,12 @@ class AccountSelector extends React.Component {
         });
 
         return (
-            <div className="account-selector" style={this.props.style}>
+            <div
+                className="account-inputs account-selector"
+                style={this.props.style}
+                data-tip="Search for an account to be used as your proxy for voting"
+                data-place="right"
+            >
                 <div className="content-area">
                     {this.props.label ? (
                         <div
@@ -406,7 +405,8 @@ class AccountSelector extends React.Component {
                                             "pubkey"
                                                 ? null
                                                 : "lowercase",
-                                        fontVariant: "initial"
+                                        fontVariant: "initial",
+                                        width: "70%"
                                     }}
                                     name="username"
                                     id="username"
@@ -433,7 +433,8 @@ class AccountSelector extends React.Component {
                                             "pubkey"
                                                 ? null
                                                 : "lowercase",
-                                        fontVariant: "initial"
+                                        fontVariant: "initial",
+                                        width: "70%"
                                     }}
                                     name="username"
                                     id="username"
@@ -472,8 +473,12 @@ class AccountSelector extends React.Component {
                             {this.props.onAction ? (
                                 <button
                                     className={action_class}
-                                    style={{marginLeft: 4}}
                                     onClick={this.onAction.bind(this)}
+                                    disabled={
+                                        !(account || inputType === "pubkey") ||
+                                        error ||
+                                        disableActionButton
+                                    }
                                 >
                                     <Translate
                                         content={this.props.action_label}
@@ -490,7 +495,7 @@ class AccountSelector extends React.Component {
                                     ? "has-error"
                                     : "error-area"
                             }
-                            style={{marginTop: "1rem", position: 'relative'}}
+                            style={{marginTop: "1rem"}}
                         >
                             <span>{error}</span>
                         </div>

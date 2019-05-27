@@ -3,11 +3,11 @@ import Immutable from "immutable";
 import counterpart from "counterpart";
 import classNames from "classnames";
 import Translate from "react-translate-component";
-import HelpContent from "../Utility/HelpContent";
-import ChainTypes from "../Utility/ChainTypes";
-import BindToChainState from "../Utility/BindToChainState";
-import FormattedAsset from "../Utility/FormattedAsset";
-import {EquivalentValueComponent} from "../Utility/EquivalentValueComponent";
+import HelpContent from "../../components/Utility/HelpContent";
+import ChainTypes from "../../components/Utility/ChainTypes";
+import BindToChainState from "../../components/Utility/BindToChainState";
+import FormattedAsset from "../../components/Utility/FormattedAsset";
+import {EquivalentValueComponent} from "../../components/Utility/EquivalentValueComponent";
 import {ChainStore, ChainTypes as grapheneChainTypes} from "bitsharesjs/es";
 const {operations} = grapheneChainTypes;
 let ops = Object.keys(operations);
@@ -184,7 +184,7 @@ class FeeGroup extends React.Component {
         return (
             <div className="asset-card">
                 <div className="card-divider">{this.props.title}</div>
-                <table className="table">
+                <table>
                     <thead>
                         <tr>
                             <th>

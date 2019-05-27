@@ -1,24 +1,26 @@
 import React from "react";
 import {Link} from "react-router/es";
 import Translate from "react-translate-component";
-import LinkToAccountById from "../Utility/LinkToAccountById";
-import AssetWrapper from "../Utility/AssetWrapper";
-import FormattedAsset from "../Utility/FormattedAsset";
-import FormattedPrice from "../Utility/FormattedPrice";
-import AssetName from "../Utility/AssetName";
-import TimeAgo from "../Utility/TimeAgo";
-import HelpContent from "../Utility/HelpContent";
+import LinkToAccountById from "../../components/Utility/LinkToAccountById";
+import AssetWrapper from "../../components/Utility/AssetWrapper";
+import FormattedAsset from "../../components/Utility/FormattedAsset";
+import FormattedPrice from "../../components/Utility/FormattedPrice";
+import AssetName from "../../components/Utility/AssetName";
+import TimeAgo from "../../components/Utility/TimeAgo";
+import HelpContent from "../../components/Utility/HelpContent";
 import assetUtils from "common/asset_utils";
 import utils from "common/utils";
-import FormattedTime from "../Utility/FormattedTime";
+import FormattedTime from "../../components/Utility/FormattedTime";
 import {ChainStore} from "bitsharesjs/es";
 import {Apis} from "bitsharesjs-ws";
-import {Tabs, Tab} from "../Utility/Tabs";
+import {Tabs, Tab} from "../../components/Utility/Tabs";
 import {CallOrder, FeedPrice} from "common/MarketClasses";
 import Page404 from "../Page404/Page404";
-import FundFeePool from "../Account/FundFeePool";
+import FundFeePool from "../../components/Account/FundFeePool";
 import AccountStore from "stores/AccountStore";
 import {connect} from "alt-react";
+import counterpart from "counterpart";
+import LinkToAssetById from "../../components/Utility/LinkToAssetById";
 
 class AssetFlag extends React.Component {
     render() {
@@ -28,11 +30,9 @@ class AssetFlag extends React.Component {
         }
 
         return (
-            <span className="asset-flag">
-                <span className="label info">
-                    <Translate content={"account.user_issued_assets." + name} />
-                </span>
-            </span>
+            <label className="btn orange">
+                <Translate content={"account.user_issued_assets." + name} />
+            </label>
         );
     }
 }
@@ -47,11 +47,9 @@ class AssetPermission extends React.Component {
         }
 
         return (
-            <span className="asset-flag">
-                <span className="label info">
-                    <Translate content={"account.user_issued_assets." + name} />
-                </span>
-            </span>
+            <label className="btn orange">
+                <Translate content={"account.user_issued_assets." + name} />
+            </label>
         );
     }
 }
@@ -154,7 +152,9 @@ class Asset extends React.Component {
 
     _assetType(asset) {
         return "bitasset" in asset
-            ? asset.bitasset.is_prediction_market ? "Prediction" : "Smart"
+            ? asset.bitasset.is_prediction_market
+                ? "Prediction"
+                : "Smart"
             : "Simple";
     }
 
@@ -176,17 +176,21 @@ class Asset extends React.Component {
 
     renderPermissionIndicators(permissions, names) {
         return (
-            <div>
-                {names.map(name => {
-                    return (
-                        <AssetPermission
-                            key={`perm_${name}`}
-                            name={name}
-                            isSet={permissions[name]}
-                        />
-                    );
-                })}
-            </div>
+            <tr>
+                <td colspan="2">
+                    <div className="table-blocks__item__table__labels">
+                        {names.map(name => {
+                            return (
+                                <AssetPermission
+                                    key={`perm_${name}`}
+                                    name={name}
+                                    isSet={permissions[name]}
+                                />
+                            );
+                        })}
+                    </div>
+                </td>
+            </tr>
         );
     }
 
@@ -254,7 +258,9 @@ class Asset extends React.Component {
         const core_asset = ChainStore.getAsset("1.3.0");
         let preferredMarket = description.market
             ? description.market
-            : core_asset ? core_asset.get("symbol") : "LLC";
+            : core_asset
+                ? core_asset.get("symbol")
+                : "LLC";
         if ("bitasset" in asset && asset.bitasset.is_prediction_market) {
             preferredMarket = ChainStore.getAsset(
                 asset.bitasset.options.short_backing_asset
@@ -287,12 +293,15 @@ class Asset extends React.Component {
                     hide_issuer="true"
                 />
                 {short_name ? <p>{short_name}</p> : null}
-                <Link
-                    className="button market-button"
-                    to={`/market/${asset.symbol}_${preferredMarket}`}
-                >
-                    <Translate content="exchange.market" />
-                </Link>
+                <button className="btn large inverted marketw3c-btn">
+                    <Link to={`/market/${asset.symbol}_${preferredMarket}`}>
+                        <Translate content="exchange.market" />
+                        &nbsp;
+                        <span>
+                            {asset.symbol} / {preferredMarket}
+                        </span>
+                    </Link>
+                </button>
             </div>
         );
     }
@@ -370,11 +379,11 @@ class Asset extends React.Component {
         ) : null;
 
         return (
-            <div className="asset-card no-padding">
-                <div className="card-divider">
+            <div className="table-blocks__item">
+                <h5 className="table-blocks__item__heading">
                     <AssetName name={asset.symbol} />
-                </div>
-                <table className="table key-value-table table-hover">
+                </h5>
+                <table className="table-blocks__item__table">
                     <tbody>
                         <tr>
                             <td>
@@ -408,7 +417,6 @@ class Asset extends React.Component {
                         {maxMarketFee}
                     </tbody>
                 </table>
-                <br />
                 {this.renderFlagIndicators(flagBooleans, bitNames)}
             </div>
         );
@@ -437,13 +445,9 @@ class Asset extends React.Component {
         var globalSettlementPrice = this.getGlobalSettlementPrice();
 
         return (
-            <div className="asset-card no-padding">
-                <div className="card-divider">{title}</div>
-
-                <table
-                    className="table key-value-table table-hover"
-                    style={{padding: "1.2rem"}}
-                >
+            <div className="table-blocks__item">
+                <h5 className="table-blocks__item__heading">{title}</h5>
+                <table className="table-blocks__item__table">
                     <tbody>
                         <tr>
                             <td>
@@ -498,7 +502,7 @@ class Asset extends React.Component {
                 </table>
 
                 <table
-                    className="table key-value-table table-hover"
+                    className="table-blocks__item__table"
                     style={{marginTop: "2rem"}}
                 >
                     <tbody>
@@ -531,14 +535,11 @@ class Asset extends React.Component {
         if (dynamic) dynamic = dynamic.toJS();
         var options = asset.options;
         return (
-            <div className="asset-card no-padding">
-                <div className="card-divider">
-                    {<Translate content="explorer.asset.fee_pool.title" />}
-                </div>
-                <table
-                    className="table key-value-table"
-                    style={{padding: "1.2rem"}}
-                >
+            <div className="table-blocks__item">
+                <h5 className="table-blocks__item__heading">
+                    {counterpart.translate("explorer.asset.fee_pool.title")}
+                </h5>
+                <table className="table-blocks__item__table">
                     <tbody>
                         <tr>
                             <td>
@@ -649,25 +650,29 @@ class Asset extends React.Component {
         var whiteLists = permissionBooleans["white_list"] ? (
             <span>
                 <br />
-                <Translate content="explorer.asset.permissions.blacklist_authorities" />:
-                &nbsp;{this.renderAuthorityList(options.blacklist_authorities)}
+                <Translate content="explorer.asset.permissions.blacklist_authorities" />
+                : &nbsp;
+                {this.renderAuthorityList(options.blacklist_authorities)}
                 <br />
-                <Translate content="explorer.asset.permissions.blacklist_markets" />:
-                &nbsp;{this.renderMarketList(asset, options.blacklist_markets)}
+                <Translate content="explorer.asset.permissions.blacklist_markets" />
+                : &nbsp;
+                {this.renderMarketList(asset, options.blacklist_markets)}
                 <br />
-                <Translate content="explorer.asset.permissions.whitelist_authorities" />:
-                &nbsp;{this.renderAuthorityList(options.whitelist_authorities)}
+                <Translate content="explorer.asset.permissions.whitelist_authorities" />
+                : &nbsp;
+                {this.renderAuthorityList(options.whitelist_authorities)}
                 <br />
-                <Translate content="explorer.asset.permissions.whitelist_markets" />:
-                &nbsp;{this.renderMarketList(asset, options.whitelist_markets)}
+                <Translate content="explorer.asset.permissions.whitelist_markets" />
+                : &nbsp;
+                {this.renderMarketList(asset, options.whitelist_markets)}
             </span>
         ) : null;
 
         return (
-            <div className="asset-card no-padding">
-                <div className="card-divider">
-                    {<Translate content="explorer.asset.permissions.title" />}{" "}
-                </div>
+            <div className="table-blocks__item">
+                <h5 className="table-blocks__item__heading">
+                    {counterpart.translate("explorer.asset.permissions.title")}
+                </h5>
                 <table
                     className="table key-value-table table-hover"
                     style={{padding: "1.2rem"}}
@@ -677,12 +682,7 @@ class Asset extends React.Component {
                         {maxSupply}
                     </tbody>
                 </table>
-
-                <br />
                 {this.renderPermissionIndicators(permissionBooleans, bitNames)}
-                <br />
-
-                {/*whiteLists*/}
             </div>
         );
     }
@@ -865,21 +865,23 @@ class Asset extends React.Component {
                     </th>
                     <th>
                         <Translate content="explorer.asset.price_feed_data.settlement_price" />
-                        <br />
-                        ({this.formattedPrice(
+                        <br />(
+                        {this.formattedPrice(
                             settlement_price_header,
                             false,
                             true
-                        )})
+                        )}
+                        )
                     </th>
                     <th>
                         <Translate content="explorer.asset.price_feed_data.core_exchange_rate" />
-                        <br />
-                        ({this.formattedPrice(
+                        <br />(
+                        {this.formattedPrice(
                             core_exchange_rate_header,
                             false,
                             true
-                        )})
+                        )}
+                        )
                     </th>
                     <th>
                         {" "}
@@ -952,7 +954,8 @@ class Asset extends React.Component {
                         <Translate content="transaction.collateral" />
                         {this.state.callOrders.length ? (
                             <span>
-                                &nbsp;(<FormattedAsset
+                                &nbsp;(
+                                <FormattedAsset
                                     amount={this.state.callOrders[0]
                                         .getCollateral()
                                         .getAmount()}
@@ -973,7 +976,8 @@ class Asset extends React.Component {
                         <Translate content="transaction.borrow_amount" />
                         {this.state.callOrders.length ? (
                             <span>
-                                &nbsp;(<FormattedAsset
+                                &nbsp;(
+                                <FormattedAsset
                                     amount={this.state.callOrders[0]
                                         .amountToReceive()
                                         .getAmount()}
@@ -995,7 +999,8 @@ class Asset extends React.Component {
                         </span>
                         {this.state.callOrders.length ? (
                             <span>
-                                &nbsp;(<FormattedPrice
+                                &nbsp;(
+                                <FormattedPrice
                                     base_amount={
                                         this.state.callOrders[0].call_price.base
                                             .amount
@@ -1014,7 +1019,8 @@ class Asset extends React.Component {
                                     }
                                     hide_value
                                     noPopOver
-                                />)
+                                />
+                                )
                             </span>
                         ) : null}
                     </th>
@@ -1114,56 +1120,38 @@ class Asset extends React.Component {
                 : null;
 
         return (
-            <div className="grid-container">
-                <div className="grid-block page-layout">
-                    <div className="grid-block main-content wrap regular-padding">
-                        <div
-                            className="grid-block small-up-1"
-                            style={{width: "100%"}}
-                        >
-                            {this.renderAboutBox(asset, this.props.asset)}
-                        </div>
-                        <div className="grid-block small-up-1 medium-up-2">
-                            <div className="grid-content">
-                                {this.renderSummary(asset)}
-                            </div>
-                            <div className="grid-content">
-                                {priceFeed
-                                    ? priceFeed
-                                    : this.renderPermissions(asset)}
-                            </div>
-                        </div>
-                        <div className="grid-block small-up-1 medium-up-2">
-                            <div className="grid-content">
-                                {this.renderFeePool(asset)}
-                            </div>
-                            <div className="grid-content">
-                                {priceFeed
-                                    ? this.renderPermissions(asset)
-                                    : null}
-                            </div>
-                        </div>
-                        {priceFeedData ? priceFeedData : null}
-                    </div>
+            <div className="content" style={{margin: 20}}>
+                <h2 className="content__heading">
+                    <LinkToAssetById showIcon asset={asset.id} />
+                </h2>
+                {this.renderAboutBox(asset, this.props.asset)}
+                <div className="table-blocks">
+                    {this.renderSummary(asset)}
+                    {priceFeed ? priceFeed : this.renderPermissions(asset)}
+                    {this.renderFeePool(asset)}
+                    {priceFeed ? this.renderPermissions(asset) : null}
                 </div>
             </div>
         );
     }
 }
 
-Asset = connect(Asset, {
-    listenTo() {
-        return [AccountStore];
-    },
-    getProps() {
-        const chainID = Apis.instance().chain_id;
-        return {
-            currentAccount:
-                AccountStore.getState().currentAccount ||
-                AccountStore.getState().passwordAccount
-        };
+Asset = connect(
+    Asset,
+    {
+        listenTo() {
+            return [AccountStore];
+        },
+        getProps() {
+            const chainID = Apis.instance().chain_id;
+            return {
+                currentAccount:
+                    AccountStore.getState().currentAccount ||
+                    AccountStore.getState().passwordAccount
+            };
+        }
     }
-});
+);
 
 Asset = AssetWrapper(Asset, {
     propNames: ["backingAsset"]

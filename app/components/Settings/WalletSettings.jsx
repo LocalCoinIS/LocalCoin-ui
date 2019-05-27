@@ -1,6 +1,6 @@
 import React from "react";
 import {ChangeActiveWallet, WalletDelete} from "../Wallet/WalletManager";
-import BalanceClaimActive from "../Wallet/BalanceClaimActive";
+import BalanceClaimActive from "../../components/Wallet/BalanceClaimActive";
 import Translate from "react-translate-component";
 import counterpart from "counterpart";
 import WalletDb from "stores/WalletDb";
@@ -56,7 +56,7 @@ export default class WalletSettings extends React.Component {
                     <Translate content="settings.lookup_text" />:
                 </div>
                 <div
-                    className="button outline"
+                    className="btn large outline button"
                     onClick={this.onLookup.bind(this)}
                 >
                     <Translate content="wallet.balance_claim_lookup" />
@@ -77,7 +77,7 @@ export default class WalletSettings extends React.Component {
                         />
                     </p>
                     <div
-                        className="button outline"
+                        className="btn large outline button"
                         onClick={this.onResetBrainkeySequence.bind(this)}
                     >
                         <Translate content="wallet.brainkey_seq_reset_button" />

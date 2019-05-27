@@ -25,6 +25,7 @@ class MarketPicker extends React.Component {
             issuersList        : "",
             lookupQuote        : null,
             filterByIssuerName : null,
+            loading            : false,
             searchAssets       : null
         };
 
@@ -39,7 +40,8 @@ class MarketPicker extends React.Component {
                 // clearInterval(this._searchAssetsUpdate);
                 // this._searchAssetsUpdate = null;
                 this.setState({
-                    searchAssets: searchAssets
+                    searchAssets: searchAssets,
+                    loading: false
                 });
             }
         }, 1000);
@@ -61,10 +63,11 @@ class MarketPicker extends React.Component {
         let isValidName = !ChainValidation.is_valid_symbol_error(toFind, true);
 
         this.setState({
-            inputValue: e.target.value.trim(),
-            marketsList: "",
-            issuersList: "",
-            filterByIssuerName: null
+            inputValue         : e.target.value.trim(),
+            marketsList        : "",
+            issuersList        : "",
+            loading            : true,
+            filterByIssuerName : null
         });
 
         /* Don't lookup invalid asset names */
@@ -396,11 +399,18 @@ class MarketPicker extends React.Component {
                         total_assets={allMarkets.length}
                     />
                 </section>
-                {!allMarkets.length ? null : (
-                    <div className="results">
+                {!allMarkets.length
+                    ? <div>
+                        {
+                            this.state.loading && !this.state.assetNameError
+                            ? <Translate content="footer.loading" />
+                            : ''
+                        }
+                    </div>
+                    : <div className="results">
                         <ul style={{marginLeft: 0}}>{marketsList}</ul>
                     </div>
-                )}
+                }
             </div>
         );
     }

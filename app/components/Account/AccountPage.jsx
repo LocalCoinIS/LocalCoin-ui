@@ -5,12 +5,15 @@ import SettingsStore from "stores/SettingsStore";
 import WalletUnlockStore from "stores/WalletUnlockStore";
 import GatewayStore from "stores/GatewayStore";
 // import AccountLeftPanel from "./AccountLeftPanel";
-import ChainTypes from "../Utility/ChainTypes";
-import BindToChainState from "../Utility/BindToChainState";
+import ChainTypes from "../../components/Utility/ChainTypes";
+import BindToChainState from "../../components/Utility/BindToChainState";
 import {connect} from "alt-react";
 import accountUtils from "common/account_utils";
 import {List} from "immutable";
 import Page404 from "../Page404/Page404";
+import Footer from "../Layout/Footer";
+import Header from "../Layout/Header";
+import Sidebar from "../Layout/Sidebar";
 
 class AccountPage extends React.Component {
     static propTypes = {
@@ -64,30 +67,25 @@ class AccountPage extends React.Component {
         let isMyAccount = AccountStore.isMyAccount(account);
 
         return (
-            <div className="grid-block page-layout">
-                <div className="grid-block no-padding">
-                    {React.cloneElement(
-                        React.Children.only(this.props.children),
-                        {
-                            account_name,
-                            myActiveAccounts,
-                            searchAccounts,
-                            settings,
-                            wallet_locked,
-                            account,
-                            isMyAccount,
-                            hiddenAssets,
-                            contained: true,
-                            balances: account.get("balances", List()).toList(),
-                            orders: account.get("orders", List()).toList(),
-                            backedCoins: this.props.backedCoins,
-                            bridgeCoins: this.props.bridgeCoins,
-                            gatewayDown: this.props.gatewayDown,
-                            viewSettings: this.props.viewSettings,
-                            proxy: account.getIn(["options", "voting_account"])
-                        }
-                    )}
-                </div>
+            <div className="content account-page">
+                {React.cloneElement(React.Children.only(this.props.children), {
+                    account_name,
+                    myActiveAccounts,
+                    searchAccounts,
+                    settings,
+                    wallet_locked,
+                    account,
+                    isMyAccount,
+                    hiddenAssets,
+                    contained: true,
+                    balances: account.get("balances", List()).toList(),
+                    orders: account.get("orders", List()).toList(),
+                    backedCoins: this.props.backedCoins,
+                    bridgeCoins: this.props.bridgeCoins,
+                    gatewayDown: this.props.gatewayDown,
+                    viewSettings: this.props.viewSettings,
+                    proxy: account.getIn(["options", "voting_account"])
+                })}
             </div>
         );
     }
@@ -104,21 +102,29 @@ class AccountPageStoreWrapper extends React.Component {
     }
 }
 
-export default connect(AccountPageStoreWrapper, {
-    listenTo() {
-        return [AccountStore, SettingsStore, WalletUnlockStore, GatewayStore];
-    },
-    getProps() {
-        return {
-            myActiveAccounts: AccountStore.getState().myActiveAccounts,
-            searchAccounts: AccountStore.getState().searchAccounts,
-            settings: SettingsStore.getState().settings,
-            hiddenAssets: SettingsStore.getState().hiddenAssets,
-            wallet_locked: WalletUnlockStore.getState().locked,
-            viewSettings: SettingsStore.getState().viewSettings,
-            backedCoins: GatewayStore.getState().backedCoins,
-            bridgeCoins: GatewayStore.getState().bridgeCoins,
-            gatewayDown: GatewayStore.getState().down
-        };
+export default connect(
+    AccountPageStoreWrapper,
+    {
+        listenTo() {
+            return [
+                AccountStore,
+                SettingsStore,
+                WalletUnlockStore,
+                GatewayStore
+            ];
+        },
+        getProps() {
+            return {
+                myActiveAccounts: AccountStore.getState().myActiveAccounts,
+                searchAccounts: AccountStore.getState().searchAccounts,
+                settings: SettingsStore.getState().settings,
+                hiddenAssets: SettingsStore.getState().hiddenAssets,
+                wallet_locked: WalletUnlockStore.getState().locked,
+                viewSettings: SettingsStore.getState().viewSettings,
+                backedCoins: GatewayStore.getState().backedCoins,
+                bridgeCoins: GatewayStore.getState().bridgeCoins,
+                gatewayDown: GatewayStore.getState().down
+            };
+        }
     }
-});
+);

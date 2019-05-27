@@ -4,17 +4,18 @@ import {Link} from "react-router/es";
 import {ChainStore} from "bitsharesjs/es";
 import Translate from "react-translate-component";
 import cnames from "classnames";
-
+import counterpart from "counterpart";
 import MarketsStore from "stores/MarketsStore";
 import SettingsActions from "actions/SettingsActions";
 import SettingsStore from "stores/SettingsStore";
-import ChainTypes from "../Utility/ChainTypes";
-import Icon from "../Icon/Icon";
-import AssetName from "../Utility/AssetName";
-import BindToChainState from "../Utility/BindToChainState";
+import ChainTypes from "../../components/Utility/ChainTypes";
+import Icon from "../../components/Icon/Icon";
+import AssetName from "../../components/Utility/AssetName";
+import BindToChainState from "../../components/Utility/BindToChainState";
 import MarketsActions from "actions/MarketsActions";
 import utils from "common/utils";
 import market_utils from "common/market_utils";
+import {coins} from "../../assets/asset-symbols/symbols";
 
 class MarketRow extends React.Component {
     static propTypes = {
@@ -110,6 +111,22 @@ class MarketRow extends React.Component {
         }
     }
 
+    findCoin(symbol) {
+        for(let i in coins) {
+            let coin = coins[i];
+            if(coin.name === symbol) return coin.image;
+        }
+        return this.getDefault();
+    }
+
+    getDefault() {
+        for(let i in coins) {
+            let coin = coins[i];
+            if(coin.name === 'bts') return coin.image;
+        }
+        return null;
+    }
+
     render() {
         let {
             base,
@@ -133,13 +150,18 @@ class MarketRow extends React.Component {
             ? ""
             : parseFloat(marketStats.change) > 0
                 ? "change-up"
-                : parseFloat(marketStats.change) < 0 ? "change-down" : "";
+                : parseFloat(marketStats.change) < 0
+                    ? "change-down"
+                    : "";
 
         let marketID = `${quote.get("symbol")}_${base.get("symbol")}`;
 
         const starClass = this.props.starredMarkets.has(marketID)
             ? "gold-star"
             : "grey-star";
+
+
+        let imgFormat = imgName.toLowerCase() === "usd" || imgName.toLowerCase() === "cny" ? ".svg" : ".png";
 
         return (
             <tr style={{display: visible ? "" : "none"}}>
@@ -170,7 +192,7 @@ class MarketRow extends React.Component {
                             className="column-hide-small"
                             onError={this._onError.bind(this, imgName)}
                             style={{maxWidth: 20, marginRight: 10}}
-                            src={`${__BASE_URL__}asset-symbols/${imgName.toLowerCase()}.png`}
+                            src={this.findCoin(imgName.toLowerCase())}
                         />
                         <AssetName dataPlace="top" name={quote.get("symbol")} />{" "}
                         :{" "}
@@ -230,19 +252,22 @@ class MarketRow extends React.Component {
 }
 
 MarketRow = BindToChainState(MarketRow);
-MarketRow = connect(MarketRow, {
-    listenTo() {
-        return [MarketsStore];
-    },
-    getProps(props) {
-        return {
-            marketStats: MarketsStore.getState().allMarketStats.get(
-                props.marketId
-            ),
-            starredMarkets: SettingsStore.getState().starredMarkets
-        };
+MarketRow = connect(
+    MarketRow,
+    {
+        listenTo() {
+            return [MarketsStore];
+        },
+        getProps(props) {
+            return {
+                marketStats: MarketsStore.getState().allMarketStats.get(
+                    props.marketId
+                ),
+                starredMarkets: SettingsStore.getState().starredMarkets
+            };
+        }
     }
-});
+);
 
 class MarketsTable extends React.Component {
     constructor() {
@@ -351,6 +376,22 @@ class MarketsTable extends React.Component {
         });
     }
 
+    _renderRadioButton(title, change, checked = false) {
+        return (
+            <label className="radio">
+                <input
+                    className="radio__input"
+                    type="radio"
+                    name="dashboard-filters"
+                    onChange={change}
+                    checked={checked}
+                />
+                <span className="radio__styled" />
+                <span className="radio__label">{title}</span>
+            </label>
+        );
+    }
+
     render() {
         let {markets, showFlip, showHidden, filter} = this.state;
         this.loaded = true;
@@ -420,98 +461,114 @@ class MarketsTable extends React.Component {
 
         return (
             <div>
-                <div className="header-selector">
-                    <div className="filter inline-block">
-                        <input
-                            type="text"
-                            placeholder="Filter"
-                            onChange={this._handleFilterInput.bind(this)}
-                        />
-                    </div>
-                    <div className="selector inline-block">
-                        <div
-                            className={cnames("inline-block", {
-                                inactive: showHidden
-                            })}
-                            onClick={this._toggleShowHidden.bind(this, false)}
-                        >
-                            <Translate content="account.hide_hidden" />
-                        </div>
-                        <div
-                            className={cnames("inline-block", {
-                                inactive: !showHidden
-                            })}
-                            onClick={this._toggleShowHidden.bind(this, true)}
-                        >
-                            <Translate content="account.show_hidden" />
+                <div className="dashboard__actions">
+                    <div className="container-fluid">
+                        <div className="row">
+                            <div className="col-xl-3 col-lg-6">
+                                <input
+                                    type="text"
+                                    placeholder="Filter"
+                                    onChange={this._handleFilterInput.bind(
+                                        this
+                                    )}
+                                />
+                            </div>
+                            <div className="col-xl-9 col-lg-12">
+                                <div className="dashboard__actions__filters">
+                                    {this._renderRadioButton(
+                                        counterpart.translate(
+                                            "account.hide_hidden"
+                                        ),
+                                        this._toggleShowHidden.bind(
+                                            this,
+                                            false
+                                        ),
+                                        !showHidden
+                                    )}
+                                    {this._renderRadioButton(
+                                        counterpart.translate(
+                                            "account.show_hidden"
+                                        ),
+                                        this._toggleShowHidden.bind(this, true),
+                                        showHidden
+                                    )}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <table className="table dashboard-table table-hover">
-                    <thead>
-                        <tr>
-                            <th style={{textAlign: "left", width: "75px"}} />
-                            <th style={{textAlign: "left"}}>
-                                <Translate
-                                    component="span"
-                                    content="account.asset"
+                <div className="dashboard__adaptive">
+                    <table className="dashboard__table">
+                        <thead>
+                            <tr>
+                                <th
+                                    style={{textAlign: "left", width: "75px"}}
                                 />
-                            </th>
-                            <th style={{textAlign: "right"}}>
-                                <Translate content="exchange.price" />
-                            </th>
-                            <th style={{textAlign: "right"}}>
-                                <Translate content="account.hour_24_short" />
-                            </th>
-                            <th
-                                className="column-hide-small"
-                                style={{textAlign: "right"}}
-                            >
-                                <Translate content="exchange.volume" />
-                            </th>
-                            {showFlip ? (
-                                <th className="column-hide-small">
-                                    <Translate content="exchange.flip" />
+                                <th style={{textAlign: "left"}}>
+                                    <Translate
+                                        component="span"
+                                        content="account.asset"
+                                    />
                                 </th>
-                            ) : null}
-                            <th>
-                                <Translate
-                                    content={
-                                        !showHidden
-                                            ? "exchange.hide"
-                                            : "account.perm.show"
-                                    }
-                                />
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr
-                            className="table-empty"
-                            style={{display: visibleRow ? "none" : ""}}
-                        >
-                            <td colSpan={showFlip ? 6 : 5}>
-                                <Translate content="dashboard.table_empty" />
-                            </td>
-                        </tr>
-                        {markets}
-                    </tbody>
-                </table>
+                                <th style={{textAlign: "right"}}>
+                                    <Translate content="exchange.price" />
+                                </th>
+                                <th style={{textAlign: "right"}}>
+                                    <Translate content="account.hour_24_short" />
+                                </th>
+                                <th
+                                    className="column-hide-small"
+                                    style={{textAlign: "right"}}
+                                >
+                                    <Translate content="exchange.volume" />
+                                </th>
+                                {showFlip ? (
+                                    <th className="column-hide-small">
+                                        <Translate content="exchange.flip" />
+                                    </th>
+                                ) : null}
+                                <th>
+                                    <Translate
+                                        content={
+                                            !showHidden
+                                                ? "exchange.hide"
+                                                : "account.perm.show"
+                                        }
+                                    />
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                className="table-empty"
+                                style={{display: visibleRow ? "none" : ""}}
+                            >
+                                <td colSpan={showFlip ? 6 : 5}>
+                                    <Translate content="dashboard.table_empty" />
+                                </td>
+                            </tr>
+                            {markets}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         );
     }
 }
 
-export default connect(MarketsTable, {
-    listenTo() {
-        return [SettingsStore];
-    },
-    getProps() {
-        let {marketDirections, hiddenMarkets} = SettingsStore.getState();
+export default connect(
+    MarketsTable,
+    {
+        listenTo() {
+            return [SettingsStore];
+        },
+        getProps() {
+            let {marketDirections, hiddenMarkets} = SettingsStore.getState();
 
-        return {
-            marketDirections,
-            hiddenMarkets
-        };
+            return {
+                marketDirections,
+                hiddenMarkets
+            };
+        }
     }
-});
+);

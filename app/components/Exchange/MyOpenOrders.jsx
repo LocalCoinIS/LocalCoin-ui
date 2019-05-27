@@ -374,60 +374,66 @@ class MyOpenOrders extends React.Component {
             [base.get("id")]: {precision: base.get("precision")},
             [quote.get("id")]: {precision: quote.get("precision")}
         };
-        let limitOrders = orders
-            .toArray()
-            .map(order => {
-                let o = ChainStore.getObject(order);
-                if (!o) return null;
-                let sellBase = o.getIn(["sell_price", "base", "asset_id"]),
-                    sellQuote = o.getIn(["sell_price", "quote", "asset_id"]);
-                if (
-                    (sellBase === baseID && sellQuote === quoteID) ||
-                    (sellBase === quoteID && sellQuote === baseID)
-                ) {
-                    return new LimitOrder(o.toJS(), assets, quote.get("id"));
-                }
-            })
-            .filter(a => !!a);
 
-        let callOrders = call_orders
-            .toArray()
-            .map(order => {
-                try {
+        try {
+            let limitOrders = orders
+                .toArray()
+                .map(order => {
                     let o = ChainStore.getObject(order);
                     if (!o) return null;
-                    let sellBase = o.getIn(["call_price", "base", "asset_id"]),
-                        sellQuote = o.getIn([
-                            "call_price",
-                            "quote",
-                            "asset_id"
-                        ]);
+                    let sellBase = o.getIn(["sell_price", "base", "asset_id"]),
+                        sellQuote = o.getIn(["sell_price", "quote", "asset_id"]);
                     if (
                         (sellBase === baseID && sellQuote === quoteID) ||
                         (sellBase === quoteID && sellQuote === baseID)
                     ) {
-                        return feedPrice
-                            ? new CallOrder(
-                                  o.toJS(),
-                                  assets,
-                                  quote.get("id"),
-                                  feedPrice
-                              )
-                            : null;
+                        return new LimitOrder(o.toJS(), assets, quote.get("id"));
                     }
-                } catch (e) {
-                    return null;
-                }
-            })
-            .filter(a => !!a)
-            .filter(a => {
-                try {
-                    return a.isMarginCalled();
-                } catch (err) {
-                    return false;
-                }
-            });
-        return limitOrders.concat(callOrders);
+                })
+                .filter(a => !!a);
+                
+            let callOrders = call_orders
+                .toArray()
+                .map(order => {
+                    try {
+                        let o = ChainStore.getObject(order);
+                        if (!o) return null;
+                        let sellBase = o.getIn(["call_price", "base", "asset_id"]),
+                            sellQuote = o.getIn([
+                                "call_price",
+                                "quote",
+                                "asset_id"
+                            ]);
+                        if (
+                            (sellBase === baseID && sellQuote === quoteID) ||
+                            (sellBase === quoteID && sellQuote === baseID)
+                        ) {
+                            return feedPrice
+                                ? new CallOrder(
+                                    o.toJS(),
+                                    assets,
+                                    quote.get("id"),
+                                    feedPrice
+                                )
+                                : null;
+                        }
+                    } catch (e) {
+                        return null;
+                    }
+                })
+                .filter(a => !!a)
+                .filter(a => {
+                    try {
+                        return a.isMarginCalled();
+                    } catch (err) {
+                        return false;
+                    }
+                });
+
+                return limitOrders.concat(callOrders);
+        } catch(ex) {
+            return null;
+        }
     }
 
     _changeTab(tab) {
@@ -482,47 +488,54 @@ class MyOpenOrders extends React.Component {
                 </tr>
             );
 
-            let bids = orders
-                .filter(a => {
-                    return a.isBid();
-                })
-                .sort((a, b) => {
-                    return b.getPrice() - a.getPrice();
-                })
-                .map(order => {
-                    let price = order.getPrice();
-                    return (
-                        <OrderRow
-                            price={price}
-                            key={order.id}
-                            order={order}
-                            base={base}
-                            quote={quote}
-                            onCancel={this.props.onCancel.bind(this, order.id)}
-                        />
-                    );
-                });
+            let bids = [];
 
-            let asks = orders
-                .filter(a => {
-                    return !a.isBid();
-                })
-                .sort((a, b) => {
-                    return a.getPrice() - b.getPrice();
-                })
-                .map(order => {
-                    let price = order.getPrice();
-                    return (
-                        <OrderRow
-                            price={price}
-                            key={order.id}
-                            order={order}
-                            base={base}
-                            quote={quote}
-                            onCancel={this.props.onCancel.bind(this, order.id)}
-                        />
-                    );
-                });
+            try {
+                bids = orders
+                    .filter(a => {
+                        return a.isBid();
+                    })
+                    .sort((a, b) => {
+                        return b.getPrice() - a.getPrice();
+                    })
+                    .map(order => {
+                        let price = order.getPrice();
+                        return (
+                            <OrderRow
+                                price={price}
+                                key={order.id}
+                                order={order}
+                                base={base}
+                                quote={quote}
+                                onCancel={this.props.onCancel.bind(this, order.id)}
+                            />
+                        );
+                    });
+            } catch(ex) {}
+
+            let asks = [];
+            try {
+                asks = orders
+                    .filter(a => {
+                        return !a.isBid();
+                    })
+                    .sort((a, b) => {
+                        return a.getPrice() - b.getPrice();
+                    })
+                    .map(order => {
+                        let price = order.getPrice();
+                        return (
+                            <OrderRow
+                                price={price}
+                                key={order.id}
+                                order={order}
+                                base={base}
+                                quote={quote}
+                                onCancel={this.props.onCancel.bind(this, order.id)}
+                            />
+                        );
+                    });
+            } catch(ex) {}
 
             let rows = [];
 
