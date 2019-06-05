@@ -11,17 +11,16 @@ branches:
   - live
   - dev
 before_install:
+- openssl aes-256-cbc -K $encrypted_731e3517c097_key -iv $encrypted_731e3517c097_iv
+  -in github_deploy_key.enc -out github_deploy_key -d
 - chmod +x build.sh
+- chmod +x deploy.sh
 install:
 - npm install
 script:
 - "./build.sh"
-deploy:
-  provider: releases
-  tag_name: "$TRAVIS_TAG"
-  name: "$TRAVIS_TAG"
-  body: Automated build from Travis CI
-  api_key:
-    secure: DM1/8Eo1g6qhAivqVT4Liir/vXckpp2CoCpRSl6ur7gGzil81mqB3cFeC3oPKC2mZs6zxjNvo1EYk8O21AhB6DhHP2EITMvebUFL6MWYCZgXAGeQj6TbqS83Gp2tog1smrYJTUdLHeVr86UmgRqxUOW1ZnFppfefb89RztJ19705i4JSzooU4CCVuOy+RQys1rFp3Z11Yi5IWqHPr1MvU+UtfS9P0uqyMOi8MV0TZE7/x2g+g/s7fBFY4fUCYtnKn6SDoQ4p+e1wiCl5VIM4xcJdkuk0qj/UEuQhY/+I1PEtS8XtxbsF4hiS9MFCA2AawpsmfpFo7XnWccgudA+gEe8RApyt+s3sD7+eotZL2bO1Ggem9xRS/SWoRNqIdM45tVI0qGgzuHA7Fd+2aqCVnWLVSF1ZYRHQPoJ4Mm6Ica5YHaVLvWRH/lHRRrcU1c4xlkgFkwxv7vzCUGL0TP9TCeTg04im7LBPw6+kdKk+hKO3bgWlFq0d8Uq3kz2rGFWCKNAo6DkDfvp/A7yDAFouL5uRZ4Vqli4ajEuLVayH8Wp3OM63mXWIlYeVzP6HrJoJGAFzNoZRhRDnejNAlB7tNafZZh1LSPcytI1waSvNzQN9+Mp2aXAdbtrTb25iXxAx/CiRHJQ5ROZl/JZSukiZrgQJl+I7/UKv/+E8kXIPAq8=
-  on:
-    branch: "$TRAVIS_BRANCH"
+after_success:
+  - |
+    $(npm bin)/set-up-ssh --key "$encrypted_731e3517c097_key" --iv "$encrypted_731e3517c097_iv" --path-encrypted-key ".travis/github_deploy_key.enc"
+    git remote add origin git@github.com:LocalCoinIS/LocalCoin-ui.git
+    git push origin $TRAVIS_BRANCH
