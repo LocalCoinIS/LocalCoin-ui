@@ -10,4 +10,4 @@ branches:
 install:
     - npm install
 script:
-    - npm run build
+    - ./build.sh
