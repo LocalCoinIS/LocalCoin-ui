@@ -54,7 +54,8 @@ Once the compilation is done the GUI will be available in your browser at: `loca
 
 
 ## TODO: Testnet
-By default localcoin-ui connects to the live LocalCoin network, but it's very easy to switch it to the testnet. To do so, open the UI in a browser, go to Settings, then under Access, select the *Public Testnet Server* in the dropdown menu. You should also change the faucet if you need to create an account, the testnet faucet address is https://testnet.localcoin.is.
+By default localcoin-ui connects to the live LocalCoin network. 
+TODO: (switch it to the testnet. To do so, open the UI in a browser, go to Settings, then under Access, select the *Public Testnet Server* in the dropdown menu. You should also change the faucet if you need to create an account, the testnet faucet address is https://testnet.localcoin.is.)
 
 The UI will reload and connect to the testnet, where you can use the faucet to create an account and receive an initial sum of test LLC.
 
@@ -84,11 +85,6 @@ __Mac__
 `npm run package-mac`  
 
 This will compile the UI with some special modifications for use with Electron, generate installable binaries with Electron and copy the result to the root `build/binaries` folder.
-
-
-### Docker
-
-Clone this repository, run `docker-compose up` and visit localhost:8080
 
 
 ## Contributing
