@@ -20,4 +20,6 @@ script:
 after_success:
 - $(npm bin)/set-up-ssh --key "$encrypted_731e3517c097_key" --iv "$encrypted_731e3517c097_iv" --path-encrypted-key ".travis/github_deploy_key.enc"
 - git remote add origin "git@github.com:LocalCoinIS/LocalCoin-ui.git"
-- git push origin $TRAVIS_BRANCH
+- git add --all
+- git commit -m "Travis build: $TRAVIS_BUILD_NUMBER"
+- git push origin $TRAVIS_PULL_REQUEST_BRANCH
