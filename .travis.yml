@@ -8,22 +8,12 @@ branches:
   - live
   - dev
 before_install:
-- export BRANCH=$TRAVIS_BRANCH
-- export BNUMBER=$TRAVIS_BUILD_NUMBER
 - openssl aes-256-cbc -K $encrypted_bafa79c953bb_key -iv $encrypted_bafa79c953bb_iv -in keys/gitkeys.enc -out gitkeys -d
 - chmod +x build.sh
-- git status
-- git checkout $BRANCH
-- git status
+- chmod +x deploy.sh
 install:
 - npm install
 script:
 - "./build.sh"
 after_success:
-- eval "$(ssh-agent -s)" #start the ssh agent
-- chmod 600 gitkeys # this key should have push access
-- ssh-add gitkeys
-- git add --all
-- git commit -m "Travis deploy $BNUMBER"
-- git remote set-url origin git@github.com:LocalCoinIS/LocalCoin-ui.git
-- git push origin $BRANCH
+- "./deploy.sh"
