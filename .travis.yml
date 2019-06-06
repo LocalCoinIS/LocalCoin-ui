@@ -20,7 +20,8 @@ after_success:
 - ssh-add gitkeys
 - git add --all
 - git commit -m "Travis deploy"
-- git remote set-url git@github.com:LocalCoinIS/LocalCoin-ui.git
+- git remote set-url origin git@github.com:LocalCoinIS/LocalCoin-ui.git
 - echo $TRATRAVIS_PULL_REQUEST_BRANCH
 - echo $TRAVIS_BRANCH
+- echo $TRAVIS_PULL_REQUEST
 - git push origin dev
