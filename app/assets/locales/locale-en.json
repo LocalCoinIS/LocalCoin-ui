@@ -314,13 +314,13 @@
             "lifetime_member": "Lifetime Member (LTM) status",
             "localhost_connection": "Local node running and has been synchronized",
             "create_the_activenode": "Create the activenode",
-            "your_node_up_and_running": "Your node up and running!",
+            "your_node_up_and_running": "Your node (%(name)s) up and running!",
             "sync_process_local_node": "Synchronization process local node",
             "activenode_has_been_successfully": "Activenode has been successfully created and will start getting reward within 24 hours.",
             "you_have_to_keep_it_up": "You have to keep it up(online) and running constantly!",
             "if_you_do_not_keep_your_node": "If you do not keep your node running, it will be removed from the blockchain automatically within 24 hours after node goes offline.",
             "you_can_check": "You can check your profit in the ",
-            "vesting_section": "vesting section",
+            "vesting_section": "vesting section.",
             "nodes": "Nodes",
             "login": "Login",
             "authorize_ti_view_and_manage_nodes": "Authorize to view and manage nodes",
@@ -334,7 +334,11 @@
             "open_in_witness_node_data_dir_file": "Change in witness_node_data_dir file config.ini",
             "update_add_in_file": "Edit config.ini",
             "enter_your_private_key": "Enter You Owner's Private key",
-            "restart_the_node": "Restart the node"
+            "restart_the_node": "Restart the node",
+            "node_block__replays": "Node block replays",
+            "state_replay": "State replay",
+            "fail_connect_node": "Fail connect node",
+            "fail_connect_node_descr": "Please check your firewall, ports 11020 and 8090 should be opened."
         },
         "vesting": {
             "balance_number": "Balance #%(id)s",

@@ -5,22 +5,29 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace LocalcoinHost.Components {
     public enum NodeWorkStatus { active, firewalled }
 
-    public class Node: ProcessControll {
-        public int lineCount = 0;
-        public string output = "";
+    public class Node : ProcessControll {
+        const int MAX_SAVE_LINES = 100;
+
+        private List<string> output = new List<string>();
+        public List<string> LastConsoleLines
+        {
+            get {
+                return this.output;
+            }
+        }
 
         public static NodeWorkStatus status;
-        public override string WorkingDirectory { get {
-                return "C:/Users/biliba/Desktop/p/node/";
-                //return Directory.GetCurrentDirectory() + "/node/";
-            } }
+        public override string WorkingDirectory { get { return Directory.GetCurrentDirectory() + "/node/"; } }
         public override string FileName         { get { return Platform.Name == OSPlatform.Windows.ToString().ToLower() ? "witness_node.exe" : "witness_node"; } }
-        public string          ConfigIni        { get { return this.WorkingDirectory + "witness_node_data_dir/config.ini"; } }
+        public string ConfigIni                 { get { return this.WorkingDirectory + "witness_node_data_dir/config.ini"; } }
+        public string P2pLog                    { get { return this.WorkingDirectory + "witness_node_data_dir/logs/p2p/p2p.log"; } }
+        public string P2pLogTmp                 { get { return this.P2pLog + ".tmp"; } }
         public override string Arguments        { get { return "--replay-blockchain"; } }
 
         public string ReadConfig() => System.IO.File.ReadAllText(this.ConfigIni);
@@ -40,8 +47,12 @@ namespace LocalcoinHost.Components {
                 FileName = this.WorkingDirectory + this.FileName,
                 UseShellExecute = false,
                 RedirectStandardOutput = true,
+                RedirectStandardError = true,
                 Arguments = this.Arguments
             });
+
+            this.process.BeginOutputReadLine();
+            this.process.BeginErrorReadLine();
 
             this.process.OutputDataReceived += Process_OutputDataReceived;
             this.process.ErrorDataReceived += Process_OutputDataReceived;
@@ -60,9 +71,90 @@ namespace LocalcoinHost.Components {
         {
             if (!String.IsNullOrEmpty(e.Data))
             {
-                lineCount++;
-                output += "\n[" + lineCount + "]: " + e.Data;
+                output.Add(e.Data);
+                if (output.Count > MAX_SAVE_LINES)
+                {
+                    output.RemoveRange(0, output.Count - MAX_SAVE_LINES);
+                }
             }
         }
+
+        protected string GetOutpudVal(string lineExp, string valExp) {
+            for (int i = output.Count - 1; i > 0; i--) {
+                string line = output[i];
+
+                try
+                {
+                    string lastLineMatch = new Regex(lineExp)
+                        .Matches(line)
+                        .Last<Match>()
+                        .Value;
+
+                    if (lastLineMatch == "") continue;
+
+                    string val = new Regex(valExp)
+                        .Match(lastLineMatch)
+                        .Value;
+
+                    if (val != "") return val;
+                } catch (Exception) { }
+            }
+
+            return "";
+        }
+
+        public List<string> ReadLog(int cntLastLines = 100)
+        {
+            try
+            {
+                if (!System.IO.File.Exists(this.P2pLog))
+                    return new List<string>();
+
+                if (System.IO.File.Exists(this.P2pLogTmp))
+                    File.Delete(this.P2pLogTmp);
+
+                File.Copy(this.P2pLog, this.P2pLogTmp);
+
+                var lines = System.IO.File.ReadAllLines(this.P2pLogTmp);
+                int from = lines.Length - cntLastLines;
+                if (from < 0) from = 0;
+
+                return lines
+                        .ToList()
+                        .GetRange(from, lines.Length < cntLastLines ? lines.Length : cntLastLines);
+            }
+            catch (Exception) {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Error read log");
+                Console.ResetColor();
+            }
+
+            return new List<string>();
+        }
+
+        public DateTime GetTimeLastFailConnectToOtherNodes() {
+            var lines = this.ReadLog();
+            lines.Reverse();
+            foreach (var line in lines)
+            {
+                //try {
+                    string val = new Regex(@"(\d*-\d*-\d*T\d*:\d*:\d*)(\s*)p2p:connect_to_task(\s*)connect_to(\s *)](\s*)fatal:(\s*)error(\s*)connecting")
+                        .Match(line)
+                        .Value;
+
+                    if (val != "")
+                        return DateTimeOffset.Parse(
+                            new Regex(@"(\d*-\d*-\d*T\d*:\d*:\d*)")
+                                .Match(line)
+                                .Value
+                        ).LocalDateTime;
+
+                //} catch (Exception) { }
+            }
+            
+            return new DateTime();
+        }
+
+        public string GetPercentReplayBlock() => GetOutpudVal(@"(\d*.\d*\%)(\s*)(\d*)(\s*)of(\s*)(\d*)", @"(\d*.\d*)");
     }
 }

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using LocalcoinHost.Actions;
 using LocalcoinHost.Components;
@@ -20,14 +22,14 @@ namespace LocalcoinHost {
         public void ConfigureServices(IServiceCollection services) => services.AddCors();
 
         public Startup() {
-            /*if (!this.CheckFiles()) {
+            if (!this.CheckFiles()) {
                 Console.ForegroundColor = ConsoleColor.Red;                
                 Console.Error.WriteLine("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 Console.Error.WriteLine("           Fix errors and try again".ToUpper());
                 Console.Error.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n");
                 Console.ResetColor();
                 return;
-            }*/
+            }
 
             this.OnStart();
             AppDomain.CurrentDomain.ProcessExit += OnExit;
@@ -94,20 +96,21 @@ namespace LocalcoinHost {
             app.UseCors(builder => builder.AllowAnyOrigin());
             app.Run(async (context) => {
                 switch (context.Request.Path) {
-                    case "/test":
-                        this.node.process.BeginOutputReadLine();
-                        this.node.process.BeginErrorReadLine();
-
-
-                        char[] buffer;
-                        this.node.process.StandardOutput.Read(buffer, 0, 10);
-                        context.Response.WriteAsync(buffer);
-                        Console.WriteLine(buffer);
-
-                        //context.Response.WriteAsync(node.output.ToString());
-                        //context.Response.WriteAsync(node.lineCount.ToString());
-                        this.node.process.CancelOutputRead();
-                        this.node.process.CancelErrorRead();
+                    case "/console":
+                        var console = string.Join(",", this.node.LastConsoleLines.ToArray());
+                        context.Response.WriteAsync(console);
+                        break;
+                    case "/log":
+                        var log = string.Join(",", this.node.ReadLog());
+                        context.Response.WriteAsync(log);
+                        break;
+                    case "/failconnection":
+                        //если последняя ошибка коннекшена была меньше минуты назад- сообщаем
+                        var diff = DateTime.Now.ToUniversalTime() - node.GetTimeLastFailConnectToOtherNodes();
+                        context.Response.WriteAsync((diff.TotalMinutes <= 1).ToString());
+                        break;
+                    case "/percentreplay":
+                        context.Response.WriteAsync(this.node.GetPercentReplayBlock());
                         break;
                     case ReloadToActivenodeAction.ACTION_NAME:
                         using (StreamReader stream = new StreamReader(context.Request.Body))

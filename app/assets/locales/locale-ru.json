@@ -309,13 +309,13 @@
             "lifetime_member": "Наличие премиум статуса",
             "localhost_connection": "Запущена локальная нода и синхронизирована",
             "create_the_activenode": "Создать активноду",
-            "your_node_up_and_running": "Ваша нода запущена!",
+            "your_node_up_and_running": "Ваша нода (%(name)s) запущена!",
             "sync_process_local_node": "Процесс синхронизации локальной ноды",
             "activenode_has_been_successfully": "Активнода создана, вы начнете получать награду после 24.",
             "you_have_to_keep_it_up": "Вы должны всегда держать ноду онлайн!",
             "if_you_do_not_keep_your_node": "Если ваша нода не будет работать в течении 24 часов, вы будете автоматичестки удалены из списка активнод.",
             "you_can_check": "Вы можете проверить награды ",
-            "vesting_section": "в вестинг балансе",
+            "vesting_section": "в вестинг балансе.",
             "nodes": "Нода",
             "login": "Вход",
             "authorize_ti_view_and_manage_nodes": "Для управления нодой необходимо авторизоваться",
@@ -329,7 +329,11 @@
             "open_in_witness_node_data_dir_file": "Замените в witness_node_data_dir файл config.ini",
             "update_add_in_file": "Изменить/добавить в файле",
             "enter_your_private_key": "введите ваш приватный ключ",
-            "restart_the_node": "Перезапустить ноду"
+            "restart_the_node": "Перезапустить ноду",
+            "node_block__replays": "Восстановление блоков ноды",
+            "state_replay": "Процесс восстановления",
+            "fail_connect_node": "Ошибка соединения ноды",
+            "fail_connect_node_descr": "Пожалуйста проверьте ваш фаервол, порты 11020 и 8090 должны быть открыты."
         },
         "votes": {
             "about": "Подробнее",
