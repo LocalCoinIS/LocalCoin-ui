@@ -9,8 +9,8 @@ branches:
   - dev
 before_install:
 - npm install --save-dev @alrra/travis-scripts
-- chmod +x build.sh
 - $(npm bin)/set-up-ssh --key "$encrypted_bafa79c953bb_key" --iv "$encrypted_bafa79c953bb_iv" --path-encrypted-key "keys/gitkeys.enc"
+- chmod +x build.sh
 install:
 - npm install
 script:
