@@ -537,7 +537,7 @@ class AccountActivenodes extends React.Component {
             "/failconnection",
             null,
             (request) => {
-                let isFailed = request.trim().toLocaleLowerCase() == "true";
+                let isFailed = (""+request).trim().toLocaleLowerCase() == "true";
                 if(this.state.failconnection !== isFailed)
                     this.setState({ failconnection: isFailed });
             }
@@ -551,7 +551,7 @@ class AccountActivenodes extends React.Component {
                         "/percentreplay",
                         null,
                         (request) => {
-                            let percent = parseInt(request.trim());
+                            let percent = parseInt((""+request).trim());
                             if(percent > 0) {
                                 if(this.state.percentreplay !== percent)
                                     this.setState({ percentreplay: percent });
