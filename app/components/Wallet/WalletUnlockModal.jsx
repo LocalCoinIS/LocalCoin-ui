@@ -156,7 +156,7 @@ class WalletUnlockModal extends React.Component {
         document.addEventListener("click", this.overlayClosePopup);
       }
 
-    componentDidUnmount() {
+      componentWillUnmount() {
         document.removeEventListener("click", this.overlayClosePopup);
      }
 

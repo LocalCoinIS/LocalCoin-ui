@@ -8,7 +8,7 @@ import SettingsActions from "actions/SettingsActions";
 import SettingsStore from "stores/SettingsStore";
 import AccountStore from "stores/AccountStore";
 import MarketsStore from "stores/MarketsStore";
-import {Tabs, Tab} from "../Utility/Tabs";
+import Tabs from "../Utility/Tabs";
 import AltContainer from "alt-container";
 
 class AccountsContainer extends React.Component {
