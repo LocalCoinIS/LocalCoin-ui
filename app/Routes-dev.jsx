@@ -204,6 +204,15 @@ const routes = (
             }}
         />
         <Route
+            path="activenode"
+            component={{
+                headerBlock: Header,
+                sidebarBlock: null,
+                contentBlock: AccountActivenodes,
+                footerBlock: Footer
+            }}
+        />
+        <Route
             path="OTC"
             component={{
                 headerBlock: Header,
@@ -358,7 +367,6 @@ const routes = (
             <Route path="vesting" component={AccountVesting} />
             <Route path="permissions" component={AccountPermissions} />
             <Route path="voting" component={AccountVoting} />
-            <Route path="activenodes" component={AccountActivenodes} />
             <Route path="whitelist" component={AccountWhitelist} />
             <Route path="signedmessages" component={AccountSignedMessages} />
             <Redirect from="overview" to="/account/:account_name" />

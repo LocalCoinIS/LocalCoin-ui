@@ -16,20 +16,20 @@ using Newtonsoft.Json;
 
 namespace LocalcoinHost {
     public class Startup : IDisposable {
-        Node   node   = new Node();
+        Node node = new Node();
         Wallet wallet = new Wallet() { UsedUrl = Program.UsedUrl };
 
         public void ConfigureServices(IServiceCollection services) => services.AddCors();
 
         public Startup() {
-            if (!this.CheckFiles()) {
-                Console.ForegroundColor = ConsoleColor.Red;                
-                Console.Error.WriteLine("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                Console.Error.WriteLine("           Fix errors and try again".ToUpper());
-                Console.Error.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n");
-                Console.ResetColor();
-                return;
-            }
+            //if (!this.CheckFiles()) {
+            //    Console.ForegroundColor = ConsoleColor.Red;                
+            //    Console.Error.WriteLine("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            //    Console.Error.WriteLine("           Fix errors and try again".ToUpper());
+            //    Console.Error.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n");
+            //    Console.ResetColor();
+            //    return;
+            //}
 
             this.OnStart();
             AppDomain.CurrentDomain.ProcessExit += OnExit;
@@ -77,7 +77,12 @@ namespace LocalcoinHost {
         private void OnStart() {
             try {
                 this.node.Start();
+                this.node.process.EnableRaisingEvents = true;
+                this.node.process.Exited += OnAnyProcessExited;
+
                 this.wallet.Start();
+                this.wallet.process.EnableRaisingEvents = true;
+                this.wallet.process.Exited += OnAnyProcessExited;
             } catch (Exception ex) {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(ex.Message);
@@ -85,11 +90,16 @@ namespace LocalcoinHost {
             }
         }
 
+        private void OnAnyProcessExited(object sender, EventArgs e) {
+            Environment.Exit(0);
+        }
+
         private void OnExit(object sender, EventArgs e) {
             try { this.node.TryKillByName();   } catch (Exception) { }
             try { this.wallet.TryKillByName(); } catch (Exception) { }
         }
 
+        static string _lastPercentReplayBlock = "";
         public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
             
@@ -104,13 +114,11 @@ namespace LocalcoinHost {
                         var log = string.Join(",", this.node.ReadLog());
                         context.Response.WriteAsync(log);
                         break;
-                    case "/failconnection":
-                        //если последняя ошибка коннекшена была меньше минуты назад- сообщаем
-                        var diff = DateTime.Now.ToUniversalTime() - node.GetTimeLastFailConnectToOtherNodes();
-                        context.Response.WriteAsync((diff.TotalMinutes <= 1).ToString());
-                        break;
                     case "/percentreplay":
-                        context.Response.WriteAsync(this.node.GetPercentReplayBlock());
+                        string lastPercentReplayBlock = this.node.GetPercentReplayBlock();
+                        if(_lastPercentReplayBlock == lastPercentReplayBlock)
+                             context.Response.WriteAsync("");
+                        else context.Response.WriteAsync(_lastPercentReplayBlock = lastPercentReplayBlock);
                         break;
                     case ReloadToActivenodeAction.ACTION_NAME:
                         using (StreamReader stream = new StreamReader(context.Request.Body))

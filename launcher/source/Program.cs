@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using LocalcoinHost.Components;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -16,7 +17,8 @@ namespace LocalcoinHost {
         public static void Main(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .UseHttpSys(options => {
+                .UseHttpSys(options =>
+                {
                     options.UrlPrefixes.Add(UsedUrl);
                 })
                 .Build()
@@ -27,6 +29,7 @@ namespace LocalcoinHost {
 
         private static int FreeTcpPort {
             get {
+                return 52209;
                 TcpListener l = new TcpListener(IPAddress.Loopback, 0);
                 l.Start();
                 int port = ((IPEndPoint)l.LocalEndpoint).Port;

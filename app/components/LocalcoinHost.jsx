@@ -1,7 +1,6 @@
 export default class LocalcoinHost {
 	_LOCALCOIN_HOST_URL = null;
 	LOCALCOIN_HOST_URL = () => {
-		//return "http://localhost:52209";
 		if(this._LOCALCOIN_HOST_URL !== null) return this._LOCALCOIN_HOST_URL;
 
 		try {
@@ -11,7 +10,7 @@ export default class LocalcoinHost {
 			if(typeof window.remote.process.argv[1] === "undefined") this._LOCALCOIN_HOST_URL = "";
 			else 								   					 this._LOCALCOIN_HOST_URL = window.remote.process.argv[1];
 		} catch(ex) {
-			this._LOCALCOIN_HOST_URL = "";
+			this._LOCALCOIN_HOST_URL = "http://localhost:52209";
 		}
 
 		return this._LOCALCOIN_HOST_URL;

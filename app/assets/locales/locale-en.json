@@ -336,7 +336,7 @@
             "enter_your_private_key": "Enter You Owner's Private key",
             "restart_the_node": "Restart the node",
             "node_block__replays": "Node block replays",
-            "state_replay": "State replay",
+            "state_replay": "Replay state",
             "fail_connect_node": "Fail connect node",
             "fail_connect_node_descr": "Please check your firewall, ports 11020 and 8090 should be opened."
         },

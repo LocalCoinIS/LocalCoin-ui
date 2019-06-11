@@ -69,7 +69,7 @@ class AccountActivenodes extends React.Component {
                         failconnection             : false,
                         percentreplay              : false,
                         cntPenalty                 : 0,
-                        imIsActivenode             : true };
+                        imIsActivenode             : true   };
 
         this.isActivenode((isActivenode) => this.setState({
             imIsActivenode: isActivenode,
@@ -139,64 +139,70 @@ class AccountActivenodes extends React.Component {
     yourNodeUpAndRunningView = () => {
         let accountName = AccountStore.getState().currentAccount;
         
-        return  <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
-                    <h2 style={{ textAlign: 'center' }}>
-                        {counterpart.translate("account.activenodes.your_node_up_and_running", {
-                            name: accountName
-                        })}
-                    </h2>
-                    <span style={{ textAlign: 'center' }}>
-                        {counterpart.translate("account.activenodes.currently_there_are")} { this.getCountActivenodes() } 
-                        {counterpart.translate("account.activenodes.activenodes_in_the_network")}</span><br />
-                    <span style={{ textAlign: 'center' }}>
-                        {counterpart.translate("account.activenodes.approximate_daily_profit_is")} { this.calculateDailyApproximate() } 
-                        {counterpart.translate("account.activenodes.llc")}.</span><br /><br />
-                    <span style={{ textAlign: 'center' }}>
-                        {counterpart.translate("account.activenodes.you_have_to_keep_it_up")}
-                    </span><br />
-                    <span style={{ textAlign: 'center' }}>
-                        {counterpart.translate("account.activenodes.if_you_do_not_keep_your_node")}
-                    </span><br />
-                    <span style={{ textAlign: 'center' }}>
-                        {counterpart.translate("account.activenodes.you_can_check")} 
-                        <Link to={`/account/${accountName}/vesting/`} activeClassName="active" >
-                            {counterpart.translate("account.activenodes.vesting_section")}
-                        </Link>
-                    </span>
+        return  <div className="market-list-wrap">
+                    <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
+                        <h2 style={{ textAlign: 'center' }}>
+                            {counterpart.translate("account.activenodes.your_node_up_and_running", {
+                                name: accountName
+                            })}
+                        </h2>
+                        <span style={{ textAlign: 'center' }}>
+                            {counterpart.translate("account.activenodes.currently_there_are")} { this.getCountActivenodes() } 
+                            {counterpart.translate("account.activenodes.activenodes_in_the_network")}</span><br />
+                        <span style={{ textAlign: 'center' }}>
+                            {counterpart.translate("account.activenodes.approximate_daily_profit_is")} { this.calculateDailyApproximate() } 
+                            {counterpart.translate("account.activenodes.llc")}.</span><br /><br />
+                        <span style={{ textAlign: 'center' }}>
+                            {counterpart.translate("account.activenodes.you_have_to_keep_it_up")}
+                        </span><br />
+                        <span style={{ textAlign: 'center' }}>
+                            {counterpart.translate("account.activenodes.if_you_do_not_keep_your_node")}
+                        </span><br />
+                        <span style={{ textAlign: 'center' }}>
+                            {counterpart.translate("account.activenodes.you_can_check")} 
+                            <Link to={`/account/${accountName}/vesting/`} activeClassName="active" >
+                                {counterpart.translate("account.activenodes.vesting_section")}
+                            </Link>
+                        </span>
+                    </div>
                 </div>;
         }
 
     unauthorizedView = () => {
-        return  <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
-                    <h2 style={{ textAlign: 'center' }}>
-                        {counterpart.translate("account.activenodes.nodes")}
-                    </h2>
-                    <span style={{ textAlign: 'center' }}>
-                        {counterpart.translate("account.activenodes.authorize_ti_view_and_manage_nodes")}
-                    </span><br />
-                    <br />
-                    <button className="button btn large inverted" onClick={this._unlockHandle}>
-                        {counterpart.translate("account.activenodes.login")}
-                    </button>
+        return  <div className="market-list-wrap">
+                    <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
+                        <h2 style={{ textAlign: 'center' }}>
+                            {counterpart.translate("account.activenodes.nodes")}
+                        </h2>
+                        <span style={{ textAlign: 'center' }}>
+                            {counterpart.translate("account.activenodes.authorize_ti_view_and_manage_nodes")}
+                        </span><br />
+                        <br />
+                        <button className="button btn large inverted" onClick={this._unlockHandle}>
+                            {counterpart.translate("account.activenodes.login")}
+                        </button>
+                    </div>
                 </div>;
     }
 
     addTheNodeView = () => {
         return (
-            <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
-                <h2 style={{ textAlign: 'center' }}>
-                    {counterpart.translate("account.activenodes.earn_coins_by_running_activenode")}</h2>
+            <div className="market-list-wrap">
+                <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
+                    <h2 style={{ textAlign: 'center' }}>
+                        {counterpart.translate("account.activenodes.earn_coins_by_running_activenode")}</h2>
 
-                <span>
-                    {counterpart.translate("account.activenodes.currently_there_are")} { this.getCountActivenodes() } 
-                    {counterpart.translate("account.activenodes.activenodes_in_the_network")}</span><br />
+                    <span>
+                        {counterpart.translate("account.activenodes.currently_there_are")} { this.getCountActivenodes() } 
+                        {counterpart.translate("account.activenodes.activenodes_in_the_network")}</span><br />
 
-                <span>
-                    {counterpart.translate("account.activenodes.approximate_daily_profit_is")} { this.calculateDailyApproximate() } 
-                    {counterpart.translate("account.activenodes.llc")}.</span><br /><br />
+                    <span>
+                        {counterpart.translate("account.activenodes.approximate_daily_profit_is")} { this.calculateDailyApproximate() } 
+                        {counterpart.translate("account.activenodes.llc")}.</span><br /><br />
 
-                <button className="button btn large inverted" onClick={this._handleAddNode}>
-                    {counterpart.translate("account.activenodes.add_the_activenode")}</button>
+                    <button className="button btn large inverted" onClick={this._handleAddNode}>
+                        {counterpart.translate("account.activenodes.add_the_activenode")}</button>
+                </div>
             </div>
         );
     }
@@ -341,15 +347,17 @@ class AccountActivenodes extends React.Component {
 
     rewriteConfigView = () => {
         return (
-            <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
-                <h2 style={{ textAlign: 'center' }}>
-                    {counterpart.translate("account.activenodes.activenode_reload")}</h2>
+            <div className="market-list-wrap">
+                <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
+                    <h2 style={{ textAlign: 'center' }}>
+                        {counterpart.translate("account.activenodes.activenode_reload")}</h2>
 
-                <span>
-                    {counterpart.translate("account.activenodes.need_rewrite_config_and_reload_node")}.</span><br /><br />
+                    <span>
+                        {counterpart.translate("account.activenodes.need_rewrite_config_and_reload_node")}.</span><br /><br />
 
-                <button className="button btn large inverted" onClick={this._reloadActivenodeHandle}>
-                    {counterpart.translate("account.activenodes.reload")}</button>
+                    <button className="button btn large inverted" onClick={this._reloadActivenodeHandle}>
+                        {counterpart.translate("account.activenodes.reload")}</button>
+                </div>
             </div>
         );
     }
@@ -365,45 +373,47 @@ class AccountActivenodes extends React.Component {
             if(percetnSync >= 100) percetnSync = null;
         }
 
-        return  <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
-                    <h2 style={{ textAlign: 'center' }}>
-                        {counterpart.translate("account.activenodes.activenode_requirements")}
-                    </h2>
-                    <br />
-                    <table>
-                        <tr>
-                            <td style={{ width: '30%', textAlign: 'right' }}><input type="checkbox" checked={this.getWalletBalance() >= MIN_BALANCE_FOR_ACTIVENODE} /></td>
-                            <td style={{ textAlign: 'left' }}><span style={{ textAlign: 'center' }}>{counterpart.translate("account.activenodes.min_balance")}</span></td>
-                        </tr>
-                        <tr>
-                            <td style={{ width: '30%', textAlign: 'right' }}><input type="checkbox" checked={this.isLifetimeMember()} /></td>
-                            <td style={{ textAlign: 'left' }}>
-                                <Link to={`/account/${accountName}/member-stats/`}>
-                                    {counterpart.translate("account.activenodes.lifetime_member")}
-                                </Link>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style={{ width: '30%', textAlign: 'right' }}><input type="checkbox" checked={this.isLocalNodeRunning()} /></td>
-                            <td style={{ textAlign: 'left' }}><span style={{ textAlign: 'center' }}>{counterpart.translate("account.activenodes.localhost_connection")}</span></td>
-                        </tr>
-                    </table>
-                    <br />
-                    { percetnSync === null || this.isLocalNodeRunning() ? null :
-                        <b style={{ textAlign: 'center' }}>{counterpart.translate("account.activenodes.sync_process_local_node")}: { percetnSync }%</b>
-                    }
-                    { percetnSync === null || this.isLocalNodeRunning() ? null : <br /> }
-                    <br />
-                    <br />
-                    <button style={{
-                        opacity : this.canCreateTheActivenode() ? 1 : 0.3
-                    }} className="button btn large inverted" onClick={this._createTheActivenodeHandle}>
-                        {counterpart.translate("account.activenodes.create_the_activenode")}
-                    </button>
+        return  <div className="market-list-wrap">
+                    <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
+                        <h2 style={{ textAlign: 'center' }}>
+                            {counterpart.translate("account.activenodes.activenode_requirements")}
+                        </h2>
+                        <br />
+                        <table>
+                            <tr>
+                                <td style={{ width: '30%', textAlign: 'right' }}><input type="checkbox" checked={this.getWalletBalance() >= MIN_BALANCE_FOR_ACTIVENODE} /></td>
+                                <td style={{ textAlign: 'left' }}><span style={{ textAlign: 'center' }}>{counterpart.translate("account.activenodes.min_balance")}</span></td>
+                            </tr>
+                            <tr>
+                                <td style={{ width: '30%', textAlign: 'right' }}><input type="checkbox" checked={this.isLifetimeMember()} /></td>
+                                <td style={{ textAlign: 'left' }}>
+                                    <Link to={`/account/${accountName}/member-stats/`}>
+                                        {counterpart.translate("account.activenodes.lifetime_member")}
+                                    </Link>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style={{ width: '30%', textAlign: 'right' }}><input type="checkbox" checked={this.isLocalNodeRunning()} /></td>
+                                <td style={{ textAlign: 'left' }}><span style={{ textAlign: 'center' }}>{counterpart.translate("account.activenodes.localhost_connection")}</span></td>
+                            </tr>
+                        </table>
+                        <br />
+                        { percetnSync === null || this.isLocalNodeRunning() ? null :
+                            <b style={{ textAlign: 'center' }}>{counterpart.translate("account.activenodes.sync_process_local_node")}: { percetnSync }%</b>
+                        }
+                        { percetnSync === null || this.isLocalNodeRunning() ? null : <br /> }
+                        <br />
+                        <br />
+                        <button style={{
+                            opacity : this.canCreateTheActivenode() ? 1 : 0.3
+                        }} className="button btn large inverted" onClick={this._createTheActivenodeHandle}>
+                            {counterpart.translate("account.activenodes.create_the_activenode")}
+                        </button>
+                    </div>
                 </div>;
     }
 
-    calculateDailyApproximate = () => 0.065 / this.getCountActivenodes() * 43200;
+    calculateDailyApproximate = () => parseInt(0.065 / this.getCountActivenodes() * 43200);
 
     getCountActivenodes = () => {
         try {
@@ -473,75 +483,86 @@ class AccountActivenodes extends React.Component {
     }
 
     updateConfigView = () => {
-        return  <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
-                    <h2 style={{ textAlign: 'center' }}>
-                        {counterpart.translate("account.activenodes.nodes")}
-                    </h2>
+        return  <div className="market-list-wrap">
+                    <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
+                        <h2 style={{ textAlign: 'center' }}>
+                            {counterpart.translate("account.activenodes.nodes")}
+                        </h2>
 
-                    <span style={{ textAlign: 'center' }}>
-                        1. {counterpart.translate("account.activenodes.open_in_witness_node_data_dir_file")}:
-                    </span><br />
+                        <span style={{ textAlign: 'center' }}>
+                            1. {counterpart.translate("account.activenodes.open_in_witness_node_data_dir_file")}:
+                        </span><br />
 
-                    <span style={{ textAlign: 'center' }}>
-                        2. {counterpart.translate("account.activenodes.restart_the_node")}:
-                    </span><br />
+                        <span style={{ textAlign: 'center' }}>
+                            2. {counterpart.translate("account.activenodes.restart_the_node")}:
+                        </span><br />
 
-                    <br />
-                    <button className="button btn large inverted"
-                            onClick={() => {
-                                this.checkActivenodeKeysHasBeenWriten();
-                            }}>OK</button>
+                        <br />
+                        <button className="button btn large inverted"
+                                onClick={() => {
+                                    this.checkActivenodeKeysHasBeenWriten();
+                                }}>OK</button>
+                    </div>
                 </div>;
     }
 
     yourNodeSkippedView = () => {
-        return (
-            <div style={{
-                    margin     : "0 auto",
-                    width      : 600,
-                    marginTop  : 100,
-                    background : '#efefef',
-                    padding    : 50,
-                    textAlign  : 'center' 
-                }}>
-                <h2 style={{ textAlign: 'center' }}>
-                    {counterpart.translate(
-                        "account.activenodes.your_node_skipped"
-                    )}.
-                </h2>
-                <span>
-                    {counterpart.translate("account.activenodes.you_can_start_getting_reward_after_penalty_period", {
-                        cnt_days: this.state.cntPenalty
-                    })}.
-                </span>
-                <br />
-            </div>
-        );
+        return (<div className="market-list-wrap">
+                    <div style={{
+                            margin     : "0 auto",
+                            width      : 600,
+                            marginTop  : 100,
+                            background : '#efefef',
+                            padding    : 50,
+                            textAlign  : 'center' 
+                        }}>
+                        <h2 style={{ textAlign: 'center' }}>
+                            {counterpart.translate(
+                                "account.activenodes.your_node_skipped"
+                            )}.
+                        </h2>
+                        <span>
+                            {counterpart.translate("account.activenodes.you_can_start_getting_reward_after_penalty_period", {
+                                cnt_days: this.state.cntPenalty
+                            })}.
+                        </span>
+                        <br />
+                    </div>
+                </div>);
     }
 
     checkActivenodeKeysHasBeenWriten = () => {
         if(!WalletUnlockStore.getState().locked) {
             this.checkKeyExistsInConfig(isExists => {
-                console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                
                 if(this.state.existsInConfActivenodeData !== isExists)
                     this.setState({ existsInConfActivenodeData: isExists });
             });
         }
     }
 
-    //failconnection
+    //this.state.failconnection
     checkFailConnection = () => {
-        (new LocalcoinHost())
-        .send(
-            "/failconnection",
-            null,
-            (request) => {
-                let isFailed = (""+request).trim().toLocaleLowerCase() == "true";
-                if(this.state.failconnection !== isFailed)
-                    this.setState({ failconnection: isFailed });
-            }
-        );
+        let accountName = ("" + AccountStore.getState().currentAccount).trim().toLocaleLowerCase();
+
+        fetch(
+            "https://api.llc.is/get_all_activenodes",
+            { method: "GET" }
+        ).then(r =>
+            r.json().then(items => {
+                let myAccountInfoList = items.filter(
+                    el => (""+el.activenode_account_name).trim().toLocaleLowerCase() === accountName
+                );                
+                let myAccountInfo = myAccountInfoList.length > 0 ? myAccountInfoList[0] : null;
+                
+                if(myAccountInfo && !myAccountInfo.is_new && myAccountInfo.penalty_left == 0 && myAccountInfo.activities_sent == 0) {
+                    if(!this.state.failconnection)
+                        this.setState({ failconnection: true });
+                } else {
+                    if(this.state.failconnection)
+                        this.setState({ failconnection: false });
+                }
+			})
+		);
     }
 
     //percentreplay
@@ -566,24 +587,28 @@ class AccountActivenodes extends React.Component {
 
     failConnectionView = () => {
         return (
-            <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
-                <h2 style={{ textAlign: 'center' }}>
-                    {counterpart.translate("account.activenodes.fail_connect_node")}
-                </h2>
-                <br />
-                <b style={{ textAlign: 'center' }}>{counterpart.translate("account.activenodes.fail_connect_node_descr")}</b>
+            <div className="market-list-wrap">
+                <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
+                    <h2 style={{ textAlign: 'center' }}>
+                        {counterpart.translate("account.activenodes.fail_connect_node")}
+                    </h2>
+                    <br />
+                    <b style={{ textAlign: 'center' }}>{counterpart.translate("account.activenodes.fail_connect_node_descr")}</b>
+                </div>
             </div>
         );
     }
 
     percentReplayView = () => {
         return (
-            <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
-                <h2 style={{ textAlign: 'center' }}>
-                    {counterpart.translate("account.activenodes.node_block__replays")}
-                </h2>
-                <br />
-                <b style={{ textAlign: 'center' }}>{counterpart.translate("account.activenodes.state_replay")}: { this.state.percentreplay }%</b>
+            <div className="market-list-wrap">
+                <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
+                    <h2 style={{ textAlign: 'center' }}>
+                        {counterpart.translate("account.activenodes.node_block__replays")}
+                    </h2>
+                    <br />
+                    <b style={{ textAlign: 'center' }}>{counterpart.translate("account.activenodes.state_replay")}: { this.state.percentreplay }%</b>
+                </div>
             </div>
         );
     }

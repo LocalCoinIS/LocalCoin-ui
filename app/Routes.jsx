@@ -314,6 +314,19 @@ const routes = (
             }}
         />
         <Route
+            path="activenode"
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components-brand-new/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components-brand-new/Account/AccountActivenodes"),
+                    import("components-brand-new/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
+            }}
+        />
+        <Route
             path="transfer"
             getComponents={(location, cb) => {
                 Promise.all([
@@ -608,14 +621,6 @@ const routes = (
                 path="voting"
                 getComponent={(location, cb) => {
                     import("components-brand-new/Account/AccountVoting")
-                        .then(loadRoute(cb))
-                        .catch(errorLoading);
-                }}
-            />
-            <Route
-                path="activenodes"
-                getComponent={(location, cb) => {
-                    import("components-brand-new/Account/AccountActivenodes")
                         .then(loadRoute(cb))
                         .catch(errorLoading);
                 }}

@@ -23,7 +23,9 @@ namespace LocalcoinHost.Components {
         }
 
         public static NodeWorkStatus status;
-        public override string WorkingDirectory { get { return Directory.GetCurrentDirectory() + "/node/"; } }
+        public override string WorkingDirectory { get {
+                return "C:\\Users\\biliba\\Desktop\\node\\";
+                return Directory.GetCurrentDirectory() + "/node/"; } }
         public override string FileName         { get { return Platform.Name == OSPlatform.Windows.ToString().ToLower() ? "witness_node.exe" : "witness_node"; } }
         public string ConfigIni                 { get { return this.WorkingDirectory + "witness_node_data_dir/config.ini"; } }
         public string P2pLog                    { get { return this.WorkingDirectory + "witness_node_data_dir/logs/p2p/p2p.log"; } }
@@ -50,6 +52,8 @@ namespace LocalcoinHost.Components {
                 RedirectStandardError = true,
                 Arguments = this.Arguments
             });
+
+            this.process.PriorityClass = ProcessPriorityClass.AboveNormal;
 
             this.process.BeginOutputReadLine();
             this.process.BeginErrorReadLine();
@@ -83,8 +87,7 @@ namespace LocalcoinHost.Components {
             for (int i = output.Count - 1; i > 0; i--) {
                 string line = output[i];
 
-                try
-                {
+                try {
                     string lastLineMatch = new Regex(lineExp)
                         .Matches(line)
                         .Last<Match>()
@@ -103,7 +106,12 @@ namespace LocalcoinHost.Components {
             return "";
         }
 
-        public List<string> ReadLog(int cntLastLines = 100)
+        /**
+         * !!!!!!!!!
+         * сделать буффер
+         * 
+         * */
+        public List<string> ReadLog(int cntLastLines = 300)
         {
             try
             {
@@ -130,29 +138,6 @@ namespace LocalcoinHost.Components {
             }
 
             return new List<string>();
-        }
-
-        public DateTime GetTimeLastFailConnectToOtherNodes() {
-            var lines = this.ReadLog();
-            lines.Reverse();
-            foreach (var line in lines)
-            {
-                //try {
-                    string val = new Regex(@"(\d*-\d*-\d*T\d*:\d*:\d*)(\s*)p2p:connect_to_task(\s*)connect_to(\s *)](\s*)fatal:(\s*)error(\s*)connecting")
-                        .Match(line)
-                        .Value;
-
-                    if (val != "")
-                        return DateTimeOffset.Parse(
-                            new Regex(@"(\d*-\d*-\d*T\d*:\d*:\d*)")
-                                .Match(line)
-                                .Value
-                        ).LocalDateTime;
-
-                //} catch (Exception) { }
-            }
-            
-            return new DateTime();
         }
 
         public string GetPercentReplayBlock() => GetOutpudVal(@"(\d*.\d*\%)(\s*)(\d*)(\s*)of(\s*)(\d*)", @"(\d*.\d*)");
