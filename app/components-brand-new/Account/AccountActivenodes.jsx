@@ -74,29 +74,29 @@ class AccountActivenodes extends React.Component {
         this.isActivenode((isActivenode) => this.setState({
             imIsActivenode: isActivenode,
             calculatePanel: false
-        }, this.checkActivenodeKeysHasBeenWriten));
+        }));
 
         this.cntPenalty(cnt => this.setState({ cntPenalty: cnt }));
 
-        if(typeof window.checkFailConnectionInterval === "undefined") window.checkFailConnectionInterval = null;
-        if(typeof window.checkPercentReplayInterval  === "undefined") window.checkPercentReplayInterval = null;
+        if(typeof window.activenodePageLifecycleInterval === "undefined") window.activenodePageLifecycleInterval = null;
+        if(window.activenodePageLifecycleInterval !== null) clearInterval(window.activenodePageLifecycleInterval);
 
-        if(window.checkFailConnectionInterval !== null)
-            clearInterval(window.checkFailConnectionInterval);
-
-        if(window.checkPercentReplayInterval  !== null)
-            clearInterval(window.checkPercentReplayInterval);
-
-        window.checkFailConnectionInterval = setInterval(this.checkFailConnection, 5000);
-        window.checkPercentReplayInterval  = setInterval(this.checkPercentReplay, 5000);
+        window.activenodePageLifecycleInterval = setInterval(() => {
+            this.checkPercentReplay();
+            this.checkFailConnection();
+            this.checkActivenodeKeysHasBeenWriten();
+            this.isActivenode((isActivenode) => {
+                if(this.state.imIsActivenode !== isActivenode)
+                    this.setState({ imIsActivenode: isActivenode });
+            });
+        }, 5000);
     }
 
-    _handleAddNode = () => this.setState({ calculatePanel: false }, this.checkActivenodeKeysHasBeenWriten);
+    _handleAddNode = () => this.setState({ calculatePanel: false });
 
     _unlockHandle = () => WalletUnlockActions.unlock()
                             .then(() => {
                                 AccountActions.tryToSetCurrentAccount();
-                                this.checkActivenodeKeysHasBeenWriten();
                             })
                             .catch(() => {});
 
@@ -259,6 +259,13 @@ class AccountActivenodes extends React.Component {
         
     }
 
+    checkActivenodeKeysHasBeenWriten = () => {
+        this.checkKeyExistsInConfig(isExists => {
+            if(this.state.existsInConfActivenodeData !== isExists)
+                this.setState({ existsInConfActivenodeData: isExists });
+        });
+    }
+
     checkKeyExistsInConfig = (cb) => {
         try {
             let accountName = AccountStore.getState().currentAccount;
@@ -339,10 +346,7 @@ class AccountActivenodes extends React.Component {
 
         let text = (new ConfigINI(accountName, publicKey, privateKey)).get();
         
-        this.processReloadHost(text, () =>
-            this.checkKeyExistsInConfig((iExists) => this.setState({
-                existsInConfActivenodeData: iExists
-            })) );
+        this.processReloadHost(text);
     }
 
     rewriteConfigView = () => {
@@ -463,10 +467,9 @@ class AccountActivenodes extends React.Component {
                 
                 this.checkHostIsRunnging((hostIsRunnging) => {
                     if(hostIsRunnging) {
-                        this.checkActivenodeKeysHasBeenWriten();
                         this.processReloadHost(text);
                     } else {
-                        this.setState({ toUpdateConfig: true }, this.checkActivenodeKeysHasBeenWriten);
+                        this.setState({ toUpdateConfig: true });
 
                         //download if host not found
                         let element = document.createElement('a');
@@ -496,12 +499,6 @@ class AccountActivenodes extends React.Component {
                         <span style={{ textAlign: 'center' }}>
                             2. {counterpart.translate("account.activenodes.restart_the_node")}:
                         </span><br />
-
-                        <br />
-                        <button className="button btn large inverted"
-                                onClick={() => {
-                                    this.checkActivenodeKeysHasBeenWriten();
-                                }}>OK</button>
                     </div>
                 </div>;
     }
@@ -531,16 +528,6 @@ class AccountActivenodes extends React.Component {
                 </div>);
     }
 
-    checkActivenodeKeysHasBeenWriten = () => {
-        if(!WalletUnlockStore.getState().locked) {
-            this.checkKeyExistsInConfig(isExists => {
-                if(this.state.existsInConfActivenodeData !== isExists)
-                    this.setState({ existsInConfActivenodeData: isExists });
-            });
-        }
-    }
-
-    //this.state.failconnection
     checkFailConnection = () => {
         let accountName = ("" + AccountStore.getState().currentAccount).trim().toLocaleLowerCase();
 
@@ -614,22 +601,24 @@ class AccountActivenodes extends React.Component {
     }
 
     render() {
+        const s             = this.state;
+        const lcNdIsRunning = this.isLocalNodeRunning();
+
         if(WalletUnlockStore.getState().locked)                                 return this.unauthorizedView();
 
-        if(this.state.failconnection)                                           return this.failConnectionView();
-        if(this.state.percentreplay)                                            return this.percentReplayView();
+        if(s.failconnection)                                                    return this.failConnectionView();
+        if(s.percentreplay)                                                     return this.percentReplayView();
 
-        if(this.state.imIsActivenode && !this.isLocalNodeRunning())             return this.activenodeRequirementsView();
-        if(this.state.imIsActivenode && !this.state.existsInConfActivenodeData) return this.rewriteConfigView();
-        if(parseInt(this.state.cntPenalty) > 0)                                 return this.yourNodeSkippedView();
+        if(s.imIsActivenode && !lcNdIsRunning)                                  return this.activenodeRequirementsView();
+        if(s.imIsActivenode && !s.existsInConfActivenodeData)                   return this.rewriteConfigView();
+        if(parseInt(s.cntPenalty) > 0)                                          return this.yourNodeSkippedView();
 
-        if(this.state.imIsActivenode && this.state.existsInConfActivenodeData && this.isLocalNodeRunning())
-            return this.yourNodeUpAndRunningView();
+        if(s.imIsActivenode && s.existsInConfActivenodeData && lcNdIsRunning)   return this.yourNodeUpAndRunningView();
 
-        if(this.state.toUpdateConfig)                                           return this.updateConfigView();
-        if(this.state.calculatePanel)                                           return this.addTheNodeView();
+        if(s.toUpdateConfig)                                                    return this.updateConfigView();
+        if(s.calculatePanel)                                                    return this.addTheNodeView();
 
-        return this.activenodeRequirementsView();
+        return                                                                  this.activenodeRequirementsView();
     }
 }
 
