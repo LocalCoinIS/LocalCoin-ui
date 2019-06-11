@@ -23,9 +23,7 @@ namespace LocalcoinHost.Components {
         }
 
         public static NodeWorkStatus status;
-        public override string WorkingDirectory { get {
-                return "C:\\Users\\biliba\\Desktop\\node\\";
-                return Directory.GetCurrentDirectory() + "/node/"; } }
+        public override string WorkingDirectory { get { return Directory.GetCurrentDirectory() + "/node/"; } }
         public override string FileName         { get { return Platform.Name == OSPlatform.Windows.ToString().ToLower() ? "witness_node.exe" : "witness_node"; } }
         public string ConfigIni                 { get { return this.WorkingDirectory + "witness_node_data_dir/config.ini"; } }
         public string P2pLog                    { get { return this.WorkingDirectory + "witness_node_data_dir/logs/p2p/p2p.log"; } }
@@ -106,11 +104,6 @@ namespace LocalcoinHost.Components {
             return "";
         }
 
-        /**
-         * !!!!!!!!!
-         * сделать буффер
-         * 
-         * */
         public List<string> ReadLog(int cntLastLines = 300)
         {
             try

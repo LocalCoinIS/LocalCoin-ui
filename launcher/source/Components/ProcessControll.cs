@@ -15,9 +15,7 @@ namespace LocalcoinHost.Components
         public virtual string FileName         { get { return null; } }
         public virtual string Title            { get { return null; } }
 
-        public string RunningAppFileName {
-            get => Directory.GetCurrentDirectory() + "/" + this.GetType().Name + ".running";
-        }
+        public string RunningAppFileName { get => Directory.GetCurrentDirectory() + "/" + this.GetType().Name + ".running"; }
         
         protected void WriteNameFile(string name) {
             this.ClearNameFile();
@@ -52,7 +50,9 @@ namespace LocalcoinHost.Components
                 UseShellExecute  = true,
                 Arguments        = this.Arguments
             });
-            
+
+            this.process.PriorityClass = ProcessPriorityClass.AboveNormal;
+
             try {
                 this.WriteNameFile(Title == null ? this.process.ProcessName : Title);
                 return this.process.Id;

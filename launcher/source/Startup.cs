@@ -22,14 +22,14 @@ namespace LocalcoinHost {
         public void ConfigureServices(IServiceCollection services) => services.AddCors();
 
         public Startup() {
-            //if (!this.CheckFiles()) {
-            //    Console.ForegroundColor = ConsoleColor.Red;                
-            //    Console.Error.WriteLine("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-            //    Console.Error.WriteLine("           Fix errors and try again".ToUpper());
-            //    Console.Error.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n");
-            //    Console.ResetColor();
-            //    return;
-            //}
+            if (!this.CheckFiles()) {
+                Console.ForegroundColor = ConsoleColor.Red;                
+                Console.Error.WriteLine("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                Console.Error.WriteLine("           Fix errors and try again".ToUpper());
+                Console.Error.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n");
+                Console.ResetColor();
+                return;
+            }
 
             this.OnStart();
             AppDomain.CurrentDomain.ProcessExit += OnExit;

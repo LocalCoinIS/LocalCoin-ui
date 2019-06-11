@@ -1,0 +1,11 @@
+C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\bin\Release\source.exe.config
+C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\bin\Release\source.exe
+C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\bin\Release\source.pdb
+C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\obj\Release\Interop.IWshRuntimeLibrary.dll
+C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\obj\Release\source.csproj.ResolveComReference.cache
+C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\obj\Release\source.Properties.Resources.resources
+C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\obj\Release\source.csproj.GenerateResource.cache
+C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\obj\Release\source.csproj.CoreCompileInputs.cache
+C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\obj\Release\source.exe
+C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\obj\Release\source.pdb
+C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\obj\Release\source.csprojAssemblyReference.cache

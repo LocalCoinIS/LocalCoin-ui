@@ -6,9 +6,7 @@ namespace LocalcoinHost.Components {
         public string UsedUrl;
         public override string Arguments        { get => UsedUrl;     }
         public override string Title            { get => "LocalCoin"; }
-        public override string WorkingDirectory { get {
-                return "C:\\Users\\biliba\\Desktop\\";
-                return Directory.GetCurrentDirectory() + "/"; } }
-        public override string FileName         { get { return Platform.Name == OSPlatform.Windows.ToString().ToLower() ? "wallet.exe" : "wallet"; } }
+        public override string WorkingDirectory { get => Directory.GetCurrentDirectory() + "/"; }
+        public override string FileName         { get => Platform.Name == OSPlatform.Windows.ToString().ToLower() ? "wallet.exe" : "wallet"; }
     }
 }

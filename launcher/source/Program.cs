@@ -29,7 +29,6 @@ namespace LocalcoinHost {
 
         private static int FreeTcpPort {
             get {
-                return 52209;
                 TcpListener l = new TcpListener(IPAddress.Loopback, 0);
                 l.Start();
                 int port = ((IPEndPoint)l.LocalEndpoint).Port;
