@@ -89,7 +89,8 @@
             "category": "public.app-category.finance"
         },
         "dmg": {
-            "contents": [{
+            "contents": [
+                {
                     "x": 130,
                     "y": 220
                 },
@@ -102,13 +103,15 @@
             ]
         },
         "win": {
-            "target": [{
-                "target": "nsis",
-                "arch": [
-                    "x64",
-                    "ia32"
-                ]
-            }]
+            "target": [
+                {
+                    "target": "nsis",
+                    "arch": [
+                        "x64",
+                        "ia32"
+                    ]
+                }
+            ]
         },
         "linux": {
             "category": "Finance",
@@ -128,8 +131,8 @@
         "alt-container": "^1.0.0",
         "alt-react": "git+https://github.com/bitshares/react.git",
         "bignumber.js": "^4.0.0",
-        "bitsharesjs": "git+https://github.com/LocalCoinIS/localcoinjs.git#9dfa0de",
-        "bitsharesjs-ws": "git+https://github.com/LocalCoinIS/localcoinjs-ws#f8eed1293f65cdf3e4953c335e8ba337b29a2384",
+        "bitsharesjs": "git+https://github.com/LocalCoinIS/localcoinjs.git",
+        "bitsharesjs-ws": "git+https://github.com/LocalCoinIS/localcoinjs-ws.git",
         "browser-locale": "^1.0.3",
         "classnames": "^2.2.1",
         "cookies-js": "^1.2.1",

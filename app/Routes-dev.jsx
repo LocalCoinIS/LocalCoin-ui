@@ -12,40 +12,40 @@ import willTransitionTo from "./routerTransition";
 import App from "./App";
 
 // Components imported here for react hot loader (does not work with async route loading)
-import DashboardPage from "./components-brand-new/Dashboard/DashboardPage";
+import DashboardPage from "./components/Dashboard/DashboardPage";
 import DashboardAccountsOnly from "./components/Dashboard/DashboardAccountsOnly";
-import Witnesses from "./components-brand-new/Explorer/Witnesses";
-import Activenodes from "./components-brand-new/Explorer/Activenodes";
-import CommitteeMembers from "./components-brand-new/Explorer/CommitteeMembers";
-import FeesContainer from "./components-brand-new/Explorer/FeesContainer";
-import BlocksContainer from "./components-brand-new/Explorer/BlocksContainer";
-import AssetsContainer from "./components-brand-new/Explorer/AssetsContainer";
-import AccountsContainer from "./components-brand-new/Explorer/AccountsContainer";
-import Explorer from "./components-brand-new/Explorer/Explorer";
-import AccountPage from "./components-brand-new/Account/AccountPage";
-import AccountOverview from "./components-brand-new/Account/AccountOverview";
-import AccountAssets from "./components-brand-new/Account/AccountAssets";
-import {AccountAssetCreate} from "./components-brand-new/Account/AccountAssetCreate";
+import Witnesses from "./components/Explorer/Witnesses";
+import Activenodes from "./components/Explorer/Activenodes";
+import CommitteeMembers from "./components/Explorer/CommitteeMembers";
+import FeesContainer from "./components/Explorer/FeesContainer";
+import BlocksContainer from "./components/Explorer/BlocksContainer";
+import AssetsContainer from "./components/Explorer/AssetsContainer";
+import AccountsContainer from "./components/Explorer/AccountsContainer";
+import Explorer from "./components/Explorer/Explorer";
+import AccountPage from "./components/Account/AccountPage";
+import AccountOverview from "./components/Account/AccountOverview";
+import AccountAssets from "./components/Account/AccountAssets";
+import {AccountAssetCreate} from "./components/Account/AccountAssetCreate";
 import AccountAssetUpdate from "./components/Account/AccountAssetUpdate";
-import AccountMembership from "./components-brand-new/Account/AccountMembership";
-import AccountVesting from "./components-brand-new/Account/AccountVesting";
-import AccountDepositWithdraw from "./components-brand-new/Account/AccountDepositWithdraw";
-import AccountPermissions from "./components-brand-new/Account/AccountPermissions";
-import AccountWhitelist from "./components-brand-new/Account/AccountWhitelist";
-import AccountVoting from "./components-brand-new/Account/AccountVoting";
-import AccountActivenodes from "./components-brand-new/Account/AccountActivenodes";
-import OTC from "./components-brand-new/OTC/OTC";
-import Page404 from "./components-brand-new/Page404/Page404";
+import AccountMembership from "./components/Account/AccountMembership";
+import AccountVesting from "./components/Account/AccountVesting";
+import AccountDepositWithdraw from "./components/Account/AccountDepositWithdraw";
+import AccountPermissions from "./components/Account/AccountPermissions";
+import AccountWhitelist from "./components/Account/AccountWhitelist";
+import AccountVoting from "./components/Account/AccountVoting";
+import AccountActivenodes from "./components/Account/AccountActivenodes";
+import OTC from "./components/OTC/OTC";
+import Page404 from "./components/Page404/Page404";
 // import AccountOrders from "./components/Account/AccountOrders";
-import AccountSignedMessages from "./components-brand-new/Account/AccountSignedMessages";
-import ExchangeContainer from "./components-brand-new/Exchange/ExchangeContainer";
-import MarketsContainer from "./components-brand-new/Explorer/MarketsContainer";
+import AccountSignedMessages from "./components/Account/AccountSignedMessages";
+import ExchangeContainer from "./components/Exchange/ExchangeContainer";
+import MarketsContainer from "./components/Explorer/MarketsContainer";
 import Transfer from "./components/Transfer/Transfer";
-import SettingsContainer from "./components-brand-new/Settings/SettingsContainer";
+import SettingsContainer from "./components/Settings/SettingsContainer";
 import BlockContainer from "./components/Blockchain/BlockContainer";
-import Asset from "./components-brand-new/Blockchain/Asset";
+import Asset from "./components/Blockchain/Asset";
 import CreateAccount from "./components/Account/CreateAccount";
-import CreateAccountPassword from "./components-brand-new/Account/CreateAccountPassword";
+import CreateAccountPassword from "./components/Account/CreateAccountPassword";
 import {
     ExistingAccount,
     ExistingAccountOptions
@@ -59,26 +59,26 @@ import Invoice from "./components/Transfer/Invoice";
 import {
     BackupCreate,
     BackupRestore
-} from "./components-brand-new/Wallet/Backup";
+} from "./components/Wallet/Backup";
 import WalletChangePassword from "./components/Wallet/WalletChangePassword";
 import {
     WalletManager,
     WalletOptions,
     ChangeActiveWallet,
     WalletDelete
-} from "./components-brand-new/Wallet/WalletManager";
+} from "./components/Wallet/WalletManager";
 import BalanceClaimActive from "./components/Wallet/BalanceClaimActive";
 import BackupBrainkey from "./components/Wallet/BackupBrainkey";
 import Brainkey from "./components/Wallet/Brainkey";
 import News from "./components/News";
-import HelpContent from "./components-brand-new/Help/Content";
-import HelpSidebar from "./components-brand-new/Help/Sidebar";
+import HelpContent from "./components/Help/Content";
+import HelpSidebar from "./components/Help/Sidebar";
 import InitError from "./components/InitError";
-import LoginSelector from "./components-brand-new/LoginSelector";
+import LoginSelector from "./components/LoginSelector";
 import CreateWorker from "./components/Account/CreateWorker";
-import Header from "./components-brand-new/Layout/Header";
-import Footer from "./components-brand-new/Layout/Footer";
-import Sidebar from "./components-brand-new/Layout/Sidebar";
+import Header from "./components/Layout/Header";
+import Footer from "./components/Layout/Footer";
+import Sidebar from "./components/Layout/Sidebar";
 
 const history = __HASH_HISTORY__ ? hashHistory : browserHistory;
 

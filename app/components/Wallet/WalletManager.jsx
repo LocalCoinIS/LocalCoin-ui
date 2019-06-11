@@ -7,6 +7,7 @@ import WalletManagerStore from "stores/WalletManagerStore";
 import Translate from "react-translate-component";
 import cname from "classnames";
 import counterpart from "counterpart";
+import DropdownList from "../Utility/DropdownList";
 
 const connectObject = {
     listenTo() {
@@ -83,9 +84,11 @@ class WalletOptions extends Component {
     render() {
         let has_wallet = !!this.props.current_wallet;
         let has_wallets = this.props.wallet_names.size > 1;
-        let current_wallet = this.props.current_wallet
-            ? this.props.current_wallet.toUpperCase()
-            : "";
+        let current_wallet = this.props.current_wallet ? (
+            this.props.current_wallet.toUpperCase()
+        ) : (
+            <br />
+        );
         return (
             <span>
                 <div className="grid-block">
@@ -96,11 +99,7 @@ class WalletOptions extends Component {
                                     <Translate content="wallet.active_wallet" />
                                     :
                                 </label>
-                                {current_wallet ? (
-                                    <div>{current_wallet}</div>
-                                ) : (
-                                    <div>&nbsp;</div>
-                                )}
+                                <div>{current_wallet}</div>
                                 <br />
                                 {has_wallets ? (
                                     <Link to="/wallet/change">
@@ -123,7 +122,7 @@ class WalletOptions extends Component {
                                 <br />
                                 {has_wallet ? (
                                     <Link to="/wallet/import-keys">
-                                        <div className="button outline success">
+                                        <div className="btn large outline button success">
                                             <Translate content="wallet.import_keys" />
                                         </div>
                                     </Link>
@@ -144,7 +143,7 @@ class WalletOptions extends Component {
                                     </div>
                                     <br />
                                     <Link to="wallet/balance-claims">
-                                        <div className="button outline success">
+                                        <div className="btn large outline button success">
                                             <Translate content="wallet.balance_claim_lookup" />
                                         </div>
                                     </Link>
@@ -162,7 +161,7 @@ class WalletOptions extends Component {
 
                 {has_wallet ? (
                     <Link to="wallet/backup/create">
-                        <div className="button outline success">
+                        <div className="btn large outline button success">
                             <Translate content="wallet.create_backup" />
                         </div>
                     </Link>
@@ -170,14 +169,14 @@ class WalletOptions extends Component {
 
                 {has_wallet ? (
                     <Link to="wallet/backup/brainkey">
-                        <div className="button outline success">
+                        <div className="btn large outline button success">
                             <Translate content="wallet.backup_brainkey" />
                         </div>
                     </Link>
                 ) : null}
 
                 <Link to="wallet/backup/restore">
-                    <div className="button outline success">
+                    <div className="btn large outline button success">
                         <Translate content="wallet.restore_backup" />
                     </div>
                 </Link>
@@ -187,14 +186,14 @@ class WalletOptions extends Component {
                 {has_wallet ? <br /> : null}
 
                 <Link to="wallet/create">
-                    <div className="button outline success">
+                    <div className="btn large outline button success">
                         <Translate content="wallet.new_wallet" />
                     </div>
                 </Link>
 
                 {has_wallet ? (
                     <Link to="wallet/delete">
-                        <div className="button outline success">
+                        <div className="btn large outline button success">
                             <Translate content="wallet.delete_wallet" />
                         </div>
                     </Link>
@@ -202,7 +201,7 @@ class WalletOptions extends Component {
 
                 {has_wallet ? (
                     <Link to="wallet/change-password">
-                        <div className="button outline success">
+                        <div className="btn large outline button success">
                             <Translate content="wallet.change_password" />
                         </div>
                     </Link>
@@ -281,14 +280,14 @@ class ChangeActiveWallet extends Component {
                 </section>
 
                 <Link to="wallet/create">
-                    <div className="button outline">
+                    <div className="btn large outline button">
                         <Translate content="wallet.new_wallet" />
                     </div>
                 </Link>
 
                 {is_dirty ? (
                     <div
-                        className="button outline"
+                        className="btn large outline button"
                         onClick={this.onConfirm.bind(this)}
                     >
                         <Translate
@@ -350,7 +349,7 @@ class WalletDelete extends Component {
                     />
                     <br />
                     <div
-                        className="button outline"
+                        className="btn large button outline"
                         onClick={this.onConfirm2.bind(this)}
                     >
                         <Translate
@@ -359,7 +358,7 @@ class WalletDelete extends Component {
                         />
                     </div>
                     <div
-                        className="button outline"
+                        className="btn large button outline"
                         onClick={this._onCancel.bind(this)}
                     >
                         <Translate content="wallet.cancel" />
@@ -369,13 +368,11 @@ class WalletDelete extends Component {
         }
 
         // this.props.current_wallet
-        let placeholder = (
-            <option
-                key="placeholder"
-                value=""
-                disabled={this.props.wallet_names.size > 1}
-            />
-        );
+        let placeholder = {
+            key: this.state.selected_wallet || "placeholder",
+            label: this.state.selected_wallet || ""
+            // disabled={this.props.wallet_names.size > 1}
+        };
         // if (this.props.wallet_names.size > 1) {
         //     placeholder = <option value="" disabled>{placeholder}</option>;
         // }
@@ -384,19 +381,12 @@ class WalletDelete extends Component {
         //     //placeholder and selecting the 1st item automatically (not shown)
         //     placeholder = <option value="">{placeholder}</option>;
         // }
-        let options = [placeholder];
-        options.push(
-            <option key="select_option" value="">
-                {counterpart.translate("settings.delete_select")}
-                &hellip;
-            </option>
-        );
+        let options = [];
         this.props.wallet_names.forEach(wallet_name => {
-            options.push(
-                <option key={wallet_name} value={wallet_name}>
-                    {wallet_name.toLowerCase()}
-                </option>
-            );
+            options.push({
+                key: wallet_name,
+                label: wallet_name.toLowerCase()
+            });
         });
 
         let is_dirty = !!this.state.selected_wallet;
@@ -407,21 +397,17 @@ class WalletDelete extends Component {
                     <header>
                         <Translate content="wallet.delete_wallet" />
                     </header>
-                    <ul>
-                        <li className="with-dropdown" style={{borderBottom: 0}}>
-                            <select
-                                className="settings-select"
-                                value={this.state.selected_wallet || ""}
-                                style={{margin: "0 auto"}}
-                                onChange={this.onChange.bind(this)}
-                            >
-                                {options}
-                            </select>
-                        </li>
-                    </ul>
+                    <DropdownList
+                        options={options}
+                        selected={placeholder}
+                        onChange={this.onChange.bind(this)}
+                    />
                 </section>
                 <div
-                    className={cname("button outline", {disabled: !is_dirty})}
+                    style={{marginTop: "12px"}}
+                    className={cname("btn large button outline", {
+                        disabled: !is_dirty
+                    })}
                     onClick={this.onConfirm.bind(this)}
                 >
                     <Translate
@@ -448,7 +434,7 @@ class WalletDelete extends Component {
     }
 
     onChange(event) {
-        let selected_wallet = event.target.value;
+        let selected_wallet = event;
         this.setState({selected_wallet});
     }
 }

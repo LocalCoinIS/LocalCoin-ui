@@ -18,6 +18,7 @@ import Translate from "react-translate-component";
 import {PrivateKey} from "bitsharesjs/es";
 import SettingsActions from "actions/SettingsActions";
 import {backupName} from "common/backupUtils";
+import counterpart from "counterpart";
 
 const connectObject = {
     listenTo() {
@@ -42,11 +43,10 @@ class BackupCreate extends Component {
                             ? this.props.location.query.newAccount
                             : null
                     }
-                    isCreateAcc={this.props.isCreateAcc}
                 >
                     <NameSizeModified />
                     {this.props.noText ? null : <Sha1 />}
-                    <Download downloadCb={this.props.downloadCb} isCreateAcc={this.props.isCreateAcc} />
+                    <Download downloadCb={this.props.downloadCb} />
                 </Create>
             </div>
         );
@@ -108,10 +108,9 @@ class BackupRestore extends Component {
                         </NewWalletName>
                     </DecryptBackup>
                 </Upload>
-                <br />
                 <Link to="/">
-                    <button className="blue">
-                        <Translate content="wallet.back" />
+                    <button className="btn large inverted">
+                        {counterpart.translate("wallet.back")}
                     </button>
                 </Link>
             </div>
@@ -166,15 +165,14 @@ class Restore extends Component {
                 <h3>
                     <Translate content="wallet.ready_to_restore" />
                 </h3>
-                <div
-                    className="button outline"
+                <button
+                    className="btn large outline"
                     onClick={this.onRestore.bind(this)}
                 >
-                    <Translate
-                        content="wallet.restore_wallet_of"
-                        name={new_wallet}
-                    />
-                </div>
+                    {counterpart.translate("wallet.restore_wallet_of", {
+                        name: new_wallet
+                    })}
+                </button>
             </span>
         );
     }
@@ -252,13 +250,13 @@ class NewWalletName extends Component {
                         <Translate content="wallet.wallet_exist" />
                     ) : null}
                 </p>
-                <div
+                <button
+                    className="btn large outline"
+                    disabled={!name_ready}
                     onClick={this.onAccept.bind(this)}
-                    type="submit"
-                    className={cname("button outline", {disabled: !name_ready})}
                 >
-                    <Translate content="wallet.accept" />
-                </div>
+                    {counterpart.translate("wallet.accept")}
+                </button>
             </form>
         );
     }
@@ -298,18 +296,16 @@ class Download extends Component {
     componentDidMount() {
         if (!this.isFileSaverSupported)
             notify.error("File saving is not supported");
-        if(this.props.isCreateAcc) {
-            this.onDownload();
-        }
     }
 
     render() {
         return (
-            <div className="button" onClick={this.onDownload.bind(this)}>
+            <div className="button btn large outline" onClick={this.onDownload.bind(this)}>
                 <Translate content="wallet.download" />
             </div>
         );
     }
+
     onDownload() {
         let blob = new Blob([this.props.backup.contents], {
             type: "application/octet-stream; charset=us-ascii"
@@ -318,10 +314,7 @@ class Download extends Component {
         if (blob.size !== this.props.backup.size)
             throw new Error("Invalid backup to download conversion");
         saveAs(blob, this.props.backup.name);
-        if(!this.props.isCreateAcc) {
-            WalletActions.setBackupDate();
-        }
-
+        WalletActions.setBackupDate();
 
         if (this.props.downloadCb) {
             this.props.downloadCb();
@@ -338,19 +331,11 @@ class Create extends Component {
         return backupName(this.props.wallet.current_wallet);
     }
 
-    componentDidMount() {
-        if(this.props.isCreateAcc) {
-            this.onCreateBackup();
-            WalletActions.setBackupDate();
-        }
-    }
-
     render() {
         let has_backup = !!this.props.backup.contents;
         if (has_backup) return <div>{this.props.children}</div>;
 
         let ready = WalletDb.getWallet() != null;
-
 
         return (
             <div>
@@ -370,7 +355,9 @@ class Create extends Component {
                 )}
                 <div
                     onClick={this.onCreateBackup.bind(this)}
-                    className={cname("button btn large outline", {disabled: !ready})}
+                    className={cname("button btn large inverted", {
+                        disabled: !ready
+                    })}
                     style={{marginBottom: 10}}
                 >
                     <Translate
@@ -448,14 +435,13 @@ class Upload extends Component {
     render() {
         let resetButton = (
             <div style={{paddingTop: 20}}>
-                <div
+                <button
+                    className="btn large outline"
+                    disabled={!this.props.backup.contents}
                     onClick={this.reset.bind(this)}
-                    className={cname("button outline", {
-                        disabled: !this.props.backup.contents
-                    })}
                 >
-                    <Translate content="wallet.reset" />
-                </div>
+                    {counterpart.translate("wallet.reset")}
+                </button>
             </div>
         );
 

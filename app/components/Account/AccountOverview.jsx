@@ -1,12 +1,12 @@
 import React from "react";
 import Immutable from "immutable";
 import Translate from "react-translate-component";
-import BalanceComponent from "../Utility/BalanceComponent";
-import TotalBalanceValue from "../Utility/TotalBalanceValue";
-import SettleModal from "../Modal/SettleModal";
-import {BalanceValueComponent} from "../Utility/EquivalentValueComponent";
-import {Market24HourChangeComponent} from "../Utility/MarketChangeComponent";
-import AssetName from "../Utility/AssetName";
+import BalanceComponent from "../../components/Utility/BalanceComponent";
+import TotalBalanceValue from "../../components/Utility/TotalBalanceValue";
+import SettleModal from "../../components/Modal/SettleModal";
+import {BalanceValueComponent} from "../../components/Utility/EquivalentValueComponent";
+import {Market24HourChangeComponent} from "../../components/Utility/MarketChangeComponent";
+import AssetName from "../../components/Utility/AssetName";
 import MarginPositions from "./MarginPositions";
 import {RecentTransactions} from "./RecentTransactions";
 import Proposals from "components/Account/Proposals";
@@ -14,30 +14,41 @@ import {ChainStore} from "bitsharesjs/es";
 import SettingsActions from "actions/SettingsActions";
 import assetUtils from "common/asset_utils";
 import counterpart from "counterpart";
-import Icon from "../Icon/Icon";
+import Icon from "../../components/Icon/Icon";
 import {Link} from "react-router/es";
-import EquivalentPrice from "../Utility/EquivalentPrice";
-import LinkToAssetById from "../Utility/LinkToAssetById";
+import EquivalentPrice from "../../components/Utility/EquivalentPrice";
+import LinkToAssetById from "../../components/Utility/LinkToAssetById";
 import utils from "common/utils";
-import BorrowModal from "../Modal/BorrowModal";
-// import DepositModal from "../Modal/DepositModal";
+import BorrowModal from "../../components/Modal/BorrowModal";
+// import DepositModal from "../../components/Modal/DepositModal";
 import ReactTooltip from "react-tooltip";
-import SimpleDepositWithdraw from "../Dashboard/SimpleDepositWithdraw";
-// import SimpleDepositBlocktradesBridge from "../Dashboard/SimpleDepositBlocktradesBridge";
-import {Tabs, Tab} from "../Utility/Tabs";
+import SimpleDepositWithdraw from "../../components/Dashboard/SimpleDepositWithdraw";
+// import SimpleDepositBlocktradesBridge from "../../components/Dashboard/SimpleDepositBlocktradesBridge";
+import Tabs from "../Utility/Tabs";
 import AccountOrders from "./AccountOrders";
 import cnames from "classnames";
-import TranslateWithLinks from "../Utility/TranslateWithLinks";
+import TranslateWithLinks from "../../components/Utility/TranslateWithLinks";
 import {checkMarginStatus} from "common/accountHelper";
-import BalanceWrapper from "./BalanceWrapper";
-import SendModal from "../Modal/SendModal";
-import PulseIcon from "../Icon/PulseIcon";
-// import WithdrawModal from "../Modal/WithdrawModalNew";
-import AccountTreemap from "./AccountTreemap";
+import BalanceWrapper from "../../components/Account/BalanceWrapper";
+import SendModal from "../../components/Modal/SendModal";
+import PulseIcon from "../../components/Icon/PulseIcon";
+// import WithdrawModal from "../../components/Modal/WithdrawModalNew";
+import AccountTreemap from "../../components/Account/AccountTreemap";
 import {getBackedCoin} from "common/gatewayUtils";
-import AssetWrapper from "../Utility/AssetWrapper";
+import AssetWrapper from "../../components/Utility/AssetWrapper";
+
+import ReserveAssetModal from "../../components/Modal/ReserveAssetModal";
+import BaseModal from "../../components/Modal/BaseModal";
+import ZfApi from "react-foundation-apps/src/utils/foundation-api";
+import LLCBridgeModal from "../../components/DepositWithdraw/llcgateway/LLCBridgeModal";
+import LLCGatewayData from "../../components/DepositWithdraw/llcgateway/LLCGatewayData";
+import {getDashboardAssets} from "branding";
 
 class AccountOverview extends React.Component {
+
+    static MODE_BUY_LLC = "1";
+    static MODE_BUY_OTHER_COIN = "0";
+
     constructor(props) {
         super();
         this.state = {
@@ -53,16 +64,33 @@ class AccountOverview extends React.Component {
             bridgeAsset: null,
             alwaysShowAssets: [
                 "LLC",
-                "USD",
-                "CNY"
+                "BTC", "ETH", "XMR", "DASH", "LTC", "USDT",
+                "EUR", "USD", "GBP", "CNY", "RUB", "UAH"
+                //,
+                //"USD",
+                //"CNY"
                 // "OPEN.BTC",
                 // "OPEN.USDT",
                 // "OPEN.ETH",
                 // "OPEN.MAID",
                 // "OPEN.STEEM",
                 // "OPEN.DASH"
-            ]
-        };
+            ],
+            hide0balances: false,
+            isBridgeModalVisible: false,
+            currentAsset: null,
+            type: "deposit",
+            currency: {
+                asset: null,
+                currency: null
+            },
+            currencies: null,
+            depositAddress: null,
+            buyLLCAddress: null,
+            activeTab: "deposit_tab",
+            isAssetsLoad: true,
+            isDashboard: true
+            };
 
         this.qtyRefs = {};
         this.priceRefs = {};
@@ -71,8 +99,96 @@ class AccountOverview extends React.Component {
         for (let key in this.sortFunctions) {
             this.sortFunctions[key] = this.sortFunctions[key].bind(this);
         }
-
         this._handleFilterInput = this._handleFilterInput.bind(this);
+        this.onShowModal = this.onShowModal.bind(this);
+    }
+
+    onShowModal(asset, tab) {
+        let self = this;
+        this.setState(
+            {
+                isBridgeModalVisible: false,
+                isDashboard: true
+            },
+            function() {
+                self.setState({
+                    isBridgeModalVisible: true,
+                    currentAsset: asset ? asset : null,
+                    activeTab: tab,
+                    isDashboard: asset === "LLC" ? false : true
+                });
+            }
+        );
+        this.getAllowCurrencies(asset);
+        let account = this.props.account
+        let accountName = typeof account === "object" ? account.get("name") :
+            typeof account === "string" ? account : "";
+
+        new LLCGatewayData().сreatePaymentAddress(
+            accountName,
+            asset,
+            AccountOverview.MODE_BUY_LLC,
+            function(address) {
+                self.setState({buyLLCAddress: address});
+            }
+        );
+        
+        new LLCGatewayData().сreatePaymentAddress(
+            accountName,
+            asset,
+            AccountOverview.MODE_BUY_OTHER_COIN,
+            function(address) {
+                self.setState({depositAddress: address});
+            }
+        );
+    }
+
+    getAllowCurrencies(asset) {
+        let provider = new LLCGatewayData();
+        let self = this;
+        provider.getAllowCurrency(data => {
+            data[this.state.type].forEach(a => {
+                if(a.asset == asset) {
+                    self.setState(
+                        {
+                            currency: a
+                        }
+                    );
+                }
+            })
+
+        });
+    }
+
+    onCloseModal = () => {
+        this.setState(
+            {
+                currentAsset: null,
+                currency: {
+                    asset: null,
+                    currency: null
+                },
+                depositAddress: null
+            }
+        );
+    }
+
+    updateModal = () => {
+        this.setState({isBridgeModalVisible: false});
+    };
+    _reserveButtonClick(assetId, e) {
+        e.preventDefault();
+        this.setState({reserve: assetId});
+        ZfApi.publish("reserve_asset", "open");
+    }
+
+    _reserveAsset(account_id, e) {
+        e.preventDefault();
+        ZfApi.publish("reserve_asset", "close");
+        let {issue} = this.state;
+        let asset = this.props.assets.get(issue.asset_id);
+        issue.amount *= utils.get_asset_precision(asset.precision);
+        AssetActions.issueAsset(account_id, issue);
     }
 
     _handleFilterInput(e) {
@@ -150,6 +266,9 @@ class AccountOverview extends React.Component {
 
     componentWillMount() {
         this._checkMarginStatus();
+        if(this.props.location.hash === "#activity") {
+           this.props.router.push("/account/" + this.props.account_name);
+        }
     }
 
     _checkMarginStatus(props = this.props) {
@@ -188,13 +307,28 @@ class AccountOverview extends React.Component {
         );
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if(!this.state.isAssetsLoad) {
+            let self = this;
+            setTimeout(function () {
+                self.forceUpdate();
+            }, 1000)
+        }
+    }
+
     _onSettleAsset(id, e) {
         e.preventDefault();
         this.setState({
             settleAsset: id
         });
-
         this.refs.settlement_modal.show();
+        console.log("====================================");
+        console.log(this.refs.settlement_modal);
+        console.log("====================================");
+        // let settleRef = "settlement_modal";
+        // this.refs[settleRef].show();
+
+        // ZfApi.publish("settle_asset", "open");
     }
 
     _hideAsset(asset, status) {
@@ -240,22 +374,15 @@ class AccountOverview extends React.Component {
         });
     }
 
-    _renderBuy = (symbol, canBuy, assetName, emptyCell, balance) => {
-        if (symbol === "LLC" && balance <= 100000) {
+    _renderBuy = (symbol, canBuy, emptyCell) => {
+        if (canBuy) {
             // Precision of 5, 1 = 10^5
             return (
                 <span>
-                    <a
-                        onClick={this._showDepositWithdraw.bind(
-                            this,
-                            "bridge_modal",
-                            assetName,
-                            false
-                        )}
-                    >
+                    <a onClick={this.onShowModal.bind(this, symbol, "buy_tab")}>
                         <PulseIcon
                             onIcon="dollar"
-                            offIcon="dollar-green"
+                            offIcon="dollar"
                             title="icons.dollar.buy"
                             duration={1000}
                             className="icon-14px"
@@ -264,26 +391,7 @@ class AccountOverview extends React.Component {
                 </span>
             );
         } else {
-            return canBuy && this.props.isMyAccount ? (
-                <span>
-                    <a
-                        onClick={this._showDepositWithdraw.bind(
-                            this,
-                            "bridge_modal",
-                            assetName,
-                            false
-                        )}
-                    >
-                        <Icon
-                            name="dollar"
-                            title="icons.dollar.buy"
-                            className="icon-14px"
-                        />
-                    </a>
-                </span>
-            ) : (
-                emptyCell
-            );
+            return emptyCell;
         }
     };
 
@@ -330,10 +438,12 @@ class AccountOverview extends React.Component {
 
         let balances = [];
         const emptyCell = "-";
+        const deafaultAssetsArr = getDashboardAssets();
         balanceList.forEach(balance => {
             let balanceObject = ChainStore.getObject(balance);
             if (!balanceObject) return;
             let asset_type = balanceObject.get("asset_type");
+
             let asset = ChainStore.getObject(asset_type);
             if (!asset) return;
 
@@ -356,7 +466,7 @@ class AccountOverview extends React.Component {
 
             /* Table content */
             directMarketLink = notCore ? (
-                <Link to={`/market/${asset.get("symbol")}_${preferredMarket}`}>
+                <Link to={`/market/${preferredMarket}_${asset.get("symbol")}`}>
                     <Icon
                         name="trade"
                         title="icons.trade.trade"
@@ -364,7 +474,7 @@ class AccountOverview extends React.Component {
                     />
                 </Link>
             ) : notCorePrefUnit ? (
-                <Link to={`/market/${asset.get("symbol")}_${preferredUnit}`}>
+                <Link to={`/market/${preferredUnit}_${asset.get("symbol")}`}>
                     <Icon
                         name="trade"
                         title="icons.trade.trade"
@@ -408,15 +518,17 @@ class AccountOverview extends React.Component {
                 asset.get("symbol"),
                 this.props.backedCoins
             );
-            const canDeposit =
-                (backedCoin && backedCoin.depositAllowed) ||
-                asset.get("symbol") == "LLC";
+
+            const canTrade = deafaultAssetsArr.includes(asset.get("symbol"));
+
+            const canDeposit = (backedCoin && backedCoin.depositAllowed) || canTrade;
 
             const canWithdraw =
-                backedCoin &&
+                (backedCoin &&
                 backedCoin.withdrawalAllowed &&
-                (hasBalance && balanceObject.get("balance") != 0);
-            const canBuy = !!this.props.bridgeCoins.get(symbol);
+                (hasBalance && balanceObject.get("balance") != 0)) || canTrade;
+
+            const canBuy = !!this.props.bridgeCoins.get(symbol) || asset.get("symbol") === "LLC" ;
 
             const assetAmount = balanceObject.get("balance");
 
@@ -424,11 +536,10 @@ class AccountOverview extends React.Component {
                 assetAmount,
                 asset
             );
-
             balances.push(
                 <tr key={asset.get("symbol")} style={{maxWidth: "100rem"}}>
                     <td style={{textAlign: "left"}}>
-                        <LinkToAssetById asset={asset.get("id")} />
+                        <LinkToAssetById showIcon asset={asset.get("id")} />
                     </td>
                     <td style={{textAlign: "right"}}>
                         {hasBalance || hasOnOrder ? (
@@ -498,23 +609,18 @@ class AccountOverview extends React.Component {
                         {this._renderBuy(
                             asset.get("symbol"),
                             canBuy,
-                            assetName,
-                            emptyCell,
-                            balanceObject.get("balance")
+                            emptyCell
                         )}
                     </td>
                     <td>
-                        {canDeposit && this.props.isMyAccount ? (
+                        {canDeposit ? (
                             <span>
                                 <Icon
                                     style={{cursor: "pointer"}}
                                     name="deposit"
                                     title="icons.deposit.deposit"
                                     className="icon-14x"
-                                    onClick={this._showDepositModal.bind(
-                                        this,
-                                        assetName
-                                    )}
+                                    onClick={this.onShowModal.bind(this,  asset.get("symbol"), "deposit_tab")}
                                 />
                             </span>
                         ) : (
@@ -522,27 +628,15 @@ class AccountOverview extends React.Component {
                         )}
                     </td>
                     <td>
-                        {canWithdraw && this.props.isMyAccount ? (
+                        {canWithdraw ? (
                             <span>
-                                <a
-                                    className={!canWithdraw ? "disabled" : ""}
-                                    onClick={
-                                        canWithdraw
-                                            ? this._showDepositWithdraw.bind(
-                                                  this,
-                                                  "withdraw_modal_new",
-                                                  assetName,
-                                                  false
-                                              )
-                                            : () => {}
-                                    }
-                                >
-                                    <Icon
-                                        name="withdraw"
-                                        title="icons.withdraw"
-                                        className="icon-14px"
-                                    />
-                                </a>
+                                <Icon
+                                style={{cursor: "pointer"}}
+                                name="withdraw"
+                                title="icons.withdraw"
+                                className="icon-14px"
+                                onClick={this.onShowModal.bind(this,  asset.get("symbol"), "withdraw_tab")}
+                                />
                             </span>
                         ) : (
                             emptyCell
@@ -586,9 +680,10 @@ class AccountOverview extends React.Component {
                         style={{textAlign: "center"}}
                         className="column-hide-small"
                         data-place="bottom"
-                        data-tip={counterpart.translate(
-                            "tooltip." +
-                                (includeAsset ? "hide_asset" : "show_asset")
+                        data-tip={counterpart.translate("tooltip.burn")}
+                        onClick={this._reserveButtonClick.bind(
+                            this,
+                            asset.get("id")
                         )}
                     >
                         <a
@@ -596,11 +691,39 @@ class AccountOverview extends React.Component {
                             className={
                                 includeAsset ? "order-cancel" : "action-plus"
                             }
-                            onClick={this._hideAsset.bind(
-                                this,
-                                asset_type,
-                                includeAsset
-                            )}
+                        >
+                            <span className="icon fire icon-14px">
+                                <svg
+                                    version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="32"
+                                    height="32"
+                                    viewBox="0 0 32 32"
+                                >
+                                    <path d="M10.031 32c-2.133-4.438-0.997-6.981 0.642-9.376 1.795-2.624 2.258-5.221 2.258-5.221s1.411 1.834 0.847 4.703c2.493-2.775 2.963-7.196 2.587-8.889 5.635 3.938 8.043 12.464 4.798 18.783 17.262-9.767 4.294-24.38 2.036-26.027 0.753 1.646 0.895 4.433-0.625 5.785-2.573-9.759-8.937-11.759-8.937-11.759 0.753 5.033-2.728 10.536-6.084 14.648-0.118-2.007-0.243-3.392-1.298-5.312-0.237 3.646-3.023 6.617-3.777 10.27-1.022 4.946 0.765 8.568 7.555 12.394z" />
+                                </svg>
+                            </span>
+                        </a>
+                    </td>
+                    <td
+                        style={{textAlign: "center"}}
+                        className="column-hide-small"
+                        data-place="bottom"
+                        data-tip={counterpart.translate(
+                            "tooltip." +
+                                (includeAsset ? "hide_asset" : "show_asset")
+                        )}
+                        onClick={this._hideAsset.bind(
+                            this,
+                            asset_type,
+                            includeAsset
+                        )}
+                    >
+                        <a
+                            style={{marginRight: 0}}
+                            className={
+                                includeAsset ? "order-cancel" : "action-plus"
+                            }
                         >
                             <Icon
                                 name={
@@ -620,49 +743,48 @@ class AccountOverview extends React.Component {
                 </tr>
             );
         });
-
-        if (optionalAssets) {
+        if (optionalAssets && !this.state.hide0balances) {
+            let isAssetsLoad = true;
+            this.setState({
+                isAssetsLoad: true
+            });
             optionalAssets
                 .filter(asset => {
-                    let isAvailable = false;
-                    this.props.backedCoins.get("OPEN", []).forEach(coin => {
-                        if (coin && coin.symbol === asset) {
-                            isAvailable = true;
-                        }
-                    });
-                    if (!!this.props.bridgeCoins.get(asset)) {
-                        isAvailable = true;
-                    }
                     let keep = true;
                     balances.forEach(a => {
                         if (a.key === asset) keep = false;
                     });
-                    return keep && isAvailable;
+                    return keep;
                 })
                 .forEach(a => {
                     let asset = ChainStore.getAsset(a);
-                    if (asset && this.props.isMyAccount) {
+                    if(!asset) {
+                        isAssetsLoad = false;
+                    }
+
+                    if (asset) {
+
                         const includeAsset = !hiddenAssets.includes(
                             asset.get("id")
                         );
 
                         const thisAssetName = asset.get("symbol").split(".");
-                        const canDeposit =
-                            !!this.props.backedCoins
-                                .get("OPEN", [])
-                                .find(
-                                    a => a.backingCoinType === thisAssetName[1]
-                                ) ||
-                            !!this.props.backedCoins
-                                .get("RUDEX", [])
-                                .find(
-                                    a => a.backingCoin === thisAssetName[1]
-                                ) ||
-                            asset.get("symbol") == "LLC";
+                        const backedCoin = getBackedCoin(
+                            asset.get("symbol"),
+                            this.props.backedCoins
+                        );
+
+                        const canTrade = deafaultAssetsArr.includes(asset.get("symbol"));
+
+                        const canDeposit = (backedCoin && backedCoin.depositAllowed) || canTrade;
+
+                        const canWithdraw =
+                            (backedCoin &&
+                                backedCoin.withdrawalAllowed) || canTrade;
 
                         const canBuy = !!this.props.bridgeCoins.get(
                             asset.get("symbol")
-                        );
+                        )  || asset.get("symbol") === "LLC" ;
 
                         const notCore = asset.get("id") !== "1.3.0";
                         let {market} = assetUtils.parseDescription(
@@ -675,12 +797,14 @@ class AccountOverview extends React.Component {
                             market = "USD";
                         let preferredMarket = market
                             ? market
-                            : core_asset ? core_asset.get("symbol") : "LLC";
+                            : core_asset
+                                ? core_asset.get("symbol")
+                                : "LLC";
                         let directMarketLink = notCore ? (
                             <Link
-                                to={`/market/${asset.get(
+                                to={`/market/${preferredMarket}_${asset.get(
                                     "symbol"
-                                )}_${preferredMarket}`}
+                                )}`}
                             >
                                 <Icon
                                     name="trade"
@@ -706,64 +830,66 @@ class AccountOverview extends React.Component {
                                     style={{maxWidth: "100rem"}}
                                 >
                                     <td style={{textAlign: "left"}}>
-                                        <LinkToAssetById
-                                            asset={asset.get("id")}
-                                        />
+                                        <LinkToAssetById showIcon asset={asset.get("id")} />
+                                    </td>
+                                    <td style={{textAlign: "right"}}>{emptyCell}</td>
+                                    <td
+                                        style={{textAlign: "right"}}
+                                        className="column-hide-small"
+                                    >
+                                        {emptyCell}
+                                    </td>
+                                    <td
+                                        style={{textAlign: "right"}}
+                                        className="column-hide-small"
+                                    >
+                                        {emptyCell}
+                                    </td>
+                                    <td
+                                        style={{textAlign: "right"}}
+                                        className="column-hide-small"
+                                    >
+                                        {emptyCell}
                                     </td>
                                     <td>{emptyCell}</td>
-                                    <td className="column-hide-small">
-                                        {emptyCell}
-                                    </td>
-                                    <td className="column-hide-small">
-                                        {emptyCell}
-                                    </td>
-                                    <td className="column-hide-small">
-                                        {emptyCell}
-                                    </td>
-                                    <td>{emptyCell}</td>
-                                    <td style={{textAlign: "center"}}>
-                                        {canBuy && this.props.isMyAccount ? (
-                                            <span>
-                                                <a
-                                                    onClick={this._showDepositWithdraw.bind(
-                                                        this,
-                                                        "bridge_modal",
-                                                        a,
-                                                        false
-                                                    )}
-                                                >
-                                                    <Icon
-                                                        name="dollar"
-                                                        title="icons.dollar.buy"
-                                                        className="icon-14px"
-                                                    />
-                                                </a>
-                                            </span>
-                                        ) : (
+                                    <td>
+                                        {this._renderBuy(
+                                            asset.get("symbol"),
+                                            canBuy,
                                             emptyCell
                                         )}
                                     </td>
                                     <td>
-                                        {canDeposit &&
-                                        this.props.isMyAccount ? (
+                                        {canDeposit ? (
                                             <span>
                                                 <Icon
                                                     style={{cursor: "pointer"}}
                                                     name="deposit"
                                                     title="icons.deposit.deposit"
                                                     className="icon-14x"
-                                                    onClick={this._showDepositModal.bind(
-                                                        this,
-                                                        asset.get("symbol")
-                                                    )}
+                                                    onClick={this.onShowModal.bind(this,  asset.get("symbol"), "deposit_tab")}
                                                 />
                                             </span>
                                         ) : (
                                             emptyCell
                                         )}
                                     </td>
-                                    <td>{emptyCell}</td>
-                                    <td style={{textAlign: "center"}}>
+                                    <td>
+                                        {canWithdraw ? (
+                                            <span>
+                                                <Icon
+                                                    style={{cursor: "pointer"}}
+                                                    name="withdraw"
+                                                    title="icons.withdraw"
+                                                    className="icon-14px"
+                                                    onClick={this.onShowModal.bind(this,  asset.get("symbol"), "withdraw_tab")}
+                                                />
+                                            </span>
+                                        ) : (
+                                            emptyCell
+                                        )}
+                                    </td>
+                                    <td>
                                         {directMarketLink}
                                     </td>
                                     <td>
@@ -784,6 +910,7 @@ class AccountOverview extends React.Component {
                                         )}
                                     </td>
                                     <td>{emptyCell}</td>
+                                    <td style={{textAlign: "center"}}>{emptyCell}</td>
                                     <td
                                         style={{textAlign: "center"}}
                                         className="column-hide-small"
@@ -827,6 +954,9 @@ class AccountOverview extends React.Component {
                             );
                     }
                 });
+            this.setState({
+                isAssetsLoad: isAssetsLoad
+            });
         }
 
         balances.sort(this.sortFunctions[this.state.sortKey]);
@@ -861,8 +991,24 @@ class AccountOverview extends React.Component {
         }
     }
 
+    _renderRadioButton(title, change, checked = false) {
+        return (
+            <label className="radio">
+                <input
+                    className="radio__input"
+                    type="radio"
+                    name="dashboard-filters"
+                    onChange={change}
+                    checked={checked}
+                />
+                <span className="radio__styled" />
+                <span className="radio__label">{title}</span>
+            </label>
+        );
+    }
+
     render() {
-        let {account, hiddenAssets, settings, orders} = this.props;
+        let {account, hiddenAssets, settings, orders, location} = this.props;
         let {shownAssets} = this.state;
 
         if (!account) {
@@ -922,6 +1068,12 @@ class AccountOverview extends React.Component {
                 ) {
                     return false;
                 } else {
+                    if (
+                        this.state.hide0balances &&
+                        balanceObject.get("balance") <= 0
+                    )
+                        return false;
+
                     return true;
                 }
             });
@@ -962,7 +1114,7 @@ class AccountOverview extends React.Component {
             includedBalances = included;
             let hidden = this._renderBalances(
                 hiddenBalancesList,
-                !this.state.filterValue ? this.state.alwaysShowAsset : null
+                !this.state.filterValue ? this.state.alwaysShowAssets : null
             );
             hiddenBalances = hidden;
         }
@@ -1067,379 +1219,358 @@ class AccountOverview extends React.Component {
         // horizontally
         const hiddenSubText = "\u00a0";
 
-        return (
-            <div className="grid-content app-tables no-padding" ref="appTables">
-                <div className="content-block small-12">
-                    <div className="tabs-container generic-bordered-box">
-                        <Tabs
-                            defaultActiveTab={0}
-                            segmented={false}
-                            setting="overviewTab"
-                            className="account-tabs"
-                            tabsClass="account-overview no-padding bordered-header content-block"
-                        >
-                            <Tab
-                                title="account.portfolio"
-                                subText={portfolioActiveAssetsBalance}
-                            >
-                                <div className="header-selector">
-                                    <div className="filter inline-block">
-                                        <input
-                                            type="text"
-                                            placeholder="Filter"
-                                            onChange={this._handleFilterInput}
-                                        />
-                                    </div>
-                                    <div className="selector inline-block">
-                                        <div
-                                            className={cnames("inline-block", {
-                                                inactive:
-                                                    shownAssets != "active"
-                                            })}
-                                            onClick={
-                                                shownAssets != "active"
-                                                    ? this._changeShownAssets.bind(
-                                                          this,
-                                                          "active"
-                                                      )
-                                                    : () => {}
-                                            }
-                                        >
-                                            <Translate content="account.hide_hidden" />
-                                        </div>
-                                        {hiddenBalances.length ? (
-                                            <div
-                                                className={cnames(
-                                                    "inline-block",
-                                                    {
-                                                        inactive:
-                                                            shownAssets !=
-                                                            "hidden"
-                                                    }
-                                                )}
-                                                onClick={
-                                                    shownAssets != "hidden"
-                                                        ? this._changeShownAssets.bind(
-                                                              this,
-                                                              "hidden"
-                                                          )
-                                                        : () => {}
-                                                }
-                                            >
-                                                <Translate content="account.show_hidden" />
-                                            </div>
-                                        ) : null}
-                                        <div
-                                            className={cnames("inline-block", {
-                                                inactive:
-                                                    shownAssets != "visual"
-                                            })}
-                                            onClick={
-                                                shownAssets != "visual"
-                                                    ? this._changeShownAssets.bind(
-                                                          this,
-                                                          "visual"
-                                                      )
-                                                    : () => {}
-                                            }
-                                        >
-                                            <Translate content="account.show_visual" />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Send Modal */}
-                                <SendModal
-                                    id="send_modal_portfolio"
-                                    refCallback={e => {
-                                        if (e) this.send_modal = e;
-                                    }}
-                                    from_name={this.props.account.get("name")}
-                                    asset_id={this.state.send_asset || "1.3.0"}
+        const accountPortfolio = (
+            <div>
+                <div className="dashboard__actions">
+                    <div className="container-fluid">
+                        <div className="row">
+                            <div className="col-xl-3 col-lg-6">
+                                <input
+                                    type="text"
+                                    placeholder="Filter"
+                                    onChange={this._handleFilterInput}
                                 />
-                                {shownAssets != "visual" ? (
-                                    <table className="table dashboard-table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th
-                                                    style={{textAlign: "left"}}
-                                                    className="clickable"
-                                                    onClick={this._toggleSortOrder.bind(
-                                                        this,
-                                                        "alphabetic"
-                                                    )}
-                                                >
-                                                    <Translate
-                                                        component="span"
-                                                        content="account.asset"
-                                                    />
-                                                </th>
-                                                <th
-                                                    onClick={this._toggleSortOrder.bind(
-                                                        this,
-                                                        "qty"
-                                                    )}
-                                                    className="clickable"
-                                                    style={{textAlign: "right"}}
-                                                >
-                                                    <Translate content="account.qty" />
-                                                </th>
-                                                <th
-                                                    onClick={this._toggleSortOrder.bind(
-                                                        this,
-                                                        "priceValue"
-                                                    )}
-                                                    className="column-hide-small clickable"
-                                                    style={{textAlign: "right"}}
-                                                >
-                                                    <Translate content="exchange.price" />{" "}
-                                                    (<AssetName
-                                                        name={preferredUnit}
-                                                        noTip
-                                                    />)
-                                                </th>
-                                                <th
-                                                    onClick={this._toggleSortOrder.bind(
-                                                        this,
-                                                        "changeValue"
-                                                    )}
-                                                    className="column-hide-small clickable"
-                                                    style={{textAlign: "right"}}
-                                                >
-                                                    <Translate content="account.hour_24_short" />
-                                                </th>
-                                                <th
-                                                    onClick={this._toggleSortOrder.bind(
-                                                        this,
-                                                        "totalValue"
-                                                    )}
-                                                    style={{textAlign: "right"}}
-                                                    className="column-hide-small clickable"
-                                                >
-                                                    <TranslateWithLinks
-                                                        noLink
-                                                        string="account.eq_value_header"
-                                                        keys={[
-                                                            {
-                                                                type: "asset",
-                                                                value: preferredUnit,
-                                                                arg: "asset"
-                                                            }
-                                                        ]}
-                                                        noTip
-                                                    />
-                                                </th>
-                                                {showAssetPercent ? (
-                                                    <th
-                                                        style={{
-                                                            textAlign: "right"
-                                                        }}
-                                                    >
-                                                        <Translate
-                                                            component="span"
-                                                            content="account.percent"
-                                                        />
-                                                    </th>
-                                                ) : null}
-                                                <th>
-                                                    <Translate content="header.payments" />
-                                                </th>
-                                                <th>
-                                                    <Translate content="exchange.buy" />
-                                                </th>
-                                                <th>
-                                                    <Translate content="modal.deposit.submit" />
-                                                </th>
-                                                <th>
-                                                    <Translate content="modal.withdraw.submit" />
-                                                </th>
-                                                <th>
-                                                    <Translate content="account.trade" />
-                                                </th>
-                                                <th>
-                                                    <Translate content="exchange.borrow_short" />
-                                                </th>
-                                                <th>
-                                                    <Translate content="account.settle" />
-                                                </th>
-                                                <th className="column-hide-small">
-                                                    <Translate
-                                                        content={
-                                                            shownAssets ==
-                                                            "active"
-                                                                ? "exchange.hide"
-                                                                : "account.perm.show"
-                                                        }
-                                                    />
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {shownAssets == "hidden" &&
-                                            hiddenBalances.length
-                                                ? hiddenBalances
-                                                : includedBalances}
-                                        </tbody>
-                                    </table>
-                                ) : (
-                                    <AccountTreemap
-                                        balanceObjects={includedBalancesList}
-                                    />
-                                )}
-                            </Tab>
-
-                            <Tab
-                                title="account.open_orders"
-                                subText={ordersValue}
-                            >
-                                <AccountOrders {...this.props}>
-                                    <tbody>
-                                        <tr className="total-value">
-                                            <td
-                                                colSpan="7"
-                                                style={{textAlign: "right"}}
-                                            >
-                                                {totalValueText}
-                                            </td>
-                                            <td
-                                                colSpan="2"
-                                                style={{textAlign: "left"}}
-                                            >
-                                                {ordersValue}
-                                            </td>
-                                            {this.props.isMyAccount ? (
-                                                <td />
-                                            ) : null}
-                                        </tr>
-                                    </tbody>
-                                </AccountOrders>
-                            </Tab>
-
-                            <Tab
-                                title="account.collaterals"
-                                subText={
-                                    <span
-                                        className={
-                                            this.state.globalMarginStatus
-                                        }
-                                    >
-                                        {marginValue}
-                                    </span>
-                                }
-                            >
-                                <div className="content-block">
-                                    <div className="generic-bordered-box">
-                                        <MarginPositions
-                                            preferredUnit={preferredUnit}
-                                            className="dashboard-table"
-                                            callOrders={call_orders}
-                                            account={account}
-                                        >
-                                            <tr className="total-value">
-                                                <td>{totalValueText}</td>
-                                                <td />
-                                                <td>{debtValue}</td>
-                                                <td className="column-hide-medium">
-                                                    {collateralValue}
-                                                </td>
-                                                <td />
-                                                <td>{marginValue}</td>
-                                                <td className="column-hide-small" />
-                                                <td className="column-hide-small" />
-                                                <td colSpan="3" />
-                                            </tr>
-                                        </MarginPositions>
-                                    </div>
-                                </div>
-                            </Tab>
-
-                            <Tab
-                                title="account.activity"
-                                subText={hiddenSubText}
-                            >
-                                <RecentTransactions
-                                    accountsList={Immutable.fromJS([
-                                        account.get("id")
-                                    ])}
-                                    compactView={false}
-                                    showMore={true}
-                                    fullHeight={true}
-                                    limit={15}
-                                    showFilters={true}
-                                    dashboard
-                                />
-                            </Tab>
-
-                            {account.get("proposals") &&
-                            account.get("proposals").size ? (
-                                <Tab
-                                    title="explorer.proposals.title"
-                                    subText={String(
-                                        account.get("proposals")
-                                            ? account.get("proposals").size
-                                            : 0
+                            </div>
+                            <div className="col-xl-9 col-lg-12">
+                                <div className="dashboard__actions__filters">
+                                    {this._renderRadioButton(
+                                        counterpart.translate(
+                                            "account.hide_hidden"
+                                        ),
+                                        shownAssets != "active"
+                                            ? this._changeShownAssets.bind(
+                                                  this,
+                                                  "active"
+                                              )
+                                            : () => {},
+                                        !(shownAssets != "active")
                                     )}
-                                >
-                                    <Proposals
-                                        className="dashboard-table"
-                                        account={account.get("id")}
-                                    />
-                                </Tab>
-                            ) : null}
-                        </Tabs>
+                                    {hiddenBalances.length
+                                        ? this._renderRadioButton(
+                                              counterpart.translate(
+                                                  "account.show_hidden"
+                                              ),
+                                              shownAssets != "hidden"
+                                                  ? this._changeShownAssets.bind(
+                                                        this,
+                                                        "hidden"
+                                                    )
+                                                  : () => {},
+                                              !(shownAssets != "hidden")
+                                          )
+                                        : null}
+                                    {this._renderRadioButton(
+                                        counterpart.translate(
+                                            "account.show_visual"
+                                        ),
+                                        shownAssets != "visual"
+                                            ? this._changeShownAssets.bind(
+                                                  this,
+                                                  "visual"
+                                              )
+                                            : () => {},
+                                        !(shownAssets != "visual")
+                                    )}
+                                    <div>
+                                        <label className="hide0balances">
+                                            <input
+                                                name="isGoing"
+                                                type="checkbox"
+                                                checked={
+                                                    this.state.hide0balances
+                                                }
+                                                onChange={e =>
+                                                    this.setState({
+                                                        hide0balances: !this
+                                                            .state.hide0balances
+                                                    })
+                                                }
+                                            />
+                                            <span />
+                                            <span>
+                                                {counterpart.translate(
+                                                    "exchange.hide"
+                                                )}
+                                                &nbsp;0&nbsp;
+                                                {counterpart.translate(
+                                                    "transfer.balances"
+                                                )}
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    {this.state.isBridgeModalVisible ? (
+                        <LLCBridgeModal
+                            account={this.props.account}
+                            currency={this.state.currency}
+                            type={this.state.type}
+                            depositAddress={this.state.depositAddress}
+                            buyLLCAddress={this.state.buyLLCAddress}
+                            activeTab={this.state.activeTab}
+                            onCloseModal={this.onCloseModal}
+                            isDashboard={this.state.isDashboard}
+                        />
+                    ) : null}
                 </div>
 
-                {/* Settle Modal */}
+                {/* Send Modal */}
+                <SendModal
+                    id="send_modal_portfolio"
+                    refCallback={e => {
+                        if (e) this.send_modal = e;
+                    }}
+                    from_name={this.props.account.get("name")}
+                    asset_id={this.state.send_asset || "1.3.0"}
+                />
+
+                {shownAssets != "visual" ? (
+                    <div className="dashboard__adaptive">
+                        <table className="dashboard__table blue-bg with-borders">
+                            <thead>
+                                <tr>
+                                    <th
+                                        style={{textAlign: "left"}}
+                                        className="clickable"
+                                        onClick={this._toggleSortOrder.bind(
+                                            this,
+                                            "alphabetic"
+                                        )}
+                                    >
+                                        <Translate
+                                            component="span"
+                                            content="account.asset"
+                                        />
+                                    </th>
+                                    <th
+                                        onClick={this._toggleSortOrder.bind(
+                                            this,
+                                            "qty"
+                                        )}
+                                        className="clickable"
+                                        style={{textAlign: "right"}}
+                                    >
+                                        <Translate content="account.qty" />
+                                    </th>
+                                    <th
+                                        onClick={this._toggleSortOrder.bind(
+                                            this,
+                                            "priceValue"
+                                        )}
+                                        className="column-hide-small clickable"
+                                        style={{textAlign: "right"}}
+                                    >
+                                        <Translate content="exchange.price" /> (
+                                        <AssetName name={preferredUnit} noTip />
+                                        )
+                                    </th>
+                                    <th
+                                        onClick={this._toggleSortOrder.bind(
+                                            this,
+                                            "changeValue"
+                                        )}
+                                        className="column-hide-small clickable"
+                                        style={{textAlign: "right"}}
+                                    >
+                                        <Translate content="account.hour_24_short" />
+                                    </th>
+                                    <th
+                                        onClick={this._toggleSortOrder.bind(
+                                            this,
+                                            "totalValue"
+                                        )}
+                                        style={{textAlign: "right"}}
+                                        className="column-hide-small clickable"
+                                    >
+                                        <TranslateWithLinks
+                                            noLink
+                                            string="account.eq_value_header"
+                                            keys={[
+                                                {
+                                                    type: "asset",
+                                                    value: preferredUnit,
+                                                    arg: "asset"
+                                                }
+                                            ]}
+                                            noTip
+                                        />
+                                    </th>
+                                    {showAssetPercent ? (
+                                        <th
+                                            style={{
+                                                textAlign: "right"
+                                            }}
+                                        >
+                                            <Translate
+                                                component="span"
+                                                content="account.percent"
+                                            />
+                                        </th>
+                                    ) : null}
+                                    <th>
+                                        <Translate content="header.payments" />
+                                    </th>
+                                    <th>
+                                        <Translate content="exchange.buy" />
+                                    </th>
+                                    <th>
+                                        <Translate content="modal.deposit.submit" />
+                                    </th>
+                                    <th>
+                                        <Translate content="modal.withdraw.submit" />
+                                    </th>
+                                    <th>
+                                        <Translate content="account.trade" />
+                                    </th>
+                                    <th>
+                                        <Translate content="exchange.borrow_short" />
+                                    </th>
+                                    <th>
+                                        <Translate content="account.settle" />
+                                    </th>
+                                    <th>
+                                        <Translate content="modal.reserve.submit" />
+                                    </th>
+                                    <th className="column-hide-small">
+                                        <Translate
+                                            content={
+                                                shownAssets == "active"
+                                                    ? "exchange.hide"
+                                                    : "account.perm.show"
+                                            }
+                                        />
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {shownAssets == "hidden" &&
+                                hiddenBalances.length
+                                    ? hiddenBalances
+                                    : includedBalances}
+                            </tbody>
+                        </table>
+                    </div>
+                ) : (
+                    <AccountTreemap balanceObjects={includedBalancesList} />
+                )}
+            </div>
+        );
+
+        const accountOpenOrders = (
+            <AccountOrders {...this.props}>
+                <tbody>
+                    <tr className="total-value">
+                        <td colSpan="7" style={{textAlign: "right"}}>
+                            {totalValueText}
+                        </td>
+                        <td colSpan="2" style={{textAlign: "left"}}>
+                            {ordersValue}
+                        </td>
+                        {this.props.isMyAccount ? <td /> : null}
+                    </tr>
+                </tbody>
+            </AccountOrders>
+        );
+
+        const accountCollaterals = (
+            <MarginPositions
+                preferredUnit={preferredUnit}
+                className="dashboard-table blue-bg with-borders"
+                callOrders={call_orders}
+                account={account}
+            >
+                <tr className="total-value">
+                    <td>{totalValueText}</td>
+                    <td />
+                    <td>{debtValue}</td>
+                    <td className="column-hide-medium">{collateralValue}</td>
+                    <td />
+                    <td>{marginValue}</td>
+                    <td className="column-hide-small" />
+                    <td className="column-hide-small" />
+                    <td colSpan="3" />
+                </tr>
+            </MarginPositions>
+        );
+
+        const accountActivity = (
+            <RecentTransactions
+                accountsList={Immutable.fromJS([account.get("id")])}
+                compactView={false}
+                showMore={true}
+                fullHeight={true}
+                limit={15}
+                showFilters={true}
+                dashboard
+            />
+        );
+
+        const accountProposals = (
+            <div className="propsal-table-wrap">
+                <Proposals
+                    className="dashboard-table"
+                    account={account.get("id")}
+                />
+            </div>
+        );
+
+        const items = [
+            {
+                title: "account.portfolio",
+                subTitle: portfolioActiveAssetsBalance,
+                content: accountPortfolio
+            },
+            {
+                title: "account.open_orders",
+                subTitle: ordersValue,
+                content: accountOpenOrders
+            },
+            {
+                title: "account.collaterals",
+                subTitle: marginValue,
+                content: accountCollaterals
+            },
+            {
+                title: "account.activity",
+                subTitle: "",
+                content: accountActivity
+            },
+            {
+                title: "account.proposed_transactions",
+                subTitle: "",
+                content: accountProposals
+            }
+        ];
+        let settleRef = "settlement_modal";
+        return (
+            <div className="dashboard-layout">
+                <Tabs
+                    items={items}
+                    inner={true}
+                    updateModal={this.updateModal}
+                    defaultActiveTab={location.hash === "#activity" ? "account.activity" : null}
+                />
+                <BaseModal id="reserve_asset" overlay={true}>
+                    <br />
+                    <div className="grid-block vertical">
+                        <ReserveAssetModal
+                            assetId={this.state.reserve}
+                            account={account}
+                            onClose={() => {
+                                ZfApi.publish("reserve_asset", "close");
+                            }}
+                        />
+                    </div>
+                </BaseModal>
+                <div />
                 <SettleModal
                     ref="settlement_modal"
                     modalId="settlement_modal"
                     asset={this.state.settleAsset}
                     account={account.get("name")}
                 />
-
-                {/* Withdraw Modal*/}
-                <SimpleDepositWithdraw
-                    ref="withdraw_modal"
-                    action="withdraw"
-                    fiatModal={this.state.fiatModal}
-                    account={this.props.account.get("name")}
-                    sender={this.props.account.get("id")}
-                    asset={this.state.withdrawAsset}
-                    modalId="simple_withdraw_modal"
-                    balances={this.props.balances}
-                    {...currentWithdrawAsset}
-                    isDown={this.props.gatewayDown.get("OPEN")}
-                />
-
-                {/*<WithdrawModal*/}
-                    {/*ref="withdraw_modal_new"*/}
-                    {/*modalId="withdraw_modal_new"*/}
-                    {/*backedCoins={this.props.backedCoins}*/}
-                    {/*initialSymbol={this.state.withdrawAsset}*/}
-                {/*/>*/}
-
-                {/* Deposit Modal */}
-                {/*<DepositModal*/}
-                    {/*ref="deposit_modal_new"*/}
-                    {/*modalId="deposit_modal_new"*/}
-                    {/*asset={this.state.depositAsset}*/}
-                    {/*account={this.props.account.get("name")}*/}
-                    {/*backedCoins={this.props.backedCoins}*/}
-                {/*/>*/}
-
-                {/* Bridge modal */}
-                {/*<SimpleDepositBlocktradesBridge*/}
-                    {/*ref="bridge_modal"*/}
-                    {/*action="deposit"*/}
-                    {/*account={this.props.account.get("name")}*/}
-                    {/*sender={this.props.account.get("id")}*/}
-                    {/*asset={this.state.bridgeAsset}*/}
-                    {/*modalId="simple_bridge_modal"*/}
-                    {/*balances={this.props.balances}*/}
-                    {/*bridges={currentBridges}*/}
-                    {/*isDown={this.props.gatewayDown.get("TRADE")}*/}
-                {/*/>*/}
             </div>
         );
     }

@@ -1,18 +1,20 @@
 import React from "react";
 import Translate from "react-translate-component";
 import {saveAs} from "file-saver";
-import Operation from "../Blockchain/Operation";
-import ChainTypes from "../Utility/ChainTypes";
-import BindToChainState from "../Utility/BindToChainState";
+import Operation from "../../components/Blockchain/Operation";
+import ChainTypes from "../../components/Utility/ChainTypes";
+import BindToChainState from "../../components/Utility/BindToChainState";
 import utils from "common/utils";
 import {ChainTypes as grapheneChainTypes} from "bitsharesjs/es";
-import TransitionWrapper from "../Utility/TransitionWrapper";
+import TransitionWrapper from "../../components/Utility/TransitionWrapper";
 import ps from "perfect-scrollbar";
 import counterpart from "counterpart";
-import Icon from "../Icon/Icon";
+import Icon from "../../components/Icon/Icon";
 import cnames from "classnames";
 import PropTypes from "prop-types";
 import {csvIcon} from "../../assets/brand-new-layout/img/images";
+import ReactTooltip from "react-tooltip";
+
 const {operations} = grapheneChainTypes;
 const alignLeft = {textAlign: "left"};
 const alignRight = {textAlign: "right"};
@@ -52,11 +54,17 @@ class RecentTransactions extends React.Component {
             limit: props.limit || 20,
             csvExport: false,
             headerHeight: 85,
+            openFilter: false,
             filter: "all"
         };
+        this._updateTooltip = this._updateTooltip.bind(this);
+        this._downloadCSV = this._downloadCSV.bind(this);
+        this._findActiveFilter = this._findActiveFilter.bind(this);
+        this._renderFilters = this._renderFilters.bind(this);
     }
 
     componentDidMount() {
+        this._updateTooltip();
         if (!this.props.fullHeight) {
             let t = this.refs.transactions;
             ps.initialize(t);
@@ -67,7 +75,6 @@ class RecentTransactions extends React.Component {
 
     _setHeaderHeight() {
         let height = this.refs.header.offsetHeight;
-
         if (height !== this.state.headerHeight) {
             this.setState({
                 headerHeight: height
@@ -85,6 +92,7 @@ class RecentTransactions extends React.Component {
             return true;
         if (this.props.maxHeight !== nextProps.maxHeight) return true;
         if (this.state.headerHeight !== nextState.headerHeight) return true;
+        if (this.state.openFilter !== nextState.openFilter) return true;
         if (this.state.filter !== nextState.filter) return true;
         if (this.props.customFilter) {
             if (
@@ -117,6 +125,7 @@ class RecentTransactions extends React.Component {
     }
 
     componentDidUpdate() {
+        this._updateTooltip();
         if (this.state.csvExport) {
             this.state.csvExport = false;
             const csv_export_container = document.getElementById(
@@ -224,6 +233,63 @@ class RecentTransactions extends React.Component {
         });
     }
 
+    _findActiveFilter(items) {
+        return items.find(title => title === this.state.filter);
+    }
+
+    _updateTooltip() {
+        ReactTooltip.rebuild();
+    }
+
+    _renderFilters(items) {
+        const activeFilter = this._findActiveFilter(items);
+        return activeFilter ? (
+            <div
+                className={cnames("select", {
+                    "is-open": this.state.openFilter
+                })}
+            >
+                <span
+                    className="placeholder"
+                    onClick={e => {
+                        e.preventDefault();
+                        this.setState({
+                            openFilter: !this.state.openFilter
+                        });
+                    }}
+                >
+                    {counterpart.translate(
+                        `transaction.trxTypes.${activeFilter}`
+                    )}
+                </span>
+                <ul>
+                    {items
+                        .filter(title => title !== activeFilter)
+                        .map(title => {
+                            return (
+                                <li
+                                    key={`${title}`}
+                                    onClick={e => {
+                                        e.preventDefault();
+                                        this.setState({
+                                            filter: title
+                                        });
+                                        this.setState({
+                                            openFilter: false
+                                        });
+                                    }}
+                                >
+                                    {counterpart.translate(
+                                        `transaction.trxTypes.${title}`
+                                    )}
+                                </li>
+                            );
+                        })}
+                </ul>
+            </div>
+        ) : null;
+    }
+
     render() {
         let {
             accountsList,
@@ -247,6 +313,7 @@ class RecentTransactions extends React.Component {
         ).sort(compareOps);
         let historyCount = history.length;
 
+        ReactTooltip.rebuild();
         // style = style ? style : {};
         // style.width = "100%";
         // style.height = "100%";
@@ -264,13 +331,7 @@ class RecentTransactions extends React.Component {
                 "asset_create",
                 "witness_withdraw_pay",
                 "vesting_balance_withdraw"
-            ].map(type => {
-                return (
-                    <option value={type} key={type}>
-                        {counterpart.translate("transaction.trxTypes." + type)}
-                    </option>
-                );
-            });
+            ];
         }
 
         let display_history = history.length
@@ -299,29 +360,16 @@ class RecentTransactions extends React.Component {
                       </td>
                   </tr>
               ];
-        display_history.push(
-            <tr className="total-value" key="total_value">
-                <td className="column-hide-tiny" />
-                <td style={alignRight}>
-                    {historyCount > 0 ? (
-                        <span>
-                            <a
-                                className="inline-block"
-                                onClick={this._downloadCSV.bind(this)}
-                                data-tip={counterpart.translate(
-                                    "transaction.csv_tip"
-                                )}
-                                data-place="bottom"
-                            >
-                                <img src={csvIcon} alt="" />
-                            </a>
-                        </span>
-                    ) : null}
-                </td>
-                <td style={{textAlign: "center"}}>
-                    &nbsp;{(this.props.showMore &&
-                        historyCount > this.props.limit) ||
-                    (20 && limit < historyCount) ? (
+        if (
+            (this.props.showMore && historyCount > this.props.limit) ||
+            (20 && limit < historyCount)
+        ) {
+            display_history.push(
+                <tr className="total-value" key="total_value">
+                    <td className="column-hide-tiny" />
+                    <td style={alignRight} />
+                    <td style={{textAlign: "center"}}>
+                        &nbsp;
                         <a onClick={this._onIncreaseLimit.bind(this)}>
                             <Icon
                                 name="chevron-down"
@@ -329,10 +377,11 @@ class RecentTransactions extends React.Component {
                                 className="icon-14px"
                             />
                         </a>
-                    ) : null}
-                </td>
-            </tr>
-        );
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+            );
+        }
 
         return (
             <div className="recent-transactions no-overflow" style={style}>
@@ -350,46 +399,23 @@ class RecentTransactions extends React.Component {
                             </div>
                         </div>
                     )}
-                    <div className="header-selector">
-                        <div className="selector">
-                            <div className={cnames("inline-block")}>
-                                {this.props.showFilters ? (
-                                    <select
-                                        data-place="left"
-                                        data-tip={counterpart.translate(
-                                            "tooltip.filter_ops"
-                                        )}
-                                        style={{paddingTop: 5, width: "auto"}}
-                                        className="bts-select no-margin"
-                                        value={this.state.filter}
-                                        onChange={this._onChangeFilter.bind(
-                                            this
-                                        )}
-                                    >
-                                        {options}
-                                    </select>
-                                ) : null}
+                    <div className="dashboard__actions">
+                        <div className="container-fluid">
+                            <div className="row">
+                                <div className="col-lg-3">
+                                    {this.props.showFilters
+                                        ? this._renderFilters(options)
+                                        : null}
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div
-                        className="box-content grid-block no-margin"
-                        style={
-                            !this.props.fullHeight
-                                ? {
-                                      maxHeight: maxHeight - headerHeight
-                                  }
-                                : null
-                        }
-                        ref="transactions"
-                    >
+                    <div className="dashboard__adaptive">
                         <table
                             className={
-                                "table table-striped " +
+                                "dashboard__table transactions-list blue-bg with-borders" +
                                 (compactView ? "compact" : "") +
-                                (this.props.dashboard
-                                    ? " dashboard-table table-hover"
-                                    : "")
+                                (this.props.dashboard ? " dashboard-table" : "")
                             }
                         >
                             <thead>
@@ -404,7 +430,13 @@ class RecentTransactions extends React.Component {
                                         className="column-hide-tiny"
                                         style={alignLeft}
                                     >
-                                        <Translate content="account.transactions.type" />
+                                        <Translate
+                                            content="account.transactions.type"
+                                            onLoad={this._updateTooltip()}
+                                        />
+                                    </th>
+                                    <th style={alignLeft}>
+                                        <Translate content="account.transactions.fee" />
                                     </th>
                                     <th style={alignLeft}>
                                         <Translate content="account.transactions.info" />
@@ -422,6 +454,21 @@ class RecentTransactions extends React.Component {
                             </TransitionWrapper>
                         </table>
                     </div>
+                    {historyCount > 0 ? (
+                        <div className="export-row" style={{marginTop: "20px"}}>
+                            <a
+                                className="csv-export"
+                                href="#"
+                                onClick={e => {
+                                    e.preventDefault();
+                                    this._downloadCSV();
+                                }}
+                            >
+                                <img src={csvIcon} alt="" />
+                                {counterpart.translate("transaction.csv_tip")}
+                            </a>
+                        </div>
+                    ) : null}
                     {historyCount > 0 &&
                         this.state.csvExport && (
                             <div

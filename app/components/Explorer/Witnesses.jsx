@@ -1,20 +1,22 @@
 import React from "react";
 import Immutable from "immutable";
-import AccountImage from "../Account/AccountImage";
-import ChainTypes from "../Utility/ChainTypes";
-import BindToChainState from "../Utility/BindToChainState";
+import AccountImage from "../../components/Account/AccountImage";
+import ChainTypes from "../../components/Utility/ChainTypes";
+import BindToChainState from "../../components/Utility/BindToChainState";
 import {ChainStore} from "bitsharesjs/es";
-import FormattedAsset from "../Utility/FormattedAsset";
+import FormattedAsset from "../../components/Utility/FormattedAsset";
 import Translate from "react-translate-component";
-import TimeAgo from "../Utility/TimeAgo";
+import TimeAgo from "../../components/Utility/TimeAgo";
 import {connect} from "alt-react";
 import SettingsActions from "actions/SettingsActions";
 import SettingsStore from "stores/SettingsStore";
 import classNames from "classnames";
-import Explorer from "./Explorer";
+import ExplorerTabs from "./ExplorerTabs";
 import PropTypes from "prop-types";
+import DropdownList from "../Utility/DropdownList";
+import counterpart from "counterpart";
 
-require("./witnesses.scss");
+require("../../components/Explorer/witnesses.scss");
 
 class WitnessCard extends React.Component {
     static propTypes = {
@@ -55,50 +57,41 @@ class WitnessCard extends React.Component {
         );
 
         return (
-            <div
-                className="grid-content account-card"
-                onClick={this._onCardClick.bind(this)}
-            >
-                <div className="card" style={color}>
-                    <h4 className="text-center">
+            <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                <a
+                    className="witness-item"
+                    href="#"
+                    onClick={this._onCardClick.bind(this)}
+                >
+                    <h5>
                         #{this.props.rank}: {this.props.witness.get("name")}
-                    </h4>
-                    <div className="card-content">
-                        <div className="text-center">
+                    </h5>
+                    <div className="witness-item__content">
+                        <div className="witness-item__pic">
+                            {/*className="witness-item__img"*/}
                             <AccountImage
                                 account={this.props.witness.get("name")}
                                 size={{height: 64, width: 64}}
                             />
                         </div>
-                        <br />
-                        <table className="table key-value-table">
-                            <tbody>
-                                <tr>
-                                    <td>Votes</td>
-                                    <td>
-                                        <FormattedAsset
-                                            amount={total_votes}
-                                            asset="1.3.0"
-                                            decimalOffset={5}
-                                        />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Last&nbsp;Block</td>
-                                    <td>
-                                        <TimeAgo
-                                            time={new Date(last_aslot_time)}
-                                        />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Missed</td>
-                                    <td>{witness_data.get("total_missed")}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div className="witness-item__row">
+                            <span>Votes</span>
+                            <FormattedAsset
+                                amount={total_votes}
+                                asset="1.3.0"
+                                decimalOffset={5}
+                            />
+                        </div>
+                        <div className="witness-item__row light">
+                            <span>Last Block</span>
+                            <TimeAgo time={new Date(last_aslot_time)} />
+                        </div>
+                        <div className="witness-item__row">
+                            <span>Missed</span>
+                            <span>{witness_data.get("total_missed")}</span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         );
     }
@@ -318,65 +311,66 @@ class WitnessList extends React.Component {
         // table view
         if (!cardView) {
             return (
-                <table className="table table-hover">
-                    <thead>
-                        <tr>
-                            <th
-                                className="clickable"
-                                onClick={this._setSort.bind(this, "rank")}
-                            >
-                                <Translate content="explorer.witnesses.rank" />
-                            </th>
-                            <th
-                                className="clickable"
-                                onClick={this._setSort.bind(this, "name")}
-                            >
-                                <Translate content="account.votes.name" />
-                            </th>
-                            <th
-                                className="clickable"
-                                onClick={this._setSort.bind(this, "last_aslot")}
-                            >
-                                <Translate content="explorer.blocks.last_block" />
-                            </th>
-                            <th
-                                className="clickable"
-                                onClick={this._setSort.bind(
-                                    this,
-                                    "last_confirmed_block_num"
-                                )}
-                            >
-                                <Translate content="explorer.witnesses.last_confirmed" />
-                            </th>
-                            <th
-                                className="clickable"
-                                onClick={this._setSort.bind(
-                                    this,
-                                    "total_missed"
-                                )}
-                            >
-                                <Translate content="explorer.witnesses.missed" />
-                            </th>
-                            <th
-                                className="clickable"
-                                onClick={this._setSort.bind(
-                                    this,
-                                    "total_votes"
-                                )}
-                            >
-                                <Translate content="account.votes.votes" />
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>{itemRows}</tbody>
-                </table>
-            );
-        } else {
-            return (
-                <div className="grid-block small-up-1 medium-up-2 large-up-3">
-                    {itemRows}
+                <div className="table-witnesses-wrap">
+                    <table className="table-witnesses">
+                        <thead>
+                            <tr>
+                                <th
+                                    className="clickable"
+                                    onClick={this._setSort.bind(this, "rank")}
+                                >
+                                    <Translate content="explorer.witnesses.rank" />
+                                </th>
+                                <th
+                                    className="clickable"
+                                    onClick={this._setSort.bind(this, "name")}
+                                >
+                                    <Translate content="account.votes.name" />
+                                </th>
+                                <th
+                                    className="clickable"
+                                    onClick={this._setSort.bind(
+                                        this,
+                                        "last_aslot"
+                                    )}
+                                >
+                                    <Translate content="explorer.blocks.last_block" />
+                                </th>
+                                <th
+                                    className="clickable"
+                                    onClick={this._setSort.bind(
+                                        this,
+                                        "last_confirmed_block_num"
+                                    )}
+                                >
+                                    <Translate content="explorer.witnesses.last_confirmed" />
+                                </th>
+                                <th
+                                    className="clickable"
+                                    onClick={this._setSort.bind(
+                                        this,
+                                        "total_missed"
+                                    )}
+                                >
+                                    <Translate content="explorer.witnesses.missed" />
+                                </th>
+                                <th
+                                    className="clickable"
+                                    onClick={this._setSort.bind(
+                                        this,
+                                        "total_votes"
+                                    )}
+                                >
+                                    <Translate content="account.votes.votes" />
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>{itemRows}</tbody>
+                    </table>
                 </div>
             );
+        } else {
+            return <div className="row">{itemRows}</div>;
         }
     }
 }
@@ -437,124 +431,106 @@ class Witnesses extends React.Component {
         }
 
         let content = (
-            <div className="grid-block">
-                <div className="grid-block">
-                    <div className="grid-block vertical small-5 medium-3">
-                        <div className="grid-content">
-                            <br />
-                            <table className="table key-value-table">
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <Translate content="explorer.witnesses.current" />
-                                        </td>
-                                        <td>
-                                            {currentAccount
-                                                ? currentAccount.get("name")
-                                                : null}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <Translate content="explorer.blocks.active_witnesses" />
-                                        </td>
-                                        <td>
-                                            {
-                                                Object.keys(
-                                                    globalObject.active_witnesses
-                                                ).length
-                                            }
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <Translate content="explorer.witnesses.participation" />
-                                        </td>
-                                        <td>
-                                            {dynGlobalObject.participation}%
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <Translate content="explorer.witnesses.pay" />
-                                        </td>
-                                        <td>
-                                            <FormattedAsset
-                                                amount={
-                                                    globalObject.parameters
-                                                        .witness_pay_per_block
-                                                }
-                                                asset="1.3.0"
-                                            />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <Translate content="explorer.witnesses.budget" />
-                                        </td>
-                                        <td>
-                                            {" "}
-                                            <FormattedAsset
-                                                amount={
-                                                    dynGlobalObject.witness_budget
-                                                }
-                                                asset="1.3.0"
-                                            />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <Translate content="explorer.witnesses.next_vote" />
-                                        </td>
-                                        <td>
-                                            {" "}
-                                            <TimeAgo
-                                                time={
-                                                    new Date(
-                                                        dynGlobalObject.next_maintenance_time +
-                                                            "Z"
-                                                    )
-                                                }
-                                            />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            {" "}
-                                            <Translate
-                                                component="h4"
-                                                content="markets.filter"
-                                            />{" "}
-                                        </td>
-                                        <td>
-                                            {" "}
-                                            <input
-                                                type="text"
-                                                value={this.state.filterWitness}
-                                                onChange={this._onFilter.bind(
-                                                    this
-                                                )}
-                                            />{" "}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div className="view-switcher">
-                                <span
-                                    className="button outline"
-                                    onClick={this._toggleView.bind(this)}
-                                >
-                                    {!this.state.cardView ? (
-                                        <Translate content="explorer.witnesses.card" />
-                                    ) : (
-                                        <Translate content="explorer.witnesses.table" />
-                                    )}
-                                </span>
-                            </div>
+            <div className="container-fluid" style={{marginTop: "20px"}}>
+                <div className="witnesses-board">
+                    <div className="witnesses-board__sidetable">
+                        <div className="witnesses-board__sidetable__row">
+                            <Translate content="explorer.witnesses.current" />
+                            <span>
+                                {currentAccount
+                                    ? currentAccount.get("name")
+                                    : null}
+                            </span>
+                        </div>
+                        <div className="witnesses-board__sidetable__row">
+                            <Translate content="explorer.blocks.active_witnesses" />
+                            <span>
+                                {
+                                    Object.keys(globalObject.active_witnesses)
+                                        .length
+                                }
+                            </span>
+                        </div>
+                        <div className="witnesses-board__sidetable__row">
+                            <Translate content="explorer.witnesses.participation" />
+                            <span>{dynGlobalObject.participation}%</span>
+                        </div>
+                        <div className="witnesses-board__sidetable__row">
+                            <Translate content="explorer.witnesses.pay" />
+                            <FormattedAsset
+                                amount={
+                                    globalObject.parameters
+                                        .witness_pay_per_block
+                                }
+                                asset="1.3.0"
+                            />
+                        </div>
+                        <div className="witnesses-board__sidetable__row">
+                            <Translate content="explorer.witnesses.budget" />
+                            <FormattedAsset
+                                amount={dynGlobalObject.witness_budget}
+                                asset="1.3.0"
+                            />
+                        </div>
+                        <div className="witnesses-board__sidetable__row">
+                            <Translate content="explorer.witnesses.next_vote" />
+                            <TimeAgo
+                                time={
+                                    new Date(
+                                        dynGlobalObject.next_maintenance_time +
+                                            "Z"
+                                    )
+                                }
+                            />
                         </div>
                     </div>
-                    <div className="grid-block">
-                        <div className="grid-content ">
+                    <div className="witnesses-board__accounts">
+                        <div className="container-fluid">
+                            {/*filter*/}
+                            <div className="row">
+                                <div className="col-xl-7 col-lg-6">
+                                    <input
+                                        type="text"
+                                        value={this.state.filterWitness}
+                                        onChange={this._onFilter.bind(this)}
+                                        placeholder="Filter accounts..."
+                                    />
+                                </div>
+                                <div className="col-xl-3 offset-xl-2 offset-lg-0 col-lg-6">
+                                    <DropdownList
+                                        options={[
+                                            {
+                                                key: "card-true",
+                                                label: counterpart.translate(
+                                                    "explorer.witnesses.card"
+                                                )
+                                            },
+                                            {
+                                                key: "card-false",
+                                                label: counterpart.translate(
+                                                    "explorer.witnesses.table"
+                                                )
+                                            }
+                                        ]}
+                                        selected={{
+                                            key: this.state.cardView
+                                                ? "card-true"
+                                                : "card-false",
+                                            label: this.state.cardView
+                                                ? counterpart.translate(
+                                                      "explorer.witnesses.card"
+                                                  )
+                                                : counterpart.translate(
+                                                      "explorer.witnesses.table"
+                                                  )
+                                        }}
+                                        onChange={e =>
+                                            this._toggleView.bind(this)(e)
+                                        }
+                                    />
+                                </div>
+                            </div>
+                            {/*end of filter*/}
                             <WitnessList
                                 current_aslot={dynGlobalObject.current_aslot}
                                 current={current ? current.get("id") : null}
@@ -570,7 +546,14 @@ class Witnesses extends React.Component {
                 </div>
             </div>
         );
-        return <Explorer tab="witnesses" content={content} />;
+        return (
+            <div className="content">
+                <ExplorerTabs
+                    defaultActiveTab="explorer.witnesses.title"
+                    defaultContent={content}
+                />
+            </div>
+        );
     }
 }
 Witnesses = BindToChainState(Witnesses);
@@ -581,18 +564,21 @@ class WitnessStoreWrapper extends React.Component {
     }
 }
 
-WitnessStoreWrapper = connect(WitnessStoreWrapper, {
-    listenTo() {
-        return [SettingsStore];
-    },
-    getProps() {
-        return {
-            cardView: SettingsStore.getState().viewSettings.get("cardView"),
-            filterWitness: SettingsStore.getState().viewSettings.get(
-                "filterWitness"
-            )
-        };
+WitnessStoreWrapper = connect(
+    WitnessStoreWrapper,
+    {
+        listenTo() {
+            return [SettingsStore];
+        },
+        getProps() {
+            return {
+                cardView: SettingsStore.getState().viewSettings.get("cardView"),
+                filterWitness: SettingsStore.getState().viewSettings.get(
+                    "filterWitness"
+                )
+            };
+        }
     }
-});
+);
 
 export default WitnessStoreWrapper;

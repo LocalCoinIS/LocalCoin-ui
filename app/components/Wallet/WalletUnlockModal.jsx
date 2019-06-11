@@ -1,7 +1,7 @@
 import React from "react";
-import BaseModal from "../Modal/BaseModal";
+import BaseModal from "../../components/Modal/BaseModal";
 import ZfApi from "react-foundation-apps/src/utils/foundation-api";
-import PasswordInput from "../Forms/PasswordInput";
+import PasswordInput from "../../components/Forms/PasswordInput";
 import notify from "actions/NotificationActions";
 import AltContainer from "alt-container";
 import WalletDb from "stores/WalletDb";
@@ -31,7 +31,7 @@ import {
     DisableChromeAutocomplete,
     CustomError,
     KeyFileLabel
-} from "./WalletUnlockModalLib";
+} from "../../components/Wallet/WalletUnlockModalLib";
 import {backupName} from "common/backupUtils";
 import PropTypes from "prop-types";
 
@@ -54,7 +54,8 @@ class WalletUnlockModal extends React.Component {
             customError: null,
             isOpen: false,
             restoringBackup: false,
-            stopAskingForBackup: false
+            stopAskingForBackup: false,
+            isPassword: false
         };
     };
 
@@ -93,6 +94,10 @@ class WalletUnlockModal extends React.Component {
 
     handleModalOpen = () => {
         BackupActions.reset();
+        const hiddenPassError = this.refs.custom_error_password;
+        if(hiddenPassError) {
+            hiddenPassError.classList.add("hidden");
+        }
         this.setState({isOpen: true}, () => {
             const {passwordLogin} = this.props;
             if (!passwordLogin) {
@@ -124,31 +129,42 @@ class WalletUnlockModal extends React.Component {
     componentDidMount() {
         const {modalId, passwordLogin} = this.props;
 
-        ZfApi.subscribe(modalId, (name, msg) => {
-            const {isOpen} = this.state;
+        ZfApi.subscribe(modalId, ( name, msg) => {
+          const {isOpen} = this.state;
 
-            if (name !== modalId) return;
-            if (msg === "close" && isOpen) {
-                this.handleModalClose();
-            } else if (msg === "open" && !isOpen) {
-                this.handleModalOpen();
-            }
+          if (name !== modalId) return;
+          if (msg === "close" && isOpen) {
+            this.handleModalClose();
+          } else if (msg === "open" && !isOpen) {
+            this.handleModalOpen();
+          }
         });
 
         if (passwordLogin) {
-            const {password_input, account_input} = this.refs;
-            const {accountName} = this.state;
+          const {password_input, account_input} = this.refs;
+          const {accountName} = this.state;
 
-            if (accountName && password_input) {
-                password_input.focus();
-            } else if (
-                account_input &&
-                typeof account_input.focus === "function"
-            ) {
-                account_input.focus();
-            }
+          if (accountName && password_input) {
+            password_input.focus();
+          } else if (
+            account_input &&
+            typeof account_input.focus === "function"
+          ) {
+            account_input.focus();
+          }
         }
-    }
+        document.addEventListener("click", this.overlayClosePopup);
+      }
+
+      componentWillUnmount() {
+        document.removeEventListener("click", this.overlayClosePopup);
+     }
+
+    overlayClosePopup = e => {
+        if (e.target.classList.contains("modal-overlay")) {
+          this.handleModalClose();
+        };
+    };
 
     componentDidUpdate() {
         const {resolve, modalId, isLocked} = this.props;
@@ -173,6 +189,10 @@ class WalletUnlockModal extends React.Component {
         );
 
         if (WalletDb.isLocked()) {
+            const hiddenPassError = this.refs.custom_error_password;
+            if(hiddenPassError) {
+                hiddenPassError.classList.remove("hidden");
+            }
             this.setState({passwordError: true});
         } else {
             const password_input = this.passwordInput();
@@ -180,7 +200,10 @@ class WalletUnlockModal extends React.Component {
                 password_input.clear();
             } else {
                 password_input.value = "";
-                if (cloudMode) AccountActions.setPasswordAccount(account);
+                if (cloudMode) {
+                    AccountActions.setPasswordAccount(account);
+                    AccountStore.tryToSetCurrentAccount();
+                }
             }
             WalletUnlockActions.change();
             if (stopAskingForBackup) WalletActions.setBackupDate();
@@ -219,17 +242,20 @@ class WalletUnlockModal extends React.Component {
     };
 
     handleLogin = e => {
-        if (e) e.preventDefault();
 
+        if (e) e.preventDefault();
         const {passwordLogin, backup} = this.props;
         const {walletSelected, accountName} = this.state;
-
         if (!passwordLogin && !walletSelected) {
             this.setState({
                 customError: counterpart.translate(
                     "wallet.ask_to_select_wallet"
                 )
             });
+            const hiddenPassError = this.refs.custom_error_password;
+            if(hiddenPassError) {
+                hiddenPassError.classList.remove("hidden");
+            }
         } else {
             this.setState({passwordError: null}, () => {
                 const password_input = this.passwordInput();
@@ -245,6 +271,18 @@ class WalletUnlockModal extends React.Component {
             });
         }
     };
+
+    onInputPassword = e => {
+        if(e.value.length > 0) {
+            this.setState({
+                isPassword: true
+            });
+        } else {
+            this.setState({
+                isPassword: false
+            });
+        }
+    }
 
     closeRedirect = path => {
         WalletUnlockActions.cancel();
@@ -352,7 +390,8 @@ class WalletUnlockModal extends React.Component {
             passwordError,
             customError,
             accountName,
-            stopAskingForBackup
+            stopAskingForBackup,
+            isPassword
         } = this.state;
 
         const noWalletNames = !(walletNames.size > 0);
@@ -370,9 +409,11 @@ class WalletUnlockModal extends React.Component {
                 id={modalId}
                 ref="modal"
                 overlay={true}
-                overlayClose={false}
-                modalHeader="header.unlock_short"
-                leftHeader
+                noLogo={true}
+                overlayClose={true}
+                modal
+                // modalHeader="header.unlock_short"
+                // leftHeader
             >
                 <form onSubmit={this.handleLogin} className="full-width">
                     <LoginTypeSelector />
@@ -389,14 +430,20 @@ class WalletUnlockModal extends React.Component {
                                 size={60}
                                 hideImage
                                 placeholder=" "
-                                useHR
+                                // useHR
                                 labelClass="login-label"
-                                reserveErrorSpace
+                                // reserveErrorSpace
                             />
-                            <CustomPasswordInput
-                                password_error={passwordError}
-                                ref="custom_password_input"
-                            />
+                            <div
+                                className="custom-password-title hidden"
+                                ref="custom_error_password"
+                            >
+                                <CustomPasswordInput
+                                    password_error={passwordError}
+                                    ref="custom_password_input"
+                                />
+                                <CustomError message={errorMessage} />
+                            </div>
                         </div>
                     ) : (
                         <div>
@@ -454,15 +501,23 @@ class WalletUnlockModal extends React.Component {
                                     </div>
                                 )}
                             </div>
-                            <PasswordInput
-                                ref="password_input"
-                                onEnter={this.handleLogin}
-                                noValidation
-                                labelClass="login-label"
-                            />
+                            <div
+                                className="custom-password-title hidden"
+                                ref="custom_error_password"
+                            >
+                                <PasswordInput
+                                    ref="password_input"
+                                    onEnter={this.handleLogin}
+                                    onChange={this.onInputPassword}
+                                    noValidation
+                                    labelClass="login-label"
+                                />
+                                <CustomError message={errorMessage} />
+                            </div>
+
                         </div>
                     )}
-                    <CustomError message={errorMessage} />
+
                     {this.shouldShowBackupWarning() && (
                         <BackupWarning
                             onChange={this.handleAskForBackupChange}
@@ -472,6 +527,8 @@ class WalletUnlockModal extends React.Component {
                     <LoginButtons
                         onLogin={this.handleLogin}
                         backupLogin={this.shouldUseBackupLogin()}
+                        isPassword={isPassword}
+                        passwordLogin={passwordLogin}
                     />
                 </form>
             </BaseModal>

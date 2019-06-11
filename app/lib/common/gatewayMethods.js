@@ -1,5 +1,5 @@
 import ls from "./localStorage";
-import {blockTradesAPIs, openledgerAPIs} from "api/apiConfig";
+//import {blockTradesAPIs, openledgerAPIs} from "api/apiConfig";
 import {availableGateways} from "common/gateways";
 const blockTradesStorage = new ls("");
 
@@ -15,7 +15,7 @@ function setCacheClearTimer(key) {
 }
 
 export function fetchCoins(
-    url = openledgerAPIs.BASE + openledgerAPIs.COINS_LIST
+//    url = openledgerAPIs.BASE + openledgerAPIs.COINS_LIST
 ) {
     const key = "fetchCoins_" + url;
     let currentPromise = fetchInProgess[key];
@@ -47,7 +47,7 @@ export function fetchCoins(
 }
 
 export function fetchCoinsSimple(
-    url = openledgerAPIs.BASE + openledgerAPIs.COINS_LIST
+//    url = openledgerAPIs.BASE + openledgerAPIs.COINS_LIST
 ) {
     return fetch(url)
         .then(reply =>
@@ -62,7 +62,7 @@ export function fetchCoinsSimple(
 }
 
 export function fetchTradingPairs(
-    url = blockTradesAPIs.BASE + blockTradesAPIs.TRADING_PAIRS
+//    url = blockTradesAPIs.BASE + blockTradesAPIs.TRADING_PAIRS
 ) {
     const key = "fetchTradingPairs_" + url;
     let currentPromise = fetchInProgess[key];
@@ -97,8 +97,8 @@ export function fetchTradingPairs(
 
 export function getDepositLimit(
     inputCoin,
-    outputCoin,
-    url = blockTradesAPIs.BASE + blockTradesAPIs.DEPOSIT_LIMIT
+    outputCoin
+//    url = blockTradesAPIs.BASE + blockTradesAPIs.DEPOSIT_LIMIT
 ) {
     return fetch(
         url +
@@ -126,8 +126,8 @@ export function getDepositLimit(
 export function estimateOutput(
     inputAmount,
     inputCoin,
-    outputCoin,
-    url = blockTradesAPIs.BASE + blockTradesAPIs.ESTIMATE_OUTPUT
+    outputCoin
+//    url = blockTradesAPIs.BASE + blockTradesAPIs.ESTIMATE_OUTPUT
 ) {
     return fetch(
         url +
@@ -157,8 +157,8 @@ export function estimateOutput(
 export function estimateInput(
     outputAmount,
     inputCoin,
-    outputCoin,
-    url = blockTradesAPIs.BASE + blockTradesAPIs.ESTIMATE_INPUT
+    outputCoin
+//    url = blockTradesAPIs.BASE + blockTradesAPIs.ESTIMATE_INPUT
 ) {
     return fetch(
         url +
@@ -189,7 +189,7 @@ export function estimateInput(
 }
 
 export function getActiveWallets(
-    url = openledgerAPIs.BASE + openledgerAPIs.ACTIVE_WALLETS
+//    url = openledgerAPIs.BASE + openledgerAPIs.ACTIVE_WALLETS
 ) {
     const key = "getActiveWallets_" + url;
     let currentPromise = fetchInProgess[key];
