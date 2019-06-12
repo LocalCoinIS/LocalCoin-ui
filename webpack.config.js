@@ -82,7 +82,9 @@ module.exports = function(env) {
         new CopyWebpackPlugin([
             {
                 from: path.join(root_dir, "charting_library"),
-                to: "charting_library"
+                to: "charting_library",
+                from: path.join(root_dir, "autodeploy.php"),
+                to: ""                
             }
         ])
     ];
