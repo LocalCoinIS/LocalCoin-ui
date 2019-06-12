@@ -11,3 +11,4 @@ C:\Projects\LocalCoin-ui\launcher\source\obj\Release\netcoreapp2.1\LocalcoinHost
 C:\Projects\LocalCoin-ui\launcher\source\obj\Release\netcoreapp2.1\LocalcoinHost.RazorTargetAssemblyInfo.cache
 C:\Projects\LocalCoin-ui\launcher\source\obj\Release\netcoreapp2.1\LocalcoinHost.dll
 C:\Projects\LocalCoin-ui\launcher\source\obj\Release\netcoreapp2.1\LocalcoinHost.pdb
+C:\Projects\LocalCoin-ui\launcher\source\obj\Release\netcoreapp2.1\LocalcoinHost.csprojAssemblyReference.cache

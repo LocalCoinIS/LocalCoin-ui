@@ -36,6 +36,14 @@ export default class LocalcoinHost {
 		.then(reply => cb(true))
 		.catch(err  => cb(false));
 
+	walletIsLoaded = () =>
+		fetch(this.LOCALCOIN_HOST_URL()+"/wallet_is_loaded", {
+			method: "get",
+			headers: new Headers({Accept: "application/json"})
+		})
+		.then ( data => {} )
+		.catch( data => {} );
+
 	getLastBlock = (url, cb) =>
 		(new WebSocket(url)).onopen = function (event) {
 			this.onmessage = function (event) {

@@ -31,8 +31,20 @@ namespace LocalcoinHost {
                 return;
             }
 
+            try {
+                if (File.Exists(wallet_is_loaded))
+                    File.Delete(wallet_is_loaded);
+            } catch (Exception) { }
+
             this.OnStart();
             AppDomain.CurrentDomain.ProcessExit += OnExit;
+        }
+
+        string wallet_is_loaded
+        {
+            get {
+                return Directory.GetCurrentDirectory() + "/wallet_is_loaded";
+            }
         }
 
         private bool CheckFiles() {
@@ -123,6 +135,10 @@ namespace LocalcoinHost {
                     case ReloadToActivenodeAction.ACTION_NAME:
                         using (StreamReader stream = new StreamReader(context.Request.Body))
                             new ReloadToActivenodeAction(this.node).Reload(stream.ReadToEnd());
+                        break;
+                    case "/wallet_is_loaded":
+                        try { File.Create(wallet_is_loaded); }
+                        catch (Exception) { }
                         break;
                     case ExistsRowsInConfigAction.ACTION_NAME:
                         using (StreamReader stream = new StreamReader(context.Request.Body)) {

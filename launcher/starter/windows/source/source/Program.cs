@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,29 +21,28 @@ namespace source
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TrayApplicationContext());
+
+            new Thread(() => new TrayApplicationContext()).Start();
+            Application.Run( new PreloaderForm() );
         }
     }
 
     public class TrayApplicationContext : ApplicationContext
     {
-        private NotifyIcon trayIcon;
+        NotifyIcon trayIcon;
 
         public TrayApplicationContext()
         {
             trayIcon = new NotifyIcon() {
                 Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location),
-                ContextMenu = new ContextMenu(new MenuItem[] {
-                new MenuItem("Exit", Exit)
-            }), Visible = true };
-            
-            LaunchHost();
+                ContextMenu = new ContextMenu(
+                    new MenuItem[] {
+                        new MenuItem("Exit", (object sender, EventArgs e) => Environment.Exit(0))
+                    }
+                ), Visible = true };
+                        
             AskCreateIcon();
-        }
-
-        void Exit(object sender, EventArgs e) {
-            
-            Environment.Exit(0);
+            LaunchHost();
         }
 
         void AskCreateIcon() {
@@ -84,9 +84,8 @@ namespace source
             object shDesktop = (object)"Desktop";
             WshShell shell = new WshShell();
             string shortcutAddress = (string)shell.SpecialFolders.Item(ref shDesktop) + @"\LocalCoin.lnk";
-            IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutAddress);
-            string app = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            shortcut.TargetPath = app;
+            IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutAddress);            
+            shortcut.TargetPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
             shortcut.Save();
         }
 
@@ -94,17 +93,17 @@ namespace source
         {
             try
             {
-                var process = Process.Start(new ProcessStartInfo()
-                {
-                    WorkingDirectory = LaunchHostWorkingDirectory,
-                    FileName = LaunchHostWorkingDirectory + LaunchHostFileName,
-                    WindowStyle = ProcessWindowStyle.Hidden
-                });
+                Process process = new Process();
+                process.StartInfo.WorkingDirectory = LaunchHostWorkingDirectory;
+                process.StartInfo.FileName = LaunchHostWorkingDirectory + LaunchHostFileName;
+                process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                process.Start();
 
                 process.PriorityClass = ProcessPriorityClass.AboveNormal;
-
                 process.EnableRaisingEvents = true;
                 process.Exited += (object sender, EventArgs e) => Environment.Exit(0);
+
+                process.WaitForExit(60000);
             }
             catch (Exception)
             {

@@ -146,8 +146,11 @@ class App extends React.Component {
         );
         updateGatewayBackers();
 
-        if(typeof window.electron !== "undefined")
+        if(typeof window.electron !== "undefined") {
             this.checkUpdate();
+            (new LocalcoinHost())
+                .walletIsLoaded();
+        }
 
         setTimeout(this.tryConnectToLocalNode,  3000);
         setInterval(this.tryConnectToLocalNode, 10000);

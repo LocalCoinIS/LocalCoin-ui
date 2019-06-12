@@ -9,3 +9,4 @@ C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\obj\Release\sour
 C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\obj\Release\source.csproj.CoreCompileInputs.cache
 C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\obj\Release\LocalCoin.exe
 C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\obj\Release\LocalCoin.pdb
+C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\obj\Release\source.PreloaderForm.resources
