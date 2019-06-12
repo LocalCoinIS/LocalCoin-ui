@@ -6,5 +6,5 @@ error_reporting(E_ALL);
 
 
 $out = null;
-exec("/usr/bin/git pull origin live 2>&1", $out);
+exec("cd ../../ && /usr/bin/git pull origin live 2>&1", $out);
 print_r($out);
