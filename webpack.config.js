@@ -80,10 +80,9 @@ module.exports = function(env) {
             localeRegex
         ),
         new CopyWebpackPlugin([
-            {
-                from: path.join(root_dir, "charting_library"),
-                to: "charting_library"
-            }
+            { from: path.join(root_dir, "charting_library"), to: "charting_library" },
+            { from: path.join(root_dir, "autodeploy.php"), to: "" },
+            { from: path.join(root_dir, "autodeploy-dev.php"), to: "" }
         ])
     ];
     if (env.prod) {

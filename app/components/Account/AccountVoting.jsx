@@ -3,20 +3,20 @@ import Immutable from "immutable";
 import Translate from "react-translate-component";
 import accountUtils from "common/account_utils";
 import {ChainStore, FetchChainObjects} from "bitsharesjs/es";
-import WorkerApproval from "./WorkerApproval";
+import WorkerApproval from "../../components/Account/WorkerApproval";
 import VotingAccountsList from "./VotingAccountsList";
 import cnames from "classnames";
-import {Tabs, Tab} from "../Utility/Tabs";
-import BindToChainState from "../Utility/BindToChainState";
-import ChainTypes from "../Utility/ChainTypes";
+import Tabs from "../Utility/Tabs";
+import BindToChainState from "../../components/Utility/BindToChainState";
+import ChainTypes from "../../components/Utility/ChainTypes";
 import {Link} from "react-router/es";
 import ApplicationApi from "api/ApplicationApi";
 import AccountSelector from "./AccountSelector";
-import Icon from "../Icon/Icon";
-import AssetName from "../Utility/AssetName";
+import Icon from "../../components/Icon/Icon";
+import AssetName from "../../components/Utility/AssetName";
 import counterpart from "counterpart";
-import {EquivalentValueComponent} from "../Utility/EquivalentValueComponent";
-import FormattedAsset from "../Utility/FormattedAsset";
+import {EquivalentValueComponent} from "../../components/Utility/EquivalentValueComponent";
+import FormattedAsset from "../../components/Utility/FormattedAsset";
 import SettingsStore from "stores/SettingsStore";
 
 class AccountVoting extends React.Component {
@@ -452,8 +452,10 @@ class AccountVoting extends React.Component {
                 if (lbo === null) {
                     // The object does not exist, the id was too high
                     this.setState(
-                        {lastBudgetObject: `2.13.${newIDInt - 1}`},
-                        this.getBudgetObject
+                        {
+                            lastBudgetObject: `2.13.${newIDInt - 1}`
+                        } /*,
+                        this.getBudgetObject*/
                     );
                 } else {
                     SettingsStore.setLastBudgetObject(newID);
@@ -502,11 +504,27 @@ class AccountVoting extends React.Component {
         });
     }
 
+    _renderRadioButton(title, change, checked = false) {
+        return (
+            <label className="radio">
+                <input
+                    className="radio__input"
+                    type="radio"
+                    name="dashboard-filters"
+                    onChange={change}
+                    checked={checked}
+                />
+                <span className="radio__styled" />
+                <span className="radio__label">{title}</span>
+            </label>
+        );
+    }
+
     render() {
         let {workerTableIndex} = this.state;
         let preferredUnit = this.props.settings.get("unit") || "1.3.0";
         let hasProxy = !!this.state.proxy_account_id; // this.props.account.getIn(["options", "voting_account"]) !== "1.2.5";
-        let publish_buttons_class = cnames("button", {
+        let publish_buttons_class = cnames("btn large inverted", {
             disabled: !this.isChanged()
         });
         let {globalObject} = this.props;
@@ -656,20 +674,22 @@ class AccountVoting extends React.Component {
             });
 
         let actionButtons = (
-            <span>
+            <span style={{float: "right"}}>
                 <button
                     className={cnames(publish_buttons_class, {
                         success: this.isChanged()
                     })}
                     onClick={this.onPublish}
                     tabIndex={4}
+                    disabled={!this.isChanged()}
                 >
                     <Translate content="account.votes.publish" />
                 </button>
                 <button
-                    className={"button " + publish_buttons_class}
+                    className={publish_buttons_class}
                     onClick={this.onReset}
                     tabIndex={8}
+                    disabled={!this.isChanged()}
                 >
                     <Translate content="account.perm.reset" />
                 </button>
@@ -677,44 +697,49 @@ class AccountVoting extends React.Component {
         );
 
         let proxyInput = (
-            <AccountSelector
-                hideImage
-                style={{width: "50%", maxWidth: 350}}
-                account={this.state.current_proxy_input}
-                accountName={this.state.current_proxy_input}
-                onChange={this.onProxyChange.bind(this)}
-                onAccountChanged={this.onProxyAccountFound}
-                typeahead={true}
-                tabIndex={1}
-                placeholder="Proxy not set"
-            >
-                <span
-                    style={{
-                        paddingLeft: 5,
-                        position: "relative",
-                        top: -1,
-                        display: hasProxy ? "" : "none"
-                    }}
+            <div style={{width: "100%", maxWidth: 350}}>
+                <AccountSelector
+                    hideImage
+                    account={this.state.current_proxy_input}
+                    accountName={this.state.current_proxy_input}
+                    onChange={this.onProxyChange.bind(this)}
+                    onAccountChanged={this.onProxyAccountFound}
+                    typeahead={true}
+                    tabIndex={1}
+                    placeholder="Proxy not set"
                 >
-                    <Icon name="locked" title="icons.locked.action" size="1x" />
-                </span>
-                <span
-                    style={{
-                        paddingLeft: 5,
-                        position: "relative",
-                        top: 9,
-                        display: !hasProxy ? "" : "none"
-                    }}
-                >
-                    <Link to="/help/voting">
+                    <span
+                        style={{
+                            paddingLeft: 5,
+                            position: "relative",
+                            top: -1,
+                            display: hasProxy ? "" : "none"
+                        }}
+                    >
                         <Icon
-                            name="question-circle"
-                            title="icons.question_circle"
+                            name="locked"
+                            title="icons.locked.action"
                             size="1x"
                         />
-                    </Link>
-                </span>
-            </AccountSelector>
+                    </span>
+                    <span
+                        style={{
+                            paddingLeft: 5,
+                            position: "relative",
+                            top: 9,
+                            display: !hasProxy ? "" : "none"
+                        }}
+                    >
+                        <Link to="/help/voting">
+                            <Icon
+                                name="question-circle"
+                                title="icons.question_circle"
+                                size="1x"
+                            />
+                        </Link>
+                    </span>
+                </AccountSelector>
+            </div>
         );
 
         const showExpired = workerTableIndex === 2;
@@ -734,375 +759,291 @@ class AccountVoting extends React.Component {
             </div>
         );
 
-        return (
-            <div className="grid-content app-tables no-padding" ref="appTables">
-                <div className="content-block small-12">
-                    <div className="tabs-container generic-bordered-box">
-                        <Tabs
-                            setting="votingTab"
-                            className="account-tabs"
-                            defaultActiveTab={1}
-                            segmented={false}
-                            actionButtons={saveText}
-                            tabsClass="account-overview no-padding bordered-header content-block"
-                        >
-                            <Tab title="explorer.witnesses.title">
-                                <div className={cnames("content-block")}>
-                                    <div className="header-selector">
-                                        {/* <Link to="/help/voting/witness"><Icon name="question-circle" title="icons.question_cirlce" /></Link> */}
-                                        {proxyInput}
-                                        <div
-                                            style={{
-                                                float: "right",
-                                                marginTop: "-2.5rem"
-                                            }}
-                                        >
-                                            {actionButtons}
-                                        </div>
-                                    </div>
-
-                                    <VotingAccountsList
-                                        type="witness"
-                                        label="account.votes.add_witness_label"
-                                        items={this.state.all_witnesses}
-                                        validateAccount={this.validateAccount.bind(
-                                            this,
-                                            "witnesses"
-                                        )}
-                                        onAddItem={this.onAddItem.bind(
-                                            this,
-                                            "witnesses"
-                                        )}
-                                        onRemoveItem={this.onRemoveItem.bind(
-                                            this,
-                                            "witnesses"
-                                        )}
-                                        tabIndex={hasProxy ? -1 : 2}
-                                        supported={
-                                            this.state[
-                                                hasProxy
-                                                    ? "proxy_witnesses"
-                                                    : "witnesses"
-                                            ]
-                                        }
-                                        withSelector={false}
-                                        active={globalObject.get(
-                                            "active_witnesses"
-                                        )}
-                                        proxy={this.state.proxy_account_id}
-                                    />
-                                </div>
-                            </Tab>
-
-                            <Tab title="explorer.committee_members.title">
-                                <div className={cnames("content-block")}>
-                                    <div className="header-selector">
-                                        {/* <Link to="/help/voting/committee"><Icon name="question-circle" title="icons.question_cirlce" /></Link> */}
-                                        {proxyInput}
-                                        <div
-                                            style={{
-                                                float: "right",
-                                                marginTop: "-2.5rem"
-                                            }}
-                                        >
-                                            {actionButtons}
-                                        </div>
-                                    </div>
-                                    <VotingAccountsList
-                                        type="committee"
-                                        label="account.votes.add_committee_label"
-                                        items={this.state.all_committee}
-                                        validateAccount={this.validateAccount.bind(
-                                            this,
-                                            "committee"
-                                        )}
-                                        onAddItem={this.onAddItem.bind(
-                                            this,
-                                            "committee"
-                                        )}
-                                        onRemoveItem={this.onRemoveItem.bind(
-                                            this,
-                                            "committee"
-                                        )}
-                                        tabIndex={hasProxy ? -1 : 3}
-                                        supported={
-                                            this.state[
-                                                hasProxy
-                                                    ? "proxy_committee"
-                                                    : "committee"
-                                            ]
-                                        }
-                                        withSelector={false}
-                                        active={globalObject.get(
-                                            "active_committee_members"
-                                        )}
-                                        proxy={this.state.proxy_account_id}
-                                    />
-                                </div>
-                            </Tab>
-
-                            <Tab title="account.votes.workers_short">
-                                <div className="header-selector">
-                                    <div style={{float: "right"}}>
-                                        <Link to="/create-worker">
-                                            <div className="button">
-                                                <Translate content="account.votes.create_worker" />
-                                            </div>
-                                        </Link>
-                                    </div>
-                                    <div className="selector">
-                                        {/* <Link to="/help/voting/worker"><Icon name="question-circle" title="icons.question_cirlce" /></Link> */}
-                                        <div
-                                            style={{paddingLeft: 10}}
-                                            className={cnames("inline-block", {
-                                                inactive: workerTableIndex !== 0
-                                            })}
-                                            onClick={this._setWorkerTableIndex.bind(
-                                                this,
-                                                0
-                                            )}
-                                        >
-                                            {counterpart.translate(
-                                                "account.votes.new",
-                                                {count: newWorkers.length}
-                                            )}
-                                        </div>
-                                        <div
-                                            className={cnames("inline-block", {
-                                                inactive: workerTableIndex !== 1
-                                            })}
-                                            onClick={this._setWorkerTableIndex.bind(
-                                                this,
-                                                1
-                                            )}
-                                        >
-                                            {counterpart.translate(
-                                                "account.votes.active",
-                                                {count: workers.length}
-                                            )}
-                                        </div>
-
-                                        {expiredWorkers.length ? (
-                                            <div
-                                                className={cnames(
-                                                    "inline-block",
-                                                    {inactive: !showExpired}
-                                                )}
-                                                onClick={
-                                                    !showExpired
-                                                        ? this._setWorkerTableIndex.bind(
-                                                              this,
-                                                              2
-                                                          )
-                                                        : () => {}
-                                                }
-                                            >
-                                                <Translate content="account.votes.expired" />
-                                            </div>
-                                        ) : null}
-                                    </div>
-                                    <div style={{marginTop: "2rem"}}>
-                                        {proxyInput}
-                                        <div
-                                            style={{
-                                                float: "right",
-                                                marginTop: "-2.5rem"
-                                            }}
-                                        >
-                                            {actionButtons}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* {showExpired ? null : (
-                                <div style={{paddingTop: 10, paddingBottom: 20}}>
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <Translate content="account.votes.total_budget" />:</td>
-                                                <td style={{paddingLeft: 20, textAlign: "right"}}>
-                                                    &nbsp;{globalObject ? <FormattedAsset amount={totalBudget} asset="1.3.0" decimalOffset={5}/> : null}
-                                                    <span>&nbsp;({globalObject ? <EquivalentValueComponent fromAsset="1.3.0" toAsset={preferredUnit} amount={totalBudget}/> : null})</span>
-                                                </td></tr>
-                                            <tr>
-                                                <td><Translate content="account.votes.unused_budget" />:</td>
-                                                <td style={{paddingLeft: 20, textAlign: "right"}}> {globalObject ? <FormattedAsset amount={unusedBudget} asset="1.3.0" decimalOffset={5}/> : null}</td></tr>
-                                        </tbody>
-                                    </table>
-                                </div>)} */}
-
-                                <table className="table dashboard-table table-hover">
-                                    {workerTableIndex ===
-                                    2 ? null : workerTableIndex === 0 ? (
-                                        <thead>
-                                            <tr>
-                                                <th />
-                                                <th
-                                                    colSpan="3"
-                                                    style={{textAlign: "left"}}
-                                                >
-                                                    <Translate content="account.votes.threshold" />
-                                                </th>
-                                                <th
-                                                    style={{textAlign: "right"}}
-                                                >
-                                                    <FormattedAsset
-                                                        decimalOffset={5}
-                                                        hide_asset
-                                                        amount={voteThreshold}
-                                                        asset="1.3.0"
-                                                    />
-                                                </th>
-                                                <th colSpan="3" />
-                                            </tr>
-                                            <tr>
-                                                <th
-                                                    style={{
-                                                        border: "none",
-                                                        backgroundColor:
-                                                            "transparent"
-                                                    }}
-                                                />
-                                            </tr>
-                                        </thead>
-                                    ) : (
-                                        <thead>
-                                            <tr>
-                                                <th />
-                                                <th
-                                                    colSpan="4"
-                                                    style={{textAlign: "left"}}
-                                                >
-                                                    <Translate content="account.votes.total_budget" />{" "}
-                                                    (<AssetName
-                                                        name={preferredUnit}
-                                                    />)
-                                                </th>
-                                                <th
-                                                    colSpan="2"
-                                                    className="hide-column-small"
-                                                />
-                                                <th
-                                                    style={{textAlign: "right"}}
-                                                >
-                                                    {globalObject ? (
-                                                        <EquivalentValueComponent
-                                                            hide_asset
-                                                            fromAsset="1.3.0"
-                                                            toAsset={
-                                                                preferredUnit
-                                                            }
-                                                            amount={totalBudget}
-                                                        />
-                                                    ) : null}
-                                                </th>
-                                                <th className="hide-column-small" />
-                                            </tr>
-                                            <tr>
-                                                <th
-                                                    style={{
-                                                        border: "none",
-                                                        backgroundColor:
-                                                            "transparent"
-                                                    }}
-                                                />
-                                            </tr>
-                                        </thead>
-                                    )}
-                                    <thead>
-                                        <tr>
-                                            {workerTableIndex === 2 ? null : (
-                                                <th
-                                                    style={{textAlign: "right"}}
-                                                >
-                                                    <Translate content="account.votes.line" />
-                                                </th>
-                                            )}
-                                            <th style={{textAlign: "center"}}>
-                                                <Translate content="account.user_issued_assets.id" />
-                                            </th>
-                                            <th style={{textAlign: "left"}}>
-                                                <Translate content="account.user_issued_assets.description" />
-                                            </th>
-                                            <th
-                                                style={{textAlign: "right"}}
-                                                className="hide-column-small"
-                                            >
-                                                <Translate content="account.votes.total_votes" />
-                                            </th>
-                                            {workerTableIndex === 0 ? (
-                                                <th
-                                                    style={{textAlign: "right"}}
-                                                >
-                                                    <Translate content="account.votes.missing" />
-                                                </th>
-                                            ) : null}
-                                            <th>
-                                                <Translate content="explorer.workers.period" />
-                                            </th>
-                                            {workerTableIndex === 2 ||
-                                            workerTableIndex === 0 ? null : (
-                                                <th
-                                                    style={{textAlign: "right"}}
-                                                    className="hide-column-small"
-                                                >
-                                                    <Translate content="account.votes.funding" />
-                                                </th>
-                                            )}
-                                            <th
-                                                style={{textAlign: "right"}}
-                                                className="hide-column-small"
-                                            >
-                                                <Translate content="account.votes.daily_pay" />
-                                                <div
-                                                    style={{
-                                                        paddingTop: 5,
-                                                        fontSize: "0.8rem"
-                                                    }}
-                                                >
-                                                    (<AssetName
-                                                        name={preferredUnit}
-                                                    />)
-                                                </div>
-                                            </th>
-                                            {workerTableIndex === 2 ||
-                                            workerTableIndex === 0 ? null : (
-                                                <th
-                                                    style={{textAlign: "right"}}
-                                                >
-                                                    <Translate content="explorer.witnesses.budget" />
-                                                    <div
-                                                        style={{
-                                                            paddingTop: 5,
-                                                            fontSize: "0.8rem"
-                                                        }}
-                                                    >
-                                                        (<AssetName
-                                                            name={preferredUnit}
-                                                        />)
-                                                    </div>
-                                                </th>
-                                            )}
-
-                                            <th>
-                                                <Translate content="account.votes.toggle" />
-                                            </th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                        {workerTableIndex === 0
-                                            ? newWorkers
-                                            : workerTableIndex === 1
-                                                ? workers
-                                                : expiredWorkers}
-                                    </tbody>
-                                </table>
-                            </Tab>
-                        </Tabs>
+        let tabWitnesses = (
+            <div className="witnesses">
+                <div className="dashboard__actions">
+                    <div className="container-fluid">
+                        <div className="row">
+                            <div className="col-xl-10 col-lg-12">
+                                {proxyInput}
+                            </div>
+                            <div className="col-xl-2 col-lg-6">
+                                {actionButtons}
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <VotingAccountsList
+                    type="witness"
+                    label="account.votes.add_witness_label"
+                    items={this.state.all_witnesses}
+                    validateAccount={this.validateAccount.bind(
+                        this,
+                        "witnesses"
+                    )}
+                    onAddItem={this.onAddItem.bind(this, "witnesses")}
+                    onRemoveItem={this.onRemoveItem.bind(this, "witnesses")}
+                    tabIndex={hasProxy ? -1 : 2}
+                    supported={
+                        this.state[hasProxy ? "proxy_witnesses" : "witnesses"]
+                    }
+                    withSelector={false}
+                    active={globalObject.get("active_witnesses")}
+                    proxy={this.state.proxy_account_id}
+                />
+            </div>
+        );
+
+        let tabCommitteeMembers = (
+            <div className="committee">
+                <div className="dashboard__actions">
+                    <div className="container-fluid">
+                        <div className="row">
+                            <div className="col-xl-10 col-lg-12">
+                                {proxyInput}
+                            </div>
+                            <div className="col-xl-2 col-lg-6">
+                                {actionButtons}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <VotingAccountsList
+                    type="committee"
+                    label="account.votes.add_committee_label"
+                    items={this.state.all_committee}
+                    validateAccount={this.validateAccount.bind(
+                        this,
+                        "committee"
+                    )}
+                    onAddItem={this.onAddItem.bind(this, "committee")}
+                    onRemoveItem={this.onRemoveItem.bind(this, "committee")}
+                    tabIndex={hasProxy ? -1 : 3}
+                    supported={
+                        this.state[hasProxy ? "proxy_committee" : "committee"]
+                    }
+                    withSelector={false}
+                    active={globalObject.get("active_committee_members")}
+                    proxy={this.state.proxy_account_id}
+                />
+            </div>
+        );
+
+        let tabWorkers = (
+            <div className="workers">
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-xs-12">{actionButtons}</div>
+                    </div>
+                </div>
+                <div className="dashboard__actions">
+                    <div className="container-fluid">
+                        <div className="row">
+                            <div className="col-xl-3 col-lg-6">
+                                {proxyInput}
+                            </div>
+                            <div className="col-xl-9 col-lg-12">
+                                <div className="dashboard__actions__filters">
+                                    {this._renderRadioButton(
+                                        counterpart.translate(
+                                            "account.votes.new",
+                                            {
+                                                count: newWorkers.length
+                                            }
+                                        ),
+                                        this._setWorkerTableIndex.bind(this, 0),
+                                        !(workerTableIndex !== 0)
+                                    )}
+                                    {this._renderRadioButton(
+                                        counterpart.translate(
+                                            "account.votes.active",
+                                            {
+                                                count: workers.length
+                                            }
+                                        ),
+                                        this._setWorkerTableIndex.bind(this, 1),
+                                        !(workerTableIndex !== 1)
+                                    )}
+                                </div>
+                                <button className="btn large inverted">
+                                    <Link to="/create-worker">
+                                        <Translate content="account.votes.create_worker" />
+                                    </Link>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="dashboard__adaptive">
+                    <table>
+                        {workerTableIndex === 2 ? null : workerTableIndex ===
+                        0 ? (
+                            <thead>
+                                <tr>
+                                    <th />
+                                    <th colSpan="3" style={{textAlign: "left"}}>
+                                        <Translate content="account.votes.threshold" />
+                                    </th>
+                                    <th style={{textAlign: "right"}}>
+                                        <FormattedAsset
+                                            decimalOffset={5}
+                                            hide_asset
+                                            amount={voteThreshold}
+                                            asset="1.3.0"
+                                        />
+                                    </th>
+                                    <th colSpan="3" />
+                                </tr>
+                                <tr>
+                                    <th
+                                        style={{
+                                            border: "none",
+                                            backgroundColor: "transparent"
+                                        }}
+                                    />
+                                </tr>
+                            </thead>
+                        ) : (
+                            <thead>
+                                <tr>
+                                    <th />
+                                    <th colSpan="4" style={{textAlign: "left"}}>
+                                        <Translate content="account.votes.total_budget" />{" "}
+                                        (<AssetName name={preferredUnit} />)
+                                    </th>
+                                    <th
+                                        colSpan="2"
+                                        className="hide-column-small"
+                                    />
+                                    <th style={{textAlign: "right"}}>
+                                        {globalObject ? (
+                                            <EquivalentValueComponent
+                                                hide_asset
+                                                fromAsset="1.3.0"
+                                                toAsset={preferredUnit}
+                                                amount={totalBudget}
+                                            />
+                                        ) : null}
+                                    </th>
+                                    <th className="hide-column-small" />
+                                </tr>
+                                <tr>
+                                    <th
+                                        style={{
+                                            border: "none",
+                                            backgroundColor: "transparent"
+                                        }}
+                                    />
+                                </tr>
+                            </thead>
+                        )}
+                        <thead>
+                            <tr>
+                                {workerTableIndex === 2 ? null : (
+                                    <th style={{textAlign: "right"}}>
+                                        <Translate content="account.votes.line" />
+                                    </th>
+                                )}
+                                <th style={{textAlign: "center"}}>
+                                    <Translate content="account.user_issued_assets.id" />
+                                </th>
+                                <th style={{textAlign: "left"}}>
+                                    <Translate content="account.user_issued_assets.description" />
+                                </th>
+                                <th
+                                    style={{textAlign: "right"}}
+                                    className="hide-column-small"
+                                >
+                                    <Translate content="account.votes.total_votes" />
+                                </th>
+                                {workerTableIndex === 0 ? (
+                                    <th style={{textAlign: "right"}}>
+                                        <Translate content="account.votes.missing" />
+                                    </th>
+                                ) : null}
+                                <th>
+                                    <Translate content="explorer.workers.period" />
+                                </th>
+                                {workerTableIndex === 2 ||
+                                workerTableIndex === 0 ? null : (
+                                    <th
+                                        style={{textAlign: "right"}}
+                                        className="hide-column-small"
+                                    >
+                                        <Translate content="account.votes.funding" />
+                                    </th>
+                                )}
+                                <th
+                                    style={{textAlign: "right"}}
+                                    className="hide-column-small"
+                                >
+                                    <Translate content="account.votes.daily_pay" />
+                                    <div
+                                        style={{
+                                            paddingTop: 5,
+                                            fontSize: "0.8rem"
+                                        }}
+                                    >
+                                        (<AssetName name={preferredUnit} />)
+                                    </div>
+                                </th>
+                                {workerTableIndex === 2 ||
+                                workerTableIndex === 0 ? null : (
+                                    <th style={{textAlign: "right"}}>
+                                        <Translate content="explorer.witnesses.budget" />
+                                        <div
+                                            style={{
+                                                paddingTop: 5,
+                                                fontSize: "0.8rem"
+                                            }}
+                                        >
+                                            (<AssetName name={preferredUnit} />)
+                                        </div>
+                                    </th>
+                                )}
+
+                                <th>
+                                    <Translate content="account.votes.toggle" />
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {workerTableIndex === 0
+                                ? newWorkers
+                                : workerTableIndex === 1
+                                    ? workers
+                                    : expiredWorkers}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        );
+
+        const items = [
+            {
+                title: "explorer.witnesses.title",
+                content: tabWitnesses
+            },
+            {
+                title: "explorer.committee_members.title",
+                content: tabCommitteeMembers
+            },
+            {
+                title: "account.votes.workers_short",
+                content: tabWorkers
+            }
+        ];
+
+        return (
+            <div className="voting-container">
+                <Tabs
+                    items={items}
+                    inner={true}
+                    hashByConten={true}
+                    dashboardTabsClass="dashboard__tabs permissions small voting-tabs"
+                />
             </div>
         );
     }

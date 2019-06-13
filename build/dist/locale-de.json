@@ -733,6 +733,7 @@
         "connected": "Verbunden",
         "connection": "Keine Blockchain Verbindung",
         "disconnected": "Getrennt",
+        "ieo": "IEO",
         "latency": "Latenzzeit",
         "loading": "Lade ...",
         "nosync": "Dein Verbindungsknoten ist nicht mehr synchron.",

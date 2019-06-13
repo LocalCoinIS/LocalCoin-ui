@@ -1,5 +1,5 @@
 import React from "react";
-import Identicon from "../../components-brand-new/Account/Identicon";
+import Identicon from "../../components/Account/Identicon";
 import {Component} from "react";
 import PropTypes from "prop-types";
 

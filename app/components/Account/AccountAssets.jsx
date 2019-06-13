@@ -5,20 +5,21 @@ import Translate from "react-translate-component";
 import AssetActions from "actions/AssetActions";
 import AssetStore from "stores/AssetStore";
 import AccountActions from "actions/AccountActions";
-import BaseModal from "../Modal/BaseModal";
-import FormattedAsset from "../Utility/FormattedAsset";
+import BaseModal from "../../components/Modal/BaseModal";
+import FormattedAsset from "../../components/Utility/FormattedAsset";
 import ZfApi from "react-foundation-apps/src/utils/foundation-api";
 import notify from "actions/NotificationActions";
 import utils from "common/utils";
 import {debounce} from "lodash-es";
-import LoadingIndicator from "../LoadingIndicator";
-import IssueModal from "../Modal/IssueModal";
-import ReserveAssetModal from "../Modal/ReserveAssetModal";
+import LoadingIndicator from "../../components/LoadingIndicator";
+import IssueModal from "../../components/Modal/IssueModal";
+import ReserveAssetModal from "../../components/Modal/ReserveAssetModal";
 import {connect} from "alt-react";
 import assetUtils from "common/asset_utils";
 import {Map, List} from "immutable";
-import AssetWrapper from "../Utility/AssetWrapper";
-import {Tabs, Tab} from "../Utility/Tabs";
+import AssetWrapper from "../../components/Utility/AssetWrapper";
+import {Tabs, Tab} from "../../components/Utility/Tabs";
+import counterpart from "counterpart";
 
 class AccountAssets extends React.Component {
     static defaultProps = {
@@ -270,9 +271,11 @@ class AccountAssets extends React.Component {
                                         asset.id,
                                         asset.symbol
                                     )}
-                                    className="button"
+                                    className="btn outline"
                                 >
-                                    <Translate content="transaction.trxTypes.asset_issue" />
+                                    {counterpart.translate(
+                                        "transaction.trxTypes.asset_issue"
+                                    )}
                                 </button>
                             ) : null}
                         </td>
@@ -284,7 +287,7 @@ class AccountAssets extends React.Component {
                                         this,
                                         asset.id
                                     )}
-                                    className="button"
+                                    className="btn outline"
                                 >
                                     <Translate content="transaction.trxTypes.asset_reserve" />
                                 </button>
@@ -298,9 +301,11 @@ class AccountAssets extends React.Component {
                                     asset.symbol,
                                     account_name
                                 )}
-                                className="button"
+                                className="btn outline"
                             >
-                                <Translate content="transaction.trxTypes.asset_update" />
+                                {counterpart.translate(
+                                    "transaction.trxTypes.asset_update"
+                                )}
                             </button>
                         </td>
                     </tr>
@@ -309,86 +314,80 @@ class AccountAssets extends React.Component {
             .toArray();
 
         return (
-            <div className="grid-content app-tables no-padding" ref="appTables">
-                <div className="content-block small-12">
-                    <div className="tabs-container generic-bordered-box">
-                        <Tabs
-                            segmented={false}
-                            setting="issuedAssetsTab"
-                            className="account-tabs"
-                            tabsClass="account-overview bordered-header content-block"
-                            contentClass="padding"
-                        >
-                            <Tab title="account.user_issued_assets.issued_assets">
-                                <div className="content-block">
-                                    <table className="table dashboard-table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>
-                                                    <Translate content="account.user_issued_assets.symbol" />
-                                                </th>
-                                                <th style={{maxWidth: "200px"}}>
-                                                    <Translate content="account.user_issued_assets.description" />
-                                                </th>
-                                                <Translate
-                                                    component="th"
-                                                    content="markets.supply"
-                                                />
-                                                <th>
-                                                    <Translate content="account.user_issued_assets.max_supply" />
-                                                </th>
-                                                <th
-                                                    style={{
-                                                        textAlign: "center"
-                                                    }}
-                                                    colSpan="3"
-                                                >
-                                                    <Translate content="account.perm.action" />
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>{myAssets}</tbody>
-                                    </table>
-                                </div>
+            <div className="assets-layout">
+                <h2 className="content__heading">
+                    {counterpart.translate(
+                        "account.user_issued_assets.issued_assets"
+                    )}
+                </h2>
+                <div className="negative-margins">
+                    <div className="container-fluid">
+                        <div className="content-block">
+                            <table className="blue-bg with-borders">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <Translate content="account.user_issued_assets.symbol" />
+                                        </th>
+                                        <th style={{maxWidth: "200px"}}>
+                                            <Translate content="account.user_issued_assets.description" />
+                                        </th>
+                                        <Translate
+                                            component="th"
+                                            content="markets.supply"
+                                        />
+                                        <th>
+                                            <Translate content="account.user_issued_assets.max_supply" />
+                                        </th>
+                                        <th
+                                            style={{
+                                                textAlign: "center"
+                                            }}
+                                            colSpan="3"
+                                        >
+                                            <Translate content="account.perm.action" />
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>{myAssets}</tbody>
+                            </table>
+                        </div>
 
-                                <div className="content-block">
-                                    <Link
-                                        to={`/account/${account_name}/create-asset/`}
-                                    >
-                                        <button className="button">
-                                            <Translate content="transaction.trxTypes.asset_create" />
-                                        </button>
-                                    </Link>
-                                </div>
-                            </Tab>
-                        </Tabs>
+                        <div className="content-block">
+                            <Link to={`/account/${account_name}/create-asset/`}>
+                                <button className="btn large inverted">
+                                    {counterpart.translate(
+                                        "transaction.trxTypes.asset_create"
+                                    )}
+                                </button>
+                            </Link>
+                        </div>
                     </div>
-
-                    <BaseModal id="issue_asset" overlay={true}>
-                        <br />
-                        <div className="grid-block vertical">
-                            <IssueModal
-                                asset_to_issue={this.state.issue.asset_id}
-                                onClose={() => {
-                                    ZfApi.publish("issue_asset", "close");
-                                }}
-                            />
-                        </div>
-                    </BaseModal>
-
-                    <BaseModal id="reserve_asset" overlay={true}>
-                        <br />
-                        <div className="grid-block vertical">
-                            <ReserveAssetModal
-                                assetId={this.state.reserve}
-                                account={account}
-                                onClose={() => {
-                                    ZfApi.publish("reserve_asset", "close");
-                                }}
-                            />
-                        </div>
-                    </BaseModal>
                 </div>
+                <BaseModal id="issue_asset" overlay={true}>
+                    <br />
+                    <div className="grid-block vertical">
+                        <IssueModal
+                            asset_to_issue={this.state.issue.asset_id}
+                            onClose={() => {
+                                ZfApi.publish("issue_asset", "close");
+                            }}
+                        />
+                    </div>
+                </BaseModal>
+
+                <BaseModal id="reserve_asset" overlay={true}>
+                    <br />
+                    <div className="grid-block vertical">
+                        <ReserveAssetModal
+                            assetId={this.state.reserve}
+                            account={account}
+                            onClose={() => {
+                                ZfApi.publish("reserve_asset", "close");
+                            }}
+                        />
+                    </div>
+                </BaseModal>
             </div>
         );
     }
@@ -400,20 +399,23 @@ AccountAssets = AssetWrapper(AccountAssets, {
     withDynamic: true
 });
 
-export default connect(AccountAssets, {
-    listenTo() {
-        return [AssetStore];
-    },
-    getProps(props) {
-        let assets = Map(),
-            assetsList = List();
-        if (props.account.get("assets", []).size) {
-            props.account.get("assets", []).forEach(id => {
-                assetsList = assetsList.push(id);
-            });
-        } else {
-            assets = AssetStore.getState().assets;
+export default connect(
+    AccountAssets,
+    {
+        listenTo() {
+            return [AssetStore];
+        },
+        getProps(props) {
+            let assets = Map(),
+                assetsList = List();
+            if (props.account.get("assets", []).size) {
+                props.account.get("assets", []).forEach(id => {
+                    assetsList = assetsList.push(id);
+                });
+            } else {
+                assets = AssetStore.getState().assets;
+            }
+            return {assets, assetsList};
         }
-        return {assets, assetsList};
     }
-});
+);

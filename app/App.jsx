@@ -22,7 +22,7 @@ import Header from "components/Layout/Header";
 import ReactTooltip from "react-tooltip";
 import NotificationSystem from "react-notification-system";
 import TransactionConfirm from "./components/Blockchain/TransactionConfirm";
-import WalletUnlockModal from "./components-brand-new/Wallet/WalletUnlockModal";
+import WalletUnlockModal from "./components/Wallet/WalletUnlockModal";
 import BrowserSupportModal from "./components/Modal/BrowserSupportModal";
 import Footer from "./components/Layout/Footer";
 import Deprecate from "./Deprecate";
@@ -48,6 +48,9 @@ class App extends React.Component {
     constructor(props) {
         super();
 
+        if(this.isLocalNodeRunning())
+            this.connectToAnyNotLocalNode(true);
+
         let syncFail =
             ChainStore.subError &&
             ChainStore.subError.message ===
@@ -70,6 +73,113 @@ class App extends React.Component {
         this._chainStoreSub = this._chainStoreSub.bind(this);
         this._syncStatus = this._syncStatus.bind(this);
         this._getWindowHeight = this._getWindowHeight.bind(this);
+    }
+
+    isDisconnect = () => BlockchainStore
+        .getState()
+        .rpc_connection_status === "closed";
+
+    connectToAnyNotLocalNode(onlyIfIsLocalNodeRunning, onlyIfIsDisconnect) {
+        if(typeof window.tryReconnectToExtNode !== "undefined" && window.tryReconnectToExtNode === true) return;
+
+        onlyIfIsLocalNodeRunning = typeof onlyIfIsLocalNodeRunning === "undefined" ? false : onlyIfIsLocalNodeRunning;
+        onlyIfIsDisconnect       = typeof onlyIfIsDisconnect       === "undefined" ? false : onlyIfIsDisconnect;
+
+        /**
+         * только если запущена локальная нода,
+         * или не соединена никакая нода
+         */
+        if     (onlyIfIsLocalNodeRunning && this.isLocalNodeRunning()) { /* OK */ }
+        else if(onlyIfIsDisconnect       && this.isDisconnect())       { /* OK */ }
+        else                                                           {  return; }
+
+        //ноды, которые не резолвятся, исключаем при дальнейших соединениях
+        if(typeof window.excludeNodes === "undefined")
+            window.excludeNodes = [];
+
+        //Ноды, отсортированные по пингу
+        let nodes = SettingsStore
+            .getState()
+            .apiLatencies;
+
+        for(let node in nodes) {
+            if(node == null || typeof node === "undefined" || node == "") continue;
+
+            //если идем по нодам по второму кругу
+            if(window.excludeNodes.length === nodes.length) window.excludeNodes = [];
+            //пропускаем ноду, не рачая
+            if(window.excludeNodes.indexOf(node) !== -1)    continue;
+
+            //на этом этапе нельзя коннектиться к локальной ноде
+            if((node + "").indexOf("//127.0.0.1:") !== -1 || (node + "").indexOf("//localhost:") !== -1) {
+                window.excludeNodes.push(node);
+                continue;
+            }
+
+            try {
+                //проверяем ноду, если резолвится, коннектимся к ней
+                let socket = new WebSocket(node);
+
+                //нода резолвится
+                socket.onopen = () => {
+                    try {
+                        //запретим пока все процессы соединения нод
+                        window.tryReconnectToExtNode = true;
+
+                        if(typeof window.tryReconnectToExtNodeTimeout !== "undefined" && window.tryReconnectToExtNodeTimeout !== null)
+                            clearTimeout(window.tryReconnectToExtNodeTimeout);
+
+                        window.tryReconnectToExtNodeTimeout = setTimeout(() => {
+                            window.tryReconnectToExtNode = false;
+                            clearTimeout(window.tryReconnectToExtNodeTimeout);
+                            window.tryReconnectToExtNodeTimeout = null;
+                        }, 30000);
+                        
+                        socket.close();
+
+                        /**
+                         * только если запущена локальная нода,
+                         * или не соединена никакая нода
+                         */
+                        if( (onlyIfIsLocalNodeRunning && this.isLocalNodeRunning()) ||
+                            (onlyIfIsDisconnect       && this.isDisconnect()      ) ) {
+
+                                //устанавливаем ноду
+                                SettingsActions.changeSetting({
+                                    setting : "apiServer",
+                                    value   : node
+                                });
+
+                                //завершаем в отдельном потоке инициализирование ноды
+                                setTimeout(
+                                    function() {
+                                        willTransitionTo( this.props.router, this.props.router.replace, () => {}, false );
+
+                                        setTimeout(() => {
+                                            window.tryReconnectToExtNode = false;
+                                            clearTimeout(window.tryReconnectToExtNodeTimeout);
+                                            window.tryReconnectToExtNodeTimeout = null;
+                                        }, 3000);
+
+                                        this.checkPageAfterReconnect();
+                                    }.bind(this),
+                                    100
+                                );
+                        }
+                    } catch(ex) {
+                        window.excludeNodes.push(node);
+                        window.tryReconnectToExtNode = false;
+                        clearTimeout(window.tryReconnectToExtNodeTimeout);
+                        window.tryReconnectToExtNodeTimeout = null;
+                    }
+                };
+            } catch(ex) {
+                window.excludeNodes.push(node);
+                window.tryReconnectToExtNode = false;
+                clearTimeout(window.tryReconnectToExtNodeTimeout);
+                window.tryReconnectToExtNodeTimeout = null;
+            }
+        }
     }
 
     componentWillUnmount() {
@@ -152,18 +262,51 @@ class App extends React.Component {
                 .walletIsLoaded();
         }
 
-        setTimeout(this.tryConnectToLocalNode,  3000);
+        setTimeout (this.tryConnectToLocalNode,  3000);
         setInterval(this.tryConnectToLocalNode, 10000);
+        setTimeout (() => this.connectToAnyNotLocalNode(false, true),  300);
+        setInterval(() => this.connectToAnyNotLocalNode(false, true), 5000);
+    }
+
+    /**
+     * если страница умирает и не возвращается в нормальное состояние 5 сек, перезагружаем ее
+     */
+    checkPageAfterReconnect() {
+        let checker = () => {
+            if(typeof window.pageIsDeadCNT === "undefined")
+                window.pageIsDeadCNT = 0;
+
+            if(document.getElementById("content") === null || document.getElementById("content").innerHTML == "") {
+                window.pageIsDeadCNT++;
+            } else {
+                window.pageIsDeadCNT = 0;
+            }
+
+            if(window.pageIsDeadCNT > 5) {
+                console.log("window.pageIsDeadCNT > 5 && location.reload();");
+                location.reload();
+                clearInterval(window.pageIsDeadChecker);
+                window.pageIsDeadChecker = null;
+            }
+        };
+
+        if(typeof window.pageIsDeadChecker !== "undefined" && window.pageIsDeadChecker !== null) {
+            clearInterval(window.pageIsDeadChecker);
+            window.pageIsDeadChecker = null;
+        }
+
+        window.pageIsDeadChecker = setInterval(checker, 1000);
+        checker();
     }
 
     //проверим или нода синхронизирована и переключаем
     activateNode(url) {
         //уберем флаг коннекта к локальной ноде
         let removeConnectFlat = () => {
-            if(typeof window.tryReconnect === "undefined" ) return;
-            if(window.tryReconnect === false ) return;
+            if(typeof window.tryReconnectToLocalNode === "undefined" ) return;
+            if(window.tryReconnectToLocalNode === false ) return;
 
-            setTimeout( () => { window.tryReconnect = false; }, 10000 )
+            setTimeout( () => { window.tryReconnectToLocalNode = false; }, 10000 )
         };
 
         //переключаемся на ноду
@@ -206,7 +349,7 @@ class App extends React.Component {
     tryConnectToLocalNode = () => {
         //если локальная нода не запущена и не выполняется коннект к ней
         if(this.isLocalNodeRunning()) return;
-        if(typeof window.tryReconnect !== "undefined" && window.tryReconnect === true) return;
+        if(typeof window.tryReconnectToLocalNode !== "undefined" && window.tryReconnectToLocalNode === true) return;
 
         //пройдемся по доступным нодам, найдем локальные, пробуем коннектиться
         let nodes = SettingsStore.getState().defaults.apiServer;
@@ -222,13 +365,16 @@ class App extends React.Component {
             try {
                 let socket = new WebSocket(node.url);
                 socket.onopen = () => {
-                    //если локальная нода не запущена и не выполняется коннект к ней
-                    if(this.isLocalNodeRunning()) return;
-                    if(typeof window.tryReconnect !== "undefined" && window.tryReconnect === true) return;
+                    try {
+                        //если локальная нода не запущена и не выполняется коннект к ней
+                        if(this.isLocalNodeRunning()) return;
+                        if(typeof window.tryReconnectToLocalNode !== "undefined" && window.tryReconnectToLocalNode === true) return;
 
-                    //скажем что выполняется коннект к локальной ноде
-                    window.tryReconnect = true;
-                    this.activateNode(node.url);
+                        //скажем что выполняется коннект к локальной ноде
+                        window.tryReconnectToLocalNode = true;
+                        socket.close();
+                        this.activateNode(node.url);
+                    } catch(ex) {}
                 };
             } catch(ex) {}
         }

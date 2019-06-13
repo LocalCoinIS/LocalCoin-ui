@@ -28,13 +28,12 @@ export default class ResetSettings extends React.Component {
 
     render() {
         return (
-            <section className="block-list no-border-bottom">
-                <header>
+            <div className="block-list no-border-bottom">
+                <div>
                     <Translate
                         component="span"
                         style={{
                             fontWeight: "normal",
-                            fontFamily: "Roboto-Medium, arial, sans-serif",
                             fontStyle: "normal"
                         }}
                         content={"settings.reset_text_description"}
@@ -51,11 +50,17 @@ export default class ResetSettings extends React.Component {
                             )
                         }}
                     />
-                </header>
+                </div>
 
                 <div
-                    style={{height: 60, width: "100%", paddingTop: 20}}
-                    className="button"
+                    style={{
+                        height: 60,
+                        width: "100%",
+                        marginTop: 20,
+                        textAlign: "center",
+                        cursor: "pointer"
+                    }}
+                    className="btn large inverted"
                     onClick={() => {
                         SettingsActions.clearSettings().then(() => {
                             this._setMessage(
@@ -73,7 +78,7 @@ export default class ResetSettings extends React.Component {
                 >
                     {this.state.message}
                 </div>
-            </section>
+            </div>
         );
     }
 }

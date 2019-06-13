@@ -38,65 +38,70 @@ class AccountsSettings extends React.Component {
         }
 
         return (
-            <table className="table">
-                <tbody>
-                    {accounts.map(account => {
-                        let isIgnored = hiddenAccounts.has(account);
-                        let hideLink = (
-                            <a
-                                onClick={
-                                    isIgnored
-                                        ? this.onToggleHide.bind(
-                                              this,
-                                              account,
-                                              false
-                                          )
-                                        : this.onToggleHide.bind(
-                                              this,
-                                              account,
-                                              true
-                                          )
-                                }
-                            >
-                                <Translate
-                                    content={
-                                        "account." +
-                                        (isIgnored ? "unignore" : "ignore")
+            <div className="table-witnesses-wrap">
+                <table className="table-witnesses">
+                    <tbody>
+                        {accounts.map(account => {
+                            let isIgnored = hiddenAccounts.has(account);
+                            let hideLink = (
+                                <a
+                                    onClick={
+                                        isIgnored
+                                            ? this.onToggleHide.bind(
+                                                  this,
+                                                  account,
+                                                  false
+                                              )
+                                            : this.onToggleHide.bind(
+                                                  this,
+                                                  account,
+                                                  true
+                                              )
                                     }
-                                />
-                            </a>
-                        );
+                                >
+                                    <Translate
+                                        content={
+                                            "account." +
+                                            (isIgnored ? "unignore" : "ignore")
+                                        }
+                                    />
+                                </a>
+                            );
 
-                        return (
-                            <tr key={account}>
-                                <td>{account}</td>
-                                <td>
-                                    <Link
-                                        to={`/account/${account}/permissions`}
-                                    >
-                                        <Translate content="settings.view_keys" />
-                                    </Link>
-                                </td>
-                                <td>{hideLink}</td>
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
+                            return (
+                                <tr key={account}>
+                                    <td>{account}</td>
+                                    <td>
+                                        <Link
+                                            to={`/account/${account}/permissions`}
+                                        >
+                                            <Translate content="settings.view_keys" />
+                                        </Link>
+                                    </td>
+                                    <td>{hideLink}</td>
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </table>
+            </div>
         );
     }
 }
 
-AccountsSettings = connect(AccountsSettings, {
-    listenTo() {
-        return [AccountStore];
-    },
-    getProps() {
-        return {
-            myAccounts: AccountStore.getMyAccounts(),
-            hiddenAccounts: AccountStore.getState().myHiddenAccounts
-        };
+AccountsSettings = connect(
+    AccountsSettings,
+    {
+        listenTo() {
+            return [AccountStore];
+        },
+        getProps() {
+            return {
+                myAccounts: AccountStore.getMyAccounts(),
+                hiddenAccounts: AccountStore.getState().myHiddenAccounts
+            };
+        }
     }
-});
+);
 
 export default AccountsSettings;

@@ -367,7 +367,7 @@ class LLCBridgeModal extends React.Component {
     onWdClick() {
         let self = this;
         let next = function() {
-            self.props.bullet.setState({modalActive: false});
+            self.setState({modalActive: false});
             self.asset = ChainStore.getAsset(self.props.currency.asset);
             const sendAmount = new Asset({
                 real: self.wdAmount,
@@ -561,7 +561,7 @@ class LLCBridgeModal extends React.Component {
         );
 
         var copy = (
-            <div className="d-flex">
+            <div className="d-flex" style={{paddingRight: "95px"}}>
                 <div onClick={this.toClipboard.bind(this)}>
                     <CopyButton
                         text={this.state.address}
@@ -626,7 +626,7 @@ class LLCBridgeModal extends React.Component {
             this.state.activeTab === "deposit_tab" ? (
                 <div className="grid-block vertical">
                     <Instructions
-                        depositAddress={this.props.depositAddress}
+                        depositAddress={ this.state.activeTab === "deposit_tab" ? this.props.depositAddress : this.props.buyLLCAddress}
                         account={this.props.account}
                         type={this.props.type}
                         currency={this.props.currency}
@@ -925,9 +925,9 @@ class LLCBridgeModal extends React.Component {
                         {buyTab}
                         {depositTab}
                         {withdrawTab}
-                    </div>) : (
-                        <div>{buyTab}</div>
-                    )}
+                    </div>) : null}
+                    {!this.props.isDashboard && this.props.activeTab === "deposit_tab" ? depositTab : null}
+                    {!this.props.isDashboard && this.state.activeTab === "buy_tab" ? buyTab : null}
                 </div>
             </div>
         );

@@ -210,15 +210,29 @@ body.localcoin .account-inputs .typeahead__innerList
 body.localcoin
 	div[id^="borrow_modal"],
 	#header_borrow_modal
+		padding: 1rem 1.5rem
 		p
 			white-space: normal!important
 		.modal-header
 			padding-bottom: 0
+			margin-bottom: 10px
 		.modal-content
 			padding-top: 0
+			@media (max-width: 639px)
+				padding: 0
 		.grid-container.small-10.small-offset-1.no-overflow
 			padding-top: 0
+			@media (max-width: 639px)
+				max-width: 100%
+				margin: 0
+			.amount-selector .right-label
+				text-align: right
+				white-space: normal
+				max-width: calc(100% - 80px)
+			input[type="range"]
+				width: calc(100% - 60px)!important
 			input[style="width: 12%; float: right; margin-top: -10px;"]
+				width: 50px!important
 				padding: 0 8px!important
 			.float-left
 				float: none!important
@@ -828,10 +842,16 @@ body.localcoin
 		line-height: 40px!important
 	.footer-line
 		height: 30px!important
-		>.btn.large.inverted, .footer-right .btn.large.inverted
+		>.btn.large.inverted, .footer-right .btn.large.inverted, .footer-left .btn.large.inverted
 			height: 30px!important
 			line-height: 30px!important
 			margin-right: 0
+		.footer-left .btn.large.inverted
+			span
+				transition: all 0.3s ease 0s !important
+		.footer-left .btn.large.inverted:hover
+			span
+				color: rgba(255, 255, 255, 0.5) !important
 
 	.stressed-stat.hide-order-3,
 	.stressed-stat.hide-order-4

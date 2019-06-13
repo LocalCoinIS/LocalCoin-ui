@@ -946,7 +946,8 @@ export default class ModalWrapper extends React.Component {
 
     render() {
         let {quote_asset, backing_asset, account} = this.props;
-        let accountBalance = account.get("balances").toJS();
+        let balances = account ? account.get("balances") : null;
+        let accountBalance = balances ? balances.toJS() : null;
         let coreBalance, bitAssetBalance;
 
         if (accountBalance) {

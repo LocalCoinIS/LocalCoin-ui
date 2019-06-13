@@ -1,38 +1,49 @@
 import React from "react";
 import PropTypes from "prop-types";
 import MarketsActions from "actions/MarketsActions";
-import {MyOpenOrders} from "./MyOpenOrders";
-import OrderBook from "./OrderBook";
-import MarketHistory from "./MarketHistory";
+import {MyOpenOrders} from "../../components/Exchange/MyOpenOrders";
+import OrderBook from "../../components/Exchange/OrderBook";
+import MarketHistory from "../../components/Exchange/MarketHistory";
 import MyMarkets from "./MyMarkets";
-import BuySell from "./BuySell";
-import MarketPicker from "./MarketPicker";
+import BuySell from "../../components/Exchange/BuySell";
+
 import utils from "common/utils";
 // import PriceChartD3 from "./PriceChartD3";
-import TradingViewPriceChart from "./TradingViewPriceChart";
+import TradingViewPriceChart from "../../components/Exchange/TradingViewPriceChart";
 import assetUtils from "common/asset_utils";
-import DepthHighChart from "./DepthHighChart";
+import DepthHighChart from "../../components/Exchange/DepthHighChart";
 import {debounce} from "lodash-es";
-import BorrowModal from "../Modal/BorrowModal";
+import BorrowModal from "../../components/Modal/BorrowModal";
 import notify from "actions/NotificationActions";
-import AccountNotifications from "../Notifier/NotifierContainer";
+import AccountNotifications from "../../components/Notifier/NotifierContainer";
 import Ps from "perfect-scrollbar";
 import {ChainStore, FetchChain} from "bitsharesjs/es";
 import SettingsActions from "actions/SettingsActions";
 import cnames from "classnames";
 import market_utils from "common/market_utils";
 import {Asset, Price, LimitOrderCreate} from "common/MarketClasses";
-import ConfirmOrderModal from "./ConfirmOrderModal";
+import ConfirmOrderModal from "../../components/Exchange/ConfirmOrderModal";
 import ExchangeHeader from "./ExchangeHeader";
 import Translate from "react-translate-component";
 import {Apis} from "bitsharesjs-ws";
 import {checkFeeStatusAsync} from "common/trxHelper";
-import LoadingIndicator from "../LoadingIndicator";
+import LoadingIndicator from "../../components/LoadingIndicator";
 import moment from "moment";
 import guide from "intro.js";
 import translator from "counterpart";
+import LLCBridgeModal from "../../components/DepositWithdraw/llcgateway/LLCBridgeModal";
+import ActionSheet from "react-foundation-apps/src/action-sheet";
+import AccountStore from "stores/AccountStore";
+import Icon from "../../components/Icon/Icon";
+import WalletDb from "stores/WalletDb";
+import WalletUnlockActions from "actions/WalletUnlockActions";
+import AccountActions from "actions/AccountActions";
+import LLCGatewayData from "../../components/DepositWithdraw/llcgateway/LLCGatewayData";
 
 class Exchange extends React.Component {
+
+    static MODE_BRIDGE = "0";
+
     static propTypes = {
         marketCallOrders: PropTypes.object.isRequired,
         activeMarketHistory: PropTypes.object.isRequired,
@@ -65,7 +76,19 @@ class Exchange extends React.Component {
             expirationCustomTime: {
                 bid: moment().add(1, "day"),
                 ask: moment().add(1, "day")
-            }
+            },
+            isBridgeModalVisible: false,
+            isMarketFee: false,
+            isMarketPage: true,
+            currentAsset: null,
+            type: "deposit",
+            currency: {
+                asset: null,
+                currency: null
+            },
+            currencies: null,
+            depositAddress: null,
+            activeTab: "deposit_tab"
         };
 
         this._getWindowSize = debounce(this._getWindowSize.bind(this), 150);
@@ -76,7 +99,135 @@ class Exchange extends React.Component {
             this
         );
 
+
         this.psInit = true;
+
+        this._toggleSwitch = this._toggleSwitch.bind(this);
+    }
+
+    onShowModal = (asset, tab) => {
+        let self = this;
+        if (self.isUnauthorizedUser()) {
+            return;
+        }
+        else if (self.props.lockedWalletState)
+            if (WalletDb.isLocked()) {
+                WalletUnlockActions.unlock()
+                    .then(() => {
+                        AccountActions.tryToSetCurrentAccount();
+                        self.setState({
+                            isBridgeModalVisible: true,
+                            currentAsset: asset ? asset : null,
+                            activeTab: tab
+                        });
+                        this.getAllowCurrencies(asset);
+                        let account = this.props.currentAccount
+                        let accountName = typeof account === "object" ? account.get("name") :
+                            typeof account === "string" ? account : "";
+                        new LLCGatewayData().сreatePaymentAddress(
+                            accountName,
+                            asset,
+                            Exchange.MODE_BRIDGE,
+                            function(address) {
+                                self.setState({depositAddress: address});
+                            }
+                        );
+                    })
+                    .catch(() => {});
+            } else {
+                WalletUnlockActions.lock();
+            }
+        else {
+            this.setState(
+                {
+                    isBridgeModalVisible: false
+                },
+                function() {
+                    self.setState({
+                        isBridgeModalVisible: true,
+                        currentAsset: asset ? asset : null,
+                        activeTab: tab
+                    });
+                }
+            );
+            this.getAllowCurrencies(asset);
+            let account = this.props.currentAccount
+            let accountName = typeof account === "object" ? account.get("name") :
+                typeof account === "string" ? account : "";
+            new LLCGatewayData().сreatePaymentAddress(
+                accountName,
+                asset,
+                Exchange.MODE_BRIDGE,
+                function(address) {
+                    self.setState({depositAddress: address});
+                }
+            );
+        };
+
+    }
+
+    getAllowCurrencies(asset) {
+        let provider = new LLCGatewayData();
+        let self = this;
+        provider.getAllowCurrency(data => {
+            data[this.state.type].forEach(a => {
+                if(a.asset == asset) {
+                    self.setState(
+                        {
+                            currency: a
+                        }
+                    );
+                }
+            })
+
+        });
+    }
+
+    onCloseModal = () => {
+        this.setState(
+            {
+                currentAsset: null,
+                currency: {
+                    asset: null,
+                    currency: null
+                },
+                depositAddress: null
+            }
+        );
+    }
+
+    _createAccountLink = null;
+    isUnauthorizedUser(route) {
+        //for exchange allow access forever
+
+        if (typeof route !== "undefined" && route.indexOf("/market/") === 0)
+            return false;
+
+        if (!this.props.currentAccount || !!this._createAccountLink) {
+            this.props.router.push("/create-account/wallet");
+            return true;
+        }
+
+        return false;
+    }
+
+    _onNavigate(route, e) {
+        e.preventDefault();
+        if (
+            route !== "/" &&
+            route !== "/settings/general" &&
+            this.isUnauthorizedUser(route)
+        )
+            return;
+
+        // Set Accounts Tab as active tab
+        if (route == "/accounts") {
+            SettingsActions.changeViewSetting({
+                dashboardEntry: "accounts"
+            });
+        }
+
+        this.context.router.push(route);
     }
 
     _handleExpirationChange(type, e) {
@@ -235,6 +386,7 @@ class Exchange extends React.Component {
             capture: false,
             passive: true
         });
+        this._toggleSwitch();
     }
 
     shouldComponentUpdate(nextProps) {
@@ -334,6 +486,7 @@ class Exchange extends React.Component {
                 SettingsActions.setExchangeTutorialShown.defer(true);
             }
         }
+        this._toggleSwitch();
     }
 
     _initPsContainer() {
@@ -381,10 +534,12 @@ class Exchange extends React.Component {
         // if (this.props.sub && nextProps.bucketSize !== this.props.bucketSize) {
         //     return this._changeBucketSize(nextProps.bucketSize);
         // }
+        this._toggleSwitch();
     }
 
     componentWillUnmount() {
         window.removeEventListener("resize", this._getWindowSize);
+
     }
 
     _getFeeAssets(quote, base, coreAsset) {
@@ -417,22 +572,24 @@ class Exchange extends React.Component {
 
         let balances = {};
 
-        currentAccount
-            .get("balances", [])
-            .filter((balance, id) => {
-                return (
-                    ["1.3.0", quote.get("id"), base.get("id")].indexOf(id) >= 0
-                );
-            })
-            .forEach((balance, id) => {
-                let balanceObject = ChainStore.getObject(balance);
-                balances[id] = {
-                    balance: balanceObject
-                        ? parseInt(balanceObject.get("balance"), 10)
-                        : 0,
-                    fee: this._getFee(ChainStore.getAsset(id))
-                };
-            });
+        try {
+            currentAccount
+                .get("balances", [])
+                .filter((balance, id) => {
+                    return (
+                        ["1.3.0", quote.get("id"), base.get("id")].indexOf(id) >= 0
+                    );
+                })
+                .forEach((balance, id) => {
+                    let balanceObject = ChainStore.getObject(balance);
+                    balances[id] = {
+                        balance: balanceObject
+                            ? parseInt(balanceObject.get("balance"), 10)
+                            : 0,
+                        fee: this._getFee(ChainStore.getAsset(id))
+                    };
+                });
+        } catch(ex) {}
 
         function filterAndDefault(assets, balances, idx) {
             let asset;
@@ -866,20 +1023,35 @@ class Exchange extends React.Component {
         this.setState({showDepthChart: !this.state.showDepthChart});
     }
 
-    _toggleMarketPicker(asset) {
-        let showMarketPicker = !!asset ? true : false;
-        this.setState({
-            showMarketPicker,
-            marketPickerAsset: asset
-        });
+    resetHeaderMargin() {
+        try {
+            let header = document.getElementsByClassName(
+                "container-menu-header"
+            )[0];
+            header.style.marginLeft = 0;
+        } catch (e) {}
     }
 
     _moveOrderBook() {
-        SettingsActions.changeViewSetting({
-            leftOrderBook: !this.state.leftOrderBook
-        });
+        document.fastLoader.show();
 
-        this.setState({leftOrderBook: !this.state.leftOrderBook});
+        let self = this;
+
+        document.delayedExecution.add(
+            "_moveOrderBook",
+            function() {
+                if (self.state.leftOrderBook) {
+                    self.resetHeaderMargin();
+                }
+
+                SettingsActions.changeViewSetting({
+                    leftOrderBook: !self.state.leftOrderBook
+                });
+
+                self.setState({leftOrderBook: !self.state.leftOrderBook});
+            },
+            100
+        );
     }
 
     _currentPriceClick(type, price) {
@@ -1159,6 +1331,21 @@ class Exchange extends React.Component {
         });
     }
 
+    _toggleSwitch() {
+        let el = document.querySelector(".grid-block.no-overflow.wrap.shrink");
+        if(!el) return;
+        if(!this.state.buySellTop) {
+            el.classList.add("switch");
+        } else {
+            el.classList.remove("switch");
+        }
+
+    }
+
+    _checkMarketFee = (value) => {
+        this.setState({ isMarketFee: value })
+    }
+
     render() {
         let {
             currentAccount,
@@ -1201,7 +1388,8 @@ class Exchange extends React.Component {
             buyDiff,
             sellDiff,
             width,
-            buySellTop
+            buySellTop,
+            isMarketFee
         } = this.state;
         const {isFrozen, frozenAsset} = this.isMarketFrozen();
 
@@ -1232,7 +1420,11 @@ class Exchange extends React.Component {
             baseSymbol = base.get("symbol");
             quoteSymbol = quote.get("symbol");
 
-            accountBalance = currentAccount.get("balances").toJS();
+            try {
+                accountBalance = currentAccount.get("balances").toJS();
+            } catch(ex) {
+                accountBalance = null;
+            }
 
             if (accountBalance) {
                 for (let id in accountBalance) {
@@ -1355,8 +1547,31 @@ class Exchange extends React.Component {
         let expirationType = this.state.expirationType;
         let expirationCustomTime = this.state.expirationCustomTime;
 
+        let myAccounts = AccountStore.getMyAccounts();
+        let myAccountCount = myAccounts.length;
+        let createAccountLink =
+            myAccountCount === 0 ? (
+                <ActionSheet.Button title="" setActiveState={() => {}}>
+                    <a
+                        className="button create-account"
+                        onClick={this._onNavigate.bind(this, "/create-account")}
+                        style={{padding: "1rem", border: "none"}}
+                    >
+                        <Icon
+                            className="icon-14px"
+                            name="user"
+                            title="icons.user.create_account"
+                        />{" "}
+                        <Translate content="header.create_account" />
+                    </a>
+                </ActionSheet.Button>
+            ) : null;
+
+        this._createAccountLink = createAccountLink;
+
         let buyForm = isFrozen ? null : (
             <BuySell
+                onShowModal={this.onShowModal}
                 onBorrow={baseIsBitAsset ? this._borrowBase.bind(this) : null}
                 currentAccount={currentAccount}
                 backedCoin={this.props.backedCoins.find(
@@ -1369,17 +1584,17 @@ class Exchange extends React.Component {
                 isOpen={this.state.buySellOpen}
                 onToggleOpen={this._toggleOpenBuySell.bind(this)}
                 className={cnames(
-                    "small-12 no-padding middle-content",
+                    "small-12 no-padding",
                     leftOrderBook || smallScreen
                         ? "medium-6"
                         : "medium-6 xlarge-4",
                     this.state.flipBuySell
                         ? `order-${
-                              buySellTop ? 2 : 5 * orderMultiplier
-                          } sell-form`
+                            buySellTop ? 2 : 5 * orderMultiplier
+                        } sell-form`
                         : `order-${
-                              buySellTop ? 1 : 4 * orderMultiplier
-                          } buy-form`
+                            buySellTop ? 1 : 4 * orderMultiplier
+                        } buy-form`
                 )}
                 type="bid"
                 expirationType={expirationType["bid"]}
@@ -1438,11 +1653,13 @@ class Exchange extends React.Component {
                         ? this._toggleBuySellPosition.bind(this)
                         : null
                 }
+                checkMarketFee={this._checkMarketFee.bind(this)}
             />
         );
 
         let sellForm = isFrozen ? null : (
             <BuySell
+                onShowModal={this.onShowModal}
                 onBorrow={quoteIsBitAsset ? this._borrowQuote.bind(this) : null}
                 currentAccount={currentAccount}
                 backedCoin={this.props.backedCoins.find(
@@ -1455,17 +1672,17 @@ class Exchange extends React.Component {
                 isOpen={this.state.buySellOpen}
                 onToggleOpen={this._toggleOpenBuySell.bind(this)}
                 className={cnames(
-                    "small-12 no-padding middle-content",
+                    "small-12 no-padding",
                     leftOrderBook || smallScreen
                         ? "medium-6"
                         : "medium-6 xlarge-4",
                     this.state.flipBuySell
                         ? `order-${
-                              buySellTop ? 1 : 4 * orderMultiplier
-                          } buy-form`
+                            buySellTop ? 1 : 4 * orderMultiplier
+                        } buy-form`
                         : `order-${
-                              buySellTop ? 2 : 5 * orderMultiplier
-                          } sell-form`
+                            buySellTop ? 2 : 5 * orderMultiplier
+                        } sell-form`
                 )}
                 type="ask"
                 amount={ask.forSaleText}
@@ -1526,6 +1743,7 @@ class Exchange extends React.Component {
                         ? this._toggleBuySellPosition.bind(this)
                         : null
                 }
+                checkMarketFee={this._checkMarketFee.bind(this)}
             />
         );
 
@@ -1560,8 +1778,69 @@ class Exchange extends React.Component {
             />
         );
 
+        let marketHistory = (
+            <MarketHistory
+                className={cnames(
+                    !smallScreen && !leftOrderBook
+                        ? "medium-6 xlarge-4"
+                        : "",
+                    "no-padding no-overflow small-12 medium-6 order-3 xlarge-order-3 my-trades"
+                )}
+                headerStyle={{paddingTop: 0}}
+                history={activeMarketHistory}
+                currentAccount={currentAccount}
+                myHistory={currentAccount.get("history")}
+                base={base}
+                quote={quote}
+                baseSymbol={baseSymbol}
+                quoteSymbol={quoteSymbol}
+            />
+        );
+
+        let myOpenOrders = marketLimitOrders.size > 0 && base && quote ? (
+            <MyOpenOrders
+                smallScreen={this.props.smallScreen}
+                className={cnames(
+                    !smallScreen && !leftOrderBook
+                        ? "medium-6 xlarge-4"
+                        : "",
+                    `open-orders small-12 medium-6 no-padding align-spaced ps-container order-${
+                        buySellTop ? 6 : 6
+                        }`
+                )}
+                key="open_orders"
+                orders={marketLimitOrders}
+                settleOrders={marketSettleOrders}
+                currentAccount={currentAccount}
+                base={base}
+                quote={quote}
+                baseSymbol={baseSymbol}
+                quoteSymbol={quoteSymbol}
+                activeTab={this.props.viewSettings.get(
+                    "ordersTab"
+                )}
+                onCancel={this._cancelLimitOrder.bind(
+                    this
+                )}
+                flipMyOrders={this.props.viewSettings.get(
+                    "flipMyOrders"
+                )}
+                feedPrice={this.props.feedPrice}
+            />
+        ) : null;
+
         return (
             <div className="grid-block vertical">
+                {this.state.isBridgeModalVisible ? (
+                    <LLCBridgeModal
+                        account={this.props.currentAccount}
+                        currency={this.state.currency}
+                        type={this.state.type}
+                        depositAddress={this.state.depositAddress}
+                        onCloseModal={this.onCloseModal}
+                        activeTab={this.state.activeTab}
+                    />
+                ) : null}
                 {!this.props.marketReady ? <LoadingIndicator /> : null}
                 <ExchangeHeader
                     account={this.props.currentAccount}
@@ -1579,23 +1858,14 @@ class Exchange extends React.Component {
                     showDepthChart={showDepthChart}
                     marketStats={marketStats}
                     onToggleCharts={this._toggleCharts.bind(this)}
-                    onToggleMarketPicker={this._toggleMarketPicker.bind(this)}
                     showVolumeChart={showVolumeChart}
                     chartHeight={chartHeight}
                     onChangeChartHeight={this.onChangeChartHeight.bind(this)}
+                    {...this.props}
                 />
 
                 <div className="grid-block page-layout market-layout">
-                    {!!this.state.showMarketPicker ? (
-                        <MarketPicker
-                            marketPickerAsset={this.state.marketPickerAsset}
-                            onToggleMarketPicker={this._toggleMarketPicker.bind(
-                                this
-                            )}
-                            {...this.props}
-                        />
-                    ) : null}
-                    <AccountNotifications />
+                    <AccountNotifications isMarketPage={this.state.isMarketPage}/>
                     {/* Main vertical block with content */}
 
                     {/* Left Column - Open Orders */}
@@ -1701,6 +1971,7 @@ class Exchange extends React.Component {
                             )}
 
                             <div className="grid-block no-overflow wrap shrink">
+                                <div className={`market-row stable-height ${isMarketFee ? "is-fee" : ""}`}>
                                 {hasPrediction ? (
                                     <div
                                         className="small-12 no-overflow"
@@ -1731,25 +2002,11 @@ class Exchange extends React.Component {
                                 {buyForm}
                                 {sellForm}
 
-                                <MarketHistory
-                                    className={cnames(
-                                        !smallScreen && !leftOrderBook
-                                            ? "medium-6 xlarge-4"
-                                            : "",
-                                        "no-padding no-overflow middle-content small-12 medium-6 order-5 xlarge-order-3"
-                                    )}
-                                    headerStyle={{paddingTop: 0}}
-                                    history={activeMarketHistory}
-                                    currentAccount={currentAccount}
-                                    myHistory={currentAccount.get("history")}
-                                    base={base}
-                                    quote={quote}
-                                    baseSymbol={baseSymbol}
-                                    quoteSymbol={quoteSymbol}
-                                />
+                                {leftOrderBook ? null : (buySellTop ? marketHistory : myOpenOrders)}
 
+                                </div>
+                                <div className={`market-row ${isMarketFee ? "is-fee-neighbor" : ""}`}>
                                 {!leftOrderBook ? orderBook : null}
-
                                 <ConfirmOrderModal
                                     type="buy"
                                     ref="buy"
@@ -1778,37 +2035,10 @@ class Exchange extends React.Component {
                                     hasOrders={combinedBids.length > 0}
                                 />
 
-                                {marketLimitOrders.size > 0 && base && quote ? (
-                                    <MyOpenOrders
-                                        smallScreen={this.props.smallScreen}
-                                        className={cnames(
-                                            !smallScreen && !leftOrderBook
-                                                ? "medium-6 xlarge-4"
-                                                : "",
-                                            `small-12 medium-6 no-padding align-spaced ps-container middle-content order-${
-                                                buySellTop ? 6 : 6
-                                            }`
-                                        )}
-                                        key="open_orders"
-                                        orders={marketLimitOrders}
-                                        settleOrders={marketSettleOrders}
-                                        currentAccount={currentAccount}
-                                        base={base}
-                                        quote={quote}
-                                        baseSymbol={baseSymbol}
-                                        quoteSymbol={quoteSymbol}
-                                        activeTab={this.props.viewSettings.get(
-                                            "ordersTab"
-                                        )}
-                                        onCancel={this._cancelLimitOrder.bind(
-                                            this
-                                        )}
-                                        flipMyOrders={this.props.viewSettings.get(
-                                            "flipMyOrders"
-                                        )}
-                                        feedPrice={this.props.feedPrice}
-                                    />
-                                ) : null}
+                                {leftOrderBook ? (marketHistory) :  null}
+                                {leftOrderBook ? (myOpenOrders) : null}
+                                {leftOrderBook ? null : (!buySellTop ? marketHistory : myOpenOrders)}
+                                </div>
                             </div>
                         </div>
                         {/* end CenterContent */}
@@ -1842,11 +2072,6 @@ class Exchange extends React.Component {
                             />
                         </div>
                         <div
-                            style={{
-                                padding: !this.props.miniDepthChart
-                                    ? 0
-                                    : "0 0 40px 0"
-                            }}
                             className="grid-block no-margin vertical shrink"
                         >
                             <div

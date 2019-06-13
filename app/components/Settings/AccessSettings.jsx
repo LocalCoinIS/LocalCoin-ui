@@ -8,7 +8,8 @@ import willTransitionTo from "../../routerTransition";
 import {withRouter} from "react-router/es";
 import {connect} from "alt-react";
 import cnames from "classnames";
-import Icon from "../Icon/Icon";
+import Icon from "../../components/Icon/Icon";
+import counterpart from "counterpart";
 
 const autoSelectAPI = "wss://fake.automatic-selection.com";
 const testnetAPI = settingsAPIs.WS_NODE_LIST.find(
@@ -167,46 +168,7 @@ class ApiNode extends React.Component {
                 </div>
             );
         } else {
-            return url === autoSelectAPI ? (
-                <div className="auto-node">
-                    <div>
-                        <span
-                            className="switch"
-                            onClick={this.activate.bind(
-                                this,
-                                autoActive ? activeNode.url : autoSelectAPI
-                            )}
-                        >
-                            <input
-                                id="automatic_node_switcher"
-                                type="checkbox"
-                                checked={autoActive}
-                                onChange={() => {}}
-                            />
-                            <label />
-                        </span>
-                        <Translate
-                            component="div"
-                            style={{paddingLeft: "1rem", paddingTop: "0.5rem"}}
-                            content="settings.automatic"
-                            totalNodes={totalNodes}
-                        />
-                        {/*
-                        // FOR FUTURE PING NODES FEATURE
-                        <div
-                            className="button"
-                            style={{position: "absolute", right: 0}}
-                            onClick={}
-                        >
-                            <Translate
-                                id="ping"
-                                component="span"
-                                content="settings.ping"
-                            />
-                        </div> */}
-                    </div>
-                </div>
-            ) : (
+            return url === autoSelectAPI ? (<div></div>) : (
                 <div className="api-node">
                     <div>
                         <p>{name}</p>
@@ -513,91 +475,117 @@ class AccessSettings extends React.Component {
                 </div>
             </div>
         ) : (
-            <div style={{paddingTop: "1em"}}>
-                {renderNode(autoNode, activeNode, false)}
-                <div className="active-node">
-                    {/*<LoadingButton
-                        style={{"float": "right"}}
-                        caption="Reload latency"
-                        loadingType="inside-feedback-resize"
-                        onClick={this._recalculateLatency.bind(this)}
-                    />*/}
-                    <Translate
-                        component="h4"
-                        style={{marginLeft: "1rem"}}
-                        content="settings.active_node"
-                    />
-                    {renderNode(activeNode, activeNode, false)}
-                </div>
-                <div
-                    className="nodes"
-                    style={{
-                        display:
-                            props.currentNode === autoSelectAPI ? "none" : "",
-                        position: "relative",
-                        marginBottom: "2em"
-                    }}
-                >
-                    <div className="grid-block shrink" style={{marginLeft: 0}}>
-                        <div
-                            className={availableClass}
-                            onClick={this._changeTab.bind(
-                                this,
-                                "available-nodes"
-                            )}
-                        >
-                            <Translate content="settings.available_nodes" />
-                        </div>
-                        <div
-                            className={hiddenClass}
-                            onClick={this._changeTab.bind(this, "hidden-nodes")}
-                        >
-                            <Translate content="settings.hidden_nodes" />
-                        </div>
-                        <div
-                            className={myClass}
-                            onClick={this._changeTab.bind(this, "my-nodes")}
-                        >
-                            <Translate content="settings.my_nodes" />
-                        </div>
+            <div className="row" style={{paddingTop: "1em"}}>
+                <div className="col-lg-11">
+                    {renderNode(autoNode, activeNode, false)}
+                    <div className="active-node">
+                        {/*<LoadingButton
+                            style={{"float": "right"}}
+                            caption="Reload latency"
+                            loadingType="inside-feedback-resize"
+                            onClick={this._recalculateLatency.bind(this)}
+                        />*/}
+                        <Translate
+                            component="h4"
+                            style={{marginLeft: "1rem"}}
+                            content="settings.active_node"
+                        />
+                        {renderNode(activeNode, activeNode, false)}
                     </div>
-                    {this.state.activeTab !== "my-nodes" ? null : (
-                        <div
-                            style={{paddingLeft: "1rem", paddingBottom: "1rem"}}
-                        >
-                            <div
-                                className="button"
-                                onClick={props.triggerModal.bind(this)}
+                    <div
+                        className="nodes"
+                        style={{
+                            display:
+                                props.currentNode === autoSelectAPI
+                                    ? "none"
+                                    : "",
+                            position: "relative",
+                            marginBottom: "2em"
+                        }}
+                    >
+                        <ul className="markets-list">
+                            <li
+                                className={cnames("markets-list__item", {
+                                    active:
+                                        this.state.activeTab ===
+                                        "available-nodes"
+                                })}
+                                onClick={this._changeTab.bind(
+                                    this,
+                                    "available-nodes"
+                                )}
                             >
-                                <Translate
-                                    id="add"
-                                    component="span"
-                                    content="settings.add_api"
-                                />
+                                {counterpart.translate(
+                                    "settings.available_nodes"
+                                )}
+                            </li>
+                            <li
+                                className={cnames("markets-list__item", {
+                                    active:
+                                        this.state.activeTab === "hidden-nodes"
+                                })}
+                                onClick={this._changeTab.bind(
+                                    this,
+                                    "hidden-nodes"
+                                )}
+                            >
+                                {counterpart.translate("settings.hidden_nodes")}
+                            </li>
+                            <li
+                                className={cnames("markets-list__item", {
+                                    active: this.state.activeTab === "my-nodes"
+                                })}
+                                onClick={this._changeTab.bind(this, "my-nodes")}
+                            >
+                                {counterpart.translate("settings.my_nodes")}
+                            </li>
+                        </ul>
+
+                        {this.state.activeTab !== "my-nodes" ? null : (
+                            <div
+                                style={{
+                                    paddingLeft: "1rem",
+                                    paddingBottom: "1rem",
+                                    marginTop: "10px"
+                                }}
+                            >
+                                <div
+                                    className="button btn large inverted"
+                                    onClick={props.triggerModal.bind(this)}
+                                >
+                                    <Translate
+                                        id="add"
+                                        component="span"
+                                        content="settings.add_api"
+                                    />
+                                </div>
                             </div>
-                        </div>
-                    )}
-                    {uniqueNodes.map(node => {
-                        if (node.url !== autoSelectAPI)
-                            return renderNode(node, activeNode, true);
-                    })}
+                        )}
+                        {uniqueNodes.map(node => {
+                            if (node.url !== autoSelectAPI)
+                                return renderNode(node, activeNode, true);
+                        })}
+                    </div>
                 </div>
             </div>
         );
     }
 }
 
-AccessSettings = connect(AccessSettings, {
-    listenTo() {
-        return [SettingsStore];
-    },
-    getProps() {
-        return {
-            currentNode: SettingsStore.getState().settings.get("apiServer"),
-            activeNode: SettingsStore.getState().settings.get("activeNode"),
-            apiLatencies: SettingsStore.getState().apiLatencies
-        };
+AccessSettings = connect(
+    AccessSettings,
+    {
+        listenTo() {
+            return [SettingsStore];
+        },
+        getProps() {
+            return {
+                currentNode: SettingsStore.getState().settings.get("apiServer"),
+                activeNode: SettingsStore.getState().settings.get("activeNode"),
+                apiLatencies: SettingsStore.getState().apiLatencies
+            };
+        }
     }
-});
+);
 
 export default AccessSettings;

@@ -2,10 +2,10 @@ import React from "react";
 import {Link} from "react-router/es";
 import AccountSelector from "./AccountSelector";
 import Translate from "react-translate-component";
-import AccountImage from "./AccountImage";
-import ChainTypes from "../Utility/ChainTypes";
-import BindToChainState from "../Utility/BindToChainState";
-import Icon from "../Icon/Icon";
+import AccountImage from "../../components/Account/AccountImage";
+import ChainTypes from "../../components/Utility/ChainTypes";
+import BindToChainState from "../../components/Utility/BindToChainState";
+import Icon from "../../components/Icon/Icon";
 import PrivateKeyView from "components/PrivateKeyView";
 import counterpart from "counterpart";
 import utils from "common/utils";
@@ -76,8 +76,8 @@ class AccountPermissionRow extends React.Component {
                         />
                     ) : pubKey ? (
                         <div className="account-image">
-                            <PrivateKeyView pubkey={pubKey}>
-                                <Icon name="key" title="icons.key" size="4x" />
+                            <PrivateKeyView pubkey={pubKey} modalKey="1">
+                                <span className="key-icon" />
                             </PrivateKeyView>
                         </div>
                     ) : null}
@@ -88,14 +88,14 @@ class AccountPermissionRow extends React.Component {
                 <td>{this.props.weights[item_id]}</td>
                 <td>
                     <button
-                        className="button"
+                        className="btn large outline"
                         onClick={this.props.onRemoveItem.bind(
                             this,
                             item_id,
                             suffix
                         )}
                     >
-                        <Translate content="account.votes.remove_witness" />
+                        {counterpart.translate("account.votes.remove_witness")}
                     </button>
                 </td>
             </tr>
@@ -262,8 +262,11 @@ class AccountPermissionsList extends React.Component {
                     />
                 </AccountSelector>
 
-                <div style={{paddingTop: "2rem"}}>
-                    <table className="table">
+                <div
+                    className="accounts-table-wrap accounts-table-wrap__keys"
+                    style={{paddingTop: "2rem"}}
+                >
+                    <table className="accounts-table">
                         <thead>
                             <tr>
                                 <th style={{width: cw[0]}} />

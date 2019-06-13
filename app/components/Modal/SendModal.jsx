@@ -6,7 +6,7 @@ import {ChainStore} from "bitsharesjs/es";
 import AccountSelect from "../Forms/AccountSelect";
 import AmountSelector from "../Utility/AmountSelector";
 import AccountStore from "stores/AccountStore";
-import AccountSelector from "components-brand-new/Account/AccountSelector";
+import AccountSelector from "components/Account/AccountSelector";
 import TransactionConfirmStore from "stores/TransactionConfirmStore";
 import {Asset} from "common/MarketClasses";
 import {debounce, isNaN} from "lodash-es";
@@ -717,7 +717,8 @@ class SendModal extends React.Component {
                     onClose={this.onClose.bind(this, false)}
                 >
                     <div
-                        className="grid-block vertical no-overflow"
+                        className="grid-block vertical"
+                        style={{overflow: "visible"}}
                         onMouseDown={() => {
                             this.setState({errorAmount: null});
                         }}

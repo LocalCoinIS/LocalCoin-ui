@@ -65,7 +65,7 @@ class RestoreFavorites extends React.Component {
         const {state} = this;
 
         return (
-            <div>
+            <div style={{marginTop: "20px"}}>
                 <input
                     type="file"
                     id="file_input"

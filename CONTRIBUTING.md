@@ -1,24 +1,14 @@
-Please work off the staging branch and make pull requests to that branch. The master branch will only be updated for new releases.
-
-The Localcoin UI team is supported by this [worker proposal](http://www.bitshares.foundation/workers/2017-08-bill-butler). It provides the funds needed to pay the coordinator and the bounties and the Localcoin Foundation.
+Please work off the dev branch and make pull requests to that branch. The master branch will only be updated for new releases.
 
 If you would like to get involved, we have a [Telegram chatroom](https://t.me/LocalCoinIS) where you can ask questions and get help. You may also join [LocalCoin on Discord](https://discord.gg/vzxSzYN)
 
-- Coordinator: Bill Butler, @billbutler
-- Lead Developer: Sigve Kvalsvik, @sigvek
-- Developer: Calvin Froedge, @calvin
-- Code Review: Fabian Schuh, @xeroc
+- Coordinator: telegram @LocalCoinA
 
 ## 贡献
 
-Localcoin UI团队被这一[工作提案](https://steemit.com/bitshares/@billbutler/translated-by-zhaomu-l)支持。它提供用来支付协调者，悬赏金和本地硬币基金的资金。
-
 如果你想参与贡献，我们有一个[Telegram 聊天室](https://t.me/LocalCoinIS)，在这里你可以问问题并得到帮助。
 
-- 协调者: Bill Butler, @billbutler
-- 主程序员: Sigve Kvalsvik, @sigvek
-- 程序员: Calvin Froedge, @calvin
-- 代码审核: Fabian Schuh, @xeroc
+- 协调者: telegram @LocalCoinA
 
 ## Development process
 

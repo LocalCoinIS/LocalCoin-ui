@@ -9,11 +9,9 @@
     var windowStateKeeper = require("./window_state");
     var fs = require("fs");
     require("./electron_context_menu")({
-        prepend: (params, browserWindow) => [
-            {
-                label: "LocalCoins"
-            }
-        ]
+        prepend: (params, browserWindow) => [{
+            label: "LocalCoin"
+        }]
     });
 
     var mainWindow;
@@ -57,43 +55,39 @@
         // Create the Application's main menu
 
         var app_menu =
-            process.platform === "darwin"
-                ? {
-                      label: "Application",
-                      submenu: [
-                          {
-                              label: "About Application",
-                              selector: "orderFrontStandardAboutPanel:"
-                          },
-                          {type: "separator"},
-                          {
-                              label: "Quit",
-                              accelerator: "CmdOrCtrl+Q",
-                              click: function() {
-                                  app.quit();
-                              }
-                          }
-                      ]
-                  }
-                : {
-                      label: "File",
-                      submenu: [
-                          {
-                              label: "Quit",
-                              accelerator: "CmdOrCtrl+Q",
-                              click: function() {
-                                  app.quit();
-                              }
-                          }
-                      ]
-                  };
+            process.platform === "darwin" ?
+            {
+                label: "Application",
+                submenu: [{
+                        label: "About Application",
+                        selector: "orderFrontStandardAboutPanel:"
+                    },
+                    { type: "separator" },
+                    {
+                        label: "Quit",
+                        accelerator: "CmdOrCtrl+Q",
+                        click: function() {
+                            app.quit();
+                        }
+                    }
+                ]
+            } :
+            {
+                label: "File",
+                submenu: [{
+                    label: "Quit",
+                    accelerator: "CmdOrCtrl+Q",
+                    click: function() {
+                        app.quit();
+                    }
+                }]
+            };
 
         var template = [
             app_menu,
             {
                 label: "Edit",
-                submenu: [
-                    {
+                submenu: [{
                         label: "Undo",
                         accelerator: "CmdOrCtrl+Z",
                         selector: "undo:"
@@ -103,7 +97,7 @@
                         accelerator: "Shift+CmdOrCtrl+Z",
                         selector: "redo:"
                     },
-                    {type: "separator"},
+                    { type: "separator" },
                     {
                         label: "Cut",
                         accelerator: "CmdOrCtrl+X",
@@ -128,8 +122,7 @@
             },
             {
                 label: "View",
-                submenu: [
-                    {
+                submenu: [{
                         label: "Reload",
                         accelerator: "CmdOrCtrl+R",
                         click: function() {

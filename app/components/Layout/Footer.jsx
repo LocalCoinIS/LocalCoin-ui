@@ -1,19 +1,20 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import AltContainer from "alt-container";
 import Translate from "react-translate-component";
-import BindToChainState from "../Utility/BindToChainState";
-import ChainTypes from "../Utility/ChainTypes";
+import BindToChainState from "../../components/Utility/BindToChainState";
+import ChainTypes from "../../components/Utility/ChainTypes";
 import CachedPropertyStore from "stores/CachedPropertyStore";
 import BlockchainStore from "stores/BlockchainStore";
 import WalletDb from "stores/WalletDb";
 import SettingsStore from "stores/SettingsStore";
 import SettingsActions from "actions/SettingsActions";
-import AccessSettings from "../Settings/AccessSettings";
-import Icon from "../Icon/Icon";
+import AccessSettings from "../../components/Settings/AccessSettings";
+import Icon from "../../components/Icon/Icon";
 import counterpart from "counterpart";
 import "intro.js/introjs.css";
 import guide from "intro.js";
 import PropTypes from "prop-types";
+import AccountStore from "stores/AccountStore";
 
 class Footer extends React.Component {
     static propTypes = {
@@ -33,14 +34,31 @@ class Footer extends React.Component {
         super(props);
 
         this.state = {
-            showNodesPopup: false
+            showNodesPopup : false,
+            connected      : this.isConnected()
         };
     }
 
-    componentDidMount() {
-        this.checkNewVersionAvailable.call(this);
+    isConnected = () => !(BlockchainStore.getState().rpc_connection_status === "closed");
 
-        this.downloadLink = "https://localcoin.is/download";
+    componentDidMount() {
+        if(typeof window.intervalFooter !== "undefined" && window.intervalFooter !== null) {
+            clearInterval(window.intervalFooter);
+            window.intervalFooter = null;
+        }
+
+        window.intervalFooter = setInterval(() => {
+            let connected = this.isConnected();
+
+            if(connected !== this.state.connected)
+                this.setState({ connected: connected });
+
+                if(!connected) {
+                    if(typeof document.getElementsByClassName("footer-info__status")[0] !== "undefined") {
+                        document.getElementsByClassName("footer-info__status")[0].innerHTML = counterpart.translate("footer.disconnected");
+                    }
+                }
+        }, 500);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -48,30 +66,10 @@ class Footer extends React.Component {
             nextProps.dynGlobalObject !== this.props.dynGlobalObject ||
             nextProps.backup_recommended !== this.props.backup_recommended ||
             nextProps.rpc_connection_status !==
-                this.props.rpc_connection_status ||
+            this.props.rpc_connection_status ||
             nextProps.synced !== this.props.synced ||
             nextState.showNodesPopup !== this.state.showNodesPopup
         );
-    }
-
-    checkNewVersionAvailable() {
-        if (__ELECTRON__) {
-            fetch(
-                "https://api.github.com/repos/localcoinis/localcoin-ui/releases/latest"
-            )
-                .then(res => {
-                    return res.json();
-                })
-                .then(
-                    function(json) {
-                        let oldVersion = String(json.tag_name);
-                        let newVersion = String(APP_VERSION);
-                        if (oldVersion !== newVersion) {
-                            this.setState({newVersion});
-                        }
-                    }.bind(this)
-                );
-        }
     }
 
     downloadVersion() {
@@ -92,10 +90,7 @@ class Footer extends React.Component {
         var theme = SettingsStore.getState().settings.get("themes");
 
         if (hintData.length == 0) {
-            window.open(
-                "https://docs.localcoin.is/localcoin/user/index.html",
-                "_blank"
-            );
+            window.open("/help", "_blank");
         } else {
             guide
                 .introJs()
@@ -125,14 +120,14 @@ class Footer extends React.Component {
     }
 
     getCurrentNodeIndex() {
-        const {props} = this;
+        const { props } = this;
         let currentNode = this.getNodeIndexByURL.call(this, props.currentNode);
 
         return currentNode;
     }
 
     getNode(node) {
-        const {props} = this;
+        const { props } = this;
 
         return {
             name: node.location || "Unknown location",
@@ -143,11 +138,58 @@ class Footer extends React.Component {
         };
     }
 
+    chatToggle(e) {
+        e.preventDefault();
+        let chatBro = document.querySelector(".chatbro_chat");
+        if (chatBro && chatBro.classList.contains("chatbro_opacity")) {
+            document.querySelector(".chatbro_minimize_button").click();
+        } else {
+            if (chatBro) {
+                document.querySelector(".chatbro_minimized_header .chatbro_header_caption_td").click();
+            }
+        }
+    }
+
+    _onNavigate(route, e) {
+        e.preventDefault();
+        if (
+            route !== "/" &&
+            route !== "/settings/general" &&
+            this.isUnauthorizedUser(route)
+        )
+            return;
+
+        // Set Accounts Tab as active tab
+        if (route == "/accounts") {
+            SettingsActions.changeViewSetting({
+                dashboardEntry: "accounts"
+            });
+        }
+
+        this.context.router.push(route);
+    }
+
+
+
+    _createAccountLink = null;
+    isUnauthorizedUser(route) {
+        //for exchange allow access forever
+        let currentAccount = AccountStore.getState().currentAccount;
+        if (typeof route !== "undefined" && route.indexOf("/market/") === 0)
+            return false;
+
+        if (!currentAccount || !!this._createAccountLink) {
+            this.props.router.push("/create-account/wallet");
+            return true;
+        }
+
+        return false;
+    }
+
     render() {
         const autoSelectAPI = "wss://fake.automatic-selection.com";
-        const {state, props} = this;
-        const {synced} = props;
-        const connected = !(this.props.rpc_connection_status === "closed");
+        const { state, props } = this;
+        const { synced } = props;
 
         // Current Node Details
         let nodes = this.props.defaults.apiServer;
@@ -167,196 +209,114 @@ class Footer extends React.Component {
         let version = version_match
             ? `.${version_match[1]}`
             : ` ${APP_VERSION}`;
-        let updateStyles = {display: "inline-block", verticalAlign: "top"};
+        let updateStyles = { display: "inline-block", verticalAlign: "top" };
         let logoProps = {};
 
-        return (
-            <div>
-                <div className="show-for-medium grid-block shrink footer">
-                    <div className="align-justify grid-block">
-                        <div className="grid-block">
-                            <div
-                                className="logo"
-                                style={{
-                                    fontSize: state.newVersion
-                                        ? "0.9em"
-                                        : "1em",
-                                    cursor: state.newVersion
-                                        ? "pointer"
-                                        : "normal",
-                                    marginTop: state.newVersion
-                                        ? "-5px"
-                                        : "0px",
-                                    overflow: "hidden"
-                                }}
-                                onClick={
-                                    state.newVersion
-                                        ? this.downloadVersion.bind(this)
-                                        : null
-                                }
-                                {...logoProps}
-                            >
-                                {state.newVersion && (
-                                    <Icon
-                                        name="download"
-                                        title="icons.download"
-                                        style={{
-                                            marginRight: "20px",
-                                            marginTop: "10px",
-                                            fontSize: "1.35em",
-                                            display: "inline-block"
-                                        }}
-                                    />
-                                )}
-                                <span style={updateStyles}>
-                                    <Translate content="footer.title" />
-                                    <span className="version">{version}</span>
-                                </span>
+        let currentAccount = AccountStore.getState().currentAccount;
 
-                                {state.newVersion && (
-                                    <Translate
-                                        content="footer.update_available"
-                                        style={{
-                                            color: "#FCAB53",
-                                            position: "absolute",
-                                            top: "8px",
-                                            left: "36px"
-                                        }}
-                                    />
-                                )}
+        return (
+            <footer className="footer">
+                <div className="footer-line">
+                    <div className="footer-left">
+                        <button
+                            className="btn large inverted flat support-btn"
+                            type="button"
+                            onClick={this._onNavigate.bind(
+                                this,
+                                `/account/${currentAccount}/create-asset/`
+                            )}
+                        >
+                            <Translate content="footer.add_coin" />
+                        </button>
+                        <button
+                            className="btn large inverted flat support-btn"
+                            type="button"
+                            onClick={this._onNavigate.bind(
+                                this,
+                                `/account/${currentAccount}/create-asset/`
+                            )}
+                        >
+                            <Translate content="footer.ieo" />
+                        </button>
+                    </div>
+                    <div className="footer-right">
+                        <Social />
+                        <button
+                            className="btn large inverted flat support-btn"
+                            type="button"
+                            onClick={this.chatToggle.bind(this)}
+                        >
+                            Chat
+                        </button>
+                        <div
+                            className="footer-info"
+                            onClick={() => {
+                                this.setState({ showNodesPopup: true });
+                            }}
+                        >
+                            <div
+                                onMouseEnter={() => {
+                                    this.setState({ showNodesPopup: true });
+                                }}
+                                onMouseLeave={() => {
+                                    this.setState({ showNodesPopup: false });
+                                }}
+                                className="node-access-popup"
+                                style={{
+                                    display: this.state.showNodesPopup ? "" : "none"
+                                }}
+                            >
+                                <AccessSettings
+                                    nodes={this.props.defaults.apiServer}
+                                    popup={true}
+                                />
+                                <div style={{ paddingTop: 15 }}>
+                                    <a onClick={this.onAccess.bind(this)}>
+                                        <Translate content="footer.advanced_settings" />
+                                    </a>
+                                </div>
                             </div>
+                            <span
+                                className="footer-info__status"
+                                onClick={e => {
+                                    e.preventDefault();
+                                    this.context.router.push("/settings/access");
+                                }}
+                            >
+                                {!this.state.connected
+                                    ? counterpart.translate("footer.disconnected")
+                                    : activeNode.name}
+                            </span>
+                            <span className="footer-info__data">
+                                <span>
+                                    {counterpart.translate("footer.latency")}
+                                    &nbsp;
+                                    {!this.state.connected
+                                        ? "-"
+                                        : !activeNode.ping
+                                            ? "-"
+                                            : activeNode.ping + "ms"}
+                                &nbsp;
+                                </span>
+                                /&nbsp;
+                                {counterpart.translate("footer.block")}
+                                &nbsp;#
+                                {block_height}
+                            </span>
                         </div>
-                        {synced ? null : (
-                            <div className="grid-block shrink txtlabel cancel">
-                                <Translate content="footer.nosync" />
-                                &nbsp; &nbsp;
-                            </div>
-                        )}
-                        {!connected ? (
-                            <div className="grid-block shrink txtlabel error">
-                                <Translate content="footer.connection" />
-                                &nbsp; &nbsp;
-                            </div>
-                        ) : null}
-                        {this.props.backup_recommended ? (
-                            <span>
-                                <div className="grid-block">
-                                    <a
-                                        className="shrink txtlabel facolor-alert"
-                                        data-tip="Please understand that you are responsible for making your own backup&hellip;"
-                                        data-type="warning"
-                                        onClick={this.onBackup.bind(this)}
-                                    >
-                                        <Translate content="footer.backup" />
-                                    </a>
-                                    &nbsp;&nbsp;
-                                </div>
-                            </span>
-                        ) : null}
-                        {this.props.backup_brainkey_recommended ? (
-                            <span>
-                                <div className="grid-block">
-                                    <a
-                                        className="grid-block shrink txtlabel facolor-alert"
-                                        onClick={this.onBackupBrainkey.bind(
-                                            this
-                                        )}
-                                    >
-                                        <Translate content="footer.brainkey" />
-                                    </a>
-                                    &nbsp;&nbsp;
-                                </div>
-                            </span>
-                        ) : null}
-                        {block_height ? (
-                            <div className="grid-block shrink">
-                                <div
-                                    onMouseEnter={() => {
-                                        this.setState({showNodesPopup: true});
-                                    }}
-                                    onMouseLeave={() => {
-                                        this.setState({showNodesPopup: false});
-                                    }}
-                                    style={{position: "relative"}}
-                                >
-                                    <div className="footer-status">
-                                        {!connected ? (
-                                            <span className="warning">
-                                                <Translate content="footer.disconnected" />
-                                            </span>
-                                        ) : (
-                                            <span className="success">
-                                                {activeNode.name}
-                                            </span>
-                                        )}
-                                    </div>
-                                    <div className="footer-block">
-                                        <span>
-                                            <span className="footer-block-title">
-                                                <Translate content="footer.latency" />
-                                            </span>
-                                            &nbsp;
-                                            {!connected
-                                                ? "-"
-                                                : !activeNode.ping
-                                                    ? "-"
-                                                    : activeNode.ping + "ms"}
-                                            &nbsp;/&nbsp;
-                                            <span className="footer-block-title">
-                                                <Translate content="footer.block" />
-                                            </span>
-                                            &nbsp;#
-                                            {block_height}
-                                        </span>
-                                    </div>
-                                </div>
-                                <div className="grid-block">
-                                    <div
-                                        className="introjs-launcher"
-                                        onClick={() => {
-                                            this.launchIntroJS();
-                                        }}
-                                    >
-                                        <Translate content="global.help" />
-                                    </div>
-                                </div>
-                            </div>
-                        ) : (
-                            <div className="grid-block shrink">
-                                <Translate content="footer.loading" />
-                            </div>
-                        )}
+                        <button
+                            className="btn large inverted flat support-btn"
+                            type="button"
+                            onClick={e => {
+                                e.preventDefault();
+                                this.context.router.push("/help");
+                            }}
+                        >
+                            {counterpart.translate("global.help")}
+                        </button>
                     </div>
                 </div>
-                <div
-                    onMouseEnter={() => {
-                        this.setState({showNodesPopup: true});
-                    }}
-                    onMouseLeave={() => {
-                        this.setState({showNodesPopup: false});
-                    }}
-                    className="node-access-popup"
-                    style={{display: this.state.showNodesPopup ? "" : "none"}}
-                >
-                    <AccessSettings
-                        nodes={this.props.defaults.apiServer}
-                        popup={true}
-                    />
-                    <div style={{paddingTop: 15}}>
-                        <a onClick={this.onAccess.bind(this)}>
-                            <Translate content="footer.advanced_settings" />
-                        </a>
-                    </div>
-                </div>
-                <div
-                    className="introjs-launcher show-for-small-only"
-                    onClick={() => {
-                        this.launchIntroJS();
-                    }}
-                >
-                    <Translate content="global.help" />
-                </div>
-            </div>
+            </footer>
         );
     }
 
@@ -375,11 +335,45 @@ class Footer extends React.Component {
     }
 
     onAccess() {
-        SettingsActions.changeViewSetting({activeSetting: 6});
+        SettingsActions.changeViewSetting({ activeSetting: 6 });
         this.context.router.push("/settings/access");
     }
 }
 Footer = BindToChainState(Footer);
+
+class Social extends Component {
+    render() {
+        let socialArr = [
+            { item: "btc", href: "https://bitcointalk.org/index.php?topic=5125670", img: "btc" },
+            { item: "vk", href: "https://vk.com/localcoin", img: "vk" },
+            { item: "tm", href: "https://t.me/LocalCoinIS", img: "tm" },
+            { item: "discord", href: "https://discord.gg/vzxSzYN", img: "s-584" },
+            { item: "medium", href: "https://medium.com/@localcoinis", img: "m-1" },
+            { item: "golos", href: "https://golos.io/@localcoin", img: "s-574" },
+            { item: "reddit", href: "https://www.reddit.com/r/LocalCoinIs", img: "redd" },
+            { item: "steemit", href: "https://steemit.com/@localcoin", img: "s-576" },
+            { item: "twitter", href: "https://twitter.com/LocalCoinIS", img: "tw" },
+        ];
+
+        let list = socialArr.map((item, i) => {
+            return (
+                <li className="social__item">
+                    <a key={item.item} href={item.href} className={`social__link ${item.item}`} target="_blank">
+                        <Icon name={item.img}/>
+                    </a>
+                </li>
+            );
+        });
+
+        return (
+            <div className="social">
+                <ul className="social__list">
+                    {list}
+                </ul>
+            </div >
+        );
+    }
+}
 
 class AltFooter extends Component {
     render() {

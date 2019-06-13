@@ -326,7 +326,7 @@ class Operation extends React.Component {
                                     arg: "amount",
                                     decimalOffset:
                                         op[1].amount.asset_id === "1.3.0"
-                                            ? 5
+                                            ? 0
                                             : null
                                 },
                                 {type: "account", value: op[1].to, arg: "to"}
@@ -1132,7 +1132,7 @@ class Operation extends React.Component {
                                                 decimalOffset:
                                                     op[1].receives.asset_id ===
                                                     "1.3.0"
-                                                        ? 3
+                                                        ? 0
                                                         : null
                                             },
                                             {

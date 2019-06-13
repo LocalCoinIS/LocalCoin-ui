@@ -1,70 +1,3 @@
-export const blockTradesAPIs = {
-    BASE: "https://api.blocktrades.us/v2",
-    COINS_LIST: "/coins",
-    ACTIVE_WALLETS: "/active-wallets",
-    TRADING_PAIRS: "/trading-pairs",
-    DEPOSIT_LIMIT: "/deposit-limits",
-    ESTIMATE_OUTPUT: "/estimate-output-amount",
-    ESTIMATE_INPUT: "/estimate-input-amount"
-};
-
-export const openledgerAPIs = {
-    BASE: "https://ol-api1.openledger.info/api/v0/ol/support",
-    COINS_LIST: "/coins",
-    ACTIVE_WALLETS: "/active-wallets",
-    TRADING_PAIRS: "/trading-pairs",
-    DEPOSIT_LIMIT: "/deposit-limits",
-    ESTIMATE_OUTPUT: "/estimate-output-amount",
-    ESTIMATE_INPUT: "/estimate-input-amount"
-};
-
-export const rudexAPIs = {
-    BASE: "https://gateway.rudex.org/api/v0_1",
-    COINS_LIST: "/coins",
-    NEW_DEPOSIT_ADDRESS: "/new-deposit-address"
-};
-
-export const cryptoBridgeAPIs = {
-    BASE: "https://api.crypto-bridge.org/api/v1",
-    COINS_LIST: "/coins",
-    ACTIVE_WALLETS: "/wallets",
-    MARKETS: "/markets",
-    TRADING_PAIRS: "/trading-pairs"
-};
-
-export const widechainAPIs = {
-    BASE: "https://gateway.winex.pro/api/v0/ol/support",
-    COINS_LIST: "/coins",
-    ACTIVE_WALLETS: "/active-wallets",
-    NEW_DEPOSIT_ADDRESS: "/new-deposit-address",
-    WITHDRAW_HISTORY: "/latelyWithdraw",
-    TRADING_PAIRS: "/trading-pairs",
-    DEPOSIT_HISTORY: "/latelyRecharge"
-};
-
-export const gdex2APIs = {
-    BASE: "https://api.gdex.io/adjust",
-    COINS_LIST: "/coins",
-    ACTIVE_WALLETS: "/active-wallets",
-    TRADING_PAIRS: "/trading-pairs"
-};
-
-// Legacy Deposit/Withdraw
-export const gdexAPIs = {
-    BASE: "https://api.gdex.io",
-    ASSET_LIST: "/gateway/asset/assetList",
-    ASSET_DETAIL: "/gateway/asset/assetDetail",
-    GET_DEPOSIT_ADDRESS: "/gateway/address/getAddress",
-    CHECK_WITHDRAY_ADDRESS: "/gateway/address/checkAddress",
-    DEPOSIT_RECORD_LIST: "/gateway/deposit/recordList",
-    DEPOSIT_RECORD_DETAIL: "/gateway/deposit/recordDetail",
-    WITHDRAW_RECORD_LIST: "/gateway/withdraw/recordList",
-    WITHDRAW_RECORD_DETAIL: "/gateway/withdraw/recordDetail",
-    GET_USER_INFO: "/gateway/user/getUserInfo",
-    USER_AGREEMENT: "/gateway/user/isAgree",
-    WITHDRAW_RULE: "/gateway/withdraw/rule"
-};
-
 export const settingsAPIs = {
     DEFAULT_WS_NODE: "wss://fake.automatic-selection.com",
     // DEFAULT_WS_NODE: "ws://127.0.0.1:8090",
@@ -74,51 +7,20 @@ export const settingsAPIs = {
             location: {translate: "settings.api_closest"}
         },
         {url: "ws://127.0.0.1:8090", location: "Locally hosted"},
-        {url: "wss://helsinki.localcoin.is", location: "Finland - Helsinki"},
-        {url: "wss://moscow.localcoin.is", location: "Russia - Moscow"},
-        {url: "wss://de.localcoin.is", location: "Germany - Falkenstein"},
-        {url: "wss://de1.localcoin.is", location: "Germany - firedswiss1"},
-        {url: "wss://fi.localcoin.is", location: "Finland - Tuusula"},
-        {url: "wss://ru.localcoin.is", location: "Russia - MO"},
-        {url: "wss://id.localcoin.is", location: "Indonesia - billpresta3101"},
-        {url: "wss://id1.localcoin.is", location: "Indonesia - "},
-        {url: "wss://vn.localcoin.is", location: "Vietnam - moneyleon1"},
-        {url: "wss://vn1.localcoin.is", location: "Vietnam - amiequach0601"},
-        {url: "wss://vn2.localcoin.is", location: "Vietnam - "},
-        {url: "wss://vn3.localcoin.is", location: "Vietnam - "},
-        {url: "wss://in.localcoin.is", location: "India - "},
-        {url: "wss://in1.localcoin.is", location: "India - "},
-        {url: "wss://cn.localcoin.is", location: "China - "},
-        {url: "wss://cn2.localcoin.is", location: "China - "},
-        {url: "wss://cn3.localcoin.is", location: "China - "},
-        {url: "wss://cn4.localcoin.is", location: "China - "},
-        {url: "wss://ch.localcoin.is", location: "Switzerland"},
-        {url: "wss://us.localcoin.is", location: "USA"},
-        {url: "wss://ca.localcoin.is", location: "Canada"},
-        {url: "wss://ar.localcoin.is", location: "Argentina"},
-        {url: "wss://cl.localcoin.is", location: "Chile"},
-        {url: "wss://ve.localcoin.is", location: "Venezuela"},
-        {url: "wss://jp.localcoin.is", location: "Japan"},
-        {url: "wss://au.localcoin.is", location: "Australia"},
-        {url: "wss://nz.localcoin.is", location: "New Zealand"},
-        {url: "wss://uk.localcoin.is", location: "UK"},
-        {url: "wss://ie.localcoin.is", location: "Ireland"},
-        {url: "wss://nl.localcoin.is", location: "Netherlands"},
-        {url: "wss://kr.localcoin.is", location: "Korea"},
-        {url: "wss://it.localcoin.is", location: "Italy"},
-        {url: "wss://es.localcoin.is", location: "Spain"},
-        {url: "wss://fr.localcoin.is", location: "France"},
-        {url: "wss://mx.localcoin.is", location: "Mexico"},
-        {url: "wss://pl.localcoin.is", location: "Poland"},
-        {url: "wss://pk.localcoin.is", location: "Pakistan"},
-        {url: "wss://tr.localcoin.is", location: "Turkey"},
-        {url: "wss://ua.localcoin.is", location: "Ukraine"},
-        {url: "wss://th.localcoin.is", location: "Thailand"},
-        {url: "wss://sg.localcoin.is", location: "Singapore"},
-        {url: "wss://my.localcoin.is", location: "Malaysia"},
-        {url: "wss://ir.localcoin.is", location: "Iran"},
-        {url: "wss://za.localcoin.is", location: "South Africa"},
-        {url: "wss://br.localcoin.is", location: "Brazil"}
+        {url: "wss://id.localcoin.is", location: "Indonesia by billpresta3101"},
+        {url: "wss://hk.localcoin.is", location: "Hong Kong by vdon61"},
+        {url: "wss://us.localcoin.is", location: "US by crazy-indain"},
+        {url: "wss://ru1.localcoin.is", location: "Russia by george2607"},
+        {url: "wss://ru2.localcoin.is", location: "Russia by albert-andersen"},
+        {url: "wss://ua.localcoin.is", location: "Ukraine by l0l"},
+        {url: "wss://de1.localcoin.is", location: "Germany by firedswiss1"},
+        {url: "wss://mysupremecoin.com", location: "Italy by the-supreme19"},
+        {url: "wss://bebe3101.space", location: "Germany by bebe3101"},
+        {url: "wss://uk.localcoin.is", location: "UK by riggen01"},
+        {url: "wss://au.localcoin.is", location: "Australia by ip23"},
+        {url: "wss://de.localcoin.is", location: "Germany"},
+        {url: "wss://fi.localcoin.is", location: "Finland"},
+        {url: "wss://ru.localcoin.is", location: "Russia"}
     ],
     DEFAULT_FAUCET: "https://faucet.localcoin.is", // 2018-12-infrastructure worker proposal
     TESTNET_FAUCET: "https://faucet.testnet.localcoin.is",
