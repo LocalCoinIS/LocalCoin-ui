@@ -62,7 +62,15 @@ namespace source
             if (hasBeenAsked == 0)
             {
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show("Do you want create desktop icon?", "Create desktop icon", buttons);
+                DialogResult result = MessageBox.Show(
+                    "Do you want create desktop icon?",
+                    "Create desktop icon",
+                    buttons,
+                    MessageBoxIcon.None,
+                    MessageBoxDefaultButton.Button1,
+                    (MessageBoxOptions)0x40000 // MB_TOPMOST
+                );
+
                 if (result == DialogResult.Yes) CreateDesctopIcon();
                 Registry.SetValue(RegistryPath, "", 1);
             }
@@ -81,7 +89,13 @@ namespace source
                     Array.Sort(folders, StringComparer.InvariantCulture);
                     return folders.Last() + "\\";
                 } catch (Exception) {
-                    MessageBox.Show("ERROR: Not found host folder");
+                    MessageBox.Show(
+                        "Not found host folder",
+                        "ERROR",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.None,
+                        MessageBoxDefaultButton.Button1,
+                        (MessageBoxOptions)0x40000);  // MB_TOPMOST
                     Environment.Exit(0);
                 }
 
@@ -118,7 +132,13 @@ namespace source
             }
             catch (Exception)
             {
-                MessageBox.Show("ERROR: " + LaunchHostWorkingDirectory + LaunchHostFileName + " not found!");
+                MessageBox.Show(
+                        LaunchHostWorkingDirectory + LaunchHostFileName + " not found!",
+                        "ERROR",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.None,
+                        MessageBoxDefaultButton.Button1,
+                        (MessageBoxOptions)0x40000);  // MB_TOPMOST
                 Environment.Exit(0);
             }
         }
