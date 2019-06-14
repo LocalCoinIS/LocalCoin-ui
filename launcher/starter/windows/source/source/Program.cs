@@ -45,6 +45,15 @@ namespace source
             LaunchHost();
         }
 
+        string readVersion() {
+            if(System.IO.File.Exists(".\\.version"))
+                try {
+                    return System.IO.File.ReadAllText(".\\.version");
+                } catch (Exception) { }
+
+            return "latest";
+        }
+
         void AskCreateIcon() {
             int hasBeenAsked;
             try { hasBeenAsked = (int)Registry.GetValue(RegistryPath, "", 0); }
@@ -59,7 +68,9 @@ namespace source
             }
         }
         
-        const string RegistryPath = "HKEY_CURRENT_USER\\LocalcoinHost\\IconCreate\\HasBeenAsked";
+        string RegistryPath {
+            get { return "HKEY_CURRENT_USER\\LocalcoinHost\\IconCreate\\HasBeenAsked" + this.readVersion(); }
+        }
         const string LaunchHostFileName = "LocalcoinHost.exe";
         string LaunchHostWorkingDirectory {
             get {
@@ -83,7 +94,7 @@ namespace source
         {
             object shDesktop = (object)"Desktop";
             WshShell shell = new WshShell();
-            string shortcutAddress = (string)shell.SpecialFolders.Item(ref shDesktop) + @"\LocalCoin.lnk";
+            string shortcutAddress = (string)shell.SpecialFolders.Item(ref shDesktop) + "\\Localcoin Wallet " + this.readVersion() + ".lnk";
             IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutAddress);            
             shortcut.TargetPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
             shortcut.Save();
