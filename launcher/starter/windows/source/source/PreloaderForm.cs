@@ -57,7 +57,7 @@ namespace source
         }
 
         string pathWalletIsLoaded {
-            get { return Directory.GetCurrentDirectory() + "\\app\\wallet_is_loaded"; }
+            get { return Application.StartupPath + "\\app\\wallet_is_loaded"; }
         }
     }
 }

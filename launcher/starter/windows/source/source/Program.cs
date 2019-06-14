@@ -84,10 +84,7 @@ namespace source
             get {
                 try
                 {
-                    string current = Directory.GetCurrentDirectory();
-                    string[] folders = Directory.GetDirectories(current);
-                    Array.Sort(folders, StringComparer.InvariantCulture);
-                    return folders.Last() + "\\";
+                    return Application.StartupPath + "\\app\\";
                 } catch (Exception) {
                     MessageBox.Show(
                         "Not found host folder",
