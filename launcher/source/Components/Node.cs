@@ -26,7 +26,7 @@ namespace LocalcoinHost.Components
         }
 
         public static NodeWorkStatus status;
-        public override string WorkingDirectory { get { return Directory.GetCurrentDirectory() + "/node/"; } }
+        public override string WorkingDirectory { get { return Startup.BASE_DIR + "/node/"; } }
         public override string FileName { get { return Platform.Name == OSPlatform.Windows.ToString().ToLower() ? "witness_node.exe" : "witness_node"; } }
         public string ConfigIni { get { return this.WorkingDirectory + "witness_node_data_dir/config.ini"; } }
         public string P2pLog { get { return this.WorkingDirectory + "witness_node_data_dir/logs/p2p/p2p.log"; } }
@@ -41,7 +41,7 @@ namespace LocalcoinHost.Components
                 writer.Write(newBodyConfig);
         }
 
-        public int Start()
+        public new int Start()
         {
             this.TryKillByName();
 
@@ -67,9 +67,11 @@ namespace LocalcoinHost.Components
             try
             {
                 this.WriteNameFile(Title == null ? this.process.ProcessName : Title);
+                Console.WriteLine(FileName + " process id: " + this.process.Id);
                 return this.process.Id;
             }
             catch (Exception) { }
+
 
             return -1;
         }
@@ -147,10 +149,21 @@ namespace LocalcoinHost.Components
 
         public new void TryKillByName()
         {
-            this.process.OutputDataReceived -= Process_OutputDataReceived;
-            this.process.ErrorDataReceived -= Process_OutputDataReceived;
-            this.startup.UnsubscribeExitEventNode();
-            base.TryKillByName();
+            try
+            {
+                this.process.OutputDataReceived -= Process_OutputDataReceived;
+                this.process.ErrorDataReceived -= Process_OutputDataReceived;
+            } catch (Exception) { }
+
+            try
+            {
+                this.startup.UnsubscribeExitEventNode();
+            } catch (Exception) { }
+
+            try
+            {
+                base.TryKillByName();
+            } catch (Exception) { }
         }
     }
 }

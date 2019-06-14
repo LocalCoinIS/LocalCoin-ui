@@ -16,7 +16,7 @@ namespace LocalcoinHost.Components
         public virtual string FileName         { get { return null; } }
         public virtual string Title            { get { return null; } }
 
-        public string RunningAppFileName { get => Directory.GetCurrentDirectory() + "/" + this.GetType().Name + ".running"; }
+        public string RunningAppFileName { get => Startup.BASE_DIR + "/" + this.GetType().Name + ".running"; }
         
         protected void WriteNameFile(string name) {
             this.ClearNameFile();

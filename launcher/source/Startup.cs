@@ -16,17 +16,20 @@ using Newtonsoft.Json;
 
 namespace LocalcoinHost {
     public class Startup : IDisposable {
-        Node node;
+        public static readonly string BASE_DIR = Directory.GetCurrentDirectory();
+
+        Node   node;
         Wallet wallet;
 
         public void ConfigureServices(IServiceCollection services) => services.AddCors();
 
         public Startup() {
-            node = new Node()
+            this.node = new Node()
             {
                 startup = this
             };
-            wallet = new Wallet() {
+            this.wallet = new Wallet()
+            {
                 startup = this,
                 UsedUrl = Program.UsedUrl
             };
@@ -52,7 +55,7 @@ namespace LocalcoinHost {
         string wallet_is_loaded
         {
             get {
-                return Directory.GetCurrentDirectory() + "/wallet_is_loaded";
+                return Startup.BASE_DIR + "/wallet_is_loaded";
             }
         }
 
@@ -80,12 +83,12 @@ namespace LocalcoinHost {
                 hasError = true;
             }
 
-            if (File.Exists(this.wallet.FileName)) {
+            if (File.Exists(this.wallet.WorkingDirectory + this.wallet.FileName)) {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.Error.WriteLine("OK: " + this.wallet.FileName);
+                Console.Error.WriteLine("OK: " + this.wallet.WorkingDirectory + this.wallet.FileName);
             } else {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("FILE NOT FOUND: " + this.wallet.FileName);
+                Console.WriteLine("FILE NOT FOUND: " + this.wallet.WorkingDirectory + this.wallet.FileName);
                 hasError = true;
             }
 
@@ -122,7 +125,6 @@ namespace LocalcoinHost {
             try {
                 this.node.Start();
                 this.wallet.Start();
-                
             } catch (Exception ex) {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(ex.Message);

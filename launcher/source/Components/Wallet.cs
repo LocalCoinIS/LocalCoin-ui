@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Runtime.InteropServices;
 
 namespace LocalcoinHost.Components {
@@ -6,7 +7,7 @@ namespace LocalcoinHost.Components {
         public string UsedUrl;
         public override string Arguments        { get => UsedUrl;     }
         public override string Title            { get => "LocalCoin"; }
-        public override string WorkingDirectory { get => Directory.GetCurrentDirectory() + "/"; }
+        public override string WorkingDirectory { get => Startup.BASE_DIR + "/"; }
         public override string FileName         { get => Platform.Name == OSPlatform.Windows.ToString().ToLower() ? "wallet.exe" : "wallet"; }
 
         public new int Start()
@@ -15,6 +16,8 @@ namespace LocalcoinHost.Components {
 
             if(result != -1)
                 this.startup.SubscribeExitEventWallet();
+
+            Console.WriteLine(FileName + " process id: " + result);
 
             return result;
         }
