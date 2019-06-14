@@ -39,7 +39,6 @@ import BlockchainStore from "stores/BlockchainStore";
 import { runInThisContext } from "vm";
 let ops = Object.keys(operations);
 
-const MIN_BALANCE_FOR_ACTIVENODE = 1010;
 class AccountActivenodes extends React.Component {
     static contextTypes = {
         router: PropTypes.object.isRequired
@@ -68,6 +67,7 @@ class AccountActivenodes extends React.Component {
                         existsInConfActivenodeData : false,
                         failconnection             : false,
                         percentreplay              : false,
+                        MIN_BALANCE_FOR_ACTIVENODE : this.get_MIN_BALANCE_FOR_ACTIVENODE(),
                         cntPenalty                 : 0,
                         imIsActivenode             : true   };
 
@@ -92,6 +92,15 @@ class AccountActivenodes extends React.Component {
         }, 5000);
     }
 
+    /**
+     * 43200*0.1/30*8=1152
+     * 43200 количество блоков за последние 24 часа(берется из блокчейна)
+     * 0.1 комиссия за активность ноды (берется из блокчейна)
+     * 30 количество активных ном в сети(берется из блокчейна)
+     * 8 - фиксированная цифра обозначающая количество дней до снятия вестинга
+     */
+    get_MIN_BALANCE_FOR_ACTIVENODE = () => parseInt(43200 * 0.1 / this.getCountActivenodes() * 8);
+
     _handleAddNode = () => this.setState({ calculatePanel: false });
 
     _unlockHandle = () => WalletUnlockActions.unlock()
@@ -101,9 +110,9 @@ class AccountActivenodes extends React.Component {
                             .catch(() => {});
 
     canCreateTheActivenode = () => {
-        if(this.getWalletBalance() < MIN_BALANCE_FOR_ACTIVENODE) return false;
-        if(!this.isLifetimeMember())                             return false;
-        if(!this.isLocalNodeRunning())                           return false;
+        if(this.getWalletBalance() < this.state.MIN_BALANCE_FOR_ACTIVENODE) return false;
+        if(!this.isLifetimeMember())                                        return false;
+        if(!this.isLocalNodeRunning())                                      return false;
 
         return true;
     }
@@ -389,8 +398,12 @@ class AccountActivenodes extends React.Component {
                         <br />
                         <table>
                             <tr>
-                                <td style={{ width: '30%', textAlign: 'right' }}><input type="checkbox" checked={this.getWalletBalance() >= MIN_BALANCE_FOR_ACTIVENODE} /></td>
-                                <td style={{ textAlign: 'left' }}><span style={{ textAlign: 'center' }}>{counterpart.translate("account.activenodes.min_balance")}</span></td>
+                                <td style={{ width: '30%', textAlign: 'right' }}>
+                                    <input type="checkbox" checked={this.getWalletBalance() >= this.state.MIN_BALANCE_FOR_ACTIVENODE} />
+                                </td>
+                                <td style={{ textAlign: 'left' }}><span style={{ textAlign: 'center' }}>{counterpart.translate("account.activenodes.min_balance", {
+                                    val: this.state.MIN_BALANCE_FOR_ACTIVENODE 
+                                })}</span></td>
                             </tr>
                             <tr>
                                 <td style={{ width: '30%', textAlign: 'right' }}><input type="checkbox" checked={this.isLifetimeMember()} /></td>
@@ -622,7 +635,7 @@ class AccountActivenodes extends React.Component {
         const s             = this.state;
         const lcNdIsRunning = this.isLocalNodeRunning();
 
-        if(WalletUnlockStore.getState().locked)                                 return this.unauthorizedView();
+        // if(WalletUnlockStore.getState().locked)                                 return this.unauthorizedView();
 
         if(s.failconnection)                                                    return this.failConnectionView();
         if(s.percentreplay)                                                     return this.percentReplayView();

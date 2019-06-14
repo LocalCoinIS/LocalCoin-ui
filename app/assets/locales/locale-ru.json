@@ -305,7 +305,7 @@
             "reload": "Перезапустить",
             "activenodes": "Активноды",
             "activenode_requirements": "Обязательные условия активноды",
-            "min_balance": "Рекомендуемый Минимальный баланс 1010 LLC",
+            "min_balance": "Рекомендуемый Минимальный баланс %(val)s LLC",
             "lifetime_member": "Наличие премиум статуса",
             "localhost_connection": "Запущена локальная нода и синхронизирована",
             "create_the_activenode": "Создать активноду",
