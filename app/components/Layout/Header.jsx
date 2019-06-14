@@ -855,7 +855,9 @@ class Header extends React.Component {
                                         </a>
                                     </li>
                                 }
-                                { !window.electron ? null :
+                                { !window.electron || ( typeof window.process === "undefined" ||
+                                                        typeof window.process.platform === "undefined" ||
+                                                        window.process.platform.lastIndexOf("win") === -1 ) ? null :
                                     <li className="mobile__list__item">
                                         <a
                                             className="mobile__list__link"
@@ -1063,7 +1065,9 @@ class Header extends React.Component {
                                 }
 
 
-                                { !window.electron ? null :
+                                { !window.electron || ( typeof window.process === "undefined" ||
+                                                        typeof window.process.platform === "undefined" ||
+                                                        window.process.platform.lastIndexOf("win") === -1 ) ? null :
                                     <li
                                         className={cnames("navigation__item", {
                                             active:
