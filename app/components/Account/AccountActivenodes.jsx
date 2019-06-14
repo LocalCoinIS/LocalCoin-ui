@@ -366,9 +366,7 @@ class AccountActivenodes extends React.Component {
         );
     }
 
-    activenodeRequirementsView = () => {
-        let accountName = AccountStore.getState().currentAccount;
-        
+    getPercetnSync = () => {
         let percetnSync = null;
         if(typeof window.lastLocalBlock !== "undefined" && typeof window.lastActualBlock !== "undefined" &&
                   window.lastLocalBlock !=  0           &&        window.lastActualBlock !=  0) {
@@ -376,6 +374,12 @@ class AccountActivenodes extends React.Component {
             percetnSync = parseInt((window.lastLocalBlock / window.lastActualBlock ) * 100);
             if(percetnSync >= 100) percetnSync = null;
         }
+        return percetnSync;
+    }
+
+    activenodeRequirementsView = () => {
+        let accountName = AccountStore.getState().currentAccount;
+        let percetnSync = this.getPercetnSync();
 
         return  <div className="market-list-wrap">
                     <div style={{ margin: "0 auto", width: 600, marginTop: 100, background: '#efefef', padding: 50, textAlign: 'center' }}>
@@ -530,6 +534,20 @@ class AccountActivenodes extends React.Component {
 
     checkFailConnection = () => {
         let accountName = ("" + AccountStore.getState().currentAccount).trim().toLocaleLowerCase();
+
+        //Нода должна быть синхронизирована
+        let percetnSync = this.getPercetnSync();
+        let isSync= ( this.state.imIsActivenode                             ) &&
+                    ( this.isLocalNodeRunning()                             ) &&
+                    ( this.state.existsInConfActivenodeData                 ) &&
+                    ( percetnSync === null || this.isLocalNodeRunning()     );
+
+        if(!isSync) {
+            if(this.state.failconnection)
+                this.setState({ failconnection: false });
+            return;
+        }
+
 
         fetch(
             "https://api.llc.is/get_all_activenodes",
