@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace LocalcoinHost.Components
 {
     public abstract class ProcessControll {
+        public Startup startup;
         public Process process = null;
         
         public virtual string Arguments        { get { return null; } }

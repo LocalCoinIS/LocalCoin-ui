@@ -16,12 +16,21 @@ using Newtonsoft.Json;
 
 namespace LocalcoinHost {
     public class Startup : IDisposable {
-        Node node = new Node();
-        Wallet wallet = new Wallet() { UsedUrl = Program.UsedUrl };
+        Node node;
+        Wallet wallet;
 
         public void ConfigureServices(IServiceCollection services) => services.AddCors();
 
         public Startup() {
+            node = new Node()
+            {
+                startup = this
+            };
+            wallet = new Wallet() {
+                startup = this,
+                UsedUrl = Program.UsedUrl
+            };
+
             if (!this.CheckFiles()) {
                 Console.ForegroundColor = ConsoleColor.Red;                
                 Console.Error.WriteLine("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -86,15 +95,34 @@ namespace LocalcoinHost {
             return !hasError;
         }
 
+        public void SubscribeExitEventNode()
+        {
+            this.node.process.EnableRaisingEvents = true;
+            this.node.process.Exited += OnAnyProcessExited;
+        }
+
+        public void UnsubscribeExitEventNode() {
+            this.node.process.EnableRaisingEvents = false;
+            this.node.process.Exited -= OnAnyProcessExited;
+        }
+
+        public void SubscribeExitEventWallet()
+        {
+            this.wallet.process.EnableRaisingEvents = true;
+            this.wallet.process.Exited += OnAnyProcessExited;
+        }
+
+        public void UnsubscribeExitEventWallet()
+        {
+            this.wallet.process.EnableRaisingEvents = false;
+            this.wallet.process.Exited -= OnAnyProcessExited;
+        }
+
         private void OnStart() {
             try {
                 this.node.Start();
-                this.node.process.EnableRaisingEvents = true;
-                this.node.process.Exited += OnAnyProcessExited;
-
                 this.wallet.Start();
-                this.wallet.process.EnableRaisingEvents = true;
-                this.wallet.process.Exited += OnAnyProcessExited;
+                
             } catch (Exception ex) {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(ex.Message);

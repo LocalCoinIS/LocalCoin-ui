@@ -8,5 +8,21 @@ namespace LocalcoinHost.Components {
         public override string Title            { get => "LocalCoin"; }
         public override string WorkingDirectory { get => Directory.GetCurrentDirectory() + "/"; }
         public override string FileName         { get => Platform.Name == OSPlatform.Windows.ToString().ToLower() ? "wallet.exe" : "wallet"; }
+
+        public new int Start()
+        {
+            var result = base.Start();
+
+            if(result != -1)
+                this.startup.SubscribeExitEventWallet();
+
+            return result;
+        }
+
+        public new void TryKillByName()
+        {
+            this.startup.UnsubscribeExitEventWallet();
+            base.TryKillByName();
+        }
     }
 }
