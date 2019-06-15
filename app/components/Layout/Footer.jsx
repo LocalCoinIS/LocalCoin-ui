@@ -53,12 +53,30 @@ class Footer extends React.Component {
             if(connected !== this.state.connected)
                 this.setState({ connected: connected });
 
-                if(!connected) {
-                    if(typeof document.getElementsByClassName("footer-info__status")[0] !== "undefined") {
-                        document.getElementsByClassName("footer-info__status")[0].innerHTML = counterpart.translate("footer.disconnected");
-                    }
+            if(!connected) {
+                if(typeof document.getElementsByClassName("footer-info__status")[0] !== "undefined") {
+                    document.getElementsByClassName("footer-info__status")[0].innerHTML
+                        = counterpart.translate("footer.disconnected");
                 }
-        }, 500);
+            } else {
+                const autoSelectAPI = "wss://fake.automatic-selection.com";
+                let nodes = this.props.defaults.apiServer;
+                let getNode = this.getNode.bind(this);
+                let currentNodeIndex = this.getCurrentNodeIndex.call(this);
+
+                let activeNode = getNode(nodes[currentNodeIndex] || nodes[0]);
+
+                if (activeNode.url == autoSelectAPI) {
+                    let nodeUrl = props.activeNode;
+                    currentNodeIndex = this.getNodeIndexByURL.call(this, nodeUrl);
+                    activeNode = getNode(nodes[currentNodeIndex]);
+                }
+
+                if(typeof document.getElementsByClassName("footer-info__status")[0] !== "undefined" && typeof activeNode.name !== "undefined") {
+                    document.getElementsByClassName("footer-info__status")[0].innerHTML = activeNode.name;
+                }
+            }
+        }, 2000);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
