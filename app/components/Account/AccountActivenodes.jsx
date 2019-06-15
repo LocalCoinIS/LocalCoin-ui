@@ -376,14 +376,14 @@ class AccountActivenodes extends React.Component {
     }
 
     getPercetnSync = () => {
-        let percetnSync = null;
         if(typeof window.lastLocalBlock !== "undefined" && typeof window.lastActualBlock !== "undefined" &&
                   window.lastLocalBlock !=  0           &&        window.lastActualBlock !=  0) {
 
-            percetnSync = parseInt((window.lastLocalBlock / window.lastActualBlock ) * 100);
-            if(percetnSync >= 100) percetnSync = null;
+            try {
+                return ((window.lastLocalBlock / window.lastActualBlock ) * 100).toFixed(1);
+            } catch(ex) {}
         }
-        return percetnSync;
+        return 0;
     }
 
     activenodeRequirementsView = () => {
@@ -635,7 +635,7 @@ class AccountActivenodes extends React.Component {
         const s             = this.state;
         const lcNdIsRunning = this.isLocalNodeRunning();
 
-        // if(WalletUnlockStore.getState().locked)                                 return this.unauthorizedView();
+        if(WalletUnlockStore.getState().locked)                                 return this.unauthorizedView();
 
         if(s.failconnection)                                                    return this.failConnectionView();
         if(s.percentreplay)                                                     return this.percentReplayView();

@@ -324,7 +324,7 @@ class App extends React.Component {
                 //узнаем актуальный блок локальной ноды
                 (new LocalcoinHost()).getLastBlock(url, (lastLocalBlock) => {
                     if(lastLocalBlock === -1) return removeConnectFlat();
-                    let localNodeIsSync = lastLocalBlock >= lastActualBlock;
+                    let localNodeIsSync = lastLocalBlock >= lastActualBlock-500;
 
                     window.lastLocalBlock  = lastLocalBlock;
                     window.lastActualBlock = lastActualBlock;
