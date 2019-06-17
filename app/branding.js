@@ -77,7 +77,7 @@ export function getUnits(chainId = "806101b8") {
  */
 
 export function getMyMarketsBases() {
-    return ["LLC", "USD", "EUR", "CNY", "RUB", "BRL", "USDT", "BTC", "LTC", "XMR", "DASH", "GBP", "AUD", "KRW", "UAH", "JPY", "ETH", "LTC", "IDR", "VND", "INR"];
+    return ["LLC", "USD", "EUR", "RUB", "BRL", "CNY", "USDT", "ETH", "BTC", "LTC", "XMR", "DASH", "GBP", "AUD", "UAH", "PLN", "IDR", "VND", "INR", "KRW"];
 }
 
 /**
@@ -88,7 +88,7 @@ export function getMyMarketsBases() {
 export function getMyMarketsQuotes() {
     let tokens = {
         nativeTokens: [
-                "LLC", "USDT", "BTC", "XMR", "ETH", "LTC", "DASH", "USD", "EUR", "CNY", "RUB", "BRL", "GBP", "AUD", "UAH", "PLN", "NGN", "KRW", "IDR", "VND", "INR"
+                "LLC", "USDT", "BTC", "XMR", "ETH", "LTC", "DASH", "USD", "EUR", "CNY", "RUB", "BRL", "GBP", "AUD", "UAH", "TRY", "PLN", "NGN", "KRW", "JPY", "IDR", "VND", "INR"
             ]
             //     "GOLD",
             //     "KRW",
