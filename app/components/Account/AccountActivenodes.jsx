@@ -81,7 +81,7 @@ class AccountActivenodes extends React.Component {
         if(typeof window.activenodePageLifecycleInterval === "undefined") window.activenodePageLifecycleInterval = null;
         if(window.activenodePageLifecycleInterval !== null) clearInterval(window.activenodePageLifecycleInterval);
 
-        window.activenodePageLifecycleInterval = setInterval(() => {
+        let checkerLifecycle = () => {
             this.checkPercentReplay();
             this.checkFailConnection();
             this.checkActivenodeKeysHasBeenWriten();
@@ -89,7 +89,9 @@ class AccountActivenodes extends React.Component {
                 if(this.state.imIsActivenode !== isActivenode)
                     this.setState({ imIsActivenode: isActivenode });
             });
-        }, 5000);
+        };
+        checkerLifecycle();
+        window.activenodePageLifecycleInterval = setInterval(checkerLifecycle, 5000);
     }
 
     /**
