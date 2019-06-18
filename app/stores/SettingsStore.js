@@ -60,7 +60,7 @@ class SettingsStore {
             unit: CORE_ASSET,
             showSettles: false,
             showAssetPercent: false,
-            walletLockTimeout: 25920 * 10,
+            walletLockTimeout: 0,
             themes: "darkTheme",
             passwordLogin: false,
             browser_notifications: {
