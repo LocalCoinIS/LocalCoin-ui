@@ -369,8 +369,15 @@ class LLCBridgeModal extends React.Component {
         let next = function() {
             self.setState({modalActive: false});
             self.asset = ChainStore.getAsset(self.props.currency.asset);
+
+            let feeAmount = 0;
+            try {
+                feeAmount = parseFloat(self.props.currency.gatewayFee);
+                if(feeAmount < 0) feeAmount = 0;
+            } catch(ex) {}
+
             const sendAmount = new Asset({
-                real: self.wdAmount,
+                real: self.wdAmount + feeAmount,
                 asset_id: self.asset.get("id"),
                 precision: self.asset.get("precision")
             });
