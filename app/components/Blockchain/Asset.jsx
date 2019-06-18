@@ -13,6 +13,7 @@ import utils from "common/utils";
 import FormattedTime from "../../components/Utility/FormattedTime";
 import {ChainStore} from "bitsharesjs/es";
 import {Apis} from "bitsharesjs-ws";
+import Tab from "../../components/Utility/Tab";
 import Tabs from "../../components/Utility/Tabs";
 import {CallOrder, FeedPrice} from "common/MarketClasses";
 import Page404 from "../Page404/Page404";

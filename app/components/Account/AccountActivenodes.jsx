@@ -5,7 +5,7 @@ import accountUtils from "common/account_utils";
 import WorkerApproval from "../../components/Account/WorkerApproval";
 import VotingAccountsList from "./VotingAccountsList";
 import cnames from "classnames";
-import Tabs from "../Utility/Tabs";
+import Tab from "../Utility/Tab"; import Tabs from "../Utility/Tabs";
 import BindToChainState from "../../components/Utility/BindToChainState";
 import WalletUnlockStore from "stores/WalletUnlockStore";
 import WalletDb from "stores/WalletDb";

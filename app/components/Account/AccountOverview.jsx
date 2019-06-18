@@ -24,7 +24,7 @@ import BorrowModal from "../../components/Modal/BorrowModal";
 import ReactTooltip from "react-tooltip";
 import SimpleDepositWithdraw from "../../components/Dashboard/SimpleDepositWithdraw";
 // import SimpleDepositBlocktradesBridge from "../../components/Dashboard/SimpleDepositBlocktradesBridge";
-import Tabs from "../Utility/Tabs";
+import Tab from "../Utility/Tab"; import Tabs from "../Utility/Tabs";
 import AccountOrders from "./AccountOrders";
 import cnames from "classnames";
 import TranslateWithLinks from "../../components/Utility/TranslateWithLinks";
