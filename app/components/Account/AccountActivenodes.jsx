@@ -101,7 +101,7 @@ class AccountActivenodes extends React.Component {
      * 30 количество активных ном в сети(берется из блокчейна)
      * 8 - фиксированная цифра обозначающая количество дней до снятия вестинга
      */
-    get_MIN_BALANCE_FOR_ACTIVENODE = () => parseInt(43200 * 0.1 / this.getCountActivenodes() * 8);
+    get_MIN_BALANCE_FOR_ACTIVENODE = () => parseInt(43200 * 0.1 / this.getCountActivenodes() * 8) + 550;
 
     _handleAddNode = () => this.setState({ calculatePanel: false });
 
