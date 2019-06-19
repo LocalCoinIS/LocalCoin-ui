@@ -49,7 +49,15 @@ class App extends React.Component {
         super();
 
         if(this.isLocalNodeRunning())
-            this.connectToAnyNotLocalNode(true);
+            this.connectToAnyNotLocalNode(true, true);
+
+        // window.forceNodeReconnect = () => {
+        //     window.tryReconnectToExtNode = false;
+        //     window.tryReconnectToExtNodeTimeout = null;
+        //     if(typeof window.tryReconnectToExtNodeTimeout !== "undefined" && window.tryReconnectToExtNodeTimeout !== null)
+        //         clearTimeout(window.tryReconnectToExtNodeTimeout);
+        //     this.connectToAnyNotLocalNode(false, false, true);
+        // };
 
         let syncFail =
             ChainStore.subError &&
@@ -79,11 +87,12 @@ class App extends React.Component {
         .getState()
         .rpc_connection_status === "closed";
 
-    connectToAnyNotLocalNode(onlyIfIsLocalNodeRunning, onlyIfIsDisconnect) {
+    connectToAnyNotLocalNode(onlyIfIsLocalNodeRunning, onlyIfIsDisconnect, force) {
         if(typeof window.tryReconnectToExtNode !== "undefined" && window.tryReconnectToExtNode === true) return;
 
         onlyIfIsLocalNodeRunning = typeof onlyIfIsLocalNodeRunning === "undefined" ? false : onlyIfIsLocalNodeRunning;
         onlyIfIsDisconnect       = typeof onlyIfIsDisconnect       === "undefined" ? false : onlyIfIsDisconnect;
+        force                    = typeof force                    === "undefined" ? false : force;
 
         /**
          * только если запущена локальная нода,
@@ -91,6 +100,7 @@ class App extends React.Component {
          */
         if     (onlyIfIsLocalNodeRunning && this.isLocalNodeRunning()) { /* OK */ }
         else if(onlyIfIsDisconnect       && this.isDisconnect())       { /* OK */ }
+        else if(force)                                                 { /* OK */ }
         else                                                           {  return; }
 
         //ноды, которые не резолвятся, исключаем при дальнейших соединениях
@@ -98,11 +108,19 @@ class App extends React.Component {
             window.excludeNodes = [];
 
         //Ноды, отсортированные по пингу
-        let nodes = SettingsStore
+        let _nodes = SettingsStore
             .getState()
             .apiLatencies;
 
-        for(let node in nodes) {
+        let nodes = {};
+        for(let node in _nodes) {
+            let ping = _nodes[node];
+            nodes[ping] = node;
+        }
+
+        // window.nodes = nodes;
+
+        for(let node of nodes) {
             if(node == null || typeof node === "undefined" || node == "") continue;
 
             //если идем по нодам по второму кругу
