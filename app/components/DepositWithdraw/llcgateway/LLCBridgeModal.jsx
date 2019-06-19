@@ -78,7 +78,11 @@ class LLCBridgeModal extends React.Component {
         new LLCGatewayData().getAllowCurrency(function(response) {
             self.currencies = response.deposit;
 
-            let thisAsset = LLCBridgeModal.DEFAULT_CURRENCY;
+            let thisAsset = self.state.asset;
+            if(typeof self.props.currency !== "undefined" && typeof self.props.currency.asset !== "undefined") {
+                thisAsset = self.props.currency.asset;
+            }
+            
             if (!self.currencies) return;
             let assets = [],
                 assetValues = [];
@@ -98,6 +102,7 @@ class LLCBridgeModal extends React.Component {
                 assets: assets,
                 assetValues: assetValues
             });
+            
             self.onChooseAsset(thisAsset);
         });
     }
@@ -131,6 +136,7 @@ class LLCBridgeModal extends React.Component {
             confirmations: this.getCountConfirmations(asset),
             minimal: currentCurrency ? currentCurrency.minimal : 0
         });
+
         this.loadAssetCourse(asset, this.updateSend.bind(this));
 
         let account = this.props.account;
@@ -148,7 +154,11 @@ class LLCBridgeModal extends React.Component {
     }
 
     getCountConfirmations(asset) {
-        switch (asset) {
+        let bullet = (""+asset)
+            .trim()
+            .toUpperCase();
+
+        switch (bullet) {
             case "BTC":
                 return 2;
             case "LTC":
@@ -369,8 +379,15 @@ class LLCBridgeModal extends React.Component {
         let next = function() {
             self.setState({modalActive: false});
             self.asset = ChainStore.getAsset(self.props.currency.asset);
+
+            let feeAmount = 0;
+            try {
+                feeAmount = parseFloat(self.props.currency.gatewayFee);
+                if(feeAmount < 0) feeAmount = 0;
+            } catch(ex) {}
+
             const sendAmount = new Asset({
-                real: self.wdAmount,
+                real: self.wdAmount + feeAmount,
                 asset_id: self.asset.get("id"),
                 precision: self.asset.get("precision")
             });

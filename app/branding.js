@@ -77,7 +77,7 @@ export function getUnits(chainId = "806101b8") {
  */
 
 export function getMyMarketsBases() {
-    return ["LLC", "USD", "EUR", "CNY", "RUB", "BRL", "USDT", "BTC", "XMR", "EOS", "XRP", "BCH", "ZEC", "TUSD", "ETH", "IDR", "VND", "INR"];
+    return ["LLC", "USD", "EUR", "RUB", "BRL", "CNY", "USDT", "ETH", "BTC", "LTC", "XMR", "DASH", "GBP", "AUD", "UAH", "PLN", "IDR", "VND", "INR", "KRW"];
 }
 
 /**
@@ -88,7 +88,7 @@ export function getMyMarketsBases() {
 export function getMyMarketsQuotes() {
     let tokens = {
         nativeTokens: [
-                "LLC", "USD", "EUR", "CNY", "RUB", "BRL", "USDT", "BTC", "XMR", "XRP", "BCH", "TUSD", "ETH", "LTC", "DASH", "USDS", "USDC", "IDR", "GBP", "UAH", "PLN", "NGN", "VND", "INR"
+                "LLC", "USDT", "BTC", "XMR", "ETH", "LTC", "DASH", "USD", "EUR", "CNY", "RUB", "BRL", "GBP", "AUD", "UAH", "TRY", "PLN", "NGN", "KRW", "JPY", "IDR", "VND", "INR"
             ]
             //     "GOLD",
             //     "KRW",
@@ -318,7 +318,7 @@ export function getAllowedLogins() {
 }
 
 export function getSmartCoinMarkets() {
-    return ['MYR', 'PGK', 'SCR', 'ANG', 'THB', 'BIF', 'USD', 'CNY', 'XDR', 'EGP', 'IQD', 'KRW', 'MDL', 'MZN', 'PHP', 'SDG', 'AngolanKwanza', 'TJS', 'BMD', 'UYU', 'COP', 'IRR', 'KWD', 'MGA', 'NAD', 'PKR', 'SEK', 'ARS', 'TurkmenManat', 'BOB', 'ISK', 'KYD', 'MKD', 'NGN', 'PLN', 'SGD', 'AUD', 'JMD', 'KZT', 'MMK', 'NIO', 'PYG', 'JOD', 'LAK', 'MNT', 'NOK', 'JPY', 'LBP', 'MOP', 'KES', 'LKR', 'MRU', 'KGS', 'LRD', 'KHR', 'GNF', 'XOF', 'ERN', 'GTQ', 'UZS', 'CRC', 'XPD', 'ETB', 'GYD', 'TND', 'BRL', 'VEF', 'CUC', 'XPF', 'EUR', 'HKD', 'SLL', 'AWG', 'TOP', 'BWP', 'VND', 'CUP', 'XPT', 'FJD', 'HNL', 'QAR', 'SOS', 'AZN', 'TRY', 'BYN', 'VUV', 'CVE', 'XUA', 'FKP', 'HRK', 'NPR', 'RON', 'SRD', 'BAM', 'TTD', 'BZD', 'WST', 'CZK', 'YER', 'GBP', 'HTG', 'NZD', 'RSD', 'AED', 'SSP', 'BBD', 'TWD', 'CAD', 'XAF', 'DJF', 'ZAR', 'GEL', 'HUF', 'MUR', 'OMR', 'RUB', 'AFN', 'SVC', 'BDT', 'TZS', 'CDF', 'XAG', 'DKK', 'ZMW', 'GHS', 'IDR', 'LSL', 'MVR', 'PAB', 'RWF', 'ALL', 'SYP', 'BGN', 'UAH', 'CHF', 'XAU', 'DOP', 'ZWL', 'GIP', 'ILS', 'KMF', 'LYD', 'MWK', 'PEN', 'SAR', 'AMD', 'SZL', 'BHD', 'UGX', 'CLP', 'XCD', 'DZD', 'ZMK', 'GMD', 'INR', 'KPW', 'MAD', 'MXN'];
+    return ['MYR', 'PGK', 'SCR', 'ANG', 'THB', 'BIF', 'USD', 'CNY', 'XDR', 'EGP', 'IQD', 'KRW', 'MDL', 'MZN', 'PHP', 'SDG', 'AOAK', 'TJS', 'BMD', 'UYU', 'COP', 'IRR', 'KWD', 'MGA', 'NAD', 'PKR', 'SEK', 'ARS', 'TMTU', 'BOB', 'ISK', 'KYD', 'MKD', 'NGN', 'PLN', 'SGD', 'AUD', 'JMD', 'KZT', 'MMK', 'NIO', 'PYG', 'JOD', 'LAK', 'MNT', 'NOK', 'JPY', 'LBP', 'MOP', 'KES', 'LKR', 'MRU', 'KGS', 'LRD', 'KHR', 'GNF', 'XOF', 'ERN', 'GTQ', 'UZS', 'CRC', 'XPD', 'ETB', 'GYD', 'TND', 'BRL', 'VEF', 'CUC', 'XPF', 'EUR', 'HKD', 'SLL', 'AWG', 'TOP', 'BWP', 'VND', 'CUP', 'XPT', 'FJD', 'HNL', 'QAR', 'SOS', 'AZN', 'TRY', 'BYN', 'VUV', 'CVE', 'XUA', 'FKP', 'HRK', 'NPR', 'RON', 'SRD', 'BAM', 'TTD', 'BZD', 'WST', 'CZK', 'YER', 'GBP', 'HTG', 'NZD', 'RSD', 'AED', 'SSP', 'BBD', 'TWD', 'CAD', 'XAF', 'DJF', 'ZAR', 'GEL', 'HUF', 'MUR', 'OMR', 'RUB', 'AFN', 'SVC', 'BDT', 'TZS', 'CDF', 'XAG', 'DKK', 'ZMW', 'GHS', 'IDR', 'LSL', 'MVR', 'PAB', 'RWF', 'ALL', 'SYP', 'BGN', 'UAH', 'CHF', 'XAU', 'DOP', 'ZWL', 'GIP', 'ILS', 'KMF', 'LYD', 'MWK', 'PEN', 'SAR', 'AMD', 'SZL', 'BHD', 'UGX', 'CLP', 'XCD', 'DZD', 'ZMK', 'GMD', 'INR', 'KPW', 'MAD', 'MXN'];
 }
 
 export function getDashboardAssets() {
