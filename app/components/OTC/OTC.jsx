@@ -17,7 +17,8 @@ class OTC extends React.Component {
         super(props);
 
         this.state = {
-            slideIndex: 1
+            slideIndex: 1,
+            isWheelEnd: true
         };
 
     }
@@ -111,19 +112,26 @@ class OTC extends React.Component {
     }
 
     _onWheel(e) {
-        e = e || window.event;
-        let delta = e.deltaY;
-        if(e.wheelDelta){
-            delta = -e.wheelDelta;
+        let _this = this;
+        if(_this.state.isWheelEnd) {
+            e = e || window.event;
+            let delta = e.deltaY;
+            if(e.wheelDelta){
+                delta = -e.wheelDelta;
+            }
+            if(delta > 0){
+                _this._plusSlides(1);
+            } else {
+                _this._plusSlides(-1);
+            }
+
+            _this.setState({isWheelEnd: false});
+            setTimeout(function() {
+                _this.setState({isWheelEnd: true});
+            }, 500);
         }
-        if(delta > 0){
-            this._plusSlides(1);
-        } else {
-            this._plusSlides(-1);
-        }
+
     }
-
-
 
     render() {
 
