@@ -17,12 +17,12 @@ export default class FastDisconnectPing {
     }
 
     setDisconnectStatus = () => {
-        if(this.currentNodeIsOpen() && window.disconnectCnt === MAX_DISCONNECT_CNT)
+        if(this.currentNodeIsOpen())
             this.blockchainStore.onUpdateRpcConnectionStatus("closed");
     }
 
     setConnectStatus = () => {
-        if(!this.currentNodeIsOpen() && window.connectCnt === MAX_CONNECT_CNT)
+        if(!this.currentNodeIsOpen())
             this.blockchainStore.onUpdateRpcConnectionStatus("open");
     }
 
