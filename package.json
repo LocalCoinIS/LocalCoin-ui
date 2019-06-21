@@ -1,6 +1,6 @@
 {
-  "name": "LocalCoin-light",
-  "version": "1.0.3",
+  "name": "LocalCoin-wallet",
+  "version": "1.0.4",
   "description": "Advanced wallet interface for the LocalCoin financial blockchain.",
   "homepage": "https://github.com/localcoinis/localcoin-ui",
   "author": "Sigve Kvalsvik <kvalsvik.crypto@gmail.com>",
