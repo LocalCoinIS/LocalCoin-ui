@@ -48,16 +48,8 @@ class App extends React.Component {
     constructor(props) {
         super();
 
-        if(this.isLocalNodeRunning())
-            this.connectToAnyNotLocalNode(true, true);
-
-        // window.forceNodeReconnect = () => {
-        //     window.tryReconnectToExtNode = false;
-        //     window.tryReconnectToExtNodeTimeout = null;
-        //     if(typeof window.tryReconnectToExtNodeTimeout !== "undefined" && window.tryReconnectToExtNodeTimeout !== null)
-        //         clearTimeout(window.tryReconnectToExtNodeTimeout);
-        //     this.connectToAnyNotLocalNode(false, false, true);
-        // };
+        // if(this.isLocalNodeRunning())
+        //     this.connectToAnyNotLocalNode(true, true);
 
         let syncFail =
             ChainStore.subError &&
@@ -117,7 +109,7 @@ class App extends React.Component {
             let ping = _nodes[node];
             nodes[ping] = node;
         }
-
+        
         // window.nodes = nodes;
 
         for(let node of nodes) {
@@ -282,8 +274,8 @@ class App extends React.Component {
 
         setTimeout (this.tryConnectToLocalNode,  3000);
         setInterval(this.tryConnectToLocalNode, 10000);
-        //this.connectToAnyNotLocalNode(false, false, true);
-        setTimeout (() => this.connectToAnyNotLocalNode(false, true),  300);
+        
+        setTimeout (() => this.connectToAnyNotLocalNode(false, false, true),  2000);
         setInterval(() => this.connectToAnyNotLocalNode(false, true), 5000);
     }
 

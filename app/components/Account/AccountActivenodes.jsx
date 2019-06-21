@@ -382,7 +382,8 @@ class AccountActivenodes extends React.Component {
                   window.lastLocalBlock !=  0           &&        window.lastActualBlock !=  0) {
 
             try {
-                return ((window.lastLocalBlock / window.lastActualBlock ) * 100).toFixed(1);
+                let percent = ((window.lastLocalBlock / window.lastActualBlock ) * 100).toFixed(1);
+                return isNaN(percent) ? 0 : percent;
             } catch(ex) {}
         }
         return 0;
