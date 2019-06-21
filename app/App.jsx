@@ -79,6 +79,41 @@ class App extends React.Component {
         .getState()
         .rpc_connection_status === "closed";
 
+    connectToNodeWithMinimalPing = () => {
+        //Ноды, отсортированные по пингу
+        let _nodes = SettingsStore
+            .getState()
+            .apiLatencies;
+
+        let nodes = {};
+        for(let node in _nodes) {
+            let ping = _nodes[node];
+            nodes[ping] = node;
+        }
+
+        if(Object.values(nodes).length < 1) return;
+
+        let currentNode = (SettingsStore.getState().settings.get( "apiServer" ) + "").trim();
+        let fastNode = (Object.keys(nodes)[0] + "").trim();
+
+        if(currentNode === fastNode) return;
+
+        //устанавливаем ноду
+        SettingsActions.changeSetting({
+            setting : "apiServer",
+            value   : fastNode
+        });
+
+        //завершаем в отдельном потоке инициализирование ноды
+        setTimeout(
+            function() {
+                willTransitionTo( this.props.router, this.props.router.replace, () => {}, false );
+                this.checkPageAfterReconnect();
+            }.bind(this),
+            100
+        );
+    }
+
     connectToAnyNotLocalNode(onlyIfIsLocalNodeRunning, onlyIfIsDisconnect, force) {
         if(typeof window.tryReconnectToExtNode !== "undefined" && window.tryReconnectToExtNode === true) return;
 
@@ -275,7 +310,7 @@ class App extends React.Component {
         setTimeout (this.tryConnectToLocalNode,  3000);
         setInterval(this.tryConnectToLocalNode, 10000);
         
-        setTimeout (() => this.connectToAnyNotLocalNode(false, false, true),  2000);
+        setTimeout (() => this.connectToNodeWithMinimalPing(), 100);
         setInterval(() => this.connectToAnyNotLocalNode(false, true), 5000);
     }
 
