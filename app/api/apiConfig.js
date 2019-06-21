@@ -1,11 +1,6 @@
 export const settingsAPIs = {
-    DEFAULT_WS_NODE: "wss://fake.automatic-selection.com",
-    // DEFAULT_WS_NODE: "ws://127.0.0.1:8090",
+    DEFAULT_WS_NODE: "wss://de.localcoin.is",
     WS_NODE_LIST: [
-        {
-            url: "wss://fake.automatic-selection.com",
-            location: {translate: "settings.api_closest"}
-        },
         {url: "ws://127.0.0.1:8090", location: "Locally hosted"},
         {url: "wss://id.localcoin.is", location: "Indonesia by billpresta3101"},
         {url: "wss://hk.localcoin.is", location: "Hong Kong by vdon61"},

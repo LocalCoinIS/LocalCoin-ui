@@ -435,7 +435,7 @@ class AccessSettings extends React.Component {
                     textAlign: "center"
                 }}>
                     <Translate content="settings.switch" />
-                    {renderNode(autoNode, activeNode, false)}
+                    {/* {renderNode(autoNode, activeNode, false)} */}
                 </div>
                 <div
                     className="nodes-list"

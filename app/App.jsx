@@ -282,6 +282,7 @@ class App extends React.Component {
 
         setTimeout (this.tryConnectToLocalNode,  3000);
         setInterval(this.tryConnectToLocalNode, 10000);
+        //this.connectToAnyNotLocalNode(false, false, true);
         setTimeout (() => this.connectToAnyNotLocalNode(false, true),  300);
         setInterval(() => this.connectToAnyNotLocalNode(false, true), 5000);
     }
