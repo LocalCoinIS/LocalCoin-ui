@@ -47,10 +47,6 @@ import {Apis} from "bitsharesjs-ws";
 class App extends React.Component {
     constructor(props) {
         super();
-
-        // if(this.isLocalNodeRunning())
-        //     this.connectToAnyNotLocalNode(true, true);
-
         let syncFail =
             ChainStore.subError &&
             ChainStore.subError.message ===
@@ -94,7 +90,7 @@ class App extends React.Component {
         if(Object.values(nodes).length < 1) return;
 
         let currentNode = (SettingsStore.getState().settings.get( "apiServer" ) + "").trim();
-        let fastNode = (Object.keys(nodes)[0] + "").trim();
+        let fastNode = (Object.values(nodes)[0] + "").trim();
 
         if(currentNode === fastNode) return;
 
@@ -144,11 +140,10 @@ class App extends React.Component {
             let ping = _nodes[node];
             nodes[ping] = node;
         }
-        
-        // window.nodes = nodes;
 
         for(let node of nodes) {
             if(node == null || typeof node === "undefined" || node == "") continue;
+            if(node.indexOf("ws://") === -1) continue;
 
             //если идем по нодам по второму кругу
             if(window.excludeNodes.length === nodes.length) window.excludeNodes = [];
@@ -310,7 +305,10 @@ class App extends React.Component {
         setTimeout (this.tryConnectToLocalNode,  3000);
         setInterval(this.tryConnectToLocalNode, 10000);
         
-        setTimeout (() => this.connectToNodeWithMinimalPing(), 100);
+        setTimeout (() => {
+            if(!this.isLocalNodeRunning())
+                this.connectToNodeWithMinimalPing();
+        }, 100);
         setInterval(() => this.connectToAnyNotLocalNode(false, true), 5000);
     }
 
