@@ -38,12 +38,12 @@ export default class FastDisconnectPing {
     }
 
     item = (cb) => {
+        let uri = this.getCurrentNode()+"";
         if(uri.indexOf("ws://") === -1) {
             cb();
             return;
         }
 
-        let uri = this.getCurrentNode();
         let websocket = new WebSocket( uri );
 
         websocket.onopen    = () => { window.disconnectCnt = 0;  window.connectCnt++;   this.checkConnect();    cb(); };

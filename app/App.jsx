@@ -143,7 +143,7 @@ class App extends React.Component {
 
         for(let node of nodes) {
             if(node == null || typeof node === "undefined" || node == "") continue;
-            if(node.indexOf("ws://") === -1) continue;
+            if((node+"").indexOf("ws://") === -1) continue;
 
             //если идем по нодам по второму кругу
             if(window.excludeNodes.length === nodes.length) window.excludeNodes = [];
