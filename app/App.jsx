@@ -302,14 +302,16 @@ class App extends React.Component {
                 .walletIsLoaded();
         }
 
-        setTimeout (this.tryConnectToLocalNode,  3000);
-        setInterval(this.tryConnectToLocalNode, 10000);
-        
-        setTimeout (() => {
-            if(!this.isLocalNodeRunning())
-                this.connectToNodeWithMinimalPing();
-        }, 100);
-        setInterval(() => this.connectToAnyNotLocalNode(false, true), 5000);
+        if(typeof window.AppIsInited === "undefined") {
+            window.AppIsInited = true;
+            setTimeout (() => {
+                if(!this.isLocalNodeRunning())
+                    this.connectToNodeWithMinimalPing();
+            }, 100);
+            setTimeout (this.tryConnectToLocalNode,  1000);
+            setInterval(this.tryConnectToLocalNode, 10000);
+            setInterval(() => this.connectToAnyNotLocalNode(false, true), 5000);
+        }
     }
 
     /**
