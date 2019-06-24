@@ -32,6 +32,7 @@ export const russiaFlag = require("!file-loader?name=asset-symbols/[name].svg!./
 export const japanFlag = require("!file-loader?name=asset-symbols/[name].svg!./jp.svg");
 
 export const otcBackground = require("!file-loader?name=asset-symbols/[name].jpg!./otc_bg.jpg");
+export const otcPrint = require("!file-loader?name=asset-symbols/[name].jpg!./otc_background.jpg");
 export const slide1 = require("!file-loader?name=asset-symbols/[name].png!./slide_1.png");
 export const slide2 = require("!file-loader?name=asset-symbols/[name].png!./slide_2.png");
 export const slide2Tooltip = require("!file-loader?name=asset-symbols/[name].png!./slide_2t.png");
