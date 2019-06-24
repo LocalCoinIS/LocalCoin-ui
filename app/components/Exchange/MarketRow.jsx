@@ -124,7 +124,8 @@ class MarketRow extends React.Component {
         else if(    ( exeptionArr.includes(baseSymbol) && !exeptionArr.includes(quoteSymbol) ) || 
                     ( smartCoinArr.includes(baseSymbol) && !exeptionArr.includes(quoteSymbol) && !smartCoinArr.includes(quoteSymbol) ) 
         ) {
-            needPairDirection = quoteSymbol + "_" + baseSymbol; }           
+            needPairDirection = quoteSymbol + "_" + baseSymbol;
+            reversePairs = true; }           
         else {
             needPairDirection = baseSymbol  + "_" + quoteSymbol;
         }
