@@ -47,10 +47,6 @@ import {Apis} from "bitsharesjs-ws";
 class App extends React.Component {
     constructor(props) {
         super();
-
-        if(this.isLocalNodeRunning())
-            this.connectToAnyNotLocalNode(true);
-
         let syncFail =
             ChainStore.subError &&
             ChainStore.subError.message ===
@@ -79,11 +75,47 @@ class App extends React.Component {
         .getState()
         .rpc_connection_status === "closed";
 
-    connectToAnyNotLocalNode(onlyIfIsLocalNodeRunning, onlyIfIsDisconnect) {
+    connectToNodeWithMinimalPing = () => {
+        //Ноды, отсортированные по пингу
+        let _nodes = SettingsStore
+            .getState()
+            .apiLatencies;
+
+        let nodes = {};
+        for(let node in _nodes) {
+            let ping = _nodes[node];
+            nodes[ping] = node;
+        }
+
+        if(Object.values(nodes).length < 1) return;
+
+        let currentNode = (SettingsStore.getState().settings.get( "apiServer" ) + "").trim();
+        let fastNode = (Object.values(nodes)[0] + "").trim();
+
+        if(currentNode === fastNode) return;
+
+        //устанавливаем ноду
+        SettingsActions.changeSetting({
+            setting : "apiServer",
+            value   : fastNode
+        });
+
+        //завершаем в отдельном потоке инициализирование ноды
+        setTimeout(
+            function() {
+                willTransitionTo( this.props.router, this.props.router.replace, () => {}, false );
+                this.checkPageAfterReconnect();
+            }.bind(this),
+            100
+        );
+    }
+
+    connectToAnyNotLocalNode(onlyIfIsLocalNodeRunning, onlyIfIsDisconnect, force) {
         if(typeof window.tryReconnectToExtNode !== "undefined" && window.tryReconnectToExtNode === true) return;
 
         onlyIfIsLocalNodeRunning = typeof onlyIfIsLocalNodeRunning === "undefined" ? false : onlyIfIsLocalNodeRunning;
         onlyIfIsDisconnect       = typeof onlyIfIsDisconnect       === "undefined" ? false : onlyIfIsDisconnect;
+        force                    = typeof force                    === "undefined" ? false : force;
 
         /**
          * только если запущена локальная нода,
@@ -91,6 +123,7 @@ class App extends React.Component {
          */
         if     (onlyIfIsLocalNodeRunning && this.isLocalNodeRunning()) { /* OK */ }
         else if(onlyIfIsDisconnect       && this.isDisconnect())       { /* OK */ }
+        else if(force)                                                 { /* OK */ }
         else                                                           {  return; }
 
         //ноды, которые не резолвятся, исключаем при дальнейших соединениях
@@ -98,12 +131,19 @@ class App extends React.Component {
             window.excludeNodes = [];
 
         //Ноды, отсортированные по пингу
-        let nodes = SettingsStore
+        let _nodes = SettingsStore
             .getState()
             .apiLatencies;
 
-        for(let node in nodes) {
+        let nodes = {};
+        for(let node in _nodes) {
+            let ping = _nodes[node];
+            nodes[ping] = node;
+        }
+
+        for(let node of nodes) {
             if(node == null || typeof node === "undefined" || node == "") continue;
+            if((node+"").indexOf("ws://") === -1) continue;
 
             //если идем по нодам по второму кругу
             if(window.excludeNodes.length === nodes.length) window.excludeNodes = [];
@@ -256,13 +296,22 @@ class App extends React.Component {
         );
         updateGatewayBackers();
 
-        if(typeof window.electron !== "undefined")
+        if(typeof window.electron !== "undefined") {
             this.checkUpdate();
+            (new LocalcoinHost())
+                .walletIsLoaded();
+        }
 
-        setTimeout (this.tryConnectToLocalNode,  3000);
-        setInterval(this.tryConnectToLocalNode, 10000);
-        setTimeout (() => this.connectToAnyNotLocalNode(false, true),  300);
-        setInterval(() => this.connectToAnyNotLocalNode(false, true), 5000);
+        if(typeof window.AppIsInited === "undefined") {
+            window.AppIsInited = true;
+            setTimeout (() => {
+                if(!this.isLocalNodeRunning())
+                    this.connectToNodeWithMinimalPing();
+            }, 100);
+            setTimeout (this.tryConnectToLocalNode,  1000);
+            setInterval(this.tryConnectToLocalNode, 10000);
+            setInterval(() => this.connectToAnyNotLocalNode(false, true), 5000);
+        }
     }
 
     /**
@@ -321,7 +370,7 @@ class App extends React.Component {
                 //узнаем актуальный блок локальной ноды
                 (new LocalcoinHost()).getLastBlock(url, (lastLocalBlock) => {
                     if(lastLocalBlock === -1) return removeConnectFlat();
-                    let localNodeIsSync = lastLocalBlock >= lastActualBlock;
+                    let localNodeIsSync = lastLocalBlock >= lastActualBlock-500;
 
                     window.lastLocalBlock  = lastLocalBlock;
                     window.lastActualBlock = lastActualBlock;

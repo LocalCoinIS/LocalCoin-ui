@@ -324,6 +324,19 @@ const routes = (
             }}
         />
         <Route
+            path="activenode"
+            getComponents={(location, cb) => {
+                Promise.all([
+                    import("components/Layout/Header"),
+                    Promise.resolve(null),
+                    import("components/Account/AccountActivenodes"),
+                    import("components/Layout/Footer")
+                ])
+                    .then(loadMultiComponentsRoute(cb))
+                    .catch(errorLoading);
+            }}
+        />
+        <Route
             path="transfer"
             getComponents={(location, cb) => {
                 Promise.all([

@@ -9,7 +9,7 @@ import {PublicKey} from "bitsharesjs/es";
 import AccountPermissionsList from "./AccountPermissionsList";
 import AccountPermissionsMigrate from "./AccountPermissionsMigrate";
 import PubKeyInput from "../Forms/PubKeyInput";
-import Tabs from "../Utility/Tabs";
+import Tab from "../Utility/Tab"; import Tabs from "../Utility/Tabs";
 import HelpContent from "../../components/Utility/HelpContent";
 // import {RecentTransactions} from "../../components/Account/RecentTransactions";
 import {RecentTransactions} from "./RecentTransactions";

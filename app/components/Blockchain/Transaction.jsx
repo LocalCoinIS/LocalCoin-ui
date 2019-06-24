@@ -1321,7 +1321,7 @@ class Transaction extends React.Component {
                             <td>
                                 <Translate
                                     component="span"
-                                    content="explorer.block.activenodes"
+                                    content="account.activenodes.activenodes"
                                 />
                             </td>
                             <td>{this.linkToAccount(op[1].activenode_account)}</td>

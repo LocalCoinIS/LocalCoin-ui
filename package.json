@@ -1,132 +1,131 @@
 {
-    "name": "LocalCoin-light",
-    "version": "1.0.3",
-    "description": "Advanced wallet interface for the LocalCoin financial blockchain.",
-    "homepage": "https://github.com/localcoinis/localcoin-ui",
-    "author": "Sigve Kvalsvik <kvalsvik.crypto@gmail.com>",
-    "contributors": [
-        "James Calfee",
-        "Dan Larimer",
-        "Valentine Zavgorodnev <valentine.zavgorodnev@gmail.com>"
+  "name": "LocalCoin-wallet",
+  "version": "1.0.4",
+  "description": "Advanced wallet interface for the LocalCoin financial blockchain.",
+  "homepage": "https://github.com/localcoinis/localcoin-ui",
+  "author": "Sigve Kvalsvik <kvalsvik.crypto@gmail.com>",
+  "contributors": [
+      "James Calfee",
+      "Dan Larimer",
+      "Valentine Zavgorodnev <valentine.zavgorodnev@gmail.com>"
+  ],
+  "license": "MIT",
+  "engines": {
+      "node": ">=9.x",
+      "npm": ">=5.x",
+      "yarn": ">=0.21.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/localcoinis/localcoin-ui"
+  },
+  "main": "build/electron/index.js",
+  "scripts": {
+    "test:market": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register ./app/test/marketTests --watch",
+    "bench:market": "cross-env NODE_ENV=test babel ./lib/common/MarketClasses.js -o ./app/test/MarketClasses.js && cross-env NODE_ENV=test node --harmony ./test/marketBenchmark",
+    "profile-dev": "webpack --env.dev --env.profile --profile --json > stats-dev.json",
+    "profile-build": "cross-env NODE_ENV=production webpack --env.prod --env.profile --env.hash --env.baseUrl='' --profile --json > stats-prod.json",
+    "profile-nougly": "cross-env NODE_ENV=production webpack --env.prod --env.profile --env.hash --env.noUgly --profile --json > stats-prod-nougly.json",
+    "start": "cross-env NODE_ENV=development node server.js",
+    "prestart-electron": "cross-env NODE_ENV=production webpack --env.hash --env.noUgly --env.electron --env.prod && npm run prepare-electron",
+    "start-electron": "electron build/electron/index.js",
+    "fix-locale-files": "node ./app/assets/locales-fixup.js",
+    "postfix-locale-files": "./node_modules/prettier/bin-prettier.js app/assets/locales/locale-*.json --write",
+    "build": "cross-env NODE_ENV=production webpack --env.prod",
+    "build-nougly": "cross-env NODE_ENV=production webpack --env.prod --env.noUgly",
+    "build-hash": "cross-env NODE_ENV=production webpack --env.prod --env.hash --env.baseUrl=''",
+    "build-hash-nougly": "cross-env NODE_ENV=production webpack --env.prod --env.hash --env.noUgly --env.baseUrl=''",
+    "build-github": "cross-env NODE_ENV=production webpack --env.prod --env.hash --env.deprecated --env.baseUrl='/wallet/'",
+    "build-electron": "cross-env NODE_ENV=production webpack --env.prod --env.electron --env.hash",
+    "build-electron-nougly": "cross-env NODE_ENV=production webpack --env.prod --env.electron --env.noUgly --env.hash --progress --display-error-details --colors",
+    "prepare-electron": "copyfiles -f resources/*.js build/electron/",
+    "postbuild-electron": "npm run prepare-electron",
+    "postbuild-electron-nougly": "npm run prepare-electron",
+    "build-win32": "cross-env NODE_ENV=production && webpack --env.prod --progress --colors &&  echo 'copying to electron/build..' &&  xcopy dist ..\\electron\\build /s /e /y && echo 'done.'",
+    "prepackage": "npm run build-electron",
+    "prepackage-no-ugly": "npm run build-electron-nougly",
+    "package": "build -p never",
+    "package-no-ugly": "build -p never",
+    "package-deb": "npm run prepackage && build  -p never --linux deb",
+    "package-win": "npm run prepackage && build  -p never --windows",
+    "package-mac": "npm run prepackage && build  -p never --mac dmg",
+    "postpackage-win": "node activenode_portable.js"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/__tests__/jest-preprocessor.js",
+    "testPathDirs": [
+      "<rootDir>/__tests__"
     ],
-    "license": "MIT",
-    "engines": {
-        "node": ">=9.x",
-        "npm": ">=5.x",
-        "yarn": ">=0.21.3"
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/tcomb",
+      "<rootDir>/node_modules/immutable"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json",
+      "coffee"
+    ],
+    "testFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "testPathIgnorePatterns": [
+      "/jest-preprocessor.js",
+      "/node_modules/",
+      "/utils/"
+    ]
+  },
+  "browsersList": "electron 1.7",
+  "build": {
+    "productName": "LocalCoin",
+    "appId": "org.localcoin.graphene",
+    "files": [
+      "build/electron",
+      "!node_modules"
+    ],
+    "portable": {
+      "artifactName": "wallet.exe"
     },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/localcoinis/localcoin-ui"
+    "mac": {
+      "category": "public.app-category.finance"
     },
-    "main": "build/electron/index.js",
-    "scripts": {
-        "test:market": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register ./app/test/marketTests --watch",
-        "bench:market": "cross-env NODE_ENV=test babel ./lib/common/MarketClasses.js -o ./app/test/MarketClasses.js && cross-env NODE_ENV=test node --harmony ./test/marketBenchmark",
-        "profile-dev": "webpack --env.dev --env.profile --profile --json > stats-dev.json",
-        "profile-build": "cross-env NODE_ENV=production webpack --env.prod --env.profile --env.hash --env.baseUrl='' --profile --json > stats-prod.json",
-        "profile-nougly": "cross-env NODE_ENV=production webpack --env.prod --env.profile --env.hash --env.noUgly --profile --json > stats-prod-nougly.json",
-        "start": "cross-env NODE_ENV=development node server.js",
-        "prestart-electron": "cross-env NODE_ENV=production webpack --env.hash --env.noUgly --env.electron --env.prod && npm run prepare-electron",
-        "start-electron": "electron build/electron/index.js",
-        "fix-locale-files": "node ./app/assets/locales-fixup.js",
-        "postfix-locale-files": "./node_modules/prettier/bin-prettier.js app/assets/locales/locale-*.json --write",
-        "build": "cross-env NODE_ENV=production webpack --env.prod",
-        "build-nougly": "cross-env NODE_ENV=production webpack --env.prod --env.noUgly",
-        "build-hash": "cross-env NODE_ENV=production webpack --env.prod --env.hash --env.baseUrl=''",
-        "build-hash-nougly": "cross-env NODE_ENV=production webpack --env.prod --env.hash --env.noUgly --env.baseUrl=''",
-        "build-github": "cross-env NODE_ENV=production webpack --env.prod --env.hash --env.deprecated --env.baseUrl='/wallet/'",
-        "build-electron": "cross-env NODE_ENV=production webpack --env.prod --env.electron --env.hash",
-        "build-electron-nougly": "cross-env NODE_ENV=production webpack --env.prod --env.electron --env.noUgly --env.hash --progress --display-error-details --colors",
-        "prepare-electron": "copyfiles -f resources/*.js build/electron/",
-        "postbuild-electron": "npm run prepare-electron",
-        "postbuild-electron-nougly": "npm run prepare-electron",
-        "build-win32": "cross-env NODE_ENV=production && webpack --env.prod --progress --colors &&  echo 'copying to electron/build..' &&  xcopy dist ..\\electron\\build /s /e /y && echo 'done.'",
-        "prepackage": "npm run build-electron",
-        "prepackage-no-ugly": "npm run build-electron-nougly",
-        "package": "build -p never",
-        "package-no-ugly": "build -p never",
-        "package-deb": "npm run prepackage && build  -p never --linux deb",
-        "package-win": "npm run prepackage && build  -p never --windows",
-        "package-mac": "npm run prepackage && build  -p never --mac dmg",
-        "postpackage": "node write_digest.js"
-    },
-    "jest": {
-        "scriptPreprocessor": "<rootDir>/__tests__/jest-preprocessor.js",
-        "testPathDirs": [
-            "<rootDir>/__tests__"
-        ],
-        "unmockedModulePathPatterns": [
-            "<rootDir>/node_modules/react",
-            "<rootDir>/node_modules/tcomb",
-            "<rootDir>/node_modules/immutable"
-        ],
-        "moduleFileExtensions": [
-            "js",
-            "jsx",
-            "json",
-            "coffee"
-        ],
-        "testFileExtensions": [
-            "js",
-            "jsx"
-        ],
-        "testPathIgnorePatterns": [
-            "/jest-preprocessor.js",
-            "/node_modules/",
-            "/utils/"
-        ]
-    },
-    "browsersList": "electron 1.7",
-    "build": {
-        "productName": "LocalCoin",
-        "appId": "org.bitshares.graphene",
-        "files": [
-            "build/electron",
-            "!node_modules"
-        ],
-        "mac": {
-            "category": "public.app-category.finance"
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
         },
-        "dmg": {
-            "contents": [
-                {
-                    "x": 130,
-                    "y": 220
-                },
-                {
-                    "x": 410,
-                    "y": 220,
-                    "type": "link",
-                    "path": "/Applications"
-                }
-            ]
-        },
-        "win": {
-            "target": [
-                {
-                    "target": "nsis",
-                    "arch": [
-                        "x64",
-                        "ia32"
-                    ]
-                }
-            ]
-        },
-        "linux": {
-            "category": "Finance",
-            "target": [
-                "deb",
-                "AppImage"
-            ],
-            "synopsis": "LocalCoin: Cryptocurrency and Decentralized Exchange"
-        },
-        "directories": {
-            "buildResources": "resources",
-            "output": "build/binaries"
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
         }
+      ]
     },
-    "dependencies": {
+    "win": {
+      "target": [
+        {
+          "target": "portable"
+        }
+      ]
+    },
+    "linux": {
+      "category": "Finance",
+      "target": [
+        "deb",
+        "AppImage"
+      ],
+      "synopsis": "LocalCoin: Cryptocurrency and Decentralized Exchange"
+    },
+    "directories": {
+      "buildResources": "resources",
+      "output": "build/binaries"
+    }
+  },
+  "dependencies": {
         "alt": "^0.18.6",
         "alt-container": "^1.0.0",
         "alt-react": "git+https://github.com/bitshares/react.git",

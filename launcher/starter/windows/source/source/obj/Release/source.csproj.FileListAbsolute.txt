@@ -1,0 +1,12 @@
+C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\bin\Release\LocalCoin.exe.config
+C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\bin\Release\LocalCoin.exe
+C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\bin\Release\LocalCoin.pdb
+C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\obj\Release\source.csprojAssemblyReference.cache
+C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\obj\Release\Interop.IWshRuntimeLibrary.dll
+C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\obj\Release\source.csproj.ResolveComReference.cache
+C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\obj\Release\source.Properties.Resources.resources
+C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\obj\Release\source.csproj.GenerateResource.cache
+C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\obj\Release\source.csproj.CoreCompileInputs.cache
+C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\obj\Release\LocalCoin.exe
+C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\obj\Release\LocalCoin.pdb
+C:\Projects\LocalCoin-ui\launcher\starter\windows\source\source\obj\Release\source.PreloaderForm.resources

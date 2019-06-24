@@ -83,14 +83,22 @@ class Instructions extends React.Component {
     }
 
     getConfirmations(asset) {
-        switch (asset) {
+        let bullet = (""+asset)
+            .trim()
+            .toUpperCase();
+
+        switch (bullet) {
             case "BTC":
                 return 2;
             case "LTC":
                 return 6;
             case "DSH":
                 return 6;
+            case "DASH":
+                return 6;
             case "TTRUSD":
+                return 2;
+            case "USDT":
                 return 2;
             case "TTREUR":
                 return 2;
