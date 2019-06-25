@@ -114,18 +114,16 @@ class MarketRow extends React.Component {
             ? quote.get("symbol") + "_" + base.get("symbol")
             : this.context.router.params.marketID.toUpperCase().trim();
 
-        //const needPairDirection
-
         let needPairDirection;
 
         if( marketIDByURL.indexOf("_" + quoteSymbol) !== -1 ||
             marketIDByURL.indexOf(baseSymbol + "_") !== -1 ) { 
             needPairDirection = baseSymbol  + "_" + quoteSymbol; }
-        else if(    ( exeptionArr.includes(baseSymbol) && !exeptionArr.includes(quoteSymbol) ) || 
-                    ( smartCoinArr.includes(baseSymbol) && !exeptionArr.includes(quoteSymbol) && !smartCoinArr.includes(quoteSymbol) ) 
-        ) {
+        else if( smartCoinArr.includes(baseSymbol) && !exeptionArr.includes(quoteSymbol) ) {
             needPairDirection = quoteSymbol + "_" + baseSymbol;
-            reversePairs = true; }           
+            reversePairs = true; }
+        else if( exeptionArr.includes(quoteSymbol) ) {
+            needPairDirection = baseSymbol + "_" + quoteSymbol; }            
         else {
             needPairDirection = baseSymbol  + "_" + quoteSymbol;
         }

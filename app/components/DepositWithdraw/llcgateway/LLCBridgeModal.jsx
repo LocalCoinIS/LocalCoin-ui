@@ -23,7 +23,7 @@ import notify from "actions/NotificationActions";
 import QRCode from "qrcode.react";
 
 class LLCBridgeModal extends React.Component {
-    static DEFAULT_CURRENCY = "BTC";
+    static DEFAULT_CURRENCY = "ETH";
     static MODE_BRIDGE = "1";
     static PRESICTION = 4;
 
@@ -79,9 +79,10 @@ class LLCBridgeModal extends React.Component {
             self.currencies = response.deposit;
 
             let thisAsset = self.state.asset;
+            /*TODO: Fix because it doesnt work
             if(typeof self.props.currency !== "undefined" && typeof self.props.currency.asset !== "undefined") {
                 thisAsset = self.props.currency.asset;
-            }
+            }*/
             
             if (!self.currencies) return;
             let assets = [],
@@ -551,6 +552,11 @@ class LLCBridgeModal extends React.Component {
             </div>
         );
 
+        let itsETH = false;
+        if (this.state.asset === "ETH") {
+            itsETH = true;
+        }        
+
         var info = (
             <div style={{width: "100%", display: "flex", flexDirection: "column"}}>
                 <br />
@@ -567,13 +573,30 @@ class LLCBridgeModal extends React.Component {
                     cnt={this.state.confirmations}
                 />
                 <br />
-                <Translate
-                    component="span"
-                    style={{fontSize: "0.8rem", whiteSpace: "normal"}}
-                    content="gateway.min_deposit_warning_asset"
-                    minDeposit={this.state.minimal || 0}
-                    coin={this.state.asset}
-                />
+                {itsETH ? (
+                    <div>
+                        <Translate
+                            component="span"
+                            style={{fontSize: "0.8rem", whiteSpace: "normal"}}
+                            content="gateway.min_deposit_warning_asset"
+                            minDeposit={this.state.minimal || 0}
+                            coin={this.state.asset}
+                        />
+                        <Translate
+                            className="has-error fz_14 ETH-warning"
+                            component="p"
+                            content="gateway.ETH_warning_asset"
+                        />   
+                    </div>
+                ) : (
+                    <Translate
+                        component="span"
+                        style={{fontSize: "0.8rem", whiteSpace: "normal"}}
+                        content="gateway.min_deposit_warning_asset"
+                        minDeposit={this.state.minimal || 0}
+                        coin={this.state.asset}
+                    />
+                )}                             
             </div>
         );
 

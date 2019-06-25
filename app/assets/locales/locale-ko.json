@@ -787,6 +787,7 @@
         "deposit_to": "Deposit To",
         "deposit_warning": "Sending any other currency to the %(asset)s address will result in the loss of your deposit",
         "deposit_warning_memo": "Deposit %(asset)s must contains memo, otherwise it won't be credited",
+        "ETH_warning_asset": "You cannot use a contract-to-contract transfer to deposit ETH!!! DO NOT SEND TOKENS OR ETC TO THIS ADDRESS! Send only Ether (ETH). Sending tokens or any other currency to this address will result in the permanent loss of your deposit.",        
         "fee": "Gateway fee",
         "fiat": "Fiat",
         "fiat_text": "Note: Fiat gateways are closed till further notice. Sorry for the inconvenience! Please follow our latest news and updates here <a target='_blank' href='https://blog.openledger.info/'>blog.openledger.info</a>",

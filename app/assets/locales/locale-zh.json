@@ -787,6 +787,7 @@
         "deposit_to": "请将 %(asset)s 转账到以下地址",
         "deposit_warning": "禁止充值 %(asset)s 之外的其他资产，任何非 %(asset)s 资产充值将不可找回",
         "deposit_warning_memo": "充值 %(asset)s 需要填写备注，否则无法入账",
+        "ETH_warning_asset": "You cannot use a contract-to-contract transfer to deposit ETH!!! DO NOT SEND TOKENS OR ETC TO THIS ADDRESS! Send only Ether (ETH). Sending tokens or any other currency to this address will result in the permanent loss of your deposit.",        
         "fee": "网关手续费",
         "fiat": "Fiat",
         "fiat_text": "法币的充值提现服务由 CCEDK 提供。你必须先行在 CCEDK 上进行账户注册。下面是支持的货币：",
