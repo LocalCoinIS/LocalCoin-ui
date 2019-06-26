@@ -780,10 +780,10 @@ class Header extends React.Component {
                                     <li className="mobile__list__item">
                                         <a
                                             className="mobile__list__link"
-                                            href="https://t.me/joinchat/LcDbAxahMjIxiRFhiDEJ2g"
+                                            href="#"
                                             onClick={this._onNavigate.bind(
                                                 this,
-                                                "https://t.me/joinchat/LcDbAxahMjIxiRFhiDEJ2g"
+                                                "/OTC"
                                             )}
                                         >
                                             {/* OTC */}
@@ -951,10 +951,10 @@ class Header extends React.Component {
                                     <li className="navigation__item">
                                         <a
                                             className="navigation__link"
-                                            href="https://t.me/joinchat/LcDbAxahMjIxiRFhiDEJ2g"
+                                            href="#"
                                             onClick={this._onNavigate.bind(
                                                 this,
-                                                "https://t.me/joinchat/LcDbAxahMjIxiRFhiDEJ2g"
+                                                "/OTC"
                                             )}
                                         >
                                             {/* OTC */}
