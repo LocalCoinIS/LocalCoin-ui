@@ -170,7 +170,7 @@ class Header extends React.Component {
         document.body.addEventListener("click", this.onBodyClick, {
             capture: false,
             passive: true
-            
+
         });
         let topContainer = document.querySelector(".balance__list_scroll");
         if (topContainer) {
@@ -570,7 +570,7 @@ class Header extends React.Component {
                 );
             });
         } catch(ex) {}
-        
+
         return balance;
     }
 
@@ -780,10 +780,10 @@ class Header extends React.Component {
                                     <li className="mobile__list__item">
                                         <a
                                             className="mobile__list__link"
-                                            href="#"
+                                            href="https://t.me/joinchat/LcDbAxahMjIxiRFhiDEJ2g"
                                             onClick={this._onNavigate.bind(
                                                 this,
-                                                "/OTC"
+                                                "https://t.me/joinchat/LcDbAxahMjIxiRFhiDEJ2g"
                                             )}
                                         >
                                             {/* OTC */}
@@ -951,10 +951,10 @@ class Header extends React.Component {
                                     <li className="navigation__item">
                                         <a
                                             className="navigation__link"
-                                            href="#"
+                                            href="https://t.me/joinchat/LcDbAxahMjIxiRFhiDEJ2g"
                                             onClick={this._onNavigate.bind(
                                                 this,
-                                                "/OTC"
+                                                "https://t.me/joinchat/LcDbAxahMjIxiRFhiDEJ2g"
                                             )}
                                         >
                                             {/* OTC */}
