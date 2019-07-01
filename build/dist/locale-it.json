@@ -812,6 +812,7 @@
         "min_deposit_warning_amount": "Minimum Deposit: %(minDeposit)s %(coin)s",
         "min_count_confirmations": "Wait for %(cnt)s confirmations for balance funding",
         "min_deposit_warning_asset": "IMPORTANT: Send only %(coin)s to this deposit address. Sending less than %(minDeposit)s %(coin)s or any other currency to this address may result in the loss of your deposit.",
+        "ETH_warning_asset": "You cannot use a contract-to-contract transfer to deposit ETH!!! DO NOT SEND TOKENS OR ETC TO THIS ADDRESS! Send only Ether (ETH). Sending tokens or any other currency to this address will result in the permanent loss of your deposit.",        
         "over_limit": "Limit Reached",
         "please_generate_address": "Please, get new address ",
         "purchase": "Acquista %(asset)s",

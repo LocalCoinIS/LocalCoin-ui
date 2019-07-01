@@ -1,6 +1,6 @@
 import React from "react";
 import Translate from "react-translate-component";
-import { otcBackground} from "../../assets/brand-new-layout/img/images";
+import { otcPrint } from "../../assets/brand-new-layout/img/images";
 
 
 class OTC extends React.Component {
@@ -11,7 +11,7 @@ class OTC extends React.Component {
                     <div className="page-otc-info">
                         <Translate content="otc.info" />
                     </div>
-                    <img src={otcBackground}/>
+                    <img src={otcPrint}/>
                 </div>
             </div>
         );

@@ -13,7 +13,7 @@ import AssetSelector from "../../components/Utility/AssetSelector";
 import big from "bignumber.js";
 import cnames from "classnames";
 import assetUtils from "common/asset_utils";
-import Tabs from "../Utility/Tabs";
+import Tab from "../Utility/Tab"; import Tabs from "../Utility/Tabs";
 import AmountSelector from "../../components/Utility/AmountSelector";
 import assetConstants from "chain/asset_constants";
 import {estimateFee} from "common/trxHelper";

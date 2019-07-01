@@ -117,31 +117,7 @@ class ApiNode extends React.Component {
 
         if (popup) {
             return url === autoSelectAPI ? (
-                <div>
-                    <span
-                        className="switch"
-                        style={{
-                            float: "right",
-                            position: "relative",
-                            top: "-15px"
-                        }}
-                        onClick={this.activate.bind(
-                            this,
-                            autoActive ? activeNode.url : autoSelectAPI
-                        )}
-                    >
-                        <input
-                            id="automatic_node_switcher"
-                            type="checkbox"
-                            checked={autoActive}
-                            onChange={() => {}}
-                        />
-                        <label />
-                    </span>
-                    <p style={{fontSize: "80%"}}>
-                        <Translate content="settings.automatic_short" />:
-                    </p>
-                </div>
+                null
             ) : (
                 <div className="api-status">
                     <a>
@@ -453,9 +429,13 @@ class AccessSettings extends React.Component {
         }, []);
         return this.props.popup ? (
             <div>
-                <div style={{fontWeight: "bold", height: 40}}>
+                <div style={{
+                    fontWeight: "bold", 
+                    height: 35,
+                    textAlign: "center"
+                }}>
                     <Translate content="settings.switch" />
-                    {renderNode(autoNode, activeNode, false)}
+                    {/* {renderNode(autoNode, activeNode, false)} */}
                 </div>
                 <div
                     className="nodes-list"

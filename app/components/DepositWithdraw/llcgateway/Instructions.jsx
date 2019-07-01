@@ -114,6 +114,12 @@ class Instructions extends React.Component {
         let countConfirmations = this.getConfirmations(
             this.props.currency.asset
         );
+
+        let itsETH = false;
+        if (this.props.currency.asset === "ETH") {
+            itsETH = true;
+        }
+
         return (
             <div className="small-12 medium-7">
                 <h4>
@@ -201,14 +207,30 @@ class Instructions extends React.Component {
                                 content="gateway.min_count_confirmations"
                                 cnt={countConfirmations}
                             />
-
-                            <Translate
-                                className="has-error fz_14"
-                                component="p"
-                                content="gateway.min_deposit_warning_asset"
-                                minDeposit={this.props.currency.minimal}
-                                coin={this.props.currency.asset}
-                            />
+                            {itsETH ? (
+                                <div>
+                                    <Translate
+                                        className="has-error fz_14"
+                                        component="p"
+                                        content="gateway.min_deposit_warning_asset"
+                                        minDeposit={this.props.currency.minimal}
+                                        coin={this.props.currency.asset}
+                                    />
+                                    <Translate
+                                        className="has-error fz_14 ETH-warning"
+                                        component="p"
+                                        content="gateway.ETH_warning_asset"
+                                    />
+                                </div>
+                            ) : (
+                                <Translate
+                                    className="has-error fz_14"
+                                    component="p"
+                                    content="gateway.min_deposit_warning_asset"
+                                    minDeposit={this.props.currency.minimal}
+                                    coin={this.props.currency.asset}
+                                />
+                            )}
                             <div
                                 className="button-group"
                                 style={{paddingTop: 10}}

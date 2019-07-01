@@ -7,7 +7,7 @@ import counterpart from "counterpart";
 import SignedMessageAction from "../../actions/SignedMessageAction";
 import SignedMessage from "../../components/Account/SignedMessage";
 import cnames from "classnames";
-import Tabs from "../Utility/Tabs";
+import Tab from "../Utility/Tab"; import Tabs from "../Utility/Tabs";
 
 /** This component gives a user interface for signing and verifying messages with the LocalCoin memo key.
  *  It consists of two tabs:

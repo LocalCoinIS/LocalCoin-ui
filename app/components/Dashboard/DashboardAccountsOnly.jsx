@@ -8,6 +8,7 @@ import SettingsActions from "actions/SettingsActions";
 import SettingsStore from "stores/SettingsStore";
 import AccountStore from "stores/AccountStore";
 import MarketsStore from "stores/MarketsStore";
+import Tab from "../Utility/Tab";
 import Tabs from "../Utility/Tabs";
 import AltContainer from "alt-container";
 

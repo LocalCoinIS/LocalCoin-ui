@@ -786,6 +786,7 @@
         "deposit_summary": "入金概要",
         "deposit_to": "%(asset)sを以下のアドレスに送ってください",
         "deposit_warning": "他の通貨を%(asset)sアドレスに送信すると、デポジットが失われます",
+        "ETH_warning_asset": "You cannot use a contract-to-contract transfer to deposit ETH!!! DO NOT SEND TOKENS OR ETC TO THIS ADDRESS! Send only Ether (ETH). Sending tokens or any other currency to this address will result in the permanent loss of your deposit.",        
         "deposit_warning_memo": "Deposit %(asset)s must contains memo, otherwise it won't be credited",
         "fee": "ゲートウェイ手数料",
         "fiat": "法定通貨",

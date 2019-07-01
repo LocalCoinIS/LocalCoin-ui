@@ -41,26 +41,6 @@ class Footer extends React.Component {
 
     isConnected = () => !(BlockchainStore.getState().rpc_connection_status === "closed");
 
-    componentDidMount() {
-        if(typeof window.intervalFooter !== "undefined" && window.intervalFooter !== null) {
-            clearInterval(window.intervalFooter);
-            window.intervalFooter = null;
-        }
-
-        window.intervalFooter = setInterval(() => {
-            let connected = this.isConnected();
-
-            if(connected !== this.state.connected)
-                this.setState({ connected: connected });
-
-                if(!connected) {
-                    if(typeof document.getElementsByClassName("footer-info__status")[0] !== "undefined") {
-                        document.getElementsByClassName("footer-info__status")[0].innerHTML = counterpart.translate("footer.disconnected");
-                    }
-                }
-        }, 500);
-    }
-
     shouldComponentUpdate(nextProps, nextState) {
         return (
             nextProps.dynGlobalObject !== this.props.dynGlobalObject ||

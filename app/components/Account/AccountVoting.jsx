@@ -6,7 +6,7 @@ import {ChainStore, FetchChainObjects} from "bitsharesjs/es";
 import WorkerApproval from "../../components/Account/WorkerApproval";
 import VotingAccountsList from "./VotingAccountsList";
 import cnames from "classnames";
-import Tabs from "../Utility/Tabs";
+import Tab from "../Utility/Tab"; import Tabs from "../Utility/Tabs";
 import BindToChainState from "../../components/Utility/BindToChainState";
 import ChainTypes from "../../components/Utility/ChainTypes";
 import {Link} from "react-router/es";

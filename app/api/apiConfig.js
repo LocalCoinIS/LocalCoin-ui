@@ -1,18 +1,14 @@
 export const settingsAPIs = {
-    DEFAULT_WS_NODE: "wss://fake.automatic-selection.com",
-    // DEFAULT_WS_NODE: "ws://127.0.0.1:8090",
+    DEFAULT_WS_NODE: "wss://de.localcoin.is",
     WS_NODE_LIST: [
-        {
-            url: "wss://fake.automatic-selection.com",
-            location: {translate: "settings.api_closest"}
-        },
         {url: "ws://127.0.0.1:8090", location: "Locally hosted"},
-        {url: "wss://id.localcoin.is", location: "Indonesia by billpresta3101"},
+        {url: "wss://de.localcoin.is", location: "Germany"},
         {url: "wss://hk.localcoin.is", location: "Hong Kong by vdon61"},
         {url: "wss://mynodes.de", location: "US NY by ip24"},
         {url: "wss://us.localcoin.is", location: "US Denver by crazy-indain"},
         {url: "wss://ru1.localcoin.is", location: "Russia by george2607"},
         {url: "wss://ru2.localcoin.is", location: "Russia by albert-andersen"},
+        {url: "wss://id.localcoin.is", location: "Indonesia by billpresta3101"},
         {url: "wss://ua.localcoin.is", location: "Ukraine by l0l"},
         {url: "wss://de1.localcoin.is", location: "Germany by firedswiss1"},
         {url: "wss://mysupremecoin.com", location: "Italy by the-supreme19"},

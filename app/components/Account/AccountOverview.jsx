@@ -24,7 +24,7 @@ import BorrowModal from "../../components/Modal/BorrowModal";
 import ReactTooltip from "react-tooltip";
 import SimpleDepositWithdraw from "../../components/Dashboard/SimpleDepositWithdraw";
 // import SimpleDepositBlocktradesBridge from "../../components/Dashboard/SimpleDepositBlocktradesBridge";
-import Tabs from "../Utility/Tabs";
+import Tab from "../Utility/Tab"; import Tabs from "../Utility/Tabs";
 import AccountOrders from "./AccountOrders";
 import cnames from "classnames";
 import TranslateWithLinks from "../../components/Utility/TranslateWithLinks";
@@ -1009,7 +1009,7 @@ class AccountOverview extends React.Component {
 
     render() {
         let {account, hiddenAssets, settings, orders, location} = this.props;
-        let {shownAssets} = this.state;
+        let {shownAssets, alwaysShowAssets} = this.state;
 
         if (!account) {
             return null;
@@ -1025,7 +1025,9 @@ class AccountOverview extends React.Component {
         let account_balances = account.get("balances");
 
         let includedBalancesList = Immutable.List(),
-            hiddenBalancesList = Immutable.List();
+        hiddenBalancesList = Immutable.List(),
+        includedOptionalList = Immutable.List(),
+        hiddenOptionalList = Immutable.List();
         call_orders.forEach(callID => {
             let position = ChainStore.getObject(callID);
             if (position) {
@@ -1057,7 +1059,7 @@ class AccountOverview extends React.Component {
                 }
             }
         });
-
+    if (alwaysShowAssets) {
         if (account_balances) {
             // Filter out balance objects that have 0 balance or are not included in open orders
             account_balances = account_balances.filter((a, index) => {
@@ -1106,18 +1108,48 @@ class AccountOverview extends React.Component {
                 }
             });
 
+
+            alwaysShowAssets.forEach((a) => {
+                const assetOptional = ChainStore.getAsset(a);
+                if(assetOptional) {
+                    let assetName = "";
+                    let filter = "";
+
+                    if (this.state.filterValue) {
+                        filter = this.state.filterValue
+                            ? String(this.state.filterValue).toLowerCase()
+                            : "";
+                        assetName = assetOptional.get("symbol").toLowerCase();
+                        let {isBitAsset} = utils.replaceName(assetOptional);
+                        if (isBitAsset) {
+                            assetName = "bit" + assetName;
+                        }
+                    }
+
+                    if (
+                        hiddenAssets.includes(a) &&
+                        assetName.includes(filter)
+                    ) {
+                        hiddenOptionalList = hiddenOptionalList.push(a);
+                    } else if (assetName.includes(filter)) {
+                        includedOptionalList = includedOptionalList.push(a);
+                    }
+                }
+            });
+
             let included = this._renderBalances(
                 includedBalancesList,
-                !this.state.filterValue ? this.state.alwaysShowAssets : null,
+                !this.state.filterValue ? this.state.alwaysShowAssets : includedOptionalList,
                 true
             );
             includedBalances = included;
             let hidden = this._renderBalances(
                 hiddenBalancesList,
-                !this.state.filterValue ? this.state.alwaysShowAssets : null
+                !this.state.filterValue ? this.state.alwaysShowAssets : hiddenOptionalList
             );
             hiddenBalances = hidden;
         }
+    }
 
         let portfolioHiddenAssetsBalance = (
             <TotalBalanceValue noTip balances={hiddenBalancesList} hide_asset />

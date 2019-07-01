@@ -1,0 +1,14 @@
+C:\Projects\LocalCoin-ui\launcher\source\bin\Release\netcoreapp2.1\LocalcoinHost.deps.json
+C:\Projects\LocalCoin-ui\launcher\source\bin\Release\netcoreapp2.1\LocalcoinHost.runtimeconfig.json
+C:\Projects\LocalCoin-ui\launcher\source\bin\Release\netcoreapp2.1\LocalcoinHost.runtimeconfig.dev.json
+C:\Projects\LocalCoin-ui\launcher\source\bin\Release\netcoreapp2.1\LocalcoinHost.dll
+C:\Projects\LocalCoin-ui\launcher\source\bin\Release\netcoreapp2.1\LocalcoinHost.pdb
+C:\Projects\LocalCoin-ui\launcher\source\obj\Release\netcoreapp2.1\LocalcoinHost.csproj.CoreCompileInputs.cache
+C:\Projects\LocalCoin-ui\launcher\source\obj\Release\netcoreapp2.1\LocalcoinHost.RazorAssemblyInfo.cache
+C:\Projects\LocalCoin-ui\launcher\source\obj\Release\netcoreapp2.1\LocalcoinHost.RazorAssemblyInfo.cs
+C:\Projects\LocalCoin-ui\launcher\source\obj\Release\netcoreapp2.1\LocalcoinHost.AssemblyInfoInputs.cache
+C:\Projects\LocalCoin-ui\launcher\source\obj\Release\netcoreapp2.1\LocalcoinHost.AssemblyInfo.cs
+C:\Projects\LocalCoin-ui\launcher\source\obj\Release\netcoreapp2.1\LocalcoinHost.RazorTargetAssemblyInfo.cache
+C:\Projects\LocalCoin-ui\launcher\source\obj\Release\netcoreapp2.1\LocalcoinHost.dll
+C:\Projects\LocalCoin-ui\launcher\source\obj\Release\netcoreapp2.1\LocalcoinHost.pdb
+C:\Projects\LocalCoin-ui\launcher\source\obj\Release\netcoreapp2.1\LocalcoinHost.csprojAssemblyReference.cache

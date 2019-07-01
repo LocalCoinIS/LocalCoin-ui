@@ -1974,8 +1974,171 @@ body.localcoin .options__setup
 	.select
 		margin-bottom: 10px
 body.localcoin .page-otc
-	padding: 16px 24px
+	//padding: 16px 24px
 	width: 100%
+	background-size: cover
+	background-repeat: no-repeat
+
+.page-otc
+	.page-otc-container
+		max-width: 1300px
+		margin: 0 auto
+		position: relative
+	.otc-slider
+		position: relative
+	.otc-slider-item
+		position: relative
+		img
+			width: 100%
+		.slide-tooltip
+			position: absolute
+			top: 0
+			left: 0
+			width: 100%
+			opacity: 0
+
+
+.page-otc
+	.otc-slider-item.active
+		.slide-tooltip
+			-webkit-animation-name: fade
+			-webkit-animation-duration: 1.5s
+			animation-name: fade
+			animation-duration: 1.5s
+			animation-delay: 0.5s
+			animation-fill-mode: forwards
+
+
+.otc-slider__navigation
+	position: absolute
+	top: 45%
+	-webkit-transform: translateY(-50%)
+	-moz-transform: translateY(-50%)
+	-ms-transform: translateY(-50%)
+	-o-transform: translateY(-50%)
+	transform: translateY(-50%)
+	left: 0
+	padding-left: 90px
+	color: #fff
+	z-index: 5
+	.otc-slider__dots
+		&--dot
+			position: relative
+			cursor: pointer
+			margin-bottom: 23px
+			font-weight: bold
+			font-size: 18px
+	.otc-slider__tooltip
+		margin-top: 80px
+		margin-left: -3px
+		.tooltip__desc
+			font-size: 13px
+			-webkit-transform: rotate(-90deg) translateY(-24px)
+			-moz-transform: rotate(-90deg) translateY(-24px)
+			-ms-transform: rotate(-90deg) translateY(-24px)
+			-o-transform: rotate(-90deg) translateY(-24px)
+			transform: rotate(-90deg) translateY(-24px)
+			margin-bottom: 35px
+
+.otc-slider__dots--dot.active
+	padding-left: 28px
+	font-size: 24px
+	&:before
+		content: ""
+		position: absolute
+		top: 50%
+		-webkit-transform: translateY(-50%)
+		-moz-transform: translateY(-50%)
+		-ms-transform: translateY(-50%)
+		-o-transform: translateY(-50%)
+		transform: translateY(-50%)
+		left: -63px
+		width: 81px
+		height: 1px
+		background-color: #fff
+
+.fade
+	-webkit-animation-name: fade
+	-webkit-animation-duration: 1.5s
+	animation-name: fade
+	animation-duration: 1.5s
+
+
+@-webkit-keyframes fade
+	from
+		opacity: .4
+
+	to
+		opacity: 1
+
+
+@keyframes fade
+	from
+		opacity: .4
+
+	to
+		opacity: 1
+
+@media only screen and (max-width: 768px)
+	.otc-slider__navigation
+		padding-left: 23px
+		.otc-slider__dots
+			&--dot
+				position: relative
+				cursor: pointer
+				margin-bottom: 5px
+				font-weight: bold
+				font-size: 14px
+		.otc-slider__tooltip
+			margin-top: 25px
+			margin-left: -8px
+			.tooltip__desc
+				font-size: 10px
+				margin-bottom: 25px
+				-webkit-transform: rotate(-90deg) translateY(-16px)
+				-moz-transform: rotate(-90deg) translateY(-16px)
+				-ms-transform: rotate(-90deg) translateY(-16px)
+				-o-transform: rotate(-90deg) translateY(-16px)
+				transform: rotate(-90deg) translateY(-16px)
+
+	.otc-slider__dots--dot.active
+		padding-left: 7px
+		font-size: 20px
+		&:before
+			left: -15px
+			width: 20px
+
+@media only screen and (max-width: 480px)
+	.otc-slider__navigation
+		padding-left: 10px
+		.otc-slider__dots
+			&--dot
+				position: relative
+				cursor: pointer
+				margin-bottom: 0
+				font-weight: bold
+				font-size: 10px
+				line-height: 1.2
+		.otc-slider__tooltip
+			margin-top: 25px
+			margin-left: -8px
+			.tooltip__desc
+				font-size: 10px
+				margin-bottom: 25px
+				-webkit-transform: rotate(-90deg) translateY(-20px)
+				-moz-transform: rotate(-90deg) translateY(-20px)
+				-ms-transform: rotate(-90deg) translateY(-20px)
+				-o-transform: rotate(-90deg) translateY(-20px)
+				transform: rotate(-90deg) translateY(-20px)
+			img
+				width: 15px
+
+	.otc-slider__dots--dot.active
+		padding-left: 5px
+		font-size: 14px
+		&:before
+			left: -7px
+			width: 10px
 
 body.localcoin div.api-node>div:nth-child(3)
 	display: inline-flex

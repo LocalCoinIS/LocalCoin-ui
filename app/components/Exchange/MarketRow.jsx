@@ -113,11 +113,20 @@ class MarketRow extends React.Component {
         const marketIDByURL = typeof this.context.router.params.marketID === "undefined"
             ? quote.get("symbol") + "_" + base.get("symbol")
             : this.context.router.params.marketID.toUpperCase().trim();
-        const needPairDirection = (
-                marketIDByURL.indexOf("_" + quoteSymbol) !== -1 ||
-                marketIDByURL.indexOf(baseSymbol + "_") !== -1
-            ) ? baseSymbol  + "_" + quoteSymbol
-              : quoteSymbol + "_" + baseSymbol;
+
+        let needPairDirection;
+
+        if( marketIDByURL.indexOf("_" + quoteSymbol) !== -1 ||
+            marketIDByURL.indexOf(baseSymbol + "_") !== -1 ) { 
+            needPairDirection = baseSymbol  + "_" + quoteSymbol; }
+        else if( smartCoinArr.includes(baseSymbol) && !exeptionArr.includes(quoteSymbol) ) {
+            needPairDirection = quoteSymbol + "_" + baseSymbol;
+            reversePairs = true; }
+        else if( exeptionArr.includes(quoteSymbol) ) {
+            needPairDirection = baseSymbol + "_" + quoteSymbol; }            
+        else {
+            needPairDirection = baseSymbol  + "_" + quoteSymbol;
+        }
         
         let columns = this.props.columns
             .map(column => {

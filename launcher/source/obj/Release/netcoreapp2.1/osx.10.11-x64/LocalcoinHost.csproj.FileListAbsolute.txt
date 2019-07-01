@@ -1,0 +1,17 @@
+C:\Projects\LocalcoinHost\bin\Release\netcoreapp2.1\osx.10.11-x64\libhostpolicy.dylib
+C:\Projects\LocalcoinHost\bin\Release\netcoreapp2.1\osx.10.11-x64\libhostfxr.dylib
+C:\Projects\LocalcoinHost\bin\Release\netcoreapp2.1\osx.10.11-x64\LocalcoinHost
+C:\Projects\LocalcoinHost\bin\Release\netcoreapp2.1\osx.10.11-x64\LocalcoinHost.deps.json
+C:\Projects\LocalcoinHost\bin\Release\netcoreapp2.1\osx.10.11-x64\LocalcoinHost.runtimeconfig.json
+C:\Projects\LocalcoinHost\bin\Release\netcoreapp2.1\osx.10.11-x64\LocalcoinHost.runtimeconfig.dev.json
+C:\Projects\LocalcoinHost\bin\Release\netcoreapp2.1\osx.10.11-x64\LocalcoinHost.dll
+C:\Projects\LocalcoinHost\bin\Release\netcoreapp2.1\osx.10.11-x64\LocalcoinHost.pdb
+C:\Projects\LocalcoinHost\obj\Release\netcoreapp2.1\osx.10.11-x64\LocalcoinHost.csprojAssemblyReference.cache
+C:\Projects\LocalcoinHost\obj\Release\netcoreapp2.1\osx.10.11-x64\LocalcoinHost.csproj.CoreCompileInputs.cache
+C:\Projects\LocalcoinHost\obj\Release\netcoreapp2.1\osx.10.11-x64\LocalcoinHost.RazorAssemblyInfo.cache
+C:\Projects\LocalcoinHost\obj\Release\netcoreapp2.1\osx.10.11-x64\LocalcoinHost.RazorAssemblyInfo.cs
+C:\Projects\LocalcoinHost\obj\Release\netcoreapp2.1\osx.10.11-x64\LocalcoinHost.AssemblyInfoInputs.cache
+C:\Projects\LocalcoinHost\obj\Release\netcoreapp2.1\osx.10.11-x64\LocalcoinHost.AssemblyInfo.cs
+C:\Projects\LocalcoinHost\obj\Release\netcoreapp2.1\osx.10.11-x64\LocalcoinHost.RazorTargetAssemblyInfo.cache
+C:\Projects\LocalcoinHost\obj\Release\netcoreapp2.1\osx.10.11-x64\LocalcoinHost.dll
+C:\Projects\LocalcoinHost\obj\Release\netcoreapp2.1\osx.10.11-x64\LocalcoinHost.pdb

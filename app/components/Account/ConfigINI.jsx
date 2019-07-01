@@ -161,6 +161,9 @@ const FILE_CONTENT =
     'level=info\n'+
     'appenders=p2p';
 
+const VAR_accountName = "{accountName}";
+const VAR_publicKey   = "{publicKey}";
+const VAR_privateKey  = "{privateKey}";
 
 class ConfigINI {
     accountName = null;
@@ -172,10 +175,26 @@ class ConfigINI {
         this.privateKey  = _privateKey;
     }
 
+    getMainRows = () => {
+        let items = FILE_CONTENT
+                        .split('\n')
+                        .filter(el => el.indexOf(VAR_accountName) !== -1 ||
+                                      el.indexOf(VAR_publicKey)   !== -1 ||
+                                      el.indexOf(VAR_privateKey)  !== -1);
+        
+        for(let i in Object.keys(items))
+            items[i] = (items[i] + "")
+                .replace(VAR_accountName, this.accountName)
+                .replace(VAR_publicKey,   this.publicKey)
+                .replace(VAR_privateKey,  this.privateKey);
+
+        return items;
+    }
+        
     get = () => FILE_CONTENT
-                    .replace("{accountName}", this.accountName)
-                    .replace("{publicKey}",   this.publicKey)
-                    .replace("{privateKey}",  this.privateKey);
+                    .replace(VAR_accountName, this.accountName)
+                    .replace(VAR_publicKey,   this.publicKey)
+                    .replace(VAR_privateKey,  this.privateKey);
 }
 
 export default ConfigINI;

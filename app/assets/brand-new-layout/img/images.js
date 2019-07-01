@@ -31,8 +31,16 @@ export const turkeyFlag = require("!file-loader?name=asset-symbols/[name].svg!./
 export const russiaFlag = require("!file-loader?name=asset-symbols/[name].svg!./ru.svg");
 export const japanFlag = require("!file-loader?name=asset-symbols/[name].svg!./jp.svg");
 
-export const otcBackground = require("!file-loader?name=asset-symbols/[name].jpg!./otc_background.jpg");
-
+export const otcBackground = require("!file-loader?name=asset-symbols/[name].jpg!./otc_bg.jpg");
+export const otcPrint = require("!file-loader?name=asset-symbols/[name].jpg!./otc_background.jpg");
+export const slide1 = require("!file-loader?name=asset-symbols/[name].png!./slide_1.png");
+export const slide2 = require("!file-loader?name=asset-symbols/[name].png!./slide_2.png");
+export const slide2Tooltip = require("!file-loader?name=asset-symbols/[name].png!./slide_2t.png");
+export const slide3 = require("!file-loader?name=asset-symbols/[name].png!./slide_3.png");
+export const slide3Tooltip = require("!file-loader?name=asset-symbols/[name].png!./slide_3t.png");
+export const slide4 = require("!file-loader?name=asset-symbols/[name].png!./slide_4.png");
+export const slide4Tooltip = require("!file-loader?name=asset-symbols/[name].png!./slide_4t.png");
+export const sliderArrow = require("!file-loader?name=asset-symbols/[name].png!./otc_arrow.png");
 // social network icons
 // export const vk = require("!file-loader?name=asset-symbols/social/[name].svg!./vk.svg");
 // export const fb = require("!file-loader?name=asset-symbols/[name].svg!./fb.svg");

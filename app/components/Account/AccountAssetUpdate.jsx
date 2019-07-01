@@ -18,6 +18,7 @@ import AssetSelector from "../Utility/AssetSelector";
 import big from "bignumber.js";
 import cnames from "classnames";
 import assetUtils from "common/asset_utils";
+import Tab from "../Utility/Tab";
 import Tabs from "../Utility/Tabs";
 import {BitAssetOptions} from "./AccountAssetCreate";
 import assetConstants from "chain/asset_constants";

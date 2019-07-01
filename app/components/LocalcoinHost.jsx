@@ -1,20 +1,48 @@
-const LOCALCOIN_HOST_URL = "https://localhost:5001";
 export default class LocalcoinHost {
+	_LOCALCOIN_HOST_URL = null;
+	LOCALCOIN_HOST_URL = () => {
+		if(this._LOCALCOIN_HOST_URL !== null) return this._LOCALCOIN_HOST_URL;
+
+		try {
+			if(typeof window.remote 				=== "undefined") this._LOCALCOIN_HOST_URL = "";
+			if(typeof window.remote.process 		=== "undefined") this._LOCALCOIN_HOST_URL = "";
+			if(typeof window.remote.process.argv 	=== "undefined") this._LOCALCOIN_HOST_URL = "";
+			if(typeof window.remote.process.argv[1] === "undefined") this._LOCALCOIN_HOST_URL = "";
+			else 								   					 this._LOCALCOIN_HOST_URL = window.remote.process.argv[1];
+		} catch(ex) {
+			this._LOCALCOIN_HOST_URL = "http://localhost:52209";
+		}
+
+		return this._LOCALCOIN_HOST_URL;
+	}
+
 	send = (url, body, cb) =>
-		fetch(LOCALCOIN_HOST_URL + url, {
+		fetch(this.LOCALCOIN_HOST_URL() + url, {
 			method: "POST",
 			body: body
 		})
-		.then(result => cb(result))
+		.then(r =>
+			r.text().then(res => {
+				if (typeof cb !== "undefined") cb(res);
+			})
+		)
 		.catch(err   => cb(null));
 
 	isRunnging = (cb) =>
-		fetch(LOCALCOIN_HOST_URL, {
+		fetch(this.LOCALCOIN_HOST_URL(), {
 			method: "get",
 			headers: new Headers({Accept: "application/json"})
 		})
 		.then(reply => cb(true))
 		.catch(err  => cb(false));
+
+	walletIsLoaded = () =>
+		fetch(this.LOCALCOIN_HOST_URL()+"/wallet_is_loaded", {
+			method: "get",
+			headers: new Headers({Accept: "application/json"})
+		})
+		.then ( data => {} )
+		.catch( data => {} );
 
 	getLastBlock = (url, cb) =>
 		(new WebSocket(url)).onopen = function (event) {
