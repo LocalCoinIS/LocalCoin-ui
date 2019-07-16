@@ -1,5 +1,5 @@
 export const settingsAPIs = {
-    DEFAULT_WS_NODE: "wss://de.localcoin.is",
+    DEFAULT_WS_NODE: "wss://fi.localcoin.is",
     WS_NODE_LIST: [
         {url: "ws://127.0.0.1:8090", location: "Locally hosted"},
         {url: "wss://mynodes.de", location: "US NY by ip24"},
