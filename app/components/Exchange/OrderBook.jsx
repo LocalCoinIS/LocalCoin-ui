@@ -153,40 +153,40 @@ class OrderBookRowHorizontal extends React.Component {
             <PriceText price={order.getPrice()} quote={quote} base={base} />
         );
         let amount = isBid
-            ? utils.format_number(
+            ? utils.format_numerical(
                   order.amountToReceive().getAmount({real: true}),
                   quote.get("precision")
               )
-            : utils.format_number(
+            : utils.format_numerical(
                   order.amountForSale().getAmount({real: true}),
                   quote.get("precision")
               );
         let value = isBid
-            ? utils.format_number(
+            ? utils.format_numerical(
                   order.amountForSale().getAmount({real: true}),
                   base.get("precision")
               )
-            : utils.format_number(
+            : utils.format_numerical(
                   order.amountToReceive().getAmount({real: true}),
                   base.get("precision")
               );
 
         let totalBaseCurrency = isBid
-            ? utils.format_number(
+            ? utils.format_numerical(
                   order.totalForSale().getAmount({real: true}),
                   8
               )
-            : utils.format_number(
+            : utils.format_numerical(
                   order.totalToReceive().getAmount({real: true}),
                   8
               );
 
         let totalQuoteCurrency = !isBid
-            ? utils.format_number(
+            ? utils.format_numerical(
                   order.totalForSale().getAmount({real: true}),
                   8
               )
-            : utils.format_number(
+            : utils.format_numerical(
                   order.totalToReceive().getAmount({real: true}),
                   8
               );

@@ -148,7 +148,7 @@ class OrderRow extends React.Component {
                     {priceSymbol}
                 </td>
                 <td>
-                    {utils.format_number(
+                    {utils.format_numerical(
                         order[
                             !isBid ? "amountForSale" : "amountToReceive"
                         ]().getAmount({real: true}),
@@ -157,7 +157,7 @@ class OrderRow extends React.Component {
                     {amountSymbol}
                 </td>
                 <td>
-                    {utils.format_number(
+                    {utils.format_numerical(
                         order[
                             !isBid ? "amountToReceive" : "amountForSale"
                         ]().getAmount({real: true}),
@@ -199,14 +199,14 @@ class OrderRow extends React.Component {
                     {isBid ? (
                         <Translate
                             content="exchange.buy_description"
-                            baseAsset={utils.format_number(
+                            baseAsset={utils.format_numerical(
                                 order[
                                     isBid ? "amountToReceive" : "amountForSale"
                                 ]().getAmount({real: true}),
                                 base.get("precision"),
                                 false
                             )}
-                            quoteAsset={utils.format_number(
+                            quoteAsset={utils.format_numerical(
                                 order[
                                     isBid ? "amountForSale" : "amountToReceive"
                                 ]().getAmount({real: true}),
@@ -231,14 +231,14 @@ class OrderRow extends React.Component {
                     ) : (
                         <Translate
                             content="exchange.sell_description"
-                            baseAsset={utils.format_number(
+                            baseAsset={utils.format_numerical(
                                 order[
                                     isBid ? "amountToReceive" : "amountForSale"
                                 ]().getAmount({real: true}),
                                 base.get("precision"),
                                 false
                             )}
-                            quoteAsset={utils.format_number(
+                            quoteAsset={utils.format_numerical(
                                 order[
                                     isBid ? "amountForSale" : "amountToReceive"
                                 ]().getAmount({real: true}),
