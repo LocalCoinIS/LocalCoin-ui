@@ -683,6 +683,7 @@ class BorrowModalContent extends React.Component {
                                         <Translate content="transaction.feed_price" />:&nbsp;
                                     </span>
                                     <FormattedPrice
+                                        isBorrow
                                         noPopOver
                                         quote_amount={quote_asset.getIn([
                                             "bitasset",
