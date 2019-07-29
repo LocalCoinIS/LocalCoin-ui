@@ -170,7 +170,7 @@ class Header extends React.Component {
         document.body.addEventListener("click", this.onBodyClick, {
             capture: false,
             passive: true
-            
+
         });
         let topContainer = document.querySelector(".balance__list_scroll");
         if (topContainer) {
@@ -570,7 +570,7 @@ class Header extends React.Component {
                 );
             });
         } catch(ex) {}
-        
+
         return balance;
     }
 
@@ -780,11 +780,12 @@ class Header extends React.Component {
                                     <li className="mobile__list__item">
                                         <a
                                             className="mobile__list__link"
-                                            href="#"
-                                            onClick={this._onNavigate.bind(
+                                            href="https://t.me/joinchat/LcDbAxahMjIxiRFhiDEJ2g"
+                                            target="_blank"
+                                            /*onClick={this._onNavigate.bind(
                                                 this,
                                                 "/OTC"
-                                            )}
+                                            )}*/
                                         >
                                             {/* OTC */}
                                             {counterpart.translate(
@@ -953,11 +954,12 @@ class Header extends React.Component {
                                     <li className="navigation__item">
                                         <a
                                             className="navigation__link"
-                                            href="#"
-                                            onClick={this._onNavigate.bind(
+                                            href="https://t.me/joinchat/LcDbAxahMjIxiRFhiDEJ2g"
+                                            target="_blank"
+                                            /*onClick={this._onNavigate.bind(
                                                 this,
                                                 "/OTC"
-                                            )}
+                                            )}*/
                                         >
                                             {/* OTC */}
                                             {counterpart.translate(
