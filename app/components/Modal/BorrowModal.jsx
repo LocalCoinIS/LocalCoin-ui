@@ -747,6 +747,7 @@ class BorrowModalContent extends React.Component {
                                     </span>
                                     {this.state.newPosition ? (
                                         <FormattedPrice
+                                            isBorrow
                                             noPopOver
                                             quote_amount={
                                                 maintenanceRatio *

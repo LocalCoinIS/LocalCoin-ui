@@ -193,9 +193,6 @@ class FormattedPrice extends React.Component {
         if (hide_symbols) {
             symbols = '';
         } else if (isBorrow) {
-            price.base.amount = 200000;
-            let first_symbol = (<AssetName name={base.get("symbol")} />);
-            let second_symbol = (<AssetName name={quote.get("symbol")} />);
             let value = price.toReal(inverted);
             let firstValue, secondValue;
             if (inverted) {
@@ -205,7 +202,9 @@ class FormattedPrice extends React.Component {
                 firstValue = value;
                 secondValue = 1;
             }
-            symbols = (
+            symbols = firstValue == Infinity || isNaN(firstValue) || secondValue == Infinity || isNaN(secondValue) ? (
+                <span>--</span>
+                ) : (
                 <span
                     data-place="bottom"
                     data-tip={"Click to invert the price"}
