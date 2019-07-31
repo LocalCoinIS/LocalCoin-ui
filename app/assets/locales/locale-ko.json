@@ -1256,7 +1256,9 @@
         },
         "update_account": "Update account data for {account}",
         "vesting_balance_withdraw": "Withdraw {amount} from vesting balance of {account}",
-        "proposal_update": "Proposal update [need to translate]"
+        "proposal_update": "Proposal update [need to translate]",
+        "activenode_create_operation": "Activenode create [need to translate]",
+        "activenode_send_activity": "Activenode send activity [need to translate]"
     },
     "proposal_create": {
         "expiration_time": "Expiration time",
@@ -1548,7 +1550,9 @@
             "witness_create": "증인 생성",
             "witness_update": "증인 업데이트",
             "witness_withdraw_pay": "증인 봉급 인출",
-            "worker_create": "예산 항목 생성"
+            "worker_create": "예산 항목 생성",
+            "activenode_create_operation": "Activenode create [need to translate]",
+            "activenode_send_activity": "Activenode send activity [need to translate]"
         },
         "vesting_balance_create": "created vesting balance of",
         "waiting": "Waiting for confirmation..",

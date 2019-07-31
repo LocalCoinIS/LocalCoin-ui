@@ -692,6 +692,19 @@ class ProposedOperation extends React.Component {
 
                 break;
 
+            case "activenode_send_activity":
+                column = (
+                    <span>
+                        <Translate
+                            component="span"
+                            content="proposal.activenode_send_activity"
+                        />
+                        &nbsp;{this.linkToAccount(op[1].activenode_account)}
+                    </span>
+                );
+
+                break;
+
             case "witness_update":
                 column = (
                     <span>

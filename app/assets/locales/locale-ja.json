@@ -1256,7 +1256,9 @@
         },
         "update_account": "{account}のアカウントデータを更新します",
         "vesting_balance_withdraw": "{account}の権利確定残高から{amount}を引き出します",
-        "proposal_update": "Proposal update [need to translate]"
+        "proposal_update": "Proposal update [need to translate]",
+        "activenode_create_operation": "Activenode create [need to translate]",
+        "activenode_send_activity": "Activenode send activity [need to translate]"
     },
     "proposal_create": {
         "expiration_time": "有効期限",
@@ -1548,7 +1550,9 @@
             "witness_create": "証人を作成",
             "witness_update": "証人を更新",
             "witness_withdraw_pay": "証人報酬を引き出し",
-            "worker_create": "ワーカーを作成"
+            "worker_create": "ワーカーを作成",
+            "activenode_create_operation": "Activenode create [need to translate]",
+            "activenode_send_activity": "Activenode send activity [need to translate]"
         },
         "vesting_balance_create": "作成済み権利確定残高:",
         "waiting": "確認を待っています..",

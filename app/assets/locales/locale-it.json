@@ -1256,7 +1256,9 @@
         },
         "update_account": "Aggiorna dati account per {account}",
         "vesting_balance_withdraw": "Preleva {amount} dal saldo vesting di {account}",
-        "proposal_update": "Proposal update [need to translate]"
+        "proposal_update": "Proposal update [need to translate]",
+        "activenode_create_operation": "Activenode create [need to translate]",
+        "activenode_send_activity": "Activenode send activity [need to translate]"
     },
     "proposal_create": {
         "expiration_time": "Data di scadenza",
@@ -1548,7 +1550,9 @@
             "witness_create": "Crea witness",
             "witness_update": "Aggiorna witness",
             "witness_withdraw_pay": "Prelievo salario della witness",
-            "worker_create": "Crea worker"
+            "worker_create": "Crea worker",
+            "activenode_create_operation": "Activenode create [need to translate]",
+            "activenode_send_activity": "Activenode send activity [need to translate]"
         },
         "vesting_balance_create": "ha creato un saldo vesting di",
         "waiting": "In attesa di conferma..",

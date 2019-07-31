@@ -1256,7 +1256,9 @@
         },
         "update_account": "更新账户 {account} 的信息",
         "vesting_balance_withdraw": "从 {account} 的解冻余额中提取 {amount}",
-        "proposal_update": "Proposal update [need to translate]"
+        "proposal_update": "Proposal update [need to translate]",
+        "activenode_create_operation": "Activenode create [need to translate]",
+        "activenode_send_activity": "Activenode send activity [need to translate]"
     },
     "proposal_create": {
         "expiration_time": "过期时间",
@@ -1548,7 +1550,9 @@
             "witness_create": "创建见证人",
             "witness_update": "更新见证人",
             "witness_withdraw_pay": "领取见证人报酬",
-            "worker_create": "创建预算项目"
+            "worker_create": "创建预算项目",
+            "activenode_create_operation": "Activenode create [need to translate]",
+            "activenode_send_activity": "Activenode send activity [need to translate]"
         },
         "vesting_balance_create": "创建待解冻余额",
         "waiting": "等待确认中…",

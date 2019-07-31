@@ -1226,7 +1226,9 @@
         "witness_pay": "{account} hat Zeugen-Guthaben eingezogen.",
         "witness_receive": "Hat den Zeugen von {witness} erhalten.",
         "witness_update": "{account} hat seinen Zeugen aktualisiert.",
-        "worker_create": "{account} hat einen Arbeitervorschlag mit einer täglichen Bezahlung von {pay} LLC/Tag erstellt."
+        "worker_create": "{account} hat einen Arbeitervorschlag mit einer täglichen Bezahlung von {pay} LLC/Tag erstellt.",
+        "activenode_create_operation": "Activenode create [need to translate]",
+        "activenode_send_activity": "Activenode send activity [need to translate]"
     },
     "page404": {
         "asset_not_found_subtitle": "Diese Anlage existert nicht.",
@@ -1270,7 +1272,9 @@
         },
         "update_account": "Aktualisiere Kontodaten für {account}",
         "vesting_balance_withdraw": "Auszahlung {amount} Sperrfristguthaben durch {account}",
-        "proposal_update": "Proposal update [need to translate]"
+        "proposal_update": "Proposal update [need to translate]",
+        "activenode_create_operation": "Activenode create [need to translate]",
+        "activenode_send_activity": "Activenode send activity [need to translate]"
     },
     "proposal_create": {
       "expiration_time": "Ablaufzeit",
@@ -1562,7 +1566,9 @@
             "witness_create": "Witness erstellen",
             "witness_update": "Witness ändern",
             "witness_withdraw_pay": "Witnesslohn ausbezahlen",
-            "worker_create": "Budgetpunkt erstellt"
+            "worker_create": "Budgetpunkt erstellt",
+            "activenode_create_operation": "Activenode create [need to translate]",
+            "activenode_send_activity": "Activenode send activity [need to translate]"
         },
         "vesting_balance_create": "Ein Sperrfristguthaben wurde erzeugt",
         "waiting": "Warte auf Bestätigung ...",
