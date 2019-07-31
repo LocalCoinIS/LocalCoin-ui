@@ -1229,8 +1229,8 @@
         "update_account": "Обновить данные аккаунта для {account}",
         "vesting_balance_withdraw": "Вывести {amount} с вестингового баланса {account}",
         "proposal_update": "Proposal update [need to translate]",
-        "activenode_create_operation": "Activenode create [need to translate]",
-        "activenode_send_activity": "Activenode send activity [need to translate]"
+        "activenode_create_operation": "Activenode create",
+        "activenode_send_activity": "Activenode send activity"
     },
     "proposal_create": {
         "expiration_time": "Окончание срока действия",
@@ -1540,8 +1540,8 @@
             "witness_update": "Обновление витнеса",
             "witness_withdraw_pay": "Получение зарплаты витнеса",
             "worker_create": "Создать работника",
-            "activenode_create_operation": "Activenode create [need to translate]",
-            "activenode_send_activity": "Activenode send activity [need to translate]"
+            "activenode_create_operation": "Activenode create",
+            "activenode_send_activity": "Activenode send activity"
         },
         "vesting_balance_create": "создал вестинговый баланс",
         "waiting": "Ожидание подтверждения...",
