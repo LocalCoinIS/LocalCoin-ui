@@ -1255,7 +1255,8 @@
             "owner_approvals_to_remove": "要移除的账户权限许可"
         },
         "update_account": "更新账户 {account} 的信息",
-        "vesting_balance_withdraw": "从 {account} 的解冻余额中提取 {amount}"
+        "vesting_balance_withdraw": "从 {account} 的解冻余额中提取 {amount}",
+        "proposal_update": "Proposal update [need to translate]"
     },
     "proposal_create": {
         "expiration_time": "过期时间",

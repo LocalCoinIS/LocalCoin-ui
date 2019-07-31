@@ -1255,7 +1255,8 @@
             "owner_approvals_to_remove": "Approvazioni del proprietario da rimuovere"
         },
         "update_account": "Aggiorna dati account per {account}",
-        "vesting_balance_withdraw": "Preleva {amount} dal saldo vesting di {account}"
+        "vesting_balance_withdraw": "Preleva {amount} dal saldo vesting di {account}",
+        "proposal_update": "Proposal update [need to translate]"
     },
     "proposal_create": {
         "expiration_time": "Data di scadenza",

@@ -1255,7 +1255,8 @@
             "owner_approvals_to_remove": "Kaldırılacak sahip onayları"
         },
         "update_account": "{account} için hesap verilerini güncelle.",
-        "vesting_balance_withdraw": "Withdraw {amount} from vesting balance of {account}"
+        "vesting_balance_withdraw": "Withdraw {amount} from vesting balance of {account}",
+        "proposal_update": "Proposal update [need to translate]"
     },
     "proposal_create": {
         "expiration_time": "Bitiş süresi",

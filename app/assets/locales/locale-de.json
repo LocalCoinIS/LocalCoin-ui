@@ -1269,7 +1269,8 @@
           "owner_approvals_to_remove": "Besitzergenehmigung entfernen"
         },
         "update_account": "Aktualisiere Kontodaten für {account}",
-        "vesting_balance_withdraw": "Auszahlung {amount} Sperrfristguthaben durch {account}"
+        "vesting_balance_withdraw": "Auszahlung {amount} Sperrfristguthaben durch {account}",
+        "proposal_update": "Proposal update [need to translate]"
     },
     "proposal_create": {
       "expiration_time": "Ablaufzeit",

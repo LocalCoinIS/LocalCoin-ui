@@ -1227,7 +1227,8 @@
             "owner_approvals_to_remove": "Подтверждения владельцев для удаления"
         },
         "update_account": "Обновить данные аккаунта для {account}",
-        "vesting_balance_withdraw": "Вывести {amount} с вестингового баланса {account}"
+        "vesting_balance_withdraw": "Вывести {amount} с вестингового баланса {account}",
+        "proposal_update": "Proposal update [need to translate]"
     },
     "proposal_create": {
         "expiration_time": "Окончание срока действия",
