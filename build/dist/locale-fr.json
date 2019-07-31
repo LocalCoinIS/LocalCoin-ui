@@ -1254,7 +1254,10 @@
             "owner_approvals_to_remove": "Owner approvals to remove"
         },
         "update_account": "Update account data for {account}",
-        "vesting_balance_withdraw": "Withdraw {amount} from vesting balance of {account}"
+        "vesting_balance_withdraw": "Withdraw {amount} from vesting balance of {account}",
+        "proposal_update": "Proposal update [need to translate]",
+        "activenode_create_operation": "Activenode create [need to translate]",
+        "activenode_send_activity": "Activenode send activity [need to translate]"
     },
     "proposal_create": {
         "expiration_time": "Expiration time",
@@ -1546,7 +1549,9 @@
             "witness_create": "Création de témoin",
             "witness_update": "Update witness",
             "witness_withdraw_pay": "Retrait de salaire de témoin",
-            "worker_create": "Création d'ouvrier"
+            "worker_create": "Création d'ouvrier",
+            "activenode_create_operation": "Activenode create [need to translate]",
+            "activenode_send_activity": "Activenode send activity [need to translate]"
         },
         "vesting_balance_create": "a créé un solde bloqué pour",
         "waiting": "Waiting for confirmation..",

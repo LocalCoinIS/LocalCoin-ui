@@ -1255,7 +1255,10 @@
             "owner_approvals_to_remove": "Aprobaciones del propietario para eliminar"
         },
         "update_account": "Actualizar los datos de la cuenta para {account}",
-        "vesting_balance_withdraw": "retirar {amount} desde la consolidación del saldo de {account}"
+        "vesting_balance_withdraw": "retirar {amount} desde la consolidación del saldo de {account}",
+        "proposal_update": "Proposal update [need to translate]",
+        "activenode_create_operation": "Activenode create [need to translate]",
+        "activenode_send_activity": "Activenode send activity [need to translate]"
     },
     "proposal_create": {
         "expiration_time": "Tiempo de expiración",
@@ -1547,7 +1550,9 @@
             "witness_create": "Crear Testigo",
             "witness_update": "Actualizar Testigo",
             "witness_withdraw_pay": "Retirar pago del Testigo",
-            "worker_create": "Crear presupuesto de trabajo"
+            "worker_create": "Crear presupuesto de trabajo",
+            "activenode_create_operation": "Activenode create [need to translate]",
+            "activenode_send_activity": "Activenode send activity [need to translate]"
         },
         "vesting_balance_create": "ha creado el fondo de consolidación de",
         "waiting": "esperando confirmación..",
