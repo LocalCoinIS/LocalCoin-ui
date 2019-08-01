@@ -1167,7 +1167,7 @@ class Header extends React.Component {
                                                 `/create-account/${(this.props.passwordLogin) ? 'password': 'wallet'}`
                                             )}
                                             >
-                                            {counterpart.translate("header.create_account")}
+                                            {counterpart.translate("header.add_new_account")}
                                         </a>
                                     </li>
                                 </ul>
