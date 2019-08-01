@@ -845,6 +845,7 @@
         "account_notify": "Активный аккаунт в настоящее время %(account)s",
         "account_value": "Оценка",
         "accounts_manage": "Управление аккаунтами",
+        "add_new_account": "Создать новый аккаунт",
         "collateral_ratio": "Коэффициент покрытия",
         "create_account": "Создать аккаунт",
         "create_asset": "Создать актив",
