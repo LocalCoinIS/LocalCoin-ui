@@ -845,6 +845,7 @@
         "account_notify": "Активный аккаунт в настоящее время %(account)s",
         "account_value": "Оценка",
         "accounts_manage": "Управление аккаунтами",
+        "add_new_account": "Создать новый аккаунт",
         "collateral_ratio": "Коэффициент покрытия",
         "create_account": "Создать аккаунт",
         "create_asset": "Создать актив",
@@ -1227,7 +1228,10 @@
             "owner_approvals_to_remove": "Подтверждения владельцев для удаления"
         },
         "update_account": "Обновить данные аккаунта для {account}",
-        "vesting_balance_withdraw": "Вывести {amount} с вестингового баланса {account}"
+        "vesting_balance_withdraw": "Вывести {amount} с вестингового баланса {account}",
+        "proposal_update": "Proposal update [need to translate]",
+        "activenode_create_operation": "Activenode create",
+        "activenode_send_activity": "Activenode send activity"
     },
     "proposal_create": {
         "expiration_time": "Окончание срока действия",
@@ -1536,7 +1540,9 @@
             "witness_create": "Создание витнеса",
             "witness_update": "Обновление витнеса",
             "witness_withdraw_pay": "Получение зарплаты витнеса",
-            "worker_create": "Создать работника"
+            "worker_create": "Создать работника",
+            "activenode_create_operation": "Activenode create",
+            "activenode_send_activity": "Activenode send activity"
         },
         "vesting_balance_create": "создал вестинговый баланс",
         "waiting": "Ожидание подтверждения...",

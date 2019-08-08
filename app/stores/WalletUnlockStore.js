@@ -21,7 +21,7 @@ class WalletUnlockStore {
             passwordLogin: passwordLogin
         };
 
-        this.walletLockTimeout = this._getTimeout(); // seconds (10 minutes)
+        this.walletLockTimeout = this._getTimeout();
         this.timeout = null;
 
         this.bindListeners({
@@ -111,7 +111,7 @@ class WalletUnlockStore {
     }
 
     _getTimeout() {
-        return parseInt(ss.get("lockTimeout", 600), 10);
+        return parseInt(ss.get("lockTimeout", 0), 10);
     }
 
     onCheckLock() {

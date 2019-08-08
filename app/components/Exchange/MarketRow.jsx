@@ -280,14 +280,14 @@ class MarketRow extends React.Component {
                                 className="text-right"
                                 key={column.index}
                             >
-                                {utils.format_number(
+                                {utils.format_numerical(utils.format_number(
                                     finalPrice,
                                     finalPrice > 1000
                                         ? 0
                                         : finalPrice > 10
                                             ? 2
                                             : precision
-                                )}
+                                ))}
                             </td>
                         );
 

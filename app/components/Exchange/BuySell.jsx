@@ -722,11 +722,10 @@ class BuySell extends React.Component {
                                                         balanceToAdd
                                                     )}
                                                 >
-                                                    {utils.format_number(
+                                                    {utils.format_numerical(
                                                         balanceAmount.getAmount(
                                                             {real: true}
-                                                        ),
-                                                        balancePrecision
+                                                        )
                                                     )}{" "}
                                                     <AssetName
                                                         name={balanceSymbol}

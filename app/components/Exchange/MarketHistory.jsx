@@ -17,6 +17,7 @@ import BlockDate from "../Utility/BlockDate";
 import counterpart from "counterpart";
 import ReactTooltip from "react-tooltip";
 import getLocale from "browser-locale";
+import utils from "common/utils";
 
 class MarketHistory extends React.Component {
     constructor(props) {
@@ -129,8 +130,8 @@ class MarketHistory extends React.Component {
                             <td className={parsed_order.className}>
                                 <PriceText preFormattedPrice={parsed_order} />
                             </td>
-                            <td>{parsed_order.receives}</td>
-                            <td>{parsed_order.pays}</td>
+                            <td>{utils.format_numerical(parsed_order.receives)}</td>
+                            <td>{utils.format_numerical(parsed_order.pays)}</td>
                             <BlockDate
                                 component="td"
                                 block_number={block_num}
@@ -177,8 +178,8 @@ class MarketHistory extends React.Component {
                             <td className={parsed_order.className}>
                                 <PriceText price={parsed_order.full} quote={quote} base={base} />
                             </td>
-                            <td>{parsed_order.receives}</td>
-                            <td>{parsed_order.pays}</td>
+                            <td>{utils.format_numerical(parsed_order.receives)}</td>
+                            <td>{utils.format_numerical(parsed_order.pays)}</td>
                             <td
                                 data-place="right"
                                 className="tooltip"

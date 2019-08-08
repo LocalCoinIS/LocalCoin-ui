@@ -130,13 +130,21 @@ class AccountNameInput extends React.Component {
         // Simplify the rules (prevent typing of invalid characters)
         var account_name = e.target.value.toLowerCase();
         account_name = account_name.match(/[a-z0-9\.-]+/);
-        account_name = account_name ? account_name[0] : null;
+        account_name = account_name ? account_name[0] : '';
         this.setState({account_name});
         this.validateAccountName(account_name);
     }
 
     onKeyDown(e) {
         if (this.props.onEnter && event.keyCode === 13) this.props.onEnter(e);
+    }
+
+    getName() {
+        let name = this.state.account_name;
+        if (typeof name !== 'string' && this.props.initial_value) {
+            name = this.props.initial_value;
+        }
+        return name;
     }
 
     render() {
@@ -146,7 +154,6 @@ class AccountNameInput extends React.Component {
         });
         let warning = this.state.warning;
         // let {noLabel} = this.props;
-
         return (
             <div className={class_name}>
                 {/* {noLabel ? null : <label><Translate content="account.name" /></label>} */}
@@ -163,9 +170,7 @@ class AccountNameInput extends React.Component {
                         placeholder={null}
                         onChange={this.handleChange}
                         onKeyDown={this.onKeyDown}
-                        value={
-                            this.state.account_name || this.props.initial_value
-                        }
+                        value={this.getName()}
                     />
                 </section>
                 { !!error &&

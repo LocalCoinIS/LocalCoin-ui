@@ -577,8 +577,16 @@ body.localcoin
 				background-color: #132d71
 	.user
 		display: flex
+		position: relative
 		align-items: center
 		margin-left: 22px
+		&:hover
+			.balance__list
+				opacity: 1
+				visibility: visible
+				width: auto
+				height: auto
+				background-color: #001b60
 		&__icon
 			display: inline-block
 			max-width: 24px
@@ -592,6 +600,14 @@ body.localcoin
 			transition: opacity .25s ease
 			&:hover
 				opacity: .5
+		.balance__link
+			display: block;
+			font-size: 12px;
+			text-transform: none;
+			padding: 9px;
+			line-height: 1;
+			text-decoration: none;
+			color: #fff;
 	.settings
 		display: inline-flex
 		position: relative

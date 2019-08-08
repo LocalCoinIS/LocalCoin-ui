@@ -108,6 +108,7 @@ class FormattedPrice extends React.Component {
             marketDirections,
             hide_symbols,
             noPopOver,
+            isBorrow,
             pulsate
         } = this.props;
         const {marketName, first, second} = this.state;
@@ -125,14 +126,18 @@ class FormattedPrice extends React.Component {
         ) {
             inverted = true;
         }
-        let base, quote;
-        if (inverted) {
-            base = second;
-            quote = first;
-        } else {
-            base = first;
-            quote = second;
+        let base = first;
+        let quote = second;
+        if (!isBorrow) {
+            if (inverted) {
+                base = second;
+                quote = first;
+            } else {
+                base = first;
+                quote = second;
+            }
         }
+
         if (base.get("id") !== base_asset.get("id")) {
             let tempAmount = base_amount;
             base_amount = quote_amount;
@@ -158,7 +163,7 @@ class FormattedPrice extends React.Component {
         }
 
         let formatted_value = "";
-        if (!this.props.hide_value) {
+        if (!this.props.hide_value && !isBorrow) {
             let value = price.toReal();
             if (isNaN(value) || !isFinite(value)) {
                 return <span>--</span>;
@@ -184,20 +189,45 @@ class FormattedPrice extends React.Component {
                 );
             }
         }
-        let symbols = hide_symbols ? (
-            ""
-        ) : (
-            <span
-                data-place="bottom"
-                data-tip={noPopOver ? "Click to invert the price" : null}
-                className={noPopOver ? "clickable inline-block" : ""}
-                onClick={noPopOver ? this.onFlip.bind(this) : null}
-            >
-                <AssetName name={quote.get("symbol")} />
-                /
-                <AssetName name={base.get("symbol")} />
-            </span>
-        );
+        let symbols;
+        if (hide_symbols) {
+            symbols = '';
+        } else if (isBorrow) {
+            let value = price.toReal(inverted);
+            let firstValue, secondValue;
+            if (inverted) {
+                firstValue = 1;
+                secondValue = value;
+            } else {
+                firstValue = value;
+                secondValue = 1;
+            }
+            symbols = firstValue == Infinity || isNaN(firstValue) || secondValue == Infinity || isNaN(secondValue) ? (
+                <span>--</span>
+                ) : (
+                <span
+                    data-place="bottom"
+                    data-tip={"Click to invert the price"}
+                    className={"clickable inline-block"}
+                    onClick={this.onFlip.bind(this)}
+                >
+                    {firstValue} <AssetName name={quote.get("symbol")} /> = {secondValue} <AssetName name={base.get("symbol")} />
+                </span>
+            );
+        } else {
+            symbols = (
+                <span
+                    data-place="bottom"
+                    data-tip={noPopOver ? "Click to invert the price" : null}
+                    className={noPopOver ? "clickable inline-block" : ""}
+                    onClick={noPopOver ? this.onFlip.bind(this) : null}
+                >
+                    <AssetName name={quote.get("symbol")} />
+                    /
+                    <AssetName name={base.get("symbol")} />
+                </span>
+            );
+        }
 
         const currency_popover_body =
             !noPopOver && !hide_symbols ? (
@@ -229,7 +259,11 @@ class FormattedPrice extends React.Component {
             </Popover>
         ) : null;
 
-        return (
+        return isBorrow ? (
+            <span className="formatted-price">
+                {symbols}
+            </span>
+        ) : (
             <span className="formatted-price">
                 {formatted_value} {popOver ? popOver : symbols}
             </span>

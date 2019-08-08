@@ -338,7 +338,8 @@
             "node_block__replays": "Node block replays",
             "state_replay": "Replay state",
             "fail_connect_node": "Fail connect node",
-            "fail_connect_node_descr": "Please check your firewall, ports 11020 and 8090 should be opened."
+            "fail_connect_node_descr": "Please check your firewall, ports 11020 and 8090 should be opened.",
+            "activenode_send_activity": "Activenode send activity"
         },
         "vesting": {
             "balance_number": "Balance #%(id)s",
@@ -943,6 +944,7 @@
         "account": "Account",
         "account_notify": "The active account is now %(account)s",
         "account_value": "Account value",
+        "add_new_account": "Add new account",
         "backup_your_brainKey": "Backup your BrainKey",
         "collateral_ratio": "Collateral ratio",
         "create_account": "Create Account",
@@ -1281,7 +1283,9 @@
         "witness_pay": "Withdrew witness pay to account",
         "witness_receive": "Received witness from witness",
         "witness_update": "{account} update its witness info",
-        "worker_create": "{account} created a worker proposal with daily pay of {pay}"
+        "worker_create": "{account} created a worker proposal with daily pay of {pay}",
+        "activenode_create_operation": "Activenode create",
+        "activenode_send_activity": "Activenode send activity"
     },
     "otc": {
         "info": "Decentralised blockchain based Over the counter trading is coming soon. Please, check our ICO page."
@@ -1327,7 +1331,10 @@
             "owner_approvals_to_remove": "Owner approvals to remove"
         },
         "update_account": "Update account data for {account}",
-        "vesting_balance_withdraw": "Withdraw {amount} from vesting balance of {account}"
+        "vesting_balance_withdraw": "Withdraw {amount} from vesting balance of {account}",
+        "proposal_update": "Proposal update [need to translate]",
+        "activenode_create_operation": "Activenode create",
+        "activenode_send_activity": "Activenode send activity"
     },
     "proposal_create": {
         "expiration_time": "Expiration time",
@@ -1624,7 +1631,9 @@
             "witness_create": "Create witness",
             "witness_update": "Update witness",
             "witness_withdraw_pay": "Witness pay withdrawal",
-            "worker_create": "Create worker"
+            "worker_create": "Create worker",
+            "activenode_create_operation": "Activenode create",
+            "activenode_send_activity": "Activenode send activity"
         },
         "vesting_balance_create": "created vesting balance of",
         "waiting": "Waiting for confirmation..",

@@ -1159,6 +1159,18 @@ class Header extends React.Component {
                                         {currentAccount}
                                     </span>
                                 </a>
+                                <ul className={`balance__list ${balanceCount !== 0 ? "balance__list_scroll" : ""}`}>
+                                    <li className="balance__item ">
+                                        <a className="balance__link"
+                                            onClick={this._onNavigate.bind(
+                                                this,
+                                                `/create-account/${(this.props.passwordLogin) ? 'password': 'wallet'}`
+                                            )}
+                                            >
+                                            {counterpart.translate("header.add_new_account")}
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         ) : null}
 

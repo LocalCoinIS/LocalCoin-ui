@@ -84,6 +84,7 @@ class AccountItemRow extends React.Component {
                         asset="1.3.0"
                         decimalOffset={5}
                         hide_asset
+                        notFormat
                     />
                 </td>
                 <td>

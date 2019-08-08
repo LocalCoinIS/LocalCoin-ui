@@ -1,6 +1,7 @@
 import React from "react";
 import {findDOMNode} from "react-dom";
 import cnames from "classnames";
+import utils from "common/utils";
 
 class Pulsate extends React.Component {
     constructor() {
@@ -55,7 +56,7 @@ class Pulsate extends React.Component {
         if (!children) {
             children = value;
         }
-
+        //children = utils.format_numerical(value)
         if (!pulse) {
             return <span>{children}</span>;
         }

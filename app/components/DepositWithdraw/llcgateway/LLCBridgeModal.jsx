@@ -106,6 +106,8 @@ class LLCBridgeModal extends React.Component {
             
             self.onChooseAsset(thisAsset);
         });
+
+        this.inputAmountRef = React.createRef();
     }
 
     closeModal(e) {
@@ -286,6 +288,13 @@ class LLCBridgeModal extends React.Component {
     wdAmount = null;
     onChangeAmount(e) {
         this.wdAmount = parseFloat(e.target.value);
+        this.validateUnlockWithdrawBtn();
+    }
+    fillInputAmount() {
+        if (typeof this.state.balance !== 'number') return;
+
+        this.inputAmountRef.current.value = this.state.balance;
+        this.wdAmount = this.state.balance;
         this.validateUnlockWithdrawBtn();
     }
 
@@ -692,7 +701,13 @@ class LLCBridgeModal extends React.Component {
                             </div>
                             <div className="content-block">
                                 <div className="amount-selector">
-                                    <label className="right-label">
+                                    <label
+                                        className="right-label"
+                                        style={{
+                                            cursor: "pointer"
+                                        }}
+                                        onClick={this.fillInputAmount.bind(this)}
+                                    >
                                         {counterpart.translate(
                                             "transfer.available"
                                         ) +
@@ -708,6 +723,7 @@ class LLCBridgeModal extends React.Component {
                                     </label>
                                     <div className="inline-label input-wrapper">
                                         <input
+                                            ref = {this.inputAmountRef}
                                             type="text"
                                             placeholder={0.0}
                                             tabIndex={0}

@@ -53,7 +53,7 @@ var Utils = {
 
     format_volume(amount) {
         if (amount < 10000) {
-            return this.format_number(amount, 3);
+            return this.format_numerical(amount);
         } else if (amount < 1000000) {
             return (Math.round(amount / 10) / 100).toFixed(2) + "k";
         } else {
@@ -139,7 +139,7 @@ var Utils = {
                 )
             );
         }
-        return priceText;
+        return this.format_numerical(priceText);
     },
 
     price_to_text: function(price, base, quote, forcePrecision = null) {
@@ -435,6 +435,23 @@ var Utils = {
             prefix,
             isBitAsset: !!isBitAsset
         };
+    },
+
+    format_numerical(value, format = true) {
+        if (value === '' || isNaN(value)) return null;
+
+        let num = parseFloat(value);
+        let str = format ? new Intl.NumberFormat('en-EN', {maximumFractionDigits: 8}).format(num) : num.toString();
+
+        let arr = str.split('.');
+
+        if (!arr[1]) {
+            arr[1] = '00';
+        } else if (arr[1].length === 1) {
+            arr[1] += '0';
+        }
+
+        return arr.join('.');
     }
 };
 

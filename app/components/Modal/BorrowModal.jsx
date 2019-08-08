@@ -683,6 +683,7 @@ class BorrowModalContent extends React.Component {
                                         <Translate content="transaction.feed_price" />:&nbsp;
                                     </span>
                                     <FormattedPrice
+                                        isBorrow
                                         noPopOver
                                         quote_amount={quote_asset.getIn([
                                             "bitasset",
@@ -746,6 +747,7 @@ class BorrowModalContent extends React.Component {
                                     </span>
                                     {this.state.newPosition ? (
                                         <FormattedPrice
+                                            isBorrow
                                             noPopOver
                                             quote_amount={
                                                 maintenanceRatio *
