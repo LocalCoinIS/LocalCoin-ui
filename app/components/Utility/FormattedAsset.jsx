@@ -81,7 +81,8 @@ class FormattedAsset extends React.Component {
             hide_asset,
             hide_amount,
             asPercentage,
-            pulsate
+            pulsate,
+            notFormat
         } = this.props;
 
         if (asset && asset.toJS) asset = asset.toJS();
@@ -133,13 +134,14 @@ class FormattedAsset extends React.Component {
         let formattedValue = null;
         if (!hide_amount) {
             let value = this.props.exact_amount ? amount : amount / precision;
-            formattedValue = (
-                <FormattedNumber
-                    value={value}
-                    minimumFractionDigits={Math.max(decimals, 0)}
-                    maximumFractionDigits={Math.max(decimals, 0)}
-                />
-            );
+            formattedValue = !pulsate && !notFormat ? utils.format_numerical(value)
+                : (
+                    <FormattedNumber
+                        value={value}
+                        minimumFractionDigits={Math.max(decimals, 0)}
+                        maximumFractionDigits={Math.max(decimals, 0)}
+                    />
+                )
 
             if (pulsate) {
                 if (typeof pulsate !== "object") pulsate = {};

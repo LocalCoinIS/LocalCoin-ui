@@ -437,11 +437,12 @@ var Utils = {
         };
     },
 
-    format_numerical(value) {
+    format_numerical(value, format = true) {
         if (value === '' || isNaN(value)) return null;
 
         let num = parseFloat(value);
-        let str = num.toString();
+        let str = format ? new Intl.NumberFormat('en-EN', {maximumFractionDigits: 8}).format(num) : num.toString();
+
         let arr = str.split('.');
 
         if (!arr[1]) {
