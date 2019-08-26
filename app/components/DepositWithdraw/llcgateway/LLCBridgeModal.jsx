@@ -703,18 +703,18 @@ class LLCBridgeModal extends React.Component {
                                 <div className="amount-selector">
                                     <label
                                         className="right-label"
-                                        style={{
-                                            cursor: "pointer"
-                                        }}
                                         onClick={this.fillInputAmount.bind(this)}
                                     >
                                         {counterpart.translate(
                                             "transfer.available"
                                         ) +
-                                        ": " +
-                                        this.state.balance +
-                                        " " +
-                                        this.props.currency.asset}
+                                        ": "}
+                                        <span
+                                            className="withdraw-available__span"
+                                            style = {{cursor: "pointer"}}
+                                        >
+                                            {this.state.balance + " " + this.props.currency.asset}
+                                        </span>
                                     </label>
                                     <label className="left-label">
                                         {counterpart.translate(
