@@ -1,4 +1,19 @@
 ---------------------------------------------------------------------
+Release 1.0.5
+---------------------------------------------------------------------
+
+Features
+--------
+- Added new node
+- New package builder
+- Trading charts update to lastest version
+
+Bugs
+--------
+- Fixed deposit pop-up windows
+- UI fix: Changed commas to dots in all balances
+
+---------------------------------------------------------------------
 Release 1.0.3
 ---------------------------------------------------------------------
 
