@@ -2,7 +2,7 @@ Deployment rules
 ============
 1. Compile "npm run build"
 2. Push your build to dev branch
-3. Check test server http://localcoin.n3.by, if it's ok merge to live branch, push
+3. Check test server https://devwallet.localcoin.is, if it's ok merge to live branch, push
 
 Build will be autodeployed to the server. Working by ssh, keep in mind proper chown&chmod.
 
@@ -54,7 +54,7 @@ Once the compilation is done the GUI will be available in your browser at: `loca
 
 
 ## TODO: Testnet
-By default localcoin-ui connects to the live LocalCoin network. 
+By default localcoin-ui connects to the live LocalCoin network.
 TODO: (switch it to the testnet. To do so, open the UI in a browser, go to Settings, then under Access, select the *Public Testnet Server* in the dropdown menu. You should also change the faucet if you need to create an account, the testnet faucet address is https://testnet.localcoin.is.)
 
 The UI will reload and connect to the testnet, where you can use the faucet to create an account and receive an initial sum of test LLC.
