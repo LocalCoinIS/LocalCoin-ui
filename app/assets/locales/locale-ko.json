@@ -85,7 +85,7 @@
             "rewards": "캐쉬백 리워드",
             "stats": "회원정보",
             "subscribe": "연간회원권 구입",
-            "suspected_scammer": "Suspected Scammer",
+            "suspected_scammer": "<b>ATTENTION!!! Scammer's Account</b>",
             "unknown": "잘못된 계정",
             "upgrade_lifetime": "평생회원권 구입",
             "vested": "확정"
