@@ -102,7 +102,7 @@
             "rewards": "Cashback Rewards",
             "stats": "Membership stats",
             "subscribe": "Buy Annual Subscription",
-            "suspected_scammer": "<b>ATTENTION!!! Scammer's Account</b>",
+            "suspected_scammer": "ATTENTION!!! Scammer's Account",
             "unknown": "Unknown member",
             "upgrade_lifetime": "Buy Lifetime Subscription",
             "vested": "Vested"
