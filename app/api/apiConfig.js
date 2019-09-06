@@ -5,7 +5,6 @@ export const settingsAPIs = {
         {url: "wss://us.localcoin.is", location: "US Denver by crazy-indain"},
         {url: "wss://id.localcoin.is", location: "Indonesia by billpresta3101"},
         {url: "wss://de1.localcoin.is", location: "Germany by firedswiss1"},
-        {url: "wss://de2.localcoin.is", location: "Germany by swift"},
         {url: "wss://mysupremecoin.com", location: "Italy by the-supreme19"},
         {url: "wss://bebe3101.space", location: "Germany by bebe3101"},
         {url: "wss://ru.localcoin.is", location: "Russia"}
