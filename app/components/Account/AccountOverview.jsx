@@ -65,7 +65,8 @@ class AccountOverview extends React.Component {
             alwaysShowAssets: [
                 "LLC",
                 "BTC", "ETH", "XMR", "DASH", "LTC", "USDT",
-                "EUR", "USD", "GBP", "CNY", "RUB", "UAH"
+                "EUR", "USD", "GBP", "CNY", "RUB", "UAH",
+                "USDC"
                 //,
                 //"USD",
                 //"CNY"
