@@ -77,7 +77,7 @@ export function getUnits(chainId = "806101b8") {
  */
 
 export function getMyMarketsBases() {
-    return ["LLC", "USD", "EUR", "RUB", "BRL", "CNY", "USDT", "ETH", "BTC", "LTC", "XMR", "DASH", "GBP", "AUD", "PLN", "UAH", "IDR", "VND", "KRW", "INR", "LINK", "USDC", "TUSD", "USDS", "EURS", "HT", "BAT"];
+    return ["LLC", "USD", "EUR", "RUB", "BRL", "CNY", "USDT", "ETH", "BTC", "LTC", "XMR", "DASH", "GBP", "AUD", "PLN", "UAH", "IDR", "VND", "KRW", "INR", "LINK", , "BAT", "HT", "USDC", "TUSD", "USDS", "EURS"];
 }
 
 /**
