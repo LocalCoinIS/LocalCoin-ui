@@ -107,7 +107,7 @@ class Instructions extends React.Component {
             case "XMR":
                 return 10;
         }
-        return "x";
+        return "6";
     }
 
     render() {

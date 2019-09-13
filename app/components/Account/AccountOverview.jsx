@@ -62,6 +62,8 @@ class AccountOverview extends React.Component {
             depositAsset: null,
             withdrawAsset: null,
             bridgeAsset: null,
+            waitLoadMore: true,
+            tokens: [],
             alwaysShowAssets: [
                 "LLC",
                 "BTC", "ETH", "XMR", "DASH", "LTC", "USDT",
@@ -102,6 +104,18 @@ class AccountOverview extends React.Component {
         }
         this._handleFilterInput = this._handleFilterInput.bind(this);
         this.onShowModal = this.onShowModal.bind(this);
+    }
+
+    ajax(cb, action, params) {
+        if (typeof params === "undefined") params = null;
+        let url = "https://llcgateway.localcoin.is/?methodnameaction=" + action;
+        if (params) url += "&" + this.encodeQueryData(params);
+
+        fetch(url)
+            .then(res => {
+                return res.json();
+            })
+            .then(cb);
     }
 
     onShowModal(asset, tab) {
@@ -269,6 +283,37 @@ class AccountOverview extends React.Component {
         this._checkMarginStatus();
         if(this.props.location.hash === "#activity") {
            this.props.router.push("/account/" + this.props.account_name);
+        }
+
+        if(typeof window.allAllowAssets !== "undefined") {
+            let list = [...this.state.alwaysShowAssets];
+            for(let i of window.allAllowAssets)
+            {
+                if(list.indexOf(i) === -1)
+                    list.push(i);
+            }
+            this.setState({
+                alwaysShowAssets: window.allAllowAssets,
+                waitLoadMore: false,
+                tokens: allAllowAssets
+            });
+        } else {
+            this.ajax((allAllowAssets) => {
+                window.allAllowAssets = allAllowAssets;
+                let list = [...this.state.alwaysShowAssets];
+
+                for(let i of allAllowAssets)
+                {
+                    if(list.indexOf(i) === -1)
+                        list.push(i);
+                }
+
+                this.setState({
+                    alwaysShowAssets: list,
+                    waitLoadMore: false,
+                    tokens: allAllowAssets
+                });
+            }, "GetAllAssets");
         }
     }
 
@@ -774,14 +819,19 @@ class AccountOverview extends React.Component {
                             asset.get("symbol"),
                             this.props.backedCoins
                         );
-
                         const canTrade = deafaultAssetsArr.includes(asset.get("symbol"));
 
-                        const canDeposit = (backedCoin && backedCoin.depositAllowed) || canTrade;
+                        ////////////////////////////////
+                        let canDeposit = (backedCoin && backedCoin.depositAllowed) || canTrade;
+                        if(!canDeposit)
+                            canDeposit = this.state.tokens.indexOf(asset.get("symbol")) !== -1;
 
-                        const canWithdraw =
+                        let canWithdraw =
                             (backedCoin &&
                                 backedCoin.withdrawalAllowed) || canTrade;
+
+                        if(!canWithdraw)
+                            canWithdraw = this.state.tokens.indexOf(asset.get("symbol")) !== -1;
 
                         const canBuy = !!this.props.bridgeCoins.get(
                             asset.get("symbol")
@@ -1220,6 +1270,17 @@ class AccountOverview extends React.Component {
                 <td colSpan="9" />
             </tr>
         );
+
+        if(this.state.waitLoadMore)
+        {
+            includedBalances.push(
+                <tr className="total-value">
+                    <td colSpan="14" style={{ textAlign: "center" }}>
+                        Load more... Please wait...
+                    </td>
+                </tr>
+            );
+        }
 
         hiddenBalances.push(
             <tr key="portfolio" className="total-value">
