@@ -67,8 +67,7 @@ class AccountOverview extends React.Component {
             alwaysShowAssets: [
                 "LLC",
                 "BTC", "ETH", "XMR", "DASH", "LTC", "USDT",
-                "EUR", "USD", "GBP", "CNY", "RUB", "UAH",
-                "USDC"
+                "EUR", "USD", "GBP", "CNY", "RUB", "UAH"
                 //,
                 //"USD",
                 //"CNY"
@@ -208,6 +207,7 @@ class AccountOverview extends React.Component {
 
     _handleFilterInput(e) {
         e.preventDefault();
+
         this.setState({
             filterValue: e.target.value
         });
@@ -293,27 +293,41 @@ class AccountOverview extends React.Component {
                     list.push(i);
             }
             this.setState({
-                alwaysShowAssets: window.allAllowAssets,
+                alwaysShowAssets: list,
                 waitLoadMore: false,
-                tokens: allAllowAssets
+                tokens: window.allAssets
             });
         } else {
-            this.ajax((allAllowAssets) => {
-                window.allAllowAssets = allAllowAssets;
-                let list = [...this.state.alwaysShowAssets];
+            this.ajax((response) => {
+                window.allAllowAssets = [];
+                window.allAssets      = [];
 
-                for(let i of allAllowAssets)
-                {
-                    if(list.indexOf(i) === -1)
-                        list.push(i);
+                //главные ассеты, которые обязательны
+                for(let i of response.deposit) {
+                    window.allAssets.push(i.asset);
+
+                    if(i.allowBridge)
+                        window.allAllowAssets.push( i.asset );
                 }
 
-                this.setState({
-                    alwaysShowAssets: list,
-                    waitLoadMore: false,
-                    tokens: allAllowAssets
-                });
-            }, "GetAllAssets");
+                let list = [...this.state.alwaysShowAssets];
+                for(let i of window.allAllowAssets)
+                    if(list.indexOf(i) === -1)
+                        list.push(i);
+
+                window.maxFinanceCnt = list.length; //кол-во ассеты, что были + главные ассеты
+
+                //добавляем не обязательные в список для поиска
+                //при рендере вырежем по window.maxFinanceCnt
+                for(let i of window.allAssets)
+                    if(list.indexOf(i) === -1)
+                        list.push(i);
+
+                this.setState({ alwaysShowAssets : list,
+                                waitLoadMore     : false,
+                                tokens           : window.allAssets });
+
+            }, "GetAllowCurrency");
         }
     }
 
@@ -1313,6 +1327,8 @@ class AccountOverview extends React.Component {
         // horizontally
         const hiddenSubText = "\u00a0";
 
+        let maxFinanceCnt = typeof window.maxFinanceCnt !== "undefined" ? window.maxFinanceCnt : 10;
+
         const accountPortfolio = (
             <div>
                 <div className="dashboard__actions">
@@ -1539,10 +1555,11 @@ class AccountOverview extends React.Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                {shownAssets == "hidden" &&
-                                hiddenBalances.length
-                                    ? hiddenBalances
-                                    : includedBalances}
+                                {
+                                    shownAssets == "hidden" && hiddenBalances.length
+                                        ? hiddenBalances.length   > maxFinanceCnt ? hiddenBalances.splice(0,   maxFinanceCnt) : hiddenBalances
+                                        : includedBalances.length > maxFinanceCnt ? includedBalances.splice(0, maxFinanceCnt) : includedBalances
+                                }
                             </tbody>
                         </table>
                     </div>
