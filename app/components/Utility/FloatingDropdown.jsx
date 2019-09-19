@@ -15,7 +15,9 @@ class Dropdown extends React.Component {
         const scroll_length = props.scroll_length;
         super(props);
         this.state = {
-            active: false
+            active: false,
+            filter: typeof props.filter !== "undefined" && props.filter === true,
+            filterValue: ""
         };
 
         this.listener = false;
@@ -103,6 +105,7 @@ class Dropdown extends React.Component {
 
     render() {
         const {entries, value} = this.props;
+
         let {active} = this.state;
         if (entries.length === 0) return null;
         if (entries.length == 1) {
@@ -121,11 +124,20 @@ class Dropdown extends React.Component {
                 </div>
             );
         } else {
-            let options = entries.map(value => {
+            var filterAssets = entries
+                .filter(
+                    item => item
+                        .toUpperCase()
+                        .indexOf(
+                            this.state.filterValue.trim().toUpperCase()
+                        ) !== -1
+                );
+
+            let options = filterAssets.map(value => {
                 return (
                     <li
                         className={this.props.upperCase ? "upper-case" : ""}
-                        key={value}
+                        
                         onClick={this.onChange.bind(
                             this,
                             this.props.values[value]
@@ -156,6 +168,22 @@ class Dropdown extends React.Component {
                         //             : "hidden"
                         // }}
                     >
+                        {this.state.filter && entries.length > 1 ? <div>
+                            <input
+                                type="text"
+                                rows="1"
+                                style={{
+                                    margin: "5px",
+                                    width: "90%"
+                                }}
+                                placeholder="Search"
+                                onChange={e => {
+                                    this.setState({
+                                        filterValue: e.target.value
+                                    });
+                                }}
+                            />
+                        </div> : ""}
                         {options}
                     </ul>
                 </div>

@@ -523,13 +523,16 @@ class LLCBridgeModal extends React.Component {
                         onChange={this.handleSendInput}
                     />
                     <div className="form-label select floating-dropdown">
+
                         <FloatingDropdown
+                            filter={true}
                             entries={this.state.assets}
                             values={this.state.assetValues}
                             singleEntry={this.state.asset}
                             value={this.state.asset}
                             onChange={this.onChooseAsset}
                         />
+
                     </div>
                 </div>
             </div>
