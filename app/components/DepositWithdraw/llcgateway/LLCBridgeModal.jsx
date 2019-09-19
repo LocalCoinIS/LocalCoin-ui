@@ -525,7 +525,6 @@ class LLCBridgeModal extends React.Component {
                     <div className="form-label select floating-dropdown">
 
                         <FloatingDropdown
-                            filter={true}
                             entries={this.state.assets}
                             values={this.state.assetValues}
                             singleEntry={this.state.asset}

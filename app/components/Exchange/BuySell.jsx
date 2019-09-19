@@ -24,6 +24,16 @@ import {getDashboardAssets} from "branding";
 class BuySell extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            depositAssets: []
+        };
+
+        fetch("https://llcgateway.localcoin.is/?methodnameaction=GetAllAssets")
+            .then(res    => { return res.json(); }                        )
+            .then(assets => { this.setState({ depositAssets: assets }, () => {
+                this.forceUpdate();
+            }); } );
     }
 
     static propTypes = {
@@ -95,9 +105,9 @@ class BuySell extends React.Component {
 
     _renderDepositBtns() {
         let {base, quote} = this.props;
-        const deafaultAssetsArr = getDashboardAssets();
-        const canDepositBase = deafaultAssetsArr.includes(base.get("symbol"));
-        const canDepositQuote = deafaultAssetsArr.includes(quote.get("symbol"));
+        const canDepositBase  = this.state.depositAssets.includes(base.get("symbol") );
+        const canDepositQuote = this.state.depositAssets.includes(quote.get("symbol"));
+
         return (
             canDepositBase ?
                 canDepositQuote ? (

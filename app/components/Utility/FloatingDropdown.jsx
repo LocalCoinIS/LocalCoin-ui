@@ -16,7 +16,7 @@ class Dropdown extends React.Component {
         super(props);
         this.state = {
             active: false,
-            filter: typeof props.filter !== "undefined" && props.filter === true,
+            filter: typeof props.filter !== "undefined" ? props.filter : true,
             filterValue: ""
         };
 
