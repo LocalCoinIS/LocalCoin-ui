@@ -41,6 +41,7 @@ class LLCBridgeModal extends React.Component {
             isActiveThisModal: "is-active",
             account: null,
             assets: [],
+            bridgeAssets: [],
             asset: LLCBridgeModal.DEFAULT_CURRENCY,
             address: "",
             minimal: 0,
@@ -85,8 +86,9 @@ class LLCBridgeModal extends React.Component {
             }*/
             
             if (!self.currencies) return;
-            let assets = [],
-                assetValues = [];
+            let assets          = [],
+                bridgeAssets    = [],
+                assetValues     = [];
 
             for (var i in self.currencies) {
                 if (!self.currencies[i].asset) continue;
@@ -97,11 +99,15 @@ class LLCBridgeModal extends React.Component {
 
                 if (self.currencies[i].asset === props.asset)
                     thisAsset = props.asset;
+
+                if(self.currencies[i].allowBridge)
+                    bridgeAssets.push(self.currencies[i].asset);
             }
             self.setState({
-                asset: thisAsset,
-                assets: assets,
-                assetValues: assetValues
+                asset        : thisAsset,
+                assets       : assets,
+                bridgeAssets : bridgeAssets,
+                assetValues  : assetValues
             });
             
             self.onChooseAsset(thisAsset);
@@ -525,7 +531,7 @@ class LLCBridgeModal extends React.Component {
                     <div className="form-label select floating-dropdown">
 
                         <FloatingDropdown
-                            entries={this.state.assets}
+                            entries={this.state.bridgeAssets}
                             values={this.state.assetValues}
                             singleEntry={this.state.asset}
                             value={this.state.asset}
