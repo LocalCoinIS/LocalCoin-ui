@@ -213,7 +213,7 @@ class AssetSelector extends React.Component {
                                             this.props.assets
                                         )}
                                         onChange={this.onAssetSelect.bind(this)}
-                                        focusInput={this._focusInput.bind(this)}
+                                        
                                     />
                                 ) : null}
                             </div>

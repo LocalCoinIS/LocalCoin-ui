@@ -101,6 +101,12 @@ class Dropdown extends React.Component {
         if(!this.state.active && this.props.focusInput) {
             this.props.focusInput();
         }
+
+        if(typeof this.find_input !== "undefined" && this.find_input != null) {
+            setTimeout(() => {
+                this.find_input.focus();
+            }, 300);
+        }
     }
 
     render() {
@@ -161,12 +167,9 @@ class Dropdown extends React.Component {
                     </div>
                     <ul
                         className="dropdown"
-                        // style={{
-                        //     overflow:
-                        //         entries.length > this.props.scroll_length
-                        //             ? "auto"
-                        //             : "hidden"
-                        // }}
+                        style={{
+                            minWidth: "100px"
+                        }}
                     >
                         {this.state.filter && entries.length > 1 ? <div>
                             <input
@@ -174,8 +177,11 @@ class Dropdown extends React.Component {
                                 rows="1"
                                 style={{
                                     margin: "5px",
-                                    width: "90%"
+                                    width: "90%",
+                                    border: "1px solid #7fafe8",
                                 }}
+                                id="search_inp_drd"
+                                ref={(input) => { this.find_input = input; }} 
                                 placeholder="Search"
                                 onChange={e => {
                                     this.setState({
