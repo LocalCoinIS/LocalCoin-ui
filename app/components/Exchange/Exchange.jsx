@@ -709,7 +709,7 @@ class Exchange extends React.Component {
         );
         if (!feeID) {
             return notify.addNotification({
-                message: "Insufficient funds to pay fees",
+                message: "Insufficient funds to pay fees. You need to buy LLC",
                 level: "error"
             });
         }
