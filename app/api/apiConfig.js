@@ -2,7 +2,7 @@ export const settingsAPIs = {
     DEFAULT_WS_NODE: "wss://de1.localcoin.is",
     WS_NODE_LIST: [
         {url: "ws://127.0.0.1:8090", location: "Locally hosted"},
-        {url: "wss://us.localcoin.is", location: "US Denver by crazy-indain"},
+        {url: "wss://chippawa-for-life.com", location: "US Denver by crazy-indain"},
         {url: "wss://id.localcoin.is", location: "Indonesia by billpresta3101"},
         {url: "wss://de1.localcoin.is", location: "Germany by firedswiss1"},
         {url: "wss://mysupremecoin.com", location: "Italy by the-supreme19"},
