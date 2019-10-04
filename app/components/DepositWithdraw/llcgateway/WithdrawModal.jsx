@@ -65,7 +65,7 @@ class WithdrawModal extends React.Component {
             this.props.currency.asset,
             this.props.currency.currencyCoef
         );
-        if (balance > this.props.currency.minimal) return "";
+        if (balance > this.props.currency.minimalAmountWithdraw) return "";
 
         return counterpart.translate("transfer.errors.noFeeBalance");
     }
@@ -154,7 +154,7 @@ class WithdrawModal extends React.Component {
             return;
         }
 
-        if (this.wdAmount < this.props.currency.minimal) {
+        if (this.wdAmount < this.props.currency.minimalAmountWithdraw) {
             this.lockWithdrawBtn();
             return;
         }
@@ -375,7 +375,7 @@ class WithdrawModal extends React.Component {
                                                     content="gateway.rudex.min_amount"
                                                     minAmount={
                                                         this.props.currency
-                                                            .minimal
+                                                            .minimalAmountWithdraw
                                                     }
                                                     symbol={
                                                         this.props.currency

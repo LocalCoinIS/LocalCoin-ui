@@ -772,7 +772,7 @@ class LLCBridgeModal extends React.Component {
                                                 content="gateway.rudex.min_amount"
                                                 minAmount={
                                                     this.props.currency
-                                                        .minimal
+                                                        .minimalAmountWithdraw
                                                 }
                                                 symbol={
                                                     this.props.currency
