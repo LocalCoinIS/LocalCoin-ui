@@ -341,7 +341,7 @@ class LLCBridgeModal extends React.Component {
             return;
         }
 
-        if (this.wdAmount < this.props.currency.minimal) {
+        if (this.wdAmount < this.props.currency.minimalAmountWithdraw) {
             this.lockWithdrawBtn();
             return;
         }
