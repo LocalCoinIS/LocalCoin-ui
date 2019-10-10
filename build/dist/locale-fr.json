@@ -436,7 +436,7 @@
         "confirm_sell": "Your order is %(diff)s times lower than the highest bid, are you sure?",
         "core_rate": "Fee Rate",
         "custom_quote": "Add a custom quote",
-        "deposit": "Deposit",
+        "deposit": "Dépôt",
         "description": "Description",
         "ema": "Exponential Moving Average",
         "featured": "Top Markets",
@@ -770,7 +770,7 @@
         "convert_now": "Convert now",
         "copy_address": "Copy address",
         "copy_memo": "Copy memo",
-        "deposit": "Deposit",
+        "deposit": "Dépôt",
         "deposit_address": "Deposit address",
         "deposit_history_status": {
             "confirming": "deposit confirming",
@@ -936,7 +936,7 @@
         },
         "dashboard": "Dashboard",
         "deposit": {
-            "deposit": "Deposit",
+            "deposit": "Dépôt",
             "deposit_withdraw": "Portefeuille"
         },
         "disconnected": "API Node is disconnected",

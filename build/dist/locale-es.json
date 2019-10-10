@@ -436,7 +436,7 @@
         "confirm_sell": "Tu pedido es %(diff)s veces inferior a la oferta más alta,  ¿estás seguro?",
         "core_rate": "Tasa de Comisión",
         "custom_quote": "Add a custom quote",
-        "deposit": "Deposit",
+        "deposit": "Depositar",
         "description": "Description",
         "ema": "Exponential Moving Average",
         "featured": "Mercados principales",

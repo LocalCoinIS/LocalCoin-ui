@@ -436,7 +436,7 @@
         "confirm_sell": "你的委单价低于最高买入价 %(diff)s 倍，确定下单吗？",
         "core_rate": "手续费率",
         "custom_quote": "Add a custom quote",
-        "deposit": "Deposit",
+        "deposit": "充值",
         "description": "Description",
         "ema": "指数移动平均线(EMA)",
         "featured": "热门市场",

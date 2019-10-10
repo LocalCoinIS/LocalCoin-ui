@@ -436,7 +436,7 @@
       "confirm_sell": "Emri teyit et: Sat %(sell_amount)s %(sell_symbol)s fiyat %(price_amount)s %(price_symbol)s",
       "core_rate": "Ücret Oranı",
       "custom_quote": "Add a custom quote",
-      "deposit": "Deposit",
+      "deposit": "Yatir",
       "description": "Description",
       "ema": "Üssel Hareketli Ortalama",
       "featured": "Öne Çıkan Piyasalar",
