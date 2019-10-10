@@ -1104,7 +1104,7 @@
         "withdraw": {
             "address": "Вывести на адрес",
             "address_not_valid": "Неверный адрес",
-            "amount": "Сумма на вывод",
+            "amount": "Сумма вывода",
             "available": "Доступно: ",
             "LocalCoin_account": "Отправить на аккаунт в LocalCoin",
             "bitshares_account": "Отправить на аккаунт в LocalCoin",
@@ -1826,7 +1826,7 @@
         },
         "withdraw": {
             "finalNumber": "Фактическая сумма:%(final_number)s",
-            "winAmount": "Минимальная сумма: %(min_amount)s %(asset)s"
+            "winAmount": "Минимальная сумма вывода: %(min_amount)s %(asset)s"
         }
     },
     "gateway": {
@@ -1885,11 +1885,11 @@
             "transfering": "передача",
             "waiting": "ожидание депозита"
         },
-        "deposit_inst": "Инструкции по депозитам",
+        "deposit_inst": "Инструкция по пополненю",
         "deposit_limit": "Лимит на депозиты",
         "deposit_notice_delay": "(новый адрес может быть создан раз в 5 минут)",
         "deposit_summary": "Сводка депозитов",
-        "deposit_to": "Пожалуйста, отправьте Ваши %(asset)s на адрес ниже",
+        "deposit_to": "Отправьте %(asset)s на адрес указанный ниже",
         "deposit_warning": "Отправка любой другой валюты на %(asset)s адрес приведет к потере вашего депозита",
         "deposit_warning_memo": "Депозит %(asset)s должен содержать примечание, иначе он не будет зачислен",
         "fee": "Комиссия шлюза",

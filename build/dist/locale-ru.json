@@ -1104,7 +1104,7 @@
         "withdraw": {
             "address": "Вывести на адрес",
             "address_not_valid": "Неверный адрес",
-            "amount": "Сумма на вывод",
+            "amount": "Сумма вывода",
             "available": "Доступно: ",
             "LocalCoin_account": "Отправить на аккаунт в LocalCoin",
             "bitshares_account": "Отправить на аккаунт в LocalCoin",
@@ -1885,7 +1885,7 @@
             "transfering": "передача",
             "waiting": "ожидание депозита"
         },
-        "deposit_inst": "Инструкции по депозитам",
+        "deposit_inst": "Инструкция для пополнения",
         "deposit_limit": "Лимит на депозиты",
         "deposit_notice_delay": "(новый адрес может быть создан раз в 5 минут)",
         "deposit_summary": "Сводка депозитов",
