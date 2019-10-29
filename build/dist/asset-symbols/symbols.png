@@ -836,6 +836,7 @@ export const coins = [
 	{name: "ctx", image: require("!file-loader?name=asset-symbols/[name].png!./ctx.png"),},
 	{name: "ctxc", image: require("!file-loader?name=asset-symbols/[name].png!./ctxc.png"),},
 	{name: "ctz", image: require("!file-loader?name=asset-symbols/[name].png!./ctz.png"),},
+	{name: "ctk", image: require("!file-loader?name=asset-symbols/[name].png!./ctk.png"),},
 	{name: "cube", image: require("!file-loader?name=asset-symbols/[name].png!./cube.png"),},
 	{name: "cuc", image: require("!file-loader?name=asset-symbols/[name].png!./cuc.png"),},
 	{name: "cup", image: require("!file-loader?name=asset-symbols/[name].png!./cup.png"),},
