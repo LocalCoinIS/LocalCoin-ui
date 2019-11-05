@@ -62,6 +62,7 @@ let icons = [
     "btc",
     "fb",
     "insta",
+    "cmc",
     "m-1",
     "redd",
     "s-574",
