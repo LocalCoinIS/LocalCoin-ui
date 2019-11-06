@@ -6,7 +6,7 @@ export const settingsAPIs = {
         {url: "wss://de.localcoin.is", location: "Germany"},
         {url: "wss://fi.localcoin.is", location: "Finland"},
         {url: "wss://mysupremecoin.com", location: "Italy by the-supreme19"},
-        {url: "wss://ru.localcoin.is", location: "Russia"}
+        {url: "wss://ru.localcoin.is", location: "Russia"},
         {url: "wss://node.gate.is", location: "Middle East"}
     ],
     DEFAULT_FAUCET: "https://faucet.localcoin.is", // 2018-12-infrastructure worker proposal
