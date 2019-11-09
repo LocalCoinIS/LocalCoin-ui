@@ -4,7 +4,7 @@ export const settingsAPIs = {
         {url: "ws://127.0.0.1:8090", location: "Locally hosted"},
         {url: "wss://chippawa-for-life.com", location: "US Denver by crazy-indain"},
         {url: "wss://de.localcoin.is", location: "Germany"},
-        {url: "wss://llcnode.buycoinbot.net", location: "Germany"},
+        {url: "wss://llcnode.buycoinbot.net", location: "Germany by BuyCoinFast"},
         {url: "wss://node.gate.is", location: "Africa"},
         {url: "wss://fi.localcoin.is", location: "Finland"},
         {url: "wss://mysupremecoin.com", location: "Italy by the-supreme19"},
