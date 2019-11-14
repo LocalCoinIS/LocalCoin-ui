@@ -1,5 +1,5 @@
 export const settingsAPIs = {
-    DEFAULT_WS_NODE: "wss://mysupremecoin.com",
+    DEFAULT_WS_NODE: "wss://de.localcoin.is",
     WS_NODE_LIST: [
         {url: "ws://127.0.0.1:8090", location: "Locally hosted"},
         {url: "wss://chippawa-for-life.com", location: "US Denver by crazy-indain"},
