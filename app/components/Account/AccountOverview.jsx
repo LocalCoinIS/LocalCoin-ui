@@ -581,12 +581,20 @@ class AccountOverview extends React.Component {
 
             const canTrade = deafaultAssetsArr.includes(asset.get("symbol"));
 
-            const canDeposit = (backedCoin && backedCoin.depositAllowed) || canTrade;
+            const canDeposit =
+                (typeof window.allAssets !== "undefined" && window.allAssets.indexOf(symbol)) ||
+                (
+                    backedCoin && backedCoin.depositAllowed
+                ) ||
+                canTrade;
 
             const canWithdraw =
-                (backedCoin &&
-                backedCoin.withdrawalAllowed &&
-                (hasBalance && balanceObject.get("balance") != 0)) || canTrade;
+                (typeof window.allAssets !== "undefined" && window.allAssets.indexOf(symbol)) ||
+                (   backedCoin &&
+                    backedCoin.withdrawalAllowed &&
+                    (hasBalance && balanceObject.get("balance") != 0)
+                ) ||
+                canTrade;
 
             const canBuy = !!this.props.bridgeCoins.get(symbol) || asset.get("symbol") === "LLC" ;
 
