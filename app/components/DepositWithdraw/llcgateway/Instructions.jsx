@@ -120,6 +120,8 @@ class Instructions extends React.Component {
             itsETH = true;
         }
 
+        let itsToken = typeof window.tokenList !== "undefined" && window.tokenList.indexOf(this.props.currency.asset) !== -1;
+
         return (
             <div className="small-12 medium-7">
                 <h4>
@@ -207,6 +209,18 @@ class Instructions extends React.Component {
                                 content="gateway.min_count_confirmations"
                                 cnt={countConfirmations}
                             />
+
+                            {itsToken ? (
+                                <Translate
+                                    className="deposit-withdraw-info"
+                                    component="b"
+                                    content="gateway.token_info"
+                                    type_action={
+                                        counterpart.translate( "gateway.deposit" )
+                                    }
+                                />
+                            ) : null}
+
                             {itsETH ? (
                                 <div>
                                     <Translate

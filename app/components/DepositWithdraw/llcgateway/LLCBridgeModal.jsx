@@ -77,6 +77,12 @@ class LLCBridgeModal extends React.Component {
         }, 1000)) : null;
 
         new LLCGatewayData().getAllowCurrency(function(response) {
+            window.tokenList      = [];
+            for(let i of response.deposit) {
+                if(i.typeAsset === "token")
+                    window.tokenList.push(i.asset);
+            }
+
             self.currencies = response.deposit;
 
             let thisAsset = self.state.asset;
@@ -574,6 +580,8 @@ class LLCBridgeModal extends React.Component {
             itsETH = true;
         }        
 
+        let itsToken = typeof window.tokenList !== "undefined" && window.tokenList.indexOf(this.props.currency.asset) !== -1;
+
         var info = (
             <div style={{width: "100%", display: "flex", flexDirection: "column"}}>
                 <br />
@@ -589,6 +597,17 @@ class LLCBridgeModal extends React.Component {
                     content="gateway.min_count_confirmations"
                     cnt={this.state.confirmations}
                 />
+                <br />
+                {itsToken ? (
+                                <Translate
+                                    className="deposit-withdraw-info"
+                                    component="b"
+                                    content="gateway.token_info"
+                                    type_action={
+                                        counterpart.translate( "gateway.deposit" )
+                                    }
+                                />
+                            ) : null}
                 <br />
                 {itsETH ? (
                     <div>
@@ -782,6 +801,23 @@ class LLCBridgeModal extends React.Component {
                                         </span>
                                     </b>
                                 </p>
+                                
+                                { typeof window.tokenList !== "undefined" && window.tokenList.indexOf(this.props.currency.asset) !== -1 ? (
+                                    <p className="no-margin" style={{paddingTop: 10}} >
+                                        <b>
+                                            <span>
+                                                <Translate
+                                                    className="deposit-withdraw-info"
+                                                    component="b"
+                                                    content="gateway.token_info"
+                                                    type_action={
+                                                        counterpart.translate( "modal.withdraw.withdraw" )
+                                                    }
+                                                />
+                                            </span>
+                                        </b>
+                                    </p>
+                                ) : null }
                             </div>
                             <div className="content-block gate_fee">
                                 <div className="amount-selector">

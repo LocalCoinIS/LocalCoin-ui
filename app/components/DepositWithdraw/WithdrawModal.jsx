@@ -94,7 +94,7 @@ class WithdrawModal extends React.Component {
                             onChange={this.onWithdrawAmountChange.bind(this)}
                             display_balance={balance}
                         />
-                    </div>
+                    </div>                    
                     <div className="content-block full-width-content">
                         <label>
                             <Translate

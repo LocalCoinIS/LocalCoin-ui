@@ -385,6 +385,7 @@ class WithdrawModal extends React.Component {
                                             </span>
                                         </b>
                                     </p>
+                                    <div>123</div>
                                 </div>
                                 <div className="content-block gate_fee">
                                     <div className="amount-selector">
@@ -411,6 +412,7 @@ class WithdrawModal extends React.Component {
                                     >
                                         <span>{this.state.insufficient}</span>
                                     </p>
+                                    <div>123</div>
                                 </div>
                                 <div className="content-block gate_fee">
                                     <div className="amount-selector">
@@ -450,7 +452,7 @@ class WithdrawModal extends React.Component {
                                                 "modal.withdraw.address"
                                             )}
                                         </span>
-                                    </label>
+                                    </label>                                    
                                     <div className="rudex-select-dropdown">
                                         <div className="inline-label">
                                             <input
