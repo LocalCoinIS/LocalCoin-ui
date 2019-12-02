@@ -218,6 +218,7 @@ class Instructions extends React.Component {
                                     type_action={
                                         counterpart.translate( "gateway.deposit" )
                                     }
+                                    fee="0.2"
                                 />
                             ) : null}
 

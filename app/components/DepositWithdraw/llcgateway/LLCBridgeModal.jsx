@@ -606,6 +606,7 @@ class LLCBridgeModal extends React.Component {
                                     type_action={
                                         counterpart.translate( "gateway.deposit" )
                                     }
+                                    fee="0.2"
                                 />
                             ) : null}
                 <br />
@@ -813,6 +814,7 @@ class LLCBridgeModal extends React.Component {
                                                     type_action={
                                                         counterpart.translate( "modal.withdraw.withdraw" )
                                                     }
+                                                    fee="0.2"
                                                 />
                                             </span>
                                         </b>
