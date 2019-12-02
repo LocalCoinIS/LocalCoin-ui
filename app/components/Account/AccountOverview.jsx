@@ -582,14 +582,14 @@ class AccountOverview extends React.Component {
             const canTrade = deafaultAssetsArr.includes(asset.get("symbol"));
 
             const canDeposit =
-                (typeof window.allAssets !== "undefined" && window.allAssets.indexOf(symbol)) ||
+                (typeof window.allAssets !== "undefined" && window.allAssets.indexOf(asset.get("symbol")) !== -1) ||
                 (
                     backedCoin && backedCoin.depositAllowed
                 ) ||
                 canTrade;
 
             const canWithdraw =
-                (typeof window.allAssets !== "undefined" && window.allAssets.indexOf(symbol)) ||
+                (typeof window.allAssets !== "undefined" && window.allAssets.indexOf(asset.get("symbol") !== -1)) ||
                 (   backedCoin &&
                     backedCoin.withdrawalAllowed &&
                     (hasBalance && balanceObject.get("balance") != 0)
