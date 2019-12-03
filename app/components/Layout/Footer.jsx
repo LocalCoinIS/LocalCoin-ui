@@ -333,7 +333,7 @@ class Social extends Component {
             { item: "reddit", href: "https://www.reddit.com/r/LocalCoinIs", img: "redd" },
             { item: "steemit", href: "https://steemit.com/@localcoin", img: "s-576" },
             { item: "twitter", href: "https://twitter.com/LocalCoinIS", img: "tw" },
-            { item: "coinmarket", href: "https://coinmarketcap.com/exchanges/localcoin/", img: "cmc" },
+            { item: "coinmarket", href: "https://coinmarketcap.com/exchanges/localcoin-dex/", img: "cmc" },
         ];
 
         let list = socialArr.map((item, i) => {
