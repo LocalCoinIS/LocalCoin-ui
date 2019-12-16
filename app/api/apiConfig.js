@@ -7,7 +7,6 @@ export const settingsAPIs = {
         {url: "wss://llcnode.buycoinbot.com", location: "Germany by BuyCoinFast"},
         {url: "wss://node.gate.is", location: "Africa"},
         {url: "wss://fi.localcoin.is", location: "Finland"},
-        {url: "wss://mysupremecoin.com", location: "Italy by the-supreme19"},
         {url: "wss://ru.localcoin.is", location: "Russia"}
     ],
     DEFAULT_FAUCET: "https://faucet.localcoin.is", // 2018-12-infrastructure worker proposal
