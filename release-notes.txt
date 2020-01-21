@@ -1,4 +1,22 @@
 ---------------------------------------------------------------------
+Release 1.0.6
+---------------------------------------------------------------------
+
+Features
+--------
+- Added new node
+- New package builder
+- Trading charts update to latest version
+- ERC-20 Token Support
+- New trading pairs
+
+Bugs
+--------
+- Fixed deposit pop-up windows
+- UI fix: Changed commas to dots in all balances
+- Minor fixes and changes
+
+---------------------------------------------------------------------
 Release 1.0.5
 ---------------------------------------------------------------------
 
