@@ -1,11 +1,9 @@
 export const settingsAPIs = {
-    DEFAULT_WS_NODE: "wss://fi.localcoin.is",
+    DEFAULT_WS_NODE: "wss://ru.localcoin.is",
     WS_NODE_LIST: [
         {url: "ws://127.0.0.1:8090", location: "Locally hosted"},
         {url: "wss://chippawa-for-life.com", location: "US Denver by crazy-indain"},
-        {url: "wss://de.localcoin.is", location: "Germany"},
         {url: "wss://node.gate.is", location: "Africa"},
-        {url: "wss://fi.localcoin.is", location: "Finland"},
         {url: "wss://ru.localcoin.is", location: "Russia"}
     ],
     DEFAULT_FAUCET: "https://faucet.localcoin.is", // 2018-12-infrastructure worker proposal
