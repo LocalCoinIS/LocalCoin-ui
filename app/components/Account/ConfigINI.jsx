@@ -189,7 +189,7 @@ class ConfigINI {
                 .replace(VAR_privateKey,  this.privateKey);
 
         return items;
-    }
+    };
         
     get = () => FILE_CONTENT
                     .replace(VAR_accountName, this.accountName)

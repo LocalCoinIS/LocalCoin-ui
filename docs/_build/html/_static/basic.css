@@ -174,14 +174,14 @@ img.toggler {
 div.modindex-jumpbox {
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
-    margin: 1em 0 1em 0;
+    margin: 1em 0;
     padding: 0.4em;
 }
 
 div.genindex-jumpbox {
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
-    margin: 1em 0 1em 0;
+    margin: 1em 0;
     padding: 0.4em;
 }
 
@@ -260,7 +260,7 @@ img.align-center, .figure.align-center, object.align-center {
 div.sidebar {
     margin: 0 0 0.5em 1em;
     border: 1px solid #ddb;
-    padding: 7px 7px 0 7px;
+    padding: 7px 7px 0;
     background-color: #ffe;
     width: 40%;
     float: right;
@@ -274,8 +274,8 @@ p.sidebar-title {
 
 div.topic {
     border: 1px solid #ccc;
-    padding: 7px 7px 0 7px;
-    margin: 10px 0 10px 0;
+    padding: 7px 7px 0;
+    margin: 10px 0;
 }
 
 p.topic-title {
@@ -501,7 +501,7 @@ table.highlighttable {
 }
 
 table.highlighttable td {
-    padding: 0 0.5em 0 0.5em;
+    padding: 0 0.5em;
 }
 
 div.code-block-caption {

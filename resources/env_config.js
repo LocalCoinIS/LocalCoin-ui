@@ -10,6 +10,6 @@
         window.env = JSON.parse(fs.readFileSync(__dirname + '/env_config.json'));
     } else {
         // Node context
-        module.exports = {} //fs.readFileSync(__dirname + '/../../env_config.json');
+        module.exports = {}; //fs.readFileSync(__dirname + '/../../env_config.json');
     }
 }());

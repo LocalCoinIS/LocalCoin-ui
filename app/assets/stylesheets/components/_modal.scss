@@ -15,7 +15,7 @@
     max-width: 700px;
     border-radius: 8px;
     overflow: auto !important;
-    padding: 1rem 2rem 1rem 2rem;
+    padding: 1rem 2rem;
     transition-duration: 0.01s !important;
 
     .modal__header {
@@ -154,7 +154,7 @@
             border-radius: 0 5px 5px 0!important;
         }
         #search_inp_drd {
-            border-radius: 5px 5px 5px 5px!important;
+            border-radius: 5px!important;
         }
         div.input-wrapper div.floating-dropdown {
             width: 30px;
