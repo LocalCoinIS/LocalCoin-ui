@@ -21,7 +21,7 @@ export default class FastDisconnectPing {
         } catch(ex) {}
 
         return 0;
-    }
+    };
 
     setDisconnectStatus = () => {
         if(!this.currentNodeIsOpen()) return;
@@ -32,7 +32,7 @@ export default class FastDisconnectPing {
         }
 
         this.blockchainStore.onUpdateRpcConnectionStatus("closed");
-    }
+    };
 
     getCurrentNodeName = () => {
         try {
@@ -46,7 +46,7 @@ export default class FastDisconnectPing {
         } catch(ex) {}
 
         return counterpart.translate("footer.connected");
-    }
+    };
 
     setConnectStatus = () => {
         if(this.currentNodeIsOpen()) return;
@@ -57,7 +57,7 @@ export default class FastDisconnectPing {
         }
 
         this.blockchainStore.onUpdateRpcConnectionStatus("open");
-    }
+    };
 
 
     item = () => {
@@ -76,7 +76,7 @@ export default class FastDisconnectPing {
         }
 
         this.lastCntBlocks = currentCntBlocks;
-    }
+    };
 
     currentNodeIsOpen = () => this.blockchainStore.rpc_connection_status === STATUS_OPEN;
 
@@ -86,5 +86,5 @@ export default class FastDisconnectPing {
         window.fastDisconnectPingInterval = setInterval(() => {
             this.item();
         }, UPDATE_BLOCK_TIME);
-    }
+    };
 }

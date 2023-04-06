@@ -146,7 +146,7 @@ section > .button:last-child {
         margin-bottom: .5rem;
     }
     .actions {
-        padding: 1rem 0 1rem 0;
+        padding: 1rem 0;
     }
 }
 
@@ -164,7 +164,7 @@ section > .button:last-child {
     h3,
     h1 {
         margin: 0;
-        padding: 1rem 0 1rem 0;
+        padding: 1rem 0;
     }
     h3 {
         font-size: 2rem;
@@ -234,10 +234,10 @@ div.memo-tip {
 
 .invoice {
     .item-name {
-        padding: 0.2rem 0 0.2rem 0;
+        padding: 0.2rem 0;
     }
     .item-description {
-        padding: 0.2rem 0 0.2rem 0;
+        padding: 0.2rem 0;
         font-size: 90%;
     }
 }
@@ -275,7 +275,7 @@ label.inline {
     max-width: 50rem;
     display: inline-flex;
     flex-direction: column;
-    padding: 1rem 2rem 1rem 2rem;
+    padding: 1rem 2rem;
     background: hsl(0, 0%, 32%);
     color: white;
     border-radius: 0.05rem;

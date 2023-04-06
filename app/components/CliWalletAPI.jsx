@@ -27,7 +27,7 @@ class CliWalletAPI {
         } catch(ex) {}
 
         error();
-    }
+    };
 
     importAccountInWallet(account, privKey, cb) {
         let q = "{ " +
@@ -112,7 +112,7 @@ class CliWalletAPI {
             this.ws.onmessage = null;
         };
         this.ws.send(q);
-    }
+    };
 
     createActivenodeByAccount = (account, cb) => {
         let q = "{ " +
@@ -130,7 +130,7 @@ class CliWalletAPI {
             this.ws.onmessage = null;
         };
         this.ws.send(q);
-    }
+    };
 }
 
 export default CliWalletAPI;
