@@ -190,8 +190,8 @@ var Stemmer = function() {
     if (firstch == "y")
       w = firstch.toLowerCase() + w.substr(1);
     return w;
-  }
-}
+  };
+};
 
 
 
@@ -564,7 +564,7 @@ var Search = {
       $u.each(_o, function(o) {
         var _files = o.files;
         if (_files === undefined)
-          return
+          return;
 
         if (_files.length === undefined)
           _files = [_files];
@@ -574,7 +574,7 @@ var Search = {
         for (j = 0; j < _files.length; j++) {
           file = _files[j];
           if (!(file in scoreMap))
-            scoreMap[file] = {}
+            scoreMap[file] = {};
           scoreMap[file][word] = o.score;
         }
       });
@@ -612,7 +612,7 @@ var Search = {
       if (valid) {
         // select one (max) score for the file.
         // for better ranking, we should calculate ranking by using words statistics like basic tf-idf...
-        var score = $u.max($u.map(fileMap[file], function(w){return scoreMap[file][w]}));
+        var score = $u.max($u.map(fileMap[file], function(w){return scoreMap[file][w];}));
         results.push([filenames[file], titles[file], '', null, score]);
       }
     }

@@ -14,7 +14,7 @@ export default class LocalcoinHost {
 		}
 
 		return this._LOCALCOIN_HOST_URL;
-	}
+	};
 
 	send = (url, body, cb) =>
 		fetch(this.LOCALCOIN_HOST_URL() + url, {

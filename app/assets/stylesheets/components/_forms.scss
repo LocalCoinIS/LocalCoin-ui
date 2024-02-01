@@ -230,7 +230,7 @@ div.transfer-input {
                 display: block;
                 text-decoration: none;
                 color: #333;
-                padding: 10px 10px;
+                padding: 10px;
                 transition: all 0.3s ease-out;
             }
             i {
@@ -250,7 +250,7 @@ div.transfer-input {
     top: 50%;
     right: 10px;
     margin-top: -3px;
-    border-width: 6px 6px 0 6px;
+    border-width: 6px 6px 0;
     border-style: solid;
 }
 .dropdown-wrapper.inactive:after {
@@ -344,7 +344,7 @@ form.full-width {
 button.red,
 button.green,
 button.blue {
-    padding: 10px 0px 10px 0px;
+    padding: 10px 0px;
     width: 8rem;
     color: rgb(242, 242, 242);
     font-size: 0.875rem;

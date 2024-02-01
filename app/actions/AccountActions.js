@@ -112,7 +112,7 @@ class AccountActions {
                 return ApplicationApi.activenode_create_operation({
                     activenode_account
                 }).then(result => {
-                     console.log( "activenode_create_operation result: ", result )
+                     console.log( "activenode_create_operation result: ", result );
 
                     dispatch(result);
                 });
